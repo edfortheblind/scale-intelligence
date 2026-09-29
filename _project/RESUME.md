@@ -24,3 +24,7 @@ Read C:/Apps/AEKR governance only; never copy its private assets. Source qualifi
 The accepted AIM baseline is decision commit 3cc7f64ee0ff840426531529fefc788754aba17f and verified corpus commit bc829bea78f8c57f5061418363326063664bd532. Its clean-clone receipt verified 14,199 expected artifacts, 3,196 unique source files, 4,892 reading files, 2,446 app documents, both prompts and the search database; all 60 tests and LFS pull/fsck passed (zero LFS objects). Preserve historical source/state/visual evidence and its original code bindings. SDK tool changes do not fabricate a new AIM browser run.
 
 Check STATE.json and the external OS writer lock before launching a process. An interrupted worker resumes from per-resource manifests. The OS lock releases on exit; never delete a lock to take ownership. Credentials/profiles/logs/runtime leases remain under LOCALAPPDATA/TAB/SCALE-Intelligence outside this repository. Prior detailed resume history is retained under _project/history/RESUME-before-AIM-acceptance-20260929.md and is superseded by this owner decision.
+
+## Current private delivery
+
+Corpus checkpoint 66cb7956c7660b1e8a599fce4a45a3aa87216544 passed clean GitHub clone verification: 14859 inventoried artifacts; 144 tests passed; LFS pull/fsck passed with zero LFS objects. This is the accepted AIM plus partial SDK generation, not full SDK/project completion. The separate receipt commit records this verification without changing corpus files.
