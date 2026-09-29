@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Device Integration Framework Process Summary: Functionality</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1029" data-source-node="n57"></a>Device Integration Framework Process Summary</h1>
+        <p data-source-node="n58"><b data-source-node="n59">** Functionality **</b>
+        </p>
+        <p data-source-node="n60"><a href="3c63bdf0272ec9766ff0f09ad26edf86b80acc7a3e3ca5d322c6845dbf3b9d59.html" style="font-style: normal;font-weight: bold" data-source-node="n61">Process Flows</a>
+        </p>
+        <p data-source-node="n62"> </p>
+        <p data-source-node="n63"> </p>
+        <h4 data-source-node="n64">Summary...</h4>
+        <p data-source-node="n65">Larger warehouses often implement additional automation software with material handling equipment (MHE) to help handle the high volume of production.  Some examples of this are executing picks using a pick to light system, or a conveyor system which closes containers when packing is complete.  The information captured from these MHEs then needs to be sent to SCALE for processing.  Also, the MHEs may need to receive information back from SCALE to complete this functionality.  The Device Integration Framework (DIF) component serves as a communicator between SCALE and the MHE. The Device Integration Framework (DIF) is made up of a set of services designed for the simple and efficient integration of SCALE with outside systems and devices in order to fulfill the demands of a supply chain. </p>
+        <p data-source-node="n66"> </p>
+        <p data-source-node="n67">The file transfer feature is a new way of handling the data received from the MHE into the SCALE DIF Incoming Message table via files.   It  handles files, in multiple formats (xml, delimited, fixed, etc.), sent from an MHE, and picks and puts them into the incoming message table. The table and the files are then processed by the existing functionality or feature. </p>
+        <p data-source-node="n68"> </p>
+        <p data-source-node="n69">The setup will have designated folders into which the MHE files are placed and these files are picked and processed based on the different extensions used for them. After processing, the user can configure the file to have the 'To Ext' extension updated (marked as processed), move the file to another folder (To directory), and insert a record in the DIF Incoming message table (Insert message set to Y). If a message is placed in the DIF Incoming Message table, the system will pick up the record and process it like in the past utilizing the existing framework.</p>
+        <p data-source-node="n70"> </p>
+        <p data-source-node="n71"> </p>
+        <h4 data-source-node="n72">Related Topics...</h4>
+        <p data-source-node="n73">- <a href="482986c5f73da065af27fd1340dceef414d1314d1de4e1e793c6c0d33771e526.html" data-source-node="n74">Setup Overview</a></p>
+        <p data-source-node="n75"> </p>
+        <p data-source-node="n76">The following are key features of the device integration framework functional area:</p>
+        <p width="22.717%" style="font-weight: bold" data-source-node="n77"> </p>
+        <h4 width="22.717%" data-source-node="n78">DIF Concepts...</h4>
+        <p width="77.283%" data-source-node="n79">The following are definitions to important DIF terms and concepts:</p>
+        <blockquote data-source-node="n80">
+            <p width="77.283%" data-source-node="n81"><i data-source-node="n82">DIF Event:</i> An event represents an action that occurs in material handling equipment (MHE) or SCALE that needs to be communicated via DIF. An example of this action could be the SCALE close container process.
+
+</p>
+            <p width="77.283%" data-source-node="n83"> </p>
+            <p width="77.283%" data-source-node="n84"><i data-source-node="n85">DIF Endpoint:</i> An endpoint represents the connection that an MHE and SCALE use to communicate actions (events) via DIF.
+</p>
+            <p width="77.283%" data-source-node="n86"> </p>
+            <p width="77.283%" data-source-node="n87"><i data-source-node="n88">DIF TCP Properties:</i>	A protocol property record containing the specific TCP data that is used to define the properties of a DIF endpoint.
+</p>
+            <p width="77.283%" data-source-node="n89"> </p>
+            <p width="77.283%" data-source-node="n90"><i data-source-node="n91">ACK:</i>	A positive acknowledgment sent for an incoming or outgoing message.
+
+</p>
+            <p width="77.283%" data-source-node="n92"> </p>
+            <p width="77.283%" data-source-node="n93"><i data-source-node="n94">NAK:</i>	A negative acknowledgment sent for an incoming or outgoing message.
+
+</p>
+            <p width="77.283%" data-source-node="n95"> </p>
+            <p width="77.283%" data-source-node="n96"><i data-source-node="n97">Heartbeat:</i>	A heartbeat is the mechanism that the application (MHE or SCALE) uses to verify that a connection is still active, without having to depend on TCP to determine this.
+
+</p>
+            <p width="77.283%" data-source-node="n98"> </p>
+            <p width="77.283%" data-source-node="n99"><i data-source-node="n100">Keep Alive:</i> A keep alive is what the TCP protocol uses internally to determine whether or not a connection is still active.  This is inbuilt into the protocol itself. This differs from a heartbeat, which is at the application level.
+</p>
+            <p width="77.283%" data-source-node="n101"> </p>
+            <p width="77.283%" data-source-node="n102"><i data-source-node="n103">Incoming Message:</i>	An incoming message represents data sent (via DIF) from an MHE to SCALE.
+
+</p>
+            <p width="77.283%" data-source-node="n104"> </p>
+            <p width="77.283%" data-source-node="n105"><i data-source-node="n106">Outgoing Message:</i>	An outgoing message represents data sent (via DIF) from SCALE to an MHE.
+</p>
+            <p width="77.283%" data-source-node="n107"> </p>
+            <p width="77.283%" data-source-node="n108"><i data-source-node="n109">DIF Communication Service:</i>	This service handles the movement of incoming/outgoing messages sent to/from DIF.
+</p>
+            <p width="77.283%" data-source-node="n110"> </p>
+            <p width="77.283%" data-source-node="n111"><i data-source-node="n112">DIF Message Processing Service:</i>	The DIF Message Processing service reads messages and sends them to appropriate API (created by the customer). It then waits for a success or failure indication from the API, and updates the record accordingly. It features the ability to configure multi-threading processing, and can handle multiple endpoints simultaneously.
+
+</p>
+            <p width="77.283%" data-source-node="n113"> </p>
+            <p width="77.283%" data-source-node="n114"><i data-source-node="n115">Custom API (Application Program Interface):</i>	A custom API is .NET logic that modifies the messages sent by the MHE before the message is by processed by SCALE.<br data-source-node="n116"><br data-source-node="n117"></p>
+            <p data-source-node="n118"><i data-source-node="n119">From Directory:</i> Directory into which the records are placed in to be processed.<br data-source-node="n120"><br data-source-node="n121"></p>
+            <p data-source-node="n122"><i data-source-node="n123">From Ext:</i> File extensions that the records must have to be eligible for processing. 
+<br data-source-node="n124"><br data-source-node="n125"></p>
+            <p data-source-node="n126"><i data-source-node="n127">To Directory:</i> Directory into which the records will be placed after processing.<br data-source-node="n128"><br data-source-node="n129"></p>
+            <p data-source-node="n130"><i data-source-node="n131">To Ext:</i> Extension the records are marked as after processing.
+<br data-source-node="n132"><br data-source-node="n133"></p>
+            <p data-source-node="n134"><i data-source-node="n135">Insert Message:</i> Determines if a message should be inserted into the incoming DIF Message table. Supported values are Y or N.
+If Y, the message will be inserted. If N, the message will not be inserted.<br data-source-node="n136"><br data-source-node="n137"></p>
+            <p data-source-node="n138"><i data-source-node="n139">Sleep Time:</i> Duration of time between the checking of new records by the system.</p>
+        </blockquote>
+        <h4 width="22.717%" data-source-node="n140">DIF Functionality...</h4>
+        <p data-source-node="n141">- The DIF framework consists of two services. One service is a “communication” service that handles the capturing and sending of messages between SCALE and the MHE.  The other service is a “message processing” service that processes messages by sending them to the proper custom API code, which then parses the data and passes the information to the appropriate SCALE logic (incoming messages) or MHE (outgoing messages).<br data-source-node="n142"><br data-source-node="n143">- Supports out-of-the-box integration with MHE’s using the TCP/IP protocol.
+<br data-source-node="n144"><br data-source-node="n145"></p>
+        <p data-source-node="n146">- DIF has the ability to receive a positive (ACK) or negative (NAK) acknowledgment message and automatically resend messages if an ACK/NAK is not received. You can also configure the number of times a message is resent.
+<br data-source-node="n147"><br data-source-node="n148"></p>
+        <p data-source-node="n149">- You can integrate DIF with multiple MHEs at the same time.<br data-source-node="n150"><br data-source-node="n151"></p>
+        <p data-source-node="n152">- DIF can handle incoming or outgoing heartbeat messages. Also, DIF will write SCALE history records when an endpoint is shut down, if the MHE does not send back an ACK  (if configured) after a heartbeat is sent.<br data-source-node="n153"><br data-source-node="n154"></p>
+        <p data-source-node="n155">- You can also configure "keep alives" for the connection at the TCP socket level.
+<br data-source-node="n156"><br data-source-node="n157"></p>
+        <p data-source-node="n158">- You can archive incoming and outgoing messages.
+<br data-source-node="n159"><br data-source-node="n160"></p>
+        <p data-source-node="n161">- You can perform debugging.
+<br data-source-node="n162"><br data-source-node="n163"></p>
+        <p data-source-node="n164">- There are insight screens in SCALE for both incoming and outgoing messages, including the ability to manually reset error records.<br data-source-node="n165"><br data-source-node="n166"></p>
+        <p data-source-node="n167">- DIF features TCP/IP socket communication, i.e. the ability to connect and be “server” or listen and be “client."
+<br data-source-node="n168"><br data-source-node="n169"></p>
+        <p data-source-node="n170">- DIF has the ability to process different message formats, such as delimited, fixed length, and XML.
+<br data-source-node="n171"><br data-source-node="n172"></p>
+        <p data-source-node="n173">- You can configure different start/end characters for messages. The standards for TCP/IP are ASCII 02 and ASCII 03, but others can be used.
+<br data-source-node="n174"><br data-source-node="n175"></p>
+        <p data-source-node="n176">- DIF also features configurable multi-threaded processing of messages, for scalability and performance.<br data-source-node="n177"><br data-source-node="n178"></p>
+        <p data-source-node="n179">- Supports TCP/IP and File transfer<br data-source-node="n180"><br data-source-node="n181"></p>
+        <p data-source-node="n182">
+-	File transfer is only supported for incoming DIF processing.
+<br data-source-node="n183"><br data-source-node="n184"></p>
+        <p data-source-node="n185">-	Multiple MHE, folder, file format, and processing are all supported for file transfer processing.
+</p>
+        <p data-source-node="n186"> </p>
+        <p data-source-node="n187">- MHE has the ability to insert incoming message tables (records) into DB using the web API’s.</p>
+        <p data-source-node="n188"> </p>
+        <p data-source-node="n189"> </p>
+    </body></html>

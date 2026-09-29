@@ -1,0 +1,220 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Status Process Summary: Functionality</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1773" data-source-node="n57"></a>Status Process Summary</h1>
+        <p data-source-node="n58"><b data-source-node="n59">** Functionality **</b>
+        </p>
+        <p data-source-node="n60"> </p>
+        <p data-source-node="n61"> </p>
+        <h4 data-source-node="n62">Summary...</h4>
+        <p data-source-node="n63">The system uses statuses to determine at what stage of processing an entity currently is at in your warehouse. Statuses for inbound processing identify the current processing state 
+ of a receipt or receipt line; statuses for outbound execution perform 
+ this task for a shipment or a shipment line. For both functional 
+ areas, the status is defined on the line. As different processes 
+ are committed against that line, its status changes. The header 
+ record, either the receipt or the shipment, identifies the most and least 
+ advanced statuses assigned to its lines. This allows you to quickly 
+ assess the general status of the entire receipt or shipment.</p>
+        <p data-source-node="n64"> </p>
+        <p data-source-node="n65"> </p>
+        <p data-source-node="n66"> </p>
+        <h4 data-source-node="n67">Related Topics...</h4>
+        <p data-source-node="n68">- <a href="07edc31677cc85116035ff7f2dff1c2a3f7a1a38afdb4aaf867617691a7483ac.html" data-source-node="n69">Setup Overview</a></p>
+        <p data-source-node="n70"> </p>
+        <p data-source-node="n71"> </p>
+        <p data-source-node="n72"> </p>
+        <h4 data-source-node="n73">Status Flows...</h4>
+        <p data-source-node="n74">A status flow is a defined sequence of statuses grouped together to 
+ manage processing. It determines which procedures will be completed against 
+ a specific line record (receipt, shipment). Status flows are defined 
+ at the line level; this allows you to accommodate item level 
+ requirements.
+ 
+When the system processes a flow, it executes each status (number) in 
+ sequential order. For example, status 100 is completed before status 101. 
+ The system will require that a status is completed before a new one is 
+ initiated.</p>
+        <p data-source-node="n75"> </p>
+        <p data-source-node="n76"> </p>
+        <p data-source-node="n77"> </p>
+        <h4 data-source-node="n78">How Status Flows Work...</h4>
+        <ol data-source-node="n79">
+            <li value="1" data-source-node="n80">All status flows are assigned at the line level. If it 
+ is not defined, the system will assign the default flow.<br data-source-node="n81"><br data-source-node="n82"></li>
+            <li value="2" data-source-node="n83">When a detail is interfaced to the system, the system will determine 
+ how its processed based on its status flow.<br data-source-node="n84"><br data-source-node="n85"></li>
+            <li value="3" data-source-node="n86">The system will process the line through the statuses in the flow.<br data-source-node="n87"><br data-source-node="n88"></li>
+            <li value="4" data-source-node="n89">As the line is processed, the system will update its "parent" entity (receipt/shipment) to 
+ reflect is progress. These records include two status fields: the 
+ Trailing Status Field and the Leading Status Field.<br data-source-node="n90"><br data-source-node="n91"></li>
+            <li value="5" data-source-node="n92">As the shipment's/receipt's containers move through the functional 
+ area's major processes, the system cycles through the statuses.</li>
+        </ol>
+        <p data-source-node="n93"> </p>
+        <p data-source-node="n94"> </p>
+        <h4 data-source-node="n95">Default Status Flow...</h4>
+        <p data-source-node="n96">The default status flow is automatically assigned to all line 
+ records (for shipments and receipts) that are not associated with a custom 
+ status flow. Therefore, the default status flow should accommodate the 
+ majority of products that you process.</p>
+        <p data-source-node="n97"> </p>
+        <p data-source-node="n98"> </p>
+        <p data-source-node="n99"> </p>
+        <h4 data-source-node="n100">Inbound Statuses (default)...</h4>
+        <p data-source-node="n101">Below are all of the Inbound Processing default statuses:</p>
+        <ul type="disc" class="ul_1" data-source-node="n102">
+            <li data-source-node="n103">(100) Check 
+ In Pending: The receipt has arrived at the warehouse and is awaiting 
+ check in.<br data-source-node="n104"><br data-source-node="n105"></li>
+            <li data-source-node="n106">(200) Locate 
+ Pending: The units on at least one receipt line were checked 
+ in. The container(s) created during check in are awaiting locating.<br data-source-node="n107"><br data-source-node="n108"></li>
+            <li data-source-node="n109">(300) Putaway 
+ Pending: The containers were located and work creation generated 
+ putaway instructions for them. The containers are awaiting work execution 
+ to be called. The containers are brought to their storage locations during 
+ work execution.<br data-source-node="n110"><br data-source-node="n111"></li>
+            <li data-source-node="n112">(301) In Putaway: 
+ Work creation generated putaway instructions for the container(s). Someone 
+ has begun transporting the container(s) from the receiving dock to the 
+ storage location(s) selected during locating.<br data-source-node="n113"><br data-source-node="n114"></li>
+            <li data-source-node="n115">(900) Closed: 
+ All receipt lines for this receipt have been checked in and located. 
+ If the work creation was called, the container(s) have been physically 
+ moved to storage location(s).                  If work 
+ creation was not called, locating has selected storage locations for the 
+ container(s). In other words, if you do not require work creation, the 
+ container will move from status 200 to status 900, provided no custom 
+ default statuses are not added.</li>
+        </ul>
+        <p data-source-node="n116"> </p>
+        <p data-source-node="n117"> </p>
+        <h4 data-source-node="n118">Outbound Statuses (default)...</h4>
+        <p data-source-node="n119">Below are all of the Outbound Execution default statuses:</p>
+        <ul type="disc" class="ul_1" data-source-node="n120">
+            <li data-source-node="n121">(90) In Pool Pending: The shipment's status before it is processed via the interface. The purpose of this status is to be a temporary status used by the interface download process to ensure that shipments do not get picked up for processing while the interface process is running. Also, shipments in this status cannot be added to a wave.<br data-source-node="n122"><br data-source-node="n123"></li>
+            <li data-source-node="n124">(100) In Pool: 
+ The shipment has not been processed in a wave, but has been created in the pool or downloaded via the interface. No work can be performed 
+ against this shipment.<br data-source-node="n125"><br data-source-node="n126"></li>
+            <li data-source-node="n127">(200) Wave Pending: 
+ The wave is being built. It has not been run.<br data-source-node="n128"><br data-source-node="n129"></li>
+            <li data-source-node="n130">(201) In Wave: 
+ A wave run was initiated and the wave has not been released.<br data-source-node="n131"><br data-source-node="n132"></li>
+            <li data-source-node="n133">(300) Picking 
+ Pending: A wave was released, but none of the work has been initiated.<br data-source-node="n134"><br data-source-node="n135"></li>
+            <li data-source-node="n136">(301) In Picking: 
+ At least one work instruction associated with this shipment has been assigned 
+ to an employee.<br data-source-node="n137"><br data-source-node="n138"></li>
+            <li data-source-node="n139">(400) Packing 
+ Pending: At least one work instruction associated with this shipment 
+ has been pick confirmed. It can now be packed.<br data-source-node="n140"><br data-source-node="n141"></li>
+            <li data-source-node="n142">(401) In Packing: 
+ At least one work instruction associated with this shipment has been packed.<br data-source-node="n143"><br data-source-node="n144"></li>
+            <li data-source-node="n145">(600) Staging 
+ Pending: All items of a shipment have been picked, packed, and/or 
+ consolidated.<br data-source-node="n146"><br data-source-node="n147"></li>
+            <li data-source-node="n148">(650) Loading 
+ Pending: All items of a shipment have been picked, packed, or consolidated, 
+ and/or staged.<br data-source-node="n149"><br data-source-node="n150"></li>
+            <li data-source-node="n151">(700) Ship Confirm 
+ Pending: At least one container associated with this shipment has 
+ been closed.<br data-source-node="n152"><br data-source-node="n153"></li>
+            <li data-source-node="n154">(800) Load Confirm 
+ Pending: All shipments on the load have been ship confirmed and 
+ the load is ready to be confirmed.<br data-source-node="n155"><br data-source-node="n156"></li>
+            <li data-source-node="n157">(900) Closed: 
+ The shipping load has been confirmed.<br data-source-node="n158"><br data-source-node="n159"></li>
+            <li data-source-node="n160">(990) Delivered: 
+ A shipment or parcel has been delivered to it's intended recipient through 
+ the system.<br data-source-node="n161"><br data-source-node="n162"></li>
+            <li data-source-node="n163">(994) Complete 
+ Rejected To Pool: System uses this in the status action to indicate 
+ that if the entire shipment cannot be allocated it will send it back to 
+ the pool.<br data-source-node="n164"><br data-source-node="n165"></li>
+            <li data-source-node="n166">(995) Finished 
+ Item Is Allocated: Assigned to a component line when its parent 
+ item has been allocated by the system.<br data-source-node="n167"><br data-source-node="n168"></li>
+            <li data-source-node="n169">(996) Component 
+ Item Is Allocated: Assigned to a parent item when the system could 
+ not allocate it, but all of its component item(s) were allocated.<br data-source-node="n170"><br data-source-node="n171"></li>
+            <li data-source-node="n172">(997) Immediate 
+ Need Pending: There is at least one shipment line that is ties 
+ to an outstanding immediate need.<br data-source-node="n173"><br data-source-node="n174"></li>
+            <li data-source-node="n175">(998) Delete 
+ Rejected: A quantity on a shipment line was rejected. The 
+ quantity will be deleted from the system.<br data-source-node="n176"><br data-source-node="n177"></li>
+            <li data-source-node="n178">(999) Rejected: 
+ During allocation, if any quantity on the line is rejected, this status 
+ will indicate that rejected quantity.</li>
+        </ul>
+        <p data-source-node="n179"> </p>
+        <p data-source-node="n180"> </p>
+        <h4 data-source-node="n181">Custom Statuses...</h4>
+        <p data-source-node="n182">The system also supports custom statuses, which are created especially for your specific business processes. Like a default status, a custom 
+ status is a process committed against either a shipment or a receipt, 
+ based on functional area.</p>
+        <p data-source-node="n183"> </p>
+        <h5 data-source-node="n184">Custom Status Flow</h5>
+        <p data-source-node="n185">A custom status flow allows you to address unique processing requirements 
+ for a specific line. It must be associated with the line record before 
+ its interfaced to the system. Although its assigned before the line
+ is interfaced, this flow must also be defined in the system on the Custom 
+ Status Flow Window. Custom status flows can accommodate any value on either the top level or 
+ line level. For example, many companies create a custom outbound execution 
+ status flow to accommodate emergency or rush orders. If the shipment line identifies the "Rush" flow in the Status Flow Field, this line (and 
+ its containers) will be processed using this custom status flow. A rush custom status flow probably does not require new statuses. Instead, 
+ it includes fewer statuses than the default status flow to streamline 
+ processing for time sensitive shipments or receipts. As the line is processed through the system, the system updates the 
+ top level record's trailing and leading status values. If this line is the least 
+ advanced line for the entity (receipt or detail), its status will be 
+ the header's trailing status. </p>
+        <p data-source-node="n186"> </p>
+        <p data-source-node="n187"> </p>
+        <p data-source-node="n188"> </p>
+        <h4 data-source-node="n189">Trailing &amp; Leading Statuses...</h4>
+        <p data-source-node="n190">These values are defined on the top level record (receipt/shipment). The 
+ trailing status is the least advanced status associated with the record; 
+ the leading status is the most advanced status associated with the record. 
+ The system obtains this information from the containers created for the 
+ entity. You can use this information to research container activity and 
+ perform troubleshooting tasks.</p>
+        <p data-source-node="n191"> </p>
+        <p data-source-node="n192"> </p>
+        <p class="p_5" data-source-node="n193"> </p>
+        <p class="p_5" data-source-node="n194"> </p>
+        <p class="p_5" data-source-node="n195"> </p>
+        <p class="p_5" data-source-node="n196"> </p>
+        <p class="p_5" data-source-node="n197"> </p>
+        <p class="p_5" data-source-node="n198"> </p>
+        <p class="p_5" data-source-node="n199"> </p>
+        <p class="p_5" data-source-node="n200"> </p>
+        <p class="p_5" data-source-node="n201"> </p>
+        <p class="p_5" data-source-node="n202"> </p>
+        <p class="p_5" data-source-node="n203"> </p>
+        <p class="p_5" data-source-node="n204"> </p>
+        <p class="p_5" data-source-node="n205"> </p>
+        <p class="p_5" data-source-node="n206"> </p>
+        <p class="p_5" data-source-node="n207"> </p>
+        <p class="p_5" data-source-node="n208"> </p>
+        <p class="p_5" data-source-node="n209"> </p>
+        <p class="p_5" data-source-node="n210"> </p>
+        <p class="p_5" data-source-node="n211"> </p>
+        <p class="p_5" data-source-node="n212"> </p>
+        <p class="p_5" data-source-node="n213"> </p>
+        <p class="p_5" data-source-node="n214"> </p>
+        <p class="p_5" data-source-node="n215"> </p>
+        <p class="p_5" data-source-node="n216"> </p>
+        <p class="p_5" data-source-node="n217"> </p>
+        <p class="p_5" data-source-node="n218"> </p>
+        <p class="p_5" data-source-node="n219"> </p>
+        <p class="p_5" data-source-node="n220"> </p>
+        <p class="p_5" data-source-node="n221"> </p>
+        <p class="p_5" data-source-node="n222"> </p>
+        <p class="p_5" data-source-node="n223"> </p>
+        <p class="p_5" data-source-node="n224"> </p>
+        <p class="p_5" data-source-node="n225"> </p>
+        <p class="p_5" data-source-node="n226"> </p>
+        <p class="p_5" data-source-node="n227"> </p>
+        <p class="p_5" data-source-node="n228"> </p>
+        <p class="p_5" data-source-node="n229"> </p>
+        <p class="p_5" data-source-node="n230"> </p>
+    </body></html>

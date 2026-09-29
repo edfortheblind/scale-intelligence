@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>LTL Rating Process Summary: Functionality</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1024" data-source-node="n57"></a>Less Than Truckload Rating Process Summary</h1>
+        <p data-source-node="n58"><b data-source-node="n59">** Functionality **</b>
+        </p>
+        <p data-source-node="n60"><a href="dc00c5fc10d6dcd7c8ab0f4764c6a743bff2853b818ec60bcaee60e39a1280f9.html" style="font-style: normal;font-weight: bold" data-source-node="n61">Scenarios</a>
+        </p>
+        <p data-source-node="n62"><a href="cb50f4eb7c0861b9e02b531274b21aae23d02e1638cad72295576d6308b9e6d1.html" style="font-style: normal;font-weight: bold" data-source-node="n63">Process Flows</a>
+        </p>
+        <p data-source-node="n64"> </p>
+        <p data-source-node="n65"> </p>
+        <h4 data-source-node="n66">Summary...</h4>
+        <p data-source-node="n67">Less than Truckload (LTL) rating allows a carrier to charge one fee for the total shipment. There can be multiple shipments loaded onto the carrier's trailer. Once the trailer is loaded, the carrier takes the shipments to its hub. At the hub, shipments are unloaded and reloaded onto trailers going to the same destination. </p>
+        <p data-source-node="n68"> </p>
+        <p data-source-node="n69">The freight charge for these shipments is calculated by taking the total weight of the shipment, the final destination and the makeup of the product in the shipment. The makeup of the shipment is broken down into LTL classes. The rate charged is typically lower per pound for the denser the product. The rate is also determined by the distance traveled. </p>
+        <p data-source-node="n70"> </p>
+        <p data-source-node="n71">The SCALE system performs LTL rating by looking at the origin, destination postal codes and any other additional criteria which are assigned to a rate base . The rate base is a table that contains a breakdown of the rates per LTL class and its weight breaks. </p>
+        <p data-source-node="n72"> </p>
+        <p data-source-node="n73">The system looks at the origin country and postal code from the address of the shipment's warehouse, then looks at the destination's country and postal code, determined by the shipment's Ship To address, to determine the rate base. If any additional shipment criteria was setup, it will also use this information to determine the rate base. Next, it looks at the LTL class of the shipment and the weight of the shipment for the LTL class. It looks up the charge associated with the LTL class and the weight. To calculate the freight charge, it takes this amount and multiplies it by the weight. It will then verify if there are any minimum charges defined by carrier. </p>
+        <p data-source-node="n74"> </p>
+        <p data-source-node="n75">When there are mixed LTL classes on a shipment, each class is rate separately and then totaled to determine the total freight charge of the shipment. </p>
+        <p data-source-node="n76"> </p>
+        <p data-source-node="n77">Once the freight charge is calculated, the SCALE internal rating system performs one additional calculation called deficit weight rating. This is when the shipper cannot be charged more than what the minimum would be at the next weight break. When the shipment has mixed classes, deficit weight rating uses the weight break charge of the lowest class on the shipment.</p>
+        <p data-source-node="n78"> </p>
+        <p data-source-node="n79"> </p>
+        <p data-source-node="n80"> </p>
+        <h4 data-source-node="n81"> Related Topics...</h4>
+        <p data-source-node="n82">- <a href="07edc31677cc85116035ff7f2dff1c2a3f7a1a38afdb4aaf867617691a7483ac.html" data-source-node="n83">Setup Overview</a></p>
+        <p data-source-node="n84">- <a href="2830924216face995f3ad5452b0984f9195fcb0bb4fc61038d5cd7960e39369d.html" data-source-node="n85">Performing Rating Shopping</a></p>
+        <p data-source-node="n86">- <a href="0f22f1f323600031ea5c3cc568dd2af321864f30780e3c575cac1c2905eaa2e4.html" data-source-node="n87">Carrier Management</a></p>
+        <p data-source-node="n88"> </p>
+        <p data-source-node="n89"> </p>
+        <p data-source-node="n90"> </p>
+        <p data-source-node="n91">The following are key features of the LTL rating functional area:</p>
+        <p data-source-node="n92"> </p>
+        <p data-source-node="n93"> </p>
+        <h4 colspan="1" rowspan="1" width="22.717%" data-source-node="n94">Rate Base...</h4>
+        <p data-source-node="n95">A rate base identifies which rate table is used    
+based on a specific origin zip code and destination
+zip code range.  The database rate table contains the actual hundredweight rates per LTL class. Before the system can rate the LTL carrier's shipment, it must be linked to a valid rate base. </p>
+        <p data-source-node="n96"> </p>
+        <p data-source-node="n97"> </p>
+        <p data-source-node="n98"> </p>
+        <h4 width="22.717%" data-source-node="n99">LTL...</h4>
+        <p width="77.283%" data-source-node="n100">Less Than Truckload (LTL) refers to carriers that ship pallet quantities using a “hub and spur” method of delivery.  The shipper loads the carrier’s trailers with shipments going to various destinations.  The carrier takes the trailer to its own “hub” where it unloads the trailer and reloads the individual shipments onto trailers going on a route to deliver each shipment to its final destination.  These carriers typically rate at the shipment level using the weight of the shipment by LTL class.</p>
+        <p width="77.283%" data-source-node="n101"> </p>
+        <p width="77.283%" data-source-node="n102"> </p>
+        <p width="77.283%" data-source-node="n103"> </p>
+        <h4 data-source-node="n104">LTL Class...</h4>
+        <p data-source-node="n105">This is a classification of product used by LTL carriers to determine the rate per pound charged for shipping product.  It’s also called “freight class”.  The idea is that different kinds of freight are “better” to ship by the pound than others.  One example of this is if you are shipping bowling balls vs. basketballs.  They are roughly the same size but if you were charging by the pound, clearly you would want to be shipping bowling balls if you were the carrier.  Therefore, with basketballs you would charge more per pound.  The lowest LTL class is typically 50 and the highest is 500.</p>
+        <p data-source-node="n106"> </p>
+        <p data-source-node="n107"> </p>
+        <p data-source-node="n108"> </p>
+        <h4 data-source-node="n109">FAK...</h4>
+        <p data-source-node="n110">Freight All Kinds (FAK) is an agreement between a carrier and a shipper that no matter what the actual LTL class of the items on a shipment, they will always be rated at a specified agreed upon class.  This simplifies the rating calculation process and typically results in cheaper rates for the shipper.</p>
+        <p data-source-node="n111"> </p>
+        <p data-source-node="n112"> </p>
+        <p data-source-node="n113"> </p>
+        <h4 data-source-node="n114">Hundredweight...</h4>
+        <p data-source-node="n115">In LTL rating this term generally refers to the weight of a shipment divided by 100.  When specifying their rates, typically LTL carriers will refer to the “rate per hundredweight” which is the rate to be charged per hundred pounds shipped (at least in the US).  This is often abbreviated as CWT (since “C” is the Roman numeral for 100).  Side note: UPS has a “hundredweight” discount that is slightly different than this but is meant for large shipments so that they can compete with LTL rates.</p>
+        <p data-source-node="n116"> </p>
+        <p data-source-node="n117"> </p>
+        <p data-source-node="n118"> </p>
+        <h4 data-source-node="n119">Deficit Weight Rating...</h4>
+        <p data-source-node="n120">The concept of deficit weight rating is that there are weight breaks set up in LTL rating.  For example the rate for less than 500 pounds might be 49.17 per hundred pounds.  The rate for 500 pounds and above might be 41.79 per hundred pounds.  If I ship 499 pounds, my rate would be 49.17 * 4.99 = 245.36.  However, if I ship 500 pounds, my rate would be 41.79 * 5.00 = 208.95.  Deficit weight rating says that I can never be charged more than the lowest amount that I would be charged at the next weight break.  Therefore, in this case I would be charged 208.95 even though I’m only shipping 499 pounds.</p>
+        <p data-source-node="n121"> </p>
+        <p data-source-node="n122"> </p>
+        <p data-source-node="n123"> </p>
+        <h4 data-source-node="n124">Minimum Charge...</h4>
+        <p data-source-node="n125">The minimum charge is the minimum amount that a carrier will ever charge for a shipment.  If the calculated charge for the shipment is less than this value, the minimum charge is used for the shipment.</p>
+        <p data-source-node="n126"> </p>
+        <p data-source-node="n127"> </p>
+        <p data-source-node="n128"> </p>
+        <p data-source-node="n129"> </p>
+        <p data-source-node="n130"> </p>
+        <p data-source-node="n131"> </p>
+        <p data-source-node="n132"> </p>
+        <p data-source-node="n133"> </p>
+        <p data-source-node="n134"> </p>
+        <p data-source-node="n135"> </p>
+        <p data-source-node="n136"> </p>
+        <p data-source-node="n137"> </p>
+        <p data-source-node="n138"> </p>
+        <p data-source-node="n139"> </p>
+        <p data-source-node="n140"> </p>
+        <p data-source-node="n141"> </p>
+        <p data-source-node="n142"> </p>
+        <p data-source-node="n143"> </p>
+        <p data-source-node="n144"> </p>
+        <p data-source-node="n145"> </p>
+        <p data-source-node="n146"> </p>
+        <p data-source-node="n147"> </p>
+        <p data-source-node="n148"> </p>
+        <p data-source-node="n149"> </p>
+        <p data-source-node="n150"> </p>
+        <p data-source-node="n151"> </p>
+        <p data-source-node="n152"> </p>
+        <p data-source-node="n153"> </p>
+        <p data-source-node="n154"> </p>
+        <p data-source-node="n155"> </p>
+        <p data-source-node="n156">  </p>
+        <p class="p_5" data-source-node="n157">  </p>
+    </body></html>

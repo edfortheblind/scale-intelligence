@@ -1,0 +1,207 @@
+
+        
+        <h1 data-source-node="n56"><a name="kanchor1432" data-source-node="n57"></a>Using the Purchase Order Insight Screen</h1>
+        <p data-source-node="n58">You can use the Purchase Order Insight Screen to search, create, and manage received purchase orders in your warehouse. Purchase orders indicate what item(s) your warehouse should be expecting to arrive at the receiving dock. Purchase Orders are used by a warehouse's suppliers/vendors to supply receipt information ahead of the arrival of the truck to their warehouse. </p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60">For example, suppose your warehouse's supplier is planning on sending you 500 pallets of Item A over the course of a year. They would first create a purchase order for Item A, adding a quantity of 500. When they are ready to ship some of Item A to your warehouse, they would create a shipment associated with this purchase order, which would indicate how many of the item they are going to send out. When the year is over, and all the Item A quantity has been shipped, the supplier would close the purchase order.</p>
+        <p data-source-node="n61"> </p>
+        <p data-source-node="n62"> </p>
+        <h4 data-source-node="n63">Related Topics...</h4>
+        <p data-source-node="n64"><a href="130679dfff7000eaf52b861d7511a6d14f9a325823d62ec9b9f2da4e272877ef.html" data-source-node="n65">Creating a Purchase Order Header/Detail in SCALE</a>
+        </p>
+        <p data-source-node="n66"><a href="d95251cf993c7e324fabed43c8f6ff3c1de711d3c12f95552d83b31a8d1a4dbe.html" data-source-node="n67">Creating/Managing Purchase Orders in Trading Partner Management</a>
+        </p>
+        <p data-source-node="n68"><a href="eb705e577b50e2097e333cbfac934ef01b8368cb6eacdaaf247e09740415ac21.html" data-source-node="n69">Creating Receipts From Purchase Orders</a>
+        </p>
+        <p data-source-node="n70"><a href="9e44fc4a2818a3126ea3add44e9b0cd8b6f99b7068fae02daff83da4050968b9.html" data-source-node="n71">Printing Paperwork</a>
+        </p>
+        <p data-source-node="n72"><a href="b9c3ffa9a81498cb548bdb61d00ba2dd34e5bfb79695f24b28a31d26d9eb8369.html" data-source-node="n73">Receiving Process Summary</a>
+        </p>
+        <p data-source-node="n74"><a href="2a527c5e7d8e6767787122c58edd13a2907206b5a7cd1f1e9b541bbc51546b85.html" data-source-node="n75">Reviewing Purchase Order Status Values</a>
+        </p>
+        <p data-source-node="n76"><a href="d97a049a5bc275a358857b638fa9dff8ec0499618251a2e0900f013de50cca02.html" data-source-node="n77">Using the Purchase Order Line Insight Screen</a>
+        </p>
+        <p data-source-node="n78"> </p>
+        <p data-source-node="n79"> </p>
+        <p data-source-node="n80"> </p>
+        <p data-source-node="n81"> </p>
+        <div class="MCDropDown MCDropDown_Closed dropDown" data-source-node="n82"><span class="MCDropDownHead dropDownHead" data-source-node="n83"><a class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage" data-source-node="n84"><img class="MCDropDown_Image_Icon" src="../source/assets/1d600a0343eef0b105f4dd86d1b7572306777214a30e5b8d49e91c153d7bca31.gif" height="11" width="16" alt="Closed" loading="eager" data-source-node="n85">Field Descriptions...</a></span>
+            <div class="MCDropDownBody dropDownBody" data-source-node="n86">
+                <p data-source-node="n87"> </p>
+                <p data-source-node="n88">Filter Pane Fields</p>
+                <p data-source-node="n89"><a href="346c9b5e3732389c708f427fc1975337b166e15b4bc1fe350908cdc541c97b96.html" data-source-node="n90">Company</a>
+                </p>
+                <p data-source-node="n91"><a href="d71d779691ef66db9edab5fdbafde467a28de563b1a74ad38ad23902e2d2425e.html" data-source-node="n92">From Created Date Time</a>
+                </p>
+                <p data-source-node="n93"><a href="4ec11cec4f01e8d6bd2fb04839297c10b4d625eed1eaa1e85a8f357ebfe55ed2.html" data-source-node="n94">Include Closed Purchase Orders Toggle</a>
+                </p>
+                <p data-source-node="n95"><a href="76b0ba6fbfb2d444434314e8775313a17fcfe3769b96750f310566f732d520ae.html" data-source-node="n96">Item</a>
+                </p>
+                <p data-source-node="n97"><a href="839659d9afe60b67d65558873389f8d500a66925d6dc461fcc75cdb99a1ce377.html" data-source-node="n98">Purchase Order</a>
+                </p>
+                <p data-source-node="n99"><a href="dd54cd744358a5a7fcfdf0193d175099be8d5e3b6041a2398056f59007d7b2ff.html" data-source-node="n100">Receipt ID</a>
+                </p>
+                <p data-source-node="n101"><a href="e05cd4e55e555417d49edabc426eed6269b5564c5e2a52d8b293c9afa010ddbd.html" data-source-node="n102">Ship From</a>
+                </p>
+                <p data-source-node="n103"><a href="12940d8a9aa90e512e513166b146cb38f8a4d069efd3cd80520c94ec10013912.html" data-source-node="n104">Source Name</a>
+                </p>
+                <p data-source-node="n105"><a href="d71d779691ef66db9edab5fdbafde467a28de563b1a74ad38ad23902e2d2425e.html" data-source-node="n106">To Created Date Time</a>
+                </p>
+                <p data-source-node="n107"><a href="64474ca5b708b3e4b8fedbe754775367cf9f57630bbedb46ac1e1956f766403f.html" data-source-node="n108">Warehouse</a>
+                </p>
+                <p data-source-node="n109"> </p>
+                <p data-source-node="n110">List Pane - Grid Fields</p>
+                <p data-source-node="n111"><a href="ad368e55195bd52a5489836038d6ba400f9e0c1a2d494d5afcf6a06bfa1e2da5.html" data-source-node="n112">Color</a>
+                </p>
+                <p data-source-node="n113"><a href="346c9b5e3732389c708f427fc1975337b166e15b4bc1fe350908cdc541c97b96.html" data-source-node="n114">Company</a>
+                </p>
+                <p data-source-node="n115"><a href="61c4ace253c4537b93cab22839742129f646164f1627d0874702b863b9e4662d.html" data-source-node="n116">Icon</a>
+                </p>
+                <p data-source-node="n117"><a href="773f6dd1e81183007e136acf5330e40b4350381875efd4f7af0e5891fa3273f6.html" data-source-node="n118">Object ID</a>
+                </p>
+                <p data-source-node="n119"><a href="839659d9afe60b67d65558873389f8d500a66925d6dc461fcc75cdb99a1ce377.html" data-source-node="n120">Purchase Order</a>
+                </p>
+                <p data-source-node="n121"><a href="e05cd4e55e555417d49edabc426eed6269b5564c5e2a52d8b293c9afa010ddbd.html" data-source-node="n122">Ship From</a>
+                </p>
+                <p data-source-node="n123"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n124">Source Address</a>
+                </p>
+                <p data-source-node="n125"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n126">Source City</a>
+                </p>
+                <p data-source-node="n127"><a href="12940d8a9aa90e512e513166b146cb38f8a4d069efd3cd80520c94ec10013912.html" data-source-node="n128">Source Name</a>
+                </p>
+                <p data-source-node="n129"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n130">Source Postal Code</a>
+                </p>
+                <p data-source-node="n131"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n132">Source State</a>
+                </p>
+                <p data-source-node="n133"><a href="9c13277d00e74633b48dc074cad949b48a1f16424ff19feaa6dbad8a7434c0ab.html" data-source-node="n134">Status</a>
+                </p>
+                <p data-source-node="n135"><a href="64474ca5b708b3e4b8fedbe754775367cf9f57630bbedb46ac1e1956f766403f.html" data-source-node="n136">Warehouse</a>
+                </p>
+                <p data-source-node="n137"> </p>
+                <p data-source-node="n138">List Pane - Summary Tiles</p>
+                <p data-source-node="n139"><a href="4ec11cec4f01e8d6bd2fb04839297c10b4d625eed1eaa1e85a8f357ebfe55ed2.html" data-source-node="n140">Closed</a>
+                </p>
+                <p data-source-node="n141"><a href="dfda726578efb3f04f77c10071ba8347a00e0f5c11e58ac46ccf19548f620d2f.html" data-source-node="n142">Lines</a>
+                </p>
+                <p data-source-node="n143"><a href="4a25aff2d75f40fbcea4d3a4c57086db7e9bf24f21f05f99b2a65e4f9d78a66f.html" data-source-node="n144">Open</a>
+                </p>
+                <p data-source-node="n145"><a href="32d2642f332778846fd44f708021ac1bf07b920d67d26748014c3b1a1a556ab2.html" data-source-node="n146">POs</a>
+                </p>
+                <p data-source-node="n147"> </p>
+                <p data-source-node="n148">Detail Pane </p>
+                <p data-source-node="n149"><a href="839659d9afe60b67d65558873389f8d500a66925d6dc461fcc75cdb99a1ce377.html" data-source-node="n150">Purchase Order ID</a>
+                </p>
+                <p data-source-node="n151"><a href="e05cd4e55e555417d49edabc426eed6269b5564c5e2a52d8b293c9afa010ddbd.html" data-source-node="n152">Ship From</a>
+                </p>
+                <p data-source-node="n153"><a href="9c13277d00e74633b48dc074cad949b48a1f16424ff19feaa6dbad8a7434c0ab.html" data-source-node="n154">Status</a>
+                </p>
+                <p data-source-node="n155"> </p>
+                <p data-source-node="n156">Detail Pane-Indicator Tiles</p>
+                <p data-source-node="n157"><a href="98a4633c6fe4be772c1efd81d83ea40fe3d1f67922821b6c82f6f60f82b9c746.html" data-source-node="n158">Lines</a>
+                </p>
+                <p data-source-node="n159"><a href="49b2ae615597d69b69799b495b70a8cfc01c344af005b270b4d4d7c5cd36d297.html" data-source-node="n160">Receipts</a>
+                </p>
+                <p data-source-node="n161"> </p>
+            </div>
+        </div>
+        <p data-source-node="n162"> </p>
+        <p data-source-node="n163"> </p>
+        <p data-source-node="n164">The following is discussed in this topic:</p>
+        <p data-source-node="n165">- <a href="#Searching" data-source-node="n166">Searching/Viewing Purchase Order Records</a></p>
+        <p data-source-node="n167">- <a href="#AboutLPane" data-source-node="n168">About the List Pane</a></p>
+        <p data-source-node="n169">- <a href="#AboutDPane" data-source-node="n170">About the Detail Pane</a></p>
+        <p data-source-node="n171">- <a href="#ScreenActions" data-source-node="n172">Screen Actions</a></p>
+        <p data-source-node="n173"> </p>
+        <p data-source-node="n174"> </p>
+        <hr width="100%" align="center" data-source-node="n175">
+        
+        <p data-source-node="n176"> </p>
+        <p data-source-node="n177"> </p>
+        <h4 data-source-node="n178"><a name="Searching" data-source-node="n179"></a>Searching/Viewing Purchase Order Records...</h4>
+        <p data-source-node="n180">You can use the Purchase Order Insight Screen to search for and view purchase order records in your warehouse. </p>
+        <ol data-source-node="n181">
+            <li value="1" data-source-node="n182">Open the Purchase Order Insight Screen.<br data-source-node="n183"><br data-source-node="n184"></li>
+            <li value="2" data-source-node="n185">Use the Basic Criteria Fields (located on the Filter Pane) to indicate the values for your primary search.<br data-source-node="n186"><br data-source-node="n187"></li>
+            <li value="3" data-source-node="n188">Press the Search Button. The system will display  the resulting records in the List Pane. <br data-source-node="n189"><br data-source-node="n190"></li>
+            <li value="4" data-source-node="n191">If you select one of the result records from the List Pane, then the system will display its information in the Detail Pane.</li>
+        </ol>
+        <p data-source-node="n192"> </p>
+        <hr width="100%" align="center" data-source-node="n193">
+        
+        <p data-source-node="n194"> </p>
+        <p data-source-node="n195"> </p>
+        <h4 data-source-node="n196"><a name="AboutLPane" data-source-node="n197"></a>About the List Pane...</h4>
+        <ul data-source-node="n198">
+            <li data-source-node="n199">The Purchase Order Insight Screen's List Pane displays the results from a query performed in the Filter Pane.<br data-source-node="n200"><br data-source-node="n201"></li>
+            <li data-source-node="n202">For more general information about the List Pane, see the topic <a href="444e9b8e14a977178c9ff48b972dd65c076a4adda44c3dfacddf94a4a6c24d22.html" data-source-node="n203">Introduction to Insight Screens</a>.<br data-source-node="n204"></li>
+        </ul>
+        <p data-source-node="n205"> </p>
+        <hr width="100%" align="center" data-source-node="n206">
+        
+        <p data-source-node="n207"> </p>
+        <p data-source-node="n208"> </p>
+        <h4 data-source-node="n209"><a name="AboutDPane" data-source-node="n210"></a>About the Detail Pane...</h4>
+        <p data-source-node="n211">The Purchase Order Insight Screen's Detail Pane displays the specific field values associated with a selected record in the List Pane.<br data-source-node="n212"><br data-source-node="n213"></p>
+        <p data-source-node="n214">The Detail Pane of Purchase Order Insight contains Indicator Tiles with counts of the other entities (i.e. receipts, lines).  If you click/tap on those indicator tiles, it will take you to the appropriate screen showing the selected data provided you have the required security to access those called screens. Here Indicator Tiles are added for the following: </p>
+        <ol data-source-node="n215">
+            <li value="1" data-source-node="n216">Receipts <ol data-source-node="n217"><li value="1" data-source-node="n218">Displays the number of receipts linked to the purchase order. </li><li value="2" data-source-node="n219"><p data-source-node="n220">Clicking on this tile takes you to Receipt Insight screen filtering on the given Purchase Order Object ID and warehouse. <br data-source-node="n221"><br data-source-node="n222"></p></li></ol></li>
+            <li value="2" data-source-node="n223">Lines<ol data-source-node="n224"><li value="1" data-source-node="n225">Displays the count of the number of details the selected purchase order has. </li><li value="2" data-source-node="n226">Clicking on this tile takes you to Purchase Order Line Insight filtering on the Purchase Order Object ID and warehouse. <br data-source-node="n227"></li></ol></li>
+            <br data-source-node="n228">
+            
+        </ol>
+        <p data-source-node="n229">For more general information about the Detail Pane, see the topic <a href="444e9b8e14a977178c9ff48b972dd65c076a4adda44c3dfacddf94a4a6c24d22.html" data-source-node="n230">Introduction to Insight Screens</a>.<br data-source-node="n231"><br data-source-node="n232"></p>
+        <hr width="100%" align="center" data-source-node="n233">
+        
+        <p data-source-node="n234"> </p>
+        <p data-source-node="n235"> </p>
+        <h4 data-source-node="n236"><a name="ScreenActions" data-source-node="n237"></a>Screen Actions</h4>
+        <p data-source-node="n238">The following actions are accessible from the List Pane:</p>
+        <p data-source-node="n239"> </p>
+        <p data-source-node="n240"> </p>
+        <h5 data-source-node="n241">New</h5>
+        <p data-source-node="n242">The action allows to create a new purchase order. Clicking on the New action will open the Purchase order header screen in New mode. </p>
+        <p data-source-node="n243"> </p>
+        <p data-source-node="n244"> </p>
+        <h5 data-source-node="n245">Copy</h5>
+        <p data-source-node="n246">This  action allows to copy an existing purchase order. Clicking on the action opens the Purchase Order screen in Copy mode with certain fields copied from the selected purchase order. For additional information on this, refer to the topic <a href="130679dfff7000eaf52b861d7511a6d14f9a325823d62ec9b9f2da4e272877ef.html" data-source-node="n247">Creating a Purchase Order Header/Detail in SCALE</a>. </p>
+        <p data-source-node="n248"> </p>
+        <p data-source-node="n249"> </p>
+        <h5 data-source-node="n250">View/Edit</h5>
+        <p data-source-node="n251">The View action allows you to open the Purchase Order Insight screen in the read-only mode and the Edit action allows you to open the Purchase Order Insight screen in the edit mode. So the View action only permits viewing the purchase order, while the Edit action permits editing certain fields on the purchase order. </p>
+        <p data-source-node="n252"> </p>
+        <p data-source-node="n253"> </p>
+        <h5 data-source-node="n254">Delete</h5>
+        <p data-source-node="n255">This action allows you to delete a purchase order. Success message appears after a purchase order is deleted. </p>
+        <p data-source-node="n256"> </p>
+        <p data-source-node="n257"> </p>
+        <h5 data-source-node="n258">New Line</h5>
+        <p data-source-node="n259">The action allows to create a new purchase order line. Clicking on the action opens the Purchase order Line screen in New mode.</p>
+        <p data-source-node="n260"> </p>
+        <p data-source-node="n261"> </p>
+        <h5 data-source-node="n262">Close</h5>
+        <p data-source-node="n263">This action allows to manually close a purchase order. The system will prompt for a confirmation message and closing a purchase order will return a success message. This action is disabled when the purchase order is already closed. </p>
+        <p data-source-node="n264"> </p>
+        <p data-source-node="n265"> </p>
+        <h5 data-source-node="n266">Cancel Close</h5>
+        <p data-source-node="n267">The action allows to reopen a closed purchase order. Success message appears after a closed purchase order is reopened and the status of the Purchase Order Header gets set to open. The Cancel close action is disabled if the Purchase order is open. </p>
+        <p data-source-node="n268"> </p>
+        <p data-source-node="n269"> </p>
+        <h5 data-source-node="n270">Print Preview</h5>
+        <p data-source-node="n271">This action allows you to generate and display a PDF version of the selected document type. For more information on this topic, refer to <a href="9e44fc4a2818a3126ea3add44e9b0cd8b6f99b7068fae02daff83da4050968b9.html" data-source-node="n272">Printing Paperwork</a>. </p>
+        <p data-source-node="n273"> </p>
+        <p data-source-node="n274"> </p>
+        <h5 data-source-node="n275">Print Default Docs</h5>
+        <p data-source-node="n276">This action allows you to print Purchase Order Status document. Invoking the Print Default Docs action by selecting a purchase order will print the Purchase Order Status document if it is marked as default.</p>
+        <p data-source-node="n277"> </p>
+        <p data-source-node="n278"> </p>
+        <h5 data-source-node="n279">Print Selected Docs</h5>
+        <p data-source-node="n280">This action allows you to select or unselect the Purchase Order Status documents you want to print. If the document is checked as default in the Document type configuration, this document will also be checked in the Print Selected window. Invoking the Print Selected Docs action by selecting a purchase order will open Print Documents screen. </p>
+        <p data-source-node="n281"> </p>
+        <p data-source-node="n282"> </p>
+        <h5 data-source-node="n283">Receipt from PO</h5>
+        <p data-source-node="n284">This action allows you to create receipts from purchase order. On a purchase order with open lines, clicking the Receipt from PO action opens the Receipt From Purchase Order Screen with the header and line information from the selected purchase order. For additional information, refer to <a href="eb705e577b50e2097e333cbfac934ef01b8368cb6eacdaaf247e09740415ac21.html" data-source-node="n285">Creating Receipts From Purchase Orders</a>. </p>
+        <p data-source-node="n286"> </p>
+        <p data-source-node="n287"> </p>
+        <p data-source-node="n288"> </p>
+        <p data-source-node="n289"> </p>
+    

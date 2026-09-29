@@ -1,0 +1,527 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Inventory Attributes - Introduction</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1891" data-source-node="n57"></a>Inventory Attributes - Introduction</h1>
+        <p data-source-node="n58">This topic will describe what inventory attributes are, and where they are used throughout the system. </p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60"> </p>
+        <h4 data-source-node="n61">Related Topics...</h4>
+        <p data-source-node="n62"><a href="de1742b64ef4309ef4218ae2c31c0200d48c4bbe37e994ff9b64365ea255a28c.html" data-source-node="n63">Inventory Tracking Process Summary</a>
+        </p>
+        <p data-source-node="n64"><a href="5ca3cbb6b64b4c2e715765ba8a62f17f1b60ed19db5a7c1d31d560d5af493a8f.html" data-source-node="n65">Using Inventory Attributes</a>
+        </p>
+        <p class="p_4" data-source-node="n66"><a href="8b4ea1511cabbc4ffdc3f55e9e2be35a1b2fcdea91d0088e93891ce192d7e6e5.html" data-source-node="n67">Using Inventory Attributes (RF)</a>
+        </p>
+        <p class="p_4" data-source-node="n68"><a href="2fa9a49ea66cdf914d4f034485f5460ac53e9a783fad78d0d96846aa5f77ab21.html" data-source-node="n69">Performing a Location Inquiry (RF)</a>
+        </p>
+        <p data-source-node="n70"><a href="a7cf2d727b34fd54d1a4d2ebae0a553f1774916e43c15825e3292ee08de7ea9d.html" data-source-node="n71">Adjusting Inventory (Desktop and RF)</a>
+        </p>
+        <p data-source-node="n72"><a href="326bf27ca3e89d45e0dc4280931d207e69f4f5fe0d7e29f31bcddc2f52792391.html" data-source-node="n73">Confirming Cycle Counts</a>
+        </p>
+        <p data-source-node="n74"><a href="dab70f0f34272d562089ede3827040eaf43a67b280ee80bf79a5743bbeba39b0.html" data-source-node="n75">Checking In and Locating Product (RF)</a>
+        </p>
+        <p data-source-node="n76"><a href="3afe0a0e91c3be424098655a59ac0655672a919ff3ef1c0b6cfc3c6a56a8444d.html" data-source-node="n77">Creating Inventory Attribute Values</a>
+        </p>
+        <p data-source-node="n78"><a href="38fb81f6457cd50c53769ba3128a39f6113904e00fb18aedff5e02bb4c9573eb.html" data-source-node="n79">Activating Inventory Attribute Validation</a>
+        </p>
+        <p data-source-node="n80"> </p>
+        <p data-source-node="n81"> </p>
+        <p data-source-node="n82">The following is discussed in this topic:</p>
+        <p data-source-node="n83">- <a href="#Defined" data-source-node="n84">Inventory Attributes Defined</a></p>
+        <p data-source-node="n85">- <a href="#SystemSupport" data-source-node="n86">System Support for Inventory Attributes</a></p>
+        <p data-source-node="n87"> </p>
+        <p data-source-node="n88"> </p>
+        <hr width="100%" align="center" data-source-node="n89">
+        <p data-source-node="n90"> </p>
+        <p data-source-node="n91"> </p>
+        <h4 data-source-node="n92"><a name="Defined" data-source-node="n93"></a>Inventory Attributes Defined...</h4>
+        <p data-source-node="n94">Inventory Attributes represent values that are assigned to inventory, typically when it is checked into the warehouse. These attributes fill the need to track specific information about warehouse inventory.  Typically, this type of information would need to be captured  during receipt check in, maintained in inventory, items allocated and picked based on these attributes, and then uploaded to your ERP system.  Also, you can add/edit these attributes to inventory at select places in the system. Examples of inventory attributes include such values as Country of Origin, Region, or Product Owner. The system supports inventory attributes for both license plate and non-license plate tracked locations. All of the functional areas that support inventory attributes are listed in the <a href="#SystemSupport" data-source-node="n95">System Support for Inventory Attributes</a> section below.</p>
+        <p data-source-node="n96"> </p>
+        <p data-source-node="n97">All of the inventory attributes are stored in a separate database table called LOCATION_INVENTORY_ATTRIBUTES. The application supports twenty attribute fields, which are generically named Inventory Attribute 01, Inventory Attribute 02, etc. You can rename these attribute field names in the System Text Editor to reflect the specific attribute being captured, such as Country of Origin, Tax Seal, or Product Owner. Also pre-defined inventory attribute values can be created in the configurations that allow you to select from these values on certain processing screens. For this list of values to be displayed onscreen, they first need to be activated (per attribute) in the configurations. </p>
+        <p data-source-node="n98"> </p>
+        <p data-source-node="n99"> </p>
+        <hr width="100%" align="center" data-source-node="n100">
+        <p data-source-node="n101"> </p>
+        <p data-source-node="n102"> </p>
+        <h4 data-source-node="n103"><a name="SystemSupport" data-source-node="n104"></a>System Support for Inventory Attributes...</h4>
+        <p data-source-node="n105">SCALE supports inventory attributes in the functional areas listed below:</p>
+        <p data-source-node="n106"> </p>
+        <h5 data-source-node="n107">Inbound</h5>
+        <p data-source-node="n108"> </p>
+        <table style="margin-left: 0;margin-right: auto" data-source-node="n109">
+            <col style="width: 214px" data-source-node="n110">
+            <col style="width: 723px" data-source-node="n111">
+            <tbody data-source-node="n112">
+                <tr data-source-node="n113">
+                    <td data-source-node="n114">
+                        <p style="font-style: italic" data-source-node="n115">User Action</p>
+                        <p data-source-node="n116"> </p>
+                    </td>
+                    <td data-source-node="n117">
+                        <p style="font-style: italic" data-source-node="n118">Supported Inventory Attribute Functionality</p>
+                        <p data-source-node="n119"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n120">
+                    <td data-source-node="n121">
+                        <p data-source-node="n122">Check In A Receipt </p>
+                        <p data-source-node="n123">(Without Attributes) Defined </p>
+                        <p data-source-node="n124">In Receipt Line, and Add </p>
+                        <p data-source-node="n125">Attributes on RF During </p>
+                        <p data-source-node="n126">Check-In</p>
+                        <p data-source-node="n127"> </p>
+                    </td>
+                    <td data-source-node="n128">
+                        <p data-source-node="n129">         This is the only method that supports capturing attributes during receiving.</p>
+                        <p data-source-node="n130"> </p>
+                        <p data-source-node="n131"> </p>
+                        <p data-source-node="n132"> </p>
+                        <p data-source-node="n133"> </p>
+                        <p data-source-node="n134"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n135">
+                    <td data-source-node="n136">
+                        <p data-source-node="n137">Locating (Based On One </p>
+                        <p data-source-node="n138">Attribute and Attributes </p>
+                        <p data-source-node="n139">Combinations) </p>
+                        <p data-source-node="n140"> </p>
+                    </td>
+                    <td data-source-node="n141">
+                        <p data-source-node="n142">         Both locating with and without work are supported.</p>
+                        <p data-source-node="n143"> </p>
+                        <p data-source-node="n144">Customizations are required to locate based on specific attribute values.               </p>
+                        <p data-source-node="n145"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n146">
+                    <td data-source-node="n147">
+                        <p data-source-node="n148">Receipt Putaway To </p>
+                        <p data-source-node="n149">Inventory Location</p>
+                        <p data-source-node="n150"> </p>
+                    </td>
+                    <td data-source-node="n151">
+                        <p data-source-node="n152">         Both full screen and RF work putaway is supported with attributes.</p>
+                        <p data-source-node="n153"> </p>
+                        <p data-source-node="n154"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n155">
+                    <td data-source-node="n156">
+                        <p data-source-node="n157">Override Putaway</p>
+                        <p data-source-node="n158"> </p>
+                    </td>
+                    <td data-source-node="n159">
+                        <p data-source-node="n160">         Overriding the putaway location is supported with attributes from both full screen and RF.</p>
+                        <p data-source-node="n161"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n162">
+                    <td data-source-node="n163">
+                        <p data-source-node="n164">View Inventory Attributes</p>
+                        <p data-source-node="n165"> </p>
+                    </td>
+                    <td data-source-node="n166">
+                        <p data-source-node="n167">Supported during RF Pick and Putaway of receipt putaway work.</p>
+                        <p data-source-node="n168"> </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-source-node="n169"> </p>
+        <p data-source-node="n170"> </p>
+        <h5 data-source-node="n171">Outbound</h5>
+        <p data-source-node="n172"> </p>
+        <table style="margin-left: 0;margin-right: auto" data-source-node="n173">
+            <col style="width: 214px" data-source-node="n174">
+            <col style="width: 725px" data-source-node="n175">
+            <tbody data-source-node="n176">
+                <tr data-source-node="n177">
+                    <td data-source-node="n178">
+                        <p style="font-style: italic" data-source-node="n179">Area</p>
+                        <p data-source-node="n180"> </p>
+                    </td>
+                    <td data-source-node="n181">
+                        <p style="font-style: italic" data-source-node="n182">Supported Inventory Attribute Functionality</p>
+                        <p data-source-node="n183"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n184">
+                    <td data-source-node="n185">
+                        <p style="font-style: normal" data-source-node="n186">Run Wave</p>
+                        <p data-source-node="n187"> </p>
+                        <p data-source-node="n188"> </p>
+                    </td>
+                    <td data-source-node="n189">
+                        <p data-source-node="n190">         Location inventory with attributes can be allocated during the allocation and replenishment wave steps.  Customizations will be required to allocate or replenish based on specific attribute values.</p>
+                        <p data-source-node="n191"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n192">
+                    <td data-source-node="n193">
+                        <p data-source-node="n194">Cancel Wave</p>
+                        <p data-source-node="n195"> </p>
+                    </td>
+                    <td data-source-node="n196">
+                        <p data-source-node="n197">         Canceling a wave cleans up inventory based on attributes.  </p>
+                        <p data-source-node="n198"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n199">
+                    <td data-source-node="n200">
+                        <p data-source-node="n201">Allocation Based On </p>
+                        <p data-source-node="n202">One Attribute and </p>
+                        <p data-source-node="n203">Attributes Combinations</p>
+                        <p data-source-node="n204"> </p>
+                        <p data-source-node="n205"> </p>
+                        <p data-source-node="n206"> </p>
+                        <p data-source-node="n207"> </p>
+                        <p data-source-node="n208"> </p>
+                    </td>
+                    <td data-source-node="n209">
+                        <p data-source-node="n210">         Allocating attributes works similar to what it does for lot controlled shipment details without the lot ID.  The system allocates based on each location inventory record at the location.  If you request 15 EA and the location has 5 EA of attribute A, 5 EA of attribute B and 5 EA without attributes, then the system allocates all three regardless the attributes. You can filter location selection by inventory attribute values.</p>
+                        <p data-source-node="n211"> </p>
+                        <p data-source-node="n212"></p>
+                        <p data-source-node="n213"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n214">
+                    <td data-source-node="n215">
+                        <p data-source-node="n216">Picking Into a </p>
+                        <p data-source-node="n217">Shipping Container</p>
+                        <p data-source-node="n218"> </p>
+                        <p data-source-node="n219"> </p>
+                    </td>
+                    <td data-source-node="n220">
+                        <p data-source-node="n221">         Picking into a shipping container is the only method of linking attributes to a shipping container.  It does not matter if it is a full pallet (case) or loose container or whether the container was created in the wave or during picking.  In all cases, the link is established during the RF pick/putaway process.</p>
+                        <p data-source-node="n222"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n223">
+                    <td data-source-node="n224">
+                        <p data-source-node="n225">Override Pick From </p>
+                        <p data-source-node="n226">a Different Location / </p>
+                        <p data-source-node="n227">License Plate</p>
+                        <p data-source-node="n228"> </p>
+                    </td>
+                    <td data-source-node="n229">
+                        <p data-source-node="n230">         Override pick is permitted from both full screen and RF, as long as the new pick location has the same attribute values as the original pick location.  </p>
+                        <p data-source-node="n231"> </p>
+                        <p data-source-node="n232"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n233">
+                    <td data-source-node="n234">
+                        <p data-source-node="n235">Override Putaway</p>
+                        <p data-source-node="n236"> </p>
+                    </td>
+                    <td data-source-node="n237">
+                        <p data-source-node="n238">        Override putaway is supported with attributes from both full screen and RF.</p>
+                        <p data-source-node="n239"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n240">
+                    <td data-source-node="n241">
+                        <p data-source-node="n242">Manual Packing</p>
+                        <p data-source-node="n243"> </p>
+                        <p data-source-node="n244"> </p>
+                        <p data-source-node="n245"> </p>
+                    </td>
+                    <td data-source-node="n246">
+                        <p data-source-node="n247">         Inventory attributes are not linked on the shipping dock inventory.  This requires picking, regardless of loose or full quantity picking, to be picked into a shipping container from RF.  Since the attributes are not linked to inventory on the shipping dock manual packing does not link attributes to the container.</p>
+                        <p data-source-node="n248"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n249">
+                    <td data-source-node="n250">
+                        <p data-source-node="n251">Shipment Upload Interface</p>
+                        <p data-source-node="n252"> </p>
+                    </td>
+                    <td data-source-node="n253">
+                        <p data-source-node="n254">        Attributes are uploaded with the shipping container in all interface modes.</p>
+                        <p data-source-node="n255"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n256">
+                    <td data-source-node="n257">
+                        <p data-source-node="n258">View Inventory Attributes</p>
+                        <p data-source-node="n259"> </p>
+                    </td>
+                    <td data-source-node="n260">
+                        <p data-source-node="n261">Supported from the RF Pick and Putaway Confirmation Screens</p>
+                        <p data-source-node="n262"> </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-source-node="n263"> </p>
+        <p data-source-node="n264"> </p>
+        <h5 data-source-node="n265">Inventory Management</h5>
+        <p data-source-node="n266"> </p>
+        <table style="margin-left: 0;margin-right: auto" data-source-node="n267">
+            <col style="width: 214px" data-source-node="n268">
+            <col style="width: 725px" data-source-node="n269">
+            <tbody data-source-node="n270">
+                <tr data-source-node="n271">
+                    <td data-source-node="n272">
+                        <p style="font-style: italic" data-source-node="n273">Area</p>
+                        <p data-source-node="n274"> </p>
+                    </td>
+                    <td data-source-node="n275">
+                        <p style="font-style: italic" data-source-node="n276">Supported Inventory Attribute Functionality</p>
+                        <p data-source-node="n277"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n278">
+                    <td data-source-node="n279">
+                        <p data-source-node="n280">Inventory Insight– </p>
+                        <p data-source-node="n281">Viewing Attributes Of </p>
+                        <p data-source-node="n282">License Plates and  </p>
+                        <p data-source-node="n283">Non License Plate </p>
+                        <p data-source-node="n284">Tracked Locations</p>
+                        <p data-source-node="n285"> </p>
+                    </td>
+                    <td data-source-node="n286">
+                        <p data-source-node="n287">         There is a setting on the criteria page to group the results by attributes and an attribute column on the results.  </p>
+                        <p data-source-node="n288"> </p>
+                        <p data-source-node="n289"> </p>
+                        <p data-source-node="n290"> </p>
+                        <p data-source-node="n291"> </p>
+                        <p data-source-node="n292"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n293">
+                    <td data-source-node="n294">
+                        <p data-source-node="n295">Location Transfer Between </p>
+                        <p data-source-node="n296">Non License Plate Tracked </p>
+                        <p data-source-node="n297">Locations</p>
+                        <p data-source-node="n298"> </p>
+                    </td>
+                    <td data-source-node="n299">
+                        <p data-source-node="n300">        Attributes are supported, the location must be selected directly from the Inventory Insight or the RF Location Inquiry screen.</p>
+                        <p data-source-node="n301"> </p>
+                        <p data-source-node="n302"> </p>
+                        <p data-source-node="n303"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n304">
+                    <td data-source-node="n305">
+                        <p data-source-node="n306">Location Transfer Between </p>
+                        <p data-source-node="n307">LicensePlate Tracked </p>
+                        <p data-source-node="n308">Locations</p>
+                        <p data-source-node="n309"> </p>
+                    </td>
+                    <td data-source-node="n310">
+                        <p data-source-node="n311">        Attributes are supported, the location must be selected directly from the Inventory Insight or the RF Location Inquiry screen.</p>
+                        <p data-source-node="n312"> </p>
+                        <p data-source-node="n313"> </p>
+                        <p data-source-node="n314"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n315">
+                    <td data-source-node="n316">
+                        <p data-source-node="n317">Transfer Inventory To </p>
+                        <p data-source-node="n318">Another License Plate </p>
+                        <p data-source-node="n319">With Different Attributes</p>
+                        <p data-source-node="n320"> </p>
+                    </td>
+                    <td data-source-node="n321">
+                        <p data-source-node="n322">        Attributes are supported, the location must be selected directly from the Inventory Insight or the RF Location Inquiry screen.</p>
+                        <p data-source-node="n323"> </p>
+                        <p data-source-node="n324"> </p>
+                        <p data-source-node="n325"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n326">
+                    <td data-source-node="n327">
+                        <p style="font-style: normal" data-source-node="n328">Inventory Adjustment</p>
+                        <p data-source-node="n329"> </p>
+                    </td>
+                    <td data-source-node="n330">
+                        <p data-source-node="n331">For Inventory Adjustment, attributes are not entered during the adjustment. After the adjustment, attributes can be updated via Inventory Insight or RF Location Inquiry</p>
+                        <p data-source-node="n332"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n333">
+                    <td data-source-node="n334">
+                        <p style="font-style: normal" data-source-node="n335">Edit Attributes in </p>
+                        <p style="font-style: normal" data-source-node="n336">Location Inventory</p>
+                        <p data-source-node="n337"> </p>
+                        <p data-source-node="n338"> </p>
+                        <p data-source-node="n339"> </p>
+                        <p data-source-node="n340"> </p>
+                    </td>
+                    <td data-source-node="n341">
+                        <p data-source-node="n342"> </p>
+                        <p data-source-node="n343">An action is available on the Inventory Insight.</p>
+                        <p data-source-node="n344"> </p>
+                        <p data-source-node="n345">A button is available to the RF Location Inquiry Screen to edit attributes.</p>
+                        <p data-source-node="n346"> </p>
+                        <p data-source-node="n347">An action is available to be added to a viewer or desktop gadget.</p>
+                        <p data-source-node="n348"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n349">
+                    <td data-source-node="n350">
+                        <p data-source-node="n351">Cycle Count: Creation </p>
+                        <p data-source-node="n352">and Execution, Add</p>
+                        <p data-source-node="n353">a New License Plate </p>
+                        <p data-source-node="n354">With Attributes</p>
+                        <p data-source-node="n355"> </p>
+                        <p data-source-node="n356"> </p>
+                        <p data-source-node="n357"> </p>
+                        <p data-source-node="n358"> </p>
+                        <p data-source-node="n359"> </p>
+                        <p data-source-node="n360"> </p>
+                        <p data-source-node="n361"> </p>
+                        <p data-source-node="n362"> </p>
+                        <p data-source-node="n363"> </p>
+                        <p data-source-node="n364"> </p>
+                        <p data-source-node="n365"> </p>
+                        <p data-source-node="n366"> </p>
+                        <p data-source-node="n367"> </p>
+                        <p data-source-node="n368"> </p>
+                        <p data-source-node="n369"> </p>
+                        <p data-source-node="n370"> </p>
+                    </td>
+                    <td data-source-node="n371">
+                        <p data-source-node="n372">         Cycle count creation for attributes is handled in the same manner as it is for lots.  The system creates a request for each unique set of attributes at the location.</p>
+                        <p data-source-node="n373"> </p>
+                        <p data-source-node="n374">         Both full screen and RF work execution are available.  However, there is no visibility to the attributes when confirming the work. </p>
+                        <p data-source-node="n375"> </p>
+                        <p data-source-node="n376">         You can add an item (lot and license plate)  with attributes from RF. </p>
+                        <p data-source-node="n377"> </p>
+                        <p data-source-node="n378"> There is an exit point from RF inventory management that permits capture attributes (from a custom capture screen - see SDK).</p>
+                        <p data-source-node="n379"> </p>
+                        <p data-source-node="n380">       The         Cycle Count Request Insight screen has a column in the results view for attributes, and the Cycle Count Request screen has a checkbox indicating whether the request has attributes.  </p>
+                        <p data-source-node="n381"> </p>
+                        <p data-source-node="n382">         Cycle count reconciliation is permitted with attributes.  As with work confirmation, there is no visibility to the attributes.  </p>
+                        <p data-source-node="n383"> </p>
+                        <p data-source-node="n384">You can define location criteria for cycle count creation using attributes.</p>
+                        <p data-source-node="n385"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n386">
+                    <td data-source-node="n387">
+                        <p style="font-style: normal" data-source-node="n388">Replenishment With and</p>
+                        <p style="font-style: italic" data-source-node="n389">Without Attributes</p>
+                        <p data-source-node="n390"> </p>
+                        <p data-source-node="n391"> </p>
+                        <p data-source-node="n392"> </p>
+                    </td>
+                    <td data-source-node="n393">
+                        <p data-source-node="n394">Replenishment allocates from reserve locations in the same manner as shipment allocation. You can filter location selection by inventory attribute values. Note that if you want to perform replenishment based on inventory attributes that more advanced than SCALE currently offers, then you will need to customize this logic.</p>
+                        <p data-source-node="n395"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n396">
+                    <td data-source-node="n397">
+                        <p style="font-style: normal" data-source-node="n398">Replenishment Override</p>
+                        <p data-source-node="n399"> </p>
+                    </td>
+                    <td data-source-node="n400">
+                        <p data-source-node="n401">Replenishment override during picking and putaway is permitted in the same manner as is for inbound and outbound work.</p>
+                        <p data-source-node="n402"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n403">
+                    <td data-source-node="n404">
+                        <p data-source-node="n405">View Inventory Attributes</p>
+                        <p data-source-node="n406"> </p>
+                        <p data-source-node="n407"> </p>
+                        <p data-source-node="n408"> </p>
+                    </td>
+                    <td data-source-node="n409">
+                        <p data-source-node="n410">Supported from the following screens: RF Location Inquiry, RF Inventory Management (when accessed from RF Location Inquiry), RF Cycle Count Work Execution, and RF Cycle Count Reconcile. Also supported is viewing during the RF Pick and Putaway of replenishment and inventory management work.</p>
+                        <p data-source-node="n411"> </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-source-node="n412"> </p>
+        <p data-source-node="n413"> </p>
+        <h5 data-source-node="n414">Transaction History</h5>
+        <p data-source-node="n415"> </p>
+        <table style="margin-left: 0;margin-right: auto" data-source-node="n416">
+            <col style="width: 213px" data-source-node="n417">
+            <col style="width: 726px" data-source-node="n418">
+            <tbody data-source-node="n419">
+                <tr data-source-node="n420">
+                    <td data-source-node="n421">
+                        <p style="font-style: italic" data-source-node="n422">Area</p>
+                        <p data-source-node="n423"> </p>
+                    </td>
+                    <td data-source-node="n424">
+                        <p style="font-style: italic" data-source-node="n425">Supported Inventory Attribute Functionality</p>
+                        <p data-source-node="n426"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n427">
+                    <td style="font-style: normal" data-source-node="n428">
+                        <p data-source-node="n429">Transaction History </p>
+                        <p data-source-node="n430">Messages</p>
+                        <p data-source-node="n431"> </p>
+                        <p data-source-node="n432"> </p>
+                        <p data-source-node="n433"> </p>
+                        <p data-source-node="n434"> </p>
+                        <p data-source-node="n435"> </p>
+                        <p data-source-node="n436"> </p>
+                        <p data-source-node="n437"> </p>
+                    </td>
+                    <td data-source-node="n438">
+                        <p data-source-node="n439">Attributes are written for transactions involving the adjusting of inventory during check in, locating, allocating, inventory adjustment/transfer/status change, picking, putaway, etc.  If the location inventory is linked to attributes, then the system writes the attributes as part of the history.  Since attributes are not tracked in location inventory on the shipping dock, they are not written when delivering or moving containers on the dock.</p>
+                        <p data-source-node="n440"> </p>
+                        <p data-source-node="n441">Notes:</p>
+                        <p data-source-node="n442">- The "Edit Inventory Attributes" action writes Inventory Attribute Change transaction history.</p>
+                        <p data-source-node="n443">- The "Delete Inventory Attributes" action writes Inventory Attribute Delete transaction history.</p>
+                        <p data-source-node="n444"> </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-source-node="n445"> </p>
+        <p data-source-node="n446"> </p>
+        <p data-source-node="n447"> </p>
+        <p data-source-node="n448"> </p>
+        <p data-source-node="n449"> </p>
+        <p data-source-node="n450"> </p>
+        <p data-source-node="n451"> </p>
+        <p data-source-node="n452"> </p>
+        <p data-source-node="n453"> </p>
+        <p data-source-node="n454"> </p>
+        <p data-source-node="n455"> </p>
+        <p data-source-node="n456"> </p>
+        <p data-source-node="n457"> </p>
+        <p data-source-node="n458"> </p>
+        <p data-source-node="n459"> </p>
+        <p data-source-node="n460"> </p>
+        <p data-source-node="n461"> </p>
+        <p data-source-node="n462"> </p>
+        <p data-source-node="n463"> </p>
+        <p data-source-node="n464"> </p>
+        <p data-source-node="n465"> </p>
+        <p data-source-node="n466"> </p>
+        <p data-source-node="n467"> </p>
+        <p data-source-node="n468"> </p>
+        <p data-source-node="n469"> </p>
+        <p data-source-node="n470"> </p>
+        <p data-source-node="n471"> </p>
+        <p data-source-node="n472"> </p>
+        <p data-source-node="n473"> </p>
+        <p data-source-node="n474"> </p>
+        <p data-source-node="n475"> </p>
+        <p data-source-node="n476"> </p>
+        <p data-source-node="n477"> </p>
+        <p data-source-node="n478"> </p>
+        <p data-source-node="n479"> </p>
+        <p data-source-node="n480"> </p>
+        <p data-source-node="n481"> </p>
+        <p data-source-node="n482"> </p>
+        <p data-source-node="n483"> </p>
+        <p data-source-node="n484"> </p>
+        <p data-source-node="n485"> </p>
+        <p data-source-node="n486"> </p>
+        <p data-source-node="n487"> </p>
+        <p data-source-node="n488"> </p>
+        <p data-source-node="n489"> </p>
+        <p data-source-node="n490"> </p>
+    </body></html>

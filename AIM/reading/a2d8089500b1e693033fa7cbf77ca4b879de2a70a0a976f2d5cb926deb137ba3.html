@@ -1,0 +1,295 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Allocation Process Summary: Functionality</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n58"><a name="kanchor1370" data-source-node="n59"></a>Allocation Process Summary</h1>
+        <p data-source-node="n60"><b data-source-node="n61">** Functionality **</b>
+        </p>
+        <p data-source-node="n62"><a href="07389991e41715f41b06fe903bb2e10d79c84341d24367dfa9f5cdc93288f9c5.html" style="font-weight: bold" data-source-node="n63">Process Flows</a>
+        </p>
+        <p data-source-node="n64"> </p>
+        <p data-source-node="n65"> </p>
+        <h4 data-source-node="n66">Summary</h4>
+        <p data-source-node="n67">The allocation process selects which location's inventory should be 
+ obtained to meet a request for product. The system will generate work for allocated product during 
+ the work creation process. Allocation is performed as a wave step which is designed to run before the work creation step. When the allocation step is run, the system 
+ selects the location that it will obtain product from for a shipment 
+ line. If you use the system 
+ to pick confirm, the product is reserved until it is either picked or 
+ its shipment is deleted. If you 
+ don't pick confirm, the system automatically removes the inventory when 
+ the load is confirmed.</p>
+        <p data-source-node="n68"> </p>
+        <p data-source-node="n69">The system includes several predefined allocation strategies. These strategies 
+ allow you to select allocation locations based on specific business needs, 
+ such as emptying as many locations as possible. </p>
+        <p data-source-node="n70"> </p>
+        <p data-source-node="n71">An allocation rule groups together all the components required to select 
+ an allocation location. Generally, an allocation rule set includes multiple 
+ sequences, which the system processes in numerical order (1, 2, 3, etc.). 
+ The sequence identifies the location selection and allocation strategy 
+ the system will apply during allocations. A location selection record 
+ determines which locations the allocation strategy can be applied to. 
+ For example, if the location selection includes all locations in Zone 
+ 'Bulk', the allocation strategy will consider only those locations in 
+ Zone 'Bulk'.</p>
+        <p data-source-node="n72"> </p>
+        <p data-source-node="n73">You can determine which locations product will be allocated from based 
+ on any item or location value. These values are defined on the Item Window, 
+ Item Class Window, Location Window and Location Class Window. Also, you 
+ can organize the order that locations will be considered for allocation, 
+ based on any item or location value. You can define handling rules for 
+ such criteria as particular products, employees, and work zones.</p>
+        <p data-source-node="n74"> </p>
+        <p data-source-node="n75">You can use the Transaction History Insight and Process History Insight screens to research the system's decisions 
+ during allocation. This screen will display a series of records that represent the confirmation 
+ or failure of the allocation events.</p>
+        <p data-source-node="n76"> </p>
+        <p data-source-node="n77"> </p>
+        <p data-source-node="n78"> </p>
+        <h4 data-source-node="n79">Related Topics</h4>
+        <p data-source-node="n80">- <a href="07edc31677cc85116035ff7f2dff1c2a3f7a1a38afdb4aaf867617691a7483ac.html" data-source-node="n81">Setup Overview</a></p>
+        <p data-source-node="n82"> </p>
+        <p data-source-node="n83"> </p>
+        <p data-source-node="n84"> </p>
+        <p data-source-node="n85">The following are key features of the allocation functional area:</p>
+        <p data-source-node="n86"> </p>
+        <p data-source-node="n87"> </p>
+        <h4 data-source-node="n88">Allocation Strategies</h4>
+        <p data-source-node="n89">An allocation strategy is a method for selecting picking locations based 
+ on a storage management goal, such as emptying locations. These strategies 
+ are predefined and represent a specific system algorithm that the system 
+ will use to allocate product. </p>
+        <p data-source-node="n90"> </p>
+        <p data-source-node="n91">The list below provides a brief description 
+ of each strategy:<br data-source-node="n92"></p>
+        <ul type="disc" class="ul_1" data-source-node="n93">
+            <li data-source-node="n94"><i data-source-node="n95">Closest Match</i> 
+ - The system attempts to allocate the product from the location whose 
+ inventory count best matches the shipment's requested quantity. It will 
+ first find the location with the lowest quantity that is greater than 
+ or equal to the requested quantity. If it cannot do that, the system will 
+ allocate locations in a manner to minimize the number of locations the 
+ picker needs to visit by allocating the location with the highest quantity 
+ first. <br data-source-node="n96"><br data-source-node="n97"></li>
+            <li data-source-node="n98"><i data-source-node="n99">First-Expiration-First-Out 
+ (FEFO)</i> - The system allocates the product with the lowest expiration 
+ date. An item must be lot controlled to identify the expiration date. 
+ This strategy decreases the likelihood that time-sensitive foods and pharmaceuticals 
+ will perish in the warehouse.<br data-source-node="n100"><br data-source-node="n101"></li>
+            <li data-source-node="n102"><i data-source-node="n103">First-In-First-Out 
+ (FIFO)</i> - The system allocates the product with the lowest aging 
+ date. The system assigns the aging date when the product is introduced 
+ to the system. This strategy ensures that the oldest inventory is removed 
+ from the warehouse first.<br data-source-node="n104"><br data-source-node="n105"></li>
+            <li data-source-node="n106"><i data-source-node="n107">Item Location 
+ Assignment</i> - The system attempts to allocate product from its permanent 
+ location. This strategy is valid only if you have defined permanent locations 
+ for items on the Item Location Assignment Window. This strategy is used 
+  when you 
+ want to have picking location(s) that you always use for an item, rather 
+ than letting the system assign locations randomly.<br data-source-node="n108"> </li>
+            <li data-source-node="n109"><i data-source-node="n110">Item Location 
+ Assignment (Over Allocation Allowed)</i> - The system attempts to allocate 
+ an item from its permanent location. If there is not enough available 
+ quantity present at the location, then the system will allocate the quantity 
+ anyway.               A location will not be rejected 
+ because it does not contain enough available quantity for your allocation 
+ request. This strategy is valid only if you have defined permanent 
+ locations for items on the Item Location Assignment Window, are performing 
+ shipment allocation, the location is not license plate tracked, and does not contain lot controlled items. This strategy 
+ is used when you want to have a single picking location that you always 
+ use for an item, and you want to be able to allocate from that location 
+ regardless of the available quantity that may or may not be present. You 
+ would be assuming that the location would be replenished               before 
+ the pick is to occur.<br data-source-node="n111"> <br data-source-node="n112">If a shipment needs a quantity of 25 for item A01, the system would 
+ allocate from Location 3 first since that is the location where the picker 
+ could perform a single pick and get all the quantity. Also, this location 
+ has the closest quantity that will meet the demand (as opposed to Location 
+ 4). However, if the shipment had a quantity of 50 on it, the system would 
+ allocate all of Location 4, followed by 10 from Location 2.<br data-source-node="n113"> </li>
+            <li data-source-node="n114"><i data-source-node="n115">Last Expired, First Out (LEFO)</i> - The system allocates the product with the expiration date that is the furthermost in the future. This strategy orders selected locations by Expiration Date in descending order (the furthermost expiration date on top).  The Expiration Date value takes precedence over other ordering fields; that is, the system always orders the selected locations by Location, but using LEFO it orders by Expiration Date (descending) and then Location. <br data-source-node="n116"> </li>
+            <li data-source-node="n117"><i data-source-node="n118">Last-In-First-Out 
+ (LIFO)</i> - The system allocates the product with the highest aging 
+ date. This strategy minimizes picking time in stackable locations (and 
+ other locations where the product last located is the most accessible).<br data-source-node="n119"> </li>
+            <li data-source-node="n120"><i data-source-node="n121">Maximize Space (Allocate Least Available First)</i> 
+ - The system allocates product from the location with the lowest inventory 
+ count. It will continue to allocate product from those locations with 
+ the least amount of inventory, until the shipment request is fulfilled. 
+ This strategy empties multiple location via allocation; however, it increases 
+ the number of location that you must visit.<br data-source-node="n122"> </li>
+            <li data-source-node="n123"><i data-source-node="n124">Minimize Visits (Allocate Most Available First)</i> 
+ - The system allocates the product from the location with the highest 
+ inventory count. This strategy minimizes the number locations that you 
+ must visit.</li>
+        </ul>
+        <p data-source-node="n125">Keep in mind that most strategies allocate based on location inventory, NOT locations.  For example, if a strategy finds 5 eligible locations that translates into 5 location inventory records.  Those 10 inventory locations could be 5 distinct locations or 2 locations with 2 license plates in one location, and 3 license plates in the other.  In either scenario, the allocation process looks at these as 5 distinct location inventory records.</p>
+        <p data-source-node="n126"> </p>
+        <p data-source-node="n127">For example, suppose the "Closest Match" allocation strategy finds 5 eligible location inventory records.  The strategy orders these by available quantity in ascending order.  The demand quantity is 192 eaches.  The 5 locations will be ordered as shown below:</p>
+        <p data-source-node="n128"> </p>
+        <table style="margin-left: 0;margin-right: auto" class="TableStyle-Basic" cellspacing="0" data-source-node="n129">
+            <col class="Column-Column1" style="width: 126px" data-source-node="n130">
+            <col class="Column-Column1" style="width: 75px" data-source-node="n131">
+            <col class="Column-Column1" style="width: 102px" data-source-node="n132">
+            <tbody data-source-node="n133">
+                <tr class="Body-Body1" data-source-node="n134">
+                    <td class="BodyE-Column1-Body1" data-source-node="n135">
+                        <p data-source-node="n136">Available Quantity</p>
+                        <p data-source-node="n137"> </p>
+                    </td>
+                    <td class="BodyE-Column1-Body1" data-source-node="n138">
+                        <p data-source-node="n139">Location</p>
+                        <p data-source-node="n140"> </p>
+                    </td>
+                    <td class="BodyD-Column1-Body1" data-source-node="n141">
+                        <p data-source-node="n142">License Plate</p>
+                        <p data-source-node="n143"> </p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1" data-source-node="n144">
+                    <td class="BodyE-Column1-Body1" data-source-node="n145">
+                        <p data-source-node="n146">32 EA</p>
+                        <p data-source-node="n147"> </p>
+                    </td>
+                    <td class="BodyE-Column1-Body1" data-source-node="n148">
+                        <p data-source-node="n149">Loc B</p>
+                        <p data-source-node="n150"> </p>
+                    </td>
+                    <td class="BodyD-Column1-Body1" data-source-node="n151">
+                        <p data-source-node="n152">LP 20</p>
+                        <p data-source-node="n153"> </p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1" data-source-node="n154">
+                    <td class="BodyE-Column1-Body1" data-source-node="n155">
+                        <p data-source-node="n156">32 EA</p>
+                        <p data-source-node="n157"> </p>
+                    </td>
+                    <td class="BodyE-Column1-Body1" data-source-node="n158">
+                        <p data-source-node="n159">Loc A</p>
+                        <p data-source-node="n160"> </p>
+                    </td>
+                    <td class="BodyD-Column1-Body1" data-source-node="n161">
+                        <p data-source-node="n162">LP 10</p>
+                        <p data-source-node="n163"> </p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1" data-source-node="n164">
+                    <td class="BodyE-Column1-Body1" data-source-node="n165">
+                        <p data-source-node="n166">64 EA</p>
+                        <p data-source-node="n167"> </p>
+                    </td>
+                    <td class="BodyE-Column1-Body1" data-source-node="n168">
+                        <p data-source-node="n169">Loc C</p>
+                        <p data-source-node="n170"> </p>
+                    </td>
+                    <td class="BodyD-Column1-Body1" data-source-node="n171">
+                        <p data-source-node="n172">LP 30</p>
+                        <p data-source-node="n173"> </p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1" data-source-node="n174">
+                    <td class="BodyE-Column1-Body1" data-source-node="n175">
+                        <p data-source-node="n176">64 EA</p>
+                        <p data-source-node="n177"> </p>
+                    </td>
+                    <td class="BodyE-Column1-Body1" data-source-node="n178">
+                        <p data-source-node="n179">Loc A</p>
+                        <p data-source-node="n180"> </p>
+                    </td>
+                    <td class="BodyD-Column1-Body1" data-source-node="n181">
+                        <p data-source-node="n182">LP 11</p>
+                        <p data-source-node="n183"> </p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1" data-source-node="n184">
+                    <td class="BodyB-Column1-Body1" data-source-node="n185">
+                        <p data-source-node="n186">96 EA</p>
+                        <p data-source-node="n187"> </p>
+                    </td>
+                    <td class="BodyB-Column1-Body1" data-source-node="n188">
+                        <p data-source-node="n189">Loc A</p>
+                        <p data-source-node="n190"> </p>
+                    </td>
+                    <td class="BodyA-Column1-Body1" data-source-node="n191">
+                        <p data-source-node="n192">LP 12</p>
+                        <p data-source-node="n193"> </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-source-node="n194"> </p>
+        <p data-source-node="n195">Location A-LP 12 (with 96 EA) will be allocated first, followed by Location C-LP 30 (with 64 EA) and Location B-LP 20 (with 32 EA).  This adds up to 192 EA.  You may notice that Location A has sufficient available quantity to allocate the entire demand quantity.  This strategy DOES NOT sum the quantities at a given location to fulfill the demand quantity. Instead, this strategy minimizes the number of picks, and NOT the number of locations when license plates, lots, or inventory attributes are involved.  Location could be added to the order by and in this specific scenario, the strategy would order the location inventory such that it would appear that the quantities were summed.  However, another set of data likely would not have the same results.</p>
+        <p data-source-node="n196"> </p>
+        <p data-source-node="n197"> </p>
+        <p data-source-node="n198"> </p>
+        <h4 data-source-node="n199">Advanced Allocation</h4>
+        <p data-source-node="n200">Advanced allocation records allow allocation to use percentages when 
+ attempting to allocate quantity on a shipment line. This process 
+ is also sometimes called variable quantity (or percent) allocation. You will define 
+ these percentages on the Advanced Allocation Window. The following scenario 
+ shows how you can use the minimum and maximum fields on this window to 
+ indicate system thresholds for performing variable quantity allocation: Suppose you define an advanced allocation record for Item 
+ A (garden hose), and defined to allow percent allocation. A customer then 
+ orders 100 feet of garden hose. If the minimum percentage is equal to 
+ 100%, and the maximum percentage is equal to 110%, then the system would 
+ be able to allocate a quantity of Item A in the range of 100 to 110 feet.</p>
+        <p data-source-node="n201"> </p>
+        <p class="p_5" data-source-node="n202"> </p>
+        <p class="p_5" data-source-node="n203"> </p>
+        <h4 data-source-node="n204">Multi-Threaded Allocation</h4>
+        <p class="p_5" data-source-node="n205">When allocating shipments, the system uses 
+ a type of processing called multi-threading. This helps the performance 
+ of the allocation process. Multi-threaded allocation is driven by a setting 
+ in the Technical Values Window. This value determines the number of shipments 
+ that the system will allocate at one time. This, in turn, will determine 
+ the number of threads used in the multi-threaded allocation process. For 
+ example, if this value is set at 2, the system will concurrently allocate 
+ two shipments (each on its own separate thread). When one shipment finishes 
+ allocating, the system will begin allocating another shipment on the available 
+ thread. This process continues until all shipments have been allocated. 
+ </p>
+        <p class="p_5" data-source-node="n206"> </p>
+        <p class="p_5" data-source-node="n207"> </p>
+        <p class="p_5" data-source-node="n208"> </p>
+        <h4 data-source-node="n209">Allocating Complete Quantities</h4>
+        <p data-source-node="n210">SCALE also allows you to indicate to the system that if any 
+ part of a shipment fails allocation, the system will reject the entire 
+ shipment. You can define this setting at the shipment level by 
+ selecting the "allocate complete" value. This is helpful if 
+ you have items on the same shipment that absolutely have to be shipped 
+ at the same time. The "allocate complete" setting ensures this 
+ by putting the whole shipment into a rejected status when any part of 
+ it fails to be allocated.</p>
+        <p data-source-node="n211"> </p>
+        <p data-source-node="n212"> </p>
+        <p data-source-node="n213"> </p>
+        <h4 data-source-node="n214">Allocation of Related Lines</h4>
+        <p data-source-node="n215">The system includes the ability to allocate related items that need 
+ to be shipped to the same destination. These type of items would typically 
+ not need to be put together in a kiting/work order process, but definitely 
+ would need to ship out on the same shipment. An example of this type of 
+ item would be a table, where the customer would order a table, but the 
+ warehouse actually ships a table top and four legs. Note that these items 
+ do not necessarily need to be packaged together, but do need to arrive 
+ at the same time (as you would not want to receive a table top and three 
+ legs). These components of the table (the finished item) can then be allocated 
+ separately as a group of table legs and one table top.</p>
+        <p data-source-node="n216"> </p>
+        <p data-source-node="n217"> </p>
+        <p data-source-node="n218"> </p>
+        <p data-source-node="n219"> </p>
+        <p data-source-node="n220"> </p>
+        <p data-source-node="n221"> </p>
+        <p data-source-node="n222"> </p>
+        <p data-source-node="n223"> </p>
+        <p data-source-node="n224"> </p>
+        <p data-source-node="n225"> </p>
+        <p data-source-node="n226"> </p>
+        <p data-source-node="n227"> </p>
+        <p data-source-node="n228"> </p>
+        <p data-source-node="n229"> </p>
+        <p data-source-node="n230"> </p>
+        <p data-source-node="n231"> </p>
+        <p data-source-node="n232"> </p>
+        <p class="p_5" data-source-node="n233"> </p>
+    </body></html>

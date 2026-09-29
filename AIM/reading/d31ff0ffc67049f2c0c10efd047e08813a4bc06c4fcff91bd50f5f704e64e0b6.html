@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Notes on Printing with SQL Server Reporting Services</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1342" data-source-node="n57"></a>Notes on Printing with SQL Server Reporting Services</h1>
+        <p data-source-node="n58">The following are some things to take into consideration when using SQL Server Reporting Services for printing:</p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60"> </p>
+        <h4 data-source-node="n61">Installation Notes...</h4>
+        <ul data-source-node="n62">
+            <li data-source-node="n63">Please see the installation guides regarding certified print drivers.<br data-source-node="n64"><br data-source-node="n65"></li>
+            <li data-source-node="n66">Please see the installation guides regarding necessary Windows operating system updates.</li>
+        </ul>
+        <p data-source-node="n67"> </p>
+        <h4 data-source-node="n68">Functional Notes...</h4>
+        <ul data-source-node="n69">
+            <li data-source-node="n70">The following are the statuses for SSRS printing requests:<br data-source-node="n71"><br data-source-node="n72">- Ready = Waiting to be printed.<br data-source-node="n73"><br data-source-node="n74">- In Process = In printing.<br data-source-node="n75"><br data-source-node="n76">- Closed = Printing completed.<br data-source-node="n77"><br data-source-node="n78">- Error = An exception has occurred (such as timeout).<br data-source-node="n79"><br data-source-node="n80">- Note that these statuses indicate when a print request has been sent to the spooler. Once a request is in the print spooler, it is up to the printer to generate the physical printed document.<br data-source-node="n81"><br data-source-node="n82"></li>
+            <li data-source-node="n83">Print requests are placed in a "Ready" state, which means they are waiting to be picked up and sent to the PDF reader for printing.<br data-source-node="n84"><br data-source-node="n85"></li>
+            <li data-source-node="n86">When a print request is picked up for printing, it is marked with an "In Process" state, and the "process start date time" value is recorded.<br data-source-node="n87"><br data-source-node="n88"></li>
+            <li data-source-node="n89">When a print request is consumed by the PDF reader within the specified allowable time, then it is marked with a state of "Closed" and the "process end date time" value is recorded.<br data-source-node="n90"><br data-source-node="n91"></li>
+            <li data-source-node="n92">When a print request is not consumed by the PDF reader within the specified allowable time, then it is marked with a state of "Error" and the "process end date time" value is recorded.<br data-source-node="n93"><br data-source-node="n94"></li>
+            <li data-source-node="n95">Note that "Closed" does not mean that a record printed successfully, but that it was sent to the PDF Reader successfully.<br data-source-node="n96"><br data-source-node="n97"></li>
+            <li data-source-node="n98">The following are the date/time definitions for SSRS printing requests:<br data-source-node="n99"><br data-source-node="n100">- Render time – The time it took to render the document.<br data-source-node="n101"><br data-source-node="n102">- Inserted date time – When the print request was inserted into the database.<br data-source-node="n103"><br data-source-node="n104">- Process start date time – The time when the record was picked up and sent to the PDF reader print application.<br data-source-node="n105"><br data-source-node="n106">- Process end date time – The time when the record was finished being consumed by the PDF reader print application.<br data-source-node="n107"></li>
+        </ul>
+        <p data-source-node="n108"> </p>
+        <p data-source-node="n109"> </p>
+        <p data-source-node="n110"> </p>
+        <p data-source-node="n111"> </p>
+        <p data-source-node="n112"> </p>
+    </body></html>

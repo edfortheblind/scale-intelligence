@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Using Delayed Locating</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1848" data-source-node="n57"></a>Using Delayed Locating</h1>
+        <p data-source-node="n58">Often there are delays between when product is received on the receiving dock and when that product is putaway to an inventory location.  This delay ties up valuable floor space.  Delayed locating can be used to maximize the available floor space.  This process will delay locating receipt containers to inventory locations until starting the actual putaway.  Instead of locating to an inventory location the receipt containers will be temporarily located to a receiving pre-locate location.</p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60">You can delay locating a receipt container or a parent container with nested containers by using the Delayed Locating flag on the receipt container’s locating rule and the Create Work Putaway flag on the user’s receiving preference.  When these two flags are checked locating will direct the receipt container to the receiving pre-locate location.  This location belongs to the Receiving Pre-locate location class.  Creating this location automatically sets the location as multi-item and license plate tracked.  Allocate in transit is unchecked.</p>
+        <p data-source-node="n61"> </p>
+        <p data-source-node="n62">If either the Delayed Locating or Create Work Putaway flag is unchecked, then the system will use the receipt container’s locating rule details to locate to an inventory location.</p>
+        <p data-source-node="n63"> </p>
+        <p data-source-node="n64">Receipt containers will be relocated to an inventory location when starting receipt putaway work from RF with the work instruction’s receiving pre-locate location as the ‘to’ location.  Relocating uses the receipt container’s locating rule to determine the new putaway location.  RF user directed, system directed, and multiple work unit assignment work initiation methods can be used to relocate “delayed” receipt containers.  Parent containers with nested receipt containers always relocate by child regardless the receiving preference’s locating method.</p>
+        <p data-source-node="n65"> </p>
+        <p data-source-node="n66">Relocating is delayed when the receiving dock has an outgoing P&amp;D location.  The pick and putaway to the P&amp;D doesn’t relocate the receipt container.  Instead the pick from the outgoing P&amp;D location relocates the receipt container.</p>
+        <p data-source-node="n67"> </p>
+        <p data-source-node="n68"> </p>
+        <h4 data-source-node="n69">Related Topics...</h4>
+        <p data-source-node="n70"><a href="b9c3ffa9a81498cb548bdb61d00ba2dd34e5bfb79695f24b28a31d26d9eb8369.html" data-source-node="n71">Receiving Process Summary</a>
+        </p>
+        <p data-source-node="n72"><a href="7ce243224234ef2a085f503382eb7608a270aeae80192c654d977e0ec2da1eb4.html" data-source-node="n73">Receiving Process Diagram</a>
+        </p>
+        <p data-source-node="n74"><a href="7ce243224234ef2a085f503382eb7608a270aeae80192c654d977e0ec2da1eb4.html" data-source-node="n75">Receiving RF Process Diagram</a>
+        </p>
+        <p data-source-node="n76"><a href="47a8b05e23ca9439d5e313cb9e74b7502cb87d797f589658af45959f2d4dedb5.html" data-source-node="n77">Receiving Setup Overview</a>
+        </p>
+        <p data-source-node="n78"><a href="4007cca3ce3ca3273f3ee4e6d51d7027ae1816c6f7ce71af9f254400514146aa.html" data-source-node="n79">Locating Process Summary</a>
+        </p>
+        <p data-source-node="n80"> </p>
+        <p data-source-node="n81"> </p>
+        <p data-source-node="n82">Discussed in this topic:</p>
+        <p data-source-node="n83">- <a href="#Delay" data-source-node="n84">Delay Locating to the Receiving Pre Locate Location</a></p>
+        <p data-source-node="n85">- <a href="#Relocate" data-source-node="n86">Relocate Delayed Receipt Containers to an Inventory Location</a></p>
+        <p data-source-node="n87"> </p>
+        <p data-source-node="n88"> </p>
+        <hr width="100%" align="center" data-source-node="n89">
+        <p data-source-node="n90"> </p>
+        <p data-source-node="n91"> </p>
+        <h4 data-source-node="n92"><a name="Delay" data-source-node="n93"></a>Delay Locating to the Receiving Pre-Locate Location…</h4>
+        <p data-source-node="n94"> </p>
+        <ol data-source-node="n95">
+            <li value="1" data-source-node="n96">Create a new location using the Receiving Pre-locate location subclass.<br data-source-node="n97"><br data-source-node="n98"></li>
+            <li value="2" data-source-node="n99">Create a locating rule with Delayed Locating checked.<br data-source-node="n100"><br data-source-node="n101"></li>
+            <li value="3" data-source-node="n102">Check Create Work Putaway on the user’s receiving preference.<br data-source-node="n103"><br data-source-node="n104"></li>
+            <li value="4" data-source-node="n105">Locate or locate all the receipt containers or parent containers with nested containers from the Receipt Workbench or RF Receiving.<br data-source-node="n106"><br data-source-node="n107"></li>
+            <p data-source-node="n108">a. The system will locate and create receipt putaway work for the receipt containers with both Delayed Locating and Create Work Putaway flags checked to the receiving pre-locate location. Receipt containers with only one of the two flags checked will locate to an inventory location based on the receipt container’s locating rule details.<br data-source-node="n109"><br data-source-node="n110"></p>
+            <p data-source-node="n111">b. If either the Delayed Locating or Create Work Putaway flag is unchecked, then the system will use the receipt container’s locating rule details to locate to an inventory location.<br data-source-node="n112"><br data-source-node="n113"></p>
+            <li value="5" data-source-node="n114">Review Process History to determine the locating status.</li>
+        </ol>
+        <p data-source-node="n115"> </p>
+        <hr width="100%" align="center" data-source-node="n116">
+        <p data-source-node="n117"> </p>
+        <p data-source-node="n118"> </p>
+        <h4 data-source-node="n119"><a name="Relocate" data-source-node="n120"></a>Relocate Delayed Receipt Containers to an Inventory Location…</h4>
+        <p data-source-node="n121"> </p>
+        <ol data-source-node="n122">
+            <li value="1" data-source-node="n123">Complete the steps in the Delay locating to the receiving pre-locate location section.<br data-source-node="n124"><br data-source-node="n125"></li>
+            <li value="2" data-source-node="n126">Log into RF and select Work.<br data-source-node="n127"><br data-source-node="n128"></li>
+            <li value="3" data-source-node="n129">Select a work profile configured to pick and putaway receipt putaway work.<br data-source-node="n130"><br data-source-node="n131"></li>
+            <li value="4" data-source-node="n132">In user directed mode enter the work unit for the receipt container(s) you would like to putaway.  See the Processing RF Work topic for details on relocating when starting work using system directed and multiple work unit assignment modes.<br data-source-node="n133"><br data-source-node="n134"></li>
+            <li value="5" data-source-node="n135">Click OK.  If the system determines the work unit is for receipt putaway work and the work instruction’s ‘to’ location is a receiving pre-locate location, then the system will relocate the receipt container(s).</li>
+            <br data-source-node="n136">
+            <p data-source-node="n137">a. First, the system validates the user can start the receipt putaway work to the pre-locate location.<br data-source-node="n138"><br data-source-node="n139"></p>
+            <p data-source-node="n140">b. If the user passes start work validation to the pre-locate location and the receiving dock does not have an outgoing P&amp;D, then the system relocates the receipt container to an inventory location based on the container’s locating rule.<br data-source-node="n141"><br data-source-node="n142"></p>
+            <p data-source-node="n143">- If relocating is successful, then the system validates the user can start the work to the new inventory location.<br data-source-node="n144"><br data-source-node="n145"></p>
+            <p data-source-node="n146">- If start work for the inventory location passes validation, then the user is presented with the Pick Confirmation screen and can pick and putaway the receipt container.<br data-source-node="n147"><br data-source-node="n148"></p>
+            <p data-source-node="n149">c. If the user passes start work validation to the pre-locate location and the receiving dock has an outgoing P&amp;D, then the work unit is picked and putaway to the P&amp;D without relocating.  <br data-source-node="n150"><br data-source-node="n151"></p>
+            <p data-source-node="n152">d. If start work or relocating fails, then the system displays the error.<br data-source-node="n153"><br data-source-node="n154"></p>
+            <li value="6" data-source-node="n155">Review Process History for more information on relocating success and failure.<br data-source-node="n156"><br data-source-node="n157"></li>
+            <p data-source-node="n158">NOTE: Parent containers with nested receipt containers always relocate by child regardless the receiving preference’s locating method.</p>
+        </ol>
+        <p data-source-node="n159"> </p>
+        <p data-source-node="n160"> </p>
+        <p data-source-node="n161"> </p>
+        <p data-source-node="n162"> </p>
+        <p data-source-node="n163"> </p>
+        <p data-source-node="n164"> </p>
+        <p data-source-node="n165"> </p>
+        <p data-source-node="n166"> </p>
+    </body></html>

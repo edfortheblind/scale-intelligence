@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Billing Management Integration Process Summary: Functionality</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor202" data-source-node="n57"></a>Billing Management Integration Process Summary</h1>
+        <p data-source-node="n58"><b data-source-node="n59">** Functionality **</b>
+        </p>
+        <p data-source-node="n60"><a href="93b67a5e861866a83006663aa86b2dc1260d4b60f07e573a2a274b5380c5e1d4.html" data-source-node="n61">Process Flows</a>
+        </p>
+        <p data-source-node="n62"> </p>
+        <p data-source-node="n63"> </p>
+        <h4 data-source-node="n64">Summary</h4>
+        <p data-source-node="n65">Billing Management is a third-party billing application that allows 
+ customers to calculate, track, and charge for the work being performed 
+ in their warehouse. It is a stand-alone product (separate from the system) 
+ that is produced by Manhattan Associates. SCALE can integrate 
+ with Billing Management (by uploading system data to the Billing Management application) in order to facilitate a link between the inbound/outbound 
+ processing of your warehouse and the billing system of your warehouse's 
+ third-party companies.</p>
+        <p data-source-node="n66"> </p>
+        <p data-source-node="n67"> </p>
+        <p data-source-node="n68"> </p>
+        <h4 data-source-node="n69">Related Topics</h4>
+        <p class="Heading11" style="font-size: 10pt;font-weight: normal;font-style: normal;color: #000000" data-source-node="n70">- <a href="2a16be86b28407502240ceb7b4e938a760446b2e587bba7519e9a33e570ab14d.html" data-source-node="n71">Setup Overview</a></p>
+        <p class="Heading11" style="font-size: 10pt;font-weight: normal;font-style: normal;color: #000000" data-source-node="n72">- <a href="e2d2e9636003124bf8ba64a4f3d4146f3abab6d10c4f3d292503bdc5d94d14be.html" data-source-node="n73">Using Billing Management With SCALE</a></p>
+        <p class="Heading11" style="font-size: 10pt;font-weight: normal;font-style: normal;color: #000000" data-source-node="n74"> </p>
+        <p class="Heading11" style="font-size: 10pt;font-weight: normal;font-style: normal;color: #000000" data-source-node="n75"> </p>
+        <p class="Heading11" style="font-size: 10pt;font-weight: normal;font-style: normal;color: #000000" data-source-node="n76"> </p>
+        <p data-source-node="n77">The following are key features of the Billing Management integration functional area:</p>
+        <p data-source-node="n78"> </p>
+        <h4 data-source-node="n79">Prerequisites</h4>
+        <p data-source-node="n80">There are the two programs that you will need to install in order to integrate 
+ with Billing Management:</p>
+        <ul type="disc" class="ul_1" data-source-node="n81">
+            <li data-source-node="n82">Billing Management: 
+ This is a third-party billing application.<br data-source-node="n83"> <br data-source-node="n84"></li>
+            <li data-source-node="n85">SQL Server Database: 
+ SCALE can only be integrated with Billing Management if you are using 
+ an SQL Server database.</li>
+        </ul>
+        <p data-source-node="n86"> </p>
+        <p data-source-node="n87"> </p>
+        <h4 data-source-node="n88">Data Flow Between SCALE and Billing Management</h4>
+        <p data-source-node="n89">Billing Management features APIs (application programming interfaces) 
+ that allow any system to transmit data to it (not just SCALE). 
+ It uses XML as the API transmission mechanism. Billing Management publishes 
+ various XML schemas, which describe the data elements that you can send 
+ it, and then each time you want to send data to Billing Management, the 
+ system will generate the appropriate XML-formatted data. </p>
+        <p data-source-node="n90"> </p>
+        <p data-source-node="n91">When you run the Billing Management interface in SCALE, the system will place the appropriate data into a user-defined directory. Then, Billing Management will retrieve this data at a later time.</p>
+        <p data-source-node="n92"> </p>
+        <p data-source-node="n93">The following example outlines the flow of data for the "close 
+ load" trigger. Other triggers will function similarly:</p>
+        <ol class="ol_1" data-source-node="n94">
+            <li value="1" data-source-node="n95">A load is confirmed. The system references the 
+ Billing Management Trigger Header records to see if any active records 
+ are associated with this event, based on Event ID.<br data-source-node="n96"> </li>
+            <li value="2" data-source-node="n97">The system grabs the trigger header with the same 
+ Event ID as the activity (the load closing). The system retrieves the 
+ only detail without a parent 
+ value.<br data-source-node="n98"> </li>
+            <li value="3" data-source-node="n99">The system executes the Billing Management data 
+ query record associated with this record (the Statement Field on the trigger 
+ detail record identifies which data query to use). <br data-source-node="n100"> </li>
+            <li value="4" data-source-node="n101">The system brings back all the records defined 
+ by the data query. The system then uses the detail's you defined on the 
+ Trigger Detail Map Window to convert system data to values defined in 
+ Billing Management. This data is XML-formatted data.<br data-source-node="n102"> </li>
+            <li value="5" data-source-node="n103">The system completes the above steps B-D for all 
+ of the remaining detail records on the trigger header. The system first 
+ processes all of the null parent record’s children, then their children, 
+ etc. <br data-source-node="n104"> </li>
+            <li value="6" data-source-node="n105">Process history is written in the application. 
+ These history records will indicate whether or not the trigger fired and 
+ if it was successful.<br data-source-node="n106"> </li>
+            <li value="7" data-source-node="n107">The system places the XML data into a directory, which is defined in the Billing Management System Values Window.<br data-source-node="n108"></li>
+        </ol>
+        <p data-source-node="n109"> </p>
+        <p data-source-node="n110"> </p>
+        <h4 data-source-node="n111">Billing Management Triggers</h4>
+        <ul type="disc" class="ul_1" data-source-node="n112">
+            <li class="li_10" data-source-node="n113">Trigger Processing Flow: As mentioned 
+ above, all the system business logic actually does is see if the trigger 
+ point is on, and then submit the thread to create the XML document, passing 
+ in the “key” values relevant to the operation (e.g. for receipt of a license plate 
+ it might be License Plate ID, for picking it might be the Work Unit) and the 
+ trigger identifier. Therefore, when triggers are on, the user will not 
+ see any difference in the processing flow compared to when they are off. 
+ The data is prepared automatically behind the scenes.<br data-source-node="n114"> </li>
+            <li class="li_10" data-source-node="n115">Adding new triggers: The user is free to add new triggers if they like; obviously adding 
+ new “run in line” triggers without adding corresponding custom processing 
+ code won’t do anything, as those require system events to check for them. 
+  So, the 
+ main use we see for adding new triggers is related to “run manually” ones. 
+  Note that 
+ the user would still be required to configure the proper SQL and to link 
+ up with the proper Billing Management XML schema, but the configuration 
+ could then be used to handle the mapping to the XML schema, and the base 
+ UI to allow execution of manual triggers which would then automatically 
+ show the new value.</li>
+        </ul>
+        <p data-source-node="n116"> </p>
+        <p data-source-node="n117"> </p>
+        <p data-source-node="n118"> </p>
+        <p class="p_19" data-source-node="n119"> </p>
+        <p data-source-node="n120"> </p>
+        <p data-source-node="n121"> </p>
+    </body></html>

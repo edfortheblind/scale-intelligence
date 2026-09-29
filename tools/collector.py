@@ -15,10 +15,11 @@ import re
 import struct
 import sys
 import tempfile
+import time
 from datetime import datetime, timezone
 from urllib.parse import urljoin, urlsplit, urlunsplit, unquote, parse_qsl
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
 REVISION = "STAGE-CHATGPT-EN-2.0"
 ORIGIN = "https://travstg.manhscale.com"
 ROOTS = {"AIM": "/SCALEHelp/Help/WebHelp/", "SDK": "/SCALEHelp/SDK/"}
@@ -46,6 +47,8 @@ def atomic_bytes(path, data):
     """Flush and verify a sibling temporary file before atomic replacement."""
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
+    if path.is_file() and path.read_bytes() == data:
+        return
     fd, temp = tempfile.mkstemp(prefix=".pending-", dir=path.parent)
     try:
         with os.fdopen(fd, "wb") as stream:
@@ -54,7 +57,16 @@ def atomic_bytes(path, data):
             os.fsync(stream.fileno())
         if digest(Path(temp).read_bytes()) != digest(data):
             raise ValueError("Temporary file hash mismatch")
-        os.replace(temp, path)
+        for attempt in range(8):
+            try:
+                os.replace(temp, path)
+                break
+            except PermissionError:
+                # OneDrive/antivirus may briefly open the destination without delete sharing.
+                # Keep the old checkpoint intact; never alter permissions or overwrite in place.
+                if attempt == 7:
+                    raise
+                time.sleep(min(0.1 * 2 ** attempt, 1.6))
     finally:
         if Path(temp).exists():
             Path(temp).unlink()
@@ -125,14 +137,23 @@ def writer_lock(root, runtime):
 
 
 class Store:
-    def __init__(self, root):
+    def __init__(self, root, *, cache_records=False):
         self.root = Path(root).resolve()
+        self.cache_records = cache_records
+        self._records = {}
 
     def records(self, module):
-        return [read_json(p) for p in sorted((self.root / module / "manifests/resources").glob("*.json"))]
+        if self.cache_records and module in self._records:
+            return [self._records[module][key] for key in sorted(self._records[module])]
+        result = [read_json(p) for p in sorted((self.root / module / "manifests/resources").glob("*.json"))]
+        if self.cache_records:
+            self._records[module] = {r['id']:r for r in result}
+        return result
 
     def save_record(self, record):
         atomic_json(self.root / record["module"] / "manifests/resources" / (record["id"] + ".json"), record)
+        if self.cache_records and record['module'] in self._records:
+            self._records[record['module']][record['id']] = record
 
     def discover(self, module, href, base, discovery_source, kind="unclassified"):
         identity = source_identity(href, base)
@@ -151,6 +172,7 @@ class Store:
             "http_status": None, "mime": None, "encoding": None, "final_url": None,
             "local_path": None, "sha256": None, "byte_count": None,
             "verification": "NOT_CAPTURED",
+            "additional_occurrence_index": module + "/data/articles/*.json:references[target_id]",
         }
         occurrence = {"original_href": href, "resolved_url": identity["url"],
                       "fragment": identity["fragment"], "discovery_source": discovery_source}
@@ -195,6 +217,41 @@ class Store:
         self.save_record(record)
         return record
 
+    def save_original(self, record, body, metadata):
+        """Commit decoded transport bytes without text conversion or DOM serialization."""
+        identity = source_identity(metadata["final_url"], record["source_url"])
+        if identity["module"] != record["module"] or metadata["http_status"] != 200:
+            raise ValueError("UNACCEPTABLE_RESPONSE")
+        if not isinstance(body, bytes) or (not body and record['type'] not in ('script','stylesheet')):
+            raise ValueError("ORIGINAL_BYTES_REQUIRED")
+        kind = record["type"]
+        folder = {"article": "html", "navigation": "navigation", "script": "assets",
+                  "stylesheet": "assets", "image": "assets", "font": "assets",
+                  "video": "assets", "attachment": "downloads"}.get(kind)
+        if folder is None:
+            raise ValueError("CLASSIFICATION_REQUIRED")
+        extension = Path(urlsplit(record["source_url"]).path).suffix
+        if not re.fullmatch(r"\.[A-Za-z0-9]{1,8}", extension):
+            extension = ".bin"
+        sha = digest(body)
+        relative = record["module"] + "/source/" + folder + "/" + sha + extension
+        prior = {key: record.get(key) for key in ("sha256", "local_path", "acquired_at", "byte_count")}
+        if prior["sha256"] and prior["sha256"] != sha:
+            record.setdefault("prior_bodies", []).append(prior)
+        atomic_bytes(self.root / relative, body)
+        # Authentication headers and other ambient response data never enter manifests.
+        for key in ("final_url", "http_status", "mime", "encoding", "redirect_chain"):
+            if key in metadata:
+                record[key] = metadata[key]
+        record.update(sha256=sha, byte_count=len(body), local_path=relative,
+                      status="BODY_SAVED", acquired_at=now(), verification="LOCAL_BYTES_VERIFIED",
+                      extraction_method="playwright.APIResponse.body", collector_version=VERSION,
+                      representation="http_content_decoded_body", transport_metadata_verified=True,
+                      metadata_limitations=[], reading_copy_verified=False, empty_body=(len(body) == 0))
+        record.pop("last_failure", None)
+        self.save_record(record)
+        return record
+
     def verify(self):
         failures, count = [], 0
         for module in ROOTS:
@@ -217,31 +274,37 @@ class Store:
                 "local_integrity_passed": not failures, "corpus_complete": False,
                 "discovery": "DISCOVERY_INCOMPLETE", "pilot": "NOT_RUN"}
 
-    def checkpoint(self, owner=None):
+    def checkpoint(self, owner=None, *, phase=None, blockers=None, worker_running=False):
         state_path = self.root / "_project/STATE.json"
         previous = read_json(state_path) if state_path.exists() else {}
-        if (previous.get("phase") == "PROJECT_COMPLETE" or any(
-                item.get("status") in ("MODULE_LOCAL_COMPLETE", "CORPUS_COMPLETE")
-                for item in previous.get("modules", {}).values())):
-            raise ValueError("Foundation collector cannot downgrade completed module evidence")
+        if phase and previous.get("phase") == "PROJECT_COMPLETE" and phase != "PROJECT_COMPLETE":
+            raise ValueError("Explicit revalidation is required before reopening a completed project")
         modules = {}
         for module in ROOTS:
             records = self.records(module)
             counts = {"discovered": len(records), "pending": sum(r["status"] == "PENDING" for r in records),
                       "bodies_saved": sum(r["status"] == "BODY_SAVED" for r in records),
-                      "articles_verified": 0, "failed": sum(r["status"] == "FAILED" for r in records)}
-            modules[module] = {"status": "DISCOVERY_INCOMPLETE" if module == "AIM" else "WAITING_FOR_AIM",
+                      "articles_verified": sum(r.get("type") == "article" and r.get("reading_copy_verified", False) for r in records),
+                      "failed": sum(r["status"] == "FAILED" for r in records)}
+            old_module = previous.get("modules", {}).get(module, {})
+            modules[module] = {**old_module,
+                               "status": old_module.get("status", "DISCOVERY_INCOMPLETE" if module == "AIM" else "WAITING_FOR_AIM"),
                                "counts": counts, "manifests": module + "/manifests/resources/"}
-            coverage = {"module": module, "status": modules[module]["status"], "counts": counts,
+            coverage_path = self.root / module / "reports/coverage.json"
+            coverage = read_json(coverage_path) if coverage_path.exists() else {"module": module,
                         "denominators": {k: None for k in ("articles", "variants", "assets", "attachments", "internal_links")},
                         "ratios": None, "pilot": "NOT_RUN", "discovery_reconciled": False,
                         "reason": "Complete published inventory has not been acquired."}
-            atomic_json(self.root / module / "reports/coverage.json", coverage)
+            coverage.update(status=modules[module]["status"], counts=counts)
+            atomic_json(coverage_path, coverage)
         state = {**previous, "scope_revision": REVISION, "collector_version": VERSION,
-                 "phase": "BLOCKED_CAPABILITY", "module": "AIM", "updated_at": now(),
-                 "worker_running": False, "writer": {"protocol": "external_os_file_lock", "last_operation": owner},
-                 "modules": modules, "blockers": [BLOCKER], "pilot": "NOT_RUN",
-                 "next_invocation": ".\\tools\\scale-int.ps1 preflight"}
+                 "phase": phase or previous.get("phase", "BLOCKED_CAPABILITY"),
+                 "module": previous.get("module", "AIM"), "updated_at": now(),
+                 "worker_running": worker_running, "writer": {"protocol": "external_os_file_lock", "last_operation": owner,
+                                                                 "heartbeat_at": now()},
+                 "modules": modules, "blockers": blockers if blockers is not None else previous.get("blockers", [BLOCKER]),
+                 "pilot": previous.get("pilot", "NOT_RUN"),
+                 "next_invocation": previous.get("next_invocation", ".\\tools\\scale-int.ps1 preflight")}
         atomic_json(state_path, state)
         return state
 

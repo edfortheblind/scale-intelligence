@@ -2,7 +2,7 @@
 
 Universal SCALE reference library: [AIM](AIM/README.md) and [SDK](SDK/README.md).
 
-Status: **BLOCKED_CAPABILITY / DISCOVERY_INCOMPLETE**. This initial delivery contains the durable storage foundation and capability evidence, not completed documentation corpora. No pilot has passed. SDK acquisition waits for AIM local completion.
+Status: **AIM capture in progress; eight-article pilot passed**. Byte-preserving acquisition through the owner's dedicated Edge session is verified. The corpora remain incomplete; SDK acquisition waits for AIM local completion. Current counts and unresolved resources are recorded in `_project/STATE.json` and module reports.
 
 The owner defines one universal reference library. Stage is the acquisition environment only. Source qualifications must be retained verbatim. Newly authored project material is English.
 
@@ -16,7 +16,7 @@ Current authoritative workspace prompts are `01_AIM_MASTER_PROMPT.md` and `02_SD
 
 ## Operation
 
-Python 3.14.7 standard library, PowerShell, Git 2.55.0 and Git LFS 3.7.1 were verified locally. No third-party runtime dependencies are installed.
+Python 3.14.7, Playwright 1.62.0, Microsoft Edge, PowerShell, Git 2.55.0 and Git LFS 3.7.1 were verified locally. Acquisition uses the dedicated authorized Edge profile outside the repository and OneDrive; it does not export cookies or credentials.
 
 ```powershell
 .\tools\scale-int.ps1 preflight
@@ -25,8 +25,10 @@ Python 3.14.7 standard library, PowerShell, Git 2.55.0 and Git LFS 3.7.1 were ve
 python -m unittest discover -s tests -v
 ```
 
-See [_project/RESUME.md](_project/RESUME.md) for the actual capability boundary and continuation steps. `verify` checks saved byte integrity only; it never certifies coverage or fidelity. `resume` checks saved bytes and reports the unresolved capability with exit 2. `publish` intentionally refuses final corpus publication while required completion evidence is absent. Publishing a clearly labeled foundation checkpoint is a separate authorized Git operation.
+See [_project/RESUME.md](_project/RESUME.md) for continuation commands. `verify` checks saved byte integrity only; it never certifies coverage or fidelity. The legacy `resume` command checks storage and exits 2; active acquisition uses `tools/acquire.py`. `publish` refuses final corpus publication while required completion evidence is absent. Clearly labeled progress checkpoints may be published to the verified private repository.
 
-The collector currently supports explicit observed-reference registration and browser asset-bundle import. It does not yet implement full original-body acquisition, navigation parsing, reading-copy conversion, or automatic AIM-to-SDK handoff. Those cannot be represented as verified against unavailable source bodies.
+The collector supports original response bytes and transport metadata, static TOC/index/search parsing, source-to-JSON conversion, inert reading copies, and a rebuildable SQLite full-text index. The [data architecture](_project/DATA_ARCHITECTURE.md) supports the future interactive SCALE consultation app. Original HTML and assets remain the fidelity authority; app JSON preserves structure and relationships. The search database is derived and explicitly provisional until corpus verification succeeds.
+
+Pilot selection is durable. Its eight articles passed source-text, table, code, asset, expanded-state, offline browser, idempotent conversion and recovery tests. Full AIM capture proceeds automatically. Source failures and incomplete coverage remain visible. Automatic module handoff and final corpus verification are still pending implementation and acceptance against the acquired data; this checkpoint does not claim completion.
 
 Private runtime locks are outside OneDrive and Git. Resource manifests are reconstructable per-resource checkpoints; partial writes do not count as saved bodies. No AEKR runtime or private assets are included.

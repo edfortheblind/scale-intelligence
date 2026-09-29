@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Bill of Lading (BOL)</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1455" data-source-node="n57"></a>Bill of Lading (BOL)</h1>
+        <p data-source-node="n58">A bill of lading is a legal document that is required for all LTL shipments. 
+ It includes such information as the ship from and ship to address, carrier 
+ information and a cargo listing. Bills of lading can be automatically 
+ generated during the paperwork wave step. You can manually generate a 
+ bill of lading in the Shipment Insight screen.</p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60"> </p>
+        <h4 data-source-node="n61">Count/Weight Displays...</h4>
+        <p data-source-node="n62">The bill of lading displays the count/weight according to VICS standards whenever there is a second level of packing of containers.
+
+When there is only top level, the system counts the number of containers and its weight.
+
+When there is second level, the system count the number of containers/weight at the second level. The customer statistics shows the containers/weight at the second level . The carrier statistics grand total weight actually adds the empty weight of the parent along with the total weight of the containers. The examples below outline this:</p>
+        <p data-source-node="n63"> </p>
+        <h5 data-source-node="n64">EXAMPLE 1A </h5>
+        <p data-source-node="n65"> Consider you have 11 full containers (each with weight 22.500) + 1 loose container (with weight  0.513). The weight of each item in the container + weight of the container that has the items.</p>
+        <p data-source-node="n66"> </p>
+        <p data-source-node="n67">Weight  of the containers: 11*22.500 = 247.500 + 0.513 = 248.01 
+Packages = 11 + 1 = 12 and each container is a handling unit.
+When you print preview the BOL, it displays the following information:</p>
+        <p data-source-node="n68"> </p>
+        <p data-source-node="n69">
+            <img loading="eager" data-source-node="n70">
+        </p>
+        <p data-source-node="n71"> </p>
+        <p data-source-node="n72">NOTE: The above are top level containers</p>
+        <p data-source-node="n73"> </p>
+        <p data-source-node="n74"> </p>
+        <h5 data-source-node="n75">EXAMPLE 1B</h5>
+        <p data-source-node="n76">Nesting the 11 full containers into a pallet (the empty weight of the pallet is 32.00 lb)</p>
+        <p data-source-node="n77"> </p>
+        <p data-source-node="n78">When you print preview the BOL, it displays the following information. Note that customer information only includes the second level container
+ count /weight.(the rule of thumb):</p>
+        <p data-source-node="n79"> </p>
+        <p data-source-node="n80">
+            <img loading="eager" data-source-node="n81">
+        </p>
+        <p data-source-node="n82"> </p>
+        <p data-source-node="n83">So, when you look at the carrier info (look at the handling unit and the packages inside each handling unit). 
+So, you have 2 top levels  :1 pallet (with 11 full containers) + 1 loose container
+
+</p>
+        <p data-source-node="n84"> </p>
+        <p data-source-node="n85">The grand total weight in the carrier info is the
+ 11*22.500 = 247.500 + 0.513 = 248.01 +32 (empty weight of the pallet)
+</p>
+        <p data-source-node="n86"> </p>
+        <p data-source-node="n87"> </p>
+        <h5 data-source-node="n88">EXAMPLE 2</h5>
+        <p data-source-node="n89">Nesting the loose container onto the same pallet as the full containers. When you print preview the BOL, it displays the following information. Note that the second level still will include the container count/weight:</p>
+        <p data-source-node="n90"> </p>
+        <p data-source-node="n91">
+            <img loading="eager" data-source-node="n92">
+        </p>
+        <p data-source-node="n93"> </p>
+        <p data-source-node="n94">Now there is only one top level the Pallet (11 full containers + 1 loose) and it is only one handling unit. The packages shows the numbers of containers inside that handling unit. </p>
+        <p data-source-node="n95"> </p>
+        <p data-source-node="n96">The grand total weight in the carrier info is the
+ 11*22.500 = 247.500 + 0.513 = 248.01 +32(empty weight of the pallet)
+</p>
+        <p data-source-node="n97"> </p>
+        <p data-source-node="n98"> </p>
+        <h5 data-source-node="n99">EXAMPLE 3</h5>
+        <p data-source-node="n100">Nesting the pallet into another pallet.</p>
+        <p data-source-node="n101"> </p>
+        <p data-source-node="n102">When you print preview the BOL, it displays the following information. Note that the second level is a pallet and we have only pallet so it will include the weight of the pallet.</p>
+        <p data-source-node="n103"> </p>
+        <p data-source-node="n104">
+            <img loading="eager" data-source-node="n105">
+        </p>
+        <p data-source-node="n106"> </p>
+        <p data-source-node="n107">The grand total weight in the carrier info is the
+ 11*22.500 = 247.500 + 0.513 = 248.01 +32 = 280.01 + 32(empty weight of the pallet)
+</p>
+        <p data-source-node="n108"> </p>
+        <p data-source-node="n109">  </p>
+        <p data-source-node="n110"> </p>
+        <p data-source-node="n111"> </p>
+        <p data-source-node="n112"> </p>
+    </body></html>

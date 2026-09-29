@@ -1,0 +1,1164 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>GS1 RF Processing</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor960" data-source-node="n57"></a>GS1 RF Processing</h1>
+        <p data-source-node="n58">When checking into your warehouse product that uses GS1 barcodes, the 
+ RF receipt processing flow is somewhat different than it is when scanning 
+ typical barcodes. GS1 barcodes contain multiple informational segments 
+ (called application identifiers), such as quantity, lot, or license plate 
+ ID. As a result, the system presents the RF user with a different set 
+ of screens to scan in the GS1 barcode data. The goal of this topic is to illustrate the differences in the RF receiving 
+ flow when scanning GS1 barcodes. You can view steps for the typical RF 
+ check in flow by visiting one of the topics in the "Related Procedures" 
+ section below.</p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60"> </p>
+        <h4 data-source-node="n61">Related Topics...</h4>
+        <p data-source-node="n62"><a href="63fce052573d8abfe6a45fd191ff6881a7d4e4dc8d037ecdc124418e157ec3fb.html" data-source-node="n63">GS1 Setup Overview</a>
+        </p>
+        <p data-source-node="n64"><a href="5f876e2632897c1569720f398a7ed5a564bc2d5792bad79a2a06d674e41e6069.html" data-source-node="n65">GS1 Process Summary</a>
+        </p>
+        <p data-source-node="n66"><a href="dab70f0f34272d562089ede3827040eaf43a67b280ee80bf79a5743bbeba39b0.html" data-source-node="n67">Checking In and Locating Product 
+ (RF)</a>
+        </p>
+        <p data-source-node="n68"> </p>
+        <p data-source-node="n69"> </p>
+        <p data-source-node="n70">The following GS1 RF receipt check in scenarios are discussed in this topic:</p>
+        <p data-source-node="n71">- <a href="#ButtonAction" class="a_1" data-source-node="n72">General Button Actions</a></p>
+        <p data-source-node="n73">- <a href="#Basic" class="a_1" data-source-node="n74">Basic GS1 Receipt Check In</a></p>
+        <p data-source-node="n75">- <a href="#Missing" class="a_1" data-source-node="n76">Entering Missing Information During 
+ Receipt Check In</a></p>
+        <p data-source-node="n77">- <a href="#Lot" class="a_1" data-source-node="n78">Receipt Check In With Lots / Expiration 
+ Dates</a></p>
+        <p data-source-node="n79">- <a href="#Serial" class="a_1" data-source-node="n80">Receipt Check In With Serial Number 
+ Tracking</a></p>
+        <p data-source-node="n81">- <a href="#Catch" class="a_1" data-source-node="n82">Receipt Check In With Catch Weights</a></p>
+        <p data-source-node="n83">- <a href="#Nesting" class="a_1" data-source-node="n84">Nesting Containers During Check In</a></p>
+        <p data-source-node="n85">- <a href="#ExecutionMethods" class="a_1" data-source-node="n86">Check In &amp; Locate (Immediate) and 
+ Quick Receive Execution Methods</a></p>
+        <p data-source-node="n87">- <a href="#InitiationMethod" class="a_1" data-source-node="n88">Item Initiation Method</a></p>
+        <p data-source-node="n89"> </p>
+        <p data-source-node="n90"> </p>
+        <p data-source-node="n91"> </p>
+        <h4 data-source-node="n92"><a name="ButtonAction" data-source-node="n93"></a>General Button Actions<br data-source-node="n94"><br data-source-node="n95"></h4>
+        <p data-source-node="n96">The following buttons actions are used in GS1 RF screens:</p>
+        <p data-source-node="n97"> </p>
+        <table style="margin-left: 0;margin-right: auto" cellspacing="0" class="table_1" data-source-node="n98">
+            <col style="width: 100px" data-source-node="n99">
+            <col style="width: 804px" data-source-node="n100">
+            <tr valign="top" data-source-node="n101">
+                <td class="td_12" data-source-node="n102">
+                    <p class="p_12" style="font-weight: bold" data-source-node="n103">Button</p>
+                    <p class="p_12" data-source-node="n104"> </p>
+                </td>
+                <td class="td_13" data-source-node="n105">
+                    <p class="p_12" style="font-weight: bold" data-source-node="n106">Description</p>
+                    <p class="p_12" data-source-node="n107"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n108">
+                <td colspan="1" rowspan="1" class="td_14" data-source-node="n109">
+                    <p class="p_10" style="font-style: italic" data-source-node="n110">OK</p>
+                </td>
+                <td colspan="1" rowspan="1" class="td_15" data-source-node="n111">
+                    <p data-source-node="n112">Accepts previously scanned data, and the system proceeds to the next 
+ GS1 scan screen.</p>
+                    <p data-source-node="n113"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n114">
+                <td colspan="1" rowspan="1" class="td_14" data-source-node="n115">
+                    <p class="p_10" data-source-node="n116"><i data-source-node="n117">Cancel</i>
+                    </p>
+                    <p data-source-node="n118"> </p>
+                </td>
+                <td colspan="1" rowspan="1" class="td_15" data-source-node="n119">
+                    <p data-source-node="n120">Returns the user to the receiving preferences screen without processing 
+ the check in.</p>
+                    <p data-source-node="n121"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n122">
+                <td class="td_14" data-source-node="n123">
+                    <p class="p_10" data-source-node="n124"><i data-source-node="n125">Done</i>
+                    </p>
+                </td>
+                <td class="td_15" data-source-node="n126">
+                    <p data-source-node="n127">This button appears after one complete set of scans has been performed 
+ for a label, and the system displays the first scan screen for the next 
+ item to be checked in. When you press this button, the system will execute 
+ all the post-check-in processing (locating, etc.), and return you to the 
+ initiation screen.</p>
+                    <p data-source-node="n128"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n129">
+                <td class="td_14" data-source-node="n130">
+                    <p class="p_10" data-source-node="n131"><i data-source-node="n132">Skip</i>
+                    </p>
+                    <p class="p_3" data-source-node="n133"> </p>
+                </td>
+                <td class="td_15" data-source-node="n134">
+                    <p data-source-node="n135">The system allows you to skip a scan (for example, maybe the barcode 
+ is smudged and would not be readable by the RF device). When you skip 
+ a scan, the system will prompt you to manually enter the information that 
+ the system would have acquired via the scan.</p>
+                    <p data-source-node="n136"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n137">
+                <td class="td_14" data-source-node="n138">
+                    <p class="p_10" data-source-node="n139"><i data-source-node="n140">Rescan</i>
+                    </p>
+                </td>
+                <td class="td_15" data-source-node="n141">
+                    <p data-source-node="n142">System disregards previously scanned information, and will navigate 
+ back to the GS1 scan screen. Also, the system will reset the scan number 
+ back to 1.</p>
+                    <p data-source-node="n143"> </p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n144"> </p>
+        <p data-source-node="n145"> </p>
+        <hr width="100%" align="center" data-source-node="n146">
+        <p data-source-node="n147"> </p>
+        <p data-source-node="n148"> </p>
+        <h4 data-source-node="n149"><a name="Basic" data-source-node="n150"></a> Basic GS1 Receipt Check In...<br data-source-node="n151"></h4>
+        <p data-source-node="n152">When initiating a basic RF Check In action, the system requires one 
+ or more of the following values: item,        item cross reference,        quantity,        quantity unit of measure, and        container ID.  The 
+ user enters this information using the Enter Item, Check In and Container 
+ ID screens.  For 
+ GS1 processing, the system replaces these screens with a single GS1 Scan 
+ screen. As in typical RF processing, the user may rescan, skip, or cancel 
+ when scanning GS1 barcodes. Note that the quantity UM is not directly 
+ defined on the GS1 barcode; instead, this is associated with an item cross 
+ reference record (in absence of this, the system uses the item's base 
+ unit of measure). If configured to do so, the system can also display 
+ a verification screen after each scan.</p>
+        <p data-source-node="n153"> </p>
+        <p class="p_10" data-source-node="n154">Note that example application identifiers 
+ are in parenthesis below each screen diagram. These could be mapped to 
+ different values depending on your configurations.</p>
+        <p data-source-node="n155"> </p>
+        <p class="p_15" data-source-node="n156">Manual 
+ Container Assignment (two items, 
+ two GS1 barcodes each to scan)</p>
+        <p class="p_15" data-source-node="n157"> </p>
+        <table style="width: 100%" cellspacing="0" width="100%" class="table_1" data-source-node="n158">
+            <col style="width: 25%" data-source-node="n159">
+            <col style="width: 25%" data-source-node="n160">
+            <col style="width: 25%" data-source-node="n161">
+            <col style="width: 25%" data-source-node="n162">
+            <tr valign="top" data-source-node="n163">
+                <td style="width: 25%" valign="middle" width="25%" class="td_12" data-source-node="n164">
+                    <p align="center" class="p_45" data-source-node="n165">Receipt ID</p>
+                    <p align="center" class="p_50" data-source-node="n166"> </p>
+                    <p align="center" class="p_50" data-source-node="n167">ID: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n168"> </p>
+                    <p align="center" class="p_50" data-source-node="n169">[OK]     [Cancel]</p>
+                </td>
+                <td style="width: 25%" valign="middle" width="25%" class="td_13" data-source-node="n170">
+                    <p align="center" class="p_45" data-source-node="n171"> </p>
+                    <p align="center" class="p_45" data-source-node="n172">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n173"> </p>
+                    <p align="center" class="p_50" data-source-node="n174">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n175">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n176"> </p>
+                    <p align="center" class="p_50" data-source-node="n177">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n178"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_13" data-source-node="n179">
+                    <p align="center" class="p_45" data-source-node="n180"> </p>
+                    <p align="center" class="p_45" data-source-node="n181">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n182"> </p>
+                    <p align="center" class="p_50" data-source-node="n183">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n184">Scan (2 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n185"> </p>
+                    <p align="center" class="p_50" data-source-node="n186">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n187"> </p>
+                </td>
+                <td style="width: 25%" valign="middle" width="25%" class="td_13" data-source-node="n188">
+                    <p align="center" class="p_45" data-source-node="n189"> </p>
+                    <p align="center" class="p_45" data-source-node="n190">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n191"> </p>
+                    <p align="center" class="p_50" data-source-node="n192">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n193">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n194"> </p>
+                    <p align="center" class="p_50" data-source-node="n195">[OK]   [Skip] 
+   [Done]</p>
+                    <p align="center" class="p_50" data-source-node="n196"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n197">
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_14" data-source-node="n198">
+                    <p align="center" class="p_51" data-source-node="n199">initiation method screen</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_15" data-source-node="n200">
+                    <p align="center" class="p_51" data-source-node="n201">item A, first scan</p>
+                    <p align="center" class="p_51" data-source-node="n202">(item cross ref, quantity)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_15" data-source-node="n203">
+                    <p align="center" class="p_34" data-source-node="n204">item A, second scan</p>
+                    <p align="center" class="p_50" data-source-node="n205">(container ID)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_15" data-source-node="n206">
+                    <p align="center" class="p_51" data-source-node="n207">item B scan starts...</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n208"> </p>
+        <p data-source-node="n209"> </p>
+        <p class="p_15" data-source-node="n210">Manual 
+ Container Assignment (two items, 
+ two GS1 barcodes each to scan, scan verification on)</p>
+        <p class="p_15" data-source-node="n211"> </p>
+        <table style="width: 100%" cellspacing="0" width="100%" class="table_1" data-source-node="n212">
+            <col style="width: 20%" data-source-node="n213">
+            <col style="width: 20%" data-source-node="n214">
+            <col style="width: 20%" data-source-node="n215">
+            <col style="width: 20%" data-source-node="n216">
+            <col style="width: 20%" data-source-node="n217">
+            <tr valign="top" data-source-node="n218">
+                <td style="width: 20%" valign="middle" width="20%" class="td_12" data-source-node="n219">
+                    <p align="center" class="p_45" data-source-node="n220">Receipt ID</p>
+                    <p align="center" class="p_50" data-source-node="n221"> </p>
+                    <p align="center" class="p_50" data-source-node="n222">ID: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n223"> </p>
+                    <p align="center" class="p_50" data-source-node="n224">[OK]     [Cancel]</p>
+                </td>
+                <td style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n225">
+                    <p align="center" class="p_45" data-source-node="n226">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n227"> </p>
+                    <p align="center" class="p_50" data-source-node="n228">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n229">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n230"> </p>
+                    <p align="center" class="p_50" data-source-node="n231">[OK]   [Skip] 
+   [Cancel]</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n232">
+                    <p align="center" class="p_45" data-source-node="n233">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n234"> </p>
+                    <p align="center" class="p_50" data-source-node="n235">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n236">Scan (2 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n237"> </p>
+                    <p align="center" class="p_50" data-source-node="n238">[OK]   [Skip] 
+   [Cancel]</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n239">
+                    <p align="center" class="p_45" data-source-node="n240"> </p>
+                    <p align="center" class="p_45" data-source-node="n241">Scan Verification</p>
+                    <p align="center" class="p_50" data-source-node="n242"> </p>
+                    <p data-source-node="n243">ID: 2338974</p>
+                    <p data-source-node="n244">Item: NOR0001</p>
+                    <p data-source-node="n245">Qty:3</p>
+                    <p data-source-node="n246">UM: CS (9.00)</p>
+                    <p data-source-node="n247">Cont ID: 0009982</p>
+                    <p align="center" class="p_50" data-source-node="n248"> </p>
+                    <p align="center" class="p_50" data-source-node="n249">[OK]     [Rescan]</p>
+                    <p align="center" class="p_50" data-source-node="n250"> </p>
+                </td>
+                <td style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n251">
+                    <p align="center" class="p_45" data-source-node="n252">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n253"> </p>
+                    <p align="center" class="p_50" data-source-node="n254">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n255">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n256"> </p>
+                    <p align="center" class="p_50" data-source-node="n257">[OK]   [Skip] 
+   [Done]</p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n258">
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_14" data-source-node="n259">
+                    <p align="center" class="p_51" data-source-node="n260">initiation method screen</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n261">
+                    <p align="center" class="p_34" data-source-node="n262">item A, first scan</p>
+                    <p align="center" class="p_34" data-source-node="n263">(item cross ref, quantity)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n264">
+                    <p align="center" class="p_34" data-source-node="n265">item A, second scan</p>
+                    <p align="center" class="p_50" data-source-node="n266">(container ID)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n267">
+                    <p align="center" class="p_51" data-source-node="n268">verification of item A scans</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n269">
+                    <p align="center" class="p_34" data-source-node="n270">item B scan starts...</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n271"> </p>
+        <p data-source-node="n272"> </p>
+        <p class="p_15" data-source-node="n273">System 
+ Container Assignment (two items, 
+ two GS1 barcodes total to scan)</p>
+        <p class="p_15" data-source-node="n274"> </p>
+        <table style="width: 75%" cellspacing="0" width="75%" class="table_1" data-source-node="n275">
+            <col style="width: 33.333%" data-source-node="n276">
+            <col style="width: 33.333%" data-source-node="n277">
+            <col style="width: 33.333%" data-source-node="n278">
+            <tr valign="top" data-source-node="n279">
+                <td style="width: 33.333%" valign="middle" width="33.333%" class="td_12" data-source-node="n280">
+                    <p align="center" class="p_45" data-source-node="n281">Receipt ID</p>
+                    <p align="center" class="p_50" data-source-node="n282"> </p>
+                    <p align="center" class="p_50" data-source-node="n283">ID: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n284"> </p>
+                    <p align="center" class="p_50" data-source-node="n285">[OK]     [Cancel]</p>
+                </td>
+                <td style="width: 33.333%" valign="middle" width="33.333%" class="td_13" data-source-node="n286">
+                    <p align="center" class="p_45" data-source-node="n287"> </p>
+                    <p align="center" class="p_45" data-source-node="n288">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n289"> </p>
+                    <p align="center" class="p_50" data-source-node="n290">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n291">Scan (1 of 1)</p>
+                    <p align="center" class="p_50" data-source-node="n292"> </p>
+                    <p align="center" class="p_50" data-source-node="n293">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n294"> </p>
+                </td>
+                <td style="width: 33.333%" valign="middle" width="33.333%" class="td_13" data-source-node="n295">
+                    <p align="center" class="p_45" data-source-node="n296"> </p>
+                    <p align="center" class="p_45" data-source-node="n297">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n298"> </p>
+                    <p align="center" class="p_50" data-source-node="n299">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n300">Scan (1 of 1)</p>
+                    <p align="center" class="p_50" data-source-node="n301"> </p>
+                    <p align="center" class="p_50" data-source-node="n302">[OK]   [Skip] 
+   [Done]</p>
+                    <p align="center" class="p_50" data-source-node="n303"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n304">
+                <td colspan="1" rowspan="1" style="width: 33.333%" valign="middle" width="33.333%" class="td_14" data-source-node="n305">
+                    <p align="center" class="p_34" data-source-node="n306">initiation method screen</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 33.333%" valign="middle" width="33.333%" class="td_15" data-source-node="n307">
+                    <p align="center" class="p_34" data-source-node="n308">item A scan</p>
+                    <p align="center" class="p_34" data-source-node="n309">(item cross ref, quantity)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 33.333%" valign="middle" width="33.333%" class="td_15" data-source-node="n310">
+                    <p align="center" class="p_34" data-source-node="n311">item B scan</p>
+                    <p align="center" class="p_34" data-source-node="n312">(item cross ref, quantity)</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n313"> </p>
+        <p data-source-node="n314"> </p>
+        <hr width="100%" align="center" data-source-node="n315">
+        <p data-source-node="n316"> </p>
+        <p data-source-node="n317"> </p>
+        <h4 data-source-node="n318"><a name="Missing" data-source-node="n319"></a>Entering Missing Information During 
+ Receipt Check In</h4>
+        <p data-source-node="n320">In cases where the GS1 barcode does not provide enough information for 
+ SCALE to check in an item (such as if the barcode is smudged or ripped), 
+ the system will display a screen that prompts the user to enter in this 
+ additional data. The example below assumes that the user attempted to scan the first barcode, but it was smudged, and no value was readable. The system would then take the user back to the first scan screen so all working scans (scan 2) would be redone, and the information from the bad barcode (scan 1) would be manually entered:</p>
+        <p data-source-node="n321"> </p>
+        <p class="p_15" data-source-node="n322">Quantity 
+ Not Provided By GS1 Barcode (manual 
+ container assignment, two items, two GS1 barcodes each to scan)</p>
+        <p class="p_15" data-source-node="n323"> </p>
+        <table style="width: 100%" cellspacing="0" width="100%" class="table_1" data-source-node="n324">
+            <col style="width: 20%" data-source-node="n325">
+            <col style="width: 20%" data-source-node="n326">
+            <col style="width: 20%" data-source-node="n327">
+            <col style="width: 20%" data-source-node="n328">
+            <tr valign="top" data-source-node="n329">
+                <td style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n330">
+                    <p align="center" class="p_45" data-source-node="n331">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n332"> </p>
+                    <p align="center" class="p_50" data-source-node="n333">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n334">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n335"> </p>
+                    <p align="center" class="p_50" data-source-node="n336">[OK]   [Skip] 
+   [Cancel]</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n337">
+                    <p align="center" class="p_45" data-source-node="n338">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n339"> </p>
+                    <p align="center" class="p_50" data-source-node="n340">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n341">Scan (2 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n342"> </p>
+                    <p align="center" class="p_50" data-source-node="n343">[OK]   [Skip] 
+   [Cancel]</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n344">
+                    <p align="center" class="p_45" data-source-node="n345"> </p>
+                    <p align="center" class="p_45" data-source-node="n346">Check In</p>
+                    <p align="center" class="p_50" data-source-node="n347"> </p>
+                    <p data-source-node="n348">ID: 7738974</p>
+                    <p data-source-node="n349">Item:████████</p>
+                    <p data-source-node="n350">Qty: ████████</p>
+                    <p data-source-node="n351">UM: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n352"> </p>
+                    <p align="center" class="p_50" data-source-node="n353">[OK]     [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n354"> </p>
+                </td>
+                <td style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n355">
+                    <p align="center" class="p_45" data-source-node="n356">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n357"> </p>
+                    <p align="center" class="p_50" data-source-node="n358">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n359">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n360"> </p>
+                    <p align="center" class="p_50" data-source-node="n361">[OK]   [Skip] 
+   [Done]</p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n362">
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n363">
+                    <p align="center" class="p_34" data-source-node="n364">item A, first scan w/smudged barcode</p>
+                    <p align="center" class="p_34" data-source-node="n365">(item cross ref). User presses Skip Button.</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n366">
+                    <p align="center" class="p_34" data-source-node="n367">item A, second scan</p>
+                    <p align="center" class="p_50" data-source-node="n368">(container ID). User completes scan.</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n369">
+                    <p align="center" class="p_51" data-source-node="n370">user now prompted to enter "missing" data 
+ from the first scan</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n371">
+                    <p align="center" class="p_34" data-source-node="n372">item B scan starts...</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n373"> </p>
+        <p data-source-node="n374"> </p>
+        <hr width="100%" align="center" data-source-node="n375">
+        <p data-source-node="n376"> </p>
+        <p data-source-node="n377"> </p>
+        <h4 data-source-node="n378"><a name="Lot" data-source-node="n379"></a>Receipt Check In With Lots / Expiration 
+ Dates<br data-source-node="n380"><br data-source-node="n381"></h4>
+        <p data-source-node="n382">If you are receiving items into your warehouse that use lot/expiration 
+ date tracking, these may be represented by a separate GS1 barcode. As 
+ seen in the example below, this adds another scan screen to the RF flow:</p>
+        <p data-source-node="n383"> </p>
+        <p class="p_15" data-source-node="n384">Items 
+ Lot / Expiration Date Tracked (manual 
+ container assignment, two items, three GS1 barcodes each to scan)</p>
+        <p class="p_15" data-source-node="n385"> </p>
+        <table style="width: 100%" cellspacing="0" width="100%" class="table_1" data-source-node="n386">
+            <col style="width: 20%" data-source-node="n387">
+            <col style="width: 20%" data-source-node="n388">
+            <col style="width: 20%" data-source-node="n389">
+            <col style="width: 20%" data-source-node="n390">
+            <col style="width: 20%" data-source-node="n391">
+            <tr valign="top" data-source-node="n392">
+                <td style="width: 20%" valign="middle" width="20%" class="td_12" data-source-node="n393">
+                    <p align="center" class="p_45" data-source-node="n394">Receipt ID</p>
+                    <p align="center" class="p_50" data-source-node="n395"> </p>
+                    <p align="center" class="p_50" data-source-node="n396">ID: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n397"> </p>
+                    <p align="center" class="p_50" data-source-node="n398">[OK]     [Cancel]</p>
+                </td>
+                <td style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n399">
+                    <p align="center" class="p_45" data-source-node="n400"> </p>
+                    <p align="center" class="p_45" data-source-node="n401">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n402"> </p>
+                    <p align="center" class="p_50" data-source-node="n403">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n404">Scan (1 of 3)</p>
+                    <p align="center" class="p_50" data-source-node="n405"> </p>
+                    <p align="center" class="p_50" data-source-node="n406">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n407"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n408">
+                    <p align="center" class="p_45" data-source-node="n409"><span class="span_2" data-source-node="n410">GS1 Scan</span>
+                    </p>
+                    <p align="center" class="p_50" data-source-node="n411"> </p>
+                    <p align="center" class="p_50" data-source-node="n412">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n413">Scan (2 of 3)</p>
+                    <p align="center" class="p_50" data-source-node="n414"> </p>
+                    <p align="center" class="p_50" data-source-node="n415">[OK]   [Skip] 
+   [Cancel]</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n416">
+                    <p align="center" class="p_45" data-source-node="n417"> </p>
+                    <p align="center" class="p_45" data-source-node="n418">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n419"> </p>
+                    <p align="center" class="p_50" data-source-node="n420">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n421">Scan (3 of 3)</p>
+                    <p align="center" class="p_50" data-source-node="n422"> </p>
+                    <p align="center" class="p_50" data-source-node="n423">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n424"> </p>
+                </td>
+                <td style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n425">
+                    <p align="center" class="p_45" data-source-node="n426"> </p>
+                    <p align="center" class="p_45" data-source-node="n427">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n428"> </p>
+                    <p align="center" class="p_50" data-source-node="n429">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n430">Scan (1 of 3)</p>
+                    <p align="center" class="p_50" data-source-node="n431"> </p>
+                    <p align="center" class="p_50" data-source-node="n432">[OK]   [Skip] 
+   [Done]</p>
+                    <p align="center" class="p_50" data-source-node="n433"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n434">
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_14" data-source-node="n435">
+                    <p align="center" class="p_51" data-source-node="n436">initiation method screen</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n437">
+                    <p align="center" class="p_51" data-source-node="n438">item A, first scan</p>
+                    <p align="center" class="p_51" data-source-node="n439">(item cross ref, quantity)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n440">
+                    <p align="center" class="p_51" data-source-node="n441">item 
+ A, second scan</p>
+                    <p align="center" class="p_51" data-source-node="n442">(lot, expiration date)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n443">
+                    <p align="center" class="p_34" data-source-node="n444">item A, third scan</p>
+                    <p align="center" class="p_50" data-source-node="n445">(container ID)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n446">
+                    <p align="center" class="p_51" data-source-node="n447">item B scan starts...</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n448"> </p>
+        <p data-source-node="n449"> </p>
+        <hr width="100%" align="center" data-source-node="n450">
+        <p data-source-node="n451"> </p>
+        <p data-source-node="n452"> </p>
+        <h4 data-source-node="n453"><a name="Serial" data-source-node="n454"></a>Receipt Check In With Serial Number 
+ Tracking<br data-source-node="n455"><br data-source-node="n456"></h4>
+        <p data-source-node="n457">If you are receiving items into your warehouse that use serial number 
+ tracking, these may be represented on the barcode that includes the item 
+ or item cross reference number. Note that a quantity value is not needed, 
+ as the system assumes that the quantity is 1 EA, because a serial number 
+ would only be assigned to one single unique item:</p>
+        <p data-source-node="n458"> </p>
+        <p class="p_15" data-source-node="n459">Items 
+ Serial Number Tracked (manual 
+ container assignment, two items, two GS1 barcodes each to scan)</p>
+        <p data-source-node="n460"> </p>
+        <table style="width: 100%" cellspacing="0" width="100%" class="table_1" data-source-node="n461">
+            <col style="width: 25%" data-source-node="n462">
+            <col style="width: 25%" data-source-node="n463">
+            <col style="width: 25%" data-source-node="n464">
+            <col style="width: 25%" data-source-node="n465">
+            <tr valign="top" data-source-node="n466">
+                <td style="width: 25%" valign="middle" width="25%" class="td_12" data-source-node="n467">
+                    <p align="center" class="p_45" data-source-node="n468">Receipt ID</p>
+                    <p align="center" class="p_50" data-source-node="n469"> </p>
+                    <p align="center" class="p_50" data-source-node="n470">ID: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n471"> </p>
+                    <p align="center" class="p_50" data-source-node="n472">[OK]     [Cancel]</p>
+                </td>
+                <td style="width: 25%" valign="middle" width="25%" class="td_13" data-source-node="n473">
+                    <p align="center" class="p_45" data-source-node="n474"> </p>
+                    <p align="center" class="p_45" data-source-node="n475">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n476"> </p>
+                    <p align="center" class="p_50" data-source-node="n477">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n478">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n479"> </p>
+                    <p align="center" class="p_50" data-source-node="n480">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n481"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_13" data-source-node="n482">
+                    <p align="center" class="p_45" data-source-node="n483"> </p>
+                    <p align="center" class="p_45" data-source-node="n484">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n485"> </p>
+                    <p align="center" class="p_50" data-source-node="n486">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n487">Scan (2 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n488"> </p>
+                    <p align="center" class="p_50" data-source-node="n489">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n490"> </p>
+                </td>
+                <td style="width: 25%" valign="middle" width="25%" class="td_13" data-source-node="n491">
+                    <p align="center" class="p_45" data-source-node="n492"> </p>
+                    <p align="center" class="p_45" data-source-node="n493">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n494"> </p>
+                    <p align="center" class="p_50" data-source-node="n495">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n496">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n497"> </p>
+                    <p align="center" class="p_50" data-source-node="n498">[OK]   [Skip] 
+   [Done]</p>
+                    <p align="center" class="p_50" data-source-node="n499"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n500">
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_14" data-source-node="n501">
+                    <p align="center" class="p_51" data-source-node="n502">initiation method screen</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_15" data-source-node="n503">
+                    <p align="center" class="p_51" data-source-node="n504">item A, first scan</p>
+                    <p align="center" class="p_51" data-source-node="n505">(item cross ref, serial number)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_15" data-source-node="n506">
+                    <p align="center" class="p_34" data-source-node="n507">item A, second scan</p>
+                    <p align="center" class="p_50" data-source-node="n508">(container ID)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_15" data-source-node="n509">
+                    <p align="center" class="p_51" data-source-node="n510">item B scan starts...</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n511"> </p>
+        <p data-source-node="n512"> </p>
+        <h5 data-source-node="n513">GS1 Processing and Serial Number Ranges</h5>
+        <p data-source-node="n514">During the processing of GS1 scans, since the system allows the scanning of only a single serial number from a GS1 barcode, the system ignores a serial number template's "allow range entry" setting. You will, however, be able to enter serial number ranges as part of the normal check in process that occurs after the GS1 scan(s).</p>
+        <p data-source-node="n515"> </p>
+        <p data-source-node="n516"> </p>
+        <hr width="100%" align="center" data-source-node="n517">
+        <p data-source-node="n518"> </p>
+        <p data-source-node="n519"> </p>
+        <h4 data-source-node="n520"><a name="Catch" data-source-node="n521"></a>Receipt Check In With Catch Weights<br data-source-node="n522"><br data-source-node="n523"></h4>
+        <p data-source-node="n524">If you are receiving items into your warehouse that use catch weight 
+ tracking, this value can be represented by a GS1 barcode, but this is not currently supported by SCALE. Instead, you 
+ will need to enter this value manually after the scans for an item have 
+ been completed:</p>
+        <p data-source-node="n525"> </p>
+        <p class="p_15" data-source-node="n526">Items 
+ Catch Weight Tracked (manual 
+ container assignment, two items, two GS1 barcodes each to scan)</p>
+        <p data-source-node="n527"> </p>
+        <table style="width: 100%" cellspacing="0" width="100%" class="table_1" data-source-node="n528">
+            <col style="width: 20%" data-source-node="n529">
+            <col style="width: 20%" data-source-node="n530">
+            <col style="width: 20%" data-source-node="n531">
+            <col style="width: 20%" data-source-node="n532">
+            <col style="width: 20%" data-source-node="n533">
+            <tr valign="top" data-source-node="n534">
+                <td style="width: 20%" valign="middle" width="20%" class="td_12" data-source-node="n535">
+                    <p align="center" class="p_45" data-source-node="n536">Receipt ID</p>
+                    <p align="center" class="p_50" data-source-node="n537"> </p>
+                    <p align="center" class="p_50" data-source-node="n538">ID: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n539"> </p>
+                    <p align="center" class="p_50" data-source-node="n540">[OK]     [Cancel]</p>
+                </td>
+                <td style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n541">
+                    <p align="center" class="p_45" data-source-node="n542"> </p>
+                    <p align="center" class="p_45" data-source-node="n543">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n544"> </p>
+                    <p align="center" class="p_50" data-source-node="n545">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n546">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n547"> </p>
+                    <p align="center" class="p_50" data-source-node="n548">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n549"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n550">
+                    <p align="center" class="p_45" data-source-node="n551"> </p>
+                    <p align="center" class="p_45" data-source-node="n552">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n553"> </p>
+                    <p align="center" class="p_50" data-source-node="n554">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n555">Scan (2 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n556"> </p>
+                    <p align="center" class="p_50" data-source-node="n557">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n558"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n559">
+                    <p align="center" class="p_45" data-source-node="n560"> </p>
+                    <p align="center" class="p_45" data-source-node="n561">Enter Catch Weight</p>
+                    <p align="center" class="p_45" data-source-node="n562"> </p>
+                    <p data-source-node="n563">Cont ID: 2837498</p>
+                    <p data-source-node="n564">Item: NOR0023</p>
+                    <p data-source-node="n565">Catch</p>
+                    <p data-source-node="n566">Weight: ████████</p>
+                    <p data-source-node="n567"> </p>
+                    <p align="center" class="p_50" data-source-node="n568">[OK]     [Cancel]</p>
+                    <p data-source-node="n569"> </p>
+                </td>
+                <td style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n570">
+                    <p align="center" class="p_45" data-source-node="n571"> </p>
+                    <p align="center" class="p_45" data-source-node="n572">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n573"> </p>
+                    <p align="center" class="p_50" data-source-node="n574">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n575">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n576"> </p>
+                    <p align="center" class="p_50" data-source-node="n577">[OK]   [Skip] 
+   [Done]</p>
+                    <p align="center" class="p_50" data-source-node="n578"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n579">
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_14" data-source-node="n580">
+                    <p align="center" class="p_51" data-source-node="n581">initiation method screen</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n582">
+                    <p align="center" class="p_51" data-source-node="n583">item A, first scan</p>
+                    <p align="center" class="p_51" data-source-node="n584">(item cross ref, quantity)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n585">
+                    <p align="center" class="p_34" data-source-node="n586">item A, second scan</p>
+                    <p align="center" class="p_50" data-source-node="n587">(container ID)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n588">
+                    <p align="center" class="p_51" data-source-node="n589">user manually enters catch weight value for item</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n590">
+                    <p align="center" class="p_51" data-source-node="n591">item B scan starts...</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n592"> </p>
+        <p data-source-node="n593"> </p>
+        <hr width="100%" align="center" data-source-node="n594">
+        <p data-source-node="n595"> </p>
+        <p data-source-node="n596"> </p>
+        <h4 data-source-node="n597"><a name="Nesting" data-source-node="n598"></a>Nesting Containers During Check 
+ In<br data-source-node="n599"><br data-source-node="n600"></h4>
+        <p data-source-node="n601">You will encounter this flow if, for example, your warehouse prefers 
+ to nest containers onto pallets during check in, for example. In order 
+ to activate this nesting, you need to have the "Nest During Check 
+ In" option selected on your receiving preferences. After you scan 
+ the GS1 barcodes of the containers you are going to nest, the system will 
+ display an additional screen for the parent container (such as a pallet) 
+ you want to nest into. Note that this functionality is not available in 
+ the separate RF main menu function "Receipt Container Nesting."</p>
+        <p data-source-node="n602"> </p>
+        <p class="p_15" data-source-node="n603">Nesting 
+ Containers During Check In (manual 
+ container assignment, two items [containers], two GS1 barcodes each to 
+ scan, one parent container)</p>
+        <p data-source-node="n604"> </p>
+        <table style="width: 100%" cellspacing="0" width="100%" class="table_1" data-source-node="n605">
+            <col style="width: 16.667%" data-source-node="n606">
+            <col style="width: 16.667%" data-source-node="n607">
+            <col style="width: 16.667%" data-source-node="n608">
+            <col style="width: 16.667%" data-source-node="n609">
+            <col style="width: 16.667%" data-source-node="n610">
+            <col style="width: 16.667%" data-source-node="n611">
+            <tr valign="top" data-source-node="n612">
+                <td style="width: 16.667%" valign="middle" width="16.667%" class="td_12" data-source-node="n613">
+                    <p align="center" class="p_45" data-source-node="n614">Receipt ID</p>
+                    <p align="center" class="p_50" data-source-node="n615"> </p>
+                    <p align="center" class="p_50" data-source-node="n616">ID: ███████</p>
+                    <p align="center" class="p_50" data-source-node="n617"> </p>
+                    <p align="center" class="p_50" data-source-node="n618">[OK]     [Cancel]</p>
+                </td>
+                <td style="width: 16.667%" valign="middle" width="16.667%" class="td_13" data-source-node="n619">
+                    <p align="center" class="p_45" data-source-node="n620"> </p>
+                    <p align="center" class="p_45" data-source-node="n621">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n622"> </p>
+                    <p align="center" class="p_50" data-source-node="n623">GS1: ███████</p>
+                    <p align="center" class="p_50" data-source-node="n624">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n625"> </p>
+                    <p align="center" class="p_50" data-source-node="n626">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n627"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 16.667%" valign="middle" width="16.667%" class="td_13" data-source-node="n628">
+                    <p align="center" class="p_45" data-source-node="n629"> </p>
+                    <p align="center" class="p_45" data-source-node="n630">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n631"> </p>
+                    <p align="center" class="p_50" data-source-node="n632">GS1: ███████</p>
+                    <p align="center" class="p_50" data-source-node="n633">Scan (2 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n634"> </p>
+                    <p align="center" class="p_50" data-source-node="n635">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n636"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 16.667%" valign="middle" width="16.667%" class="td_13" data-source-node="n637">
+                    <p align="center" class="p_45" data-source-node="n638">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n639"> </p>
+                    <p align="center" class="p_50" data-source-node="n640">GS1: ███████</p>
+                    <p align="center" class="p_50" data-source-node="n641">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n642"> </p>
+                    <p align="center" class="p_50" data-source-node="n643">[OK]   [Skip] 
+   [Done]</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 16.667%" valign="middle" width="16.667%" class="td_13" data-source-node="n644">
+                    <p align="center" class="p_45" data-source-node="n645">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n646"> </p>
+                    <p align="center" class="p_50" data-source-node="n647">GS1: ███████</p>
+                    <p align="center" class="p_50" data-source-node="n648">Scan (2 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n649"> </p>
+                    <p align="center" class="p_50" data-source-node="n650">[OK]   [Skip] 
+   [Done]</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 16.667%" valign="middle" width="16.667%" class="td_13" data-source-node="n651">
+                    <p class="p_12" data-source-node="n652"> </p>
+                    <p class="p_12" data-source-node="n653">RF Receiving Container Nesting</p>
+                    <p data-source-node="n654"> </p>
+                    <p data-source-node="n655">Cont ID: █████</p>
+                    <p data-source-node="n656">Cont</p>
+                    <p data-source-node="n657">Type: █████</p>
+                    <p data-source-node="n658">Loc </p>
+                    <p data-source-node="n659">Rule: █████</p>
+                    <p align="center" class="p_50" data-source-node="n660"> </p>
+                    <p align="center" class="p_50" data-source-node="n661">[OK]  [Skip] 
+ [Cancel]</p>
+                    <p data-source-node="n662"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n663">
+                <td colspan="1" rowspan="1" style="width: 16.667%" valign="middle" width="16.667%" class="td_14" data-source-node="n664">
+                    <p align="center" class="p_51" data-source-node="n665">initiation method screen</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 16.667%" valign="middle" width="16.667%" class="td_15" data-source-node="n666">
+                    <p align="center" class="p_51" data-source-node="n667">item A, first scan</p>
+                    <p align="center" class="p_51" data-source-node="n668">(item cross ref, quantity)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 16.667%" valign="middle" width="16.667%" class="td_15" data-source-node="n669">
+                    <p align="center" class="p_34" data-source-node="n670">item A, second scan</p>
+                    <p align="center" class="p_50" data-source-node="n671">(container ID)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 16.667%" valign="middle" width="16.667%" class="td_15" data-source-node="n672">
+                    <p align="center" class="p_51" data-source-node="n673">item 
+ B, first scan</p>
+                    <p align="center" class="p_51" data-source-node="n674">(item cross ref, quantity)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 16.667%" valign="middle" width="16.667%" class="td_15" data-source-node="n675">
+                    <p align="center" class="p_34" data-source-node="n676">item B, second scan</p>
+                    <p align="center" class="p_50" data-source-node="n677">(container ID)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 16.667%" valign="middle" width="16.667%" class="td_15" data-source-node="n678">
+                    <p align="center" class="p_51" data-source-node="n679">user scans ID of parent container</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n680"> </p>
+        <p data-source-node="n681"> </p>
+        <hr width="100%" align="center" data-source-node="n682">
+        <p data-source-node="n683"> </p>
+        <p data-source-node="n684"> </p>
+        <h4 data-source-node="n685"><a name="ExecutionMethods" data-source-node="n686"></a>Check In &amp; Locate (Immediate) 
+ and Quick Receive Execution Methods<br data-source-node="n687"><br data-source-node="n688"></h4>
+        <p data-source-node="n689">These two execution methods vary the GS1 RF flow slightly, as seen in 
+ the following examples:</p>
+        <p data-source-node="n690"> </p>
+        <p class="p_15" data-source-node="n691">Check 
+ In &amp; Locate Execution Method (manual 
+ container assignment, two items, two GS1 barcodes each to scan)</p>
+        <p class="p_15" data-source-node="n692"> </p>
+        <table style="width: 100%" cellspacing="0" width="100%" class="table_1" data-source-node="n693">
+            <col style="width: 25%" data-source-node="n694">
+            <col style="width: 25%" data-source-node="n695">
+            <col style="width: 25%" data-source-node="n696">
+            <col style="width: 25%" data-source-node="n697">
+            <tr valign="top" data-source-node="n698">
+                <td style="width: 25%" valign="middle" width="25%" class="td_12" data-source-node="n699">
+                    <p align="center" class="p_45" data-source-node="n700">Receipt ID</p>
+                    <p align="center" class="p_50" data-source-node="n701"> </p>
+                    <p align="center" class="p_50" data-source-node="n702">ID: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n703"> </p>
+                    <p align="center" class="p_50" data-source-node="n704">[OK]     [Cancel]</p>
+                </td>
+                <td style="width: 25%" valign="middle" width="25%" class="td_13" data-source-node="n705">
+                    <p align="center" class="p_45" data-source-node="n706"> </p>
+                    <p align="center" class="p_45" data-source-node="n707">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n708"> </p>
+                    <p align="center" class="p_50" data-source-node="n709">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n710">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n711"> </p>
+                    <p align="center" class="p_50" data-source-node="n712">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n713"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_13" data-source-node="n714">
+                    <p align="center" class="p_45" data-source-node="n715"> </p>
+                    <p align="center" class="p_45" data-source-node="n716">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n717"> </p>
+                    <p align="center" class="p_50" data-source-node="n718">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n719">Scan (2 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n720"> </p>
+                    <p align="center" class="p_50" data-source-node="n721">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n722"> </p>
+                </td>
+                <td style="width: 25%" valign="middle" width="25%" class="td_13" data-source-node="n723">
+                    <p align="center" class="p_45" data-source-node="n724"> </p>
+                    <p align="center" class="p_45" data-source-node="n725">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n726"> </p>
+                    <p align="center" class="p_45" data-source-node="n727">Locating Was Successful</p>
+                    <p align="center" class="p_50" data-source-node="n728"> </p>
+                    <p align="center" class="p_50" data-source-node="n729">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n730">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n731"> </p>
+                    <p align="center" class="p_50" data-source-node="n732">[OK]   [Skip] 
+   [Done]</p>
+                    <p align="center" class="p_50" data-source-node="n733"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n734">
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_14" data-source-node="n735">
+                    <p align="center" class="p_51" data-source-node="n736">initiation method screen</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_15" data-source-node="n737">
+                    <p align="center" class="p_51" data-source-node="n738">item A, first scan</p>
+                    <p align="center" class="p_51" data-source-node="n739">(item cross ref, quantity)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_15" data-source-node="n740">
+                    <p align="center" class="p_34" data-source-node="n741">item A, second scan</p>
+                    <p align="center" class="p_50" data-source-node="n742">(container ID)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 25%" valign="middle" width="25%" class="td_15" data-source-node="n743">
+                    <p align="center" class="p_51" data-source-node="n744">system locates product immediately; item B scan starts...</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n745"> </p>
+        <p data-source-node="n746"> </p>
+        <p data-source-node="n747">With the Quick Receiving (User) execution method, the system checks in and 
+ locates the container(s) that you enter, and provides separate screens 
+ for each entity checked in that allows the user to indicate where they 
+ want the container to be putaway. The system does not create putaway work 
+ using this method. There is also a Quick Receiving (System) method, where the system provides the location value and the user cannot change it. </p>
+        <p data-source-node="n748"> </p>
+        <p class="p_15" data-source-node="n749">Quick 
+ Receiving (User) Execution Method (manual 
+ container assignment, two items, two GS1 barcodes each to scan)</p>
+        <p data-source-node="n750"> </p>
+        <table style="width: 100%" cellspacing="0" width="100%" class="table_1" data-source-node="n751">
+            <col style="width: 20%" data-source-node="n752">
+            <col style="width: 20%" data-source-node="n753">
+            <col style="width: 20%" data-source-node="n754">
+            <col style="width: 20%" data-source-node="n755">
+            <col style="width: 20%" data-source-node="n756">
+            <tr valign="top" data-source-node="n757">
+                <td style="width: 20%" valign="middle" width="20%" class="td_12" data-source-node="n758">
+                    <p align="center" class="p_45" data-source-node="n759">Receipt ID</p>
+                    <p align="center" class="p_50" data-source-node="n760"> </p>
+                    <p align="center" class="p_50" data-source-node="n761">ID: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n762"> </p>
+                    <p align="center" class="p_50" data-source-node="n763">[OK]     [Cancel]</p>
+                </td>
+                <td style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n764">
+                    <p align="center" class="p_45" data-source-node="n765"> </p>
+                    <p align="center" class="p_45" data-source-node="n766">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n767"> </p>
+                    <p align="center" class="p_50" data-source-node="n768">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n769">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n770"> </p>
+                    <p align="center" class="p_50" data-source-node="n771">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n772"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n773">
+                    <p align="center" class="p_45" data-source-node="n774"> </p>
+                    <p align="center" class="p_45" data-source-node="n775">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n776"> </p>
+                    <p align="center" class="p_50" data-source-node="n777">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n778">Scan (2 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n779"> </p>
+                    <p align="center" class="p_50" data-source-node="n780">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n781"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n782">
+                    <p align="center" class="p_45" data-source-node="n783"> </p>
+                    <p align="center" class="p_45" data-source-node="n784">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n785"> </p>
+                    <p align="center" class="p_50" data-source-node="n786">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n787">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n788"> </p>
+                    <p align="center" class="p_50" data-source-node="n789">[OK]   [Skip] 
+   [Done]</p>
+                    <p align="center" class="p_50" data-source-node="n790"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n791">
+                    <p align="center" class="p_45" data-source-node="n792"> </p>
+                    <p align="center" class="p_45" data-source-node="n793">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n794"> </p>
+                    <p align="center" class="p_50" data-source-node="n795">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n796">Scan (2 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n797"> </p>
+                    <p align="center" class="p_50" data-source-node="n798">[OK]   [Skip] 
+   [Done]</p>
+                    <p align="center" class="p_50" data-source-node="n799"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n800">
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_14" data-source-node="n801">
+                    <p align="center" class="p_51" data-source-node="n802">initiation method screen</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n803">
+                    <p align="center" class="p_51" data-source-node="n804">item A, first scan</p>
+                    <p align="center" class="p_51" data-source-node="n805">(item cross ref, quantity)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n806">
+                    <p align="center" class="p_34" data-source-node="n807">item A, second scan</p>
+                    <p align="center" class="p_50" data-source-node="n808">(container ID)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n809">
+                    <p align="center" class="p_51" data-source-node="n810">item 
+ B, first scan</p>
+                    <p align="center" class="p_51" data-source-node="n811">(item cross ref, quantity)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n812">
+                    <p align="center" class="p_34" data-source-node="n813">item B, second scan</p>
+                    <p align="center" class="p_50" data-source-node="n814">(container ID)</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n815"> </p>
+        <table style="width: 100%" cellspacing="0" width="100%" class="table_1" data-source-node="n816">
+            <col style="width: 33.333%" data-source-node="n817">
+            <col style="width: 33.333%" data-source-node="n818">
+            <col style="width: 33.333%" data-source-node="n819">
+            <tr valign="top" data-source-node="n820">
+                <td style="width: 33.333%" valign="middle" width="33.333%" class="td_12" data-source-node="n821">
+                    <p data-source-node="n822"> </p>
+                    <p data-source-node="n823"> </p>
+                    <p data-source-node="n824"> </p>
+                    <p align="center" class="p_45" data-source-node="n825">User presses the </p>
+                    <p align="center" class="p_45" data-source-node="n826">Done Button...</p>
+                    <p data-source-node="n827"> </p>
+                    <p data-source-node="n828"> </p>
+                    <p data-source-node="n829"> </p>
+                </td>
+                <td style="width: 33.333%" valign="middle" width="33.333%" class="td_13" data-source-node="n830">
+                    <p align="center" class="p_45" data-source-node="n831"> </p>
+                    <p align="center" class="p_45" data-source-node="n832">Quick Receive</p>
+                    <p align="center" class="p_50" data-source-node="n833"> </p>
+                    <p data-source-node="n834">Cont ID: 8009834</p>
+                    <p data-source-node="n835">Item: NOR0002</p>
+                    <p data-source-node="n836">Qty: 2.000 CS</p>
+                    <p data-source-node="n837">Location: ██████</p>
+                    <p data-source-node="n838"> </p>
+                    <p align="center" class="p_50" data-source-node="n839">[OK]     [Skip]</p>
+                    <p align="center" class="p_50" data-source-node="n840"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 33.333%" valign="middle" width="33.333%" class="td_13" data-source-node="n841">
+                    <p align="center" class="p_50" data-source-node="n842"> </p>
+                    <p align="center" class="p_45" data-source-node="n843">Receipt ID</p>
+                    <p align="center" class="p_50" data-source-node="n844"> </p>
+                    <p align="center" class="p_45" data-source-node="n845">Locating was successful</p>
+                    <p align="center" class="p_50" data-source-node="n846"> </p>
+                    <p align="center" class="p_50" data-source-node="n847">ID: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n848"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n849">
+                <td colspan="1" rowspan="1" style="width: 33.333%" valign="middle" width="33.333%" class="td_14" data-source-node="n850">
+                    <p align="center" class="p_50" data-source-node="n851"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 33.333%" valign="middle" width="33.333%" class="td_15" data-source-node="n852">
+                    <p align="center" class="p_34" data-source-node="n853">user enters</p>
+                    <p align="center" class="p_34" data-source-node="n854">location value</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 33.333%" valign="middle" width="33.333%" class="td_15" data-source-node="n855">
+                    <p align="center" class="p_34" data-source-node="n856">system navigates back to initiation screen, so user can 
+ check in another receipt</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n857"> </p>
+        <p data-source-node="n858"> </p>
+        <hr width="100%" align="center" data-source-node="n859">
+        <p data-source-node="n860"> </p>
+        <p data-source-node="n861"> </p>
+        <h4 data-source-node="n862"><a name="InitiationMethod" data-source-node="n863"></a>Item Initiation Method<br data-source-node="n864"><br data-source-node="n865"></h4>
+        <p data-source-node="n866">With the item initiation method, the system asks for an item, and then 
+ the user chooses the receipt they want to receive against. For GS1 processing, 
+ you select the receipt you are checking in after the GS1 scans:</p>
+        <p data-source-node="n867"> </p>
+        <p class="p_15" data-source-node="n868">Item 
+ Initiation Method (manual container 
+ assignment, two items, two GS1 barcodes each to scan)</p>
+        <p data-source-node="n869"> </p>
+        <table style="width: 100%" cellspacing="0" width="100%" class="table_1" data-source-node="n870">
+            <col style="width: 20%" data-source-node="n871">
+            <col style="width: 20%" data-source-node="n872">
+            <col style="width: 20%" data-source-node="n873">
+            <col style="width: 20%" data-source-node="n874">
+            <tr valign="top" data-source-node="n875">
+                <td style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n876">
+                    <p align="center" class="p_45" data-source-node="n877"> </p>
+                    <p align="center" class="p_45" data-source-node="n878">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n879"> </p>
+                    <p align="center" class="p_50" data-source-node="n880">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n881">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n882"> </p>
+                    <p align="center" class="p_50" data-source-node="n883">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n884"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n885">
+                    <p align="center" class="p_45" data-source-node="n886"> </p>
+                    <p align="center" class="p_45" data-source-node="n887">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n888"> </p>
+                    <p align="center" class="p_50" data-source-node="n889">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n890">Scan (2 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n891"> </p>
+                    <p align="center" class="p_50" data-source-node="n892">[OK]   [Skip] 
+   [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n893"> </p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n894">
+                    <p align="center" class="p_45" data-source-node="n895"> </p>
+                    <p align="center" class="p_45" data-source-node="n896">Receipt Selection</p>
+                    <p align="center" class="p_45" data-source-node="n897"> </p>
+                    <p align="center" class="p_52" data-source-node="n898">ID: ████████</p>
+                    <p align="center" class="p_45" data-source-node="n899"> </p>
+                    <p align="center" class="p_50" data-source-node="n900">[OK]     [Cancel]</p>
+                    <p align="center" class="p_50" data-source-node="n901"> </p>
+                </td>
+                <td style="width: 20%" valign="middle" width="20%" class="td_13" data-source-node="n902">
+                    <p align="center" class="p_45" data-source-node="n903"> </p>
+                    <p align="center" class="p_45" data-source-node="n904">GS1 Scan</p>
+                    <p align="center" class="p_50" data-source-node="n905"> </p>
+                    <p align="center" class="p_50" data-source-node="n906">GS1: ████████</p>
+                    <p align="center" class="p_50" data-source-node="n907">Scan (1 of 2)</p>
+                    <p align="center" class="p_50" data-source-node="n908"> </p>
+                    <p align="center" class="p_50" data-source-node="n909">[OK]   [Skip] 
+   [Done]</p>
+                    <p align="center" class="p_50" data-source-node="n910"> </p>
+                </td>
+            </tr>
+            <tr valign="top" data-source-node="n911">
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n912">
+                    <p align="center" class="p_51" data-source-node="n913">item A, first scan</p>
+                    <p align="center" class="p_51" data-source-node="n914">(item cross ref, quantity)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n915">
+                    <p align="center" class="p_34" data-source-node="n916">item A, second scan</p>
+                    <p align="center" class="p_50" data-source-node="n917">(container ID)</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n918">
+                    <p align="center" class="p_51" data-source-node="n919">user indicates the receipt they are checking in</p>
+                </td>
+                <td colspan="1" rowspan="1" style="width: 20%" valign="middle" width="20%" class="td_15" data-source-node="n920">
+                    <p align="center" class="p_51" data-source-node="n921">item B scan starts...</p>
+                </td>
+            </tr>
+        </table>
+        <p data-source-node="n922"> </p>
+        <p data-source-node="n923"> </p>
+        <p data-source-node="n924"> </p>
+        <p data-source-node="n925"> </p>
+        <p data-source-node="n926"> </p>
+        <p data-source-node="n927"> </p>
+        <p data-source-node="n928"> </p>
+        <p data-source-node="n929"> </p>
+        <p data-source-node="n930"> </p>
+        <p data-source-node="n931"> </p>
+        <p data-source-node="n932"> </p>
+        <p data-source-node="n933"> </p>
+        <p data-source-node="n934"> </p>
+        <p data-source-node="n935"> </p>
+        <p data-source-node="n936"> </p>
+        <p data-source-node="n937"> </p>
+        <p data-source-node="n938"> </p>
+        <p data-source-node="n939"> </p>
+        <p data-source-node="n940"> </p>
+        <p data-source-node="n941"> </p>
+        <p data-source-node="n942"> </p>
+        <p data-source-node="n943"> </p>
+        <p data-source-node="n944"> </p>
+        <p data-source-node="n945"> </p>
+        <p data-source-node="n946"> </p>
+        <p data-source-node="n947"> </p>
+        <p data-source-node="n948"> </p>
+        <p data-source-node="n949"> </p>
+        <p data-source-node="n950"> </p>
+        <p data-source-node="n951"> </p>
+        <p data-source-node="n952"> </p>
+        <p data-source-node="n953"> </p>
+        <p data-source-node="n954"> </p>
+        <p data-source-node="n955"> </p>
+        <p data-source-node="n956"> </p>
+        <p data-source-node="n957"> </p>
+        <p data-source-node="n958"> </p>
+        <p data-source-node="n959"> </p>
+        <p data-source-node="n960"> </p>
+    </body></html>

@@ -1,0 +1,565 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Creating/Processing a Shipment Line</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1512" data-source-node="n57"></a>Creating/Processing a Shipment Line</h1>
+        <p data-source-node="n58">When an order is interfaced, the system creates a shipment line 
+ that corresponds to each order line. The system will also generate 
+ lines when one is split to accommodate warehouse activity, such 
+ as inadequate stock. You can also manually create a line to accommodate 
+ special circumstances, such as call-in orders.</p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60"> </p>
+        <h4 data-source-node="n61">Related Topics...</h4>
+        <p data-source-node="n62"><a href="5ac29e4a274425e27625988f719182ef57034ce6339602c8fa1afa288cacbe66.html" data-source-node="n63">Shipping Process Overview</a>
+        </p>
+        <p data-source-node="n64"><a href="07edc31677cc85116035ff7f2dff1c2a3f7a1a38afdb4aaf867617691a7483ac.html" data-source-node="n65">Shipping Setup Overview</a>
+        </p>
+        <p class="p_6" data-source-node="n66"><a href="b8cac7af3607a14a426e1d6a3d5e77e50dacdb7dc06933dc6737652d5d59d465.html" data-source-node="n67">Shipment Processing</a>
+        </p>
+        <p class="p_4" data-source-node="n68"><a href="9d7b6f8eb86f821e91644205e500f232cd099762c4e804be2fb56a39a81dcff5.html" data-source-node="n69">Creating a Shipment</a>
+        </p>
+        <p class="p_4" data-source-node="n70"><a href="1ddb11546762b120c182699cb150bf7e033c1b04a7fc1cccafed87f467e08b53.html" data-source-node="n71">Creating/Processing 
+ a Shipping Load</a>
+        </p>
+        <p class="p_4" data-source-node="n72"><a href="839bcd97b359849b55cefbf2a3536c3e9dadcb33d7fb01b8899309b188e40627.html" data-source-node="n73">Converting a Shipment 
+ to a Receipt</a>
+        </p>
+        <p class="p_4" data-source-node="n74"><a href="4fbcb00ce5a01a000b5cf063d026f7a1231a48b183672b91019608ac3a4050af.html" data-source-node="n75">Using the Shipment Insight Screen</a>
+        </p>
+        <p class="p_4" data-source-node="n76"><a href="c170856f467f8a52e6a13d3514a0fa653049da5f2d1606ff712c6b1396b29835.html" data-source-node="n77">Using the Shipment Line Insight Screen</a>
+        </p>
+        <p class="p_4" data-source-node="n78"> </p>
+        <p class="p_4" data-source-node="n79"> </p>
+        <div class="MCDropDown MCDropDown_Closed dropDown" data-source-node="n80"><span class="MCDropDownHead dropDownHead" data-source-node="n81"><a class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage" data-source-node="n82"><img class="MCDropDown_Image_Icon" src="../source/assets/1d600a0343eef0b105f4dd86d1b7572306777214a30e5b8d49e91c153d7bca31.gif" height="11" width="16" alt="Closed" loading="eager" data-source-node="n83">Field Descriptions</a></span>
+            <div class="MCDropDownBody dropDownBody" data-source-node="n84">
+                <p class="p_12" data-source-node="n85"> </p>
+                <p class="p_12" data-source-node="n86">Item Info</p>
+                <p class="p_12" data-source-node="n87"><a href="346c9b5e3732389c708f427fc1975337b166e15b4bc1fe350908cdc541c97b96.html" data-source-node="n88">Company</a>
+                </p>
+                <p class="p_12" data-source-node="n89"><a href="e20cf7ddda682cb939b108acbc220fd7987c3a4c0be74064174515ecd697029f.html" data-source-node="n90">Customer Item Number</a>
+                </p>
+                <p class="p_12" data-source-node="n91"><a href="2c6ccb4a2a6f4e2bee53d5d054bae3a7a64f8ede90e41bf13d92ce55f6254d33.html" data-source-node="n92">Description</a>
+                </p>
+                <p class="p_12" data-source-node="n93"><a href="5fef2bcae98afe05f213a2d19280285963fdfe95e48d6418e4e3a81aaf1727dc.html" data-source-node="n94">Inventory Attribute ID</a>
+                </p>
+                <p class="p_12" data-source-node="n95"><a href="76b0ba6fbfb2d444434314e8775313a17fcfe3769b96750f310566f732d520ae.html" data-source-node="n96">Item</a>
+                </p>
+                <p class="p_12" data-source-node="n97"><a href="d1a6c9d0e721024c14602fb614123d042e6acace452199ea1bb981972d4bff23.html" data-source-node="n98">License Plate</a>
+                </p>
+                <p class="p_12" data-source-node="n99"><a href="4ecb620add25490c565eec5de85107f772ae3da8957015add1541e8f10c8559d.html" data-source-node="n100">Lot</a>
+                </p>
+                <p class="p_12" data-source-node="n101"><a href="8b526df232d22b39cc19fb22aa16c697e17eedc42caeb1b2d467ce9ff8a810ab.html" data-source-node="n102">Lot Controlled Toggle</a>
+                </p>
+                <p class="p_12" data-source-node="n103"><a href="5b5914b6c3b0516a4b128a923ee861835e943ff7cb845ac7827bee84788945bb.html" data-source-node="n104">Original Item Ordered </a>
+                </p>
+                <p class="p_12" data-source-node="n105"><a href="92a2fd7987848f6e8e1d63c2aff2f5bce0b474106012bb86d9f7c93119dd3a34.html" data-source-node="n106">Parent License Plate</a>
+                </p>
+                <p class="p_12" data-source-node="n107"> </p>
+                <p class="p_12" data-source-node="n108">Quantity Info</p>
+                <p class="p_12" data-source-node="n109"><a href="ea4a118681e9834941da692cf9dc62d999a5d7b51feac89edb18b3eff37565dd.html" data-source-node="n110">Allocation Rejected Quantity </a>
+                </p>
+                <p data-source-node="n111"><a href="d8668c22994a88cea760c2e605a816b9bc9da2e839cbe3298bd260a77bd3c4a2.html" data-source-node="n112">Quantity</a>
+                </p>
+                <p data-source-node="n113"><a href="554a1158c8268c99837c4ad4c46e5c343f183126dcb17a2eb67ff5ebd4c77f7c.html" data-source-node="n114">Requested Quantity</a>
+                </p>
+                <p data-source-node="n115"><a href="5ce53cdf01b6433a35989bc09fb6f909aa4afec0acc54b3d91cd7d66e7a0db9d.html" data-source-node="n116">UM</a>
+                </p>
+                <p data-source-node="n117"> </p>
+                <p data-source-node="n118">Item Dimensions</p>
+                <p data-source-node="n119"><a href="e1946b7eaaebd60f6b5290bdef7653860cb84eab778ff650a4f92295a8c29306.html" data-source-node="n120">Item Height</a>
+                </p>
+                <p data-source-node="n121"><a href="22905c5d4103b72384a64ca8f8df4c4fcbed0a2b1ab56de161525fbc9433880c.html" data-source-node="n122">Item Length </a>
+                </p>
+                <p data-source-node="n123"><a href="44062c13fb101f75e82651c6df7e520dfa5dfc1711ee1c8dec808f0c6975c77a.html" data-source-node="n124">Item Volume</a>
+                </p>
+                <p data-source-node="n125"><a href="6a5a6d73b7a99e0c2a53137248f195d66b74151aea17bd6e595d5a7f348fb815.html" data-source-node="n126">Item Width</a>
+                </p>
+                <p data-source-node="n127"><a href="80b2bc9103d1cefb18afa39ab1fdd0eb51b5fcd414c23e1b69ea1ac01c1cb211.html" data-source-node="n128">Total Volume</a>
+                </p>
+                <p data-source-node="n129"><a href="f4635765da53522e138fdada6c527f825d4b1406941adfa737bf5101deff0da7.html" data-source-node="n130">Total Weight</a>
+                </p>
+                <p data-source-node="n131"><a href="5ce53cdf01b6433a35989bc09fb6f909aa4afec0acc54b3d91cd7d66e7a0db9d.html" data-source-node="n132">UM</a>
+                </p>
+                <p data-source-node="n133"><a href="d01f270ede8c570ad9eb5859c0a303071c57b426716e546af45161196121df05.html" data-source-node="n134">Weight Per Piece</a>
+                </p>
+                <p data-source-node="n135"> </p>
+                <p data-source-node="n136">Item Characteristics </p>
+                <p data-source-node="n137"><a href="ade4d272a0fcdd7ebc01b4a528e9ee516145c2403f11ea8b234ece3d59b85f36.html" data-source-node="n138">Allocation Rule</a>
+                </p>
+                <p data-source-node="n139"><a href="5ae3819bc4b4a3cbebca3c910a967ad628f073f05342e4116adf3982e0dd4a32.html" data-source-node="n140">Catch Weight Required Toggle</a>
+                </p>
+                <p data-source-node="n141"><a href="fe1a5139f2f4c3afe41630b70b8ee6e8e82774acf4eded96c2d1faa9776d0aec.html" data-source-node="n142">Item Class</a>
+                </p>
+                <p data-source-node="n143"><a href="da321730c79f0939be667ebec8006f7879386cdfe193dd9c4f7b2d2ef026534d.html" data-source-node="n144">Item Color</a>
+                </p>
+                <p data-source-node="n145"><a href="c6c7a74f4d6813c3f5bc214a680c4542eaf0bca5c8300f27dd141a885ab4db44.html" data-source-node="n146">Item Department</a>
+                </p>
+                <p data-source-node="n147"><a href="d44dbbcb19c64cb8fb6813a1b65894de75a6d0e43ab9448be13dfb5950e36f08.html" data-source-node="n148">Item List Price</a>
+                </p>
+                <p data-source-node="n149"><a href="ff1a5176f77b5cb82c6d9f9bb8c02f3376b878fcb9455d7e16de8dae6ae3b76c.html" data-source-node="n150">Item Net Price</a>
+                </p>
+                <p data-source-node="n151"><a href="d44dbbcb19c64cb8fb6813a1b65894de75a6d0e43ab9448be13dfb5950e36f08.html" data-source-node="n152">Item Size</a>
+                </p>
+                <p data-source-node="n153"><a href="976a09eb30580d6f422fae32d4574a414c6aa9e358847435cdcc9c1878730f12.html" data-source-node="n154">Item Style</a>
+                </p>
+                <p data-source-node="n155"><a href="f0d0710c384143ddd6421bf216a03be9b122cae6a40d8393d23783abc3e2ca43.html" data-source-node="n156">Serial Number Required Toggle </a>
+                </p>
+                <p data-source-node="n157"> </p>
+                <p data-source-node="n158">Dates</p>
+                <p data-source-node="n159"><a href="b9dc0ec12f9ed7ca00462a5b1fd95841b36ce9a095f6dfffd3437e52a204e9f0.html" data-source-node="n160">Interface Date</a>
+                </p>
+                <p data-source-node="n161"><a href="295905a744a7a6410a577b28170a07c2720d04392ddcaf55f719ae825c0c4ceb.html" data-source-node="n162">Order Date</a>
+                </p>
+                <p data-source-node="n163"><a href="8c0ce5d2b451da8142b4623b4036d68c57db3cc24df460850a0805ff3270558a.html" data-source-node="n164">Requested Delivery Date</a>
+                </p>
+                <p data-source-node="n165"><a href="8f814b569f6ae822379e59740c12880363b0302c18a180e9059347cad58cf9d6.html" data-source-node="n166">Requested Delivery Type</a>
+                </p>
+                <p data-source-node="n167"> </p>
+                <p data-source-node="n168">Status</p>
+                <p data-source-node="n169"><a href="7dea35315d3b01c525fb1ca9561c24a020ea22e72622cec402976081c63194e7.html" data-source-node="n170">Status 1-10</a>
+                </p>
+                <p data-source-node="n171"><a href="d8668c22994a88cea760c2e605a816b9bc9da2e839cbe3298bd260a77bd3c4a2.html" data-source-node="n172">Quantity At Status 1-10</a>
+                </p>
+                <p data-source-node="n173"> </p>
+                <p data-source-node="n174">Advanced Allocation</p>
+                <p data-source-node="n175"><a href="e578170601bac930525368af651873c168bf3fe4120d4e6aa28398648bd4e733.html" data-source-node="n176">Allocate Full Location Quantity Toggle</a>
+                </p>
+                <p data-source-node="n177"><a href="a1502029092ae56231aa481c912aa757511695e7b6af3544fae068b90e2f6559.html" data-source-node="n178">Allow Percent Location Toggle</a>
+                </p>
+                <p data-source-node="n179"><a href="0b08ebfa35cb7dcf8c466535717b6e197195c496f0e3206e028550c5d3b0230d.html" data-source-node="n180">Maximum Allocation Percentage</a>
+                </p>
+                <p data-source-node="n181"><a href="00f18fe4a991c6c8e12d2449e963bac552a2611f294f06d06032d15ea2d741a0.html" data-source-node="n182">Minimum Allocation Percentage </a>
+                </p>
+                <p data-source-node="n183"> </p>
+                <p data-source-node="n184">Packing</p>
+                <p data-source-node="n185"><a href="182de1d310919063963848d9519bf4a512ebec6912dc245fcf469bc7d9a766b1.html" data-source-node="n186">Full Container Quantity</a>
+                </p>
+                <p data-source-node="n187"><a href="182de1d310919063963848d9519bf4a512ebec6912dc245fcf469bc7d9a766b1.html" data-source-node="n188">Full Container Quantity UM</a>
+                </p>
+                <p data-source-node="n189"><a href="bebd9e746ebf4e4ac1c44228f426f30a7a2de68944009f46618aa0ce1740676d.html" data-source-node="n190">Packing Category</a>
+                </p>
+                <p data-source-node="n191"><a href="f8faf0afd7e40a3c40e1f7d6bc236bc51365d7136b3908cb8552cfc3df135bdf.html" data-source-node="n192">Packing Class</a>
+                </p>
+                <p data-source-node="n193"><a href="7aa156f78d186a12aa2365a671fde2bcf51f110cf4ef698a57c0049c00b8e8e3.html" data-source-node="n194">Treat As Loose Toggle</a>
+                </p>
+                <p data-source-node="n195"> </p>
+                <p data-source-node="n196">Bill Of Materials</p>
+                <p data-source-node="n197"><a href="4a5d4696e266478bbc43e35c91432d6883d85b83f16c3579c110e60cfd2032fb.html" data-source-node="n198">Internal Work Order Number</a>
+                </p>
+                <p data-source-node="n199"><a href="a471c6cc4f41bb5275e08a20141d6e4fc78012a1215dbcbcd789e16af3929db2.html" data-source-node="n200">Previous Wave</a>
+                </p>
+                <p data-source-node="n201"><a href="2b2ca33f6c831824db24df4c7ea5f101738f73120c9c2e2a2247d35e9036a273.html" data-source-node="n202">Quantity Needed Per Item</a>
+                </p>
+                <p data-source-node="n203"><a href="8b5ad8aa22b56cb59ba7851de3e63a145120deb71d765b40f63b68d2a2f10cbe.html" data-source-node="n204">Related Line Number</a>
+                </p>
+                <p data-source-node="n205"><a href="b45d784d273a77434f17685c390c11433edd1657e2fc0c63a7e707bd7fbb8e44.html" data-source-node="n206">Shipment BOM Action</a>
+                </p>
+                <p data-source-node="n207"> </p>
+                <p data-source-node="n208">Picking</p>
+                <p data-source-node="n209"><a href="fe1993caa1bd435c7b14721cd8f82319c95ee248531f7e5099578136ac5130b6.html" data-source-node="n210">Pick Location</a>
+                </p>
+                <p data-source-node="n211"><a href="da43bdda1fabfd8256f6db1cd945a74e98308c22d4aa9987cf95385dcabc031d.html" data-source-node="n212">Pick Zone</a>
+                </p>
+                <p data-source-node="n213"><a href="c188cb582e99b1f245292d959f7b63bc3f7b3a5a4499001203aa039416019abe.html" data-source-node="n214">Secondary Pick Location</a>
+                </p>
+                <p data-source-node="n215"><a href="02fc4cd109171f16a2a4ce341b2d037ee455e58f3e104a38226ed98f028592b2.html" data-source-node="n216">Secondary Pick Zone</a>
+                </p>
+                <p data-source-node="n217"><a href="2091ddb336e6caa2d6fa523d75de67df55407ae5ba175d3e0f87305bf9ec1466.html" data-source-node="n218">Status Flow Name</a>
+                </p>
+                <p data-source-node="n219"> </p>
+                <p data-source-node="n220">Immediate Needs</p>
+                <p data-source-node="n221"><a href="8c7c327565db523d262f58e332be5bb61976b6fb36b511935dd3207cd7b0931a.html" data-source-node="n222">Eligible Toggle</a>
+                </p>
+                <p data-source-node="n223"><a href="bb5c7a9c7e4a5a118fb4726006bcb0ac8908c4c2951e9059b6537d3207154345.html" data-source-node="n224">Locating Rule</a>
+                </p>
+                <p data-source-node="n225"><a href="eafa00a7ab4b49f033eb0270ab3275d5f2f64395fa9d56b4941215fb2a4a33cc.html" data-source-node="n226">Note</a>
+                </p>
+                <p data-source-node="n227"> </p>
+                <p data-source-node="n228">Comments</p>
+                <p data-source-node="n229"><a href="375593eae29442c9c4fdee3f004bdd174436cf35fa3ebc5d2ad6098a136d4c8d.html" data-source-node="n230">Internal Number</a>
+                </p>
+                <p data-source-node="n231"><a href="8fc81e1c55c906f0d2280b917ead934bc1521c3344f62ea5432d596b79becac1.html" data-source-node="n232">Internal Line Number </a>
+                </p>
+                <p data-source-node="n233"><a href="9c27a568d15ef76ddca9e0f2426bcfb46bf28ae7a4637ca46a80a450a8e971b8.html" data-source-node="n234">User Defined Fields 1-8</a>
+                </p>
+                <p data-source-node="n235"> </p>
+                <p data-source-node="n236">VAS Activities</p>
+                <p data-source-node="n237"><a href="1e0a0e167f3a76717f87a12a443ff808f0a00d4ddf2f81b7e63f6e8e5a0dbaf3.html" data-source-node="n238">Internal Shipment Line Number</a>
+                </p>
+                <p data-source-node="n239"><a href="773f6dd1e81183007e136acf5330e40b4350381875efd4f7af0e5891fa3273f6.html" data-source-node="n240">Object ID</a>
+                </p>
+                <p data-source-node="n241"><a href="9c27a568d15ef76ddca9e0f2426bcfb46bf28ae7a4637ca46a80a450a8e971b8.html" data-source-node="n242">User Defined Field 1-8</a>
+                </p>
+                <p data-source-node="n243"> </p>
+                <p data-source-node="n244">Reference Info</p>
+                <p data-source-node="n245"><a href="a3df8df65ae94bf6d45c9617f9a9829365c18efc215e7a797d81558b7279e373.html" data-source-node="n246">Customer PO</a>
+                </p>
+                <p data-source-node="n247"><a href="431e613141014bf98ffbea1c8524a90b74ee87d3d2f6924e06f85d3c948970a7.html" data-source-node="n248">Date Time Stamp</a>
+                </p>
+                <p data-source-node="n249"><a href="1e0a0e167f3a76717f87a12a443ff808f0a00d4ddf2f81b7e63f6e8e5a0dbaf3.html" data-source-node="n250">Internal Shipment Line Number</a>
+                </p>
+                <p data-source-node="n251"><a href="d8f142ebd7f2e4396e708139dee5131ddd3b995c0b0111ad651134209bc49bb4.html" data-source-node="n252">Internal Shipment Number</a>
+                </p>
+                <p data-source-node="n253"><a href="02711a35128e18df629101fec697476ad6677a6dba28f3995b29517e03db6d42.html" data-source-node="n254">Invoice Number</a>
+                </p>
+                <p data-source-node="n255"><a href="d5199bcf7b9e2f79376b02e549fe8a611923fde5cff626a7081dbce71069eae6.html" data-source-node="n256">Manually Entered Toggle</a>
+                </p>
+                <p data-source-node="n257"><a href="cced709cc1944274105d322c94ca595fb61d17c6bbae00511d2f7347b28acd6d.html" data-source-node="n258">Order Line Number</a>
+                </p>
+                <p data-source-node="n259"><a href="3dca47774812487839ed8dab4ef2de72d314dc2a8dd7fa0dd60149b93a665092.html" data-source-node="n260">Order Number </a>
+                </p>
+                <p data-source-node="n261"><a href="e4b65f945b157784f9ba748c2dd3e2e0bfa17e65a57fe55de676a310358e83fb.html" data-source-node="n262">Order Type</a>
+                </p>
+                <p data-source-node="n263"><a href="a3b73a57810f194e21635f21fb70903c0c23647c0e904958f31eb11f1623dadd.html" data-source-node="n264">Pick List ID</a>
+                </p>
+                <p data-source-node="n265"><a href="f450114f9d032e4ccf76923563f635e1cf623e31f8b0c00d14843b4ef2a03b3c.html" data-source-node="n266">Priority </a>
+                </p>
+                <p data-source-node="n267"><a href="0c4a2b2b243439d72d7546a2c9c038710c8160cd8e635e50b0a75329d515e387.html" data-source-node="n268">Process Stamp</a>
+                </p>
+                <p data-source-node="n269"><a href="6a69f7847d285a4b1f9e48eeaa1e0191cf02c9844a47d45472211a60e551f194.html" data-source-node="n270">Shipment ID</a>
+                </p>
+                <p data-source-node="n271"><a href="7061f3320cc22ccefbe40c58186b4e312d59348481a5e2af1f9dceeb28fb745b.html" data-source-node="n272">Store Distribution</a>
+                </p>
+                <p data-source-node="n273"><a href="fd15af2a8fbf610c3f12541bd5e7986a70d9d5c27e28aacbf40c3fcc066b5e43.html" data-source-node="n274">User Stamp </a>
+                </p>
+                <p data-source-node="n275"><a href="64474ca5b708b3e4b8fedbe754775367cf9f57630bbedb46ac1e1956f766403f.html" data-source-node="n276">Warehouse</a>
+                </p>
+                <p data-source-node="n277"><a href="ddba8eb9bc0fd8b6c8e48661aaebe58327d9184a962094d4c55edb3173fb8e5d.html" data-source-node="n278">Wave Number</a>
+                </p>
+                <p data-source-node="n279"> </p>
+                <p data-source-node="n280">Classification</p>
+                <p data-source-node="n281"><a href="6db507a8bb20b5422e12b5ef912bf2110d92182f0de63307788533ca7fc37733.html" data-source-node="n282">Catalog Number</a>
+                </p>
+                <p data-source-node="n283"><a href="e2c50df61abf32d992a86c996197722041fccdc564dd8dffc9b2afd6e0b59200.html" data-source-node="n284">Hazardous Code</a>
+                </p>
+                <p data-source-node="n285"><a href="744365ca76bb7d901132204d97ed73b349638d0f8267fc1c017fe890de3aeb6b.html" data-source-node="n286">Manufacture Number</a>
+                </p>
+                <p data-source-node="n287"><a href="082c5f2075e85b5892efd8940dfae378abaa5bc95f5bbfaa009d534d950cb600.html" data-source-node="n288">Merchandise Code</a>
+                </p>
+                <p data-source-node="n289"><a href="0e6ca55ca27dfffc0d3f8cd97f8095e2624c4ea1ec35d6363f900b1d56e2fae3.html" data-source-node="n290">NMFC Code</a>
+                </p>
+                <p data-source-node="n291"> </p>
+                <p data-source-node="n292">Mark For</p>
+                <p data-source-node="n293"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n294">Address</a>
+                </p>
+                <p data-source-node="n295"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n296">Address 2 (Optional)</a>
+                </p>
+                <p data-source-node="n297"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n298">Address 3 (Optional)</a>
+                </p>
+                <p data-source-node="n299"><a href="69a50873067bfe685343617b867d73efc9a986beecff43effc1fe72620900156.html" data-source-node="n300">Attention To</a>
+                </p>
+                <p data-source-node="n301"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n302">City</a>
+                </p>
+                <p data-source-node="n303"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n304">Country</a>
+                </p>
+                <p data-source-node="n305"><a href="653f18a471b00671e9bab1a2a437fd0ce59371457b4401c3fc84713aab39bbc0.html" data-source-node="n306">Email Address </a>
+                </p>
+                <p data-source-node="n307"><a href="40a2ea191847cc2e72e3cbacdfdd4684b61b79522f631cf7e77ddcc33a12bebd.html" data-source-node="n308">Fax Number</a>
+                </p>
+                <p data-source-node="n309"><a href="113793e69ac9a12647a125d20135771d0c22f8b51ede64a5cccc7710a0a87bd4.html" data-source-node="n310">Mark For ID</a>
+                </p>
+                <p data-source-node="n311"><a href="d986941e351966b5a4a4e3b0eb2f17c58a7a403eea5ffc5ca23d6549a1097427.html" data-source-node="n312">Name</a>
+                </p>
+                <p data-source-node="n313"><a href="070a35f4fcd9de0b58d71130cae9f37ddb09bd45839a85c62b489419a6e35ffe.html" data-source-node="n314">Phone Number</a>
+                </p>
+                <p data-source-node="n315"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n316">Postal Code</a>
+                </p>
+                <p data-source-node="n317"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n318">State</a>
+                </p>
+                <p data-source-node="n319"> </p>
+                <p data-source-node="n320">International </p>
+                <p data-source-node="n321"><a href="f8c41f2ae1f0b5e35fae282da1e493a268fdbd149bb616f8b0af5f390f4bfaed.html" data-source-node="n322">Country Of Origin</a>
+                </p>
+                <p data-source-node="n323"><a href="d7b605e6128ad976601e505ab0b26946877a7bca290aaa3245e7654e592e9eb5.html" data-source-node="n324">ECCN</a>
+                </p>
+                <p data-source-node="n325"><a href="1fc116ef56c283fc6aa1b73c065d7b99faf2c4f33e8c0ff2bd01d3d3e96988a7.html" data-source-node="n326">Export Description</a>
+                </p>
+                <p data-source-node="n327"><a href="f1420b67603ba277e757ce830dba9d6668f8d7a53825d575ae109830c0edabbc.html" data-source-node="n328">Harmonized Code</a>
+                </p>
+                <p data-source-node="n329"><a href="8f8031561f7fd7829e405aaeefd7768d0b75b9ed764cf6c823489a769f3cd73a.html" data-source-node="n330">Harmonized Description</a>
+                </p>
+                <p data-source-node="n331"><a href="9fbbcfcc26dc099b43884cb622c3b691ea29d617b01116995e28239c280ad18a.html" data-source-node="n332">License Expiration Date</a>
+                </p>
+                <p data-source-node="n333"><a href="936a2d8d5f5140987ea0b35a84e367ef93d943fa501eaa1d936680bedf0f8450.html" data-source-node="n334">Net Cost</a>
+                </p>
+                <p data-source-node="n335"><a href="bc907bee0c6de170d9ad69bd347581e784d7dce07d54f08dec59525ea6b32ed0.html" data-source-node="n336">Preference Criterion</a>
+                </p>
+                <p data-source-node="n337"><a href="d8b1412b13799706579ba04364d3ab7d1a347e72ac5dd58e90e0d5f3f9490806.html" data-source-node="n338">Producer Toggle</a>
+                </p>
+                <p data-source-node="n339"><a href="c57b074829897413faaabd42211935f229399fd1b682cbcff1d268bf0080cbb5.html" data-source-node="n340">Validated License</a>
+                </p>
+                <p data-source-node="n341"> </p>
+                <p data-source-node="n342">Categories</p>
+                <p data-source-node="n343"><a href="16c3b733735d15a6d8a101cc49e5b68b6d44a6414e21f5a53385759237dca27a.html" data-source-node="n344">Catalog?</a>
+                </p>
+                <p data-source-node="n345"><a href="d8ad01ddd399aa0ff55629cfab93ec00f7d4b1f9a61f9df9c4c1819a61b525b6.html" data-source-node="n346">Item Category 3-10</a>
+                </p>
+                <p data-source-node="n347"><a href="591f20fc5b48a128c16d227997ad7078724a8011216931d40a194e5756f47255.html" data-source-node="n348">Vertical Industry</a>
+                </p>
+                <p data-source-node="n349"> </p>
+                <p data-source-node="n350">User Defined</p>
+                <p data-source-node="n351"><a href="9c27a568d15ef76ddca9e0f2426bcfb46bf28ae7a4637ca46a80a450a8e971b8.html" data-source-node="n352">User Defined Field 1-8</a>
+                </p>
+                <p data-source-node="n353"> </p>
+            </div>
+        </div>
+        <p data-source-node="n354"> </p>
+        <p data-source-node="n355"> </p>
+        <p data-source-node="n356">The following is discussed in this topic:</p>
+        <p data-source-node="n357">- <a href="#Creating" data-source-node="n358">Creating 
+ a Shipment Line</a></p>
+        <p class="p_15" data-source-node="n359">- <a href="#Cancelling" data-source-node="n360">Canceling 
+ a Shipment Line</a></p>
+        <p class="p_12" data-source-node="n361">-<a href="#Deleting" data-source-node="n362"> Deleting 
+ a Shipment Line</a></p>
+        <p class="p_15" data-source-node="n363">- <a href="#Transferring" data-source-node="n364">Transferring 
+ a Shipment Line</a></p>
+        <p class="p_15" data-source-node="n365"> </p>
+        <p data-source-node="n366"> </p>
+        <p data-source-node="n367"> </p>
+        <h4 data-source-node="n368"><a name="Creating" data-source-node="n369"></a>Creating a Shipment Line...</h4>
+        <p data-source-node="n370">The following information is a general 
+ description of each tab used in creating a shipment line using the Shipment Line Screen. For specific 
+ definitions of a certain field, see the "Field Links" section 
+ of this topic, or type the field name into the help index. </p>
+        <p data-source-node="n371"> </p>
+        <h5 data-source-node="n372">Common Fields</h5>
+        <ol class="ol_1" data-source-node="n373">
+            <li value="1" data-source-node="n374">Use the Internal 
+ Shipment Line Number Field to view the internal line number that 
+ was generated in the interface. The internal shipment line number represents 
+ the order line.<br data-source-node="n375"><br data-source-node="n376"></li>
+            <li value="2" data-source-node="n377">Use the Shipment 
+ ID Field to view the shipment ID associated with this shipment 
+ line.<br data-source-node="n378"><br data-source-node="n379"></li>
+            <li value="3" data-source-node="n380">Use the Internal 
+ Shipment Number Field to view the internal number assigned to a 
+ shipment in the system. This value identifies the shipment within the 
+ system. This value is unique.<br data-source-node="n381"><br data-source-node="n382"></li>
+            <li value="4" data-source-node="n383">Use the Warehouse 
+ Field to view the warehouse associated with this shipment line.<br data-source-node="n384"><br data-source-node="n385"></li>
+            <li value="5" data-source-node="n386">Use the Order 
+ Number Field to view the order number associated with a specific 
+ order request. All shipments are associated with an order. Order numbers 
+ originate in the ERP. When interfacing an order, the system assigns it 
+ a shipment ID number. All activity in the system is committed against 
+ the shipment ID number, not the order number.<br data-source-node="n387"><br data-source-node="n388"></li>
+            <li value="6" data-source-node="n389">Use the Order 
+ Line Number Field to view the specific order line number associated 
+ with this specific shipment line. The system generates a shipment 
+ line for every existing order line number.</li>
+        </ol>
+        <p data-source-node="n390"> </p>
+        <h5 data-source-node="n391">Item Info Tab </h5>
+        <p data-source-node="n392">- You can use these fields to enter the item that you want 
+ on this shipment line. </p>
+        <p data-source-node="n393"> </p>
+        <h5 data-source-node="n394">Quantity Info Tab </h5>
+        <p data-source-node="n395">- You can use these fields to enter the quantity that you want 
+ on this shipment line. </p>
+        <p data-source-node="n396"> </p>
+        <h5 data-source-node="n397">Item Dimensions Tab </h5>
+        <p data-source-node="n398">- You can use these fields to enter the physical measurements of the 
+ line's item.</p>
+        <p data-source-node="n399"> </p>
+        <h5 data-source-node="n400">Item Characteristics Tab </h5>
+        <p data-source-node="n401">- You can use these fields to define specific item-level values associated 
+ with this line, including such fields as Item Price/Color/Style/Size, 
+ Lot/Serial Control, and various allocation and unit of measure settings.</p>
+        <p data-source-node="n402"> </p>
+        <h5 data-source-node="n403">Dates Tab</h5>
+        <p data-source-node="n404">- You can use these fields to view the dates associated with this line.</p>
+        <p data-source-node="n405"> </p>
+        <h5 data-source-node="n406">Status  Tab </h5>
+        <p data-source-node="n407">- You can use these fields to view/define information about this line's 
+ current status.</p>
+        <p data-source-node="n408"> </p>
+        <h5 data-source-node="n409">Advanced Allocation Tab</h5>
+        <p data-source-node="n410">- You can use these fields when attempting to allocate quantity for a shipment line (this process is sometimes called variable quantity or percent allocation).</p>
+        <p data-source-node="n411"> </p>
+        <h5 data-source-node="n412">Packing Tab</h5>
+        <p data-source-node="n413">- You can use these fields when attempting to  associate shipment lines with containers, perform item validation, and generate packing labels. </p>
+        <p data-source-node="n414"> </p>
+        <h5 data-source-node="n415">Bill Of Materials Tab</h5>
+        <p data-source-node="n416">- You can use these fields to view/define a finished items and its requirements. </p>
+        <p data-source-node="n417"> </p>
+        <h5 data-source-node="n418">Picking Tab</h5>
+        <p data-source-node="n419">- You can use these fields to view/define picking associated with a shipment line. </p>
+        <p data-source-node="n420"> </p>
+        <h5 data-source-node="n421">Immediate Needs Tab</h5>
+        <p data-source-node="n422">- You can use these fields to view/define immediate needs request associated with a shipment line. </p>
+        <p data-source-node="n423"> </p>
+        <h5 data-source-node="n424">Comments Tab</h5>
+        <p data-source-node="n425">- You can use this tab to view the comments associated with this line.</p>
+        <p data-source-node="n426"> </p>
+        <h5 data-source-node="n427">VAS Activities Tab </h5>
+        <p data-source-node="n428">- You can use these fields to review or add value added services to this shipment line.</p>
+        <p data-source-node="n429"> </p>
+        <h5 data-source-node="n430">Reference Info Tab </h5>
+        <p data-source-node="n431">- You can use these fields to define various processing values for this 
+ line.</p>
+        <p data-source-node="n432"> </p>
+        <h5 data-source-node="n433">Classification Tab </h5>
+        <p data-source-node="n434">- You can use this tab to view the various codes associated with this line.</p>
+        <p data-source-node="n435"> </p>
+        <h5 data-source-node="n436">Mark For Tab </h5>
+        <p data-source-node="n437">- You can use these fields to define the "mark for address" 
+ for this line. This address represents the final destination for a shipment 
+ with a ship to address. </p>
+        <p data-source-node="n438"> </p>
+        <h5 data-source-node="n439">International Tab </h5>
+        <p data-source-node="n440">- You can use these fields to define fields that deal with international 
+ shipping for this line.</p>
+        <p data-source-node="n441"> </p>
+        <h5 data-source-node="n442">Categories Tab </h5>
+        <p data-source-node="n443">- You can use these "category" fields to associate these user-defined 
+ categories to this line.</p>
+        <p data-source-node="n444"> </p>
+        <h5 data-source-node="n445">User Defined Tab</h5>
+        <p data-source-node="n446">- You can use these fields to define the user defined fields. </p>
+        <p data-source-node="n447"> </p>
+        <h5 data-source-node="n448">When Finished...</h5>
+        <p data-source-node="n449">- Press Save. The system will 
+ add this new shipment line. Its leading and trailing status are determined 
+ by the status action value associated with the window that you're creating 
+ it on. </p>
+        <p data-source-node="n450"> </p>
+        <p data-source-node="n451">NOTE: If you created this line
+ on the Shipment insight screen, its status is based on 
+ the value defined in the "Add From Shipping" status action setting. If you created 
+ this line on the Planned shipment insight, its status is based 
+ on the value defined in the "Add From Wave" status action setting. If you created 
+ this line on the Order Entry Window, its status is based on the value 
+ defined in the "Add From Order Entry" status action setting.</p>
+        <p data-source-node="n452"> </p>
+        <p data-source-node="n453"> </p>
+        <hr width="100%" align="center" data-source-node="n454">
+        <p data-source-node="n455"> </p>
+        <p data-source-node="n456"> </p>
+        <h4 data-source-node="n457"><a name="Cancelling" data-source-node="n458"></a>Canceling a Shipment 
+ Line...</h4>
+        <p data-source-node="n459">You may need to delete a shipment line to accommodate a customer's 
+ request. If a shipment line is part of a wave, then the option is available 
+ to cancel the line item. If a shipment line is not part of a 
+ wave, see the procedures for deleting a shipment line. When you 
+ cancel the line from the wave, the system creates a duplicate shipment 
+ in the Planned Shipment Insight with a status of "In Pool."</p>
+        <ol data-source-node="n460">
+            <li value="1" data-source-node="n461">
+                <p data-source-node="n462">Access the Shipment Line Insight or the Planned Shipment Insight.</p>
+                <p data-source-node="n463"> </p>
+            </li>
+            <li value="2" data-source-node="n464">
+                <p data-source-node="n465">Access the line that you 
+ want to cancel. Select the Cancel Action.</p>
+                <p data-source-node="n466"> </p>
+            </li>
+            <li value="3" data-source-node="n467">
+                <p data-source-node="n468">The system will display a confirmation 
+ window. Verify that you want to cancel this detail.</p>
+                <p data-source-node="n469"> </p>
+            </li>
+            <li value="4" data-source-node="n470">Press OK. 
+ The system will cancel the line.</li>
+        </ol>
+        <p class="p_5" data-source-node="n471"> </p>
+        <hr width="100%" align="center" data-source-node="n472">
+        <p data-source-node="n473"> </p>
+        <p data-source-node="n474"> </p>
+        <h4 data-source-node="n475"><a name="Deleting" data-source-node="n476"></a>Deleting a Shipment 
+ Line...</h4>
+        <p data-source-node="n477">You may need to delete a shipment line to accommodate a customer's 
+ request. The system will not allow you to delete a line associated 
+ with a container or wave. To delete a shipment line associated with 
+ a wave, see the procedures for canceling a shipment line above.</p>
+        <ol data-source-node="n478">
+            <li value="1" data-source-node="n479">
+                <p data-source-node="n480">Access the Shipment Line Insight or the Planned Shipment Insight.</p>
+                <p data-source-node="n481"> </p>
+            </li>
+            <li value="2" data-source-node="n482">
+                <p data-source-node="n483">Access the line record that you 
+ want to delete, and select the Delete Action.</p>
+                <p data-source-node="n484"> </p>
+            </li>
+            <li value="3" data-source-node="n485">
+                <p data-source-node="n486">The system will display a confirmation 
+ window. Verify that you want to delete this line.</p>
+                <p data-source-node="n487"> </p>
+            </li>
+            <li value="4" data-source-node="n488">Press OK. 
+ The system will delete the line.</li>
+        </ol>
+        <p data-source-node="n489"> </p>
+        <hr width="100%" align="center" data-source-node="n490">
+        <p data-source-node="n491"> </p>
+        <p data-source-node="n492"> </p>
+        <h4 data-source-node="n493"><a name="Transferring" data-source-node="n494"></a>Transferring 
+ a Shipment Line...</h4>
+        <p data-source-node="n495">You can transfer a line to a different shipment as long as the 
+ original shipment has not been confirmed.</p>
+        <ol data-source-node="n496">
+            <li value="1" data-source-node="n497">
+                <p data-source-node="n498">Access the Shipment Line Insight screen.<br data-source-node="n499"><br data-source-node="n500"></p>
+            </li>
+            <li value="2" data-source-node="n501"> Select the line that you want 
+ to transfer to a different shipment.<br data-source-node="n502"><br data-source-node="n503"></li>
+            <li value="3" data-source-node="n504">Select the Transfer 
+ Action. The system will display the Transfer Shipment Line Screen. 
+ Information about the detail and its current shipment (the shipment you 
+ are transferring from) is provided.<br data-source-node="n505"><br data-source-node="n506"></li>
+            <li value="4" data-source-node="n507">Use the Shipment ID Field in the Destination 
+ Shipment accordion to identify the shipment that you want to transfer 
+ this detail to.<br data-source-node="n508"><br data-source-node="n509">- If you want to transfer to an 
+ existing shipment, you can use the Lookup Search to find a particular 
+ shipment.<br data-source-node="n510"><br data-source-node="n511">- If you want to transfer to a new shipment, select the New action in the Actions Menu. The system 
+ will display the Shipment screen in new mode. Define this shipment. Press Save when complete. 
+ The system will create the shipment and navigate back to the Transfer 
+ Shipment Line Screen. It will display this new shipment in the 
+ Shipment ID Field. <br data-source-node="n512"><br data-source-node="n513"></li>
+            <li value="5" data-source-node="n514">Press the Transfer Button. 
+ The system will transfer the shipment line to the destination shipment.</li>
+        </ol>
+        <p data-source-node="n515"> </p>
+        <p class="p_5" data-source-node="n516"> </p>
+        <p class="p_5" data-source-node="n517"> </p>
+        <p class="p_5" data-source-node="n518"> </p>
+        <p class="p_5" data-source-node="n519"> </p>
+        <p data-source-node="n520"> </p>
+        <p data-source-node="n521"> </p>
+        <p data-source-node="n522"> </p>
+        <p data-source-node="n523"> </p>
+        <p data-source-node="n524"> </p>
+        <p data-source-node="n525"> </p>
+        <p data-source-node="n526"> </p>
+        <p data-source-node="n527"> </p>
+        <p data-source-node="n528"> </p>
+        <p data-source-node="n529"> </p>
+        <p data-source-node="n530"> </p>
+        <p data-source-node="n531"> </p>
+        <p data-source-node="n532"> </p>
+        <p data-source-node="n533"> </p>
+        <p data-source-node="n534"> </p>
+        <p data-source-node="n535"> </p>
+        <p data-source-node="n536"> </p>
+        <p data-source-node="n537"> </p>
+        <p data-source-node="n538"> </p>
+        <p data-source-node="n539"> </p>
+        <p data-source-node="n540"> </p>
+        <p data-source-node="n541"> </p>
+        <p data-source-node="n542"> </p>
+        <p data-source-node="n543"> </p>
+        <p data-source-node="n544"> </p>
+        <p data-source-node="n545"> </p>
+        <p data-source-node="n546"> </p>
+        <p data-source-node="n547"> </p>
+        <p data-source-node="n548"> </p>
+        <p data-source-node="n549"> </p>
+        <p data-source-node="n550"> </p>
+        <p data-source-node="n551"> </p>
+        <p data-source-node="n552"> </p>
+        <p data-source-node="n553"> </p>
+        <p data-source-node="n554"> </p>
+        <p data-source-node="n555"> </p>
+        <p data-source-node="n556"> </p>
+        <p data-source-node="n557"> </p>
+    </body></html>

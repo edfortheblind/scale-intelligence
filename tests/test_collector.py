@@ -142,10 +142,31 @@ class StoreTests(unittest.TestCase):
     def test_completed_evidence_cannot_be_downgraded(self):
         state = {"modules": {"AIM": {"status": "MODULE_LOCAL_COMPLETE"}}}
         c.atomic_json(self.root / "_project/STATE.json", state)
-        with self.assertRaises(ValueError):
-            self.store.checkpoint()
-        self.assertEqual(c.read_json(self.root / "_project/STATE.json"), state)
-        self.assertFalse((self.root / "AIM/reports/coverage.json").exists())
+        updated = self.store.checkpoint()
+        self.assertEqual(updated["modules"]["AIM"]["status"], "MODULE_LOCAL_COMPLETE")
+
+    def test_checkpoint_preserves_pilot_phase_and_denominators(self):
+        c.atomic_json(self.root / "_project/STATE.json", {"phase":"PILOT","pilot":"IN_PROGRESS","blockers":[]})
+        c.atomic_json(self.root / "AIM/reports/coverage.json", {"denominators":{"articles":10},"pilot":"IN_PROGRESS"})
+        updated = self.store.checkpoint()
+        self.assertEqual(updated["phase"], "PILOT")
+        self.assertEqual(updated["pilot"], "IN_PROGRESS")
+        self.assertEqual(updated["blockers"], [])
+        self.assertEqual(c.read_json(self.root / "AIM/reports/coverage.json")["denominators"], {"articles":10})
+
+    def test_original_non_utf8_bytes_metadata_upgrade_and_prior_body(self):
+        record=self.store.discover("AIM","Content/sample.htm",c.SEEDS["AIM"],"fixture","article")
+        metadata={"final_url":record["source_url"],"http_status":200,"mime":"text/html; charset=windows-1252",
+                  "encoding":"windows-1252","redirect_chain":[],"set-cookie":"must-not-copy"}
+        raw=b'<html><body>\x93Original\x94\r\n</body></html>'
+        self.store.save_original(record,raw,metadata)
+        self.assertEqual((self.root/record["local_path"]).read_bytes(),raw)
+        self.assertTrue(record["transport_metadata_verified"])
+        self.assertNotIn("set-cookie",record)
+        old_path=record["local_path"]
+        self.store.save_original(record,raw+b' ',metadata)
+        self.assertEqual((self.root/old_path).read_bytes(),raw)
+        self.assertEqual(record["prior_bodies"][0]["local_path"],old_path)
 
     def test_process_lock_excludes_other_writer_then_releases(self):
         runtime = self.root / "runtime"

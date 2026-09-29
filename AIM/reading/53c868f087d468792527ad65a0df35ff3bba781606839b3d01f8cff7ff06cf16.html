@@ -1,0 +1,160 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Printing Configuration</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 style="text-align: left;font-size: 12pt" data-source-node="n56"><span style="font-size: 18pt" data-source-node="n57">Print Device and Document Routing Configuration</span>
+        </h1>
+        <h4 data-source-node="n58">Overview</h4>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60">The printing process includes the generation and printing of paper documents and labels. You can obtain paperwork for all phases of the system's outbound and inbound processes, including such key processing points as running a wave, closing a container, or confirming a shipment/load.</p>
+        <p data-source-node="n61"> </p>
+        <h4 data-source-node="n62">Configuration Hierarchy</h4>
+        <p data-source-node="n63"> </p>
+        <p data-source-node="n64">The following are the configurations needed for printing operations.</p>
+        <p data-source-node="n65">
+            <img loading="eager" data-source-node="n66">
+        </p>
+        <p data-source-node="n67"> </p>
+        <h4 data-source-node="n68">Configuring Print devices</h4>
+        <p data-source-node="n69"> </p>
+        <p data-source-node="n70">The Printers in the network need to be configured for it to print documents. </p>
+        <p data-source-node="n71"> </p>
+        <h5 data-source-node="n72">Name and Description</h5>
+        <p data-source-node="n73">Use the <b data-source-node="n74">Name Field</b> to identify the printer to users. This value should be descriptive and this will later be displayed in the Device Field on the Document Routing configuration. Use the Description Field to enter the appropriate alphanumeric description to identify the printer better. For example Printer for Return Labels only.</p>
+        <p data-source-node="n75"> </p>
+        <h5 data-source-node="n76"> Qualified Device Name</h5>
+        <ul data-source-node="n77">
+            <li data-source-node="n78">
+                <p data-source-node="n79">If the Printer is set on a Personal Computer (or other non-server location), the qualified device name will identify both the machine that the printer is configured on and the printer itself. In the example below, Sales_office is the machine and Return_printer is the printer. Since the printer is not declared on the server, its network path is included in its name.</p>
+            </li>
+            <li data-source-node="n80">
+                <p data-source-node="n81">If this printer is configured on the server, the qualified device name will just identify the printer. Since the printer is already defined to the server, you will not see a network path.</p>
+            </li>
+        </ul>
+        <h5 data-source-node="n82">Rating Printer Driver Symbol and Rating Printer Stock Symbol.</h5>
+        <p data-source-node="n83">When the user needs to print vendor or progistics integrated labels, then users will need to configure these options. You can enter these details either when you create a new printer device or Edit an existing printer device.</p>
+        <p data-source-node="n84">Select the appropriate driver from the Rating Printer Driver symbol drop-down list. The corresponding label list for the driver selected will be displayed.</p>
+        <p data-source-node="n85"> </p>
+        <h5 data-source-node="n86">Printer Warehouse Access List</h5>
+        <p data-source-node="n87">Use the Printer Warehouse Access List to control warehouse-level access for a print device when this feature is enabled.</p>
+        <p data-source-node="n88">After entering printer information, select <b data-source-node="n89">Assign Docs to Printer</b> to save and continue to Document Routing configuration.</p>
+        <p data-source-node="n90"> </p>
+        <h4 data-source-node="n91">Document Routing</h4>
+        <p data-source-node="n92"> </p>
+        <p data-source-node="n93">The document routing parameters such as document type, template, printer selection, and routing criteria such as customer details, container class, carrier, rating ID, machine name (workstation), and more. You can either configure using the existing document routing record or create a new one.</p>
+        <p data-source-node="n94"> </p>
+        <p data-source-node="n95">Note: The Document Routing button from the System Configurations screen enables the user to only edit the printer and Document Routing information.</p>
+        <p data-source-node="n96"> </p>
+        <h5 data-source-node="n97">1. Document</h5>
+        <p data-source-node="n98">Document are defined for the system to identify the document that needs to be printed. The template will configure the layout and associated applications that will generate the document (SSRS, Progistics, and more). The format is defined by the document type (label or document).</p>
+        <p data-source-node="n99"> </p>
+        <p data-source-node="n100"><b data-source-node="n101">Document Type</b>
+        </p>
+        <blockquote data-source-node="n102">
+            <p data-source-node="n103"> You can choose an existing document type or define a new document type. A document type identifies a general document category, such as a pick list or a shipping label, and the physical structure (label or document) of all paperwork associated with the type. The system has a list of documents defined. Optionally users can configure a new Document Type.</p>
+            <ul data-source-node="n104">
+                <li data-source-node="n105">
+                    <p data-source-node="n106">Document Type Information - The name and description for the document type created.</p>
+                    <p data-source-node="n107"> </p>
+                </li>
+                <li data-source-node="n108">
+                    <p data-source-node="n109">	Print Procedure - Select from drop down list  for all the paperwork generated for this print procedure. Set the default print procedure for the printer by checking the Default check box.  </p>
+                    <p data-source-node="n110"> </p>
+                </li>
+                <li data-source-node="n111">
+                    <p data-source-node="n112">Document Data - Configure the following</p>
+                    <p data-source-node="n113"> </p>
+                    <ul data-source-node="n114">
+                        <li data-source-node="n115">
+                            <p data-source-node="n116">Data Source - This determines which data selection records are available when you are defining sequences on the Document Master</p>
+                        </li>
+                    </ul>
+                    <p data-source-node="n117"> </p>
+                    <ul data-source-node="n118">
+                        <li data-source-node="n119">
+                            <p data-source-node="n120">Detail Data Source - The database table that system will retrieve the document details information. </p>
+                        </li>
+                    </ul>
+                    <p data-source-node="n121"> </p>
+                    <ul data-source-node="n122">
+                        <li data-source-node="n123">
+                            <p data-source-node="n124">Document Generator - The document generator record is associated with this document type.</p>
+                        </li>
+                    </ul>
+                    <p data-source-node="n125"> </p>
+                </li>
+                <li data-source-node="n126">
+                    <p data-source-node="n127">Classification - Indicate the Document Type you are creating as a Document ,Label or Collate </p>
+                    <p data-source-node="n128"> </p>
+                </li>
+                <li data-source-node="n129">
+                    <p data-source-node="n130">SQL Server Reporting Services - Use the Rendered Document PDF File Directory Field in the warehouse as well as in the document type to indicate where you want SQL Server Reporting Services to place rendered (created).pdf files. Note that these .pdf files are not automatically deleted from this directory after they are printed by the default PDF reader application.</p>
+                </li>
+            </ul>
+            <p data-source-node="n131"> </p>
+            <p data-source-node="n132"><b data-source-node="n133">Printed Format Information</b> - Select the print format properties for the document. </p>
+            <ul data-source-node="n134">
+                <li data-source-node="n135">
+                    <p data-source-node="n136">Print As - Set the application that will process the printing. </p>
+                </li>
+            </ul>
+            <ul data-source-node="n137">
+                <li data-source-node="n138">
+                    <p data-source-node="n139">Document Template -The system will have a list of pre-defined templates for selection. When users need to print documents, the system will need to have template  to provide structure and types of information printed on the document.</p>
+                </li>
+            </ul>
+            <ul data-source-node="n140">
+                <li data-source-node="n141">
+                    <p data-source-node="n142">Document Criteria - This criteria is used by the system to generate detail record values on the document. </p>
+                </li>
+            </ul>
+            <ul data-source-node="n143">
+                <li data-source-node="n144">
+                    <p data-source-node="n145">Language - Set the language text the document needs to display.</p>
+                </li>
+            </ul>
+            <p data-source-node="n146"><b data-source-node="n147">Collate Label</b> - This enables the user to print by combing documents using the collate document template. Read <a href="e02ee71e0725fce56d0c24675ff6ca3aec77ee215772543595b0768efb5478e1.html" data-source-node="n148">Collate List</a>.</p>
+        </blockquote>
+        <h5 data-source-node="n149">2. Routing Criteria</h5>
+        <p data-source-node="n150">Once Document and Document Type are configured, you can optionally configure the following routing criteria. </p>
+        <blockquote data-source-node="n151">
+            <ul data-source-node="n152">
+                <li data-source-node="n153">
+                    <p data-source-node="n154">Warehouse</p>
+                </li>
+                <li data-source-node="n155">
+                    <p data-source-node="n156">Company</p>
+                </li>
+                <li data-source-node="n157">
+                    <p data-source-node="n158">Customer/Ship To</p>
+                </li>
+                <li data-source-node="n159">
+                    <p data-source-node="n160">Carrier/Service</p>
+                </li>
+                <li data-source-node="n161">
+                    <p data-source-node="n162">Rating ID</p>
+                </li>
+                <li data-source-node="n163">
+                    <p data-source-node="n164">Container Class</p>
+                </li>
+                <li data-source-node="n165">
+                    <p data-source-node="n166">Work Type</p>
+                </li>
+                <li data-source-node="n167">
+                    <p data-source-node="n168">Username</p>
+                </li>
+                <li data-source-node="n169">
+                    <p data-source-node="n170">Country</p>
+                </li>
+                <li data-source-node="n171">
+                    <p data-source-node="n172">Machine Name/Workstation</p>
+                </li>
+                <li data-source-node="n173">
+                    <p data-source-node="n174">Number of Copies</p>
+                </li>
+            </ul>
+        </blockquote>
+        <h5 data-source-node="n175">3. Routing Summary</h5>
+        <p data-source-node="n176">The Routing Summary screen will enable you to review the document routing record for the selected printer record. </p>
+        <p data-source-node="n177"> </p>
+        <h5 data-source-node="n178">4. Edit Existing Document Routing</h5>
+        <p data-source-node="n179">To update an existing routing record, select a printer from the Printer Selection step, review the selected routing record in Routing Summary, and then use Edit to update routing criteria values and save changes.</p>
+    </body></html>

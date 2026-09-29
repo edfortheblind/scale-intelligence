@@ -1,0 +1,382 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Defining Carriers</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor605" data-source-node="n57"></a>Defining Carriers</h1>
+        <p data-source-node="n58">To be considered during routing and rating, all carriers must be defined 
+ on the Carrier Window. The procedures on this page describe how to define 
+ carrier and carrier service records. The carrier record is sometimes referred 
+ to as the parent record. The carrier service record is sometimes referred 
+ to as the child record.</p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60"> </p>
+        <h5 data-source-node="n61">Parent Records, Child Records, 
+ &amp; Inheritance<br data-source-node="n62"></h5>
+        <p data-source-node="n63">The parent record represents the transportation company that offers 
+ multiple services at different pricing scales, such as UPS or Fed Ex. 
+ A child record represents each service provided by that carrier, such 
+ as 2nd Day Delivery or Overnight Delivery. By creating separate records 
+ for the carrier and its services, you can minimize setup time by using 
+ inheritance. Inheritance allows you to default the appropriate carrier 
+ values onto the service records. As soon as you provide a value in the 
+ Carrier Field and access the Service Field, the system will display the 
+ Inherited Checkbox on all other field in the Carrier Window. You can select 
+ the checkbox when appropriate, instead of manually entering this information. 
+ Of course, you need to define the parent record before you define the 
+ child records.</p>
+        <p data-source-node="n64"> </p>
+        <p data-source-node="n65"> </p>
+        <h5 data-source-node="n66">Do I Need To Create Both 
+ Parent &amp; Child Records?<br data-source-node="n67"></h5>
+        <p data-source-node="n68">Before setting up a carrier, use the following question to determine 
+ if you can benefit from inheritance: Does the carrier provide multiple 
+ services that it charges different prices for?</p>
+        <ul data-source-node="n69">
+            <li data-source-node="n70">
+                <p data-source-node="n71">If yes, you can minimize 
+ setup time by creating a parent record and multiple child records. The parent record would identify the 
+ carrier. Each child record would identify a specific service that the 
+ carrier supported. This will allow you to inherit shared values, such 
+ as address and carrier type. See the Defining the Parent Record section 
+ for more details.</p>
+                <p data-source-node="n72"> </p>
+            </li>
+            <li data-source-node="n73">If no, 
+ you should create just a parent record. If you only use one service provided by a carrier, or the carrier 
+ does not offer any services, you will not need to inherit values across 
+ multiple records. You will only need to create one parent record. See 
+ the Defining a Child Record section for more details.</li>
+        </ul>
+        <p data-source-node="n74"> </p>
+        <h5 data-source-node="n75">Note 
+ On Using the Inherited Checkbox</h5>
+        <p class="p_15" data-source-node="n76">If you select 
+ the Inherited Checkbox (on any field), the system will default the value 
+ from the parent record.</p>
+        <p data-source-node="n77"> </p>
+        <p data-source-node="n78"> </p>
+        <h4 data-source-node="n79">Related Topics...</h4>
+        <p class="p_5" data-source-node="n80"><a href="0f22f1f323600031ea5c3cc568dd2af321864f30780e3c575cac1c2905eaa2e4.html" data-source-node="n81">Rating Process Summary</a>
+        </p>
+        <p class="p_5" data-source-node="n82"><a href="0f22f1f323600031ea5c3cc568dd2af321864f30780e3c575cac1c2905eaa2e4.html" data-source-node="n83">Routing Process Summary</a>
+        </p>
+        <p data-source-node="n84"><a href="66f522d9ea61a79265d4f554eefaa3cf9eb580ca5083eb1e4a3282e7a7c55376.html" data-source-node="n85">LTL Process Summary</a>
+        </p>
+        <p class="p_6" data-source-node="n86"><a href="07edc31677cc85116035ff7f2dff1c2a3f7a1a38afdb4aaf867617691a7483ac.html" data-source-node="n87">Rating Setup</a>
+        </p>
+        <p class="p_6" data-source-node="n88"><a href="07edc31677cc85116035ff7f2dff1c2a3f7a1a38afdb4aaf867617691a7483ac.html" data-source-node="n89">Routing Setup</a>
+        </p>
+        <p class="p_6" data-source-node="n90"> </p>
+        <p class="p_6" data-source-node="n91"> </p>
+        <div class="MCDropDown MCDropDown_Closed dropDown" data-source-node="n92"><span class="MCDropDownHead dropDownHead" data-source-node="n93"><a class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage" data-source-node="n94"><img class="MCDropDown_Image_Icon" src="../source/assets/1d600a0343eef0b105f4dd86d1b7572306777214a30e5b8d49e91c153d7bca31.gif" height="11" width="16" alt="Closed" loading="eager" data-source-node="n95">Field Descriptions...</a></span>
+            <div class="MCDropDownBody dropDownBody" data-source-node="n96">
+                <p class="p_12" data-source-node="n97"> </p>
+                <p class="p_12" data-source-node="n98">Header Fields</p>
+                <p data-source-node="n99"><a href="ee018530b29cfaff775d791e5648b0621755b95022cf7ca4521a3053b17f69f2.html" data-source-node="n100">Carrier</a>
+                </p>
+                <p data-source-node="n101"><a href="2c6ccb4a2a6f4e2bee53d5d054bae3a7a64f8ede90e41bf13d92ce55f6254d33.html" data-source-node="n102">Description</a>
+                </p>
+                <p data-source-node="n103"><a href="371801a291daf37514b2bf333555489d35aaf923b9b0cb094115ab2b8a49184d.html" data-source-node="n104">Service</a>
+                </p>
+                <p data-source-node="n105"> </p>
+                <p class="p_12" data-source-node="n106">General Tab Fields</p>
+                <p data-source-node="n107"><a href="73897a799f13ceb64a1e5e95aa597c47a640053d2dd749941b59cf5979f1c924.html" data-source-node="n108">Can Be Used in Carrier Assignment</a>
+                </p>
+                <p data-source-node="n109"><a href="a6004dcafbc858d7b4dd9622e92d9b7c5cbf622292aa52ab32d013510a0946f0.html" data-source-node="n110">Can Be Used to Ship</a>
+                </p>
+                <p data-source-node="n111"><a href="d8c7892cc57d1faa71f9d171c46e13969c1f3d25429152922468b01a115b1e16.html" data-source-node="n112">Dock</a>
+                </p>
+                <p data-source-node="n113"><a href="14d16db78afa25b58af0ddc63183c894dd7a2fa63783536477164700921cecc2.html" data-source-node="n114">Inherited Checkbox</a>
+                </p>
+                <p data-source-node="n115"><a href="5d08922bfe23d0bab3e4a256506f1c313236d51c29cfca9ece85136d74a5d5ad.html" data-source-node="n116">Load Size Definition</a>
+                </p>
+                <p data-source-node="n117"><a href="2ce904facb73a3e6c39e0864a2e960d0c4cfa1d7f603b95e1d7ce448513a2aaf.html" data-source-node="n118">Pro Number Set Name</a>
+                </p>
+                <p data-source-node="n119"><a href="5e5a37113d62cb45ded832517ba1dea9678e899108803092d4fe932e4565b461.html" data-source-node="n120">SCAC</a>
+                </p>
+                <p data-source-node="n121"><a href="9c6a3fe60d0d6c581f56c0b8bf9a5ae2809fecd90ed6f6c25d552973ab885802.html" data-source-node="n122">Shipping Calendar</a>
+                </p>
+                <p data-source-node="n123"><a href="75e5320a7413297779128fc8c60a07c0fc15fc9d6df8e2f5b9630d14a8551a50.html" data-source-node="n124">Type</a>
+                </p>
+                <p data-source-node="n125"> </p>
+                <p class="p_12" data-source-node="n126">Address Tab Fields</p>
+                <p data-source-node="n127"><a href="2e94e8df200c8751d61b9bbd7567dec5ca888c523f98c30653033a9c856baff6.html" data-source-node="n128">Address Fields</a>
+                </p>
+                <p data-source-node="n129"><a href="e66a502331c1c4f5e51b0857a1c3196608c0cbd697c66153c42afb6e2a2878c3.html" data-source-node="n130">Contact Name</a>
+                </p>
+                <p data-source-node="n131"><a href="40a2ea191847cc2e72e3cbacdfdd4684b61b79522f631cf7e77ddcc33a12bebd.html" data-source-node="n132">Fax Number</a>
+                </p>
+                <p data-source-node="n133"><a href="14d16db78afa25b58af0ddc63183c894dd7a2fa63783536477164700921cecc2.html" data-source-node="n134">Inherited Checkbox</a>
+                </p>
+                <p data-source-node="n135"><a href="070a35f4fcd9de0b58d71130cae9f37ddb09bd45839a85c62b489419a6e35ffe.html" data-source-node="n136">Phone Number</a>
+                </p>
+                <p data-source-node="n137"> </p>
+                <p class="p_12" data-source-node="n138">Rating Tab Fields</p>
+                <p data-source-node="n139"><a href="b2a5e40df9b19880224c601543d9a9016b4916f2ad6d7aa00db49a89fdb9d43d.html" data-source-node="n140">Charge Requirement Buttons</a>
+                </p>
+                <p data-source-node="n141"><a href="12db8fb003f36763718b8f04bb8bdd467626d3ddc382025cb213cb8308864386.html" data-source-node="n142">Commitments Required For 
+ Routing Checkbox</a>
+                </p>
+                <p data-source-node="n143"><a href="670e115d52de77af5a25a34bc18a307d5a7f243311d16a13ca32a73273cd7ecd.html" data-source-node="n144"><a href="670e115d52de77af5a25a34bc18a307d5a7f243311d16a13ca32a73273cd7ecd.html" data-source-node="n145"> FAK LTL Class</a></a><a href="670e115d52de77af5a25a34bc18a307d5a7f243311d16a13ca32a73273cd7ecd.html" data-source-node="n146"> </a>
+                </p>
+                <p data-source-node="n147"><a href="cc9eb0d976671058b02553728cbd0f719f903586ada8bd628c3d385ec121ed96.html" data-source-node="n148">Rating ID</a>
+                </p>
+                <p data-source-node="n149"><a href="270df0e9a0f4f1999b6467164f4277ca77b505e262ba331fb187b8aef9944921.html" data-source-node="n150">Rating Profile</a>
+                </p>
+                <p data-source-node="n151"><a href="d37434b711bbebe79a1c42b6d9f83cf9b18c75db86eb69ce76f731b782cedee3.html" data-source-node="n152">Rating Service</a>
+                </p>
+                <p data-source-node="n153"> </p>
+                <p class="p_12" data-source-node="n154">Internet Information Tab Fields</p>
+                <p data-source-node="n155"><a href="c6a20911ee186ae144e920248923ff064a7b1d7d8f84d2abdb54fa213a6e7d7c.html" data-source-node="n156">Available for Web Order Checkbox</a>
+                </p>
+                <p data-source-node="n157"><a href="653f18a471b00671e9bab1a2a437fd0ce59371457b4401c3fc84713aab39bbc0.html" data-source-node="n158">Email Address</a>
+                </p>
+                <p data-source-node="n159"><a href="8941d61c85fc67bc6bff35781c60bf60a522947c7852835136130517deac233e.html" data-source-node="n160">Internet Tracking Link</a>
+                </p>
+                <p data-source-node="n161"><a href="c281184dd9353e98239e449eed115d1d112de32e6d6022665d1b64df2a9aab72.html" data-source-node="n162">Web Site</a>
+                </p>
+                <p data-source-node="n163"> </p>
+                <p data-source-node="n164">Dock Tab Fields </p>
+                <p data-source-node="n165"><a href="704c251eb7e33c1ed534eec17b906e0d870de388c68441204b6d20a9febb7d89.html" data-source-node="n166">Consolidation Location Area</a>
+                </p>
+                <p data-source-node="n167"> </p>
+            </div>
+        </div>
+        <p data-source-node="n168"> </p>
+        <p data-source-node="n169"> </p>
+        <p data-source-node="n170">The following is discussed in this topic:</p>
+        <p data-source-node="n171"><a href="#parent" data-source-node="n172">Defining the Parent Carrier Record</a>
+        </p>
+        <p data-source-node="n173"><a href="#child" data-source-node="n174">Defining the Child Carrier Record</a>
+        </p>
+        <p data-source-node="n175"> </p>
+        <p data-source-node="n176"> </p>
+        <p data-source-node="n177"> </p>
+        <h4 data-source-node="n178"><a name="parent" data-source-node="n179"></a>Procedures (Defining the Parent Carrier 
+ Record)...<br data-source-node="n180"></h4>
+        <h5 data-source-node="n181">Using the Header Fields</h5>
+        <ul type="disc" class="ul_1" data-source-node="n182">
+            <li data-source-node="n183">You will use the header fields to identify this 
+ carrier as an LTL, truckload or parcel parent. You will provide values 
+ in the Carrier Field and the Description Field. You will not 
+ provide a value in the Service Field. The Service Field identifies a child 
+ record.</li>
+        </ul>
+        <p data-source-node="n184"> </p>
+        <h5 data-source-node="n185">Using the General Tab</h5>
+        <ol data-source-node="n186">
+            <li value="1" data-source-node="n187">
+                <p data-source-node="n188">Use the Type Field to select 
+ what kind of carrier will transport this carrier's product, such as parcel 
+ or LTL. </p>
+                <p data-source-node="n189"> </p>
+            </li>
+            <li value="2" data-source-node="n190">
+                <p data-source-node="n191">Use the Load Size Definition Field 
+ to identify the type of trailer this carrier uses to transport product.</p>
+                <p data-source-node="n192"> </p>
+            </li>
+            <li value="3" data-source-node="n193">
+                <p data-source-node="n194">Use the SCAC Field to identify 
+ the carrier's SCAC (Standard Carrier Alpha Code) value. The carrier will 
+ supply this code.</p>
+                <p data-source-node="n195"> </p>
+            </li>
+            <li value="4" data-source-node="n196">
+                <p data-source-node="n197">Use the Shipping Calendar Field 
+ to associate this carrier with the appropriate shipping calendar record. 
+ These define "no ship days," such as holidays.</p>
+                <p data-source-node="n198"> </p>
+            </li>
+            <li value="5" data-source-node="n199">
+                <p data-source-node="n200">Use the Pro Number Set Name Field 
+ to associate the carrier with its Pro Numbers. The carrier will supply 
+ these numbers. This is only done if the carrier is an LTL or truckload 
+ carrier.</p>
+                <p data-source-node="n201"> </p>
+            </li>
+            <li value="6" data-source-node="n202">Use the Can Be 
+ Used to Ship Checkbox to indicate if this carrier can ship product. 
+ Generally, you will want to select this checkbox unless you are creating 
+ a parent record that is used for inheritance purposes only.<br data-source-node="n203"> </li>
+            <ul type="disc" class="ul_1" data-source-node="n204">
+                <li data-source-node="n205">
+                    <p data-source-node="n206">If you are defining a parent 
+ record only, select this checkbox for the parent record.</p>
+                    <p data-source-node="n207"> </p>
+                </li>
+                <li data-source-node="n208">
+                    <p data-source-node="n209">If you are defining both parent 
+ &amp; child records, do not select this checkbox for the parent 
+ record if its only used for inheritance purposes. Later, when you create 
+ the child records, you will select this checkbox for each child record.</p>
+                    <p data-source-node="n210"> </p>
+                </li>
+            </ul>
+            <li value="7" data-source-node="n211">
+                <p data-source-node="n212">Use the Can Be Used in Carrier 
+ Assignment Checkbox to indicate if this carrier can be rated. Carriers 
+ that the system cannot select during assignment can be manually selected.</p>
+                <p data-source-node="n213"> </p>
+            </li>
+            <ul type="disc" class="ul_1" data-source-node="n214">
+                <li data-source-node="n215">
+                    <p data-source-node="n216">If this carrier can accommodate 
+ most of your shipments, select this checkbox. During rating, the 
+ system will include this carrier and might select it.</p>
+                    <p data-source-node="n217"> </p>
+                </li>
+                <li data-source-node="n218">If this 
+ carrier rarely transports product for you, consider not selecting 
+ this checkbox. This will minimize processing time. You can still select 
+ this carrier manually.</li>
+            </ul>
+        </ol>
+        <p data-source-node="n219"> </p>
+        <h5 data-source-node="n220">Using the Address Tab</h5>
+        <ol class="ol_1" data-source-node="n221">
+            <li value="1" data-source-node="n222">Use the Address 
+ Tab fields to provide the carrier's billing address. You can also 
+ identify your contact name at the carrier, his/her phone number and fax 
+ number.</li>
+        </ol>
+        <p data-source-node="n223"> </p>
+        <h5 data-source-node="n224">Using the Rating Tab</h5>
+        <p data-source-node="n225"> </p>
+        <p data-source-node="n226">This tab is only required if you plan to use the rating module. Note: 
+ you will not be able to complete this tab's values until you finish the 
+ Rating Setup procedures.</p>
+        <ol data-source-node="n227">
+            <li value="1" data-source-node="n228">Use the Charge 
+ Requirement Buttons to indicate whether rating is 'not required', calls an associated internal or external rating engine (system calculated)or is 'manually' added to the shipment.</li>
+            <p data-source-node="n229"> </p>
+            <li value="2" data-source-node="n230">
+                <p data-source-node="n231">Use the Rating ID Field 
+ to identify the server/carrier symbols used to identify where rating is coming from.  .</p>
+                <p data-source-node="n232"> </p>
+            </li>
+            <li value="3" data-source-node="n233">
+                <p data-source-node="n234">Use the Rating Service Field to identify a carrier/service combination. It is used by the system to call external rating engines. For LTL internal rating, this field should be left blank.</p>
+                <p data-source-node="n235"> </p>
+            </li>
+            <li value="4" data-source-node="n236">Use the Rating 
+ Profile Field to associate a profile record to this carrier. When 
+ rating is run during a wave, the system usually does not know how many 
+ containers are on a shipment. It uses the rating profile to estimate how 
+ many containers are on a shipment.<br data-source-node="n237"><br data-source-node="n238"></li>
+            <li value="5" data-source-node="n239">Use the FAK LTL Class Field for LTL internal rating. If you want the entire shipment to get rated at the specified LTL Class regardless of the actual classes of the items on the shipment.<br data-source-node="n240"><br data-source-node="n241"></li>
+            <li value="6" data-source-node="n242">Use the Commitments 
+ Required for Routing Checkbox to identify how the system will make 
+ a carrier decision during routing, when a particular carrier is part of 
+ a carrier group. The following is based on when a carrier commitment record            does not exist for a certain 
+ carrier:<br data-source-node="n243"><br data-source-node="n244"></li>
+            <ul type="disc" class="ul_1" data-source-node="n245">
+                <li data-source-node="n246">If this 
+ checkbox is checked, commitments are required for this carrier. 
+ Therefore, the system will reject this carrier because no commitment record 
+ exists.<br data-source-node="n247"><br data-source-node="n248"></li>
+                <li data-source-node="n249">If this 
+ checkbox is not checked, that indicates that commitments are not 
+ required for this carrier. Therefore, the system will not reject the carrier. 
+ However, a large number of days to deliver is used (999), which makes 
+ it almost impossible for that carrier to "win" the selection 
+ process and be assigned to the shipment.</li>
+            </ul>
+        </ol>
+        <p data-source-node="n250"> </p>
+        <h5 data-source-node="n251">Using the Internet Information 
+ Tab</h5>
+        <ol data-source-node="n252">
+            <li value="1" data-source-node="n253">
+                <p data-source-node="n254">Use the Email Address Field 
+ to provide your contact person's email address.</p>
+                <p data-source-node="n255"> </p>
+            </li>
+            <li value="2" data-source-node="n256">
+                <p data-source-node="n257">Use the Web Site Field to 
+ provide the carrier's website address.</p>
+                <p data-source-node="n258"> </p>
+            </li>
+            <li value="3" data-source-node="n259">
+                <p data-source-node="n260">Use the Internet Tracking Link 
+ Field to identify the carrier's tracking parcels website. This 
+ value is required if you want to link a container ID to its carrier's 
+ web page in Trading Partner Management. You can obtain this value from 
+ the particular carrier that you are linking to.</p>
+                <p data-source-node="n261"> </p>
+            </li>
+            <li value="4" data-source-node="n262">Use the Available 
+ for Web Order Checkbox to indicate that you want to be able to 
+ choose this carrier when entering a web order via Trading Partner Management.</li>
+        </ol>
+        <p class="p_15" data-source-node="n263"> </p>
+        <h5 data-source-node="n264">Using the Dock Tab<br data-source-node="n265"></h5>
+        <ol class="ol_1" data-source-node="n266">
+            <li value="1" data-source-node="n267">Use the Consolidation Location Area Field to indicate the default dock location area you want to use when consolidating this carrier's shipments. </li>
+        </ol>
+        <p data-source-node="n268"> </p>
+        <p data-source-node="n269"> </p>
+        <h4 data-source-node="n270"><a name="child" data-source-node="n271"></a>Procedures (defining the child carrier 
+ record)...</h4>
+        <p class="p_15" data-source-node="n272"> </p>
+        <h5 data-source-node="n273">Using the Header Fields<br data-source-node="n274"></h5>
+        <p data-source-node="n275">After you define the parcel parent record, you can create the parent 
+ child records. These records identify a specific service offered by the 
+ carrier that you defined on the parcel parent record. If an LTL or truckload 
+ carrier offers services, you can create child records for it.</p>
+        <ol data-source-node="n276">
+            <li value="1" data-source-node="n277">
+                <p data-source-node="n278">In the Carrier Field, identify 
+ the carrier that offers this service, or the parent carrier. Make sure 
+ that you enter this value exactly as it appears on the parent record. 
+ When you exit this field and enter the Service Field, the system will 
+ recognize that you are creating a child record. It will display the Inherited 
+ Checkbox on each field that can obtain its value from the parent record.</p>
+                <p data-source-node="n279"> </p>
+            </li>
+            <li value="2" data-source-node="n280">In the Service 
+ Field, identify the service level that you want to define a record 
+ for. The value in this field, along with the value in the Carrier Field, 
+ will identify this record to the system.</li>
+        </ol>
+        <p data-source-node="n281"> </p>
+        <p data-source-node="n282"> </p>
+        <p data-source-node="n283"> </p>
+        <p data-source-node="n284"> </p>
+        <p data-source-node="n285"> </p>
+        <p data-source-node="n286"> </p>
+        <p data-source-node="n287"> </p>
+        <p data-source-node="n288"> </p>
+        <p data-source-node="n289"> </p>
+        <p data-source-node="n290"> </p>
+        <p data-source-node="n291"> </p>
+        <p data-source-node="n292"> </p>
+        <p data-source-node="n293"> </p>
+        <p data-source-node="n294"> </p>
+        <p data-source-node="n295"> </p>
+        <p data-source-node="n296"> </p>
+        <p data-source-node="n297"> </p>
+        <p data-source-node="n298"> </p>
+        <p data-source-node="n299"> </p>
+        <p data-source-node="n300"> </p>
+        <p data-source-node="n301"> </p>
+        <p data-source-node="n302"> </p>
+        <p data-source-node="n303"> </p>
+        <p data-source-node="n304"> </p>
+        <p data-source-node="n305"> </p>
+        <p data-source-node="n306"> </p>
+        <p data-source-node="n307"> </p>
+        <p data-source-node="n308"> </p>
+        <p data-source-node="n309"> </p>
+        <p data-source-node="n310"> </p>
+        <p data-source-node="n311"> </p>
+        <p data-source-node="n312"> </p>
+        <p data-source-node="n313"> </p>
+        <p data-source-node="n314"> </p>
+        <p data-source-node="n315"> </p>
+        <p data-source-node="n316"> </p>
+        <p data-source-node="n317"> </p>
+        <p data-source-node="n318"> </p>
+        <p data-source-node="n319"> </p>
+        <p data-source-node="n320"> </p>
+        <p data-source-node="n321"> </p>
+        <p data-source-node="n322"> </p>
+    </body></html>

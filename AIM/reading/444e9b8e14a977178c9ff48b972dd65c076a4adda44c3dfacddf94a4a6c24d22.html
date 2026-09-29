@@ -1,0 +1,470 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Introduction To Insight Screens</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1905" data-source-node="n57"></a>Introduction to Insight Screens</h1>
+        <p data-source-node="n58">You can use insight screens to search for and perform actions against data records in several functional areas. These screens are not only viewable from the SCALE Desktop, but are also optimized for mobile viewing on a device such as a tablet. The system uses a configurable framework called metadata to display the screen components, which allows you the ability to customize anything on the screen (fields can be added, taken away, moved around, etc). This topic describes the basic structure and function of insight screens.</p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60"> </p>
+        <p data-source-node="n61"> </p>
+        <p data-source-node="n62">The following is discussed in this topic:</p>
+        <p data-source-node="n63">- <a href="#Basic" data-source-node="n64">Basic Screen Structure</a></p>
+        <p data-source-node="n65">- <a href="#SignInOut" data-source-node="n66">Sign In/Out of Insight Screens</a></p>
+        <p data-source-node="n67">- <a href="#NavBar" data-source-node="n68">Using the Navigation Bar</a></p>
+        <p data-source-node="n69">-<a href="#UsingMenu" data-source-node="n70"> Using the Menu Bar</a></p>
+        <p data-source-node="n71">- <a href="#UsingSearch" data-source-node="n72">Using the Filter Pane</a></p>
+        <p data-source-node="n73">- <a href="#UseListPane" data-source-node="n74">Using the List Pane</a></p>
+        <p data-source-node="n75">- <a href="#UseDetailsPane" data-source-node="n76">Using the Detail Pane</a></p>
+        <p data-source-node="n77">- <a href="#detailsScreen" data-source-node="n78">Using the Details Screen</a></p>
+        <p data-source-node="n79">- <a href="#Custom" data-source-node="n80">Screen Customization</a></p>
+        <p data-source-node="n81">- <a href="#security" data-source-node="n82">Security</a></p>
+        <p data-source-node="n83">-<a href="#TouchDevice" data-source-node="n84"> Touch Device Guidance</a></p>
+        <p data-source-node="n85">- <a href="#virtualKeyboard" data-source-node="n86">Using a Tablet's Virtual Keyboard</a></p>
+        <p data-source-node="n87">- <a href="#fieldLengths" data-source-node="n88">Field Lengths / Decimal Positions</a></p>
+        <p data-source-node="n89"> </p>
+        <p data-source-node="n90"> </p>
+        <hr width="100%" align="center" data-source-node="n91">
+        <p data-source-node="n92"> </p>
+        <p data-source-node="n93"> </p>
+        <h4 data-source-node="n94"><a name="Basic" data-source-node="n95"></a>Basic Screen Structure...</h4>
+        <p data-source-node="n96">Each insight screen includes five primary components (as seen in the picture below): the Navigation Bar, the Menu Bar, the Filter Pane, the List Pane, and the Detail Pane. You can scroll each pane independently of each other. See the "using" sections later in this topic for more information about these screen components.</p>
+        <p data-source-node="n97"> </p>
+        <p style="text-align: left" data-source-node="n98">
+            <img loading="eager" data-source-node="n99">
+        </p>
+        <p data-source-node="n100"> </p>
+        <hr width="100%" align="center" data-source-node="n101">
+        <p data-source-node="n102"> </p>
+        <p data-source-node="n103"> </p>
+        <h4 data-source-node="n104"><a name="SignInOut" data-source-node="n105"></a>Sign In/Out of Insight Screens...</h4>
+        <p data-source-node="n106">Authentication into the SCALE Insight screens is performed by an external Security Token Service (STS).</p>
+        <p data-source-node="n107"> </p>
+        <p data-source-node="n108"> STS performs authentication against an organization’s user pool. This could be Microsoft Entra ID or Active Directory Federation Services (AD FS) linked to an on-premise Active Directory. After you are authenticated by STS,  SCALE verifies that the email address is mentioned in the user profile configuration and that the user profile is active in the User Profile configuration. Upon successful verification,  access permission is granted. </p>
+        <p data-source-node="n109"> </p>
+        <p data-source-node="n110">You can use the following URL as the generic sign-in and front page to SCALE: https://&lt;servername&gt;/scale/security/login. When you access this page, you will be navigated to the configured home page after authentication.</p>
+        <p data-source-node="n111"> </p>
+        <p data-source-node="n112">NOTE: For instructions on configuring the STS, refer to the SCALE installation guides.</p>
+        <hr width="100%" align="center" data-source-node="n113">
+        <p data-source-node="n114"> </p>
+        <p data-source-node="n115"> </p>
+        <h4 data-source-node="n116"><a name="NavBar" data-source-node="n117"></a>Using the Navigation Bar...</h4>
+        <p data-source-node="n118">An insight screen’s Navigation Bar (located on the top of the screen) provides you access to several important features.</p>
+        <p data-source-node="n119"> </p>
+        <p data-source-node="n120">The graphic below outlines the structure of the Navigation Bar:</p>
+        <p data-source-node="n121"> </p>
+        <p style="text-align: left" data-source-node="n122">
+            <img style="width: 1287;height: 136" loading="eager" data-source-node="n123">
+        </p>
+        <p data-source-node="n124"> </p>
+        <h5 data-source-node="n125">System Menu </h5>
+        <ul data-source-node="n126">
+            <li data-source-node="n127">This menu contains links to all of the insight/transaction/details/monitoring screens. <br data-source-node="n128"><br data-source-node="n129"></li>
+            <li data-source-node="n130">You can use the screen search box to select and open a screen directly from the search list. This box is available on any screen that has a system menu. <br data-source-node="n131"><br data-source-node="n132"><ul data-source-node="n133"><li data-source-node="n134">When you type a value in the search field, the system will display the list of screens based on the typed value.<br data-source-node="n135"><br data-source-node="n136"></li><li data-source-node="n137">The list will only display the screens that you are authorized or licensed to use.<br data-source-node="n138"><br data-source-node="n139"></li><li data-source-node="n140">The list will also display the screens that you have added as Favorites.<br data-source-node="n141"><br data-source-node="n142"></li><li data-source-node="n143">The screens will be displayed in the current tab only.<br data-source-node="n144"><br data-source-node="n145"></li><li data-source-node="n146">You can also access non-metadata screens using the screen search.<br data-source-node="n147"><br data-source-node="n148"></li></ul></li>
+            <li data-source-node="n149">You can use its Favorites section to save one or more system menus. <br data-source-node="n150"><br data-source-node="n151"><ul data-source-node="n152"><li data-source-node="n153">When you click on the Add icon under Favorites, the system will display 'Add a favorite' pop-up. <br data-source-node="n154"><br data-source-node="n155"></li><li data-source-node="n156">Enter a suitable name for the Favorite screen and the screen gets added in the Favorites section under Add icon. You can retrieve the screen by clicking on that specified name. <br data-source-node="n157"><br data-source-node="n158"> </li></ul><p data-source-node="n159">NOTE: If the screen currently being viewed is not either an Insight, Transaction, Details, or Monitoring screen, the Add icon disappears (For example, the security access violation page). Otherwise, the Add icon is enabled.<br data-source-node="n160"><br data-source-node="n161"></p></li>
+            <li data-source-node="n162">You can delete the previously saved Favorites by clicking on the Edit button. A corresponding delete symbol for each of the saved Favorites allows you to complete the deletion process after you confirm the action. <br data-source-node="n163"><br data-source-node="n164"></li>
+            <li data-source-node="n165">When you select a different insight screen, you can choose to have the system display it in the current browser tab, in a new browser tab, or in a new browser window (by right-clicking on the link; or on a tablet, press-and-hold the link until a menu pops up).<br data-source-node="n166"><br data-source-node="n167"></li>
+            <li data-source-node="n168">If you collapse the system menu or navigate to a different screen, you can always traverse to the System Menu to find it in its previous state as set by you. In short, it retains the prior setting. <br data-source-node="n169"><br data-source-node="n170"></li>
+            <li data-source-node="n171">This menu displays all independent Insight screens grouped by their respective functional areas. The screens are segregated into different functional areas like Receiving, Order planning, Shipping, and so on. You can further click on them to find the corresponding list of Insight screens. <br data-source-node="n172"><br data-source-node="n173"></li>
+        </ul>
+        <p style="text-align: left" data-source-node="n174">
+            <img loading="eager" data-source-node="n175">
+        </p>
+        <p data-source-node="n176"> </p>
+        <p data-source-node="n177"> </p>
+        <p data-source-node="n178"> </p>
+        <p style="text-align: left" data-source-node="n179">
+            <img style="width: 445;height: 620" loading="eager" data-source-node="n180">
+        </p>
+        <p data-source-node="n181"> </p>
+        <p data-source-node="n182"> </p>
+        <h5 data-source-node="n183">Screen Title</h5>
+        <ul data-source-node="n184">
+            <li data-source-node="n185">This represents the name of the current insight screen.<br data-source-node="n186"></li>
+        </ul>
+        <p data-source-node="n187"> </p>
+        <h5 data-source-node="n188">Filter</h5>
+        <ul data-source-node="n189">
+            <li data-source-node="n190">This represents the filter applied on the Insight screen. <br data-source-node="n191"><br data-source-node="n192"></li>
+            <li data-source-node="n193">When a search is performed, the system will add a badge that indicates how many filter criteria were applied. In the above figure, since three criteria were indicated during the search, the badge has a "3" adjacent to it.  <br data-source-node="n194"><br data-source-node="n195"></li>
+            <li data-source-node="n196">This badge will refresh its count once a new search is performed.<br data-source-node="n197"><br data-source-node="n198"></li>
+            <li data-source-node="n199">The system will not display the badge if a search is performed without the specified criteria.<br data-source-node="n200"><br data-source-node="n201"></li>
+            <li data-source-node="n202">Each row of defined advanced criteria represents 1 badge count.<br data-source-node="n203"><br data-source-node="n204"></li>
+            <li data-source-node="n205">Each "side" of a date/time range (i.e., from and to) represents 1 badge count.<br data-source-node="n206"><br data-source-node="n207"></li>
+            <li data-source-node="n208">Each multi-selection control (for example, Warehouse) represents 1 badge count, no matter how many selections are made in the control.<br data-source-node="n209"><br data-source-node="n210"></li>
+        </ul>
+        <h5 data-source-node="n211">Display Toggle Buttons </h5>
+        <ul data-source-node="n212">
+            <li data-source-node="n213">These buttons will hide/show these two panes on the insight screen: <br data-source-node="n214"><br data-source-node="n215">- The Filter Pane is represented by a filter icon.<br data-source-node="n216"><br data-source-node="n217">- The Detail Pane is represented by a page icon.<br data-source-node="n218"></li>
+        </ul>
+        <p data-source-node="n219"> </p>
+        <h5 data-source-node="n220">Home Icon</h5>
+        <ul data-source-node="n221">
+            <li data-source-node="n222">You can use this icon to return to your configured home page within the application. Any prior filter or data on the configured home page will not remain set.  <br data-source-node="n223"><br data-source-node="n224"></li>
+            <li data-source-node="n225">If you have not configured any home page, clicking on this navigates you to the Warehouse Dashboard Screen. <br data-source-node="n226"><br data-source-node="n227"></li>
+            <li data-source-node="n228">You can set different home pages for each browser/device/environment.<br data-source-node="n229"></li>
+        </ul>
+        <h5 data-source-node="n230"> </h5>
+        <h5 data-source-node="n231">Environment</h5>
+        <ul data-source-node="n232">
+            <li data-source-node="n233">This represents the name of the environment that you are currently signed into. When signing on for the first time, the environment is set to one of the environments for which you have authorized access. <br data-source-node="n234"></li>
+        </ul>
+        <p data-source-node="n235"> </p>
+        <h5 data-source-node="n236">Warehouse</h5>
+        <ul data-source-node="n237">
+            <li data-source-node="n238"> This represents your user's assigned warehouse from the current session.<br data-source-node="n239"><br data-source-node="n240"></li>
+            <li data-source-node="n241">You can change the warehouse to any other warehouse for which you have access authorization. When you choose another warehouse, any subsequent screen will use the newly specified warehouse.  If you have specified the filter criteria, that will be retained (including the original warehouse) when returning to an insight screen from another screen after you have changed the warehouse.  If not, the warehouse in the filter criteria will be changed to the newly selected warehouse.<br data-source-node="n242"></li>
+        </ul>
+        <p data-source-node="n243"> </p>
+        <h5 data-source-node="n244">Navigation Trail </h5>
+        <ul data-source-node="n245">
+            <li data-source-node="n246">This shows up to the previous 10 screens that the user has accessed within this browser tab, with the most recent starting at the top.<br data-source-node="n247"><br data-source-node="n248">NOTE: If you use Cancel option to leave a screen, that screen is not added to the navigation trail. <br data-source-node="n249"><br data-source-node="n250"></li>
+            <li data-source-node="n251">This is unique per browser tab. If a screen is opened in a new tab, the navigation trail will start freshly in the new tab while the previous tab will maintain its trail.<br data-source-node="n252"><br data-source-node="n253"></li>
+            <li data-source-node="n254">Pressing (or selecting or tapping) on an entry will take the user back to that screen in its last “saved” state.<br data-source-node="n255"><br data-source-node="n256"></li>
+            <li data-source-node="n257">When you leave a sub-screen (displayed from a parent screen) by pressing the Cancel action, or the system completes processing on the sub-screen and returns to the parent screen, the sub-screen is removed from the navigation trail list. Therefore, the navigation trail is not maintained for the sub-screen.<br data-source-node="n258"><br data-source-node="n259"></li>
+            <li data-source-node="n260">Screens shown in modal dialogs are ignored.<br data-source-node="n261"></li>
+        </ul>
+        <p data-source-node="n262"> </p>
+        <h5 data-source-node="n263">Help Menu</h5>
+        <ul data-source-node="n264">
+            <li data-source-node="n265"> This menu contains links to the SCALE online help, with which you can access the complete help system, or a topic specific to the insight screen you are currently viewing. <br data-source-node="n266"><br data-source-node="n267"></li>
+            <li data-source-node="n268">If you select the "toggle resource keys" option, the system will display the resource key ID's of text labels that the current insight screen is using. If you then select this option again, the system will hide the resource key ID's and display the text labels. Note that if the resource keys are toggled on and you navigate to a different insight screen, the system will open that new screen with the resource keys displayed as well. </li>
+        </ul>
+        <p data-source-node="n269"> </p>
+        <h5 data-source-node="n270">User Menu</h5>
+        <p data-source-node="n271">If you click on the user menu, then  your SCALE user name will be displayed in the drop-down menu along with the following options:</p>
+        <ol style="font-weight: normal" data-source-node="n272">
+            <li value="1" data-source-node="n273"><b data-source-node="n274">Restore Default Settings: </b>The "restore default settings" option will allow you to change back to the shipped default the following insight screen display settings: column grouping, column preferences (sequence, visibility, width), column sorting, mini-grid, and hierarchical mini-grid. Note that the system will prompt you to confirm this action before actually restoring these settings. While opening each insight screen, after performing a "restore default settings",<br data-source-node="n275"><br data-source-node="n276"><ul style="font-weight: normal" data-source-node="n277"><li data-source-node="n278">All displayed columns show their entire column headings and data in them without data being truncated<br data-source-node="n279"><br data-source-node="n280"></li><li data-source-node="n281">All displayed columns shrink to fit the data being displayed without truncating the data or the column heading.<br data-source-node="n282"></li><br data-source-node="n283"></ul></li>
+            <li value="2" data-source-node="n284"><b data-source-node="n285">Workstation Configuration: </b>This option enables you to set the application to the workstation identifier which will be the default machine for all document routing activities.<br data-source-node="n286"><br data-source-node="n287"><ul style="font-weight: normal" data-source-node="n288"><li data-source-node="n289">Click <b data-source-node="n290">User Menu</b> &gt;&gt; <b data-source-node="n291">Workstation Configuration</b><br data-source-node="n292"><br data-source-node="n293"></li><li data-source-node="n294">In the <b data-source-node="n295">Workstation Assignment</b> pop -up window, select the workstation name from the drop down list. Click <b data-source-node="n296">Save</b>.<br data-source-node="n297"><br data-source-node="n298"><b data-source-node="n299">Note</b>: The name populated in the drop-down is defined in the <b data-source-node="n300">Machine Name</b> field in the document routing configuration. Workstation name (identifier) are configured in the printer configuration section.<br data-source-node="n301"><br data-source-node="n302"></li><li data-source-node="n303">Also, upon first sign in to the system, the <b data-source-node="n304">Workstation Assignment</b> pop-will be prompted to select the workstation.<br data-source-node="n305"><br data-source-node="n306"></li><br data-source-node="n307"></ul></li>
+            <li value="3" data-source-node="n308"><b data-source-node="n309">Set As Home Page: </b>Clicking on 'Set as home page' option sets the current page as your home page for that browser/device/environment. This is allowed on insight screens, transaction screens (not shown in a modal window), and monitor screens.<br data-source-node="n310"><br data-source-node="n311"><ul data-source-node="n312"><li data-source-node="n313">Upon first sign in to the system without establishing a home page, the Warehouse Dashboard screen appears. After setting a home page, signing out and signing back in with the same user ID using this same device and browser takes you to the established home page.  No filters are set when the screen appears.<br data-source-node="n314"><br data-source-node="n315"></li><li data-source-node="n316">After setting a home page on one browser but not another, signing in with the same user ID using a different browser takes you to the Warehouse Dashboard screen.<br data-source-node="n317"><br data-source-node="n318"></li><li data-source-node="n319">After setting a home page on one device but not another, signing in with the same user ID using a different device takes you to the Warehouse Dashboard screen.<br data-source-node="n320"><br data-source-node="n321"></li><li data-source-node="n322">Having different home pages for different browsers/devices, signing on with the same user ID takes you to the home page you have configured for that respective browser/device.<br data-source-node="n323"><br data-source-node="n324"></li><li data-source-node="n325">When signing on to a different environment on a device/browser where the home page was established, you can establish a different home page for that environment.<br data-source-node="n326"><br data-source-node="n327"></li><br data-source-node="n328"></ul></li>
+            <li value="4" data-source-node="n329"><b data-source-node="n330">Sign Out: </b>The "sign out" option allows you to log out of the current insight screen session. </li>
+        </ol>
+        <p data-source-node="n331">NOTE: The user menu can show a generic image or your customized image  saved at  \\&lt;server name&gt;\ILS\Web\_custom\images with the file name &lt;username&gt;.png,</p>
+        <p data-source-node="n332"> </p>
+        <h5 data-source-node="n333">Offline Indicator</h5>
+        <ul data-source-node="n334">
+            <li data-source-node="n335">This graphical indicator tells the user whether the server is online (green) or offline (red). When the server is offline, the user is not able to perform any action, search for a result, or navigate to any other insight screen. All the fields will be disabled too. They will get enabled when the server comes online.</li>
+        </ul>
+        <p data-source-node="n336"> </p>
+        <hr width="100%" align="center" data-source-node="n337">
+        <h4 data-source-node="n338"><a name="UsingMenu" data-source-node="n339"></a>Using the Menu Bar...</h4>
+        <p data-source-node="n340">An insight screen’s Menu Bar (located below the Navigation Bar) provides you access to several important features.</p>
+        <p data-source-node="n341"> </p>
+        <p data-source-node="n342">The graphic below outlines the structure of the Menu Bar:</p>
+        <p data-source-node="n343"> </p>
+        <p data-source-node="n344">
+            <img loading="eager" data-source-node="n345">
+        </p>
+        <p data-source-node="n346"> </p>
+        <h5 data-source-node="n347">Apply Filter</h5>
+        <p data-source-node="n348"> </p>
+        <p data-source-node="n349">If you provide some criteria to select specific records to be displayed, you can apply those filter with this menu. </p>
+        <p data-source-node="n350"> </p>
+        <h5 data-source-node="n351">Clear Filter</h5>
+        <p data-source-node="n352"> </p>
+        <p data-source-node="n353">You can delete the filter selection by clicking on this menu. The "clear" action performs several actions: any filter(s) that have been applied will be removed, the badge's count will be updated to zero, and a search action will be performed with no filters applied.</p>
+        <p data-source-node="n354"> </p>
+        <h5 data-source-node="n355">Cancel Search</h5>
+        <p data-source-node="n356">
+            <br data-source-node="n357">
+        </p>
+        <p data-source-node="n358">You can stop a search that has been running for a long time by clicking on this menu. This menu will be enabled only if a record search is in progress.</p>
+        <p data-source-node="n359"> </p>
+        <h5 data-source-node="n360">Save</h5>
+        <p data-source-node="n361"> </p>
+        <p data-source-node="n362">You can save the search criteria by clicking on this. Refer to <a href="#Search_Tips" class="MCXref xref" data-source-node="n363">Search Tips</a> and <a href="#SavingSeacrh" data-source-node="n364">Saving Search Criteria</a> for additional information. </p>
+        <p data-source-node="n365"> </p>
+        <h5 data-source-node="n366">Favorites </h5>
+        <p data-source-node="n367"> </p>
+        <p data-source-node="n368">Saved searches are displayed under the Favorites menu. </p>
+        <p data-source-node="n369"> </p>
+        <h5 data-source-node="n370">Summary</h5>
+        <p data-source-node="n371"> </p>
+        <p data-source-node="n372">If you do not need the Summary Tiles information in the <a href="#UseListPane" data-source-node="n373">List Pane</a>, you can click this Sigma (Σ) symbol to hide that information. </p>
+        <p data-source-node="n374"> </p>
+        <h5 data-source-node="n375">Group by </h5>
+        <p data-source-node="n376"> </p>
+        <p data-source-node="n377">You can show/hide the 'Group by Columns Area' section of the List Pane by clicking on this Group by icon. </p>
+        <p data-source-node="n378"> </p>
+        <h5 data-source-node="n379">Collapse All</h5>
+        <p data-source-node="n380"> </p>
+        <p data-source-node="n381">You can collapse all the records in the list pane when they are grouped by one or more fields. </p>
+        <p data-source-node="n382"> </p>
+        <h5 data-source-node="n383">Save Filter Criteria as Tile</h5>
+        <p data-source-node="n384"> </p>
+        <p data-source-node="n385">Click to save the set filter criteria for the insight screen as Tile. This save tile can be displayed in Warehouse Dashboard screen be enabling the tile. Read Save Filter Criteria for more information.</p>
+        <p data-source-node="n386"> </p>
+        <p data-source-node="n387"> </p>
+        <h5 data-source-node="n388">Print Menu Bar</h5>
+        <p data-source-node="n389"> </p>
+        <p data-source-node="n390"> </p>
+        <h5 data-source-node="n391">Export to Excel</h5>
+        <p data-source-node="n392"> </p>
+        <p data-source-node="n393">If you click on this option, a spreadsheet on your device will open with all of the rows on all pages of the grid being displayed.  On a Windows machine, this opens a spreadsheet in the Downloads directory.  On a non-Windows tablet device, it opens the spreadsheet in a new browser tab. </p>
+        <p data-source-node="n394"> </p>
+        <p data-source-node="n395">NOTE:</p>
+        <ul data-source-node="n396">
+            <li data-source-node="n397">
+                <p data-source-node="n398">	Data is filtered by the criteria specified in the filter applied to the screen.<br data-source-node="n399"><br data-source-node="n400"></p>
+            </li>
+            <li data-source-node="n401">
+                <p data-source-node="n402"> Data is sorted by the default sort set up for the screen.  If you have overridden the sort on the screen, it will not be reflected in the sorting of the spreadsheet.<br data-source-node="n403"><br data-source-node="n404"></p>
+            </li>
+            <li data-source-node="n405">
+                <p data-source-node="n406">All columns from the grid, including those that are hidden from the user, are included.<br data-source-node="n407"><br data-source-node="n408"></p>
+            </li>
+            <li data-source-node="n409">
+                <p data-source-node="n410">Date fields will also include the time stored in the database.<br data-source-node="n411"><br data-source-node="n412"></p>
+            </li>
+            <li data-source-node="n413">
+                <p data-source-node="n414">Some Yes/No fields will display as 0/1 and some will display as False/True.<br data-source-node="n415"><br data-source-node="n416"></p>
+            </li>
+            <li data-source-node="n417">
+                <p data-source-node="n418">Numeric fields will display with all of their decimal positions, even if configured to display with fewer/no decimal positions.<br data-source-node="n419"><br data-source-node="n420"></p>
+            </li>
+            <li data-source-node="n421">
+                <p data-source-node="n422">When the maximum number of records (5,000) are displayed in the grid, the export includes only the records in the grid regardless of whether other records in the database meet the criteria.<br data-source-node="n423"><br data-source-node="n424"></p>
+            </li>
+        </ul>
+        <hr width="100%" align="center" data-source-node="n425">
+        <p data-source-node="n426"> </p>
+        <h4 data-source-node="n427"><a name="UsingSearch" data-source-node="n428"></a>Using the Filter Pane...</h4>
+        <p data-source-node="n429">An insight screen’s Filter Pane (located on the far left of the screen) provides you multiple data search methods. Insight screens open by default with the Filter Pane collapsed.  You can expand the Filter Pane by pressing on the filter icon on the Navigation Bar.</p>
+        <p data-source-node="n430"> </p>
+        <p data-source-node="n431">The graphic below outlines the structure of the Filter Pane:</p>
+        <p data-source-node="n432"> </p>
+        <p data-source-node="n433"> </p>
+        <p style="text-align: left" data-source-node="n434">
+            <img loading="eager" data-source-node="n435">
+        </p>
+        <p data-source-node="n436"> </p>
+        <h5 data-source-node="n437">Basic Criteria Accordion</h5>
+        <ul data-source-node="n438">
+            <li data-source-node="n439">This includes several common fields that you will begin a search with.<br data-source-node="n440"><br data-source-node="n441"></li>
+            <li data-source-node="n442">The warehouse dropdown is defaulted with the user’s default warehouse.  The defaulted warehouse would be the same warehouse as displayed on the Navigation bar.<br data-source-node="n443"></li>
+        </ul>
+        <p data-source-node="n444"> </p>
+        <h5 data-source-node="n445">Additional Criteria Accordion(s)</h5>
+        <ul data-source-node="n446">
+            <li data-source-node="n447">These accordions list various search criteria that you can use to further refine a search. The number of accordions displayed will depend on what type of Insight screen you are on.</li>
+        </ul>
+        <p data-source-node="n448"> </p>
+        <h5 data-source-node="n449">Advanced Criteria Accordion</h5>
+        <ul data-source-node="n450">
+            <li data-source-node="n451"> This accordion allows the user to  define "advanced" criteria in order to more finely define your insight screen search. This functions in the same manner as SCALE filter data configurations, in that you create data rules that will govern the search.</li>
+        </ul>
+        <p data-source-node="n452"> </p>
+        <h5 data-source-node="n453"><a name="Search_Tips" data-source-node="n454"></a>Search Tips</h5>
+        <p data-source-node="n455">The following are some tips to use when performing searches:</p>
+        <ul data-source-node="n456">
+            <li data-source-node="n457">Search using the wildcard symbol % is supported only in text fields (not numeric field<br data-source-node="n458"><br data-source-node="n459">NOTE: If you search without using the wildcard symbol, the system will still return all records that start with the characters entered.  For example, searching for "ABC" in the Item Field will return all the item records that begin with "ABC" (e.g., ABC0001, ABC-0010, and ABCDEFG).<br data-source-node="n460"><br data-source-node="n461"></li>
+            <li data-source-node="n462">
+                <p data-source-node="n463">Invoke the search action by pressing the Apply button on the screen or the Enter key on your keyboard.<br data-source-node="n464"><br data-source-node="n465"></p>
+            </li>
+            <li data-source-node="n466">Remove all the current applied search filters by pressing the Clear button. Pressing the Clear button will not start a search.<br data-source-node="n467"><br data-source-node="n468"></li>
+            <li data-source-node="n469">Press the Apply button to start the search.<br data-source-node="n470"><br data-source-node="n471"></li>
+            <li data-source-node="n472">You can stop a search that has been running for a long time by pressing the Cancel Search button.<br data-source-node="n473"></li>
+        </ul>
+        <p data-source-node="n474"> </p>
+        <h5 data-source-node="n475"><a name="SavingSeacrh" data-source-node="n476"></a>Saving Search Criteria</h5>
+        <p data-source-node="n477">You can save the criteria used for a search by pressing the save icon on the Filter Pane's menu bar. When you do this, the system will prompt you for a name to identify the search.</p>
+        <p data-source-node="n478"> </p>
+        <p data-source-node="n479">
+            <img style="width: 1284;height: 463" loading="eager" data-source-node="n480">
+        </p>
+        <p data-source-node="n481"> </p>
+        <p data-source-node="n482"> Saved searches are displayed under the Favorites menu (indicated by a star icon, see the screenshot below). If you select a saved search, the system will perform the search, and display the resulting records. If you press the "X" button to the right of a saved search, then the system will delete it (after prompting you to confirm this action).</p>
+        <p data-source-node="n483"> </p>
+        <p style="text-align: left" data-source-node="n484">
+            <img style="width: 417;height: 90" loading="eager" data-source-node="n485">
+        </p>
+        <p data-source-node="n486"> </p>
+        <p data-source-node="n487"> </p>
+        <hr width="100%" align="center" data-source-node="n488">
+        <p data-source-node="n489"> </p>
+        <p data-source-node="n490"> </p>
+        <h4 data-source-node="n491"><a name="UseListPane" data-source-node="n492"></a>Using the List Pane...</h4>
+        <p data-source-node="n493">An insight screen’s List Pane displays results from queries executed on the Filter Pane. The records are listed in a grid format, which is paginated if there are too many results to display on the screen at one time. The List Pane also includes several “summary tiles” that provide data totals related to the record(s) displayed in the grid. Opening the insight screen initially from the system menu or the home page button will display the list pane grid without any search results. You must press Apply Filter to view the results based on the filter criteria. If you open the insight screen from the navigation trail, indicator tile, monitoring screen insight button, monitoring screen chart, and so on,  the filter from the calling screen will be applied.</p>
+        <p data-source-node="n494"> </p>
+        <p data-source-node="n495">NOTE: Here columns by default are auto-sized to the maximum width of the column heading and the data being displayed. This ensures that the screen optimizes the data display without truncating anything pertinent. There are some exceptions to the rule such as description fields, which defaults to fixed length.  If the user resizes the column, then that column stays fixed at that width for that user/device/browser.</p>
+        <p data-source-node="n496"> </p>
+        <p data-source-node="n497">The graphic below outlines the structure of the List Pane:</p>
+        <p data-source-node="n498"> </p>
+        <p style="text-align: left" data-source-node="n499">
+            <img loading="eager" data-source-node="n500">
+        </p>
+        <p data-source-node="n501"> </p>
+        <h5 data-source-node="n502">Summary Tiles </h5>
+        <ul data-source-node="n503">
+            <li data-source-node="n504">These present relevant "total" values related to the records displayed in the List Pane. You can hide this Summary Tiles section by clicking the  Σ ("Sigma") icon in the menu bar.</li>
+        </ul>
+        <p data-source-node="n505"> </p>
+        <h5 data-source-node="n506">Group By Columns Area </h5>
+        <ul data-source-node="n507">
+            <li data-source-node="n508">This allows you to manually drag grid columns in order to group the records listed by specific field(s). You can also press the "Select columns" link to perform this same action.<br data-source-node="n509"><br data-source-node="n510"></li>
+            <li data-source-node="n511">You can hide this section by clicking on the 'Group by' icon of the menu bar. </li>
+        </ul>
+        <p data-source-node="n512"> </p>
+        <h5 data-source-node="n513">Records Grid </h5>
+        <ul data-source-node="n514">
+            <li data-source-node="n515">This contains the record(s) that the system returned per your query executed in the Filter Pane:<br data-source-node="n516"><br data-source-node="n517">- Opening the insight screen initially from the system menu or the home page button will display the list pane grid without any search results. You must press Apply Filter to view the results based on the filter criteria. If you open the insight screen from the navigation trail, indicator tile, monitoring screen insight button, monitoring screen chart, etc. will apply the filter saved for the screen from which the insight screen is being called.<br data-source-node="n518"><br data-source-node="n519">- You use the checkboxes to select a row.  You can select multiple rows. Only actions that support multiple row selection are enabled when selecting multiple rows.<br data-source-node="n520"><br data-source-node="n521">- You can navigate to other pages in the grid and also select rows from those pages.<br data-source-node="n522"><br data-source-node="n523">- The checkbox at the top of the column selects all rows on that page.   If you also want to select all rows on other pages, you can navigate to those pages. <br data-source-node="n524"><br data-source-node="n525">- The system will display 100 records by default on the screen, and the rest on pages, which you can navigate to by selecting the number of the page that you want to view. You can modify the initial number of displayed records through Screen Control Attributes, if needed. <br data-source-node="n526"><br data-source-node="n527">- You can  choose the Advanced Filter  from the pop up bar to view the Advanced Filter screen. You can add filter criteria to the records matching either ALL or ANY of the criteria. Click Search to get the results based on the new search criteria entered.<br data-source-node="n528"><br data-source-node="n529">- You can define conditional rule(s) in the database so that the system will shade grid row(s) a certain color if they meet the criteria for the rule(s). See the SDK topic "How to: Setup Colors on the List Pane Grid" for more information on how to define these rules.<br data-source-node="n530"><br data-source-node="n531">- You can define conditional rule(s) in the database so that the system will display an icon on the grid row(s) if they meet the criteria for the rule(s). See the SDK topic "How to: Setup Icons on the List Pane Grid" for more information on how to define these rules.<br data-source-node="n532"><br data-source-node="n533">- Note that the maximum amount of records that the system returns for a search is determined by the "Record number displayed in Quick Finds/Lookups/etc" value configured on the Technical Values Window.<br data-source-node="n534"></li>
+        </ul>
+        <p data-source-node="n535"> </p>
+        <h5 data-source-node="n536">Summary Totals Area </h5>
+        <ul data-source-node="n537">
+            <li data-source-node="n538">This displays total values for numeric data columns (these are turned off by default). </li>
+        </ul>
+        <p data-source-node="n539"> </p>
+        <h5 data-source-node="n540">Navigational Aids </h5>
+        <ul data-source-node="n541">
+            <li data-source-node="n542">These allow you to select the grid page that you want to display, or move to the previous/next page.<br data-source-node="n543"></li>
+        </ul>
+        <p data-source-node="n544"> </p>
+        <hr width="100%" align="center" data-source-node="n545">
+        <p data-source-node="n546"> </p>
+        <p data-source-node="n547"> </p>
+        <h4 data-source-node="n548"><a name="UseDetailsPane" data-source-node="n549"></a>Using the Detail Pane...</h4>
+        <p data-source-node="n550">An insight screen’s Detail Pane provides a snapshot view of a selected result record from the List Pane. The system displays data in this pane where the selected result represents a single row of inventory data. The header section will show information pertinent to that particular screen. For example, for the Shipment Insight screen, the header section of the detail pane should contain: Shipment ID, Customer Name, Ship to Name, Carrier/Carrier Service, Trailing Status/Leading Status, and Scheduled Ship Date. </p>
+        <p data-source-node="n551"> </p>
+        <p data-source-node="n552">Also, there are Indicator Tiles indicating the total number of records associated with the selected record, and when you click on a tile, it takes you to the corresponding screen to show you the details of those records. For example, there are Indicator Tiles for the following in the Shipment Insight screen:</p>
+        <p data-source-node="n553"> </p>
+        <h5 data-source-node="n554">Lines:</h5>
+        <p data-source-node="n555"> </p>
+        <p data-source-node="n556"> - Displays total number of shipment line records for a shipment.  </p>
+        <p data-source-node="n557">- Clicking on this tile takes you to Shipment Line Insight filtering by this internal shipment number.<br data-source-node="n558"><br data-source-node="n559"></p>
+        <h5 data-source-node="n560">Containers: </h5>
+        <p data-source-node="n561"> </p>
+        <p data-source-node="n562">- Displays total number of parent shipping containers. </p>
+        <p data-source-node="n563"> - Clicking on this tile takes you to Shipping Container Insight filtering by this internal shipment number. </p>
+        <p data-source-node="n564"> </p>
+        <p data-source-node="n565">Note that these Indicator Tiles can only be clicked if the user has the required security to access the called screen. </p>
+        <p data-source-node="n566"> </p>
+        <p data-source-node="n567">The graphic below outlines the structure of the Detail Pane: </p>
+        <p data-source-node="n568"> </p>
+        <p data-source-node="n569"> </p>
+        <p style="text-align: left" data-source-node="n570">
+            <img loading="eager" data-source-node="n571">
+        </p>
+        <p data-source-node="n572"> </p>
+        <p data-source-node="n573"> </p>
+        <h5 data-source-node="n574">Actions Menu Bar </h5>
+        <ul data-source-node="n575">
+            <li data-source-node="n576">This includes a menu with links to action(s) that you can perform against the data represented in the Detail Pane. The system will typically display an appropriate success/error message after the action is invoked.</li>
+        </ul>
+        <p data-source-node="n577"> </p>
+        <h5 data-source-node="n578">Header Information Area </h5>
+        <ul data-source-node="n579">
+            <li data-source-node="n580">This includes important record data, specifically information that is typically used to identify a record (i.e., item/company/description for inventory records, or shipment ID/customer/carrier for shipment records).</li>
+        </ul>
+        <p data-source-node="n581"> </p>
+        <h5 data-source-node="n582">Summary Tiles </h5>
+        <ul data-source-node="n583">
+            <li data-source-node="n584">These present relevant "total" values related to the record represented in the Detail Pane.</li>
+        </ul>
+        <p data-source-node="n585"> </p>
+        <h5 data-source-node="n586">Data Accordions </h5>
+        <ul data-source-node="n587">
+            <li data-source-node="n588">These house informational fields related to the record represented in the Detail Pane. Some of the accordions are simply lists of fields. Others, however, contain a mini-grid, which lists a number of sub-records (such as lot, license plate, etc) related to the record selected in the List Pane. <br data-source-node="n589"><br data-source-node="n590"></li>
+            <li data-source-node="n591">You can resize columns in most mini-grids and hierarchical mini-grids. Also, note that such resizing is not possible on tablet devices without a mouse.<br data-source-node="n592"><br data-source-node="n593"></li>
+            <li data-source-node="n594">You can move columns in the mini-grid and hierarchical mini-grids. <br data-source-node="n595"><br data-source-node="n596"></li>
+            <li data-source-node="n597">You can sort columns in the mini-grid and hierarchical mini-grid.<br data-source-node="n598"><br data-source-node="n599"></li>
+            <li data-source-node="n600">You can hide columns in the mini-grid and hierarchical mini-grid.<br data-source-node="n601"><br data-source-node="n602"></li>
+            <li data-source-node="n603">This section displays 10 records on one page in the mini-grid and then the system will display navigational aids to allow you to view other data pages.</li>
+        </ul>
+        <p data-source-node="n604"> </p>
+        <h5 data-source-node="n605">Sidebar</h5>
+        <ul data-source-node="n606">
+            <li data-source-node="n607">This section facilitates easy navigation through the Details Pane. </li>
+        </ul>
+        <p data-source-node="n608"> </p>
+        <hr width="100%" align="center" data-source-node="n609">
+        <p data-source-node="n610"> </p>
+        <p data-source-node="n611"> </p>
+        <h4 data-source-node="n612"><a name="detailsScreen" data-source-node="n613"></a>Using the Details Screen...</h4>
+        <p data-source-node="n614">A Details Screen is displayed when you choose to edit/view a record from an insight screen. You can access the details screen from an actions menu "view" or "edit" option (depending on your security settings), or from a hyperlinked piece of information (such as the "work unit" value in the Work Insight screen). When you select this link, the system will open the Details Screen. </p>
+        <p data-source-node="n615"> </p>
+        <p data-source-node="n616">The graphic below outlines the structure of the Details Screen:</p>
+        <p data-source-node="n617"> </p>
+        <p data-source-node="n618">
+            <img loading="eager" data-source-node="n619">
+        </p>
+        <p data-source-node="n620"> </p>
+        <h5 data-source-node="n621">Navigation Bar</h5>
+        <ul data-source-node="n622">
+            <li data-source-node="n623">This includes the System Menu (Show or Hide the left pane), Screen Title, User Name Menu, Navigation Trail, Help menu (which includes the same options as the help menu on the insight screen's help menu), and the Offline Indicator. If you click on the System Menu, all independent Insight screens grouped by their respective functional areas get displayed. </li>
+        </ul>
+        <p data-source-node="n624"> </p>
+        <h5 data-source-node="n625">Menu Bar</h5>
+        <ul data-source-node="n626">
+            <li data-source-node="n627">This includes a Save button which allows the user to apply the changes you have made to a record. <br data-source-node="n628"><br data-source-node="n629"></li>
+            <li data-source-node="n630">The Cancel button cancels the screen and navigates back to the previous screen in the navigation trail.<br data-source-node="n631"><br data-source-node="n632"></li>
+            <li data-source-node="n633">Also, header informational field is located on this menu bar.<br data-source-node="n634"><br data-source-node="n635"></li>
+            <li data-source-node="n636">Adjacent to the header information field, the button with the down arrow symbol is used to expand and collapse the sidebar. </li>
+        </ul>
+        <p data-source-node="n637"> </p>
+        <h5 data-source-node="n638">Detail Information Accordions</h5>
+        <ul data-source-node="n639">
+            <li data-source-node="n640">This section displays a series of accordions that include the field values for the selected detail record. If a field is editable, then you can enter/select a value (if you have the appropriate security settings). This facilitates easy navigation between different sections and supports independent scrolling. </li>
+        </ul>
+        <p data-source-node="n641"> </p>
+        <p data-source-node="n642">NOTE: </p>
+        <p data-source-node="n643"> </p>
+        <p data-source-node="n644">1. Click Collapse all if you want to minimize all the expanded Detail Information Accordions. <br data-source-node="n645"><br data-source-node="n646">2. Columns by default are auto-sized to the maximum width of the column heading and the data being displayed.  This ensures that the screen optimizes the data display without truncating anything pertinent. There are some exceptions to the rule such as description fields, which defaults to fixed length. If the user resizes the column, then that column stays fixed at that width for that user/device/browser.</p>
+        <hr width="100%" align="center" data-source-node="n647">
+        <p data-source-node="n648"> </p>
+        <h4 data-source-node="n649"><a name="Custom" data-source-node="n650"></a>Screen Customization...</h4>
+        <p data-source-node="n651">Insight screens can be customized to fit your specific business needs. For example, if your warehouse does not track license plates, all the license plate fields/references could be hidden from the Inventory Insight screen. This customization is done via the screen metadata. Please see the <a href="81d022a2ab379af5c9e945433d1bd3f6e09728fcfd355546989e79b3a0ecfa54.html" data-source-node="n652">SCALE SDK</a> for more information. </p>
+        <p data-source-node="n653"> </p>
+        <p data-source-node="n654"> </p>
+        <hr width="100%" align="center" data-source-node="n655">
+        <p data-source-node="n656"> </p>
+        <p data-source-node="n657"> </p>
+        <h4 data-source-node="n658"><a name="security" data-source-node="n659"></a>Security...</h4>
+        <p data-source-node="n660"> </p>
+        <h5 data-source-node="n661">Insight Screen Security</h5>
+        <p data-source-node="n662">Insight screen security is governed by the following security forms:</p>
+        <ul data-source-node="n663">
+            <li data-source-node="n664">"Global Security" form - Security settings defined on this form apply to ALL Insight screens. For example, security for the "toggle resources" and "restore default settings" Navigation Bar actions are configured as global security settings.<br data-source-node="n665"><br data-source-node="n666"></li>
+            <li data-source-node="n667">Insight screen-specific forms - Security settings defined on this form apply only to a specific Insight screen. For example, actions such as "create count" and "freeze lot" are configured on the "Inventory Insight" security form.</li>
+        </ul>
+        <p data-source-node="n668"> </p>
+        <h5 data-source-node="n669">Details Screen Security</h5>
+        <p data-source-node="n670">Details screen security is governed by the following security forms:<br data-source-node="n671"></p>
+        <ul data-source-node="n672">
+            <li data-source-node="n673">Details screen-specific forms - Security settings defined on this form apply only to a specific Details screen. For example, the security for the Shipping Container Details Screen is configured on the "Shipping Container" security form.</li>
+        </ul>
+        <p data-source-node="n674"> </p>
+        <h5 data-source-node="n675">Security Access Violations</h5>
+        <ul data-source-node="n676">
+            <li data-source-node="n677">The system will redirect a signed-in user to a "Security Access Violation" screen if you manually enter an inaccessible or invalid URL for a screen.  A URL is considered inaccessible when you do not have security access, or the application is not licensed to the screen in which you entered the URL.  A URL is considered invalid if the screen's form ID or internal detail number that you used as part of the URL does not exist.<br data-source-node="n678"><br data-source-node="n679"></li>
+            <li data-source-node="n680">The system will redirect a signed-in user to a "Security Access Violation" screen if you manually enter a URL for a Details screen that contains a company or warehouse for which you do not have access.<br data-source-node="n681"><br data-source-node="n682"></li>
+            <li data-source-node="n683">
+                <p data-source-node="n684">The system will redirect you to the Sign-In page if you manually enter an inaccessible URL.</p>
+            </li>
+        </ul>
+        <p data-source-node="n685"> </p>
+        <hr width="100%" align="center" data-source-node="n686">
+        <p data-source-node="n687"> </p>
+        <p data-source-node="n688"> </p>
+        <h4 data-source-node="n689"><a name="TouchDevice" data-source-node="n690"></a>Touch Device Guidance</h4>
+        <p data-source-node="n691">If you need to delete a grid row on the screen, left swipe on the selected row. That will make the Delete icon ("X") appear on the grid. Touch that icon to delete that specific row. The system will delete once you confirm this action.</p>
+        <p data-source-node="n692"> </p>
+        <p data-source-node="n693"> </p>
+        <hr width="100%" align="center" data-source-node="n694">
+        <p data-source-node="n695"> </p>
+        <p data-source-node="n696"> </p>
+        <h4 data-source-node="n697"><a name="virtualKeyboard" data-source-node="n698"></a>Using a Tablet's Virtual Keyboard</h4>
+        <p data-source-node="n699">Typing on a tablet while using an Insight or Details screen is done using a virtual keyboard.  When you tap or focus on an editable field, the system will either automatically open the keyboard, or you will need to manually open it (depending on the tablet device/browser you are using). The keyboard then remains open as you scroll up and down on the Insight or Details screen.</p>
+        <p data-source-node="n700"> </p>
+        <p data-source-node="n701"> </p>
+        <hr width="100%" align="center" data-source-node="n702">
+        
+        <p data-source-node="n703"> </p>
+        <p data-source-node="n704"> </p>
+        <h4 data-source-node="n705"><a name="fieldLengths" data-source-node="n706"></a>Field Lengths / Decimal Positions</h4>
+        <p data-source-node="n707">The field length on Insight and Details screens support up to 15 total characters (including the decimal positions and the decimal separator).  The database field, however may support more characters. For example, suppose the resource key for a field has a field length of 19,5; an Insight or Details screen will only display 15 characters (999999999.99999).  Note that the decimal separator is only counted as part of the total characters when the resource key’s field length is 15 or greater.</p>
+        <p data-source-node="n708"> </p>
+        <p data-source-node="n709">Insight screens use the Decimal Position configuration settings to manage a numeric field's decimal positions. However, numeric fields on the Details screens use the Decimal Positions settings on a field's resource for both read only and editable fields.  </p>
+        <p data-source-node="n710"> </p>
+        <p data-source-node="n711"> </p>
+        <hr width="100%" align="center" data-source-node="n712">
+        
+        <p data-source-node="n713"> </p>
+    </body></html>
