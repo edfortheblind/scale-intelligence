@@ -1,0 +1,11 @@
+-- DOCUMENTATION ONLY: literals/comments removed; do not execute.
+
+
+
+CREATE VIEW SHIPMENT_HEADER_DOCK_AREA
+AS 
+SELECT distinct *
+FROM SHIP_HEADER_DOCK_AREA_ON_HAND 
+union 
+SELECT distinct *
+FROM SHIP_HEADER_DOCK_AREA_IN_TRANS;

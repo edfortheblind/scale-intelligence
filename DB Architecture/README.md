@@ -1,0 +1,17 @@
+# SCALE database architecture
+
+This is the metadata and functionality assessment of the authorized SCALE replica, captured on 2026-09-29. It complements the existing AIM and SDK library for the future internal intelligence app. No application records were selected or imported, and no database routines were executed.
+
+Start with the [assessment](ASSESSMENT.md), [schema/layout](SCHEMA.md), [object dictionary](OBJECT_INDEX.md), [process explanations](PROCESS_GUIDE.md), and [runtime evidence](RUNTIME.md). The [vendor process index](PROCESS_INDEX.md) links every captured AIM Process Summary. The [documentation plan](PLAN.md) identifies completed coverage and the remaining semantic and operational work. The [intelligence contract](INTELLIGENCE_CONTRACT.md) defines how the app can use this evidence without inventing deployment behavior.
+
+The snapshot contains **3,022 objects: 518 tables, 921 stored procedures, 76 functions, 135 views, six triggers, and associated constraints/sequence**. All 1,142 SQL module definitions were available. Every object has a JSON record; tables, routines, views, triggers and the sequence also have Markdown references. Machine-readable details live in `catalog/`, `objects/` and `mappings/`.
+
+The connected engine is Azure SQL Database. `DATABASEPROPERTYEX(...,'Updateability')` returned `READ_ONLY`. TLS validation remained enabled. Access used the supplied connection input through installed ODBC Driver 18 and pyodbc, independently of the VS Code extension UI; no claim of extension-state inspection is made.
+
+Runtime has two meanings here: documented processing behavior and measured execution evidence. Query Store supplied aggregate statement history for 163 historical object IDs: 154 match the current catalog and nine remain unresolved. This is **not complete end-to-end runtime for every SCALE process**. Active configuration records, external application services, dynamic SQL and source-version differences remain explicit limits.
+
+Original SQL definitions are retained under the existing private `%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/db-assessment/` directory. Repository SQL copies remove string literals and comments and carry original-definition hashes. They are documentation, not executable deployment scripts. Following the owner's cleanup instruction, `dbstring.txt` was moved to `%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/credentials/replica.connection.txt`; both directory and file have a verified current-user-only access-control list. The collector now defaults to that location. The old root filename remains ignored by Git as a future guard. Prior OneDrive cloud copies or retention were not inspected or removed.
+
+AEKR guidance was consulted read-only. Native agents performed bounded architecture work and independent review; this is manual governance, without an installed AEKR runtime, scaffold migration or copied private AEKR assets. The owner subsequently [accepted the delivered scope with its documented limitations and authorized commit/push](../_project/owner-acceptance-DB.json). This acceptance does not claim unfinished semantic/runtime work or authorize deployment.
+
+See [reproduction and verification](OPERATIONS.md) and the current [coverage summary](evidence/summary.json). AIM and SDK acceptance and existing source gaps remain unchanged.

@@ -1,5 +1,13 @@
 # Resume SCALE Intelligence
 
+## Database assessment and supporting documents — 2026-09-29
+
+The owner separately authorized a full metadata-only SCALE replica assessment and documentation plan, then accepted the delivered scope with its documented gaps and authorized commit/push in `owner-acceptance-DB.json`. Start at `DB Architecture/README.md`, `ASSESSMENT.md`, `PLAN.md` and `evidence/summary.json`. Snapshot `20260929T214106Z` contains 3,022 visible objects and all 1,142 SQL modules. Structural documentation and existing runtime aggregates are captured; exhaustive per-routine semantic review, active application configuration and end-to-end process timings remain explicitly incomplete. No application records were selected and no routines were executed.
+
+Credentials were subsequently moved under explicit owner instruction to `%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/credentials/replica.connection.txt`, with a verified current-user-only ACL. `tools/assess_db.py` defaults to that private file. Never put credentials back in the repository. Raw definitions remain in the separate private `db-assessment` directory. Consult `DB Architecture/OPERATIONS.md` before refreshing; the builder prevents mixed-generation/stale output. Read `evidence/verification.json` and `evidence/REVIEW.md` for current verification/audit limits.
+
+The owner also requested `SDD/README.md` be prepared and obsolete prompts archived. SDD now inventories nine supplied documents and defines their intake/reconciliation method; document-body extraction is not yet performed. The active `01_AIM_MASTER_PROMPT.md` and `02_SDK_MASTER_PROMPT.md` remain because collector/policy/tests consume them. Obsolete kickoff material has a local ignored archive with restoration metadata. This does not reopen accepted AIM/SDK collection or start the interactive application.
+
 ## Owner-closed collection
 
 AIM is accepted complete at 99.71% (2,446/2,453 known article originals). SDK is accepted complete at 95.53% (363/380). Both use OWNER_ACCEPTED_COMPLETE_WITH_EXCEPTIONS. Read owner-acceptance-AIM.json, owner-acceptance-SDK.json, collection-closure.json and COLLECTION_CLOSURE.md. No acquisition is pending, and no routine retries or repeated approval are required.

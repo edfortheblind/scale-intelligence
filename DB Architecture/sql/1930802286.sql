@@ -1,0 +1,101 @@
+-- DOCUMENTATION ONLY: literals/comments removed; do not execute.
+/* [comment omitted] */
+
+
+
+
+
+
+CREATE PROCEDURE dbc_IDocumentType(
+    @allowPrintPreview nchar(1) = NULL,
+    @classification numeric(3),
+    @dataSource nvarchar(25) = NULL,
+    @default1 nchar(1) = NULL,
+    @default2 nchar(1) = NULL,
+    @default3 nchar(1) = NULL,
+    @default4 nchar(1) = NULL,
+    @default5 nchar(1) = NULL,
+    @description nvarchar(50),
+    @detailDataSource nvarchar(25) = NULL,
+    @documentGenerator nvarchar(25) = NULL,
+    @documentType nvarchar(25),
+    @printProc1 nvarchar(25) = NULL,
+    @printProc2 nvarchar(25) = NULL,
+    @printProc3 nvarchar(25) = NULL,
+    @printProc4 nvarchar(25) = NULL,
+    @printProc5 nvarchar(25) = NULL,
+    @processStamp nvarchar(100),
+    @userDef1 nvarchar(25) = NULL,
+    @userDef2 nvarchar(25) = NULL,
+    @userDef3 nvarchar(25) = NULL,
+    @userDef4 nvarchar(25) = NULL,
+    @userDef5 nvarchar(25) = NULL,
+    @userDef6 nvarchar(25) = NULL,
+    @userDef7 numeric(19,5) = NULL,
+    @userDef8 numeric(19,5) = NULL)
+AS
+    SET NOCOUNT ON;
+
+    INSERT INTO DOCUMENT_TYPE
+        (ALLOW_PRINT_PREVIEW,
+         CLASSIFICATION,
+         DATA_SOURCE,
+         DATE_TIME_STAMP,
+         DEFAULT1,
+         DEFAULT2,
+         DEFAULT3,
+         DEFAULT4,
+         DEFAULT5,
+         DESCRIPTION,
+         DETAIL_DATA_SOURCE,
+         DOCUMENT_GENERATOR,
+         DOCUMENT_TYPE,
+         PRINT_PROC1,
+         PRINT_PROC2,
+         PRINT_PROC3,
+         PRINT_PROC4,
+         PRINT_PROC5,
+         PROCESS_STAMP,
+         SYSTEM_CREATED,
+         USER_DEF1,
+         USER_DEF2,
+         USER_DEF3,
+         USER_DEF4,
+         USER_DEF5,
+         USER_DEF6,
+         USER_DEF7,
+         USER_DEF8,
+         USER_STAMP)
+    SELECT @allowPrintPreview,
+           @classification,
+           @dataSource,
+           GETUTCDATE(),
+           @default1,
+           @default2,
+           @default3,
+           @default4,
+           @default5,
+           @description,
+           @detailDataSource,
+           @documentGenerator,
+           @documentType,
+           @printProc1,
+           @printProc2,
+           @printProc3,
+           @printProc4,
+           @printProc5,
+           @processStamp,
+           N'<literal:1>',
+           @userDef1,
+           @userDef2,
+           @userDef3,
+           @userDef4,
+           @userDef5,
+           @userDef6,
+           @userDef7,
+           @userDef8,
+           N'<literal:2>'
+     WHERE NOT EXISTS(SELECT *
+                        FROM DOCUMENT_TYPE
+                       WHERE DOCUMENT_TYPE = @documentType);
+-- [comment omitted]

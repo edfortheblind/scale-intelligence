@@ -1,0 +1,20 @@
+-- DOCUMENTATION ONLY: literals/comments removed; do not execute.
+/* [comment omitted] */
+
+
+
+
+
+
+-- [comment omitted]
+
+CREATE PROCEDURE SCI_SHIPMENT_DETAIL
+	@StartTime  datetime,
+	@EndTime datetime
+AS
+BEGIN
+SET NOCOUNT ON;
+select sd.internal_shipment_line_num, sd.internal_shipment_num, sd.total_qty, sd.requested_qty, sd.item, sd.company, CASE WHEN sh.actual_delivery_date_time > N'<literal:1>' THEN N'<literal:2>' ELSE sh.actual_delivery_date_time END as actual_delivery_date_time , CASE WHEN sh.actual_ship_date_time > N'<literal:3>' THEN N'<literal:4>' ELSE sh.actual_ship_date_time END as actual_ship_date_time, sh.carrier, sh.carrier_service, sh.carrier_type, sh.carrier_group, sh.route, sh.stop, sd.country_of_origin, sh.customer, sh.customer_city, sh.customer_country, sh.customer_postal_code, sh.customer_state, sh.freight_bill_to_city, sh.freight_bill_to_state, sh.freight_bill_to_postal_code, sh.freight_bill_to_country, sd.hazardous_code, sd.item_category1, sd.item_category2, sd.item_category3, sd.item_category4, sd.item_category5, sd.item_category6, sd.item_category7, sd.item_category8, sd.item_category9, sd.item_category10, sd.item_class, sd.item_color, sd.item_department, sd.item_desc, sd.item_division, sd.item_list_price, sd.item_net_price, sd.item_size, sd.value, sd.item_volume, sd.item_weight, sd.lot_controlled, sd.manufacture_id, sd.mark_for_city, sd.mark_for_state, sd.mark_for_postal_code,   sd.mark_for_country, sd.merchandise_code, sd.nmfc_code, CASE WHEN sd.order_date > N'<literal:5>' THEN N'<literal:6>' ELSE sd.order_date END as order_date, sd.original_item_ordered, sd.packing_class, sd.packing_category, CASE WHEN sh.planned_delivery_date_time > N'<literal:7>' THEN N'<literal:8>' ELSE sh.planned_delivery_date_time END as planned_delivery_date_time, CASE WHEN sd.planned_ship_date > N'<literal:9>' THEN N'<literal:10>' ELSE sd.planned_ship_date END as planned_ship_date, sd.priority, sd.producer, CASE WHEN sd.requested_delivery_date > N'<literal:11>' THEN N'<literal:12>' ELSE sd.requested_delivery_date END as requested_delivery_date, CASE WHEN sh.scheduled_ship_date > N'<literal:13>' THEN N'<literal:14>' ELSE sh.scheduled_ship_date END as scheduled_ship_date , sh.ship_to_city, sh.ship_to_state, sh.ship_to_postal_code, sh.ship_to_country, sh.customer_residential_flag, sd.serial_num_reqd, sh.warehouse, sd.quantity_um, sd.weight_um, sd.volume_um, sh.customer_name, sh.ship_to, sh.ship_to_name, sh.freight_bill_to, sh.freight_bill_to_name, sd.mark_for_name, CASE WHEN ls.launch_date_time_ended > N'<literal:15>' THEN N'<literal:16>' ELSE ls.launch_date_time_ended END as wave_end_date_time, sd.mark_for, CAST(null as nvarchar(100)) user_dimension01, CAST(null as nvarchar(100)) user_dimension02, CAST(null as nvarchar(100)) user_dimension03, CAST(null as nvarchar(100)) user_dimension04, CAST(null as nvarchar(100)) user_dimension05, CAST(null as nvarchar(100)) user_dimension06,  CAST(null as nvarchar(100)) user_dimension07, CAST(null as nvarchar(100)) user_dimension08, CAST(null as nvarchar(100)) user_dimension09, CAST(null as nvarchar(100)) user_dimension10, CAST(null as numeric(28,5)) user_fact1, CAST(null as numeric(28,5)) user_fact2, CAST(null as numeric(28,5)) user_fact3, CAST(null as numeric(28,5)) user_fact4, CAST(null as numeric(28,5)) user_fact5 from Shipment_Detail sd with (nolock) join Shipment_header sh with (nolock) on sd.internal_shipment_num = sh.internal_shipment_num left outer join launch_statistics ls with (nolock) on sd.launch_num = ls.internal_launch_num   where sh.trailing_sts >=900 and sh.trailing_sts < 990   AND ((sh.DATE_TIME_STAMP > @StartTime AND sh.DATE_TIME_STAMP <= @EndTime) OR (sd.DATE_TIME_STAMP > @StartTime AND sd.DATE_TIME_STAMP <= @EndTime))
+END
+;
+
