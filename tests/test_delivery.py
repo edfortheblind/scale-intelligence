@@ -28,7 +28,12 @@ class DeliveryTests(unittest.TestCase):
             atomic_json(root/'_project/STATE.json',{'phase':'SYNTHETIC_TEST'})
             index=b'Synthetic index bytes';(root/'_project/search.sqlite').write_bytes(index)
             atomic_json(root/'_project/search-index.json',{'database':'_project/search.sqlite','sha256':digest(index)})
-            build(root)
+            pending=root/'AIM/manifests/resources/.pending-test'
+            pending.write_bytes(b'incomplete atomic checkpoint')
+            inventory=build(root)
+            self.assertNotIn(pending.relative_to(root).as_posix(),{item['path'] for item in inventory['files']})
+            self.assertTrue(pending.exists())
+            (root/'.gitignore').write_text('.pending-*\n',encoding='utf-8')
             (root/'.gitattributes').write_bytes((Path(__file__).resolve().parents[1]/'.gitattributes').read_bytes())
             def git(*args,cwd=root):
                 return subprocess.run(['git','-c','core.autocrlf=true','-c','user.name=Collector Test','-c','user.email=collector-test@example.invalid',*args],cwd=cwd,capture_output=True,check=True)

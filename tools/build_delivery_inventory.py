@@ -9,7 +9,8 @@ def build(root):
     root=Path(root).resolve()
     files=[]
     for module in ('AIM','SDK'):
-        files.extend(p for p in (root/module).rglob('*') if p.is_file())
+        # Interrupted atomic writes are explicitly uncommitted recovery leftovers.
+        files.extend(p for p in (root/module).rglob('*') if p.is_file() and not p.name.startswith('.pending-'))
     files.extend(root/p for p in ('01_AIM_MASTER_PROMPT.md','02_SDK_MASTER_PROMPT.md',
         '_project/preflight.json','_project/search-index.json','_project/search.sqlite'))
     entries=[]
