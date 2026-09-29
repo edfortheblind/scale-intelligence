@@ -1,9 +1,9 @@
 {
   "scope_revision": "STAGE-CHATGPT-EN-2.0",
   "collector_version": "0.2.0",
-  "phase": "DISCOVERY_INCOMPLETE",
+  "phase": "COLLECTION_CLOSED_WITH_ACCEPTED_EXCEPTIONS",
   "module": "SDK",
-  "updated_at": "2026-09-29T19:20:48.914416+00:00",
+  "updated_at": "2026-09-29T19:31:25.753680+00:00",
   "worker_running": false,
   "writer": {
     "protocol": "external_os_file_lock",
@@ -52,7 +52,7 @@
       "module_local_complete": false
     },
     "SDK": {
-      "status": "DISCOVERY_INCOMPLETE",
+      "status": "OWNER_ACCEPTED_COMPLETE_WITH_EXCEPTIONS",
       "counts": {
         "discovered": 734,
         "pending": 0,
@@ -103,51 +103,29 @@
       },
       "module_local_complete": false,
       "corpus_complete": false,
-      "technical_status": "DISCOVERY_INCOMPLETE"
+      "technical_status": "DISCOVERY_INCOMPLETE",
+      "owner_acceptance": "_project/owner-acceptance-SDK.json",
+      "accepted_exceptions": "SDK/reports/source-gaps.json"
     }
   },
-  "blockers": [
-    {
-      "code": "PILOT_VERIFIED",
-      "report": "SDK/reports/module-audit.json"
-    },
-    {
-      "code": "DISCOVERY_RECONCILED",
-      "report": "SDK/reports/module-audit.json"
-    },
-    {
-      "code": "ATTACHMENT_DEPENDENCIES_CLOSED",
-      "report": "SDK/reports/module-audit.json"
-    },
-    {
-      "code": "REQUIRED_ORIGINALS_CAPTURED",
-      "report": "SDK/reports/module-audit.json"
-    },
-    {
-      "code": "RESOURCE_FIDELITY",
-      "report": "SDK/reports/module-audit.json"
-    },
-    {
-      "code": "ALL_ARTICLES_VERIFIED",
-      "report": "SDK/reports/module-audit.json"
-    }
-  ],
+  "blockers": [],
   "pilot": "PASSED",
-  "next_invocation": "Resolve exact source/proof/link gaps in SDK/reports/module-audit.json and source-gaps.json; rerun only affected capture/verification before the final audit.",
+  "next_invocation": "Collection is closed by owner acceptance for AIM and SDK. Do not resume capture or retry accepted gaps unless the owner requests reopening. The next separate phase is discovery, design, and implementation of the interactive SCALE consultation app.",
   "publication": {
     "repository": "edfortheblind/scale-intelligence",
     "visibility": "PRIVATE",
     "permission": "ADMIN",
-    "stage": "SDK_PROGRESS_CHECKPOINT_VERIFIED",
+    "stage": "COLLECTION_OWNER_CLOSED_VERIFIED_CORPUS",
     "complete_corpus_delivered": false,
     "verified_commit": "d52f0ddc661afb35f54a93d36f708afb7f425b2d",
     "clean_clone_verified": true,
-    "current_checkpoint_clean_clone_verified": true,
+    "current_checkpoint_clean_clone_verified": false,
     "proof": "_project/delivery-checkpoint.json",
     "current_local_changes_pending_publication": false,
     "artifact_inventory_sha256": "3c29f66868640b1e66f550690eedacfceb8966b386a9466fcfd54173caa2ff17",
     "current_changes_pending": false,
-    "receipt_publication_pending": false
+    "receipt_publication_pending": false,
+    "closure_metadata_pending_publication": false
   },
   "controller": {
     "pid": 41204,
@@ -186,6 +164,12 @@
       "instruction": "Ok, work on the concern and solve it, and proceed with the rest.",
       "effect": "Continue SDK acquisition with documented publisher failures, repair local concerns, verify all accessible content and preserve SDK completion gates.",
       "record": "_project/sdk-pilot-disposition.json"
+    },
+    {
+      "recorded_at": "2026-09-29T19:28:53.590835+00:00",
+      "instruction": "95.53% it's ok, let's consider it closed. So, what's pending now?",
+      "effect": "SDK collection closed by explicit owner acceptance at 95.53%, with documented exceptions retained. Both collection modules are now owner-closed.",
+      "record": "_project/owner-acceptance-SDK.json"
     }
   ],
   "collection_order_question": {
@@ -193,5 +177,39 @@
     "record": "_project/owner-acceptance-AIM.json"
   },
   "legacy_pilot_module": "AIM",
-  "pilot_status_authority": "modules.<module>.pilot; legacy top-level pilot applies only to AIM"
+  "pilot_status_authority": "modules.<module>.pilot; legacy top-level pilot applies only to AIM",
+  "collection_closed": true,
+  "collection_status": "OWNER_ACCEPTED_COMPLETE_WITH_EXCEPTIONS",
+  "technical_project_complete": false,
+  "accepted_concerns": [
+    {
+      "code": "PILOT_VERIFIED",
+      "report": "SDK/reports/module-audit.json"
+    },
+    {
+      "code": "DISCOVERY_RECONCILED",
+      "report": "SDK/reports/module-audit.json"
+    },
+    {
+      "code": "ATTACHMENT_DEPENDENCIES_CLOSED",
+      "report": "SDK/reports/module-audit.json"
+    },
+    {
+      "code": "REQUIRED_ORIGINALS_CAPTURED",
+      "report": "SDK/reports/module-audit.json"
+    },
+    {
+      "code": "RESOURCE_FIDELITY",
+      "report": "SDK/reports/module-audit.json"
+    },
+    {
+      "code": "ALL_ARTICLES_VERIFIED",
+      "report": "SDK/reports/module-audit.json"
+    }
+  ],
+  "next_phase": {
+    "name": "Interactive SCALE consultation app",
+    "status": "NOT_STARTED"
+  },
+  "closure_record": "_project/collection-closure.json"
 }

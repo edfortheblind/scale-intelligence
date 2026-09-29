@@ -2,7 +2,7 @@
 
 Universal SCALE reference library: [AIM](AIM/README.md) and [SDK](SDK/README.md).
 
-AIM is owner-accepted complete with documented exceptions: 99.71% known article capture (2,446/2,453). Deprecation remains an unverified owner hypothesis. SDK remains technically incomplete; acquisition continuation is authorized and documented source/proof gaps remain open.
+AIM is owner-accepted complete with documented exceptions: 99.71% known article capture (2,446/2,453). Deprecation remains an unverified owner hypothesis. SDK is also owner-accepted complete with documented exceptions at 95.53%. The documentation collection phase is closed; source-fidelity measurements remain unchanged.
 
 363/380 known SDK article originals are saved (95.53%). 691/734 required original resources are saved; 43 failed and 0 pending. All currently eligible acquisition work is exhausted. Counts describe known inventory; the SDK denominator is **KNOWN_LOWER_BOUND**. Capture percentage does not establish complete fidelity.
 
@@ -16,7 +16,7 @@ Original HTML, images, styles, scripts and attachments remain byte-preserved fid
 - [SDK reading index](SDK/docs/INDEX.md), [coverage](SDK/reports/coverage.md), [source gaps](SDK/reports/source-gaps.md), and [final local audit](SDK/reports/module-audit.json).
 - [Current state](_project/STATE.json), [resume instructions](_project/RESUME.md), and [data architecture](_project/DATA_ARCHITECTURE.md).
 
-SDK acquisition continuation is authorized. Completion is ungranted unless every technical gate passes. AIM acceptance applies to its recorded exceptions only. This local checkpoint does not certify a new GitHub delivery; a separate receipt must identify the verified commit and clean clone.
+Both modules are closed by explicit owner acceptance. See the [global closure report](_project/COLLECTION_CLOSURE.md), [SDK acceptance](_project/owner-acceptance-SDK.json), and [verified private delivery receipt](_project/delivery-checkpoint.json). Historical technical reports retain all failures. No collection work remains pending. The interactive consultation app is the next separate phase.
 
 ## Authority and operation
 
