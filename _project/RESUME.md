@@ -36,4 +36,8 @@ The SDK audit is the final writer of rich coverage.json. Shared Store.checkpoint
 
 ## Delivery
 
-Current local changes are pending publication verification. Historical verified_commit/receipt fields identify prior immutable generations only. Reverify edfortheblind identity, ownership, write permission, PRIVATE visibility and the exact remote; then verify the new private clean clone, original/reading hashes, images, attachments and LFS objects. Record the resulting commit/receipt separately. Neither this generator nor an acquisition-only authorization grants PROJECT_COMPLETE.
+The current verified corpus checkpoint and private clean-clone evidence are recorded below and in delivery-checkpoint.json. Receipt verified_commit fields identify the exact immutable corpus generation. Reverify edfortheblind identity, ownership, write permission, PRIVATE visibility and the exact remote; then verify the new private clean clone, original/reading hashes, images, attachments and LFS objects. Record the resulting commit/receipt separately. Neither this generator nor an acquisition-only authorization grants PROJECT_COMPLETE.
+
+## Current private delivery
+
+Corpus checkpoint d52f0ddc661afb35f54a93d36f708afb7f425b2d passed clean-clone verification: 16787 inventoried artifacts; 236 tests passed; 0 LFS objects verified. SDK has 734 known resource records, 691 saved originals, 43 failures and 0 pending records. Source gaps and completion gates remain in the reports. The separate receipt commit contains only delivery receipt, STATE and RESUME; the verified corpus generation remains unchanged.
