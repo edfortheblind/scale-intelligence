@@ -1,6 +1,8 @@
 # SCALE database architecture
 
-This is the metadata and functionality assessment of the authorized SCALE replica, captured on 2026-09-29. It complements the existing AIM and SDK library for the future internal intelligence app. No application records were selected or imported, and no database routines were executed.
+This is the metadata and functionality assessment of the authorized SCALE replica, captured on 2026-09-29. It complements the existing AIM and SDK library for the future internal intelligence app. The original structural snapshot selected no application records. A subsequent owner-authorized extension checks a reviewed configuration allowlist and retains aggregate observations only. No transactional records are imported and no database routines are executed.
+
+For the SCALE help section, start with the [functional report](SCALE_FUNCTIONAL_REPORT.md), [user-facing help topics](HELP_TOPICS.md), [reviewed object roles](FUNCTIONAL_ROLES.md), and [configuration validation](CONFIGURATION_VALIDATION.md). They organize the evidence by what the user is doing and how SCALE processes it.
 
 Start with the [assessment](ASSESSMENT.md), [schema/layout](SCHEMA.md), [object dictionary](OBJECT_INDEX.md), [process explanations](PROCESS_GUIDE.md), and [runtime evidence](RUNTIME.md). The [vendor process index](PROCESS_INDEX.md) links every captured AIM Process Summary. The [documentation plan](PLAN.md) identifies completed coverage and the remaining semantic and operational work. The [intelligence contract](INTELLIGENCE_CONTRACT.md) defines how the app can use this evidence without inventing deployment behavior.
 
@@ -8,7 +10,7 @@ The snapshot contains **3,022 objects: 518 tables, 921 stored procedures, 76 fun
 
 The connected engine is Azure SQL Database. `DATABASEPROPERTYEX(...,'Updateability')` returned `READ_ONLY`. TLS validation remained enabled. Access used the supplied connection input through installed ODBC Driver 18 and pyodbc, independently of the VS Code extension UI; no claim of extension-state inspection is made.
 
-Runtime has two meanings here: documented processing behavior and measured execution evidence. Query Store supplied aggregate statement history for 163 historical object IDs: 154 match the current catalog and nine remain unresolved. This is **not complete end-to-end runtime for every SCALE process**. Active configuration records, external application services, dynamic SQL and source-version differences remain explicit limits.
+Runtime has two meanings here: documented processing behavior and measured execution evidence. Query Store supplied aggregate statement history for 163 historical object IDs: 154 match the current catalog and nine remain unresolved. This is **not complete end-to-end runtime for every SCALE process**. The bounded configuration observations do not establish effective settings for a specific user or transaction. External application services, dynamic SQL and source-version differences remain explicit limits.
 
 Original SQL definitions are retained under the existing private `%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/db-assessment/` directory. Repository SQL copies remove string literals and comments and carry original-definition hashes. They are documentation, not executable deployment scripts. Following the owner's cleanup instruction, `dbstring.txt` was moved to `%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/credentials/replica.connection.txt`; both directory and file have a verified current-user-only access-control list. The collector now defaults to that location. The old root filename remains ignored by Git as a future guard. Prior OneDrive cloud copies or retention were not inspected or removed.
 

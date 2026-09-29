@@ -1,8 +1,10 @@
 # SCALE Intelligence
 
-Universal SCALE reference library: [AIM](AIM/README.md) and [SDK](SDK/README.md).
+SCALE Intelligence is building an accessible knowledge foundation that explains SCALE functionality, configuration and execution behavior to novice users. Its preserved reference library includes [AIM](AIM/README.md) and [SDK](SDK/README.md).
 
-The [database architecture assessment](DB%20Architecture/README.md) adds a metadata-only replica inventory, routine contracts, dependency maps, runtime evidence and source-linked process explanations. The [SDD intake](SDD/README.md) organizes the owner's supplied solution-design and supporting documents. Database structural coverage, semantic review and complete process runtime are tracked separately; the interactive application remains a subsequent implementation phase. The [DB/SDD delivery receipt](_project/db-delivery-checkpoint.json) records its verified private main publication and clean checkout.
+**Next-session entry:** [03_SCALE_INTELLIGENCE_MASTER_PROMPT.md](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md). Read the [full project status](PROJECT_STATUS.md) for completed work, open coverage, source limits and the next executable tasks. The [continuation delivery receipt](_project/continuation-delivery.json) records publication and checkout verification.
+
+The [database architecture assessment](DB%20Architecture/README.md) adds the structural replica inventory, routine contracts, dependency maps and retained runtime evidence. Its [functional report](DB%20Architecture/SCALE_FUNCTIONAL_REPORT.md) now centers on direct user explanations: eight initial help topics, 35 reviewed object roles, and five separately authorized configuration aggregate checks. The [SDD intake](SDD/README.md) organizes nine supplied source documents whose bodies still require reconciliation. Structural coverage, semantic review and complete process runtime are tracked separately; the interactive app and Insight-screen/SOP task remain later work. The earlier [DB/SDD delivery receipt](_project/db-delivery-checkpoint.json) remains scoped to its recorded commit.
 
 AIM is owner-accepted complete with documented exceptions: 99.71% known article capture (2,446/2,453). Deprecation remains an unverified owner hypothesis. SDK is also owner-accepted complete with documented exceptions at 95.53%. The documentation collection phase is closed; source-fidelity measurements remain unchanged.
 
@@ -16,12 +18,12 @@ Original HTML, images, styles, scripts and attachments remain byte-preserved fid
 
 - [AIM owner acceptance](_project/owner-acceptance-AIM.json) and [documented exceptions](AIM/reports/source-gaps.md).
 - [SDK reading index](SDK/docs/INDEX.md), [coverage](SDK/reports/coverage.md), [source gaps](SDK/reports/source-gaps.md), and [final local audit](SDK/reports/module-audit.json).
-- [Current state](_project/STATE.json), [resume instructions](_project/RESUME.md), and [data architecture](_project/DATA_ARCHITECTURE.md).
+- [Collection state](_project/STATE.json), [current project status](PROJECT_STATUS.md), [resume instructions](_project/RESUME.md), and [data architecture](_project/DATA_ARCHITECTURE.md).
 
-Both modules are closed by explicit owner acceptance. See the [global closure report](_project/COLLECTION_CLOSURE.md), [SDK acceptance](_project/owner-acceptance-SDK.json), and [verified private delivery receipt](_project/delivery-checkpoint.json). Historical technical reports retain all failures. No collection work remains pending. The interactive consultation app is the next separate phase.
+Both modules are closed by explicit owner acceptance. See the [global closure report](_project/COLLECTION_CLOSURE.md), [SDK acceptance](_project/owner-acceptance-SDK.json), and [verified private delivery receipt](_project/delivery-checkpoint.json). Historical technical reports retain all failures. No collection work remains pending. Current work completes the functional knowledge and supporting-document review before the separate app implementation phase.
 
 ## Authority and operation
 
 The owner reports Manhattan Associates approval for TAB's internal documentation initiative and TAB CTO authorization. This records the owner's statement, not an independently verified legal instrument. Only published documentation under the authorized Stage AIM/SDK roots is collected. Normal SSO remains in the authorized Edge session outside Git and OneDrive; no operational examples are executed.
 
-The authoritative root prompts are 01_AIM_MASTER_PROMPT.md and 02_SDK_MASTER_PROMPT.md, revision STAGE-CHATGPT-EN-2.0. Newly authored material is English. One active writer, atomic resource checkpoints and external runtime locks preserve resumability. No AEKR private assets or runtime are included. Publication is restricted to the verified private repository owned by edfortheblind.
+The current continuation entry is [03_SCALE_INTELLIGENCE_MASTER_PROMPT.md](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md). The original `01_AIM_MASTER_PROMPT.md` and `02_SDK_MASTER_PROMPT.md`, revision STAGE-CHATGPT-EN-2.0, remain unchanged as active acquisition/authority/integrity inputs; they do not reopen owner-closed collection. Their active consumers make them ineligible for the owner's conditional archive request. Newly authored material is English. Bounded agents use nonoverlapping writes, with one coordinator for integration/publication. No AEKR private assets or runtime are included. Publication is restricted to the verified private repository owned by edfortheblind.

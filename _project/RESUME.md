@@ -1,31 +1,44 @@
 # Resume SCALE Intelligence
 
-## Database assessment and supporting documents — 2026-09-29
+Current continuation entry: [03_SCALE_INTELLIGENCE_MASTER_PROMPT.md](../03_SCALE_INTELLIGENCE_MASTER_PROMPT.md). Full report: [PROJECT_STATUS.md](../PROJECT_STATUS.md). Read both before acting. They incorporate the owner's latest direction; older closure documents remain scoped evidence rather than current phase-selection instructions.
 
-The owner separately authorized a full metadata-only SCALE replica assessment and documentation plan, then accepted the delivered scope with its documented gaps and authorized commit/push in `owner-acceptance-DB.json`. Start at `DB Architecture/README.md`, `ASSESSMENT.md`, `PLAN.md` and `evidence/summary.json`. Snapshot `20260929T214106Z` contains 3,022 visible objects and all 1,142 SQL modules. Structural documentation and existing runtime aggregates are captured; exhaustive per-routine semantic review, active application configuration and end-to-end process timings remain explicitly incomplete. No application records were selected and no routines were executed.
+## Current objective and next action
 
-Credentials were subsequently moved under explicit owner instruction to `%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/credentials/replica.connection.txt`, with a verified current-user-only ACL. `tools/assess_db.py` defaults to that private file. Never put credentials back in the repository. Raw definitions remain in the separate private `db-assessment` directory. Consult `DB Architecture/OPERATIONS.md` before refreshing; the builder prevents mixed-generation/stale output. Read `evidence/verification.json` and `evidence/REVIEW.md` for current verification/audit limits.
+Complete the knowledge foundation for fast, accessible SCALE help to novice users, including visually impaired users. Explain functionality and execution behavior directly, with reviewed configuration context and optional source detail. Begin by expanding work/inventory functional contracts and role review while a separate agent extracts and verifies the supplied SDD bodies. Continue through the remaining process families in verified batches.
 
-The owner also requested `SDD/README.md` be prepared and obsolete prompts archived. SDD now inventories nine supplied documents and defines their intake/reconciliation method; document-body extraction is not yet performed. The active `01_AIM_MASTER_PROMPT.md` and `02_SDK_MASTER_PROMPT.md` remain because collector/policy/tests consume them. Obsolete kickoff material has a local ignored archive with restoration metadata. This does not reopen accepted AIM/SDK collection or start the interactive application.
+The future Insight screen register/navigation and functionality SOP task remains separate. App implementation, hosting/deployment, retrieval evaluation and keyboard/screen-reader/user acceptance have not started. Do not jump to app implementation because a historical collection-closure report named it as the next phase.
 
-Private main delivery of the DB/SDD generation is verified at content commit `920c2aa50afeed5030b8ff9eef7e48026831c3a0`; `_project/db-delivery-checkpoint.json` records the clean clone, all 5,971 artifact hashes, nine source-document originals and 12 passing clone tests. The receipt itself is published in a subsequent metadata commit. Documented semantic/runtime gaps remain unchanged.
+## Current evidence
 
-## Owner-closed collection
+- Structural snapshot `20260929T214106Z`: 3,022 objects and all 1,142 SQL modules captured. Azure SQL Database; verified read-only replica connection and certificate validation.
+- Functional pilot: eight help topics, 35 execution steps, 16 authored app evaluation cases, 35 reviewed role assignments out of 1,656 eligible objects. Role review does not equal complete routine semantics.
+- Process coverage: 34 captured AIM summary families / 62 articles indexed; no family marked fully reconciled to deployment.
+- Configuration: five fixed aggregate checks observed at 2026-09-29 22:50:28-30 UTC. No transactional rows or application routines accessed. Replica freshness and effective per-user configuration remain unestablished.
+- Runtime: 163 historical Query Store object IDs, 154 currently matched and nine unresolved; statement observations do not establish full process duration.
+- SDD: nine originals, including one identical duplicate pair; bodies not yet extracted/reconciled. MAWM examples retain their distinct product applicability.
 
-AIM is accepted complete at 99.71% (2,446/2,453 known article originals). SDK is accepted complete at 95.53% (363/380). Both use OWNER_ACCEPTED_COMPLETE_WITH_EXCEPTIONS. Read owner-acceptance-AIM.json, owner-acceptance-SDK.json, collection-closure.json and COLLECTION_CLOSURE.md. No acquisition is pending, and no routine retries or repeated approval are required.
+Start at `DB Architecture/SCALE_FUNCTIONAL_REPORT.md`, `PLAN.md`, `INTELLIGENCE_CONTRACT.md`, `HELP_TOPICS.md`, `FUNCTIONAL_ROLES.md`, `CONFIGURATION_VALIDATION.md` and `evidence/FUNCTIONAL_REVIEW.md`. The current machine-readable ledgers and verification are in `mappings/` and `evidence/`.
 
-Do not rerun collection merely because the preserved historical audit says DISCOVERY_INCOMPLETE or the SDK pilot says FAILED. Missing originals and source-format diagnostics remain actual technical facts; they do not reopen the owner's closed work disposition. Do not change denominators, fabricate content, infer deprecation or mark missing resources saved. Reopen only when the owner requests work on specified gaps.
+## Preserved collection closure
 
-## Existing foundation and delivery
+AIM is owner-accepted complete with exceptions at 99.71% (2,446/2,453 known article originals). SDK is owner-accepted complete with exceptions at 95.53% (363/380). Search contains 2,809 articles. Read `owner-acceptance-AIM.json`, `owner-acceptance-SDK.json`, `collection-closure.json` and `COLLECTION_CLOSURE.md` when checking the disposition.
 
-Verified corpus: d52f0ddc661afb35f54a93d36f708afb7f425b2d. Historical clean-clone receipt: 89bc99247d7639b0926b1894433dc83d4f05683f. The private repository remains edfortheblind/scale-intelligence. Verification covered 16,787 artifacts and 236 passing tests, with LFS pull/fsck passed and zero required LFS objects. Originals, JSON, readings, manifests, source gaps, search database and technical reports stay unchanged by this closure. The search database contains 2,809 articles and retains its provisional/incomplete flags.
+No acquisition is pending. Do not retry accepted gaps because historical diagnostics remain incomplete/failed. Preserve source deficiencies, denominators, byte-identical originals, preflight and owner-authority records. Reopen only a specific owner-requested gap.
 
-Closure changes are metadata only; verify their Git/clone parity separately without claiming a new corpus acquisition or browser run. Retain the historical corpus receipt and hashes.
+Both original root prompts remain unchanged because active collector/policy/revalidation/delivery tooling requires their exact bytes and paths. `03_SCALE_INTELLIGENCE_MASTER_PROMPT.md` routes future work; it does not rewrite those source contracts. The conditional archive request was reviewed and its unused-file condition was not met. Previously archived launch material remains ignored/private and outside ordinary context.
 
-## Next phase
+## Access and reproduction
 
-The interactive SCALE consultation app is not implemented. Next work is MVP discovery and design, followed by implementation, accessibility/retrieval testing and private deployment. Confirm the intended users, core workflows, access model and hosting destination during that phase. The current collection instruction does not start a chatbot, RAG pipeline, embeddings or a replacement WMS UI.
+Credential input: `%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/credentials/replica.connection.txt`, with verified current-user-only file/directory ACLs. Never print values or put credentials back into the repository. Original SQL definitions: exact private full snapshot `%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/db-assessment/20260929T214106Z`. Newer private folders may be partial identity checks.
 
-## Continuing controls
+Read `DB Architecture/OPERATIONS.md` before collection/regeneration. Preserve curated mappings and source identities; never delete all mappings/evidence as if they were generated metadata. Reuse existing captures. Metadata-only collection and the five-check configuration allowlist remain separate; no arbitrary SQL or operational execution is authorized.
 
-Keep this existing project and repository. Preserve one active writer and atomic checkpoints. Use the owner-authorized Stage Edge session with normal SSO only if collection is explicitly reopened. Credentials and runtime profiles stay outside Git and OneDrive. C:/Apps/AEKR remains read-only; do not copy its private assets. English applies to authored material; source text, code, images and attachments remain intact. The original root master prompts remain authoritative except where the later recorded owner acceptance supersedes their work-closure requirements.
+Use AEKR externally and read-only through `C:/Apps/AEKR/.aekr/AGENTS.md`; no runtime/scaffold installation or private asset copying. Agent writing scopes must not overlap. One coordinator owns integration/publication. Archive payload is excluded unless separately authorized.
+
+## Delivery and verification
+
+Current handoff publication details, exact content commit, private remote/ref verification, tests and clean-checkout evidence are in [continuation-delivery.json](continuation-delivery.json). Verify its scope and actual Git state rather than reusing historical receipts as current proof.
+
+Historical accepted corpus commit: `d52f0ddc661afb35f54a93d36f708afb7f425b2d`. Earlier structural/SDD content commit: `920c2aa50afeed5030b8ff9eef7e48026831c3a0`, with receipt in `db-delivery-checkpoint.json`. Those receipts are preserved; current functional coverage remains incomplete regardless of Git delivery.
+
+Before each future handoff, update the report and ledgers, run relevant tests and `tools/verify_db_docs.py`, verify corpus integrity when affected, inspect the changed scope and scan for secrets. Publish only within owner authority to the existing private `edfortheblind/scale-intelligence` repository. No forced history rewrite, DB mutation, public redistribution, deployment or OneDrive-sync claim follows from this handoff.

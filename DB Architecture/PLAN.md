@@ -1,6 +1,8 @@
 # Documentation plan and acceptance boundary
 
-Owner scope: document SCALE database functionality and process behavior for the intelligence app, without importing operational data. Existing AIM/SDK collection remains closed with its accepted exceptions. The SDD source work is a separate concurrent owner request.
+Owner scope: build the evidence for an accessible SCALE knowledge base that quickly explains functionality and execution behavior to novice users without requiring AIM/SDK/DB research. Do not import transactional data. The owner separately authorized a reviewed configuration allowlist. Existing AIM/SDK collection remains closed with its accepted exceptions; SDD samples supply design context after source reconciliation. Insight screen registration/navigation and functionality SOPs are a future task.
+
+The primary deliverable is now the [SCALE functional report](SCALE_FUNCTIONAL_REPORT.md), supported by [help topics](HELP_TOPICS.md), [reviewed object roles](FUNCTIONAL_ROLES.md), [configuration validation](CONFIGURATION_VALIDATION.md) and the [process-family coverage ledger](mappings/functional-coverage.json). Structural completeness remains a separate measure.
 
 | Work package | Result / present status | Acceptance evidence / remaining work |
 | --- | --- | --- |
@@ -18,8 +20,8 @@ Owner scope: document SCALE database functionality and process behavior for the 
 2. Review tenant-style/custom modules and high-activity inventory/work/shipping entry points first. Link each claim to an exact SQL hash/line and AIM/SDK node. Compare the captured implementation with the documented example rather than assuming equality.
 3. Work through receiving/putaway, inventory/serial/lot, allocation/waving/replenishment, work execution, packing/ship confirmation, interfaces, printing, labor/yard, billing, history/alerts and system administration. The [process index](PROCESS_INDEX.md) provides the existing vendor explanation for every captured process summary.
 4. For each procedure/function, document output shape, null behavior, branch conditions, status meanings, effect ownership, caller transactions and error propagation. Use static analysis; do not execute routines. Mark source-derived interpretations separately from accepted user explanations.
-5. Reconcile documentary queue names that are absent from the replica, and identify application-server configuration/exit-point sources through an existing sanitized architecture handoff. This is an external evidence requirement, not permission to read operational tables or change the deployment.
-6. Evaluate representative questions with a SCALE SME. Require citations, correct distinction between documented/general behavior and observed deployment, and an explicit unknown response when evidence is absent. Record owner acceptance separately from technical validation.
+5. Reconcile documentary queue names that are absent from the replica, and identify application-server configuration/exit-point sources through an existing sanitized architecture handoff. The approved configuration allowlist provides only its declared aggregate flag observations; other operational sources and deployment changes remain outside it.
+6. Evaluate representative questions with a SCALE SME and novice users, including visually impaired users. Require useful plain-language answers, keyboard/screen-reader acceptance of the eventual app, citations, correct distinction between documented/general behavior and observed deployment, and an explicit unknown response when evidence is absent. Record owner acceptance separately from technical validation.
 
 ## Completion measures
 
