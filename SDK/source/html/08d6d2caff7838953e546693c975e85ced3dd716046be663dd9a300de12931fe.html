@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Transaction Page Stored Procedures</title>
+    <meta name="Title" content="Transaction Page Stored Procedures"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Most transaction screens are bound via a stored procedure. This allows for a dynamic runtime binding that is easily customizable. This topic will describe the basic format of a transaction screen stored procedure. Please reference the How to: Tie a T" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="c1df5017-52a1-400f-98c3-142794c42508"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Transaction Page Stored Procedures</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Most transaction screens are bound via a stored procedure. This allows for a dynamic runtime binding that is easily customizable. This topic will describe the basic format of a transaction screen stored procedure. Please reference the&nbsp;<a href="fb1bf04f-ad33-4d65-a552-cfc6b3f6c5a6" data-auto-update-caption="true">How to: Tie a Transaction Page to a Stored Procedure</a> topic for more information on tying a transaction screen to a stored procedure.</p>
+
+<div id="i-c42800f0-062d-4ad2-9631-cd011246bd72-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Parameters</span>
+</div>
+
+<div id="i-c42800f0-062d-4ad2-9631-cd011246bd72-section-content" class="i-section-content">
+    <p>The parameters that will be passed to the stored procedure are defined by the query parameters passed to the transaction page in the URL. For example, the URL&nbsp;<em>/&lt;servername&gt;/scale/trans/printselecteddocuments?InternalNum=23833&amp;printProcess=70</em> will pass two parameters to the stored procedure - InternalNum and PrintProcess.</p>
+
+    <p>Please note that culture is automatically passed into every transaction stored procedure. This allows for resource translation inside the stored procedure. So the final parameters for the example above would be:</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Transaction stored procedure parameters</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">ALTER</span> <span style="COLOR: #0000ff">PROCEDURE</span> MetaTrans_GetPrintSelectedDocuments(
+<span style="COLOR: #008000">@internalNum</span> <span style="COLOR: #0000ff">int</span>, <span style="COLOR: #008000">@printProcess</span> <span style="COLOR: #0000ff">int</span>, <span style="COLOR: #008000">@culture</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">10</span>))
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>Finally, please note that query parameters can be passed in the URL but not passed to the stored procedure by prefixing with an underscore. So the URL&nbsp;<em>/&lt;servername&gt;/scale/trans/printselecteddocuments?InternalNum=23833&amp;printProcess=70&amp;_customParam=customValue</em> would call the stored procedure in the exact same manner as the example above. &nbsp;</p>
+</div>
+
+<div id="i-90242426-cfd1-43a1-b2b2-74ad821863b3-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Returning scalar objects from the stored procedure</span>
+</div>
+
+<div id="i-90242426-cfd1-43a1-b2b2-74ad821863b3-section-content" class="i-section-content">
+    <p>Most controls on a transaction screen are bound with simple values that can be returned as scalar values and bound based on data source names matching the column names in the stored procedure. For these types of simple controls, a scalar data table can be returned as illustrated below.</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Scalar set</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #008080">--shipment level docs
+</span><span style="COLOR: #0000ff">SELECT</span> 
+   N<span style="COLOR: #ff0000">'SCALAR'</span> <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'EntityType'</span>,
+   N<span style="COLOR: #ff0000">'PrintSelected'</span> <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'EntityName'</span>, 
+   <span style="COLOR: #008000">@printProcess</span> <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">'PrintProcess'</span>, 
+   SH.INTERNAL_SHIPMENT_NUM <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">'InternalNum'</span>,
+   SH.SHIPMENT_ID <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">'Id'</span>, 
+   N<span style="COLOR: #ff0000">'SHIPMENTID'</span> <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">'IdLabel'</span>, 
+   N<span style="COLOR: #ff0000">''</span> <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">'ShipperCode'</span>, 
+   N<span style="COLOR: #ff0000">''</span> <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">'CarrierSymbol'</span>, 
+   SH.COMPANY <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">'Company'</span>,
+   SH.WAREHOUSE <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">'Warehouse'</span>
+<span style="COLOR: #0000ff">FROM</span> 
+   SHIPMENT_HEADER SH
+<span style="COLOR: #0000ff">WHERE</span> 
+   INTERNAL_SHIPMENT_NUM <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@internalNum</span>;
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-04eeb089-2964-4304-85dd-bf8314a7572a-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Returning lists from the stored procedure</span>
+</div>
+
+<div id="i-04eeb089-2964-4304-85dd-bf8314a7572a-section-content" class="i-section-content">
+    <p>Other controls take lists and cannot be bound via the scalar set mentioned above. These can still be bound via the stored procedure by returning another data table representing an identifier/desription list. This list is still bound via the data source name matching the "EntityName" from the stored procedure. An example of this is illustrated below.</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>List binding</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">select</span> 
+   N<span style="COLOR: #ff0000">'ID_DESC_TABLE'</span> <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'EntityType'</span>, 
+   N<span style="COLOR: #ff0000">'DocumentTypes'</span> <span style="COLOR: #0000ff">as</span> N<span style="COLOR: #ff0000">'EntityName'</span>, 
+   DT.DOCUMENT_TYPE <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'Identifier'</span>, 
+   DT.DESCRIPTION <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'Description'</span>, 
+   <span style="COLOR: #ff00ff">case</span> <span style="COLOR: #0000ff">when</span> ((PRINT_PROC1 <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@printProcess</span> <span style="COLOR: #808080">and</span> DEFAULT1 <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span>) 
+      <span style="COLOR: #808080">or</span> (PRINT_PROC1 <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@printProcess</span> <span style="COLOR: #808080">and</span> DEFAULT1 <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span>) 
+      <span style="COLOR: #808080">or</span> (PRINT_PROC1 <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@printProcess</span> <span style="COLOR: #808080">and</span> DEFAULT1 <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span>) 
+      <span style="COLOR: #808080">or</span> (PRINT_PROC1 <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@printProcess</span> <span style="COLOR: #808080">and</span> DEFAULT1 <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span>) 
+      <span style="COLOR: #808080">or</span> (PRINT_PROC1 <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@printProcess</span> <span style="COLOR: #808080">and</span> DEFAULT1 <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span>))
+   <span style="COLOR: #0000ff">then</span> N<span style="COLOR: #ff0000">'Y'</span> <span style="COLOR: #0000ff">else</span> N<span style="COLOR: #ff0000">'N'</span> <span style="COLOR: #0000ff">end</span> <span style="COLOR: #0000ff">as</span> <span style="COLOR: #ff0000">'DEFAULT'</span>
+<span style="COLOR: #0000ff">from</span> 
+   DOCUMENT_TYPE DT
+<span style="COLOR: #0000ff">where</span> 
+   PRINT_PROC1 <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@printProcess</span> <span style="COLOR: #808080">or</span> PRINT_PROC2 <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@printProcess</span> <span style="COLOR: #808080">or</span> PRINT_PROC3 <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@printProcess</span> <span style="COLOR: #808080">or</span> PRINT_PROC4 <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@printProcess</span> <span style="COLOR: #808080">or</span> PRINT_PROC5 <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@printProcess</span>;
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

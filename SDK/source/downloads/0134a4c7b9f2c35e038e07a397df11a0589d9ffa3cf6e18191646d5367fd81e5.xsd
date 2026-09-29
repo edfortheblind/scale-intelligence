@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="ManifestContainerRequest" targetNamespace="http://www.manh.com/ILSNET/Shipping/ManifestContainerRequest"
+	elementFormDefault="qualified" xmlns="http://www.manh.com/ILSNET/Shipping/ManifestContainerRequest"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:import1="http://www.manh.com/ILSNET/General/Address"
+	xmlns:import2="http://www.manh.com/ILSNET/General/UserDefinedFields" xmlns:import3="http://www.manh.com/ILSNET/Shipping/Accessorial">
+	<xs:import schemaLocation="../General/UserDefinedFields.xsd" namespace="http://www.manh.com/ILSNET/General/UserDefinedFields" />
+	<xs:import schemaLocation="../General/Address.xsd" namespace="http://www.manh.com/ILSNET/General/Address" />
+	<xs:import schemaLocation="Accessorial.xsd" namespace="http://www.manh.com/ILSNET/Shipping/Accessorial" />
+	<xs:element name="ManifestContainerRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="ShipmentId" type="xs:string" maxOccurs="1" />
+				<xs:element name="InternalShipmentNumber" type="xs:int" maxOccurs="1" />
+				<xs:element name="FreightBillToAddress" type="import1:Address" minOccurs="0" maxOccurs="1" />
+				<xs:element name="RecipientAddress" type="import1:Address" minOccurs="0" maxOccurs="1" />
+				<xs:element name="ShipperCode" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="ShipperAddress" type="import1:Address" minOccurs="0" maxOccurs="1" />
+				<xs:element name="Carrier" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="CarrierService" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="CarrierServiceSymbol" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="InternationalShipmentFlag" type="xs:boolean" maxOccurs="1" />
+				<xs:element name="RateAtShipmentLevel" type="xs:boolean" maxOccurs="1" />
+				<xs:element name="CustomsValue" type="xs:double" minOccurs="0" maxOccurs="1" />
+				<xs:element name="FreightTerms" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="HazardousMaterialsEmergencyPhone" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="ShipDate" type="xs:dateTime" minOccurs="0" maxOccurs="1" />
+				<xs:element name="SignatureReleaseAuthorizationNumber" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="TaxNumber" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="TermsOfSale" type="xs:string" minOccurs="0" maxOccurs="1" />
+				<xs:element name="Accessorials" type="AccessorialList" minOccurs="0" maxOccurs="1" />
+				<xs:element name="ParcelRequests" type="ParcelRequestList" minOccurs="0" maxOccurs="1" />
+				<xs:element name="RatingServiceUserDefinedFields" type="import2:UserDefinedFields" maxOccurs="1" />
+				<xs:element name="ShipmentHeaderUserDefinedFields" type="import2:UserDefinedFields" minOccurs="0"
+					maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ParcelRequest">
+		<xs:sequence>
+			<xs:element name="ContainerId" type="xs:string" maxOccurs="1" />
+			<xs:element name="InternalContainerNum" type="xs:int" maxOccurs="1" />
+			<xs:element name="DimensionUM" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="WeightUM" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Height" type="xs:double" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Width" type="xs:double" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Length" type="xs:double" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Weight" type="xs:double" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Quantity" type="xs:double" maxOccurs="1" />
+			<xs:element name="Value" type="xs:double" minOccurs="0" maxOccurs="1" />
+			<xs:element name="LTLClass" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="XofYSequence" type="xs:int" minOccurs="0" maxOccurs="1" />
+			<xs:element name="XofYTotal" type="xs:int" minOccurs="0" maxOccurs="1" />
+			<xs:element name="ReturnAddress" type="import1:Address" minOccurs="0" maxOccurs="1" />
+			<xs:element name="PackagingType" type="xs:string" minOccurs="0" maxOccurs="1" />
+			<xs:element name="Accessorials" type="AccessorialList" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ParcelRequestList">
+		<xs:sequence>
+			<xs:element name="ParcelRequest" type="ParcelRequest" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AccessorialList">
+		<xs:sequence>
+			<xs:element name="Accessorial" minOccurs="0" maxOccurs="unbounded" type="import3:Accessorial"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

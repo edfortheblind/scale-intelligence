@@ -1,0 +1,36 @@
+<xs:schema xmlns:tns="http://www.manh.com/ILSNET/Entities" elementFormDefault="qualified" targetNamespace="http://www.manh.com/ILSNET/Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:include schemaLocation="SerialNumberDTO.xsd" />
+  <xs:element name="ArrayOfPutawayOutboundWorkInstructionsRequest" type="tns:ArrayOfPutawayOutboundWorkInstructionsRequest" />
+  <xs:complexType name="ArrayOfPutawayOutboundWorkInstructionsRequest">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="PutawayOutboundWorkInstructionsRequest" type="tns:PutawayOutboundWorkInstructionsRequest" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PutawayOutboundWorkInstructionsRequest">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="1" name="InternalInstructionNum" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="QuantityConfirmed" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="WorkProfile" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SerialNumbers" type="xs:ArrayOfString" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SerialNumberDTOs" type="tns:ArrayOfArrayOfSerialNumberDTO" />
+      <xs:element minOccurs="0" maxOccurs="1" name="PickAndDropLicensePlate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ReasonCode" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FromQty" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ToQty" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="FromLoc" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="Lot" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="LogisticsUnit" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="ParentLogisticsUnit" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ArrayOfString">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+   <xs:complexType name="ArrayOfDecimal">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="decimal" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

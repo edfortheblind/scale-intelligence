@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.manh.com/ILSNET/Entities" elementFormDefault="qualified" targetNamespace="http://www.manh.com/ILSNET/Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="shippingContainerQcCounts" type="tns:shippingContainerQcCounts" />
+  <xs:complexType name="shippingContainerQcCounts">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Links" type="tns:Link" />
+      <xs:element minOccurs="1" maxOccurs="1" name="LaborStartTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="1" name="containerId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="shipmentId" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="warehouse" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="qcStatus" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="qcAssignmentReason" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="shippingContainerQcCount" type="tns:shippingContainerQcCount" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Link">
+    <xs:attribute name="href" type="xs:string" />
+    <xs:attribute name="type" type="xs:string" />
+    <xs:attribute name="rel" type="xs:string" />
+  </xs:complexType>
+  <xs:complexType name="shippingContainerQcCount">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="item" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="itemDescription" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="company" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="lot" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="packedQuantity" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="countedQuantity" type="xs:decimal" />
+      <xs:element minOccurs="0" maxOccurs="1" name="quantityUM" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="qcReasonCode" type="tns:qcReasonCode" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDef1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDef2" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDef3" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDef4" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDef5" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDef6" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="userDef7" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="1" maxOccurs="1" name="userDef8" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="qcReasonCode">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="reasonCode" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="failedQuantity" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

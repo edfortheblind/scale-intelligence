@@ -1,0 +1,429 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create a Breadcrumb on a Monitor Page</title>
+    <meta name="Title" content="How to: Create a Breadcrumb on a Monitor Page"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The Breadcrumb will typically appear horizontally near the top of a Monitor page, providing links back to each previous page that the user navigates through. " />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="4509d595-45ad-4bc8-b698-77c47b0eca3b"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="4"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create a Breadcrumb on a Monitor Page</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Monitor Pages
+ > How to: Create a Breadcrumb on a Monitor Page</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The Breadcrumb will typically appear horizontally near the top of a Monitor page, providing links back to each previous page that the user navigates through.&nbsp;</p>
+
+<p><img border="0" alt="" src="images/Bread_Crumb.png" /></p>
+
+<p>There are 2 drill down level screens in the above&nbsp;diagram.<br />
+Drill down level 1 (Work group) - This is the default page.<br />
+Drill down level 2 (Work type)&nbsp;&nbsp; &nbsp;- This will be displayed when any column on the first drill down level is clicked.</p>
+
+<p>Breadcrumb Work groups will be displayed in 1st drill down level.<br />
+Breadcrumb Work group: &lt;clicked column chart name&gt; will be displayed in 2nd drill down level. (in the diagram it is 'Work group: Picking').<br />
+Number of Breadcrumbs that get displayed depends on the number of drill down levels, hence that many Screen Control Attributes will have to be added in the metadata script.</p>
+
+<p>These 2 Breadcrumbs (i.e. Work groups, Work group :&lt;picking&gt;) can be created by adding 2 Screen Control Attributes to the&nbsp;breadcrumb Screen&nbsp;Control. The below is the sample&nbsp;script to add this.</p>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Example&nbsp;Breadcrumb script</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #008080">------------------Control Start----------------------------
+</span>
+<span style="COLOR: #0000ff">exec</span> DBC_ISCREENCONTROL
+ <span style="COLOR: #008000">@active</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Y'</span> ,
+ <span style="COLOR: #008000">@controlCssClass</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">''</span>,
+ <span style="COLOR: #008000">@controlName</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'breadCrumbWorkMonitor'</span>,
+ <span style="COLOR: #008000">@controlType</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'310'</span>,
+ <span style="COLOR: #008000">@dataSource</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #0000ff">null</span> ,
+ <span style="COLOR: #008000">@dataSourceType</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #0000ff">null</span> ,
+ <span style="COLOR: #008000">@defaultAction</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #0000ff">null</span> ,
+ <span style="COLOR: #008000">@defaultState</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #0000ff">null</span> ,
+ <span style="COLOR: #008000">@divCssClass</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">''</span>,
+ <span style="COLOR: #008000">@labelOrientation</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #0000ff">null</span> , 
+ <span style="COLOR: #008000">@resourceKey</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #0000ff">null</span> ,
+ <span style="COLOR: #008000">@screenGroupId</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@screenGroupId</span>,
+ <span style="COLOR: #008000">@sequence</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'250'</span>        
+<span style="COLOR: #0000ff">set</span> <span style="COLOR: #008000">@screenControlId</span> <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #008000">@@IDENTITY</span>
+<span style="COLOR: #008080">------------------Attribute Start----------------------------
+</span>
+<span style="COLOR: #0000ff">exec</span> DBC_ISCREENCONTROLATTRIBUTES
+ <span style="COLOR: #008000">@active</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Y'</span> ,
+ <span style="COLOR: #008000">@attributeName</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'breadcrumb'</span>,
+ <span style="COLOR: #008000">@attributeValue</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'WORKGROUPS'</span>,
+ <span style="COLOR: #008000">@isControlProperty</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Y'</span> ,
+ <span style="COLOR: #008000">@processStamp</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'dbChangeWork_Monitor.SQL'</span>,
+ <span style="COLOR: #008000">@screenControlId</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@screenControlId</span> 
+<span style="COLOR: #0000ff">set</span> <span style="COLOR: #008000">@screenControlAttributesId</span> <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #008000">@@IDENTITY</span>;
+<span style="COLOR: #008080">------------------Attribute End----------------------------
+------------------Attribute Start----------------------------
+</span>
+<span style="COLOR: #0000ff">exec</span> DBC_ISCREENCONTROLATTRIBUTES
+ <span style="COLOR: #008000">@active</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Y'</span> ,
+ <span style="COLOR: #008000">@attributeName</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'breadcrumb'</span>,
+ <span style="COLOR: #008000">@attributeValue</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'WORKGROUP'</span>,
+ <span style="COLOR: #008000">@isControlProperty</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Y'</span> ,
+ <span style="COLOR: #008000">@processStamp</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'dbChangeWork_Monitor.SQL'</span>,
+ <span style="COLOR: #008000">@screenControlId</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@screenControlId</span>
+<span style="COLOR: #0000ff">set</span> <span style="COLOR: #008000">@screenControlAttributesId</span> <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #008000">@@IDENTITY</span>;
+<span style="COLOR: #008080">------------------Attribute End----------------------------
+------------------Control End-------------------------------</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>&nbsp;</p>
+
+<p>Below are the steps to create the breadcrumb.</p>
+
+<div id="i-4b992c4a-b496-4d4d-b510-5afaf97f6b4e-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1:&nbsp;Create a Menu bar to house the Breadcrumb panel</span>
+</div>
+
+<div id="i-4b992c4a-b496-4d4d-b510-5afaf97f6b4e-section-content" class="i-section-content">
+    <p>Add a SCREEN_GROUP record as follows in order to create a&nbsp;Menu bar to hold the Breadcrumb panel.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART_ID</td>
+
+                <td>The Screen Part Id of the Monitor Menu Pane</td>
+            </tr>
+
+            <tr>
+                <td>GROUP_NAME</td>
+
+                <td>The name of the group</td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>GROUP_TYPE</td>
+
+                <td><em>70</em>&nbsp;(Menu)</td>
+            </tr>
+
+            <tr>
+                <td>PARENT_GROUP_ID</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>NESTED_GROUP_UNIT</td>
+
+                <td>0</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td>nav nav-pills</td>
+            </tr>
+
+            <tr>
+                <td>ROW_CSS_CLASS</td>
+
+                <td>row rowmenupanel</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-d4c64fe7-d28c-49fd-9dbf-fb3c6cb808ae-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2:&nbsp;Create a panel screen group to house the Breadcrumb</span>
+</div>
+
+<div id="i-d4c64fe7-d28c-49fd-9dbf-fb3c6cb808ae-section-content" class="i-section-content">
+    <p>Add a SCREEN_GROUP record as follows in order to create a&nbsp;panel&nbsp;to hold the Breadcrumb.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART_ID</td>
+
+                <td>The Screen Part Id of the Monitor Menu Pane</td>
+            </tr>
+
+            <tr>
+                <td>GROUP_NAME</td>
+
+                <td>The name of the group</td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>GROUP_TYPE</td>
+
+                <td><em>60</em>&nbsp;(Panel)</td>
+            </tr>
+
+            <tr>
+                <td>PARENT_GROUP_ID</td>
+
+                <td>Set the object id of the parent group created in step 1</td>
+            </tr>
+
+            <tr>
+                <td>NESTED_GROUP_UNIT</td>
+
+                <td>Set the top level object id&nbsp;of this group (used in nested groups) created in step 1</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td>col-9 col-sm-9 col-md-9 col-lg-10</td>
+            </tr>
+
+            <tr>
+                <td>ROW_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-e380bea2-1ee7-4fb4-ac0b-939d61bf4707-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Create a Screen Control for the Breadcrumb</span>
+</div>
+
+<div id="i-e380bea2-1ee7-4fb4-ac0b-939d61bf4707-section-content" class="i-section-content">
+    <p>Now add a SCREEN_CONTROL record as follows for the Breadcrumb.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_GROUP_ID</td>
+
+                <td>The Screen Group Id of the&nbsp;panel that will hold the Breadcrumb</td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_NAME</td>
+
+                <td>The name of&nbsp;this Breadcrumb control</td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_TYPE</td>
+
+                <td><em>310</em>&nbsp;(Breadcrumb)</td>
+            </tr>
+
+            <tr>
+                <td>DATA_SOURCE_TYPE</td>
+
+                <td><em><em>NULL</em></em></td>
+            </tr>
+
+            <tr>
+                <td>DATA_SOURCE</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-d1fed2e4-23d7-416c-833f-9d47625a565c-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 4: Create Screen Control Attributes for the Breadcrumb</span>
+</div>
+
+<div id="i-d1fed2e4-23d7-416c-833f-9d47625a565c-section-content" class="i-section-content">
+    <p>The breadcrumb will have a screen control attribute record for each level that the user can drill down on the chart as seen below.</p>
+
+    <p>Add a&nbsp;SCREEN_CONTROL_ATTRIBUTES as follows&nbsp;for the Breadcrumb.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>ATTRIBUTE_NAME</td>
+
+                <td>breadcrumb</td>
+            </tr>
+
+            <tr>
+                <td>ATTRIBUTE_VALUE</td>
+
+                <td>The resource key for the Breadcrumb navigation name</td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL_ID</td>
+
+                <td>The Screen Control Id of the Breadcrumb</td>
+            </tr>
+
+            <tr>
+                <td>IS_CONTROL_PROPERTY</td>
+
+                <td>N</td>
+            </tr>
+        </tbody>
+    </table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Screen_Groups.html">How to: Create Screen Groups</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Controls.html">How to: Create Screen Controls</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Control_Attributes.html">How to: Create Screen Control Attributes</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

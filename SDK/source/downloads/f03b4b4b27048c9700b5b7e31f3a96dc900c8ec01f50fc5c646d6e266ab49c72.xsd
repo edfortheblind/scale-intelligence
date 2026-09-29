@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="PrintManifestRequest" targetNamespace="http://www.manh.com/ILSNET/Shipping/PrintManifestRequest"
+	elementFormDefault="qualified" xmlns="http://www.manh.com/ILSNET/Shipping/PrintManifestRequest"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:import="http://www.manh.com/ILSNET/Printing/PrintAttributes"
+	xmlns:import1="http://www.manh.com/ILSNET/Shipping/Manifest" xmlns:import2="http://www.manh.com/ILSNET/General/UserDefinedFields">
+	<xs:import schemaLocation="../General/UserDefinedFields.xsd" namespace="http://www.manh.com/ILSNET/General/UserDefinedFields" />
+	<xs:import schemaLocation="Manifest.xsd" namespace="http://www.manh.com/ILSNET/Shipping/Manifest" />
+	<xs:import schemaLocation="../Printing/PrintAttributes.xsd" namespace="http://www.manh.com/ILSNET/Printing/PrintAttributes" />
+	<xs:element name="PrintManifestRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Manifest" type="import1:Manifest" maxOccurs="1" />
+				<xs:element name="PrintAttributes" type="import:PrintAttributes" maxOccurs="1" />
+				<xs:element name="RatingServiceUserDefinedFields" type="import2:UserDefinedFields" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,646 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Movement Class Analysis Extensibility</title>
+    <meta name="Title" content="Movement Class Analysis Extensibility"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Movement Class Analysis data mining functionality pulls data from the TRANSACTION_HISTORY and AR_TRANSACTION_HISTORY tables. This functionality can be extended by extending the  MOVECLS_MineMovementClassAnalysisData stored procedure or by adding a cu" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="938a5889-27c7-4a08-921c-68ab2c66cbd8"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="1"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Movement Class Analysis Extensibility</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+Extensibility
+ > Movement Class Analysis
+ > Movement Class Analysis Extensibility</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Movement Class Analysis data mining functionality pulls data from the TRANSACTION_HISTORY and AR_TRANSACTION_HISTORY tables. This functionality&nbsp;can be extended by extending the&nbsp; MOVECLS_MineMovementClassAnalysisData stored procedure or by adding a custom stored procedure via a modification.</p>
+
+<p>The MOVECLS_MineMovementClassAnalysisData stored procedure is responsible for the data migration functionality, below is an example that will illustrate how the functionality can be extended.</p>
+
+<div id="i-29823f73-8c4a-4a3c-852b-e057d1336228-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Modify the&nbsp;MOVECLS_MineMovementClassAnalysisData Stored Procedure</span>
+</div>
+
+<div id="i-29823f73-8c4a-4a3c-852b-e057d1336228-section-content" class="i-section-content">
+    <p>A new nullable or default value parameter can be added to the stored procedure to allow the SP to be called from the existing and modified code. This will prevent breaking the existing stored procedure call. Here the WorkZone nullable field has been added in the existing stored procedure.</p>
+
+    <p>&nbsp;</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>MOVECLS_MineMovementClassAnalysisData</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">ALTER</span> <span style="COLOR: #0000ff">PROCEDURE</span> <span style="COLOR: #ff0000">[dbo]</span>.<span style="COLOR: #ff0000">[MOVECLS_MineMovementClassAnalysisData]</span> (
+      <span style="COLOR: #008000">@Warehouse</span> <span style="COLOR: #0000ff">NVARCHAR</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">25</span>),
+      <span style="COLOR: #008000">@Days</span> <span style="COLOR: #0000ff">INT</span> <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">90</span>,
+      <span style="COLOR: #008000">@Permanent</span> <span style="COLOR: #0000ff">NCHAR</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">1</span>),
+      <span style="COLOR: #008000">@IncludeArchivedData</span> <span style="COLOR: #0000ff">NCHAR</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">1</span>),
+      <span style="COLOR: #008000">@WorkZone</span> <span style="COLOR: #0000ff">NVARCHAR</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">25</span>) <span style="COLOR: #808080">=</span> <span style="COLOR: #0000ff">NULL</span>  <span style="COLOR: #008080">--- 'Work Zone has been added under extensibility.'      )
+</span><span style="COLOR: #0000ff">AS</span>
+<span style="COLOR: #0000ff">SET</span> NOCOUNT <span style="COLOR: #0000ff">ON</span>;
+
+<span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@DateFrom</span> <span style="COLOR: #0000ff">DATETIME</span>
+<span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@DateTo</span> <span style="COLOR: #0000ff">DATETIME</span>
+<span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@stErrorMsg</span> <span style="COLOR: #0000ff">NVARCHAR</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">2000</span>)
+<span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@rowEffected</span> NUMERIC(<span style="FONT-WEIGHT: bold; COLOR: #800000">9</span>, <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span>)
+
+<span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #008000">@DateTo</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff00ff">DATEADD</span>(dd, <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span>, <span style="COLOR: #ff00ff">DATEDIFF</span>(dd, <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span>, <span style="COLOR: #ff00ff">GETDATE</span>()))
+
+<span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #008000">@DateFrom</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@DateTo</span> <span style="COLOR: #808080">-</span> <span style="COLOR: #008000">@Days</span>
+
+<span style="COLOR: #008080">--Wareshouse should not be null
+</span><span style="COLOR: #0000ff">IF</span> (<span style="COLOR: #008000">@Warehouse</span> <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>)
+<span style="COLOR: #0000ff">BEGIN</span>
+      <span style="COLOR: #0000ff">SET</span> <span style="COLOR: #008000">@stErrorMsg</span> <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'MSG_INVVAL28'</span>;
+
+      <span style="COLOR: #0000ff">RETURN</span> <span style="COLOR: #808080">-</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span>;
+<span style="COLOR: #0000ff">END</span>
+
+<span style="COLOR: #008080">--Clear MOVEMENT_CLASS_ANALYSIS table on each run
+</span><span style="COLOR: #0000ff">DELETE</span>
+<span style="COLOR: #0000ff">FROM</span> MOVEMENT_CLASS_ANALYSIS
+<span style="COLOR: #0000ff">WHERE</span> WAREHOUSE <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@Warehouse</span>
+
+<span style="COLOR: #0000ff">IF</span> <span style="COLOR: #ff00ff">UPPER</span>(<span style="COLOR: #008000">@PERMANENT</span>) <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span>
+<span style="COLOR: #0000ff">BEGIN</span>
+      <span style="COLOR: #0000ff">INSERT</span> <span style="COLOR: #0000ff">INTO</span> MOVEMENT_CLASS_ANALYSIS (
+            ITEM,
+            COMPANY,
+            WAREHOUSE,
+            LOCATION,
+            TOTAL_QUANTITY,
+            QUANTITY_UM,
+            ITEM_CLASS,
+            NUMBER_OF_HITS,
+            NUMBER_OF_DAYS,
+            DATE_TIME_STAMP,
+            USER_STAMP,
+            PROCESS_STAMP
+            )
+      <span style="COLOR: #0000ff">SELECT</span> ITEM,
+            COMPANY,
+            WAREHOUSE,
+            LOCATION,
+            <span style="COLOR: #ff00ff">sum</span>(TOTAL_QUATITY) <span style="COLOR: #0000ff">AS</span> TOTAL_QUATITY,
+            QUANTITY_UM,
+            ITEM_CLASS,
+            <span style="COLOR: #ff00ff">SUM</span>(NUMBER_OF_HITS),
+            <span style="COLOR: #008000">@Days</span>,
+            <span style="COLOR: #ff00ff">GETDATE</span>(),
+            N<span style="COLOR: #ff0000">'System'</span>,
+            N<span style="COLOR: #ff0000">'MineMovementClassAnalysis'</span>
+      <span style="COLOR: #0000ff">FROM</span> (
+            <span style="COLOR: #0000ff">SELECT</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.WAREHOUSE,
+                  TH.LOCATION,
+                  <span style="COLOR: #ff00ff">sum</span>(TH.QUANTITY) <span style="COLOR: #0000ff">AS</span> TOTAL_QUATITY,
+                  th.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            <span style="COLOR: #0000ff">FROM</span> ITEM I <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+            <span style="COLOR: #808080">JOIN</span> (
+                  <span style="COLOR: #0000ff">SELECT</span> TRANSACTION_HISTORY.ITEM,
+                        TRANSACTION_HISTORY.COMPANY,
+                        TRANSACTION_HISTORY.WAREHOUSE,
+                        TRANSACTION_HISTORY.LOCATION,
+                        TRANSACTION_HISTORY.QUANTITY_UM,
+                        <span style="COLOR: #ff00ff">sum</span>(TRANSACTION_HISTORY.QUANTITY) <span style="COLOR: #0000ff">AS</span> QUANTITY,
+                        <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #808080">*</span>) <span style="COLOR: #0000ff">AS</span> NUMBER_OF_HITS
+                  <span style="COLOR: #0000ff">FROM</span> TRANSACTION_HISTORY <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+                  <span style="COLOR: #0000ff">INNER</span> <span style="COLOR: #808080">JOIN</span> LOCATION <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+                        <span style="COLOR: #0000ff">ON</span> LOCATION.LOCATION <span style="COLOR: #808080">=</span> TRANSACTION_HISTORY.LOCATION
+                              <span style="COLOR: #808080">AND</span> LOCATION.WAREHOUSE <span style="COLOR: #808080">=</span> TRANSACTION_HISTORY.WAREHOUSE
+                              <span style="COLOR: #808080">AND</span> LOCATION.LOCATION_CLASS <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Inventory'</span>
+                  <span style="COLOR: #0000ff">INNER</span> <span style="COLOR: #808080">JOIN</span> LOCATION_INVENTORY LI
+                        <span style="COLOR: #0000ff">ON</span> TRANSACTION_HISTORY.LOCATION <span style="COLOR: #808080">=</span> LI.LOCATION
+                              <span style="COLOR: #808080">AND</span> TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080">=</span> LI.WAREHOUSE
+                  <span style="COLOR: #0000ff">WHERE</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080">&gt;=</span> <span style="COLOR: #008000">@DateFrom</span>
+                        <span style="COLOR: #808080">AND</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080">&lt;</span> <span style="COLOR: #008000">@DateTo</span>
+                        <span style="COLOR: #808080">AND</span> DIRECTION <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'FROM'</span>
+                        <span style="COLOR: #808080">AND</span> TRANSACTION_TYPE <span style="COLOR: #808080">IN</span> (
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">40</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">60</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">100</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">130</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">120</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">240</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">250</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">360</span>
+                              )
+                        <span style="COLOR: #808080">AND</span> TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@Warehouse</span>
+                        <span style="COLOR: #808080">AND</span> (
+                              <span style="COLOR: #008000">@WorkZone</span> <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                              <span style="COLOR: #808080">OR</span> (<span style="COLOR: #ff00ff">ISNULL</span>(<span style="COLOR: #008000">@WorkZone</span>, <span style="COLOR: #ff0000">'!'</span>) <span style="COLOR: #808080">=</span> <span style="COLOR: #ff00ff">ISNULL</span>(TRANSACTION_HISTORY.WORK_ZONE, <span style="COLOR: #ff0000">'!'</span>))
+                              ) <span style="COLOR: #008080">--- 'Work Zone has been added under extensibility.'
+</span>                        <span style="COLOR: #808080">AND</span> (LI.<span style="COLOR: #0000ff">PERMANENT</span> <span style="COLOR: #808080">&lt;&gt;</span> N<span style="COLOR: #ff0000">'N'</span>)
+                  <span style="COLOR: #0000ff">GROUP</span> <span style="COLOR: #0000ff">BY</span> TRANSACTION_HISTORY.ITEM,
+                        TRANSACTION_HISTORY.COMPANY,
+                        TRANSACTION_HISTORY.WAREHOUSE,
+                        TRANSACTION_HISTORY.LOCATION,
+                        TRANSACTION_HISTORY.QUANTITY_UM
+                  ) TH
+                  <span style="COLOR: #0000ff">ON</span> I.ITEM <span style="COLOR: #808080">=</span> TH.ITEM
+                        <span style="COLOR: #808080">AND</span> (
+                              TH.COMPANY <span style="COLOR: #808080">=</span> I.COMPANY
+                              <span style="COLOR: #808080">OR</span> (
+                                    TH.COMPANY <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                                    <span style="COLOR: #808080">OR</span> I.COMPANY <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                                    )
+                              )
+            <span style="COLOR: #0000ff">WHERE</span> TH.WAREHOUSE <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@WAREHOUSE</span>
+            <span style="COLOR: #0000ff">GROUP</span> <span style="COLOR: #0000ff">BY</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.LOCATION,
+                  TH.WAREHOUSE,
+                  TH.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            
+            <span style="COLOR: #0000ff">UNION</span>
+            
+            <span style="COLOR: #0000ff">SELECT</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.WAREHOUSE,
+                  TH.LOCATION,
+                  <span style="COLOR: #ff00ff">sum</span>(TH.QUANTITY) <span style="COLOR: #0000ff">AS</span> TOTAL_QUATITY,
+                  th.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            <span style="COLOR: #0000ff">FROM</span> ITEM I <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+            <span style="COLOR: #808080">JOIN</span> (
+                  <span style="COLOR: #0000ff">SELECT</span> AR_TRANSACTION_HISTORY.ITEM,
+                        AR_TRANSACTION_HISTORY.COMPANY,
+                        AR_TRANSACTION_HISTORY.WAREHOUSE,
+                        AR_TRANSACTION_HISTORY.LOCATION,
+                        AR_TRANSACTION_HISTORY.QUANTITY_UM,
+                        <span style="COLOR: #ff00ff">sum</span>(AR_TRANSACTION_HISTORY.QUANTITY) <span style="COLOR: #0000ff">AS</span> QUANTITY,
+                        <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #808080">*</span>) <span style="COLOR: #0000ff">AS</span> NUMBER_OF_HITS
+                  <span style="COLOR: #0000ff">FROM</span> AR_TRANSACTION_HISTORY <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+                  <span style="COLOR: #0000ff">INNER</span> <span style="COLOR: #808080">JOIN</span> LOCATION <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+                        <span style="COLOR: #0000ff">ON</span> LOCATION.LOCATION <span style="COLOR: #808080">=</span> AR_TRANSACTION_HISTORY.LOCATION
+                              <span style="COLOR: #808080">AND</span> LOCATION.WAREHOUSE <span style="COLOR: #808080">=</span> AR_TRANSACTION_HISTORY.WAREHOUSE
+                              <span style="COLOR: #808080">AND</span> LOCATION.LOCATION_CLASS <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Inventory'</span>
+                  <span style="COLOR: #0000ff">INNER</span> <span style="COLOR: #808080">JOIN</span> LOCATION_INVENTORY LI
+                        <span style="COLOR: #0000ff">ON</span> AR_TRANSACTION_HISTORY.LOCATION <span style="COLOR: #808080">=</span> LI.LOCATION
+                              <span style="COLOR: #808080">AND</span> AR_TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080">=</span> LI.WAREHOUSE
+                  <span style="COLOR: #0000ff">WHERE</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080">&gt;=</span> <span style="COLOR: #008000">@DateFrom</span>
+                        <span style="COLOR: #808080">AND</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080">&lt;</span> <span style="COLOR: #008000">@DateTo</span>
+                        <span style="COLOR: #808080">AND</span> DIRECTION <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'FROM'</span>
+                        <span style="COLOR: #808080">AND</span> TRANSACTION_TYPE <span style="COLOR: #808080">IN</span> (
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">40</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">60</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">100</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">130</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">120</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">240</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">250</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">360</span>
+                              )
+                        <span style="COLOR: #808080">AND</span> AR_TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@Warehouse</span>
+                        <span style="COLOR: #808080">AND</span> (
+                              <span style="COLOR: #008000">@WorkZone</span> <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                              <span style="COLOR: #808080">OR</span> (<span style="COLOR: #ff00ff">ISNULL</span>(<span style="COLOR: #008000">@WorkZone</span>, <span style="COLOR: #ff0000">'!'</span>) <span style="COLOR: #808080">=</span> <span style="COLOR: #ff00ff">ISNULL</span>(AR_TRANSACTION_HISTORY.WORK_ZONE, <span style="COLOR: #ff0000">'!'</span>))
+                              ) <span style="COLOR: #008080">--- 'Work Zone has been added under extensibility.'
+</span>                        <span style="COLOR: #808080">AND</span> (LI.<span style="COLOR: #0000ff">PERMANENT</span> <span style="COLOR: #808080">&lt;&gt;</span> N<span style="COLOR: #ff0000">'N'</span>)
+                  <span style="COLOR: #0000ff">GROUP</span> <span style="COLOR: #0000ff">BY</span> AR_TRANSACTION_HISTORY.ITEM,
+                        AR_TRANSACTION_HISTORY.COMPANY,
+                        AR_TRANSACTION_HISTORY.WAREHOUSE,
+                        AR_TRANSACTION_HISTORY.LOCATION,
+                        AR_TRANSACTION_HISTORY.QUANTITY_UM
+                  ) TH
+                  <span style="COLOR: #0000ff">ON</span> I.ITEM <span style="COLOR: #808080">=</span> TH.ITEM
+                        <span style="COLOR: #808080">AND</span> (
+                              TH.COMPANY <span style="COLOR: #808080">=</span> I.COMPANY
+                              <span style="COLOR: #808080">OR</span> (
+                                    TH.COMPANY <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                                    <span style="COLOR: #808080">OR</span> I.COMPANY <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                                    )
+                              )
+            <span style="COLOR: #0000ff">WHERE</span> TH.WAREHOUSE <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@WAREHOUSE</span>
+                  <span style="COLOR: #808080">AND</span> <span style="COLOR: #008000">@IncludeArchivedData</span> <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span>
+            <span style="COLOR: #0000ff">GROUP</span> <span style="COLOR: #0000ff">BY</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.LOCATION,
+                  TH.WAREHOUSE,
+                  TH.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            ) TransactionHistoryData
+      <span style="COLOR: #0000ff">GROUP</span> <span style="COLOR: #0000ff">BY</span> ITEM,
+            COMPANY,
+            LOCATION,
+            WAREHOUSE,
+            QUANTITY_UM,
+            ITEM_CLASS
+<span style="COLOR: #0000ff">END</span>
+<span style="COLOR: #0000ff">ELSE</span>
+<span style="COLOR: #0000ff">BEGIN</span>
+      <span style="COLOR: #0000ff">INSERT</span> <span style="COLOR: #0000ff">INTO</span> MOVEMENT_CLASS_ANALYSIS (
+            ITEM,
+            COMPANY,
+            WAREHOUSE,
+            LOCATION,
+            TOTAL_QUANTITY,
+            QUANTITY_UM,
+            ITEM_CLASS,
+            NUMBER_OF_HITS,
+            NUMBER_OF_DAYS,
+            DATE_TIME_STAMP,
+            USER_STAMP,
+            PROCESS_STAMP
+            )
+      <span style="COLOR: #0000ff">SELECT</span> ITEM,
+            COMPANY,
+            WAREHOUSE,
+            LOCATION,
+            <span style="COLOR: #ff00ff">sum</span>(TOTAL_QUATITY) <span style="COLOR: #0000ff">AS</span> TOTAL_QUATITY,
+            QUANTITY_UM,
+            ITEM_CLASS,
+            <span style="COLOR: #ff00ff">SUM</span>(NUMBER_OF_HITS),
+            <span style="COLOR: #008000">@DAYS</span>,
+            <span style="COLOR: #ff00ff">GETDATE</span>(),
+            N<span style="COLOR: #ff0000">'System'</span>,
+            N<span style="COLOR: #ff0000">'MineMovementClassAnalysis'</span>
+      <span style="COLOR: #0000ff">FROM</span> (
+            <span style="COLOR: #0000ff">SELECT</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.WAREHOUSE,
+                  TH.LOCATION,
+                  <span style="COLOR: #ff00ff">sum</span>(TH.QUANTITY) <span style="COLOR: #0000ff">AS</span> TOTAL_QUATITY,
+                  th.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            <span style="COLOR: #0000ff">FROM</span> ITEM I <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+            <span style="COLOR: #808080">JOIN</span> (
+                  <span style="COLOR: #0000ff">SELECT</span> TRANSACTION_HISTORY.ITEM,
+                        TRANSACTION_HISTORY.COMPANY,
+                        TRANSACTION_HISTORY.WAREHOUSE,
+                        TRANSACTION_HISTORY.LOCATION,
+                        QUANTITY_UM,
+                        <span style="COLOR: #ff00ff">sum</span>(TRANSACTION_HISTORY.QUANTITY) <span style="COLOR: #0000ff">AS</span> QUANTITY,
+                        <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #808080">*</span>) <span style="COLOR: #0000ff">AS</span> NUMBER_OF_HITS
+                  <span style="COLOR: #0000ff">FROM</span> TRANSACTION_HISTORY <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+                  <span style="COLOR: #0000ff">INNER</span> <span style="COLOR: #808080">JOIN</span> LOCATION <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+                        <span style="COLOR: #0000ff">ON</span> LOCATION.LOCATION <span style="COLOR: #808080">=</span> TRANSACTION_HISTORY.LOCATION
+                              <span style="COLOR: #808080">AND</span> LOCATION.WAREHOUSE <span style="COLOR: #808080">=</span> TRANSACTION_HISTORY.WAREHOUSE
+                              <span style="COLOR: #808080">AND</span> LOCATION.LOCATION_CLASS <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Inventory'</span>
+                  <span style="COLOR: #0000ff">WHERE</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080">&gt;=</span> <span style="COLOR: #008000">@DateFrom</span>
+                        <span style="COLOR: #808080">AND</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080">&lt;</span> <span style="COLOR: #008000">@DateTo</span>
+                        <span style="COLOR: #808080">AND</span> DIRECTION <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'FROM'</span>
+                        <span style="COLOR: #808080">AND</span> TRANSACTION_TYPE <span style="COLOR: #808080">IN</span> (
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">40</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">60</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">100</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">130</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">120</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">240</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">250</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">360</span>
+                              )
+                        <span style="COLOR: #808080">AND</span> TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@Warehouse</span>
+                        <span style="COLOR: #808080">AND</span> (
+                              <span style="COLOR: #008000">@WorkZone</span> <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                              <span style="COLOR: #808080">OR</span> (<span style="COLOR: #ff00ff">ISNULL</span>(<span style="COLOR: #008000">@WorkZone</span>, <span style="COLOR: #ff0000">'!'</span>) <span style="COLOR: #808080">=</span> <span style="COLOR: #ff00ff">ISNULL</span>(TRANSACTION_HISTORY.WORK_ZONE, <span style="COLOR: #ff0000">'!'</span>))
+                              )  <span style="COLOR: #008080">--- 'Work Zone has been added under extensibility.'
+</span>                  <span style="COLOR: #0000ff">GROUP</span> <span style="COLOR: #0000ff">BY</span> TRANSACTION_HISTORY.ITEM,
+                        TRANSACTION_HISTORY.COMPANY,
+                        TRANSACTION_HISTORY.WAREHOUSE,
+                        TRANSACTION_HISTORY.LOCATION,
+                        QUANTITY_UM
+                  ) TH
+                  <span style="COLOR: #0000ff">ON</span> I.ITEM <span style="COLOR: #808080">=</span> TH.ITEM
+                        <span style="COLOR: #808080">AND</span> (
+                              TH.COMPANY <span style="COLOR: #808080">=</span> I.COMPANY
+                              <span style="COLOR: #808080">OR</span> (
+                                    TH.COMPANY <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                                    <span style="COLOR: #808080">OR</span> I.COMPANY <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                                    )
+                              )
+            <span style="COLOR: #0000ff">WHERE</span> TH.WAREHOUSE <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@WAREHOUSE</span>
+            <span style="COLOR: #0000ff">GROUP</span> <span style="COLOR: #0000ff">BY</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.LOCATION,
+                  TH.WAREHOUSE,
+                  TH.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            
+            <span style="COLOR: #0000ff">UNION</span>
+            
+            <span style="COLOR: #0000ff">SELECT</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.WAREHOUSE,
+                  TH.LOCATION,
+                  <span style="COLOR: #ff00ff">sum</span>(TH.QUANTITY) <span style="COLOR: #0000ff">AS</span> TOTAL_QUATITY,
+                  th.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            <span style="COLOR: #0000ff">FROM</span> ITEM I <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+            <span style="COLOR: #808080">JOIN</span> (
+                  <span style="COLOR: #0000ff">SELECT</span> AR_TRANSACTION_HISTORY.ITEM,
+                        AR_TRANSACTION_HISTORY.COMPANY,
+                        AR_TRANSACTION_HISTORY.WAREHOUSE,
+                        AR_TRANSACTION_HISTORY.LOCATION,
+                        QUANTITY_UM,
+                        <span style="COLOR: #ff00ff">sum</span>(AR_TRANSACTION_HISTORY.QUANTITY) <span style="COLOR: #0000ff">AS</span> QUANTITY,
+                        <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #808080">*</span>) <span style="COLOR: #0000ff">AS</span> NUMBER_OF_HITS
+                  <span style="COLOR: #0000ff">FROM</span> AR_TRANSACTION_HISTORY <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+                  <span style="COLOR: #0000ff">INNER</span> <span style="COLOR: #808080">JOIN</span> LOCATION <span style="COLOR: #0000ff">WITH</span> (NOLOCK)
+                        <span style="COLOR: #0000ff">ON</span> LOCATION.LOCATION <span style="COLOR: #808080">=</span> AR_TRANSACTION_HISTORY.LOCATION
+                              <span style="COLOR: #808080">AND</span> LOCATION.WAREHOUSE <span style="COLOR: #808080">=</span> AR_TRANSACTION_HISTORY.WAREHOUSE
+                              <span style="COLOR: #808080">AND</span> LOCATION.LOCATION_CLASS <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Inventory'</span>
+                  <span style="COLOR: #0000ff">WHERE</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080">&gt;=</span> <span style="COLOR: #008000">@DateFrom</span>
+                        <span style="COLOR: #808080">AND</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080">&lt;</span> <span style="COLOR: #008000">@DateTo</span>
+                        <span style="COLOR: #808080">AND</span> DIRECTION <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'FROM'</span>
+                        <span style="COLOR: #808080">AND</span> TRANSACTION_TYPE <span style="COLOR: #808080">IN</span> (
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">40</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">60</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">100</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">130</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">120</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">240</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">250</span>,
+                              <span style="FONT-WEIGHT: bold; COLOR: #800000">360</span>
+                              )
+                        <span style="COLOR: #808080">AND</span> AR_TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@Warehouse</span>
+                        <span style="COLOR: #808080">AND</span> (
+                              <span style="COLOR: #008000">@WorkZone</span> <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                              <span style="COLOR: #808080">OR</span> (<span style="COLOR: #ff00ff">ISNULL</span>(<span style="COLOR: #008000">@WorkZone</span>, <span style="COLOR: #ff0000">'!'</span>) <span style="COLOR: #808080">=</span> <span style="COLOR: #ff00ff">ISNULL</span>(AR_TRANSACTION_HISTORY.WORK_ZONE, <span style="COLOR: #ff0000">'!'</span>))
+                              ) <span style="COLOR: #008080">--- 'Work Zone has been added under extensibility.'
+</span>                  <span style="COLOR: #0000ff">GROUP</span> <span style="COLOR: #0000ff">BY</span> AR_TRANSACTION_HISTORY.ITEM,
+                        AR_TRANSACTION_HISTORY.COMPANY,
+                        AR_TRANSACTION_HISTORY.WAREHOUSE,
+                        AR_TRANSACTION_HISTORY.LOCATION,
+                        QUANTITY_UM
+                  ) TH
+                  <span style="COLOR: #0000ff">ON</span> I.ITEM <span style="COLOR: #808080">=</span> TH.ITEM
+                        <span style="COLOR: #808080">AND</span> (
+                              TH.COMPANY <span style="COLOR: #808080">=</span> I.COMPANY
+                              <span style="COLOR: #808080">OR</span> (
+                                    TH.COMPANY <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                                    <span style="COLOR: #808080">OR</span> I.COMPANY <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>
+                                    )
+                              )
+            <span style="COLOR: #0000ff">WHERE</span> TH.WAREHOUSE <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@WAREHOUSE</span>
+                  <span style="COLOR: #808080">AND</span> <span style="COLOR: #008000">@IncludeArchivedData</span> <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span>
+            <span style="COLOR: #0000ff">GROUP</span> <span style="COLOR: #0000ff">BY</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.LOCATION,
+                  TH.WAREHOUSE,
+                  TH.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            ) TransactionHistoryData
+      <span style="COLOR: #0000ff">GROUP</span> <span style="COLOR: #0000ff">BY</span> ITEM,
+            COMPANY,
+            LOCATION,
+            WAREHOUSE,
+            QUANTITY_UM,  
+            ITEM_CLASS
+    <span style="COLOR: #0000ff">END</span>
+<span style="COLOR: #0000ff">Select</span> <span style="COLOR: #008000">@rowEffected</span> <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #008000">@@ROWCOUNT</span>  
+<span style="COLOR: #0000ff">SET</span> NOCOUNT <span style="COLOR: #0000ff">OFF</span> 
+<span style="COLOR: #0000ff">if</span> (<span style="FONT-WEIGHT: bold; COLOR: #008000">@@ERROR</span> <span style="COLOR: #808080">&lt;&gt;</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span>) 
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">-</span><span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> 
+<span style="COLOR: #0000ff">else</span> 
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #008000">@rowEffected</span>
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p>&nbsp;</p>
+
+<div id="i-d9f5e745-267d-4cb7-9d28-89304fd28a7b-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Extend MOVEMENT_CLASS_ANALYSIS_VIEW View</span>
+</div>
+
+<div id="i-d9f5e745-267d-4cb7-9d28-89304fd28a7b-section-content" class="i-section-content">
+    <p>The new WORK_ZONE column added above can be added to the view MOVEMENT_CLASS_ANALYSIS_VIEW, which is the Header Data Source for the viewer. The example below will show this modification&nbsp;&nbsp;</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>MOVEMENT_CLASS_ANALYSIS_VIEW</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">ALTER</span> <span style="COLOR: #0000ff">VIEW</span> MOVEMENT_CLASS_ANALYSIS_VIEW 
+<span style="COLOR: #0000ff">AS</span>
+<span style="COLOR: #0000ff">SELECT</span> 
+    <span style="COLOR: #ff00ff">ISNULL</span>(
+        (
+            <span style="COLOR: #ff00ff">CASE</span> 
+                <span style="COLOR: #0000ff">WHEN</span> (
+                ( 
+                    <span style="COLOR: #0000ff">SELECT</span>  <span style="COLOR: #ff00ff">COUNT</span>(GC.<span style="COLOR: #ff00ff">OBJECT_ID</span>) 
+                    <span style="COLOR: #0000ff">FROM</span> GENERIC_CONFIG_DETAIL <span style="COLOR: #0000ff">AS</span> GC <span style="COLOR: #0000ff">WITH</span> (NOLOCK) 
+                    <span style="COLOR: #0000ff">INNER</span> <span style="COLOR: #808080">JOIN</span> ITEM_UNIT_OF_MEASURE <span style="COLOR: #0000ff">AS</span> IU <span style="COLOR: #0000ff">WITH</span>(NOLOCK) 
+                        <span style="COLOR: #0000ff">ON</span> GC.IDENTIFIER<span style="COLOR: #808080">=</span>IU.ITEM_CLASS
+                ) <span style="COLOR: #808080">&lt;&gt;</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span>) 
+                <span style="COLOR: #0000ff">THEN</span> ITEM_INFO.ITEMCLASSOBJECTID 
+            <span style="COLOR: #0000ff">END</span>
+        ),
+        
+    ITEM_INFO.INTERNALITEMNUM ) <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff00ff">OBJECT_ID</span>,
+    MCA.ITEM,ITEM_INFO.ITEMDESC <span style="COLOR: #0000ff">AS</span> DESCRIPTION,
+    ITEM_INFO.ITEMCLASS <span style="COLOR: #0000ff">AS</span> ITEM_CLASS,
+    MCA.COMPANY,
+    MCA.LOCATION,
+    L.LOCATION_TYPE,
+    L.LOCATING_ZONE,
+    MCA.WAREHOUSE,
+    NUMBER_OF_HITS,
+    MCA.TOTAL_QUANTITY,
+    MCA.QUANTITY_UM,
+    MCA.NUMBER_OF_DAYS,
+    MCA.DATE_TIME_STAMP,
+    ITEM_INFO.VALUEPERITEM <span style="COLOR: #808080">*</span> MCA.TOTAL_QUANTITY <span style="COLOR: #0000ff">AS</span> TOTAL_VALUE_PICKED,
+    ITEM_INFO.COSTPERITEM <span style="COLOR: #808080">*</span> MCA.TOTAL_QUANTITY <span style="COLOR: #0000ff">AS</span> TOTAL_COST_PICKED,
+    CONVERSION_INFO.WEIGHTPERITEM <span style="COLOR: #808080">*</span> (MCA.TOTAL_QUANTITY<span style="COLOR: #808080">/</span>CONVERSION_INFO.CONVERSIONQTY) <span style="COLOR: #0000ff">AS</span> TOTAL_WEIGHT_PICKED,
+    ITEM_INFO.MOVEMENTCLASS <span style="COLOR: #0000ff">AS</span> QUANTITY_UM_MOVEMENT_CLASS,
+    L.MOVEMENT_CLS <span style="COLOR: #0000ff">AS</span> LOCATION_MOVEMENT_CLASS, 
+    <span style="COLOR: #ff00ff">CASE</span> 
+        <span style="COLOR: #0000ff">WHEN</span> <span style="COLOR: #ff00ff">LEN</span>(ILA.ALLOCATION_LOC) <span style="COLOR: #808080">&gt;</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span> 
+        <span style="COLOR: #0000ff">THEN</span> <span style="COLOR: #ff0000">'Y'</span> 
+        <span style="COLOR: #0000ff">ELSE</span> <span style="COLOR: #ff0000">'N'</span> 
+    <span style="COLOR: #0000ff">END</span> <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #0000ff">PERMANENT</span>,
+    <span style="COLOR: #ff00ff">CASE</span> 
+        <span style="COLOR: #0000ff">WHEN</span> CONVERSION_INFO.CONVERSIONQUANTITYUM <span style="COLOR: #808080">!=</span> MCA.QUANTITY_UM 
+        <span style="COLOR: #0000ff">THEN</span> MCA.TOTAL_QUANTITY<span style="COLOR: #808080">/</span>CONVERSION_INFO.CONVERSIONQTY 
+        <span style="COLOR: #0000ff">ELSE</span> MCA.TOTAL_QUANTITY 
+    <span style="COLOR: #0000ff">END</span> <span style="COLOR: #0000ff">AS</span> CONVERTED_QTY,
+    CONVERSION_INFO.CONVERSIONQUANTITYUM <span style="COLOR: #0000ff">AS</span> CONVERTED_QTY_UM, 
+    CONVERSION_INFO.CONVERSIONQUANTITYMOVEMENTCLASS <span style="COLOR: #0000ff">AS</span> CONVERTED_UM_MOVEMENT_CLASS,
+    L.WORK_ZONE  <span style="COLOR: #008080">--- 'Work Zone has been added under extensibility.'
+</span><span style="COLOR: #0000ff">FROM</span> 
+    MOVEMENT_CLASS_ANALYSIS MCA <span style="COLOR: #0000ff">WITH</span> (NOLOCK) 
+    <span style="COLOR: #808080">LEFT</span> <span style="COLOR: #808080">OUTER</span> <span style="COLOR: #808080">JOIN</span> ITEM_LOCATION_ASSIGNMENT ILA <span style="COLOR: #0000ff">WITH</span> (NOLOCK) 
+        <span style="COLOR: #0000ff">ON</span> ILA.WAREHOUSE <span style="COLOR: #808080">=</span> MCA.WAREHOUSE
+            <span style="COLOR: #808080">AND</span> ILA.ALLOCATION_LOC<span style="COLOR: #808080">=</span> MCA.LOCATION 
+            <span style="COLOR: #808080">AND</span> ILA.ITEM <span style="COLOR: #808080">=</span> MCA.ITEM 
+            <span style="COLOR: #808080">AND</span> (ILA.COMPANY <span style="COLOR: #808080">=</span> MCA.COMPANY <span style="COLOR: #808080">OR</span> (ILA.COMPANY <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span> <span style="COLOR: #808080">AND</span> MCA.COMPANY <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>)) 
+    <span style="COLOR: #808080">LEFT</span> <span style="COLOR: #808080">OUTER</span> <span style="COLOR: #808080">JOIN</span> LOCATION L <span style="COLOR: #0000ff">WITH</span> (NOLOCK) 
+        <span style="COLOR: #0000ff">ON</span> L.LOCATION <span style="COLOR: #808080">=</span> MCA.LOCATION 
+            <span style="COLOR: #808080">AND</span> L.WAREHOUSE <span style="COLOR: #808080">=</span> MCA.WAREHOUSE
+    <span style="COLOR: #808080">OUTER</span> APPLY INVFN_RTRVITEMINFOFORBASEUM(
+            MCA.ITEM,
+            MCA.COMPANY,
+            MCA.WAREHOUSE
+            ) <span style="COLOR: #0000ff">AS</span> ITEM_INFO 
+    <span style="COLOR: #808080">OUTER</span> APPLY INVfn_RtrvConversionInfoForItemAndLocation(
+        MCA.ITEM,
+        MCA.COMPANY,
+        MCA.WAREHOUSE,
+        MCA.LOCATION,
+        MCA.TOTAL_QUANTITY,
+        MCA.QUANTITY_UM,
+        ITEM_INFO.MOVEMENTCLASS, 
+        ITEM_INFO.weightPerItem
+        ) <span style="COLOR: #0000ff">AS</span> CONVERSION_INFO;
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p>&nbsp;</p>
+
+<div id="i-3274059c-c8e1-4a95-8f73-e874592dd723-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Customize Viewer</span>
+</div>
+
+<div id="i-3274059c-c8e1-4a95-8f73-e874592dd723-section-content" class="i-section-content">
+    <p>Newly added column WORK_ZONE can be selected by customizing the Movement Class Analysis Viewer in the Criteria as shown below.</p>
+
+    <p><img border="0" alt="" src="images/CustomizeMovementClassAnalysisViewerCriteria.png" /></p>
+
+    <p>&nbsp;</p>
+
+    <p>Newly added column WORK_ZONE can be selected by customizing the Movement Class Analysis Viewer in the Header Results as shown below.</p>
+
+    <p>&nbsp;<img border="0" alt="" src="images/CustomizeMovementClassAnalysisViewerHeader.png" /></p>
+
+    <p>&nbsp;</p>
+
+    <p>After customizing the viewer criteria tab on the Movement Class Analysis it will be shown as seen below.</p>
+
+    <p><img border="0" alt="" src="images/MovementClassAnalysisViewerCriteria.png" /></p>
+
+    <p>&nbsp;</p>
+
+    <p>Newly added column WORK_ZONE will be&nbsp;displayed on the Movement Class Analysis Viewer as shown below.</p>
+
+    <p><img border="0" alt="" src="images/MovementClassAnalysisViewer.png" /></p>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

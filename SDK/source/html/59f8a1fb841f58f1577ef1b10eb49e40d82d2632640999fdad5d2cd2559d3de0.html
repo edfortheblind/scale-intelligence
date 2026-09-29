@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create Screen Control Events</title>
+    <meta name="Title" content="How to: Create Screen Control Events"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Control events represent an event that can be triggered against a web control, such as &quot;click&quot; or &quot;onkeypress&quot; or &quot;textChanged&quot;. These are represented by the SCREEN_CONTROL_EVENT database table. There can be 1-N control events for a particular screen" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="edc894e9-cb65-446a-9efd-c52b4ddcd5e4"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="16"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create Screen Control Events</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > How to: Create Screen Control Events</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Control events&nbsp;represent an event that can be triggered against a web control, such as "click" or "onkeypress" or "textChanged". These are represented by the SCREEN_CONTROL_EVENT database table.&nbsp;There can be 1-N control events for a particular screen control. Control events are tied to screen controls by the SCREEN_CONTROL_ID field (SCREEN_CONTROL_EVENT.SCREEN_CONTROL_ID = SCREEN_CONTROL.OBJECT_ID).</p>
+
+<p>Available events can be found within the external documentation for a particular control suite (i.e. IgniteUI documentation, JQueryUI documentation, etc.). Screen control events are rendered via JQuery binding as follows.</p>
+
+<p></p>
+
+<div class="i-filtered-content-HTML" data-title="HTML" data-itemid="HTML">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Event in HTML</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">script</span> <span style="COLOR: #ff0000">type</span><span style="COLOR: #0000ff">="text/javascript"</span><span style="COLOR: #0000ff">&gt;</span>
+    $(function () { if (typeof _webUi.dialog.showModalDialogByEvent === 'function') 
+    {  $(document).delegate('#SearchPaneMenuActionSaveSearch', 'click',
+    {'ModalDialogName' : 'SaveSearchModalDialog'} ,
+    _webUi.dialog.showModalDialogByEvent)} })
+<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">script</span><span style="COLOR: #0000ff">&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p></p>
+
+<div id="i-e1c05677-0706-4982-a881-1ac73ffe4eaf-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Determine the Object Id for the screen control</span>
+</div>
+
+<div id="i-e1c05677-0706-4982-a881-1ac73ffe4eaf-section-content" class="i-section-content">
+    <p>Use the following SQL to determine the Object Id for the screen&nbsp;control if you know the Form Id. This will return all screen&nbsp;controls on the page and you will need to find the appropriate screen&nbsp;control from the list. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <p>&nbsp;</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Find the Object Id for screen control</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">IN</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> SCREEN_ID <span style="COLOR: #808080">in</span> (
+            <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>form id<span style="COLOR: #808080">&gt;</span>)))
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-13fa3f9c-bb4c-4150-bbd3-df8922fbdb22-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create screen&nbsp;control&nbsp;event&nbsp;record</span>
+</div>
+
+<div id="i-13fa3f9c-bb4c-4150-bbd3-df8922fbdb22-section-content" class="i-section-content">
+    <p>Create a new record in the SCREEN_CONTROL_EVENT table tied to the corresponding&nbsp;SCREEN_CONTROL record for the screen control. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <p>&nbsp;</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Description/Notes</strong></td>
+            </tr>
+
+            <tr>
+                <td>EVENT_ID</td>
+
+                <td>The identifier of the control specific event such as <em>click</em> or <em>onkeypress</em>.</td>
+            </tr>
+
+            <tr>
+                <td>EVENT_NAME</td>
+
+                <td>The javascript function that could be called when event is triggered.</td>
+            </tr>
+
+            <tr>
+                <td>GRID_COLUMN</td>
+
+                <td>Used to tie the event to a grid column. Should be filled with the FIELD_NAME value from the SCREEN_CONTROL_GRID_COLUMNS table.</td>
+            </tr>
+        </tbody>
+    </table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="i-box i-box-note">
+        Please note that the dbc_IScreenControlEvent stored procedure can be used to create screen control events.
+    </div>
+
+    <div class="i-box i-box-note">
+        Please note there is a new special event called DOMCONTENTLOADED to call anything on DOM Ready using metadata. Configure this event in metadata (follow standard event related metadata) for any control to call specific javascript function on DOM Ready event. Parameters passed to handler are control name (automatically) and all configured event parameters in metadata.
+    </div>
+
+    <p></p>
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Screen_Controls.html">How to: Create Screen Controls</a></div>
+<div class="i-see-also-link">
+<a href="Supported_Screen_Control_Events.html">Supported Screen Control Events</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

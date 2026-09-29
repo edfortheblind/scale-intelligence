@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create Monitor Page Stored Procedure</title>
+    <meta name="Title" content="How to: Create Monitor Page Stored Procedure"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The Generic Monitor Data Retrieval web service is used to retrieve data from a stored procedure and return it to a Monitor page. Also see the How to Bind Controls on Monitor Page topic for more information on binding the data to the controls on the M" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="d881c3c6-ae09-46c8-a32f-d1af82856df2"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="7"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create Monitor Page Stored Procedure</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Monitor Pages
+ > How to: Create Monitor Page Stored Procedure</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The Generic Monitor Data Retrieval web service is used to retrieve data from a stored procedure and return it to a Monitor page. Also see&nbsp;the <a href="How_to_Bind_Controls_on_a_Monitor_Page.html"><font color="navy">How to Bind Controls on Monitor Page</font></a> topic for more information on&nbsp;binding the&nbsp;data to the controls on the Monitor page.</p>
+
+<div id="i-78ca4f69-beb4-42cc-89dc-4799de93602b-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Stored Procedure in Detail</span>
+</div>
+
+<div id="i-78ca4f69-beb4-42cc-89dc-4799de93602b-section-content" class="i-section-content">
+    <ul>
+        <li><strong>Stored Procedure Input Parameters:&nbsp;</strong>This stored procedure has two input parameters, FilterCriteria and culture. FilterCriteria can have multiple comma separated values and should end with a semicolon.</li>
+
+        <li><strong>fn_GetMonitorFilterParameters Function:</strong> The Monitor&nbsp;stored procedure calls this SQL function to&nbsp;format the "FilterCriteria". This function&nbsp;returns a table which&nbsp;contains filterName and filterValue columns to represent the filter criteria name and value.</li>
+
+        <li><strong>Return Data from Stored Procedure:&nbsp;</strong>The Monitor stored procedure returns data in a Table format. The table column details are outlined below.</li>
+    </ul>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Column Name</strong></td>
+
+                <td><strong>Description</strong></td>
+            </tr>
+
+            <tr>
+                <td>ChartData_&lt;DataSourceName&gt;</td>
+
+                <td>This is the first column for the return data table. &lt;DataSourceName&gt; represents the data binding name for the control.</td>
+            </tr>
+
+            <tr>
+                <td>Data</td>
+
+                <td>Defines the actual chart values.</td>
+            </tr>
+
+            <tr>
+                <td>Category</td>
+
+                <td>Defines the data name for a chart.</td>
+            </tr>
+
+            <tr>
+                <td>XaxisTitle</td>
+
+                <td>Defines the chart's X axis title.</td>
+            </tr>
+
+            <tr>
+                <td>YaxisTtile</td>
+
+                <td>Defines the chart's Y axis title.</td>
+            </tr>
+
+            <tr>
+                <td>NextDrillDownLevel</td>
+
+                <td>Defines the next level of drilldown for the chart. Use -1 for last level or no drilldown.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Example&nbsp;Monitor Stored Procedure</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">Alter</span> <span style="COLOR: #0000ff">Procedure</span> WRK_MonitorWorkGroupChartData
+<span style="COLOR: #008000">@filterCriteria</span> <span style="COLOR: #0000ff">nVarchar</span>(<span style="COLOR: #ff00ff">MAX</span>),
+<span style="COLOR: #008000">@culture</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">10</span>)
+       
+<span style="COLOR: #0000ff">AS</span>
+    <span style="COLOR: #0000ff">Set</span> NoCount <span style="COLOR: #0000ff">ON</span>
+    <span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@warehouse</span> <span style="COLOR: #0000ff">as</span> <span style="COLOR: #0000ff">nVarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">50</span>);
+    <span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@criteriaTempTable</span> <span style="COLOR: #0000ff">TABLE</span> (
+   filterName <span style="COLOR: #0000ff">nVarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">300</span>),
+   filterValue <span style="COLOR: #0000ff">nVarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">300</span>))
+ <span style="COLOR: #008080">/*get the where clause value*/</span>
+  <span style="COLOR: #0000ff">INSERT</span> <span style="COLOR: #0000ff">INTO</span> <span style="COLOR: #008000">@criteriaTempTable</span> <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">FROM</span> fn_GetMonitorFilterParameters(<span style="COLOR: #008000">@filterCriteria</span>)
+  <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #008000">@warehouse</span> <span style="COLOR: #808080">=</span> filterValue <span style="COLOR: #0000ff">from</span> <span style="COLOR: #008000">@criteriaTempTable</span> <span style="COLOR: #0000ff">WHERE</span> filterName <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'FROM_WHS'</span>
+   
+ 
+  <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #ff0000">'CHARTDATA_MonitorWorkGroup'</span> <span style="COLOR: #0000ff">AS</span> CHARTDATA_MonitorWorkGroup, CATEGORY <span style="COLOR: #808080">=</span> <span style="COLOR: #ff00ff">CASE</span> <span style="COLOR: #0000ff">WHEN</span>  WORK_INSTRUCTION.WORK_GROUP <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span> <span style="COLOR: #0000ff">THEN</span> <span style="COLOR: #ff0000">'Unassigned'</span> <span style="COLOR: #0000ff">ELSE</span> WORK_INSTRUCTION.WORK_GROUP <span style="COLOR: #0000ff">END</span>,                                                                            
+                                                                    <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_INSTRUCTION.WORK_UNIT)<span style="COLOR: #0000ff">AS</span> DATA,
+                                                                    DESCRIPTION <span style="COLOR: #808080">=</span><span style="COLOR: #ff00ff">CASE</span> <span style="COLOR: #0000ff">WHEN</span>  WORK_INSTRUCTION.WORK_GROUP <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span> <span style="COLOR: #0000ff">THEN</span> dbo.RSCMfn_RtrvResource(<span style="COLOR: #ff0000">'UNASSIGNED'</span>,N<span style="COLOR: #ff0000">'text'</span>,<span style="COLOR: #008000">@culture</span>) <span style="COLOR: #0000ff">ELSE</span> GENERIC_CONFIG_DETAIL.DESCRIPTION <span style="COLOR: #0000ff">END</span>,   
+                                                                    <span style="COLOR: #ff0000">'WORKGROUP'</span> <span style="COLOR: #0000ff">AS</span> XAXISTITLE, <span style="COLOR: #ff0000">'WORKUNITS'</span> <span style="COLOR: #0000ff">AS</span> YAXISTITLE, <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #0000ff">AS</span> NextDrillDownLevel <span style="COLOR: #0000ff">FROM</span> WORK_INSTRUCTION
+ <span style="COLOR: #808080">LEFT</span> <span style="COLOR: #808080">OUTER</span> <span style="COLOR: #808080">JOIN</span> GENERIC_CONFIG_DETAIL <span style="COLOR: #0000ff">ON</span> GENERIC_CONFIG_DETAIL.IDENTIFIER <span style="COLOR: #808080">=</span> WORK_INSTRUCTION.WORK_GROUP
+ <span style="COLOR: #0000ff">WHERE</span> (WORK_INSTRUCTION.FROM_WHS <span style="COLOR: #808080">=</span><span style="COLOR: #008000">@warehouse</span> <span style="COLOR: #808080">OR</span> WORK_INSTRUCTION.TO_WHS<span style="COLOR: #808080">=</span><span style="COLOR: #008000">@warehouse</span>) <span style="COLOR: #808080">AND</span> WORK_INSTRUCTION.CONDITION <span style="COLOR: #808080">!=</span> <span style="COLOR: #ff0000">'CLOSED'</span>  <span style="COLOR: #808080">and</span> (GENERIC_CONFIG_DETAIL.RECORD_TYPE <span style="COLOR: #808080">=</span><span style="COLOR: #ff0000">'WORK GROUP'</span> <span style="COLOR: #808080">or</span> GENERIC_CONFIG_DETAIL.RECORD_TYPE <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #0000ff">NULL</span>)  <span style="COLOR: #0000ff">GROUP</span> <span style="COLOR: #0000ff">BY</span> WORK_INSTRUCTION.WORK_GROUP, GENERIC_CONFIG_DETAIL.DESCRIPTION ;
+
+<span style="COLOR: #008080">/* Summary Tiles End */</span>                 
+    <span style="COLOR: #0000ff">If</span> <span style="FONT-WEIGHT: bold; COLOR: #008000">@@ERROR</span> <span style="COLOR: #808080">&lt;&gt;</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span> <span style="COLOR: #0000ff">GoTo</span> ErrorHandler
+    <span style="COLOR: #0000ff">Set</span> NoCount <span style="COLOR: #0000ff">OFF</span>
+    <span style="COLOR: #0000ff">Return</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">0</span>)
+ 
+ErrorHandler:
+    <span style="COLOR: #0000ff">Return</span>(<span style="FONT-WEIGHT: bold; COLOR: #008000">@@ERROR</span>)
+       
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Bind_Controls_on_a_Monitor_Page.html">How to:  Bind Controls on a Monitor Page</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

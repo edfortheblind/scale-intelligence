@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Movement Class Analysis Overview</title>
+    <meta name="Title" content="Movement Class Analysis Overview"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The Movement Class Analysis scheduled job collects data from the transaction and archive transaction history tables. This job calculates the total hits and total quantity in base unit of measure per unique item/company/location/warehouse. The Movemen" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="c149a60f-d3c1-42a8-aeb0-f29b41776538"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="2"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Movement Class Analysis Overview</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+Extensibility
+ > Movement Class Analysis
+ > Movement Class Analysis Overview</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The Movement Class Analysis scheduled job collects data from the transaction and archive transaction history tables. This job calculates the&nbsp;total hits and total quantity in base unit of measure per unique item/company/location/warehouse. The Movement Class Analysis system stores the calculated records in the new Movement Class Analysis table with the help of the Movement Class Analysis scheduled job.</p>
+
+<p>Movement Class Analysis considers only the transactions of inventory locations having the direction "From" for the below mentioned list of transaction types.</p>
+
+<ul>
+    <li><strong>Inventory Adjustments</strong></li>
+
+    <li><strong>Inventory Transfers</strong></li>
+
+    <li><strong>Warehouse Transfers</strong></li>
+
+    <li><strong>Over Pick Adjustments</strong></li>
+
+    <li><strong>Pick and Put Confirmation</strong></li>
+
+    <li><strong>Pick Confirmation</strong></li>
+
+    <li><strong>Short Pick Adjustment</strong></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>This functionality is made up of a new Scheduled Job, Stored Procedure, Functions and Views in the database. Below is the brief description of these.</p>
+
+<div id="i-50670e3c-c8ac-4483-abdd-6beeaba53b6f-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Scheduled Job</span>
+</div>
+
+<div id="i-50670e3c-c8ac-4483-abdd-6beeaba53b6f-section-content" class="i-section-content">
+    <p>Added the&nbsp;scheduled job Movement Class Analysis. It has four configurable parameters shown below.</p>
+
+    <ul>
+        <li><strong>Warehouse:</strong> Warehouse defines the warehouse to collect data for. When not specified all warehouses will be evaluated.</li>
+
+        <li><strong>Number of Days to Collect:</strong> Time Duration for which Item/Location movement needs to be collected. Default shipped value is 90 days. Value should be positive integer greater than 0.</li>
+
+        <li><strong>Collect Data for Permanent Locations Only:</strong> Collects data for permanent locations only when selected. Shipped value is not selected.</li>
+
+        <li><strong>Include Archived Data:</strong> Scheduler collects data from AR_TRANSACTION_HISTORY table in addition to TRANSACTION_HISTORY table when selected. By default archive transaction history will not be collected.<br /></li>
+    </ul>
+</div>
+
+<p>&nbsp;</p>
+
+<div id="i-406dc73e-f8e5-497c-a7d8-fae71a52da25-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Stored Procedure MOVECLS_MineMovementClassAnalysisData&nbsp;</span>
+</div>
+
+<div id="i-406dc73e-f8e5-497c-a7d8-fae71a52da25-section-content" class="i-section-content">
+    <p>Stored Procedure MOVECLS_MineMovementClassAnalysisData migrates data from the TRANSACTION_HISTORY and AR_TRANSACTION_HISTORY table to MOVEMENT_CLASS_ANALYSIS table, having four input parameter shown below.</p>
+
+    <ul>
+        <li><strong>@Warehouse:</strong> Stored Procedure MineMovementClassAnalysisData will mine data for passed Warehouse.</li>
+
+        <li><strong>@Days:</strong> Defines the number of days of data to collect.</li>
+
+        <li><strong>@Permanent:</strong> Allows only permanent inventory locations for retrieval.</li>
+
+        <li><strong>@IncludeArchiveData:</strong> Triggers the retrieval of archived transactions in addition.</li>
+    </ul>
+
+    <p>&nbsp;</p>
+
+    <p>Below is code snippet for input parameter of "MOVECLS_MineMovementClassAnalysisData".</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>MOVECLS_MineMovementClassAnalysisData</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">ALTER</span> <span style="COLOR: #0000ff">PROCEDURE</span> <span style="COLOR: #ff0000">[dbo]</span>.<span style="COLOR: #ff0000">[MOVECLS_MineMovementClassAnalysisData]</span>
+(  
+<span style="COLOR: #008000">@Warehouse</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">25</span>), 
+<span style="COLOR: #008000">@Days</span> <span style="COLOR: #0000ff">int</span> <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">90</span>, 
+<span style="COLOR: #008000">@Permanent</span> <span style="COLOR: #0000ff">nchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">1</span>), 
+<span style="COLOR: #008000">@IncludeArchivedData</span> <span style="COLOR: #0000ff">nchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">1</span>)
+)
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p>&nbsp;</p>
+
+<div id="i-7ce4adc4-7798-4f96-b303-b86be5f8f86a-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Views</span>
+</div>
+
+<div id="i-7ce4adc4-7798-4f96-b303-b86be5f8f86a-section-content" class="i-section-content">
+    <p>Two new views have been created for the movement class analysis viewer for passing values as the Header and Detail Data Source.</p>
+
+    <ul>
+        <li><strong>MOVEMENT_CLASS_ANALYSIS_VIEW:</strong> Queries the Movement Class Analysis table by using the function INVfn_RtrvItemInfoForBaseUM and INVfn_RtrvConversionInfoForItemAndLocation and provides information such as Item, Item Class, Number of Hits, Item Movement of Class, Location Movement Class, Total Volume, Total Weight, Number of Days, etc. This is used as the&nbsp;Header Data Source in the Movement Class Analysis Viewer.</li>
+
+        <li><strong>MOVEMENT_CLASS_ANALYSIS_UM_VIEW :</strong> This view provides the Item Unit of Measure records linked to the movement class analysis records displayed in the viewer. This is used as the Detail Data Source in the Movement Class Analysis Viewer.</li>
+    </ul>
+</div>
+
+<p>&nbsp;</p>
+
+<div id="i-978e3de8-252b-414c-8509-7e73ef577c8c-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Functions</span>
+</div>
+
+<div id="i-978e3de8-252b-414c-8509-7e73ef577c8c-section-content" class="i-section-content">
+    <p>Three new functions have been added to retrieve data from the Movement Class Analysis table and used by the Views mentioned above.</p>
+
+    <ul>
+        <li><strong>GENfn_SplitString:</strong> Splits string using the passed in separator.</li>
+
+        <li><strong>INVfn_RtrvConversionInfoForItemAndLocation:</strong> Uses the Location Quantity UM List to return a list of Item Unit Of measure records matching the Item/Company and Location passed in. Will use Item Class if Item/Company is not found in the Item Unit of Measure table. All records are returned when a quantity um list is not specified.</li>
+
+        <li><strong>INVfn_RtrvItemInfoForBaseUM:</strong> Returns the item’s information like cost, volume, color, size etc for base UM of passed item.</li>
+    </ul>
+
+    <p>&nbsp;</p>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

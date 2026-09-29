@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Customize the Bill of Lading</title>
+    <meta name="Title" content="How to: Customize the Bill of Lading"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="This topic will give information about how to control the number of Customer Order Information and Carrier Information rows displayed on the first and supplementary pages of the Bill of Lading." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="81820812-a7c9-4535-8984-718c84aba649"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="4"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Customize the Bill of Lading</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+Printing
+ > SQL Server Reporting Service 
+ > How to: Customize the Bill of Lading</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>This topic will give information about&nbsp;how to control the number of Customer Order Information and Carrier Information rows displayed on the first and supplementary pages of the Bill of Lading.</p>
+
+<div id="i-f01ae02b-bb5c-47bc-9a04-2533a565004a-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Modify the defaults on the first page of the Bill of Lading</span>
+</div>
+
+<div id="i-f01ae02b-bb5c-47bc-9a04-2533a565004a-section-content" class="i-section-content">
+    The default number of records for the customer order information and carrier information sections on first page of the Bill of Lading should be modified. Currently the first page of the Bill of Lading has a maximum of 5 records for both the carrier information and the customer order information. To change this value, modify the TransformPageLevelData method in the BillOfLadingDataTransformationForSSRS class.<br />
+</div>
+
+<div id="i-6d605455-0ab5-48f3-b5f6-80d482f9d33a-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Modify the defaults on supplemental pages of the Bill of Lading</span>
+</div>
+
+<div id="i-6d605455-0ab5-48f3-b5f6-80d482f9d33a-section-content" class="i-section-content">
+    <p>The default number of records for the customer order information and carrier information sections on supplement pages of the Bill of Lading should also be modified. Currently supplement pages of the Bill of Lading has a maximum of 35 records for both the carrier information and the customer order information. There are two ways to change this value:</p>
+
+    <p><br /></p>
+
+    <div id="i-0615f4fe-e7ab-498e-ac2c-d710f3bcb43d-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Option 1: Use Visual Studio SQL Data Tools</span>
+    </div>
+
+    <div id="i-0615f4fe-e7ab-498e-ac2c-d710f3bcb43d-section-content" class="i-section-content">
+        <ol>
+            <li>Open the report on a machine that has Visual Studio with SQL Data Tools installed.</li>
+
+            <li>Open the project Reporting.rptproj.</li>
+
+            <li>Open the design view of BillOfLadingSupplementPageSubReport report.</li>
+
+            <li>Select the CarrierParent Tablix in the properties dropdown.</li>
+
+            <li>At the bottom of the report you will see row groups and columns groups. In row group right click on details2 and select group property.</li>
+
+            <li>This expression is dividing by 35 right now to get 35 records per supplement page.</li>
+
+            <li>Modify this number value with the new max record count for the supplemental page.</li>
+
+            <li>Save the report and upload to the SSRS server.See database install guide in help for how to upload report to SSRS server.<br /></li>
+        </ol>
+    </div>
+
+    <div id="i-83c1dbc8-996d-4994-b49a-eb7635676617-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Option 2: Use Notepad</span>
+    </div>
+
+    <div id="i-83c1dbc8-996d-4994-b49a-eb7635676617-section-content" class="i-section-content">
+        <ol>
+            <li>Open the BillOfLadingSupplementPageSubReport report in notepad.</li>
+
+            <li>Find the expression Ceiling((RowNumber(Nothing)).</li>
+
+            <li>This expression is dividing by 35 right now to get 35 records per supplement page.</li>
+
+            <li>Modify this number value with the new max record count for the supplemental page.</li>
+
+            <li>Save the report and upload to the SSRS server.See database install guide in help for how to upload report to SSRS server.</li>
+        </ol>
+    </div>
+</div>
+
+<div id="i-8c9ac881-8fbe-4098-9b06-51f69bc370e8-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">How to customize&nbsp;Reports</span>
+</div>
+
+<div id="i-8c9ac881-8fbe-4098-9b06-51f69bc370e8-section-content" class="i-section-content">
+    <div style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "Segoe UI", system-ui, "Apple Color Emoji", "Segoe UI Emoji", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>
+        BOL reports can be customized by passing the custom stored procedure name in data source query parameters in the reports.&nbsp;This allows to display the required elements in SSRS Reports.
+    </div>
+
+    <div style='BOX-SIZING: border-box; FONT-SIZE: 14px; FONT-FAMILY: "Segoe UI", system-ui, "Apple Color Emoji", "Segoe UI Emoji", sans-serif; WHITE-SPACE: normal; WORD-SPACING: 0px; TEXT-TRANSFORM: none; FONT-WEIGHT: 400; FONT-STYLE: normal; ORPHANS: 2; WIDOWS: 2; LETTER-SPACING: normal; TEXT-INDENT: 0px; font-variant-ligatures: normal; font-variant-caps: normal'>
+        The custom&nbsp;stored procedure&nbsp;can be called by a report during print preview, print selected, print default, and auto print.
+    </div>
+
+    <p>To customize the reports, follow the below mentioned steps:</p>
+
+    <ol>
+        <li>Make sure custom stored procedure is available in database.</li>
+
+        <li>Custom stored procedure can be passed into data source query parameters in the report (*.rdl file) as:
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;Parameter Name="storedProcedure"&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;DefaultValue&gt;CustomStoredProcedureForReports&lt;/DefaultValue&gt;<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/Parameter&gt;</p>
+        </li>
+
+        <li>Dataset needs to be modified appropriately to match the results of stored procedure.</li>
+
+        <li>The result of stored procedure execution will be used for displaying specific properties in the generated SSRS Reports.</li>
+    </ol>
+
+    <p>&nbsp;</p>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

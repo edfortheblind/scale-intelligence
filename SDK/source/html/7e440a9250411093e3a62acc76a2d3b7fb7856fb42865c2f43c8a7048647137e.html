@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Screen Navigation</title>
+    <meta name="Title" content="Screen Navigation"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="This page reviews how SCALE automates the navigation between metadata screens. These patterns should be followed if you need to customize a screen or create a new metadata screen." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="a7ebea62-6ec4-4615-9d69-98f59b0d769a"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="43"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Screen Navigation</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > Screen Navigation</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>This page reviews how SCALE automates the navigation between metadata screens. These patterns should be followed if you need to customize a screen or create a new metadata screen.</p>
+
+<div id="i-4597ea1a-bac1-4f71-a325-306fe3c5ceb8-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Navigation Trail</span>
+</div>
+
+<div id="i-4597ea1a-bac1-4f71-a325-306fe3c5ceb8-section-content" class="i-section-content">
+    <p>SCALE tracks the last 10&nbsp;pages that have been visited by the user in a Navigation Trail in the top Navigation bar on each page. The only exceptions to this are as follows:</p>
+
+    <ul>
+        <li>If a user cancels out of a Details or Transaction page, that page is not included in the navigation trail history.</li>
+
+        <li>If a user successfully completes a Details or Transaction page, that page is not included in the navigation trail history.</li>
+
+        <li>Sign on pages and error pages are not included in the navigation trail history.</li>
+
+        <li>Any page that has <strong>excludeFromNavTrail=Y</strong> as a query parameter is not included in the navigation trail history.</li>
+    </ul>
+</div>
+
+<div id="i-aa60bb28-b4a6-4f81-9da4-e85b5b1c65e3-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Cancel</span>
+</div>
+
+<div id="i-aa60bb28-b4a6-4f81-9da4-e85b5b1c65e3-section-content" class="i-section-content">
+    <p>Details and Transaction pages should all have a Cancel button. The cancel action should take the user back to the previous page in their navigation history. To do this, the cancel action on any page should call the SCALE provided function&nbsp;<strong>_webUi.detailsScreenBinding.cancel</strong>.</p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+
+<div id="i-798204fd-64fd-4a4b-b8ea-121cb4c154dd-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Success</span>
+</div>
+
+<div id="i-798204fd-64fd-4a4b-b8ea-121cb4c154dd-section-content" class="i-section-content">
+    <p>Upon successful completion of a Details or Transaction page, the user should be taken back to the previous page in their navigation history in most circumstances. Most screens can accomplish this navigation by simply specifing the base SCALE success callback functions&nbsp;for the web service call on the Details or Transaction page, which are <strong>_webUi.detailsScreenBinding.successCallbackUpdate</strong> and <strong>_webUi.detailsScreenBinding.successCallbackInsert</strong>.</p>
+
+    <p>If your screen requires logic beyond what exists in the base SCALE success callback functions, create your own callback function, do your custom logic, and then call&nbsp;<strong>_webUi.navigationTrail.navigateBackToPreviousPage</strong>.</p>
+
+    <div class="i-filtered-content-JavaScript" data-title="JavaScript" data-itemid="JavaScript">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Custom success callback</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #008000">// web service call specifying custom successCallbackUpdate
+</span>_httpRequest.performPost(postUrl, webserviceobject, customSuccessCallbackUpdate, errorCallbackUpdate, <span style="COLOR: #0000ff">false</span>);
+<span style="COLOR: #0000ff">var</span> customSuccessCallbackUpdate = <span style="COLOR: #0000ff">function</span> (data, textStatus, jqXHR) {
+    <span style="COLOR: #008000">// do custom logic here
+</span>    _webUi.navigationTrail.navigateBackToPreviousPage(<span style="COLOR: #0000ff">false</span>, $.trim(data.MessageType), data.MessageCode, <span style="COLOR: #0000ff">null</span>);
+};
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>There are certain screens that should stay open after success when opened from the main menu, but close when opened as an action against a specific record (i.e. close container). These screens will need their own callback functions as well, but should use&nbsp;the query parameter <strong>NavToPrev=Y</strong> when called from an action against a specific record. There is a generic function <strong>_webUi.navigationTrail.doesUrlIndicateFlowShouldNavigateToPreviousPage</strong> provided to check this query parameter.</p>
+
+    <div class="i-filtered-content-JavaScript" data-title="JavaScript" data-itemid="JavaScript">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Success callback for dual screens</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">if</span> (_webUi.navigationTrail.doesUrlIndicateFlowShouldNavigateToPreviousPage()) {
+    _webUi.navigationTrail.navigateBackToPreviousPage(<span style="COLOR: #0000ff">false</span>, $.trim(data.MessageType),
+        data.MessageCode, <span style="COLOR: #0000ff">null</span>);
+}
+<span style="COLOR: #0000ff">else</span> {
+    <span style="COLOR: #008000">// reset variables, screen, etc. but keep it open
+</span>}
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

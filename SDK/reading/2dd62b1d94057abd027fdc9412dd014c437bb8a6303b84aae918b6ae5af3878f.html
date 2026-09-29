@@ -1,0 +1,82 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Work Profile Authorization Retrieval Exit Point</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">Work Profile Authorization Retrieval Exit Point</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+<a href="151fb685ffa48d0988636095b3af7881bab2d21e6ea0f1f1f260a337c40eebce.html" data-source-node="n46">Integration Endpoints</a>
+ &gt; Exit points
+ &gt; Work Profile Authorization Retrieval Exit Point</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n47">
+        <p data-source-node="n48">The system provides an exit point <em data-source-node="n49">Work Profile Authorization Retrieval</em> , that should be used to override the list of work profiles that can be viewed in various screens. The sql utility function <em data-source-node="n50">ModifyCharacterSeparatedStringList</em> can be used to modify work profiles in stored procedure exit point programs.</p>
+
+<p data-source-node="n51"> </p>
+
+<p data-source-node="n52">The following example represents a sample implementation of the <em data-source-node="n53">Work Profile Authorization Retrieval</em> exit point program using a stored procedure. </p>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL" data-source-node="n54">
+    <table class="i-syntax-table" data-source-node="n55">
+        <tbody data-source-node="n56">
+            <tr data-source-node="n57">
+                <th data-source-node="n58">Sample exit point program for Work Profile Authorization Retrieval exit point</th>
+
+                <th data-source-node="n59">
+                    <div class="i-copy-code-wrapper" data-source-node="n60">
+                        <span class="i-copy-code" data-source-node="n61">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr data-source-node="n62">
+                <td class="i-code" colspan="2" data-source-node="n63">
+                    <pre data-source-node="n64">
+<span style="COLOR: #0000ff" data-source-node="n65">CREATE</span> <span style="COLOR: #0000ff" data-source-node="n66">PROCEDURE</span> <span style="COLOR: #ff0000" data-source-node="n67">[EXP_WorkProfileAuthorizationRetrieval]</span> (
+    <span style="COLOR: #008000" data-source-node="n68">@SESSIONVALUE</span> xml,
+    <span style="COLOR: #008000" data-source-node="n69">@WORKPROFILELIST</span> <span style="COLOR: #0000ff" data-source-node="n70">nvarchar</span>(<span style="COLOR: #ff00ff" data-source-node="n71">max</span>),
+    <span style="COLOR: #008000" data-source-node="n72">@RETURNVALUE</span> <span style="COLOR: #0000ff" data-source-node="n73">nvarchar</span>(<span style="COLOR: #ff00ff" data-source-node="n74">max</span>) output
+)
+<span style="COLOR: #0000ff" data-source-node="n75">AS</span>
+    <span style="COLOR: #0000ff" data-source-node="n76">SET</span> NOCOUNT <span style="COLOR: #0000ff" data-source-node="n77">ON</span>;
+    <span style="COLOR: #0000ff" data-source-node="n78">DECLARE</span> <span style="COLOR: #008000" data-source-node="n79">@workProfilesToAdd</span> <span style="COLOR: #0000ff" data-source-node="n80">nvarchar</span>(<span style="COLOR: #ff00ff" data-source-node="n81">max</span>), <span style="COLOR: #008000" data-source-node="n82">@workProfilesToRemove</span> <span style="COLOR: #0000ff" data-source-node="n83">nvarchar</span>(<span style="COLOR: #ff00ff" data-source-node="n84">max</span>);
+    <span style="COLOR: #0000ff" data-source-node="n85">SET</span> <span style="COLOR: #008000" data-source-node="n86">@workProfilesToAdd</span> <span style="COLOR: #808080" data-source-node="n87">=</span> <span style="COLOR: #ff0000" data-source-node="n88">''</span>;
+    <span style="COLOR: #0000ff" data-source-node="n89">SET</span> <span style="COLOR: #008000" data-source-node="n90">@workProfilesToRemove</span> <span style="COLOR: #808080" data-source-node="n91">=</span> <span style="COLOR: #ff0000" data-source-node="n92">''</span>;
+
+        <span style="COLOR: #008080" data-source-node="n93">-- Update the list using Pipe character as the separator
+</span>        <span style="COLOR: #0000ff" data-source-node="n94">SELECT</span> <span style="COLOR: #008000" data-source-node="n95">@RETURNVALUE</span> <span style="COLOR: #808080" data-source-node="n96">=</span> dbo.ModifyCharacterSeparatedStringList(<span style="COLOR: #008000" data-source-node="n97">@WORKPROFILELIST</span>, <span style="COLOR: #008000" data-source-node="n98">@workProfilesToAdd</span>, <span style="COLOR: #008000" data-source-node="n99">@workProfilesToRemove</span>, <span style="COLOR: #ff0000" data-source-node="n100">'|'</span>)
+           
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p data-source-node="n101"> </p>
+            <a name="seealsobookmark" data-source-node="n102"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n103">
+        
+<p data-source-node="n104"> </p><p data-source-node="n105"> </p><hr style="height: 1px" data-source-node="n106"><p data-source-node="n107">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Display a Column Value as a Link in a Grid</title>
+    <meta name="Title" content="How to: Display a Column Value as a Link in a Grid"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="A column value inside a grid on the detail pane can be displayed as a hyperlink by setting the template property of the IgniteUI grid column header. This allows for flexible conditional formatting (i.e. a column value can be displayed as a hyperlink " />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="2691a84b-9716-4c59-ba7e-8bb677199516"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="29"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Display a Column Value as a Link in a Grid</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > How to: Display a Column Value as a Link in a Grid</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>A column value inside a grid on the detail pane can be displayed as a hyperlink by setting the template property of the&nbsp;IgniteUI grid column header. This allows for flexible conditional formatting (i.e. a column value can be displayed as a hyperlink or plain text based on a specified condition). This is achieved by setting the column template attribute value for an&nbsp;IgniteUI grid column header object. The system processes the given template value using either the IgniteUI or Handlebars template engine. An example column template value with the Handlebars template engine is shown below.</p>
+
+<p></p>
+
+<div class="i-filtered-content-HTML" data-title="HTML" data-itemid="HTML">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Handlebards Column Template</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+{{#ifCond INTERNALNUMTYPE "==" "Shipment"}}
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">a</span> <span style="COLOR: #ff0000">href</span><span style="COLOR: #0000ff">="/SCALE/Insights/2735?filters=BasicCriteriaShipmentId:{{encodeURIComponent REFERENCEID}}"</span><span style="COLOR: #0000ff">&gt;</span>{{REFERENCEID}}<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">a</span><span style="COLOR: #0000ff">&gt;</span>
+{{else}}
+    {{#ifCond INTERNALNUMTYPE "==" "Dock Management"}}
+        <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">a</span> <span style="COLOR: #ff0000">href</span><span style="COLOR: #0000ff">="/SCALE/Insights/2735?filters=BasicCriteriaShipmentId:{{encodeURIComponent REFERENCEID}}"</span><span style="COLOR: #0000ff">&gt;</span>{{REFERENCEID}}<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">a</span><span style="COLOR: #0000ff">&gt;</span>            {{else}}
+        {{REFERENCEID}}
+    {{/ifCond}}
+{{/ifCond}}
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>&nbsp;</p>
+
+<div class="i-box i-box-note">
+    <p>For specific information on handlebars refer the following article: <a href="http://handlebarsjs.com/"><u><font color="#0066CC">http://handlebarsjs.com/</font></u></a>.</p>
+
+    <p>&nbsp;</p>
+
+    <p>NOTE: %20 must be used for spaces for example CARRIER === UPS%20GROUND</p>
+</div>
+
+<div id="i-edb6ed57-dd77-42df-9119-e5adc0deb9b1-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Set the template in the stored procedure for the detail pane</span>
+</div>
+
+<div id="i-edb6ed57-dd77-42df-9119-e5adc0deb9b1-section-content" class="i-section-content">
+    <p>The detail pane data is generally filled via a stored procedure. See the&nbsp;<a href="How_to_Create_Detail_Pane_Stored_Procedure.html" data-auto-update-caption="true">How to: Create a Detail Pane Stored Procedure</a>&nbsp;topic for more details on creating this stored procedure. This stored procedure can have a special table returned named "AdditionalInfo".&nbsp; To make a column in a grid be a hyperlink, you will need to insert a record into the "AdditionalInfo" table inside the detail pane stored procedure to set the template property value for a column. If the "AdditionalInfo" table does not exist in the stored procedure, then create one using the following as an example.</p>
+
+    <p></p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>AdditionalInfo table in detail pane stored procedure</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">SELECT</span>  <span style="COLOR: #808080">*</span>
+<span style="COLOR: #0000ff">FROM</span>
+    (   
+        <span style="COLOR: #008080">--        Table Name,                      Column Name,     IG grid column header property,     Property Value   
+</span>        <span style="COLOR: #0000ff">VALUES</span>(<span style="COLOR: #ff0000">'DetailPaneDetailsReference'</span>, <span style="COLOR: #ff0000">'REFERENCEID'</span>, <span style="COLOR: #ff0000">'template'</span>, <span style="COLOR: #ff0000">'
+        {{#ifCond INTERNALNUMTYPE "==" "Shipment"}}
+        &lt;a href="/SCALE/Insights/2735?filters=BasicCriteriaShipmentId:{{encodeURIComponent REFERENCEID}}"&gt;{{REFERENCEID}}&lt;/a&gt;{{else}}
+        {{#ifCond INTERNALNUMTYPE "==" "Dock Management"}}&lt;a href="/SCALE/Insights/2735?filters=BasicCriteriaShipmentId:{{encodeURIComponent REFERENCEID}}"&gt;{{REFERENCEID}}&lt;/a&gt;{{else}}{{REFERENCEID}}{{/ifCond}}
+        {{/ifCond}}'</span>),
+        (<span style="COLOR: #ff0000">'DetailPaneDetailsReference'</span>, <span style="COLOR: #ff0000">'INTERNALNUMTYPE'</span>, <span style="COLOR: #ff0000">'hidden'</span>, <span style="COLOR: #ff0000">'true'</span>)
+    )
+    <span style="COLOR: #0000ff">AS</span>  AdditionalInfo (ADDITIONALINFO_TABLENAME, ColumnName, Property, Value)
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p></p>
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Detail_Pane_Stored_Procedure.html">How to: Create a Detail Pane Stored Procedure</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

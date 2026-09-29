@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create Screen Parts</title>
+    <meta name="Title" content="How to: Create Screen Parts"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Screen parts simply represent a portion of an overall web page. Screen parts are represented by the SCREEN_PART database table. There can be 1-N screen parts (ordered by SEQUENCE field) for a particular page. Screen parts are tied to screens through " />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="599720ff-6712-4b01-a85e-f0e63d316d45"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="21"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create Screen Parts</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > How to: Create Screen Parts</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Screen parts simply represent a portion of an overall web page. Screen parts are represented by the SCREEN_PART database table. There can be 1-N screen parts (ordered by SEQUENCE field) for a particular page. Screen parts are tied to screens through the MAIN_UI_SCREEN table (SCREEN_PART.SCREEN_ID = MAIN_UI_SCREEN.OBJECT_ID).</p>
+
+<div id="i-36aeac3f-6824-44b1-ada7-838655e4c18a-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Determine the Object Id for the screen</span>
+</div>
+
+<div id="i-36aeac3f-6824-44b1-ada7-838655e4c18a-section-content" class="i-section-content">
+    <p>Use the following SQL to determine the Object Id for the screen if you know the Form Id. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Find the Object Id for screen</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>form id<span style="COLOR: #808080">&gt;</span>
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-34d3bcd0-1d2e-4a42-a3c3-80165e9f3455-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create screen part record</span>
+</div>
+
+<div id="i-34d3bcd0-1d2e-4a42-a3c3-80165e9f3455-section-content" class="i-section-content">
+    <p>Create a new record in the SCREEN_PART table tied to the corresponding MAIN_UI_SCREEN record for the page. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).<br /></p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Description/Notes</strong></td>
+            </tr>
+
+            <tr>
+                <td>PART_NAME</td>
+
+                <td>The name of the screen part. For insight screens, the search pane must be named "SearchPane", the list pane must be named "ListPane", the detail pane must be named "DetailPane".</td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td>The resource key of the text to show for the screen part, if any.</td>
+            </tr>
+
+            <tr>
+                <td>PART_TYPE</td>
+
+                <td>The type of the part. Please see the "Screen Part Type" configuration for an enumeration of all screen part types.</td>
+            </tr>
+
+            <tr>
+                <td>SEQUENCE</td>
+
+                <td>Screen parts are rendered in sequence order.</td>
+            </tr>
+
+            <tr>
+                <td>DEFAULT_ACTION</td>
+
+                <td>The button or link that should be triggered when the Enter key is pressed and focus is in a control within this screen part. Please see the&nbsp;<a href="How_to_Set_Default_Action_for_Enter Key.html">How to: Set Default Action for Enter Key</a> topic for more details.</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td>Used to configure the layout of the screen part. Please see the&nbsp;<a href="How_to_Configure_Layout_of_Metadata_Pages.html">How to: Configure Layout of Metadata Pages</a>&nbsp;topic for more details.</td>
+            </tr>
+
+            <tr>
+                <td>PARTIAL_VIEW</td>
+
+                <td>Whether the screen part should be rendered as a partial view. Currently only Modal Dialogs support partial views.</td>
+            </tr>
+        </tbody>
+    </table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="i-box i-box-note">
+        Please note that the dbc_IScreenPart stored procedure can be used to create screen parts.
+    </div>
+
+    <p></p>
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Screen_Controls.html">How to: Create Screen Controls</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Groups.html">How to: Create Screen Groups</a></div>
+<div class="i-see-also-link">
+<a href="Metadata_Page_Architecture.html">Metadata Page Architecture</a></div>
+<div class="i-see-also-link">
+<a href="Supported_Screen_Parts.html">Supported Screen Parts</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

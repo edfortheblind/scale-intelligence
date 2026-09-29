@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Add a Drilldown Level to a Chart on a Monitor Page</title>
+    <meta name="Title" content="How to: Add a Drilldown Level to a Chart on a Monitor Page"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="A column chart can be drilled down to N levels. Follow the below steps to enable drill down for a chart." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="488fb66a-7e6f-4df0-a941-2977746b3e88"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="1"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Add a Drilldown Level to a Chart on a Monitor Page</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Monitor Pages
+ > How to: Add a Drilldown Level to a Chart on a Monitor Page</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>A column chart can be drilled down to N levels.&nbsp;Follow the below steps to&nbsp;enable drill down for a chart.</p>
+
+<div id="i-29262866-3fee-4c33-8b6c-fe4f7661cd4c-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create a Stored Procedure for the Chart</span>
+</div>
+
+<div id="i-29262866-3fee-4c33-8b6c-fe4f7661cd4c-section-content" class="i-section-content">
+    <p>A stored procedure needs to be&nbsp;created for each drilldown level. The stored procedure name should be&nbsp;in the format <em>&lt;functional area&gt;_Monitor&lt;Description of what will be retrieved&gt;</em>.</p>
+
+    <p>For example if a chart is retrieving data for work type for active work then the stored procedure would be named WRK_MonitorWorkTypeChartData</p>
+
+    <p>Please refer to the&nbsp; <a href="How_to_Create_Monitor_Page_Stored_Procedure.html" data-auto-update-caption="true">How to: Create Monitor Page Stored Procedure</a> topic for more information.</p>
+</div>
+
+<div id="i-52dedf00-6db5-445c-bf7f-b58f65ffe883-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create Required Screen Control Attributes for the Chart</span>
+</div>
+
+<div id="i-52dedf00-6db5-445c-bf7f-b58f65ffe883-section-content" class="i-section-content">
+    <p>The following screen control attributes need to be created and tied to the corresponding chart. Please refer to the&nbsp; <a href="How_to_Create_Screen_Control_Attributes.html" data-auto-update-caption="true">How to: Create Screen Control Attributes</a> topic for more information.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Description</strong></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-drilldownLevel&lt;N&gt;criteria</p>
+                </td>
+
+                <td>
+                    <p>This&nbsp;attribute defines the parameters to pass to the stored procedure for the<br />
+                    various drill downs the user has executed. These parameters will filter the data<br />
+                    in the stored procedure. The criteria consists of&nbsp;a&nbsp;comma&nbsp;delimited list of<br />
+                    criteria, ending with a semicolon.</p>
+
+                    <p>For example if a chart has two drill down levels then the following attributes need to be created: data-drilldownLevel1criteria and data-drilldownLevel2criteria.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-drilldownLevel&lt;N&gt;storedprocedure</p>
+                </td>
+
+                <td>
+                    <p>This attribute defines the stored procedure that should be used to retrieve the<br />
+                    data for a drill down level in the chart.&nbsp;Each drill down level has one stored<br />
+                    procedure defined.</p>
+
+                    <p>For example if a chart has two drill down levels then the following attributes need to be created: data-drilldownLevel1storedprocedure and data-drilldownLevel2storedprocedure.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

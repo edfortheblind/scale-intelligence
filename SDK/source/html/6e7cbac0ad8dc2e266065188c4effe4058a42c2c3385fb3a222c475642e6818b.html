@@ -1,0 +1,474 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Authentication in REST-Based Web Services</title>
+    <meta name="Title" content="Authentication in REST-Based Web Services"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="One of the challenges to building any rest based web service/web api is having a well thought out authentication and authorization strategy. The most preferred mechanism is to authenticate client over HTTP using a signed token." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="{B09DC934-3CF1-46AD-A76D-324C1E8A1AC4}"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Authentication in REST-Based Web Services</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>One of the challenges to building any rest based web service/web api is having a well thought out authentication and authorization strategy. The most preferred mechanism is to authenticate client over HTTP using a signed token.</p>
+
+<p>A token is a piece of data that has no meaning or use on its own, but combined with the correct tokenization system, becomes a vital player in securing your application. Token based authentication works by ensuring that each request to a server is accompanied by a signed token which the server verifies for authenticity and only then responds to the request.</p>
+
+<p>In SCALE application, we use Bearer authentication (also called token authentication) which is an HTTP authentication scheme that involves security tokens called bearer tokens. The name “Bearer authentication” can be understood as “give access to the bearer of this token".</p>
+
+<p>The bearer token is a cryptic string, usually generated by the server in response to a login request. The client must send this token in the Authorization header when making requests to protected resources:</p>
+
+<p>&nbsp;</p>
+
+<p dir="ltr" align="left"><span lang="EN" xml:lang="EN"><em>Authorization: Bearer &lt;token&gt;</em></span></p>
+
+<p></p>
+
+<h2>How to add ‘Authorization’ header?</h2>
+
+<p>In SCALE application, the ‘Authorization’ header can be added to the HttpRequest&nbsp;in below ways.</p>
+
+<p>&nbsp;&nbsp; <strong>1)&nbsp; Using Java Script :</strong> This method invloved user interaction to sign in to get the token if user is not already signed in</p>
+
+<div class="i-filtered-content-javascript" data-title="javascript" data-itemid="javascript">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>httpClient.js</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+ HttpRequest.prototype._openXMLHttpRequest = <span style="COLOR: #0000ff">function</span>(method, uri, async) {
+    <span style="COLOR: #008000">/// &lt;summary&gt;
+</span>    <span style="COLOR: #008000">///    Private function for creating and opening an XMLHttpRequest.
+</span>    <span style="COLOR: #008000">/// Defaults the Content-Type to "application/json" and fills the
+</span>    <span style="COLOR: #008000">/// "Session" HTTP Header with information from Session.
+</span>    <span style="COLOR: #008000">/// &lt;/summary&gt;
+</span>    manh.ils.clientSession.assertLoggedIn();
+    <span style="COLOR: #0000ff">var</span> xmlHttpRequest = <span style="COLOR: #0000ff">this</span>._createXMLHttpRequest();
+   
+    xmlHttpRequest.open(method, uri, async);
+    manh.ils.clientSession.addToRequest(xmlHttpRequest);
+    xmlHttpRequest.setRequestHeader(<span style="COLOR: #800000">"Content-Type"</span>, <span style="COLOR: #800000">"application/json"</span>);
+    xmlHttpRequest.setRequestHeader(<span style="COLOR: #800000">"Accept"</span>, <span style="COLOR: #800000">"application/json"</span>);
+    xmlHttpRequest.setRequestHeader(<span style="COLOR: #800000">"Authorization"</span>, <span style="COLOR: #800000">'Bearer '</span> + manhAdal.acquireToken());
+    <span style="COLOR: #0000ff">return</span> xmlHttpRequest;
+};
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>Here, the ‘Authorization’ header is added to the HttpRequest and token is generated using manhAdal.acquireToken() and is added to the 'Authorization'.</p>
+
+<p>The code for token generation is shown below:</p>
+
+<div class="i-filtered-content-javascript" data-title="javascript" data-itemid="javascript">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>manhAdal.js</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+   <span style="COLOR: #008000">//returns the token if its cached else open popup for token retrieval
+</span>    AdalContext.prototype.acquireToken = <span style="COLOR: #0000ff">function</span> () {
+        <span style="COLOR: #0000ff">if</span> (!adalHelper.isSSOConfigured()) {
+            <span style="COLOR: #0000ff">return</span> <span style="COLOR: #0000ff">null</span>;
+        }
+        <span style="COLOR: #0000ff">if</span> (!adalHelper.login()) <span style="COLOR: #0000ff">return</span>;
+        authContext.acquireToken(authContext.config.clientId,
+            <span style="COLOR: #0000ff">function</span> (error, token) {
+                authToken = token;
+                <span style="COLOR: #008000">// Handle ADAL Error
+</span>                <span style="COLOR: #0000ff">if</span> (error || !token) {
+                    error = (<span style="COLOR: #800000">'ADAL Error Occurred: '</span> + error);
+                    console.error(error);
+                    <span style="COLOR: #0000ff">return</span> <span style="COLOR: #0000ff">null</span>;
+                }
+                <span style="COLOR: #0000ff">return</span> authToken;
+            });
+        <span style="COLOR: #0000ff">return</span> authToken;
+    }
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>&nbsp;</p>
+
+<p><strong>2) Client Credentials Grant with Confidential role token&nbsp;:</strong> This uses client credentials grant, which is&nbsp;for non interactive applications (a CLI, a daemon, or a Service running on your backend) where the token is issued to the application itself, instead of an end user. This will be presented with token marked as "Confidential", which can call only confidential role SCALE Api's.</p>
+
+<p>Here, the ‘Authorization’ header is added to the HttpRequest, token is generated using AuthenticationHandler.AcquireToken() and is added to the Authorization header. The code for token generation is shown below:</p>
+
+<div class="i-filtered-content-CS" data-title="CS" data-itemid="CS">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>C# - AuthenticationHandler</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+ <span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">static</span> <span style="COLOR: #0000ff">string</span> AcquireToken()
+        {
+            <span style="COLOR: #0000ff">bool</span> retry = <span style="COLOR: #0000ff">false</span>; 
+            <span style="COLOR: #0000ff">int</span> retryCount = 0; 
+            <span style="COLOR: #0000ff">do</span>
+            {
+                <span style="COLOR: #0000ff">try</span>
+                {
+                    <span style="COLOR: #0000ff">if</span> (CacheProvider.Contains(NcacheAcquireTokenKey))
+                    {
+                        <span style="COLOR: #0000ff">return</span> CacheProvider.Get(NcacheAcquireTokenKey) <span style="COLOR: #0000ff">as</span> <span style="COLOR: #0000ff">string</span>;
+                    }
+                    <span style="COLOR: #0000ff">var</span> authContext = <span style="COLOR: #0000ff">new</span> AuthenticationContext(Authority);
+                    ClientCredential clientCredential = <span style="COLOR: #0000ff">new</span> ClientCredential(ClientId, ClientSecret);
+                    <span style="COLOR: #0000ff">var</span> authResult = authContext.AcquireTokenAsync(ClientId, clientCredential);
+                    Task.WaitAll(authResult);
+                    CacheProvider.Add(NcacheAcquireTokenKey, authResult.Result.AccessToken, <span style="COLOR: #0000ff">new</span> TimeSpan(0, 40, 0));
+                    <span style="COLOR: #0000ff">return</span> authResult.Result.AccessToken;
+                }
+                <span style="COLOR: #0000ff">catch</span> (AdalException ex)
+                {
+                    <span style="COLOR: #0000ff">if</span> (ex.ErrorCode == <span style="COLOR: #800000">"temporarily_unavailable"</span>)
+                    {
+                        retry = <span style="COLOR: #0000ff">true</span>;
+                        retryCount++;
+                        Thread.Sleep(3000);
+                    } 
+                    Logger.FatalFormat(
+                        <span style="COLOR: #800000">"An error occurred while acquiring a token\nTime: {0}\nError: {1}\nRetry: {2}\n"</span>, DateTime.Now, ex, retry);
+                }
+                <span style="COLOR: #0000ff">catch</span> (Exception ex)
+                {
+                    Logger.Fatal(<span style="COLOR: #800000">"ADAL Error: "</span> + ex.Message + <span style="COLOR: #800000">" call stack : "</span> + ex.StackTrace);
+                }
+            } <span style="COLOR: #0000ff">while</span> (retry &amp;&amp; retryCount++ &lt; 3);
+            <span style="COLOR: #0000ff">return</span> String.Empty;
+        }     
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>Once the token is generated it is sent through the request Authorization header.</p>
+
+<div class="i-filtered-content-CS" data-title="CS" data-itemid="CS">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>C# - HttpRequest</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">private</span> HttpWebRequest InitializeHttpWebRequest(<span style="COLOR: #0000ff">string</span> method, <span style="COLOR: #0000ff">object</span> httpEntity)
+        {
+            <span style="COLOR: #0000ff">this</span>.Uri = <span style="COLOR: #0000ff">this</span>.Uri.Trim();
+            <span style="COLOR: #0000ff">this</span>.Uri = ConfigManager.GetUri(<span style="COLOR: #0000ff">this</span>.Uri);
+            Validate.IsNotEmpty(<span style="COLOR: #0000ff">this</span>.Uri, <span style="COLOR: #800000">"this.Uri"</span>);
+            Validate.IsNotNegativeOrZero(<span style="COLOR: #0000ff">this</span>.TimeoutMillis, <span style="COLOR: #800000">"this.TimeoutMillis"</span>);
+            IMediaType acceptMediaType = <span style="COLOR: #0000ff">this</span>._mediaTypeConverter.GetMediaType(<span style="COLOR: #0000ff">this</span>._responseSerializer);
+            Validate.IsNotNull(acceptMediaType, <span style="COLOR: #800000">"acceptMediaType ("</span> + <span style="COLOR: #0000ff">this</span>._responseSerializer + <span style="COLOR: #800000">")"</span>);
+            HttpWebRequest httpWebRequest = HttpWebRequest.Create(<span style="COLOR: #0000ff">this</span>.Uri) <span style="COLOR: #0000ff">as</span> HttpWebRequest;
+            httpWebRequest.Method = method;
+            httpWebRequest.Timeout = <span style="COLOR: #0000ff">this</span>.TimeoutMillis;
+            httpWebRequest.Accept = acceptMediaType.ToString();
+            httpWebRequest.UseDefaultCredentials = <span style="COLOR: #0000ff">true</span>;
+            <span style="COLOR: #0000ff">this</span>._httpRequestSession.AddCurrentSessionToRequest(httpWebRequest);
+            <span style="COLOR: #0000ff">if</span> (!<span style="COLOR: #0000ff">string</span>.IsNullOrEmpty(<span style="COLOR: #0000ff">this</span>.AcceptEncoding))
+                httpWebRequest.Headers[HttpRequestHeader.AcceptEncoding] = <span style="COLOR: #0000ff">this</span>.AcceptEncoding;
+            <span style="COLOR: #0000ff">if</span> (httpEntity != <span style="COLOR: #0000ff">null</span>)
+            {
+                Stream requestStream = httpWebRequest.GetRequestStream();
+                <span style="COLOR: #0000ff">try</span>
+                {
+                    <span style="COLOR: #0000ff">if</span> (<span style="COLOR: #0000ff">this</span>.RequestEncoder != <span style="COLOR: #0000ff">null</span>)
+                    {
+                        <span style="COLOR: #0000ff">this</span>.RequestEncoder.EncodeToStream(httpEntity, <span style="COLOR: #0000ff">this</span>._requestSerializer, requestStream);
+                        <span style="COLOR: #0000ff">string</span> contentEncoding = <span style="COLOR: #0000ff">this</span>._encodingConverter.GetEncodingFromEncoder(<span style="COLOR: #0000ff">this</span>.RequestEncoder);
+                        Validate.IsNotEmpty(contentEncoding, <span style="COLOR: #800000">"contentEncoding"</span>);
+                        httpWebRequest.Headers[HttpRequestHeader.ContentEncoding] = contentEncoding;
+                    }
+                    <span style="COLOR: #0000ff">else</span>
+                    {
+                        <span style="COLOR: #0000ff">this</span>._requestSerializer.SerializeToStream(httpEntity, requestStream);
+                    }
+                }
+                <span style="COLOR: #0000ff">finally</span>
+                {
+                    <span style="COLOR: #0000ff">if</span> (requestStream != <span style="COLOR: #0000ff">null</span>)
+                        requestStream.Close();
+                }
+                IMediaType contentMediaType = <span style="COLOR: #0000ff">this</span>._mediaTypeConverter.GetMediaType(<span style="COLOR: #0000ff">this</span>._requestSerializer);
+                Validate.IsNotNull(contentMediaType, <span style="COLOR: #800000">"contentType ("</span> + <span style="COLOR: #0000ff">this</span>._requestSerializer + <span style="COLOR: #800000">")"</span>);
+                httpWebRequest.ContentType = contentMediaType.ToString();
+            }<span style="COLOR: #008000">// end if
+</span>            <span style="COLOR: #0000ff">else</span>
+            {
+                httpWebRequest.ContentLength = 0;
+            }<span style="COLOR: #008000">// end else 
+</span>            httpWebRequest.Headers[<span style="COLOR: #800000">"Authorization"</span>] = <span style="COLOR: #800000">"Bearer "</span> + AuthenticationHandler.AcquireToken();
+            <span style="COLOR: #0000ff">return</span> httpWebRequest;
+        }     
+        <span style="COLOR: #0000ff">#endregion</span> InitializeHttpWebRequest 
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>When Web API gets called, the token is validated using WebApiCustomAuthorize/TokenValidationHandler classes.If valiation fails it returns HTTP status code 401 (Unauthorized), without invoking the action.</p>
+
+<p>You can apply the filter globally, at the controller level, or at the level of individual actions.</p>
+
+<p><b>Controller:</b> To restrict access for a specific controller, add the filter as an attribute to the controller.</p>
+
+<div class="i-filtered-content-CS" data-title="CS" data-itemid="CS">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>CountryApiController.cs</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+ [WebApiCustomAuthorize(Roles = <span style="COLOR: #800000">"SCALEUSER"</span>)]
+    <span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">class</span> CountryApiController : ApiController
+    {
+    }
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p><b>Action:</b> To restrict access for specific actions, add the attribute to the action method.</p>
+
+<div class="i-filtered-content-CS" data-title="CS" data-itemid="CS">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>CountryApiController.cs</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+    <span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">class</span> CountryApiController : ApiController
+    {
+       [HttpGet]
+       [WebApiCustomAuthorize(Roles = <span style="COLOR: #800000">"SCALEUSER"</span>)]
+        <span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">object</span> Get(<span style="COLOR: #0000ff">string</span> id)
+        {  
+        }
+     }
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>&nbsp;</p>
+
+<p>Standalone active SCALE api's also provide below method to get the confidential role token.</p>
+
+<div class="i-filtered-content-CS" data-title="CS" data-itemid="CS">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>C# - HttpClient</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">string</span> Post(ShippingContainersClosedRequest shippingContainersClosedRequest)
+        {
+            <span style="COLOR: #0000ff">var</span> client = <span style="COLOR: #0000ff">new</span> HttpClient();
+            client.BaseAddress = <span style="COLOR: #0000ff">new</span> Uri(<span style="COLOR: #800000">"https://"</span>+ GetLoadBalancerUrl() + <span style="COLOR: #800000">"/"</span>);
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(<span style="COLOR: #0000ff">new</span> MediaTypeWithQualityHeaderValue(<span style="COLOR: #800000">"application/json"</span>));
+            client.Timeout = <span style="COLOR: #0000ff">new</span> TimeSpan(0, _timeOutInMins, 0);
+            client.DefaultRequestHeaders.Authorization = <span style="COLOR: #0000ff">new</span> AuthenticationHeaderValue(<span style="COLOR: #800000">"Bearer"</span>, AquireAuthToken.AcquireToken(GetLoadBalancerUrl()));
+            HttpContent httpContent = BuildContent(shippingContainersClosedRequest);
+            HttpResponseMessage response = client.PostAsync(<span style="COLOR: #800000">"/outbound/ShippingContainers/ShippingContainers-Closed"</span>, httpContent).Result;
+            <span style="COLOR: #0000ff">return</span> response.Content.ReadAsStringAsync().Result;
+        }     
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p><strong>3) Client Credentials Grant with SCALEUser role token&nbsp;:</strong> This uses client credentials grant, which is&nbsp;for non interactive applications (a CLI, a daemon, or a Service running on your backend) where the token is issued to the application itself, instead of an end user. This will be presented with token marked as "SCALEUSER", which can call only SCALEUSER role SCALE Api's.</p>
+
+<p>For this flow you need to create "API Confidential Application" as discussed in Single Sign on guides.</p>
+
+<p>Use&nbsp;http request to get the token as below inputs</p>
+
+<div class="colorizedcode">
+    <p><strong>Method</strong> - POST</p>
+
+    <p><strong>URL</strong> - <span class="disabledIndicatorTile">Authentication instance+Tenant id</span>/oauth2/token</p>
+
+    <p><strong>Request Body for ADFS -</strong></p>
+
+    <p>grant_type=client_credentials&amp;client_id=<span class="ui-state-default">API confidential client id</span>&amp;client_secret=<span class="ui-state-default">API confidential client secret</span>&amp;resource=<span class="ui-state-default">API confidential client id</span></p>
+
+    <p><strong>Request Body for&nbsp;Microsoft Entra ID-</strong></p>
+
+    <p>grant_type=client_credentials&amp;client_id=<span class="ui-state-default">API confidential client id</span>&amp;client_secret=<span class="ui-state-default">API confidential client secret</span>&amp;resource=<span class="ui-state-default">client id&nbsp;</span></p>
+</div>
+
+<div class="colorizedcode">
+    &nbsp;&nbsp;&nbsp;
+</div>
+
+<div class="i-box i-box-note">
+    Change the highlighted values from SCALE single sign-on configuration. API confidential client secret is not part of SCALE single sign-on configuration. This value was generated when created API confidential client.Also, you need to have SCALE user profile for user <strong>SCALEAPI</strong> to use this token.
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

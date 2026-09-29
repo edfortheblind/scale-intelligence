@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>How to: Add Validation to Modal Dialog Controls</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">How to: Add Validation to Modal Dialog Controls</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+User Interface Extensibility
+ &gt; Metadata Web Pages
+ &gt; Shared
+ &gt; How to: Add Validation to Modal Dialog Controls</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47">The input controls within a modal dialog control use JQuery validation and must be inside a form tag for the validation to function properly. Validation can be configured for an input control via the standard JQuery validation Html attributes.</p>
+
+<div id="i-758ba84e-deeb-4622-9fe3-69044726aecb-section-heading" class="i-section-heading" data-source-node="n48">
+    <span class="i-section-heading-icon" data-source-node="n49"><span class="i-hidden" data-source-node="n50"> </span></span><span class="i-section-heading-text" data-source-node="n51">Step 1: Create ModalDialog</span>
+</div>
+
+<div id="i-758ba84e-deeb-4622-9fe3-69044726aecb-section-content" class="i-section-content" data-source-node="n52">
+    Please reference the <a href="b26513e56333a33b3f8d49c27076e4d8331ce560a2f1f212ad998bc5a511e753.html" data-source-node="n53">How to: Create a Dynamic Modal Dialog</a> topic for details on creating a modal dialog control.
+</div>
+
+<div id="i-8276a611-caa4-4fd5-9148-96e14bf700f9-section-heading" class="i-section-heading" data-source-node="n54">
+    <span class="i-section-heading-icon" data-source-node="n55"><span class="i-hidden" data-source-node="n56"> </span></span><span class="i-section-heading-text" data-source-node="n57">Step 2: Add validation attributes</span>
+</div>
+
+<div id="i-8276a611-caa4-4fd5-9148-96e14bf700f9-section-content" class="i-section-content" data-source-node="n58">
+    <p data-source-node="n59">In order to add validation to an input control, create a SCREEN_CONTROL_ATTRIBUTES record with ATTRIBUTE_NAME of the appropriate JQuery Validation attribute (<a href="http://jqueryvalidation.org/documentation/" data-source-node="n60">http://jqueryvalidation.org/documentation/</a>) and ATTRIBUTE_VALUE of "true". Also create another SCREEN_CONTROL_ATTRIBUTES record with ATTRIBUTE_NAME of the appropriate JQuery Validation Message attribute and ATTRIBUTE_VALUE of the correct error resource key. For example, to make an input control be required, add an attribute for "data-rule-required = true" and "data-msg-required = &lt;error msg key&gt;". These message keys in metadata are rendered in HTML as the translated resource text (see below). Please reference the <a href="c6f2b575ac93c80d7fed0743e021c3a4410aa69f0a1277ed7d8a2a7e7a692c93.html" data-source-node="n61">How to: Create Screen Control Attributes</a> topic for more details. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n62"><u data-source-node="n63"><font color="navy" data-source-node="n64">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <p data-source-node="n65"></p>
+
+    <div class="i-filtered-content-HTML" data-title="HTML" data-itemid="HTML" data-source-node="n66">
+        <table class="i-syntax-table" data-source-node="n67">
+            <tbody data-source-node="n68">
+                <tr data-source-node="n69">
+                    <th data-source-node="n70">JQuery Attributes HTML</th>
+
+                    <th data-source-node="n71">
+                        <div class="i-copy-code-wrapper" data-source-node="n72">
+                            <span class="i-copy-code" data-source-node="n73">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr data-source-node="n74">
+                    <td class="i-code" colspan="2" data-source-node="n75">
+                        <pre data-source-node="n76">
+<span style="COLOR: #0000ff" data-source-node="n77">&lt;</span><span style="COLOR: #800000" data-source-node="n78">div</span> <span style="COLOR: #ff0000" data-source-node="n79">class</span><span style="COLOR: #0000ff" data-source-node="n80">="modal-body"</span>  <span style="COLOR: #ff0000" data-source-node="n81">data-controlType</span><span style="COLOR: #0000ff" data-source-node="n82">="modalDialogBody"</span> <span style="COLOR: #ff0000" data-source-node="n83">data-controlId</span><span style="COLOR: #0000ff" data-source-node="n84">="39566"</span> <span style="COLOR: #0000ff" data-source-node="n85">&gt;</span>
+    <span style="COLOR: #0000ff" data-source-node="n86">&lt;</span><span style="COLOR: #800000" data-source-node="n87">label</span> <span style="COLOR: #ff0000" data-source-node="n88">class</span><span style="COLOR: #0000ff" data-source-node="n89">="LabelInline"</span> <span style="COLOR: #ff0000" data-source-node="n90">for</span><span style="COLOR: #0000ff" data-source-node="n91">="SaveSearchNameEditor"</span><span style="COLOR: #0000ff" data-source-node="n92">&gt;</span> <span style="COLOR: #0000ff" data-source-node="n93">&lt;/</span><span style="COLOR: #800000" data-source-node="n94">label</span><span style="COLOR: #0000ff" data-source-node="n95">&gt;</span>
+    <span style="COLOR: #0000ff" data-source-node="n96">&lt;</span><span style="COLOR: #800000" data-source-node="n97">span</span> <span style="COLOR: #ff0000" data-source-node="n98">data-controlId</span><span style="COLOR: #0000ff" data-source-node="n99">="56778"</span> <span style="COLOR: #ff0000" data-source-node="n100">data-controlType</span><span style="COLOR: #0000ff" data-source-node="n101">="igEditor"</span> <span style="COLOR: #ff0000" data-source-node="n102">data-dataType</span><span style="COLOR: #0000ff" data-source-node="n103">="A"</span> <span style="COLOR: #ff0000" data-source-node="n104">data-defaultAction</span><span style="COLOR: #0000ff" data-source-node="n105">="SaveSearchSaveButton"</span> <span style="COLOR: #ff0000" data-source-node="n106">id</span><span style="COLOR: #0000ff" data-source-node="n107">="SaveSearchNameEditor"</span><span style="COLOR: #0000ff" data-source-node="n108">&gt;&lt;/</span><span style="COLOR: #800000" data-source-node="n109">span</span><span style="COLOR: #0000ff" data-source-node="n110">&gt;</span>\
+    <span style="COLOR: #0000ff" data-source-node="n111">&lt;</span><span style="COLOR: #800000" data-source-node="n112">input</span> <span style="COLOR: #ff0000" data-source-node="n113">name</span><span style="COLOR: #0000ff" data-source-node="n114">="SaveSearchNameEditor"</span> <span style="COLOR: #ff0000" data-source-node="n115">type</span><span style="COLOR: #0000ff" data-source-node="n116">="hidden"</span> <span style="COLOR: #ff0000" data-source-node="n117">data-rule-required</span><span style="COLOR: #0000ff" data-source-node="n118">="true"</span> <span style="COLOR: #ff0000" data-source-node="n119">data-msg-required</span><span style="COLOR: #0000ff" data-source-node="n120">="You forgot to enter a search name."</span>  <span style="COLOR: #0000ff" data-source-node="n121">/&gt;</span>
+   
+    <span style="COLOR: #0000ff" data-source-node="n122">&lt;</span><span style="COLOR: #800000" data-source-node="n123">script</span> <span style="COLOR: #ff0000" data-source-node="n124">type</span><span style="COLOR: #0000ff" data-source-node="n125">="text/javascript"</span><span style="COLOR: #0000ff" data-source-node="n126">&gt;</span>//<span style="COLOR: #008000" data-source-node="n127">&lt;!--&lt;![CDATA[$(function () {$('#SaveSearchNameEditor').igEditor({ type: 0, button: 'clear', disabled: false, excludeKeys: null, height: 25, hideEnterKey: false, includeKeys: null, maxLength: 100, nullText: 'Enter a name for the search', selectionOnFocus: -1, textMode: 'text', toLower: false, toUpper: false, inputName: 'SaveSearchNameEditor' });});
+    //]]&gt;--&gt;</span><span style="COLOR: #0000ff" data-source-node="n128">&lt;/</span><span style="COLOR: #800000" data-source-node="n129">script</span><span style="COLOR: #0000ff" data-source-node="n130">&gt;</span>
+<span style="COLOR: #0000ff" data-source-node="n131">&lt;/</span><span style="COLOR: #800000" data-source-node="n132">div</span><span style="COLOR: #0000ff" data-source-node="n133">&gt;</span>
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p data-source-node="n134"></p>
+
+    <p data-source-node="n135"><br data-source-node="n136"></p>
+</div>
+
+<p data-source-node="n137"><br data-source-node="n138"></p>
+            <a name="seealsobookmark" data-source-node="n139"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading" data-source-node="n140"><span class="i-section-heading-icon" data-source-node="n141"></span><span class="i-section-heading-text" data-source-node="n142">See Also</span></div><div id="i-seealso-section-content" class="i-section-content" data-source-node="n143"><div class="i-see-also-link" data-source-node="n144">
+<a href="b26513e56333a33b3f8d49c27076e4d8331ce560a2f1f212ad998bc5a511e753.html" data-source-node="n145">How to: Create a Dynamic Modal Dialog</a></div>
+<div class="i-see-also-link" data-source-node="n146">
+<a href="c6f2b575ac93c80d7fed0743e021c3a4410aa69f0a1277ed7d8a2a7e7a692c93.html" data-source-node="n147">How to: Create Screen Control Attributes</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n148">
+        
+<p data-source-node="n149"> </p><p data-source-node="n150"> </p><hr style="height: 1px" data-source-node="n151"><p data-source-node="n152">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

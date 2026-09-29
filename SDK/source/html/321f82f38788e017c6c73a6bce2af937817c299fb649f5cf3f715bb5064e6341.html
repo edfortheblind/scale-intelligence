@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create Screen Groups</title>
+    <meta name="Title" content="How to: Create Screen Groups"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Screen groups represent a grouping of controls within a single screen part. Screen groups are represented by the SCREEN_GROUP database table. There can be 1-N screen groups (ordered by the SEQUENCE field) for a particular screen part. Screen groups a" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="ed90e038-4b36-45b3-b329-721e9f5baabc"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="20"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create Screen Groups</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > How to: Create Screen Groups</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Screen groups represent a grouping of controls within a single screen part. Screen groups are represented by the SCREEN_GROUP database table. There can be 1-N screen groups (ordered by the SEQUENCE field) for a particular screen part. Screen groups are tied to screen parts by the SCREEN_PART_ID field (SCREEN_GROUP.SCREEN_PART_ID = SCREEN_PART.OBJECT_ID). Screen groups can also be nested within each other (i.e. an accordion control has sub-accordions or an accordion control can be placed inside a&nbsp;panel control). This nesting is controlled by the PARENT_GROUP_ID and NESTED_GROUP_UNIT fields. All records in a particular "tree" (other than the top level record) will have a PARENT_GROUP_ID. All records in a "tree" will have the top level OBJECT_ID as their NESTED_GROUP_UNIT (including the top level record).</p>
+
+<div id="i-2e772889-f265-4917-b97f-25f3acfbf8fe-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Determine the Object Id for the screen part</span>
+</div>
+
+<div id="i-2e772889-f265-4917-b97f-25f3acfbf8fe-section-content" class="i-section-content">
+    <p>Use the following SQL to determine the Object Id for the screen part&nbsp;if you know the Form Id. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Find the Object Id for screen part</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> SCREEN_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>form id<span style="COLOR: #808080">&gt;</span>)
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-3e92957f-5c30-42c9-8b05-414749c4352e-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create screen&nbsp;group record</span>
+</div>
+
+<div id="i-3e92957f-5c30-42c9-8b05-414749c4352e-section-content" class="i-section-content">
+    <p>Create a new record in the SCREEN_GROUP table tied to the corresponding&nbsp;SCREEN_PART record for the screen part. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).<br /></p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td width="162"><strong>Field</strong></td>
+
+                <td><strong>Description/Notes</strong></td>
+            </tr>
+
+            <tr>
+                <td width="162">GROUP_NAME</td>
+
+                <td>The name of the screen group.</td>
+            </tr>
+
+            <tr>
+                <td width="162">RESOURCE_KEY</td>
+
+                <td>The resource key of the label to show for the screen group, if any.</td>
+            </tr>
+
+            <tr>
+                <td width="162">GROUP_TYPE<br /></td>
+
+                <td>The type of the group. Please see the "Screen&nbsp;Group Type" configuration for an enumeration of all screen&nbsp;group types.</td>
+            </tr>
+
+            <tr>
+                <td width="162">SEQUENCE</td>
+
+                <td>Screen groups are rendered in sequence order.</td>
+            </tr>
+
+            <tr>
+                <td width="162">DEFAULT_ACTION</td>
+
+                <td>The button or link that should be triggered when the Enter key is pressed and focus is in a control within this screen group. Please see the&nbsp;<a href="How_to_Set_Default_Action_for_Enter Key.html">How to: Set Default Action for Enter Key</a> topic for more details.</td>
+            </tr>
+
+            <tr>
+                <td width="162">DIV_CSS_CLASS</td>
+
+                <td>Used to configure the layout of the screen group. Please see the&nbsp;<a href="How_to_Configure_Layout_of_Metadata_Pages.html">How to: Configure Layout of Metadata Pages</a>&nbsp;topic for more details.</td>
+            </tr>
+
+            <tr>
+                <td width="162">ROW_CSS_CLASS</td>
+
+                <td>Used to configure the layout of the screen group. Please see the&nbsp;<a href="How_to_Configure_Layout_of_Metadata_Pages.html">How to: Configure Layout of Metadata Pages</a>&nbsp;topic for more details.</td>
+            </tr>
+
+            <tr>
+                <td width="162">PARENT_GROUP_ID</td>
+
+                <td>The parent group for this group (used in nested groups).</td>
+            </tr>
+
+            <tr>
+                <td width="162">NESTED_GROUP_UNIT</td>
+
+                <td>The top level group for this group (used in nested groups).</td>
+            </tr>
+
+            <tr>
+                <td width="162">FIXED_TO_TOP</td>
+
+                <td>Used to configure elements that should be fixed to the top of the page when the page is scrolled. This feature only applies to Detail&nbsp;screens (Create, Read, Update)&nbsp;at this time.</td>
+            </tr>
+
+            <tr>
+                <td width="162">CONTENT_LOADING_TYPE</td>
+
+                <td>Used to specify how content in the screen group should be loaded. Please see the "Content Loading Type" configuration for an enumeration of all content loading types. Also see the&nbsp;<a href="How_to_Set_Content_Loading_Type.html">How to: Set Loading Content Type</a> topic for more information.</td>
+            </tr>
+        </tbody>
+    </table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="i-box i-box-note">
+        Please note that the dbc_IScreenGroup stored procedure can be used to create screen groups.
+    </div>
+
+    <p></p>
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Screen_Controls.html">How to: Create Screen Controls</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Parts.html">How to: Create Screen Parts</a></div>
+<div class="i-see-also-link">
+<a href="Metadata_Page_Architecture.html">Metadata Page Architecture</a></div>
+<div class="i-see-also-link">
+<a href="Supported_Screen_Groups.html">Supported Screen Groups</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,640 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Exit Point Programs</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">Exit Point Programs</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+<a href="151fb685ffa48d0988636095b3af7881bab2d21e6ea0f1f1f260a337c40eebce.html" data-source-node="n46">Integration Endpoints</a>
+ &gt; Exit Point Programs</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n47">
+        <p data-source-node="n48">Exit Point Programs are API style or SQL Stored Procedure type Integration Endpoints and are invoked during predefined checkpoints throughout the application. For the full details on each exit point, such as timing information, parameter lists, return values, and "Legacy" vs. IWorkFlowStep implementation (see below), view the <a href="../source/downloads/80f19d0a6ae470e375fd667c26b5853375417e18471c033f6c9c379942e5c258.xlsx" data-source-node="n49">Exit Point Program Details (Microsoft Excel)</a>.</p>
+
+<p data-source-node="n50">For specific Exit Point Program samples, please view the <a href="b94690d0086cce4a01564186f37d44ebb01e1c357c251d8dcc0733889592653a.html" data-source-node="n51">Manh.ILS.SDK.IntegrationEndpoints.ExitPointPrograms Namespace</a>.</p>
+
+<p data-source-node="n52"> </p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n53">
+    <span class="i-section-heading-icon" data-source-node="n54"><span class="i-hidden" data-source-node="n55"> </span></span><span class="i-section-heading-text" data-source-node="n56">API Type</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" data-source-node="n57">
+    <div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n58">
+        <span class="i-section-heading-icon" data-source-node="n59"><span class="i-hidden" data-source-node="n60"> </span></span><span class="i-section-heading-text" data-source-node="n61">"Legacy" Programs</span>
+    </div>
+
+    <div id="i-SectionId-section-content" class="i-section-content" data-source-node="n62">
+        <p data-source-node="n63">Exit Points that were created before the 2004R2 release will expect programs that implement the Manh.SDK.IntegrationEndpoints.ExitPointPrograms.ILegacyExitPointProgram. Please view the documentation on that interface and any implementing samples supplied with this SDK for more information on these style of Exit Point Programs.</p>
+
+        <p data-source-node="n64">Here is a simple example of an implementer of ILegacyExitPointProgram:</p>
+
+        <div class="i-filtered-content-CS" data-title="CS" data-itemid="CS" data-source-node="n65">
+            <table class="i-syntax-table" data-source-node="n66">
+                <tbody data-source-node="n67">
+                    <tr data-source-node="n68">
+                        <th data-source-node="n69">C#</th>
+
+                        <th data-source-node="n70">
+                            <div class="i-copy-code-wrapper" data-source-node="n71">
+                                <span class="i-copy-code" data-source-node="n72">Copy Code</span>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr data-source-node="n73">
+                        <td class="i-code" colspan="2" data-source-node="n74">
+                            <pre data-source-node="n75">
+<span style="COLOR: #0000ff" data-source-node="n76">public</span> <span style="COLOR: #0000ff" data-source-node="n77">class</span> SampleLegacyExitPointProgram : ILegacyExitPointProgram
+{
+    <span style="COLOR: #0000ff" data-source-node="n78">public</span> <span style="COLOR: #0000ff" data-source-node="n79">object</span> ExecuteExitPointProgram(
+        <span style="COLOR: #0000ff" data-source-node="n80">string</span> sessionString,
+        <span style="COLOR: #0000ff" data-source-node="n81">object</span> parameter1,
+        <span style="COLOR: #0000ff" data-source-node="n82">object</span> parameter2,
+        <span style="COLOR: #0000ff" data-source-node="n83">object</span> parameter3,
+        <span style="COLOR: #0000ff" data-source-node="n84">object</span> parameter4,
+        <span style="COLOR: #0000ff" data-source-node="n85">object</span> parameter5,
+        <span style="COLOR: #0000ff" data-source-node="n86">object</span> parameter6,
+        <span style="COLOR: #0000ff" data-source-node="n87">object</span> parameter7,
+        <span style="COLOR: #0000ff" data-source-node="n88">object</span> parameter8,
+        <span style="COLOR: #0000ff" data-source-node="n89">object</span> parameter9,
+        <span style="COLOR: #0000ff" data-source-node="n90">object</span> parameter10,
+        <span style="COLOR: #0000ff" data-source-node="n91">object</span> parameter11,
+        <span style="COLOR: #0000ff" data-source-node="n92">object</span> parameter12,
+        <span style="COLOR: #0000ff" data-source-node="n93">object</span> parameter13,
+        <span style="COLOR: #0000ff" data-source-node="n94">object</span> parameter14,
+        <span style="COLOR: #0000ff" data-source-node="n95">object</span> parameter15)
+    {
+        <span style="COLOR: #0000ff" data-source-node="n96">using</span> (Session session = SessionMapper.ConvertFromLegacySession(sessionString))
+        {
+
+            <span style="COLOR: #008000" data-source-node="n97">// Insert Exit Point Program logic here.
+</span>
+        }
+
+        <span style="COLOR: #0000ff" data-source-node="n98">return</span> <span style="COLOR: #0000ff" data-source-node="n99">null</span>;
+    }
+}
+</pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p data-source-node="n100"> </p>
+
+    <div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n101">
+        <span class="i-section-heading-icon" data-source-node="n102"><span class="i-hidden" data-source-node="n103"> </span></span><span class="i-section-heading-text" data-source-node="n104">IWorkFlowStep Programs</span>
+    </div>
+
+    <div id="i-SectionId-section-content" class="i-section-content" data-source-node="n105">
+        <p data-source-node="n106">Since 2004R2, we have adopted a new approach to supporting exit points in the application. The new approach conforms with the "Strategy" design pattern. This means that the exit point program must implement the interface IWorkFlowStep (WMW.General.dll). Also, every custom program must be in a separate class but can be in the same assembly.<br data-source-node="n107">
+        <br data-source-node="n108">
+        Here is a simple example of an implementer of IWorkFlowStep.</p>
+
+        <p data-source-node="n109"> </p>
+
+        <div class="i-filtered-content-CS" data-title="CS" data-itemid="CS" data-source-node="n110">
+            <table class="i-syntax-table" data-source-node="n111">
+                <tbody data-source-node="n112">
+                    <tr data-source-node="n113">
+                        <th data-source-node="n114">C#</th>
+
+                        <th data-source-node="n115">
+                            <div class="i-copy-code-wrapper" data-source-node="n116">
+                                <span class="i-copy-code" data-source-node="n117">Copy Code</span>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr data-source-node="n118">
+                        <td class="i-code" colspan="2" data-source-node="n119">
+                            <pre data-source-node="n120">
+<span style="COLOR: #0000ff" data-source-node="n121">public</span> <span style="COLOR: #0000ff" data-source-node="n122">class</span> SampleExitPointProgram : Manh.WMW.General.IWorkFlowStep
+{
+    <span style="COLOR: #0000ff" data-source-node="n123">public</span> <span style="COLOR: #0000ff" data-source-node="n124">object</span> ExecuteStep(
+        Manh.WMFW.General.Session session,
+        <span style="COLOR: #0000ff" data-source-node="n125">params</span> <span style="COLOR: #0000ff" data-source-node="n126">object</span>[] parameters)
+    {
+
+        <span style="COLOR: #008000" data-source-node="n127">// Insert Exit Point Program logic here.
+</span>
+        <span style="COLOR: #0000ff" data-source-node="n128">return</span> <span style="COLOR: #0000ff" data-source-node="n129">null</span>;
+    }
+}
+</pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p data-source-node="n130">When an Exit Point is triggered, the WorkFlowManager class queries the Exit Point Control &amp; Exit Point Program configuration for the exit point. If the exit point is active, it loads the assembly and creates an instance of the class of type IWorkFlowStep as defined in Exit Point Program. It then calls the ExecuteStep method on the interface. This runs the custom code.</p>
+    </div>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n131">
+    <span class="i-section-heading-icon" data-source-node="n132"><span class="i-hidden" data-source-node="n133"> </span></span><span class="i-section-heading-text" data-source-node="n134">Stored Procedure Type</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" data-source-node="n135">
+    <p data-source-node="n136">SQL Stored procedures are also supported as exit point programs. However the stored procedures need to conform to the following guidelines:-</p>
+
+    <ol data-source-node="n137">
+        <li data-source-node="n138">The SP parameters should conform to the specification for the Exit point in terms of data type and parameter ordering. This is visible from the "Parameters List" screen on the Exit Point Control configuration.</li>
+
+        <li data-source-node="n139">The "Exit Point Stored Procedure" screen can be used to generate correctly structured skeleton stored procedures for each exit point. Pre-existing stored procedures can also be modified by replacing "Create Procedure" with "Alter procedure" in the generated SQL (screen validations block all other freeform SQL)</li>
+
+        <li data-source-node="n140">Return values from exit point programs are supported through "output" parameters. These are analogous to the API method return values or reference parameters. Note that such parameters in Sql Server allow both input and output.</li>
+
+        <li data-source-node="n141">Complex parameter types like entities, class and array/collection types etc are serialized and sent as XML to stored procedures</li>
+
+        <li data-source-node="n142">Utility SQL functions and stored procedures have been provided to allow easy extraction of data from XML parameters. More information can be found at <a href="879afe4dcf58a259a0b8942dd629c61fa833f4c9fd76dfdde8bce54fa1fa8311.html" data-source-node="n143">How to: Extract values from Xml through SQL</a></li>
+    </ol>
+
+    <p data-source-node="n144"> </p>
+
+    <p data-source-node="n145">An Exit point can be linked up with a stored procedure as in the screenshot below. For more details please refer Help documentation.</p>
+
+    <p data-source-node="n146"><img border="0" alt="" src="../source/assets/9889e5dfa3a9ebe5e9df11b7a6247c5ee1270723ec2b641e7dd61857d5d5ea6c.png" loading="eager" data-source-node="n147"></p>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n148">
+    <span class="i-section-heading-icon" data-source-node="n149"><span class="i-hidden" data-source-node="n150"> </span></span><span class="i-section-heading-text" data-source-node="n151">Web Service Type</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" data-source-node="n152">
+    <p data-source-node="n153">Azure Functions  are also supported as exit point programs. However the Azure Functions need to conform to the following guidelines:-</p>
+
+    <ol data-source-node="n154">
+        <li data-source-node="n155">The Azure function URL should be a valid Azure Function URL.</li>
+
+        <li data-source-node="n156">HTTP Header should be sent in proper format.</li>
+
+        <li data-source-node="n157">This is HTTP POST web Service Call. This can be used to call an azure function or any web service.</li>
+
+        <li data-source-node="n158">Parameters can be sent in HTTP Header in key-value pair with a semi-colon and multiple values supported on multiple lines.</li>
+
+        <li data-source-node="n159">Any authentication is not supported while calling either azure function or web service.</li>
+
+        <li data-source-node="n160">The response will be in string format which will be returned to the calling function.</li>
+    </ol>
+
+    <p data-source-node="n161"> </p>
+
+    <p data-source-node="n162">An Exit point can be linked up with a web service type as in the screenshot below. For more details please refer Help documentation.</p>
+
+    <p data-source-node="n163"><img border="0" alt="" src="../source/assets/cca6d25aac28725eb109dba382c4fac2f8bfa2a0fbe7f6aa207cc398434f608e.png" loading="eager" data-source-node="n164"></p>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n165">
+    <span class="i-section-heading-icon" data-source-node="n166"><span class="i-hidden" data-source-node="n167"> </span></span><span class="i-section-heading-text" data-source-node="n168">Invoking exit points in a transaction scope</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" data-source-node="n169">
+    <p data-source-node="n170">Certain exit points are triggered from business processes that execute in a transaction and all data changes are supposed to be committed or rolled back at the logical end of the process. To ensure that changes made to the data in the custom exit point logic are persisted properly and to avoid stale data issues in the invoking base logic, the following guidelines are recommended.</p>
+
+    <ol data-source-node="n171">
+        <li data-source-node="n172">The persistence technology used in the custom exit point should match the one used by the invoking module in the base application. Example: Close Container process uses NHibernate, hence the "Close Container - After" exit point should use the same.</li>
+
+        <li data-source-node="n173">If the process executes in a transaction, the exit point should make related data updates in the same transaction and the application would perform the final commit or rollback as needed.  Any data changes made outside the transaction scope cannot be rolled-back by the application in case of a process failure; hence this scenario is not supported.</li>
+
+        <li data-source-node="n174">"Stored Procedure" exit point programs are invoked in a new database transaction scope. It does not commit/rollback in the same transaction as the EntityBroker/NHibernate transaction (if any) of the calling process.</li>
+    </ol>
+
+    <p data-source-node="n175"> </p>
+
+    <p data-source-node="n176">The <a href="../source/downloads/80f19d0a6ae470e375fd667c26b5853375417e18471c033f6c9c379942e5c258.xlsx" data-source-node="n177">Exit Point Program Details (Microsoft Excel)</a> document indicates which exit points need to be invoked within a transaction scope and the persistence technology used in the invoking application module.</p>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n178">
+    <span class="i-section-heading-icon" data-source-node="n179"><span class="i-hidden" data-source-node="n180"> </span></span><span class="i-section-heading-text" data-source-node="n181">Client Side Exit points</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" data-source-node="n182">
+    <p data-source-node="n183">The following client-side Exit Point programs that previously existed in the SCALE desktop application have not been recreated in the SCALE metadata web pages. Instead, each one can still be accomplished through metadata or Javascript or Typescript changes as noted below.     </p>
+
+    <p data-source-node="n184">       </p>
+
+    <table data-source-node="n185">
+        <tbody data-source-node="n186">
+            <tr valign="top" data-source-node="n187">
+                <th height="9" data-source-node="n188">Exit Point</th>
+
+                <th height="9" data-source-node="n189">Desktop Screen</th>
+
+                <th height="9" data-source-node="n190">Metadata screen</th>
+
+                <th height="9" data-source-node="n191">Exit point Implementation in Metadata Screen</th>
+            </tr>
+
+            <tr data-source-node="n192">
+                <td data-source-node="n193">Before- cycle count reconcile</td>
+
+                <td data-source-node="n194">Cycle count reconciliation</td>
+
+                <td data-source-node="n195">Cycle count reconciliation</td>
+
+                <td data-source-node="n196">If the "Before- cycle count reconcile" exit point was previously utilized on the full screen cycle count reconciliation screen, and you want to do something similar in the web metadata version of cycle count reconciliation screen, then create new web service with your requirement and modify the $(window).load function present in manh.ui.cycleCountReconciliationTransaction.js to invoke the web service you have created.</td>
+            </tr>
+
+            <tr data-source-node="n197">
+                <td data-source-node="n198">Suggest Value in Cycle Count Reconciliation</td>
+
+                <td data-source-node="n199">Cycle count reconciliation</td>
+
+                <td data-source-node="n200">Cycle count reconciliation</td>
+
+                <td data-source-node="n201">If the "Suggest Value in Cycle Count Reconciliation" exit point was previously utilized on the full screen cycle count reconciliation screen, and you want to do something similar in the web metadata version of cycle count reconciliation screen, then modify the $(window).load function present in manh.ui.cycleCountReconciliationTransaction.js to set the required value to the input control id “ReconcileSetOnHandQuantity”.</td>
+            </tr>
+
+            <tr data-source-node="n202">
+                <td data-source-node="n203">QC Workbench - Count Before</td>
+
+                <td data-source-node="n204">QC workbench</td>
+
+                <td data-source-node="n205">QC workbench</td>
+
+                <td data-source-node="n206">If the "QC Workbench - Count Before" exit point was previously utlized on the full screen QC workbench, and you want to do something similar in the web metadata version of QC workbench, then modify the itemEditorChanged function present in the shippingContainerQC.component.ts file or add your own custom function and configure the event to call the new method.</td>
+            </tr>
+
+            <tr data-source-node="n207">
+                <td data-source-node="n208">QC Workbench - Leave Item</td>
+
+                <td data-source-node="n209">QC workbench</td>
+
+                <td data-source-node="n210">QC workbench</td>
+
+                <td data-source-node="n211">if you used to use the "leave item" exit point on QC workbench in full screen, and you want to do something similar in the web metadata version of QC workbench, we need to add exit point code in countQc method present in shippingContainerQC.component.ts file</td>
+            </tr>
+        </tbody>
+    </table>           
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n212">
+    <span class="i-section-heading-icon" data-source-node="n213"><span class="i-hidden" data-source-node="n214"> </span></span><span class="i-section-heading-text" data-source-node="n215">Exit points invoked from warehouse mobile</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" data-source-node="n216">
+    <p data-source-node="n217">The following is the list of exit points invoked from the warehouse mobile APIs.</p>
+
+    <innovasys:widgetproperty layout="block" name="Content" data-source-node="n218">
+        <div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n219">
+            <span class="i-section-heading-icon" data-source-node="n220"><span class="i-hidden" data-source-node="n221"> </span></span><span class="i-section-heading-text" data-source-node="n222">General</span>
+        </div>
+
+        <div id="i-SectionId-section-content" class="i-section-content" data-source-node="n223">
+            <table data-source-node="n224">
+                <thead data-source-node="n225">
+                    <tr data-source-node="n226">
+                        <th data-source-node="n227">Exit point</th>
+
+                        <th data-source-node="n228">Description</th>
+                    </tr>
+                </thead>
+
+                <tbody data-source-node="n229">
+                    <tr data-source-node="n230">
+                        <td data-source-node="n231">Adjustment Type Authorization Retrieval</td>
+
+                        <td data-source-node="n232">Modifies adjustment type list as per authorization</td>
+                    </tr>
+
+                    <tr data-source-node="n233">
+                        <td data-source-node="n234">Cycle Count Reconcile - After</td>
+
+                        <td data-source-node="n235">After a cycle count reconcile</td>
+                    </tr>
+
+                    <tr data-source-node="n236">
+                        <td data-source-node="n237">Cycle Count SQL - Modify</td>
+
+                        <td data-source-node="n238">Cycle Count SQL - Modify</td>
+                    </tr>
+
+                    <tr data-source-node="n239">
+                        <td data-source-node="n240">Finished Item SN Validation</td>
+
+                        <td data-source-node="n241">Finished Item SN Validation</td>
+                    </tr>
+
+                    <tr data-source-node="n242">
+                        <td data-source-node="n243">Image capture - Update company</td>
+
+                        <td data-source-node="n244">Image capture - Update company</td>
+                    </tr>
+
+                    <tr data-source-node="n245">
+                        <td data-source-node="n246">Image capture - Link internal reference number</td>
+
+                        <td data-source-node="n247">Image capture - Link internal reference number</td>
+                    </tr>
+
+                    <tr data-source-node="n248">
+                        <td data-source-node="n249">Inv Mgmt Validation - After</td>
+
+                        <td data-source-node="n250">Inv Mgmt Validation - After</td>
+                    </tr>
+
+                    <tr data-source-node="n251">
+                        <td data-source-node="n252">Inventory Transaction - After</td>
+
+                        <td data-source-node="n253">Inventory Transaction - After</td>
+                    </tr>
+
+                    <tr data-source-node="n254">
+                        <td data-source-node="n255">Item Validation Get Cross Reference SQL - Modify</td>
+
+                        <td data-source-node="n256">Item Validation Get Cross Reference SQL - Modify</td>
+                    </tr>
+
+                    <tr data-source-node="n257">
+                        <td data-source-node="n258">Labor Management Log Request - After</td>
+
+                        <td data-source-node="n259">Labor Management Log Request - After</td>
+                    </tr>
+
+                    <tr data-source-node="n260">
+                        <td data-source-node="n261">Labor Management Log Request - Before</td>
+
+                        <td data-source-node="n262">Labor Management Log Request - Before</td>
+                    </tr>
+
+                    <tr data-source-node="n263">
+                        <td data-source-node="n264">RF Work Replace Text Message Retrieval Logic</td>
+
+                        <td data-source-node="n265">RF Work Replace Text Message Retrieval Logic</td>
+                    </tr>
+
+                    <tr data-source-node="n266">
+                        <td data-source-node="n267">WM Capture inventory attributes</td>
+
+                        <td data-source-node="n268">WM Capture inventory attributes</td>
+                    </tr>
+
+                    <tr data-source-node="n269">
+                        <td data-source-node="n270">WM SRC Configurator - Override</td>
+
+                        <td data-source-node="n271">WM SRC Configurator - Override</td>
+                    </tr>
+
+                    <tr data-source-node="n272">
+                        <td data-source-node="n273">Work Creation - After</td>
+
+                        <td data-source-node="n274">Work Creation - After</td>
+                    </tr>
+
+                    <tr data-source-node="n275">
+                        <td data-source-node="n276">Work Creation - Before</td>
+
+                        <td data-source-node="n277">Work Creation - Before</td>
+                    </tr>
+
+                    <tr data-source-node="n278">
+                        <td data-source-node="n279">Work Order Header Allocation - Before</td>
+
+                        <td data-source-node="n280">Work Order Header Allocation - Before</td>
+                    </tr>
+
+                    <tr data-source-node="n281">
+                        <td data-source-node="n282">Work Profile Authorization Retrieval</td>
+
+                        <td data-source-node="n283">Modifies work profile list as per authorization</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n284">
+            <span class="i-section-heading-icon" data-source-node="n285"><span class="i-hidden" data-source-node="n286"> </span></span><span class="i-section-heading-text" data-source-node="n287">Inbound</span>
+        </div>
+
+        <div id="i-SectionId-section-content" class="i-section-content" data-source-node="n288">
+            <table data-source-node="n289">
+                <thead data-source-node="n290">
+                    <tr data-source-node="n291">
+                        <th data-source-node="n292">Exit point</th>
+
+                        <th data-source-node="n293">Description</th>
+                    </tr>
+                </thead>
+
+                <tbody data-source-node="n294">
+                    <tr data-source-node="n295">
+                        <td data-source-node="n296">Check In - Before</td>
+
+                        <td data-source-node="n297">Check In - Before</td>
+                    </tr>
+
+                    <tr data-source-node="n298">
+                        <td data-source-node="n299">Check In - Lot Entry Expiration Date Validation</td>
+
+                        <td data-source-node="n300">Validates expiration date when specified</td>
+                    </tr>
+
+                    <tr data-source-node="n301">
+                        <td data-source-node="n302">Check In Inv Attributes Assignment - Replace</td>
+
+                        <td data-source-node="n303">Check In Inv Attributes Assignment - Replace</td>
+                    </tr>
+
+                    <tr data-source-node="n304">
+                        <td data-source-node="n305">Close Receipt - Before</td>
+
+                        <td data-source-node="n306">Close Receipt - Before</td>
+                    </tr>
+
+                    <tr data-source-node="n307">
+                        <td data-source-node="n308">Locate - Before</td>
+
+                        <td data-source-node="n309">Locate - Before</td>
+                    </tr>
+
+                    <tr data-source-node="n310">
+                        <td data-source-node="n311">Locating Location Selection SQL - Modify</td>
+
+                        <td data-source-node="n312">Locating Location Selection SQL - Modify</td>
+                    </tr>
+
+                    <tr data-source-node="n313">
+                        <td data-source-node="n314">Locating Request - After</td>
+
+                        <td data-source-node="n315">Locating Request - After</td>
+                    </tr>
+
+                    <tr data-source-node="n316">
+                        <td data-source-node="n317">Locating Rule Split - Override</td>
+
+                        <td data-source-node="n318">Locating Rule Split - Override</td>
+                    </tr>
+
+                    <tr data-source-node="n319">
+                        <td data-source-node="n320">Override Inbound QC Values</td>
+
+                        <td data-source-node="n321">Override Inbound QC Values</td>
+                    </tr>
+
+                    <tr data-source-node="n322">
+                        <td data-source-node="n323">Override Putaway Group Selection SQL</td>
+
+                        <td data-source-node="n324">Override Putaway Group Selection SQL</td>
+                    </tr>
+
+                    <tr data-source-node="n325">
+                        <td data-source-node="n326">Pre Check Receipt Container Id - Replace</td>
+
+                        <td data-source-node="n327">Pre Check Receipt Container Id - Replace</td>
+                    </tr>
+
+                    <tr data-source-node="n328">
+                        <td data-source-node="n329">Putaway Group Close - Before</td>
+
+                        <td data-source-node="n330">Putaway Group Close - Before</td>
+                    </tr>
+
+                    <tr data-source-node="n331">
+                        <td data-source-node="n332">Receiving Preference Authorization Retrieval</td>
+
+                        <td data-source-node="n333">Modifies receiving preference list as per authoriz</td>
+                    </tr>
+
+                    <tr data-source-node="n334">
+                        <td data-source-node="n335">Receiving- Validate Immediate Needs Request</td>
+
+                        <td data-source-node="n336">Validate immediate needs request during receiving</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n337">
+            <span class="i-section-heading-icon" data-source-node="n338"><span class="i-hidden" data-source-node="n339"> </span></span><span class="i-section-heading-text" data-source-node="n340">Outbound</span>
+        </div>
+
+        <div id="i-SectionId-section-content" class="i-section-content" data-source-node="n341">
+            <table data-source-node="n342">
+                <thead data-source-node="n343">
+                    <tr data-source-node="n344">
+                        <th data-source-node="n345">Exit point</th>
+
+                        <th data-source-node="n346">Description</th>
+                    </tr>
+                </thead>
+
+                <tbody data-source-node="n347">
+                    <tr data-source-node="n348">
+                        <td data-source-node="n349">Close Container - After</td>
+
+                        <td data-source-node="n350">Close Container - After</td>
+                    </tr>
+
+                    <tr data-source-node="n351">
+                        <td data-source-node="n352">Close Container - Validate</td>
+
+                        <td data-source-node="n353">Close Container - Validate</td>
+                    </tr>
+
+                    <tr data-source-node="n354">
+                        <td data-source-node="n355">Container Type Authorization Retrieval</td>
+
+                        <td data-source-node="n356">Modifies container type list as per authorization</td>
+                    </tr>
+
+                    <tr data-source-node="n357">
+                        <td data-source-node="n358">Delete Shipment - After</td>
+
+                        <td data-source-node="n359">Delete Shipment - After</td>
+                    </tr>
+
+                    <tr data-source-node="n360">
+                        <td data-source-node="n361">Delete Shipment - Before</td>
+
+                        <td data-source-node="n362">Delete Shipment - Before</td>
+                    </tr>
+
+                    <tr data-source-node="n363">
+                        <td data-source-node="n364">Group Pick Instructions - Override</td>
+
+                        <td data-source-node="n365">Group Pick Instructions - Override</td>
+                    </tr>
+
+                    <tr data-source-node="n366">
+                        <td data-source-node="n367">Immediate Dock Transfer - Before</td>
+
+                        <td data-source-node="n368">Immediate Dock Transfer - Before</td>
+                    </tr>
+
+                    <tr data-source-node="n369">
+                        <td data-source-node="n370">Multi Order Pallet Container ID - Replace</td>
+
+                        <td data-source-node="n371">Multi Order Pallet Container ID Replace</td>
+                    </tr>
+
+                    <tr data-source-node="n372">
+                        <td data-source-node="n373">Replenishment Existing Inv Calc SQL - Modify</td>
+
+                        <td data-source-node="n374">Replenishment Existing Inv Calc SQL - Modify</td>
+                    </tr>
+
+                    <tr data-source-node="n375">
+                        <td data-source-node="n376">RF Serial Number Scan - Before</td>
+
+                        <td data-source-node="n377">RF Serial Number Scan - Before</td>
+                    </tr>
+
+                    <tr data-source-node="n378">
+                        <td data-source-node="n379">Shipment Work Instruction - Close</td>
+
+                        <td data-source-node="n380">Shipment Work Instruction - Close</td>
+                    </tr>
+
+                    <tr data-source-node="n381">
+                        <td data-source-node="n382">Short Pick Inventory - Replace?</td>
+
+                        <td data-source-node="n383">Short Pick Inventory - Replace?</td>
+                    </tr>
+
+                    <tr data-source-node="n384">
+                        <td data-source-node="n385">Work Short Pick - After</td>
+
+                        <td data-source-node="n386">Work Short Pick - After</td>
+                    </tr>
+
+                    <tr data-source-node="n387">
+                        <td data-source-node="n388">Work Unit Close</td>
+
+                        <td data-source-node="n389">Work Unit Close</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </innovasys:widgetproperty>
+</div>
+            <a name="seealsobookmark" data-source-node="n390"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n391">
+        
+<p data-source-node="n392"> </p><p data-source-node="n393"> </p><hr style="height: 1px" data-source-node="n394"><p data-source-node="n395">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

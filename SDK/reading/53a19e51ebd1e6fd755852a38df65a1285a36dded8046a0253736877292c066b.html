@@ -1,0 +1,660 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>3DCubing</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">3DCubing</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+Implementation Overriding
+ &gt; 3DCubing</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47">3D Cubing is a new container creation strategy in SCALE. Container creation strategies till this point only looked at the volume, weight and critical dimensions of the item to be packed. 3D Cubing, in addition to these parameters, also analyzes the physical size of the items being placed into the carton and the geometric configuration of the carton’s volume to determine which set of items will fit together into a carton.The advantage of such an approach is that it never suggests a packing that is not feasible.</p>
+
+<p data-source-node="n48"></p>
+
+<p data-source-node="n49">This section is divided into 3 parts. The first one indicates the current features that 3D Cubing leverages. The second talks about additional features that can be configured and the third discusses the exit point program and other changes that are required to enable the advanced features.</p>
+
+<div id="i-c8c24071-9b78-4a63-afaf-a630f8b20a21-section-heading" class="i-section-heading" data-source-node="n50">
+    <span class="i-section-heading-icon" data-source-node="n51"><span class="i-hidden" data-source-node="n52"> </span></span><span class="i-section-heading-text" data-source-node="n53">3D Cubing features in Base SCALE</span>
+</div>
+
+<div id="i-c8c24071-9b78-4a63-afaf-a630f8b20a21-section-content" class="i-section-content" data-source-node="n54">
+    <p data-source-node="n55">There are some changes in the way container creation configuration values are used by the 3D Cubing container creation strategy.</p>
+
+    <p data-source-node="n56"> </p>
+
+    <p data-source-node="n57"></p>
+
+    <table class="members" data-source-node="n58">
+        <tbody data-source-node="n59">
+            <tr data-source-node="n60">
+                <th class="descriptionColumn" data-source-node="n61">Configuration</th>
+
+                <td data-source-node="n62"><strong data-source-node="n63">Description</strong></td>
+            </tr>
+
+            <tr data-source-node="n64">
+                <td data-source-node="n65">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n66">Packing Class</p>
+                </td>
+
+                <td data-source-node="n67">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n68">The packing class is defined for an item or an item class. It is tied to a container group and packing criteria.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n69">
+                <td data-source-node="n70">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n71">Packing Criteria</p>
+                </td>
+
+                <td data-source-node="n72">3D Cubing supports a value for item break attribute.</td>
+            </tr>
+
+            <tr data-source-node="n73">
+                <td data-source-node="n74">Container Group</td>
+
+                <td data-source-node="n75">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n76">The container group contains a list of container types and the corresponding fill percentage. 3D Cubing ignores the fill percentage value.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n77">
+                <td data-source-node="n78">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n79">Default Stabilization Value</p>
+                </td>
+
+                <td data-source-node="n80">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n81">This configuration can be accessed under Container Creation System Values. It denotes the amount of space that needs to be left out between 2 items when they are packed. For E.g. if the default stabilization code value is 0.5 then then 0.5 units of space if left out on either side so for an item having dimensions 2x3x4 the effective dimensions is 3x4x5.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-source-node="n82"></p>
+
+    <p data-source-node="n83"> </p>
+</div>
+
+<div id="i-1bd56794-a06d-4272-82cc-557388c0137d-section-heading" class="i-section-heading" data-source-node="n84">
+    <span class="i-section-heading-icon" data-source-node="n85"><span class="i-hidden" data-source-node="n86"> </span></span><span class="i-section-heading-text" data-source-node="n87">Advanced 3D Cubing Features</span>
+</div>
+
+<div id="i-1bd56794-a06d-4272-82cc-557388c0137d-section-content" class="i-section-content" data-source-node="n88">
+    <p data-source-node="n89">Below are the additional item and container type features that are supported by 3D Cubing.</p>
+
+    <p data-source-node="n90"> </p>
+
+    <p data-source-node="n91"><strong data-source-node="n92">Item Master Configuration Additions:</strong></p>
+
+    <p data-source-node="n93"> </p>
+
+    <table class="members" data-source-node="n94">
+        <tbody data-source-node="n95">
+            <tr data-source-node="n96">
+                <th class="descriptionColumn" data-source-node="n97">Configuration</th>
+
+                <td data-source-node="n98"><strong data-source-node="n99">Description</strong></td>
+            </tr>
+
+            <tr data-source-node="n100">
+                <td data-source-node="n101">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n102">Orientation</p>
+                </td>
+
+                <td data-source-node="n103">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n104">This is used for limiting item orientation. The “L”, “W”, or “H” dimension of the item has to be forced along the height axis of the container. If left blank, allow any orientation.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n105">
+                <td data-source-node="n106">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n107">Cavity Length</p>
+                </td>
+
+                <td data-source-node="n108">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n109">This refers to the length of the cavity in the item.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n110">
+                <td height="14" data-source-node="n111">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n112">Cavity Width</p>
+                </td>
+
+                <td height="14" data-source-node="n113">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n114">This refers to the width of the cavity in the item.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n115">
+                <td data-source-node="n116">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n117">Cavity Height</p>
+                </td>
+
+                <td data-source-node="n118">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n119">This refers to the height of the cavity in the item.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n120">
+                <td data-source-node="n121">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n122">Incremental Length</p>
+                </td>
+
+                <td data-source-node="n123">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n124">When like-items are nested, this is the additional length in a nested stack of adding one additional item.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n125">
+                <td data-source-node="n126">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n127">Incremental Width</p>
+                </td>
+
+                <td data-source-node="n128">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n129">When like-items are nested, this is the additional width in a nested stack of adding one additional item.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n130">
+                <td data-source-node="n131">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n132">Incremental Height</p>
+                </td>
+
+                <td data-source-node="n133">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n134">When like-items are nested, this is the additional height in a nested stack of adding one additional item.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n135">
+                <td data-source-node="n136">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n137">Maximum Units Nested</p>
+                </td>
+
+                <td data-source-node="n138">This refers to the maximum number of like-items that can be nested together.</td>
+            </tr>
+
+            <tr data-source-node="n139">
+                <td data-source-node="n140">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n141">Stackable Item</p>
+                </td>
+
+                <td data-source-node="n142">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n143">This value indicates whether the item can be positioned above or below other items in the container. If this value is ‘N’, then this item cannot be positioned above or below other items. If this value is ‘Y’, then there is no restriction.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n144">
+                <td data-source-node="n145">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n146">Protection Factor</p>
+                </td>
+
+                <td data-source-node="n147">Protection Factor (PF) indicates how sturdy a container is. The larger the item’s PF, the more fragile the item and the more protection is required from its container. Every item will be assigned to a container which has a PF that is greater than or equal to the PF required by the item.</td>
+            </tr>
+
+            <tr data-source-node="n148">
+                <td data-source-node="n149">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n150">Container Size</p>
+                </td>
+
+                <td data-source-node="n151">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n152">If an item’s Container Size matches that of the Container_Type, then packing is allowed. This value can indicate whether the container type should be Big, Medium or Small when all these container types are present in the relevant container group.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-source-node="n153"></p>
+
+    <p data-source-node="n154"></p>
+
+    <p data-source-node="n155"></p>
+
+    <p data-source-node="n156"></p>
+
+    <p data-source-node="n157"> </p>
+
+    <p data-source-node="n158"><span style="FONT-SIZE: 10pt;FONT-FAMILY: &quot;Arial&quot;,&quot;sans-serif&quot;" data-source-node="n159"><strong data-source-node="n160">Container Type Configuration Additions:</strong></span></p>
+
+    <p data-source-node="n161"> </p>
+
+    <table class="members" data-source-node="n162">
+        <tbody data-source-node="n163">
+            <tr data-source-node="n164">
+                <th class="descriptionColumn" data-source-node="n165">Configuration</th>
+
+                <td data-source-node="n166"><strong data-source-node="n167">Description</strong></td>
+            </tr>
+
+            <tr data-source-node="n168">
+                <td data-source-node="n169">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n170">Protection Factor</p>
+                </td>
+
+                <td data-source-node="n171">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n172">Protection Factor (PF) indicates how sturdy a container is. The larger a container’s PF, the sturdier the container is and the more protection it offers. Every item will be assigned to a container which has a PF that is greater than or equal to the PF required by the item.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n173">
+                <td data-source-node="n174">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n175">Container Size</p>
+                </td>
+
+                <td data-source-node="n176">If an item’s Container Size matches that of the Container_Type, then packing is allowed. This is a string value and could represent what kind of container items should be packed in.</td>
+            </tr>
+
+            <tr data-source-node="n177">
+                <td data-source-node="n178">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n179">Minimum Container Weight</p>
+                </td>
+
+                <td data-source-node="n180">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n181">Minimum weight of the container. If the weight of items packed is less than this value, then the 3D Cubing algorithm generates an alert.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n182">
+                <td data-source-node="n183">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n184">Minimum Container Volume</p>
+                </td>
+
+                <td data-source-node="n185">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n186">Minimum container volume.If the volume of items packed is less than this value, then the 3D Cubing algorithm generates an alert.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-source-node="n187"></p>
+
+    <p data-source-node="n188"></p>
+
+    <p data-source-node="n189"> </p>
+</div>
+
+<div id="i-2a59fdf9-fa92-4c8f-9015-417e4d2d2ed0-section-heading" class="i-section-heading" data-source-node="n190">
+    <span class="i-section-heading-icon" data-source-node="n191"><span class="i-hidden" data-source-node="n192"> </span></span><span class="i-section-heading-text" data-source-node="n193">How to: configure the advanced features</span>
+</div>
+
+<div id="i-2a59fdf9-fa92-4c8f-9015-417e4d2d2ed0-section-content" class="i-section-content" data-source-node="n194">
+    <p data-source-node="n195">A new exit point program (ThreeDCubingContainerCreationBefore) has been added which can be used to make any changes to the item list before it is passed to the 3D Cubing algorithm. A sample exit point program implementation showing how to set a custom "Stablilization" factor per item is available <a href="b94690d0086cce4a01564186f37d44ebb01e1c357c251d8dcc0733889592653a.html" data-source-node="n196">here</a>.</p>
+
+    <p data-source-node="n197">In addition, certain database changes are required for fully leveraging all the 3D Cubing features. These are as follows:</p>
+
+    <p data-source-node="n198"><font color="black" data-source-node="n199">  </font></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n200"><strong data-source-node="n201">Additions to ITEM table:</strong></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n202"> </p>
+
+    <table class="members" style="HEIGHT: 255px;WIDTH: 53.81%" data-source-node="n203">
+        <tbody data-source-node="n204">
+            <tr data-source-node="n205">
+                <th class="descriptionColumn" width="244" data-source-node="n206">Configuration</th>
+
+                <th class="descriptionColumn" width="231" data-source-node="n207">Code</th>
+
+                <td data-source-node="n208"><strong data-source-node="n209">Type</strong></td>
+            </tr>
+
+            <tr data-source-node="n210">
+                <td width="244" data-source-node="n211">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n212">Stabilization Code</p>
+                </td>
+
+                <td width="231" data-source-node="n213">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n214">STAB_CODE</p>
+                </td>
+
+                <td data-source-node="n215">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n216">VARCHAR (4)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n217">
+                <td width="244" data-source-node="n218">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n219">Orientation</p>
+                </td>
+
+                <td width="231" data-source-node="n220">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n221">ITEM_ORIENTATION</p>
+                </td>
+
+                <td data-source-node="n222">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n223">VARCHAR(1)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n224">
+                <td width="244" data-source-node="n225">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n226">Protection Factor</p>
+                </td>
+
+                <td width="231" data-source-node="n227">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n228">PROTN_FACTOR</p>
+                </td>
+
+                <td data-source-node="n229">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n230">VARCHAR(9)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n231">
+                <td width="244" data-source-node="n232">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n233">Cavity Length</p>
+                </td>
+
+                <td width="231" data-source-node="n234">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n235">CAVITY_LEN</p>
+                </td>
+
+                <td data-source-node="n236">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n237">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n238">
+                <td width="244" data-source-node="n239">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n240">Cavity Width</p>
+                </td>
+
+                <td width="231" data-source-node="n241">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n242">CAVITY_WD</p>
+                </td>
+
+                <td data-source-node="n243">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n244">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n245">
+                <td height="11" width="244" data-source-node="n246">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n247">Cavity Height</p>
+                </td>
+
+                <td height="11" width="231" data-source-node="n248">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n249">CAVITY_HT</p>
+                </td>
+
+                <td height="11" data-source-node="n250">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n251">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n252">
+                <td width="244" data-source-node="n253">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n254">Incremental Length</p>
+                </td>
+
+                <td width="231" data-source-node="n255">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n256">INCREMENTAL_LEN</p>
+                </td>
+
+                <td data-source-node="n257">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n258">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n259">
+                <td width="244" data-source-node="n260">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n261">Incremental Width</p>
+                </td>
+
+                <td width="231" data-source-node="n262">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n263">INCREMENTAL _WD</p>
+                </td>
+
+                <td data-source-node="n264">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n265">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n266">
+                <td width="244" data-source-node="n267">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n268">Incremental Height</p>
+                </td>
+
+                <td width="231" data-source-node="n269">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n270">INCREMENTAL_HT</p>
+                </td>
+
+                <td data-source-node="n271">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n272">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n273">
+                <td width="244" data-source-node="n274">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n275">Stackable Item</p>
+                </td>
+
+                <td width="231" data-source-node="n276">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n277">STACKABLE_ITEM</p>
+                </td>
+
+                <td data-source-node="n278">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n279">VARCHAR(1)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n280">
+                <td width="244" data-source-node="n281">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n282">Maximum Units Nested</p>
+                </td>
+
+                <td width="231" data-source-node="n283">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n284">MAX_NEST_NUMBER</p>
+                </td>
+
+                <td data-source-node="n285">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n286">NUMBER(4)</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-source-node="n287"><font color="black" data-source-node="n288">  </font></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n289"><strong data-source-node="n290">Additions to CONTAINER_TYPE Table:</strong></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n291"> </p>
+
+    <table class="members" style="HEIGHT: 57px;WIDTH: 54.13%" data-source-node="n292">
+        <tbody data-source-node="n293">
+            <tr data-source-node="n294">
+                <th class="descriptionColumn" height="25" width="242" data-source-node="n295">Configuration</th>
+
+                <th class="descriptionColumn" height="25" width="232" data-source-node="n296">Code</th>
+
+                <td height="25" data-source-node="n297"><strong data-source-node="n298">Type</strong></td>
+            </tr>
+
+            <tr data-source-node="n299">
+                <td width="242" data-source-node="n300">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n301">Protection Factor</p>
+                </td>
+
+                <td width="232" data-source-node="n302">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n303">PROTN_FACTOR</p>
+                </td>
+
+                <td data-source-node="n304">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n305">VARCHAR (9)</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-source-node="n306"><font color="black" data-source-node="n307">  </font></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n308"><strong data-source-node="n309">New Table STABILIZATION_CODE:</strong></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n310"> </p>
+
+    <table class="members" style="HEIGHT: 144px;WIDTH: 54.19%" data-source-node="n311">
+        <tbody data-source-node="n312">
+            <tr data-source-node="n313">
+                <th class="descriptionColumn" width="243" data-source-node="n314">Configuration</th>
+
+                <th class="descriptionColumn" width="230" data-source-node="n315">Code</th>
+
+                <td data-source-node="n316"><strong data-source-node="n317">Type</strong></td>
+            </tr>
+
+            <tr data-source-node="n318">
+                <td width="243" data-source-node="n319">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n320">Stabilization Code</p>
+                </td>
+
+                <td width="230" data-source-node="n321">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n322">STAB_CODE</p>
+                </td>
+
+                <td data-source-node="n323">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n324">VARCHAR (4)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n325">
+                <td width="243" data-source-node="n326">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n327">Description</p>
+                </td>
+
+                <td width="230" data-source-node="n328">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n329">STAB_DESC</p>
+                </td>
+
+                <td data-source-node="n330">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n331">VARCHAR(25)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n332">
+                <td height="20" width="243" data-source-node="n333">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n334">Global Stabilization Amount</p>
+                </td>
+
+                <td height="20" width="230" data-source-node="n335">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n336">GLOBAL_STAB_AMNT</p>
+                </td>
+
+                <td height="20" data-source-node="n337">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n338">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n339">
+                <td width="243" data-source-node="n340">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n341">SKU specific Stabilization Amount</p>
+                </td>
+
+                <td width="230" data-source-node="n342">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n343">SKU_SPECIFIC_STAB_AMNT</p>
+                </td>
+
+                <td data-source-node="n344">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n345">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-source-node="n346"> </p>
+</div>
+
+<div id="i-38a440f1-92a5-4875-b0eb-1080bf2b2267-section-heading" class="i-section-heading" data-source-node="n347">
+    <span class="i-section-heading-icon" data-source-node="n348"><span class="i-hidden" data-source-node="n349"> </span></span><span class="i-section-heading-text" data-source-node="n350">2D Pack Algorithm</span>
+</div>
+
+<div id="i-38a440f1-92a5-4875-b0eb-1080bf2b2267-section-content" class="i-section-content" data-source-node="n351">
+    <p data-source-node="n352">The 2D Pack Algorithm provides the feature to arrange a given item along a specific box edge. The 2D pack algorithm is used when the system is directed to use "ItemOrientation" during packing. The "ItemOrientation" needs to be set using exit point "3D Cubing Stabilization Code Assignment – Before". If the item orientation is not set, the system will not honor the 2D Pack algorithm.</p>
+
+    <p data-source-node="n353"><strong data-source-node="n354">Note:-System currently does not support Item Orientation along with stacking. If Item Orientation is set, system will consider only 2D Pack Algorithm.</strong></p>
+
+    <p data-source-node="n355"><font color="black" data-source-node="n356">  </font></p>
+
+    <p dir="ltr" align="left" data-source-node="n357"><span lang="" data-source-node="n358"><strong data-source-node="n359">"ItemOrientation"</strong> Property restricts the orientation of item in the box.</span></p>
+
+    <ul data-source-node="n360">
+        <li data-source-node="n361"><span lang="" data-source-node="n362"><span lang="" data-source-node="n363">"L" – represents orientation along Length of the item.</span></span></li>
+
+        <li data-source-node="n364"><span lang="" data-source-node="n365">"W" – represents orientation along Width of the item.</span></li>
+
+        <li data-source-node="n366"><span lang="" data-source-node="n367">"H" – represents orientation along Height of the item.</span></li>
+
+        <li data-source-node="n368"><span lang="" data-source-node="n369">Blank represents no orientation restrictions.</span></li>
+    </ul>
+
+    <p data-source-node="n370"> </p>
+
+    <p data-source-node="n371"><span lang="" data-source-node="n372"><strong data-source-node="n373">"ItemPlacement"</strong> P<span lang="" data-source-node="n374">roperty decides the dimension to keep alongside of the big dimension of box in horizontal plane(X or Y axis) when new row is being created.</span></span></p>
+
+    <ul data-source-node="n375">
+        <li data-source-node="n376"><span lang="" data-source-node="n377"><span lang="" data-source-node="n378">0 - Keeps big dimension of item alongside of big dimension of box.</span></span></li>
+
+        <li data-source-node="n379"><span lang="" data-source-node="n380">1 - Keeps small dimension of item alongside of big dimension of box.</span></li>
+    </ul>
+
+    <p data-source-node="n381"> </p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n382"><strong data-source-node="n383">2D Pack algorithm details:</strong></p>
+
+    <p data-source-node="n384"> </p>
+
+    <p data-source-node="n385">(1) The large dimension of the box after the orientation will be placed large side of the container (If, item orientation is set to height, either the length or the width of the container will be considered). It’s the beginning of the row.</p>
+
+    <p data-source-node="n386">(2) If the previous box fits, then try to place the next box in the same row. The next box should have a width less than the first box. If fits, then place the subsequent boxes.</p>
+
+    <p data-source-node="n387">(3) If the box doesn’t fit in step 2, rotate the box and try to fit. If the box still doesn’t fit, move to the next box (And leave the current box to try for the new row) for the same row and follow the same for all the remaining items till the space is left in the row. To do this follow step 2.</p>
+
+    <p data-source-node="n388">(4) Build the second row if items are yet to be placed and space is left in the container. To do this follow step 1.</p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n389"> </p>
+
+    <p data-source-node="n390"><font color="black" data-source-node="n391">  </font></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n392"><strong data-source-node="n393">For Example :</strong></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n394"> </p>
+
+    <p data-source-node="n395"><font color="black" data-source-node="n396">  <img border="0" alt="" src="../source/assets/9676034f4e647f733f088461d95b77a93241dd49ad8808352b23e52818a8af5c.png" loading="eager" data-source-node="n397"></font></p>
+
+    <p data-source-node="n398"> </p>
+
+    <p data-source-node="n399">Row 1 is having boxes number 1, 2 and 3, and none of the row 1 box is having more width than box number 1. In row 1, box number 3 is placed after rotation.</p>
+
+    <p data-source-node="n400">Row 2 is having the box number 4 and 5. Though box 4 is big but it can’t be placed after the box 1 ,so placed in second row after placing 2 and 3 boxes.</p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt" data-source-node="n401"> </p>
+
+    <p data-source-node="n402"> </p>
+</div>
+            <a name="seealsobookmark" data-source-node="n403"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n404">
+        
+<p data-source-node="n405"> </p><p data-source-node="n406"> </p><hr style="height: 1px" data-source-node="n407"><p data-source-node="n408">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

@@ -1,0 +1,152 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Define Custom Endpoint Handlers</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n29">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n30">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n31">
+            <div class="i-project-title" data-source-node="n32">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n33"><div class="i-page-title-text" data-source-node="n34">Define Custom Endpoint Handlers</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n35">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n36">
+                <label class="i-collapse-all" data-source-node="n37">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n38">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n39">View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n40">
+        <p data-source-node="n41">An endpoint handler is a module that contains logic to keep an endpoint running. The system hosts all configured endpoints under service "DIFCommunicationService". When the service starts it looks for all configured endpoint handlers to start the appropriate endpoints.</p>
+
+<p data-source-node="n42"> </p>
+
+<p data-source-node="n43"><strong data-source-node="n44">The following endpoint handlers are provided by the system:</strong></p>
+
+<p data-source-node="n45"> </p>
+
+<table cellspacing="0" cellpadding="0" data-source-node="n46">
+    <tbody data-source-node="n47">
+        <tr data-source-node="n48">
+            <td data-source-node="n49"><strong data-source-node="n50">IncomingTCPServerEndpointHandler</strong></td>
+
+            <td data-source-node="n51">This endpoint handler is used to send data to the system when the system serves as a server and the MHE as a client. This handler should be used when the system waits for connections and the MHE connects to the system to send data.</td>
+        </tr>
+
+        <tr data-source-node="n52">
+            <td data-source-node="n53"><strong data-source-node="n54">IncomingTCPClientEndpointHandler</strong></td>
+
+            <td data-source-node="n55">This endpoint handler is used to send data to the system when the system acts as a client and the MHE as a server. This handler connects to the MHE but waits for the MHE to send data</td>
+        </tr>
+
+        <tr data-source-node="n56">
+            <td data-source-node="n57"><strong data-source-node="n58">IncomingFileEndpointHandler</strong></td>
+
+            <td data-source-node="n59">This endpoint handler is used to move file from one location to another location using simple file operation.</td>
+        </tr>
+
+        <tr data-source-node="n60">
+            <td data-source-node="n61"><strong data-source-node="n62">OutgoingTCPClientEndpointHandler</strong></td>
+
+            <td data-source-node="n63">
+                <p data-source-node="n64">This endpoint handler is used to send data from the system to the MHE. This handler connects to the MHE and sends it data.<strong data-source-node="n65"> </strong></p>
+            </td>
+        </tr>
+
+        <tr data-source-node="n66">
+            <td data-source-node="n67"><strong data-source-node="n68">OutgoingHTTPClientEndpointHandler</strong></td>
+
+            <td data-source-node="n69">
+                <p data-source-node="n70">This endpoint handler is used to send data from the system to the configured DIF outgoing endpoint web service(Azure function).<strong data-source-node="n71"> </strong></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p data-source-node="n72"></p>
+
+<p data-source-node="n73"> </p>
+
+<p data-source-node="n74">In addition to the four endpoint handlers provided by the system. You can create your own endpoint handler, the following steps provide direction to create a custom endpoint handler:</p>
+
+<p data-source-node="n75"> </p>
+
+<p data-source-node="n76"><strong data-source-node="n77">1.</strong> Your endpoint handler must implement interface IEndpointHandler. The interface is located in assembly DeviceIntegrationFramework.Interfaces under the Common folder.</p>
+
+<blockquote style="MARGIN-RIGHT: 0px" dir="ltr" data-source-node="n78">
+    <p data-source-node="n79"> </p>
+
+    <div class="i-box i-box-note" data-source-node="n80">
+        Your endpoint handler should have logic to keep processing until the endpoint handler is issued the stop command
+    </div>
+
+    <p data-source-node="n81"> </p>
+</blockquote>
+
+<p dir="ltr" data-source-node="n82"><strong data-source-node="n83">2.</strong> You will need to defined your endpoint handler in the Spring.NET objects definition files. Put your object definition in a custom file and add an import directive in file  Objects.DeviceIntegrationFramework.BL.xml</p>
+
+<div class="i-filtered-content-LanguageName" data-title="LanguageName" data-itemid="LanguageName" data-source-node="n84">
+    <table class="i-syntax-table" data-source-node="n85">
+        <tbody data-source-node="n86">
+            <tr data-source-node="n87">
+                <th data-source-node="n88">Custom file with endpoint Handler Entry</th>
+
+                <th data-source-node="n89">
+                    <div class="i-copy-code-wrapper" data-source-node="n90">
+                        <span class="i-copy-code" data-source-node="n91">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr data-source-node="n92">
+                <td class="i-code" colspan="2" data-source-node="n93">
+                    <p dir="ltr" data-source-node="n94"><font color="blue" size="2" data-source-node="n95"><font color="blue" size="2" data-source-node="n96">&lt;</font></font><font color="#A31515" size="2" data-source-node="n97"><font color="#A31515" size="2" data-source-node="n98">object</font></font> <font color="red" size="2" data-source-node="n99"><font color="red" size="2" data-source-node="n100">id</font></font><font color="blue" size="2" data-source-node="n101"><font color="blue" size="2" data-source-node="n102">=</font></font><font color="black" size="2" data-source-node="n103">"</font><font color="blue" size="2" data-source-node="n104"><font color="blue" size="2" data-source-node="n105">IncomingTCPServerEndpointHandler</font></font><font color="black" size="2" data-source-node="n106">"</font> <font color="red" size="2" data-source-node="n107"><font color="red" size="2" data-source-node="n108">type</font></font><font color="blue" size="2" data-source-node="n109"><font color="blue" size="2" data-source-node="n110">=</font></font><font color="black" size="2" data-source-node="n111">"</font><font color="blue" size="2" data-source-node="n112"><font color="blue" size="2" data-source-node="n113">DeviceIntegrationFramework.BL.IncomingTCPServerEndpointHandler, DeviceIntegrationFramework.BL, Version=8.0.0.0, Culture=neutral, PublicKeyToken=a978a715ccadf176</font></font><font color="black" size="2" data-source-node="n114">"</font> <font color="red" size="2" data-source-node="n115"><font color="red" size="2" data-source-node="n116">singleton</font></font><font color="blue" size="2" data-source-node="n117"><font color="blue" size="2" data-source-node="n118">=</font></font><font color="black" size="2" data-source-node="n119">"</font><font color="blue" size="2" data-source-node="n120"><font color="blue" size="2" data-source-node="n121">false</font></font><font color="black" size="2" data-source-node="n122">"</font> <font color="red" size="2" data-source-node="n123"><font color="red" size="2" data-source-node="n124">autowire</font></font><font color="blue" size="2" data-source-node="n125"><font color="blue" size="2" data-source-node="n126">=</font></font><font color="black" size="2" data-source-node="n127">"</font><font color="blue" size="2" data-source-node="n128"><font color="blue" size="2" data-source-node="n129">constructor</font></font><font color="black" size="2" data-source-node="n130">"</font><font color="blue" size="2" data-source-node="n131"><font color="blue" size="2" data-source-node="n132">/&gt;</font></font></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="i-filtered-content-LanguageName" data-title="LanguageName" data-itemid="LanguageName" data-source-node="n133">
+    <table class="i-syntax-table" data-source-node="n134">
+        <tbody data-source-node="n135">
+            <tr data-source-node="n136">
+                <th data-source-node="n137">Add import directive to file Objects.DeviceIntegrationFramework.BL.xml</th>
+
+                <th data-source-node="n138">
+                    <div class="i-copy-code-wrapper" data-source-node="n139">
+                        <span class="i-copy-code" data-source-node="n140">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr data-source-node="n141">
+                <td class="i-code" colspan="2" data-source-node="n142">
+                    <p data-source-node="n143"><font color="blue" size="2" data-source-node="n144"><font color="blue" size="2" data-source-node="n145">&lt;</font></font><font color="#A31515" size="2" data-source-node="n146"><font color="#A31515" size="2" data-source-node="n147">objects</font></font> <font color="red" size="2" data-source-node="n148"><font color="red" size="2" data-source-node="n149">xmlns</font></font><font color="blue" size="2" data-source-node="n150"><font color="blue" size="2" data-source-node="n151">=</font></font><font color="black" size="2" data-source-node="n152">"</font><font color="blue" size="2" data-source-node="n153"><font color="blue" size="2" data-source-node="n154">http://www.springframework.net</font></font><font color="black" size="2" data-source-node="n155">"</font><font color="blue" size="2" data-source-node="n156"><font color="blue" size="2" data-source-node="n157">&gt;</font></font></p>
+
+                    <p data-source-node="n158"><font color="blue" size="2" data-source-node="n159"><font color="blue" size="2" data-source-node="n160">&lt;</font></font><font color="#A31515" size="2" data-source-node="n161"><font color="#A31515" size="2" data-source-node="n162">import</font></font> <font color="red" size="2" data-source-node="n163"><font color="red" size="2" data-source-node="n164">resource</font></font><font color="blue" size="2" data-source-node="n165"><font color="blue" size="2" data-source-node="n166">=</font></font><a data-source-node="n167"><font color="blue" size="2" data-source-node="n168"><font color="blue" size="2" data-source-node="n169">file:/%SCALE_HOME%/Settings/Custom.xml</font></font></a> <font color="blue" size="2" data-source-node="n170"><font color="blue" size="2" data-source-node="n171">/&gt;</font></font></p>
+
+                    <p data-source-node="n172"><font color="blue" size="2" data-source-node="n173"><font color="blue" size="2" data-source-node="n174">&lt;/</font></font><font color="#A31515" size="2" data-source-node="n175"><font color="#A31515" size="2" data-source-node="n176">objects</font></font><font color="blue" size="2" data-source-node="n177"><font color="blue" size="2" data-source-node="n178">&gt;</font></font></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p dir="ltr" data-source-node="n179"><strong data-source-node="n180">3.</strong> Update your endpoint configuration. You will need to specify the object id (e.g "<font color="blue" size="2" data-source-node="n181"><font color="blue" size="2" data-source-node="n182">IncomingTCPServerEndpointHandler</font></font>") of your spring entry in column ENDPOINT_HANDLER of table DIF_ENDPOINT</p>
+            <a name="seealsobookmark" data-source-node="n183"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n184">
+        
+<p data-source-node="n185"> </p><p data-source-node="n186"> </p><hr style="height: 1px" data-source-node="n187"><p data-source-node="n188">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

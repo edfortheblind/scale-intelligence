@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>How to: Create Screen Control Events</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">How to: Create Screen Control Events</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+User Interface Extensibility
+ &gt; Metadata Web Pages
+ &gt; Shared
+ &gt; How to: Create Screen Control Events</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47">Control events represent an event that can be triggered against a web control, such as "click" or "onkeypress" or "textChanged". These are represented by the SCREEN_CONTROL_EVENT database table. There can be 1-N control events for a particular screen control. Control events are tied to screen controls by the SCREEN_CONTROL_ID field (SCREEN_CONTROL_EVENT.SCREEN_CONTROL_ID = SCREEN_CONTROL.OBJECT_ID).</p>
+
+<p data-source-node="n48">Available events can be found within the external documentation for a particular control suite (i.e. IgniteUI documentation, JQueryUI documentation, etc.). Screen control events are rendered via JQuery binding as follows.</p>
+
+<p data-source-node="n49"></p>
+
+<div class="i-filtered-content-HTML" data-title="HTML" data-itemid="HTML" data-source-node="n50">
+    <table class="i-syntax-table" data-source-node="n51">
+        <tbody data-source-node="n52">
+            <tr data-source-node="n53">
+                <th data-source-node="n54">Event in HTML</th>
+
+                <th data-source-node="n55">
+                    <div class="i-copy-code-wrapper" data-source-node="n56">
+                        <span class="i-copy-code" data-source-node="n57">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr data-source-node="n58">
+                <td class="i-code" colspan="2" data-source-node="n59">
+                    <pre data-source-node="n60">
+<span style="COLOR: #0000ff" data-source-node="n61">&lt;</span><span style="COLOR: #800000" data-source-node="n62">script</span> <span style="COLOR: #ff0000" data-source-node="n63">type</span><span style="COLOR: #0000ff" data-source-node="n64">="text/javascript"</span><span style="COLOR: #0000ff" data-source-node="n65">&gt;</span>
+    $(function () { if (typeof _webUi.dialog.showModalDialogByEvent === 'function') 
+    {  $(document).delegate('#SearchPaneMenuActionSaveSearch', 'click',
+    {'ModalDialogName' : 'SaveSearchModalDialog'} ,
+    _webUi.dialog.showModalDialogByEvent)} })
+<span style="COLOR: #0000ff" data-source-node="n66">&lt;/</span><span style="COLOR: #800000" data-source-node="n67">script</span><span style="COLOR: #0000ff" data-source-node="n68">&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p data-source-node="n69"></p>
+
+<div id="i-e1c05677-0706-4982-a881-1ac73ffe4eaf-section-heading" class="i-section-heading" data-source-node="n70">
+    <span class="i-section-heading-icon" data-source-node="n71"><span class="i-hidden" data-source-node="n72"> </span></span><span class="i-section-heading-text" data-source-node="n73">Step 1: Determine the Object Id for the screen control</span>
+</div>
+
+<div id="i-e1c05677-0706-4982-a881-1ac73ffe4eaf-section-content" class="i-section-content" data-source-node="n74">
+    <p data-source-node="n75">Use the following SQL to determine the Object Id for the screen control if you know the Form Id. This will return all screen controls on the page and you will need to find the appropriate screen control from the list. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n76"><u data-source-node="n77"><font color="navy" data-source-node="n78">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <p data-source-node="n79"> </p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL" data-source-node="n80">
+        <table class="i-syntax-table" data-source-node="n81">
+            <tbody data-source-node="n82">
+                <tr data-source-node="n83">
+                    <th data-source-node="n84">Find the Object Id for screen control</th>
+
+                    <th data-source-node="n85">
+                        <div class="i-copy-code-wrapper" data-source-node="n86">
+                            <span class="i-copy-code" data-source-node="n87">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr data-source-node="n88">
+                    <td class="i-code" colspan="2" data-source-node="n89">
+                        <pre data-source-node="n90">
+<span style="COLOR: #0000ff" data-source-node="n91">select</span> <span style="COLOR: #808080" data-source-node="n92">*</span> <span style="COLOR: #0000ff" data-source-node="n93">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff" data-source-node="n94">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080" data-source-node="n95">in</span> (
+    <span style="COLOR: #0000ff" data-source-node="n96">select</span> <span style="COLOR: #ff00ff" data-source-node="n97">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n98">from</span> SCREEN_GROUP <span style="COLOR: #0000ff" data-source-node="n99">where</span> SCREEN_PART_ID <span style="COLOR: #808080" data-source-node="n100">IN</span> (
+        <span style="COLOR: #0000ff" data-source-node="n101">select</span> <span style="COLOR: #ff00ff" data-source-node="n102">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n103">from</span> SCREEN_PART <span style="COLOR: #0000ff" data-source-node="n104">where</span> SCREEN_ID <span style="COLOR: #808080" data-source-node="n105">in</span> (
+            <span style="COLOR: #0000ff" data-source-node="n106">select</span> <span style="COLOR: #ff00ff" data-source-node="n107">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n108">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff" data-source-node="n109">where</span> FORM_ID <span style="COLOR: #808080" data-source-node="n110">=</span> <span style="COLOR: #808080" data-source-node="n111">&lt;</span>form id<span style="COLOR: #808080" data-source-node="n112">&gt;</span>)))
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-13fa3f9c-bb4c-4150-bbd3-df8922fbdb22-section-heading" class="i-section-heading" data-source-node="n113">
+    <span class="i-section-heading-icon" data-source-node="n114"><span class="i-hidden" data-source-node="n115"> </span></span><span class="i-section-heading-text" data-source-node="n116">Step 2: Create screen control event record</span>
+</div>
+
+<div id="i-13fa3f9c-bb4c-4150-bbd3-df8922fbdb22-section-content" class="i-section-content" data-source-node="n117">
+    <p data-source-node="n118">Create a new record in the SCREEN_CONTROL_EVENT table tied to the corresponding SCREEN_CONTROL record for the screen control. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n119"><u data-source-node="n120"><font color="navy" data-source-node="n121">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <p data-source-node="n122"> </p>
+
+    <table data-source-node="n123">
+        <tbody data-source-node="n124">
+            <tr data-source-node="n125">
+                <td data-source-node="n126"><strong data-source-node="n127">Field</strong></td>
+
+                <td data-source-node="n128"><strong data-source-node="n129">Description/Notes</strong></td>
+            </tr>
+
+            <tr data-source-node="n130">
+                <td data-source-node="n131">EVENT_ID</td>
+
+                <td data-source-node="n132">The identifier of the control specific event such as <em data-source-node="n133">click</em> or <em data-source-node="n134">onkeypress</em>.</td>
+            </tr>
+
+            <tr data-source-node="n135">
+                <td data-source-node="n136">EVENT_NAME</td>
+
+                <td data-source-node="n137">The javascript function that could be called when event is triggered.</td>
+            </tr>
+
+            <tr data-source-node="n138">
+                <td data-source-node="n139">GRID_COLUMN</td>
+
+                <td data-source-node="n140">Used to tie the event to a grid column. Should be filled with the FIELD_NAME value from the SCREEN_CONTROL_GRID_COLUMNS table.</td>
+            </tr>
+        </tbody>
+    </table>       
+
+    <div class="i-box i-box-note" data-source-node="n141">
+        Please note that the dbc_IScreenControlEvent stored procedure can be used to create screen control events.
+    </div>
+
+    <div class="i-box i-box-note" data-source-node="n142">
+        Please note there is a new special event called DOMCONTENTLOADED to call anything on DOM Ready using metadata. Configure this event in metadata (follow standard event related metadata) for any control to call specific javascript function on DOM Ready event. Parameters passed to handler are control name (automatically) and all configured event parameters in metadata.
+    </div>
+
+    <p data-source-node="n143"></p>
+</div>
+            <a name="seealsobookmark" data-source-node="n144"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading" data-source-node="n145"><span class="i-section-heading-icon" data-source-node="n146"></span><span class="i-section-heading-text" data-source-node="n147">See Also</span></div><div id="i-seealso-section-content" class="i-section-content" data-source-node="n148"><div class="i-see-also-link" data-source-node="n149">
+<a href="bb522128265dc8e032acf43909a28cdb0383a4c646d9bddef63fdc9e27ce292e.html" data-source-node="n150">How to: Create Screen Controls</a></div>
+<div class="i-see-also-link" data-source-node="n151">
+<a href="c226f0dd3a73247b1e5284e2bcd02ee45ef1bdedc7b8c3d55c03c9385ccfb384.html" data-source-node="n152">Supported Screen Control Events</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n153">
+        
+<p data-source-node="n154"> </p><p data-source-node="n155"> </p><hr style="height: 1px" data-source-node="n156"><p data-source-node="n157">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

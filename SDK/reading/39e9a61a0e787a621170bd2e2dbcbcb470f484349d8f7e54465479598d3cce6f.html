@@ -1,0 +1,204 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>How to: Drilldown to Insight Screen from a Chart on a Monitor Page</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">How to: Drilldown to Insight Screen from a Chart on a Monitor Page</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+User Interface Extensibility
+ &gt; Metadata Web Pages
+ &gt; Monitor Pages
+ &gt; How to: Drilldown to Insight Screen from a Chart on a Monitor Page</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47"><span style="FONT-SIZE: 10pt;FONT-FAMILY: &quot;Segoe UI&quot;,sans-serif" data-source-node="n48">A column chart can be drilled down to N levels and further drilled down to open an Insight screen. <span style="FONT-SIZE: 10pt;FONT-FAMILY: &quot;Segoe UI&quot;,sans-serif" data-source-node="n49">For example, the "data-drilldownToInsight" attribute value could be set to the following.</span></span></p>
+
+<div id="384754d4-e2c2-4825-ae9e-c87e02d6ca8bSectionHeading" class="SectionHeading" data-source-node="n50">
+    <span class="SectionHeadingIcon" data-source-node="n51"><span class="Hidden" data-source-node="n52"> </span></span><span class="SectionHeadingText" data-source-node="n53">Create required screen control attribute for Action Tile</span>
+</div>
+
+<div id="384754d4-e2c2-4825-ae9e-c87e02d6ca8bSectionContent" class="SectionContent" data-source-node="n54">
+    <p data-source-node="n55">To enable drilldown to insight , the "data-drilldownToInsight" attribute needs to be created for the Chart control. The value for this attribute should be in the following format. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n56"><u data-source-node="n57"><font color="navy" data-source-node="n58">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <p data-source-node="n59"> </p>
+
+    <p data-source-node="n60">Use the ALT+219 █ character for the separator characters in the path as shown below.</p>
+
+    <p data-source-node="n61"> </p>
+
+    <p data-source-node="n62">{{FORM_ID=&lt;Form Id&gt;}}?filters=&lt;Control Name&gt;█{{{Chart Field Name}}}</p>
+
+    <table class="LastChild" data-source-node="n63">
+        <tbody data-source-node="n64">
+            <tr data-source-node="n65">
+                <td data-source-node="n66"><strong data-source-node="n67">Field</strong></td>
+
+                <td data-source-node="n68"><strong data-source-node="n69">Description</strong></td>
+            </tr>
+
+            <tr data-source-node="n70">
+                <td data-source-node="n71">
+                    <p data-source-node="n72">Form Id</p>
+                </td>
+
+                <td data-source-node="n73">
+                    <p data-source-node="n74">Defines the Insight screen Form Id.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n75">
+                <td data-source-node="n76">
+                    <p data-source-node="n77">Control Name</p>
+                </td>
+
+                <td data-source-node="n78">
+                    <p data-source-node="n79">Defines the name of the control on the Insight screen search pane that this criteria applies to.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n80">
+                <td data-source-node="n81">
+                    <p data-source-node="n82">Chart Field Name</p>
+                </td>
+
+                <td data-source-node="n83">
+                    <p data-source-node="n84">Defines the field name from the chart that should be used to filter the Insight screen for this criteria.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p data-source-node="n85">For example, the "data-drilldownToInsight" attribute value  set to the following.</p>
+
+<p data-source-node="n86"><font size="2" face="Consolas" data-source-node="n87"><font size="2" face="Consolas" data-source-node="n88"><font size="2" face="Consolas" data-source-node="n89"><font size="2" face="Consolas" data-source-node="n90">{{FORM_ID=2757}}?filters=SearchPaneWhs<font face="Segoe UI" data-source-node="n91">█</font>{{{FROM_WHS}}},SearchPaneAdvCrit_Field<font face="Segoe UI" data-source-node="n92">█</font>{{{WORK_GROUP}}},SearchPaneWrkTyp<font face="Segoe UI" data-source-node="n93">█</font>{{{WORK_TYPE}}},BasicCriteriaUserAssigned<font face="Segoe UI" data-source-node="n94">█</font>{{{USER_ASSIGNED}}}</font></font></font></font></p>
+
+<table class="LastChild" data-source-node="n95">
+    <tbody data-source-node="n96">
+        <tr data-source-node="n97">
+            <td data-source-node="n98"><strong data-source-node="n99">Field</strong></td>
+
+            <td data-source-node="n100"><strong data-source-node="n101">Description</strong></td>
+        </tr>
+
+        <tr data-source-node="n102">
+            <td data-source-node="n103">
+                <p data-source-node="n104">2757</p>
+            </td>
+
+            <td data-source-node="n105">
+                <p data-source-node="n106">Defines the Work Insight screen Form Id.</p>
+            </td>
+        </tr>
+
+        <tr data-source-node="n107">
+            <td data-source-node="n108">
+                <p data-source-node="n109">SearchPaneWhs</p>
+            </td>
+
+            <td data-source-node="n110">
+                <p data-source-node="n111">Defines the name of the control on the Insight screen search pane that FROM_WHS criteria applies to.</p>
+            </td>
+        </tr>
+
+        <tr data-source-node="n112">
+            <td data-source-node="n113">
+                <p data-source-node="n114"><font face="Consolas" data-source-node="n115">FROM_WHS</font></p>
+            </td>
+
+            <td data-source-node="n116">
+                <p data-source-node="n117">Defines the field name from the chart that should be used to filter the Insight screen for this criteria.</p>
+            </td>
+        </tr>
+
+        <tr data-source-node="n118">
+            <td data-source-node="n119">
+                <p data-source-node="n120"><font face="Consolas" data-source-node="n121">SearchPaneAdvCrit_Field</font></p>
+            </td>
+
+            <td data-source-node="n122">
+                <p data-source-node="n123">Defines the name of the control on the Insight screen search pane that <font face="Consolas" data-source-node="n124">WORK_GROUP</font> criteria applies to.</p>
+            </td>
+        </tr>
+
+        <tr data-source-node="n125">
+            <td data-source-node="n126">
+                <p data-source-node="n127"><font face="Consolas" data-source-node="n128">WORK_GROUP</font></p>
+            </td>
+
+            <td data-source-node="n129">
+                <p data-source-node="n130">Defines the field name from the chart that should be used to filter the Insight screen for this criteria.</p>
+            </td>
+        </tr>
+
+        <tr data-source-node="n131">
+            <td data-source-node="n132">
+                <p data-source-node="n133"><font face="Consolas" data-source-node="n134">SearchPaneWrkTyp</font></p>
+            </td>
+
+            <td data-source-node="n135">
+                <p data-source-node="n136">Defines the name of the control on the Insight screen search pane that WORK_TYPE criteria applies to.</p>
+            </td>
+        </tr>
+
+        <tr data-source-node="n137">
+            <td data-source-node="n138">
+                <p data-source-node="n139"><font face="Consolas" data-source-node="n140">WORK_TYPE</font></p>
+            </td>
+
+            <td data-source-node="n141">
+                <p data-source-node="n142">Defines the field name from the chart that should be used to filter the Insight screen for this criteria.</p>
+            </td>
+        </tr>
+
+        <tr data-source-node="n143">
+            <td data-source-node="n144">
+                <p data-source-node="n145"><font face="Consolas" data-source-node="n146">BasicCriteriaUserAssigned</font></p>
+            </td>
+
+            <td data-source-node="n147">
+                <p data-source-node="n148">Defines the name of the control on the Insight screen search pane that <font face="Consolas" data-source-node="n149">USER_ASSIGNED</font> criteria applies to.</p>
+            </td>
+        </tr>
+
+        <tr data-source-node="n150">
+            <td data-source-node="n151">
+                <p data-source-node="n152"><font face="Consolas" data-source-node="n153">USER_ASSIGNED</font></p>
+            </td>
+
+            <td data-source-node="n154">
+                <p data-source-node="n155">Defines the field name from the chart that should be used to filter the Insight screen for this criteria.</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p data-source-node="n156">Note: please refer to the  <a href="c6f2b575ac93c80d7fed0743e021c3a4410aa69f0a1277ed7d8a2a7e7a692c93.html" data-source-node="n157"><u data-source-node="n158"><font color="navy" data-source-node="n159">How to: Create Screen Control Attributes</font></u></a> topic for more detailed information on screen control attributes.</p>
+
+<p data-source-node="n160"> </p>
+            <a name="seealsobookmark" data-source-node="n161"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n162">
+        
+<p data-source-node="n163"> </p><p data-source-node="n164"> </p><hr style="height: 1px" data-source-node="n165"><p data-source-node="n166">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

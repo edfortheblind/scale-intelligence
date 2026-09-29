@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create Screen Control Grid Columns</title>
+    <meta name="Title" content="How to: Create Screen Control Grid Columns"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The SCREEN_CONTROL_GRID_COLUMNS table allows for dynamic metadata configuration of various grid values, such as columns, column headings, column types. Please note that to create a new insight screen or add columns to an existing grid, currently C# c" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="9c996fe8-6cb9-4a9b-93b8-618e3410d67d"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="17"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create Screen Control Grid Columns</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > How to: Create Screen Control Grid Columns</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The SCREEN_CONTROL_GRID_COLUMNS table allows for dynamic metadata configuration of various grid values, such as columns, column headings, column types. Please note that to create a new insight screen or add columns to an existing grid, currently C# code is required for the model in addition to updating or inserting SCREEN_CONTROL_GRID_COLUMNS records. Please review the&nbsp;<a href="d519b1e3-62bf-4d06-855a-62c7e005fc67" data-auto-update-caption="true">How to: Create the Grid Model</a> topic for more information.</p>
+
+<p>&nbsp;</p>
+
+<div class="i-box i-box-note">
+    For information on how to tie an event to the grid column see the&nbsp;<a href="How_to_Create_Screen_Control_Events.html" data-auto-update-caption="true">How to: Create Screen Control Events</a>&nbsp;topic.
+</div>
+
+<div id="i-84e34080-fdfd-4254-8bde-ecb81c2e29e2-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create select columns</span>
+</div>
+
+<div id="i-84e34080-fdfd-4254-8bde-ecb81c2e29e2-section-content" class="i-section-content">
+    <p>Add a SCREEN_CONTROL_GRID_COLUMNS record for each column that should be in the grid as follows.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>FIELD</td>
+
+                <td>The literal field name or aggregate value that will be executed as part of SQL query. For example, this could be something like "sum(On_Hand_Qty)".</td>
+            </tr>
+
+            <tr>
+                <td>FIELD_NAME</td>
+
+                <td>The alias for the FIELD. If the FIELD is "sum(On_Hand_Qty)" and the FIELD_NAME is ON_HAND_QTY, then the query for the column will be rendered "sum(On_Hand_Qty) as ON_HAND_QTY".</td>
+            </tr>
+
+            <tr>
+                <td>FIELD_TYPE</td>
+
+                <td>The column type. The full enumeration of available field types can be found in the "Metadata Field Types" configuration.</td>
+            </tr>
+
+            <tr>
+                <td>FIELD_WIDTH</td>
+
+                <td>The default width of the column in the grid. Use <em>null</em> to specify that column should be "auto sized" based on the largest value in the column (header text or actual row values). Use integer value to specify an actual column width in pixels. The value&nbsp;will be overridden if the user changes the column width manually from the screen itself.</td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td>The resource key for the header text of the column.</td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL_ID</td>
+
+                <td>The Object of the grid screen control the column is tied to.</td>
+            </tr>
+
+            <tr>
+                <td>SEQUENCE</td>
+
+                <td>Used to determine the default order of the columns in the grid. This will be overridden if the user changes the column order manually.</td>
+            </tr>
+
+            <tr>
+                <td>SQL_CLAUSE_TYPE</td>
+
+                <td><em>20</em> (Select)</td>
+            </tr>
+
+            <tr>
+                <td>DECIMAL_POSITIONS</td>
+
+                <td>Used to define what "Decimal Positions" configuration record the column should use.</td>
+            </tr>
+
+            <tr>
+                <td>HIDDEN</td>
+
+                <td>Used to default a column to hidden.</td>
+            </tr>
+
+            <tr>
+                <td>COLUMN_TEMPLATE</td>
+
+                <td>Used to define templating for grid columns. Please reference <a href="http://www.igniteui.com/grid/column-template">http://www.igniteui.com/grid/column-template</a> for more information.</td>
+            </tr>
+
+            <tr>
+                <td>IS_PRIMARY_KEY</td>
+
+                <td>Determines whether or not the column is the primary key for the grid. This is required if the "delete" option will be enabled in the grid. Only one primary key should be specified per grid.</td>
+            </tr>
+
+            <tr>
+                <td>ALLOW_SORT</td>
+
+                <td>Determines whether or not the column can be sorted. Default value is Y. Set to N to turn off sorting for the column.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-e1945a2b-30aa-4b5f-b387-48c35a802f73-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create where columns</span>
+</div>
+
+<div id="i-e1945a2b-30aa-4b5f-b387-48c35a802f73-section-content" class="i-section-content">
+    <p>Extra filters on a query can either be processed directly by creating or modifying the SQL view that a grid is tied to, or by creating SCREEN_CONTROL_GRID_COLUMNS records. To add extra conditions that always apply to the search query, add a SCREEN_CONTROL_GRID_COLUMNS record for each extra condition as follows.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <p></p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>FIELD</td>
+
+                <td>The extra condition to apply to the query. For example, this could be something like "On_Hand_Qty &gt; 0".</td>
+            </tr>
+
+            <tr>
+                <td>FIELD_NAME</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>FIELD_TYPE</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>FIELD_WIDTH</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL_ID</td>
+
+                <td>The Object of the grid screen control the column is tied to.</td>
+            </tr>
+
+            <tr>
+                <td>SEQUENCE</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>SQL_CLAUSE_TYPE</td>
+
+                <td><em>40</em>&nbsp;(Where)</td>
+            </tr>
+
+            <tr>
+                <td>DECIMAL_POSITIONS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>HIDDEN</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-3472809f-2051-4509-9ed9-9678408b48f8-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Create group by columns</span>
+</div>
+
+<div id="i-3472809f-2051-4509-9ed9-9678408b48f8-section-content" class="i-section-content">
+    Please see the&nbsp;<a href="How_to_Default_Group_By.html" data-auto-update-caption="true">How to: Default the Group By Column in a Grid</a> for instructions.
+</div>
+
+<div id="i-ac78393e-079a-495c-a71d-00f14c01842d-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 4: Create order by columns</span>
+</div>
+
+<div id="i-ac78393e-079a-495c-a71d-00f14c01842d-section-content" class="i-section-content">
+    Please see the&nbsp;<a href="How_to_Default_Order_By.html" data-auto-update-caption="true">How to: Default the Order By Column in a Grid</a> for instructions.
+</div>
+
+<p><br /></p>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Add_Grid_to_List_Pane.html">How to: Add a Grid to an Insight List Pane</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

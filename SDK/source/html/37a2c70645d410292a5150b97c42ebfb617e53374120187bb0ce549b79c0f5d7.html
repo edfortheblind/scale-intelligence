@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Field Restrictions</title>
+    <meta name="Title" content="Field Restrictions"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The base system is shipped with certain protected fields on a detail page as Label controls. However, since the detail pages are now being rendered via metadata, it would be simple to change some of these protected fields to be editors instead, which" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="1283e703-5f90-45e8-a943-55aadb255bf5"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="3"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Field Restrictions</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Detail Pages
+ > Field Restrictions</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The base system is shipped with certain protected fields on a detail page as Label controls. However, since the detail pages are now being rendered via metadata, it would be simple to change some of these protected fields to be editors instead, which would allow those fields to be editable. For example, the Item field on the Work Instruction table is shipped as a label and needs to be protected. If it were editable and someone changed the item value on a work instruction, the work instruction would be corrupt at that point. To protect against this, the concept of field restrictions was created. Field restrictions are simply a list of fields on a detail page that should always be read-only, even if someone changes the metadata for that field to be an editor instead of a label. The restrictions&nbsp;lists&nbsp;are defined through a C# class that must implement the <em>IScreenRestrictionsProcessor</em> interface. Each detail page has its restrictions class defined via the RESTRICTIONS_ID (which represents Spring identifier)&nbsp;field on the corresponding MAIN_UI_SCREEN record for the screen. The base restrictions can be modified via the exit point defined&nbsp;in the topic&nbsp;<a href="How_to_Customize_Field_Restrictions_Through_Exit_Point_Program.html" data-auto-update-caption="true">How to: Customize Field Restrictions through Exit Point Programs</a>.</p>
+
+<p>&nbsp;</p>
+
+<div class="i-filtered-content-C#" data-title="C#" data-itemid="C#">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Sample Restrictions Class</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">class</span> WorkInstructionRestrictionsProcessor : IScreenRestrictionsProcessor
+{
+    <span style="COLOR: #0000ff">public</span> Dictionary&lt;<span style="COLOR: #0000ff">string</span>,<span style="COLOR: #0000ff">string</span>&gt; GetRestrictions(<span style="COLOR: #0000ff">int</span> internalNum, ScreenConstants.Mode screenMode, <span style="COLOR: #0000ff">out</span> <span style="COLOR: #0000ff">bool</span> restrictEntireScreen)     
+    {
+        <span style="COLOR: #008000">//Dictionary containing restricted fields and error message to be displayed in case restriction is violated
+</span>        Dictionary&lt;<span style="COLOR: #0000ff">string</span>, <span style="COLOR: #0000ff">string</span>&gt; restrictions = <span style="COLOR: #0000ff">new</span> Dictionary&lt;<span style="COLOR: #0000ff">string</span>,<span style="COLOR: #0000ff">string</span>&gt;();
+        WorkInstruction workInstruction = <span style="COLOR: #0000ff">this</span>._workInstructionDao.Get(internalNum);
+        <span style="COLOR: #0000ff">if</span> (workInstruction != <span style="COLOR: #0000ff">null</span>)
+        {
+            restrictions = GetDefaultRestrictions();
+            restrictEntireScreen = <span style="COLOR: #0000ff">false</span>;
+            <span style="COLOR: #0000ff">return</span> restrictions;
+        }
+        <span style="COLOR: #0000ff">else</span>
+        {
+            <span style="COLOR: #008000">//Get a message for this scenario
+</span>            restrictions.Add(<span style="COLOR: #800000">"All"</span>, <span style="COLOR: #800000">"MSG_WORKINSTRUCTION03"</span>);
+            restrictEntireScreen = <span style="COLOR: #0000ff">true</span>;
+        }              
+       
+        <span style="COLOR: #0000ff">return</span> <span style="COLOR: #0000ff">null</span>;
+    }
+   
+    <span style="COLOR: #0000ff">private</span> Dictionary&lt;<span style="COLOR: #0000ff">string</span>, <span style="COLOR: #0000ff">string</span>&gt; GetDefaultRestrictions()
+    {
+        <span style="COLOR: #008000">//Add all controls which are disabled by default to the list
+</span>        Dictionary&lt;<span style="COLOR: #0000ff">string</span>, <span style="COLOR: #0000ff">string</span>&gt; restrictions = <span style="COLOR: #0000ff">new</span> Dictionary&lt;<span style="COLOR: #0000ff">string</span>, <span style="COLOR: #0000ff">string</span>&gt;
+        {
+            {<span style="COLOR: #800000">"AgingDateTime"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"AllocationZone"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"AssignmentId"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"Company"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"CompletedByUser"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"Condition"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ContainerId"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ConvertedQty"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ConvertedQtyUm"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"CycleCount"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"CycleCountGroupNum"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"DateTimeStamp"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"EndDateTime"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"EquipmentLoc"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ErpOrder"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ErpOrderLineNum"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"FromLocInvAttributesId"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"FromQty"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"FromTemplField1"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"FromTemplField2"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"FromTemplField3"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"FromTemplField4"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"FromTemplField5"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"FromWorkZone"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"GroupNum"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"HoldCode"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"IncomingPdLoc"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"InstructionType"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"InternalContainerNum"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"InternalCountNum"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"InternalInstructionNum"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"WorkInstructionList"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"InternalLineNum"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"InternalNum"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"InternalNumType"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"InternalReqNum"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"InventoryAtPd"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"InventoryTracking"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"Item"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"LaunchNum"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"LocatingZone"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"Locked"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"LogisticsUnit"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"Lot"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"NumberOfChildren"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"OutgoingPdLoc"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ParentContainerId"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ParentContainerNum"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ParentInstr"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ParentLogisticsUnit"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"Priority"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ProcessStamp"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"Quantity"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"QuantityUm"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"RelatedWorkUnit"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"StartDateTime"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"TeamAssigned"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ToLocInvAttributesId"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ToQty"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ToTemplField1"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ToTemplField2"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ToTemplField3"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ToTemplField4"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ToTemplField5"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"ToWorkZone"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"TotalVolume"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"TransportContId"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"TreeUnit"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"TreeUnitId"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"UserAssigned"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"UserStamp"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"WorkGroup"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"WorkType"</span>, READ_ONLY_VALIDATION_MSG},
+            {<span style="COLOR: #800000">"WorkUnit"</span>, READ_ONLY_VALIDATION_MSG}
+        };                      
+       
+        <span style="COLOR: #0000ff">return</span> restrictions;
+    }
+}
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Customize_Field_Restrictions_Through_Exit_Point_Program.html">How to: Customize Field Restrictions through Exit Point Programs</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

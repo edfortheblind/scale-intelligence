@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="SerialNumber" targetNamespace="http://www.manh.com/ILSNET/Interface" elementFormDefault="qualified"
+	xmlns="http://www.manh.com/ILSNET/Interface" xmlns:xs="http://www.w3.org/2001/XMLSchema" version ="2007">
+	<xs:include schemaLocation="InterfaceEntity.xsd" />
+	<xs:complexType name="SerialNumberList">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="SerialNumber" nillable="true" type="SerialNumber" />
+		</xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SerialNumber">
+     <xs:complexContent mixed="false">
+      <xs:extension base="InterfaceEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Minors" type="SerialNumberList" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ObjectId" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SerialNumber" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SerialNumTemplate" type="SerialNumTemplate" />
+        </xs:sequence>
+     </xs:extension>
+    </xs:complexContent>
+   </xs:complexType>
+  <xs:complexType name="SerialNumTemplate">
+    <xs:complexContent mixed="false">
+      <xs:extension base="InterfaceEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Active" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="AllowDuplicates" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ObjectId" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Pattern" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Sequence" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="GetManifestsRequest" targetNamespace="http://www.manh.com/ILSNET/Shipping/GetManifestsRequest" elementFormDefault="qualified" xmlns="http://www.manh.com/ILSNET/Shipping/GetManifestsRequest" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:import="http://www.manh.com/ILSNET/Shipping/GenericTypes" xmlns:import1="http://www.manh.com/ILSNET/General/UserDefinedFields" xmlns:import2="http://www.manh.com/ILSNET/Shipping/Parcel">
+	<xs:import schemaLocation="../General/UserDefinedFields.xsd" namespace="http://www.manh.com/ILSNET/General/UserDefinedFields" />
+	<xs:import schemaLocation="Parcel.xsd" namespace="http://www.manh.com/ILSNET/Shipping/Parcel" />
+	<xs:element name="GetManifestsRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Status" type="xs:string" maxOccurs="1" />
+				<xs:element name="ShipDate" type="xs:dateTime" minOccurs="0" maxOccurs="1" />
+				<xs:element name="CarrierSymbol" type="xs:string" maxOccurs="1" />
+				<xs:element name="ShipperCode" type="xs:string" maxOccurs="1" />
+				<xs:element name="RatingId" type="xs:string" maxOccurs="1" />
+				<xs:element name="Parcel" type="import2:Parcel" minOccurs="0" maxOccurs="1" />
+				<xs:element name="RatingServiceUserDefinedFields" type="import1:UserDefinedFields" maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

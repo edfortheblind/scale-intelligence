@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Use a Toggle to Dynamically tie an Insight Page to an Alternate Table or View</title>
+    <meta name="Title" content="How to: Use a Toggle to Dynamically tie an Insight Page to an Alternate Table or View"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Insight screens generally work of a single SQL table or view that is tied to the Advanced criteria and Grid controls. At times, however, it may be useful to dynamically switch between two different SQL tables or views on a single Insight screen. This" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="3599a5fe-34f2-4155-9350-6d3d754f37b2"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="7"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Use a Toggle to Dynamically tie an Insight Page to an Alternate Table or View</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Insight Pages
+ > How to: Use a Toggle to Dynamically tie an Insight Page to an Alternate Table or View</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Insight screens generally work of a single SQL table or view that is tied to the Advanced criteria and Grid controls. At times, however, it may be useful to dynamically switch between two different SQL tables or views on a single Insight screen. This can be accomplished with special attributes on a Toggle control placed on the Insight screen.&nbsp;The following rules apply however:</p>
+
+<ul>
+    <li>Both SQL tables or views MUST return the&nbsp;exact same set of columns.</li>
+
+    <li>The detail pane stored procedure may need to be&nbsp;modified as well since it would normally have a hard-coded SQL table or view&nbsp;that it uses.</li>
+
+    <li>Action enabling/disabling may need to be modified&nbsp;as well based on the differences in the two SQL tables or views.</li>
+</ul>
+
+<p>Use the following steps to add a toggle to an Insight screen to dynamically switch between two different SQL views or tables.</p>
+
+<div id="i-36d989ba-7bdc-470c-962a-d02141d35e4d-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Add a Toggle control to the Insight page</span>
+</div>
+
+<div id="i-36d989ba-7bdc-470c-962a-d02141d35e4d-section-content" class="i-section-content">
+    <p>Use the&nbsp;<a href="How_to_Add_BasicCriteria.html" data-auto-update-caption="true">How to: Add Basic Criteria to Search Pane</a> page to add&nbsp;a Toggle control to the Insight page. The following screen control attributes are required for this Toggle control.</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Attribute</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>data-dbcolumn</td>
+
+                <td><em>TableOrView</em></td>
+            </tr>
+
+            <tr>
+                <td>data-positiveCondition</td>
+
+                <td>If the "positive" state should use the default table or view, then empty string. Otherwise, the name of the SQL table or view that should be used when the toggle is in the "positive" state.</td>
+            </tr>
+
+            <tr>
+                <td>data-negativeCondition</td>
+
+                <td>If the "negative" state should use the default table or view, then empty string. Otherwise, the name of the SQL table or view that should be used when the toggle is in the "negative" state.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-e3a1368e-da75-4f64-869d-0f521e2b4d1f-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create a new SQL table or view</span>
+</div>
+
+<div id="i-e3a1368e-da75-4f64-869d-0f521e2b4d1f-section-content" class="i-section-content">
+    Create the alternate SQL table or view that will be used by the Insight screen. It must return the exact same set of columns as the default SQL table or view used by the Insight screen.
+</div>
+
+<div id="i-f0539da5-6ca7-4bb5-8fc1-689c14855883-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Modify Detail Pane Stored Procedure</span>
+</div>
+
+<div id="i-f0539da5-6ca7-4bb5-8fc1-689c14855883-section-content" class="i-section-content">
+    If required, modify the detail pane stored procedure. Please reference the&nbsp;<a href="How_to_Create_Detail_Pane_Stored_Procedure.html" data-auto-update-caption="true">How to: Create a Detail Pane Stored Procedure</a> page for more details.
+</div>
+
+<div id="i-44816de1-9488-4c68-ba1c-32b1a5e9efd0-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 4: Modify how Actions are Enabled/Disabled</span>
+</div>
+
+<div id="i-44816de1-9488-4c68-ba1c-32b1a5e9efd0-section-content" class="i-section-content">
+    If required, modify the conditions when the Insight screen actions are enabled or disabled. Please reference the&nbsp;<a href="How_to_Enable_or_Disable_Actions_Based_on_Screen_Data.html" data-auto-update-caption="true">How to: Enable/Disable Metadata Actions Based on Screen Data</a> page for more details.
+</div>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Tie_Insight_Screen_to_Table_or_View.html">How to: Tie an Insight Page to a Table or View</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

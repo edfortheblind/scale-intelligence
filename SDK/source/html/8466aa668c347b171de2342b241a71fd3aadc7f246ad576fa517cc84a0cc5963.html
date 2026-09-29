@@ -1,0 +1,254 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create Screen Controls</title>
+    <meta name="Title" content="How to: Create Screen Controls"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Screen controls represent a single control or set of controls within a single screen group. Screen controls are represented by the SCREEN_CONTROL database table. There can be 1-N screen controls (ordered by SEQUENCE field) for a particular screen gro" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="820db37d-1685-48b8-b742-50e52fc5d31a"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="18"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create Screen Controls</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > How to: Create Screen Controls</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Screen controls represent a single control or set of controls within a single screen group. Screen controls are represented by the SCREEN_CONTROL database table. There can be 1-N screen controls (ordered by SEQUENCE field) for a particular screen group. Screen controls are tied to screen groups by the SCREEN_GROUP_ID field (SCREEN_CONTROL.SCREEN_GROUP_ID = SCREEN_GROUP.OBJECT_ID). In addition when the screen group has screen group columns there can be 1-N screen controls (ordered by the SEQUENCE field) for a particular screen group column. Screen controls are tied to screen group columns by the SCREEN_GROUP_COLUMN_ID field (SCREEN_CONTROL.SCREEN_GROUP_COLUMN_ID = SCREEN_GROUP_COLUMN.OBJECT_ID).</p>
+
+<div id="i-22c4d90f-f1fb-4a1c-a041-eaac9b68bf38-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Determine the Object Id for the screen group or screen group column</span>
+</div>
+
+<div id="i-22c4d90f-f1fb-4a1c-a041-eaac9b68bf38-section-content" class="i-section-content">
+    <p>Use the following SQL to determine the Object Id for the screen group or screen group column&nbsp;if you know the Form Id. This will return all screen groups or screen group columns&nbsp;on the page and you will need to find the appropriate screen group or screen grouop column from the list. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <p>&nbsp;</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Find the Object Id for screen group or screen group column</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">IN</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> SCREEN_ID <span style="COLOR: #808080">in</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>form id<span style="COLOR: #808080">&gt;</span>))
+
+
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP_COLUMN <span style="COLOR: #0000ff">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">IN</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> SCREEN_ID <span style="COLOR: #808080">in</span> (
+            <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>form id<span style="COLOR: #808080">&gt;</span>)))
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-bb605f6a-f84f-4357-b70f-231cc7da3ab4-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create screen&nbsp;control record</span>
+</div>
+
+<div id="i-bb605f6a-f84f-4357-b70f-231cc7da3ab4-section-content" class="i-section-content">
+    <p>Create a new record in the SCREEN_CONTROL table tied to the corresponding&nbsp;SCREEN_GROUP or SCREEN_GROUP_COLUMN&nbsp;record for the screen group. Keep in mind that screen groups can be nested. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).<br /></p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Description/Notes</strong></td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_NAME</td>
+
+                <td>The name of the screen control.</td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td>The resource key of the label to show for the screen control, if any. Label can be to the left, above, or inline.</td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_TYPE<br /></td>
+
+                <td>The type of the control. Please see the "Screen&nbsp;Control Type" configuration for an enumeration of all screen&nbsp;control types.</td>
+            </tr>
+
+            <tr>
+                <td>SEQUENCE</td>
+
+                <td>Screen controls are rendered in sequence order.</td>
+            </tr>
+
+            <tr>
+                <td>DEFAULT_ACTION</td>
+
+                <td>The button or link that should be triggered when the Enter key is pressed and focus is in&nbsp;the control. Please see the&nbsp;<a href="How_to_Set_Default_Action_for_Enter Key.html">How to: Set Default Action for Enter Key</a> topic for more details.</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td>Used to configure the layout of the screen group. Please see the&nbsp;<a href="How_to_Configure_Layout_of_Metadata_Pages.html">How to: Configure Layout of Metadata Pages</a>&nbsp;topic for more details.</td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_CSS_CLASS</td>
+
+                <td>Used to configure the layout of the screen group. Please see the&nbsp;<a href="How_to_Configure_Layout_of_Metadata_Pages.html">How to: Configure Layout of Metadata Pages</a>&nbsp;topic for more details.</td>
+            </tr>
+
+            <tr>
+                <td>LABEL_ORIENTATION</td>
+
+                <td>Where the label should be placed in relation to the control. Please see the "Label Orientation" configuration for an enumeration of all label orientations. Also see the&nbsp;<a href="How_to_Set_Label_Orientation.html">How to: Set Label Orientation</a> topic for more information.</td>
+            </tr>
+
+            <tr>
+                <td>DATA_SOURCE_TYPE</td>
+
+                <td>The type of the data source. Please see the "Metadata Data Source Type" configuration for an enumeration of all data source types.</td>
+            </tr>
+
+            <tr>
+                <td>DATA_SOURCE</td>
+
+                <td>The data source that will be used to fill the control. Values will vary based on the data source type specified.</td>
+            </tr>
+
+            <tr>
+                <td>DEFAULT_STATE</td>
+
+                <td>The default state for the control. Please see the "Metadata Default State" configuration for an enumeration of all default states.</td>
+            </tr>
+
+            <tr>
+                <td>TOOL_TIP_RESOURCE_KEY</td>
+
+                <td>The resource key for the tool tip tied to the control.</td>
+            </tr>
+
+            <tr>
+                <td>TEMPLATE_NAME</td>
+
+                <td>The partial view name with controls as placeholder. Also see the&nbsp;<a href="How_to_set_template_name_for_a_screen_contol.html">How to: Set Template Name for a Screen Control</a>&nbsp;topic for more information.</td>
+            </tr>
+        </tbody>
+    </table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div class="i-box i-box-note">
+        Please note that the dbc_IScreenControl stored procedure can be used to create screen controls.
+    </div>
+
+    <p></p>
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Screen_Groups.html">How to: Create Screen Groups</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Parts.html">How to: Create Screen Parts</a></div>
+<div class="i-see-also-link">
+<a href="Metadata_Page_Architecture.html">Metadata Page Architecture</a></div>
+<div class="i-see-also-link">
+<a href="Supported_Screen_Controls.html">Supported Screen Controls</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

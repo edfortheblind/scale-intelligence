@@ -1,0 +1,701 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Exit Point Programs</title>
+    <meta name="Title" content="Exit Point Programs"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Exit Point Programs are API style or SQL Stored Procedure type Integration Endpoints and are invoked during predefined checkpoints throughout the application. For the full details on each exit point, such as timing information, parameter lists, retur" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="{69277435-B904-4029-A16D-CB6329E1FC3B}"/>
+    <meta name="Microsoft.Help.TocParent" content="{476BE228-7E02-4BF1-8E9E-CB3225E02BFE}"/>
+    <meta name="Microsoft.Help.TocOrder" content="10"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Exit Point Programs</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+<a href="Integration_Endpoints.html">Integration Endpoints</a>
+ > Exit Point Programs</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Exit Point Programs are API style or SQL Stored Procedure type&nbsp;Integration Endpoints and are invoked during predefined checkpoints throughout the application. For the full details on each exit point, such as timing information, parameter lists, return values, and "Legacy" vs. IWorkFlowStep implementation (see below), view the <a href="Excel/ExitPointDetailedDoc.xlsx">Exit Point Program Details (Microsoft Excel)</a>.</p>
+
+<p>For specific Exit Point Program samples, please view the <a href="SDK.IntegrationEndpoints.ExitPointPrograms.html">Manh.ILS.SDK.IntegrationEndpoints.ExitPointPrograms Namespace</a>.</p>
+
+<p>&nbsp;</p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">API Type</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <div id="i-SectionId-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">"Legacy" Programs</span>
+    </div>
+
+    <div id="i-SectionId-section-content" class="i-section-content">
+        <p>Exit Points that were created before the 2004R2 release&nbsp;will expect programs that implement the Manh.SDK.IntegrationEndpoints.ExitPointPrograms.ILegacyExitPointProgram. Please view the documentation on that interface and any implementing samples supplied with this SDK for more information on these style of Exit Point Programs.</p>
+
+        <p>Here is a simple example of an implementer of ILegacyExitPointProgram:</p>
+
+        <div class="i-filtered-content-CS" data-title="CS" data-itemid="CS">
+            <table class="i-syntax-table">
+                <tbody>
+                    <tr>
+                        <th>C#</th>
+
+                        <th>
+                            <div class="i-copy-code-wrapper">
+                                <span class="i-copy-code">Copy Code</span>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="i-code" colspan="2">
+                            <pre>
+<span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">class</span> SampleLegacyExitPointProgram : ILegacyExitPointProgram
+{
+    <span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">object</span> ExecuteExitPointProgram(
+        <span style="COLOR: #0000ff">string</span> sessionString,
+        <span style="COLOR: #0000ff">object</span> parameter1,
+        <span style="COLOR: #0000ff">object</span> parameter2,
+        <span style="COLOR: #0000ff">object</span> parameter3,
+        <span style="COLOR: #0000ff">object</span> parameter4,
+        <span style="COLOR: #0000ff">object</span> parameter5,
+        <span style="COLOR: #0000ff">object</span> parameter6,
+        <span style="COLOR: #0000ff">object</span> parameter7,
+        <span style="COLOR: #0000ff">object</span> parameter8,
+        <span style="COLOR: #0000ff">object</span> parameter9,
+        <span style="COLOR: #0000ff">object</span> parameter10,
+        <span style="COLOR: #0000ff">object</span> parameter11,
+        <span style="COLOR: #0000ff">object</span> parameter12,
+        <span style="COLOR: #0000ff">object</span> parameter13,
+        <span style="COLOR: #0000ff">object</span> parameter14,
+        <span style="COLOR: #0000ff">object</span> parameter15)
+    {
+        <span style="COLOR: #0000ff">using</span> (Session session = SessionMapper.ConvertFromLegacySession(sessionString))
+        {
+
+            <span style="COLOR: #008000">// Insert Exit Point Program logic here.
+</span>
+        }
+
+        <span style="COLOR: #0000ff">return</span> <span style="COLOR: #0000ff">null</span>;
+    }
+}
+</pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <p>&nbsp;</p>
+
+    <div id="i-SectionId-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">IWorkFlowStep Programs</span>
+    </div>
+
+    <div id="i-SectionId-section-content" class="i-section-content">
+        <p>Since 2004R2, we have adopted a new approach to supporting exit points in the application. The new approach conforms with the "Strategy" design pattern. This means that the exit point program must implement the interface IWorkFlowStep (WMW.General.dll). Also, every custom program must be in a separate class but can be in the same assembly.<br />
+        <br />
+        Here is a simple example of an implementer of IWorkFlowStep.</p>
+
+        <p>&nbsp;</p>
+
+        <div class="i-filtered-content-CS" data-title="CS" data-itemid="CS">
+            <table class="i-syntax-table">
+                <tbody>
+                    <tr>
+                        <th>C#</th>
+
+                        <th>
+                            <div class="i-copy-code-wrapper">
+                                <span class="i-copy-code">Copy Code</span>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="i-code" colspan="2">
+                            <pre>
+<span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">class</span> SampleExitPointProgram : Manh.WMW.General.IWorkFlowStep
+{
+    <span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">object</span> ExecuteStep(
+        Manh.WMFW.General.Session session,
+        <span style="COLOR: #0000ff">params</span> <span style="COLOR: #0000ff">object</span>[] parameters)
+    {
+
+        <span style="COLOR: #008000">// Insert Exit Point Program logic here.
+</span>
+        <span style="COLOR: #0000ff">return</span> <span style="COLOR: #0000ff">null</span>;
+    }
+}
+</pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>When an Exit Point is triggered, the WorkFlowManager class queries the Exit Point Control &amp; Exit Point Program configuration for the exit point. If the exit point is active, it loads the assembly and creates an instance of the class of type IWorkFlowStep as defined in Exit Point Program. It then calls the ExecuteStep method on the interface. This runs the custom code.</p>
+    </div>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Stored Procedure Type</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>SQL Stored procedures&nbsp;are also supported&nbsp;as exit point programs. However the stored procedures need to conform to the&nbsp;following guidelines:-</p>
+
+    <ol>
+        <li>The SP parameters should conform to the specification for the Exit point in terms of data type and parameter ordering. This is visible from the "Parameters List" screen on the Exit Point Control configuration.</li>
+
+        <li>The "Exit Point Stored Procedure" screen can be used to generate correctly structured skeleton stored procedures for each exit point. Pre-existing stored procedures can also be modified by replacing "Create Procedure" with "Alter procedure" in the generated SQL (screen validations block all other freeform SQL)</li>
+
+        <li>Return values from exit point programs are supported through "output" parameters. These are analogous to the API method return values or reference parameters. Note that such parameters in Sql Server allow both input and output.</li>
+
+        <li>Complex parameter types like entities, class and array/collection types etc are serialized and sent as XML to stored procedures</li>
+
+        <li>Utility SQL functions and stored procedures have been provided to allow easy extraction of data from XML parameters. More information can be found at <a href="How_To_Extract_Values_From_Xml_Through_Sql.html" data-auto-update-caption="true">How to: Extract values from Xml through SQL</a></li>
+    </ol>
+
+    <p>&nbsp;</p>
+
+    <p>An Exit point can be linked up with a stored procedure as in the screenshot below. For more details please refer Help documentation.</p>
+
+    <p><img border="0" alt="" src="images/ExitPoint/ExitPointProgram.png" /></p>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Web Service Type</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>Azure Functions &nbsp;are also supported&nbsp;as exit point programs. However the Azure Functions need to conform to the&nbsp;following guidelines:-</p>
+
+    <ol>
+        <li>The Azure function URL should be a valid Azure Function URL.</li>
+
+        <li>HTTP Header should be sent in proper format.</li>
+
+        <li>This is HTTP POST web Service Call. This can be used to call an azure function or any web service.</li>
+
+        <li>Parameters can be sent in HTTP Header in key-value pair with a semi-colon and multiple values supported on multiple lines.</li>
+
+        <li>Any authentication is not supported while calling either azure function or web service.</li>
+
+        <li>The response will be in string format which will be returned to the calling function.</li>
+    </ol>
+
+    <p>&nbsp;</p>
+
+    <p>An Exit point can be linked up with a web service type as in the screenshot below. For more details please refer Help documentation.</p>
+
+    <p><img border="0" alt="" src="images/ExitPoint/ExitPointAzureFuncn.png" /></p>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Invoking exit points in a transaction scope</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>Certain exit points are triggered from business processes that execute in a transaction and all data changes are supposed to be committed or rolled back at the logical end of the process. To ensure that changes made to the data in the custom exit point logic are persisted properly and to avoid stale data issues in the invoking base logic, the following guidelines are recommended.</p>
+
+    <ol>
+        <li>The persistence technology used in the custom exit point should match the one used by the invoking module in the base application. Example: Close Container process uses NHibernate, hence the "Close Container - After" exit point should use the same.</li>
+
+        <li>If the process executes in a transaction, the exit point should make related data updates in the same transaction and&nbsp;the application&nbsp;would perform the final commit or rollback as needed. &nbsp;Any data changes made outside the transaction scope cannot be rolled-back by&nbsp;the application&nbsp;in case of a process failure; hence this scenario is not supported.</li>
+
+        <li>"Stored Procedure" exit point programs are invoked in a new database transaction scope. It does not commit/rollback in the same transaction as the EntityBroker/NHibernate transaction (if any) of the calling process.</li>
+    </ol>
+
+    <p>&nbsp;</p>
+
+    <p>The <a href="Excel/ExitPointDetailedDoc.xlsx">Exit Point Program Details (Microsoft Excel)</a> document indicates which exit points need to be invoked within a transaction scope and the persistence technology used in the invoking&nbsp;application module.</p>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Client Side Exit points</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>The following client-side Exit Point programs that previously existed in the SCALE desktop application have not been recreated in the SCALE metadata web pages. Instead, each one can still be accomplished through metadata or Javascript or Typescript&nbsp;changes as noted below.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+    <table>
+        <tbody>
+            <tr valign="top">
+                <th height="9">Exit Point</th>
+
+                <th height="9">Desktop Screen</th>
+
+                <th height="9">Metadata screen</th>
+
+                <th height="9">Exit point Implementation in Metadata Screen</th>
+            </tr>
+
+            <tr>
+                <td>Before- cycle count reconcile</td>
+
+                <td>Cycle count reconciliation</td>
+
+                <td>Cycle count reconciliation</td>
+
+                <td>If the "Before- cycle count reconcile" exit point was previously utilized on the full screen cycle count reconciliation screen, and you want to do something similar in the web metadata version of cycle count reconciliation screen, then create new web service with your requirement and modify the $(window).load function present in manh.ui.cycleCountReconciliationTransaction.js to invoke the web service you have created.</td>
+            </tr>
+
+            <tr>
+                <td>Suggest Value in Cycle Count Reconciliation</td>
+
+                <td>Cycle count reconciliation</td>
+
+                <td>Cycle count reconciliation</td>
+
+                <td>If the "Suggest Value in Cycle Count Reconciliation" exit point was previously utilized on the full screen cycle count reconciliation screen, and you want to do something similar in the web metadata version of cycle count reconciliation screen, then modify the $(window).load function present in manh.ui.cycleCountReconciliationTransaction.js to set the required value to the input control id “ReconcileSetOnHandQuantity”.</td>
+            </tr>
+
+            <tr>
+                <td>QC Workbench - Count Before</td>
+
+                <td>QC workbench</td>
+
+                <td>QC workbench</td>
+
+                <td>If the "QC Workbench - Count Before" exit point was previously utlized on the full screen QC workbench, and you want to do something similar in the web metadata version of QC workbench, then modify the itemEditorChanged function present in the shippingContainerQC.component.ts file or add your own custom function and configure the event to call the new method.</td>
+            </tr>
+
+            <tr>
+                <td>QC Workbench - Leave Item</td>
+
+                <td>QC workbench</td>
+
+                <td>QC workbench</td>
+
+                <td>if you used to use the "leave item" exit point on QC workbench in full screen, and you want to do something similar in the web metadata version of QC workbench,&nbsp;we need to add exit point code&nbsp;in&nbsp;countQc method present in shippingContainerQC.component.ts file</td>
+            </tr>
+        </tbody>
+    </table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Exit points invoked from warehouse mobile</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>The following is the list of exit points invoked from the warehouse mobile APIs.</p>
+
+    <innovasys:widgetproperty layout="block" name="Content">
+        <div id="i-SectionId-section-heading" class="i-section-heading">
+            <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">General</span>
+        </div>
+
+        <div id="i-SectionId-section-content" class="i-section-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exit point</th>
+
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Adjustment Type Authorization Retrieval</td>
+
+                        <td>Modifies adjustment type list as per authorization</td>
+                    </tr>
+
+                    <tr>
+                        <td>Cycle Count Reconcile - After</td>
+
+                        <td>After a cycle count reconcile</td>
+                    </tr>
+
+                    <tr>
+                        <td>Cycle Count SQL - Modify</td>
+
+                        <td>Cycle Count SQL - Modify</td>
+                    </tr>
+
+                    <tr>
+                        <td>Finished Item SN Validation</td>
+
+                        <td>Finished Item SN Validation</td>
+                    </tr>
+
+                    <tr>
+                        <td>Image capture - Update company</td>
+
+                        <td>Image capture - Update company</td>
+                    </tr>
+
+                    <tr>
+                        <td>Image capture - Link internal reference number</td>
+
+                        <td>Image capture - Link internal reference number</td>
+                    </tr>
+
+                    <tr>
+                        <td>Inv Mgmt Validation - After</td>
+
+                        <td>Inv Mgmt Validation - After</td>
+                    </tr>
+
+                    <tr>
+                        <td>Inventory Transaction - After</td>
+
+                        <td>Inventory Transaction - After</td>
+                    </tr>
+
+                    <tr>
+                        <td>Item Validation Get Cross Reference SQL - Modify</td>
+
+                        <td>Item Validation Get Cross Reference SQL - Modify</td>
+                    </tr>
+
+                    <tr>
+                        <td>Labor Management Log Request - After</td>
+
+                        <td>Labor Management Log Request - After</td>
+                    </tr>
+
+                    <tr>
+                        <td>Labor Management Log Request - Before</td>
+
+                        <td>Labor Management Log Request - Before</td>
+                    </tr>
+
+                    <tr>
+                        <td>RF Work Replace Text Message Retrieval Logic</td>
+
+                        <td>RF Work Replace Text Message Retrieval Logic</td>
+                    </tr>
+
+                    <tr>
+                        <td>WM Capture inventory attributes</td>
+
+                        <td>WM Capture inventory attributes</td>
+                    </tr>
+
+                    <tr>
+                        <td>WM SRC Configurator - Override</td>
+
+                        <td>WM SRC Configurator - Override</td>
+                    </tr>
+
+                    <tr>
+                        <td>Work Creation - After</td>
+
+                        <td>Work Creation - After</td>
+                    </tr>
+
+                    <tr>
+                        <td>Work Creation - Before</td>
+
+                        <td>Work Creation - Before</td>
+                    </tr>
+
+                    <tr>
+                        <td>Work Order Header Allocation - Before</td>
+
+                        <td>Work Order Header Allocation - Before</td>
+                    </tr>
+
+                    <tr>
+                        <td>Work Profile Authorization Retrieval</td>
+
+                        <td>Modifies work profile list as per authorization</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="i-SectionId-section-heading" class="i-section-heading">
+            <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Inbound</span>
+        </div>
+
+        <div id="i-SectionId-section-content" class="i-section-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exit point</th>
+
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Check In - Before</td>
+
+                        <td>Check In - Before</td>
+                    </tr>
+
+                    <tr>
+                        <td>Check In - Lot Entry Expiration Date Validation</td>
+
+                        <td>Validates expiration date when specified</td>
+                    </tr>
+
+                    <tr>
+                        <td>Check In Inv Attributes Assignment - Replace</td>
+
+                        <td>Check In Inv Attributes Assignment - Replace</td>
+                    </tr>
+
+                    <tr>
+                        <td>Close Receipt - Before</td>
+
+                        <td>Close Receipt - Before</td>
+                    </tr>
+
+                    <tr>
+                        <td>Locate - Before</td>
+
+                        <td>Locate - Before</td>
+                    </tr>
+
+                    <tr>
+                        <td>Locating Location Selection SQL - Modify</td>
+
+                        <td>Locating Location Selection SQL - Modify</td>
+                    </tr>
+
+                    <tr>
+                        <td>Locating Request - After</td>
+
+                        <td>Locating Request - After</td>
+                    </tr>
+
+                    <tr>
+                        <td>Locating Rule Split - Override</td>
+
+                        <td>Locating Rule Split - Override</td>
+                    </tr>
+
+                    <tr>
+                        <td>Override Inbound QC Values</td>
+
+                        <td>Override Inbound QC Values</td>
+                    </tr>
+
+                    <tr>
+                        <td>Override Putaway Group Selection SQL</td>
+
+                        <td>Override Putaway Group Selection SQL</td>
+                    </tr>
+
+                    <tr>
+                        <td>Pre Check Receipt Container Id - Replace</td>
+
+                        <td>Pre Check Receipt Container Id - Replace</td>
+                    </tr>
+
+                    <tr>
+                        <td>Putaway Group Close - Before</td>
+
+                        <td>Putaway Group Close - Before</td>
+                    </tr>
+
+                    <tr>
+                        <td>Receiving Preference Authorization Retrieval</td>
+
+                        <td>Modifies receiving preference list as per authoriz</td>
+                    </tr>
+
+                    <tr>
+                        <td>Receiving- Validate Immediate Needs Request</td>
+
+                        <td>Validate immediate needs request during receiving</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="i-SectionId-section-heading" class="i-section-heading">
+            <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Outbound</span>
+        </div>
+
+        <div id="i-SectionId-section-content" class="i-section-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Exit point</th>
+
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Close Container - After</td>
+
+                        <td>Close Container - After</td>
+                    </tr>
+
+                    <tr>
+                        <td>Close Container - Validate</td>
+
+                        <td>Close Container - Validate</td>
+                    </tr>
+
+                    <tr>
+                        <td>Container Type Authorization Retrieval</td>
+
+                        <td>Modifies container type list as per authorization</td>
+                    </tr>
+
+                    <tr>
+                        <td>Delete Shipment - After</td>
+
+                        <td>Delete Shipment - After</td>
+                    </tr>
+
+                    <tr>
+                        <td>Delete Shipment - Before</td>
+
+                        <td>Delete Shipment - Before</td>
+                    </tr>
+
+                    <tr>
+                        <td>Group Pick Instructions - Override</td>
+
+                        <td>Group Pick Instructions - Override</td>
+                    </tr>
+
+                    <tr>
+                        <td>Immediate Dock Transfer - Before</td>
+
+                        <td>Immediate Dock Transfer - Before</td>
+                    </tr>
+
+                    <tr>
+                        <td>Multi Order Pallet Container ID - Replace</td>
+
+                        <td>Multi Order Pallet Container ID Replace</td>
+                    </tr>
+
+                    <tr>
+                        <td>Replenishment Existing Inv Calc SQL - Modify</td>
+
+                        <td>Replenishment Existing Inv Calc SQL - Modify</td>
+                    </tr>
+
+                    <tr>
+                        <td>RF Serial Number Scan - Before</td>
+
+                        <td>RF Serial Number Scan - Before</td>
+                    </tr>
+
+                    <tr>
+                        <td>Shipment Work Instruction - Close</td>
+
+                        <td>Shipment Work Instruction - Close</td>
+                    </tr>
+
+                    <tr>
+                        <td>Short Pick Inventory - Replace?</td>
+
+                        <td>Short Pick Inventory - Replace?</td>
+                    </tr>
+
+                    <tr>
+                        <td>Work Short Pick - After</td>
+
+                        <td>Work Short Pick - After</td>
+                    </tr>
+
+                    <tr>
+                        <td>Work Unit Close</td>
+
+                        <td>Work Unit Close</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </innovasys:widgetproperty>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

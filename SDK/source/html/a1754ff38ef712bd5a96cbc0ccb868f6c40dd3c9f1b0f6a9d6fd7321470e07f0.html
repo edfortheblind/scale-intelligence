@@ -1,0 +1,341 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Add Menu Options to a Details/Transaction Screen Grid</title>
+    <meta name="Title" content="How to: Add Menu Options to a Details/Transaction Screen Grid"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Follow these steps to add the menu options for the grid that are standard for the detail and transaction pages." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="bc52e5eb-358d-4433-8c3b-d67728a51ec0"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="6"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Add Menu Options to a Details/Transaction Screen Grid</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Detail Pages
+ > How to: Add Menu Options to a Details/Transaction Screen Grid</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Follow these steps to add the menu options for the grid that are standard for the detail and transaction pages.</p>
+
+<div id="i-ee400490-8fd7-4f4c-bbb2-097c62d3e4d2-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create required modal dialogs</span>
+</div>
+
+<div id="i-ee400490-8fd7-4f4c-bbb2-097c62d3e4d2-section-content" class="i-section-content">
+    If any actions on the detail screen grid will require input via modal dialogs, create them.&nbsp;Please reference the&nbsp;<a href="How_to_Create_Dynamic_Modal_Dialog.html">How to: Create a Dynamic Modal Dialog</a> topic for more information.
+</div>
+
+<div id="i-c47b2523-7a37-4cec-a25e-e47ff5d3c909-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create new menu screen groups</span>
+</div>
+
+<div id="i-c47b2523-7a37-4cec-a25e-e47ff5d3c909-section-content" class="i-section-content">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <p>Add a SCREEN_GROUP record as follows in order to create an actions&nbsp;menu for the detail screen grid.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART_ID</td>
+
+                <td>The Screen Part Id of the detail Page</td>
+            </tr>
+
+            <tr>
+                <td>GROUP_NAME</td>
+
+                <td><em>[GridName]Menu</em></td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>GROUP_TYPE</td>
+
+                <td><em>70</em>&nbsp;(Menu)</td>
+            </tr>
+
+            <tr>
+                <td>PARENT_GROUP_ID</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>NESTED_GROUP_UNIT</td>
+
+                <td>0</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>row ScreenGroupPanel cruddetailtitlepanel nav nav-pills</em></td>
+            </tr>
+
+            <tr>
+                <td>ROW_CSS_CLASS</td>
+
+                <td><em>row transparentscreengroup</em></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><br /></p>
+
+    <p>Add a SCREEN_GROUP record as follows in order to create Title Panel.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART_ID</td>
+
+                <td>The Screen Part Id of the detail Page</td>
+            </tr>
+
+            <tr>
+                <td>GROUP_NAME</td>
+
+                <td><em>[GridName]TitlePanel</em></td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>GROUP_TYPE</td>
+
+                <td><em>60</em> (Panel)</td>
+            </tr>
+
+            <tr>
+                <td>PARENT_GROUP_ID</td>
+
+                <td>The Screen Group Id of the&nbsp;menu SCREEN_GROUP in the detail page</td>
+            </tr>
+
+            <tr>
+                <td>NESTED_GROUP_UNIT</td>
+
+                <td>The Screen Group Id of the&nbsp;menu SCREEN_GROUP in the detail page</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>pull-left menubuttonpanel</em></td>
+            </tr>
+
+            <tr>
+                <td>ROW_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-81b65a5c-1f8a-4ef3-a8d0-25a25a053c95-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Create screen control related records for&nbsp;each action</span>
+</div>
+
+<div id="i-81b65a5c-1f8a-4ef3-a8d0-25a25a053c95-section-content" class="i-section-content">
+    <div id="i-99ac1ed1-71e1-4b26-a12a-844f84408244-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Create menu button screen control</span>
+    </div>
+
+    <div id="i-99ac1ed1-71e1-4b26-a12a-844f84408244-section-content" class="i-section-content">
+        <p>Now add a SCREEN_CONTROL record as follows for the Menu Button control.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><strong>Field</strong></td>
+
+                    <td><strong>Value</strong></td>
+                </tr>
+
+                <tr>
+                    <td>SCREEN_GROUP_ID</td>
+
+                    <td>The Screen Group Id of the title panel</td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_NAME</td>
+
+                    <td><em>[GridName] MenuAction [Action]</em></td>
+                </tr>
+
+                <tr>
+                    <td>RESOURCE_KEY</td>
+
+                    <td><em>Resource key for the button</em></td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_TYPE</td>
+
+                    <td><em>150</em> (Menu Button)</td>
+                </tr>
+
+                <tr>
+                    <td>LABEL_ORIENTATION</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DATA_SOURCE_TYPE</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DATA_SOURCE</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DIV_CSS_CLASS</td>
+
+                    <td><em>pull-right menubutton</em></td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_CSS_CLASS</td>
+
+                    <td><em>dropdownaction pull-right menubutton cruddetailmenubutton</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="i-c1e6f49c-4777-4758-bdf7-0e077ab8d938-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Add security for the menu button</span>
+    </div>
+
+    <div id="i-c1e6f49c-4777-4758-bdf7-0e077ab8d938-section-content" class="i-section-content">
+        Reference the&nbsp;<a href="How_to_Configure Security_for_Action.html">How to: Configure Security for a Dynamic Action</a> topic in order to add security for the new action.
+    </div>
+
+    <div id="i-a5a896d2-eb82-4f1c-8492-168e3553d0f8-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Create a screen control event record tied to the menu button control</span>
+    </div>
+
+    <div id="i-a5a896d2-eb82-4f1c-8492-168e3553d0f8-section-content" class="i-section-content">
+        Reference the&nbsp;<a href="How_to_Create_Screen_Control_Events.html">How to: Create Screen Control Events</a> topic in order to add event for the new control.
+    </div>
+
+    <div id="i-b6eb3a58-239f-4718-bf42-8b5eec575077-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Create screen control event parameters record tied to the event</span>
+    </div>
+
+    <div id="i-b6eb3a58-239f-4718-bf42-8b5eec575077-section-content" class="i-section-content">
+        Reference the&nbsp;<a href="How_to_Create_Screen_Control_Event_Parameters.html">How to: Create Screen Control Event Parameters</a> topic in order to add event parameters for the new event.
+    </div>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

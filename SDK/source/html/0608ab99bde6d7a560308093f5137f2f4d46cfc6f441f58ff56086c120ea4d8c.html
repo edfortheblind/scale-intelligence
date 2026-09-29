@@ -1,0 +1,539 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create an Indicator Tile on a Monitor Page</title>
+    <meta name="Title" content="How to: Create an Indicator Tile on a Monitor Page"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="An Indicator tile is similar to a summary tile, it allows us to quickly view a numeric represenation of data. Unlike a Summary tile an Indicator tile is clickable.  In addition the tile can be configured to change its appearance when configured crite" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="f2436472-165e-4bb4-abc8-1ed0c1c30069"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="6"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create an Indicator Tile on a Monitor Page</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Monitor Pages
+ > How to: Create an Indicator Tile on a Monitor Page</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>An Indicator tile is similar to a summary tile, it allows us to quickly view a numeric represenation of data. Unlike a Summary tile an Indicator tile is clickable.&nbsp; In addition the tile can be configured to change its appearance when configured criteria is met to indicate a warning or caution state to the user.</p>
+
+<div id="i-8ee3468d-b978-4c35-b947-0d5664f68824-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create a Stored procedure for the Indicator Tile</span>
+</div>
+
+<div id="i-8ee3468d-b978-4c35-b947-0d5664f68824-section-content" class="i-section-content">
+    <p>The Generic Monitor Data Retrieval web API is used to retrieve data from a stored procedure and bind it to the tile control. Also see&nbsp;the <a href="How_to_Bind_Controls_on_a_Monitor_Page.html"><font color="navy">How to Bind Controls on Monitor Page</font></a> topic for more information on&nbsp;binding the&nbsp;data to the controls on the Monitor page. &nbsp;&nbsp;</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Example&nbsp;Monitor Stored Procedure</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">CREATE</span> <span style="COLOR: #0000ff">PROCEDURE</span> WRK_MonitorCustomerIndicatorTile(  
+<span style="COLOR: #008000">@filterCriteria</span> <span style="COLOR: #0000ff">NVARCHAR</span>(<span style="COLOR: #ff00ff">MAX</span>),
+<span style="COLOR: #008000">@indicatorTileName</span> <span style="COLOR: #0000ff">NVARCHAR</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">100</span>),
+<span style="COLOR: #008000">@cautionCriteria</span> <span style="COLOR: #0000ff">NVARCHAR</span>(<span style="COLOR: #ff00ff">MAX</span>),
+<span style="COLOR: #008000">@warningCriteria</span> <span style="COLOR: #0000ff">NVARCHAR</span>(<span style="COLOR: #ff00ff">MAX</span>),
+<span style="COLOR: #008000">@culture</span> <span style="COLOR: #0000ff">NVARCHAR</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">10</span>))
+<span style="COLOR: #0000ff">AS</span>
+    <span style="COLOR: #0000ff">Set</span> NoCount <span style="COLOR: #0000ff">ON</span>
+    <span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@warehouse</span> <span style="COLOR: #0000ff">as</span> <span style="COLOR: #0000ff">nVarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">50</span>);
+    <span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@criteriaTempTable</span> <span style="COLOR: #0000ff">TABLE</span>(filterName <span style="COLOR: #0000ff">nVarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">300</span>),filterValue <span style="COLOR: #0000ff">nVarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">300</span>))
+ <span style="COLOR: #008080">/*get the where clause value*/</span>
+  <span style="COLOR: #0000ff">INSERT</span> <span style="COLOR: #0000ff">INTO</span> <span style="COLOR: #008000">@criteriaTempTable</span> <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">FROM</span> fn_GetMonitorFilterParameters(<span style="COLOR: #008000">@filterCriteria</span>)
+  <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #008000">@warehouse</span> <span style="COLOR: #808080">=</span> filterValue <span style="COLOR: #0000ff">from</span> <span style="COLOR: #008000">@criteriaTempTable</span> <span style="COLOR: #0000ff">WHERE</span> filterName <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'FROM_WHS'</span>
+<span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@cautionValue</span> <span style="COLOR: #0000ff">as</span> NUMERIC(<span style="FONT-WEIGHT: bold; COLOR: #800000">9</span>);<span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@warningValue</span> <span style="COLOR: #0000ff">as</span> NUMERIC(<span style="FONT-WEIGHT: bold; COLOR: #800000">9</span>);
+  <span style="COLOR: #0000ff">IF</span>(<span style="COLOR: #008000">@indicatorTileName</span> <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'IndicatorTileAtRiskWork'</span>)
+   <span style="COLOR: #0000ff">BEGIN</span>
+     <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #0000ff">TOP</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> N<span style="COLOR: #ff0000">'INDICATORTILE_ATRISKWORK'</span> <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'INDICATORTILE_ATRISKWORK'</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT) <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'AT_RISK_WORK'</span>,
+     <span style="COLOR: #ff0000">'CAUTION'</span> <span style="COLOR: #808080">=</span> (<span style="COLOR: #0000ff">SELECT</span>  dbo.fn_GetCriticalLevel(<span style="COLOR: #008000">@cautionCriteria</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT))),
+      <span style="COLOR: #ff0000">'WARNING'</span> <span style="COLOR: #808080">=</span> (<span style="COLOR: #0000ff">SELECT</span> dbo.fn_GetCriticalLevel(<span style="COLOR: #008000">@warningCriteria</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT)))
+       <span style="COLOR: #0000ff">FROM</span> WORK_INSTRUCTION <span style="COLOR: #0000ff">WHERE</span> INSTRUCTION_TYPE <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'DETAIL'</span> <span style="COLOR: #808080">AND</span> (FROM_WHS <span style="COLOR: #808080">=</span><span style="COLOR: #008000">@warehouse</span>) <span style="COLOR: #808080">AND</span> CONDITION <span style="COLOR: #808080">IN</span> (N<span style="COLOR: #ff0000">'OPEN'</span>, N<span style="COLOR: #ff0000">'IN PROCESS'</span>) <span style="COLOR: #808080">AND</span> AGING_DATE_TIME <span style="COLOR: #808080">&gt;</span> <span style="COLOR: #ff00ff">DateAdd</span>(<span style="COLOR: #ff00ff">DAY</span>, <span style="COLOR: #808080">-</span><span style="FONT-WEIGHT: bold; COLOR: #800000">1</span>, <span style="COLOR: #ff00ff">GETDATE</span>())
+   <span style="COLOR: #0000ff">END</span>
+  <span style="COLOR: #0000ff">ELSE</span>
+   <span style="COLOR: #0000ff">IF</span>(<span style="COLOR: #008000">@indicatorTileName</span> <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'IndicatorTilePriorityWork'</span>)
+    <span style="COLOR: #0000ff">BEGIN</span>
+     <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #0000ff">TOP</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> N<span style="COLOR: #ff0000">'INDICATORTILE_PRIORITYWORK'</span> <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'INDICATORTILE_PRIORITYWORK'</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT) <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'PRIORITY_WORK'</span>,
+     <span style="COLOR: #ff0000">'CAUTION'</span> <span style="COLOR: #808080">=</span> (<span style="COLOR: #0000ff">SELECT</span>  dbo.fn_GetCriticalLevel(<span style="COLOR: #008000">@cautionCriteria</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT))),
+      <span style="COLOR: #ff0000">'WARNING'</span> <span style="COLOR: #808080">=</span> (<span style="COLOR: #0000ff">SELECT</span> dbo.fn_GetCriticalLevel(<span style="COLOR: #008000">@warningCriteria</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT)))
+       <span style="COLOR: #0000ff">FROM</span> WORK_INSTRUCTION <span style="COLOR: #0000ff">WHERE</span> INSTRUCTION_TYPE <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'DETAIL'</span> <span style="COLOR: #808080">AND</span> (FROM_WHS <span style="COLOR: #808080">=</span><span style="COLOR: #008000">@warehouse</span>) <span style="COLOR: #808080">AND</span> CONDITION <span style="COLOR: #808080">IN</span> (N<span style="COLOR: #ff0000">'OPEN'</span>, N<span style="COLOR: #ff0000">'IN PROCESS'</span>) <span style="COLOR: #808080">AND</span> PRIORITY <span style="COLOR: #808080">&lt;=</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">10</span>
+    <span style="COLOR: #0000ff">END</span> 
+  <span style="COLOR: #0000ff">ELSE</span>
+    <span style="COLOR: #0000ff">IF</span>(<span style="COLOR: #008000">@indicatorTileName</span> <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'IndicatorTileWorkOnHold'</span>)
+     <span style="COLOR: #0000ff">BEGIN</span>
+     <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #0000ff">TOP</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> N<span style="COLOR: #ff0000">'INDICATORTILE_WORKONHOLD'</span> <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'INDICATORTILE_WORKONHOLD'</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT) <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'WORK_ON_HOLD'</span>,
+     <span style="COLOR: #ff0000">'CAUTION'</span> <span style="COLOR: #808080">=</span> (<span style="COLOR: #0000ff">SELECT</span>  dbo.fn_GetCriticalLevel(<span style="COLOR: #008000">@cautionCriteria</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT))),
+      <span style="COLOR: #ff0000">'WARNING'</span> <span style="COLOR: #808080">=</span> (<span style="COLOR: #0000ff">SELECT</span> dbo.fn_GetCriticalLevel(<span style="COLOR: #008000">@warningCriteria</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT))) <span style="COLOR: #0000ff">FROM</span> WORK_INSTRUCTION <span style="COLOR: #0000ff">WHERE</span> INSTRUCTION_TYPE <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'DETAIL'</span> <span style="COLOR: #808080">AND</span>
+      (FROM_WHS <span style="COLOR: #808080">=</span><span style="COLOR: #008000">@warehouse</span>) <span style="COLOR: #808080">AND</span> CONDITION <span style="COLOR: #808080">IN</span> (N<span style="COLOR: #ff0000">'OPEN'</span>, N<span style="COLOR: #ff0000">'IN PROCESS'</span>) <span style="COLOR: #808080">AND</span> HOLD_CODE <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #808080">NOT</span> <span style="COLOR: #0000ff">NULL</span>
+    <span style="COLOR: #0000ff">END</span>
+   <span style="COLOR: #0000ff">ELSE</span>
+    <span style="COLOR: #0000ff">IF</span>(<span style="COLOR: #008000">@indicatorTileName</span> <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'IndicatorTileOpenWork'</span>)
+     <span style="COLOR: #0000ff">BEGIN</span>
+     <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #0000ff">TOP</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> N<span style="COLOR: #ff0000">'INDICATORTILE_OPENWORK'</span> <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'INDICATORTILE_OPENWORK'</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT) <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'OPENWORK'</span>,
+     <span style="COLOR: #ff0000">'CAUTION'</span> <span style="COLOR: #808080">=</span> (<span style="COLOR: #0000ff">SELECT</span>  dbo.fn_GetCriticalLevel(<span style="COLOR: #008000">@cautionCriteria</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT))),
+      <span style="COLOR: #ff0000">'WARNING'</span> <span style="COLOR: #808080">=</span> (<span style="COLOR: #0000ff">SELECT</span> dbo.fn_GetCriticalLevel(<span style="COLOR: #008000">@warningCriteria</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT)))  <span style="COLOR: #0000ff">FROM</span> WORK_INSTRUCTION <span style="COLOR: #0000ff">WHERE</span> INSTRUCTION_TYPE <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'DETAIL'</span> <span style="COLOR: #808080">AND</span>
+      (FROM_WHS <span style="COLOR: #808080">=</span><span style="COLOR: #008000">@warehouse</span>) <span style="COLOR: #808080">AND</span> CONDITION <span style="COLOR: #808080">IN</span> (N<span style="COLOR: #ff0000">'OPEN'</span>, N<span style="COLOR: #ff0000">'IN PROCESS'</span>)
+    <span style="COLOR: #0000ff">END</span>    
+    <span style="COLOR: #0000ff">ELSE</span>
+    <span style="COLOR: #0000ff">IF</span>(<span style="COLOR: #008000">@indicatorTileName</span> <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'IndicatorTileInProgressWork'</span>)
+     <span style="COLOR: #0000ff">BEGIN</span>
+     <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #0000ff">TOP</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> N<span style="COLOR: #ff0000">'INDICATORTILE_INPROGRESSWORK'</span> <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'INDICATORTILE_INPROGRESSWORK'</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT) <span style="COLOR: #0000ff">AS</span> N<span style="COLOR: #ff0000">'INPROGRESSWORK'</span>,
+     <span style="COLOR: #ff0000">'CAUTION'</span> <span style="COLOR: #808080">=</span> (<span style="COLOR: #0000ff">SELECT</span>  dbo.fn_GetCriticalLevel(<span style="COLOR: #008000">@cautionCriteria</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT))),
+      <span style="COLOR: #ff0000">'WARNING'</span> <span style="COLOR: #808080">=</span> (<span style="COLOR: #0000ff">SELECT</span> dbo.fn_GetCriticalLevel(<span style="COLOR: #008000">@warningCriteria</span>, <span style="COLOR: #ff00ff">COUNT</span>(<span style="COLOR: #0000ff">DISTINCT</span> WORK_UNIT))) <span style="COLOR: #0000ff">FROM</span> WORK_INSTRUCTION <span style="COLOR: #0000ff">WHERE</span> INSTRUCTION_TYPE <span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'DETAIL'</span> <span style="COLOR: #808080">AND</span>
+      (FROM_WHS <span style="COLOR: #808080">=</span><span style="COLOR: #008000">@warehouse</span>) <span style="COLOR: #808080">AND</span> CONDITION <span style="COLOR: #808080">IN</span> (N<span style="COLOR: #ff0000">'IN PROCESS'</span>) <span style="COLOR: #808080">AND</span> USER_ASSIGNED <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #808080">NOT</span> <span style="COLOR: #0000ff">NULL</span> 
+    <span style="COLOR: #0000ff">END</span>   
+   
+         
+    <span style="COLOR: #0000ff">If</span> <span style="FONT-WEIGHT: bold; COLOR: #008000">@@ERROR</span> <span style="COLOR: #808080">&lt;&gt;</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span> <span style="COLOR: #0000ff">GoTo</span> ErrorHandler
+    <span style="COLOR: #0000ff">Set</span> NoCount <span style="COLOR: #0000ff">OFF</span>
+    <span style="COLOR: #0000ff">Return</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">0</span>)
+ 
+ErrorHandler:
+    <span style="COLOR: #0000ff">Return</span>(<span style="FONT-WEIGHT: bold; COLOR: #008000">@@ERROR</span>) 
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>&nbsp;</p>
+
+    <p><strong>Stored Procedure Input Parameters:&nbsp;</strong>This stored procedure has 5 input parameters<span class="NewStyle">:</span>&nbsp;filterCriteria, indicatorTileName, cautionCriteria, warningCriteria and culture.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Parameter Name</strong></td>
+
+                <td><strong>Description</strong></td>
+            </tr>
+
+            <tr>
+                <td>filterCriteria</td>
+
+                <td>
+                    <p>Filter criteria can have multiple comma separated values and should end with a semicolon.</p>
+
+                    <p>e.g. 'from_whs=MN, WORK_INSTRUCTION_PRIORITY&lt;= 10;'</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>indicatorTileName</td>
+
+                <td>
+                    <p>The name of the&nbsp;tile control to which the data is to be fetched is defined here.</p>
+
+                    <p>e.g. 'IndicatorTilePriorityWork'</p>
+
+                    <p>&nbsp;Note: This should match with the&nbsp;tile control name defined in metadata.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>cautionCriteria</td>
+
+                <td>
+                    <p>Pass the caution criteria here. When the criteria is met the tile will change color to indicate the caution level has been met.</p>
+
+                    <p>e.g. '&gt;=30'</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>warningCriteria</td>
+
+                <td>
+                    <p>Pass the warning criteria here. When the criteria is met the tile will change color to indicate the warning level has been met.</p>
+
+                    <p>e.g. '&gt;40'</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>culture</td>
+
+                <td>
+                    <p>Culture is passed here.</p>
+
+                    <p>e.g. 'en-us'</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+    <p><strong>Return Data from Stored Procedure:&nbsp;</strong>The Stored procedure returns data with 4 columns. The details are below.</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Column Name</strong></td>
+
+                <td><strong>Description</strong></td>
+            </tr>
+
+            <tr>
+                <td>INDICATORTILE_&lt;name&gt;</td>
+
+                <td>Column name should start with INDICATORTILE_.</td>
+            </tr>
+
+            <tr>
+                <td>&lt;DataSourceName&gt;</td>
+
+                <td>
+                    <p>Represents the name of the control to which the data should bind.&nbsp; This column&nbsp;data will bind to the&nbsp;tile control.</p>
+
+                    <p>Note: This column name ( in this e.g. &nbsp;"PRIORITY_WORK")&nbsp;should match the data source property&nbsp;of the control name in the metadata.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>caution</td>
+
+                <td>This column data&nbsp;will be true when the caution criteria is met.</td>
+            </tr>
+
+            <tr>
+                <td>warning</td>
+
+                <td>This column data&nbsp;will be true when the warning criteria is met.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+
+    <p>Below is the screen shot for the output of the Stored procedure.</p>
+
+    <p><img border="0" alt="" src="images/Actiontile.png" /></p>
+</div>
+
+<div id="i-510cdac0-c96e-4877-aa80-76f51435f74b-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2:&nbsp;Create a panel screen group to house the Indicator Tile</span>
+</div>
+
+<div id="i-510cdac0-c96e-4877-aa80-76f51435f74b-section-content" class="i-section-content">
+    <p>Add a SCREEN_GROUP record as follows in order to create a&nbsp;panel&nbsp;to hold the Indicator tile.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART_ID</td>
+
+                <td>The Screen Part Id of the Monitor Pane</td>
+            </tr>
+
+            <tr>
+                <td>GROUP_NAME</td>
+
+                <td>The name of the group</td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>GROUP_TYPE</td>
+
+                <td><em>60</em>&nbsp;(Panel)</td>
+            </tr>
+
+            <tr>
+                <td>PARENT_GROUP_ID</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>NESTED_GROUP_UNIT</td>
+
+                <td>0</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td>listpanesummarypanelgroup equalize</td>
+            </tr>
+
+            <tr>
+                <td>ROW_CSS_CLASS</td>
+
+                <td>row indicatortilepanel</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-987043d9-1245-4e58-babc-83424531eb89-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Create a Screen Control for the Indicator Tile</span>
+</div>
+
+<div id="i-987043d9-1245-4e58-babc-83424531eb89-section-content" class="i-section-content">
+    <p>Add a&nbsp;SCREEN_CONTROL record as follows for the tile.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_GROUP_ID</td>
+
+                <td>The Screen Group Id of the&nbsp;panel that will hold the tile</td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_NAME</td>
+
+                <td>The name of&nbsp;this tile control</td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td>The resource key of the label to show for the tile control</td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_TYPE</td>
+
+                <td>320&nbsp;(Indicator tile)</td>
+            </tr>
+
+            <tr>
+                <td>DATA_SOURCE_TYPE</td>
+
+                <td>20 (Data-bind attribute - sets data from the ajax response)</td>
+            </tr>
+
+            <tr>
+                <td>DATA_SOURCE</td>
+
+                <td>The data source that will be used to fill the control.</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td>col-3 col-sm-3 col-md-12 col-lg-12</td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_CSS_CLASS</td>
+
+                <td>indicatortile</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-74c4bb21-b615-4c7b-859d-8c6426a8e71e-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 4: Create Screen Control Attributes for the Indicator&nbsp;Tile</span>
+</div>
+
+<div id="i-74c4bb21-b615-4c7b-859d-8c6426a8e71e-section-content" class="i-section-content">
+    <p>Add&nbsp;a SCREEN_CONTROL_ATTRIBUTES record&nbsp;as follows&nbsp;for the&nbsp;tile.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Description</strong></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-indicatorTileWebService</p>
+                </td>
+
+                <td>
+                    <p>Defines the web API which returns the required information to a Monitor page for binding data to a&nbsp;tile control. This attribute value is "/general/scaleapi/GenericMonitorDataRetrievalApi/Post" .</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-indicatorTileCriteria</p>
+                </td>
+
+                <td>
+                    <p>Defines the filter criteria for&nbsp;tile.</p>
+
+                    <p>e.g.&nbsp; from_whs=@warehouse, WORK_INSTRUCTION_PRIORITY&lt;= 10</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-indicatorTileGoToInsight</p>
+                </td>
+
+                <td>
+                    <p>URL template and the parameters to be redirected to the insight page are defined here.</p>
+
+                    <p>Use the ALT+219 █ character&nbsp;for the separator characters in the path as shown below.</p>
+
+                    <p>e.g. {{FORM_ID=&lt;form id&gt;}}?filters=SearchPaneWhs█{{{FROM_WHS}}},SearchPaneAdvCrit_Field█{{{WORK_GROUP}}},SearchPaneWrkTyp█{{{WORK_TYPE}}},SearchPaneAdvCrit_Field█{{{AGING_DATE_TIME}}}</p>
+
+                    <p>&nbsp;Note: &nbsp;<br />
+                    &nbsp;FORM_ID=&lt;form id&gt; -&nbsp;This indicates that when the&nbsp;tile is clicked the insight page corresponding to the &lt;form id&gt; is displayed.<br />
+                    &nbsp;SearchPaneWhs - The token values defined here will bind to the&nbsp;Basic Criteria search&nbsp;on the&nbsp;Insight page.<br />
+                    &nbsp;SearchPaneAdvCrit_Field - The token values defined here will bind to the&nbsp;Advanced Criteria search&nbsp;on the&nbsp;Insight page.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-indicatorTileStoredProcedure</p>
+                </td>
+
+                <td>
+                    <p>Stored procedure name is defined here. Web api calls this Stored procedure and bind it to the&nbsp;tile control.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-indicatorTileCautionCriteria</p>
+                </td>
+
+                <td>
+                    <p>Caution criiteria is defined here.&nbsp;When a&nbsp;tile meets the specified caution criteria condition the&nbsp;tile will change color to inidcate the critical level to the user. Please refer to the&nbsp; <a href="How_to_configure_critical_level_on_Indicator_Tile.html" data-auto-update-caption="true"><u><font color="navy">How to: Configure Critical Level on Indicator Tile</font></u></a> topic for more detailed information.&nbsp;</p>
+
+                    <p>e.g.&nbsp; attributeValue = &lt;condition&gt;</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-indicatorTileWarningCriteria</p>
+                </td>
+
+                <td>
+                    <p>Warning criteria is defined here. When a&nbsp;tile meets the specified warning criteria condition the&nbsp;tile will change color to inidcate the critical level to the user. Please refer to the&nbsp; <a href="How_to_configure_critical_level_on_Indicator_Tile.html" data-auto-update-caption="true"><u><font color="navy">How to: Configure Critical Level on Indicator Tile</font></u></a> topic for more detailed information.&nbsp;</p>
+
+                    <p>e.g.&nbsp; attributeValue = &lt;condition&gt;</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Screen_Groups.html">How to: Create Screen Groups</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Controls.html">How to: Create Screen Controls</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Control_Attributes.html">How to: Create Screen Control Attributes</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

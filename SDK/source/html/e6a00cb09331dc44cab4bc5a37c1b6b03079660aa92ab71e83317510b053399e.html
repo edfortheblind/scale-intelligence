@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Enable/Disable Metadata Actions Based on Screen Data</title>
+    <meta name="Title" content="How to: Enable/Disable Metadata Actions Based on Screen Data"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Metadata actions can also be enabled and disabled based on data on the screen. For example, when a new record is selected in the list pane grid, certain actions may need to be enabled or disabled based on the data in that row. Records can be added to" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="a31738fd-928c-4561-a37e-9efdd4b6092d"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="4"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Enable/Disable Metadata Actions Based on Screen Data</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Actions
+ > How to: Enable/Disable Metadata Actions Based on Screen Data</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Metadata actions can also be enabled and disabled based on data on the screen. For example, when a new record is selected in the list pane grid, certain actions may need to be enabled or disabled based on the data in that row.&nbsp;Records can be added to the SCREEN_CONTROL_EVENT_PARAMETERS table to configure the data that determines whether an action is enabled or disabled when a new record in the grid is selected.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+<p></p>
+
+<div class="i-box i-box-note">
+    Please note that security checkpoints in the system override the metadata configurations for enabling or disabling an action.
+</div>
+
+<p></p>
+
+<table>
+    <tbody>
+        <tr>
+            <td><strong>Field</strong></td>
+
+            <td><strong>Value</strong></td>
+        </tr>
+
+        <tr>
+            <td>PARAMETER_NAME</td>
+
+            <td>EnableAction_&lt;ControlName&gt; (e.g. <em>EnableAction_ListPaneMenuActionUnassignWork</em>)</td>
+        </tr>
+
+        <tr>
+            <td><font style="COLOR: rgb(0,0,0); BACKGROUND-COLOR: rgb(255,255,255)" color="white">PARAMETER_VALUE</font></td>
+
+            <td>Literal value (<em>true</em> or <em>false</em>) or JavaScript conditional (e.g. <em>INSTRUCTION_TYPE === Header &amp;&amp; USER_ASSIGNED !== NULL &amp;&amp; WORK_INSTRUCTION_CONDITION !== Closed</em>)</td>
+        </tr>
+
+        <tr>
+            <td>SCREEN_CONTROL_ID</td>
+
+            <td>The Object Id of the screen control event</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<div class="i-box i-box-note">
+    <p>The parameter value must be in the handlebars format. For specific information on handlebars refer the following article: <a href="http://handlebarsjs.com/"><u><font color="#0066CC">http://handlebarsjs.com/</font></u></a>.</p>
+
+    <p>&nbsp;</p>
+
+    <p>NOTE: %20 must be used for spaces for example CARRIER === UPS%20GROUND</p>
+</div>
+
+<p>Insight actions can also&nbsp;be enabled/ disabled based on controls on insight screens except Listpane grid data.</p>
+
+<p></p>
+
+<table>
+    <tbody>
+        <tr>
+            <td><strong>Field</strong></td>
+
+            <td><strong>Value</strong></td>
+        </tr>
+
+        <tr>
+            <td>PARAMETER_NAME</td>
+
+            <td>EnableAction_&lt;ControlName&gt;_&lt;ControlId&gt; (e.g. <em>EnableAction_ListPaneMenuActionAddFilteredShipmentsToWave_filterBadge, Here filterBadge is Id of control, used to determine whether to enable or disable action based on its value.</em>)</td>
+        </tr>
+
+        <tr>
+            <td height="37"><font style="COLOR: rgb(0,0,0); BACKGROUND-COLOR: rgb(255,255,255)" color="white">PARAMETER_VALUE</font></td>
+
+            <td height="37">Literal value (<em>true</em> or <em>false</em>) or JavaScript conditional (e.g. <em>filterBadge &gt; 0</em>)</td>
+        </tr>
+
+        <tr>
+            <td>SCREEN_CONTROL_ID</td>
+
+            <td>The Object Id of the screen control event</td>
+        </tr>
+    </tbody>
+</table>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="Screen_Control_Event_Parameter_Naming_Conventions.html">Screen Control Event Parameter Naming Conventions</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

@@ -100,12 +100,14 @@ def main(argv=None):
         seed = SEEDS[module].split('#', 1)[0]
         queue.sort(key=lambda r: (r['source_url'] != seed, r['discovered_at'], r['source_url']))
         pilot_passed = module_pilot(state, module) == 'PASSED'
-        if module == 'SDK' and args.kind == 'article' and pilot_passed:
-            from verify_sdk import pilot_proof_current
-            proof = pilot_proof_current(store)
-            if not proof['passed']:
-                raise ValueError('SDK_PILOT_PROOF_NOT_CURRENT: ' + '; '.join(proof['issues']))
-        if args.kind == 'article' and not pilot_passed:
+        bulk_authorized = pilot_passed
+        if module == 'SDK' and args.kind == 'article':
+            from sdk_acquisition_policy import sdk_acquisition_readiness
+            readiness = sdk_acquisition_readiness(store, state)
+            bulk_authorized = readiness['ready']
+            if not bulk_authorized and readiness['basis'] != 'pilot_only':
+                raise ValueError('SDK_ACQUISITION_NOT_READY: ' + '; '.join(readiness['issues']))
+        if args.kind == 'article' and not bulk_authorized:
             selection = read_json(root / ('_project/pilot-' + module + '.json'))
             if selection.get('module', module) != module:
                 raise ValueError('Pilot selection belongs to another module')
@@ -113,9 +115,19 @@ def main(argv=None):
             if not queue:
                 raise ValueError('No eligible pilot articles; verify or explicitly revise the pilot selection')
         if args.kind == 'article':
-            phase = module + '_CAPTURE_IN_PROGRESS' if pilot_passed else ('PILOT_IN_PROGRESS' if module == 'AIM' else 'SDK_PILOT_IN_PROGRESS')
+            phase = module + '_CAPTURE_IN_PROGRESS' if bulk_authorized else ('PILOT_IN_PROGRESS' if module == 'AIM' else 'SDK_PILOT_IN_PROGRESS')
         else:
             phase = 'DISCOVERY_IN_PROGRESS' if module == 'AIM' else 'SDK_DISCOVERY_IN_PROGRESS'
+        if module == 'SDK' and bulk_authorized and not pilot_passed:
+            blocked = []
+            source_blockers = [b for b in state.get('modules', {}).get('SDK', {}).get('blockers', [])
+                               if b.get('code') in ('SDK_SOURCE_IMAGES_UNAVAILABLE', 'SDK_PILOT_FIDELITY_GAPS',
+                                                    'SDK_SOURCE_RESOURCES_UNAVAILABLE', 'SDK_FIDELITY_GAPS')]
+            source_blockers = list({json.dumps(b, sort_keys=True): b for b in source_blockers}.values())
+            def checkpoint(**kwargs):
+                if 'blockers' in kwargs:
+                    kwargs['blockers'] = source_blockers + kwargs['blockers']
+                return module_checkpoint(store, owner, module, **kwargs)
         checkpoint(phase=phase, blockers=[], worker_running=True)
         try:
             with sync_playwright() as playwright:
@@ -125,9 +137,16 @@ def main(argv=None):
                 try:
                     for record in queue[:args.limit]:
                         if record.get('transport_metadata_verified') and record['status'] == 'BODY_SAVED' and conversion_missing(record):
-                            convert_draft(store, record)
+                            try:
+                                convert_draft(store, record)
+                                record.pop('conversion_failure', None)
+                                store.save_record(record)
+                                print(json.dumps({'module': module, 'conversion_recovered': record['id'], 'network_request': False}), flush=True)
+                            except (ValueError, UnicodeError) as error:
+                                record['conversion_failure'] = {'class': 'PARSE_OR_FIDELITY', 'detail': str(error), 'at': now()}
+                                store.save_record(record)
+                                print(json.dumps({'module': module, 'conversion_pending': record['id'], 'network_request': False}), flush=True)
                             checkpoint(worker_running=True)
-                            print(json.dumps({'module': module, 'conversion_recovered': record['id'], 'network_request': False}), flush=True)
                             continue
                         for attempt in range(1, 4):
                             record['attempts'] += 1

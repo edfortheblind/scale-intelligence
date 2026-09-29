@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Pallet Building Web Service</title>
+    <meta name="Title" content="Pallet Building Web Service"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The Pallet building web services support the following operations. However, the application only invokes the &quot;Pallet Building for Wave&quot; operation during the Pallet Building Wave Step." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="857f45d1-c91d-4235-a735-ea8cc4b36697"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Pallet Building Web Service</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The Pallet building web services support the following operations. However, the application only invokes the "Pallet Building for Wave" operation during the Pallet Building Wave Step.</p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Pallet Building for Wave</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>It takes a wave number and nests all applicable top-level containers into pallets, as directed by the Pallet Building Master linked to the Wave Master. This is achieved by the following steps:</p>
+
+    <div id="i-SectionId-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Retrieve a Shipping Resource Representation</span>
+    </div>
+
+    <div id="i-SectionId-section-content" class="i-section-content">
+        <p>First perform an HTTP GET to retrieve a Shipping resource representation.</p>
+
+        <p>How to: <a href="ShippingWebService.html">Shipping Web Service</a></p>
+    </div>
+
+    <div id="i-SectionId-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2:&nbsp;Build Pallets</span>
+    </div>
+
+    <div id="i-SectionId-section-content" class="i-section-content">
+        <p align="left">The Shipping resource representation will include&nbsp;the link to the&nbsp;"Waved Shipping Containers-Palletized" collection&nbsp;resource. The link (rel="palletBuildingForWave") has a href<em>&nbsp;</em>with a URI template that has the <strong>{waveNumber}</strong> token.&nbsp;To&nbsp;build pallets for wave substitute the token and&nbsp;perform an HTTP POST using the following:</p>
+
+        <p><strong>Request:</strong></p>
+
+        <ul>
+            <li><strong>URI:</strong> From Shipping resource&nbsp;link (rel="palletBuildingForWave") href</li>
+
+            <li><strong>Method:</strong> POST</li>
+
+            <li><strong>Accept:</strong> application/json or application/xml</li>
+
+            <li><strong>Content-Type:</strong> application/json or application/xml</li>
+
+            <li><strong>Entity:</strong>&nbsp;none</li>
+
+            <li><strong>Roles:</strong> SCALEUSER,Confidential</li>
+        </ul>
+
+        <p align="left"><strong>Response:</strong></p>
+
+        <p>Aside from <a href="Standard_Responses_from_REST-Based_Web_Services.html">standard responses</a>, note the following specifics for this service:</p>
+
+        <p></p>
+
+        <table class="members">
+            <tbody>
+                <tr>
+                    <th class="nameColumn">Status Code</th>
+
+                    <th class="descriptionColumn">Notes</th>
+                </tr>
+
+                <tr>
+                    <td>200</td>
+
+                    <td>
+                        <p>OK will be accompanied by an entity conforming to one of the requested media types: <a href="JSON/Shipping/PalletBuildingResponse.json">application/vnd.manh.ils.shipping.palletBuildingResponse+json</a>, <a href="XML%20Schema/Web%20Services/Pallet%20Building/PalletBuildingResponse.xsd">xml</a></p>
+
+                        <p>Note that for performance reasons neither of the ContainerReferenceList fields&nbsp;are returned when requesting pallets using the wave number.</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>400</td>
+
+                    <td>
+                        <p>The following ErrorTypes can be expected: <strong>Container, Unknown</strong></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p></p>
+    </div>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Pallet Building for Container list</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>It takes a Pallet Building Master and a list of Shipping Containers and nests all applicable top-level containers into pallets, as directed by the Pallet Building Master. This is achieved by the following steps:</p>
+
+    <div id="i-SectionId-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Retrieve a Shipping Resource Representation</span>
+    </div>
+
+    <div id="i-SectionId-section-content" class="i-section-content">
+        <p>First perform an HTTP GET to retrieve a Shipping resource representation.</p>
+
+        <p>How to: <a href="ShippingWebService.html">Shipping Web Service</a></p>
+    </div>
+
+    <div id="i-SectionId-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2:&nbsp;Build Pallets</span>
+    </div>
+
+    <div id="i-SectionId-section-content" class="i-section-content">
+        <p align="left">The Shipping resource representation will include&nbsp;the link to the&nbsp;"Shipping Containers-Palletized" collection&nbsp;resource. The link (rel="palletBuildingForContainerList") has a href<em>&nbsp;</em>with a URI template that has the <strong>{palletBuildingMaster}</strong> token.&nbsp;To palletize the given containers substitute the token and&nbsp;perform an HTTP POST using the following:</p>
+
+        <p><strong>Request:</strong></p>
+
+        <ul>
+            <li><strong>URI:</strong> From Shipping resource&nbsp;link (rel="palletBuildingForContainerList") href</li>
+
+            <li><strong>Method:</strong> POST</li>
+
+            <li><strong>Accept:</strong> application/json or application/xml</li>
+
+            <li><strong>Content-Type:</strong> application/json or application/xml</li>
+
+            <li><strong>Entity:</strong>&nbsp;<a href="JSON/Shipping/ContainerReferenceList.json">application/vnd.manh.ils.shipping.ContainerReferenceList+json</a>, <a href="XML%20Schema/Web%20Services/Pallet%20Building/ContainerReferenceList.xsd">XML</a></li>
+
+            <li><strong>Roles:</strong> SCALEUSER,Confidential</li>
+        </ul>
+
+        <p align="left"><strong>Response:</strong></p>
+
+        <p>Aside from <a href="Standard_Responses_from_REST-Based_Web_Services.html">standard responses</a>, note the following specifics for this service:</p>
+
+        <p></p>
+
+        <table class="members">
+            <tbody>
+                <tr>
+                    <th class="nameColumn">Status Code</th>
+
+                    <th class="descriptionColumn">Notes</th>
+                </tr>
+
+                <tr>
+                    <td>200</td>
+
+                    <td>
+                        <p>OK will be accompanied by an entity conforming to one of the requested media types: <a href="JSON/Shipping/PalletBuildingResponse.json">application/vnd.manh.ils.shipping.palletBuildingResponse+json</a>, <a href="XML%20Schema/Web%20Services/Pallet%20Building/PalletBuildingResponse.xsd">xml</a></p>
+
+                        <p>Contains a ContainerReferenceList tree structure showing the new pallets and which containers are nested in each, and a ContainerReferenceList of any containers that did not get nested.</p>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>400</td>
+
+                    <td>
+                        <p>The following ErrorTypes can be expected: <strong>Container, Unknown</strong></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p></p>
+    </div>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

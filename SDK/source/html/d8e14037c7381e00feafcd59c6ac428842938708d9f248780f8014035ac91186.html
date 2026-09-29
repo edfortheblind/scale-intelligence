@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Bind Detail Controls</title>
+    <meta name="Title" content="How to: Bind Detail Controls"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Individual controls on a Detail page are bound to properties on the returned NHibernate entity by specifying the NHibernate property in the DATA_SOURCE column of the SCREEN_CONTROL table along with the appropriate DATA_SOURCE_TYPE." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="67e0f821-b888-43bb-ae03-a911d093254a"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="7"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Bind Detail Controls</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Detail Pages
+ > How to: Bind Detail Controls</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Individual controls on a Detail page are bound to properties on the returned NHibernate entity by specifying the NHibernate property in the DATA_SOURCE column of the SCREEN_CONTROL table along with the appropriate DATA_SOURCE_TYPE.</p>
+
+<div id="i-e615fc36-ef2a-4f14-bff6-4e3429c46ff5-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Find the&nbsp;SCREEN_CONTROL record for the control</span>
+</div>
+
+<div id="i-e615fc36-ef2a-4f14-bff6-4e3429c46ff5-section-content" class="i-section-content">
+    <p>Select the SCREEN_CONTROL record for the control you are working with. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Find&nbsp;SCREEN_CONTROL record</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff">where</span> CONTROL_NAME <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>control name<span style="COLOR: #808080">&gt;</span>
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p></p>
+</div>
+
+<div id="i-6345cea4-a345-410d-a9b0-88f2853a2728-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Update the&nbsp;DATA_SOURCE and DATA_SOURCE_TYPE&nbsp;fields</span>
+</div>
+
+<div id="i-6345cea4-a345-410d-a9b0-88f2853a2728-section-content" class="i-section-content">
+    <p>To add a binding or change the binding on the control, simply update the DATA_SOURCE and DATA_SOURCE_TYPE fields accordingly. The DATA_SOURCE field must be filled with an NHibernate property, which is generally the database field name minus the underscores, with the first letter and each letter after the underscores capitalized and all other letters lower case (it is case sensitive). For example, the SHIPMENT_ID database column would be ShipmentId on an NHibernate entity. The DATA_SOURCE_TYPE is filled with one of the identifiers from the "Metadata data source type" configuration. For example, to bind an editor on a Detail page to the SHIPMENT_ID column, set the control to have DATA_SOURCE = 'ShipmentId' and DATA_SOURCE_TYPE = 20 (Data-bind attribute). Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <p></p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Modify&nbsp;DATA_SOURCE and DATA_SOURCE_TYPE&nbsp;columns</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">update</span> SCREEN_CONTROL <span style="COLOR: #0000ff">set</span> DATA_SOURCE <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'&lt;new NHibernate property name&gt;'</span>, DATA_SOURCE_TYPE <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'new data source type&gt;'</span>
+<span style="COLOR: #0000ff">where</span> CONTROL_NAME <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>control name<span style="COLOR: #808080">&gt;</span>
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

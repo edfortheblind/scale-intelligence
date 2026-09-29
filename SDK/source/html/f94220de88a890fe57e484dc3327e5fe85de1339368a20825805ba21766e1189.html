@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Exit Points For Customizing The Vocollect Request And Response Messages</title>
+    <meta name="Title" content="Exit Points For Customizing The Vocollect Request And Response Messages"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The system provides following exit points for customizing the vocollect messages. These exit points are added in VocollectMessagesApi service. Right now this feature is provided only for Manhattan Active SCALE customers." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="e84f5957-e713-4df9-93a7-d45236dff03d"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="3"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Exit Points For Customizing The Vocollect Request And Response Messages</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+<a href="Integration_Endpoints.html">Integration Endpoints</a>
+ > Exit points
+ > Exit Points For Customizing The Vocollect Request And Response Messages</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The system provides following exit points for customizing the vocollect messages. These exit points are added in VocollectMessagesApi service. Right now this feature is provided only for Manhattan Active SCALE customers.</p>
+
+<ul>
+    <li>Customize incoming Vocollect message – Before
+
+        <p>This one is used to customize the vocollect request message before scale processing it.</p>
+    </li>
+
+    <li>Customize outgoing Vocollect message – Before
+
+        <p>This one is used to customize the vocollect response message before sending it from Scale to the vocollect device.</p>
+    </li>
+</ul>
+
+<p>Both the exit points receive following four input parameters.</p>
+
+<ul>
+    <li><strong>Session value</strong></li>
+
+    <li><strong>Message type</strong> (Container, ContainerReview, ContainerType, CoreBreakTypes, CoreConfiguration, CoreSendBreakInfo, CoreSendVehicleIDs, CoreSignOff, CoreSignOn, CoreValidCodes, CoreValidFunctions, CoreValidVehicleTypes, GetAssignment, GetDeliveryLocation, GetPicks, PassAssignment, Picked, PickingRegion, Print, RegionPermissionsForWorkType, RequestWork, ReviewCasePicks, SendLot, StopAssignment, UpdateStatus, ValidLots, VerifyReplenishment, VerifyReplenishment)</li>
+
+    <li><strong>Vocollect message</strong> (in case of incoming ,it is a request message. for outgoing it is a response message.)</li>
+
+    <li><strong>Return value</strong> (Output only)</li>
+</ul>
+
+<p>The following example(Azure function) represents a sample implementation of customizing the vocollect response message before sending it to the vocollect device.</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Azure function</strong></p>
+
+<p><img border="0" alt="" src="images/ExitPoint/VocollectMessageCustomization.png" /></p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

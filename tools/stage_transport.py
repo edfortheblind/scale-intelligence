@@ -49,7 +49,15 @@ def validate_body(url, mime, body):
     if not body:
         raise AcquisitionBlocked("EMPTY_BODY", "Empty response is not documentation")
     low = body.lower()
-    is_html = "html" in mime.lower() or b"<html" in low[:2048]
+    # HTML strings inside JavaScript are data, not the response document.
+    # Ignore only a BOM, leading whitespace and complete HTML comments.
+    prefix = low.removeprefix(b"\xef\xbb\xbf").lstrip()
+    while prefix.startswith(b"<!--"):
+        end = prefix.find(b"-->")
+        if end < 0:
+            break
+        prefix = prefix[end + 3:].lstrip()
+    is_html = "html" in mime.lower() or bool(re.match(rb"(?:<!doctype\s+html|<(?:html|head|body))\b", prefix))
     expected_html = urlsplit(url).path.lower().endswith((".htm", ".html"))
     if is_html and re.search(rb"<input[^>]+type\s*=\s*[\"']?password", low):
         raise AcquisitionBlocked("BLOCKED_AUTH", "Authentication form detected; body not archived")

@@ -1,0 +1,156 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>How to: Create Monitor Page Stored Procedure</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">How to: Create Monitor Page Stored Procedure</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+User Interface Extensibility
+ &gt; Metadata Web Pages
+ &gt; Monitor Pages
+ &gt; How to: Create Monitor Page Stored Procedure</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47">The Generic Monitor Data Retrieval web service is used to retrieve data from a stored procedure and return it to a Monitor page. Also see the <a href="87805cd9111e0fa780af41745eecaec6f7c342121195d2ac78cb63c28ef7c81d.html" data-source-node="n48"><font color="navy" data-source-node="n49">How to Bind Controls on Monitor Page</font></a> topic for more information on binding the data to the controls on the Monitor page.</p>
+
+<div id="i-78ca4f69-beb4-42cc-89dc-4799de93602b-section-heading" class="i-section-heading" data-source-node="n50">
+    <span class="i-section-heading-icon" data-source-node="n51"><span class="i-hidden" data-source-node="n52"> </span></span><span class="i-section-heading-text" data-source-node="n53">Stored Procedure in Detail</span>
+</div>
+
+<div id="i-78ca4f69-beb4-42cc-89dc-4799de93602b-section-content" class="i-section-content" data-source-node="n54">
+    <ul data-source-node="n55">
+        <li data-source-node="n56"><strong data-source-node="n57">Stored Procedure Input Parameters: </strong>This stored procedure has two input parameters, FilterCriteria and culture. FilterCriteria can have multiple comma separated values and should end with a semicolon.</li>
+
+        <li data-source-node="n58"><strong data-source-node="n59">fn_GetMonitorFilterParameters Function:</strong> The Monitor stored procedure calls this SQL function to format the "FilterCriteria". This function returns a table which contains filterName and filterValue columns to represent the filter criteria name and value.</li>
+
+        <li data-source-node="n60"><strong data-source-node="n61">Return Data from Stored Procedure: </strong>The Monitor stored procedure returns data in a Table format. The table column details are outlined below.</li>
+    </ul>
+
+    <table data-source-node="n62">
+        <tbody data-source-node="n63">
+            <tr data-source-node="n64">
+                <td data-source-node="n65"><strong data-source-node="n66">Column Name</strong></td>
+
+                <td data-source-node="n67"><strong data-source-node="n68">Description</strong></td>
+            </tr>
+
+            <tr data-source-node="n69">
+                <td data-source-node="n70">ChartData_&lt;DataSourceName&gt;</td>
+
+                <td data-source-node="n71">This is the first column for the return data table. &lt;DataSourceName&gt; represents the data binding name for the control.</td>
+            </tr>
+
+            <tr data-source-node="n72">
+                <td data-source-node="n73">Data</td>
+
+                <td data-source-node="n74">Defines the actual chart values.</td>
+            </tr>
+
+            <tr data-source-node="n75">
+                <td data-source-node="n76">Category</td>
+
+                <td data-source-node="n77">Defines the data name for a chart.</td>
+            </tr>
+
+            <tr data-source-node="n78">
+                <td data-source-node="n79">XaxisTitle</td>
+
+                <td data-source-node="n80">Defines the chart's X axis title.</td>
+            </tr>
+
+            <tr data-source-node="n81">
+                <td data-source-node="n82">YaxisTtile</td>
+
+                <td data-source-node="n83">Defines the chart's Y axis title.</td>
+            </tr>
+
+            <tr data-source-node="n84">
+                <td data-source-node="n85">NextDrillDownLevel</td>
+
+                <td data-source-node="n86">Defines the next level of drilldown for the chart. Use -1 for last level or no drilldown.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL" data-source-node="n87">
+    <table class="i-syntax-table" data-source-node="n88">
+        <tbody data-source-node="n89">
+            <tr data-source-node="n90">
+                <th data-source-node="n91">Example Monitor Stored Procedure</th>
+
+                <th data-source-node="n92">
+                    <div class="i-copy-code-wrapper" data-source-node="n93">
+                        <span class="i-copy-code" data-source-node="n94">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr data-source-node="n95">
+                <td class="i-code" colspan="2" data-source-node="n96">
+                    <pre data-source-node="n97">
+<span style="COLOR: #0000ff" data-source-node="n98">Alter</span> <span style="COLOR: #0000ff" data-source-node="n99">Procedure</span> WRK_MonitorWorkGroupChartData
+<span style="COLOR: #008000" data-source-node="n100">@filterCriteria</span> <span style="COLOR: #0000ff" data-source-node="n101">nVarchar</span>(<span style="COLOR: #ff00ff" data-source-node="n102">MAX</span>),
+<span style="COLOR: #008000" data-source-node="n103">@culture</span> <span style="COLOR: #0000ff" data-source-node="n104">nvarchar</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n105">10</span>)
+       
+<span style="COLOR: #0000ff" data-source-node="n106">AS</span>
+    <span style="COLOR: #0000ff" data-source-node="n107">Set</span> NoCount <span style="COLOR: #0000ff" data-source-node="n108">ON</span>
+    <span style="COLOR: #0000ff" data-source-node="n109">DECLARE</span> <span style="COLOR: #008000" data-source-node="n110">@warehouse</span> <span style="COLOR: #0000ff" data-source-node="n111">as</span> <span style="COLOR: #0000ff" data-source-node="n112">nVarchar</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n113">50</span>);
+    <span style="COLOR: #0000ff" data-source-node="n114">DECLARE</span> <span style="COLOR: #008000" data-source-node="n115">@criteriaTempTable</span> <span style="COLOR: #0000ff" data-source-node="n116">TABLE</span> (
+   filterName <span style="COLOR: #0000ff" data-source-node="n117">nVarchar</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n118">300</span>),
+   filterValue <span style="COLOR: #0000ff" data-source-node="n119">nVarchar</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n120">300</span>))
+ <span style="COLOR: #008080" data-source-node="n121">/*get the where clause value*/</span>
+  <span style="COLOR: #0000ff" data-source-node="n122">INSERT</span> <span style="COLOR: #0000ff" data-source-node="n123">INTO</span> <span style="COLOR: #008000" data-source-node="n124">@criteriaTempTable</span> <span style="COLOR: #0000ff" data-source-node="n125">SELECT</span> <span style="COLOR: #808080" data-source-node="n126">*</span> <span style="COLOR: #0000ff" data-source-node="n127">FROM</span> fn_GetMonitorFilterParameters(<span style="COLOR: #008000" data-source-node="n128">@filterCriteria</span>)
+  <span style="COLOR: #0000ff" data-source-node="n129">SELECT</span> <span style="COLOR: #008000" data-source-node="n130">@warehouse</span> <span style="COLOR: #808080" data-source-node="n131">=</span> filterValue <span style="COLOR: #0000ff" data-source-node="n132">from</span> <span style="COLOR: #008000" data-source-node="n133">@criteriaTempTable</span> <span style="COLOR: #0000ff" data-source-node="n134">WHERE</span> filterName <span style="COLOR: #808080" data-source-node="n135">=</span> <span style="COLOR: #ff0000" data-source-node="n136">'FROM_WHS'</span>
+   
+ 
+  <span style="COLOR: #0000ff" data-source-node="n137">SELECT</span> <span style="COLOR: #ff0000" data-source-node="n138">'CHARTDATA_MonitorWorkGroup'</span> <span style="COLOR: #0000ff" data-source-node="n139">AS</span> CHARTDATA_MonitorWorkGroup, CATEGORY <span style="COLOR: #808080" data-source-node="n140">=</span> <span style="COLOR: #ff00ff" data-source-node="n141">CASE</span> <span style="COLOR: #0000ff" data-source-node="n142">WHEN</span>  WORK_INSTRUCTION.WORK_GROUP <span style="COLOR: #0000ff" data-source-node="n143">IS</span> <span style="COLOR: #0000ff" data-source-node="n144">NULL</span> <span style="COLOR: #0000ff" data-source-node="n145">THEN</span> <span style="COLOR: #ff0000" data-source-node="n146">'Unassigned'</span> <span style="COLOR: #0000ff" data-source-node="n147">ELSE</span> WORK_INSTRUCTION.WORK_GROUP <span style="COLOR: #0000ff" data-source-node="n148">END</span>,                                                                            
+                                                                    <span style="COLOR: #ff00ff" data-source-node="n149">COUNT</span>(<span style="COLOR: #0000ff" data-source-node="n150">DISTINCT</span> WORK_INSTRUCTION.WORK_UNIT)<span style="COLOR: #0000ff" data-source-node="n151">AS</span> DATA,
+                                                                    DESCRIPTION <span style="COLOR: #808080" data-source-node="n152">=</span><span style="COLOR: #ff00ff" data-source-node="n153">CASE</span> <span style="COLOR: #0000ff" data-source-node="n154">WHEN</span>  WORK_INSTRUCTION.WORK_GROUP <span style="COLOR: #0000ff" data-source-node="n155">IS</span> <span style="COLOR: #0000ff" data-source-node="n156">NULL</span> <span style="COLOR: #0000ff" data-source-node="n157">THEN</span> dbo.RSCMfn_RtrvResource(<span style="COLOR: #ff0000" data-source-node="n158">'UNASSIGNED'</span>,N<span style="COLOR: #ff0000" data-source-node="n159">'text'</span>,<span style="COLOR: #008000" data-source-node="n160">@culture</span>) <span style="COLOR: #0000ff" data-source-node="n161">ELSE</span> GENERIC_CONFIG_DETAIL.DESCRIPTION <span style="COLOR: #0000ff" data-source-node="n162">END</span>,   
+                                                                    <span style="COLOR: #ff0000" data-source-node="n163">'WORKGROUP'</span> <span style="COLOR: #0000ff" data-source-node="n164">AS</span> XAXISTITLE, <span style="COLOR: #ff0000" data-source-node="n165">'WORKUNITS'</span> <span style="COLOR: #0000ff" data-source-node="n166">AS</span> YAXISTITLE, <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n167">1</span> <span style="COLOR: #0000ff" data-source-node="n168">AS</span> NextDrillDownLevel <span style="COLOR: #0000ff" data-source-node="n169">FROM</span> WORK_INSTRUCTION
+ <span style="COLOR: #808080" data-source-node="n170">LEFT</span> <span style="COLOR: #808080" data-source-node="n171">OUTER</span> <span style="COLOR: #808080" data-source-node="n172">JOIN</span> GENERIC_CONFIG_DETAIL <span style="COLOR: #0000ff" data-source-node="n173">ON</span> GENERIC_CONFIG_DETAIL.IDENTIFIER <span style="COLOR: #808080" data-source-node="n174">=</span> WORK_INSTRUCTION.WORK_GROUP
+ <span style="COLOR: #0000ff" data-source-node="n175">WHERE</span> (WORK_INSTRUCTION.FROM_WHS <span style="COLOR: #808080" data-source-node="n176">=</span><span style="COLOR: #008000" data-source-node="n177">@warehouse</span> <span style="COLOR: #808080" data-source-node="n178">OR</span> WORK_INSTRUCTION.TO_WHS<span style="COLOR: #808080" data-source-node="n179">=</span><span style="COLOR: #008000" data-source-node="n180">@warehouse</span>) <span style="COLOR: #808080" data-source-node="n181">AND</span> WORK_INSTRUCTION.CONDITION <span style="COLOR: #808080" data-source-node="n182">!=</span> <span style="COLOR: #ff0000" data-source-node="n183">'CLOSED'</span>  <span style="COLOR: #808080" data-source-node="n184">and</span> (GENERIC_CONFIG_DETAIL.RECORD_TYPE <span style="COLOR: #808080" data-source-node="n185">=</span><span style="COLOR: #ff0000" data-source-node="n186">'WORK GROUP'</span> <span style="COLOR: #808080" data-source-node="n187">or</span> GENERIC_CONFIG_DETAIL.RECORD_TYPE <span style="COLOR: #0000ff" data-source-node="n188">IS</span> <span style="COLOR: #0000ff" data-source-node="n189">NULL</span>)  <span style="COLOR: #0000ff" data-source-node="n190">GROUP</span> <span style="COLOR: #0000ff" data-source-node="n191">BY</span> WORK_INSTRUCTION.WORK_GROUP, GENERIC_CONFIG_DETAIL.DESCRIPTION ;
+
+<span style="COLOR: #008080" data-source-node="n192">/* Summary Tiles End */</span>                 
+    <span style="COLOR: #0000ff" data-source-node="n193">If</span> <span style="FONT-WEIGHT: bold;COLOR: #008000" data-source-node="n194">@@ERROR</span> <span style="COLOR: #808080" data-source-node="n195">&lt;&gt;</span> <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n196">0</span> <span style="COLOR: #0000ff" data-source-node="n197">GoTo</span> ErrorHandler
+    <span style="COLOR: #0000ff" data-source-node="n198">Set</span> NoCount <span style="COLOR: #0000ff" data-source-node="n199">OFF</span>
+    <span style="COLOR: #0000ff" data-source-node="n200">Return</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n201">0</span>)
+ 
+ErrorHandler:
+    <span style="COLOR: #0000ff" data-source-node="n202">Return</span>(<span style="FONT-WEIGHT: bold;COLOR: #008000" data-source-node="n203">@@ERROR</span>)
+       
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            <a name="seealsobookmark" data-source-node="n204"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading" data-source-node="n205"><span class="i-section-heading-icon" data-source-node="n206"></span><span class="i-section-heading-text" data-source-node="n207">See Also</span></div><div id="i-seealso-section-content" class="i-section-content" data-source-node="n208"><div class="i-see-also-link" data-source-node="n209">
+<a href="87805cd9111e0fa780af41745eecaec6f7c342121195d2ac78cb63c28ef7c81d.html" data-source-node="n210">How to:  Bind Controls on a Monitor Page</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n211">
+        
+<p data-source-node="n212"> </p><p data-source-node="n213"> </p><hr style="height: 1px" data-source-node="n214"><p data-source-node="n215">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

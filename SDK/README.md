@@ -1,13 +1,19 @@
 # SDK
 
-Status: **PILOT_REPAIR_REQUIRED**. AIM is owner-accepted complete with documented exceptions. SDK acquisition uses the approved dedicated Edge session and preserves original API response bytes, including the UTF-8 BOM omitted by Chromium's alternate response-body representation.
+Technical status: **DISCOVERY_INCOMPLETE**. SDK remains technically incomplete; acquisition continuation is authorized and documented source/proof gaps remain open.
 
-Published navigation is reconciled across 176 TOC nodes in 12 roots, 287 unique index destinations, and 362 search destinations. One additional literal GUID topic link is queued exactly as published. Eight of 363 currently known articles are captured (2.20%); the complete source-link closure remains unknown. There are 99 saved original resources, 24 failed resources, and 355 pending resources. See [coverage](reports/coverage.json).
+363/380 known SDK article originals are saved (95.53%). 691/734 required original resources are saved; 43 failed and 0 pending. All currently eligible acquisition work is exhausted. Denominator: **KNOWN_LOWER_BOUND**.
 
-The eight-article SDK pilot covers welcome, Web API code and configuration, stored procedure authoring, control properties, mobile extensibility, generated API syntax, and an additional published topic inspected for a possible mapping. Exact text, 15 tables, seven code blocks, 22 visible documentary states, six code-copy payloads, and all eight idempotence/recovery checks passed. All 99 saved originals passed byte checks; all 47 saved images decoded. No attachments have yet been discovered. These checks do not certify unacquired resources.
+362/362 distinct published search-index destinations have saved original bodies. Body-only references may add required resources outside that index. All 691 saved originals pass byte-hash and length integrity checks. 3 saved attachments fail strict source text decoding. 50 published attachment examples have source parse diagnostics; these groups may overlap. The 50 distinct affected originals remain byte-preserved. Source-format defects remain recorded and are not repaired by transcoding or editing examples.
 
-The pilot failed required source availability: ten content images in WarehouseMobileExtensibility.html and 13 required stylesheet images return HTTP 404. One further stylesheet image outside the pilot dependency closure also returns HTTP 404. The normal Stage browser confirmed the ten broken content images; the first seven article API hashes matched their archives. Exact URLs and occurrences remain in [source gaps](reports/source-gaps.md). The additional How.html topic has a different published Help ID from the literal GUID link; no alias was inferred.
+363 articles pass structural reading checks; 0 pass reading/support checks; 0 pass all article checks. 1,838/1,838 known documentary state bodies are verified. The captured input generation is current according to the final audit.
 
-The SDK master prompt requires a passing pilot before bulk collection. An owner decision to permit continued acquisition while preserving these failures is pending. SDK completion has not been granted. AIM acceptance applies only to the recorded AIM exceptions.
+The zero reading/support count reflects strict dependency completeness: every one of the 363 preserved article bodies references jquery-ui-1.11.4.css (13 missing published dependencies). Article structure and documentary state verification pass; missing publisher CSS image/icon resources keep the combined reading/support flag false.
 
-Originals remain under source/, structured navigation and article data under data/, and faithful inert reading copies under reading/. The [reading index](docs/INDEX.md) preserves source order and labels. Original HTML/assets, app JSON, and the derived SQLite FTS5 index support the future consultation app. Source examples are never executed.
+The captured-fidelity report records 209/209 matching source/reading/copy payloads and 363/363 successful deterministic recovery rows. The resource report records 112/112 decoded saved images. Reported failures and stale proofs remain blockers; these counts do not waive missing resources.
+
+There are 43 currently recorded HTTP 404 URLs and 0 other failed resources. Exact URLs, source occurrences, failure history and parent references remain in [source gaps](reports/source-gaps.md). No aliases or deprecation conclusions are inferred.
+
+Originals are under source/, structured navigation/article data under data/, and inert copies under reading/. Open the [reading index](docs/INDEX.md). [Coverage](reports/coverage.json), [module audit](reports/module-audit.json), [resource proof](reports/resource-fidelity.json) and [cross-module reconciliation](reports/cross-module.json) record separate evidence.
+
+The owner authorized continued acquisition with documented source gaps. No acquisition approval is pending. SDK completion remains governed by its actual technical gates; AIM owner acceptance grants no SDK waiver. Private delivery verification is recorded separately in [../_project/delivery-checkpoint.json](../_project/delivery-checkpoint.json).

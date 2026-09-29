@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>QC Confirmation Web Service</title>
+    <meta name="Title" content="QC Confirmation Web Service"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The QC Confirmation web service allows a consumer to perform QC counts for the item contents of a Shipping container.  This is achieved by executing the following steps:" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="{AF8842EA-55D0-4739-BCFB-B3CDDC7329D3}"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">QC Confirmation Web Service</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The QC Confirmation web service allows a consumer to perform QC counts for the item contents of a Shipping container.&nbsp; This is achieved by executing the following steps:</p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Retrieve a Shipping Resource Representation</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>First perform an HTTP GET to retrieve a Shipping resource representation.</p>
+
+    <p>How to: <a href="ShippingWebService.html">Shipping Web Service</a></p>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Retrieve the ShippingContainer using its link</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p align="left">The Shipping resource representation will include&nbsp;the link to the Shipping Containers Resource. The link (rel="shippingContainer") has a href<em>&nbsp;</em>that is a URI template with the <strong>{warehouse}</strong> and <strong>{containerId}</strong> tokens.&nbsp; To fetch the Shipping Container representation, substitute the tokens and perform an HTTP GET:</p>
+
+    <p align="left">How to: <a href="Shipping_Container_Web_Service.html">Shipping Container Web service</a></p>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Retrieve the ShippingContainerQcCounts using its qcCounts link</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p align="left">The Shipping Container resource representation will include&nbsp;the link to its QC Counts collection resource. The link has a href<em>&nbsp;</em>that is a URI template with the <strong>{intContNum}</strong> token.&nbsp; To fetch the QC Counts, substitute the token with the Shipping Container's InternalContainerNum&nbsp;and perform an HTTP GET:</p>
+
+    <p><strong>Request:</strong></p>
+
+    <ul>
+        <li><strong>URI:</strong> From ShippingContainer's link (rel="qcCounts")&nbsp;href</li>
+
+        <li><strong>Method:</strong> GET</li>
+
+        <li><strong>Accept:</strong> application/json or application/xml</li>
+
+        <li><strong>Roles:</strong> SCALEUSER,Confidential</li>
+    </ul>
+
+    <p>&nbsp;</p>
+
+    <p><strong>Response:</strong></p>
+
+    <p>Aside from <a href="Standard_Responses_from_REST-Based_Web_Services.html">standard responses</a>, note the following specifics for this service:</p>
+
+    <p></p>
+
+    <table class="members">
+        <tbody>
+            <tr>
+                <th class="nameColumn">Status Code</th>
+
+                <th class="descriptionColumn">Notes</th>
+            </tr>
+
+            <tr>
+                <td>200</td>
+
+                <td>OK will be accompanied by the updated ShippingContainer conforming to one of the media types: <a href="JSON/Shipping/ShippingContainerQcCounts.json">application/vnd.manh.ils.shipping.shippingContainerQcCounts+json</a>,&nbsp;<a href="XML%20Schema/Web%20Services/Shipping/ShippingContainerQcCounts.xsd">XML</a>&nbsp;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 4: Post the ShippingContainerQcCounts using its completed link</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p align="left">The Shipping Container QC Counts collection&nbsp;resource representation will include&nbsp;a <strong>completed</strong> link.&nbsp;To do a QC Confirmation for the shipping container, fill the relevant QC data into each ShippingContainerQCCount representation and perform an HTTP POST with the following:</p>
+
+    <p><strong>Request:</strong></p>
+
+    <ul>
+        <li><strong>URI:</strong> From ShippingContainerQcCounts' link (rel="completed") href</li>
+
+        <li><strong>Method:</strong> POST</li>
+
+        <li><strong>Accept:</strong> application/json or application/xml</li>
+
+        <li><strong>Content-Type:</strong> application/json or application/xml</li>
+
+        <li><strong>Entity:</strong> The updated ShippingContainerQcCounts from Step 3</li>
+    </ul>
+
+    <p>&nbsp;</p>
+
+    <p><strong>Response:</strong></p>
+
+    <p>Aside from <a href="Standard_Responses_from_REST-Based_Web_Services.html">standard responses</a>, note the following specifics for this service:</p>
+
+    <p></p>
+
+    <table class="members">
+        <tbody>
+            <tr>
+                <th class="nameColumn">Status Code</th>
+
+                <th class="descriptionColumn">Notes</th>
+            </tr>
+
+            <tr>
+                <td>200</td>
+
+                <td>OK will be accompanied by the updated ShippingContainerQcCounts with the QcStatus field representing a Success or failure. The Response conforms to one of the&nbsp;media types: <a href="JSON/Shipping/ShippingContainerQcCounts.json">application/vnd.manh.ils.shipping.shippingContainerQcCounts+json</a>,&nbsp;<a href="XML%20Schema/Web%20Services/Shipping/ShippingContainerQcCounts.xsd">XML</a>&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td>400</td>
+
+                <td>
+                    <p>The following ErrorTypes can be expected: <strong>Container, Item, Quantity</strong></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

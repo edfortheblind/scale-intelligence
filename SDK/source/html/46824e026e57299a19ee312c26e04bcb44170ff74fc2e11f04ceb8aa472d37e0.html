@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Set Field Defaults through Exit Point Programs</title>
+    <meta name="Title" content="How to: Set Field Defaults through Exit Point Programs"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="System can set default values to detail screens through configured exit point. Default values can be set in create mode. System provides the exit point Field Defaults – Modify, this should be used to pass default values to detail screen. Sql function" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="691425c5-a2b8-4b86-a94a-ff795ac90d92"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="14"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Set Field Defaults through Exit Point Programs</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Detail Pages
+ > How to: Set Field Defaults through Exit Point Programs</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>System can set default values to detail screens through configured exit point.&nbsp;Default values&nbsp;can be set&nbsp;in&nbsp;create&nbsp;mode.&nbsp;System provides the exit point&nbsp;<em>Field&nbsp;Defaults – Modify</em>, this should be used to pass default values to detail screen.&nbsp;Sql function <em>ConvertKeyValueTableToXML</em>&nbsp;can be utilized to provide default values in required&nbsp;XML format to system.&nbsp;User defined Table Type <em>KeyValueTableType</em> is used to pass values to the <em>ConvertKeyValueTableToXML</em>&nbsp;function.</p>
+
+<p>The following example represents a sample implementation of the&nbsp;<em>Field&nbsp;Defaults – Modify</em> exit point program using a stored procedure.&nbsp;</p>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Sample exit point program for Field&nbsp;Defaults - Modify exit point</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">CREATE</span> <span style="COLOR: #0000ff">PROCEDURE</span> EXP_FieldDefaultsModify (
+    <span style="COLOR: #008000">@SESSIONVALUE</span> xml,
+    <span style="COLOR: #008000">@FORMID</span> numeric,
+    <span style="COLOR: #008000">@SCREENNAME</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="COLOR: #ff00ff">max</span>),
+    <span style="COLOR: #008000">@ENTITY</span> xml,
+    <span style="COLOR: #008000">@RETURNVALUE</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="COLOR: #ff00ff">max</span>) output
+)
+<span style="COLOR: #0000ff">AS</span>
+    <span style="COLOR: #0000ff">SET</span> NOCOUNT <span style="COLOR: #0000ff">ON</span>;
+    <span style="COLOR: #0000ff">Declare</span> <span style="COLOR: #008000">@DataTable</span> <span style="COLOR: #0000ff">as</span> KeyValueTableType;
+    <span style="COLOR: #0000ff">if</span>(<span style="COLOR: #008000">@FORMID</span> <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">2760</span>) <span style="COLOR: #008080">-- Shipment
+</span>    <span style="COLOR: #0000ff">BEGIN</span>
+        <span style="COLOR: #0000ff">Insert</span> <span style="COLOR: #0000ff">into</span> <span style="COLOR: #008000">@DataTable</span>(<span style="COLOR: #ff0000">[Key]</span>,VALUE)
+        <span style="COLOR: #0000ff">values</span> (<span style="COLOR: #ff0000">'UserDef7'</span>,<span style="COLOR: #ff0000">'9.000'</span>) 
+        <span style="COLOR: #0000ff">Insert</span> <span style="COLOR: #0000ff">into</span> <span style="COLOR: #008000">@DataTable</span>(<span style="COLOR: #ff0000">[Key]</span>,VALUE)   
+        <span style="COLOR: #0000ff">values</span> (<span style="COLOR: #ff0000">'Company'</span>,<span style="COLOR: #ff0000">'04-"Electronic" Avenue'</span>)
+    <span style="COLOR: #0000ff">END</span>
+    <span style="COLOR: #008080">--Returns Key Value XML for provided defaults.
+</span>    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #008000">@RETURNVALUE</span> <span style="COLOR: #808080">=</span> dbo.ConvertKeyValueTableToXML(<span style="COLOR: #008000">@DataTable</span>)       
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

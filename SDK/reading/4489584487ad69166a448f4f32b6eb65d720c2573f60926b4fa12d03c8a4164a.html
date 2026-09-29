@@ -1,0 +1,585 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Movement Class Analysis Extensibility</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">Movement Class Analysis Extensibility</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+Extensibility
+ &gt; Movement Class Analysis
+ &gt; Movement Class Analysis Extensibility</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47">Movement Class Analysis data mining functionality pulls data from the TRANSACTION_HISTORY and AR_TRANSACTION_HISTORY tables. This functionality can be extended by extending the  MOVECLS_MineMovementClassAnalysisData stored procedure or by adding a custom stored procedure via a modification.</p>
+
+<p data-source-node="n48">The MOVECLS_MineMovementClassAnalysisData stored procedure is responsible for the data migration functionality, below is an example that will illustrate how the functionality can be extended.</p>
+
+<div id="i-29823f73-8c4a-4a3c-852b-e057d1336228-section-heading" class="i-section-heading" data-source-node="n49">
+    <span class="i-section-heading-icon" data-source-node="n50"><span class="i-hidden" data-source-node="n51"> </span></span><span class="i-section-heading-text" data-source-node="n52">Modify the MOVECLS_MineMovementClassAnalysisData Stored Procedure</span>
+</div>
+
+<div id="i-29823f73-8c4a-4a3c-852b-e057d1336228-section-content" class="i-section-content" data-source-node="n53">
+    <p data-source-node="n54">A new nullable or default value parameter can be added to the stored procedure to allow the SP to be called from the existing and modified code. This will prevent breaking the existing stored procedure call. Here the WorkZone nullable field has been added in the existing stored procedure.</p>
+
+    <p data-source-node="n55"> </p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL" data-source-node="n56">
+        <table class="i-syntax-table" data-source-node="n57">
+            <tbody data-source-node="n58">
+                <tr data-source-node="n59">
+                    <th data-source-node="n60">MOVECLS_MineMovementClassAnalysisData</th>
+
+                    <th data-source-node="n61">
+                        <div class="i-copy-code-wrapper" data-source-node="n62">
+                            <span class="i-copy-code" data-source-node="n63">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr data-source-node="n64">
+                    <td class="i-code" colspan="2" data-source-node="n65">
+                        <pre data-source-node="n66">
+<span style="COLOR: #0000ff" data-source-node="n67">ALTER</span> <span style="COLOR: #0000ff" data-source-node="n68">PROCEDURE</span> <span style="COLOR: #ff0000" data-source-node="n69">[dbo]</span>.<span style="COLOR: #ff0000" data-source-node="n70">[MOVECLS_MineMovementClassAnalysisData]</span> (
+      <span style="COLOR: #008000" data-source-node="n71">@Warehouse</span> <span style="COLOR: #0000ff" data-source-node="n72">NVARCHAR</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n73">25</span>),
+      <span style="COLOR: #008000" data-source-node="n74">@Days</span> <span style="COLOR: #0000ff" data-source-node="n75">INT</span> <span style="COLOR: #808080" data-source-node="n76">=</span> <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n77">90</span>,
+      <span style="COLOR: #008000" data-source-node="n78">@Permanent</span> <span style="COLOR: #0000ff" data-source-node="n79">NCHAR</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n80">1</span>),
+      <span style="COLOR: #008000" data-source-node="n81">@IncludeArchivedData</span> <span style="COLOR: #0000ff" data-source-node="n82">NCHAR</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n83">1</span>),
+      <span style="COLOR: #008000" data-source-node="n84">@WorkZone</span> <span style="COLOR: #0000ff" data-source-node="n85">NVARCHAR</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n86">25</span>) <span style="COLOR: #808080" data-source-node="n87">=</span> <span style="COLOR: #0000ff" data-source-node="n88">NULL</span>  <span style="COLOR: #008080" data-source-node="n89">--- 'Work Zone has been added under extensibility.'      )
+</span><span style="COLOR: #0000ff" data-source-node="n90">AS</span>
+<span style="COLOR: #0000ff" data-source-node="n91">SET</span> NOCOUNT <span style="COLOR: #0000ff" data-source-node="n92">ON</span>;
+
+<span style="COLOR: #0000ff" data-source-node="n93">DECLARE</span> <span style="COLOR: #008000" data-source-node="n94">@DateFrom</span> <span style="COLOR: #0000ff" data-source-node="n95">DATETIME</span>
+<span style="COLOR: #0000ff" data-source-node="n96">DECLARE</span> <span style="COLOR: #008000" data-source-node="n97">@DateTo</span> <span style="COLOR: #0000ff" data-source-node="n98">DATETIME</span>
+<span style="COLOR: #0000ff" data-source-node="n99">DECLARE</span> <span style="COLOR: #008000" data-source-node="n100">@stErrorMsg</span> <span style="COLOR: #0000ff" data-source-node="n101">NVARCHAR</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n102">2000</span>)
+<span style="COLOR: #0000ff" data-source-node="n103">DECLARE</span> <span style="COLOR: #008000" data-source-node="n104">@rowEffected</span> NUMERIC(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n105">9</span>, <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n106">0</span>)
+
+<span style="COLOR: #0000ff" data-source-node="n107">SELECT</span> <span style="COLOR: #008000" data-source-node="n108">@DateTo</span> <span style="COLOR: #808080" data-source-node="n109">=</span> <span style="COLOR: #ff00ff" data-source-node="n110">DATEADD</span>(dd, <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n111">1</span>, <span style="COLOR: #ff00ff" data-source-node="n112">DATEDIFF</span>(dd, <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n113">0</span>, <span style="COLOR: #ff00ff" data-source-node="n114">GETDATE</span>()))
+
+<span style="COLOR: #0000ff" data-source-node="n115">SELECT</span> <span style="COLOR: #008000" data-source-node="n116">@DateFrom</span> <span style="COLOR: #808080" data-source-node="n117">=</span> <span style="COLOR: #008000" data-source-node="n118">@DateTo</span> <span style="COLOR: #808080" data-source-node="n119">-</span> <span style="COLOR: #008000" data-source-node="n120">@Days</span>
+
+<span style="COLOR: #008080" data-source-node="n121">--Wareshouse should not be null
+</span><span style="COLOR: #0000ff" data-source-node="n122">IF</span> (<span style="COLOR: #008000" data-source-node="n123">@Warehouse</span> <span style="COLOR: #0000ff" data-source-node="n124">IS</span> <span style="COLOR: #0000ff" data-source-node="n125">NULL</span>)
+<span style="COLOR: #0000ff" data-source-node="n126">BEGIN</span>
+      <span style="COLOR: #0000ff" data-source-node="n127">SET</span> <span style="COLOR: #008000" data-source-node="n128">@stErrorMsg</span> <span style="COLOR: #808080" data-source-node="n129">=</span> N<span style="COLOR: #ff0000" data-source-node="n130">'MSG_INVVAL28'</span>;
+
+      <span style="COLOR: #0000ff" data-source-node="n131">RETURN</span> <span style="COLOR: #808080" data-source-node="n132">-</span> <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n133">1</span>;
+<span style="COLOR: #0000ff" data-source-node="n134">END</span>
+
+<span style="COLOR: #008080" data-source-node="n135">--Clear MOVEMENT_CLASS_ANALYSIS table on each run
+</span><span style="COLOR: #0000ff" data-source-node="n136">DELETE</span>
+<span style="COLOR: #0000ff" data-source-node="n137">FROM</span> MOVEMENT_CLASS_ANALYSIS
+<span style="COLOR: #0000ff" data-source-node="n138">WHERE</span> WAREHOUSE <span style="COLOR: #808080" data-source-node="n139">=</span> <span style="COLOR: #008000" data-source-node="n140">@Warehouse</span>
+
+<span style="COLOR: #0000ff" data-source-node="n141">IF</span> <span style="COLOR: #ff00ff" data-source-node="n142">UPPER</span>(<span style="COLOR: #008000" data-source-node="n143">@PERMANENT</span>) <span style="COLOR: #808080" data-source-node="n144">=</span> N<span style="COLOR: #ff0000" data-source-node="n145">'Y'</span>
+<span style="COLOR: #0000ff" data-source-node="n146">BEGIN</span>
+      <span style="COLOR: #0000ff" data-source-node="n147">INSERT</span> <span style="COLOR: #0000ff" data-source-node="n148">INTO</span> MOVEMENT_CLASS_ANALYSIS (
+            ITEM,
+            COMPANY,
+            WAREHOUSE,
+            LOCATION,
+            TOTAL_QUANTITY,
+            QUANTITY_UM,
+            ITEM_CLASS,
+            NUMBER_OF_HITS,
+            NUMBER_OF_DAYS,
+            DATE_TIME_STAMP,
+            USER_STAMP,
+            PROCESS_STAMP
+            )
+      <span style="COLOR: #0000ff" data-source-node="n149">SELECT</span> ITEM,
+            COMPANY,
+            WAREHOUSE,
+            LOCATION,
+            <span style="COLOR: #ff00ff" data-source-node="n150">sum</span>(TOTAL_QUATITY) <span style="COLOR: #0000ff" data-source-node="n151">AS</span> TOTAL_QUATITY,
+            QUANTITY_UM,
+            ITEM_CLASS,
+            <span style="COLOR: #ff00ff" data-source-node="n152">SUM</span>(NUMBER_OF_HITS),
+            <span style="COLOR: #008000" data-source-node="n153">@Days</span>,
+            <span style="COLOR: #ff00ff" data-source-node="n154">GETDATE</span>(),
+            N<span style="COLOR: #ff0000" data-source-node="n155">'System'</span>,
+            N<span style="COLOR: #ff0000" data-source-node="n156">'MineMovementClassAnalysis'</span>
+      <span style="COLOR: #0000ff" data-source-node="n157">FROM</span> (
+            <span style="COLOR: #0000ff" data-source-node="n158">SELECT</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.WAREHOUSE,
+                  TH.LOCATION,
+                  <span style="COLOR: #ff00ff" data-source-node="n159">sum</span>(TH.QUANTITY) <span style="COLOR: #0000ff" data-source-node="n160">AS</span> TOTAL_QUATITY,
+                  th.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            <span style="COLOR: #0000ff" data-source-node="n161">FROM</span> ITEM I <span style="COLOR: #0000ff" data-source-node="n162">WITH</span> (NOLOCK)
+            <span style="COLOR: #808080" data-source-node="n163">JOIN</span> (
+                  <span style="COLOR: #0000ff" data-source-node="n164">SELECT</span> TRANSACTION_HISTORY.ITEM,
+                        TRANSACTION_HISTORY.COMPANY,
+                        TRANSACTION_HISTORY.WAREHOUSE,
+                        TRANSACTION_HISTORY.LOCATION,
+                        TRANSACTION_HISTORY.QUANTITY_UM,
+                        <span style="COLOR: #ff00ff" data-source-node="n165">sum</span>(TRANSACTION_HISTORY.QUANTITY) <span style="COLOR: #0000ff" data-source-node="n166">AS</span> QUANTITY,
+                        <span style="COLOR: #ff00ff" data-source-node="n167">COUNT</span>(<span style="COLOR: #808080" data-source-node="n168">*</span>) <span style="COLOR: #0000ff" data-source-node="n169">AS</span> NUMBER_OF_HITS
+                  <span style="COLOR: #0000ff" data-source-node="n170">FROM</span> TRANSACTION_HISTORY <span style="COLOR: #0000ff" data-source-node="n171">WITH</span> (NOLOCK)
+                  <span style="COLOR: #0000ff" data-source-node="n172">INNER</span> <span style="COLOR: #808080" data-source-node="n173">JOIN</span> LOCATION <span style="COLOR: #0000ff" data-source-node="n174">WITH</span> (NOLOCK)
+                        <span style="COLOR: #0000ff" data-source-node="n175">ON</span> LOCATION.LOCATION <span style="COLOR: #808080" data-source-node="n176">=</span> TRANSACTION_HISTORY.LOCATION
+                              <span style="COLOR: #808080" data-source-node="n177">AND</span> LOCATION.WAREHOUSE <span style="COLOR: #808080" data-source-node="n178">=</span> TRANSACTION_HISTORY.WAREHOUSE
+                              <span style="COLOR: #808080" data-source-node="n179">AND</span> LOCATION.LOCATION_CLASS <span style="COLOR: #808080" data-source-node="n180">=</span> N<span style="COLOR: #ff0000" data-source-node="n181">'Inventory'</span>
+                  <span style="COLOR: #0000ff" data-source-node="n182">INNER</span> <span style="COLOR: #808080" data-source-node="n183">JOIN</span> LOCATION_INVENTORY LI
+                        <span style="COLOR: #0000ff" data-source-node="n184">ON</span> TRANSACTION_HISTORY.LOCATION <span style="COLOR: #808080" data-source-node="n185">=</span> LI.LOCATION
+                              <span style="COLOR: #808080" data-source-node="n186">AND</span> TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080" data-source-node="n187">=</span> LI.WAREHOUSE
+                  <span style="COLOR: #0000ff" data-source-node="n188">WHERE</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080" data-source-node="n189">&gt;=</span> <span style="COLOR: #008000" data-source-node="n190">@DateFrom</span>
+                        <span style="COLOR: #808080" data-source-node="n191">AND</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080" data-source-node="n192">&lt;</span> <span style="COLOR: #008000" data-source-node="n193">@DateTo</span>
+                        <span style="COLOR: #808080" data-source-node="n194">AND</span> DIRECTION <span style="COLOR: #808080" data-source-node="n195">=</span> N<span style="COLOR: #ff0000" data-source-node="n196">'FROM'</span>
+                        <span style="COLOR: #808080" data-source-node="n197">AND</span> TRANSACTION_TYPE <span style="COLOR: #808080" data-source-node="n198">IN</span> (
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n199">40</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n200">60</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n201">100</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n202">130</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n203">120</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n204">240</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n205">250</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n206">360</span>
+                              )
+                        <span style="COLOR: #808080" data-source-node="n207">AND</span> TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080" data-source-node="n208">=</span> <span style="COLOR: #008000" data-source-node="n209">@Warehouse</span>
+                        <span style="COLOR: #808080" data-source-node="n210">AND</span> (
+                              <span style="COLOR: #008000" data-source-node="n211">@WorkZone</span> <span style="COLOR: #0000ff" data-source-node="n212">IS</span> <span style="COLOR: #0000ff" data-source-node="n213">NULL</span>
+                              <span style="COLOR: #808080" data-source-node="n214">OR</span> (<span style="COLOR: #ff00ff" data-source-node="n215">ISNULL</span>(<span style="COLOR: #008000" data-source-node="n216">@WorkZone</span>, <span style="COLOR: #ff0000" data-source-node="n217">'!'</span>) <span style="COLOR: #808080" data-source-node="n218">=</span> <span style="COLOR: #ff00ff" data-source-node="n219">ISNULL</span>(TRANSACTION_HISTORY.WORK_ZONE, <span style="COLOR: #ff0000" data-source-node="n220">'!'</span>))
+                              ) <span style="COLOR: #008080" data-source-node="n221">--- 'Work Zone has been added under extensibility.'
+</span>                        <span style="COLOR: #808080" data-source-node="n222">AND</span> (LI.<span style="COLOR: #0000ff" data-source-node="n223">PERMANENT</span> <span style="COLOR: #808080" data-source-node="n224">&lt;&gt;</span> N<span style="COLOR: #ff0000" data-source-node="n225">'N'</span>)
+                  <span style="COLOR: #0000ff" data-source-node="n226">GROUP</span> <span style="COLOR: #0000ff" data-source-node="n227">BY</span> TRANSACTION_HISTORY.ITEM,
+                        TRANSACTION_HISTORY.COMPANY,
+                        TRANSACTION_HISTORY.WAREHOUSE,
+                        TRANSACTION_HISTORY.LOCATION,
+                        TRANSACTION_HISTORY.QUANTITY_UM
+                  ) TH
+                  <span style="COLOR: #0000ff" data-source-node="n228">ON</span> I.ITEM <span style="COLOR: #808080" data-source-node="n229">=</span> TH.ITEM
+                        <span style="COLOR: #808080" data-source-node="n230">AND</span> (
+                              TH.COMPANY <span style="COLOR: #808080" data-source-node="n231">=</span> I.COMPANY
+                              <span style="COLOR: #808080" data-source-node="n232">OR</span> (
+                                    TH.COMPANY <span style="COLOR: #0000ff" data-source-node="n233">IS</span> <span style="COLOR: #0000ff" data-source-node="n234">NULL</span>
+                                    <span style="COLOR: #808080" data-source-node="n235">OR</span> I.COMPANY <span style="COLOR: #0000ff" data-source-node="n236">IS</span> <span style="COLOR: #0000ff" data-source-node="n237">NULL</span>
+                                    )
+                              )
+            <span style="COLOR: #0000ff" data-source-node="n238">WHERE</span> TH.WAREHOUSE <span style="COLOR: #808080" data-source-node="n239">=</span> <span style="COLOR: #008000" data-source-node="n240">@WAREHOUSE</span>
+            <span style="COLOR: #0000ff" data-source-node="n241">GROUP</span> <span style="COLOR: #0000ff" data-source-node="n242">BY</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.LOCATION,
+                  TH.WAREHOUSE,
+                  TH.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            
+            <span style="COLOR: #0000ff" data-source-node="n243">UNION</span>
+            
+            <span style="COLOR: #0000ff" data-source-node="n244">SELECT</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.WAREHOUSE,
+                  TH.LOCATION,
+                  <span style="COLOR: #ff00ff" data-source-node="n245">sum</span>(TH.QUANTITY) <span style="COLOR: #0000ff" data-source-node="n246">AS</span> TOTAL_QUATITY,
+                  th.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            <span style="COLOR: #0000ff" data-source-node="n247">FROM</span> ITEM I <span style="COLOR: #0000ff" data-source-node="n248">WITH</span> (NOLOCK)
+            <span style="COLOR: #808080" data-source-node="n249">JOIN</span> (
+                  <span style="COLOR: #0000ff" data-source-node="n250">SELECT</span> AR_TRANSACTION_HISTORY.ITEM,
+                        AR_TRANSACTION_HISTORY.COMPANY,
+                        AR_TRANSACTION_HISTORY.WAREHOUSE,
+                        AR_TRANSACTION_HISTORY.LOCATION,
+                        AR_TRANSACTION_HISTORY.QUANTITY_UM,
+                        <span style="COLOR: #ff00ff" data-source-node="n251">sum</span>(AR_TRANSACTION_HISTORY.QUANTITY) <span style="COLOR: #0000ff" data-source-node="n252">AS</span> QUANTITY,
+                        <span style="COLOR: #ff00ff" data-source-node="n253">COUNT</span>(<span style="COLOR: #808080" data-source-node="n254">*</span>) <span style="COLOR: #0000ff" data-source-node="n255">AS</span> NUMBER_OF_HITS
+                  <span style="COLOR: #0000ff" data-source-node="n256">FROM</span> AR_TRANSACTION_HISTORY <span style="COLOR: #0000ff" data-source-node="n257">WITH</span> (NOLOCK)
+                  <span style="COLOR: #0000ff" data-source-node="n258">INNER</span> <span style="COLOR: #808080" data-source-node="n259">JOIN</span> LOCATION <span style="COLOR: #0000ff" data-source-node="n260">WITH</span> (NOLOCK)
+                        <span style="COLOR: #0000ff" data-source-node="n261">ON</span> LOCATION.LOCATION <span style="COLOR: #808080" data-source-node="n262">=</span> AR_TRANSACTION_HISTORY.LOCATION
+                              <span style="COLOR: #808080" data-source-node="n263">AND</span> LOCATION.WAREHOUSE <span style="COLOR: #808080" data-source-node="n264">=</span> AR_TRANSACTION_HISTORY.WAREHOUSE
+                              <span style="COLOR: #808080" data-source-node="n265">AND</span> LOCATION.LOCATION_CLASS <span style="COLOR: #808080" data-source-node="n266">=</span> N<span style="COLOR: #ff0000" data-source-node="n267">'Inventory'</span>
+                  <span style="COLOR: #0000ff" data-source-node="n268">INNER</span> <span style="COLOR: #808080" data-source-node="n269">JOIN</span> LOCATION_INVENTORY LI
+                        <span style="COLOR: #0000ff" data-source-node="n270">ON</span> AR_TRANSACTION_HISTORY.LOCATION <span style="COLOR: #808080" data-source-node="n271">=</span> LI.LOCATION
+                              <span style="COLOR: #808080" data-source-node="n272">AND</span> AR_TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080" data-source-node="n273">=</span> LI.WAREHOUSE
+                  <span style="COLOR: #0000ff" data-source-node="n274">WHERE</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080" data-source-node="n275">&gt;=</span> <span style="COLOR: #008000" data-source-node="n276">@DateFrom</span>
+                        <span style="COLOR: #808080" data-source-node="n277">AND</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080" data-source-node="n278">&lt;</span> <span style="COLOR: #008000" data-source-node="n279">@DateTo</span>
+                        <span style="COLOR: #808080" data-source-node="n280">AND</span> DIRECTION <span style="COLOR: #808080" data-source-node="n281">=</span> N<span style="COLOR: #ff0000" data-source-node="n282">'FROM'</span>
+                        <span style="COLOR: #808080" data-source-node="n283">AND</span> TRANSACTION_TYPE <span style="COLOR: #808080" data-source-node="n284">IN</span> (
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n285">40</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n286">60</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n287">100</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n288">130</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n289">120</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n290">240</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n291">250</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n292">360</span>
+                              )
+                        <span style="COLOR: #808080" data-source-node="n293">AND</span> AR_TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080" data-source-node="n294">=</span> <span style="COLOR: #008000" data-source-node="n295">@Warehouse</span>
+                        <span style="COLOR: #808080" data-source-node="n296">AND</span> (
+                              <span style="COLOR: #008000" data-source-node="n297">@WorkZone</span> <span style="COLOR: #0000ff" data-source-node="n298">IS</span> <span style="COLOR: #0000ff" data-source-node="n299">NULL</span>
+                              <span style="COLOR: #808080" data-source-node="n300">OR</span> (<span style="COLOR: #ff00ff" data-source-node="n301">ISNULL</span>(<span style="COLOR: #008000" data-source-node="n302">@WorkZone</span>, <span style="COLOR: #ff0000" data-source-node="n303">'!'</span>) <span style="COLOR: #808080" data-source-node="n304">=</span> <span style="COLOR: #ff00ff" data-source-node="n305">ISNULL</span>(AR_TRANSACTION_HISTORY.WORK_ZONE, <span style="COLOR: #ff0000" data-source-node="n306">'!'</span>))
+                              ) <span style="COLOR: #008080" data-source-node="n307">--- 'Work Zone has been added under extensibility.'
+</span>                        <span style="COLOR: #808080" data-source-node="n308">AND</span> (LI.<span style="COLOR: #0000ff" data-source-node="n309">PERMANENT</span> <span style="COLOR: #808080" data-source-node="n310">&lt;&gt;</span> N<span style="COLOR: #ff0000" data-source-node="n311">'N'</span>)
+                  <span style="COLOR: #0000ff" data-source-node="n312">GROUP</span> <span style="COLOR: #0000ff" data-source-node="n313">BY</span> AR_TRANSACTION_HISTORY.ITEM,
+                        AR_TRANSACTION_HISTORY.COMPANY,
+                        AR_TRANSACTION_HISTORY.WAREHOUSE,
+                        AR_TRANSACTION_HISTORY.LOCATION,
+                        AR_TRANSACTION_HISTORY.QUANTITY_UM
+                  ) TH
+                  <span style="COLOR: #0000ff" data-source-node="n314">ON</span> I.ITEM <span style="COLOR: #808080" data-source-node="n315">=</span> TH.ITEM
+                        <span style="COLOR: #808080" data-source-node="n316">AND</span> (
+                              TH.COMPANY <span style="COLOR: #808080" data-source-node="n317">=</span> I.COMPANY
+                              <span style="COLOR: #808080" data-source-node="n318">OR</span> (
+                                    TH.COMPANY <span style="COLOR: #0000ff" data-source-node="n319">IS</span> <span style="COLOR: #0000ff" data-source-node="n320">NULL</span>
+                                    <span style="COLOR: #808080" data-source-node="n321">OR</span> I.COMPANY <span style="COLOR: #0000ff" data-source-node="n322">IS</span> <span style="COLOR: #0000ff" data-source-node="n323">NULL</span>
+                                    )
+                              )
+            <span style="COLOR: #0000ff" data-source-node="n324">WHERE</span> TH.WAREHOUSE <span style="COLOR: #808080" data-source-node="n325">=</span> <span style="COLOR: #008000" data-source-node="n326">@WAREHOUSE</span>
+                  <span style="COLOR: #808080" data-source-node="n327">AND</span> <span style="COLOR: #008000" data-source-node="n328">@IncludeArchivedData</span> <span style="COLOR: #808080" data-source-node="n329">=</span> N<span style="COLOR: #ff0000" data-source-node="n330">'Y'</span>
+            <span style="COLOR: #0000ff" data-source-node="n331">GROUP</span> <span style="COLOR: #0000ff" data-source-node="n332">BY</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.LOCATION,
+                  TH.WAREHOUSE,
+                  TH.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            ) TransactionHistoryData
+      <span style="COLOR: #0000ff" data-source-node="n333">GROUP</span> <span style="COLOR: #0000ff" data-source-node="n334">BY</span> ITEM,
+            COMPANY,
+            LOCATION,
+            WAREHOUSE,
+            QUANTITY_UM,
+            ITEM_CLASS
+<span style="COLOR: #0000ff" data-source-node="n335">END</span>
+<span style="COLOR: #0000ff" data-source-node="n336">ELSE</span>
+<span style="COLOR: #0000ff" data-source-node="n337">BEGIN</span>
+      <span style="COLOR: #0000ff" data-source-node="n338">INSERT</span> <span style="COLOR: #0000ff" data-source-node="n339">INTO</span> MOVEMENT_CLASS_ANALYSIS (
+            ITEM,
+            COMPANY,
+            WAREHOUSE,
+            LOCATION,
+            TOTAL_QUANTITY,
+            QUANTITY_UM,
+            ITEM_CLASS,
+            NUMBER_OF_HITS,
+            NUMBER_OF_DAYS,
+            DATE_TIME_STAMP,
+            USER_STAMP,
+            PROCESS_STAMP
+            )
+      <span style="COLOR: #0000ff" data-source-node="n340">SELECT</span> ITEM,
+            COMPANY,
+            WAREHOUSE,
+            LOCATION,
+            <span style="COLOR: #ff00ff" data-source-node="n341">sum</span>(TOTAL_QUATITY) <span style="COLOR: #0000ff" data-source-node="n342">AS</span> TOTAL_QUATITY,
+            QUANTITY_UM,
+            ITEM_CLASS,
+            <span style="COLOR: #ff00ff" data-source-node="n343">SUM</span>(NUMBER_OF_HITS),
+            <span style="COLOR: #008000" data-source-node="n344">@DAYS</span>,
+            <span style="COLOR: #ff00ff" data-source-node="n345">GETDATE</span>(),
+            N<span style="COLOR: #ff0000" data-source-node="n346">'System'</span>,
+            N<span style="COLOR: #ff0000" data-source-node="n347">'MineMovementClassAnalysis'</span>
+      <span style="COLOR: #0000ff" data-source-node="n348">FROM</span> (
+            <span style="COLOR: #0000ff" data-source-node="n349">SELECT</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.WAREHOUSE,
+                  TH.LOCATION,
+                  <span style="COLOR: #ff00ff" data-source-node="n350">sum</span>(TH.QUANTITY) <span style="COLOR: #0000ff" data-source-node="n351">AS</span> TOTAL_QUATITY,
+                  th.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            <span style="COLOR: #0000ff" data-source-node="n352">FROM</span> ITEM I <span style="COLOR: #0000ff" data-source-node="n353">WITH</span> (NOLOCK)
+            <span style="COLOR: #808080" data-source-node="n354">JOIN</span> (
+                  <span style="COLOR: #0000ff" data-source-node="n355">SELECT</span> TRANSACTION_HISTORY.ITEM,
+                        TRANSACTION_HISTORY.COMPANY,
+                        TRANSACTION_HISTORY.WAREHOUSE,
+                        TRANSACTION_HISTORY.LOCATION,
+                        QUANTITY_UM,
+                        <span style="COLOR: #ff00ff" data-source-node="n356">sum</span>(TRANSACTION_HISTORY.QUANTITY) <span style="COLOR: #0000ff" data-source-node="n357">AS</span> QUANTITY,
+                        <span style="COLOR: #ff00ff" data-source-node="n358">COUNT</span>(<span style="COLOR: #808080" data-source-node="n359">*</span>) <span style="COLOR: #0000ff" data-source-node="n360">AS</span> NUMBER_OF_HITS
+                  <span style="COLOR: #0000ff" data-source-node="n361">FROM</span> TRANSACTION_HISTORY <span style="COLOR: #0000ff" data-source-node="n362">WITH</span> (NOLOCK)
+                  <span style="COLOR: #0000ff" data-source-node="n363">INNER</span> <span style="COLOR: #808080" data-source-node="n364">JOIN</span> LOCATION <span style="COLOR: #0000ff" data-source-node="n365">WITH</span> (NOLOCK)
+                        <span style="COLOR: #0000ff" data-source-node="n366">ON</span> LOCATION.LOCATION <span style="COLOR: #808080" data-source-node="n367">=</span> TRANSACTION_HISTORY.LOCATION
+                              <span style="COLOR: #808080" data-source-node="n368">AND</span> LOCATION.WAREHOUSE <span style="COLOR: #808080" data-source-node="n369">=</span> TRANSACTION_HISTORY.WAREHOUSE
+                              <span style="COLOR: #808080" data-source-node="n370">AND</span> LOCATION.LOCATION_CLASS <span style="COLOR: #808080" data-source-node="n371">=</span> N<span style="COLOR: #ff0000" data-source-node="n372">'Inventory'</span>
+                  <span style="COLOR: #0000ff" data-source-node="n373">WHERE</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080" data-source-node="n374">&gt;=</span> <span style="COLOR: #008000" data-source-node="n375">@DateFrom</span>
+                        <span style="COLOR: #808080" data-source-node="n376">AND</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080" data-source-node="n377">&lt;</span> <span style="COLOR: #008000" data-source-node="n378">@DateTo</span>
+                        <span style="COLOR: #808080" data-source-node="n379">AND</span> DIRECTION <span style="COLOR: #808080" data-source-node="n380">=</span> N<span style="COLOR: #ff0000" data-source-node="n381">'FROM'</span>
+                        <span style="COLOR: #808080" data-source-node="n382">AND</span> TRANSACTION_TYPE <span style="COLOR: #808080" data-source-node="n383">IN</span> (
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n384">40</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n385">60</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n386">100</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n387">130</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n388">120</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n389">240</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n390">250</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n391">360</span>
+                              )
+                        <span style="COLOR: #808080" data-source-node="n392">AND</span> TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080" data-source-node="n393">=</span> <span style="COLOR: #008000" data-source-node="n394">@Warehouse</span>
+                        <span style="COLOR: #808080" data-source-node="n395">AND</span> (
+                              <span style="COLOR: #008000" data-source-node="n396">@WorkZone</span> <span style="COLOR: #0000ff" data-source-node="n397">IS</span> <span style="COLOR: #0000ff" data-source-node="n398">NULL</span>
+                              <span style="COLOR: #808080" data-source-node="n399">OR</span> (<span style="COLOR: #ff00ff" data-source-node="n400">ISNULL</span>(<span style="COLOR: #008000" data-source-node="n401">@WorkZone</span>, <span style="COLOR: #ff0000" data-source-node="n402">'!'</span>) <span style="COLOR: #808080" data-source-node="n403">=</span> <span style="COLOR: #ff00ff" data-source-node="n404">ISNULL</span>(TRANSACTION_HISTORY.WORK_ZONE, <span style="COLOR: #ff0000" data-source-node="n405">'!'</span>))
+                              )  <span style="COLOR: #008080" data-source-node="n406">--- 'Work Zone has been added under extensibility.'
+</span>                  <span style="COLOR: #0000ff" data-source-node="n407">GROUP</span> <span style="COLOR: #0000ff" data-source-node="n408">BY</span> TRANSACTION_HISTORY.ITEM,
+                        TRANSACTION_HISTORY.COMPANY,
+                        TRANSACTION_HISTORY.WAREHOUSE,
+                        TRANSACTION_HISTORY.LOCATION,
+                        QUANTITY_UM
+                  ) TH
+                  <span style="COLOR: #0000ff" data-source-node="n409">ON</span> I.ITEM <span style="COLOR: #808080" data-source-node="n410">=</span> TH.ITEM
+                        <span style="COLOR: #808080" data-source-node="n411">AND</span> (
+                              TH.COMPANY <span style="COLOR: #808080" data-source-node="n412">=</span> I.COMPANY
+                              <span style="COLOR: #808080" data-source-node="n413">OR</span> (
+                                    TH.COMPANY <span style="COLOR: #0000ff" data-source-node="n414">IS</span> <span style="COLOR: #0000ff" data-source-node="n415">NULL</span>
+                                    <span style="COLOR: #808080" data-source-node="n416">OR</span> I.COMPANY <span style="COLOR: #0000ff" data-source-node="n417">IS</span> <span style="COLOR: #0000ff" data-source-node="n418">NULL</span>
+                                    )
+                              )
+            <span style="COLOR: #0000ff" data-source-node="n419">WHERE</span> TH.WAREHOUSE <span style="COLOR: #808080" data-source-node="n420">=</span> <span style="COLOR: #008000" data-source-node="n421">@WAREHOUSE</span>
+            <span style="COLOR: #0000ff" data-source-node="n422">GROUP</span> <span style="COLOR: #0000ff" data-source-node="n423">BY</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.LOCATION,
+                  TH.WAREHOUSE,
+                  TH.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            
+            <span style="COLOR: #0000ff" data-source-node="n424">UNION</span>
+            
+            <span style="COLOR: #0000ff" data-source-node="n425">SELECT</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.WAREHOUSE,
+                  TH.LOCATION,
+                  <span style="COLOR: #ff00ff" data-source-node="n426">sum</span>(TH.QUANTITY) <span style="COLOR: #0000ff" data-source-node="n427">AS</span> TOTAL_QUATITY,
+                  th.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            <span style="COLOR: #0000ff" data-source-node="n428">FROM</span> ITEM I <span style="COLOR: #0000ff" data-source-node="n429">WITH</span> (NOLOCK)
+            <span style="COLOR: #808080" data-source-node="n430">JOIN</span> (
+                  <span style="COLOR: #0000ff" data-source-node="n431">SELECT</span> AR_TRANSACTION_HISTORY.ITEM,
+                        AR_TRANSACTION_HISTORY.COMPANY,
+                        AR_TRANSACTION_HISTORY.WAREHOUSE,
+                        AR_TRANSACTION_HISTORY.LOCATION,
+                        QUANTITY_UM,
+                        <span style="COLOR: #ff00ff" data-source-node="n432">sum</span>(AR_TRANSACTION_HISTORY.QUANTITY) <span style="COLOR: #0000ff" data-source-node="n433">AS</span> QUANTITY,
+                        <span style="COLOR: #ff00ff" data-source-node="n434">COUNT</span>(<span style="COLOR: #808080" data-source-node="n435">*</span>) <span style="COLOR: #0000ff" data-source-node="n436">AS</span> NUMBER_OF_HITS
+                  <span style="COLOR: #0000ff" data-source-node="n437">FROM</span> AR_TRANSACTION_HISTORY <span style="COLOR: #0000ff" data-source-node="n438">WITH</span> (NOLOCK)
+                  <span style="COLOR: #0000ff" data-source-node="n439">INNER</span> <span style="COLOR: #808080" data-source-node="n440">JOIN</span> LOCATION <span style="COLOR: #0000ff" data-source-node="n441">WITH</span> (NOLOCK)
+                        <span style="COLOR: #0000ff" data-source-node="n442">ON</span> LOCATION.LOCATION <span style="COLOR: #808080" data-source-node="n443">=</span> AR_TRANSACTION_HISTORY.LOCATION
+                              <span style="COLOR: #808080" data-source-node="n444">AND</span> LOCATION.WAREHOUSE <span style="COLOR: #808080" data-source-node="n445">=</span> AR_TRANSACTION_HISTORY.WAREHOUSE
+                              <span style="COLOR: #808080" data-source-node="n446">AND</span> LOCATION.LOCATION_CLASS <span style="COLOR: #808080" data-source-node="n447">=</span> N<span style="COLOR: #ff0000" data-source-node="n448">'Inventory'</span>
+                  <span style="COLOR: #0000ff" data-source-node="n449">WHERE</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080" data-source-node="n450">&gt;=</span> <span style="COLOR: #008000" data-source-node="n451">@DateFrom</span>
+                        <span style="COLOR: #808080" data-source-node="n452">AND</span> ACTIVITY_DATE_TIME <span style="COLOR: #808080" data-source-node="n453">&lt;</span> <span style="COLOR: #008000" data-source-node="n454">@DateTo</span>
+                        <span style="COLOR: #808080" data-source-node="n455">AND</span> DIRECTION <span style="COLOR: #808080" data-source-node="n456">=</span> N<span style="COLOR: #ff0000" data-source-node="n457">'FROM'</span>
+                        <span style="COLOR: #808080" data-source-node="n458">AND</span> TRANSACTION_TYPE <span style="COLOR: #808080" data-source-node="n459">IN</span> (
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n460">40</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n461">60</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n462">100</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n463">130</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n464">120</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n465">240</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n466">250</span>,
+                              <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n467">360</span>
+                              )
+                        <span style="COLOR: #808080" data-source-node="n468">AND</span> AR_TRANSACTION_HISTORY.WAREHOUSE <span style="COLOR: #808080" data-source-node="n469">=</span> <span style="COLOR: #008000" data-source-node="n470">@Warehouse</span>
+                        <span style="COLOR: #808080" data-source-node="n471">AND</span> (
+                              <span style="COLOR: #008000" data-source-node="n472">@WorkZone</span> <span style="COLOR: #0000ff" data-source-node="n473">IS</span> <span style="COLOR: #0000ff" data-source-node="n474">NULL</span>
+                              <span style="COLOR: #808080" data-source-node="n475">OR</span> (<span style="COLOR: #ff00ff" data-source-node="n476">ISNULL</span>(<span style="COLOR: #008000" data-source-node="n477">@WorkZone</span>, <span style="COLOR: #ff0000" data-source-node="n478">'!'</span>) <span style="COLOR: #808080" data-source-node="n479">=</span> <span style="COLOR: #ff00ff" data-source-node="n480">ISNULL</span>(AR_TRANSACTION_HISTORY.WORK_ZONE, <span style="COLOR: #ff0000" data-source-node="n481">'!'</span>))
+                              ) <span style="COLOR: #008080" data-source-node="n482">--- 'Work Zone has been added under extensibility.'
+</span>                  <span style="COLOR: #0000ff" data-source-node="n483">GROUP</span> <span style="COLOR: #0000ff" data-source-node="n484">BY</span> AR_TRANSACTION_HISTORY.ITEM,
+                        AR_TRANSACTION_HISTORY.COMPANY,
+                        AR_TRANSACTION_HISTORY.WAREHOUSE,
+                        AR_TRANSACTION_HISTORY.LOCATION,
+                        QUANTITY_UM
+                  ) TH
+                  <span style="COLOR: #0000ff" data-source-node="n485">ON</span> I.ITEM <span style="COLOR: #808080" data-source-node="n486">=</span> TH.ITEM
+                        <span style="COLOR: #808080" data-source-node="n487">AND</span> (
+                              TH.COMPANY <span style="COLOR: #808080" data-source-node="n488">=</span> I.COMPANY
+                              <span style="COLOR: #808080" data-source-node="n489">OR</span> (
+                                    TH.COMPANY <span style="COLOR: #0000ff" data-source-node="n490">IS</span> <span style="COLOR: #0000ff" data-source-node="n491">NULL</span>
+                                    <span style="COLOR: #808080" data-source-node="n492">OR</span> I.COMPANY <span style="COLOR: #0000ff" data-source-node="n493">IS</span> <span style="COLOR: #0000ff" data-source-node="n494">NULL</span>
+                                    )
+                              )
+            <span style="COLOR: #0000ff" data-source-node="n495">WHERE</span> TH.WAREHOUSE <span style="COLOR: #808080" data-source-node="n496">=</span> <span style="COLOR: #008000" data-source-node="n497">@WAREHOUSE</span>
+                  <span style="COLOR: #808080" data-source-node="n498">AND</span> <span style="COLOR: #008000" data-source-node="n499">@IncludeArchivedData</span> <span style="COLOR: #808080" data-source-node="n500">=</span> N<span style="COLOR: #ff0000" data-source-node="n501">'Y'</span>
+            <span style="COLOR: #0000ff" data-source-node="n502">GROUP</span> <span style="COLOR: #0000ff" data-source-node="n503">BY</span> TH.ITEM,
+                  TH.COMPANY,
+                  TH.LOCATION,
+                  TH.WAREHOUSE,
+                  TH.QUANTITY_UM,
+                  I.ITEM_CLASS,
+                  NUMBER_OF_HITS
+            ) TransactionHistoryData
+      <span style="COLOR: #0000ff" data-source-node="n504">GROUP</span> <span style="COLOR: #0000ff" data-source-node="n505">BY</span> ITEM,
+            COMPANY,
+            LOCATION,
+            WAREHOUSE,
+            QUANTITY_UM,  
+            ITEM_CLASS
+    <span style="COLOR: #0000ff" data-source-node="n506">END</span>
+<span style="COLOR: #0000ff" data-source-node="n507">Select</span> <span style="COLOR: #008000" data-source-node="n508">@rowEffected</span> <span style="COLOR: #808080" data-source-node="n509">=</span> <span style="FONT-WEIGHT: bold;COLOR: #008000" data-source-node="n510">@@ROWCOUNT</span>  
+<span style="COLOR: #0000ff" data-source-node="n511">SET</span> NOCOUNT <span style="COLOR: #0000ff" data-source-node="n512">OFF</span> 
+<span style="COLOR: #0000ff" data-source-node="n513">if</span> (<span style="FONT-WEIGHT: bold;COLOR: #008000" data-source-node="n514">@@ERROR</span> <span style="COLOR: #808080" data-source-node="n515">&lt;&gt;</span> <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n516">0</span>) 
+    <span style="COLOR: #0000ff" data-source-node="n517">select</span> <span style="COLOR: #808080" data-source-node="n518">-</span><span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n519">1</span> 
+<span style="COLOR: #0000ff" data-source-node="n520">else</span> 
+    <span style="COLOR: #0000ff" data-source-node="n521">select</span> <span style="COLOR: #008000" data-source-node="n522">@rowEffected</span>
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p data-source-node="n523"> </p>
+
+<div id="i-d9f5e745-267d-4cb7-9d28-89304fd28a7b-section-heading" class="i-section-heading" data-source-node="n524">
+    <span class="i-section-heading-icon" data-source-node="n525"><span class="i-hidden" data-source-node="n526"> </span></span><span class="i-section-heading-text" data-source-node="n527">Extend MOVEMENT_CLASS_ANALYSIS_VIEW View</span>
+</div>
+
+<div id="i-d9f5e745-267d-4cb7-9d28-89304fd28a7b-section-content" class="i-section-content" data-source-node="n528">
+    <p data-source-node="n529">The new WORK_ZONE column added above can be added to the view MOVEMENT_CLASS_ANALYSIS_VIEW, which is the Header Data Source for the viewer. The example below will show this modification  </p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL" data-source-node="n530">
+        <table class="i-syntax-table" data-source-node="n531">
+            <tbody data-source-node="n532">
+                <tr data-source-node="n533">
+                    <th data-source-node="n534">MOVEMENT_CLASS_ANALYSIS_VIEW</th>
+
+                    <th data-source-node="n535">
+                        <div class="i-copy-code-wrapper" data-source-node="n536">
+                            <span class="i-copy-code" data-source-node="n537">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr data-source-node="n538">
+                    <td class="i-code" colspan="2" data-source-node="n539">
+                        <pre data-source-node="n540">
+<span style="COLOR: #0000ff" data-source-node="n541">ALTER</span> <span style="COLOR: #0000ff" data-source-node="n542">VIEW</span> MOVEMENT_CLASS_ANALYSIS_VIEW 
+<span style="COLOR: #0000ff" data-source-node="n543">AS</span>
+<span style="COLOR: #0000ff" data-source-node="n544">SELECT</span> 
+    <span style="COLOR: #ff00ff" data-source-node="n545">ISNULL</span>(
+        (
+            <span style="COLOR: #ff00ff" data-source-node="n546">CASE</span> 
+                <span style="COLOR: #0000ff" data-source-node="n547">WHEN</span> (
+                ( 
+                    <span style="COLOR: #0000ff" data-source-node="n548">SELECT</span>  <span style="COLOR: #ff00ff" data-source-node="n549">COUNT</span>(GC.<span style="COLOR: #ff00ff" data-source-node="n550">OBJECT_ID</span>) 
+                    <span style="COLOR: #0000ff" data-source-node="n551">FROM</span> GENERIC_CONFIG_DETAIL <span style="COLOR: #0000ff" data-source-node="n552">AS</span> GC <span style="COLOR: #0000ff" data-source-node="n553">WITH</span> (NOLOCK) 
+                    <span style="COLOR: #0000ff" data-source-node="n554">INNER</span> <span style="COLOR: #808080" data-source-node="n555">JOIN</span> ITEM_UNIT_OF_MEASURE <span style="COLOR: #0000ff" data-source-node="n556">AS</span> IU <span style="COLOR: #0000ff" data-source-node="n557">WITH</span>(NOLOCK) 
+                        <span style="COLOR: #0000ff" data-source-node="n558">ON</span> GC.IDENTIFIER<span style="COLOR: #808080" data-source-node="n559">=</span>IU.ITEM_CLASS
+                ) <span style="COLOR: #808080" data-source-node="n560">&lt;&gt;</span> <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n561">0</span>) 
+                <span style="COLOR: #0000ff" data-source-node="n562">THEN</span> ITEM_INFO.ITEMCLASSOBJECTID 
+            <span style="COLOR: #0000ff" data-source-node="n563">END</span>
+        ),
+        
+    ITEM_INFO.INTERNALITEMNUM ) <span style="COLOR: #0000ff" data-source-node="n564">AS</span> <span style="COLOR: #ff00ff" data-source-node="n565">OBJECT_ID</span>,
+    MCA.ITEM,ITEM_INFO.ITEMDESC <span style="COLOR: #0000ff" data-source-node="n566">AS</span> DESCRIPTION,
+    ITEM_INFO.ITEMCLASS <span style="COLOR: #0000ff" data-source-node="n567">AS</span> ITEM_CLASS,
+    MCA.COMPANY,
+    MCA.LOCATION,
+    L.LOCATION_TYPE,
+    L.LOCATING_ZONE,
+    MCA.WAREHOUSE,
+    NUMBER_OF_HITS,
+    MCA.TOTAL_QUANTITY,
+    MCA.QUANTITY_UM,
+    MCA.NUMBER_OF_DAYS,
+    MCA.DATE_TIME_STAMP,
+    ITEM_INFO.VALUEPERITEM <span style="COLOR: #808080" data-source-node="n568">*</span> MCA.TOTAL_QUANTITY <span style="COLOR: #0000ff" data-source-node="n569">AS</span> TOTAL_VALUE_PICKED,
+    ITEM_INFO.COSTPERITEM <span style="COLOR: #808080" data-source-node="n570">*</span> MCA.TOTAL_QUANTITY <span style="COLOR: #0000ff" data-source-node="n571">AS</span> TOTAL_COST_PICKED,
+    CONVERSION_INFO.WEIGHTPERITEM <span style="COLOR: #808080" data-source-node="n572">*</span> (MCA.TOTAL_QUANTITY<span style="COLOR: #808080" data-source-node="n573">/</span>CONVERSION_INFO.CONVERSIONQTY) <span style="COLOR: #0000ff" data-source-node="n574">AS</span> TOTAL_WEIGHT_PICKED,
+    ITEM_INFO.MOVEMENTCLASS <span style="COLOR: #0000ff" data-source-node="n575">AS</span> QUANTITY_UM_MOVEMENT_CLASS,
+    L.MOVEMENT_CLS <span style="COLOR: #0000ff" data-source-node="n576">AS</span> LOCATION_MOVEMENT_CLASS, 
+    <span style="COLOR: #ff00ff" data-source-node="n577">CASE</span> 
+        <span style="COLOR: #0000ff" data-source-node="n578">WHEN</span> <span style="COLOR: #ff00ff" data-source-node="n579">LEN</span>(ILA.ALLOCATION_LOC) <span style="COLOR: #808080" data-source-node="n580">&gt;</span> <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n581">0</span> 
+        <span style="COLOR: #0000ff" data-source-node="n582">THEN</span> <span style="COLOR: #ff0000" data-source-node="n583">'Y'</span> 
+        <span style="COLOR: #0000ff" data-source-node="n584">ELSE</span> <span style="COLOR: #ff0000" data-source-node="n585">'N'</span> 
+    <span style="COLOR: #0000ff" data-source-node="n586">END</span> <span style="COLOR: #0000ff" data-source-node="n587">AS</span> <span style="COLOR: #0000ff" data-source-node="n588">PERMANENT</span>,
+    <span style="COLOR: #ff00ff" data-source-node="n589">CASE</span> 
+        <span style="COLOR: #0000ff" data-source-node="n590">WHEN</span> CONVERSION_INFO.CONVERSIONQUANTITYUM <span style="COLOR: #808080" data-source-node="n591">!=</span> MCA.QUANTITY_UM 
+        <span style="COLOR: #0000ff" data-source-node="n592">THEN</span> MCA.TOTAL_QUANTITY<span style="COLOR: #808080" data-source-node="n593">/</span>CONVERSION_INFO.CONVERSIONQTY 
+        <span style="COLOR: #0000ff" data-source-node="n594">ELSE</span> MCA.TOTAL_QUANTITY 
+    <span style="COLOR: #0000ff" data-source-node="n595">END</span> <span style="COLOR: #0000ff" data-source-node="n596">AS</span> CONVERTED_QTY,
+    CONVERSION_INFO.CONVERSIONQUANTITYUM <span style="COLOR: #0000ff" data-source-node="n597">AS</span> CONVERTED_QTY_UM, 
+    CONVERSION_INFO.CONVERSIONQUANTITYMOVEMENTCLASS <span style="COLOR: #0000ff" data-source-node="n598">AS</span> CONVERTED_UM_MOVEMENT_CLASS,
+    L.WORK_ZONE  <span style="COLOR: #008080" data-source-node="n599">--- 'Work Zone has been added under extensibility.'
+</span><span style="COLOR: #0000ff" data-source-node="n600">FROM</span> 
+    MOVEMENT_CLASS_ANALYSIS MCA <span style="COLOR: #0000ff" data-source-node="n601">WITH</span> (NOLOCK) 
+    <span style="COLOR: #808080" data-source-node="n602">LEFT</span> <span style="COLOR: #808080" data-source-node="n603">OUTER</span> <span style="COLOR: #808080" data-source-node="n604">JOIN</span> ITEM_LOCATION_ASSIGNMENT ILA <span style="COLOR: #0000ff" data-source-node="n605">WITH</span> (NOLOCK) 
+        <span style="COLOR: #0000ff" data-source-node="n606">ON</span> ILA.WAREHOUSE <span style="COLOR: #808080" data-source-node="n607">=</span> MCA.WAREHOUSE
+            <span style="COLOR: #808080" data-source-node="n608">AND</span> ILA.ALLOCATION_LOC<span style="COLOR: #808080" data-source-node="n609">=</span> MCA.LOCATION 
+            <span style="COLOR: #808080" data-source-node="n610">AND</span> ILA.ITEM <span style="COLOR: #808080" data-source-node="n611">=</span> MCA.ITEM 
+            <span style="COLOR: #808080" data-source-node="n612">AND</span> (ILA.COMPANY <span style="COLOR: #808080" data-source-node="n613">=</span> MCA.COMPANY <span style="COLOR: #808080" data-source-node="n614">OR</span> (ILA.COMPANY <span style="COLOR: #0000ff" data-source-node="n615">IS</span> <span style="COLOR: #0000ff" data-source-node="n616">NULL</span> <span style="COLOR: #808080" data-source-node="n617">AND</span> MCA.COMPANY <span style="COLOR: #0000ff" data-source-node="n618">IS</span> <span style="COLOR: #0000ff" data-source-node="n619">NULL</span>)) 
+    <span style="COLOR: #808080" data-source-node="n620">LEFT</span> <span style="COLOR: #808080" data-source-node="n621">OUTER</span> <span style="COLOR: #808080" data-source-node="n622">JOIN</span> LOCATION L <span style="COLOR: #0000ff" data-source-node="n623">WITH</span> (NOLOCK) 
+        <span style="COLOR: #0000ff" data-source-node="n624">ON</span> L.LOCATION <span style="COLOR: #808080" data-source-node="n625">=</span> MCA.LOCATION 
+            <span style="COLOR: #808080" data-source-node="n626">AND</span> L.WAREHOUSE <span style="COLOR: #808080" data-source-node="n627">=</span> MCA.WAREHOUSE
+    <span style="COLOR: #808080" data-source-node="n628">OUTER</span> APPLY INVFN_RTRVITEMINFOFORBASEUM(
+            MCA.ITEM,
+            MCA.COMPANY,
+            MCA.WAREHOUSE
+            ) <span style="COLOR: #0000ff" data-source-node="n629">AS</span> ITEM_INFO 
+    <span style="COLOR: #808080" data-source-node="n630">OUTER</span> APPLY INVfn_RtrvConversionInfoForItemAndLocation(
+        MCA.ITEM,
+        MCA.COMPANY,
+        MCA.WAREHOUSE,
+        MCA.LOCATION,
+        MCA.TOTAL_QUANTITY,
+        MCA.QUANTITY_UM,
+        ITEM_INFO.MOVEMENTCLASS, 
+        ITEM_INFO.weightPerItem
+        ) <span style="COLOR: #0000ff" data-source-node="n631">AS</span> CONVERSION_INFO;
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<p data-source-node="n632"> </p>
+
+<div id="i-3274059c-c8e1-4a95-8f73-e874592dd723-section-heading" class="i-section-heading" data-source-node="n633">
+    <span class="i-section-heading-icon" data-source-node="n634"><span class="i-hidden" data-source-node="n635"> </span></span><span class="i-section-heading-text" data-source-node="n636">Customize Viewer</span>
+</div>
+
+<div id="i-3274059c-c8e1-4a95-8f73-e874592dd723-section-content" class="i-section-content" data-source-node="n637">
+    <p data-source-node="n638">Newly added column WORK_ZONE can be selected by customizing the Movement Class Analysis Viewer in the Criteria as shown below.</p>
+
+    <p data-source-node="n639"><img border="0" alt="" src="../source/assets/7b3c41d18797c808972712c78c2cb5e416f651b52afa35c3b47ce20307729d35.png" loading="eager" data-source-node="n640"></p>
+
+    <p data-source-node="n641"> </p>
+
+    <p data-source-node="n642">Newly added column WORK_ZONE can be selected by customizing the Movement Class Analysis Viewer in the Header Results as shown below.</p>
+
+    <p data-source-node="n643"> <img border="0" alt="" src="../source/assets/a6c06408310b5407e8a81afc0f6bcd10c0ea1c9c08d640dae98d5d0663043db5.png" loading="eager" data-source-node="n644"></p>
+
+    <p data-source-node="n645"> </p>
+
+    <p data-source-node="n646">After customizing the viewer criteria tab on the Movement Class Analysis it will be shown as seen below.</p>
+
+    <p data-source-node="n647"><img border="0" alt="" src="../source/assets/8935cc2643b25f6b45b343ed4a417b713a4a3e989b20e446ba2dd93b2a6d7592.png" loading="eager" data-source-node="n648"></p>
+
+    <p data-source-node="n649"> </p>
+
+    <p data-source-node="n650">Newly added column WORK_ZONE will be displayed on the Movement Class Analysis Viewer as shown below.</p>
+
+    <p data-source-node="n651"><img border="0" alt="" src="../source/assets/11d349a3355a07df322e6398c5c1995d1e200eabf5b43b391cc0ccd1c60ffcb6.png" loading="eager" data-source-node="n652"></p>
+</div>
+            <a name="seealsobookmark" data-source-node="n653"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n654">
+        
+<p data-source-node="n655"> </p><p data-source-node="n656"> </p><hr style="height: 1px" data-source-node="n657"><p data-source-node="n658">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Add List Pane Menu Options</title>
+    <meta name="Title" content="How to: Add List Pane Menu Options"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Follow these steps to add the menu options that are standard for the list pane of insight screens, as well as new custom menu options." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="46d31abc-8fe4-452e-a856-ee5727f1ba55"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="3"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Add List Pane Menu Options</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Insight Pages
+ > List Pane
+ > How to: Add List Pane Menu Options</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Follow these steps to add the menu options that are standard for the list pane of insight screens, as well as new custom menu options.</p>
+
+<div id="i-cd86966b-fe51-448a-888a-9ce92f9d3861-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create required modal dialogs</span>
+</div>
+
+<div id="i-cd86966b-fe51-448a-888a-9ce92f9d3861-section-content" class="i-section-content">
+    If any actions on the insight screen will require input via modal dialogs, create them.&nbsp;Please reference the&nbsp;<a href="How_to_Create_Dynamic_Modal_Dialog.html">How to: Create a Dynamic Modal Dialog</a> topic for more information.
+</div>
+
+<div id="i-da399770-6f24-421b-baa3-28b0c07f0a0d-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create new menu screen groups</span>
+</div>
+
+<div id="i-da399770-6f24-421b-baa3-28b0c07f0a0d-section-content" class="i-section-content">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <p>Add a SCREEN_GROUP record as follows in order to create an actions&nbsp;menu for the list pane.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART_ID</td>
+
+                <td>The Screen Part Id of the&nbsp;Insight Menu&nbsp;pane</td>
+            </tr>
+
+            <tr>
+                <td>GROUP_NAME</td>
+
+                <td><em>ListPaneMenu</em></td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>GROUP_TYPE</td>
+
+                <td><em>70</em>&nbsp;(Menu)</td>
+            </tr>
+
+            <tr>
+                <td>PARENT_GROUP_ID</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>NESTED_GROUP_UNIT</td>
+
+                <td>Set this to the Object Id of this screen group record once it is created</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>nav nav-pills</em></td>
+            </tr>
+
+            <tr>
+                <td>ROW_CSS_CLASS</td>
+
+                <td><em>row rowmenupanel</em></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><br /></p>
+
+    <p>Add a SCREEN_GROUP record as follows in order to create a menu drop down for the list pane actions.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART_ID</td>
+
+                <td>The Screen Part Id of the list pane</td>
+            </tr>
+
+            <tr>
+                <td>GROUP_NAME</td>
+
+                <td><em>ListPaneMenuActionDropdown</em></td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>ACTIONS</em></td>
+            </tr>
+
+            <tr>
+                <td>GROUP_TYPE</td>
+
+                <td><em>80</em> (Menu Dropdown)</td>
+            </tr>
+
+            <tr>
+                <td>PARENT_GROUP_ID</td>
+
+                <td>The Screen Group Id of the&nbsp;menu SCREEN_GROUP in the list pane</td>
+            </tr>
+
+            <tr>
+                <td>NESTED_GROUP_UNIT</td>
+
+                <td>The Screen Group Id of the&nbsp;menu SCREEN_GROUP in the list pane</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>dropdown pull-right</em></td>
+            </tr>
+
+            <tr>
+                <td>ROW_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-00b9ab0f-0d0e-4f3c-b788-32cca2db911f-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Create screen control related records for&nbsp;each action</span>
+</div>
+
+<div id="i-00b9ab0f-0d0e-4f3c-b788-32cca2db911f-section-content" class="i-section-content">
+    <p>Please reference the&nbsp;following topics in the User Inteface Extensibility | Metadata Web Pages | Actions folder for more information on creating individual actions.</p>
+</div>
+
+<div id="i-78c3a4b5-7558-4947-a369-09f311f58df7-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 4: Create a new&nbsp;panel screen group to house export to excel action</span>
+</div>
+
+<div id="i-78c3a4b5-7558-4947-a369-09f311f58df7-section-content" class="i-section-content">
+    &nbsp;&nbsp;&nbsp;
+
+    <p>Add a SCREEN_GROUP record as follows.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <p>&nbsp;</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART_ID</td>
+
+                <td>The Screen Part Id of the search pane</td>
+            </tr>
+
+            <tr>
+                <td>GROUP_NAME</td>
+
+                <td><em>ListPaneMenuExportToExcelPanel</em></td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>GROUP_TYPE</td>
+
+                <td><em>60</em> (Panel)</td>
+            </tr>
+
+            <tr>
+                <td>PARENT_GROUP_ID</td>
+
+                <td>The Screen Group Id of the&nbsp;menu SCREEN_GROUP in the list pane</td>
+            </tr>
+
+            <tr>
+                <td>NESTED_GROUP_UNIT</td>
+
+                <td>The Screen Group Id of the&nbsp;menu SCREEN_GROUP in the list pane</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>ROW_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-c56374f6-b87d-4473-b5f7-2eaf58c458f1-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 5: Create screen control related records for the "export to excel" action</span>
+</div>
+
+<div id="i-c56374f6-b87d-4473-b5f7-2eaf58c458f1-section-content" class="i-section-content">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <div id="i-c413a0e0-e80b-436b-8b79-c61c22024243-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Create menu button screen control</span>
+    </div>
+
+    <div id="i-c413a0e0-e80b-436b-8b79-c61c22024243-section-content" class="i-section-content">
+        <p>Now add a SCREEN_CONTROL record as follows for the Menu Button control.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><strong>Field</strong></td>
+
+                    <td><strong>Value</strong></td>
+                </tr>
+
+                <tr>
+                    <td>SCREEN_GROUP_ID</td>
+
+                    <td>The Screen Group Id of the&nbsp;menu dropdown&nbsp;on the list pane</td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_NAME</td>
+
+                    <td><em>ListPaneMenuExportToExcel</em></td>
+                </tr>
+
+                <tr>
+                    <td>RESOURCE_KEY</td>
+
+                    <td><em>EXPORTTOEXCEL</em></td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_TYPE</td>
+
+                    <td><em>150</em> (Menu Button)</td>
+                </tr>
+
+                <tr>
+                    <td>LABEL_ORIENTATION</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DATA_SOURCE_TYPE</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DATA_SOURCE</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DIV_CSS_CLASS</td>
+
+                    <td><em>pull-right menubutton</em></td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_CSS_CLASS</td>
+
+                    <td><em>pull-right menubutton fa fa-file-excel-o excelIcon</em></td>
+                </tr>
+
+                <tr>
+                    <td>TOOL_TIP_RESOURCE_KEY</td>
+
+                    <td><em>EXPORTTOEXCEL</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="i-14f817db-819a-495a-b46a-0324c4bb0c3b-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Create a screen control event record tied to the menu button control</span>
+    </div>
+
+    <div id="i-14f817db-819a-495a-b46a-0324c4bb0c3b-section-content" class="i-section-content">
+        <p>Now add a SCREEN_CONTROL_EVENT record as follows for the Menu Button control. This defines what gets called when the button is clicked by the user. This action will call a pre-created JavaScript function that process the "export to excel" action on an insight screen.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><strong>Field</strong></td>
+
+                    <td><strong>Value</strong></td>
+                </tr>
+
+                <tr>
+                    <td>SCREEN_CONTROL_ID</td>
+
+                    <td>The Screen Control Id of the&nbsp;menu&nbsp;button</td>
+                </tr>
+
+                <tr>
+                    <td>EVENT_ID</td>
+
+                    <td><em>click</em></td>
+                </tr>
+
+                <tr>
+                    <td>EVENT_NAME</td>
+
+                    <td><em>_webUi.insightListPaneActions.exportButtonClicked</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Dynamic_Modal_Dialog.html">How to: Create a Dynamic Modal Dialog</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Controls.html">How to: Create Screen Controls</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Groups.html">How to: Create Screen Groups</a></div>
+<div class="i-see-also-link">
+<a href="Supported_Screen_Controls.html">Supported Screen Controls</a></div>
+<div class="i-see-also-link">
+<a href="Supported_Screen_Groups.html">Supported Screen Groups</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

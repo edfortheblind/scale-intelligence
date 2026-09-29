@@ -1,0 +1,280 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>How to: Add Menu Options to a Details/Transaction Screen Grid</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">How to: Add Menu Options to a Details/Transaction Screen Grid</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+User Interface Extensibility
+ &gt; Metadata Web Pages
+ &gt; Detail Pages
+ &gt; How to: Add Menu Options to a Details/Transaction Screen Grid</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47">Follow these steps to add the menu options for the grid that are standard for the detail and transaction pages.</p>
+
+<div id="i-ee400490-8fd7-4f4c-bbb2-097c62d3e4d2-section-heading" class="i-section-heading" data-source-node="n48">
+    <span class="i-section-heading-icon" data-source-node="n49"><span class="i-hidden" data-source-node="n50"> </span></span><span class="i-section-heading-text" data-source-node="n51">Step 1: Create required modal dialogs</span>
+</div>
+
+<div id="i-ee400490-8fd7-4f4c-bbb2-097c62d3e4d2-section-content" class="i-section-content" data-source-node="n52">
+    If any actions on the detail screen grid will require input via modal dialogs, create them. Please reference the <a href="b26513e56333a33b3f8d49c27076e4d8331ce560a2f1f212ad998bc5a511e753.html" data-source-node="n53">How to: Create a Dynamic Modal Dialog</a> topic for more information.
+</div>
+
+<div id="i-c47b2523-7a37-4cec-a25e-e47ff5d3c909-section-heading" class="i-section-heading" data-source-node="n54">
+    <span class="i-section-heading-icon" data-source-node="n55"><span class="i-hidden" data-source-node="n56"> </span></span><span class="i-section-heading-text" data-source-node="n57">Step 2: Create new menu screen groups</span>
+</div>
+
+<div id="i-c47b2523-7a37-4cec-a25e-e47ff5d3c909-section-content" class="i-section-content" data-source-node="n58">
+           
+
+    <p data-source-node="n59">Add a SCREEN_GROUP record as follows in order to create an actions menu for the detail screen grid. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n60"><u data-source-node="n61"><font color="navy" data-source-node="n62">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table data-source-node="n63">
+        <tbody data-source-node="n64">
+            <tr data-source-node="n65">
+                <td data-source-node="n66"><strong data-source-node="n67">Field</strong></td>
+
+                <td data-source-node="n68"><strong data-source-node="n69">Value</strong></td>
+            </tr>
+
+            <tr data-source-node="n70">
+                <td data-source-node="n71">SCREEN_PART_ID</td>
+
+                <td data-source-node="n72">The Screen Part Id of the detail Page</td>
+            </tr>
+
+            <tr data-source-node="n73">
+                <td data-source-node="n74">GROUP_NAME</td>
+
+                <td data-source-node="n75"><em data-source-node="n76">[GridName]Menu</em></td>
+            </tr>
+
+            <tr data-source-node="n77">
+                <td data-source-node="n78">RESOURCE_KEY</td>
+
+                <td data-source-node="n79"><em data-source-node="n80">NULL</em></td>
+            </tr>
+
+            <tr data-source-node="n81">
+                <td data-source-node="n82">GROUP_TYPE</td>
+
+                <td data-source-node="n83"><em data-source-node="n84">70</em> (Menu)</td>
+            </tr>
+
+            <tr data-source-node="n85">
+                <td data-source-node="n86">PARENT_GROUP_ID</td>
+
+                <td data-source-node="n87"><em data-source-node="n88">NULL</em></td>
+            </tr>
+
+            <tr data-source-node="n89">
+                <td data-source-node="n90">NESTED_GROUP_UNIT</td>
+
+                <td data-source-node="n91">0</td>
+            </tr>
+
+            <tr data-source-node="n92">
+                <td data-source-node="n93">DIV_CSS_CLASS</td>
+
+                <td data-source-node="n94"><em data-source-node="n95">row ScreenGroupPanel cruddetailtitlepanel nav nav-pills</em></td>
+            </tr>
+
+            <tr data-source-node="n96">
+                <td data-source-node="n97">ROW_CSS_CLASS</td>
+
+                <td data-source-node="n98"><em data-source-node="n99">row transparentscreengroup</em></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-source-node="n100"><br data-source-node="n101"></p>
+
+    <p data-source-node="n102">Add a SCREEN_GROUP record as follows in order to create Title Panel. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n103"><u data-source-node="n104"><font color="navy" data-source-node="n105">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table data-source-node="n106">
+        <tbody data-source-node="n107">
+            <tr data-source-node="n108">
+                <td data-source-node="n109"><strong data-source-node="n110">Field</strong></td>
+
+                <td data-source-node="n111"><strong data-source-node="n112">Value</strong></td>
+            </tr>
+
+            <tr data-source-node="n113">
+                <td data-source-node="n114">SCREEN_PART_ID</td>
+
+                <td data-source-node="n115">The Screen Part Id of the detail Page</td>
+            </tr>
+
+            <tr data-source-node="n116">
+                <td data-source-node="n117">GROUP_NAME</td>
+
+                <td data-source-node="n118"><em data-source-node="n119">[GridName]TitlePanel</em></td>
+            </tr>
+
+            <tr data-source-node="n120">
+                <td data-source-node="n121">RESOURCE_KEY</td>
+
+                <td data-source-node="n122"><em data-source-node="n123">NULL</em></td>
+            </tr>
+
+            <tr data-source-node="n124">
+                <td data-source-node="n125">GROUP_TYPE</td>
+
+                <td data-source-node="n126"><em data-source-node="n127">60</em> (Panel)</td>
+            </tr>
+
+            <tr data-source-node="n128">
+                <td data-source-node="n129">PARENT_GROUP_ID</td>
+
+                <td data-source-node="n130">The Screen Group Id of the menu SCREEN_GROUP in the detail page</td>
+            </tr>
+
+            <tr data-source-node="n131">
+                <td data-source-node="n132">NESTED_GROUP_UNIT</td>
+
+                <td data-source-node="n133">The Screen Group Id of the menu SCREEN_GROUP in the detail page</td>
+            </tr>
+
+            <tr data-source-node="n134">
+                <td data-source-node="n135">DIV_CSS_CLASS</td>
+
+                <td data-source-node="n136"><em data-source-node="n137">pull-left menubuttonpanel</em></td>
+            </tr>
+
+            <tr data-source-node="n138">
+                <td data-source-node="n139">ROW_CSS_CLASS</td>
+
+                <td data-source-node="n140"><em data-source-node="n141">NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-81b65a5c-1f8a-4ef3-a8d0-25a25a053c95-section-heading" class="i-section-heading" data-source-node="n142">
+    <span class="i-section-heading-icon" data-source-node="n143"><span class="i-hidden" data-source-node="n144"> </span></span><span class="i-section-heading-text" data-source-node="n145">Step 3: Create screen control related records for each action</span>
+</div>
+
+<div id="i-81b65a5c-1f8a-4ef3-a8d0-25a25a053c95-section-content" class="i-section-content" data-source-node="n146">
+    <div id="i-99ac1ed1-71e1-4b26-a12a-844f84408244-section-heading" class="i-section-heading" data-source-node="n147">
+        <span class="i-section-heading-icon" data-source-node="n148"><span class="i-hidden" data-source-node="n149"> </span></span><span class="i-section-heading-text" data-source-node="n150">Create menu button screen control</span>
+    </div>
+
+    <div id="i-99ac1ed1-71e1-4b26-a12a-844f84408244-section-content" class="i-section-content" data-source-node="n151">
+        <p data-source-node="n152">Now add a SCREEN_CONTROL record as follows for the Menu Button control. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n153"><u data-source-node="n154"><font color="navy" data-source-node="n155">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <table data-source-node="n156">
+            <tbody data-source-node="n157">
+                <tr data-source-node="n158">
+                    <td data-source-node="n159"><strong data-source-node="n160">Field</strong></td>
+
+                    <td data-source-node="n161"><strong data-source-node="n162">Value</strong></td>
+                </tr>
+
+                <tr data-source-node="n163">
+                    <td data-source-node="n164">SCREEN_GROUP_ID</td>
+
+                    <td data-source-node="n165">The Screen Group Id of the title panel</td>
+                </tr>
+
+                <tr data-source-node="n166">
+                    <td data-source-node="n167">CONTROL_NAME</td>
+
+                    <td data-source-node="n168"><em data-source-node="n169">[GridName] MenuAction [Action]</em></td>
+                </tr>
+
+                <tr data-source-node="n170">
+                    <td data-source-node="n171">RESOURCE_KEY</td>
+
+                    <td data-source-node="n172"><em data-source-node="n173">Resource key for the button</em></td>
+                </tr>
+
+                <tr data-source-node="n174">
+                    <td data-source-node="n175">CONTROL_TYPE</td>
+
+                    <td data-source-node="n176"><em data-source-node="n177">150</em> (Menu Button)</td>
+                </tr>
+
+                <tr data-source-node="n178">
+                    <td data-source-node="n179">LABEL_ORIENTATION</td>
+
+                    <td data-source-node="n180"><em data-source-node="n181">NULL</em></td>
+                </tr>
+
+                <tr data-source-node="n182">
+                    <td data-source-node="n183">DATA_SOURCE_TYPE</td>
+
+                    <td data-source-node="n184"><em data-source-node="n185">NULL</em></td>
+                </tr>
+
+                <tr data-source-node="n186">
+                    <td data-source-node="n187">DATA_SOURCE</td>
+
+                    <td data-source-node="n188"><em data-source-node="n189">NULL</em></td>
+                </tr>
+
+                <tr data-source-node="n190">
+                    <td data-source-node="n191">DIV_CSS_CLASS</td>
+
+                    <td data-source-node="n192"><em data-source-node="n193">pull-right menubutton</em></td>
+                </tr>
+
+                <tr data-source-node="n194">
+                    <td data-source-node="n195">CONTROL_CSS_CLASS</td>
+
+                    <td data-source-node="n196"><em data-source-node="n197">dropdownaction pull-right menubutton cruddetailmenubutton</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="i-c1e6f49c-4777-4758-bdf7-0e077ab8d938-section-heading" class="i-section-heading" data-source-node="n198">
+        <span class="i-section-heading-icon" data-source-node="n199"><span class="i-hidden" data-source-node="n200"> </span></span><span class="i-section-heading-text" data-source-node="n201">Add security for the menu button</span>
+    </div>
+
+    <div id="i-c1e6f49c-4777-4758-bdf7-0e077ab8d938-section-content" class="i-section-content" data-source-node="n202">
+        Reference the <a href="ea6813660b3c5ccb1f434eac9531df5d9a8c30cbf3688a5bd93829d5f0c17698.html" data-source-node="n203">How to: Configure Security for a Dynamic Action</a> topic in order to add security for the new action.
+    </div>
+
+    <div id="i-a5a896d2-eb82-4f1c-8492-168e3553d0f8-section-heading" class="i-section-heading" data-source-node="n204">
+        <span class="i-section-heading-icon" data-source-node="n205"><span class="i-hidden" data-source-node="n206"> </span></span><span class="i-section-heading-text" data-source-node="n207">Create a screen control event record tied to the menu button control</span>
+    </div>
+
+    <div id="i-a5a896d2-eb82-4f1c-8492-168e3553d0f8-section-content" class="i-section-content" data-source-node="n208">
+        Reference the <a href="eca9fc53f0fb038bdfb1d5f215e7b5f31082e710554ecde05af2dd256e790233.html" data-source-node="n209">How to: Create Screen Control Events</a> topic in order to add event for the new control.
+    </div>
+
+    <div id="i-b6eb3a58-239f-4718-bf42-8b5eec575077-section-heading" class="i-section-heading" data-source-node="n210">
+        <span class="i-section-heading-icon" data-source-node="n211"><span class="i-hidden" data-source-node="n212"> </span></span><span class="i-section-heading-text" data-source-node="n213">Create screen control event parameters record tied to the event</span>
+    </div>
+
+    <div id="i-b6eb3a58-239f-4718-bf42-8b5eec575077-section-content" class="i-section-content" data-source-node="n214">
+        Reference the <a href="7c5bf5af09ba93c382282549079eaedada01fb57e66568c67fe6581c0c707450.html" data-source-node="n215">How to: Create Screen Control Event Parameters</a> topic in order to add event parameters for the new event.
+    </div>
+</div>
+            <a name="seealsobookmark" data-source-node="n216"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n217">
+        
+<p data-source-node="n218"> </p><p data-source-node="n219"> </p><hr style="height: 1px" data-source-node="n220"><p data-source-node="n221">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

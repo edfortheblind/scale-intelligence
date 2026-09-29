@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Cycle Count Quick Plan Web Service</title>
+    <meta name="Title" content="Cycle Count Quick Plan Web Service"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The Cycle Count Quick Plan Web Service gives the ability to submit a list of cycle count quick plans for processing, as well as a resource that will calculate the number of cycle count requests a quick plan would create once submitted." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="{3044B0A9-47EB-4A57-B4FD-B00280C75750}"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Cycle Count Quick Plan Web Service</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The Cycle Count Quick Plan Web Service gives the ability to submit a list of cycle count quick plans for processing, as well as a resource that will calculate the number of cycle count requests a quick plan would create once submitted.</p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Requests</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p><strong>CycleCountQuickPlans resource:</strong></p>
+
+    <ul>
+        <li><strong>URI:</strong> http://<i>ServerName</i>/ILSIntegrationServices/CycleCountQuickPlans</li>
+
+        <li><strong>Method:</strong> POST</li>
+
+        <li><strong>Accept:</strong> application/json or application/xml</li>
+
+        <li><strong>Content-Type:</strong> application/json or application/xml</li>
+
+        <li><strong>Entity:</strong> <a href="JSON/Inventory/CycleCountQuickPlan.json">JSON</a>, <a href="XML%20Schema/Web%20Services/Inventory/CycleCountQuickPlan.xsd">XML</a></li>
+
+        <li><strong>Roles:</strong> SCALEUSER,Confidential</li>
+    </ul>
+
+    <p>&nbsp;</p>
+
+    <p><strong>CalculatedRequestCount resource:</strong></p>
+
+    <ul>
+        <li>
+            <strong>URI:</strong> http://<i>ServerName</i>/ILSIntegrationServices/CycleCounting/CalculatedRequestCount?&lt;queryString&gt;
+
+            <ul>
+                <li>Note that the &lt;queryString&gt; can consist of any fields found in the above request entity to the CycleCountQuickPlans resource.&nbsp; For example, if requesting the count for all items that start with 'NOR' in warehouse '001', the query string would be 'Description=<em>description</em>&amp;Item=NOR%25&amp;Warehouse=001', where '%25' is the URL-encoding for the '%' wildcard character.</li>
+            </ul>
+        </li>
+
+        <li><strong>Method:</strong> GET</li>
+
+        <li><strong>Accept:</strong> application/json or application/xml</li>
+    </ul>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Responses</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>Aside from <a href="Standard_Responses_from_REST-Based_Web_Services.html">standard responses</a>, note the following specifics for this service:</p>
+
+    <p><strong>CycleCountQuickPlans resource:</strong></p>
+
+    <p></p>
+
+    <p></p>
+
+    <table class="members">
+        <tbody>
+            <tr>
+                <th class="nameColumn">Status Code</th>
+
+                <th class="descriptionColumn">Notes</th>
+            </tr>
+
+            <tr>
+                <td>202</td>
+
+                <td>
+                    <p>Accepted will be the typical response when the quick plans&nbsp;are successfully queued for processing.&nbsp; It will be accompanied by a human readable message&nbsp;entity in&nbsp;the requested media type: <a href="JSON/Message.json">JSON</a>, <a href="XML%20Schema/Web%20Services/Message.xsd">XML</a></p>
+
+                    <p>The Location header of the response will contain a URI to the <a href="Cycle_Count_Plan_Web_Service.html">Cycle Count Plan Web Service</a> that can be used to access the cycle count plan once created.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>400</td>
+
+                <td>Bad Request may be accompanied by the <strong>Criteria</strong> or <strong>Description</strong> ErrorTypes.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+
+    <p><strong>CalculatedRequestCount resource:</strong></p>
+
+    <p></p>
+
+    <table class="members">
+        <tbody>
+            <tr>
+                <th class="nameColumn">Status Code</th>
+
+                <th class="descriptionColumn">Notes</th>
+            </tr>
+
+            <tr>
+                <td>200</td>
+
+                <td>
+                    <p>OK will be accompanied by an entity in&nbsp;the requested media type: <a href="JSON/Inventory/CalculatedRequestCount.json">JSON</a>, <a href="XML%20Schema/Web%20Services/Inventory/CalculatedRequestCount.xsd">XML</a></p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>400</td>
+
+                <td>Bad Request may be accompanied by the <strong>Criteria</strong> or <strong>Description</strong> ErrorTypes.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

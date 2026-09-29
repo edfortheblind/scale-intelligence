@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Azure Functions</title>
+    <meta name="Title" content="Azure Functions"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Azure function is a serverless compute service that enables us to run code on-demand without having to explicitly provision or manage infrastructure. This can be utilized as an exit point program and will provide extensibility to the customers to add" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="ff692844-cb56-4350-8b51-ac2f70ee368d"/>
+    <meta name="Microsoft.Help.TocParent" content="{476BE228-7E02-4BF1-8E9E-CB3225E02BFE}"/>
+    <meta name="Microsoft.Help.TocOrder" content="3"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Azure Functions</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+<a href="Integration_Endpoints.html">Integration Endpoints</a>
+ > Azure Functions</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Azure function is a serverless compute service that enables us to run code on-demand without having to explicitly provision or manage infrastructure. This can be utilized as an exit point program and will provide extensibility to the customers to add their custom code in it. For configuring azure function as an exit point program, please refer <a href="Exit_Point_Programs.html">Exit point program(Web service type)</a></p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Usage of the key vault in azure functions</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>Azure Key vault is used to store secrets. To invoke SCALE web services from azure functions, bearer token is required. Please refer topic <a href="Authentication_in_REST-Based_Web_Services.html">Generating bearer token(Client Credentials Grant with SCALEUser role token)</a> to know how to generate bearer token. This logic requires API Confidential client secret key. As the key cannot be shared, this can be stored in azure key vault as a secret and can be retrieved in azure function by its URI(DNS name) and secret name.</p>
+
+    <p></p>
+
+    <p>Creating new key vault</p>
+
+    <ol>
+        <li>Log on to the azure AAD portal.</li>
+
+        <li>From the dashboard, select Create a resource &gt; Security&gt; Key Vault.</li>
+
+        <li>Create key vault pane, assign a name for vault.</li>
+
+        <li>Choose a subscription from the list of available subscriptions.</li>
+
+        <li>Select a resource group.</li>
+    </ol>
+
+    <p>Using the key vault in azure functions</p>
+
+    <ol>
+        <li>Once the key vault app is created, please note down the DNS name from overview.</li>
+
+        <li>Then add secrets from the settings and store secret key, please note down the secret name.</li>
+
+        <li>Secret name and DNS name are required while retrieving the secret key from the key vault in azure function.</li>
+
+        <li>In the access polices, choose the azure function app from where we are accessing the key vault.</li>
+
+        <li>Also enable Managed service identity for the selected azure function app. This can be found in the platform features.</li>
+    </ol>
+
+    <p>Piece of code using which secret key can be retrieved from the key vault.</p>
+
+    <p><img border="0" alt="" src="images/ExitPoint/SecretKeyFromKeyVault.png" /></p>
+
+    <p>Useful links:</p>
+
+    <p>Please refer the following links for performance considerations of azure functions.</p>
+
+    <div style="MARGIN-LEFT: 2em">
+        <ul>
+            <li><a href="https://blogs.msdn.microsoft.com/amitagarwal/2018/04/03/azure-function-apps-performance-considerations">https://blogs.msdn.microsoft.com/amitagarwal/2018/04/03/azure-function-apps-performance-considerations</a></li>
+
+            <li><a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-scale">https://docs.microsoft.com/en-us/azure/azure-functions/functions-scale</a></li>
+        </ul>
+    </div>
+
+    <p>&nbsp;</p>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

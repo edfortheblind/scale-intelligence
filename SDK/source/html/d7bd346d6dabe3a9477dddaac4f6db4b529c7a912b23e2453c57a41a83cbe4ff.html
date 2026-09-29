@@ -1,0 +1,721 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>3DCubing</title>
+    <meta name="Title" content="3DCubing"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="3D Cubing is a new container creation strategy in SCALE. Container creation strategies till this point only looked at the volume, weight and critical dimensions of the item to be packed. 3D Cubing, in addition to these parameters, also analyzes the p" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="{D49C6367-E53C-4FF0-B8B8-FFB1E46240B3}"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="1"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">3DCubing</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+Implementation Overriding
+ > 3DCubing</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>3D Cubing is a new container creation strategy in SCALE. Container creation strategies till this point only looked at the volume, weight and critical dimensions of the item to be packed. 3D Cubing, in addition to these parameters, also analyzes the physical size of the items being placed into the carton and the geometric configuration of the carton’s volume to determine which set of items will fit together into a carton.The advantage of such an approach is that it never suggests a packing that is not feasible.</p>
+
+<p></p>
+
+<p>This section is divided into 3 parts. The first one indicates the current features that 3D Cubing leverages. The second talks about additional features that can be configured and the third discusses the exit point program and other changes that are required to enable the advanced features.</p>
+
+<div id="i-c8c24071-9b78-4a63-afaf-a630f8b20a21-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">3D Cubing features in Base SCALE</span>
+</div>
+
+<div id="i-c8c24071-9b78-4a63-afaf-a630f8b20a21-section-content" class="i-section-content">
+    <p>There are some changes in the way container creation configuration values are used by the 3D Cubing container creation strategy.</p>
+
+    <p>&nbsp;</p>
+
+    <p></p>
+
+    <table class="members">
+        <tbody>
+            <tr>
+                <th class="descriptionColumn">Configuration</th>
+
+                <td><strong>Description</strong></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Packing Class</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">The packing class is defined for an item or an item class. It is tied to a container group and packing criteria.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Packing Criteria</p>
+                </td>
+
+                <td>3D Cubing supports a value for item break attribute.</td>
+            </tr>
+
+            <tr>
+                <td>Container Group</td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">The container group contains a list of container types and the corresponding fill percentage. 3D Cubing ignores the fill percentage value.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Default Stabilization Value</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">This configuration can be accessed under Container Creation System Values. It denotes the amount of space that needs to be left out between 2 items when they are packed. For E.g. if the default stabilization code value is 0.5 then then 0.5 units of space if left out on either side so for an item having dimensions 2x3x4 the effective dimensions is 3x4x5.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+
+    <p>&nbsp;</p>
+</div>
+
+<div id="i-1bd56794-a06d-4272-82cc-557388c0137d-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Advanced 3D Cubing Features</span>
+</div>
+
+<div id="i-1bd56794-a06d-4272-82cc-557388c0137d-section-content" class="i-section-content">
+    <p>Below are the additional item and container type features that are supported by 3D Cubing.</p>
+
+    <p>&nbsp;</p>
+
+    <p><strong>Item Master Configuration Additions:</strong></p>
+
+    <p>&nbsp;</p>
+
+    <table class="members">
+        <tbody>
+            <tr>
+                <th class="descriptionColumn">Configuration</th>
+
+                <td><strong>Description</strong></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Orientation</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">This is used for limiting item orientation. The “L”, “W”, or “H” dimension of the item has to be forced along the height axis of the container. If left blank, allow any orientation.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Cavity Length</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">This refers to the length of the cavity in the item.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td height="14">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Cavity Width</p>
+                </td>
+
+                <td height="14">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">This refers to the width of the cavity in the item.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Cavity Height</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">This refers to the height of the cavity in the item.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Incremental Length</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">When like-items are nested, this is the additional length in a nested stack of adding one additional item.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Incremental Width</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">When like-items are nested, this is the additional width in a nested stack of adding one additional item.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Incremental Height</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">When like-items are nested, this is the additional height in a nested stack of adding one additional item.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Maximum Units Nested</p>
+                </td>
+
+                <td>This refers to the maximum number of like-items that can be nested together.</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Stackable Item</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">This value indicates whether the item can be positioned above or below other items in the container. If this value is ‘N’, then this item cannot be positioned above or below other items. If this value is ‘Y’, then there is no restriction.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Protection Factor</p>
+                </td>
+
+                <td>Protection Factor (PF) indicates how sturdy a container is. The larger the item’s PF, the more fragile the item and the more protection is required from its container. Every item will be assigned to a container which has a PF that is greater than or equal to the PF required by the item.</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Container Size</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">If an item’s Container Size matches that of the Container_Type, then packing is allowed. This value can indicate whether the container type should be Big, Medium or Small when all these container types are present in the relevant container group.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+
+    <p></p>
+
+    <p></p>
+
+    <p></p>
+
+    <p>&nbsp;</p>
+
+    <p><span style='FONT-SIZE: 10pt; FONT-FAMILY: "Arial","sans-serif"; LINE-HEIGHT: 115%; mso-fareast-font-family: "Times New Roman"; mso-bidi-language: EN-US; mso-fareast-theme-font: minor-fareast; mso-ansi-language: EN-US; mso-fareast-language: EN-US; mso-bidi-font-family: "Times New Roman"; mso-bidi-theme-font: minor-bidi; mso-bidi-font-size: 11.0pt; mso-ascii-theme-font: minor-latin; mso-hansi-theme-font: minor-latin'><strong>Container Type Configuration Additions:</strong></span></p>
+
+    <p>&nbsp;</p>
+
+    <table class="members">
+        <tbody>
+            <tr>
+                <th class="descriptionColumn">Configuration</th>
+
+                <td><strong>Description</strong></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Protection Factor</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Protection Factor (PF) indicates how sturdy a container is. The larger a container’s PF, the sturdier the container is and the more protection it offers. Every item will be assigned to a container which has a PF that is greater than or equal to the PF required by the item.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Container Size</p>
+                </td>
+
+                <td>If an item’s Container Size matches that of the Container_Type, then packing is allowed. This is a string value and could represent what kind of container items should be packed in.</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Minimum Container Weight</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Minimum weight of the container. If the weight of items packed is less than this value, then the 3D Cubing algorithm generates an alert.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Minimum Container Volume</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; LINE-HEIGHT: normal">Minimum container volume.If the volume of items packed is less than this value, then the 3D Cubing algorithm generates an alert.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+
+    <p></p>
+
+    <p>&nbsp;</p>
+</div>
+
+<div id="i-2a59fdf9-fa92-4c8f-9015-417e4d2d2ed0-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">How to: configure the advanced features</span>
+</div>
+
+<div id="i-2a59fdf9-fa92-4c8f-9015-417e4d2d2ed0-section-content" class="i-section-content">
+    <p>A new&nbsp;exit point program (ThreeDCubingContainerCreationBefore) has been added which can be used to make any changes to the item list before it is passed to the 3D Cubing algorithm. A sample exit point program implementation showing how to set a custom "Stablilization" factor per item is available <a href="SDK.IntegrationEndpoints.ExitPointPrograms.html">here</a>.</p>
+
+    <p>In addition, certain database changes are required for fully leveraging all the 3D Cubing features. These are as follows:</p>
+
+    <p><font color="black">&nbsp;&nbsp;</font></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><strong>Additions to ITEM table:</strong></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">&nbsp;</p>
+
+    <table class="members" style="HEIGHT: 255px; WIDTH: 53.81%">
+        <tbody>
+            <tr>
+                <th class="descriptionColumn" width="244">Configuration</th>
+
+                <th class="descriptionColumn" width="231">Code</th>
+
+                <td><strong>Type</strong></td>
+            </tr>
+
+            <tr>
+                <td width="244">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Stabilization Code</p>
+                </td>
+
+                <td width="231">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">STAB_CODE</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">VARCHAR (4)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="244">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Orientation</p>
+                </td>
+
+                <td width="231">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">ITEM_ORIENTATION</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">VARCHAR(1)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="244">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Protection Factor</p>
+                </td>
+
+                <td width="231">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">PROTN_FACTOR</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">VARCHAR(9)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="244">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Cavity Length</p>
+                </td>
+
+                <td width="231">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">CAVITY_LEN</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="244">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Cavity Width</p>
+                </td>
+
+                <td width="231">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">CAVITY_WD</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td height="11" width="244">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Cavity Height</p>
+                </td>
+
+                <td height="11" width="231">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">CAVITY_HT</p>
+                </td>
+
+                <td height="11">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="244">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Incremental Length</p>
+                </td>
+
+                <td width="231">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">INCREMENTAL_LEN</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="244">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Incremental Width</p>
+                </td>
+
+                <td width="231">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">INCREMENTAL _WD</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="244">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Incremental Height</p>
+                </td>
+
+                <td width="231">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">INCREMENTAL_HT</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="244">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Stackable Item</p>
+                </td>
+
+                <td width="231">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">STACKABLE_ITEM</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">VARCHAR(1)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="244">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Maximum Units Nested</p>
+                </td>
+
+                <td width="231">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">MAX_NEST_NUMBER</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">NUMBER(4)</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><font color="black">&nbsp;&nbsp;</font></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><strong>Additions to CONTAINER_TYPE Table:</strong></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">&nbsp;</p>
+
+    <table class="members" style="HEIGHT: 57px; WIDTH: 54.13%">
+        <tbody>
+            <tr>
+                <th class="descriptionColumn" height="25" width="242">Configuration</th>
+
+                <th class="descriptionColumn" height="25" width="232">Code</th>
+
+                <td height="25"><strong>Type</strong></td>
+            </tr>
+
+            <tr>
+                <td width="242">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none; mso-pagination: none">Protection Factor</p>
+                </td>
+
+                <td width="232">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">PROTN_FACTOR</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">VARCHAR (9)</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><font color="black">&nbsp;&nbsp;</font></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><strong>New Table STABILIZATION_CODE:</strong></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">&nbsp;</p>
+
+    <table class="members" style="HEIGHT: 144px; WIDTH: 54.19%">
+        <tbody>
+            <tr>
+                <th class="descriptionColumn" width="243">Configuration</th>
+
+                <th class="descriptionColumn" width="230">Code</th>
+
+                <td><strong>Type</strong></td>
+            </tr>
+
+            <tr>
+                <td width="243">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Stabilization Code</p>
+                </td>
+
+                <td width="230">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">STAB_CODE</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">VARCHAR (4)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="243">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Description</p>
+                </td>
+
+                <td width="230">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">STAB_DESC</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">VARCHAR(25)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td height="20" width="243">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">Global Stabilization Amount</p>
+                </td>
+
+                <td height="20" width="230">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">GLOBAL_STAB_AMNT</p>
+                </td>
+
+                <td height="20">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="243">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">SKU specific Stabilization Amount</p>
+                </td>
+
+                <td width="230">
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">SKU_SPECIFIC_STAB_AMNT</p>
+                </td>
+
+                <td>
+                    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt; mso-layout-grid-align: none">NUMBER( 7,2)</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>&nbsp;</p>
+</div>
+
+<div id="i-38a440f1-92a5-4875-b0eb-1080bf2b2267-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">2D Pack Algorithm</span>
+</div>
+
+<div id="i-38a440f1-92a5-4875-b0eb-1080bf2b2267-section-content" class="i-section-content">
+    <p>The 2D Pack Algorithm provides the feature to arrange a given item along a specific box edge. The 2D pack algorithm is used when the system is directed to use "ItemOrientation" during packing. The "ItemOrientation" needs to be set using exit point "3D Cubing Stabilization Code Assignment – Before". If the item orientation is not set, the system will not honor the 2D Pack algorithm.</p>
+
+    <p><strong>Note:-System currently does not support Item Orientation along with stacking. If Item Orientation is set, system will consider only 2D Pack Algorithm.</strong></p>
+
+    <p><font color="black">&nbsp;&nbsp;</font></p>
+
+    <p dir="ltr" align="left"><span lang="" xml:lang=""><strong>"ItemOrientation"</strong> Property restricts the orientation of item in the box.</span></p>
+
+    <ul>
+        <li><span lang="" xml:lang=""><span lang="" xml:lang="">"L" – represents orientation along Length of the item.</span></span></li>
+
+        <li><span lang="" xml:lang="">"W" – represents orientation along Width of the item.</span></li>
+
+        <li><span lang="" xml:lang="">"H" – represents orientation along Height of the item.</span></li>
+
+        <li><span lang="" xml:lang="">Blank represents no orientation restrictions.</span></li>
+    </ul>
+
+    <p>&nbsp;</p>
+
+    <p><span lang="" xml:lang=""><strong>"ItemPlacement"</strong> P<span lang="" xml:lang="">roperty decides the dimension to keep alongside of the big dimension of box in horizontal plane(X or Y axis) when new row is being created.</span></span></p>
+
+    <ul>
+        <li><span lang="" xml:lang=""><span lang="" xml:lang="">0 - Keeps big dimension of item alongside of big dimension of box.</span></span></li>
+
+        <li><span lang="" xml:lang="">1 - Keeps small dimension of item alongside of big dimension of box.</span></li>
+    </ul>
+
+    <p>&nbsp;</p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><strong>2D Pack algorithm details:</strong></p>
+
+    <p>&nbsp;</p>
+
+    <p>(1) The large dimension of the box after the orientation will be placed large side of the container (If, item orientation is set to height, either the length or the width of the container will be considered). It’s the beginning of the row.</p>
+
+    <p>(2) If the previous box fits, then try to place the next box in the same row. The next box should have a width less than the first box. If fits, then place the subsequent boxes.</p>
+
+    <p>(3) If the box doesn’t fit in step 2, rotate the box and try to fit. If the box still doesn’t fit, move to the next box (And leave the current box to try for the new row) for the same row and follow the same for all the remaining items till the space is left in the row. To do this follow step 2.</p>
+
+    <p>(4) Build the second row if items are yet to be placed and space is left in the container. To do this follow step 1.</p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">&nbsp;</p>
+
+    <p><font color="black">&nbsp;&nbsp;</font></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt"><strong>For Example :</strong></p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">&nbsp;</p>
+
+    <p><font color="black">&nbsp;&nbsp;<img border="0" alt="" src="images/2DPackAlgo.png" /></font></p>
+
+    <p>&nbsp;</p>
+
+    <p>Row 1 is having boxes number 1, 2 and 3, and none of the row 1 box is having more width than box number 1. In row 1, box number 3 is placed after rotation.</p>
+
+    <p>Row 2 is having the box number 4 and 5. Though box 4 is big but it can’t be placed after the box 1 ,so placed in second row after placing 2 and 3 boxes.</p>
+
+    <p class="MsoNormal" style="MARGIN: 0in 0in 0pt">&nbsp;</p>
+
+    <p>&nbsp;</p>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

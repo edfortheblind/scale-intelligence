@@ -16,10 +16,10 @@ from collector import atomic_bytes, atomic_json, digest, source_identity, VERSIO
 from discover_sdk import candidates, reference_kind
 
 SCHEMA = 1
-CONVERTER = 'sdk-innovasys-static-2'
-SAFE_TAGS = shared.SAFE_TAGS | {'font', 'label', 'input'}
+CONVERTER = 'sdk-innovasys-static-3'
+SAFE_TAGS = shared.SAFE_TAGS | {'font', 'label', 'input', 'innovasys:widgetproperty', 'xml', 'mshelp:nosearch'}
 SAFE_ATTRS = shared.SAFE_ATTRS | {'for', 'color', 'face', 'size', 'checked',
-    'data-title', 'data-itemid', 'data-languagename', 'data-toggleclass'}
+    'data-title', 'data-itemid', 'data-languagename', 'data-toggleclass', 'layout'}
 EXECUTABLE_TYPES = {'', 'text/javascript', 'application/javascript',
     'text/ecmascript', 'application/ecmascript', 'module'}
 # Exact captured renderer bytes inspected for sibling section toggles, syntax
@@ -30,6 +30,13 @@ RENDERER_HASHES = {
     'fc0b96647059feab8ae5f5b825014f55bd0faaca6fc2b26cb93e042c322d046f',
 }
 LEGACY_TOGGLE_HASH = '9579025296114b8ecf69158763734cd98eb66a9342a79b9549831a85bb06126d'
+MEMBER_FILTER_HASH = 'fc0b96647059feab8ae5f5b825014f55bd0faaca6fc2b26cb93e042c322d046f'
+MEMBER_FILTER_TARGETS = {'i-inherited-checkbox':'i-inherited-member',
+                         'i-protected-checkbox':'ProtectedMember'}
+FALLBACK_SOURCE_HASHES = {
+    'e886947e04d2241a6969a84f53a2bddca0d10b67b27a12bccbdb3e4ba4ab2924':'topic_navigation_failure',
+    'c32cbff38fcaddeaa8fc6640a742bc78241b9e0bf1f2e750f598ae43cd2b3745':'empty_index_entry',
+}
 
 
 def literal_dom_text(value):
@@ -53,6 +60,7 @@ class SdkTreeParser(TreeParser):
         self.dom_segments = {}
         self.ignore_pre_lf = None
         self.conditional_comments = []
+        self.metadata_self_closures = []
 
     def handle_starttag(self, tag, attrs):
         self.ignore_pre_lf = None
@@ -65,6 +73,13 @@ class SdkTreeParser(TreeParser):
         super().handle_endtag(tag)
 
     def handle_startendtag(self, tag, attrs):
+        if tag == 'mshelp:nosearch' and not attrs and self.stack[-1]['tag'] == 'xml':
+            # The publisher emits this exact empty Help XML metadata island.
+            # Retain its tree and source token, and validate the entire wrapper
+            # after parsing before classifying it as publication metadata.
+            self.metadata_self_closures.append((self.stack[-1], self.get_starttag_text(), list(self.getpos())))
+            super().handle_startendtag(tag, attrs)
+            return
         if tag not in shared.VOID:
             self.errors.append({'class':'SELF_CLOSING_NONVOID_ELEMENT', 'tag':tag})
         super().handle_startendtag(tag, attrs)
@@ -117,6 +132,9 @@ class SdkTreeParser(TreeParser):
 
     def close(self):
         super().close()
+        for wrapper, token, position in self.metadata_self_closures:
+            if not is_help_nosearch_metadata(wrapper):
+                self.errors.append({'class':'SELF_CLOSING_NONVOID_ELEMENT', 'tag':'mshelp:nosearch'})
         for node in nodes(self.root):
             overrides = {str(index):projected for index, projected in self.dom_segments.get(node['node_id'], {}).items()
                          if projected != literal_dom_text(node['children'][index])}
@@ -130,6 +148,57 @@ def dom_text_of(node):
         return literal_dom_text(node)
     overrides = node.get('browser_text_overrides', {})
     return ''.join(overrides.get(str(index), dom_text_of(child)) for index, child in enumerate(node.get('children', [])))
+
+
+def source_parse_diagnostics(errors):
+    """Classify literal source defects without suppressing or accepting them.
+
+    A native browser may ignore an unmatched STRONG closing tag, but only a
+    current independent source-DOM comparison can establish equivalent output.
+    The converter therefore retains its failed parse_without_repair check.
+    """
+    original = copy.deepcopy(errors)
+    recoverable = [e for e in original if e == {'class':'UNMATCHED_CLOSE', 'tag':'strong'}]
+    blocking = [e for e in original if e != {'class':'UNMATCHED_CLOSE', 'tag':'strong'}]
+    return {'schema_version':1, 'original_diagnostics':original,
+        'native_equivalence_required':bool(recoverable),
+        'native_equivalence_candidates':recoverable, 'blocking_diagnostics':blocking,
+        'classification':'unsupported_source_structure' if blocking else (
+            'independent_native_equivalence_required' if recoverable else 'no_source_parse_diagnostics'),
+        'native_equivalence_verified':False,
+        'original_source_modified':False}
+
+
+def is_help_nosearch_metadata(node):
+    return (node['tag'] == 'xml' and not node['attrs'] and len(node['children']) == 1 and
+        isinstance(node['children'][0], dict) and node['children'][0]['tag'] == 'mshelp:nosearch' and
+        not node['children'][0]['attrs'] and not node['children'][0]['children'])
+
+
+def publication_metadata(parser, content):
+    tokens = {wrapper['node_id']:(token, position) for wrapper, token, position in parser.metadata_self_closures}
+    return [{'kind':'help_search_exclusion', 'wrapper_node':n['node_id'],
+             'metadata_node':n['children'][0]['node_id'],
+             'source_self_closing_token':tokens.get(n['node_id'],(None,None))[0],
+             'source_position':tokens.get(n['node_id'],(None,None))[1],
+             'representation':'exact empty publication metadata retained as inert elements'}
+            for n in nodes(content) if is_help_nosearch_metadata(n)]
+
+
+def source_context(record, parser, content):
+    role = FALLBACK_SOURCE_HASHES.get(record.get('sha256'))
+    result = {'document_role':'navigation_fallback' if role else 'documentary_topic',
+              'publication_metadata':publication_metadata(parser, content), 'request_context_ui':[]}
+    if role:
+        result['role_evidence'] = {'source_sha256':record['sha256'], 'published_function':role,
+            'basis':'captured failed-navigation instructions, exact NoSearch XML metadata and published search-index occurrence'}
+    if role == 'topic_navigation_failure':
+        scripts = [n for n in nodes(parser.root) if n['tag']=='script' and 'navfailpageparam' in text_of(n)]
+        result['request_context_ui'] = [{'kind':'navigation_failure_parameters',
+            'query_keys':['keywords','index','url'], 'target_ids':['keywordsSpan','indexSpan','urlSpan'],
+            'source_scripts':[{'node_id':n['node_id'], 'text_sha256':digest(text_of(n).encode('utf-8'))} for n in scripts],
+            'representation':'source scripts retained in original and excluded-node records; empty request-context spans retained without invented parameter values'}]
+    return result
 
 
 def classes(node):
@@ -243,8 +312,17 @@ def discover_references(store, record, parser):
 def is_shell_state(node):
     cls = classes(node)
     return (node['tag'] == 'label' and any(c.startswith('i-language-filter-') or c.endswith('-label') or
-            c in ('i-collapse-all', 'i-expand-all', 'i-show-all-dropdowns', 'i-hide-all-dropdowns') for c in cls) or
-            'i-view-in-frame-link' in cls or node['attrs'].get('id') == 'i-language-options')
+            c in ('i-collapse-all', 'i-expand-all', 'i-show-all-dropdowns', 'i-hide-all-dropdowns',
+                  'i-members-all', 'i-members-filtered') for c in cls) or
+            'i-view-in-frame-link' in cls or node['attrs'].get('id') in ('i-language-options', 'i-member-filter-checkboxes'))
+
+
+def is_member_filter_control(node):
+    attrs = node['attrs']
+    return (node['tag'] == 'input' and attrs.get('type') == 'checkbox' and
+            'i-toggle-filter-checkbox' in classes(node) and
+            attrs.get('id') in MEMBER_FILTER_TARGETS and
+            attrs.get('data-toggleclass') == MEMBER_FILTER_TARGETS[attrs['id']])
 
 
 def state_kinds(node):
@@ -258,6 +336,8 @@ def state_kinds(node):
         kinds.append('language_variant')
     if cls.intersection({'hs-collapsed', 'hs-expanded'}):
         kinds.append('legacy_toggle')
+    if cls.intersection(MEMBER_FILTER_TARGETS.values()):
+        kinds.append('member_filter')
     return kinds
 
 
@@ -290,7 +370,7 @@ def reconcile(content, references, resources):
         for child in node['children']:
             if isinstance(child, dict):
                 parents[child['node_id']] = node
-    edges, issues = [], []
+    edges, issues, filter_controls, no_op_controls = [], [], [], []
     covered = set()
     evidence = []
     for ref in references:
@@ -299,6 +379,7 @@ def reconcile(content, references, resources):
             evidence.append({'id':target['id'], 'source_url':target['source_url'], 'sha256':target['sha256']})
     known_renderer = any(e['sha256'] in RENDERER_HASHES for e in evidence)
     known_legacy = any(e['sha256'] == LEGACY_TOGGLE_HASH for e in evidence)
+    known_member_filter = any(e['sha256'] == MEMBER_FILTER_HASH for e in evidence)
 
     def add(kind, control, body, **extra):
         covered.add(body['node_id'])
@@ -326,6 +407,19 @@ def reconcile(content, references, resources):
                 target = next_element(node)
                 if target and body_class in classes(target):
                     add(kind, node, target)
+                elif known_renderer:
+                    # The exact captured renderer calls next('.body-class').
+                    # With no matching sibling the source control changes no
+                    # documentary body; retain the defect without inventing a
+                    # relationship to unrelated following source content.
+                    no_op_controls.append({'class':'SOURCE_CONTROL_WITHOUT_MATCHING_BODY',
+                        'control_node':node['node_id'], 'kind':kind,
+                        'source_control_attributes':dict(attrs),
+                        'required_next_sibling_class':body_class,
+                        'actual_next_sibling_node':target['node_id'] if target else None,
+                        'actual_next_sibling_attributes':dict(target['attrs']) if target else None,
+                        'source_effect':'no documentary body selected; heading class and stored UI state may still change',
+                        'representation':'source heading and all following content retained; reading copy inert'})
                 else:
                     issues.append({'class':'MISSING_SIBLING_STATE_BODY', 'node_id':node['node_id'], 'kind':kind})
         if 'i-tab-container' in cls:
@@ -349,6 +443,23 @@ def reconcile(content, references, resources):
                 issues.append({'class':'MISSING_LANGUAGE_FILTER_BODY', 'node_id':node['node_id']})
             for target in targets:
                 add('language_filter', node, target, language=attrs.get('data-languagename'))
+        if 'i-toggle-filter-checkbox' in cls:
+            if not is_member_filter_control(node):
+                issues.append({'class':'UNSUPPORTED_MEMBER_FILTER_CONTROL', 'node_id':node['node_id']})
+            else:
+                toggle = attrs['data-toggleclass']
+                targets = [n for n in all_nodes if toggle in classes(n)]
+                filter_controls.append({'control_node':node['node_id'],
+                    'control_id':attrs['id'], 'target_class':toggle,
+                    'source_checked_attribute_present':'checked' in attrs,
+                    'target_nodes':[n['node_id'] for n in targets],
+                    'source_control_attributes':dict(attrs),
+                    'representation':'all source-published members retained; filter control disabled in inert reading copy'})
+                # An empty match is a legitimate state: the published checkbox
+                # exists even when this API type has no members in that category.
+                for target in targets:
+                    add('member_filter', node, target, target_class=toggle,
+                        source_checked_attribute_present='checked' in attrs)
         if 'i-copy-code' in cls:
             ancestor = parents.get(node['node_id'])
             while ancestor and ancestor['tag'] != 'table':
@@ -388,7 +499,11 @@ def reconcile(content, references, resources):
         issues.append({'class':'UNVERIFIED_SDK_RENDERER_SEMANTICS'})
     if any(e['kind'] == 'legacy_toggle' for e in edges) and not known_legacy:
         issues.append({'class':'UNVERIFIED_LEGACY_TOGGLE_SEMANTICS'})
+    if filter_controls and not known_member_filter:
+        issues.append({'class':'UNVERIFIED_MEMBER_FILTER_SEMANTICS'})
     return {'schema_version':1, 'control_body_edges':edges, 'condition_nodes':[],
+            'filter_controls':filter_controls,
+            'no_op_controls':no_op_controls,
             'issues':issues, 'static_relationships_passed':not issues,
             'renderer_semantics_evidence':sorted(evidence, key=lambda e:e['id']),
             'representation':'all source-published static states retained and expanded; no source JavaScript execution'}
@@ -399,6 +514,8 @@ def serialize(content, refs, resources, module='SDK'):
         raise ValueError('SDK_CONVERTER_REQUIRES_SDK')
     refmap = {(r['node_id'], r['attribute'], r['original_href']):r for r in refs}
     exceptions = []
+    metadata_nodes = {item['node_id'] for n in nodes(content) if is_help_nosearch_metadata(n)
+                      for item in (n, n['children'][0])}
 
     def local_reference(node, key, value):
         ref = refmap.get((node['node_id'], key, value))
@@ -438,7 +555,17 @@ def serialize(content, refs, resources, module='SDK'):
         if tag not in SAFE_TAGS:
             exceptions.append({'node_id':node['node_id'], 'tag':tag, 'class':'UNSUPPORTED_ELEMENT'})
             tag = 'div'
-        if tag == 'input' and not ('i-toggle-language-checkbox' in classes(node) and node['attrs'].get('type') == 'checkbox'):
+        if tag in ('xml', 'mshelp:nosearch') and node['node_id'] not in metadata_nodes:
+            exceptions.append({'node_id':node['node_id'], 'tag':tag, 'class':'UNSUPPORTED_PUBLICATION_METADATA'})
+        if tag == 'innovasys:widgetproperty':
+            # Published static wrappers are preserved as source elements. The
+            # empty inline SectionId marker contributes no generated content;
+            # a nonempty or differently named marker still requires review.
+            known_widget = (node['attrs'].get('layout') == 'block' and node['attrs'].get('name') == 'Content') or (
+                node['attrs'].get('layout') == 'inline' and node['attrs'].get('name') == 'SectionId' and not node['children'])
+            if not known_widget:
+                exceptions.append({'node_id':node['node_id'], 'tag':tag, 'class':'UNSUPPORTED_WIDGET_PROPERTY'})
+        if tag == 'input' and not (('i-toggle-language-checkbox' in classes(node) and node['attrs'].get('type') == 'checkbox') or is_member_filter_control(node)):
             exceptions.append({'node_id':node['node_id'], 'tag':tag, 'class':'UNSUPPORTED_INPUT_STATE'})
         attrs = []
         for key, value in node['attrs'].items():
@@ -530,9 +657,11 @@ def convert(store, record):
         'titles':record.get('titles', []), 'breadcrumbs':record.get('breadcrumbs', []),
         'content_tree':content, 'content_text':text_of(content), 'search_text':search_text(content),
         'inventory':source_inventory, 'references':references, 'documentary_states':states,
+        'source_context':source_context(record, parser, content),
         'excluded_shell_nodes':excluded, 'format_exceptions':exceptions,
         'verification':{'checks':checks, 'missing_direct_assets':missing, 'unresolved_image_references':unresolved_images,
-            'parse_errors':parser.errors, 'content_checks_passed':all(checks.values()), 'reading_copy_verified':False,
+            'parse_errors':parser.errors, 'source_parse_diagnostics':source_parse_diagnostics(parser.errors),
+            'content_checks_passed':all(checks.values()), 'reading_copy_verified':False,
             'pending':['CSS dependency closure', 'offline documentary state visibility', 'internal anchor/link audit']}}
     prefix = 'SDK/reading/'+record['id']
     csp = "default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"

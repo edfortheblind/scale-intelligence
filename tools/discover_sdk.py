@@ -5,7 +5,7 @@ import json
 import os
 from pathlib import Path
 import re
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import urljoin, urlsplit, unquote
 
 from article_data import TreeParser, nodes, text_of, decode_original, reference_candidates, classify_href
 from collector import Store, ROOTS, ORIGIN, source_identity, digest, atomic_json, writer_lock, now
@@ -431,6 +431,12 @@ def reference_kind(node, attribute, href, base, role):
         return 'stylesheet', None
     if attribute == 'url_container_text':
         return ('stylesheet' if node['attrs']['type'].endswith('/css') else 'script'), None
+    # A literal topic hyperlink can use a GUID without a file suffix.
+    # Classify only the published URL; never invent a .html route or alias.
+    basename = unquote(urlsplit(resolved).path.rsplit('/', 1)[-1])
+    guid = r'[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}'
+    if node['tag'] == 'a' and attribute == 'href' and re.fullmatch('(?:' + guid + '|\\{' + guid + '\\})', basename):
+        return 'article', None
     return classify_href(resolved, node['tag'], attribute), None
 
 

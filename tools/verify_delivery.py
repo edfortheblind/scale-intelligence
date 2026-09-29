@@ -50,6 +50,10 @@ def verify(root):
         disposition=acceptance_readiness(store,state)
         if not disposition['ready']:
             failures.append({'error':'OWNER_ACCEPTANCE_INVALID_OR_STALE','detail':disposition.get('detail',disposition.get('reason'))})
+    from sdk_delivery_authority import verify_sdk_authority
+    inventory_path=store.root/'_project/artifact-inventory.json'
+    listed={item['path'] for item in read_json(inventory_path).get('files',[])} if inventory_path.is_file() else set()
+    failures.extend(verify_sdk_authority(store,state,listed))
     checked={'source_files':0,'reading_files':0,'app_documents':0,'prompts':0}
     checked['inventory_files']=inventory_count
     def check(relative,sha,kind):

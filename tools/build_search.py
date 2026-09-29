@@ -10,6 +10,21 @@ from collector import Store, ROOTS, atomic_bytes, atomic_json, read_json, digest
 from article_data import CONVERTER, parse_article, text_of
 
 
+def sdk_provisional_projection(store,record,data,parser,tree,catalog):
+    """Validate SDK searchable text now, without accepting resource/link gaps."""
+    import sdk_article_data as sdk
+    import verify_sdk
+    if (tree!=data['content_tree'] or sdk.inventory(tree)!=data['inventory'] or
+            data.get('source_context')!=sdk.source_context(record,parser,tree)):
+        raise ValueError('SDK app JSON structure differs from its source')
+    parse_check=verify_sdk.source_parse_check(store,record,parser,tree,data)
+    if not parse_check['passed']:
+        return False
+    if not verify_sdk.verify_reading(store.root,record,data,tree,catalog)['passed']:
+        raise ValueError('SDK reading structure differs from its source')
+    return True
+
+
 def build(store, output, provisional=False):
     output=Path(output).resolve()
     docs=[]
@@ -23,7 +38,12 @@ def build(store, output, provisional=False):
             data=read_json(path)
             verification=data['verification']
             approved=verification.get('reading_copy_verified',False)
-            provisional_eligible=all(verification['checks'].get(k,False) for k in ('exact_decoded_text','table_cell_structure','exact_code_whitespace','headings','parse_without_repair','supported_elements'))
+            # Provisional SDK indexing never promotes a stored status flag to
+            # final acceptance; freshness is recomputed below from actual bytes.
+            if module=='SDK' and provisional:approved=False
+            required=('exact_decoded_text','table_cell_structure','exact_code_whitespace','headings','supported_elements')
+            if module!='SDK':required+=('parse_without_repair',)
+            provisional_eligible=all(verification['checks'].get(k,False) for k in required)
             if approved or (provisional and provisional_eligible):
                 current=resource_map.get(data['id'],{})
                 if current.get('sha256')!=data['source']['sha256'] or current.get('app_data_path')!=path.relative_to(store.root).as_posix():
@@ -33,14 +53,16 @@ def build(store, output, provisional=False):
                 original=store.root/data['source']['local_path']
                 if digest(original.read_bytes())!=data['source']['sha256']:
                     raise ValueError('Index source hash mismatch')
-                _,tree,_,title,_=module_parser(current,original.read_bytes())
+                source_parser,tree,_,title,_=module_parser(current,original.read_bytes())
                 if text_of(tree)!=data['content_text'] or title!=data['title']:
                     raise ValueError('App JSON content differs from its source')
                 for kind in ('html','markdown'):
                     derivative=(store.root/data['reading'][kind]).resolve()
                     if not derivative.is_relative_to(store.root) or digest(derivative.read_bytes())!=data['reading'][kind+'_sha256']:
                         raise ValueError('Reading artifact hash mismatch')
-                docs.append((path,data))
+                if module=='SDK' and not sdk_provisional_projection(store,current,data,source_parser,tree,resource_map):
+                    continue
+                docs.append((path,data,approved))
     with tempfile.TemporaryDirectory(prefix='scale-search-') as folder, ExitStack() as cleanup:
         path=Path(folder)/'search.sqlite'
         db=sqlite3.connect(path)
@@ -74,8 +96,8 @@ def build(store, output, provisional=False):
                         db.execute('INSERT INTO navigation VALUES(?,?,?,?,?,?,?)',(node['id'],module,parent,position,node['title'],node.get('resource_id'),json.dumps(node['breadcrumbs'],ensure_ascii=False)))
                         insert(node.get('children',[]),node['id'])
                 insert(read_json(toc_path).get('nodes',[]))
-        for source,data in docs:
-            db.execute('INSERT INTO articles VALUES(?,?,?,?,?,?,?,?,?)',(data['id'],data['module'],data['title'],data['source']['source_url'],data['source']['sha256'],source.relative_to(store.root).as_posix(),data['reading']['html'],data['content_text'],int(data['verification'].get('reading_copy_verified',False))))
+        for source,data,approved in docs:
+            db.execute('INSERT INTO articles VALUES(?,?,?,?,?,?,?,?,?)',(data['id'],data['module'],data['title'],data['source']['source_url'],data['source']['sha256'],source.relative_to(store.root).as_posix(),data['reading']['html'],data['content_text'],int(approved)))
             db.execute('INSERT INTO article_search VALUES(?,?,?,?)',(data['id'],data['module'],data['title'],data['search_text']))
             for ref in data['references']:
                 db.execute('INSERT INTO links VALUES(?,?,?,?,?,?,?)',(data['id'],ref['node_id'],ref.get('target_id'),ref.get('fragment'),ref['classification'],ref['original_href'],ref['attribute']))

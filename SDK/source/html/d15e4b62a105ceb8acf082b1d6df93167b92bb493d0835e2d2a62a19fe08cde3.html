@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Configure Layout of Metadata Pages</title>
+    <meta name="Title" content="How to: Configure Layout of Metadata Pages"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The metadata screen framework is built using Twitter Bootstrap. In particular the grid system layout is used to define the basic layout of the screen. This section will go into more detail about defining the layout css classes of the screen." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="ea0ba233-9276-4b01-b482-5d48aa88e3a6"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="12"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Configure Layout of Metadata Pages</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > How to: Configure Layout of Metadata Pages</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The metadata screen framework is built using&nbsp;<a href="http://getbootstrap.com/">Twitter Bootstrap</a>. In particular the grid system layout is used to define the basic layout of the screen. This section will go into more detail about&nbsp;defining the&nbsp;layout css classes&nbsp;of the screen.</p>
+
+<div id="i-a2a484c4-9892-49c1-a32f-86e5479f8872-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Screen Layout Overview</span>
+</div>
+
+<div id="i-a2a484c4-9892-49c1-a32f-86e5479f8872-section-content" class="i-section-content">
+    <p>Screen layout is defined in metadata via css class definitions. This section will provide an overview of how this layout is configured using the insight screen layout as an example.</p>
+
+    <p>An insight screen consists of a screen container&nbsp;with three panes (Search, List, and Detail). These elements of the screen are rendered when the metadata elements define Bootstrap css classes on the div elements of the html. In particular, the metadata insight screens are using the container, row and col classes.</p>
+
+    <p>The container is defined as a 12 column grid system. Css was used to achieve this 3 column layout css&nbsp;by defining each pane as 4 columns (col-md-4). This makes&nbsp;each pane the same size. The insight screen allows the search pane to be collapsed when in this view the list pane is modified to include additional columns, giving them different sizes. In this scenario the list pane column has 8 columns of the grid system (col-md-8), and the detail pane has 4 columns of the grid system (col-md-4). As the page is resized the media queries within the Bootstrap infrastructure alter the classes accordingly to size to the device viewport.<br /></p>
+
+    <p>The contents of each pane can have their own css defined in metadata for a screen part, screen group, and screen control by specifying the appropriate css class.</p>
+</div>
+
+<div id="i-eac35354-0fb1-4045-9620-3b62648bbb42-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Defining Metadata Layout Classes</span>
+</div>
+
+<div id="i-eac35354-0fb1-4045-9620-3b62648bbb42-section-content" class="i-section-content">
+    <p>Each table has&nbsp;its own columns&nbsp;used to define the layout/css of the elements on the screen. Refer to the columns in the table below that are associated with defining the layout of each part of the metadata.</p>
+
+    <p><br /></p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Table Name</strong></td>
+
+                <td><strong>Column</strong></td>
+
+                <td><strong>Description</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART</td>
+
+                <td>DIV_CSS_CLASS</td>
+
+                <td>Defines any css classes that should be applied to a screen part. The css is placed on the screen part div wrapper in the html. The Bootstrap column layout for the screen parts should be defined here in addition to any other css classes that should be applied over the entire screen part.</td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_GROUP</td>
+
+                <td>ROW_CSS_CLASS</td>
+
+                <td>Used when a screen group is wrapped in a Bootstrap grid row. This column defines any css classes that should be applied to the groups row div in the html. The Bootstrap row class should be defined here in addition to any other css classes that should be applied over the entire screen group.</td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_GROUP</td>
+
+                <td>DIV_CSS_CLASS</td>
+
+                <td>Defines any css classes that should be applied to a screen group. The css is placed on the screen group div wrapper in the html.</td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_GROUP_COLUMN</td>
+
+                <td>COLUMN_CSS_CLASS</td>
+
+                <td>Defines any css classes that should be applied to the columns of a screen group that is nested in a Bootstrap grid row. The Bootstrap column layout for the screen group column should be defined here in addition to any other css classes that should be applied over the entire column.</td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL</td>
+
+                <td>DIV_CSS_CLASS</td>
+
+                <td>Defines any css classes that should be applied to the wrapper of a screen control. The css is placed on the screen control div wrapper in the html.</td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL</td>
+
+                <td>CONTROL_CSS_CLASS</td>
+
+                <td>Defines any css classes that should be applied to a screen control. The css is placed on the screen control itself in the html. For example, specifying an ellipsis for the label control when the text is longer than the control itself.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><br /></p>
+
+    <p>In addition to the Bootstrap grid layout the metadata framework&nbsp;also has its own set of custom classes found in the manh.css file. These classes define colors, padding,&nbsp;height, etc. for the metadata.&nbsp;More information on customizing the styles can be found in the&nbsp;<a href="4cb471c5-9e7a-46f9-95b6-b8edcb98e8c9">How to: Override the Default Theme for Metadata Screens</a> topic.</p>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

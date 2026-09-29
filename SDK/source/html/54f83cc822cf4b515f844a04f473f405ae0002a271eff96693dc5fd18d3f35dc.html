@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Configure Security for a Dynamic Action</title>
+    <meta name="Title" content="How to: Configure Security for a Dynamic Action"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Actions in the metadata screens use the same security concepts and configurations as the rest of the system. Follow the steps below to add security to an action on a metadata page." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="c53aeed1-7728-48ec-971c-a2cb2dd72c30"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="2"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Configure Security for a Dynamic Action</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Actions
+ > How to: Configure Security for a Dynamic Action</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Actions in the metadata screens use the same security concepts and configurations as the rest of the system. Follow the steps below to add security to an action on a metadata page.</p>
+
+<div id="i-5a980e86-8708-4458-b2d8-ff80774b719a-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create a security checkpoint for the action</span>
+</div>
+
+<div id="i-5a980e86-8708-4458-b2d8-ff80774b719a-section-content" class="i-section-content">
+    <p>Create a SECURITY_CHECKPOINT record for the action that is tied to the appropriate Form Id.</p>
+
+    <p></p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>FORM_ID</td>
+
+                <td>The Form Id for the current page that action will be added to.</td>
+            </tr>
+
+            <tr>
+                <td>CHECK_POINT</td>
+
+                <td>Unique identifier for the checkpoint for the action. Custom checkpoints start at 21, so use the first available number after 21 for the Form Id.</td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_FILE_KEY</td>
+
+                <td>Resource key that will be used to display the checkpoint in the "Security Permissions" screen.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+</div>
+
+<div id="i-dab18ced-a78d-4e1a-a236-b29a7dfe8b55-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Find the Object Id of the control that fires the action</span>
+</div>
+
+<div id="i-dab18ced-a78d-4e1a-a236-b29a7dfe8b55-section-content" class="i-section-content">
+    <p>Use the following SQL statement to find the control that fires the action you want to add security to. This will return all of the&nbsp;controls for the page and you will need to find the correct&nbsp;control from the list.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true">How to: Use Insight Architect to Customize a Metadata Page</a> ).</p>
+
+    <p></p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Find the action</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">in</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> PART_NAME <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@paneName</span> <span style="COLOR: #808080">and</span> SCREEN_ID <span style="COLOR: #808080">in</span> (<span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>form id<span style="COLOR: #808080">&gt;</span>)));
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p></p>
+</div>
+
+<div id="i-a94fe657-1bf1-472f-8d97-1d721d263f90-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Add a screen control attribute for the security checkpoint</span>
+</div>
+
+<div id="i-a94fe657-1bf1-472f-8d97-1d721d263f90-section-content" class="i-section-content">
+    <p>Create a SCREEN_CONTROL_ATTRIBUTES record tied to the control for the security checkpoint.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <p></p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>ATTRIBUTE_NAME</td>
+
+                <td><font style="BACKGROUND-COLOR: rgb(247,247,255)"><em>data-securitycheckpoint</em></font></td>
+            </tr>
+
+            <tr>
+                <td>ATTRIBUTE_VALUE</td>
+
+                <td>The security checkpoint configured in step 1</td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL_ID</td>
+
+                <td>The Screen Control Id of the control that fires the action</td>
+            </tr>
+
+            <tr>
+                <td>IS_CONTROL_PROPERTY</td>
+
+                <td><em>N</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

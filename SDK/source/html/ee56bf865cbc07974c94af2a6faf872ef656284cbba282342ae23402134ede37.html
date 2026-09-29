@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Tie an Insight Page to a Table or View</title>
+    <meta name="Title" content="How to: Tie an Insight Page to a Table or View"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="An insight screen can currently only be driven from a single database entity (either table or view). This entity is defined by the &quot;data-dbtable&quot; Html attribute on the list pane grid control. " />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="9ff6de68-919e-48ab-a13e-cab32060b580"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="6"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Tie an Insight Page to a Table or View</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Insight Pages
+ > How to: Tie an Insight Page to a Table or View</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>An insight screen can currently only be driven from a single database entity (either table or view). This entity is defined by the "data-dbtable" Html attribute on the list pane grid control.&nbsp;</p>
+
+<p></p>
+
+<div class="i-filtered-content-HTML" data-title="HTML" data-itemid="HTML">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>data-dbtable attribute</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">script</span> <span style="COLOR: #ff0000">type</span><span style="COLOR: #0000ff">="text/javascript"</span><span style="COLOR: #0000ff">&gt;</span>
+    $(function () { $('#ListPaneDataGrid').attr({
+    'data-dbtable': "Metadata_Insight_Shipment_View" });})
+<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">script</span><span style="COLOR: #0000ff">&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p></p>
+
+<p>This attribute should be created or modifed in the metadata for the grid control on an insight screen within the SCREEN_CONTROL_ATTRIBUTES table.</p>
+
+<div id="i-603a111b-b4f2-4c45-85a8-432a9a10a669-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Modify an existing insight screen to point to a different table or view</span>
+</div>
+
+<div id="i-603a111b-b4f2-4c45-85a8-432a9a10a669-section-content" class="i-section-content">
+    <p>In order to change an existing Insight screen to point to a different table or view, follow the steps below.</p>
+
+    <div id="i-204bc27f-7305-4512-af88-fa349f927a9e-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Find the SCREEN_CONTROL record for the insight grid</span>
+    </div>
+
+    <div id="i-204bc27f-7305-4512-af88-fa349f927a9e-section-content" class="i-section-content">
+        <p>Use the following SQL statement to locate the grid using the corresponding Form Id. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <p></p>
+
+        <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+            <table class="i-syntax-table">
+                <tbody>
+                    <tr>
+                        <th>Find grid control record</th>
+
+                        <th>
+                            <div class="i-copy-code-wrapper">
+                                <span class="i-copy-code">Copy Code</span>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="i-code" colspan="2">
+                            <pre>
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff">where</span> CONTROL_TYPE <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'20'</span> <span style="COLOR: #808080">and</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">IN</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> SCREEN_ID <span style="COLOR: #808080">in</span> (
+            <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>form id<span style="COLOR: #808080">&gt;</span>)))
+</pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p></p>
+    </div>
+
+    <div id="i-b953f3f1-9bee-4251-a4c3-1440af3e0cb0-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Update the data-dbtable attribute with new table or view</span>
+    </div>
+
+    <div id="i-b953f3f1-9bee-4251-a4c3-1440af3e0cb0-section-content" class="i-section-content">
+        <p>Use the following SQL statement to modify the table or view that the insight screen is using. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <p></p>
+
+        <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+            <table class="i-syntax-table">
+                <tbody>
+                    <tr>
+                        <th>Modify data-dbtable attribute</th>
+
+                        <th>
+                            <div class="i-copy-code-wrapper">
+                                <span class="i-copy-code">Copy Code</span>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="i-code" colspan="2">
+                            <pre>
+<span style="COLOR: #0000ff">update</span> SCREEN_CONTROL_ATTRIBUTES <span style="COLOR: #0000ff">set</span> ATTRIBUTE_VALUE <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'&lt;new table or view&gt;'</span>
+<span style="COLOR: #0000ff">where</span> SCREEN_CONTROL_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>control id <span style="COLOR: #0000ff">of</span> grid<span style="COLOR: #808080">&gt;</span> <span style="COLOR: #808080">and</span> ATTRIBUTE_NAME <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'data-dbtable'</span>
+</pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p></p>
+
+        <p></p>
+
+        <div class="i-box i-box-note">
+            Please note that changing the table or view on an insight screen only changes the table or view that the insight page selects from. If specific controls reference column names that do not exist in the table or view, errors will occur on the screen. The individual columns that other controls point to will need to be updated as well. Please reference the&nbsp;<a href="How_to_Create_Search_Pane.html">How to: Create Insight Search Pane</a> for more details.
+        </div>
+
+        <p></p>
+    </div>
+</div>
+
+<div id="i-1a1613ad-d96b-456c-a792-7c5a33fd4e9d-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Create a new insight page tied to a table or view</span>
+</div>
+
+<div id="i-1a1613ad-d96b-456c-a792-7c5a33fd4e9d-section-content" class="i-section-content">
+    Tying a new insight page to a table or view is as simple as creating a new SCREEN_CONTROL_ATTRIBUTES record with ATTRIBUTE_NAME = "data-dbtable" and ATTRIBUTE_VALUE = "&lt;table or view name&gt;" that is linked to the SCREEN_CONTROL record for the grid on the page. Please reference the&nbsp;<a href="How_to_Create_List_Pane.html">How to: Create Insight List Pane</a>&nbsp;topic for more details on creating a grid on an insight screen. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).
+</div>
+
+<p></p>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Use_a_Toggle_to_Dynamically_tie_an_Insight_Page_to_an_Alternate_Table_or_View.html">How to: Use a Toggle to Dynamically tie an Insight Page to an Alternate Table or View</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

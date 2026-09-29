@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Customize Field Restrictions through Exit Point Programs</title>
+    <meta name="Title" content="How to: Customize Field Restrictions through Exit Point Programs"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Restrictions represent the list of fields on a screen that should always be restricted (or read-only). The system provides the exit point Field Restrictions – Modify, that should be used to override the list of base restrictions. The sql utility func" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="9a8bfeab-d37b-4b90-b26c-875eb45a0c18"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="11"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Customize Field Restrictions through Exit Point Programs</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Detail Pages
+ > How to: Customize Field Restrictions through Exit Point Programs</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Restrictions represent the list of fields on a screen that should always be restricted (or read-only).&nbsp;The system provides the exit point <em>Field Restrictions – Modify</em>, that should be used to override the list of base restrictions.&nbsp;The sql utility function <em>ModifyCommaSeparatedStringList</em> can be used to modify field restrictions in stored procedure exit point programs.</p>
+
+<p>&nbsp;</p>
+
+<p>The following example represents a sample implementation of the&nbsp;<em>Field Restrictions – Modify</em> exit point program using a stored procedure.&nbsp;</p>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Sample exit point program for Field&nbsp; Restrictions - Modify exit point</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">CREATE</span> <span style="COLOR: #0000ff">PROCEDURE</span> <span style="COLOR: #ff0000">[EXP_FieldRestrictionsModify]</span> (
+    <span style="COLOR: #008000">@SESSIONVALUE</span> xml,
+    <span style="COLOR: #008000">@FORMID</span> numeric,
+    <span style="COLOR: #008000">@SCREENNAME</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="COLOR: #ff00ff">max</span>),
+    <span style="COLOR: #008000">@INTERNALNUM</span> numeric,
+    <span style="COLOR: #008000">@RESTRICTIONS</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="COLOR: #ff00ff">max</span>),
+    <span style="COLOR: #008000">@RETURNVALUE</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="COLOR: #ff00ff">max</span>) output
+)
+<span style="COLOR: #0000ff">AS</span>
+    <span style="COLOR: #0000ff">SET</span> NOCOUNT <span style="COLOR: #0000ff">ON</span>;
+    <span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@fieldsToAdd</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="COLOR: #ff00ff">max</span>), <span style="COLOR: #008000">@fieldsToRemove</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="COLOR: #ff00ff">max</span>), <span style="COLOR: #008000">@userName</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="COLOR: #ff00ff">max</span>);
+    <span style="COLOR: #0000ff">SET</span> <span style="COLOR: #008000">@userName</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">''</span>;
+    <span style="COLOR: #0000ff">SET</span> <span style="COLOR: #008000">@fieldsToAdd</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">''</span>;
+    <span style="COLOR: #0000ff">SET</span> <span style="COLOR: #008000">@fieldsToRemove</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">''</span>;
+    <span style="COLOR: #0000ff">IF</span> (<span style="COLOR: #008000">@FORMID</span> <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">2759</span>) <span style="COLOR: #008080">-- Work instruction
+</span>    <span style="COLOR: #0000ff">BEGIN</span>       
+       
+        <span style="COLOR: #008080">-- If we want allow only a particular user to edit fields Description and User Defined 8
+</span>        <span style="COLOR: #008080">-- If user is not 'userName' then do not allow user to edit Description and User Defined 8 field
+</span>        <span style="COLOR: #0000ff">EXEC</span> dbo.GetXMLAttributeValueByAttributeName <span style="COLOR: #008000">@SESSIONVALUE</span>,<span style="COLOR: #ff0000">'Session/User'</span>,<span style="COLOR: #008000">@userName</span> OUTPUT
+        <span style="COLOR: #0000ff">IF</span> (<span style="COLOR: #008000">@userName</span> <span style="COLOR: #808080">&lt;&gt;</span> <span style="COLOR: #ff0000">'userName'</span>)
+        <span style="COLOR: #0000ff">BEGIN</span>
+            <span style="COLOR: #0000ff">SET</span> <span style="COLOR: #008000">@fieldsToAdd</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'ITEMDESCRIPTION,UDWORK_INSTRUCTION8'</span>
+        <span style="COLOR: #0000ff">END</span>
+
+        <span style="COLOR: #008080">-- Update base restrictions
+</span>        <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #008000">@RETURNVALUE</span> <span style="COLOR: #808080">=</span> dbo.ModifyCommaSeparatedStringList(<span style="COLOR: #008000">@RESTRICTIONS</span>, <span style="COLOR: #008000">@fieldsToAdd</span>, <span style="COLOR: #008000">@fieldsToRemove</span>)
+    <span style="COLOR: #0000ff">END</span>
+    <span style="COLOR: #0000ff">ELSE</span>
+       <span style="COLOR: #0000ff">begin</span>
+         <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #008000">@RETURNVALUE</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@RESTRICTIONS</span>
+       <span style="COLOR: #0000ff">END</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>&nbsp;</p>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="Field_Restrictions.html">Field Restrictions</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

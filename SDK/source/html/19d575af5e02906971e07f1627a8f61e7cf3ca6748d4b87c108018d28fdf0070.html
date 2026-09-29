@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Activate Inline Deleting in a Grid</title>
+    <meta name="Title" content="How to: Activate Inline Deleting in a Grid"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="A grid can have an inline delete option enabled that allows users to quickly delete records in the grid. The delete option is represented by the delete button shown in the figure below." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="0d629a81-248b-4a33-b40a-a4268c44aedc"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="2"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Activate Inline Deleting in a Grid</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > How to: Activate Inline Deleting in a Grid</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>A grid can have an inline delete option enabled that allows users to quickly delete records in the grid. The delete option is represented by the delete button shown in the figure below.</p>
+
+<p><img border="0" alt="" src="images/inline delete.png" /></p>
+
+<p>In order to allow inline deleting from a grid, follow these steps.</p>
+
+<div id="i-9a908034-1fa3-4007-bb97-55cafbca9173-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Identify the delete web service call for the grid records</span>
+</div>
+
+<div id="i-9a908034-1fa3-4007-bb97-55cafbca9173-section-content" class="i-section-content">
+    <p>To configure a grid for inline deleting a&nbsp;delete web service must exist for the type of records displayed in the grid.&nbsp;&nbsp;The grid will pass the primary key to the web service. If a web service does not exist you will need to create the appropriate web service logic before configuring this option on the grid.</p>
+</div>
+
+<div id="i-a9a715da-fae3-4803-9aaa-1370505ce4d6-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Find the Object Id of the grid</span>
+</div>
+
+<div id="i-a9a715da-fae3-4803-9aaa-1370505ce4d6-section-content" class="i-section-content">
+    <p>Use the following SQL statement to show all controls for the screen. Browse through the returned records and find the record corresponding to the grid.&nbsp;&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Find the Object Id of Grid</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">IN</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> SCREEN_ID <span style="COLOR: #808080">in</span> (
+            <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>form id<span style="COLOR: #808080">&gt;</span>)))
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>&nbsp;</p>
+</div>
+
+<div id="i-7acf5dd7-e820-4537-bc9d-c6dddf14b65d-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Create the&nbsp;required screen control attribute records&nbsp;for the&nbsp;grid</span>
+</div>
+
+<div id="i-7acf5dd7-e820-4537-bc9d-c6dddf14b65d-section-content" class="i-section-content">
+    <p>Two SCREEN_CONTROL_ATTRIBUTES records need to be created to activate inline deleting in a grid.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>ATTRIBUTE_NAME</td>
+
+                <td><font style="BACKGROUND-COLOR: rgb(247,247,255)"><em>data-restdelete</em></font></td>
+            </tr>
+
+            <tr>
+                <td>ATTRIBUTE_VALUE</td>
+
+                <td>
+                    <p>Web service URL (i.e. /general/scaleapi/shipmentHeaderApi/delete)</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL_ID</td>
+
+                <td>The Screen Control Id of the grid</td>
+            </tr>
+
+            <tr>
+                <td>IS_CONTROL_PROPERTY</td>
+
+                <td><em>Y</em></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>&nbsp;</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td width="236"><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td width="236">ATTRIBUTE_NAME</td>
+
+                <td><font style="BACKGROUND-COLOR: rgb(247,247,255)"><em>data-restFormId</em></font></td>
+            </tr>
+
+            <tr>
+                <td width="236">ATTRIBUTE_VALUE</td>
+
+                <td>
+                    <p>The Form Id of record being deleted in the grid. If this attribute is not added, there will be no active security for the delete action.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="236">SCREEN_CONTROL_ID</td>
+
+                <td>The Screen Control Id of the grid</td>
+            </tr>
+
+            <tr>
+                <td width="236">IS_CONTROL_PROPERTY</td>
+
+                <td><em>Y</em></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>&nbsp;</p>
+</div>
+
+<div id="i-7f4686f8-b060-4443-a171-cfd24e053119-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 4: Create the&nbsp;required screen control&nbsp;event records&nbsp;for the&nbsp;grid</span>
+</div>
+
+<div id="i-7f4686f8-b060-4443-a171-cfd24e053119-section-content" class="i-section-content">
+    <p>In order to tie the delete action out to another button on the screen (for example, the Save button), the following SCREEN_CONTROL_EVENT and SCREEN_CONTROL_EVENT_PARAMETERS records are required.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td width="240"><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td width="240">EVENT_ID</td>
+
+                <td><font style="BACKGROUND-COLOR: rgb(247,247,255)"><em>iggridupdatingrowdelete</em></font></td>
+            </tr>
+
+            <tr>
+                <td width="240">ATTRIBUTE_VALUE</td>
+
+                <td>
+                    <p><em>_webUi.Grid.enableCommitActionForEditableGrid</em></p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="240">SCREEN_CONTROL_ID</td>
+
+                <td>The Screen Control Id of the grid</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>&nbsp;</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td width="236"><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td width="236">PARAMETER_NAME</td>
+
+                <td><font style="BACKGROUND-COLOR: rgb(247,247,255)"><em>CommitSelector</em></font></td>
+            </tr>
+
+            <tr>
+                <td width="236">PARAMETER_VALUE</td>
+
+                <td>
+                    <p>The jQuery selector for the button that should process the delete action for the grid. For example, the Save button on a details screen would be <em>li.menubuttonsave</em>.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="236">SCREEN_CONTROL_EVENT_ID</td>
+
+                <td>The Screen Control Event Id of the event created above</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>&nbsp;</p>
+</div>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

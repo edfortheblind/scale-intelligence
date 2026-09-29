@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Integration Endpoints</title>
+    <meta name="Title" content="Integration Endpoints"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Integration Endpoints refer to configurable extensions to the typical Manhattan SCALE system. These can be required components, such as Document Generators, where the base system ships and uses many different endpoints. They can also be optional comp" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="{476BE228-7E02-4BF1-8E9E-CB3225E02BFE}"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="6"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Integration Endpoints</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Integration Endpoints refer to configurable extensions to the typical Manhattan SCALE system. These can be required components, such as Document Generators, where the base system ships and uses many different endpoints. They can also be optional components, such as Exit Points, that are used by consultants and/or customers to enhance the default functionality of the application to meet a specific business need. The application currently supports Integration Endpoints of the API types.</p>
+
+<p>&nbsp;</p>
+
+<p>NOTE: In the application Integration Endpoints can be found under the Integration Services Folder of the Configuration Explorer.</p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">API Endpoints</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>API Integration Endpoints are written in any .NET language and are invoked in the same process as the consuming&nbsp;Manhattan SCALE&nbsp;logic. Except where noted, you must configure the assembly's name, the namespace, the class name, and the entry method of the endpoint from the appropriate Integration Endpoint configuration (e.g. the Exit Point Program config). At runtime,&nbsp;the application&nbsp;loads the assembly from the GAC, creates an instance of the configured class, and uses reflection to invoke the endpoint's entry method.</p>
+
+    <p>&nbsp;</p>
+
+    <p>Here is an example of an Exit Point Program API configuration.</p>
+
+    <p>&nbsp;</p>
+
+    <p><img border="0" alt="API Integration Endpoint Example" src="images/APIIntegrationEndpointExample.png" /></p>
+
+    <p>&nbsp;</p>
+
+    <p>API style Integration Endpoints can throw an exception derived from Manh.ILS.General.IntegrationEndpointException of the WMW.General assembly. These exceptions can be used to:</p>
+
+    <ul>
+        <li>Return validation errors via IntegrationEndpointException.Message.</li>
+
+        <li>Wrap other caught exceptions via the IntegrationEndpointException.InnerException to prevent an unexpected abort in the business process.</li>
+    </ul>
+
+    <p>Note that the action taken once the IntegrationEndpointException is caught entirely depends on the business process, so please consult the each specific Integration Endpoint’s documentation for details.</p>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

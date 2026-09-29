@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Screen Control Event Parameter Naming Conventions</title>
+    <meta name="Title" content="Screen Control Event Parameter Naming Conventions"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Event parameters have naming conventions that must be followed in order to dynamically call web services through actions. The following conventions refer to the PARAMETER_NAME column in the SCREEN_CONTROL_EVENT_PARAMETERS table." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="f0d63ebe-fb22-4b4f-9173-ba1a32eea1fe"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="42"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Screen Control Event Parameter Naming Conventions</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > Screen Control Event Parameter Naming Conventions</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Event parameters have naming conventions that must be followed in order to dynamically call web services through actions. The following conventions refer to the PARAMETER_NAME column in the SCREEN_CONTROL_EVENT_PARAMETERS table.</p>
+
+<table>
+    <tbody>
+        <tr>
+            <td>Name</td>
+
+            <td>Description</td>
+
+            <td>Naming Convention</td>
+        </tr>
+
+        <tr>
+            <td>Service URL parameter</td>
+
+            <td>Defines the URL for the web service call</td>
+
+            <td>&lt;Method&gt;ServiceURL where &lt;Method&gt; is the Http method (GET, POST, DELETE, etc.).</td>
+        </tr>
+
+        <tr>
+            <td>Pull parameter value from detail pane model</td>
+
+            <td>Any value from the detail pane model can be passed as an&nbsp; argument to the web service call</td>
+
+            <td>&lt;ParameterType&gt;_&lt;InputParameterName&gt; where &lt;ParameterType&gt; is the type of parameter (queryParameter for GET and DELETE and PostData for POST)&nbsp;and &lt;InputParameterName&gt; is&nbsp;the name of the parameter to pass. Please reference the&nbsp;<a href="How_to_Retrieve_Parameter_Values_from_Detail_Pane_Model.html" data-auto-update-caption="true">How to: Retrieve Parameter Values from the Insight Detail Pane Model</a> topic for more information.</td>
+        </tr>
+
+        <tr>
+            <td>Pull parameter value from grid column</td>
+
+            <td>Any column from the selected grid row can be passed as an&nbsp; argument to the web service call</td>
+
+            <td>&lt;ParameterType&gt;_Grid_&lt;ControlName&gt;_&lt;InputParameterName&gt; where &lt;ParameterType&gt; is the type of parameter (queryParameter for GET and DELETE and PostData for POST), &lt;ControlName&gt; is the name of the grid control, and &lt;InputParameterName&gt; is the name of the parameter to pass. Please reference the&nbsp;<a href="How_to_Retrieve_Parameter_Values_from_Grid.html" data-auto-update-caption="true">How to: Retrieve Parameter Values from the Insight Grid</a>&nbsp;topic for more information.</td>
+        </tr>
+
+        <tr>
+            <td>Pull parameter value from input prompt</td>
+
+            <td>User input via a Modal Dialog prompt can be passed as an argument to the web service call</td>
+
+            <td>&lt;ParameterType&gt;_Input_&lt;ControlName&gt;_&lt;InputParameterName&gt; where &lt;ParameterType&gt; is the type of parameter (queryParameter for GET and DELETE and PostData for POST), &lt;ControlName&gt; is the name of the input control, and &lt;InputParameterName&gt; is the name of the parameter to pass. Please reference the&nbsp;<a href="How_to_Retrieve_Parameter_Values_from_Input_Control.html" data-auto-update-caption="true">How to: Retrieve Parameter Values from an Input Control</a>&nbsp;topic for more information.</td>
+        </tr>
+
+        <tr>
+            <td>Pull parameter value from javascript function</td>
+
+            <td>The return value from a javascript function can be passed as an argument to the web service call</td>
+
+            <td>&lt;ParameterType&gt;_Function_&lt;InputParameterName&gt; where &lt;ParameterType&gt; is the type of parameter (queryParameter for GET and DELETE and PostData for POST) and &lt;InputParameterName&gt; is the name of the parameter to pass. Please reference the&nbsp;<a href="How_to_Retrieve_Parameter_Values_from_JavaScript_Function.html" data-auto-update-caption="true">How to: Retrieve Parameter Values from a JavaScript Function Call</a>&nbsp;topic for more information.</td>
+        </tr>
+
+        <tr>
+            <td>Override success callback function</td>
+
+            <td>The default success callback when the web service completes can be overridden</td>
+
+            <td>&lt;Method&gt;_SuccessCallback where &lt;Method&gt; is the Http method (GET, POST, DELETE, etc.). Please reference the&nbsp;<a href="How_to_Override_Default_Success_Callback.html" data-auto-update-caption="true">How to: Override the Default Success Callback</a>&nbsp;topic for more information.</td>
+        </tr>
+
+        <tr>
+            <td>Enable/Disable actions</td>
+
+            <td>Enable or disable an action based on the data in the selected grid record</td>
+
+            <td>EnableAction_&lt;ControlName&gt; where &lt;ControlName&gt; is the name of the control tied to the action.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><br /></p>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Screen_Control_Event_Parameters.html">How to: Create Screen Control Event Parameters</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

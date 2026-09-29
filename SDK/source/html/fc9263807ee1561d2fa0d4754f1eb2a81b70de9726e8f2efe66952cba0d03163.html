@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Overview</title>
+    <meta name="Title" content="Overview"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The Notifications framework is architected as a two stage system - creation and then delivery - to ensure high performance and scalability. The overall idea is that various processes in the system would create notification messages and a background s" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="61ffd174-5ce5-41ec-980b-44aa11b520c2"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="1"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Overview</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+Notifications
+ > Overview</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The Notifications framework is architected as a two stage system - creation and then delivery - to ensure high performance and scalability. The overall idea is that various processes in the system would create notification messages and a background service (SCALE Monitor Service) would pick them up, templatize the message (if required) and deliver to (configurable) destinations.</p>
+
+<p>It depends on a few configurations being in place (please consult product Help documentation for more details):</p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Configurations</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <table class="members">
+        <tbody>
+            <tr>
+                <th class="nameColumn" width="220"><strong>Configuration setting</strong></th>
+
+                <th class="descriptionColumn"><strong>Description</strong></th>
+            </tr>
+
+            <tr>
+                <td width="220">SMTP server</td>
+
+                <td>URL is configured in Technical values, For SaaS, value is taken from default database.</td>
+            </tr>
+
+            <tr>
+                <td width="220">Notification record/s</td>
+
+                <td>Table configuration header record for message, title etc. The ObjectID of the notification record is referenced from the generated Notification Messages.</td>
+            </tr>
+
+            <tr>
+                <td width="220">Notification Address record/s</td>
+
+                <td>Table configuration detail records tied to the Notification header for email addresses (semi-colon delimited), message template, delivery mechanism (Email, SMS etc.) and flag for file attachments.</td>
+            </tr>
+
+            <tr>
+                <td width="220">Delivery Mechanism/s</td>
+
+                <td>
+                    <p>Email and SMS delivery mechanisms come with the base product. These are configured as Dynamic_Calling_Details of record type NOTDELIVER. This allows for extensibility in the sense that additional mechanisms can be configured by providing a code implementation.</p>
+
+                    <p>Note: SMS delivery mechanism leverages the email integration provided by most mobile carriers wherein they allow an email to be sent to a specific domain address and will translate this request into an SMS transmission to a mobile phone. The list of carrier supporting this feature is quite large and it generally documented on their web sites. A helpful list of Email to SMS gateways is available&nbsp;<a href="http://martinfitzpatrick.name/list-of-email-to-sms-gateways/" target="_blank">here</a>.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Notification template formats</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>The raw Notification messages can be styled based on template files that can support both plain text and HTML content (to support rich formatting). These templates also support tokens as described in the next section. This facilitates message content with rich styling, embedded url's and a lot more.</p>
+
+    <p>The notification templates are supported in two formats - Xml and text. The message content supported is primarily derived from what is traditionally supported in emails - text and html. The Xml template is useful in scenarios where the csv message data contains multiple rows and the final notification is expected to represent that information. The text template is useful in simpler scenarios where limited information from the first row of the csv data or a fixed alert is to be sent - which is often the case with SMS alerts.</p>
+
+    <div class="i-filtered-content-Xml" data-title="Xml" data-itemid="Xml">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th><strong>Xml Template</strong> - Allows plain text or html content within an xml document</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">NotificationTemplate</span><span style="COLOR: #0000ff">&gt;</span>   
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">Header</span><span style="COLOR: #0000ff">&gt;</span>Message body header (supports tokens taken from 1st row in csv message data)<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">Header</span><span style="COLOR: #0000ff">&gt;</span>
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">RowTemplate</span><span style="COLOR: #0000ff">&gt;</span>Text here is repeated per row available in the csv message data (supports tokens)<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">RowTemplate</span><span style="COLOR: #0000ff">&gt;</span>
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">Footer</span><span style="COLOR: #0000ff">&gt;</span>Message footer (supports tokens taken from 1st row in csv message data)<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">Footer</span><span style="COLOR: #0000ff">&gt;</span>
+<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">NotificationTemplate</span><span style="COLOR: #0000ff">&gt;</span>
+
+Example showing template that generates html email content:
+<span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">NotificationTemplate</span><span style="COLOR: #0000ff">&gt;</span>   
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">Header</span><span style="COLOR: #0000ff">&gt;</span>
+        <span style="COLOR: #0000ff">&lt;![CDATA[</span><span style="COLOR: #808080">&lt;html lang="en-us"&gt;
+                &lt;body&gt;
+                &lt;p&gt;&lt;span style='font-size:18.0pt;font-weight:bold;color:#00cc00'&gt;Shipments on Loads confirmed on [[CURRENTDATETIME]] &lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;&lt;ul style='font-size:12.0pt;color:black'&gt;</span><span style="COLOR: #0000ff">]]&gt;</span>
+    <span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">Header</span><span style="COLOR: #0000ff">&gt;</span>
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">RowTemplate</span><span style="COLOR: #0000ff">&gt;</span>
+        <span style="COLOR: #0000ff">&lt;![CDATA[</span><span style="COLOR: #808080">&lt;li&gt;[[ROWINDEX]]. Shipment ([[SHIPMENT_ID]]) has been confirmed on load [[SHIPPING_LOAD_NUM]].
+           It will be shipped in [[TOTAL_CONTAINERS]] parcels via [[CARRIER]] [[CARRIER_SERVICE]]. &lt;/li&gt;</span><span style="COLOR: #0000ff">]]&gt;</span>
+    <span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">RowTemplate</span><span style="COLOR: #0000ff">&gt;</span>
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">Footer</span><span style="COLOR: #0000ff">&gt;</span>
+        <span style="COLOR: #0000ff">&lt;![CDATA[</span><span style="COLOR: #808080">&lt;/ul&gt;&lt;/p&gt; &lt;p&gt;Thank you for your patronage,
+        [[WAREHOUSE]] &lt;/p&gt;
+                &lt;/body&gt;
+            &lt;/html&gt;</span><span style="COLOR: #0000ff">]]&gt;</span>
+    <span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">Footer</span><span style="COLOR: #0000ff">&gt;</span>
+<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">NotificationTemplate</span><span style="COLOR: #0000ff">&gt;</span>
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>&nbsp;The following example shows a text template for SMS (limited to max 160 characters) that has a web link to a shipment.</p>
+
+    <div class="i-filtered-content-Text" data-title="Text" data-itemid="Text">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th><strong>Text&nbsp;Template</strong> - Allows plain text or html content</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+Shipment [[SHIPMENT_ID]] will be late. Link http://[[SERVERNAME]]/scale/details/shipment?internalNum=[[INTERNAL_SHIPMENT_NUM]]
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Notification template tokens</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>Notification templates support tokens that can be replaced dynamically from message data. In such cases the message data is assumed to be in CSV (comma separated value) format, with the first row representing column names. This facilitates dynamic message content based on actual&nbsp;data taken from the raw message. A token in the template is any field enclosed within double square brackets - [[Field]]</p>
+
+    <p>The following table lists all supported pre-defined tokens. Beyond this, anything from the csv message header can also be used as tokens.</p>
+
+    <table class="members">
+        <tbody>
+            <tr>
+                <th class="nameColumn" width="220"><strong>Token</strong></th>
+
+                <th width="433"><strong>Description</strong></th>
+
+                <th class="descriptionColumn"><strong>Sample template/example</strong></th>
+            </tr>
+
+            <tr>
+                <td width="220">NOTIFICATIONMESSAGE</td>
+
+                <td width="433">Full raw notification message replaces this token</td>
+
+                <td>The alert is - [[NOTIFICATIONMESSAGE]]. Thanks.</td>
+            </tr>
+
+            <tr>
+                <td width="220">SERVERNAME</td>
+
+                <td width="433">The name of the application server that is delivering the notification</td>
+
+                <td>The alert was generated from [[SERVERNAME]] environment.</td>
+            </tr>
+
+            <tr>
+                <td width="220">CURRENTDATE</td>
+
+                <td width="433">Today's date in the current culture's short date&nbsp;format</td>
+
+                <td>2015-01-15T13:45:30 -&gt; 01/15/2015 in the en-US culture</td>
+            </tr>
+
+            <tr>
+                <td width="220">CURRENTDATETIME</td>
+
+                <td width="433">Current date with long time format</td>
+
+                <td>2015-01-15T13:45:30 -&gt; 1/15/2015 1:45:30 PM in the en-US culture</td>
+            </tr>
+
+            <tr>
+                <td width="220">CURRENTDATECUSTOM</td>
+
+                <td width="433">Allows custom formatting of date with formats</td>
+
+                <td>
+                    <p>The alert was generated&nbsp;on [[CURRENTDATECUSTOM.d MMM]].</p>
+
+                    <p>After template processing the notification looks like - The alert was generated on 15 Jan.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td width="220">ROWINDEX</td>
+
+                <td width="433">Represents the index of the row from csv data. Typically this is to be used in RowTemplate section along with other csv based tokens, so that the section will be repeated per row data available in the csv message. If used in Header or Footer sections it will be replaced with value “1”</td>
+
+                <td></td>
+            </tr>
+
+            <tr>
+                <td width="220">CONDITIONALDATA</td>
+
+                <td width="433">[[CONDITIONALDATA.Text.COLUMNNAME]] - should print "Text" if COLUMNNAME value is not null</td>
+
+                <td>[[SHIPMENT_ID]] will be shipped via [[CARRIER]] [[CONDITIONALDATA. service .CARRIER_SERVICE]]</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Any non-recognizable tokens in the template are replaced with null text in the final notification message.</p>
+</div>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

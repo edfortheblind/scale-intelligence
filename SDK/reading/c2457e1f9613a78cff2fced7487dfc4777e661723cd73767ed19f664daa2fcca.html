@@ -1,0 +1,126 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Compression in REST-Based WCF Web Services</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n29">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n30">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n31">
+            <div class="i-project-title" data-source-node="n32">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n33"><div class="i-page-title-text" data-source-node="n34">Compression in REST-Based WCF Web Services</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n35">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n36">
+                <label class="i-collapse-all" data-source-node="n37">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n38">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n39">View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n40">
+        <p data-source-node="n41">REST-based web services offer the ability to compress entities attached to both requests and responses.  In certain scenarios, the size of the entity as it travels across the network can be reduced by over 90%.</p>
+
+<p data-source-node="n42">To send the application a compressed entity, apply one of the supported compression encodings to the entity data and place the name of that encoding in the <a href="f579bfac844b388ae25396c60597f70bfde47aba8e663ffe4ece557eb116c226.html#Content-Encoding" data-source-node="n43">Content-Encoding</a> header.  The following C# example illustrates how deflate encoding can be achieved using the <strong data-source-node="n44">System.IO.Compression.DeflateStream</strong> class:</p>
+
+<p data-source-node="n45"> </p>
+
+<div class="i-filtered-content-CS" data-title="CS" data-itemid="CS" data-source-node="n46">
+    <table class="i-syntax-table" data-source-node="n47">
+        <tbody data-source-node="n48">
+            <tr data-source-node="n49">
+                <th data-source-node="n50">C# - Compressing a Request Entity</th>
+
+                <th data-source-node="n51">
+                    <div class="i-copy-code-wrapper" data-source-node="n52">
+                        <span class="i-copy-code" data-source-node="n53">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr data-source-node="n54">
+                <td class="i-code" colspan="2" data-source-node="n55">
+                    <pre data-source-node="n56">
+<span style="COLOR: #0000ff" data-source-node="n57">private</span> System.Net.HttpWebRequest GetDeflatePostRequest(
+    <span style="COLOR: #0000ff" data-source-node="n58">string</span> uri,
+    <span style="COLOR: #0000ff" data-source-node="n59">string</span> entityXml)
+{
+    HttpWebRequest request = WebRequest.Create(uri) <span style="COLOR: #0000ff" data-source-node="n60">as</span> HttpWebRequest;
+    request.Method = <span style="COLOR: #800000" data-source-node="n61">"POST"</span>;
+    request.ContentType = <span style="COLOR: #800000" data-source-node="n62">"application/xml"</span>;
+    request.Headers[HttpRequestHeader.ContentEncoding] = <span style="COLOR: #800000" data-source-node="n63">"deflate"</span>;
+
+    StreamWriter requestStreamWriter = <span style="COLOR: #0000ff" data-source-node="n64">null</span>;
+    <span style="COLOR: #0000ff" data-source-node="n65">try</span>
+    {
+        Stream stream = <span style="COLOR: #0000ff" data-source-node="n66">new</span> System.IO.Compression.DeflateStream(
+            request.GetRequestStream(), CompressionMode.Compress);
+        requestStreamWriter = <span style="COLOR: #0000ff" data-source-node="n67">new</span> StreamWriter(stream);
+        requestStreamWriter.Write(entityXml);
+        requestStreamWriter.Flush();
+    }
+    <span style="COLOR: #0000ff" data-source-node="n68">finally</span>
+    {
+        <span style="COLOR: #0000ff" data-source-node="n69">if</span> (requestStreamWriter != <span style="COLOR: #0000ff" data-source-node="n70">null</span>)
+            requestStreamWriter.Close();
+    }
+
+    <span style="COLOR: #0000ff" data-source-node="n71">return</span> request;
+}
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p data-source-node="n72"> </p>
+
+<p data-source-node="n73">To request that the application respond with a compressed entity, set the <a href="f579bfac844b388ae25396c60597f70bfde47aba8e663ffe4ece557eb116c226.html#Accept-Encoding" data-source-node="n74">Accept-Encoding</a> header on the request to the desired compression format, and then be prepared to decompress the response entity once it returns.  It is a good idea to check the <a href="f579bfac844b388ae25396c60597f70bfde47aba8e663ffe4ece557eb116c226.html#Content-Encoding" data-source-node="n75">Content-Encoding</a> on the response to make sure decompression is required, as there may be situations where the application could not compress the response (e.g. error situations).  The following C# example illustrates how a .NET consumer can request that the response entity is compressed using the gzip encoding.  Note that the <strong data-source-node="n76">HttpWebRequest</strong> class will handle much of the work for you when using the <strong data-source-node="n77">AutomaticDecompression</strong> property.</p>
+
+<p data-source-node="n78"> </p>
+
+<div class="i-filtered-content-CS" data-title="CS" data-itemid="CS" data-source-node="n79">
+    <table class="i-syntax-table" data-source-node="n80">
+        <tbody data-source-node="n81">
+            <tr data-source-node="n82">
+                <th data-source-node="n83">C# - Accepting a Compressed Response Entity</th>
+
+                <th data-source-node="n84">
+                    <div class="i-copy-code-wrapper" data-source-node="n85">
+                        <span class="i-copy-code" data-source-node="n86">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr data-source-node="n87">
+                <td class="i-code" colspan="2" data-source-node="n88">
+                    <pre data-source-node="n89">
+<span style="COLOR: #0000ff" data-source-node="n90">private</span> System.Net.HttpWebRequest GetRequestThatAcceptsGZip(
+    <span style="COLOR: #0000ff" data-source-node="n91">string</span> uri)
+{
+    HttpWebRequest request = WebRequest.Create(uri) <span style="COLOR: #0000ff" data-source-node="n92">as</span> HttpWebRequest;
+    request.Method = <span style="COLOR: #800000" data-source-node="n93">"GET"</span>;
+    request.AutomaticDecompression = DecompressionMethods.GZip;
+    <span style="COLOR: #0000ff" data-source-node="n94">return</span> request;
+}
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            <a name="seealsobookmark" data-source-node="n95"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n96">
+        
+<p data-source-node="n97"> </p><p data-source-node="n98"> </p><hr style="height: 1px" data-source-node="n99"><p data-source-node="n100">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

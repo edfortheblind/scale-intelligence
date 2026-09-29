@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Process Dock Assignment Wave Step Web Service</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n29">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n30">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n31">
+            <div class="i-project-title" data-source-node="n32">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n33"><div class="i-page-title-text" data-source-node="n34">Process Dock Assignment Wave Step Web Service</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n35">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n36">
+                <label class="i-collapse-all" data-source-node="n37">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n38">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n39">View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n40">
+        <div class="summary" data-source-node="n41">
+    The ProcessDockAssignmentWaveStep operation belongs to the Dock Management Web Service. It is invoked as part of the Dock Assignment Wave Step and is not intended to be called by a custom implementation. 
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n42">
+    <span class="i-section-heading-icon" data-source-node="n43"><span class="i-hidden" data-source-node="n44"> </span></span><span class="i-section-heading-text" data-source-node="n45">Step 1: Retrieve a Shipping Resource Representation</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" data-source-node="n46">
+    <p data-source-node="n47">First perform an HTTP GET to retrieve a Shipping resource representation.</p>
+
+    <p data-source-node="n48">How to: <a href="15f4741027cfd823e26da0bc96553096c9655a5a8d497e3a92a0830eea6f1929.html" data-source-node="n49">Shipping Web Service</a></p>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n50">
+    <span class="i-section-heading-icon" data-source-node="n51"><span class="i-hidden" data-source-node="n52"> </span></span><span class="i-section-heading-text" data-source-node="n53">Step 2: Post the WaveNumber using the locateWaveContainers link</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" data-source-node="n54">
+    <p align="left" data-source-node="n55">The Shipping resource representation will include a <strong data-source-node="n56">locateWaveContainers</strong> URI Template field that contains a single {waveNumber} token. To invoke DockAssignmentWaveStep for a wave, substitute the desired wave number and perform the following HTTP POST:</p>
+
+    <p data-source-node="n57"><strong data-source-node="n58">Request:</strong></p>
+
+    <ul data-source-node="n59">
+        <li data-source-node="n60"><strong data-source-node="n61">URI:</strong> From Shipping representation's link (rel="locateWaveContainers") href</li>
+
+        <li data-source-node="n62"><strong data-source-node="n63">Method:</strong> POST</li>
+
+        <li data-source-node="n64"><strong data-source-node="n65">Content-Type:</strong> application/json or application/xml</li>
+
+        <li data-source-node="n66"><strong data-source-node="n67">Roles:</strong> SCALEUSER,Confidential</li>
+    </ul>
+
+    <p data-source-node="n68"> </p>
+
+    <p data-source-node="n69"><strong data-source-node="n70">Response:</strong></p>
+
+    <p data-source-node="n71">Aside from <a href="330a68671fd01d31e69b8634088ee603d769cc8b8d2c45b49f4a3d068a6f9bdb.html" data-source-node="n72">standard responses</a>, note the following specifics for this service:</p>
+
+    <table class="members" data-source-node="n73">
+        <tbody data-source-node="n74">
+            <tr data-source-node="n75">
+                <th class="nameColumn" data-source-node="n76">Status Code</th>
+
+                <th class="descriptionColumn" data-source-node="n77">Notes</th>
+            </tr>
+
+            <tr data-source-node="n78">
+                <td data-source-node="n79">200</td>
+
+                <td data-source-node="n80">OK will be accompanied by an entity that contains an error or is empty:<a href="../source/downloads/9a52242b69c26bac080843c9b0a2ef98e37a7d809b38aed87b4f34a4580aabb4.json" data-source-node="n81">application/vnd.manh.ils.shipping.processDockAssignmentWaveStepResponse+json</a>, <a href="../source/downloads/e1ffa6b8ad56964bcf72ad35a34390fb90dc4ab1fcd3f770f47a6d9806010e3d.xsd" data-source-node="n82">xml</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-source-node="n83"> </p>
+</div>
+            <a name="seealsobookmark" data-source-node="n84"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n85">
+        
+<p data-source-node="n86"> </p><p data-source-node="n87"> </p><hr style="height: 1px" data-source-node="n88"><p data-source-node="n89">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

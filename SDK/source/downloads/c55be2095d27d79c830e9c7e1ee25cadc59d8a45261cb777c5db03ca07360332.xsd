@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="ReceiptHeaderDownload" targetNamespace="http://www.manh.com/ILSNET/Interface" elementFormDefault="qualified"
+	xmlns="http://www.manh.com/ILSNET/Interface" xmlns:xs="http://www.w3.org/2001/XMLSchema" version ="2007">
+<xs:include schemaLocation="InterfaceEntity.xsd" />
+<xs:include schemaLocation="Item.xsd" />
+<xs:include schemaLocation="SerialNumber.xsd" />
+<xs:include schemaLocation="Address.xsd" />
+<xs:include schemaLocation="ContainerType.xsd" />
+
+  <xs:element name="WMWROOT" nillable="true" type="WMWROOT" />
+  <xs:complexType name="WMWROOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="WMWDATA" type="WMWDATA" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="WMWDATA" nillable="true" type="WMWDATA"/>
+  <xs:complexType name="WMWDATA">
+    <xs:sequence>
+       <xs:element minOccurs="0" maxOccurs="1" name="Receipts" type="ReceiptList" />
+    </xs:sequence>
+  </xs:complexType>
+  
+ <xs:element name="Receipts" nillable="false" type="ReceiptList"  />
+  <xs:complexType name="ReceiptList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PurchaseOrder" nillable="true" type="PurchaseOrder" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Receipt" nillable="true" type="Receipt" />
+    </xs:sequence>
+  </xs:complexType>
+
+<xs:complexType name="PurchaseOrder">
+  <xs:complexContent mixed="false">
+    <xs:extension base="InterfaceEntity">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="ClosedDateTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Company" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="CreatedDateTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Error" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ObjectId" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="PurchaseOrderId" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ReceiptType" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Status" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Vendor" type="Vendor" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Warehouse" type="xs:string" />
+        <xs:element minOccurs="0" maxOccurs="1" name="Details" type="PurchaseOrderDetailList" />
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="PurchaseOrderDetail">
+  <xs:complexContent mixed="false">
+    <xs:extension base="InterfaceEntity">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" name="LineNumber" type="xs:decimal" />
+        <xs:element minOccurs="0" maxOccurs="1" name="ObjectId" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="OpenQuantity" type="xs:decimal" />
+        <xs:element minOccurs="0" maxOccurs="1" name="PurchaseOrderObjectId" type="xs:int" />
+        <xs:element minOccurs="0" maxOccurs="1" name="SKU" type="SKU" />
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+<xs:complexType name="PurchaseOrderDetailList">
+  <xs:sequence>
+    <xs:element minOccurs="0" maxOccurs="unbounded" name="PurchaseOrderDetail" nillable="true" type="PurchaseOrderDetail" />
+  </xs:sequence>
+</xs:complexType>
+  
+  <xs:complexType name="Receipt">
+    <xs:complexContent mixed="false">
+      <xs:extension base="InterfaceEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Appointment" type="AppointmentSchedule" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ArrivedDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="BolNumAlpha" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Carrier" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CarrierService" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ClosedDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Company" type="xs:string" />          
+          <xs:element minOccurs="0" maxOccurs="1" name="EndUnitizeDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ErpOrderNum" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ErpOrderType" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Error" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalRecNum" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LaunchNum" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LeadingSts" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LeadingStsDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LeadingStsFailed" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LicensePlateId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ManuallyEntered" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PackingListId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Priority" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ProNumAlpha" type="xs:string" />          
+          <xs:element minOccurs="0" maxOccurs="1" name="ReceiptDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReceiptId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReceiptIdType" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReceiptType" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ScheduledDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SealId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StartUnitizeDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalContainers" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalCost" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalGreatPlainsQty" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalLines" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalListPrice" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalQty" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalValue" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalVolume" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalWeight" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TrailerId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TrailingSts" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TrailingStsDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TrailingStsFailed" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Vendor" type="Vendor" />
+          <xs:element minOccurs="0" maxOccurs="1" name="VolumeUm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Warehouse" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="WeightUm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Details" type="ReceiptDetailList" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ParentContainers" type="ParentList" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReceiptContainers" type="ReceiptContainerList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>  
+  <xs:complexType name="Vendor">
+    <xs:complexContent mixed="false">
+      <xs:extension base="InterfaceEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="Company" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ShipFrom" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ShipFromAddress" type="Address" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Source" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SourceAddress" type="Address" />
+          <xs:element minOccurs="0" maxOccurs="1" name="VerifyUm" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReceiptContainer">
+    <xs:complexContent mixed="false">
+      <xs:extension base="InterfaceEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ContainerId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ContainerClass" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ContainerType" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ConvQty" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ConvUm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DimensionUm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="DispCode" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EPC" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FromLoc" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FromWhs" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Height" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="IncomingPd" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InterfaceRecId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalLocContNum" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalRecContNum" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InventorySts" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LaunchNum" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Length" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LocatingRule" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OutPd" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="QcInspection" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Qty" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="QtyUm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReasonCode" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReceiptDetail" type="ReceiptDetail" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SerialNumbers" type="SerialNumberList" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Status" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StatusFailed" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ToLoc" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ToWhs" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="UploadInterfaceBatch" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="URI" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="UsedByImmNeed" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Weight" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Width" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReceiptDetail">
+    <xs:complexContent mixed="false">
+      <xs:extension base="InterfaceEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ConvHeight" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ConvLength" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ConvQty" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ConvUm" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ConvWeight" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ConvWidth" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Cost" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="CustomerOrderNum" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ErpOrderLineNum" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ErpOrderNum" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ErpOrderType" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExpectedInvSts" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ExpDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="HazCode" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InterfaceRecId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalRecLineNum" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InvSts" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="GreatPlainsQty" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ManufacturedDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OpenQty" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="OriginalQty" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Priority" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PurchaseOrderDetailId" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PurchaseOrderLineNumber" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PurchaseOrderId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PutListNum" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PutLoc" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="PutZone" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SerialNumReqd" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="SKU" type="SKU" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StatusFlowName" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalCost" type="xs:decimal" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>   
+  <xs:complexType name="Parent">
+    <xs:complexContent mixed="false">
+      <xs:extension base="InterfaceEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ContainerId" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ContainerType" type="ContainerType" />
+          <xs:element minOccurs="0" maxOccurs="1" name="EPC" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FromLoc" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="FromWhs" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InternalRecContNum" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="InventorySts" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="LocatingRule" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="QcInspection" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Status" type="xs:int" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalQty" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="TotalWeight" type="xs:decimal" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ReceiptContainers" type="ReceiptContainerList" />
+          <xs:element minOccurs="0" maxOccurs="1" name="StatusFailed" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ToLoc" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="ToWhs" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="URI" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="1" name="WeightUm" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReceiptContainerList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReceiptContainer" nillable="true" type="ReceiptContainer" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AppointmentSchedule">
+    <xs:complexContent mixed="false">
+      <xs:extension base="InterfaceEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="1" name="ApptDateTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" maxOccurs="1" name="Dock" type="xs:string" />
+		  <xs:element minOccurs="0" maxOccurs="1" name="EndDateTime" type="xs:dateTime" />
+		  <xs:element minOccurs="0" maxOccurs="1" name="ObjectId" type="xs:int" />
+		</xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="ReceiptDetailList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReceiptDetail" nillable="true" type="ReceiptDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ParentList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Parent" nillable="true" type="Parent" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

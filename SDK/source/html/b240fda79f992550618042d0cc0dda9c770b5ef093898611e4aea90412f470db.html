@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create the Detail Pane</title>
+    <meta name="Title" content="How to: Create the Detail Pane"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The &quot;Detail Pane&quot; on an insight screen represents the right section of the screen where detailed information is displayed for the selected row in the list pane grid. As an example, you can find all of the metadata records for an existing detail pane " />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="18366b8a-2d02-4be8-b7e4-37d82eafc5a2"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="6"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create the Detail Pane</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Insight Pages
+ > Detail Pane
+ > How to: Create the Detail Pane</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The "Detail Pane" on an insight screen represents the&nbsp;right section of the screen where detailed information is displayed for the selected row in the list pane grid. As an example, you can find all of the metadata records for an existing&nbsp;detail pane&nbsp;using the following script.</p>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Shipment insight&nbsp;detail pane example</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">declare</span> <span style="COLOR: #008000">@formId</span> numeric(<span style="FONT-WEIGHT: bold; COLOR: #800000">9</span>,<span style="FONT-WEIGHT: bold; COLOR: #800000">0</span>);
+<span style="COLOR: #0000ff">declare</span> <span style="COLOR: #008000">@paneName</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">25</span>);
+<span style="COLOR: #0000ff">set</span> <span style="COLOR: #008000">@formId</span> <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">2735</span>;
+<span style="COLOR: #0000ff">set</span> <span style="COLOR: #008000">@paneName</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'DetailPane'</span>;
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> PART_NAME <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@paneName</span> <span style="COLOR: #808080">and</span> SCREEN_ID <span style="COLOR: #808080">in</span> (<span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@formId</span>);
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> PART_NAME <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@paneName</span> <span style="COLOR: #808080">and</span> SCREEN_ID <span style="COLOR: #808080">in</span> (<span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@formId</span>));
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP_COLUMN <span style="COLOR: #0000ff">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">in</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> PART_NAME <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@paneName</span> <span style="COLOR: #808080">and</span> SCREEN_ID <span style="COLOR: #808080">in</span> (<span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@formId</span>)));
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">in</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> PART_NAME <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@paneName</span> <span style="COLOR: #808080">and</span> SCREEN_ID <span style="COLOR: #808080">in</span> (<span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@formId</span>)));
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL_ATTRIBUTES <span style="COLOR: #0000ff">where</span> SCREEN_CONTROL_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">in</span> (
+            <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> PART_NAME <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@paneName</span> <span style="COLOR: #808080">and</span> SCREEN_ID <span style="COLOR: #808080">in</span> (<span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@formId</span>))));
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL_EVENT <span style="COLOR: #0000ff">where</span> SCREEN_CONTROL_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">in</span> (
+            <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> PART_NAME <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@paneName</span> <span style="COLOR: #808080">and</span> SCREEN_ID <span style="COLOR: #808080">in</span> (<span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@formId</span>))));
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL_EVENT_PARAMETERS <span style="COLOR: #0000ff">where</span> SCREEN_CONTROL_EVENT_ID <span style="COLOR: #808080">in</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL_EVENT <span style="COLOR: #0000ff">where</span> SCREEN_CONTROL_ID <span style="COLOR: #808080">in</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+            <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">in</span> (
+                <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> PART_NAME <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@paneName</span> <span style="COLOR: #808080">and</span> SCREEN_ID <span style="COLOR: #808080">in</span> (<span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@formId</span>)))));
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p><br /></p>
+
+<p>Creating the&nbsp;detail pane on an insight screen can be processed as follows.</p>
+
+<div id="i-44aeb1ab-504b-4818-be3b-e1e98e7a78fb-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create the screen part record for the detail pane</span>
+</div>
+
+<div id="i-44aeb1ab-504b-4818-be3b-e1e98e7a78fb-section-content" class="i-section-content">
+    <p>Add a SCREEN_PART record as follows.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_ID</td>
+
+                <td>The Screen Id of the current insight screen</td>
+            </tr>
+
+            <tr>
+                <td>PART_NAME</td>
+
+                <td><em>DetailPane</em></td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>PART_TYPE</td>
+
+                <td><em>10</em> (Div Container)</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>col-md-4 col-lg-4 detailpanepart</em></td>
+            </tr>
+
+            <tr>
+                <td>DEFAULT_ACTION</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-95ca9497-abb7-411c-a55e-17288d411357-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create a stored procedure or web service to return the detail data</span>
+</div>
+
+<div id="i-95ca9497-abb7-411c-a55e-17288d411357-section-content" class="i-section-content">
+    <p>Create either a stored procedure or web service that will return the data to bind to the detail pane. Reference the&nbsp;<a href="How_to_Create_Detail_Pane_Stored_Procedure.html" data-auto-update-caption="true">How to: Create a Detail Pane Stored Procedure</a> and&nbsp;<a href="76de723c-5b8b-4291-ace8-3656af7a1716" data-auto-update-caption="true">How to: Create a Detail Pane Web Service</a> topics for instructions.</p>
+
+    <p></p>
+
+    <div class="i-box i-box-note">
+        Please note that the stored procedure approach is the most commonly used. A web service should only be created if complex calculations are required that are too difficult to accomplish within a stored procedure.
+    </div>
+</div>
+
+<div id="i-2afb16a3-6fd7-45ab-943f-eb092e9f7a5c-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Add controls to the detail pane</span>
+</div>
+
+<div id="i-2afb16a3-6fd7-45ab-943f-eb092e9f7a5c-section-content" class="i-section-content">
+    Please reference the&nbsp;<a href="How_to_Create_Screen_Controls.html">How to: Add Screen Controls</a>&nbsp;topic for instructions. Also reference the&nbsp;<a href="How_to_Bind_Detail_Pane_Controls.html">How to: Bind Insight Detail Pane Controls</a> topic for instructions on how to bind these controls with the values returned from the stored procedure or web service.
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Add_Detail_Pane_Menu_Options.html">How to: Add Detail Pane Menu Options</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

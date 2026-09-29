@@ -1,0 +1,230 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>How to Add Custom Action With Multiple Selection On InsightPage</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">How to Add Custom Action With Multiple Selection On InsightPage</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+User Interface Extensibility
+ &gt; Metadata Web Pages
+ &gt; Insight Pages
+ &gt; How to Add Custom Action With Multiple Selection On InsightPage</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47">The tooling provided for creating a new custom action on the insight page with multiple selection on the grid and passing the column data(comma separated) to the stored Procedure.</p>
+
+<div id="i-47dcfcde-500f-4692-83dc-b6cb68746890-section-heading" class="i-section-heading" data-source-node="n48">
+    <span class="i-section-heading-icon" data-source-node="n49"><span class="i-hidden" data-source-node="n50"> </span></span><span class="i-section-heading-text" data-source-node="n51">Step 1: Copy an Existing Insight Page Script</span>
+</div>
+
+<div id="i-47dcfcde-500f-4692-83dc-b6cb68746890-section-content" class="i-section-content" data-source-node="n52">
+    <p data-source-node="n53">Browse to the directory that SCALE is installed to and then go to the sub folder Database | ILS | DBChange | _Metadata | Insight. Pick a script for the screen on which you want to add the custom action. Copy the script to another location, rename it, and open it.</p>
+</div>
+
+<div id="i-b0a631b1-3339-45ec-b438-123b7c31ee22-section-heading" class="i-section-heading" data-source-node="n54">
+    <span class="i-section-heading-icon" data-source-node="n55"><span class="i-hidden" data-source-node="n56"> </span></span><span class="i-section-heading-text" data-source-node="n57">Step 2: Create Custom Action screen control</span>
+</div>
+
+<div id="i-b0a631b1-3339-45ec-b438-123b7c31ee22-section-content" class="i-section-content" data-source-node="n58">
+     Now add a SCREEN_CONTROL record as follows for the custom action. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n59"><u data-source-node="n60"><font color="navy" data-source-node="n61">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).
+
+    <table data-source-node="n62">
+        <tbody data-source-node="n63">
+            <tr data-source-node="n64">
+                <td data-source-node="n65"><strong data-source-node="n66">Field</strong></td>
+
+                <td data-source-node="n67"><strong data-source-node="n68">Value</strong></td>
+            </tr>
+
+            <tr data-source-node="n69">
+                <td data-source-node="n70">CONTROL_NAME</td>
+
+                <td data-source-node="n71"><em data-source-node="n72">[ListPane] MenuAction [Action]</em></td>
+            </tr>
+
+            <tr data-source-node="n73">
+                <td data-source-node="n74">RESOURCE_KEY</td>
+
+                <td data-source-node="n75"><em data-source-node="n76">Resource key for the Action</em></td>
+            </tr>
+
+            <tr data-source-node="n77">
+                <td data-source-node="n78">CONTROL_TYPE</td>
+
+                <td data-source-node="n79"><em data-source-node="n80">150</em></td>
+            </tr>
+
+            <tr data-source-node="n81">
+                <td data-source-node="n82">LABEL_ORIENTATION</td>
+
+                <td data-source-node="n83"><em data-source-node="n84">NULL</em></td>
+            </tr>
+
+            <tr data-source-node="n85">
+                <td data-source-node="n86">DATA_SOURCE_TYPE</td>
+
+                <td data-source-node="n87"><em data-source-node="n88">NULL</em></td>
+            </tr>
+
+            <tr data-source-node="n89">
+                <td data-source-node="n90">DATA_SOURCE</td>
+
+                <td data-source-node="n91"><em data-source-node="n92">NULL</em></td>
+            </tr>
+
+            <tr data-source-node="n93">
+                <td data-source-node="n94">DIV_CSS_CLASS</td>
+
+                <td data-source-node="n95"><em data-source-node="n96">NULL</em></td>
+            </tr>
+
+            <tr data-source-node="n97">
+                <td data-source-node="n98">CONTROL_CSS_CLASS</td>
+
+                <td data-source-node="n99"><em data-source-node="n100">dropdownaction</em></td>
+            </tr>
+
+            <tr data-source-node="n101">
+                <td data-source-node="n102">TOOL_TIP_RESOURCE_KEY</td>
+
+                <td data-source-node="n103"><em data-source-node="n104">Resource key for the button</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-be71572a-0da1-4914-b1ca-c8a9a1d62787-section-heading" class="i-section-heading" data-source-node="n105">
+    <span class="i-section-heading-icon" data-source-node="n106"><span class="i-hidden" data-source-node="n107"> </span></span><span class="i-section-heading-text" data-source-node="n108">Step 3: Create a screen control event record tied to the custom action. control</span>
+</div>
+
+<div id="i-be71572a-0da1-4914-b1ca-c8a9a1d62787-section-content" class="i-section-content" data-source-node="n109">
+    Reference the <a href="eca9fc53f0fb038bdfb1d5f215e7b5f31082e710554ecde05af2dd256e790233.html" data-source-node="n110">How to: Create Screen Control Events</a> topic in order to add event for the new control.
+</div>
+
+<table data-source-node="n111">
+    <tbody data-source-node="n112">
+        <tr data-source-node="n113">
+            <td data-source-node="n114"><strong data-source-node="n115">Field</strong></td>
+
+            <td data-source-node="n116"><strong data-source-node="n117">Value</strong></td>
+        </tr>
+
+        <tr data-source-node="n118">
+            <td data-source-node="n119">EventId</td>
+
+            <td data-source-node="n120"><em data-source-node="n121">click</em></td>
+        </tr>
+
+        <tr data-source-node="n122">
+            <td data-source-node="n123">EventName</td>
+
+            <td data-source-node="n124"><em data-source-node="n125">_webUi.insightListPaneActions.menuActionPerformPostForMultipleSelection</em></td>
+        </tr>
+    </tbody>
+</table>
+
+<div id="i-0edfb75d-9b59-4e2e-91a3-31ebcfa55ed6-section-heading" class="i-section-heading" data-source-node="n126">
+    <span class="i-section-heading-icon" data-source-node="n127"><span class="i-hidden" data-source-node="n128"> </span></span><span class="i-section-heading-text" data-source-node="n129">Step 4: Create screen control event parameters record tied to the event</span>
+</div>
+
+<div id="i-0edfb75d-9b59-4e2e-91a3-31ebcfa55ed6-section-content" class="i-section-content" data-source-node="n130">
+    Reference the <a href="7c5bf5af09ba93c382282549079eaedada01fb57e66568c67fe6581c0c707450.html" data-source-node="n131">How to: Create Screen Control Event Parameters</a> topic in order to add event parameters for the new event.
+</div>
+
+<table data-source-node="n132">
+    <tbody data-source-node="n133">
+        <tr data-source-node="n134">
+            <td data-source-node="n135"><strong data-source-node="n136">Field</strong></td>
+
+            <td data-source-node="n137"><strong data-source-node="n138">Value</strong></td>
+        </tr>
+
+        <tr data-source-node="n139">
+            <td data-source-node="n140">ParameterName</td>
+
+            <td data-source-node="n141"><em data-source-node="n142">PostData_Grid_ListPaneDataGrid_[Column Name]</em></td>
+        </tr>
+
+        <tr data-source-node="n143">
+            <td data-source-node="n144">ParameterValue</td>
+
+            <td data-source-node="n145"><em data-source-node="n146">[Column Name]</em></td>
+        </tr>
+    </tbody>
+</table><br data-source-node="n147">
+
+<table data-source-node="n148">
+    <tbody data-source-node="n149">
+        <tr data-source-node="n150">
+            <td data-source-node="n151"><strong data-source-node="n152">Field</strong></td>
+
+            <td data-source-node="n153"><strong data-source-node="n154">Value</strong></td>
+        </tr>
+
+        <tr data-source-node="n155">
+            <td data-source-node="n156">ParameterName</td>
+
+            <td data-source-node="n157"><em data-source-node="n158">PostData_storedProcedure</em></td>
+        </tr>
+
+        <tr data-source-node="n159">
+            <td data-source-node="n160">ParameterValue</td>
+
+            <td data-source-node="n161"><em data-source-node="n162">[Stored Procedure]</em></td>
+        </tr>
+    </tbody>
+</table><br data-source-node="n163">
+
+<table data-source-node="n164">
+    <tbody data-source-node="n165">
+        <tr data-source-node="n166">
+            <td data-source-node="n167"><strong data-source-node="n168">Field</strong></td>
+
+            <td data-source-node="n169"><strong data-source-node="n170">Value</strong></td>
+        </tr>
+
+        <tr data-source-node="n171">
+            <td data-source-node="n172">ParameterName</td>
+
+            <td data-source-node="n173"><em data-source-node="n174">POSTServiceURL</em></td>
+        </tr>
+
+        <tr data-source-node="n175">
+            <td data-source-node="n176">ParameterValue</td>
+
+            <td data-source-node="n177"><em data-source-node="n178">[/outbound/scaleapi/GenericDataExecutionApi]</em></td>
+        </tr>
+    </tbody>
+</table><br data-source-node="n179">
+
+<div id="i-a96f0a73-cd70-4169-8029-2bd7b6ba9051-section-heading" class="i-section-heading" data-source-node="n180">
+    <span class="i-section-heading-icon" data-source-node="n181"><span class="i-hidden" data-source-node="n182"> </span></span><span class="i-section-heading-text" data-source-node="n183">Step 5: Run the script on the corresponding datatbase environment.</span>
+</div>
+
+<div id="i-a96f0a73-cd70-4169-8029-2bd7b6ba9051-section-content" class="i-section-content" data-source-node="n184"></div>
+            <a name="seealsobookmark" data-source-node="n185"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n186">
+        
+<p data-source-node="n187"> </p><p data-source-node="n188"> </p><hr style="height: 1px" data-source-node="n189"><p data-source-node="n190">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

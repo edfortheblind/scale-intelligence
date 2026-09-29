@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Compression in REST-Based Web API Web Services</title>
+    <meta name="Title" content="Compression in REST-Based Web API Web Services"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="When building systems on top of web APIs, performance is critical. Compression is an easy and effective way to reduce the size and increase the speed of communication between a client and remote resource." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="b99ebb9d-ac34-4058-b012-78c9d6f0a9b5"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Compression in REST-Based Web API Web Services</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p class="MsoNormal">When building systems on top of web APIs, performance is critical. Compression is an easy and effective way to reduce the size and increase the speed of communication between a client and remote resource.</p>
+
+<p class="MsoNormal">Two common compression algorithms used on the web are GZip and Deflate. The Accept-Encoding header is used by a client to restrict the encoding types that are acceptable in the response.</p>
+
+<p>&nbsp;</p>
+
+<div class="i-filtered-content-CS" data-title="CS" data-itemid="CS">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>C# - Enabling Compression</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">class</span> ApiCompressionMessageHandler : DelegatingHandler
+    {
+        <span style="COLOR: #0000ff">public</span> Collection&lt;IApiCompressor&gt; Compressors { <span style="COLOR: #0000ff">get</span>; <span style="COLOR: #0000ff">private</span> <span style="COLOR: #0000ff">set</span>; }
+        <span style="COLOR: #0000ff">#region</span> ..ctor
+        <span style="COLOR: #0000ff">public</span> ApiCompressionMessageHandler(
+            GZipCompressor gZipCompressor,
+            DeflateCompressor deflateCompressor)
+        {
+            Compressors = <span style="COLOR: #0000ff">new</span> Collection&lt;IApiCompressor&gt;();
+            Compressors.Add(gZipCompressor);
+            Compressors.Add(deflateCompressor);
+        }
+        <span style="COLOR: #0000ff">#endregion</span>
+        <span style="COLOR: #008000">/// </span><span style="COLOR: #808080">&lt;summary&gt;</span><span style="COLOR: #008000">
+        /// Checks the Acccept Encoding and compresses the response based on the first supported encoding type
+        /// </span><span style="COLOR: #808080">&lt;/summary&gt;</span><span style="COLOR: #008000">
+        /// </span><span style="COLOR: #808080">&lt;param name="request"&gt;&lt;/param&gt;</span><span style="COLOR: #008000">
+        /// </span><span style="COLOR: #808080">&lt;param name="cancellationToken"&gt;&lt;/param&gt;</span><span style="COLOR: #008000">
+        /// </span><span style="COLOR: #808080">&lt;returns&gt;&lt;/returns&gt;</span><span style="COLOR: #008000">
+</span>        <span style="COLOR: #0000ff">protected</span> <span style="COLOR: #0000ff">async</span> <span style="COLOR: #0000ff">override</span> Task&lt;HttpResponseMessage&gt; SendAsync
+(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            <span style="COLOR: #0000ff">var</span> response = <span style="COLOR: #0000ff">await</span> <span style="COLOR: #0000ff">base</span>.SendAsync(request, cancellationToken);
+            <span style="COLOR: #0000ff">if</span> (request.Headers.AcceptEncoding.Count &gt; 0 &amp;&amp; response.Content != <span style="COLOR: #0000ff">null</span>)
+            {
+                <span style="COLOR: #0000ff">var</span> encoding = request.Headers.AcceptEncoding.First();
+                <span style="COLOR: #0000ff">var</span> compressor = Compressors.FirstOrDefault
+(c =&gt; c.EncodingType.Equals(encoding.Value, StringComparison.InvariantCultureIgnoreCase));
+                <span style="COLOR: #0000ff">if</span> (compressor != <span style="COLOR: #0000ff">null</span>)
+                {
+                    response.Content = <span style="COLOR: #0000ff">new</span> ApiCompressedContent(response.Content, compressor);
+                }
+            }
+            <span style="COLOR: #0000ff">return</span> response;
+        }
+    }
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p class="MsoNormal">The&nbsp;<span style="FONT-SIZE: 9.5pt; FONT-FAMILY: Consolas; BACKGROUND: white; COLOR: rgb(43,145,175); mso-highlight: white">ApiCompressionMessageHandler</span> takes care of compressing responses based on the Accept-Encoding header supplied by the client.</p>
+
+<p class="MsoNormal">The&nbsp;<span style="FONT-SIZE: 9.5pt; FONT-FAMILY: Consolas; BACKGROUND: white; COLOR: rgb(43,145,175); mso-highlight: white">ApiCompressionMessageHandler</span> has a collection of compressors that can be used to compress responses into different formats. By default it contains compressors for GZip and Deflate formats.</p>
+
+<p class="MsoNormal">In the SendAsync method we get the response and check if the client accepts any of the encoding types supported by our Compressors. If so, we replace the response.Content with CompressedContent.</p>
+
+<p class="MsoNormal">&nbsp;</p>
+
+<div class="i-filtered-content-CS" data-title="CS" data-itemid="CS">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>C# - Compressors</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+        
+<span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">class</span> ApiCompressedContent : HttpContent
+    {
+        <span style="COLOR: #0000ff">private</span> <span style="COLOR: #0000ff">readonly</span> HttpContent content;
+        <span style="COLOR: #0000ff">private</span> <span style="COLOR: #0000ff">readonly</span> IApiCompressor compressor;
+        <span style="COLOR: #008000">/// </span><span style="COLOR: #808080">&lt;summary&gt;</span><span style="COLOR: #008000">
+        /// Compresses the content and adds the content encoding to the header
+        /// </span><span style="COLOR: #808080">&lt;/summary&gt;</span><span style="COLOR: #008000">
+        /// </span><span style="COLOR: #808080">&lt;param name="content"&gt;&lt;/param&gt;</span><span style="COLOR: #008000">
+        /// </span><span style="COLOR: #808080">&lt;param name="compressor"&gt;&lt;/param&gt;</span><span style="COLOR: #008000">
+</span>        <span style="COLOR: #0000ff">public</span> ApiCompressedContent(HttpContent content, IApiCompressor compressor)
+        {
+            <span style="COLOR: #0000ff">this</span>.content = content;
+            <span style="COLOR: #0000ff">this</span>.compressor = compressor;
+            AddHeaders();
+        }
+        <span style="COLOR: #008000">/// </span><span style="COLOR: #808080">&lt;summary&gt;</span><span style="COLOR: #008000">
+        /// Determines whether the HTTP content has a valid length in bytes
+        /// </span><span style="COLOR: #808080">&lt;/summary&gt;</span><span style="COLOR: #008000">
+        /// </span><span style="COLOR: #808080">&lt;param name="length"&gt;&lt;/param&gt;</span><span style="COLOR: #008000">
+        /// </span><span style="COLOR: #808080">&lt;returns&gt;&lt;/returns&gt;</span><span style="COLOR: #008000">
+</span>        <span style="COLOR: #0000ff">protected</span> <span style="COLOR: #0000ff">override</span> <span style="COLOR: #0000ff">bool</span> TryComputeLength(<span style="COLOR: #0000ff">out</span> <span style="COLOR: #0000ff">long</span> length)
+        {
+            length = -1;
+            <span style="COLOR: #0000ff">return</span> <span style="COLOR: #0000ff">false</span>;
+        }
+        <span style="COLOR: #008000">/// </span><span style="COLOR: #808080">&lt;summary&gt;</span><span style="COLOR: #008000">
+        /// Serialize the HTTP content to a stream as an asynchronous operation
+        /// </span><span style="COLOR: #808080">&lt;/summary&gt;</span><span style="COLOR: #008000">
+        /// </span><span style="COLOR: #808080">&lt;param name="stream"&gt;&lt;/param&gt;</span><span style="COLOR: #008000">
+        /// </span><span style="COLOR: #808080">&lt;param name="context"&gt;&lt;/param&gt;</span><span style="COLOR: #008000">
+        /// </span><span style="COLOR: #808080">&lt;returns&gt;&lt;/returns&gt;</span><span style="COLOR: #008000">
+</span>        <span style="COLOR: #0000ff">protected</span> <span style="COLOR: #0000ff">async</span> <span style="COLOR: #0000ff">override</span> Task SerializeToStreamAsync(Stream stream, TransportContext context)
+        {
+            <span style="COLOR: #0000ff">using</span> (content)
+            {
+                <span style="COLOR: #0000ff">var</span> contentStream = <span style="COLOR: #0000ff">await</span> content.ReadAsStreamAsync();
+                <span style="COLOR: #0000ff">await</span> compressor.Compress(contentStream, stream);
+            }
+        }
+        <span style="COLOR: #008000">/// </span><span style="COLOR: #808080">&lt;summary&gt;</span><span style="COLOR: #008000">
+        /// Adds the encoding type to the respone header.
+        /// </span><span style="COLOR: #808080">&lt;/summary&gt;</span><span style="COLOR: #008000">
+</span>        <span style="COLOR: #0000ff">private</span> <span style="COLOR: #0000ff">void</span> AddHeaders()
+        {
+            <span style="COLOR: #0000ff">foreach</span> (<span style="COLOR: #0000ff">var</span> header <span style="COLOR: #0000ff">in</span> content.Headers)
+            {
+                Headers.TryAddWithoutValidation(header.Key, header.Value);
+            }
+            Headers.ContentEncoding.Add(compressor.EncodingType);
+        }
+    }
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p class="MsoNormal">The&nbsp;<span style="FONT-SIZE: 9.5pt; FONT-FAMILY: Consolas; BACKGROUND: white; COLOR: rgb(43,145,175); mso-highlight: white">ApiCompressedContent</span> class takes care of compressing the original content stream using the provided IApiCompressor instance. It also ensures that the correct Content-Encoding header is added to the response so that the client knows how to perform decompression.</p>
+
+<p>&nbsp;</p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

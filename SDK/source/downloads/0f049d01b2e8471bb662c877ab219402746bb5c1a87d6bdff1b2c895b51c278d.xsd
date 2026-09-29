@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="WorkOrderDownload" targetNamespace="http://www.manh.com/ILSNET/Interface" elementFormDefault="qualified" xmlns="http://www.manh.com/ILSNET/Interface" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2008">
+	<xs:include schemaLocation="InterfaceEntity.xsd" />
+	<xs:element name="WorkOrders" nillable="false" type="WorkOrderList" />
+	<xs:complexType name="WorkOrderList">
+		<xs:sequence>
+			<xs:element minOccurs="1" maxOccurs="unbounded" name="WorkOrder" nillable="true" type="WorkOrder" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkOrder">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="1" name="AutoRelease" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="BuildInstructions" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="BuildLocation" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="Company" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="DimensionUm" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="DueDate" type="xs:dateTime" />
+			<xs:element minOccurs="0" maxOccurs="1" name="Error" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="FinishedItem" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="InterfaceEntity" type="InterfaceEntity" />
+			<xs:element minOccurs="0" maxOccurs="1" name="InternalWorkOrderNum" type="xs:int" />
+			<xs:element minOccurs="0" maxOccurs="1" name="ItemClass" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="ItemColor" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="ItemCost">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="ItemDescription" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="ItemHeight">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="ItemLength">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="ItemSize" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="ItemStyle" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="ItemValue">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="ItemWeight">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="ItemWidth">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="PlannedUnitBuildTime">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="QtyToBeBuilt">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="QtyUm" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="RevisionNum">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="VolumeUm" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="Warehouse" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="WeightUm" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="WOAllocMethod" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="WorkOrderDetails" type="WorkOrderDetailList" />
+			<xs:element minOccurs="0" maxOccurs="1" name="WorkOrderId" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkOrderDetailList">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="WorkOrderDetail" nillable="true" type="WorkOrderDetail" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="WorkOrderDetail">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="1" name="AllocationRule" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="BuildLevel">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="BuildSequence">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="Company" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="ComponentItem" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="FromLocation" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="IncQtyAmount" type="xs:double" />
+			<xs:element minOccurs="0" maxOccurs="1" name="IncQtyEligible" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="IncQtyMinAmount">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="IncQtyType" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="InterfaceEntity" type="InterfaceEntity" />
+			<xs:element minOccurs="0" maxOccurs="1" name="InternalWorkOrderNum">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="0" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="LogisticsUnit" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="Lot" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="ParentLogisticsUnit" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="QtyNeededPerItem">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="1" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element minOccurs="0" maxOccurs="1" name="QuantityUm" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="Warehouse" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

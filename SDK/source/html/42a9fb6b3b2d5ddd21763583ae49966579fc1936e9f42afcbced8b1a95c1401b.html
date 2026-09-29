@@ -1,0 +1,247 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Add Advanced Criteria to Search Pane</title>
+    <meta name="Title" content="How to: Add Advanced Criteria to Search Pane"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The Advanced Criteria control allows for the &quot;advanced search&quot; section within a metadata insight screen to be easily applied within the metadata. Adding an Advanced Criteria control to the search pane on an insight page simply requires adding a new s" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="73929e51-b844-43f4-8397-a64340507155"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="1"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Add Advanced Criteria to Search Pane</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Insight Pages
+ > Search Pane
+ > How to: Add Advanced Criteria to Search Pane</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The Advanced Criteria control allows for the "advanced search" section within a metadata insight screen to be easily applied within the metadata. Adding an Advanced Criteria control to the search pane on an insight page simply requires adding a new sub-accordion&nbsp;SCREEN_GROUP and a new advanced criteria SCREEN_CONTROL record.</p>
+
+<div id="i-d1f5ed18-803f-4aa0-8a45-371d4b8bf59e-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create a new sub-accordion screen group</span>
+</div>
+
+<div id="i-d1f5ed18-803f-4aa0-8a45-371d4b8bf59e-section-content" class="i-section-content">
+    <p>When adding a new Advanced Criteria section from scratch, it will be done within a new sub-accordion on the search pane. Add a SCREEN_GROUP record as follows.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART_ID</td>
+
+                <td>The Screen Part Id of the search pane</td>
+            </tr>
+
+            <tr>
+                <td>GROUP_NAME</td>
+
+                <td><em>SearchPaneAdvancedCriteria</em></td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>ADVANCEDCRITERIA</em></td>
+            </tr>
+
+            <tr>
+                <td>GROUP_TYPE</td>
+
+                <td><em>50</em> (Sub-accordion)</td>
+            </tr>
+
+            <tr>
+                <td>PARENT_GROUP_ID</td>
+
+                <td>The Screen Group Id of the main accordion SCREEN_GROUP in the search pane</td>
+            </tr>
+
+            <tr>
+                <td>NESTED_GROUP_UNIT</td>
+
+                <td>The Screen Group Id of the main accordion SCREEN_GROUP in the search pane</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>ROW_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-c0780626-6ca6-452c-afdd-c993e0b3e354-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create a new advanced criteria screen control</span>
+</div>
+
+<div id="i-c0780626-6ca6-452c-afdd-c993e0b3e354-section-content" class="i-section-content">
+    <p>Now add a SCREEN_CONTROL record as follows.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_GROUP_ID</td>
+
+                <td>The Screen Group Id of the sub-accordion that will hold the Advanced Criteria control.</td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_NAME</td>
+
+                <td><em>SearchPaneAdvCrit</em></td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_TYPE</td>
+
+                <td><em>70</em> (Advanced Criteria)</td>
+            </tr>
+
+            <tr>
+                <td>LABEL_ORIENTATION</td>
+
+                <td><em>20</em> (Inline)</td>
+            </tr>
+
+            <tr>
+                <td>DATA_SOURCE_TYPE</td>
+
+                <td><em>40</em> (TableFields)</td>
+            </tr>
+
+            <tr>
+                <td>DATA_SOURCE</td>
+
+                <td>The name of the database table or view the control should be tied to.</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>advancedCriteriaInline</em></td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Tie_AdvancedCriteria_Fields_to_Operands_and_Field_Types.html">How to: Tie Advanced Criteria Fields to Operand Lists and Field Types</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Controls.html">How to: Create Screen Controls</a></div>
+<div class="i-see-also-link">
+<a href="Supported_Screen_Controls.html">Supported Screen Controls</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

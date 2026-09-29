@@ -1,0 +1,295 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Calling a REST-Based Web Service</title>
+    <meta name="Title" content="Calling a REST-Based Web Service"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="REST-based Web Services can be invoked from any type of consumer that has access to a common HTTP API.  With that said, below are two common examples: .NET and AJAX." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="{63975FD3-5FE5-4795-A5BB-8B6C5FF0452E}"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Calling a REST-Based Web Service</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>REST-based Web Services can be invoked from any type of consumer that has access to a common HTTP API.&nbsp; With that said, below are two common examples: .NET and AJAX.</p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">.NET</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>.NET offers an HTTP API in its System.Net.HttpWebRequest and HttpWebResponse classes.&nbsp; The following example code illustrates&nbsp;how to use those classes to interact synchronously with a typical service:</p>
+
+    <div class="i-filtered-content-CS" data-title="CS" data-itemid="CS">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>C#</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">public</span> <span style="COLOR: #0000ff">string</span> InvokeService(
+    <span style="COLOR: #0000ff">string</span> userName,
+    <span style="COLOR: #0000ff">string</span> culture,
+    <span style="COLOR: #0000ff">string</span> httpMethod,
+    <span style="COLOR: #0000ff">string</span> uri,
+    <span style="COLOR: #0000ff">int</span> timeoutMillis,
+    <span style="COLOR: #0000ff">string</span> contentType,
+    <span style="COLOR: #0000ff">string</span> requestEntity,
+    <span style="COLOR: #0000ff">out</span> HttpStatusCode statusCode)
+{
+    <span style="COLOR: #008000">// build the request.
+</span>    HttpWebRequest request = HttpWebRequest.Create(uri) <span style="COLOR: #0000ff">as</span> HttpWebRequest;
+    request.Accept = contentType;
+    request.Headers.Add(<span style="COLOR: #800000">"Session"</span>, userName + <span style="COLOR: #800000">":::"</span> + culture);
+    request.Method = httpMethod;
+    request.Timeout = timeoutMillis;
+
+    <span style="COLOR: #008000">// add request entity when applicable.
+</span>    <span style="COLOR: #0000ff">if</span> (requestEntity != <span style="COLOR: #0000ff">null</span>
+        &amp;&amp; (httpMethod == <span style="COLOR: #800000">"POST"</span> || httpMethod == <span style="COLOR: #800000">"PUT"</span>))
+    {
+        request.ContentType = contentType;
+        StreamWriter requestStream = <span style="COLOR: #0000ff">null</span>;
+        <span style="COLOR: #0000ff">try</span>
+        {
+            requestStream = <span style="COLOR: #0000ff">new</span> StreamWriter(request.GetRequestStream());
+            requestStream.Write(requestEntity);
+        }
+        <span style="COLOR: #0000ff">finally</span>
+        {
+            <span style="COLOR: #0000ff">if</span> (requestStream != <span style="COLOR: #0000ff">null</span>)
+                    requestStream.Close();
+        }
+    }
+
+    <span style="COLOR: #008000">// perform a synchronous request.
+    // use request.BeginGetResponse() for asynchronous requests.
+</span>    HttpWebResponse response = <span style="COLOR: #0000ff">null</span>;
+    <span style="COLOR: #0000ff">try</span>
+    {
+        <span style="COLOR: #0000ff">try</span>
+        {
+            response = request.GetResponse() <span style="COLOR: #0000ff">as</span> HttpWebResponse;
+        }
+        <span style="COLOR: #0000ff">catch</span> (System.Net.WebException e)
+        {
+            <span style="COLOR: #008000">// all non-200 (OK) responses are thrown as WebExceptions by .NET.
+</span>            <span style="COLOR: #0000ff">if</span> (e.Response != <span style="COLOR: #0000ff">null</span>)
+                response = e.Response <span style="COLOR: #0000ff">as</span> HttpWebResponse;
+            <span style="COLOR: #0000ff">else</span>
+                <span style="COLOR: #0000ff">throw</span>;
+        }
+
+        <span style="COLOR: #008000">// make the status code available.
+</span>        statusCode = response.StatusCode;
+
+        <span style="COLOR: #008000">// return the response entity as a string.
+</span>        StreamReader responseStream = <span style="COLOR: #0000ff">new</span> StreamReader(response.GetResponseStream(), Encoding.UTF8);
+        <span style="COLOR: #0000ff">return</span> responseStream.ReadToEnd();
+    }
+    <span style="COLOR: #0000ff">finally</span>
+    {
+        <span style="COLOR: #0000ff">if</span> (response != <span style="COLOR: #0000ff">null</span>)
+            response.Close();
+    }
+}
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">AJAX</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>AJAX (Asynchronous JavaScript and XML), for the sake of this SDK, simply describes HTTP requests made directly from&nbsp;JavaScript hosted in a web browser.&nbsp; The key to AJAX is the XMLHttpRequest JavaScript object, which offers a typical HTTP API.</p>
+
+    <p>Though XML is implied in the acronym,&nbsp;the application&nbsp;also supports&nbsp;JSON (JavaScript Object Notation) media types, which can be more convenient from JavaScript.&nbsp; See <a href="http://www.json.org/">www.json.org</a> for more information about JSON, especially <a href="http://www.json.org/js.html">www.json.org/js.html</a>, which focuses on using JSON within JavaScript, with a link to an open source JSON serializer (<a href="http://www.json.org/json2.js">www.json.org/json2.js</a>).</p>
+
+    <p>The following example illustrates the use of XMLHttpRequest&nbsp;while using the application/json media type:</p>
+
+    <div class="i-filtered-content-JSCRIPT" data-title="JSCRIPT" data-itemid="JSCRIPT">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>JavaScript</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+&lt;script type=<span style="COLOR: #800000">"text/javascript"</span> src=<span style="COLOR: #800000">"json2.js"</span>&gt;&lt;<span style="COLOR: #800000">/script&gt;
+</span>&lt;script type=<span style="COLOR: #800000">"text/javascript"</span>&gt;
+    <span style="COLOR: #0000ff">function</span> invokeService(userName, culture, method, uri, requestEntity, asynch)
+    {
+        <span style="COLOR: #008000">// create the XMLHttpRequest object in a cross-browser safe manner.
+</span>        <span style="COLOR: #0000ff">var</span> xmlHttpRequest = window.XMLHttpRequest
+            ? xmlHttpRequest = <span style="COLOR: #0000ff">new</span> XMLHttpRequest() <span style="COLOR: #008000">// IE7+, Firefox, Opera, Safari, etc.
+</span>            : <span style="COLOR: #0000ff">new</span> ActiveXObject(<span style="COLOR: #800000">'MSXML2.XMLHTTP.3.0'</span>); <span style="COLOR: #008000">// pre-IE7
+</span>
+        <span style="COLOR: #008000">// open and initialize the XMLHttpRequest.
+</span>        xmlHttpRequest.open(method, uri, async);
+        xmlHttpRequest.setRequestHeader(<span style="COLOR: #800000">"Accept"</span>, <span style="COLOR: #800000">"application/json"</span>);
+        xmlHttpRequest.setRequestHeader(<span style="COLOR: #800000">"Session"</span>, userName + <span style="COLOR: #800000">":::"</span> + culture);
+
+        <span style="COLOR: #008000">// add the event handler that will process the response of the request.
+</span>        <span style="COLOR: #0000ff">var</span> responseEntity;
+        xmlHttpRequest.onreadystatechange=<span style="COLOR: #0000ff">function</span>()
+        {
+            <span style="COLOR: #0000ff">if</span> (xmlHttpRequest.readyState != 4)
+                <span style="COLOR: #0000ff">return</span>;
+
+            <span style="COLOR: #008000">// parse the response entity into object form, while handling
+</span>            <span style="COLOR: #008000">// the specialized date format returned by the application.
+</span>            responseEntity = JSON.parse(
+                xmlHttpRequest.responseText,
+                __jsonParserFilter);
+            <span style="COLOR: #0000ff">if</span> (xmlHttpRequest.status == 200)
+            {
+                <span style="COLOR: #008000">// Success! Possibly use response entity.
+</span>            }
+            <span style="COLOR: #008000">// add else-ifs for other expected response statuses.
+</span>            <span style="COLOR: #0000ff">else</span>
+            {
+                <span style="COLOR: #008000">// handle error based on status and response json, if applicable.
+</span>            }
+        }
+
+        <span style="COLOR: #008000">// perform the request, passing the request entity if specified.
+</span>        <span style="COLOR: #0000ff">if</span> (requestEntity
+            &amp;&amp; (method == <span style="COLOR: #800000">"POST"</span> || method == <span style="COLOR: #800000">"PUT"</span>))
+        {
+            xmlHttpRequest.setRequestHeader(<span style="COLOR: #800000">"Content-Type"</span>, <span style="COLOR: #800000">"application/json"</span>);
+            xmlHttpRequest.send(JSON.stringify(requestEntity));
+        }
+        <span style="COLOR: #0000ff">else</span>
+        {
+            xmlHttpRequest.send();
+        }
+
+        <span style="COLOR: #008000">// if we waited for a response, send it back to the caller.
+</span>        <span style="COLOR: #0000ff">if</span> (!asynch)
+            <span style="COLOR: #0000ff">return</span> responseEntity;
+    }
+
+    <span style="COLOR: #0000ff">function</span> __jsonParserFilter(key, value)
+    {
+        <span style="COLOR: #008000">// The application will return Dates as strings in the form "/Date(milliseconds[+-]GMT)/"
+</span>        <span style="COLOR: #008000">// The following will properly parse such strings into Date objects.
+</span>        <span style="COLOR: #0000ff">if</span> (value
+            &amp;&amp; <span style="COLOR: #0000ff">typeof</span>(value) === <span style="COLOR: #800000">'string'</span>
+            &amp;&amp; value.indexOf(<span style="COLOR: #800000">'/Date('</span>) == 0)
+        {
+            <span style="COLOR: #0000ff">return</span> eval(<span style="COLOR: #800000">"new Date("</span> + value.substring(6, v.length-2) + <span style="COLOR: #800000">")"</span>);
+        }
+    }
+&lt;<span style="COLOR: #800000">/script&gt;</span>
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

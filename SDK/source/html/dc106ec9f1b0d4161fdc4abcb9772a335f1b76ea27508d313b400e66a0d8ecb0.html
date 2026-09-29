@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Property Placeholders in Spring.NET</title>
+    <meta name="Title" content="Property Placeholders in Spring.NET"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Spring.NET offers the ability to inject configuration values from a variety of sources into objects using property placeholders.  This gives the application the ability to define not only the configuration values in centralized and easily modifiable " />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="{C1F71BDE-686F-46AB-A4AC-9D61F7A8AE51}"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="2"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Property Placeholders in Spring.NET</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+Third Party Software 
+ > Spring.NET
+ > Property Placeholders in Spring.NET</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Spring.NET offers the ability to inject configuration values from a variety of sources into objects using property placeholders.&nbsp; This gives&nbsp;the application&nbsp;the ability to define not only the configuration values in centralized and easily modifiable sources, but also allows the end user to change where and at what level these values are stored.</p>
+
+<p>To describe how property placeholders work, let's dive into a simple contrived example.&nbsp; The following object definition tells Spring.NET to construct a class Manh.ILS.Example.Class1 and to set the <em>configValue</em> constructor argument based on the <em>configValuePlaceholder</em> property placeholder.&nbsp; Note that property placeholders always&nbsp;have the form ${<em>property placeholder&nbsp;name</em>}.</p>
+
+<div class="i-filtered-content-XML" data-title="XML" data-itemid="XML">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Object with Property Placeholder</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">object</span> <span style="COLOR: #ff0000">id</span><span style="COLOR: #0000ff">="IClass1"</span> <span style="COLOR: #ff0000">type</span><span style="COLOR: #0000ff">="Manh.ILS.Example.Class1, Example"</span><span style="COLOR: #0000ff">&gt;</span>
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">constructor-arg</span> <span style="COLOR: #ff0000">name</span><span style="COLOR: #0000ff">="configValue"</span> <span style="COLOR: #ff0000">value</span><span style="COLOR: #0000ff">="${configValuePlaceholder}"</span> <span style="COLOR: #0000ff">/&gt;</span>
+<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">object</span><span style="COLOR: #0000ff">&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>Next, the Spring.NET provided <strong>Spring.Objects.Factory.Config.VariablePlaceholderConfigurer</strong> is configured to tell Spring.NET where to look for property placeholder values.</p>
+
+<div class="i-filtered-content-XML" data-title="XML" data-itemid="XML">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>VariablePlaceholderConfigurer</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">object</span> <span style="COLOR: #ff0000">type</span><span style="COLOR: #0000ff">="Spring.Objects.Factory.Config.VariablePlaceholderConfigurer, Spring.Core"</span><span style="COLOR: #0000ff">&gt;</span>
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">property</span> <span style="COLOR: #ff0000">name</span><span style="COLOR: #0000ff">="VariableSources"</span><span style="COLOR: #0000ff">&gt;</span>
+        <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">list</span><span style="COLOR: #0000ff">&gt;</span>
+            <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">object</span> <span style="COLOR: #ff0000">type</span><span style="COLOR: #0000ff">="Spring.Objects.Factory.Config.ConfigSectionVariableSource, Spring.Core"</span><span style="COLOR: #0000ff">&gt;</span>
+                <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">property</span> <span style="COLOR: #ff0000">name</span><span style="COLOR: #0000ff">="SectionNames"</span> <span style="COLOR: #ff0000">value</span><span style="COLOR: #0000ff">="appSettings"</span> <span style="COLOR: #0000ff">/&gt;</span>
+            <span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">object</span><span style="COLOR: #0000ff">&gt;</span>
+            <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">object</span> <span style="COLOR: #ff0000">type</span><span style="COLOR: #0000ff">="Spring.Objects.Factory.Config.PropertyFileVariableSource, Spring.Core"</span><span style="COLOR: #0000ff">&gt;</span>
+                <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">property</span> <span style="COLOR: #ff0000">name</span><span style="COLOR: #0000ff">="Location"</span> <span style="COLOR: #ff0000">value</span><span style="COLOR: #0000ff">="file://~/Example.properties"</span> <span style="COLOR: #0000ff">/&gt;</span>
+            <span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">object</span><span style="COLOR: #0000ff">&gt;</span>
+        <span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">list</span><span style="COLOR: #0000ff">&gt;</span>
+    <span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">property</span><span style="COLOR: #0000ff">&gt;</span>
+<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">object</span><span style="COLOR: #0000ff">&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>The <strong>VariableSources</strong> property defines a list of sources that Spring.NET uses to find property placeholder values.&nbsp; This example shows a <strong>ConfigSectionVariableSource</strong> that reads values from the appSettings section of a .NET configuration file, followed by a specific Java-style properties file read by the <strong>PropertyFileVariableSource</strong>.&nbsp; Note that if a placeholder's value is defined in both of these sources, the one defined first will be used.&nbsp; The above setup thus allows for&nbsp;process specific values in the application configuration&nbsp;to override values defined in Example.properties.</p>
+
+<div class="i-box i-box-note">
+    The applicatoin&nbsp;defines a VariablePlaceholderConfigurer object similar to this example in the Objects.xml file deployed in the Common folder.
+</div>
+
+<p>For illustration purposes, the following shows how our example <em>configValuePlaceholder</em> could be defined as both a typical appSetting or in a Java-style property file:</p>
+
+<div class="i-filtered-content-XML" data-title="XML" data-itemid="XML">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>.NET Configuration Example</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">appSettings</span><span style="COLOR: #0000ff">&gt;</span>
+    ...
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">add</span> <span style="COLOR: #ff0000">key</span><span style="COLOR: #0000ff">="configValuePlaceholder"</span> <span style="COLOR: #ff0000">value</span><span style="COLOR: #0000ff">="this is the value of configValuePlaceholder"</span> <span style="COLOR: #0000ff">/&gt;</span>
+    ...
+<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">appSettings</span><span style="COLOR: #0000ff">&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="i-filtered-content-XML" data-title="XML" data-itemid="XML">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Java-style Property File Example</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+configValuePlaceholder = this is the value of configValuePlaceholder
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>For more detailed information about Spring.NET property placeholders, see the following links in Spring.NET's online help:</p>
+
+<p><u><font color="blue"><a href="http://www.springframework.net/doc-latest/reference/html/objects.html#objects-factory-placeholderconfigurer">http://www.springframework.net/doc-latest/reference/html/objects.html#objects-factory-placeholderconfigurer</a></font></u></p>
+
+<p><a href="http://www.springframework.net/doc-latest/reference/html/objects.html#objects-variablesource">http://www.springframework.net/doc-latest/reference/html/objects.html#objects-variablesource</a></p>
+
+<p>&nbsp;</p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

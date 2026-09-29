@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Define Custom Endpoint Handlers</title>
+    <meta name="Title" content="Define Custom Endpoint Handlers"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="An endpoint handler is a module that contains logic to keep an endpoint running. The system hosts all configured endpoints under service &quot;DIFCommunicationService&quot;. When the service starts it looks for all configured endpoint handlers to start the app" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="{AC93FAAC-C46C-462B-9883-4F7A2D578424}"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Define Custom Endpoint Handlers</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>An endpoint handler is&nbsp;a&nbsp;module&nbsp;that contains logic to keep an endpoint running. The system hosts all configured endpoints under service "DIFCommunicationService". When the service starts it looks for all configured endpoint handlers to start the appropriate endpoints.</p>
+
+<p>&nbsp;</p>
+
+<p><strong>The following endpoint handlers are provided by the system:</strong></p>
+
+<p>&nbsp;</p>
+
+<table cellspacing="0" cols="2" cellpadding="0">
+    <tbody>
+        <tr>
+            <td><strong>IncomingTCPServerEndpointHandler</strong></td>
+
+            <td>This endpoint handler&nbsp;is used to send&nbsp;data to the system&nbsp;when the system&nbsp;serves as a server and the&nbsp;MHE as a client. This&nbsp;handler should be used when the system&nbsp;waits for connections and the MHE connects to the&nbsp;system to send data.</td>
+        </tr>
+
+        <tr>
+            <td><strong>IncomingTCPClientEndpointHandler</strong></td>
+
+            <td>This endpoint handler is used to send data to the system&nbsp;when the system acts as a client and the MHE as a server. This handler connects to the MHE but waits for the MHE to send data</td>
+        </tr>
+
+        <tr>
+            <td><strong>IncomingFileEndpointHandler</strong></td>
+
+            <td>This endpoint handler is used to move file from one location to another location using simple file operation.</td>
+        </tr>
+
+        <tr>
+            <td><strong>OutgoingTCPClientEndpointHandler</strong></td>
+
+            <td>
+                <p>This endpoint handler is used to send data&nbsp;from the system to the MHE. This handler connects to the MHE and sends it data.<strong>&nbsp;</strong></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td><strong>OutgoingHTTPClientEndpointHandler</strong></td>
+
+            <td>
+                <p>This endpoint handler is used to send data&nbsp;from the system to the configured DIF outgoing endpoint web service(Azure function).<strong>&nbsp;</strong></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p></p>
+
+<p>&nbsp;</p>
+
+<p>In addition to the four endpoint handlers provided by the system. You can create your own endpoint handler, the following steps provide direction to create a custom endpoint handler:</p>
+
+<p>&nbsp;</p>
+
+<p><strong>1.</strong> Your endpoint handler&nbsp;must implement interface IEndpointHandler. The interface is located in assembly DeviceIntegrationFramework.Interfaces under the Common folder.</p>
+
+<blockquote style="MARGIN-RIGHT: 0px" dir="ltr">
+    <p>&nbsp;</p>
+
+    <div class="i-box i-box-note">
+        Your endpoint handler should have logic to keep processing until the endpoint handler is issued the stop command
+    </div>
+
+    <p>&nbsp;</p>
+</blockquote>
+
+<p dir="ltr"><strong>2.</strong> You will need to&nbsp;defined your endpoint handler&nbsp;in the&nbsp;Spring.NET objects definition files. Put your object definition in a custom file&nbsp;and add an import directive in file &nbsp;Objects.DeviceIntegrationFramework.BL.xml</p>
+
+<div class="i-filtered-content-LanguageName" data-title="LanguageName" data-itemid="LanguageName">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Custom file with endpoint Handler Entry</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <p dir="ltr"><font color="blue" size="2"><font color="blue" size="2">&lt;</font></font><font color="#A31515" size="2"><font color="#A31515" size="2">object</font></font> <font color="red" size="2"><font color="red" size="2">id</font></font><font color="blue" size="2"><font color="blue" size="2">=</font></font><font color="black" size="2">"</font><font color="blue" size="2"><font color="blue" size="2">IncomingTCPServerEndpointHandler</font></font><font color="black" size="2">"</font> <font color="red" size="2"><font color="red" size="2">type</font></font><font color="blue" size="2"><font color="blue" size="2">=</font></font><font color="black" size="2">"</font><font color="blue" size="2"><font color="blue" size="2">DeviceIntegrationFramework.BL.IncomingTCPServerEndpointHandler, DeviceIntegrationFramework.BL, Version=8.0.0.0, Culture=neutral, PublicKeyToken=a978a715ccadf176</font></font><font color="black" size="2">"</font> <font color="red" size="2"><font color="red" size="2">singleton</font></font><font color="blue" size="2"><font color="blue" size="2">=</font></font><font color="black" size="2">"</font><font color="blue" size="2"><font color="blue" size="2">false</font></font><font color="black" size="2">"</font> <font color="red" size="2"><font color="red" size="2">autowire</font></font><font color="blue" size="2"><font color="blue" size="2">=</font></font><font color="black" size="2">"</font><font color="blue" size="2"><font color="blue" size="2">constructor</font></font><font color="black" size="2">"</font><font color="blue" size="2"><font color="blue" size="2">/&gt;</font></font></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="i-filtered-content-LanguageName" data-title="LanguageName" data-itemid="LanguageName">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Add import directive to file Objects.DeviceIntegrationFramework.BL.xml</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <p><font color="blue" size="2"><font color="blue" size="2">&lt;</font></font><font color="#A31515" size="2"><font color="#A31515" size="2">objects</font></font> <font color="red" size="2"><font color="red" size="2">xmlns</font></font><font color="blue" size="2"><font color="blue" size="2">=</font></font><font color="black" size="2">"</font><font color="blue" size="2"><font color="blue" size="2">http://www.springframework.net</font></font><font color="black" size="2">"</font><font color="blue" size="2"><font color="blue" size="2">&gt;</font></font></p>
+
+                    <p><font color="blue" size="2"><font color="blue" size="2">&lt;</font></font><font color="#A31515" size="2"><font color="#A31515" size="2">import</font></font> <font color="red" size="2"><font color="red" size="2">resource</font></font><font color="blue" size="2"><font color="blue" size="2">=</font></font><a href="file:/%25scale_home%25/Settings/Custom.xml"><font color="blue" size="2"><font color="blue" size="2">file:/%SCALE_HOME%/Settings/Custom.xml</font></font></a> <font color="blue" size="2"><font color="blue" size="2">/&gt;</font></font></p>
+
+                    <p><font color="blue" size="2"><font color="blue" size="2">&lt;/</font></font><font color="#A31515" size="2"><font color="#A31515" size="2">objects</font></font><font color="blue" size="2"><font color="blue" size="2">&gt;</font></font></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p dir="ltr"><strong>3.</strong> Update your endpoint configuration. You will need to specify the object id (e.g "<font color="blue" size="2"><font color="blue" size="2">IncomingTCPServerEndpointHandler</font></font>") of your spring entry in column ENDPOINT_HANDLER&nbsp;of table DIF_ENDPOINT</p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>How to: Add a Drilldown Level to a Chart on a Monitor Page</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">How to: Add a Drilldown Level to a Chart on a Monitor Page</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+User Interface Extensibility
+ &gt; Metadata Web Pages
+ &gt; Monitor Pages
+ &gt; How to: Add a Drilldown Level to a Chart on a Monitor Page</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47">A column chart can be drilled down to N levels. Follow the below steps to enable drill down for a chart.</p>
+
+<div id="i-29262866-3fee-4c33-8b6c-fe4f7661cd4c-section-heading" class="i-section-heading" data-source-node="n48">
+    <span class="i-section-heading-icon" data-source-node="n49"><span class="i-hidden" data-source-node="n50"> </span></span><span class="i-section-heading-text" data-source-node="n51">Step 1: Create a Stored Procedure for the Chart</span>
+</div>
+
+<div id="i-29262866-3fee-4c33-8b6c-fe4f7661cd4c-section-content" class="i-section-content" data-source-node="n52">
+    <p data-source-node="n53">A stored procedure needs to be created for each drilldown level. The stored procedure name should be in the format <em data-source-node="n54">&lt;functional area&gt;_Monitor&lt;Description of what will be retrieved&gt;</em>.</p>
+
+    <p data-source-node="n55">For example if a chart is retrieving data for work type for active work then the stored procedure would be named WRK_MonitorWorkTypeChartData</p>
+
+    <p data-source-node="n56">Please refer to the  <a href="2f1e464b919bbe6d9db8cf9f7a2eb6d5cfd5866b662fd85c0ef3c9c02005b000.html" data-source-node="n57">How to: Create Monitor Page Stored Procedure</a> topic for more information.</p>
+</div>
+
+<div id="i-52dedf00-6db5-445c-bf7f-b58f65ffe883-section-heading" class="i-section-heading" data-source-node="n58">
+    <span class="i-section-heading-icon" data-source-node="n59"><span class="i-hidden" data-source-node="n60"> </span></span><span class="i-section-heading-text" data-source-node="n61">Step 2: Create Required Screen Control Attributes for the Chart</span>
+</div>
+
+<div id="i-52dedf00-6db5-445c-bf7f-b58f65ffe883-section-content" class="i-section-content" data-source-node="n62">
+    <p data-source-node="n63">The following screen control attributes need to be created and tied to the corresponding chart. Please refer to the  <a href="c6f2b575ac93c80d7fed0743e021c3a4410aa69f0a1277ed7d8a2a7e7a692c93.html" data-source-node="n64">How to: Create Screen Control Attributes</a> topic for more information. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n65"><u data-source-node="n66"><font color="navy" data-source-node="n67">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table data-source-node="n68">
+        <tbody data-source-node="n69">
+            <tr data-source-node="n70">
+                <td data-source-node="n71"><strong data-source-node="n72">Field</strong></td>
+
+                <td data-source-node="n73"><strong data-source-node="n74">Description</strong></td>
+            </tr>
+
+            <tr data-source-node="n75">
+                <td data-source-node="n76">
+                    <p data-source-node="n77">data-drilldownLevel&lt;N&gt;criteria</p>
+                </td>
+
+                <td data-source-node="n78">
+                    <p data-source-node="n79">This attribute defines the parameters to pass to the stored procedure for the<br data-source-node="n80">
+                    various drill downs the user has executed. These parameters will filter the data<br data-source-node="n81">
+                    in the stored procedure. The criteria consists of a comma delimited list of<br data-source-node="n82">
+                    criteria, ending with a semicolon.</p>
+
+                    <p data-source-node="n83">For example if a chart has two drill down levels then the following attributes need to be created: data-drilldownLevel1criteria and data-drilldownLevel2criteria.</p>
+                </td>
+            </tr>
+
+            <tr data-source-node="n84">
+                <td data-source-node="n85">
+                    <p data-source-node="n86">data-drilldownLevel&lt;N&gt;storedprocedure</p>
+                </td>
+
+                <td data-source-node="n87">
+                    <p data-source-node="n88">This attribute defines the stored procedure that should be used to retrieve the<br data-source-node="n89">
+                    data for a drill down level in the chart. Each drill down level has one stored<br data-source-node="n90">
+                    procedure defined.</p>
+
+                    <p data-source-node="n91">For example if a chart has two drill down levels then the following attributes need to be created: data-drilldownLevel1storedprocedure and data-drilldownLevel2storedprocedure.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            <a name="seealsobookmark" data-source-node="n92"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n93">
+        
+<p data-source-node="n94"> </p><p data-source-node="n95"> </p><hr style="height: 1px" data-source-node="n96"><p data-source-node="n97">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

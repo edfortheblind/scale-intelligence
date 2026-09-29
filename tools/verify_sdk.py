@@ -17,11 +17,37 @@ from article_data import nodes,text_of,TreeParser
 from reading_audit import child_signature
 from verify_pilot import offline_browser,QuietHandler
 import sdk_article_data as adapter
+from sdk_state_visibility import empty_state_descriptors,offline_sdk_states
+from sdk_link_semantics import fragment_supported,required_external_reference
 
 SEMANTICS=('verify_sdk.py','sdk_article_data.py','verify_pilot.py','article_data.py','reading_audit.py','style_data.py',
-           'discover_sdk.py','collector.py','audit_module.py')
+           'discover_sdk.py','collector.py','audit_module.py','sdk_link_semantics.py','sdk_state_visibility.py')
 REQUIRED_CHECKS=('exact_decoded_text','table_cell_structure','exact_code_whitespace','headings',
                  'parse_without_repair','supported_elements','image_reference_classification','direct_assets_available')
+
+
+def source_parse_check(store,record,parser,content,data):
+    """Retain converter diagnostics; accept only independently proved recovery."""
+    verification=data.get('verification',{})
+    exact=(verification.get('parse_errors')==parser.errors and
+           verification.get('source_parse_diagnostics')==adapter.source_parse_diagnostics(parser.errors))
+    equivalent=False
+    if exact and parser.errors and all(e=={'class':'UNMATCHED_CLOSE','tag':'strong'} for e in parser.errors):
+        from verify_sdk_markup import markup_proof_current
+        equivalent=markup_proof_current(store,record,parser,content) is True
+    return {'passed':bool(exact and (not parser.errors or equivalent)),
+            'native_equivalence_verified':equivalent}
+
+
+def converter_check_failures(data,parse_check,ignore=()):
+    checks=data.get('verification',{}).get('checks',{})
+    keys=set(checks)|set(REQUIRED_CHECKS)
+    # This is the only admissible exception, and the original false check is
+    # never rewritten. Missing checks and every other false check remain errors.
+    accepted_recovery=(parse_check.get('passed') is True and
+                       parse_check.get('native_equivalence_verified') is True)
+    return sorted(key for key in keys if key not in ignore and checks.get(key) is not True and not (
+        key=='parse_without_repair' and checks.get(key) is False and accepted_recovery))
 
 
 def verify_reading(root,record,data,content,catalog):
@@ -75,7 +101,7 @@ def verify_reading(root,record,data,content,catalog):
 def attachment_check(record,body):
     """Inspect file structure only; never extract or execute an attachment."""
     suffix=Path(urlsplit(record['source_url']).path).suffix.lower()
-    check='original_hash_and_transport';valid=True
+    check='original_hash_and_transport';valid=True;diagnostic=None
     try:
         if suffix=='.pdf':
             check='pdf_signature_and_eof';valid=body.startswith(b'%PDF-') and b'%%EOF' in body[-2048:]
@@ -90,8 +116,15 @@ def attachment_check(record,body):
                 if valid:valid=archive.testzip() is None
         elif suffix in ('.txt','.sql','.cs','.ps1','.js','.json','.xml','.xsd'):
             check='strict_text_decoding';body.decode(record.get('encoding') or 'utf-8-sig',errors='strict')
+    except UnicodeDecodeError as error:
+        valid=False
+        diagnostic={'class':'SOURCE_TEXT_ENCODING_INVALID','encoding':error.encoding,
+            'byte_start':error.start,'byte_end':error.end,'reason':error.reason,
+            'original_bytes_preserved':True,'replacement_or_transcoding_applied':False}
     except (ValueError,UnicodeError,OSError,zipfile.BadZipFile,RuntimeError):valid=False
-    return {'id':record['id'],'sha256':record.get('sha256'),'check':check,'passed':valid}
+    result={'id':record['id'],'sha256':record.get('sha256'),'check':check,'passed':valid}
+    if diagnostic:result['source_diagnostic']=diagnostic
+    return result
 
 
 def decode_images(root,records):
@@ -162,6 +195,8 @@ def input_generation(store,catalog,identifiers,documents,styles):
     for data in documents:
         paths.add(catalog[data['id']]['app_data_path'])
         paths.update(data['reading'][kind] for kind in ('html','markdown'))
+    if any(data.get('verification',{}).get('source_parse_diagnostics',{}).get('native_equivalence_required') is True for data in documents):
+        paths.update(('SDK/reports/source-markup.json','tools/verify_sdk_markup.py'))
     paths.update(item['path'] for item in styles)
     paths.update('tools/'+name for name in SEMANTICS)
     files=[]
@@ -195,7 +230,7 @@ def copy_payload_checks(view,source_payloads,reading_payloads):
 def offline_sdk_browser(root,views):
     """Reuse inert-view checks; independently parse originals without source JS."""
     from playwright.sync_api import sync_playwright
-    issues,checked=offline_browser(root,views)
+    issues,checked=offline_sdk_states(root,views)
     by_id={item['id']:item for item in checked}
     for item in checked:item['copy_payloads']=[]
     copying=[view for view in views if view.get('copy_payloads')]
@@ -314,10 +349,12 @@ def validate(store,selection,*,pilot=True,browser=None,image_decoder=None,replay
                 raise ValueError('SOURCE_GENERATION_MISMATCH')
             if data.get('module')!='SDK' or data.get('converter_version')!=adapter.CONVERTER:raise ValueError('SDK_CONVERTER_GENERATION_MISMATCH')
             parser,content,_,title,_=adapter.parse_article(record,raw);inv=adapter.inventory(content)
-            if parser.errors or content!=data['content_tree'] or text_of(content)!=data['content_text'] or title!=data['title'] or inv!=data['inventory']:
+            parse_check=source_parse_check(store,record,parser,content,data)
+            if not parse_check['passed'] or content!=data['content_tree'] or text_of(content)!=data['content_text'] or title!=data['title'] or inv!=data['inventory'] or data.get('source_context')!=adapter.source_context(record,parser,content):
                 issues.append({'id':identifier,'error':'SOURCE_TO_APP_FIDELITY_FAILED'})
-            if not all(data['verification']['checks'].get(k) is True for k in REQUIRED_CHECKS) or not all(data['verification']['checks'].values()):
-                issues.append({'id':identifier,'error':'CONVERTER_CHECKS_FAILED','checks':data['verification']['checks']})
+            failed_checks=converter_check_failures(data,parse_check)
+            if failed_checks:
+                issues.append({'id':identifier,'error':'CONVERTER_CHECKS_FAILED','checks':data['verification']['checks'],'failed_checks':failed_checks})
             state=adapter.reconcile(content,data['references'],catalog)
             if state!=data.get('documentary_states') or state.get('issues') or state.get('static_relationships_passed') is not True:
                 issues.append({'id':identifier,'error':'SDK_DOCUMENTARY_STATE_MAPPING_FAILED','issues':state.get('issues',[])})
@@ -334,7 +371,7 @@ def validate(store,selection,*,pilot=True,browser=None,image_decoder=None,replay
                 if simplify(inv[key])!=simplify(reading[key]):issues.append({'id':identifier,'error':'EXACT_'+key.upper()+'_MISMATCH'})
             for ref in data['references']:
                 category=ref['classification'];target=catalog.get(ref.get('target_id'))
-                if category=='same_document' and ref.get('fragment') and unquote(ref['fragment']) not in inv['anchors']:
+                if category=='same_document' and ref.get('fragment') and not fragment_supported(ref['fragment'],inv['anchors']):
                     issues.append({'id':identifier,'error':'MISSING_SAME_DOCUMENT_ANCHOR','fragment':ref['fragment']})
                 elif category=='internal':
                     if not target:issues.append({'id':identifier,'error':'UNMAPPED_INTERNAL_REFERENCE'});continue
@@ -342,19 +379,19 @@ def validate(store,selection,*,pilot=True,browser=None,image_decoder=None,replay
                         if target['id'] not in ids:totals['topic_links_outside_selected_scope']+=1
                         elif ref.get('fragment'):
                             target_data=read_json(store.root/target['app_data_path'])
-                            if unquote(ref['fragment']) not in target_data['inventory']['anchors']:
+                            if not fragment_supported(ref['fragment'],target_data['inventory']['anchors']):
                                 issues.append({'id':identifier,'error':'SELECTED_TOPIC_ANCHOR_MISSING','target_id':target['id'],'fragment':ref['fragment']})
                     else:support.add(target['id'])
                 elif category=='classification_required':issues.append({'id':identifier,'error':'UNCLASSIFIED_REFERENCE'})
                 elif category=='deferred_cross_module':totals['cross_module_links_deferred']+=1
                 elif category=='out_of_scope_reference':
-                    from audit_module import required_external_reference
                     if required_external_reference(ref,{n['node_id']:n for n in nodes(parser.root)}):
                         issues.append({'id':identifier,'error':'REQUIRED_DEPENDENCY_OUTSIDE_SCOPE'})
             edges=state.get('control_body_edges',[])
             variants=sorted({v['node_id'] for v in inv['variants']}|{edge['body_node'] for edge in edges if edge.get('body_node')})
             views.append({'id':identifier,'source_sha256':record['sha256'],'source_path':record['local_path'],
                           'reading':data['reading'],'variant_nodes':variants,
+                          'empty_source_states':empty_state_descriptors(content,variants,edges),
                           'copy_payloads':[{k:edge[k] for k in ('control_node','body_node','copy_text','copy_text_sha256')} for edge in edges if edge['kind']=='copy_code']})
             documents.append(data);totals.update(articles=1,tables=len(inv['tables']),code_blocks=len(inv['code']),images=inv['tags'].get('img',0),documentary_states=len(variants))
             formats['welcome']|=urlsplit(record['source_url']).path.endswith('/Welcome.html')

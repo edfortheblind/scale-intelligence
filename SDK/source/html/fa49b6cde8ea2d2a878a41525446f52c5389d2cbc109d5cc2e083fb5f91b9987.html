@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Customize the Appointment Calendar Page Appointment Colors</title>
+    <meta name="Title" content="How to: Customize the Appointment Calendar Page Appointment Colors"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The Appointment Calendar Events SQL – Modify exit point allows the user to customize the appointment colors for appointments displayed on the Appointment Calendar page per dock door. In the SCALE configuration, this exit point can be found under Exit" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="12293e08-3f8c-48e5-990f-ac2d05f2d6da"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="2"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Customize the Appointment Calendar Page Appointment Colors</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Transaction Pages
+ > How to: Customize the Appointment Calendar Page Appointment Colors</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The Appointment Calendar Events&nbsp;SQL – Modify exit point allows the&nbsp;user to customize the appointment colors for appointments displayed on the&nbsp;Appointment Calendar page per dock door. In the&nbsp;SCALE configuration, this exit point can be found under Exit Point Controls -&gt; General-&gt; Appointment Calendar Events SQL - Modify.</p>
+
+<p>&nbsp;</p>
+
+<p class="i-adjacent-paragraph">This exit point receives following two input parameters.</p>
+
+<ul>
+    <li>@SESSIONVALUE – Session(xml)</li>
+
+    <li>@SQL&nbsp;&nbsp;- Base SQL query which is used to fetch and display appointments</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p class="i-adjacent-paragraph">This exit point has an output parameter i.e. @RETURNVALUE. It returns the customized SQL query which overrides the base SQL query to fetch and display appointments. The base SQL query looks as shown below</p><br />
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Base SQL query</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">SELECT</span>
+    <span style="COLOR: #0000ff">NULL</span> <span style="COLOR: #0000ff">as</span> backgroundColor, <span style="COLOR: #0000ff">NULL</span> <span style="COLOR: #0000ff">as</span> textColor, AP.<span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">as</span> ObjectId, AP.DOCK <span style="COLOR: #0000ff">as</span> Dock, AP.APPT_DATE_TIME <span style="COLOR: #0000ff">as</span> ApptDateTime, AP.END_DATE_TIME <span style="COLOR: #0000ff">as</span> EndDateTime, RH.INTERNAL_RECEIPT_NUM <span style="COLOR: #0000ff">as</span> InternalReceiptNum, RH.RECEIPT_ID <span style="COLOR: #0000ff">as</span> ReceiptId, RH.TRAILER_ID <span style="COLOR: #0000ff">as</span> TrailerId, RH.CARRIER <span style="COLOR: #0000ff">as</span> Carrier
+<span style="COLOR: #0000ff">FROM</span>
+    APPOINTMENT_SCHEDULE AP <span style="COLOR: #808080">JOIN</span> RECEIPT_HEADER RH <span style="COLOR: #0000ff">ON</span> AP.INTERNAL_RECEIPT_NUM <span style="COLOR: #808080">=</span> RH.INTERNAL_RECEIPT_NUM
+<span style="COLOR: #0000ff">WHERE</span>
+    RH.WAREHOUSE <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@WAREHOUSE</span> <span style="COLOR: #808080">AND</span> ((AP.APPT_DATE_TIME <span style="COLOR: #808080">&lt;=</span> <span style="COLOR: #008000">@apptendDateTime</span>) <span style="COLOR: #808080">AND</span> (<span style="COLOR: #008000">@apptstartDateTime</span> <span style="COLOR: #808080">&lt;=</span> AP.END_DATE_TIME))
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p class="i-adjacent-paragraph">&nbsp;</p>
+
+<p class="i-adjacent-paragraph">&nbsp;The steps below will walk through on customizing the base SQL query</p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1:&nbsp;Access the exit point</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" style="OVERFLOW: hidden; DISPLAY: block" jquery17206684811739708774="6">
+    Go to Configurations | Exit point control and open the Stored procedure for the Appointment Calendar Events SQL - Modify Exit Point.&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2:&nbsp;Create the stored procedure</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" style="OVERFLOW: hidden; DISPLAY: block" jquery17206684811739708774="6">
+    Generate the sample stored procedure. &nbsp;&nbsp;&nbsp;
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3:&nbsp;Modify the base SQL query</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" style="OVERFLOW: hidden; DISPLAY: block" jquery17206684811739708774="6">
+    Add the modified SQL query below to the stored procedure which customizes the colors for appointments per dock door. The example below applies custom colors to two receiving dock doors i.e. RCV.1 and RCV.2. &nbsp; &nbsp;&nbsp;&nbsp;<br />
+    <br />
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Custom SQL query</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #008080">-- Define an temporary variable to store custom colors per dock door
+</span><span style="COLOR: #0000ff">DECLARE</span> <span style="COLOR: #008000">@EventColorsPerDockLocation</span> <span style="COLOR: #0000ff">TABLE</span>
+(
+    DockLocation <span style="COLOR: #0000ff">nvarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">25</span>),
+    BackgroundColor <span style="COLOR: #0000ff">nvarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">50</span>),
+    TextColor <span style="COLOR: #0000ff">nvarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">50</span>)
+);
+<span style="COLOR: #008080">-- Set the background and text color for dock door that require custom colors
+-- You can use any of the CSS color formats such #f00, #ff0000, rgb(255,0,0), or red.
+</span><span style="COLOR: #0000ff">INSERT</span> <span style="COLOR: #0000ff">INTO</span> <span style="COLOR: #008000">@EventColorsPerDockLocation</span> <span style="COLOR: #0000ff">VALUES</span>(<span style="COLOR: #ff0000">'RCV.1'</span>, <span style="COLOR: #ff0000">'yellow'</span>, <span style="COLOR: #ff0000">'black'</span>);
+<span style="COLOR: #0000ff">INSERT</span> <span style="COLOR: #0000ff">INTO</span> <span style="COLOR: #008000">@EventColorsPerDockLocation</span> <span style="COLOR: #0000ff">VALUES</span>(<span style="COLOR: #ff0000">'RCV.2'</span>, <span style="COLOR: #ff0000">'#000000'</span>, <span style="COLOR: #ff0000">'#ffffff'</span>);
+<span style="COLOR: #008080">-- Join the above table variable with APPOINTMENT_SCHEDULE table and select the backgroundColor, textColor and borderColor column values
+</span><span style="COLOR: #0000ff">SELECT</span>
+    BackgroundColor <span style="COLOR: #0000ff">as</span> backgroundColor, TextColor <span style="COLOR: #0000ff">as</span> textColor, BackgroundColor <span style="COLOR: #0000ff">as</span> borderColor, AP.<span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">as</span> ObjectId, AP.DOCK <span style="COLOR: #0000ff">as</span> Dock, AP.APPT_DATE_TIME <span style="COLOR: #0000ff">as</span> ApptDateTime, AP.END_DATE_TIME <span style="COLOR: #0000ff">as</span> EndDateTime, RH.INTERNAL_RECEIPT_NUM <span style="COLOR: #0000ff">as</span> InternalReceiptNum, RH.RECEIPT_ID <span style="COLOR: #0000ff">as</span> ReceiptId, RH.TRAILER_ID <span style="COLOR: #0000ff">as</span> TrailerId, RH.CARRIER <span style="COLOR: #0000ff">as</span> Carrier
+<span style="COLOR: #0000ff">FROM</span>
+    APPOINTMENT_SCHEDULE AP <span style="COLOR: #808080">JOIN</span> RECEIPT_HEADER RH <span style="COLOR: #0000ff">ON</span> AP.INTERNAL_RECEIPT_NUM <span style="COLOR: #808080">=</span> RH.INTERNAL_RECEIPT_NUM
+    <span style="COLOR: #808080">LEFT</span> <span style="COLOR: #808080">OUTER</span> <span style="COLOR: #808080">JOIN</span> <span style="COLOR: #008000">@EventColorsPerDockLocation</span> <span style="COLOR: #0000ff">ON</span> AP.Dock <span style="COLOR: #808080">=</span> DockLocation
+<span style="COLOR: #0000ff">WHERE</span>
+    RH.WAREHOUSE <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@WAREHOUSE</span> <span style="COLOR: #808080">AND</span> ((AP.APPT_DATE_TIME <span style="COLOR: #808080">&lt;=</span> <span style="COLOR: #008000">@apptendDateTime</span>) <span style="COLOR: #808080">AND</span> (<span style="COLOR: #008000">@apptstartDateTime</span> <span style="COLOR: #808080">&lt;=</span> AP.END_DATE_TIME))
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="i-last-child" style="MARGIN-LEFT: 2em"></div>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 4:&nbsp;Save the stored procedure</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" style="OVERFLOW: hidden; DISPLAY: block" jquery17206684811739708774="6">
+    Click OK/run script to save the stored procedure to the database. &nbsp;&nbsp;&nbsp;
+</div>After all steps run the reset.bat found in the %SCALE_HOME% folder. Then use CTRL+F5 to refresh the page. The new appointment colors should appear as shown below on the Appointment Calendar.
+
+<p>&nbsp;<img border="0" alt="" src="images/ExitPoint/AppointmentCalendarEventsWithCustomColors.png" /></p>
+
+<p>&nbsp;</p>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="Exit_Point_Programs.html">Exit Point Programs</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

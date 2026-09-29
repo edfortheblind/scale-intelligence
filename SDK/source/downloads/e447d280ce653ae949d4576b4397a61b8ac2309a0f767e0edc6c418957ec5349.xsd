@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+		targetNamespace="http://www.manh.com/ILSNET/Shipping"
+		xmlns:tns="http://www.manh.com/ILSNET/Shipping"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		elementFormDefault="qualified">
+	<xs:include schemaLocation="ContainerReference.xsd" />
+	<xs:element name="transferShippingContainersResponse" type="tns:transferShippingContainersResponse" />
+	<xs:complexType name="transferShippingContainersResponse">
+		<xs:sequence>
+			<xs:element minOccurs="0" maxOccurs="1" name="error" type="xs:string" />
+			<xs:element minOccurs="0" maxOccurs="1" name="errorType" type="tns:transferShippingContainersResponseErrorType" />
+			<xs:element minOccurs="0" maxOccurs="unbounded" name="locationCollisionContainer" type="tns:ContainerReference" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="transferShippingContainersResponseErrorType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unknown" />
+			<xs:enumeration value="LocationCollision" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

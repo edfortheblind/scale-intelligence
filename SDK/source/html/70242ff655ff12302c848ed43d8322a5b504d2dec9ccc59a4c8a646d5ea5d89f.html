@@ -1,0 +1,426 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Default the Group By Column in a Grid</title>
+    <meta name="Title" content="How to: Default the Group By Column in a Grid"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content=" " />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="9187ad53-6313-4eb9-b8c4-1decffd38a84"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="25"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Default the Group By Column in a Grid</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > How to: Default the Group By Column in a Grid</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>&nbsp;</p>
+
+<div id="i-49c185ba-e507-47e6-8b4a-62b06a4bd3cc-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Defaulting group by columns within a grid</span>
+</div>
+
+<div id="i-49c185ba-e507-47e6-8b4a-62b06a4bd3cc-section-content" class="i-section-content">
+    <p>Grids store column&nbsp;grouping information on a user/browser/device basis and remember these settings. However, grids can also be configured to have&nbsp;default&nbsp;group by&nbsp;columns which apply until the first time a user&nbsp;groups by a column from within the grid itself.</p>
+
+    <div id="i-bf9b7472-8969-4b9f-8621-c95bfb478da6-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Find the appropriate screen control grid column record for the default&nbsp;grid group by&nbsp;column</span>
+    </div>
+
+    <div id="i-bf9b7472-8969-4b9f-8621-c95bfb478da6-section-content" class="i-section-content">
+        <p>Use the following SQL to determine the Object Id for the screen&nbsp;control grid columns that are stored in the grid&nbsp;if you know the Form Id. This will return all screen&nbsp;control grid columns&nbsp;and you will need to find the appropriate&nbsp;column from the list.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <p></p>
+
+        <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+            <table class="i-syntax-table">
+                <tbody>
+                    <tr>
+                        <th>Find existing screen control grid columns</th>
+
+                        <th>
+                            <div class="i-copy-code-wrapper">
+                                <span class="i-copy-code">Copy Code</span>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="i-code" colspan="2">
+                            <pre>
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL_GRID_COLUMNS <span style="COLOR: #0000ff">where</span> SCREEN_CONTROL_ID <span style="COLOR: #808080">IN</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">IN</span> (
+            <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> SCREEN_ID <span style="COLOR: #808080">in</span> (
+                <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>form id<span style="COLOR: #808080">&gt;</span>))))
+</pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p></p>
+
+        <p>If there are any records that have a SQL_CLAUSE_TYPE = 50 (Group By - Within Control), then there are already default&nbsp;group by&nbsp;columns on the grid. Once these records are found, you can either update those records or create new ones to get the correct&nbsp;group by&nbsp;columns.</p>
+    </div>
+
+    <div id="i-a76fc569-845f-4752-ab22-1afa6ff54d2a-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Update or insert screen control grid columns for the default&nbsp;group by&nbsp;order</span>
+    </div>
+
+    <div id="i-a76fc569-845f-4752-ab22-1afa6ff54d2a-section-content" class="i-section-content">
+        <p>If records already exist, the default group by can be changed by simply changing the FIELD to a new value.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <p></p>
+
+        <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+            <table class="i-syntax-table">
+                <tbody>
+                    <tr>
+                        <th>Updating sort order</th>
+
+                        <th>
+                            <div class="i-copy-code-wrapper">
+                                <span class="i-copy-code">Copy Code</span>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="i-code" colspan="2">
+                            <pre>
+<span style="COLOR: #0000ff">update</span> SCREEN_CONTROL_GRID_COLUMNS <span style="COLOR: #0000ff">set</span> FIELD <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'&lt;new group by column&gt;'</span> <span style="COLOR: #0000ff">where</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>object id<span style="COLOR: #808080">&gt;</span>
+</pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p></p>
+
+        <p>If no records exist, or you need to add new columns to the existing group by columns, then create a new SCREEN_CONTROL_GRID_COLUMNS record.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <p></p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><strong>Field</strong></td>
+
+                    <td><strong>Value</strong></td>
+                </tr>
+
+                <tr>
+                    <td>SCREEN_CONTROL_ID</td>
+
+                    <td>The Object Id of the grid control</td>
+                </tr>
+
+                <tr>
+                    <td>FIELD</td>
+
+                    <td>The column name to group by</td>
+                </tr>
+
+                <tr>
+                    <td>FIELD_NAME</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>FIELD_WIDTH</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>FIELD_TYPE</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>SQL_CLAUSE_TYPE</td>
+
+                    <td><em>50</em> (Group&nbsp;By - Within Control)</td>
+                </tr>
+
+                <tr>
+                    <td>SEQUENCE</td>
+
+                    <td>Use this field to determine the order of the default group by columns</td>
+                </tr>
+
+                <tr>
+                    <td>RESOURCE_KEY</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>HIDDEN</td>
+
+                    <td><em>N</em></td>
+                </tr>
+
+                <tr>
+                    <td>DECIMAL_POSITIONS</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-93bb8878-1949-4f21-ab35-5c4b394b31a8-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Defaulting group by columns within a query</span>
+</div>
+
+<div id="i-93bb8878-1949-4f21-ab35-5c4b394b31a8-section-content" class="i-section-content">
+    <p>The search queries that are executed from insight screens can also be defaulted to "group by" a column. In this scenario, the resulting records are grouped within the query itself, before the data is ever sent to the grid (and therefore there is no resulting "grouping" in the grid itself).</p>
+
+    <div id="i-26121bd0-172d-4c16-9ad7-1e44f385c483-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Find the appropriate screen control grid column record for the default&nbsp;query group by&nbsp;column</span>
+    </div>
+
+    <div id="i-26121bd0-172d-4c16-9ad7-1e44f385c483-section-content" class="i-section-content">
+        <p>Use the following SQL to determine the Object Id for the screen&nbsp;control grid columns that are stored in the grid&nbsp;if you know the Form Id. This will return all screen&nbsp;control grid columns&nbsp;and you will need to find the appropriate&nbsp;column from the list.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <p></p>
+
+        <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+            <table class="i-syntax-table">
+                <tbody>
+                    <tr>
+                        <th>Find existing screen control grid columns</th>
+
+                        <th>
+                            <div class="i-copy-code-wrapper">
+                                <span class="i-copy-code">Copy Code</span>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="i-code" colspan="2">
+                            <pre>
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL_GRID_COLUMNS <span style="COLOR: #0000ff">where</span> SCREEN_CONTROL_ID <span style="COLOR: #808080">IN</span> (
+    <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080">in</span> (
+        <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_GROUP <span style="COLOR: #0000ff">where</span> SCREEN_PART_ID <span style="COLOR: #808080">IN</span> (
+            <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> SCREEN_PART <span style="COLOR: #0000ff">where</span> SCREEN_ID <span style="COLOR: #808080">in</span> (
+                <span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #0000ff">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff">where</span> FORM_ID <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>form id<span style="COLOR: #808080">&gt;</span>))))
+</pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p></p>
+
+        <p>If there are any records that have a SQL_CLAUSE_TYPE = 20 (Group By - Within Query), then there are already default&nbsp;group by&nbsp;columns on the query. Once these records are found, you can either update those records or create new ones to get the correct&nbsp;group by&nbsp;columns.</p>
+    </div>
+
+    <div id="i-880204ff-3fe4-4789-84c1-40349a9be244-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Update or insert screen control grid columns for the default&nbsp;group by&nbsp;order</span>
+    </div>
+
+    <div id="i-880204ff-3fe4-4789-84c1-40349a9be244-section-content" class="i-section-content">
+        <p>If records already exist, the default group by can be changed by simply changing the FIELD to a new value.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <p></p>
+
+        <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+            <table class="i-syntax-table">
+                <tbody>
+                    <tr>
+                        <th>Updating group by</th>
+
+                        <th>
+                            <div class="i-copy-code-wrapper">
+                                <span class="i-copy-code">Copy Code</span>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="i-code" colspan="2">
+                            <pre>
+<span style="COLOR: #0000ff">update</span> SCREEN_CONTROL_GRID_COLUMNS <span style="COLOR: #0000ff">set</span> FIELD <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'&lt;new group by column&gt;'</span> <span style="COLOR: #0000ff">where</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>object id<span style="COLOR: #808080">&gt;</span>
+</pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p></p>
+
+        <p>If no records exist, or you need to add new columns to the existing group by columns, then create a new SCREEN_CONTROL_GRID_COLUMNS record. Please note that when group by columns are added to the query, you may need to look at the select columns as well to determine if aggregate functions may be required.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <p></p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><strong>Field</strong></td>
+
+                    <td><strong>Value</strong></td>
+                </tr>
+
+                <tr>
+                    <td>SCREEN_CONTROL_ID</td>
+
+                    <td>The Object Id of the grid control</td>
+                </tr>
+
+                <tr>
+                    <td>FIELD</td>
+
+                    <td>The column name to group by</td>
+                </tr>
+
+                <tr>
+                    <td>FIELD_NAME</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>FIELD_WIDTH</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>FIELD_TYPE</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>SQL_CLAUSE_TYPE</td>
+
+                    <td><em>20</em> (Group&nbsp;By - Within Query)</td>
+                </tr>
+
+                <tr>
+                    <td>SEQUENCE</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>RESOURCE_KEY</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>HIDDEN</td>
+
+                    <td><em>N</em></td>
+                </tr>
+
+                <tr>
+                    <td>DECIMAL_POSITIONS</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Add_Grid_to_List_Pane.html">How to: Add a Grid to an Insight List Pane</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Control_Grid_Columns.html">How to: Create Screen Control Grid Columns</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

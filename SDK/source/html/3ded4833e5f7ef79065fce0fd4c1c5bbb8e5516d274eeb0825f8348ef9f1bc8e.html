@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>HTTP Headers in REST-Based Web Services</title>
+    <meta name="Title" content="HTTP Headers in REST-Based Web Services"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The following table describes the common use of HTTP headers by REST-Based Web Services in the application.  A specific service may override this default behavior, which will be described in the service's specific help topic." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="{B9554FE0-325C-47F0-BBC5-1CFDE7138A58}"/>
+    
+    
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">HTTP Headers in REST-Based Web Services</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The following table describes the common use of HTTP headers by REST-Based Web Services in the application.&nbsp;&nbsp;A specific service may override this default behavior, which will be described in the service's specific&nbsp;help topic.</p>
+
+<p>For general information about HTTP Headers, consult <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">the corresponding section of the HTTP specification</a>.</p>
+
+<p>&nbsp;</p>
+
+<p></p>
+
+<table class="members">
+    <tbody>
+        <tr>
+            <th class="nameColumn" width="84">Header</th>
+
+            <th class="descriptionColumn">Description</th>
+        </tr>
+
+        <tr>
+            <td width="84"><a id="Accept" name="Accept"></a>Accept</td>
+
+            <td>
+                <p>Communicates to&nbsp;the application&nbsp;the acceptable media types to include in response.&nbsp; Acceptable values include <strong>application/json</strong>,&nbsp;<strong>application/xml</strong>, or&nbsp;a&nbsp;resource specific media type.&nbsp; See each individual service's help topic for specifics.</p>
+
+                <p>If a suitable media type cannot be determined, an error response with status code 406 (Not Acceptable) will result.</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td><a id="Accept-Encoding" name="Accept-Encoding"></a>Accept-Encoding</td>
+
+            <td>
+                <p>Communicates to&nbsp;the application&nbsp;the acceptable encodings that will be applied to the corresponding response entity.&nbsp; See <a href="Compression_in_REST-Based_Web_Services.html" data-auto-update-caption="true">Compression in REST-Based Web Services</a>&nbsp;for an example of where this header is used.</p>
+
+                <p>Note the following:</p>
+
+                <ul>
+                    <li>Currently supported encodings: <strong>gzip</strong>, <strong>deflate</strong></li>
+
+                    <li>The first supported encoding will always be honored across all services.</li>
+
+                    <li>Parameters such as "q" values are ignored.</li>
+
+                    <li>The special "identity" and "*" encodings are not supported.</li>
+
+                    <li>If an Accept-Encoding is specified but no supported encodings are listed, an error response with status code of 406 (Not Acceptable) will result.</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td><a id="Accept-Language" name="Accept-Language"></a>Accept-Language</td>
+
+            <td>Communicates to&nbsp;the application&nbsp;the acceptable languages that should be used for localizable data on responses.&nbsp;&nbsp;The application&nbsp;will use the first supported language in the list, and if none of the languages are supported or the Accept-Language is empty, the server's default language will be used.</td>
+        </tr>
+
+        <tr>
+            <td>Authorization</td>
+
+            <td>
+                <p dir="ltr" align="left"><span lang="EN" xml:lang="EN">A Oauth 2.0 Bearer Token is set in the Authorization header of every Inline Action HTTP Request. For example:</span></p>
+
+                <p dir="ltr" align="left"><span lang="EN" xml:lang="EN"><b>"Authorization: Bearer &lt;AbCdEf123456&gt;"</b></span></p>
+
+                <p dir="ltr" align="left"><span lang="EN" xml:lang="EN">The string "AbCdEf123456" in the example above is the bearer authorization token.</span></p>
+
+                <p dir="ltr" align="left"><span lang="EN" xml:lang="EN">If using bearer tokens, verify that the request is coming from the intended sender domain. If the token doesn't verify, the service should respond to the request with an HTTP response code 401 (Unauthorized)</span></p>
+
+                <p dir="ltr" align="left"><span lang="EN" xml:lang="EN">See <a href="Authentication_in_REST-Based_Web_Services.html">Authentication in REST-Based Web Services</a> for more information.</span></p>
+            </td>
+        </tr>
+
+        <tr>
+            <td><a id="Environment" name="Environment"></a>Environment</td>
+
+            <td>
+                <p>If no environment are configured this value should be passed as Defaultaabf6698-37ae-45ee.</p>
+
+                <p>If environments are configured this value should be the name of environment to which web service to be called. Environment name should match subdomain of hostname.</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Cache-Control</td>
+
+            <td>May be specified by&nbsp;The application&nbsp;to suggest how the client should cache a returned entity.&nbsp; For example, if performing a GET on a resource that represents live, frequently changing data, a Cache-Control of <strong>no-cache</strong> may be returned.</td>
+        </tr>
+
+        <tr>
+            <td><a id="Content-Encoding" name="Content-Encoding"></a>Content-Encoding</td>
+
+            <td>
+                <p>Describes the encoding that was applied to the included entity.&nbsp; See <a href="Compression_in_REST-Based_Web_Services.html" data-auto-update-caption="true">Compression in REST-Based Web Services</a>&nbsp;for an example of where this header is used.</p>
+
+                <p>Note the following:</p>
+
+                <ul>
+                    <li>Currently supported encodings: <strong>gzip</strong>, <strong>deflate</strong></li>
+
+                    <li>The encodings applied by&nbsp;SCALE to a response entity are governed by the Accept-Encoding header on the request.</li>
+
+                    <li>During a POST or PUT, a Content-Encoding may be specified on the request, which will force&nbsp;the application&nbsp;to decode the request entity before processing.&nbsp; If the&nbsp;Content-Encoding contains an unsupported encoding value, an error response with status code of 415 (Unsupported Media Type) will result.</li>
+                </ul>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="84"><a id="Content-Type" name="Content-Type"></a>Content-Type</td>
+
+            <td>
+                <p>Describes the media type of the entity attached to both requests and responses.</p>
+
+                <p>Requests must include this header for POSTs and PUTs.&nbsp; If the specific media type of the attached entity is not know, then <strong>application/json</strong> or <strong>application/xml</strong> must be supplied.&nbsp; If the media type is not recognized, an error response with status code of 415 (Unsupported Media Type) will result.</p>
+
+                <p>The application&nbsp;will respond with the specific media type of a resource when available.&nbsp; See each individual service's help topic for specifics.&nbsp; Each media type ends with either <strong>json</strong> or <strong>xml</strong> to describe the serialization format.</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="84">MachineName</td>
+
+            <td>
+                <p>Indicates the client's machine name. In case of a terminal services user, it represents the machine from which the terminal services session was opened. It is the responsibility of the web service consumer to appropriately set this header.</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td><a id="Warehouse" name="Warehouse"></a>Warehouse</td>
+
+            <td>
+                <p>Indicates the warehouse for which web service to be called</p>
+            </td>
+        </tr>
+    </tbody>
+</table>&nbsp;
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

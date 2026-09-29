@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="AddressCandidates" targetNamespace="http://www.manh.com/ILSNET/Shipping/AddressCandidates"
+	elementFormDefault="qualified" xmlns="http://www.manh.com/ILSNET/Shipping/AddressCandidates"
+	xmlns:mstns="http://www.manh.com/ILSNET/Shipping/AddressCandidates"
+	xmlns:import="http://www.manh.com/ILSNET/General/Address" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import id="Address" schemaLocation="../General/Address.xsd" namespace="http://www.manh.com/ILSNET/General/Address" />
+	<xs:complexType name="AddressCandidates">
+		<xs:sequence>
+			<xs:element name="Addresses" type="AddressList" minOccurs="0" maxOccurs="1" />
+			<xs:element name="ErrorMessage" type="xs:string" minOccurs="0" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AddressList">
+		<xs:sequence>
+			<xs:element name="Address" type="import:Address" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AddressCandidates" type="AddressCandidates"></xs:element>
+</xs:schema>

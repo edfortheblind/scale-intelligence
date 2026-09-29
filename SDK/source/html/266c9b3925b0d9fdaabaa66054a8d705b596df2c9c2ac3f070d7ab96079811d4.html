@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Customize the Dashboard KPI Calculations</title>
+    <meta name="Title" content="How to: Customize the Dashboard KPI Calculations"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="This topic will walk you through customizing the Key Performance Indicator(KPI) calculations of Dashboard screen. All widgets of Dashboard make separate API calls to fetch the data and API's intern make call to one single stored procedure DASH_GetKPI" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="aa668610-5a94-4e26-9fcd-52f1b726f073"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="4"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Customize the Dashboard KPI Calculations</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Transaction Pages
+ > How to: Customize the Dashboard KPI Calculations</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>This topic will walk you through customizing the Key Performance Indicator(KPI) calculations of Dashboard screen. All widgets of Dashboard make separate API calls to fetch the data and API's intern make call to one single stored procedure DASH_GetKPIData by passing the required parameters. The DASH_GetKPIData procedure internally invokes an function DASHFn_GetKPIValue which holds all KPI's calcuation logic. Steps to customize KPI calculations are as follows.</p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1:&nbsp;Find out the Identifier of the KPI to be modified</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" style="OVERFLOW: hidden; DISPLAY: block" jquery17206684811739708774="6">
+    <div class="i-last-child" style="MARGIN-LEFT: 2em">
+        After accessing the dashboard screen for first time system inserts all KPI records into DASHBOARD_DATA table. Query the DASHBOARD_DATA table and find out the identifier of the KPI to be modified as show below
+    </div>
+
+    <div class="i-last-child" style="MARGIN-LEFT: 2em">
+        &nbsp;
+    </div>
+
+    <div class="i-last-child" style="MARGIN-LEFT: 2em"></div>
+
+    <div class="i-last-child" style="MARGIN-LEFT: 2em"><img border="0" alt="" src="images/DashboardKPIIndicators.png" /></div>
+
+    <div class="i-last-child" style="MARGIN-LEFT: 2em"></div>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2:&nbsp;Modify the KPI calculation in DASHFn_GetKPIValue SQL function</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" style="OVERFLOW: hidden; DISPLAY: block" jquery17206684811739708774="6">
+    <div class="i-last-child" style="MARGIN-LEFT: 2em">
+        Search for the identifier of the KPI to be modified in DASHFn_GetKPIValue SQL function and customize the query as required.
+    </div>
+
+    <div class="i-last-child" style="MARGIN-LEFT: 2em"></div>
+
+    <div class="i-last-child" style="MARGIN-LEFT: 2em"><img border="0" alt="" src="images/DashboardCalculations.png" /></div>
+
+    <div class="i-last-child" style="MARGIN-LEFT: 2em"></div>
+
+    <div class="i-last-child" style="MARGIN-LEFT: 2em">
+        For customizing the Today's Receipts By Time and Today's Shipments By Time calculations modify the queries in DASH_CaptureDashboardData stored procedure.
+    </div>
+</div>
+
+<p></p>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>How to: Configure Cascading Combo Boxes</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">How to: Configure Cascading Combo Boxes</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+User Interface Extensibility
+ &gt; Metadata Web Pages
+ &gt; Shared
+ &gt; How to: Configure Cascading Combo Boxes</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47">This topic will walk you through changing metadata to define two cascading combo boxes. When the user selects a value from the parent combo box the list of results in the child combo box will be narrowed down to only the values that are associated with the selected parent.</p>
+
+<div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n48">
+    <span class="i-section-heading-icon" data-source-node="n49"><span class="i-hidden" data-source-node="n50"> </span></span><span class="i-section-heading-text" data-source-node="n51">Step 1: <span class="SectionHeadingText" data-source-node="n52">Identify the parent and child combo boxes</span></span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" data-source-node="n53">
+    <p data-source-node="n54">These could be controls that are shipped with the system or custom controls that were added. For this example, let's look at the Carrier and Service fields from the Shipment detail screen. Find the OBJECT_ID of the corresponding SCREEN_CONTROL records for the combo boxes. The below SQL will return the entire list of controls for a screen and the correct control should be chosen from the list. The form id for the Shipment detail screen is <em data-source-node="n55">2735</em>. The Carrier combo box control name is <em data-source-node="n56">CarrierCarrierNameValue</em> and the Carrier Service combo box control name is <em data-source-node="n57">CarrierCarrierServiceValue</em>. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n58"><u data-source-node="n59"><font color="navy" data-source-node="n60">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL" data-source-node="n61">
+        <table class="i-syntax-table" data-source-node="n62">
+            <tbody data-source-node="n63">
+                <tr data-source-node="n64">
+                    <th data-source-node="n65">Find Object Id of control</th>
+
+                    <th data-source-node="n66">
+                        <div class="i-copy-code-wrapper" data-source-node="n67">
+                            <span class="i-copy-code" data-source-node="n68">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr data-source-node="n69">
+                    <td class="i-code" colspan="2" data-source-node="n70">
+                        <pre data-source-node="n71">
+<span style="COLOR: #0000ff" data-source-node="n72">select</span> <span style="COLOR: #808080" data-source-node="n73">*</span> <span style="COLOR: #0000ff" data-source-node="n74">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff" data-source-node="n75">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080" data-source-node="n76">in</span> (
+    <span style="COLOR: #0000ff" data-source-node="n77">select</span> <span style="COLOR: #ff00ff" data-source-node="n78">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n79">from</span> SCREEN_GROUP <span style="COLOR: #0000ff" data-source-node="n80">where</span> SCREEN_PART_ID <span style="COLOR: #808080" data-source-node="n81">IN</span> (
+        <span style="COLOR: #0000ff" data-source-node="n82">select</span> <span style="COLOR: #ff00ff" data-source-node="n83">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n84">from</span> SCREEN_PART <span style="COLOR: #0000ff" data-source-node="n85">where</span> SCREEN_ID <span style="COLOR: #808080" data-source-node="n86">in</span> (
+            <span style="COLOR: #0000ff" data-source-node="n87">select</span> <span style="COLOR: #ff00ff" data-source-node="n88">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n89">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff" data-source-node="n90">where</span> FORM_ID <span style="COLOR: #808080" data-source-node="n91">=</span> <span style="COLOR: #808080" data-source-node="n92">&lt;</span>form id<span style="COLOR: #808080" data-source-node="n93">&gt;</span>)))
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-SectionId-section-heading" class="i-section-heading" data-source-node="n94">
+    <span class="i-section-heading-icon" data-source-node="n95"><span class="i-hidden" data-source-node="n96"> </span></span><span class="i-section-heading-text" data-source-node="n97">Step 2: Identify the drop down list to show from the combo box</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content" data-source-node="n98">
+    <p data-source-node="n99"><span class="SectionHeadingText" data-source-node="n100">A SCREEN_CONTROL_ATTRIBUTE record for the parent (carrier) and child (carrier service) combo box should be found in the SCREEN_CONTROL_ATTRIBUTES table. The records are defined as listed in the table below. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n101"><u data-source-node="n102"><font color="navy" data-source-node="n103">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</span></p>
+
+    <p data-source-node="n104"><span class="SectionHeadingText" data-source-node="n105">When configuring your own parent and child cascading combo boxes they should have similar records defined in the SCREEN_CONTROL_ATTRIBUTE table as the carrier and service example.</span></p>
+
+    <p data-source-node="n106"> </p>
+
+    <table data-source-node="n107">
+        <tbody data-source-node="n108">
+            <tr data-source-node="n109">
+                <td data-source-node="n110"><strong data-source-node="n111">Field</strong></td>
+
+                <td data-source-node="n112"><strong data-source-node="n113">Value</strong></td>
+            </tr>
+
+            <tr data-source-node="n114">
+                <td data-source-node="n115">SCREEN_CONTROL_ID</td>
+
+                <td data-source-node="n116">The Object of the grid screen control the attribute is tied to.</td>
+            </tr>
+
+            <tr data-source-node="n117">
+                <td data-source-node="n118">ATTRIBUTE_NAME</td>
+
+                <td data-source-node="n119">The name of the attribute. For the parent combo box this value should be <em data-source-node="n120">childCombo</em>. For the child combo box this value should be <em data-source-node="n121">parentCombo</em>.</td>
+            </tr>
+
+            <tr data-source-node="n122">
+                <td data-source-node="n123">ATTRIBUTE_VALUE</td>
+
+                <td data-source-node="n124">The value associated with the attribute. For the parent this should be the name of the child combo box. This value can be found in the SCREEN_CONTROL record found in step 1. For the child combo box this value should be the name of the parent combo box.</td>
+            </tr>
+
+            <tr data-source-node="n125">
+                <td data-source-node="n126">ACTIVE</td>
+
+                <td data-source-node="n127">Used to define if the attribute is active. This should be <em data-source-node="n128">Y.</em></td>
+            </tr>
+
+            <tr data-source-node="n129">
+                <td data-source-node="n130">IS_CONTROL_PROPERTY</td>
+
+                <td data-source-node="n131">Defines if this is a property of the control. This should be <em data-source-node="n132">N</em>.</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            <a name="seealsobookmark" data-source-node="n133"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n134">
+        
+<p data-source-node="n135"> </p><p data-source-node="n136"> </p><hr style="height: 1px" data-source-node="n137"><p data-source-node="n138">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

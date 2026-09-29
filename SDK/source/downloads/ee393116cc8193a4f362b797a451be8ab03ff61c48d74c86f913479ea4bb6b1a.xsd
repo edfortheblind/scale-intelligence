@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://www.manh.com/ILSNET/Entities" elementFormDefault="qualified" targetNamespace="http://www.manh.com/ILSNET/Entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="InventoryTransactionRequest" type="tns:InventoryTransactionRequest" />
+  <xs:complexType name="InventoryTransactionRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="inventoryTransactions" type="tns:inventoryTransaction" />
+      <xs:element minOccurs="1" maxOccurs="1" name="transactionType" type="tns:inventoryTransactionType" />
+      <xs:element minOccurs="1" maxOccurs="1" name="transactionSource" type="tns:inventoryTransactionSource" />
+      <xs:element minOccurs="1" maxOccurs="1" name="adjustInventory" type="xs:boolean" />
+      <xs:element minOccurs="1" maxOccurs="1" name="workCreationMode" type="tns:workCreationMode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="inventoryTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="adjustmentType" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="suppressUMOverrides" type="xs:boolean" />
+      <xs:element minOccurs="0" maxOccurs="1" name="fromLocation" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="toLocation" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="fromWarehouse" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="toWarehouse" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="item" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="company" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="lot" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="expirationDate" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="lotAttributes" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="quantity" type="xs:double" />
+      <xs:element minOccurs="0" maxOccurs="1" name="quantityUM" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="inventoryStatus" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="referenceID" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="logisticsUnit" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="parentLogisticsUnit" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="enteredSerialNumbers" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="toLogisticsUnit" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="toParentLogisticsUnit" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDefinedField1" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDefinedField2" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDefinedField3" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDefinedField4" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDefinedField5" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="1" name="userDefinedField6" type="xs:string" />
+      <xs:element minOccurs="1" maxOccurs="1" name="userDefinedField7" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="userDefinedField8" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="slottingMoveSequence" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="numberOfSlotUnits" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="slottingPalletHI" type="xs:double" />
+      <xs:element minOccurs="1" maxOccurs="1" name="fromLocationInventoryAttributesId" type="xs:int" />
+      <xs:element minOccurs="1" maxOccurs="1" name="toLocationInventoryAttributesId" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="1" name="beforeInventoryStatus" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="inventoryTransactionType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Inventory Adjustment" />
+      <xs:enumeration value="Inventory Transfer" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="inventoryTransactionSource">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="0" />
+      <xs:enumeration value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="workCreationMode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pending" />
+      <xs:enumeration value="Immediate" />
+      <xs:enumeration value="None" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

@@ -1,0 +1,218 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>How to: Define Lists tied to Controls</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">How to: Define Lists tied to Controls</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+User Interface Extensibility
+ &gt; Metadata Web Pages
+ &gt; Shared
+ &gt; How to: Define Lists tied to Controls</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47">Metadata based screens allow for controls such as drop downs, checked list boxes, etc. to be tied to a list of values. The list of available values is retrieved dynamically at runtime based on the metadata configured. Therefore these lists can be defined and controlled by clients at runtime.</p>
+
+<p data-source-node="n48">The DATA_SOURCE_TYPE and DATA_SOURCE fields in the SCREEN_CONTROL table drive this dynamic list retrieval. The following are valid DATA_SOURCE_TYPE values for retrieving lists tied to controls:</p>
+
+<p data-source-node="n49"> </p>
+
+<p data-source-node="n50"></p>
+
+<table data-source-node="n51">
+    <tbody data-source-node="n52">
+        <tr data-source-node="n53">
+            <td class="NewStyle" width="231" data-source-node="n54"><strong data-source-node="n55">Data Source Type</strong></td>
+
+            <td class="NewStyle" width="52" data-source-node="n56"><strong data-source-node="n57">Value</strong></td>
+
+            <td class="NewStyle" data-source-node="n58"><strong data-source-node="n59">Description</strong></td>
+        </tr>
+
+        <tr data-source-node="n60">
+            <td width="231" data-source-node="n61">ConfigType</td>
+
+            <td width="52" data-source-node="n62">10</td>
+
+            <td data-source-node="n63">Retrieves lists for normal configurations; works exactly like the "ConfigType|…" lists within generic configurations. The supported list of types is defined in a generic configuration with record type of "METADATACONFIGTYPE".</td>
+        </tr>
+
+        <tr data-source-node="n64">
+            <td data-source-node="n65">Generic</td>
+
+            <td data-source-node="n66">30</td>
+
+            <td data-source-node="n67">Retrieves lists for generic configurations; works exactly like the generic lists within generic configurations. Any generic configuration record type is supported.</td>
+        </tr>
+
+        <tr data-source-node="n68">
+            <td data-source-node="n69">TableFields</td>
+
+            <td data-source-node="n70">40</td>
+
+            <td data-source-node="n71">Retrieves a list of columns for a database table.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p data-source-node="n72"> </p>
+
+<div id="i-40bd6e85-8e52-480d-8a84-326bec7197a9-section-heading" class="i-section-heading" data-source-node="n73">
+    <span class="i-section-heading-icon" data-source-node="n74"><span class="i-hidden" data-source-node="n75"> </span></span><span class="i-section-heading-text" data-source-node="n76">How to configure control lists based on ConfigType records</span>
+</div>
+
+<div id="i-40bd6e85-8e52-480d-8a84-326bec7197a9-section-content" class="i-section-content" data-source-node="n77">
+    <p data-source-node="n78">This section defines how ConfigType records can be used to fill dynamic lists tied to controls in metadata screens. The valid ConfigType values can be found in the "Metadata Config Type" configuration.</p>
+
+    <p data-source-node="n79">Specifying a DATA_SOURCE_TYPE of 10 (ConfigType) in the SCREEN_CONTROL table indicates to the system that it should use built-in retrieval logic based on the value in the DATA_SOURCE field to fill the list tied to the control. The following table contains a few samples – please reference the "Metadata Config Type" configuration for the full list of supported values.</p>
+
+    <p data-source-node="n80"> </p>
+
+    <table data-source-node="n81">
+        <tbody data-source-node="n82">
+            <tr data-source-node="n83">
+                <td class="NewStyle" width="231" data-source-node="n84"><strong data-source-node="n85">Data Source</strong></td>
+
+                <td class="NewStyle" data-source-node="n86"><strong data-source-node="n87">Example</strong></td>
+            </tr>
+
+            <tr data-source-node="n88">
+                <td width="231" data-source-node="n89">Warehouse</td>
+
+                <td data-source-node="n90">To retrieve the list of authorized warehouses, specify data source type = 10 and data source = Warehouse.</td>
+            </tr>
+
+            <tr data-source-node="n91">
+                <td data-source-node="n92">Company</td>
+
+                <td data-source-node="n93">To retrieve the list of authorized companies, specify data source type = 10 and data source = Company.</td>
+            </tr>
+
+            <tr data-source-node="n94">
+                <td data-source-node="n95">ProNumber</td>
+
+                <td data-source-node="n96">To retrieve the list of Pro Number records, specify data source type = 10 and data source = ProNumber.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-source-node="n97"> </p>
+</div>
+
+<p data-source-node="n98"> </p>
+
+<p data-source-node="n99"></p>
+
+<div id="i-6c39e5f2-273c-406c-a6c1-d940c1b9f70f-section-heading" class="i-section-heading" data-source-node="n100">
+    <span class="i-section-heading-icon" data-source-node="n101"><span class="i-hidden" data-source-node="n102"> </span></span><span class="i-section-heading-text" data-source-node="n103">How to configure control lists based on Generic record types</span>
+</div>
+
+<div id="i-6c39e5f2-273c-406c-a6c1-d940c1b9f70f-section-content" class="i-section-content" data-source-node="n104">
+    <p data-source-node="n105">This section defines how generic configuration lists can be used to fill dynamic lists tied to controls in metadata screens. All generic configuration record types are valid for use in creating metadata lists.</p>
+
+    <p data-source-node="n106">Specifying a DATA_SOURCE_TYPE of 30 (Generic) in the SCREEN_CONTROL table indicates to the system that it should use built-in retrieval logic based on the value in the DATA_SOURCE field to fill the list tied to the control. The following table contains a few samples – please note that any generic configuration record type can be used.</p>
+
+    <p data-source-node="n107"> </p>
+
+    <table data-source-node="n108">
+        <tbody data-source-node="n109">
+            <tr data-source-node="n110">
+                <td class="NewStyle" width="231" data-source-node="n111"><strong data-source-node="n112">Data Source</strong></td>
+
+                <td class="NewStyle" data-source-node="n113"><strong data-source-node="n114">Example</strong></td>
+            </tr>
+
+            <tr data-source-node="n115">
+                <td width="231" data-source-node="n116">COUNTRY</td>
+
+                <td data-source-node="n117">To retrieve the list of countries configured in the system, specify data source type = 30 and data source = COUNTRY.</td>
+            </tr>
+
+            <tr data-source-node="n118">
+                <td data-source-node="n119">DISPOSCODE</td>
+
+                <td data-source-node="n120">To retrieve the list of disposition codes, specify data source type = 30 and data source = DISPOSCODE.</td>
+            </tr>
+
+            <tr data-source-node="n121">
+                <td data-source-node="n122">WORKTEAM</td>
+
+                <td data-source-node="n123">To retrieve the list of work teams, specify data source type = 30 and data source = WORKTEAM.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-source-node="n124"> </p>
+</div>
+
+<p data-source-node="n125"> </p>
+
+<p data-source-node="n126"></p>
+
+<div id="i-9ace55bd-6a96-4e22-b38e-33014aed60cc-section-heading" class="i-section-heading" data-source-node="n127">
+    <span class="i-section-heading-icon" data-source-node="n128"><span class="i-hidden" data-source-node="n129"> </span></span><span class="i-section-heading-text" data-source-node="n130">How to configure control lists based on TableFields</span>
+</div>
+
+<div id="i-9ace55bd-6a96-4e22-b38e-33014aed60cc-section-content" class="i-section-content" data-source-node="n131">
+    <p data-source-node="n132">This section defines how the TableFields data source type can be used to fill dynamic lists tied to controls in metadata screens. All tables in the SCALE database are eligible.</p>
+
+    <p data-source-node="n133">Specifying a DATA_SOURCE_TYPE of 40 (TableFields) in the SCREEN_CONTROL table indicates to the system that it should use built-in retrieval logic based on the value in the DATA_SOURCE field to fill the list tied to the control. The following table contains a few samples – please note that any SCALE database table can be used.</p>
+
+    <p data-source-node="n134"> </p>
+
+    <table data-source-node="n135">
+        <tbody data-source-node="n136">
+            <tr data-source-node="n137">
+                <td class="NewStyle" width="231" data-source-node="n138"><strong data-source-node="n139">Data Source</strong></td>
+
+                <td class="NewStyle" data-source-node="n140"><strong data-source-node="n141">Example</strong></td>
+            </tr>
+
+            <tr data-source-node="n142">
+                <td width="231" data-source-node="n143">LOCATION_INVENTORY</td>
+
+                <td data-source-node="n144">To retrieve the list of columns in the location inventory table, specify data source type = 40 and data source = LOCATION_INVENTORY.</td>
+            </tr>
+
+            <tr data-source-node="n145">
+                <td data-source-node="n146">SHIPMENT_HEADER</td>
+
+                <td data-source-node="n147">To retrieve the list of columns in the shipment header table, specify data source type = 40 and data source = SHIPMENT_HEADER.</td>
+            </tr>
+
+            <tr data-source-node="n148">
+                <td data-source-node="n149">ITEM</td>
+
+                <td data-source-node="n150">To retrieve the list of columns in the item table, specify data source type = 40 and data source = ITEM.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p data-source-node="n151"> </p>
+</div>
+            <a name="seealsobookmark" data-source-node="n152"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n153">
+        
+<p data-source-node="n154"> </p><p data-source-node="n155"> </p><hr style="height: 1px" data-source-node="n156"><p data-source-node="n157">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

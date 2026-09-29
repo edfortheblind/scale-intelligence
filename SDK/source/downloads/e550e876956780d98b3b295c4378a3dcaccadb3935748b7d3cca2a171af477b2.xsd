@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="GetContainersResponse" targetNamespace="http://www.manh.com/ILSNET/Shipping/GetContainersResponse"
+	elementFormDefault="qualified" xmlns="http://www.manh.com/ILSNET/Shipping/GetContainersResponse"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:import="http://www.manh.com/ILSNET/General/Result"
+	xmlns:import1="http://www.manh.com/ILSNET/Shipping/Parcel">
+	<xs:import schemaLocation="../General/Result.xsd" namespace="http://www.manh.com/ILSNET/General/Result" />
+	<xs:import schemaLocation="Parcel.xsd" namespace="http://www.manh.com/ILSNET/Shipping/Parcel" />
+	<xs:element name="GetContainersResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Result" type="import:Result" maxOccurs="1" />
+				<xs:element name="Parcels" minOccurs="0" maxOccurs="1" type="ParcelList" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="ParcelList">
+		<xs:sequence>
+			<xs:element name="Parcel" type="import1:Parcel" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

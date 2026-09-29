@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create a New Insight Page</title>
+    <meta name="Title" content="How to: Create a New Insight Page"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The tooling provided for creating a new custom Insight page is not complete. For now, follow the instructions below in order to create a new Insight page." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="f16e351c-e46b-4507-96c9-eeddf830d772"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="4"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create a New Insight Page</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Insight Pages
+ > How to: Create a New Insight Page</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The tooling provided for creating a new custom Insight page is not complete. For now, follow the instructions below in order to create a new Insight page.</p>
+
+<div id="i-b6e6b081-b7e6-4086-8a92-cdd1241ffe52-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Copy an Existing Insight Page Script</span>
+</div>
+
+<div id="i-b6e6b081-b7e6-4086-8a92-cdd1241ffe52-section-content" class="i-section-content">
+    <p>Browse to the directory that SCALE is installed to and then go to the sub folder Database | ILS | Scripts | _Metadata | Insight. Pick a script for a screen that is the most similar to the&nbsp;page you want to create. Copy the script to another location, rename it, and open it.</p>
+</div>
+
+<div id="i-c60d459e-5f59-4306-838e-7c15ef663277-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2:&nbsp;Update Script with Page Level information</span>
+</div>
+
+<div id="i-c60d459e-5f59-4306-838e-7c15ef663277-section-content" class="i-section-content">
+    <p>Update the script for all page level information as follows:</p>
+
+    <p>&nbsp;</p>
+
+    <ul>
+        <li><strong><em>Form Id</em></strong>: Use a different Form Id for your new screen. At the top of the script you will see the Form Id being set similar to this: <strong>set @formId = 2767</strong>. Search and replace the actual Form Id value in the script with your new Form Id. The new Form Id value you use should be the next available Form Id &gt;= 60,000. So in the example given above, the Form Id 2767 should be replaced by 60000 everywhere in the script.</li>
+
+        <li>
+            <strong><em>Form record</em></strong>: Update the call to <strong>DBC_IFORM</strong> as follows:
+
+            <ul>
+                <li>@formKeyName&nbsp;= MNU_&lt;customScreenName&gt;Insight (i.e. MNU_CustomInsight)</li>
+
+                <li><a>@tableName</a>&nbsp;= the name of the SQL table or SQL View that should be used for the Insight screen data</li>
+            </ul>
+        </li>
+
+        <li><strong><em>Security</em></strong>: Remove all calls to <strong>dbc_ISecurityCheckpoint</strong> except for security_checkpoint 1 (which is "run").</li>
+
+        <li>
+            <strong><em>Screen record</em></strong>: Update the call to <strong>DBC_IMAINUISCREEN</strong> as follows:
+
+            <ul>
+                <li><a>@functionalArea</a> = the identifier of the functional area you want the screen to show up under in the menu</li>
+
+                <li><a>@menuResourceKey</a> = the Resource Key to be used for the page title</li>
+            </ul>
+        </li>
+
+        <li><strong><em>Licensing</em></strong>: Remove all calls to <strong>dbc_IMainUiWmLicenseXrefOriginal</strong>.</li>
+    </ul>
+</div>
+
+<div id="i-dc49f244-a6d4-4752-945f-9d83bb5ea00f-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Run the Modified Script</span>
+</div>
+
+<div id="i-dc49f244-a6d4-4752-945f-9d83bb5ea00f-section-content" class="i-section-content">
+    <p>Open SQL Server Management Studio and run the modified script ensuring there are no errors. Run an IISRESET and then try to browse to the new page. The URL will be in the format https://&lt;serverName&gt;/scale/insights/&lt;newFormId&gt;. The new Insight page should be shown, but it will look exactly like the Insight page of the script that was copied.</p>
+</div>
+
+<div id="i-9bd7b852-3cef-41a6-aecb-8e83f8cff4a1-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 4: Modify the Search Pane</span>
+</div>
+
+<div id="i-9bd7b852-3cef-41a6-aecb-8e83f8cff4a1-section-content" class="i-section-content">
+    <p>Now that the new page exists, we can modify the screen metadata for the Search Pane using either&nbsp;Insight Architect (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true">How to: Use Insight Architect to Customize a Metadata Page</a> ), modifying the&nbsp;script mentioned above,&nbsp;or straight SQL against the database. Reference the topic&nbsp;<a href="How_to_Create_Search_Pane.html" data-auto-update-caption="true">How to: Create the Search Pane</a> for a general overview of the Search Pane metadata.</p>
+
+    <p>&nbsp;</p>
+
+    <ul>
+        <li><strong><em>Basic Criteria</em></strong>: Modify, add, or delete the basic criteria controls as required. Make sure they are pointing at the proper field in the database. Reference the&nbsp;<a href="How_to_Add_BasicCriteria.html" data-auto-update-caption="true">How to: Add Basic Criteria to Search Pane</a> topic for instructions.</li>
+
+        <li><strong><em>Advanced Criteria</em></strong>: Update the data_source on the Advanced Criteria control for the screen to be the SQL Table or SQL View that will be used for the table. Please note that for the fields in the Advanced Criteria control to show the proper controls (numeric editor vs. text editor vs combo box, etc.), records may need to be added to the FILTER_ATTRIBUTES table. Please reference the&nbsp;<a href="How_to_Add_AdvancedCriteria.html" data-auto-update-caption="true">How to: Add Advanced Criteria to Search Pane</a> and&nbsp;<a href="How_to_Tie_AdvancedCriteria_Fields_to_Operands_and_Field_Types.html" data-auto-update-caption="true">How to: Tie Advanced Criteria Fields to Operand Lists and Field Types</a> topics for more information.</li>
+    </ul>
+</div>
+
+<div id="i-9f5d4eb9-f90f-4980-a049-b202d8615d01-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 5: Modify the&nbsp;List Pane</span>
+</div>
+
+<div id="i-9f5d4eb9-f90f-4980-a049-b202d8615d01-section-content" class="i-section-content">
+    <p>Now modify the screen metadata for the&nbsp;List Pane using either&nbsp;Insight Architect (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true">How to: Use Insight Architect to Customize a Metadata Page</a> ), modifying the&nbsp;script mentioned above,&nbsp;or straight SQL against the database. Reference the topic&nbsp;<a href="How_to_Create_List_Pane.html" data-auto-update-caption="true">How to: Create the List Pane</a> for a general overview of the&nbsp;List Pane metadata.</p>
+
+    <p>&nbsp;</p>
+
+    <ul>
+        <li><strong><em>Summary Tiles</em></strong>: Modify, add, or delete the&nbsp;Summary Tile&nbsp;controls as required. Reference the&nbsp;<a href="How_to_Add_Summary_Tile_to_List_Pane.html" data-auto-update-caption="true">How to: Add a Summary Tile to an Insight List Pane</a> topic for instructions.</li>
+
+        <li><strong><em>Grid</em></strong>: Modify the main grid and also the grid columns. Make sure to properly point the grid at the correct SQL Table or SQL View via the data-dbtable screen control attribute. Please reference the&nbsp;<a href="How_to_Add_Grid_to_List_Pane.html" data-auto-update-caption="true">How to: Add a Grid to an Insight List Pane</a> topic for more information.</li>
+    </ul>
+</div>
+
+<div id="i-7066580a-87dc-4a9f-bb09-a7b86cfd8e92-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 6: Modify the&nbsp;Detail Pane</span>
+</div>
+
+<div id="i-7066580a-87dc-4a9f-bb09-a7b86cfd8e92-section-content" class="i-section-content">
+    <p>Now modify the screen metadata for the&nbsp;Detail Pane using either&nbsp;Insight Architect (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true">How to: Use Insight Architect to Customize a Metadata Page</a> ), modifying the&nbsp;script mentioned above,&nbsp;or straight SQL against the database. Reference the topic&nbsp;<a href="How_to_Create_Detail_Pane.html" data-auto-update-caption="true">How to: Create the Detail Pane</a> for a general overview of the&nbsp;Detail Pane metadata.</p>
+
+    <p>&nbsp;</p>
+
+    <ul>
+        <li><strong><em>Stored Procedure</em></strong>: Create a new stored procedure to fill the data for the Detail Pane. Reference the&nbsp;<a href="How_to_Create_Detail_Pane_Stored_Procedure.html" data-auto-update-caption="true">How to: Create a Detail Pane Stored Procedure</a> topic for instructions.</li>
+
+        <li><strong><em>Header section</em></strong>: Modify, add, or delete&nbsp;the controls in the header section. Please reference the&nbsp;<a href="How_to_Bind_Detail_Pane_Controls.html" data-auto-update-caption="true">How to: Bind Detail Pane Controls</a> topic for more information.</li>
+
+        <li><strong><em>Tiles</em></strong>: Modify, add, or delete the tiles on the Detail Pane. Please reference the&nbsp;<a href="How_to_Create_an_Indicator_Tile_on_an_Insight_Detail_Pane.html" data-auto-update-caption="true">How to: Create an Indicator Tile on an Insight Detail Pane</a> topic for more information.</li>
+    </ul>
+</div>
+
+<div id="i-8ddb4980-5d23-48d2-ae41-5e11fdba57f4-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 7: Modify the&nbsp;Actions</span>
+</div>
+
+<div id="i-8ddb4980-5d23-48d2-ae41-5e11fdba57f4-section-content" class="i-section-content">
+    <p>Now modify the screen metadata for the&nbsp;Actions on the page using either&nbsp;Insight Architect (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true">How to: Use Insight Architect to Customize a Metadata Page</a> ), modifying the&nbsp;script me. ntioned above,&nbsp;or straight SQL against the database. Reference the topic&nbsp;<a href="How_to_Add_List_Pane_Menu_Options.html" data-auto-update-caption="true">How to: Add List Pane Menu Options</a> for a general overview of the&nbsp;Actions metadata.</p>
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html">How to: Use Insight Architect to Customize a Metadata Page </a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

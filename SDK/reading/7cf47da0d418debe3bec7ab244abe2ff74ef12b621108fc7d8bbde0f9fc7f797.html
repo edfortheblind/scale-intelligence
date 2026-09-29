@@ -1,0 +1,181 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>How to: Create the Search Pane</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">How to: Create the Search Pane</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+User Interface Extensibility
+ &gt; Metadata Web Pages
+ &gt; Insight Pages
+ &gt; Search Pane
+ &gt; How to: Create the Search Pane</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n46">
+        <p data-source-node="n47">The "Search Pane" on an insight screen represents the left side of the screen where search criteria are entered and used to filter the grid results. As an example, you can find all of the metadata records for an existing search pane using the following script.</p>
+
+<p data-source-node="n48"></p>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL" data-source-node="n49">
+    <table class="i-syntax-table" data-source-node="n50">
+        <tbody data-source-node="n51">
+            <tr data-source-node="n52">
+                <th data-source-node="n53">Shipment insight search pane example</th>
+
+                <th data-source-node="n54">
+                    <div class="i-copy-code-wrapper" data-source-node="n55">
+                        <span class="i-copy-code" data-source-node="n56">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr data-source-node="n57">
+                <td class="i-code" colspan="2" data-source-node="n58">
+                    <pre data-source-node="n59">
+<span style="COLOR: #0000ff" data-source-node="n60">declare</span> <span style="COLOR: #008000" data-source-node="n61">@formId</span> numeric(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n62">9</span>,<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n63">0</span>);
+<span style="COLOR: #0000ff" data-source-node="n64">declare</span> <span style="COLOR: #008000" data-source-node="n65">@paneName</span> <span style="COLOR: #0000ff" data-source-node="n66">nvarchar</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n67">25</span>);
+<span style="COLOR: #0000ff" data-source-node="n68">set</span> <span style="COLOR: #008000" data-source-node="n69">@formId</span> <span style="COLOR: #808080" data-source-node="n70">=</span> <span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n71">2735</span>;
+<span style="COLOR: #0000ff" data-source-node="n72">set</span> <span style="COLOR: #008000" data-source-node="n73">@paneName</span> <span style="COLOR: #808080" data-source-node="n74">=</span> <span style="COLOR: #ff0000" data-source-node="n75">'SearchPane'</span>;
+<span style="COLOR: #0000ff" data-source-node="n76">select</span> <span style="COLOR: #808080" data-source-node="n77">*</span> <span style="COLOR: #0000ff" data-source-node="n78">from</span> SCREEN_PART <span style="COLOR: #0000ff" data-source-node="n79">where</span> PART_NAME <span style="COLOR: #808080" data-source-node="n80">=</span> <span style="COLOR: #008000" data-source-node="n81">@paneName</span> <span style="COLOR: #808080" data-source-node="n82">and</span> SCREEN_ID <span style="COLOR: #808080" data-source-node="n83">in</span> (<span style="COLOR: #0000ff" data-source-node="n84">select</span> <span style="COLOR: #ff00ff" data-source-node="n85">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n86">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff" data-source-node="n87">where</span> FORM_ID <span style="COLOR: #808080" data-source-node="n88">=</span> <span style="COLOR: #008000" data-source-node="n89">@formId</span>);
+<span style="COLOR: #0000ff" data-source-node="n90">select</span> <span style="COLOR: #808080" data-source-node="n91">*</span> <span style="COLOR: #0000ff" data-source-node="n92">from</span> SCREEN_GROUP <span style="COLOR: #0000ff" data-source-node="n93">where</span> SCREEN_PART_ID <span style="COLOR: #808080" data-source-node="n94">in</span> (
+    <span style="COLOR: #0000ff" data-source-node="n95">select</span> <span style="COLOR: #ff00ff" data-source-node="n96">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n97">from</span> SCREEN_PART <span style="COLOR: #0000ff" data-source-node="n98">where</span> PART_NAME <span style="COLOR: #808080" data-source-node="n99">=</span> <span style="COLOR: #008000" data-source-node="n100">@paneName</span> <span style="COLOR: #808080" data-source-node="n101">and</span> SCREEN_ID <span style="COLOR: #808080" data-source-node="n102">in</span> (<span style="COLOR: #0000ff" data-source-node="n103">select</span> <span style="COLOR: #ff00ff" data-source-node="n104">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n105">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff" data-source-node="n106">where</span> FORM_ID <span style="COLOR: #808080" data-source-node="n107">=</span> <span style="COLOR: #008000" data-source-node="n108">@formId</span>));
+<span style="COLOR: #0000ff" data-source-node="n109">select</span> <span style="COLOR: #808080" data-source-node="n110">*</span> <span style="COLOR: #0000ff" data-source-node="n111">from</span> SCREEN_GROUP_COLUMN <span style="COLOR: #0000ff" data-source-node="n112">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080" data-source-node="n113">in</span> (
+    <span style="COLOR: #0000ff" data-source-node="n114">select</span> <span style="COLOR: #ff00ff" data-source-node="n115">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n116">from</span> SCREEN_GROUP <span style="COLOR: #0000ff" data-source-node="n117">where</span> SCREEN_PART_ID <span style="COLOR: #808080" data-source-node="n118">in</span> (
+        <span style="COLOR: #0000ff" data-source-node="n119">select</span> <span style="COLOR: #ff00ff" data-source-node="n120">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n121">from</span> SCREEN_PART <span style="COLOR: #0000ff" data-source-node="n122">where</span> PART_NAME <span style="COLOR: #808080" data-source-node="n123">=</span> <span style="COLOR: #008000" data-source-node="n124">@paneName</span> <span style="COLOR: #808080" data-source-node="n125">and</span> SCREEN_ID <span style="COLOR: #808080" data-source-node="n126">in</span> (<span style="COLOR: #0000ff" data-source-node="n127">select</span> <span style="COLOR: #ff00ff" data-source-node="n128">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n129">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff" data-source-node="n130">where</span> FORM_ID <span style="COLOR: #808080" data-source-node="n131">=</span> <span style="COLOR: #008000" data-source-node="n132">@formId</span>)));
+<span style="COLOR: #0000ff" data-source-node="n133">select</span> <span style="COLOR: #808080" data-source-node="n134">*</span> <span style="COLOR: #0000ff" data-source-node="n135">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff" data-source-node="n136">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080" data-source-node="n137">in</span> (
+    <span style="COLOR: #0000ff" data-source-node="n138">select</span> <span style="COLOR: #ff00ff" data-source-node="n139">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n140">from</span> SCREEN_GROUP <span style="COLOR: #0000ff" data-source-node="n141">where</span> SCREEN_PART_ID <span style="COLOR: #808080" data-source-node="n142">in</span> (
+        <span style="COLOR: #0000ff" data-source-node="n143">select</span> <span style="COLOR: #ff00ff" data-source-node="n144">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n145">from</span> SCREEN_PART <span style="COLOR: #0000ff" data-source-node="n146">where</span> PART_NAME <span style="COLOR: #808080" data-source-node="n147">=</span> <span style="COLOR: #008000" data-source-node="n148">@paneName</span> <span style="COLOR: #808080" data-source-node="n149">and</span> SCREEN_ID <span style="COLOR: #808080" data-source-node="n150">in</span> (<span style="COLOR: #0000ff" data-source-node="n151">select</span> <span style="COLOR: #ff00ff" data-source-node="n152">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n153">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff" data-source-node="n154">where</span> FORM_ID <span style="COLOR: #808080" data-source-node="n155">=</span> <span style="COLOR: #008000" data-source-node="n156">@formId</span>)));
+<span style="COLOR: #0000ff" data-source-node="n157">select</span> <span style="COLOR: #808080" data-source-node="n158">*</span> <span style="COLOR: #0000ff" data-source-node="n159">from</span> SCREEN_CONTROL_ATTRIBUTES <span style="COLOR: #0000ff" data-source-node="n160">where</span> SCREEN_CONTROL_ID <span style="COLOR: #808080" data-source-node="n161">in</span> (
+    <span style="COLOR: #0000ff" data-source-node="n162">select</span> <span style="COLOR: #ff00ff" data-source-node="n163">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n164">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff" data-source-node="n165">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080" data-source-node="n166">in</span> (
+        <span style="COLOR: #0000ff" data-source-node="n167">select</span> <span style="COLOR: #ff00ff" data-source-node="n168">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n169">from</span> SCREEN_GROUP <span style="COLOR: #0000ff" data-source-node="n170">where</span> SCREEN_PART_ID <span style="COLOR: #808080" data-source-node="n171">in</span> (
+            <span style="COLOR: #0000ff" data-source-node="n172">select</span> <span style="COLOR: #ff00ff" data-source-node="n173">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n174">from</span> SCREEN_PART <span style="COLOR: #0000ff" data-source-node="n175">where</span> PART_NAME <span style="COLOR: #808080" data-source-node="n176">=</span> <span style="COLOR: #008000" data-source-node="n177">@paneName</span> <span style="COLOR: #808080" data-source-node="n178">and</span> SCREEN_ID <span style="COLOR: #808080" data-source-node="n179">in</span> (<span style="COLOR: #0000ff" data-source-node="n180">select</span> <span style="COLOR: #ff00ff" data-source-node="n181">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n182">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff" data-source-node="n183">where</span> FORM_ID <span style="COLOR: #808080" data-source-node="n184">=</span> <span style="COLOR: #008000" data-source-node="n185">@formId</span>))));
+<span style="COLOR: #0000ff" data-source-node="n186">select</span> <span style="COLOR: #808080" data-source-node="n187">*</span> <span style="COLOR: #0000ff" data-source-node="n188">from</span> SCREEN_CONTROL_EVENT <span style="COLOR: #0000ff" data-source-node="n189">where</span> SCREEN_CONTROL_ID <span style="COLOR: #808080" data-source-node="n190">in</span> (
+    <span style="COLOR: #0000ff" data-source-node="n191">select</span> <span style="COLOR: #ff00ff" data-source-node="n192">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n193">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff" data-source-node="n194">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080" data-source-node="n195">in</span> (
+        <span style="COLOR: #0000ff" data-source-node="n196">select</span> <span style="COLOR: #ff00ff" data-source-node="n197">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n198">from</span> SCREEN_GROUP <span style="COLOR: #0000ff" data-source-node="n199">where</span> SCREEN_PART_ID <span style="COLOR: #808080" data-source-node="n200">in</span> (
+            <span style="COLOR: #0000ff" data-source-node="n201">select</span> <span style="COLOR: #ff00ff" data-source-node="n202">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n203">from</span> SCREEN_PART <span style="COLOR: #0000ff" data-source-node="n204">where</span> PART_NAME <span style="COLOR: #808080" data-source-node="n205">=</span> <span style="COLOR: #008000" data-source-node="n206">@paneName</span> <span style="COLOR: #808080" data-source-node="n207">and</span> SCREEN_ID <span style="COLOR: #808080" data-source-node="n208">in</span> (<span style="COLOR: #0000ff" data-source-node="n209">select</span> <span style="COLOR: #ff00ff" data-source-node="n210">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n211">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff" data-source-node="n212">where</span> FORM_ID <span style="COLOR: #808080" data-source-node="n213">=</span> <span style="COLOR: #008000" data-source-node="n214">@formId</span>))));
+<span style="COLOR: #0000ff" data-source-node="n215">select</span> <span style="COLOR: #808080" data-source-node="n216">*</span> <span style="COLOR: #0000ff" data-source-node="n217">from</span> SCREEN_CONTROL_EVENT_PARAMETERS <span style="COLOR: #0000ff" data-source-node="n218">where</span> SCREEN_CONTROL_EVENT_ID <span style="COLOR: #808080" data-source-node="n219">in</span> (
+    <span style="COLOR: #0000ff" data-source-node="n220">select</span> <span style="COLOR: #ff00ff" data-source-node="n221">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n222">from</span> SCREEN_CONTROL_EVENT <span style="COLOR: #0000ff" data-source-node="n223">where</span> SCREEN_CONTROL_ID <span style="COLOR: #808080" data-source-node="n224">in</span> (
+        <span style="COLOR: #0000ff" data-source-node="n225">select</span> <span style="COLOR: #ff00ff" data-source-node="n226">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n227">from</span> SCREEN_CONTROL <span style="COLOR: #0000ff" data-source-node="n228">where</span> SCREEN_GROUP_ID <span style="COLOR: #808080" data-source-node="n229">in</span> (
+            <span style="COLOR: #0000ff" data-source-node="n230">select</span> <span style="COLOR: #ff00ff" data-source-node="n231">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n232">from</span> SCREEN_GROUP <span style="COLOR: #0000ff" data-source-node="n233">where</span> SCREEN_PART_ID <span style="COLOR: #808080" data-source-node="n234">in</span> (
+                <span style="COLOR: #0000ff" data-source-node="n235">select</span> <span style="COLOR: #ff00ff" data-source-node="n236">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n237">from</span> SCREEN_PART <span style="COLOR: #0000ff" data-source-node="n238">where</span> PART_NAME <span style="COLOR: #808080" data-source-node="n239">=</span> <span style="COLOR: #008000" data-source-node="n240">@paneName</span> <span style="COLOR: #808080" data-source-node="n241">and</span> SCREEN_ID <span style="COLOR: #808080" data-source-node="n242">in</span> (<span style="COLOR: #0000ff" data-source-node="n243">select</span> <span style="COLOR: #ff00ff" data-source-node="n244">OBJECT_ID</span> <span style="COLOR: #0000ff" data-source-node="n245">from</span> MAIN_UI_SCREEN <span style="COLOR: #0000ff" data-source-node="n246">where</span> FORM_ID <span style="COLOR: #808080" data-source-node="n247">=</span> <span style="COLOR: #008000" data-source-node="n248">@formId</span>)))));
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p data-source-node="n249"></p>
+
+<p data-source-node="n250"><br data-source-node="n251"></p>
+
+<p data-source-node="n252">Creating the search pane on an insight screen can be processed as follows.</p>
+
+<div id="i-c96b7de2-6c0b-4acf-a485-a9ffa795f2af-section-heading" class="i-section-heading" data-source-node="n253">
+    <span class="i-section-heading-icon" data-source-node="n254"><span class="i-hidden" data-source-node="n255"> </span></span><span class="i-section-heading-text" data-source-node="n256">Step 1: Create a screen part record for the search pane</span>
+</div>
+
+<div id="i-c96b7de2-6c0b-4acf-a485-a9ffa795f2af-section-content" class="i-section-content" data-source-node="n257">
+    <p data-source-node="n258">Add a SCREEN_PART record as follows. Insight Architect can also be used for this (<a href="9d1879df4946560f87a878505496d9ada1e9ac63368517e75e0d9428da242ec2.html" data-source-node="n259"><u data-source-node="n260"><font color="navy" data-source-node="n261">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table data-source-node="n262">
+        <tbody data-source-node="n263">
+            <tr data-source-node="n264">
+                <td data-source-node="n265"><strong data-source-node="n266">Field</strong></td>
+
+                <td data-source-node="n267"><strong data-source-node="n268">Value</strong></td>
+            </tr>
+
+            <tr data-source-node="n269">
+                <td data-source-node="n270">SCREEN_ID</td>
+
+                <td data-source-node="n271">The Screen Id of the current insight screen</td>
+            </tr>
+
+            <tr data-source-node="n272">
+                <td data-source-node="n273">PART_NAME</td>
+
+                <td data-source-node="n274"><em data-source-node="n275">SearchPane</em></td>
+            </tr>
+
+            <tr data-source-node="n276">
+                <td data-source-node="n277">RESOURCE_KEY</td>
+
+                <td data-source-node="n278"><em data-source-node="n279">NULL</em></td>
+            </tr>
+
+            <tr data-source-node="n280">
+                <td data-source-node="n281">PART_TYPE</td>
+
+                <td data-source-node="n282"><em data-source-node="n283">10</em> (Div Container)</td>
+            </tr>
+
+            <tr data-source-node="n284">
+                <td data-source-node="n285">DIV_CSS_CLASS</td>
+
+                <td data-source-node="n286"><em data-source-node="n287">col-md-4 col-lg-4 searchpanepart</em></td>
+            </tr>
+
+            <tr data-source-node="n288">
+                <td data-source-node="n289">DEFAULT_ACTION</td>
+
+                <td data-source-node="n290"><em data-source-node="n291">SearchPaneMenuSearch</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-69c7f317-c0a3-4a8c-bf63-439bf7d05c2a-section-heading" class="i-section-heading" data-source-node="n292">
+    <span class="i-section-heading-icon" data-source-node="n293"><span class="i-hidden" data-source-node="n294"> </span></span><span class="i-section-heading-text" data-source-node="n295">Step 2: Add basic criteria</span>
+</div>
+
+<div id="i-69c7f317-c0a3-4a8c-bf63-439bf7d05c2a-section-content" class="i-section-content" data-source-node="n296">
+    Please reference the <a href="8d9cc6c87819a3e09c6eacc80676f4a9320d5a841d0b0b5beabc6429e129d14b.html" data-source-node="n297">How to: Add Basic Criteria to Search Pane</a> topic for instructions.
+</div>
+
+<div id="i-897a0792-6095-4dd7-be79-37efc3514f33-section-heading" class="i-section-heading" data-source-node="n298">
+    <span class="i-section-heading-icon" data-source-node="n299"><span class="i-hidden" data-source-node="n300"> </span></span><span class="i-section-heading-text" data-source-node="n301">Step 3: Add other criteria</span>
+</div>
+
+<div id="i-897a0792-6095-4dd7-be79-37efc3514f33-section-content" class="i-section-content" data-source-node="n302">
+    Add subsequent criteria sections with input controls, or sections with checked list boxes. Please reference <a href="c95fe03ada2cbf86de9d89c6d28cb2615189ef0110d6a704e4ad3f8f3f1022f1.html" data-source-node="n303">How to: Add Checked List Box to Search Pane</a> for more details.
+</div>
+
+<div id="i-fda5d5b5-9733-4908-bf41-8d9aaa3eab3a-section-heading" class="i-section-heading" data-source-node="n304">
+    <span class="i-section-heading-icon" data-source-node="n305"><span class="i-hidden" data-source-node="n306"> </span></span><span class="i-section-heading-text" data-source-node="n307">Step 4: Add advanced criteria</span>
+</div>
+
+<div id="i-fda5d5b5-9733-4908-bf41-8d9aaa3eab3a-section-content" class="i-section-content" data-source-node="n308">
+    Please reference the <a href="95bb20f9bcab55fa6d537e53e69a34d1a8d93304f90342dd12906081b67afdb0.html" data-source-node="n309">How to: Add Advanced Criteria to Search Pane</a> topic for instructions.
+</div>
+
+<p data-source-node="n310"> </p>
+            <a name="seealsobookmark" data-source-node="n311"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading" data-source-node="n312"><span class="i-section-heading-icon" data-source-node="n313"></span><span class="i-section-heading-text" data-source-node="n314">See Also</span></div><div id="i-seealso-section-content" class="i-section-content" data-source-node="n315"><div class="i-see-also-link" data-source-node="n316">
+<a href="fc5ddd70703d1aba80767c79fcef809c39dfef3c3413eef057239c50d88f1c65.html" data-source-node="n317">How to: Add Search Pane Menu Options</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n318">
+        
+<p data-source-node="n319"> </p><p data-source-node="n320"> </p><hr style="height: 1px" data-source-node="n321"><p data-source-node="n322">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

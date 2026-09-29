@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Set Default Action for Enter Key</title>
+    <meta name="Title" content="How to: Set Default Action for Enter Key"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="It is often necessary to define a &quot;default action&quot; (button or link) when the Enter key is pressed from a specific control on a screen. This can be defined dynamically in metadata via the DEFAULT_ACTION fields in the SCREEN_PART, SCREEN_GROUP, and SCR" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="f5e0b6f2-1ed8-4910-8ce1-7a8f398ae4fc"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="34"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Set Default Action for Enter Key</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > How to: Set Default Action for Enter Key</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>It is often necessary to define a "default action" (button or link) when the Enter key is pressed from a specific control on a screen. This can be defined dynamically in metadata via the DEFAULT_ACTION fields in the SCREEN_PART, SCREEN_GROUP, and SCREEN_CONTROL tables. Metadata screens will process these fields in a "bottom up" approach, meaning that the lowest level (control level) takes precedence over higher levels (group, part). With this approach, the required metadata can be minimized by generally placing the default action at the&nbsp;part level. However, if controls require a different default action, it can be specified at the group or control level.</p>
+
+<p>When a page is loaded with all of its controls, each control is assigned a custom attribute named "data-defaultAction". This attribute is filled based on priority order (the default action from control if it is specified, then the group, and then the part) and is illustrated below:</p>
+
+<p></p>
+
+<div class="i-filtered-content-HTML" data-title="HTML" data-itemid="HTML">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Text Editor HTML</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">div</span> <span style="COLOR: #ff0000">id</span><span style="COLOR: #0000ff">="ScreenControlTextEditor56948"</span> <span style="COLOR: #ff0000">class</span><span style="COLOR: #0000ff">="ScreenControlTextEditorInline basiccriteriarow  "</span> <span style="COLOR: #ff0000">data-name</span><span style="COLOR: #0000ff">="BasicCriteriaLocation"</span> <span style="COLOR: #ff0000">data-internalid</span><span style="COLOR: #0000ff">="56948"</span><span style="COLOR: #0000ff">&gt;</span>
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">label</span> <span style="COLOR: #ff0000">class</span><span style="COLOR: #0000ff">="LabelInline"</span> <span style="COLOR: #ff0000">for</span><span style="COLOR: #0000ff">="BasicCriteriaLocation"</span><span style="COLOR: #0000ff">&gt;</span> <span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">label</span><span style="COLOR: #0000ff">&gt;</span>
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">span</span> <span style="COLOR: #ff0000">data-controlId</span><span style="COLOR: #0000ff">="56948"</span> <span style="COLOR: #ff0000">data-controlType</span><span style="COLOR: #0000ff">="igEditor"</span> <span style="COLOR: #ff0000">data-dataType</span><span style="COLOR: #0000ff">="A"</span> <span style="COLOR: #ff0000">data-defaultAction</span><span style="COLOR: #0000ff">="SearchPaneMenuSearch"</span> <span style="COLOR: #ff0000">id</span><span style="COLOR: #0000ff">="BasicCriteriaLocation"</span><span style="COLOR: #0000ff">&gt;&lt;/</span><span style="COLOR: #800000">span</span><span style="COLOR: #0000ff">&gt;</span>
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">input</span> <span style="COLOR: #ff0000">name</span><span style="COLOR: #0000ff">="BasicCriteriaLocation"</span> <span style="COLOR: #ff0000">type</span><span style="COLOR: #0000ff">="hidden"</span> <span style="COLOR: #0000ff">/&gt;</span>
+    <span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">script</span> <span style="COLOR: #ff0000">type</span><span style="COLOR: #0000ff">="text/javascript"</span><span style="COLOR: #0000ff">&gt;</span>
+        //<span style="COLOR: #008000">&lt;!--&lt;![CDATA[$(function () {$('#BasicCriteriaLocation').igEditor({ type: 0, button: 'clear',
+            disabled: false, excludeKeys: null, height: 25, hideEnterKey: false, includeKeys: null, maxLength: 25,
+            nullText: 'Location', selectionOnFocus: -1, textMode: 'text', toLower: false, toUpper: false,
+            inputName: 'BasicCriteriaLocation' });});//]]&gt;--&gt;</span>
+    <span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">script</span><span style="COLOR: #0000ff">&gt;</span>
+<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">div</span><span style="COLOR: #0000ff">&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p><br />
+&nbsp;</p>
+
+<p>When the page loads it also binds the "keypress" event to all controls with a matching "data-defaultAction" attribute.&nbsp; It does this for all unique default actions for a screen (for the parts, groups, and controls). This is illustrated below:</p>
+
+<p></p>
+
+<div class="i-filtered-content-HTML" data-title="HTML" data-itemid="HTML">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Binding Default Action HTML</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">&lt;</span><span style="COLOR: #800000">script</span> <span style="COLOR: #ff0000">type</span><span style="COLOR: #0000ff">="text/javascript"</span><span style="COLOR: #0000ff">&gt;</span>
+    $(function () {$(document).on('keypress', "[data-defaultAction='SearchPaneMenuSearch']",
+        function(e) { return _webUi.onKeyPress(e, "SearchPaneMenuSearch");})})
+<span style="COLOR: #0000ff">&lt;/</span><span style="COLOR: #800000">script</span><span style="COLOR: #0000ff">&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p></p>
+
+<div class="i-box i-box-note">
+    Please note that the DEFAULT_ACTION field should be filled with the Id of the button/link that should be called when the user hits enter. The default action always calls the "onKeyPress" function in webui.js, passing the Id specified for the default action.
+</div>
+
+<p><br /></p>
+
+<p>In order to&nbsp;modify the default action on a specific part, group, or control, a SQL statement similar to the following should be used.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Update default action on part</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">update</span> screen_part <span style="COLOR: #0000ff">set</span> DEFAULT_ACTION <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'&lt;id of custom action&gt;'</span> <span style="COLOR: #0000ff">where</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>object id <span style="COLOR: #0000ff">of</span> existing part<span style="COLOR: #808080">&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Update default action on group</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">update</span> screen_group <span style="COLOR: #0000ff">set</span> DEFAULT_ACTION <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'&lt;id of custom action&gt;'</span> <span style="COLOR: #0000ff">where</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>object id <span style="COLOR: #0000ff">of</span> existing <span style="COLOR: #0000ff">group</span><span style="COLOR: #808080">&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Update default action on control</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">update</span> screen_control <span style="COLOR: #0000ff">set</span> DEFAULT_ACTION <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'&lt;id of custom action&gt;'</span> <span style="COLOR: #0000ff">where</span> <span style="COLOR: #ff00ff">OBJECT_ID</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #808080">&lt;</span>object id <span style="COLOR: #0000ff">of</span> existing control<span style="COLOR: #808080">&gt;</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

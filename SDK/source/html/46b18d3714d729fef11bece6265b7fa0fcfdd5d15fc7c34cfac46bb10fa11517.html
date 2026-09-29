@@ -1,0 +1,352 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create a Dynamic Action Requiring User Input via Modal Dialog with Yes/No Confirmation Prompt</title>
+    <meta name="Title" content="How to: Create a Dynamic Action Requiring User Input via Modal Dialog with Yes/No Confirmation Prompt"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="At times an action may require user input that triggers a GET service call that peforms some type of validation that will present the user with a yes/no confirmation message. Based on the user's response to the yes/no confirmation, another POST, DELE" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="e9c9a655-7c5b-49db-8cf2-a55a51faed3e"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="3"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create a Dynamic Action Requiring User Input via Modal Dialog with Yes/No Confirmation Prompt</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Actions
+ > How to: Create a Dynamic Action Requiring User Input via Modal Dialog with Yes/No Confirmation Prompt</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>At times an action may require user input that triggers a GET service call that peforms some type of validation that will present the user with a yes/no confirmation message. Based on the user's response to the yes/no confirmation, another&nbsp;POST, DELETE, or&nbsp;GET service call may be required. This is most complex action type currently supported through straight metadata.</p>
+
+<p><br /></p>
+
+<p>An example of this that is shipped with the system is the "Save Search" action that is shipped with the insight screens.&nbsp;In this scenario, the user chooses the "Save Search" action, which presents a modal dialog asking the user to enter a name for their search. Once the user enters a name for their search, the system performs a GET service call that determines if that search name already exists for that user on the current insight screen. If it doesn't exist, then no "ConfirmationMessage" field is passed back. If it does exist, then a "ConfirmationMessage" of "Search name already exists. Do you wish to continue and overwrite the existing value?" is passed back and a yes/no confirmation prompt is given to the user. Any complexities beyond this type of scenario would required coding changes instead of metadata changes. In order to configure this type of scenario, setup the metadata as follows.</p>
+
+<div id="i-ff22b26b-1f80-4330-9e9c-997d4cf4197e-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create a new GET web service call</span>
+</div>
+
+<div id="i-ff22b26b-1f80-4330-9e9c-997d4cf4197e-section-content" class="i-section-content">
+    If a new web service call is required, create it. Reference the various web service sections of the SDK for more information. This web service method should contain a field in the return entity named "ConfirmationMessage" if a message should be displayed to the user (based on the input they entered). This message will be displayed to the user in a yes/no confirmation prompt.
+</div>
+
+<div id="i-e2bb38ae-d568-4ead-b9f3-ede845286061-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create a new POST or DELETE service call</span>
+</div>
+
+<div id="i-e2bb38ae-d568-4ead-b9f3-ede845286061-section-content" class="i-section-content">
+    <span id="Content" class="WidgetProperty" contenteditable="true" style="BORDER-TOP: rgb(224,224,224) 1px dotted; BORDER-RIGHT: rgb(224,224,224) 1px dotted; WIDTH: 100%; VERTICAL-ALIGN: top; BORDER-BOTTOM: rgb(224,224,224) 1px dotted; BORDER-LEFT: rgb(224,224,224) 1px dotted; BACKGROUND-COLOR: white; border-image: none">If a new web service call is required, create it. Reference the various web service sections of the SDK for more information. This web service will be called after the yes/no confirmation if one exists, or will be called immediately if no yes/no confirmation needs to be displayed.</span>
+</div>
+
+<div id="i-d155f977-76bf-44d7-a230-1232674ef47e-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Create a modal dialog</span>
+</div>
+
+<div id="i-d155f977-76bf-44d7-a230-1232674ef47e-section-content" class="i-section-content">
+    Create the modal dialog control with the user input required. Reference the&nbsp;<a href="How_to_Create_Dynamic_Modal_Dialog.html" data-auto-update-caption="true"><font color="navy">How to: Create a Dynamic Modal Dialog</font></a>&nbsp;topic for instructions.
+</div>
+
+<div id="i-e7d7234d-acc3-4b21-86da-c03d7be17d43-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 4: Create a screen control or find an&nbsp;existing screen control</span>
+</div>
+
+<div id="i-e7d7234d-acc3-4b21-86da-c03d7be17d43-section-content" class="i-section-content">
+    Please reference the&nbsp;<a href="How_to_Create_Screen_Controls.html"><font color="navy">How to: Create Screen Controls</font></a>&nbsp;topic for instructions on creating the control that will trigger the action.
+</div>
+
+<div id="i-6f86ac96-ea89-4ba3-93dc-1f6b4b02817a-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 5: Create the&nbsp;screen control event and parameters&nbsp;for displaying the modal dialog</span>
+</div>
+
+<div id="i-6f86ac96-ea89-4ba3-93dc-1f6b4b02817a-section-content" class="i-section-content">
+    <p>Create a new SCREEN_CONTROL_EVENT record as follows. This defines what gets called when the event is fired.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL_ID</td>
+
+                <td>The Screen Control Id of the&nbsp;the control that fires the action</td>
+            </tr>
+
+            <tr>
+                <td><font style="COLOR: rgb(0,0,0); BACKGROUND-COLOR: rgb(255,255,255)" color="white">EVENT_ID</font></td>
+
+                <td><em>click</em> or another event to be fired depending on the type of the control</td>
+            </tr>
+
+            <tr>
+                <td>EVENT_NAME</td>
+
+                <td><font style="BACKGROUND-COLOR: rgb(255,255,255)"><em>_webUi.dialog.showModalDialogByEvent</em></font></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><br /></p>
+
+    <p>Now create a&nbsp;SCREEN_CONTROL_EVENT_PARAMETERS record to define the modal dialog control that should be displayed.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>PARAMETER_NAME</td>
+
+                <td><em>ModalDialogName</em></td>
+            </tr>
+
+            <tr>
+                <td><font style="COLOR: rgb(0,0,0); BACKGROUND-COLOR: rgb(255,255,255)" color="white">PARAMETER_VALUE</font></td>
+
+                <td>The name of the modal dialog control to display (e.g. <em>SaveSearchModalDialog</em>)</td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL_ID_EVENT_ID</td>
+
+                <td>The Object Id of the screen control event</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-fa50c0bd-1c42-4d5a-abac-ea6c68ea729f-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 6: Create the screen control event and parameters to call the modal dialog action web service</span>
+</div>
+
+<div id="i-fa50c0bd-1c42-4d5a-abac-ea6c68ea729f-section-content" class="i-section-content">
+    In the footer section of the modal dialog control, one of the buttons should be configured as the "positive" action. This action will be triggered when the user inputs the proper data and chooses the affirmative action such as "OK" or "Save". This action is tied to an event through the same SCREEN_CONTROL_EVENT and SCREEN_CONTROL_EVENT_PARAMETERS records as other actions. There is a special&nbsp;function&nbsp;to perform a GET service call from a modal dialog window with the possibility of a yes/no confirmation prompt afterwards. The SCREEN_CONTROL_EVENT created should be as follows.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).&nbsp;
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL_ID</td>
+
+                <td>The Screen Control Id of the&nbsp;the control that fires the affirmative action</td>
+            </tr>
+
+            <tr>
+                <td><font style="COLOR: rgb(0,0,0); BACKGROUND-COLOR: rgb(255,255,255)" color="white">EVENT_ID</font></td>
+
+                <td><em>click</em></td>
+            </tr>
+
+            <tr>
+                <td>EVENT_NAME</td>
+
+                <td><font style="BACKGROUND-COLOR: rgb(255,255,255)"><em>_webUi.insightListPaneActions.modalDialogPerformGetWithConfirmation</em></font></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>This function should&nbsp;have SCREEN_CONTROL_EVENT_PARAMETERS records create for both the initial GET service call and the subsequent POST or DELETE service call after the yes/no confirmation. It will automatically show the yes/no confirmation if there is a ConfirmationMessage field returned by the GET service call. If the user chooses "no" the system will always stop processing and keep the modal dialog control open. If the user chooses "yes" the system will always call the POST or DELETE service that is configured. Both the GET and the POST or DELETE SCREEN_CONTROL_EVENT_PARAMETERS records are created in the standard metadata fashion spelled out in the&nbsp;<a href="How_to_Perform_GET_from_Action.html" data-auto-update-caption="true">How to: Perform a GET Service Call from Metadata Action</a>,&nbsp;<a href="How_to_Perform_GET_from_Action.html" data-auto-update-caption="true">How to: Perform a GET Service Call from Metadata Action</a>, and&nbsp;<a href="How_to_Perform_DELETE_from_Action.html" data-auto-update-caption="true">How to: Perform a DELETE Service Call from Metadata Action</a>&nbsp;topics. In addition to all of these service related SCREEN_CONTROL_EVENT_PARAMETERS records, create a&nbsp;SCREEN_CONTROL_EVENT_PARAMETERS record to define the modal dialog control tied to these events.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>PARAMETER_NAME</td>
+
+                <td><em>ModalDialogName</em></td>
+            </tr>
+
+            <tr>
+                <td><font style="COLOR: rgb(0,0,0); BACKGROUND-COLOR: rgb(255,255,255)" color="white">PARAMETER_VALUE</font></td>
+
+                <td>The name of the modal dialog control to hide upon successful web service completion (e.g. <em>AssignHoldCodeModalDialog</em>)</td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL_ID_EVENT_ID</td>
+
+                <td>The Object Id of the screen control event</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="i-bb879233-01b6-4e63-8b16-caade33a0b5c-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 7: Create the screen control event and parameters&nbsp;to hide the&nbsp;modal dialog for the cancel action</span>
+</div>
+
+<div id="i-bb879233-01b6-4e63-8b16-caade33a0b5c-section-content" class="i-section-content">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <p>Modal dialogs will also have a "cancel" type action that will need to close the modal dialog without doing any processing.&nbsp;Create a new SCREEN_CONTROL_EVENT record as follows. This defines what gets called when the event is fired.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL_ID</td>
+
+                <td>The Screen Control Id of the&nbsp;the control that fires the cancel action</td>
+            </tr>
+
+            <tr>
+                <td><font style="COLOR: rgb(0,0,0); BACKGROUND-COLOR: rgb(255,255,255)" color="white">EVENT_ID</font></td>
+
+                <td><em>click</em></td>
+            </tr>
+
+            <tr>
+                <td>EVENT_NAME</td>
+
+                <td><font style="BACKGROUND-COLOR: rgb(255,255,255)"><em>_webUi.dialog.hideModalDialogByEvent</em></font></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><br /></p>
+
+    <p>Now create a&nbsp;SCREEN_CONTROL_EVENT_PARAMETERS record to define the modal dialog control that should be displayed.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>PARAMETER_NAME</td>
+
+                <td><em>ModalDialogName</em></td>
+            </tr>
+
+            <tr>
+                <td><font style="COLOR: rgb(0,0,0); BACKGROUND-COLOR: rgb(255,255,255)" color="white">PARAMETER_VALUE</font></td>
+
+                <td>The name of the modal dialog control to hide (e.g. <em>AssignHoldCodeModalDialog</em>)</td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_CONTROL_ID_EVENT_ID</td>
+
+                <td>The Object Id of the screen control event</td>
+            </tr>
+        </tbody>
+    </table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Dynamic_Modal_Dialog.html">How to: Create a Dynamic Modal Dialog</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Perform_GET_from_Action.html">How to: Perform a GET Service Call from Metadata Action</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Perform_POST_from_Action.html">How to: Perform a POST Service Call from Metadata Action</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Perform_DELETE_from_Action.html">How to: Perform a DELETE Service Call from Metadata Action</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Retrieve_Parameter_Values_from_Input_Control.html">How to: Retrieve Parameter Values from an Input Control</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

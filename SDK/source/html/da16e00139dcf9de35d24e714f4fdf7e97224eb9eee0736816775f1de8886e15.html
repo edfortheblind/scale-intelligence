@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Add Complex Filters to the Search Pane</title>
+    <meta name="Title" content="How to: Add Complex Filters to the Search Pane"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Filter configurations can be applied as pre-configured complex filters on an Insight screen. An example of this that is shipped with the system is the Planned Shipment Filters on the Planned Shipment Insight screen. Use the following instructions to " />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="4faad9fe-212e-43ef-bdfd-2392eabe99e5"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="4"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Add Complex Filters to the Search Pane</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Insight Pages
+ > Search Pane
+ > How to: Add Complex Filters to the Search Pane</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Filter configurations can be applied as pre-configured complex filters on an Insight screen. An example of this that is shipped with the system is the Planned Shipment Filters on the Planned Shipment Insight screen. Use the following instructions to add these types of filters to any insight screen.</p>
+
+<div id="i-c31f9e4d-9162-494e-9a31-8e9280562bb4-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create a new filter configuration for the screen</span>
+</div>
+
+<div id="i-c31f9e4d-9162-494e-9a31-8e9280562bb4-section-content" class="i-section-content">
+    <p>A new filter configuration needs to be created so that the filters can be properly configured. This involves creating a new Form Id and filter config header. It is recommended that Insight filters be placed under <em>Personalization/extensibility | User Interface | Insight Filters</em> folder in the Configuration Explorer (but this is not a requirement). Below is an example script that can be run with the SCALE installers to create a similar filter configuration (needs to be updated based on the Filter config you want to add).</p>
+
+    <div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>Filter configuration SQL script</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #0000ff">DELETE</span> <span style="COLOR: #0000ff">FROM</span> RESOURCE_FILE_BASE <span style="COLOR: #0000ff">WHERE</span> RESOURCE_KEY <span style="COLOR: #808080">in</span> (<span style="COLOR: #ff0000">'UI_FLTPLANSHIPFLTRS'</span>, <span style="COLOR: #ff0000">'PLANSHIPFLTRS'</span>, <span style="COLOR: #ff0000">'UI_CFGFILPLANSHIPFLTRS'</span>);
+<span style="COLOR: #0000ff">DELETE</span> <span style="COLOR: #0000ff">FROM</span> SECURITY_CHECKPOINT <span style="COLOR: #0000ff">WHERE</span> FORM_ID <span style="COLOR: #808080">in</span> (<span style="FONT-WEIGHT: bold; COLOR: #800000">4033</span>);
+<span style="COLOR: #0000ff">DELETE</span> <span style="COLOR: #0000ff">FROM</span> FORM <span style="COLOR: #0000ff">WHERE</span> FORM_ID <span style="COLOR: #808080">in</span> (<span style="FONT-WEIGHT: bold; COLOR: #800000">4033</span>);
+<span style="COLOR: #0000ff">DELETE</span> <span style="COLOR: #0000ff">FROM</span> FILTER_STATEMENT <span style="COLOR: #0000ff">WHERE</span> RECORD_TYPE <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'PLANSHIPFLTRS'</span>;
+<span style="COLOR: #0000ff">DELETE</span> <span style="COLOR: #0000ff">FROM</span> FILTER_CONFIG_DETAIL <span style="COLOR: #0000ff">WHERE</span> RECORD_TYPE <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'PLANSHIPFLTRS'</span>;
+<span style="COLOR: #0000ff">DELETE</span> <span style="COLOR: #0000ff">FROM</span> FILTER_CONFIG_HEADER <span style="COLOR: #0000ff">WHERE</span> RECORD_TYPE <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'PLANSHIPFLTRS'</span>;
+   
+#SP dbc_IGenericConfigForm
+    formId <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">4033</span>,
+    formKeyName <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'UI_FLTPLANSHIPFLTRS'</span>,
+    helpResourceKey <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'UI_CFGFILPLANSHIPFLTRS'</span>,
+    helpText <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'plannedShipmentFilters.htm'</span>,
+    parentkeyname <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'UI_CFGNODEINSIGHTFLTRS'</span>,
+    tableName <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'FILTER_CONFIG_DETAIL'</span>,
+    <span style="COLOR: #0000ff">text</span> <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Planned shipment filters'</span>,
+    usedByGenerator <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Y'</span>,
+    processStamp <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'dbChange194099.sql'</span>;
+
+#SP dbc_IFilterConfigHeader
+    allowOrderBy <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'N'</span>,
+    description <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Planned shipment filters'</span>,
+    doPath <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'com.pronto.dbutility.process.ShipmentDetailDO,com.pronto.dbutility.process.ShipmentHeaderDO'</span>,
+    joinClause <span style="COLOR: #808080">=</span> <span style="COLOR: #0000ff">NULL</span>,
+    recordType <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'PLANSHIPFLTRS'</span>,
+    tableDoName <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Metadata_Insight_Shipment_Pool_View'</span>,
+    processStamp <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'dbChange194099.sql'</span>;
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-d5f14150-2709-425a-834c-835d878ed97a-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Add a combo box tied to your filter configuration to the appropriate Insight screen</span>
+</div>
+
+<div id="i-d5f14150-2709-425a-834c-835d878ed97a-section-content" class="i-section-content">
+    <p>Now add a SCREEN_CONTROL record as follows to the appropriate Insight screen. It is recommended to add this combo box to the top of the Basic Criteria section. Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_GROUP_ID</td>
+
+                <td>The Screen Group Id of the sub-accordion that will hold the combo box.</td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_NAME</td>
+
+                <td>The name of the control.</td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>The resource key used when creating the filter configuration. In the example above, it would be UI_FLTPLANSHIPFLTRS.</em></td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_TYPE</td>
+
+                <td><em>80</em> (ComboBox)</td>
+            </tr>
+
+            <tr>
+                <td>LABEL_ORIENTATION</td>
+
+                <td><em>20</em> (Inline)</td>
+            </tr>
+
+            <tr>
+                <td>DATA_SOURCE_TYPE</td>
+
+                <td><em>10</em> (ConfigType)</td>
+            </tr>
+
+            <tr>
+                <td>DATA_SOURCE</td>
+
+                <td><em>Filter|&lt;record type of the filter configuration&gt; (in the example above, it would be PLANSHIPFLTRS.</em></td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>basiccriteriarow</em></td>
+            </tr>
+
+            <tr>
+                <td>CONTROL_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

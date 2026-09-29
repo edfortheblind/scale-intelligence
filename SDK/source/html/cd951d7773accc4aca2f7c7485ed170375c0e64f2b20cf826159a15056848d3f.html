@@ -1,0 +1,543 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Add Search Pane Menu Options</title>
+    <meta name="Title" content="How to: Add Search Pane Menu Options"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Follow these steps to add the menu options that are standard for the search pane of insight screens, as well as new custom menu options." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="9fc847d4-a71e-45d3-a988-c75ed5e5f8e9"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="6"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Add Search Pane Menu Options</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Insight Pages
+ > Search Pane
+ > How to: Add Search Pane Menu Options</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Follow these steps to add the menu options that are standard for the search pane of insight screens, as well as new custom menu options.</p>
+
+<div id="i-851eee5e-ac14-4a20-a544-a8519aaf8a6a-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create a modal dialog for the "Save Search" action</span>
+</div>
+
+<div id="i-851eee5e-ac14-4a20-a544-a8519aaf8a6a-section-content" class="i-section-content">
+    Create a modal dialog control that will be used to provide user input when the "Save Search" action is selected. Please reference the&nbsp;<a href="How_to_Create_Dynamic_Modal_Dialog.html">How to: Create a&nbsp;Dynamic Modal Dialog</a> topic for more information.
+</div>
+
+<div id="i-554188fe-18a7-4ced-ac1f-8fd83b54c43d-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create new menu screen groups</span>
+</div>
+
+<div id="i-554188fe-18a7-4ced-ac1f-8fd83b54c43d-section-content" class="i-section-content">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <p>Add a SCREEN_GROUP record as follows in order to create a menu for the search pane.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART_ID</td>
+
+                <td>The Screen Part Id of the&nbsp;Insight menu&nbsp;pane</td>
+            </tr>
+
+            <tr>
+                <td>GROUP_NAME</td>
+
+                <td><em>SearchPaneMenu</em></td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>GROUP_TYPE</td>
+
+                <td><em>70</em>&nbsp;(Menu)</td>
+            </tr>
+
+            <tr>
+                <td>PARENT_GROUP_ID</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+
+            <tr>
+                <td>NESTED_GROUP_UNIT</td>
+
+                <td>Set this to the Object Id of this screen group record once it is created</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>nav nav-pills</em></td>
+            </tr>
+
+            <tr>
+                <td>ROW_CSS_CLASS</td>
+
+                <td><em>row rowmenupanel</em></td>
+            </tr>
+        </tbody>
+    </table>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+
+<div id="i-5f8b9aa0-430d-4fac-830b-26978022a27b-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 3: Create screen control related records for the "Save Search" action</span>
+</div>
+
+<div id="i-5f8b9aa0-430d-4fac-830b-26978022a27b-section-content" class="i-section-content">
+    <div id="i-3b67f70a-b667-4949-a48f-66dfa6a02a06-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Create menu button screen control</span>
+    </div>
+
+    <div id="i-3b67f70a-b667-4949-a48f-66dfa6a02a06-section-content" class="i-section-content">
+        <p>Now add a SCREEN_CONTROL record as follows for the Menu Button control.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><strong>Field</strong></td>
+
+                    <td><strong>Value</strong></td>
+                </tr>
+
+                <tr>
+                    <td>SCREEN_GROUP_ID</td>
+
+                    <td>The Screen Group Id of the&nbsp;menu dropdown&nbsp;on the search pane</td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_NAME</td>
+
+                    <td><em>SearchPaneMenuActionSaveSearch</em></td>
+                </tr>
+
+                <tr>
+                    <td>RESOURCE_KEY</td>
+
+                    <td><em>SAVESEARCH</em></td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_TYPE</td>
+
+                    <td><em>150</em> (Menu Button)</td>
+                </tr>
+
+                <tr>
+                    <td>LABEL_ORIENTATION</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DATA_SOURCE_TYPE</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DATA_SOURCE</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DIV_CSS_CLASS</td>
+
+                    <td><em>pull-left menubutton</em></td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_CSS_CLASS</td>
+
+                    <td><em>pull-left menubutton fa fa-floppy-o floppyDiskIcon</em></td>
+                </tr>
+
+                <tr>
+                    <td>TOOL_TIP_RESOURCE_KEY</td>
+
+                    <td><em>SAVESEARCH</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="i-e27a443f-eef0-42f0-a1d9-7a301fe27d68-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Add security for the menu button</span>
+    </div>
+
+    <div id="i-e27a443f-eef0-42f0-a1d9-7a301fe27d68-section-content" class="i-section-content">
+        Reference the&nbsp;<a href="How_to_Configure Security_for_Action.html">How to: Configure Security for a Dynamic Action</a> topic in order to add security for the new action.
+    </div>
+
+    <div id="i-27fb1b00-925d-481d-8d65-aa707e6340c7-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Create a screen control event record tied to the menu button control</span>
+    </div>
+
+    <div id="i-27fb1b00-925d-481d-8d65-aa707e6340c7-section-content" class="i-section-content">
+        <p>Now add a SCREEN_CONTROL_EVENT record as follows for the Menu Button control. This defines what gets called when the button is clicked by the user. This action will call a generic JavaScript function that will show a Modal Dialog control that will prompt the user to input the name of the search that they want to save.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><strong>Field</strong></td>
+
+                    <td><strong>Value</strong></td>
+                </tr>
+
+                <tr>
+                    <td>SCREEN_CONTROL_ID</td>
+
+                    <td>The Screen Control Id of the&nbsp;menu&nbsp;button</td>
+                </tr>
+
+                <tr>
+                    <td>EVENT_ID</td>
+
+                    <td><em>click</em></td>
+                </tr>
+
+                <tr>
+                    <td>EVENT_NAME</td>
+
+                    <td><em>_webUi.dialog.showModalDialogByEvent</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="i-494f8d15-4a5b-4193-b623-0be3b36b7215-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Create a screen control event parameters record tied to the event</span>
+    </div>
+
+    <div id="i-494f8d15-4a5b-4193-b623-0be3b36b7215-section-content" class="i-section-content">
+        <p>Now add a SCREEN_CONTROL_EVENT_PARAMETERS record as follows for the Menu Button control event. This defines what Modal Dialog control should be displayed by the event.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><strong>Field</strong></td>
+
+                    <td><strong>Value</strong></td>
+                </tr>
+
+                <tr>
+                    <td>SCREEN_CONTROL_EVENT_ID</td>
+
+                    <td>The Screen Control Event Id of the event for the menu button</td>
+                </tr>
+
+                <tr>
+                    <td>PARAMETER_NAME</td>
+
+                    <td><em>ModalDialogName</em></td>
+                </tr>
+
+                <tr>
+                    <td>PARAMETER_VALUE</td>
+
+                    <td>The name of the Modal Dialog created in metadata previously (normally named "SaveSearchModalDialog")</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-94569079-b810-447a-a4ce-9fb576f5d7af-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 4: Create screen control related records for the "Search" action</span>
+</div>
+
+<div id="i-94569079-b810-447a-a4ce-9fb576f5d7af-section-content" class="i-section-content">
+    <div id="i-4d4a28cd-7cc1-4b2f-ac93-650c847258a6-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Create a menu button screen control</span>
+    </div>
+
+    <div id="i-4d4a28cd-7cc1-4b2f-ac93-650c847258a6-section-content" class="i-section-content">
+        <p>Now add a SCREEN_CONTROL record as follows for the Menu Button control.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><strong>Field</strong></td>
+
+                    <td><strong>Value</strong></td>
+                </tr>
+
+                <tr>
+                    <td>SCREEN_GROUP_ID</td>
+
+                    <td>The Screen Group Id of the&nbsp;menu dropdown&nbsp;on the search pane</td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_NAME</td>
+
+                    <td><em>SearchPaneMenuSearch</em></td>
+                </tr>
+
+                <tr>
+                    <td>RESOURCE_KEY</td>
+
+                    <td><em>BTN_SEARCH</em></td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_TYPE</td>
+
+                    <td><em>150</em> (Menu Button)</td>
+                </tr>
+
+                <tr>
+                    <td>LABEL_ORIENTATION</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DATA_SOURCE_TYPE</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DATA_SOURCE</td>
+
+                    <td><em>NULL</em></td>
+                </tr>
+
+                <tr>
+                    <td>DIV_CSS_CLASS</td>
+
+                    <td><em>pull-left menubutton</em></td>
+                </tr>
+
+                <tr>
+                    <td>CONTROL_CSS_CLASS</td>
+
+                    <td><em>pull-left menubutton</em></td>
+                </tr>
+
+                <tr>
+                    <td>TOOL_TIP_RESOURCE_KEY</td>
+
+                    <td><em>BTN_SEARCH</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="i-da676923-e99d-49a3-91b4-3c8e972ced58-section-heading" class="i-section-heading">
+        <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Create a screen control event record tied to the menu button control</span>
+    </div>
+
+    <div id="i-da676923-e99d-49a3-91b4-3c8e972ced58-section-content" class="i-section-content">
+        <p>Now add a SCREEN_CONTROL_EVENT record as follows for the Menu Button control. This defines what gets called when the button is clicked by the user. This action will call a pre-created JavaScript function that process the "Search" action on an insight screen.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+        <table>
+            <tbody>
+                <tr>
+                    <td><strong>Field</strong></td>
+
+                    <td><strong>Value</strong></td>
+                </tr>
+
+                <tr>
+                    <td>SCREEN_CONTROL_ID</td>
+
+                    <td>The Screen Control Id of the&nbsp;menu&nbsp;button</td>
+                </tr>
+
+                <tr>
+                    <td>EVENT_ID</td>
+
+                    <td><em>click</em></td>
+                </tr>
+
+                <tr>
+                    <td>EVENT_NAME</td>
+
+                    <td><em>_webUi.insightSearchPaneActions.searchButtonClicked</em></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="i-c1e5fd10-272b-4f72-aee2-3763518a004d-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 5: Create a screen group for the "Favorites" menu</span>
+</div>
+
+<div id="i-c1e5fd10-272b-4f72-aee2-3763518a004d-section-content" class="i-section-content">
+    <p>Add a SCREEN_GROUP record as follows. This defines the entire "Favorites" menu and will be rendered as several different records in the HTML.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Value</strong></td>
+            </tr>
+
+            <tr>
+                <td>SCREEN_PART_ID</td>
+
+                <td>The Screen Part Id of the search pane</td>
+            </tr>
+
+            <tr>
+                <td>GROUP_NAME</td>
+
+                <td><em>SearchPaneMenuFavoritesDropdown</em></td>
+            </tr>
+
+            <tr>
+                <td>RESOURCE_KEY</td>
+
+                <td><em>FAVORITES</em></td>
+            </tr>
+
+            <tr>
+                <td>GROUP_TYPE</td>
+
+                <td><em>100</em> (Saved Searches Menu)</td>
+            </tr>
+
+            <tr>
+                <td>PARENT_GROUP_ID</td>
+
+                <td>The Screen Group Id of the&nbsp;menu SCREEN_GROUP in the search pane</td>
+            </tr>
+
+            <tr>
+                <td>NESTED_GROUP_UNIT</td>
+
+                <td>The Screen Group Id of the&nbsp;menu SCREEN_GROUP in the search pane</td>
+            </tr>
+
+            <tr>
+                <td>DIV_CSS_CLASS</td>
+
+                <td><em>dropdown pull-left pullleftfavourite</em></td>
+            </tr>
+
+            <tr>
+                <td>ROW_CSS_CLASS</td>
+
+                <td><em>NULL</em></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p></p>
+
+    <p></p>
+</div>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Dynamic_Modal_Dialog.html">How to: Create a Dynamic Modal Dialog</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Controls.html">How to: Create Screen Controls</a></div>
+<div class="i-see-also-link">
+<a href="How_to_Create_Screen_Groups.html">How to: Create Screen Groups</a></div>
+<div class="i-see-also-link">
+<a href="Supported_Screen_Controls.html">Supported Screen Controls</a></div>
+<div class="i-see-also-link">
+<a href="Supported_Screen_Controls.html">Supported Screen Controls</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Change Decimal Positions on Resources</title>
+    <meta name="Title" content="How to: Change Decimal Positions on Resources"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="In the application you will notice that editable numeric fields may now show decimal positions where they haven’t in the past. These editable fields are tied to the resource file and not the Decimal Positions configuration at this time. To adjust the" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="{2548FE59-1FEB-4A2A-953E-38B3FE29FDCF}"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="1"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Change Decimal Positions on Resources</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+Localization
+ > How to: Change Decimal Positions on Resources</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>In the&nbsp;application you will notice that editable numeric fields may now show decimal positions where they haven’t in the past. These editable fields are tied to the resource file and not the Decimal Positions configuration at this time. To adjust the number of positions on these fields a modification via the System Text Editor is needed. This can be done by taking the following steps:<br /></p>
+
+<ol>
+    <li>Launch the System Text Editor from the Main UI<br /></li>
+
+    <li>When the following window appears look for keys related to the area you would like to change. If for example you want to change all Quantity fields to not show decimal positions you would probably want to search for QUANTITY and QTY in the Resource Key section.<br /></li>
+
+    <li>Customize the entries by right-clicking and choosing 'Open Custom Value'.<br /></li>
+
+    <li>Change the Decimal Position value from 5 to 0 and hit OK.<br /></li>
+
+    <li>Repeat for all keys you would like to change.<br /></li>
+
+    <li>Click Apply on the System Text Editor Window.</li>
+</ol>
+
+<div id="i-SectionId-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Remove All Decimal Precision</span>
+</div>
+
+<div id="i-SectionId-section-content" class="i-section-content">
+    <p>If you wish to remove all decimal precision from fields across the entire system, you could run a quick query to update all of the fields at once to have a decimal position value of zero. The queries below will insert custom records for QUANTITY and QTY resources with a decimal pos value of 0. The resources will need to be regenerated after running these. You could pull out the resource key section that narrows the results down to QUANTITY if you wanted to do this over all keys.</p>
+
+    <p>&nbsp;</p>
+
+    <div class="i-filtered-content-T-SQL" data-title="T-SQL" data-itemid="T-SQL">
+        <table class="i-syntax-table">
+            <tbody>
+                <tr>
+                    <th>SQL Server Syntax</th>
+
+                    <th>
+                        <div class="i-copy-code-wrapper">
+                            <span class="i-copy-code">Copy Code</span>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <td class="i-code" colspan="2">
+                        <pre>
+<span style="COLOR: #008080">-- First update all existing custom records
+</span><span style="COLOR: #0000ff">UPDATE</span>
+        RESOURCE_FILE_CUSTOM
+<span style="COLOR: #0000ff">SET</span>
+        DECIMAL_POS <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span>,
+        USER_STAMP <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'System'</span>,
+        PROCESS_STAMP <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Decimal Pos = 0'</span>,
+        DATE_TIME_STAMP <span style="COLOR: #808080">=</span> <span style="COLOR: #ff00ff">getDate</span>()
+<span style="COLOR: #0000ff">WHERE</span>
+        (RESOURCE_KEY <span style="COLOR: #808080">like</span> <span style="COLOR: #ff0000">'%QUANTITY%'</span> <span style="COLOR: #808080">OR</span> RESOURCE_KEY <span style="COLOR: #808080">LIKE</span> <span style="COLOR: #ff0000">'%QTY%'</span>)
+        <span style="COLOR: #808080">AND</span>
+        DECIMAL_POS <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">5</span>
+        <span style="COLOR: #808080">AND</span>
+        RESOURCE_GROUP <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Text'</span>;
+
+<span style="COLOR: #008080">-- Next insert any missing custom records
+</span><span style="COLOR: #0000ff">INSERT</span> <span style="COLOR: #0000ff">INTO</span> RESOURCE_FILE_CUSTOM
+(
+        RESOURCE_LANGUAGE,
+        RESOURCE_GROUP,
+        RESOURCE_KEY,
+        <span style="COLOR: #0000ff">TEXT</span>,
+        FIELD_LENGTH,
+        DECIMAL_POS,
+        USER_STAMP,
+        PROCESS_STAMP,
+        DATE_TIME_STAMP
+)
+<span style="COLOR: #0000ff">SELECT</span>
+        RESOURCE_LANGUAGE,
+        RESOURCE_GROUP,
+        RESOURCE_KEY,
+        <span style="COLOR: #0000ff">TEXT</span>,
+        FIELD_LENGTH,
+        <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span>,
+        <span style="COLOR: #ff0000">'System'</span>,
+        <span style="COLOR: #ff0000">'Decimal Pos = 0'</span>,
+        <span style="COLOR: #ff00ff">getDate</span>()
+<span style="COLOR: #0000ff">FROM</span>
+        RESOURCE_FILE_BASE
+<span style="COLOR: #0000ff">WHERE</span>
+        (RESOURCE_KEY <span style="COLOR: #808080">like</span> <span style="COLOR: #ff0000">'%QUANTITY%'</span> <span style="COLOR: #808080">OR</span> RESOURCE_KEY <span style="COLOR: #808080">LIKE</span> <span style="COLOR: #ff0000">'%QTY%'</span>)
+        <span style="COLOR: #808080">AND</span>
+        DECIMAL_POS <span style="COLOR: #808080">=</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">5</span>
+        <span style="COLOR: #808080">AND</span>
+        RESOURCE_GROUP <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Text'</span>
+        <span style="COLOR: #808080">AND</span>
+        <span style="COLOR: #808080">NOT</span> RESOURCE_KEY <span style="COLOR: #808080">IN</span> (
+                <span style="COLOR: #0000ff">SELECT</span>
+                        RESOURCE_KEY
+                <span style="COLOR: #0000ff">FROM</span>
+                        RESOURCE_FILE_CUSTOM
+                <span style="COLOR: #0000ff">WHERE</span>
+                        (RESOURCE_KEY <span style="COLOR: #808080">like</span> <span style="COLOR: #ff0000">'%QUANTITY%'</span> <span style="COLOR: #808080">OR</span> RESOURCE_KEY <span style="COLOR: #808080">LIKE</span> <span style="COLOR: #ff0000">'%QTY%'</span>)
+                        <span style="COLOR: #808080">AND</span>
+                        RESOURCE_GROUP <span style="COLOR: #808080">=</span> <span style="COLOR: #ff0000">'Text'</span>);
+</pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>&nbsp;</p>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

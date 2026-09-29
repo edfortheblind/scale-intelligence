@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="ItemDownload" targetNamespace="http://www.manh.com/ILSNET/Interface" elementFormDefault="qualified"
+	xmlns="http://www.manh.com/ILSNET/Interface" xmlns:xs="http://www.w3.org/2001/XMLSchema" version ="2007">
+	<xs:include schemaLocation="Item.xsd" />
+
+  <xs:element name="WMWROOT" nillable="true" type="WMWROOT" />
+  <xs:complexType name="WMWROOT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="WMWDATA" type="WMWDATA" />
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:element name="WMWDATA" nillable="true" type="WMWDATA"/>
+  <xs:complexType name="WMWDATA">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Items" type="ItemList" />
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="Items" nillable="false" type="ItemList"  />
+  <xs:complexType name="ItemList">
+    <xs:sequence>
+      <xs:element minOccurs="1" maxOccurs="unbounded" name="Item" nillable="true" type="Item" />
+    </xs:sequence>
+  </xs:complexType>
+  </xs:schema>

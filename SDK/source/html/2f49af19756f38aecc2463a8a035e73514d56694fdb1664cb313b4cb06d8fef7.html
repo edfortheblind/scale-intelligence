@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to:  Bind Controls on a Monitor Page</title>
+    <meta name="Title" content="How to:  Bind Controls on a Monitor Page"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="To bind a chart control on a Monitor Page, a stored procedure needs to be called via a built in web service. This web service returns the JSON which has the required data to bind the chart control on a Monitor page. Please follow the below steps to b" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="7c80d825-0854-44a4-99f2-dc0a1323aeb3"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="2"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to:  Bind Controls on a Monitor Page</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Monitor Pages
+ > How to:  Bind Controls on a Monitor Page</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>To bind a chart control on a&nbsp;Monitor Page, a&nbsp;stored procedure needs to be called&nbsp;via a built in&nbsp;web service. This web service returns the&nbsp;JSON which has the required&nbsp;data to bind the chart control on a Monitor page. Please follow the&nbsp;below steps to bind a chart control on a Monitor page.&nbsp; Please follow the&nbsp;below steps to bind a chart control on monitor page.</p>
+
+<div id="i-b3dc839d-7779-446f-9ef2-ed8982d27c93-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 1: Create Stored Procedure for Chart</span>
+</div>
+
+<div id="i-b3dc839d-7779-446f-9ef2-ed8982d27c93-section-content" class="i-section-content">
+    <span style='FONT-SIZE: 10pt; FONT-FAMILY: "Segoe UI",sans-serif; COLOR: rgb(30,30,30); LINE-HEIGHT: 107%'><span style='FONT-SIZE: 10pt; FONT-FAMILY: "Segoe UI",sans-serif; COLOR: rgb(30,30,30); LINE-HEIGHT: 107%'>A stored procedure must be created that will retrieve the chart data. The stored procedure should be named in the format <em>&lt;functional area&gt;_Monitor&lt;Description of what will be retrieved&gt;</em>. For example, if a Monitor page was going to be created for retrieving work related data based on work group, the stored procedure should be named <em>WRK_MonitorWorkGroupChartData.</em> Please refer to the&nbsp;<a href="ms-its:C:/source/SOD/Active/SDK/Build/SDK.chm::/How_to_Create_Monitor_Page_Stored_Procedure.html"><u><font color="#0066CC">How to: Create Monitor Page Stored Procedure</font></u></a> topic for more detailed information.&nbsp;</span></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</div>
+
+<div id="i-b342ed48-97b4-4bad-947a-216626f5454c-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">Step 2: Create required screen control attributes for&nbsp;Chart</span>
+</div>
+
+<div id="i-b342ed48-97b4-4bad-947a-216626f5454c-section-content" class="i-section-content">
+    Create the below&nbsp;Screen Control Attributes to bind a chart control on monitor page. Please refer to the&nbsp;<a href="ms-its:C:/source/SOD/Active/SDK/Build/SDK.chm::/How_to_Create_Screen_Control_Attributes.html"><u><font color="#0066CC">How to: Create Screen Control Attributes</font></u></a> topic for more detailed information on screen control attributes.&nbsp;Insight Architect can also be used for this (<a href="How_to_Use_SnapDragon_to_Customize_a_Metadata_Page.html" data-auto-update-caption="true"><u><font color="navy">How to: Use&nbsp;Insight Architect to Customize a Metadata Page</font></u></a>).
+
+    <p></p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><strong>Field</strong></td>
+
+                <td><strong>Description</strong></td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-monitorWebService</p>
+                </td>
+
+                <td>
+                    <p>Defines the web service which returns the required information to a Monitor page for binding data to a chart control. This attribute value is "/general/scaleapi/GenericMonitorDataRetrievalApi/Post" and can be used for all charts.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-chartType</p>
+                </td>
+
+                <td>Defines the type of a chart. Currently supported value is "Column".</td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-chartCategoryMaxCount</p>
+                </td>
+
+                <td>
+                    <p>Defines the&nbsp;maximum value of the axis. This is an optional attribute&nbsp;and the default value is 10.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-drilldownLevel0criteria</p>
+                </td>
+
+                <td>
+                    <p>Defines filter criteria to retrieve data from the stored procedure. Each level can have one filter criteria with a list of comma delimited values with an ending semicolon.</p>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p>data-drilldownLevel0storedprocedure</p>
+                </td>
+
+                <td>
+                    <p>This attribute defines the stored procedure to call for the chart data. The stored procedure has two parameters: filterCriteria&nbsp; and culture. Each drill down level in the chart has one stored procedure.</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Add_drilldown_level_on_a_Chart_on_Monitor_Page.html">How to: Add a Drilldown Level to a Chart on a Monitor Page</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

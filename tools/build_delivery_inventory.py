@@ -7,6 +7,7 @@ from collector import atomic_json, digest, now, writer_lock, read_json
 
 def build(root):
     from module_policy import required_acceptance_paths
+    from sdk_delivery_authority import required_sdk_authority_paths
     root=Path(root).resolve()
     files=[]
     for module in ('AIM','SDK'):
@@ -17,12 +18,13 @@ def build(root):
     state_path=root/'_project/STATE.json'
     state=read_json(state_path) if state_path.is_file() else {}
     files.extend(root/p for p in required_acceptance_paths(state))
+    files.extend(root/p for p in required_sdk_authority_paths(state))
     entries=[]
     for path in sorted(set(files)):
         raw=path.read_bytes()
         entries.append({'path':path.relative_to(root).as_posix(),'byte_count':len(raw),'sha256':digest(raw)})
     result={'schema_version':1,'created_at':now(),'file_count':len(entries),
-        'scope':'All AIM and SDK corpus artifacts plus original prompts, preflight, search index, and required owner acceptance. Coverage remains separate.',
+        'scope':'All AIM and SDK corpus artifacts plus original prompts, preflight, search index, and required AIM acceptance and SDK acquisition authority. Coverage remains separate.',
         'files':entries}
     atomic_json(root/'_project/artifact-inventory.json',result)
     return result

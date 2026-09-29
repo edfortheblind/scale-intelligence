@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Define Lists tied to Controls</title>
+    <meta name="Title" content="How to: Define Lists tied to Controls"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Metadata based screens allow for controls such as drop downs, checked list boxes, etc. to be tied to a list of values. The list of available values is retrieved dynamically at runtime based on the metadata configured. Therefore these lists can be def" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="efd8a796-bd3c-4d83-bb07-7ba7dd82c8b9"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="27"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Define Lists tied to Controls</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Shared
+ > How to: Define Lists tied to Controls</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Metadata based screens allow for controls such as drop downs, checked list boxes, etc. to be tied to a list of values. The list of available values is retrieved dynamically at runtime based on the metadata configured. Therefore these lists can be defined and controlled by clients at runtime.</p>
+
+<p>The DATA_SOURCE_TYPE and DATA_SOURCE fields in the SCREEN_CONTROL table drive this dynamic list retrieval. The following are valid DATA_SOURCE_TYPE values for retrieving lists tied to controls:</p>
+
+<p>&nbsp;</p>
+
+<p></p>
+
+<table>
+    <tbody>
+        <tr>
+            <td class="NewStyle" width="231"><strong>Data Source Type</strong></td>
+
+            <td class="NewStyle" width="52"><strong>Value</strong></td>
+
+            <td class="NewStyle"><strong>Description</strong></td>
+        </tr>
+
+        <tr>
+            <td width="231">ConfigType</td>
+
+            <td width="52">10</td>
+
+            <td>Retrieves lists for normal configurations; works exactly like the "ConfigType|…" lists within generic configurations. The supported list of types is defined in a generic configuration with record type of "METADATACONFIGTYPE".</td>
+        </tr>
+
+        <tr>
+            <td>Generic</td>
+
+            <td>30</td>
+
+            <td>Retrieves lists for generic configurations; works exactly like the generic lists within generic configurations. Any generic configuration record type is supported.</td>
+        </tr>
+
+        <tr>
+            <td>TableFields</td>
+
+            <td>40</td>
+
+            <td>Retrieves a list of columns for a database table.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>&nbsp;</p>
+
+<div id="i-40bd6e85-8e52-480d-8a84-326bec7197a9-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">How to configure control lists based on ConfigType records</span>
+</div>
+
+<div id="i-40bd6e85-8e52-480d-8a84-326bec7197a9-section-content" class="i-section-content">
+    <p>This section defines how ConfigType records can be used to fill dynamic lists tied to controls in metadata screens. The valid ConfigType values can be found in the "Metadata Config Type" configuration.</p>
+
+    <p>Specifying a DATA_SOURCE_TYPE of 10 (ConfigType) in the SCREEN_CONTROL table indicates to the system that it should use built-in retrieval logic based on the value in the DATA_SOURCE field to fill the list tied to the control. The following table contains a few samples – please reference the "Metadata Config Type" configuration for the full list of supported values.</p>
+
+    <p>&nbsp;</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class="NewStyle" width="231"><strong>Data Source</strong></td>
+
+                <td class="NewStyle"><strong>Example</strong></td>
+            </tr>
+
+            <tr>
+                <td width="231">Warehouse</td>
+
+                <td>To retrieve the list of authorized warehouses, specify data source type = 10 and data source = Warehouse.</td>
+            </tr>
+
+            <tr>
+                <td>Company</td>
+
+                <td>To retrieve the list of authorized companies, specify data source type = 10 and data source = Company.</td>
+            </tr>
+
+            <tr>
+                <td>ProNumber</td>
+
+                <td>To retrieve the list of Pro Number records, specify data source type = 10 and data source = ProNumber.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>&nbsp;</p>
+</div>
+
+<p>&nbsp;</p>
+
+<p></p>
+
+<div id="i-6c39e5f2-273c-406c-a6c1-d940c1b9f70f-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">How to configure control lists based on&nbsp;Generic record types</span>
+</div>
+
+<div id="i-6c39e5f2-273c-406c-a6c1-d940c1b9f70f-section-content" class="i-section-content">
+    <p>This section defines how&nbsp;generic configuration lists&nbsp;can be used to fill dynamic lists tied to controls in metadata screens. All generic configuration record types are valid for use&nbsp;in creating&nbsp;metadata lists.</p>
+
+    <p>Specifying a DATA_SOURCE_TYPE of 30 (Generic) in the SCREEN_CONTROL table indicates to the system that it should use built-in retrieval logic based on the value in the DATA_SOURCE field to fill the list tied to the control. The following table contains a few samples – please note that any generic configuration record type can be used.</p>
+
+    <p>&nbsp;</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class="NewStyle" width="231"><strong>Data Source</strong></td>
+
+                <td class="NewStyle"><strong>Example</strong></td>
+            </tr>
+
+            <tr>
+                <td width="231">COUNTRY</td>
+
+                <td>To retrieve the list of countries configured in the system, specify data source type = 30 and data source = COUNTRY.</td>
+            </tr>
+
+            <tr>
+                <td>DISPOSCODE</td>
+
+                <td>To retrieve the list of disposition codes, specify data source type = 30 and data source = DISPOSCODE.</td>
+            </tr>
+
+            <tr>
+                <td>WORKTEAM</td>
+
+                <td>To retrieve the list of work teams, specify data source type = 30 and data source = WORKTEAM.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>&nbsp;</p>
+</div>
+
+<p>&nbsp;</p>
+
+<p></p>
+
+<div id="i-9ace55bd-6a96-4e22-b38e-33014aed60cc-section-heading" class="i-section-heading">
+    <span class="i-section-heading-icon"><span class="i-hidden">&nbsp;</span></span><span class="i-section-heading-text">How to configure control lists based on TableFields</span>
+</div>
+
+<div id="i-9ace55bd-6a96-4e22-b38e-33014aed60cc-section-content" class="i-section-content">
+    <p>This section defines how&nbsp;the TableFields data source type can be used to fill dynamic lists tied to controls in metadata screens. All tables in the SCALE database are eligible.</p>
+
+    <p>Specifying a DATA_SOURCE_TYPE of 40 (TableFields) in the SCREEN_CONTROL table indicates to the system that it should use built-in retrieval logic based on the value in the DATA_SOURCE field to fill the list tied to the control. The following table contains a few samples – please note that any SCALE database table can be used.</p>
+
+    <p>&nbsp;</p>
+
+    <table>
+        <tbody>
+            <tr>
+                <td class="NewStyle" width="231"><strong>Data Source</strong></td>
+
+                <td class="NewStyle"><strong>Example</strong></td>
+            </tr>
+
+            <tr>
+                <td width="231">LOCATION_INVENTORY</td>
+
+                <td>To retrieve the list of columns in the location inventory table, specify data source type = 40 and data source = LOCATION_INVENTORY.</td>
+            </tr>
+
+            <tr>
+                <td>SHIPMENT_HEADER</td>
+
+                <td>To retrieve the list of columns in the shipment header table, specify data source type = 40 and data source = SHIPMENT_HEADER.</td>
+            </tr>
+
+            <tr>
+                <td>ITEM</td>
+
+                <td>To retrieve the list of columns in the item table, specify data source type = 40 and data source = ITEM.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>&nbsp;</p>
+</div>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>
