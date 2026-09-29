@@ -1,0 +1,219 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Vocollect Configuration</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 style="text-align: left;font-size: 12pt" data-source-node="n56"><span style="font-size: 18pt" data-source-node="n57">Vocollect Configuration</span>
+        </h1>
+        <h4 data-source-node="n58">Overview</h4>
+        <p data-source-node="n59">A Vocollect region record determines how the voice picking process is managed (similar to a work profile). It includes many different values that you will need to define before you start picking using the TalkMan device.</p>
+        <p data-source-node="n60"> </p>
+        <p data-source-node="n61">Note that in many cases, Vocollect terms (not their SCALE equivalents) are used in this topic. See the topic Before You Begin: Vocollect Setup for a list of these terms and their SCALE equivalents.</p>
+        <h4 data-source-node="n62"> </h4>
+        <h4 data-source-node="n63">Configuration Hierarchy</h4>
+        <p data-source-node="n64"> </p>
+        <p data-source-node="n65">
+            <img src="../source/assets/a9f0c1d53fd48de83ddd704bb6c3b1b018a1cbfdfcd09ce05b7e0e79d55f310b.png" loading="eager" data-source-node="n66">
+        </p>
+        <p data-source-node="n67"> </p>
+        <h4 data-source-node="n68">Configure Vocollect</h4>
+        <p data-source-node="n69"> </p>
+        <h5 data-source-node="n70">1. Vocollect Region Information </h5>
+        <p data-source-node="n71"> </p>
+        <ul data-source-node="n72">
+            <li data-source-node="n73">
+                <p data-source-node="n74">Region - A Vocollect term for the set of work to be done.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n75">
+            <li data-source-node="n76">
+                <p data-source-node="n77">Work Profile - Select the SCALE side Work Profile.</p>
+            </li>
+        </ul>
+        <p data-source-node="n78"> </p>
+        <h5 data-source-node="n79">2. Vocollect Functions</h5>
+        <p data-source-node="n80">This function indicates the type of picking flow that you want users of this region to use. Normal picking is the only function currently supported.</p>
+        <p data-source-node="n81"> </p>
+        <h5 data-source-node="n82">3. Characteristics 1</h5>
+        <ul data-source-node="n83">
+            <li data-source-node="n84">
+                <p data-source-node="n85">Assignment Method - Determine whether users can enter their own work ID when starting an assignment, or the work is automatically selected them. Either system-directed or user-directed is defaulted from the first detail record of the appropriate work profile record (the one associated with a Vocollect region). Note that the group user work assignment method is not supported. </p>
+            </li>
+        </ul>
+        <ul data-source-node="n86">
+            <li data-source-node="n87">
+                <p data-source-node="n88">Pick Prompt - indicates how the TalkMan gives the pick prompt to the user:</p>
+                <p data-source-node="n89"> </p>
+                <ul data-source-node="n90">
+                    <li data-source-node="n91">
+                        <p data-source-node="n92">Double Prompts mean that the TalkMan speaks a location prompt, after which the user speaks the check digits, and a quantity-to-pick prompt.</p>
+                        <p data-source-node="n93"> </p>
+                    </li>
+                    <li data-source-node="n94">
+                        <p data-source-node="n95">Always Single Prompt means that the TalkMan speaks the location and quantity to pick (no matter how many items the user should pick), before waiting for the user to speak the check digits.</p>
+                        <p data-source-node="n96"> </p>
+                    </li>
+                    <li data-source-node="n97">
+                        <p data-source-node="n98">Single Prompt, Omit Quantity When = 1 means that the TalkMan gives the location and, if the user should pick more than one item, the quantity to pick. The prompt may include the work ID as well (depending upon the setting of Speak Work ID Field). The slot identifier may include the slot, description, or both (depending upon the setting of pick by Location/description).</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul data-source-node="n99">
+            <li data-source-node="n100">
+                <p data-source-node="n101">Speak Slot Description - Indicate what the TalkMan should speak to a user (the item’s slot, description, or both) when the user is picking in a particular region.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n102">
+            <li data-source-node="n103">
+                <p data-source-node="n104">Maximum assignments - Determine the maximum number of work ID(s) that a Vocollect user can work on at one time. If it is greater than 1 (with user-directed assignment), then the user will have to speak all of the work IDs before beginning to pick. If it is greater than 1 (with system-directed assignment), the system will assign all of the work IDs first, and then the user will pick them one at a time.</p>
+            </li>
+        </ul>
+        <p data-source-node="n105"> </p>
+        <p data-source-node="n106">Toggle Buttons </p>
+        <ul data-source-node="n107">
+            <li data-source-node="n108">
+                <p data-source-node="n109"><b data-source-node="n110">Skip aisle</b> - indicate whether a user can choose to skip an aisle when picking. Users may want to skip an aisle, for example, if they can see that a spill in the aisle makes picking now impossible. The terminal sends users back to pick skipped items at the end of the assignment, or the user can say, Repick skips at any point to pick those items if the Repick Skips Field is set to Yes. Keep in mind that if users can skip aisles, and they do so during base picking, they cannot repack those base items during the base pass; the skipped base items become part of the normal picking pass.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n111">
+            <li data-source-node="n112">
+                <p data-source-node="n113"><b data-source-node="n114">Skip Slot</b> - indicate whether a user can choose to skip a slot when picking an assignment. Users may want to skip a slot, for example, if they see that it is short, but that someone will replenish it soon. The terminal sends users back to pick skipped items at the end of the assignment, or the user can say, Repick skips at any point to pick those items if the Repick Skips Field is set to Yes. Keep in mind that if users can skip slots, and they do so during base picking, they cannot repack those base items during the base pass; the skipped base items become part of the normal picking pass.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n115">
+            <li data-source-node="n116">
+                <p data-source-node="n117"><b data-source-node="n118">Repick Skips</b> - indicate whether a user can choose to pick skipped items at any time during processing.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n119">
+            <li data-source-node="n120">
+                <p data-source-node="n121"><b data-source-node="n122">Speak work id</b> - indicate whether the TalkMan says the work ID and location for every pick in a chase assignment.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n123">
+            <li data-source-node="n124">
+                <p data-source-node="n125"><b data-source-node="n126">Sign off allowed</b> - indicate whether a user can choose to sign off before completing a pick.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n127">
+            <li data-source-node="n128">
+                <p data-source-node="n129"><b data-source-node="n130">Speak entire location</b> - indicate that the complete location ID is spoken at once by the TalkMan device. Otherwise, the TalkMan will speak each location ID segment (aisle, bay, level, etc.) separately.</p>
+            </li>
+        </ul>
+        <p data-source-node="n131"> </p>
+        <h5 data-source-node="n132">4. Characteristics 2</h5>
+        <p data-source-node="n133"> </p>
+        <ul data-source-node="n134">
+            <li data-source-node="n135">
+                <p data-source-node="n136"><b data-source-node="n137">Delivery</b> - indicate the type of delivery prompt. Prompt Delivery Location means the TalkMan prompts the operator with the delivery location and waits for the user to say Ready. The Prompt and Confirm option means the TalkMan prompts the user with the delivery location and waits for the user to confirm it by saying the delivery location and Ready. None means the TalkMan does not prompt the user with delivery information.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n138">
+            <li data-source-node="n139">
+                <p data-source-node="n140"><b data-source-node="n141">Container Type</b> - The following selections are made</p>
+                <p data-source-node="n142"> </p>
+                <ul data-source-node="n143">
+                    <li data-source-node="n144">
+                        <p data-source-node="n145">For the "Picking Into Tote" and "Picking Into Shipping Container" flows (with container created on-the-fly, not in the wave), this field should be set to "Variable Full Quantity Container.”</p>
+                        <p data-source-node="n146"> </p>
+                    </li>
+                    <li data-source-node="n147">
+                        <p data-source-node="n148">For the "Picking Into Shipping Container" flow (with container created in wave), this field should have set to “No Container.”</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul data-source-node="n149">
+            <li data-source-node="n150">
+                <p data-source-node="n151"><b data-source-node="n152">Work ID length</b> - Only used when a region is configured to allow manual work ID assignment. This value is used to specify how many digits of the work ID must be spoken by the user to manually request a work ID. The spoken work ID is matched to either the entire or the last &lt;number&gt; of digits of the work ID the user must speak.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n153">
+            <li data-source-node="n154">
+                <p data-source-node="n155"><b data-source-node="n156">Lot id length</b> - used when the following occurs</p>
+                <p data-source-node="n157"> </p>
+                <ul data-source-node="n158">
+                    <li data-source-node="n159">
+                        <p data-source-node="n160">If the Lot ID for an item on the work instruction has length higher than configured on the Vocollect region, the system should strip the extra characters from beginning, and the user will be asked to speak last X characters of Lot ID configured on the region.</p>
+                        <p data-source-node="n161"> </p>
+                    </li>
+                    <li data-source-node="n162">
+                        <p data-source-node="n163">If the Lot ID length on work instruction is lesser than configured on the Vocollect region, system should check if the user spoke the entire lot ID. If the user didn’t speak the entire lot, system will display an error message. The user must then speak &amp;1 characters, else the system will accept what the user spoke.</p>
+                        <p data-source-node="n164"> </p>
+                    </li>
+                    <li data-source-node="n165">
+                        <p data-source-node="n166">If the Lot ID length on work instruction is equal to configured on the vocollect region, the system will allow user to speak entire lot ID.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p data-source-node="n167"> </p>
+        <p data-source-node="n168">Toggle Buttons </p>
+        <ul data-source-node="n169">
+            <li data-source-node="n170">
+                <p data-source-node="n171"><b data-source-node="n172">Pass Assignment</b> - indicate whether a user can choose to stop picking an in process work ID, and pass the rest of it on to another user for completion. Note that users cannot pass work during base picking or chase assignments (chase assignments are not currently supported with SCALE). Work also cannot be passed while splitting a pick.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n173">
+            <li data-source-node="n174">
+                <p data-source-node="n175"><b data-source-node="n176">Quantity Verification</b> - indicate if you want the user to verify the quantity being picked. When you have this field set to Yes, the TalkMan will ask you to verify the quantity. When this field is set to No, the TalkMan will pick the full quantity right away, unless it is a lot-controlled item. This is because the TalkMan will ask for the quantity of a lot-controlled item.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n177">
+            <li data-source-node="n178">
+                <p data-source-node="n179"><b data-source-node="n180">Allow reverse picking</b> - Indicate whether the user will be asked to choose the order of picking, either forward or reverse.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n181">
+            <li data-source-node="n182">
+                <p data-source-node="n183"><b data-source-node="n184">Automatic putaway</b> - Indicates that the system will automatically putaway items during the work execution process. This value is defaulted from the first detail record of your SCALE Vocollect-related work profile record</p>
+            </li>
+        </ul>
+        <p data-source-node="n185"> </p>
+        <h5 data-source-node="n186">5. Characteristics 3</h5>
+        <p data-source-node="n187"> </p>
+        <ul data-source-node="n188">
+            <li data-source-node="n189">
+                <p data-source-node="n190"><b data-source-node="n191">Prompt operation for container id</b> - indicate whether the TalkMan should prompt the user for the container ID when a new container is opened.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n192">
+            <li data-source-node="n193">
+                <p data-source-node="n194"><b data-source-node="n195">Deliver container at close</b> - indicate whether the TalkMan should prompt the operator to deliver the container when it is closed.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n196">
+            <li data-source-node="n197">
+                <p data-source-node="n198"><b data-source-node="n199">Pass Unit of measure</b> - indicate what unit of measure you want to use while picking. When this field is set to Lowest, the TalkMan will always use the lowest UM (such as Each). When it is set to Highest, the TalkMan will use the highest UM the system can convert the work detail to, for each Case, Pallet, etc.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n200">
+            <li data-source-node="n201">
+                <p data-source-node="n202"><b data-source-node="n203">Spoken container validation length</b> - specify the number of digits a user must speak when validating a container to put, close, or reprint labels.</p>
+                <p data-source-node="n204"> </p>
+            </li>
+            <li data-source-node="n205">
+                <p data-source-node="n206">For example </p>
+                <ul data-source-node="n207">
+                    <li data-source-node="n208">
+                        <p data-source-node="n209">If the Vocollect Container ID is 12345 and if the Spoken Container Validation Length is set to 3, then user should speak “345” to validate the container.</p>
+                    </li>
+                    <li data-source-node="n210">
+                        <p data-source-node="n211">If the Vocollect Container IDis 12345 and if the Spoken Container Validation Length is set to 20, then user should speak “12345” to validate the container since the Container ID Length is only 5 digits here.</p>
+                        <p data-source-node="n212"> </p>
+                    </li>
+                    <li data-source-node="n213">
+                        <p data-source-node="n214">NOTE: The SCALE containers are different from the Vocollect containers.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul data-source-node="n215">
+            <li data-source-node="n216">
+                <p data-source-node="n217"><b data-source-node="n218">Item reference</b> - Indicate how you want the TalkMan to handle item validation during the picking process. If there is no check digit assigned to the work ID, this field will be used to indicate whether the user needs to speak the last 5 digits of the item ID or its cross reference number.</p>
+            </li>
+        </ul>
+        <ul data-source-node="n219">
+            <li data-source-node="n220">
+                <p data-source-node="n221"><b data-source-node="n222">Allow multiple container per work id</b> - Indicate whether the user is allowed to open a new container without closing the current container. When this field is set to No, the container currently open will be closed automatically when the user tries to open a new one.</p>
+            </li>
+        </ul>
+    </body></html>

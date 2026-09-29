@@ -1,0 +1,773 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Warehouse Mobile Receiving</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56">Using Warehouse Mobile - Receiving</h1>
+        <p data-source-node="n57">Warehouse Mobile Receiving is the process of checking in and locating the product. </p>
+        <p data-source-node="n58"><i data-source-node="n59">Check in</i> is the process of adding received product on to the receiving dock. During <i data-source-node="n60">check in</i>, the system creates a receipt container to support the quantity on a receipt line; the container can include either the entire line quantity or part of the quantity. <i data-source-node="n61">Locating</i> is the process of selecting the proper storage location(s) for the checked in product.</p>
+        <p data-source-node="n62"> </p>
+        <h4 data-source-node="n63">Related Topics...</h4>
+        <p style="font-weight: normal" data-source-node="n64"><a href="b9c3ffa9a81498cb548bdb61d00ba2dd34e5bfb79695f24b28a31d26d9eb8369.html" style="font-weight: normal" data-source-node="n65">Receiving Process Summary</a>
+        </p>
+        <p style="font-weight: normal" data-source-node="n66"><a href="47a8b05e23ca9439d5e313cb9e74b7502cb87d797f589658af45959f2d4dedb5.html" style="font-weight: normal" data-source-node="n67">Receiving Setup Overview</a>
+        </p>
+        <p class="p_1" style="text-align: left;font-size: 10pt;font-style: normal;font-weight: normal" data-source-node="n68"><a href="819737ec46ea63973259964fb951c9f43b42c18355d46f4a5c9bb9992d45a21a.html" data-source-node="n69">Creating a Receipt/Receipt Line</a>
+        </p>
+        <p class="p_1" style="text-align: left;font-size: 10pt;font-style: normal;font-weight: normal" data-source-node="n70"><a href="cdd035231269b9e86ef14a592f83a10888f073e35b300f82b60fe7301b4832ee.html" data-source-node="n71">Processing Receipts</a>
+        </p>
+        <p class="p_1" style="text-align: left;font-size: 10pt;font-style: normal;font-weight: normal" data-source-node="n72"><a href="a357eac1f7ebf1b8fcf6edee90c086783da65f07d18fbdcc06236891e314cebc.html" data-source-node="n73">Checking In and Locating Product (Receipt Workbench)</a>
+        </p>
+        <p class="p_1" style="text-align: left;font-size: 10pt;font-style: normal;font-weight: normal" data-source-node="n74"><a href="1e177683ead3d4dbf24684d72666831cb828dfcf3bec8775a1997fcba8c88b69.html" data-source-node="n75">Creating/Viewing Receipt 
+ Appointments</a>
+        </p>
+        <p class="p_1" style="text-align: left;font-size: 10pt;font-style: normal;font-weight: normal" data-source-node="n76"> </p>
+        <h4 data-source-node="n77">Warehouse Mobile screens</h4>
+        <ul data-source-node="n78">
+            <li data-source-node="n79"><a href="c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.html" data-source-node="n80">Work Execution</a>
+            </li>
+            <li data-source-node="n81"><a href="b33a75f313a267b2873999318c8752e9ddbe07fbd8201653f8f3aa6b757253b5.html" data-source-node="n82">Close Container</a>
+            </li>
+            <li data-source-node="n83"><a href="4bf6394a506302ab51f0d295d2c6159739380cb3fe96ba50f65972a616dbcf87.html" data-source-node="n84">Close Putaway Group</a>
+            </li>
+            <li data-source-node="n85"><a href="e9ce2d02e2d39cac6a47697cf78ba14b45aaf87d69152dc75acae644a4ca56d2.html" data-source-node="n86">Cycle Count Work</a>
+            </li>
+        </ul>
+        <h4 data-source-node="n87">Topics Discussed</h4>
+        <ul data-source-node="n88">
+            <li data-source-node="n89"><a href="#Receive" data-source-node="n90">Receiving Workflows</a>
+                <ul data-source-node="n91">
+                    <li data-source-node="n92"><a href="#Receiving_header" data-source-node="n93">Receiving by Header-Item initiation flow</a>
+                    </li>
+                    <li data-source-node="n94"><a href="#Receiving_LP" data-source-node="n95">Receiving by License Plate initiation flow</a>
+                        <ul data-source-node="n96">
+                            <li data-source-node="n97"><a href="#Inventory_attributes" data-source-node="n98">Add Inventory Attributes</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-source-node="n99"><a href="#QuickReceive" data-source-node="n100">Quick Receive</a> </li>
+                    <li data-source-node="n101"><a href="#lot_confirm" data-source-node="n102">Lot Controlled Item check in (Header-Item initiation flow)</a>
+                    </li>
+                    <li data-source-node="n103">
+                        <p data-source-node="n104"><a href="#Lot_LP" data-source-node="n105">Lot Controlled Item check in (License Plate flow)</a>
+                        </p>
+                    </li>
+                    <li data-source-node="n106"><a href="#lot_confirm" data-source-node="n107">Confirm Lot Update</a>
+                    </li>
+                    <li data-source-node="n108"><a href="#Mutilpe_LP" data-source-node="n109">Multiple license plate check in</a>
+                    </li>
+                    <li data-source-node="n110"><a href="#Nest" data-source-node="n111">Nest During Check in</a>
+                    </li>
+                    <li data-source-node="n112"><a href="#Parent_checkin" data-source-node="n113">Check in Parent receipt container</a>
+                    </li>
+                    <li data-source-node="n114"><a href="#Multiple_reciept_line" data-source-node="n115">Multiple Receipt Lines</a>
+                    </li>
+                    <li data-source-node="n116"><a href="#Reason_code" data-source-node="n117">Reason Code and Disposition Code</a>
+                    </li>
+                    <li data-source-node="n118"><a href="#Locate" data-source-node="n119">Locate Receipt Container</a>
+                    </li>
+                    <li data-source-node="n120"><a href="#Appointment" data-source-node="n121">Check in with scheduled appointment</a>
+                    </li>
+                    <li data-source-node="n122"><a href="#Blind" data-source-node="n123">Blind Receiving</a> </li>
+                </ul>
+            </li>
+            <li data-source-node="n124"><a href="#Assign_putaway" data-source-node="n125">Assign Putaway Group.</a>
+                <ul data-source-node="n126">
+                    <li data-source-node="n127"><a href="#Receiving_putaway" data-source-node="n128">Receiving with  Putaway Group</a>
+                    </li>
+                    <li data-source-node="n129"><a href="#Assign_close_putaway" data-source-node="n130">Assign and close putaway group</a>
+                    </li>
+                </ul>
+            </li>
+            <li data-source-node="n131"><a href="#Create_WM_menu" data-source-node="n132">Create Receiving Preference using Warehouse Mobile Menu</a>
+            </li>
+            <li data-source-node="n133"><a href="#Check" data-source-node="n134">Check In and Locating Product (Warehouse Mobile)</a>
+                <ul data-source-node="n135">
+                    <li data-source-node="n136"><a href="#Execution" data-source-node="n137">Execution Method Descriptions</a>
+                    </li>
+                    <li data-source-node="n138"><a href="#Procedures" data-source-node="n139">Procedures</a>
+                    </li>
+                </ul>
+            </li>
+            <li data-source-node="n140"><a href="#Receive" data-source-node="n141">Receiving Warehouse Mobile Process Diagram</a>
+            </li>
+        </ul>
+        <p data-source-node="n142"> </p>
+        <h4 data-source-node="n143"><a name="Receive" data-source-node="n144"></a>Receiving Workflows</h4>
+        <p data-source-node="n145"> </p>
+        <p data-source-node="n146">The Receiving workflows are  described below.</p>
+        <h5 data-source-node="n147"><a name="Receiving_header" data-source-node="n148"></a>Receiving by Header-Item initiation flow</h5>
+        <p data-source-node="n149">Follow the steps for receipt check in by header-item initiation method.</p>
+        <ol data-source-node="n150">
+            <li value="1" data-source-node="n151">Tap <b data-source-node="n152">Receiving</b> to view the <b data-source-node="n153">Select receiving preference</b> screen.</li>
+            <li value="2" data-source-node="n154">Tap to select receiving preference as required. <b data-source-node="n155">Note</b>: In case default receiving preference is set in the User Profile settings, the system will not prompt user to select receiving preference.</li>
+            <li value="3" data-source-node="n156">Enter or scan the <b data-source-node="n157">Receipt ID</b>.</li>
+            <li value="4" data-source-node="n158">Tap <b data-source-node="n159">Go</b> to view the <b data-source-node="n160">Receipt Initiation</b> screen.</li>
+            <li value="5" data-source-node="n161">Enter or scan the Item to view the <b data-source-node="n162">Receipt Check In</b> screen. You can view the details of the Item such as Item ID, description, Quantity and its UOM. Optionally you can choose to change the UOM from the drop-down list.</li>
+            <li value="6" data-source-node="n163">Enter the <b data-source-node="n164">Quantity</b> and Tap <b data-source-node="n165">Go</b>. </li>
+            <li value="7" data-source-node="n166">System will prompt for  reason code and disposition code if enabled in the receiving preference. Tap <b data-source-node="n167">Go</b>.</li>
+            <li value="8" data-source-node="n168">It will re-direct to the <b data-source-node="n169">Receipt Initiation</b> screen after successful check in of the item. <ol data-source-node="n170"><li value="1" data-source-node="n171"><p data-source-node="n172">If LP assignment method is Manual, then user enters a license plate.</p></li><li value="2" data-source-node="n173"> If LP assignment method is System, the system generates license plate.</li></ol></li>
+        </ol>
+        <p data-source-node="n174">
+            <h5 data-source-node="n175">Catch-Weight Entry in Header-Item Receiving</h5>
+            <p data-source-node="n176"> </p>
+        </p>
+        <ul data-source-node="n177">
+            <li data-source-node="n178">In Warehouse Mobile, catch-weight receiving is supported in the Header-Item initiation flow.</li>
+            <li data-source-node="n179">After you enter the receipt ID, item, quantity, and any required receiving information, system proceeds to the Catch Weight Entry screen when the receipt line item is configured as a catch-weight item.</li>
+            <li data-source-node="n180">If license plate assignment is system-generated, system creates the license plate and then prompts for catch weight entry for the license plate. Select the catch weight UOM and complete the entry. If multiple license plates are created, repeat catch weight entry for each license plate.</li>
+            <li data-source-node="n181">If license plate assignment is manual, enter the license plate ID first. System then prompts for catch weight. Select the catch weight UOM and complete the entry. If multiple license plates are created, repeat these steps for each license plate.</li>
+            <li data-source-node="n182">After catch weight entry is completed, system continues the receiving flow. If the receiving preference uses check in and locate or check in and locate (immediate), the system continues into locating and, when configured, putaway work creation while preserving the captured catch weight.</li>
+        </ul>
+        <p data-source-node="n183"> </p>
+        <h5 data-source-node="n184"><a name="Receiving_LP" data-source-node="n185"></a>Receiving by License Plate initiation flow</h5>
+        <p data-source-node="n186">Follow the steps for receipt check in by License Plate initiation method.</p>
+        <ol data-source-node="n187">
+            <li value="1" data-source-node="n188">Tap <b data-source-node="n189">Receiving</b> to view the <b data-source-node="n190">Select receiving preference</b> screen.</li>
+            <li value="2" data-source-node="n191">Tap on receiving preference with license plate method.</li>
+            <li value="3" data-source-node="n192">Enter or scan the <b data-source-node="n193">License Plate</b>.</li>
+            <li value="4" data-source-node="n194">System will prompt for  reason code and disposition code if enabled in the receiving preference. Tap <b data-source-node="n195">Go</b></li>
+            <li value="5" data-source-node="n196">Tap <b data-source-node="n197">Go</b>, Receipt Check in successful message displayed.</li>
+            <li value="6" data-source-node="n198">Tap the <b data-source-node="n199">Done</b> button when checked in using the <i data-source-node="n200">Check in and Locate </i>method.</li>
+        </ol>
+        <h5 data-source-node="n201"><a name="Inventory_attributes" data-source-node="n202"></a>Add inventory attributes</h5>
+        <p data-source-node="n203">Users can add inventory attributes during receipt check in using header item and license plate initiation. </p>
+        <h6 data-source-node="n204">Configuration</h6>
+        <p data-source-node="n205">Users need to configure inventory attributes SRC file in the receiving preference. Follow the steps given below</p>
+        <ul data-source-node="n206">
+            <li data-source-node="n207">Use an existing or create a new receiving preference with Header-Item initiation.</li>
+            <li data-source-node="n208">Create a warehouse mobile screen flow using the ReceivingInventoryAttributes.json</li>
+            <li data-source-node="n209">Open the Warehouse mobile menu insight screen, and map the warehouse mobile screen flow with the receiving preference.</li>
+            <li data-source-node="n210">In case it is license plate initiation, then users need to use the ReceivingLicensePlateInventoryAttributes.json as screen flow and License Plate initiation method in the receiving preference.</li>
+        </ul>
+        <h6 data-source-node="n211">Steps</h6>
+        <ul data-source-node="n212">
+            <li data-source-node="n213">During the receipt check in, the system prompts the user to enter Inventory attributes 1 to 20.</li>
+            <li data-source-node="n214">Enter the details and Tap <b data-source-node="n215">GO</b> to save the record.</li>
+            <li data-source-node="n216">Optionally, <ul data-source-node="n217"><li data-source-node="n218">Tap <b data-source-node="n219">Go</b> to skip the inventory attribute record.</li><li data-source-node="n220">Select <b data-source-node="n221">Actions</b> &gt;&gt; <b data-source-node="n222">Done</b>  after saving one or more inventory attributes to complete check in process.</li></ul></li>
+        </ul>
+        <h5 data-source-node="n223"><a name="Receiving_LP" data-source-node="n224"></a>Receiving by Trailer ID - Item initiation flow</h5>
+        <p data-source-node="n225">Follow the steps for receipt check in by Trailer ID - Item initiation method.</p>
+        <ol data-source-node="n226">
+            <li value="1" data-source-node="n227">Tap <b data-source-node="n228">Receiving</b> to view the <b data-source-node="n229">Select receiving preference</b> screen.</li>
+            <li value="2" data-source-node="n230">Tap on receiving preference with Trailer ID - Item method.</li>
+            <li value="3" data-source-node="n231">If only one receipt for the trailer ID.<ol data-source-node="n232"><li value="1" data-source-node="n233">Enter or scan the <b data-source-node="n234">Trailer ID</b> and Tap Go. System prompts to enter the Item. Enter or scan the <b data-source-node="n235">Item ID</b> related to the Trailer.</li></ol></li>
+            <li value="4" data-source-node="n236">If there are multiple receipts for the Trailer ID.<ol data-source-node="n237"><li value="1" data-source-node="n238">Enter or scan the <b data-source-node="n239">Trailer ID</b>. System prompts to enter the item. Enter or scan the item on multiple receipts. </li><li value="2" data-source-node="n240">System displays multiple receipt lines. Select required receipt line.</li></ol></li>
+            <li value="5" data-source-node="n241">Enter the <b data-source-node="n242">Quantity</b> and Tap <b data-source-node="n243">GO</b>.</li>
+            <li value="6" data-source-node="n244">System prompts for License Plate. Enter license plate and Tap Go.</li>
+            <li value="7" data-source-node="n245">Successful receipt check in message is displayed.</li>
+        </ol>
+        <p data-source-node="n246"> </p>
+        <h5 data-source-node="n247">Receiving by Trailer ID - LP flow</h5>
+        <p data-source-node="n248">Follow the steps for receipt check in by Trailer ID - License Plate method</p>
+        <p data-source-node="n249"> </p>
+        <ol data-source-node="n250">
+            <li value="1" data-source-node="n251">Tap <b data-source-node="n252">Receiving</b> to view the <b data-source-node="n253">Select receiving preference</b> screen.</li>
+            <li value="2" data-source-node="n254">Tap on receiving preference with Trailer ID - LP method.</li>
+            <li value="3" data-source-node="n255">Enter or scan the <b data-source-node="n256">Trailer ID</b> and Tap Go. System prompts to enter the License Plate. Enter or scan the <b data-source-node="n257">License Plate</b> related to the Trailer.</li>
+            <li value="4" data-source-node="n258">System will prompt for  reason code and disposition code if enabled in the receiving preference. Tap <b data-source-node="n259">Go</b></li>
+            <li value="5" data-source-node="n260">Tap <b data-source-node="n261">Go</b>, Receipt Check in successful message displayed.</li>
+            <li value="6" data-source-node="n262">Tap the <b data-source-node="n263">Done</b> button when checked in using the <i data-source-node="n264">Check in and Locate </i>method.</li>
+        </ol>
+        <p data-source-node="n265"> </p>
+        <h5 data-source-node="n266"><a name="Header_LP" data-source-node="n267"></a>Receiving by Header - License Plate flow</h5>
+        <p data-source-node="n268">Follow the steps for receipt check in by Header - License Plate initiation method.</p>
+        <ol data-source-node="n269">
+            <li value="1" data-source-node="n270">Tap <b data-source-node="n271">Receiving</b> to view the <b data-source-node="n272">Select receiving preference</b> screen.</li>
+            <li value="2" data-source-node="n273">Tap on receiving preference with Header - License Plate method.</li>
+            <li value="3" data-source-node="n274">Enter or scan the <b data-source-node="n275">Receipt ID</b> and Tap Go.</li>
+            <li value="4" data-source-node="n276">Enter the license plate and Tap Go.<ol data-source-node="n277"><li value="1" data-source-node="n278">For lot controlled item, system prompts for Lot ID and Expiration Date.</li><li value="2" data-source-node="n279">Select the inventory status</li><li value="3" data-source-node="n280">For serial number item, system prompts for serial number.</li></ol></li>
+            <li value="5" data-source-node="n281">Prompts the user to enter disposition code and reason code (if enabled in preferences).</li>
+            <li value="6" data-source-node="n282">Click Actions &gt;&gt; Done to locate.</li>
+            <li value="7" data-source-node="n283">Successful receipt check in and locate message is displayed.</li>
+        </ol>
+        <h5 data-source-node="n284">Receiving by Item flow</h5>
+        <p data-source-node="n285">Follow the steps for receipt check in by  Item initiation method</p>
+        <ol data-source-node="n286">
+            <li value="1" data-source-node="n287">Tap <b data-source-node="n288">Receiving</b> to view the <b data-source-node="n289">Select receiving preference</b> screen.</li>
+            <li value="2" data-source-node="n290">Tap on receiving preference with Item initiation method.</li>
+            <li value="3" data-source-node="n291">Enter or scan the <b data-source-node="n292">Item</b> and Tap Go. System prompts user to select the receipt line. Select the receipt line and Tap Go.</li>
+            <li value="4" data-source-node="n293">Enter the <b data-source-node="n294">Quantity</b> and Tap <b data-source-node="n295">GO</b>.</li>
+            <li value="5" data-source-node="n296">Tap the <b data-source-node="n297">Done</b> button when checked in using the <i data-source-node="n298">Check in and Locate </i>method.</li>
+        </ol>
+        <p data-source-node="n299">The receipt line selection is displayed when the entered Item</p>
+        <ul data-source-node="n300">
+            <li data-source-node="n301">
+                <p data-source-node="n302">Is associated with multiple companies across several open receipt lines</p>
+            </li>
+            <li data-source-node="n303">
+                <p data-source-node="n304">The related item cross-reference is linked to multiple open receipt lines</p>
+            </li>
+        </ul>
+        <p data-source-node="n305"> </p>
+        <h5 data-source-node="n306"><a name="QuickReceive" data-source-node="n307"></a>Quick Receive</h5>
+        <p data-source-node="n308"> </p>
+        <p data-source-node="n309"><b data-source-node="n310">Quick Receive - User</b>
+        </p>
+        <p data-source-node="n311">Using this execution method, the system will check in container(s) that you scanned, and attempt to locate each according to the appropriate locating rule. The system will display a screen for each container displaying either the location it has located to, or asking the user to provide a location if none could be found. The system does not create putaway work using this method. Follow the steps for Quick Receive - User.  </p>
+        <ol data-source-node="n312">
+            <li value="1" data-source-node="n313">Complete the check in process and select <b data-source-node="n314">Actions</b> &gt;&gt; <b data-source-node="n315">Done</b> to view the <b data-source-node="n316">Quick Receive</b> screen.</li>
+            <li value="2" data-source-node="n317">If only one receipt container<ul data-source-node="n318"><li data-source-node="n319">Enter or scan the location. Tap <b data-source-node="n320">Go</b> and the system locates the receipt container to the location.</li></ul></li>
+            <li value="3" data-source-node="n321">If there are multiple receipt containers.<ul data-source-node="n322"><li data-source-node="n323">Enter or scan the location for the first receipt container and Tap <b data-source-node="n324">Go</b>. The system locates the receipt container and then prompts the user to enter the location for the second receipt container.</li></ul></li>
+            <li value="4" data-source-node="n325">Continue till all the receipt containers are located.</li>
+            <li value="5" data-source-node="n326">In case the Check Digit and Location verifications are configured at the location, then the system will prompt user to check digit and location verification.</li>
+        </ol>
+        <p data-source-node="n327"><b data-source-node="n328">Quick Receive - System</b>
+        </p>
+        <p data-source-node="n329">Using this execution method, the system will check in the container(s) that you enter, and attempt to locate each according to the appropriate locating rule. The system will display a screen for each container displaying either the location it has chosen to locate to, or asking the user to provide a location if none could be found. The system does not create putaway work using this method.</p>
+        <p data-source-node="n330"> </p>
+        <p data-source-node="n331">Bypass location capacity validation</p>
+        <p data-source-node="n332">Select the <b data-source-node="n333">Bypass Location Capacity Validation</b> checkbox on your Receiving Preferences, the system will ignore (bypass) the dimensions (length, width, height, weight), volume, and item location capacity validations. <a href="123b2e4aa0407f8d5354c10bf4d9a965db123b2b74b4aa76fe75818856b326b8.html" data-source-node="n334">Read for more information</a>. </p>
+        <p data-source-node="n335">The system will operate in the following way</p>
+        <ul data-source-node="n336">
+            <li data-source-node="n337">
+                <p data-source-node="n338">Quick receive - User - This validations mentioned above will always be bypassed.</p>
+            </li>
+            <li data-source-node="n339">
+                <p data-source-node="n340">Quick Receive - System - The above will be bypassed only if the user is overriding the system selected location.</p>
+            </li>
+        </ul>
+        <p data-source-node="n341">Override System Selected Location Checkbox- </p>
+        <p data-source-node="n342">When enabled the user should be able to enter an alternate putaway location (different than the system-selected location) during license plate check in (when using the Quick Receive-System execution method).</p>
+        <p data-source-node="n343">Note: You cannot use this setting when using the Quick Receive-User execution method.</p>
+        <p data-source-node="n344"> </p>
+        <p data-source-node="n345">Skip</p>
+        <p data-source-node="n346">The <b data-source-node="n347">Actions &gt;&gt; Skip</b>  navigates to the screen based on the following scenario. </p>
+        <p data-source-node="n348">When  receiving </p>
+        <ul data-source-node="n349">
+            <li data-source-node="n350">single receipt container - system navigates back to the receipt entry screen.</li>
+            <li data-source-node="n351">multiple receipt container - system navigates to the next receipt container.</li>
+        </ul>
+        <h5 data-source-node="n352"><a name="lot_controlled" data-source-node="n353"></a> Lot Controlled Item check in</h5>
+        <p data-source-node="n354"> </p>
+        <p data-source-node="n355">Lot Controlled item with Lot Template</p>
+        <p data-source-node="n356"> </p>
+        <p data-source-node="n357">When receiving a lot controlled item (header item, License Plate and Blind receiving methods), warehouse mobile will display the <b data-source-node="n358">Enter Lot</b> screen when the item's lot template is configured. This screen allows user to enter the lot information for the item.</p>
+        <ul data-source-node="n359">
+            <li data-source-node="n360">
+                <p data-source-node="n361"> The <b data-source-node="n362">Enter Lot</b> screen is displayed if the Lot controlled item is configured with lot template.</p>
+            </li>
+            <li data-source-node="n363">
+                <p data-source-node="n364">Enter <b data-source-node="n365">Lot</b> and Tap <b data-source-node="n366">Go</b>. System will prompt for the Expiration Date.</p>
+            </li>
+            <li data-source-node="n367">
+                <p data-source-node="n368">Enter <b data-source-node="n369">Expiration Date</b> and Tap <b data-source-node="n370">Go</b>. If the lot template has Auto fill is configured, then the Lot and Expiration Date field value is auto populated. Custom Date format for Expiration date is also supported for auto fill.</p>
+            </li>
+        </ul>
+        <p data-source-node="n371">
+            <p data-source-node="n372">For Lot controlled item without lot template.</p>
+            <ol data-source-node="n373">
+                <li value="1" data-source-node="n374">Lot field <ul data-source-node="n375"><li data-source-node="n376">Enter <b data-source-node="n377">Lot</b> and tap <b data-source-node="n378">Go</b>.</li></ul></li>
+                <li value="2" data-source-node="n379">Expiration Date<ul data-source-node="n380"><li data-source-node="n381">Enter the <b data-source-node="n382">Expiration Date</b> and tap <b data-source-node="n383">Go</b>. Optionally users can also tap <b data-source-node="n384">Go</b> without entering the expiration date. </li></ul></li>
+                <li value="3" data-source-node="n385">Frozen State<ul data-source-node="n386"><li data-source-node="n387">The system will prompt the frozen field. Select the <b data-source-node="n388">Yes</b> or <b data-source-node="n389">No</b>. By default system will have <b data-source-node="n390">No</b> selected. Select <b data-source-node="n391">Yes</b> and system will default the frozen inventory status to the inventory status page.</li></ul></li>
+                <li value="4" data-source-node="n392">Inventory Status<ul data-source-node="n393"><li data-source-node="n394">Select the inventory status and tap <b data-source-node="n395">Go</b>.</li></ul></li>
+            </ol>
+        </p>
+        <p data-source-node="n396">When lot is not specified for a receipt line and entering an existing lot and the <b data-source-node="n397">Lot</b> is in the <b data-source-node="n398">Frozen</b> state.</p>
+        <ul data-source-node="n399">
+            <li data-source-node="n400">In the lot entry screen, Tap <b data-source-node="n401">Go</b> and system will skip the expiration date, frozen state validation and move to the <b data-source-node="n402">Inventory Status</b> screen.</li>
+            <li data-source-node="n403">Tap <b data-source-node="n404">Go</b> and complete the receipt check in.</li>
+        </ul>
+        <p data-source-node="n405">When lot is not specified for a receipt line for an existing lot and entering an existing lot, the system will populate the default <b data-source-node="n406">Expiration date, Frozen</b> and <b data-source-node="n407">Inventory Status</b> field.</p>
+        <ul data-source-node="n408">
+            <li data-source-node="n409">In the lot entry screen, the (default date) in the Expiration date field in the Lot screen. This expiration date is defaulted from the date on the existing lot.</li>
+            <li data-source-node="n410">Tap <b data-source-node="n411">Go</b> and the <b data-source-node="n412">frozen</b> state is highlighted in the screen.</li>
+            <li data-source-node="n413">Tap <b data-source-node="n414">Go</b> and the inventory status is highlighted. Tap <b data-source-node="n415">Go</b> to check in the receipt. </li>
+        </ul>
+        <h5 data-source-node="n416"><a name="lot_confirm" data-source-node="n417"></a>Confirm Lot Update</h5>
+        <p data-source-node="n418">The confirm lot update screen is displays, in following scenarios when</p>
+        <ul data-source-node="n419">
+            <li data-source-node="n420">The expiration date is changed for existing lot.</li>
+            <li data-source-node="n421">Inventory status is changed from Frozen to Unfrozen state. </li>
+            <li data-source-node="n422">The Frozen state from No to Yes.</li>
+        </ul>
+        <p data-source-node="n423">When you change the expiration date or Frozen inventory status, system prompts for the Confirm lot update screen to verify the changes. The Confirm lot update screen displays the Lot, item, description, company, warehouse, before expiration date, after expiration date, before inventory state and After inventory state, affected location and affected containers. </p>
+        <p data-source-node="n424"> </p>
+        <h5 data-source-node="n425"><a name="Mutilpe_LP" data-source-node="n426"></a><b data-source-node="n427">Multiple license plate check in</b>
+        </h5>
+        <p data-source-node="n428">Multiple License plate entry is for the following scenarios:</p>
+        <ul data-source-node="n429">
+            <li data-source-node="n430">The item storage template is configured with Group during check in = No , then system will prompt for  multiple license plates when check in quantity has multiple UOM.</li>
+            <li data-source-node="n431">When the entered quantity splits across multiple UMs, then the system prompts for multiple license plate entry. For example, if item UMs have 1 CS = 10 EA and 1 PL = 50 EA and entered quantity is 65 EA, then system will split into 3 receipt containers. One receipt container will be for 1 PL (50 EA), one will be for 1 CS (10 EA), and one will be for 5 EA. </li>
+            <li data-source-node="n432">The item storage template is configured with Group during check in = yes, then system will prompt for  single license plate.</li>
+        </ul>
+        <p data-source-node="n433">Check in -System will prompt for lot, serial number, putaway group, reason code and disposition code for each license plate entry during check in.</p>
+        <p data-source-node="n434"> </p>
+        <p data-source-node="n435">Quantity split to multiple receipt container - When the check in quantity is spit into multiple receipt containers, then system will prompt for lot, expiration date, Frozen, serial number, inventory status, putaway group, reason code and disposition code entry for each container.</p>
+        <p data-source-node="n436"> </p>
+        <p data-source-node="n437">Quantity validation - Is performed when validate quantity option is selected in the work special handling.</p>
+        <p data-source-node="n438"> </p>
+        <h5 data-source-node="n439"><a name="Nest" data-source-node="n440"></a>Nest During Check in</h5>
+        <p data-source-node="n441"> </p>
+        <p data-source-node="n442">Select the  <b data-source-node="n443">"Nest During Check In"</b> checkbox on your Receiving Preferences and the system will nest the container(s) on a receipt into one container. At the end of the check in process, the system will display a screen where you will enter a parent license plate ID, container type and locating rule.  The system then will nest the container(s) that you checked in during that “session” into the new container. Note that you can configure security for this process to skip nesting using the "WM Receiving Container Nesting" security option.</p>
+        <ul data-source-node="n444">
+            <li data-source-node="n445">Cancel - Returns to the item entry screen. Receipt containers will be available for nesting.</li>
+            <li data-source-node="n446">Skip - Returns to the receipt ID screen and user will loose all the checked in receipt containers will not be available for nesting. Skip option is enabled security permission &gt;&gt; Whs mobile - Receipt container &gt;&gt; Skip check box.</li>
+        </ul>
+        <p data-source-node="n447"><b data-source-node="n448">Note</b>: The Check in, Check in and Locate and Quick Receive - User execution methods are supported.</p>
+        <p data-source-node="n449"> </p>
+        <h5 data-source-node="n450"><a name="Parent_checkin" data-source-node="n451"></a>Check in Parent receipt container (nested)</h5>
+        <p data-source-node="n452"> </p>
+        <p data-source-node="n453">The nested receipt containers are downloaded to the SCALE through XMLs. These XMLs may have one or more parent containers with multiple child containers.</p>
+        <p data-source-node="n454">Enter/Scan the license plate of the parent container. The system will automatically check in the child containers with the parent container.</p>
+        <p data-source-node="n455">If  the disposition code or reason code is enabled in the receiving preference, then system will prompt user to choose the disposition code/ reason code for each child container, one by one during check in.</p>
+        <p data-source-node="n456"> </p>
+        <p data-source-node="n457"><b data-source-node="n458">Note:</b> The following are supported</p>
+        <ul data-source-node="n459">
+            <li data-source-node="n460">
+                <p data-source-node="n461">Nested child containers for normal items.</p>
+            </li>
+            <li data-source-node="n462">
+                <p data-source-node="n463">Lot controlled items with lot specified in the receipt details.</p>
+            </li>
+            <li data-source-node="n464">
+                <p data-source-node="n465">Inbound and inventory tracked serial number items when the serial number is already specified in the interface.</p>
+            </li>
+            <li data-source-node="n466">
+                <p data-source-node="n467">Outbound tracked serial number items.</p>
+            </li>
+        </ul>
+        <h5 data-source-node="n468"><a name="Multiple_reciept_line" data-source-node="n469"></a>Multiple Receipt Lines</h5>
+        <p data-source-node="n470">When there are multiple receipt lines for an item, then system will show receipts lines in form of slider. For example if there are 3 receipt lines, then in the Select a Receipt Line screen, 1/3 shows the first receipt line. Slide the screen left to see the second (2/3 as mentioned in the screen).</p>
+        <p data-source-node="n471"> </p>
+        <h5 data-source-node="n472"><a name="serial_numbers" data-source-node="n473"></a><b data-source-node="n474">Serial Numbers</b>
+        </h5>
+        <p data-source-node="n475">The serial number tracked item  enables user to scan serial numbers based on the check in quantity. </p>
+        <ul data-source-node="n476">
+            <li data-source-node="n477">For one unit quantity, system will prompt you to enter the serial number only once.</li>
+            <li data-source-node="n478">For multiple quantity, system will prompt for the serial numbers for all item quantity entered. System validates for unique serial numbers and duplicate serial numbers are not allowed.</li>
+            <li data-source-node="n479">Serial number entry is automatically validated by the system. The Go button is disabled when we have a duplicate serial number entered.</li>
+            <li data-source-node="n480">System will validate the serial number tracked items that are linked to serial number templates.</li>
+        </ul>
+        <p data-source-node="n481"> </p>
+        <h5 data-source-node="n482">Inbound QC</h5>
+        <p data-source-node="n483">When an item is marked for quality control inspection in the item master, the system offers the option to route it to a QC location after check-in. Upon performing the check-in action, a prompt will appear, displaying the quantity being processed and the user can then choose to either confirm the routing of the required quantity to QC or cancel the check-in request.</p>
+        <p data-source-node="n484">Note: Header Item Flow is supported.</p>
+        <p data-source-node="n485"> </p>
+        <p data-source-node="n486">The system will prompt for QC inspection only if:</p>
+        <ul data-source-node="n487">
+            <li data-source-node="n488">
+                <p data-source-node="n489">Item is set as "Eligible" for inbound QC</p>
+            </li>
+            <li data-source-node="n490">
+                <p data-source-node="n491">receiving preference has "QC inspection active" enabled.</p>
+            </li>
+        </ul>
+        <p data-source-node="n492"> </p>
+        <p data-source-node="n493">During Receiving, the inbound QC flow is as follows.</p>
+        <p data-source-node="n494"> </p>
+        <ul data-source-node="n495">
+            <li data-source-node="n496">
+                <p data-source-node="n497">Enter <b data-source-node="n498">Receipt ID</b>, <b data-source-node="n499">Item</b>, and <b data-source-node="n500">Quantity</b> during receiving check in.</p>
+            </li>
+            <li data-source-node="n501">
+                <p data-source-node="n502">System prompts This item requires QC inspection. QC amount: &amp;1. Do you wish to continue?". Yes or No</p>
+            </li>
+            <li data-source-node="n503">
+                <p data-source-node="n504">No</p>
+                <ul data-source-node="n505">
+                    <li data-source-node="n506">
+                        <p data-source-node="n507">The prompt closes, and the user returns to the check-in page.</p>
+                    </li>
+                    <li data-source-node="n508">
+                        <p data-source-node="n509">user can Cancel, Modify Check-in Quantity, and Tap GO to proceed.</p>
+                    </li>
+                </ul>
+            </li>
+            <li data-source-node="n510">
+                <p data-source-node="n511">Yes</p>
+                <ul data-source-node="n512">
+                    <li data-source-node="n513">
+                        <p data-source-node="n514">The system processes the check-in and splits QC quantity and remaining quantity for the check-in process.</p>
+                    </li>
+                    <li data-source-node="n515">
+                        <p data-source-node="n516">On clicking Actions &gt;&gt; Done, the system submits for locating.</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <p data-source-node="n517">Note:</p>
+        <ul data-source-node="n518">
+            <li data-source-node="n519">
+                <p data-source-node="n520">QC will be triggered only the first time a receipt line is checked in.</p>
+            </li>
+            <li data-source-node="n521">
+                <p data-source-node="n522">If there are multiple receipt lines for the same item, QC will be processed per receipt line.</p>
+            </li>
+            <li data-source-node="n523">
+                <p data-source-node="n524">If no Unit of Measure (UM) is configured for Inbound QC Amount, the system will use the base UM for calculation.</p>
+            </li>
+        </ul>
+        <h5 data-source-node="n525"><a name="Reason_code" data-source-node="n526"></a>Reason Code and Disposition Code</h5>
+        <p data-source-node="n527">The reason code and disposition code can be entered by user during check in. Enable the reason and disposition code during check in using the <b data-source-node="n528">Receiving Preference&gt;&gt;Workbench</b> tab.   </p>
+        <p data-source-node="n529">The system prompts you to select the reason code and disposition code by tapping the text box or scanning.</p>
+        <ul data-source-node="n530">
+            <li data-source-node="n531">Text box - Tap on the text box and the active reason and disposition codes are displayed in the drop-down. Select and tap <b data-source-node="n532">Go</b> to complete the check in.</li>
+            <li data-source-node="n533">Scan - When you scan the item, the system will validate and populate the  disposition and reason codes. An error message will be displayed if the reason and disposition code is invalid.</li>
+        </ul>
+        <p data-source-node="n534"><b data-source-node="n535">Note: </b> System will prompt to enter the reason code. If the reason code is assigned to a disposition code, then  the disposition code field can be left blank.</p>
+        <p data-source-node="n536"> </p>
+        <h5 data-source-node="n537"><a name="Locate" data-source-node="n538"></a>Locate Receipt Containers</h5>
+        <p data-source-node="n539">Users can locate receipt containers during check-in using the license plate initiation method with Check in and locate or Check in and Locate (immediate) execution method. The license plate which is in locate pending status can be processed with locate receipt containers.</p>
+        <ul data-source-node="n540">
+            <li data-source-node="n541">Delayed Locating - When delayed locating is selected in the receipt containers locating rule, then the system will locate receipt containers to pre-locate location. </li>
+            <li data-source-node="n542">Execute putaway groups - When the execute putaway groups are selected in the receiving preference, the locate receipt container process will initiate the putaway groups.</li>
+        </ul>
+        <h5 data-source-node="n543"><a name="Appointment" data-source-node="n544"></a>Check in when receipt has an appointment in a different dock door than the one mentioned in Receiving Preferences.</h5>
+        <p data-source-node="n545">If a receipt has an appointment at a dock door which is different than the one set in the user’s receiving preferences, then the system check in to the dock door based on appointment.</p>
+        <p data-source-node="n546"> The system will update the inventory at the dock door for which the check in is completed.</p>
+        <p data-source-node="n547"> </p>
+        <h5 data-source-node="n548"><a name="Blind" data-source-node="n549"></a>Blind Receiving </h5>
+        <p data-source-node="n550">Blind receiving enables users to create a receipt directly without having to enter a receipt into the system. When the user enters the header and detail information (during the check in process), the system will create the header and detail records. This allows the user to check in quantity quickly. One can also use this method to add detail(s) to an existing receipt (as long as it is located in the user's default warehouse). Inventory attributes can also be captured during check in. Users can be set up to perform blind receiving according to their receiving preference configuration.</p>
+        <p data-source-node="n551"> </p>
+        <p data-source-node="n552"><b data-source-node="n553">Execute group putaway with Blind receiving</b>.</p>
+        <p data-source-node="n554">By selecting the Blind initiation method and selecting the Execute group putaway option, enables the Putaway groups.For example, when Blind receiving with Execute group putaway is enabled in the receiving preferences, and the checked-in license plate is located in a Putaway Group Location, the system prompts the creation of a putaway group and assigns the license plate to it.</p>
+        <p data-source-node="n555"> </p>
+        <h4 data-source-node="n556"><a name="Assign_putaway" data-source-node="n557"></a>Assign Putaway Group.</h4>
+        <p data-source-node="n558">The Assign Putaway Group screen is displayed when the receiving preference has the <i data-source-node="n559">Check In and Locate (Immediate)</i> execution method and an existing putaway group is found for the located receipt container. </p>
+        <ol data-source-node="n560">
+            <li value="1" data-source-node="n561">Tap <b data-source-node="n562">Receiving</b> to view <b data-source-node="n563">Select receiving preference</b> screen.</li>
+            <li value="2" data-source-node="n564">Tap to select receiving preference as required. <b data-source-node="n565">Note</b>: In case of default receiving preference is set in the User Profile settings, the system will not prompt user to select receiving preference.</li>
+            <li value="3" data-source-node="n566">Enter or scan the <b data-source-node="n567">Receipt ID</b>.</li>
+            <li value="4" data-source-node="n568">Tap <b data-source-node="n569">Go</b> to view <b data-source-node="n570">Receipt Initiation</b> screen.</li>
+            <li value="5" data-source-node="n571">Enter or scan the Item to view <b data-source-node="n572">Receipt Check In</b> screen. Details of the Item such as Item ID, description, Quantity and its UOM. Optionally you can choose to change the UOM from the drop-down list.</li>
+            <li value="6" data-source-node="n573">Enter the <b data-source-node="n574">Quantity</b> and tap <b data-source-node="n575">Go</b>. The Assign Putaway Group screen is displayed. Details such as Location, putaway Group ID, License Plate and Quantity is displayed.</li>
+            <li value="7" data-source-node="n576">Tap <b data-source-node="n577">Go</b> to check in and navigate back to the Receipt Initiation screen.</li>
+        </ol>
+        <h5 data-source-node="n578"><a name="Assign_LP_putaway" data-source-node="n579"></a>Assign Putaway Group with Multiple License Plates</h5>
+        <p data-source-node="n580">Checking Multiple License Plate - The system will prompt the user to assign each license plate number to a putaway group when a work has multiple license plate created for check in. After all the license plate has been checked in, then the Assign Putaway screen will be displayed.</p>
+        <p data-source-node="n581"> </p>
+        <p data-source-node="n582">Check in Multiple license plate for multiple putaway groups - When we have multiple License Plate created for a work, then each LP can be assigned to different putaway group. </p>
+        <p data-source-node="n583"> </p>
+        <p data-source-node="n584">Check in multiple License plate for multiple groups (Putaway Configuration different) - Multiple LP check in is allowed in a scenario, where each putaway location group has been configured with different group assignment id and group id. Also the group id  can be same for all putaway group location. Usually you will have the following scenario</p>
+        <ul data-source-node="n585">
+            <li data-source-node="n586">Manual Group ID assignment</li>
+            <li data-source-node="n587">Manual group id assignment without verification</li>
+            <li data-source-node="n588">System group id assignment without verification</li>
+            <li data-source-node="n589">System group id assignment with verify group ID</li>
+        </ul>
+        <h5 data-source-node="n590"><a name="Receiving_putaway" data-source-node="n591"></a>Receiving with  Putaway Group</h5>
+        <p data-source-node="n592"> The Assign Putaway Group screen will prompt for a new putaway group ID in the following scenarios.</p>
+        <ul data-source-node="n593">
+            <li data-source-node="n594">
+                <p data-source-node="n595">Assigning a putaway group will only prompt for a putaway group id when a putaway group is not found during locating and the group assignment method is Manual. If System group assignment method, then a putaway group id is auto generated.</p>
+            </li>
+            <li data-source-node="n596">
+                <p data-source-node="n597">Assigning a putaway group will prompt the user to verify the putaway group id for new or existing putaway group when Verify group id is checked on the Putaway location group configuration. This holds good for Manual and System group assignment method.</p>
+            </li>
+        </ul>
+        <p data-source-node="n598">Perform the following steps</p>
+        <ol data-source-node="n599">
+            <li value="1" data-source-node="n600">Tap <b data-source-node="n601">Receiving</b> to view the <b data-source-node="n602">Select receiving preference</b> screen.</li>
+            <li value="2" data-source-node="n603">Tap to select receiving preference as required. <b data-source-node="n604">Note</b>: In case a default receiving preference is set in the User Profile settings, the system will not prompt user to select receiving preference.</li>
+            <li value="3" data-source-node="n605">Enter or scan the <b data-source-node="n606">Receipt ID</b>.</li>
+            <li value="4" data-source-node="n607">Tap <b data-source-node="n608">Go</b> to view the <b data-source-node="n609">Receipt Initiation</b> screen.</li>
+            <li value="5" data-source-node="n610">Enter or scan the Item to view the <b data-source-node="n611">Receipt Check In</b> screen. You can view the details of the Item such as Item ID, description, Quantity and its UOM. Optionally you can choose to change the UOM from the drop-down list.</li>
+            <li value="6" data-source-node="n612">Tap <b data-source-node="n613">Go</b> to display the  <b data-source-node="n614">Assign Putaway Group</b> screen.</li>
+            <li value="7" data-source-node="n615">Enter the new <b data-source-node="n616">putaway Group ID</b>, and tap <b data-source-node="n617">Go</b>.</li>
+        </ol>
+        <h5 data-source-node="n618"><a name="Assign_close_putaway" data-source-node="n619"></a>Assign and close putaway group</h5>
+        <p data-source-node="n620"> </p>
+        <p data-source-node="n621">In the <b data-source-node="n622">Assign Putaway Group</b> screen, tap <b data-source-node="n623">Actions</b> &gt;&gt;<b data-source-node="n624">Assign and Close</b> to assign a license plate to the putaway group and then close the putaway group. We use this action when you are checking in the last license plate and simultaneously close the open putaway group.</p>
+        <p data-source-node="n625"> </p>
+        <p data-source-node="n626">Multiple putaway groups can be opened and closed when there a multiple license plates assigned to a putaway group and the quantity on the LPs exceed the maximum units.</p>
+        <p data-source-node="n627"> </p>
+        <p data-source-node="n628">Auto Close Putaway Group - When the Maximum Units value is specified in the Putaway Location Group configuration, the putaway group will automatically close once the total license plate quantity assigned to it equals or exceeds the specified Maximum Units limit.</p>
+        <p data-source-node="n629"> </p>
+        <h4 data-source-node="n630"><a name="Create_WM_menu" data-source-node="n631"></a>Create Receiving Preference using Warehouse Mobile Menu</h4>
+        <p data-source-node="n632"> </p>
+        <p data-source-node="n633">A new receiving preference can be created using the Warehouse Mobile menu insight screen. Read Create Warehouse Mobile menu.</p>
+        <p data-source-node="n634"> </p>
+        <p data-source-node="n635">New receiving preference will be added under the Receiving Menu. The following SRC screen flow can be set for the following</p>
+        <ul data-source-node="n636">
+            <li data-source-node="n637">Receiving 30 - Receiving preference initiation method is Header-Item, then this will be set as SRC identifier.</li>
+            <li data-source-node="n638">Receiving via License Plate (50) - Receiving preference for initiation method is License Plate.</li>
+            <li data-source-node="n639">Null - if the receiving preference is other than Header item or license initiated method.</li>
+        </ul>
+        <p data-source-node="n640">Note: When the system is upgraded, then these existing receiving preference will be retained in the warehouse mobile menu. </p>
+        <p data-source-node="n641"> </p>
+        <h4 data-source-node="n642"><a name="Check" data-source-node="n643"></a>Check In and Locating Product (Warehouse Mobile)</h4>
+        <p data-source-node="n644"> </p>
+        <p data-source-node="n645">During check in, the system accepts product on the receiving dock into 
+ the warehouse. Using the warehouse mobile application, it allows you to locate the 
+ product automatically after check in. The procedures below describe this 
+ process.</p>
+        <p data-source-node="n646"> </p>
+        <p data-source-node="n647"><b data-source-node="n648">NOTE:</b> You cannot check in the receipt lines after a receipt has been closed (i.e. the Closed Date is specified).  However, you can still perform functions on existing receipt containers such as check-in, locate, and unlocate.</p>
+        <h4 data-source-node="n649"> </h4>
+        <h5 data-source-node="n650"><a name="Execution" data-source-node="n651"></a>Execution Method Descriptions...<br data-source-node="n652"><br data-source-node="n653"></h5>
+        <p data-source-node="n654">The Execution Method Descriptions indicates the way you want the system to process the items that are 
+ received into the warehouse:</p>
+        <p data-source-node="n655"> </p>
+        <table style="width: 100%" data-source-node="n656">
+            <col data-source-node="n657">
+            
+            <col data-source-node="n658">
+            
+            <col data-source-node="n659">
+            
+            <col data-source-node="n660">
+            
+            <tbody data-source-node="n661">
+                <tr data-source-node="n662">
+                    <td style="font-weight: normal" data-source-node="n663">
+                        <p data-source-node="n664"><span style="font-size: 12pt" data-source-node="n665">Execution method</span>
+                        </p>
+                        <p data-source-node="n666"> </p>
+                        <p data-source-node="n667"> </p>
+                    </td>
+                    <td style="font-weight: normal" data-source-node="n668">
+                        <p data-source-node="n669"><span style="font-size: 12pt" data-source-node="n670">Action</span>
+                        </p>
+                        <p data-source-node="n671"> </p>
+                        <p data-source-node="n672"> </p>
+                    </td>
+                    <td style="font-weight: normal" data-source-node="n673">
+                        <p data-source-node="n674"><span style="font-size: 12pt" data-source-node="n675">Processing</span>
+                        </p>
+                        <p data-source-node="n676"> </p>
+                        <p data-source-node="n677"> </p>
+                    </td>
+                    <td style="font-weight: normal" data-source-node="n678">
+                        <p data-source-node="n679"><span style="font-size: 12pt" data-source-node="n680">Putaway Work Created</span>
+                        </p>
+                        <p data-source-node="n681"> </p>
+                        <p data-source-node="n682"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n683">
+                    <td data-source-node="n684">
+                        <p data-source-node="n685">Check In</p>
+                    </td>
+                    <td data-source-node="n686">
+                        <p class="p_6" style="color: #000000;text-align: left" data-source-node="n687">Check in only</p>
+                    </td>
+                    <td data-source-node="n688">
+                        <p class="p_6" style="text-align: left" data-source-node="n689">Done button</p>
+                    </td>
+                    <td data-source-node="n690">
+                        <p style="text-align: left" data-source-node="n691">No</p>
+                    </td>
+                </tr>
+                <tr data-source-node="n692">
+                    <td data-source-node="n693">
+                        <p data-source-node="n694">Check In and Locate</p>
+                    </td>
+                    <td data-source-node="n695">
+                        <p data-source-node="n696">Check in, locate</p>
+                    </td>
+                    <td data-source-node="n697">
+                        <p data-source-node="n698">Done button</p>
+                    </td>
+                    <td data-source-node="n699">
+                        <p data-source-node="n700">Yes (if configured)</p>
+                    </td>
+                </tr>
+                <tr data-source-node="n701">
+                    <td data-source-node="n702">
+                        <p data-source-node="n703">Check In and Locate (Immediate)</p>
+                    </td>
+                    <td data-source-node="n704">
+                        <p data-source-node="n705">Check in, Locate</p>
+                    </td>
+                    <td data-source-node="n706">
+                        <p data-source-node="n707">Immediate execution</p>
+                    </td>
+                    <td data-source-node="n708">
+                        <p data-source-node="n709">Yes (if Configured)</p>
+                    </td>
+                </tr>
+                <tr data-source-node="n710">
+                    <td data-source-node="n711">
+                        <p data-source-node="n712">Quick Receive (User)</p>
+                    </td>
+                    <td data-source-node="n713">
+                        <p data-source-node="n714">Check in, Locate</p>
+                    </td>
+                    <td data-source-node="n715">
+                        <p data-source-node="n716">Immediate execution</p>
+                    </td>
+                    <td data-source-node="n717">
+                        <p data-source-node="n718">No</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-source-node="n719"> </p>
+        <h5 data-source-node="n720"><a name="Procedures" data-source-node="n721"></a>Procedures</h5>
+        <p data-source-node="n722"> </p>
+        <p data-source-node="n723">1. Sign in to Warehouse Mobile, 
+ and tap <b data-source-node="n724">Receiving</b> in the main menu screen.</p>
+        <p data-source-node="n725"> </p>
+        <p data-source-node="n726">2. Select Receiving Preference: Select and <b data-source-node="n727">Tap</b>
+ the receiving preference you want to use for this session. 
+ Note that the system will automatically load a preference that is associated 
+ with your user profile record. Receiving preferences shown on the Select Receiving Preferences selection screen can be authorized by the user from the Receiving Preference configuration screen.</p>
+        <p data-source-node="n728"> </p>
+        <p data-source-node="n729">3. Receipt Initiation Screen: The system 
+ will display a screen to start the check in process, depending 
+ on the initiation method defined in your receiving preference record: </p>
+        <p data-source-node="n730"> </p>
+        <table style="width: 100%" data-source-node="n731">
+            <col data-source-node="n732">
+            
+            <col data-source-node="n733">
+            
+            <tbody data-source-node="n734">
+                <tr data-source-node="n735">
+                    <td style="font-weight: normal" data-source-node="n736">
+                        <p data-source-node="n737"><span style="font-size: 12pt" data-source-node="n738">Initiation Method</span>
+                        </p>
+                        <p data-source-node="n739"> </p>
+                        <p data-source-node="n740"> </p>
+                    </td>
+                    <td style="font-weight: normal" data-source-node="n741">
+                        <p data-source-node="n742"><b style="font-size: 12pt" data-source-node="n743">Value(s) User Enters</b>
+                        </p>
+                        <p data-source-node="n744"> </p>
+                        <p data-source-node="n745"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n746">
+                    <td data-source-node="n747">
+                        <p data-source-node="n748">Header-Item</p>
+                        <p data-source-node="n749"> </p>
+                    </td>
+                    <td data-source-node="n750">
+                        <p class="p_6" style="color: #000000;text-align: left" data-source-node="n751">Receipt ID</p>
+                        <p class="p_6" style="color: #000000;text-align: left" data-source-node="n752"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n753">
+                    <td data-source-node="n754">
+                        <p data-source-node="n755">License Plate</p>
+                        <p data-source-node="n756"> </p>
+                    </td>
+                    <td data-source-node="n757">
+                        <p data-source-node="n758">License Plate ID</p>
+                        <p data-source-node="n759"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n760">
+                    <td data-source-node="n761">
+                        <p data-source-node="n762">Header - License Plate</p>
+                    </td>
+                    <td data-source-node="n763">
+                        <p data-source-node="n764">Receipt ID</p>
+                        <p data-source-node="n765"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n766">
+                    <td data-source-node="n767">
+                        <p data-source-node="n768"> </p>
+                        <p data-source-node="n769">Trailer ID - Item</p>
+                    </td>
+                    <td data-source-node="n770">
+                        <p data-source-node="n771">Trailer ID</p>
+                    </td>
+                </tr>
+                <tr data-source-node="n772">
+                    <td data-source-node="n773">
+                        <p data-source-node="n774">Item</p>
+                    </td>
+                    <td data-source-node="n775">
+                        <p data-source-node="n776">Item ID</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-source-node="n777"> </p>
+        <p data-source-node="n778">Both these initiation methods support the serial number entry and confirm lot update process.</p>
+        <p data-source-node="n779"> </p>
+        <p data-source-node="n780">4. Item Cross Reference: (If cross references are used) when an item cross reference is entered in place of the item, the system will check in the receipt line associate with the item cross reference.</p>
+        <p data-source-node="n781"> </p>
+        <p data-source-node="n782">5. Main Check In Screen: Show the quantity and correct unit of measure for the product you want to check in. If there is an Item Unit of Measure record for the item you are checking in, the Item UOM field will indicate the conversion quantity next to a unit(s) of measure.</p>
+        <p data-source-node="n783"> </p>
+        <p data-source-node="n784">6. Start Check In/Locating Process: Tap GO. The system will check in the product. If there are multiple receipt lines for an item, then the system will prompt the user to select the receipt lines one by one.</p>
+        <p data-source-node="n785"> </p>
+        <p data-source-node="n786">7. Validations:  If Validations are configured, ensure you enter the following details</p>
+        <ul data-source-node="n787">
+            <li class="li_1" data-source-node="n788">
+                <p data-source-node="n789">License Plate Id: System will prompt for the license plate ID that you want to associate with this checked-in item. Enter the License Plate ID and tap Go. The system will create License Plate ID if you do not enter one.</p>
+                <p data-source-node="n790"> </p>
+            </li>
+            <li data-source-node="n791">
+                <p data-source-node="n792">Check in Verification: System will hide open quantity on the Check in screen when quantity verification is checked on work special handing for the receiving preference's work type</p>
+                <p data-source-node="n793"> </p>
+            </li>
+            <li data-source-node="n794">
+                <p data-source-node="n795">Check in License Plate: During check in, the user can be prompted to enter multiple license plate based on the item storage template group. for example, If the flag is set to No, then  during checking in multiple (3 cases) Unit of measure (UM), then system will prompt the user to enter three License plate. The check in quantity is also displayed when the system prompts for the license plate number.</p>
+                <p data-source-node="n796"> </p>
+            </li>
+            <li data-source-node="n797">
+                <p data-source-node="n798">Lot Controlled: During check in, if the Lot is not configured at the receipt line, then system will prompt to enter Lot ID. </p>
+                <ul data-source-node="n799">
+                    <li data-source-node="n800">For Header - Item method -On receipt check in, the system will prompt user  to manually generate LP. </li>
+                    <li data-source-node="n801">For License Plate method - On receipt check in, enter the LP for the receipt container.</li>
+                </ul>
+                <blockquote data-source-node="n802">
+                    <p data-source-node="n803">The system will then prompt the following for lot controlled item</p>
+                    <ul data-source-node="n804">
+                        <li data-source-node="n805">Lot ID</li>
+                        <li data-source-node="n806">Expiration Date</li>
+                        <li data-source-node="n807">Frozen</li>
+                        <li data-source-node="n808">Inventory Status</li>
+                    </ul>
+                </blockquote>
+            </li>
+        </ul>
+        <h4 data-source-node="n809">Notes</h4>
+        <ul data-source-node="n810">
+            <li data-source-node="n811">The select receiving preference screen lists all the authorized receiving preferences. </li>
+            <li data-source-node="n812">Header Item and License Plate Initiation method preferences are listed.</li>
+            <li data-source-node="n813">Validation error message are displayed to the user when the action performed is not authorized.</li>
+            <li data-source-node="n814">Tap information icon  for Item and Quantity label details screen.</li>
+            <li data-source-node="n815">Change the UM before checking in by tapping the drop-down list. The available UM for the item will be listed for selection.<ul data-source-node="n816"><li data-source-node="n817">The default storage template UM is displayed for Item that do not have UM defined. Also in case if there is only one UM defined, then the drop-down list is disabled for selection.</li></ul></li>
+            <li data-source-node="n818">Optionally choose to verify quantity while receiving. <ul data-source-node="n819"><li data-source-node="n820">Select Verify quantity in Work Special handling for the work type on the user receiving screen. In such a scenario , the Quantity label is hidden in the Receipt Check in screen</li><li data-source-node="n821">When Verify Quantity is not selected or Work special handling does not exist for receiving preference, then Quantity label is displayed in the Receipt Check in screen.</li></ul></li>
+        </ul>
+        <p data-source-node="n822"> </p>
+        <h4 data-source-node="n823"><a name="Receiving" data-source-node="n824"></a>Receiving Warehouse Mobile Process Diagram</h4>
+        <p data-source-node="n825"> </p>
+        <p data-source-node="n826"> </p>
+        <p data-source-node="n827">
+            <img src="../source/assets/4bc794cdac41426944a0e12ee259db832868df4eb40db746126de220843c09f2.png" loading="eager" data-source-node="n828">
+        </p>
+        <h4 data-source-node="n829">Receiving Process Description</h4>
+        <p data-source-node="n830"> </p>
+        <p data-source-node="n831">Receiving has two key components, which can be performed in Warehouse Mobile application as well as from the main server application: </p>
+        <p data-source-node="n832">Check in is the process of making received product inventory. During check in, the system creates a receipt container to support the quantity on a receipt line; the container can include either the entire line quantity or part of the quantity. Locating is the process of selecting the appropriate storage location(s) for the checked in product.</p>
+        <p data-source-node="n833"> </p>
+        <p data-source-node="n834">The important process steps are highlighted by numbers in the diagram.</p>
+        <p data-source-node="n835"> </p>
+        <h5 data-source-node="n836">1. Sign in to Warehouse Mobile</h5>
+        <p data-source-node="n837">User signs into the Warehouse Mobile application in the device. The user is now ready to receive items at the dock and check in the products and locate to inventory locations in the warehouse.</p>
+        <p data-source-node="n838"> </p>
+        <h5 data-source-node="n839">2. Choosing Initiating method for Receipts</h5>
+        <p data-source-node="n840">The user will have to choose the method for receiving process. The following are the initiation methods</p>
+        <p data-source-node="n841"> </p>
+        <p data-source-node="n842">Header - Item: In this method, the system prompts for receipt and then the user chooses the item they want to receive.</p>
+        <p data-source-node="n843"> </p>
+        <p data-source-node="n844">License plate: In this method, the system will ask for a license plate ID, and then the user can check in and locate or check in.</p>
+        <p data-source-node="n845"> </p>
+        <h5 data-source-node="n846">3. Check in Information</h5>
+        <p data-source-node="n847">The system will prompt the user to enter the item that they want to check in. If an item has a cross-reference, the user will additionally have to select the item that they want to check in. The system will try to verify if this item has open quantity on the receipt ID. If it does, the system will continue to process the check in. If it does not, the system will return to the item entry screen. If there are multiple receipt lines for an item, then the system will prompt the user to select the receipt lines one by one.</p>
+        <p data-source-node="n848"> </p>
+        <h5 data-source-node="n849">4. Apply Special handling configuration to item and verifying the quantity</h5>
+        <p data-source-node="n850">The system will reference any work special handling record, in order to identify any unique handling requirements of this item. A special handling record defines processing validations or restrictions required for a certain item. In receiving, typically one would use this type of record to assign a quantity verification to an item.</p>
+        <p data-source-node="n851"> </p>
+        <p data-source-node="n852">The system will then ask for the user to enter the quantity that they want to check in. After the user enters this quantity, the system will verify that the quantity entered is a valid for the receipt ID.</p>
+        <p data-source-node="n853"> </p>
+        <h5 data-source-node="n854">5. System assigns a license plate ID</h5>
+        <p data-source-node="n855">The system then will make a decision as to how it will assign an ID to the receipt container. The license plate assignment method (on the user's receiving preference record) determines how the license plate ID will be assigned. System assignment will auto generate the license plate ID and manual assignment will prompt the user to enter a license plate ID.</p>
+        <p data-source-node="n856"> </p>
+        <p data-source-node="n857">System Generated: The system will automatically generate a license plate ID and create the container.</p>
+        <ul data-source-node="n858">
+            <li data-source-node="n859">If using the Header Item  method, the system will display the Item Entry Screen again (B).</li>
+            <li data-source-node="n860">If using the License Plate initiation method, the system will display the license plate entry screen (seen as step 6/3 in the diagram above).</li>
+        </ul>
+        <h5 data-source-node="n861">6. (6/3) System executes all containers.</h5>
+        <p data-source-node="n862"> </p>
+        <p data-source-node="n863">Finally, the system will begin to execute the receipt container, based on the execution method of the user's preference.</p>
+        <ul data-source-node="n864">
+            <li data-source-node="n865">If only checking in, the system will check in the container. The receiving process ends.</li>
+            <li data-source-node="n866">If checking in and locating, the system queues up the checked in containers and does not locate until user selects Done. The receiving process ends.<br data-source-node="n867"></li>
+            <li data-source-node="n868">If checking in and locating (immediate), the system will check in and locate the container(s) that you enter, using the appropriate locating rule. The system will perform this action immediately, in "real-time." The system will also create work for the putaway actions (if the Create Putaway Work for this window is checked) generated from the locating process.<br data-source-node="n869"></li>
+        </ul>
+    </body></html>

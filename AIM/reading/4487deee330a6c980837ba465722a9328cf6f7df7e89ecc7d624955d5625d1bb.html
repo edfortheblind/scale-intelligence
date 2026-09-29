@@ -1,0 +1,614 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Replenishment Process Summary: Scenarios</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/2339644490ea0efdf615ffc927e4ea91a06065fa401b7fadd3717e2bfe95791c.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><link rel="stylesheet" href="assets/2339644490ea0efdf615ffc927e4ea91a06065fa401b7fadd3717e2bfe95791c.css"><link rel="stylesheet" href="assets/2339644490ea0efdf615ffc927e4ea91a06065fa401b7fadd3717e2bfe95791c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n57">Replenishment Process Summary</h1>
+        <p data-source-node="n58"><a href="b254d4db09e26e4051dbd17a72fdac027fe6db1686788a4353a109d9882819c1.html" style="font-style: normal;color: #000000;font-weight: bold" data-source-node="n59">Functionality</a>
+        </p>
+        <p data-source-node="n60"><b data-source-node="n61">** Scenarios **</b>
+        </p>
+        <p data-source-node="n62"><a href="61f0a241aded189425d956f7a9408608bd793068a8dc510d53f5fb402c6c9b58.html" style="font-style: normal;color: #000000;font-weight: bold" data-source-node="n63">Process Flows</a>
+        </p>
+        <p data-source-node="n64"> </p>
+        <p data-source-node="n65"> </p>
+        <p data-source-node="n66"> </p>
+        <h4 data-source-node="n67">Replenishment Methods...</h4>
+        <p data-source-node="n68"> </p>
+        <p data-source-node="n69">SCALE can support several different replenishment methods, and can also support combinations of these at the same time.  Below are outlines of these different setups.
+
+</p>
+        <p data-source-node="n70"> </p>
+        <p data-source-node="n71">Click a link to access a section of this topic:</p>
+        <p data-source-node="n72">- <a href="#capacityBasedLean" data-source-node="n73">Capacity Based "Lean Time" Replenishment</a></p>
+        <p data-source-node="n74">- <a href="#capacityBasedDuringDay" data-source-node="n75">Capacity Based "Real-Time" Replenishment</a></p>
+        <p data-source-node="n76">- <a href="#standardDemandBased" data-source-node="n77">Standard Demand Based Replenishment</a></p>
+        <p data-source-node="n78">- <a href="#demandBasedOvernight" data-source-node="n79">Demand-Based Replenishment (small forward pick area and large waves overnight)</a></p>
+        <p data-source-node="n80">- <a href="#demandBasedSmallDay" data-source-node="n81">Demand-Based Replenishment (many small waves during the day)</a></p>
+        <p data-source-node="n82">- <a href="#combination" data-source-node="n83">Example Combination of Demand and Real-Time Methods</a></p>
+        <p data-source-node="n84">- <a href="#priority" data-source-node="n85">Setting Priority For Replenishment Requests</a></p>
+        <p data-source-node="n86">- <a href="#examples" data-source-node="n87">Replenishment Calculation Examples</a></p>
+        <p data-source-node="n88"> </p>
+        <p data-source-node="n89"> </p>
+        <p data-source-node="n90"> </p>
+        <h4 data-source-node="n91"><a name="capacityBasedLean" data-source-node="n92"></a>Capacity-Based "Lean-Time" Replenishment...</h4>
+        <p data-source-node="n93">This represents the basic flavor of replenishment in the system.  It is based on the capacity of a location compared to what is currently in the location, plus the quantity that is in transit to the location.  When that quantity falls below a configured threshold, the replenishment process creates a request to fill the location back up.  Since this replenishment method is not based on any sort of demand, it can be run at any point someone has free, or "lean," time.
+
+</p>
+        <p data-source-node="n94"> </p>
+        <h5 data-source-node="n95">Key Configuration Settings:</h5>
+        <p data-source-node="n96">- Replenishment Type (on the master record):  Item Location Capacity
+</p>
+        <p data-source-node="n97">- Replenishment Mode:  Manual (typically in most situations)
+</p>
+        <p data-source-node="n98">- Replenishment Work Creation Method (on the master record):  Automatic
+</p>
+        <p data-source-node="n99">- Item Location Assignment:  Required
+</p>
+        <p data-source-node="n100"> </p>
+        <p data-source-node="n101"> </p>
+        <p data-source-node="n102"> </p>
+        <h4 data-source-node="n103"><a name="capacityBasedDuringDay" data-source-node="n104"></a>Capacity Based "Real-Time" Replenishment...</h4>
+        <p data-source-node="n105">Since running “lean time” replenishment (as described above) typically takes a long time to complete (since it is analyzing all forward pick locations), the rate at which work can get done potentially will not meet the demand of shipments.  To resolve this dilemma, you can use a capacity-based method called "real-time" replenishment. This method represents when a pick drives a location below its threshold quantity for a replenishment, then that location is marked as eligible for replenishment.  Then you would use the real time replenishment scheduled job, which looks at all of those marked locations and attempts to replenish them. Therefore, you can run this job several times a day, whenever it is necessary.  It speeds up the overall replenishment process because as it creates work for locations that got picked from recently. However, this method has nothing to do with the <i data-source-node="n106">demand </i>of shipments coming through the system, so it sometimes tends to create work that is not very critical (since you may not have any picks coming for the items you are replenishing).</p>
+        <p data-source-node="n107"> </p>
+        <h5 data-source-node="n108">Key Configuration Settings:</h5>
+        <p data-source-node="n109">- Replenishment Type (on the master record):  Item Location Capacity
+</p>
+        <p data-source-node="n110">- Replenishment Mode:  Real-Time  </p>
+        <p data-source-node="n111">- Replenishment Work Creation Method (on the master record):  Automatic
+</p>
+        <p data-source-node="n112">- Location:  Real-Time Replenishment checkbox selected
+</p>
+        <p data-source-node="n113">- Allocate In Transit (on the Location Window): Typically selected for locations being replenished
+</p>
+        <p data-source-node="n114">- Item Location Assignment:  Required
+</p>
+        <p data-source-node="n115"> </p>
+        <p data-source-node="n116"> </p>
+        <p data-source-node="n117"> </p>
+        <h4 data-source-node="n118"><a name="standardDemandBased" data-source-node="n119"></a>Standard Demand-Based Replenishment...</h4>
+        <p data-source-node="n120">In order to tie what is being replenished back to what needs to be shipped, SCALE features the demand-based replenishment method.  This can be based on demand from the entire shipment pool, or just within the specific wave you are running.  The replenishment process runs identically for both; the only difference is which shipments the system will consider in the demand. When this replenishment method runs, the system creates requests for the quantity needed (according to the shipment details) that is not already in the forward pick area.  The main limitation here is that if your permanent forward pick location is not large enough to hold all of the demand, the only thing that the replenishment process does is try to find an empty location to put the excess quantity. The system requires everything to be brought forward at once.  This will work your warehouse has a large forward pick area, and all of your locations are not assigned as permanent locations.</p>
+        <p data-source-node="n121"> </p>
+        <h5 data-source-node="n122">Key Primary Configuration Settings:</h5>
+        <p data-source-node="n123">- Replenishment Type (on the master record):  Demand from Wave or Demand from Pool
+</p>
+        <p data-source-node="n124">- Replenishment Mode:  Wave or Manual
+</p>
+        <p data-source-node="n125">- Replenishment Work Creation Method (on the master record):  Automatic
+</p>
+        <p data-source-node="n126">- Allocate In Transit (on the Location Window):  Typically selected for locations being replenished</p>
+        <p data-source-node="n127">- Item Location Assignment:  Not required, but generally does exist
+</p>
+        <p data-source-node="n128"> </p>
+        <p data-source-node="n129"> </p>
+        <p data-source-node="n130"> </p>
+        <h4 data-source-node="n131"><a name="demandBasedOvernight" data-source-node="n132"></a>Demand-Based Replenishment (small forward pick area, running large waves overnight)...
+</h4>
+        <p data-source-node="n133"> In the case where your warehouse runs large waves overnight (but has a small forward pick area), there could be demand to fill the forward pick location beyond what it is capable of holding.  When there is no more space in that location, the system will create more requests for that location, but not create work yet.  That way, the inventory is allocated and “queued up” to come forward to the location when there is space.  Once the location gets picked below its minimum threshold, the next replenishment request gets marked for work creation.  Then there is a scheduled job that will wake up whenever it is configured to, and create work for those requests that have been marked.
+</p>
+        <p data-source-node="n134"> </p>
+        <h5 data-source-node="n135">Key Primary Configuration Settings:</h5>
+        <p data-source-node="n136">- Replenishment Type (on the master record):  Demand from Wave or Demand from Pool</p>
+        <p data-source-node="n137">- Replenishment Mode:  Wave or Manual
+</p>
+        <p data-source-node="n138">- Replenishment Create Requests for Excess Demand (on the master record):  Checked
+</p>
+        <p data-source-node="n139">- Replenishment Work Creation Method (on the master record):  Manual/Scheduled
+</p>
+        <p data-source-node="n140">- Allocate In Transit (on the Location Window):  Selected</p>
+        <p data-source-node="n141">- Item Location Assignment:  Required
+</p>
+        <p data-source-node="n142"> </p>
+        <p data-source-node="n143"> </p>
+        <p data-source-node="n144"> </p>
+        <h4 data-source-node="n145"><a name="demandBasedSmallDay" data-source-node="n146"></a>Demand-Based Replenishment (running many small waves during the day)...</h4>
+        <p data-source-node="n147">In the case where a customer runs many small waves during the course of a day (and the demand for a given item builds up over time),  the replenishment process will create a small replenishment just for just the quantity that is needed on that wave.  If multiple waves require the same item over and over, this can make for a lot of small replenishments from the same location to the same location throughout the day. In SCALE, you can consolidate replenishment quantities with existing requests.  Therefore, if multiple waves run one after another, they will continue to add to the existing replenishment request for a given item.  Once the scheduled job for creating work wakes up, it will take all requests that are marked for work creation at that time and it will create work for them.  This will make for larger replenishment runs to satisfy the demand across all waves (that have run since the last time the work creation scheduled job ran).
+</p>
+        <p data-source-node="n148"> </p>
+        <h5 data-source-node="n149">Key Primary Configuration Settings:</h5>
+        <p data-source-node="n150">- Replenishment Type (on the master record):  Demand from Wave or Demand from Pool
+</p>
+        <p data-source-node="n151">- Replenishment Mode:  Wave
+</p>
+        <p data-source-node="n152">- Replenishment Consolidate with Existing Requests (on the master record):  Checked
+</p>
+        <p data-source-node="n153">- Replenishment Work Creation Method (on the master record):  Manual/Scheduled
+</p>
+        <p data-source-node="n154">- Replenishment Strategy (on the master record):  Round Up
+</p>
+        <p data-source-node="n155">- Allocate In Transit (on the Location Window):  Selected</p>
+        <p data-source-node="n156">- Item Location Assignment:  Not required, but typically does exist
+</p>
+        <p data-source-node="n157"> </p>
+        <p data-source-node="n158"> </p>
+        <p data-source-node="n159"> </p>
+        <h4 data-source-node="n160"><a name="combination" data-source-node="n161"></a>Combination Approach (using Demand-Based and Real-Time in concert in your warehouse)...</h4>
+        <p data-source-node="n162">Also, you can use a combination of methods to achieve the desired replenishment results. Suppose you run a large wave at night for scheduled shipments, and then run several smaller waves during the day for same day shipping.  In addition, you want to create replenishment requests for any item that is running short in the forward area, but want to create those at a lower priority so they can be done whenever someone gets a chance.  To configure this, you would use the setup outlined below:</p>
+        <p data-source-node="n163"> </p>
+        <h5 data-source-node="n164">Key Primary Configuration Settings:</h5>
+        <p data-source-node="n165"><u data-source-node="n166">Work Types</u>
+        </p>
+        <p data-source-node="n167">- Demand Replenishment: Priority 10
+</p>
+        <p data-source-node="n168">- Off Time Replenishment: Priority 90
+</p>
+        <p data-source-node="n169"> </p>
+        <p data-source-node="n170"><u data-source-node="n171">Locations
+</u>
+        </p>
+        <p data-source-node="n172">- Real Time Replenishment checked on all forward locations
+</p>
+        <p data-source-node="n173"> </p>
+        <p data-source-node="n174"><u data-source-node="n175">"Demand-Based" Replenishment Master</u>
+        </p>
+        <p data-source-node="n176">- Type:  Demand from Wave</p>
+        <p data-source-node="n177">- Mode:  Wave
+</p>
+        <p data-source-node="n178">- Create Requests for Excess Demand:  Checked
+</p>
+        <p data-source-node="n179">- Consolidate with Existing Requests:  Checked
+</p>
+        <p data-source-node="n180">- Work Creation Method:  <i data-source-node="n181">Manual/Scheduled
+</i></p>
+        <p data-source-node="n182">- Strategy:  Round Up
+</p>
+        <p data-source-node="n183"> </p>
+        <p data-source-node="n184"><u data-source-node="n185">"Demand-Based" Work Creation Master
+</u>
+        </p>
+        <p data-source-node="n186">- Replenishment Data Selection:  Select Replenishment Master–Demand
+</p>
+        <p data-source-node="n187">- Work Type:  Demand Replenishment
+</p>
+        <p data-source-node="n188"> </p>
+        <p data-source-node="n189"><u data-source-node="n190">"Real-Time" Replenishment Master</u>
+        </p>
+        <p data-source-node="n191">- Type: Item Location Capacity</p>
+        <p data-source-node="n192">- Mode: Real Time
+</p>
+        <p data-source-node="n193">- Consolidate with Existing Requests: Not Checked
+</p>
+        <p data-source-node="n194">- Work Creation Method:  Automatic
+</p>
+        <p data-source-node="n195">- Strategy: Fill Location
+</p>
+        <p data-source-node="n196"> </p>
+        <p data-source-node="n197"><u data-source-node="n198">"Real Time" Work Creation Master
+</u>
+        </p>
+        <p data-source-node="n199">- Replenishment Data Selection:  Select Replenishment Master-Real Time
+</p>
+        <p data-source-node="n200">- Work Type:  Off time replenishment
+</p>
+        <p data-source-node="n201"> </p>
+        <p data-source-node="n202"><u data-source-node="n203">Location Window</u>
+        </p>
+        <p data-source-node="n204">- Allocate In Transit: Selected
+</p>
+        <p data-source-node="n205"> </p>
+        <p data-source-node="n206">In this scenario, the large wave would run overnight.  All demand from that wave would generate replenishment requests and get allocated to the shipments in that wave.  Some locations would get multiple requests created for them.  When the scheduled job for work creation runs, those locations where this was the only open replenishment request would get work created.  This would all be at priority 10 so that it would get done right away.</p>
+        <p data-source-node="n207"> </p>
+        <p data-source-node="n208">As small waves ran during the day, they would continue to allocate against what was marked to be replenished.  As the demand exceeded what had requests created already, new requests would be written.  If there was “room” on the existing requests for the quantity, the quantity would be added to the existing requests (because of the consolidate setting being active for this method).  As picking was done, any pick that drove the location quantity below the threshold would trigger an existing replenishment request to be marked for work creation. Work Creation would run periodically via a scheduled job to create concise work units for the requests that had been marked.
+
+</p>
+        <p data-source-node="n209"> </p>
+        <p data-source-node="n210">In the case where no open replenishment requests existed for the location, and a pick drove the location below its min threshold, the system would mark that location for real time replenishment.  Then, when the real-time replenishment job runs, the system will create replenishment requests for that location and create work right away.  The work would get created at a priority 90 so that it would be done when there are no other outstanding replenishments.</p>
+        <p data-source-node="n211"> </p>
+        <p data-source-node="n212"> </p>
+        <p data-source-node="n213"> </p>
+        <h4 data-source-node="n214"><a name="priority" data-source-node="n215"></a>Setting Priorities For Replenishment Requests...</h4>
+        <p data-source-node="n216">If you are using different replenishment types for your warehouse, the following indicates how you would use the Priority setting on the work type record to make sure that the system runs your replenishment types in the correct order. For example, suppose you want the system to attempt to create work for demand replenishment before real-time replenishment. You would first create a work type record for demand replenishment with a priority of 1. Next, you would create a work type record for real-time replenishment with a priority of 99. You would then tie these work types to valid work creation masters. The system would then process these in priority order, with the first being demand replenishment. So, if a location currently has multiple replenishment requests (of different types) outstanding, then the system can create work based on priority, so that the more critical replenishment requests are processed first.</p>
+        <p data-source-node="n217"> </p>
+        <p data-source-node="n218"> </p>
+        <p data-source-node="n219"> </p>
+        <h4 data-source-node="n220"><a name="examples" data-source-node="n221"></a>Replenishment Calculation Examples...</h4>
+        <p data-source-node="n222"> </p>
+        <p style="font-style: italic" data-source-node="n223">EA = Each</p>
+        <p style="font-style: italic" data-source-node="n224">CS = Case</p>
+        <p style="font-style: italic" data-source-node="n225">PL = Pallet</p>
+        <p data-source-node="n226"> </p>
+        <p data-source-node="n227"><u data-source-node="n228">EXAMPLE 1 </u>
+        </p>
+        <p data-source-node="n229">Replenishment Increment = CS</p>
+        <p data-source-node="n230"> </p>
+        <p data-source-node="n231">Item Unit of Measure =</p>
+        <table style="margin-left: 0;margin-right: auto" class="TableStyle_Basic TableStyle-Basic" cellspacing="0" data-source-node="n232">
+            <col style="width: 117px" class="Column-Column1" data-source-node="n233">
+            <col style="width: 120px" class="Column-Column1" data-source-node="n234">
+            <tbody data-source-node="n235">
+                <tr class="Body-Body1" data-source-node="n236">
+                    <td style="font-size: 10pt;font-weight: bold;text-align: center" class="BodyE-Column1-Body1" data-source-node="n237"><span style="font-weight: normal" data-source-node="n238">Unit of Measure</span>
+                    </td>
+                    <td style="font-size: 10pt;font-weight: bold;text-align: center" class="BodyD-Column1-Body1" data-source-node="n239"><span style="font-weight: normal" data-source-node="n240">Conversion Qty</span>
+                    </td>
+                </tr>
+                <tr class="Body-Body1" data-source-node="n241">
+                    <td style="font-size: 10pt;text-align: center" class="BodyE-Column1-Body1" data-source-node="n242">EA</td>
+                    <td style="font-size: 10pt;text-align: center" class="BodyD-Column1-Body1" data-source-node="n243">1</td>
+                </tr>
+                <tr class="Body-Body1" data-source-node="n244">
+                    <td style="font-size: 10pt;text-align: center" class="BodyE-Column1-Body1" data-source-node="n245">CS</td>
+                    <td style="font-size: 10pt;text-align: center" class="BodyD-Column1-Body1" data-source-node="n246">12</td>
+                </tr>
+                <tr class="Body-Body1" data-source-node="n247">
+                    <td style="font-size: 10pt;text-align: center" class="BodyB-Column1-Body1" data-source-node="n248">PL</td>
+                    <td style="font-size: 10pt;text-align: center" class="BodyA-Column1-Body1" data-source-node="n249">288</td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-source-node="n250"> </p>
+        <p data-source-node="n251">Replenishment process determines a need in the active location of 38.
+
+</p>
+        <p data-source-node="n252"> </p>
+        <p data-source-node="n253">Calculated Replenishment Quantity = 48.</p>
+        <p data-source-node="n254">Since the system must replenish a full case, it must bring forward a full case quantity that is equal to or greater than the needed quantity.  Since 38 is more than 3 cases, the system needs to bring forward 4 cases which is a quantity of 48.</p>
+        <p data-source-node="n255"> </p>
+        <p data-source-node="n256"> </p>
+        <p data-source-node="n257"><u data-source-node="n258">EXAMPLE 2</u>
+        </p>
+        <p data-source-node="n259">Item Criteria = ITEM_CLASS = "Food"</p>
+        <p data-source-node="n260"> </p>
+        <p data-source-node="n261">Location Criteria = LOCATING_ZONE = "CF"</p>
+        <p data-source-node="n262"> </p>
+        <p data-source-node="n263">Inventory = </p>
+        <table style="margin-left: 0;margin-right: auto" class="TableStyle_Basic TableStyle-Basic" cellspacing="0" data-source-node="n264">
+            <col style="width: 75px" class="Column-Column1" data-source-node="n265">
+            
+            <col style="width: 75px" class="Column-Column1" data-source-node="n266">
+            
+            <col style="width: 75px" class="Column-Column1" data-source-node="n267">
+            
+            <col style="width: 75px" class="Column-Column1" data-source-node="n268">
+            
+            <col style="width: 75px" class="Column-Column1" data-source-node="n269">
+            
+            <col style="width: 75px" class="Column-Column1" data-source-node="n270">
+            
+            <col style="width: 75px" class="Column-Column1" data-source-node="n271">
+            
+            <col style="width: 75px" class="Column-Column1" data-source-node="n272">
+            
+            <tbody data-source-node="n273">
+                <tr class="Body-Body1" data-source-node="n274">
+                    <td class="BodyE-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n275">
+                        <p style="font-size: 9pt" data-source-node="n276">Loc R1</p>
+                        <p style="font-size: 9pt" data-source-node="n277">Item F1</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n278">
+                        <p style="font-size: 9pt" data-source-node="n279">Loc R2</p>
+                        <p style="font-size: 9pt" data-source-node="n280">Item F2</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n281"> </td>
+                    <td class="BodyE-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n282">
+                        <p style="font-size: 9pt" data-source-node="n283">Loc S1</p>
+                        <p style="font-size: 9pt" data-source-node="n284">Item F1</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n285">
+                        <p style="font-size: 9pt" data-source-node="n286">Loc S2</p>
+                        <p style="font-size: 9pt" data-source-node="n287">Item F2</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n288"> </td>
+                    <td class="BodyE-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n289">
+                        <p style="font-size: 9pt" data-source-node="n290">Loc C1</p>
+                        <p style="font-size: 9pt" data-source-node="n291">Item F1</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n292">
+                        <p style="font-size: 9pt" data-source-node="n293">Loc C2</p>
+                        <p style="font-size: 9pt" data-source-node="n294">Item F2</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1" data-source-node="n295">
+                    <td class="BodyB-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n296">
+                        <p style="font-size: 9pt" data-source-node="n297">Loc R3</p>
+                        <p style="font-size: 9pt" data-source-node="n298">Item D1</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n299">
+                        <p style="font-size: 9pt" data-source-node="n300">Loc R4</p>
+                        <p style="font-size: 9pt" data-source-node="n301">Item D2</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n302"> </td>
+                    <td class="BodyB-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n303">
+                        <p style="font-size: 9pt" data-source-node="n304">Loc S3</p>
+                        <p style="font-size: 9pt" data-source-node="n305">Item D1</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n306">
+                        <p style="font-size: 9pt" data-source-node="n307">Loc S4</p>
+                        <p style="font-size: 9pt" data-source-node="n308">Item D2</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n309"> </td>
+                    <td class="BodyB-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n310">
+                        <p style="font-size: 9pt" data-source-node="n311">Loc C3</p>
+                        <p style="font-size: 9pt" data-source-node="n312">Item D1</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1" style="text-align: center;font-size: 9pt" data-source-node="n313">
+                        <p style="font-size: 9pt" data-source-node="n314">Loc C4</p>
+                        <p style="font-size: 9pt" data-source-node="n315">Item D2</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-source-node="n316"> </p>
+        <p data-source-node="n317">Locations = 
+</p>
+        <p data-source-node="n318">- Beginning with R:  Locating Zone = ‘RSV’
+</p>
+        <p data-source-node="n319">- Beginning with S:  Locating Zone = ‘SHF’
+</p>
+        <p data-source-node="n320">- Beginning with C:  Locating Zone = ‘CF’
+
+</p>
+        <p data-source-node="n321"> </p>
+        <p data-source-node="n322">Items = 
+</p>
+        <p data-source-node="n323">- Beginning with F:  Item Class = ‘Food’
+</p>
+        <p data-source-node="n324">- Beginning with D:  Item Class = ‘Drink’
+</p>
+        <p data-source-node="n325"> </p>
+        <p data-source-node="n326">Locations To Be Replenished = locations C1 and C2.</p>
+        <p data-source-node="n327">These are the only locations with a locating zone of CF and items with item class of Food.
+</p>
+        <p data-source-node="n328"> </p>
+        <p data-source-node="n329"> </p>
+        <p data-source-node="n330"><u data-source-node="n331">EXAMPLE 3</u>
+        </p>
+        <p data-source-node="n332">Minimum Replenishment Threshold = 20%
+</p>
+        <p data-source-node="n333"> </p>
+        <p data-source-node="n334">Maximum Replenishment Fill Percent = 80%
+</p>
+        <p data-source-node="n335"> </p>
+        <p data-source-node="n336">Maximum Quantity = 60 EA
+</p>
+        <p data-source-node="n337"> </p>
+        <p data-source-node="n338">Replenishment Increment = CS
+</p>
+        <p data-source-node="n339"> </p>
+        <p data-source-node="n340">Replenishment Strategy = Round Up</p>
+        <p data-source-node="n341"> </p>
+        <p data-source-node="n342">Item Unit of Measure = 10 EA per CS
+</p>
+        <p data-source-node="n343"> </p>
+        <p data-source-node="n344">Current On Hand Plus In Transit = 18 EA
+</p>
+        <p data-source-node="n345"> </p>
+        <p data-source-node="n346">Calculated Replenishment Quantity = 0
+</p>
+        <p data-source-node="n347">18 EA is greater than 20% of 60.</p>
+        <p data-source-node="n348"> </p>
+        <p data-source-node="n349"> </p>
+        <p data-source-node="n350"><u data-source-node="n351">EXAMPLE 4</u>
+        </p>
+        <p data-source-node="n352">Minimum Replenishment Threshold = 20%
+</p>
+        <p data-source-node="n353"> </p>
+        <p data-source-node="n354">Maximum Replenishment Fill Percent = 80%
+</p>
+        <p data-source-node="n355"> </p>
+        <p data-source-node="n356">Maximum Quantity = 60 EA
+</p>
+        <p data-source-node="n357"> </p>
+        <p data-source-node="n358">Replenishment Increment = CS
+</p>
+        <p data-source-node="n359"> </p>
+        <p data-source-node="n360">Replenishment Strategy = Round Up
+</p>
+        <p data-source-node="n361"> </p>
+        <p data-source-node="n362">Item Unit of Measure = 10 EA per CS
+</p>
+        <p data-source-node="n363"> </p>
+        <p data-source-node="n364">Current On Hand plus In Transit = 7 EA
+</p>
+        <p data-source-node="n365"> </p>
+        <p data-source-node="n366">Calculated Replenishment Quantity = 50
+</p>
+        <p data-source-node="n367">System wants to fill to 80% of 60, which is 48.  It needs 41 to get there.  System must have increments of 10 and its rounding up, so it need 50.</p>
+        <p data-source-node="n368"> </p>
+        <p data-source-node="n369"> </p>
+        <p data-source-node="n370"><u data-source-node="n371">EXAMPLE 5</u>
+        </p>
+        <p data-source-node="n372">Minimum Replenishment Threshold = 20%
+</p>
+        <p data-source-node="n373"> </p>
+        <p data-source-node="n374">Maximum Replenishment Fill Percent = 80%</p>
+        <p data-source-node="n375"> </p>
+        <p data-source-node="n376">Maximum Quantity = 60 EA
+</p>
+        <p data-source-node="n377"> </p>
+        <p data-source-node="n378">Replenishment Increment = CS
+</p>
+        <p data-source-node="n379"> </p>
+        <p data-source-node="n380">Replenishment Strategy = Fill Location
+</p>
+        <p data-source-node="n381"> </p>
+        <p data-source-node="n382">Item Unit of Measure = 10 EA per CS
+</p>
+        <p data-source-node="n383"> </p>
+        <p data-source-node="n384">Current On Hand plus In Transit = 11 EA
+</p>
+        <p data-source-node="n385"> </p>
+        <p data-source-node="n386">Calculated Replenishment Quantity = 40
+</p>
+        <p data-source-node="n387">Fill Location overrides the threshold %, so you want to fill to 60.  If you add 40 to the 11 there, you get 51.  If you were to add 50, you would get 61 which would overfill.
+</p>
+        <p data-source-node="n388"> </p>
+        <p data-source-node="n389"> </p>
+        <p data-source-node="n390"><u data-source-node="n391">EXAMPLE 6</u>
+        </p>
+        <p data-source-node="n392">Maximum Quantity = 60 EA
+</p>
+        <p data-source-node="n393"> </p>
+        <p data-source-node="n394">Replenishment Increment = CS
+</p>
+        <p data-source-node="n395"> </p>
+        <p data-source-node="n396">Demand Units of Measure = EA
+</p>
+        <p data-source-node="n397"> </p>
+        <p data-source-node="n398">Replenishment Strategy = Round Up
+</p>
+        <p data-source-node="n399"> </p>
+        <p data-source-node="n400">Item Unit of Measure = 10 EA per CS
+ </p>
+        <p data-source-node="n401"> </p>
+        <p data-source-node="n402">Current Available = 18 EA
+</p>
+        <p data-source-node="n403"> </p>
+        <p data-source-node="n404">20 shipments in wave for this item, each with a quantity of 12
+</p>
+        <p data-source-node="n405"> </p>
+        <p data-source-node="n406">Calculated Replenishment Quantity = 30
+</p>
+        <p data-source-node="n407">Each shipment has EA demand of 2, for a total of 40.  There are 18 in the location, which means you need 22 more.  You have to round up to the next CS since that is your increment, which is 30.
+</p>
+        <p data-source-node="n408"> </p>
+        <p data-source-node="n409"> </p>
+        <p data-source-node="n410"><u data-source-node="n411">EXAMPLE 7</u>
+        </p>
+        <p data-source-node="n412">Maximum Quantity = 60 EA</p>
+        <p data-source-node="n413"> </p>
+        <p data-source-node="n414">Replenishment Increment = CS
+</p>
+        <p data-source-node="n415"> </p>
+        <p data-source-node="n416">Demand Units of Measure = EA
+</p>
+        <p data-source-node="n417"> </p>
+        <p data-source-node="n418">Replenishment Strategy = Fill Location
+</p>
+        <p data-source-node="n419"> </p>
+        <p data-source-node="n420">Item Unit of Measure = 10 EA per CS
+</p>
+        <p data-source-node="n421"> </p>
+        <p data-source-node="n422">Current Available = 18 EA (None currently allocated)
+</p>
+        <p data-source-node="n423"> </p>
+        <p data-source-node="n424">20 shipments in wave for this item, each with a quantity of 12
+</p>
+        <p data-source-node="n425"> </p>
+        <p data-source-node="n426">Calculated Replenishment Quantity = 40
+</p>
+        <p data-source-node="n427">Once it determines it needs to replenish, it fills the location.  50 would overfill the location so it will replenish 40, giving the location a total of 58.
+</p>
+        <p data-source-node="n428"> </p>
+        <p data-source-node="n429"> </p>
+        <p data-source-node="n430"><u data-source-node="n431">EXAMPLE 8</u>
+        </p>
+        <p data-source-node="n432">Maximum Quantity = 60 EA
+</p>
+        <p data-source-node="n433"> </p>
+        <p data-source-node="n434">Replenishment Increment = CS
+</p>
+        <p data-source-node="n435"> </p>
+        <p data-source-node="n436">Demand Units of Measure = EA
+</p>
+        <p data-source-node="n437"> </p>
+        <p data-source-node="n438">Replenishment Strategy = Round Up
+</p>
+        <p data-source-node="n439"> </p>
+        <p data-source-node="n440">Item Unit of Measure = 10 EA per CS
+</p>
+        <p data-source-node="n441"> </p>
+        <p data-source-node="n442">Current Available = 18 EA (None currently allocated)
+</p>
+        <p data-source-node="n443"> </p>
+        <p data-source-node="n444">40 shipments in wave for this item, each with a quantity of 12
+</p>
+        <p data-source-node="n445"> </p>
+        <p data-source-node="n446">Calculated Replenishment Quantity = 40 to this location, and 30 to an empty location</p>
+        <p data-source-node="n447">EA demand is 2*40=80.  This means you need 62 more.  Only 4 cases will fit in the current location, meaning you need 22 to go to a second location.  You must round up to the next case, which is 30.</p>
+        <p data-source-node="n448"> </p>
+        <p data-source-node="n449"> </p>
+        <p data-source-node="n450"><u data-source-node="n451">EXAMPLE 9</u>
+        </p>
+        <p data-source-node="n452">Minimum Replenishment Threshold = 20%
+</p>
+        <p data-source-node="n453"> </p>
+        <p data-source-node="n454">Maximum Fill Percent = 100%
+</p>
+        <p data-source-node="n455"> </p>
+        <p data-source-node="n456">Maximum Quantity = 60 EA
+</p>
+        <p data-source-node="n457"> </p>
+        <p data-source-node="n458">Replenishment Increment = CS
+</p>
+        <p data-source-node="n459"> </p>
+        <p data-source-node="n460">Demand Units of Measure = EA
+</p>
+        <p data-source-node="n461"> </p>
+        <p data-source-node="n462">Create Multiple Requests for Excess Demand = Selected
+</p>
+        <p data-source-node="n463"> </p>
+        <p data-source-node="n464">Replenishment Strategy = Round Up
+</p>
+        <p data-source-node="n465"> </p>
+        <p data-source-node="n466">Item Unit of Measure = 10 EA per CS
+</p>
+        <p data-source-node="n467"> </p>
+        <p data-source-node="n468">Current Available = 8 EA (None currently allocated)
+</p>
+        <p data-source-node="n469"> </p>
+        <p data-source-node="n470">80 shipments in wave for this item, each with a quantity of 12
+</p>
+        <p data-source-node="n471"> </p>
+        <p data-source-node="n472">- Total quantity to be replenished is (80*2) - 8 = 152
+
+</p>
+        <p data-source-node="n473"> </p>
+        <p data-source-node="n474">- First replenishment will fill the location to the nearest CS:  50 (since 60 would overfill)
+
+</p>
+        <p data-source-node="n475"> </p>
+        <p data-source-node="n476">- Subsequent replenishments assume the location is picked down to threshold: 60*0.2 = 12
+
+</p>
+        <p data-source-node="n477"> </p>
+        <p data-source-node="n478">- Therefore each subsequent replenishment will be for a quantity of 40 since 50 would make the total 50+12 = 62.
+
+</p>
+        <p data-source-node="n479"> </p>
+        <p data-source-node="n480">- To fulfill all 152, the replenishments must be 50+40+40+22
+
+</p>
+        <p data-source-node="n481"> </p>
+        <p data-source-node="n482">- The last one must be rounded to the next CS
+
+</p>
+        <p data-source-node="n483"> </p>
+        <p data-source-node="n484">- Therefore, the replenishments to be created are:  50, 40, 40, and 30 - all for the same location.
+</p>
+        <p data-source-node="n485"> </p>
+        <p data-source-node="n486"> </p>
+        <p data-source-node="n487"> </p>
+        <p data-source-node="n488"> </p>
+        <p data-source-node="n489"> </p>
+        <p data-source-node="n490"> </p>
+        <p data-source-node="n491"> </p>
+        <p data-source-node="n492"> </p>
+        <p data-source-node="n493"> </p>
+        <p data-source-node="n494"> </p>
+        <p data-source-node="n495"> </p>
+        <p data-source-node="n496"> </p>
+        <p data-source-node="n497"> </p>
+        <p data-source-node="n498"> </p>
+        <p data-source-node="n499"> </p>
+        <p data-source-node="n500"> </p>
+        <p data-source-node="n501"> </p>
+        <p data-source-node="n502"> </p>
+        <p data-source-node="n503"> </p>
+        <p data-source-node="n504"> </p>
+        <p data-source-node="n505"> </p>
+        <p data-source-node="n506"> </p>
+        <p data-source-node="n507"> </p>
+        <p data-source-node="n508"> </p>
+        <p data-source-node="n509"> </p>
+        <p data-source-node="n510"> </p>
+        <p data-source-node="n511"> </p>
+        <p data-source-node="n512"> </p>
+        <p data-source-node="n513"> </p>
+        <p data-source-node="n514"> </p>
+        <p data-source-node="n515"> </p>
+        <p data-source-node="n516"> </p>
+        <p data-source-node="n517"> </p>
+        <p data-source-node="n518"> </p>
+        <p data-source-node="n519"> </p>
+        <p data-source-node="n520"> </p>
+        <p data-source-node="n521"> </p>
+        <p data-source-node="n522"> </p>
+    </body></html>

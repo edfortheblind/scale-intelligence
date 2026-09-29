@@ -1,7 +1,11 @@
 # AIM acquisition checkpoint
 
-Incomplete discovery. Observed resources: 65, including the entry, two article references, and 62 shell resources. Saved bodies: 16 support assets. Verified articles: 0. Reading copies: 0. Pilot: not run.
+Status: DISCOVERY_INCOMPLETE. The eight-article pilot passed. The authenticated Edge transport is verified.
 
-The Copyright Notice article download timed out. General original HTML/XML/JavaScript export remains a capability blocker. Published navigation partitions were observed but not acquired. Their descendants, search/index closure, hidden states, attachments and informative article assets remain unknown. Unknown denominators are not zero and no completion ratio is asserted.
+Known valid resources: 3,213; saved original bodies: 3,205; failed source requests: 8. Forty historical CSS resolution mistakes remain recorded separately. Captured articles: 2,446 of 2,453 currently known. All captured articles have structured JSON and HTML/Markdown reading copies.
 
-Stored-file verification proves local byte integrity against the imported browser exports. The asset exporter omits HTTP status and redirect-chain metadata; those checks remain unverified. Asset imports cannot satisfy article coverage or documentary-state fidelity.
+All 355 captured images decoded, all 13 attachments passed format checks, and all 478 static state nodes plus the linked popup passed offline browser verification. Current structural/link checks pass for 2,420 captured articles. The remaining 26 article findings concern unavailable source links or absent source anchors.
+
+The original publication contains 23 broken anchor references. See [source gaps](source-gaps.md) for exact URLs, occurrences, and evidence. These gaps prevent module completion. SDK has not started.
+
+Discovery has not reconciled completely: final denominators remain unknown. Ratios of currently known resources are acquisition progress only, never final corpus-completion percentages.

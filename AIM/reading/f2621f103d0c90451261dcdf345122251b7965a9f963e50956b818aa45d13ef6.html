@@ -1,0 +1,143 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Starting the Interface</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1021" data-source-node="n57"></a>Starting the Interface</h1>
+        <p data-source-node="n58">When you are ready to start an interface process, you have one more 
+ decision to consider: whether to run the interface process manually, or 
+ to have the system start it automatically at certain time(s) of the day. 
+ Below are discussions on the advantages of both options, and the procedures 
+ on how to use them. </p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60"> </p>
+        <h4 data-source-node="n61">Starting the Interface Automatically on a Regular 
+ Basis...</h4>
+        <p class="p_8" data-source-node="n62"> </p>
+        <h5 data-source-node="n63">Warehouse Scenarios</h5>
+        <p data-source-node="n64">Typically, most customers will want to schedule their interface to start 
+ it automatically during certain time(s) of the day. This accommodates 
+ the two most typical business flows:</p>
+        <ul type="disc" class="ul_1" data-source-node="n65">
+            <li data-source-node="n66">Running the 
+ interface once at night: Suppose your ERP system sends down data 
+ throughout the day. You might then want to schedule the interface to start 
+ once at night when no one is working, so the interface job will not affect 
+ daily processing. When started, the SCALE interface will retrieve the new 
+ data, and place it into the database; therefore, when the workers arrive 
+ in the morning, there will be new data ready to be processed.<br data-source-node="n67"> </li>
+            <li data-source-node="n68">Running the 
+ interface several times during the day: Suppose your ERP system 
+ sends down data throughout the day. You might then want to schedule the 
+ interface to start several times during the work day (every two hours, 
+ for example). When started, the SCALE interface will retrieve the new data, 
+ and place it into the database; therefore, when the workers arrive in 
+ the morning, new data will be ready to be processed throughout the work 
+ day.</li>
+        </ul>
+        <p data-source-node="n69"> </p>
+        <h5 data-source-node="n70">Procedures</h5>
+        <p data-source-node="n71">To automatically interface data, you will need to set up a SCALE scheduled 
+ job to have the system start the interface at a certain time of day.</p>
+        <ol class="ol_1" data-source-node="n72">
+            <li value="1" data-source-node="n73">Access the Scheduled 
+ Job Window. Follow the general procedures for creating a        <a href="89cd7c907a14ac69519371eda239e33c8578f7f1e4049b7feebd15cb21bfc537.html" data-source-node="n74">scheduled 
+ job</a>.<br data-source-node="n75"> </li>
+            <li value="2" data-source-node="n76">Additionally, 
+ you will need to enter special values on the Parameters Tab of 
+ the Scheduled Job Window:<br data-source-node="n77"><br data-source-node="n78">- Use the Area Field to indicate 
+ the interface functional area process that you want to run with this scheduled 
+ job. These values are represented by interface process records, which 
+ determine how data can be downloaded and/or uploaded between SCALE 
+ and the ERP. <br data-source-node="n79"><br data-source-node="n80">- Use the Direction Field 
+ to indicate if this scheduled job will be kicking off a system download, 
+ upload, or either direction (choose "all"). <br data-source-node="n81"><br data-source-node="n82">- Use the Mode Field to indicate 
+ what method this scheduled job will use to interface data into the application: 
+ by delimited text file, directly from the interface tables, or via XML 
+ files. If this job will be used to interface in using several methods, 
+ choose "all."<br data-source-node="n83"> </li>
+            <li value="3" data-source-node="n84">Press OK. 
+ The system will save your scheduled job.<br data-source-node="n85"> </li>
+            <li value="4" data-source-node="n86">When the appropriate 
+ time arrives, the system will kick off the interface:<br data-source-node="n87"><br data-source-node="n88">- If the interface ran successfully, 
+ you should find your newly-interfaced data in the appropriate place in 
+ the system. For example, if you downloaded shipments, you could 
+ find them in the Planned Shipment Insight screen.<br data-source-node="n89"><br data-source-node="n90">- If the interface did not run successfully, 
+ you will need to research the problem. See the topic        <a href="b513ca14b9cb0f36c570ce09bffe39c542fefa60be50eb2fa8426edd804467af.html" data-source-node="n91">Troubleshooting 
+ the Interface</a> for more details on this process.</li>
+        </ol>
+        <p data-source-node="n92"> </p>
+        <p class="p_8" data-source-node="n93"> </p>
+        <h4 data-source-node="n94">Starting the Interface Manually...</h4>
+        <p class="p_8" data-source-node="n95"> </p>
+        <h5 data-source-node="n96">Warehouse Scenarios</h5>
+        <p data-source-node="n97">You can also choose to manually interface data between SCALE and your 
+ ERP if your business needs require. Reasons for needing to manually start 
+ the interface process include:</p>
+        <ul type="disc" class="ul_1" data-source-node="n98">
+            <li data-source-node="n99">Variable work 
+ volume: You might choose to start the interface manually if your 
+ warehouse's actual work volume fluctuates from day-to-day, and/or you 
+ require that the interface is run several times a day (at non-scheduled 
+ times). A manually-run interface allows you to start the interface process 
+ at different times during the day when the work load is light and system 
+ performance will not be adversely affected by interface processing.</li>
+        </ul>
+        <p data-source-node="n100"> </p>
+        <h5 data-source-node="n101">Procedures</h5>
+        <p data-source-node="n102">To interface data between the two systems:</p>
+        <ol class="ol_1" data-source-node="n103">
+            <li value="1" data-source-node="n104">Access the Interface 
+ Data Window.<br data-source-node="n105"> </li>
+            <li value="2" data-source-node="n106">Use the Process 
+ Buttons to identify in which "direction" you want the 
+ system to interface data in:<br data-source-node="n107"><br data-source-node="n108">- To download data from the 
+ ERP, select the Download Button.<br data-source-node="n109"><br data-source-node="n110">- To upload data to the ERP, 
+ select the Upload Button.<br data-source-node="n111"> </li>
+            <li value="3" data-source-node="n112">Use the Upload 
+ Output Buttons to identify what method the system should use to 
+ transmit the data (note that you will only be able to do this if you selected 
+ the Upload Button in Step 2). If you transmit using a text file, select 
+ "Delimited File." If you transmit directly to the database, 
+ select "Interface Tables." If you transmit using XML files, 
+ select "XML." <br data-source-node="n113"> </li>
+            <li value="4" data-source-node="n114">Use the Functional 
+ Areas Field to define what type of data you want to interface. 
+ <br data-source-node="n115"> </li>
+            <li value="5" data-source-node="n116">Press OK. 
+ The system will submit a request for the system to process any data file(s) 
+ that may exist. <br data-source-node="n117"><br data-source-node="n118">- If the interface ran successfully, 
+ you should find your newly-interfaced data in the appropriate place in 
+ SCALE. For example, if you downloaded shipments, you could find 
+ them in the Planned Shipment Insight screen.<br data-source-node="n119"><br data-source-node="n120">- If the interface did not run successfully, 
+ you will need to research the problem. See the topic        <a href="b513ca14b9cb0f36c570ce09bffe39c542fefa60be50eb2fa8426edd804467af.html" data-source-node="n121">Troubleshooting 
+ the Interface</a> for more details on this process.</li>
+        </ol>
+        <p data-source-node="n122"> </p>
+        <p data-source-node="n123"> </p>
+        <p data-source-node="n124"> </p>
+        <p data-source-node="n125"> </p>
+        <p data-source-node="n126"> </p>
+        <p data-source-node="n127"> </p>
+        <p data-source-node="n128"> </p>
+        <p data-source-node="n129"> </p>
+        <p data-source-node="n130"> </p>
+        <p data-source-node="n131"> </p>
+        <p data-source-node="n132"> </p>
+        <p data-source-node="n133"> </p>
+        <p data-source-node="n134"> </p>
+        <p data-source-node="n135"> </p>
+        <p data-source-node="n136"> </p>
+        <p data-source-node="n137"> </p>
+        <p data-source-node="n138"> </p>
+        <p data-source-node="n139"> </p>
+        <p data-source-node="n140"> </p>
+        <p data-source-node="n141"> </p>
+        <p data-source-node="n142"> </p>
+        <p data-source-node="n143"> </p>
+        <p data-source-node="n144"> </p>
+        <p data-source-node="n145"> </p>
+        <p data-source-node="n146"> </p>
+        <p data-source-node="n147"> </p>
+        <p data-source-node="n148"> </p>
+        <p data-source-node="n149"> </p>
+        <p data-source-node="n150"> </p>
+        <p data-source-node="n151"> </p>
+    </body></html>

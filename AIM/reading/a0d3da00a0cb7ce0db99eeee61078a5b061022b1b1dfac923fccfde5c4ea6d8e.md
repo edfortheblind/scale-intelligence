@@ -8,7 +8,7 @@
         <h4 data-source-node="n61">Configuration Hierarchy</h4>
         <p data-source-node="n62"> </p>
         <p data-source-node="n63">
-            <img style="width: 1023;height: 270" loading="eager" data-source-node="n64">
+            <img src="../source/assets/cf36ea635a5341b5c699baa9bf125a42cc3e81040a9bd7f49713b4f4f4879b39.png" style="width: 1023;height: 270" loading="eager" data-source-node="n64">
         </p>
         <p data-source-node="n65"> </p>
         <h4 data-source-node="n66">Configure User Profile</h4>

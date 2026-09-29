@@ -1,28 +1,28 @@
 {
   "scope_revision": "STAGE-CHATGPT-EN-2.0",
   "collector_version": "0.2.0",
-  "phase": "AIM_CAPTURE_READY",
+  "phase": "AIM_SOURCE_BLOCKED",
   "module": "AIM",
-  "updated_at": "2026-09-29T11:53:34.373818+00:00",
+  "updated_at": "2026-09-29T13:32:42.916562+00:00",
   "worker_running": false,
   "writer": {
     "protocol": "external_os_file_lock",
     "last_operation": {
-      "pid": 7060,
-      "acquired_at": "2026-09-29T11:49:17.145928+00:00",
+      "pid": 35136,
+      "acquired_at": "2026-09-29T13:31:37.237060+00:00",
       "root": "C:\\Users\\ed.lopez\\OneDrive - TRAVIS ASSOCIATION FOR THE BLIND\\Documents\\VS Code\\SCALE Int"
     },
-    "heartbeat_at": "2026-09-29T11:49:20.581043+00:00"
+    "heartbeat_at": "2026-09-29T13:32:42.916576+00:00"
   },
   "modules": {
     "AIM": {
       "status": "DISCOVERY_INCOMPLETE",
       "counts": {
-        "discovered": 3111,
-        "pending": 2196,
-        "bodies_saved": 874,
+        "discovered": 3253,
+        "pending": 0,
+        "bodies_saved": 3205,
         "articles_verified": 0,
-        "failed": 1
+        "failed": 8
       },
       "manifests": "AIM/manifests/resources/"
     },
@@ -38,18 +38,50 @@
       "manifests": "SDK/manifests/resources/"
     }
   },
-  "blockers": [],
+  "blockers": [
+    {
+      "code": "SOURCE_RESOURCES_UNAVAILABLE",
+      "count": 8,
+      "report": "AIM/reports/source-gaps.json"
+    },
+    {
+      "code": "BROKEN_SOURCE_ANCHORS",
+      "count": 23,
+      "report": "AIM/reports/source-gaps.json"
+    }
+  ],
   "pilot": "PASSED",
-  "next_invocation": "python tools/run_aim.py",
+  "next_invocation": "Review AIM/reports/source-gaps.md; resume affected source URLs after publisher repair, or record the owner collection-order decision before SDK acquisition.",
   "publication": {
     "repository": "edfortheblind/scale-intelligence",
     "visibility": "PRIVATE",
     "permission": "ADMIN",
-    "stage": "PARTIAL_APP_DATA_CHECKPOINT_PUBLISHED",
+    "stage": "EXPANDED_AIM_CHECKPOINT_READY",
     "complete_corpus_delivered": false,
     "verified_commit": "c32230700187a42da2903c02bdd6350a64c51ab3",
     "clean_clone_verified": true,
-    "current_checkpoint_clean_clone_verified": true,
-    "proof": "_project/delivery-checkpoint.json"
+    "current_checkpoint_clean_clone_verified": false,
+    "proof": "_project/delivery-checkpoint.json",
+    "current_local_changes_pending_publication": true
+  },
+  "controller": {
+    "pid": 14408,
+    "started_at": "2026-09-29T11:53:58.503934+00:00",
+    "running": false,
+    "log_location": "%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/aim-controller.log",
+    "finished_at": "2026-09-29T12:27:30.750989+00:00",
+    "result": "AIM_AUDIT_REQUIRES_REVIEW"
+  },
+  "owner_decisions": [
+    {
+      "recorded_at": "2026-09-29T13:11:30.044328+00:00",
+      "instruction": "The review has passed and it's approved, proceed with the rest.",
+      "effect": "Continued implementation, source recheck and verification authorized. Source failures remain actual evidence gaps."
+    }
+  ],
+  "collection_order_question": {
+    "status": "AWAITING_OWNER_REPLY",
+    "reason": "AIM master prompt section 16 requires local completion; 8 resource failures and 23 source anchor gaps remain.",
+    "requested_exception": "Acquire SDK while retaining AIM incomplete and all final completeness requirements."
   }
 }

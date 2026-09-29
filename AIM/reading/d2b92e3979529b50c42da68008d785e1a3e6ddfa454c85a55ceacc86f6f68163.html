@@ -1,0 +1,172 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Discussion: SOA Strategy For SCALE</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor808" data-source-node="n57"></a>Discussion: SOA Strategy For SCALE</h1>
+        <p data-source-node="n58">  This topic discusses the need for service orientation and its implementation within SCALE.</p>
+        <p data-source-node="n59"> </p>
+        <h5 data-source-node="n60">Web Service List</h5>
+        <p data-source-node="n61">To see a list of all the web services that are shipped with SCALE, see the topic <a href="0aaa6cf5ac0baaf0d085b11f01cd828564b8a910ba9654ac6150a8953db9ca09.html" data-source-node="n62">Complete List of Web Services</a>.</p>
+        <p data-source-node="n63"> </p>
+        <p data-source-node="n64"> </p>
+        <p data-source-node="n65">The following topics are discussed below:</p>
+        <p style="font-style: italic" data-source-node="n66">SOA Abstract Discussion</p>
+        <p data-source-node="n67"><a href="#whatIsSOA" data-source-node="n68">What Is Service Oriented Architecture?</a>
+        </p>
+        <p data-source-node="n69"><a href="#needForSOA" data-source-node="n70">What Is the Need For Service Orientation?</a>
+        </p>
+        <p data-source-node="n71"><a href="#whatAreTenants" data-source-node="n72">What Are The Tenets of Service Orientation?</a>
+        </p>
+        <p data-source-node="n73"><a href="#howWSrelateSOA" data-source-node="n74">How Do Web Services Relate To SOA?</a>
+        </p>
+        <p data-source-node="n75"><a href="#howXMLwithSOA" data-source-node="n76">How Does XML Used With SOA?</a>
+        </p>
+        <p data-source-node="n77"><a href="#conclusion" data-source-node="n78">Conclusion</a>
+        </p>
+        <p data-source-node="n79"> </p>
+        <p style="font-style: italic" data-source-node="n80">SOA Strategy As Applied To SCALE</p>
+        <p data-source-node="n81"><a href="#SOAdesignApproach" data-source-node="n82">What Are The SOA Design Approaches?</a>
+        </p>
+        <p data-source-node="n83"><a href="#RESTservice" data-source-node="n84">What Are REST-Based Services?</a>
+        </p>
+        <p data-source-node="n85"><a href="#MESTservice" data-source-node="n86">What Are MEST-Based Services?</a>
+        </p>
+        <p data-source-node="n87"><a href="#RPCservice" data-source-node="n88">What Are RPC Services?</a>
+        </p>
+        <p data-source-node="n89"><a href="#requestSchema" data-source-node="n90">What Are Request Schemas?</a>
+        </p>
+        <p data-source-node="n91"><a href="#responseSchema" data-source-node="n92">What Are Response Schemas?</a>
+        </p>
+        <p data-source-node="n93"> </p>
+        <p data-source-node="n94"> </p>
+        <p data-source-node="n95"> </p>
+        <h4 data-source-node="n96">SOA: Abstract Discussion...</h4>
+        <p data-source-node="n97"> </p>
+        <h5 data-source-node="n98"><a name="whatIsSOA" data-source-node="n99"></a>What Is Service Oriented Architecture?</h5>
+        <p data-source-node="n100">Service Oriented Architecture (SOA) means many things to many people, depending on the context in which it exists.  For the purposes of this discussion, it will be used to describe an architecture that exposes SCALE business processes that are consumable by disparate applications.
+</p>
+        <p data-source-node="n101"> </p>
+        <p data-source-node="n102"> </p>
+        <h5 data-source-node="n103"><a name="needForSOA" data-source-node="n104"></a>What Is the Need For Service Orientation?</h5>
+        <p data-source-node="n105">This is because a major challenge that exists today is the integration of disparate applications within any given enterprise.  It is quite common for a suite of applications to work in concert with each other in order to provide a fully functional supply-chain solution.  Very rarely does a single application provide all the functionality required by a business operation.  Services provided by other applications need to be leveraged to provide an enterprise-level solution.
+
+Applications within an enterprise may not be based on the same technology stack.  There may be Java-based applications, C++-based applications, RPG programs etc.  Service orientation provides a unified approach to integrating applications based on different technologies.
+</p>
+        <p data-source-node="n106"> </p>
+        <p data-source-node="n107"> </p>
+        <h5 data-source-node="n108"><a name="whatAreTenants" data-source-node="n109"></a>What Are The Tenets of Service Orientation?</h5>
+        <p data-source-node="n110">To establish a service oriented architecture, it is recommended that four basic principles be followed. These are:</p>
+        <ol data-source-node="n111">
+            <li value="1" data-source-node="n112">Boundaries are explicit
+<br data-source-node="n113"> </li>
+            <li value="2" data-source-node="n114">Services are autonomous<br data-source-node="n115"> </li>
+            <li value="3" data-source-node="n116">Services share schema and contract, not class<br data-source-node="n117"> </li>
+            <li value="4" data-source-node="n118">Service compatibility is based upon policy
+
+While it is not the purpose of this paper to discuss these tenets in-depth, it can be stated in summary that: Services are independent, have a well-defined interface, communicate via messages expressed in XML and have policies that state how they can be consumed.
+</li>
+        </ol>
+        <p data-source-node="n119"> </p>
+        <h5 data-source-node="n120"><a name="howWSrelateSOA" data-source-node="n121"></a>How Do Web Services Relate To SOA?</h5>
+        <p data-source-node="n122">Web services and SOA
+
+web services are services that are exposed over the web or, more aptly put, are services that are accessed over a network protocol.  Web services can be used to form the backbone of a SOA; however, implementing web services does not equate to having a SOA as the tenets mentioned above must be adhered too.
+
+Because of the ubiquitous nature of http, it has become the predominant protocol of choice for making web services available.  However, services can be accessed by other common protocols such as TCP, SMTP, FTP, etc.
+</p>
+        <p data-source-node="n123"> </p>
+        <p data-source-node="n124"> </p>
+        <h5 data-source-node="n125"><a name="howXMLwithSOA" data-source-node="n126"></a>How Does XML Used With SOA?</h5>
+        <p data-source-node="n127">As implied by the third tenet of service orientation, services communicate via messages in a format that is commonly understood by parties involved.  The most commonly understood protocol for expressing messages is XML.  The structure of the messages shared between services is described by XML Schema.  SOAP is an XML-based messaging protocol that has become standardized and forms the basis of what are called “Web Services Specification” or WS-*, which are a set of specifications that state how SOAP-based messages are formed to handle scenarios such as security, addressing, metadata exchange, business process co-ordination etc.  However it should be stated that service orientation does not require the use of SOAP-based messages.
+</p>
+        <p data-source-node="n128"> </p>
+        <p data-source-node="n129"> </p>
+        <h5 data-source-node="n130"><a name="conclusion" data-source-node="n131"></a>Conclusion</h5>
+        <p data-source-node="n132">In summary, SCALE provides a set of integration points that are exposed through SCALE Integration Services, are available both over HTTP and TCP.  These services are intended for usage by external applications that need to leverage business processes provided by SCALE.
+</p>
+        <p data-source-node="n133"> </p>
+        <p data-source-node="n134"> </p>
+        <hr width="100%" align="center" data-source-node="n135">
+        <p data-source-node="n136"> </p>
+        <p data-source-node="n137"> </p>
+        <h4 data-source-node="n138">SOA Strategy As Applied To SCALE...</h4>
+        <p data-source-node="n139"> </p>
+        <h5 data-source-node="n140"><a name="SOAdesignApproach" data-source-node="n141"></a>What Are The SOA Design Approaches?
+</h5>
+        <p data-source-node="n142">There are 3 predominant architectural styles being used to develop services.  These are:
+</p>
+        <ul data-source-node="n143">
+            <li data-source-node="n144">REST – Representational State Transfer<br data-source-node="n145"> </li>
+            <li data-source-node="n146">MEST – Message State Transfer<br data-source-node="n147"> </li>
+            <li data-source-node="n148">RPC – Remote Procedure Call
+
+</li>
+        </ul>
+        <p data-source-node="n149">The intent of this article is not to discuss, compare or evaluate the architectural styles between themselves.  Rather, the article will explain the usage of the architectural styles within the SCALE SOA strategy.
+</p>
+        <p data-source-node="n150"> </p>
+        <p data-source-node="n151"> </p>
+        <h5 data-source-node="n152"><a name="RESTservice" data-source-node="n153"></a>What Are REST-Based Services?</h5>
+        <p data-source-node="n154">The REST architectural style exposes entities as resources (nouns) over the web.  Access to these resources is through the use of the standard HTTP verbs GET, POST, PUT and DELETE.  The GET operation is idempotent, i.e. a GET does not change the state of the resource returned; it is a safe operation.  The resources are commonly represented are XML documents. This architectural style is ideal for service interaction that is synchronous and requires a wide-reach due to a large audience.  Multiple message exchange patterns (MEPs) are generally not supported. There is also lack of standardized document for REST-based services.  Custom documentation must be created that explains how these services can be accessed. SCALE services that are of a data-retrieval nature will generally be REST-based. </p>
+        <p data-source-node="n155"> </p>
+        <p data-source-node="n156"> </p>
+        <h5 data-source-node="n157"><a name="MESTservice" data-source-node="n158"></a>What Are MEST-Based Services?</h5>
+        <p data-source-node="n159">The MEST architectural style focuses on the passing of messages between systems.  These messages are normally SOAP-based and conform to the SOAP and WS specifications.  Because service interaction is event driven i.e. a specific method on the service is not explicitly invoked, there are formal methods for interaction.  A message is just sent a defined endpoint. This architectural style is ideal for all types of service interactions.  However it is a little more complex as there is an extra layer of SOAP processing that must be handled.  This architectural style allows for use of a more diverse group of transport protocols such as SMTP, TCP, FTP etc. Documentation for MEST based services is done using WSDL or SSDL.
+ SCALE services that are leveraged for business processing will generally be MEST-based.</p>
+        <p data-source-node="n160"> </p>
+        <p data-source-node="n161"> </p>
+        <h5 data-source-node="n162"><a name="RPCservice" data-source-node="n163"></a>What Are RPC Services?</h5>
+        <p data-source-node="n164">RPC services are pretty similar to the concept of distributed objects.  In this architectural style, methods are created on the service side and then exposed to consumer via a proxy.  WSDL is sometimes used to create such proxies.
+ 
+This discussion does not go into the architectural ramifications of this architectural style, as  SCALE does not leverage this style.</p>
+        <p data-source-node="n165"> </p>
+        <p data-source-node="n166"> </p>
+        <h5 data-source-node="n167"><a name="requestSchema" data-source-node="n168"></a>What Are Request Schemas?</h5>
+        <p data-source-node="n169">This is the XML schema that represents the data that is sent to the web service.</p>
+        <p data-source-node="n170"> </p>
+        <p data-source-node="n171"> </p>
+        <h5 data-source-node="n172"><a name="responseSchema" data-source-node="n173"></a>What Are Response Schemas?</h5>
+        <p data-source-node="n174">This is the XML schema that represents the data is returned from the web service.</p>
+        <p data-source-node="n175"> </p>
+        <p data-source-node="n176"> </p>
+        <p data-source-node="n177"> </p>
+        <p data-source-node="n178"> </p>
+        <p data-source-node="n179"> </p>
+        <p data-source-node="n180"> </p>
+        <p data-source-node="n181"> </p>
+        <p data-source-node="n182"> </p>
+        <p data-source-node="n183"> </p>
+        <p data-source-node="n184"> </p>
+        <p data-source-node="n185"> </p>
+        <p data-source-node="n186"> </p>
+        <p data-source-node="n187"> </p>
+        <p data-source-node="n188"> </p>
+        <p data-source-node="n189"> </p>
+        <p data-source-node="n190"> </p>
+        <p data-source-node="n191"> </p>
+        <p data-source-node="n192"> </p>
+        <p data-source-node="n193"> </p>
+        <p data-source-node="n194"> </p>
+        <p data-source-node="n195"> </p>
+        <p data-source-node="n196"> </p>
+        <p data-source-node="n197"> </p>
+        <p data-source-node="n198"> </p>
+        <p data-source-node="n199"> </p>
+        <p data-source-node="n200"> </p>
+        <p data-source-node="n201"> </p>
+        <p data-source-node="n202"> </p>
+        <p data-source-node="n203"> </p>
+        <p data-source-node="n204"> </p>
+        <p data-source-node="n205"> </p>
+        <p data-source-node="n206"> </p>
+        <p data-source-node="n207"> </p>
+        <p data-source-node="n208"> </p>
+        <p data-source-node="n209"> </p>
+        <p data-source-node="n210"> </p>
+        <p data-source-node="n211"> </p>
+        <p data-source-node="n212"> </p>
+        <p data-source-node="n213"> </p>
+        <p data-source-node="n214"> </p>
+        <p data-source-node="n215"> </p>
+        <p data-source-node="n216"> </p>
+        <p data-source-node="n217"> </p>
+        <p data-source-node="n218"> </p>
+    </body></html>

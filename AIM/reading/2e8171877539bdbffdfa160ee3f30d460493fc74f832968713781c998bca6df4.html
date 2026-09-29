@@ -1,0 +1,162 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Multi-segment GS1 Scanning in Warehouse Mobile</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56">Multi-segment GS1 Scanning in Warehouse Mobile</h1>
+        <p data-source-node="n57">Warehouse Mobile GS1 scanning is configuration-driven and uses multi-segment barcode setup. This approach is based on supported label types, barcode type recognition, application identifier definitions, and mapped field records.</p>
+        <p data-source-node="n58">Unlike legacy RF receiving, Warehouse Mobile GS1 scanning is not driven by a GS1 scan required flag and application identifier template tied to receiving preference.</p>
+        <p data-source-node="n59"> </p>
+        <h4 data-source-node="n60">Topics covered:</h4>
+        <ul data-source-node="n61">
+            <li data-source-node="n62"><a href="#Configuring_GS1_Scanning" data-source-node="n63">Configuring GS1 Scanning</a>
+            </li>
+            <li data-source-node="n64"><a href="#GS1_Scanning" data-source-node="n65">GS1 Scanning</a>
+            </li>
+            <li data-source-node="n66"><a href="#Receiving_with_GS1_Scanning" data-source-node="n67">Receiving with GS1 Scanning</a>
+            </li>
+            <li data-source-node="n68"><a href="#Executing_Work_with_GS1_Scanning" data-source-node="n69">Executing Work with GS1 Scanning</a>
+            </li>
+        </ul>
+        <h2 data-source-node="n70"><a name="Configuring_GS1_Scanning" data-source-node="n71"></a>
+            <h4 data-source-node="n72">Configuring GS1 Scanning</h4>
+        </h2>
+        <h4 data-source-node="n73">
+            <h6 data-source-node="n74">
+                <h5 data-source-node="n75">Overview</h5>
+            </h6>
+        </h4>
+        <p data-source-node="n76">Configuration determines which barcode types are supported, how barcode segments are interpreted, and which Warehouse Mobile fields are populated from each scanned value.</p>
+        <h4 data-source-node="n77">
+            <h6 data-source-node="n78">
+                <h5 data-source-node="n79">Configuration Overview</h5>
+            </h6>
+        </h4>
+        <ol data-source-node="n80">
+            <li value="1" data-source-node="n81"><b data-source-node="n82">Label Type Configuration</b>: Determines whether a scanned barcode matches a supported multi-segment label before parsing begins. When multiple label definitions match, SCALE applies configuration priority.</li>
+            <li value="2" data-source-node="n83"><b data-source-node="n84">Application Identifier Configuration</b>: Defines what each barcode segment represents, such as item, quantity, lot, serial number, expiration date, and license plate. Both fixed-length and variable-length identifiers are supported. For GS1-128 parsing, SCALE supports FNC1 or group separator handling where required.</li>
+            <li value="3" data-source-node="n85"><b data-source-node="n86">Mapped Field Configuration:</b> Determines which Warehouse Mobile field receives each parsed barcode value so the same barcode data can be reused across flows.</li>
+            <li value="4" data-source-node="n87"><b data-source-node="n88">Warehouse Mobile Flow Behavior:</b> Uses mapped fields to update payloads and populate current transaction flow inputs. Depending on configuration, scans can auto-fill values and trigger auto-execute behavior when supported.</li>
+        </ol>
+        <h4 data-source-node="n89">
+            <h6 data-source-node="n90">
+                <h5 data-source-node="n91">Configure GS1 Scanning</h5>
+            </h6>
+        </h4>
+        <ol data-source-node="n92">
+            <li value="1" data-source-node="n93">Configure supported barcode types and label definitions that Warehouse Mobile should recognize.</li>
+            <li value="2" data-source-node="n94">Define application identifiers for each supported barcode format.</li>
+            <li value="3" data-source-node="n95">Map each application identifier to the Warehouse Mobile field that receives the parsed value.</li>
+        </ol>
+        <h4 data-source-node="n96">
+            <h6 data-source-node="n97">
+                <h5 data-source-node="n98">Application Identifier Configuration Screen</h5>
+            </h6>
+        </h4>
+        <p data-source-node="n99">Each application identifier entry maps a barcode segment to a specific Warehouse Mobile field. Use the <b data-source-node="n100">Mapped Field</b> dropdown to select the field that receives the parsed value. Enable <b data-source-node="n101">Auto Execute</b> to trigger automatic execution when the value is populated, and <b data-source-node="n102">Auto Fill</b> to populate the field without requiring user confirmation.</p>
+        <h4 data-source-node="n103">
+            <h6 data-source-node="n104">
+                <h5 data-source-node="n105">Mapped Field and SRC JSON Alignment</h5>
+            </h6>
+        </h4>
+        <p data-source-node="n106">The mapped field name configured in the Application Identifier record must match the <b data-source-node="n107">name</b> property of the corresponding SRC JSON field definition. The mapped field value returned by the parser includes a <b data-source-node="n108">Value</b>, <b data-source-node="n109">AutoFill</b>, and <b data-source-node="n110">AutoExecute</b> setting that SCALE uses to populate the Warehouse Mobile input.</p>
+        <p data-source-node="n111"> </p>
+        <h2 data-source-node="n112"><a name="GS1_Scanning" data-source-node="n113"></a>
+            <h4 data-source-node="n114">GS1 Scanning</h4>
+        </h2>
+        <h4 data-source-node="n115">
+            <h6 data-source-node="n116">
+                <h5 data-source-node="n117">Overview</h5>
+            </h6>
+        </h4>
+        <p data-source-node="n118">Use GS1 scanning to capture multiple data elements from a barcode during Warehouse Mobile processing. System supports configurable multi-segment barcode handling.</p>
+        <p data-source-node="n119">GS1 scanning can extract values such as item, quantity, lot, serial number, expiration date, and license plate. Parsed values are mapped to configured Warehouse Mobile fields so the system can populate the correct inputs during receiving and work execution.</p>
+        <p data-source-node="n120">If a scanned barcode matches a supported label type, SCALE invokes the multi-segment parser. If no supported label type matches, or parsing fails, SCALE treats the value as a normal barcode.</p>
+        <h4 data-source-node="n121">
+            <h6 data-source-node="n122">
+                <h5 data-source-node="n123">Multi-segment Parser Response</h5>
+            </h6>
+        </h4>
+        <p data-source-node="n124">When a barcode matches a configured multi-segment label type, SCALE parses the barcode data and returns a structured response. The response includes an <b data-source-node="n125">IsMultiElementBarcode</b> flag and a <b data-source-node="n126">Data</b> object containing one entry per mapped field, each with the parsed value, <b data-source-node="n127">AutoExecute</b>, and <b data-source-node="n128">AutoFill</b> settings. SCALE uses these settings to populate and, where applicable, auto-execute the corresponding Warehouse Mobile input fields.</p>
+        <h4 data-source-node="n129">
+            <h6 data-source-node="n130">
+                <h5 data-source-node="n131">Multi-segment Barcode Flow</h5>
+            </h6>
+        </h4>
+        <p data-source-node="n132">The following diagram shows the end-to-end multi-segment barcode flow used by Warehouse Mobile, including cache checks, barcode type validation, parse and merge behavior, and no-data error handling.</p>
+        <p data-source-node="n133"> </p>
+        <p data-source-node="n134">
+            <img src="../source/assets/6ae8bda6d97601c43c833b52628b409a1a2a1f81e3b0b93c38ab1ad207cf7ec1.png" style="width: 800;height: 561" loading="eager" data-source-node="n135">
+        </p>
+        <h4 data-source-node="n136">
+            <h6 data-source-node="n137">
+                <h5 data-source-node="n138">Where GS1 Scanning Is Used</h5>
+            </h6>
+        </h4>
+        <ul data-source-node="n139">
+            <li data-source-node="n140">Receiving flows in Warehouse Mobile</li>
+            <li data-source-node="n141">Work execution flows in Warehouse Mobile</li>
+        </ul>
+        <h2 data-source-node="n142"><a name="Receiving_with_GS1_Scanning" data-source-node="n143"></a>
+            <h4 data-source-node="n144">Receiving with GS1 Scanning</h4>
+        </h2>
+        <h4 data-source-node="n145">
+            <h6 data-source-node="n146">
+                <h5 data-source-node="n147">Overview</h5>
+            </h6>
+        </h4>
+        <p data-source-node="n148">During Warehouse Mobile receiving, SCALE can parse a supported GS1 barcode and use mapped fields to populate receiving inputs. This reduces manual keying by allowing a scan to provide more transaction data in fewer steps.</p>
+        <p data-source-node="n149">In receiving flows, users can scan GS1 barcodes during item scanning and, where applicable, lot scanning. At item scanning, only configured item barcode formats are considered. At lot scanning, only configured lot barcode formats are considered.</p>
+        <h4 data-source-node="n150">
+            <h6 data-source-node="n151">
+                <h5 data-source-node="n152">Receiving Notes</h5>
+            </h6>
+        </h4>
+        <ul data-source-node="n153">
+            <li data-source-node="n154">If scanned item barcode data includes lot and expiration date, SCALE updates the request payload and skips related lot entry pages.</li>
+            <li data-source-node="n155">If scanned data includes only GTIN or item information, users complete remaining required prompts later in the flow for lot-controlled items.</li>
+            <li data-source-node="n156">If the scanned item cross reference is associated with a specific unit of measure, SCALE uses that unit of measure on quantity entry.</li>
+            <li data-source-node="n157">If a barcode does not exactly match a configured Warehouse Mobile GS1 format, SCALE returns the normal validation error for the current receiving step.</li>
+        </ul>
+        <h4 data-source-node="n158">
+            <h6 data-source-node="n159">
+                <h5 data-source-node="n160">Receive Inventory with GS1 Scanning</h5>
+            </h6>
+        </h4>
+        <ol data-source-node="n161">
+            <li value="1" data-source-node="n162">Start the receipt check-in transaction in Warehouse Mobile.</li>
+            <li value="2" data-source-node="n163">Scan the barcode in the current GS1-enabled receiving input field.</li>
+            <li value="3" data-source-node="n164">Allow SCALE to parse the barcode and fill configured values when the barcode matches a configured format.</li>
+            <li value="4" data-source-node="n165">Review populated values and complete any remaining prompts not supplied by barcode data.</li>
+            <li value="5" data-source-node="n166">Complete remaining required steps, such as quantity, license plate, lot, or expiration date, if needed.</li>
+            <li value="6" data-source-node="n167">Complete the receiving transaction.</li>
+        </ol>
+        <h2 data-source-node="n168"><a name="Executing_Work_with_GS1_Scanning" data-source-node="n169"></a>
+            <h4 data-source-node="n170">Executing Work with GS1 Scanning</h4>
+        </h2>
+        <h4 data-source-node="n171">
+            <h6 data-source-node="n172">
+                <h5 data-source-node="n173">Overview</h5>
+            </h6>
+        </h4>
+        <p data-source-node="n174">GS1 scanning can be used in Warehouse Mobile work execution flows. Parsed values are mapped to configured fields for the flow so users can complete tasks with less manual entry.</p>
+        <h4 data-source-node="n175">
+            <h6 data-source-node="n176">
+                <h5 data-source-node="n177">Execute Work with GS1 Scanning</h5>
+            </h6>
+        </h4>
+        <ol data-source-node="n178">
+            <li value="1" data-source-node="n179">Open the Warehouse Mobile work execution flow configured for GS1 scanning.</li>
+            <li value="2" data-source-node="n180">Scan the barcode in the current input field.</li>
+            <li value="3" data-source-node="n181">Allow SCALE to parse the barcode and populate configured fields when a supported label type is matched.</li>
+            <li value="4" data-source-node="n182">Confirm populated values and complete any additional required prompts.</li>
+            <li value="5" data-source-node="n183">Continue the transaction until completion.</li>
+        </ol>
+        <h4 data-source-node="n184">
+            <h6 data-source-node="n185">
+                <h5 data-source-node="n186">Notes</h5>
+            </h6>
+        </h4>
+        <ul data-source-node="n187">
+            <li data-source-node="n188">Fields populated during work execution depend on mapped field configuration for that flow.</li>
+            <li data-source-node="n189">Supported behavior is configuration-driven instead of hard coded to a single barcode pattern.</li>
+            <li data-source-node="n190">If parsing fails, SCALE handles the scan as a normal barcode.</li>
+        </ul>
+    </body></html>

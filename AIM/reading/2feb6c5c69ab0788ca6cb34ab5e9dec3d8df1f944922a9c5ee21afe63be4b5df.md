@@ -1,0 +1,107 @@
+
+        
+        <h1 data-source-node="n56"><a name="kanchor284" data-source-node="n57"></a>Setup Overviews: Trading Partner Management</h1>
+        <p data-source-node="n58">Below are lists of the setup procedures required to use the Trading Partner Management
+ functional areas. </p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60">NOTE: Actions without hyperlinks can be performed by your Manhattan Associates representative.</p>
+        <p data-source-node="n61"> </p>
+        <p data-source-node="n62"> </p>
+        <h4 data-source-node="n63">Email Alerts (TPM)<br data-source-node="n64"></h4>
+        <ol data-source-node="n65">
+            <li value="1" data-source-node="n66"><a href="bfbb93113fba305f3121d16ae0aa4b5934efb26578c71c892bc5815f57bb83ea.html" class="a_1" data-source-node="n67">Configure</a> 
+ the SMTP Mail Server</li>
+            <li value="2" data-source-node="n68"><a href="d3cfa356a8b3c50852ab775e78eacf888cf1e09da6f7fc24e920b29dc7794e24.html" class="a_1" data-source-node="n69">Create</a> a 
+ custom email template</li>
+            <li value="3" data-source-node="n70"><a href="ffc1753f3e4e0e20eb42b8c9dab8a4d56d9eda5cc007a14a4dde255d4bec9b4b.html" class="a_1" data-source-node="n71">Define</a> a TPM 
+ email alert</li>
+            <li value="4" data-source-node="n72"><a href="80c6e8e2a27d3a2f6042ae822e86649df57914839c57648c1daaa72d754e5905.html" class="a_1" data-source-node="n73">Review</a> the 
+ TPM email alert-related web system values</li>
+        </ol>
+        <p class="Heading11" data-source-node="n74"> </p>
+        <p class="Heading11" data-source-node="n75"> </p>
+        <h4 data-source-node="n76">Web Inventory Management<br data-source-node="n77"></h4>
+        <ol data-source-node="n78">
+            <li value="1" data-source-node="n79"><a href="ee586c6fe117641588df3e3257591537fabde4178062cfe247d97f698cc60de5.html" class="a_1" data-source-node="n80">Define</a> the web screen data values</li>
+        </ol>
+        <p class="Heading11" data-source-node="n81"> </p>
+        <p class="Heading11" data-source-node="n82"> </p>
+        <h4 data-source-node="n83">Web Order Management<br data-source-node="n84"></h4>
+        <ol data-source-node="n85">
+            <li value="1" data-source-node="n86"><a href="80c6e8e2a27d3a2f6042ae822e86649df57914839c57648c1daaa72d754e5905.html" class="a_1" data-source-node="n87">Review</a> order management-related web 
+ system values </li>
+            <li value="2" data-source-node="n88"><a href="ee586c6fe117641588df3e3257591537fabde4178062cfe247d97f698cc60de5.html" class="a_1" data-source-node="n89">Define</a> the 
+ web screen data values</li>
+            <li value="3" data-source-node="n90"><a href="c634dabf921a2c8f3381ea915fff77b4881a5c5978c58d04ecbf698e2ebde2fa.html" class="a_1" data-source-node="n91">Activate</a> 
+ item and carrier records for web order entry</li>
+        </ol>
+        <p data-source-node="n92"> </p>
+        <p data-source-node="n93"> </p>
+        <h4 data-source-node="n94">Web Purchase Order Management<br data-source-node="n95"></h4>
+        <ol data-source-node="n96">
+            <li value="1" data-source-node="n97"><a href="80c6e8e2a27d3a2f6042ae822e86649df57914839c57648c1daaa72d754e5905.html" class="a_1" data-source-node="n98">Review</a> purchase order management-related 
+ web system values</li>
+        </ol>
+        <p class="Heading11" data-source-node="n99"> </p>
+        <p class="Heading11" data-source-node="n100"> </p>
+        <h4 data-source-node="n101">Initial Setup<br data-source-node="n102"></h4>
+        <ol data-source-node="n103">
+            <li value="1" data-source-node="n104"><a href="b1723a09874a836359b82db29f8337ce9b420d24c590d93d5b07372deae27c78.html" class="a_1" data-source-node="n105">Create</a> new web users</li>
+            <li value="2" data-source-node="n106"><a href="41e377d28d6f2b0e9e8cca61779ed389b4e0e1ab8ad634923b39b4926154554e.html" class="a_1" data-source-node="n107">Create</a> a 
+ customer group selection record</li>
+            <li value="3" data-source-node="n108"><a href="80c6e8e2a27d3a2f6042ae822e86649df57914839c57648c1daaa72d754e5905.html" class="a_1" data-source-node="n109">Review</a> general 
+ web system values</li>
+            <li value="4" data-source-node="n110"><a href="ee586c6fe117641588df3e3257591537fabde4178062cfe247d97f698cc60de5.html" class="a_1" data-source-node="n111">Define</a> the 
+ web screen data values</li>
+            <li value="5" data-source-node="n112"><a href="e298398eed1b31e231fc89ec1591f2720ac61c08472185b44ef24c10e75d898f.html" class="a_1" data-source-node="n113">Define</a> the 
+ "Reporting" link</li>
+        </ol>
+        <p class="Heading11" data-source-node="n114"> </p>
+        <p class="Heading11" data-source-node="n115"> </p>
+        <h4 data-source-node="n116">Web Statistics<br data-source-node="n117"></h4>
+        <ol data-source-node="n118">
+            <li value="1" data-source-node="n119"><a href="80c6e8e2a27d3a2f6042ae822e86649df57914839c57648c1daaa72d754e5905.html" class="a_1" data-source-node="n120">Review</a> the web statistics-related web 
+ system values </li>
+            <li value="2" data-source-node="n121"><a href="ee586c6fe117641588df3e3257591537fabde4178062cfe247d97f698cc60de5.html" class="a_1" data-source-node="n122">Define</a> the 
+ web screen data values</li>
+        </ol>
+        <p class="p_25" data-source-node="n123"> </p>
+        <p class="p_25" data-source-node="n124"> </p>
+        <p class="p_25" data-source-node="n125"> </p>
+        <p class="p_25" data-source-node="n126"> </p>
+        <p class="p_25" data-source-node="n127"> </p>
+        <p class="p_25" data-source-node="n128"> </p>
+        <p class="p_25" data-source-node="n129"> </p>
+        <p class="p_25" data-source-node="n130"> </p>
+        <p class="p_25" data-source-node="n131"> </p>
+        <p class="p_25" data-source-node="n132"> </p>
+        <p class="p_25" data-source-node="n133"> </p>
+        <p class="p_25" data-source-node="n134"> </p>
+        <p class="p_25" data-source-node="n135"> </p>
+        <p class="p_25" data-source-node="n136"> </p>
+        <p class="p_25" data-source-node="n137"> </p>
+        <p class="p_25" data-source-node="n138"> </p>
+        <p class="p_25" data-source-node="n139"> </p>
+        <p class="p_25" data-source-node="n140"> </p>
+        <p class="p_25" data-source-node="n141"> </p>
+        <p class="p_25" data-source-node="n142"> </p>
+        <p class="p_25" data-source-node="n143"> </p>
+        <p class="p_25" data-source-node="n144"> </p>
+        <p class="p_25" data-source-node="n145"> </p>
+        <p class="p_25" data-source-node="n146"> </p>
+        <p class="p_25" data-source-node="n147"> </p>
+        <p class="p_25" data-source-node="n148"> </p>
+        <p class="p_25" data-source-node="n149"> </p>
+        <p class="p_25" data-source-node="n150"> </p>
+        <p class="p_25" data-source-node="n151"> </p>
+        <p class="p_25" data-source-node="n152"> </p>
+        <p class="p_25" data-source-node="n153"> </p>
+        <p class="p_25" data-source-node="n154"> </p>
+        <p class="p_25" data-source-node="n155"> </p>
+        <p class="p_25" data-source-node="n156"> </p>
+        <p class="p_25" data-source-node="n157"> </p>
+        <p class="p_25" data-source-node="n158"> </p>
+        <p class="p_25" data-source-node="n159"> </p>
+        <p class="p_25" data-source-node="n160"> </p>
+        <p class="p_25" data-source-node="n161"> </p>
+    

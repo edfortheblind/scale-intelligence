@@ -1,0 +1,216 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>XML Interface Mode Overview</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor688" data-source-node="n57"></a>XML Interface Mode Overview</h1>
+        <h4 data-source-node="n58">What is the XML Interface Mode?</h4>
+        <p data-source-node="n59">An XML interface involves the system retrieving your ERP's XML-formatted 
+ data files. These XML files are placed in a specified directory, with 
+ a file extension that the system can recognize. When the interface process 
+ is started, the system parses the data (based on an XML style sheet), 
+ and places it in a SCALE database table. </p>
+        <p data-source-node="n60"> </p>
+        <p data-source-node="n61">Using this method to upload, when the interface is started, SCALE parses 
+ the data into the XML format, and places it into an XML file (with a user-defined 
+ file extension) in a directory on your server. This eligible data has 
+ reached a minimum user-defined status, such as "load confirmed" 
+ for shipments or "closed" for receipt containers. The ERP then 
+ will retrieve this XML file, parse the data, and insert it into its own 
+ database.</p>
+        <p data-source-node="n62"> </p>
+        <p data-source-node="n63"> </p>
+        <p data-source-node="n64"> </p>
+        <h4 data-source-node="n65">What is the Basic Functional Flow of the XML 
+ Interface Process?</h4>
+        <p class="p_8" data-source-node="n66"> </p>
+        <p data-source-node="n67">
+            <img src="../source/assets/700713c686e690de9fbed19dadcf70228f42769d377cb5c0aeaa9bcbe74ca506.gif" style="height: 399px;width: 769px" width="769" height="399" border="1" class="img_3" loading="eager" data-source-node="n68">
+        </p>
+        <p data-source-node="n69"> </p>
+        <p data-source-node="n70"> </p>
+        <p data-source-node="n71"> </p>
+        <h4 data-source-node="n72">When are XML Interfaces Commonly Used?</h4>
+        <p class="p_8" data-source-node="n73">You would typically use the XML mode if 
+ your ERP generates XML-formatted data. This method is appealing if you 
+ do not have the business need to communicate directly to the system's 
+ database tables. </p>
+        <p data-source-node="n74"> </p>
+        <p data-source-node="n75"> </p>
+        <p data-source-node="n76"> </p>
+        <h4 data-source-node="n77">What Actions Can an XML Interface Perform?</h4>
+        <p data-source-node="n78">SCALE XML interface mode supports four data actions (for uploads and downloads):</p>
+        <ul type="disc" class="ul_1" data-source-node="n79">
+            <li data-source-node="n80">New Action: 
+ This action allows you to introduce new records to the system (downloads), 
+ or provide data to the ERP (uploads). Generally, this is the action you 
+ would perform using the interface. <br data-source-node="n81"><br data-source-node="n82">In XML mode, suppose your ERP generates a file filled with XML data, 
+ which is ready to be imported into the system. When the interface is started, 
+ these "new" files are processed by the system and interfaced 
+ into the SCALE database. This data then can be processed by the user.<br data-source-node="n83"><br data-source-node="n84"></li>
+            <li data-source-node="n85">Change Action: 
+ This action allows you to update records that were interfaced to the system 
+ from the ERP. Generally, records can be changed until they reach a certain 
+ processing point in the system. As a rule, change verification of interfaced 
+ records follows the same standards as the change action within the system. 
+ For example, you cannot change the carrier on a shipment once it's been 
+ ship confirmed; therefore, you cannot change the carrier on a ship-confirmed 
+ shipment via the interface. To determine when a change action is prohibited, 
+ please review the help and check your own processing rules for the functional 
+ area in question. Change actions can be used for downloads only.<br data-source-node="n86"><br data-source-node="n87">In XML mode, suppose your ERP generates an XML file filled with data 
+ meant to update records that already exist in the system. When the interface 
+ is started, these "change" files are processed by the system, 
+ the XML data is translated, and then interfaced into the SCALE database. 
+ These changes to data records, then, are merged into the SCALE database 
+ (which houses the existing records).<br data-source-node="n88"><br data-source-node="n89"></li>
+            <li data-source-node="n90">Delete Action: 
+ This action allows you to remove records from the system that were interfaced 
+ from the ERP. Like the Change action, you can delete a record until it 
+ reaches a certain processing point in the system. The information provided 
+ for the Change action above also applies for the Delete action. Delete 
+ actions can be used for downloads only.<br data-source-node="n91"><br data-source-node="n92">In XML mode, suppose your ERP generates an XML file with data identifying 
+ already-existing records that need to be deleted from the SCALE database. 
+ When the interface is started, these "delete" files are processed 
+ by the system and interfaced into the SCALE database. The system will interface 
+ the file in, and delete the appropriate data. For example, suppose there 
+ is an order that was cancelled, the ERP would then send down an XML file 
+ identifying this order. The system would then interface this file in, 
+ translate the data, and make the appropriate deletion from the database.<br data-source-node="n93"><br data-source-node="n94"></li>
+            <li data-source-node="n95">Save Action: 
+ This action allows you to update a current record (that the system sees 
+ is a duplicate), rather than create a second record with the updated information. 
+ If no matching record is found, the system will insert a new record. This 
+ is helpful if your ERP system generates data that does not indicate that 
+ it is new data or changed data. Save actions can be used for downloads 
+ and uploads.<br data-source-node="n96"><br data-source-node="n97">In XML mode, suppose your ERP generates an XML file with data identifying 
+ either new or already-existing records that need to be added/changed from 
+ the SCALE database. When the interface is started, these "save" 
+ files are processed by the system and interfaced into the SCALE database, 
+ depending on the status of the data in the system. If the data already 
+ exists, the system will handle this data record as a Change action. If 
+ the data does not exist, the system will handle this as a New action</li>
+        </ul>
+        <p data-source-node="n98"> </p>
+        <p data-source-node="n99"> </p>
+        <h4 data-source-node="n100">What are the Basic Steps to Implement / Use an 
+ XML Interface?</h4>
+        <p data-source-node="n101">The following configurations need to be addressed to process data via 
+ an XML interface:</p>
+        <ul type="disc" class="ul_1" data-source-node="n102">
+            <li data-source-node="n103">First, you need to create an interface 
+ process record, which determines how data will be downloaded/uploaded 
+ between the system and the ERP. Each functional area has its own process 
+ settings for the interface. For example, in the Receiving process record, 
+ there is a separate detail record for each interface process you want 
+ to use (such as "receiving delimited upload," "receiving 
+ XML download," etc).<br data-source-node="n104"> </li>
+            <li data-source-node="n105">Next, you will need to address the various interface system values. These values 
+ mostly involve technical decisions that you have to address in order for 
+ the system to run your interface properly, such as in what status you 
+ want data to be eligible for uploading, or directories you want delimited 
+ files to be downloaded from.<br data-source-node="n106"> </li>
+            <li data-source-node="n107">Finally, you will need to decide if you want to 
+ run your interface manually, 
+ or have the system kick it off           automatically 
+ during scheduled time(s) of the day. If you decide to run it automatically, 
+ you need to define a job record in the Scheduled Job Window.</li>
+        </ul>
+        <p data-source-node="n108"> </p>
+        <p data-source-node="n109"> </p>
+        <h4 data-source-node="n110">What Does a Typical XML File Look Like?</h4>
+        <p data-source-node="n111">To see examples of an XML file that is specially-formatted to interface 
+ data into the system, see <a href="454345924a1071f9f511d89e406a31641c26bcdcc8fa4c2a268168bae9e0420e.html" data-source-node="n112">XML Interface Tutorials 
+ and Schemas</a>. When generating your XML files, make certain that they meet all the guidelines for correctly-formatted XML files. These can be found in XML tutorial books or on the Internet.</p>
+        <p data-source-node="n113"> </p>
+        <p data-source-node="n114"> </p>
+        <p data-source-node="n115"> </p>
+        <h4 data-source-node="n116">Where Should XML Files Be Placed in Order for 
+ the System to Process Them?</h4>
+        <p data-source-node="n117">You can define the directory where the system will place XML files to 
+ upload to the ERP, or already downloaded files that the ERP sent to SCALE. 
+ You can define these directories (the Interface Download Input Directory 
+ for downloads and the Interface Upload Input Directory for uploads) on 
+ the Interface System Values Window.</p>
+        <p data-source-node="n118"> </p>
+        <p data-source-node="n119"> </p>
+        <p data-source-node="n120"> </p>
+        <h4 data-source-node="n121">How Does the System Know Which Files to Download 
+ to SCALE?</h4>
+        <p data-source-node="n122">The system will attempt to process any files that have the appropriate 
+ file extension. You can configure this extension on the Interface Process 
+ Window, specifically the process detail record's File Extension Field. 
+ For example, suppose you enter the file extension "shxml" for 
+ the XML order download process detail record. When the download interface 
+ process runs, the system will look in the specified directory for all 
+ files that have an "shxml" extension. Note that it does not 
+ matter what the file is actually named, as long as the matching extension 
+ exists.</p>
+        <p data-source-node="n123"> </p>
+        <p data-source-node="n124"> </p>
+        <p data-source-node="n125"> </p>
+        <h4 data-source-node="n126">How Does the System Know Which Data to Upload 
+ to the ERP?</h4>
+        <p data-source-node="n127">The system will attempt to process data that has attained a minimum 
+ status, which is defined on the Interface System Values Window. For example, 
+ you can configure shipment data to be "eligible" for uploads 
+ at such statuses as "load confirmed" or "ship confirmed." 
+ When the upload interface process runs, the system will place a file in 
+ the specified directory with this data in an XML format.</p>
+        <p data-source-node="n128"> </p>
+        <p data-source-node="n129"> </p>
+        <p data-source-node="n130"> </p>
+        <h4 data-source-node="n131">Where are XML Files Placed After Processing?</h4>
+        <p data-source-node="n132">If you select the Save Processed Data 
+ Checkbox on the interface process detail, the system will save 
+ each "used" XML file in the interface's Output directory, appending it with a user-configurable 
+ extension. If you do not select this setting, the system will delete "used" 
+ XML files. Note, however, if a data validation error occurs with the interface, the system will place the original data file (with its original file extension) into a user-defined subfolder in the Output directory. You can indicate this directory in the Interface System Values Window.</p>
+        <p data-source-node="n133"> </p>
+        <p data-source-node="n134"> </p>
+        <p data-source-node="n135"> </p>
+        <h4 data-source-node="n136">Where does data go when downloaded into SCALE?</h4>
+        <p data-source-node="n137">The answer for this depends on what type of data you are interfacing 
+ into the system. For example, you could have downloaded orders to go into 
+ the pool (in the Planned Shipment Insight screen), or as an "unassigned shipment" 
+ (in the Shipment Insight). These statuses can be configured in the Interface 
+ System Values Window.</p>
+        <p data-source-node="n138"> </p>
+        <p data-source-node="n139"> </p>
+        <p data-source-node="n140"> </p>
+        <h4 data-source-node="n141">What Happens if There is a Problem?  </h4>
+        <p data-source-node="n142">If there is a problem with the interface, an error file is created. The error file can be corrected and the information downloaded again. The original interface download file will be considerably larger than the error file. If there is an error, the system extracts all extraneous information from the error file generation. The only information that will be included is the shipment, shipment line, and container. Thus, some information from the original file is stripped out during the error creation process.</p>
+        <p data-source-node="n143"> </p>
+        <p data-source-node="n144"> </p>
+        <p class="p_30" data-source-node="n145"> </p>
+        <p data-source-node="n146"> </p>
+        <p data-source-node="n147"> </p>
+        <p data-source-node="n148"> </p>
+        <p data-source-node="n149"> </p>
+        <p data-source-node="n150"> </p>
+        <p data-source-node="n151"> </p>
+        <p data-source-node="n152"> </p>
+        <p data-source-node="n153"> </p>
+        <p data-source-node="n154"> </p>
+        <p data-source-node="n155"> </p>
+        <p data-source-node="n156"> </p>
+        <p data-source-node="n157"> </p>
+        <p data-source-node="n158"> </p>
+        <p data-source-node="n159"> </p>
+        <p data-source-node="n160"> </p>
+        <p data-source-node="n161"> </p>
+        <p data-source-node="n162"> </p>
+        <p data-source-node="n163"> </p>
+        <p data-source-node="n164"> </p>
+        <p data-source-node="n165"> </p>
+        <p data-source-node="n166"> </p>
+        <p data-source-node="n167"> </p>
+        <p data-source-node="n168"> </p>
+        <p data-source-node="n169"> </p>
+        <p data-source-node="n170"> </p>
+        <p data-source-node="n171"> </p>
+        <p data-source-node="n172"> </p>
+        <p data-source-node="n173"> </p>
+        <p data-source-node="n174"> </p>
+        <p data-source-node="n175"> </p>
+        <p data-source-node="n176"> </p>
+        <p data-source-node="n177"> </p>
+        <p data-source-node="n178"> </p>
+        <p data-source-node="n179"> </p>
+    </body></html>

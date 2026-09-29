@@ -1,0 +1,124 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Processing Data Archiving Records</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1981" data-source-node="n57"></a>Processing Data Archiving Records</h1>
+        <p data-source-node="n58">Data archiving moves records from an "active" database to 
+ an "inactive" database, based on age and any other defined criteria. 
+ This increases system speed and minimizes the number of records displayed 
+ on application screens. You can schedule archiving processes 
+ to run automatically (via "scheduled jobs") or manually, depending 
+ on your business practices. When you archive records, the system will save them to a separate database table. You can then view these records using the Archive viewers. You can also restore them back to an active state. However, if you choose to delete the records from the database, the system will remove them permanently from active database tables. You cannot access or restore deleted records.</p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60">Archive to external storage can also be configured to improve the performance of the application. The archiving to an external storage database can be configured using few powershell commands. See the <b data-source-node="n61">SDK topic "How to: Configure External Data Storage for Archiving"</b> for more information.</p>
+        <p data-source-node="n62"> </p>
+        <p data-source-node="n63">WARNING: Archiving records will 
+ take up considerable system resources. You should not run a archive job 
+ during normal operational hours or during peak processing times. </p>
+        <p data-source-node="n64"> </p>
+        <h5 data-source-node="n65">Note On Archiving Receiving Records</h5>
+        <p data-source-node="n66">  Receipts that are related to serial numbers will only be archived when they no longer relate to serial numbers in inventory</p>
+        <p data-source-node="n67"> </p>
+        <p data-source-node="n68"> </p>
+        <h4 data-source-node="n69">Related Topics...</h4>
+        <p data-source-node="n70"><a href="62470f051ed57f24c0d7d9e59111662d32d64353aee9f242c70a9c048d6b3311.html#da" data-source-node="n71">Data Archiving Process Summary</a>
+        </p>
+        <p data-source-node="n72"><a href="482986c5f73da065af27fd1340dceef414d1314d1de4e1e793c6c0d33771e526.html" data-source-node="n73">Setup Overview</a>
+        </p>
+        <p data-source-node="n74"> </p>
+        <p data-source-node="n75"> </p>
+        <div class="MCDropDown MCDropDown_Closed dropDown" data-source-node="n76"><span class="MCDropDownHead dropDownHead" data-source-node="n77"><a class="MCDropDownHotSpot dropDownHotspot MCDropDownHotSpot_ MCHotSpotImage" data-source-node="n78"><img class="MCDropDown_Image_Icon" src="../source/assets/1d600a0343eef0b105f4dd86d1b7572306777214a30e5b8d49e91c153d7bca31.gif" height="11" width="16" alt="Closed" loading="eager" data-source-node="n79">Field Descriptions...</a></span>
+            <div class="MCDropDownBody dropDownBody" data-source-node="n80">
+                <p class="Heading11" data-source-node="n81"> </p>
+                <p class="Heading11" style="font-style: italic" data-source-node="n82">Archive 
+ Data Window Fields</p>
+                <p class="p_6" data-source-node="n83"><a href="2333f128e83b9ffc0c4d77196bb61deb25e45fc8d1116a73a9250cba6acd26ac.html" data-source-node="n84">Archive Master Check boxes</a>
+                </p>
+                <p data-source-node="n85"><a href="60b6baea5faf2701b0580017e5e527db6a2570673dea380cd0889beea0619e5f.html" data-source-node="n86">Check All Check box</a>
+                </p>
+                <p data-source-node="n87"> </p>
+                <p class="Heading11" style="font-style: italic" data-source-node="n88">Archive Viewers Fields</p>
+                <p data-source-node="n89">- The fields displayed on the archive viewers will depend on how 
+ this viewer was configured. See the topic      Defining 
+ Dynamic Configuration Viewer Fields for more information. Also, for 
+ specific field descriptions, enter the field name in the index.</p>
+                <p class="p_4" data-source-node="n90"> </p>
+            </div>
+        </div>
+        <p data-source-node="n91"> </p>
+        <p data-source-node="n92"> </p>
+        <p data-source-node="n93">The following is discussed in this topic:</p>
+        <p class="p_12" data-source-node="n94">- <a href="#Manually" data-source-node="n95">Manually Running Archive 
+ Masters</a></p>
+        <p class="p_12" data-source-node="n96">- <a href="#Researching" data-source-node="n97">Researching Data 
+ Archiving Records</a></p>
+        <p class="p_12" data-source-node="n98">- <a href="#External" data-source-node="n99">Archive to External Data Storage</a>.</p>
+        <p data-source-node="n100"> </p>
+        <p data-source-node="n101"> </p>
+        <p class="p_5" data-source-node="n102"> </p>
+        <h4 data-source-node="n103"><a name="Manually" data-source-node="n104"></a>Manually Running Archive 
+ Masters...</h4>
+        <p data-source-node="n105">You can manually activate the archiving of old records in the system. 
+ When you activate a master, it will archive records according to rules 
+ you define. You can define how you want to deal with this data by creating 
+ an archive master in the Archive Master Window. The system displays these 
+ masters in the Archive Data Window. You can also research archived records 
+ on one of the Archive Viewers. Note that if you have checked the Run As Default Check box on the Archive 
+ Master Window, certain master record(s) will already be checked when you 
+ open the Archive Data Window. These masters are run automatically through 
+ SCALE scheduled jobs.</p>
+        <ol data-source-node="n106">
+            <li value="1" data-source-node="n107">
+                <p data-source-node="n108">Use the Archive Masters Check boxes 
+ to indicate which archive master(s) that you want to activate. You can 
+ also use the     Check All Check box to 
+ select all of the masters.</p>
+                <p data-source-node="n109"> </p>
+            </li>
+            <li value="2" data-source-node="n110">
+                <p data-source-node="n111">Select OK. The 
+ system will display a confirmation message verifying that you want to 
+ archive this data:</p>
+                <p data-source-node="n112"> </p>
+            </li>
+            <ul type="disc" class="ul_1" data-source-node="n113">
+                <li data-source-node="n114">
+                    <p data-source-node="n115">If you choose Yes, 
+ the system will immediately archive/purge the records as defined on the 
+ master rule.</p>
+                    <p data-source-node="n116"> </p>
+                </li>
+                <li data-source-node="n117">If you choose 
+ No, the system will return 
+ you to the Archive Data Window.</li>
+            </ul>
+        </ol>
+        <p data-source-node="n118"> </p>
+        <h4 data-source-node="n119"><a name="Researching" data-source-node="n120"></a>Researching Data Archiving Records...</h4>
+        <p data-source-node="n121">You can view your warehouse's archived records in one of the Archive 
+ Viewers.</p>
+        <p class="p_5" data-source-node="n122"> </p>
+        <h5 data-source-node="n123">Viewer Window Layout</h5>
+        <p data-source-node="n124">When you open an Archive Viewer, the system will display a window with 
+ two tabs. The Criteria Tab contains the fields you can use to perform 
+ a search. The Results Tab displays the record(s) that the system found 
+ to match your search criteria. You can use the fields on the Criteria 
+ Tab to search for your archived records. The fields displayed on this 
+ tab will depend on how this viewer was configured.</p>
+        <p data-source-node="n125"> </p>
+        <h4 data-source-node="n126"><a name="External" data-source-node="n127"></a>Archive to External Data Storage.</h4>
+        <p data-source-node="n128">You can create and configure an external database to store archiving data for the application. This configuration will enable you to record the archive data directly to the external storage. The following are the feature capabilities. See the <b data-source-node="n129">SDK topic "How to: Configure External Data Storage for Archiving"</b> for more information on how to create, configure and upgrade using the PowerShell commands.</p>
+        <p data-source-node="n130"> </p>
+        <h5 data-source-node="n131">Create a new Archive Database </h5>
+        <p data-source-node="n132">Using the <b data-source-node="n133">Add-ScaleArchiveDB</b> PowerShell command, create a new archive database. The external database will be of MS SQL type only.</p>
+        <p data-source-node="n134"> </p>
+        <h5 data-source-node="n135">Configuration of Archive DB</h5>
+        <p data-source-node="n136">The new external archive database (MS SQL) can be configured using the <b data-source-node="n137">Set-ScaleArchiveDataStorage</b> powershell command. </p>
+        <p data-source-node="n138"> The user is prompted with the following two options</p>
+        <ul data-source-node="n139">
+            <li data-source-node="n140">1- Default - The archive data will be stored in the main database and the external database will not be used for archiving.</li>
+            <li data-source-node="n141">2- MS SQL - The archive data will be directed to be written in the external MS SQL database.</li>
+        </ul>
+        <h5 data-source-node="n142">Archive Custom Tables</h5>
+        <p data-source-node="n143">The custom tables created for user-specific environment can also be archived in the external database. Users need to add the custom table to the Archive table list and then configure and run the archive masters.</p>
+        <p data-source-node="n144"> </p>
+        <p data-source-node="n145">See the <b data-source-node="n146">SDK topic "How to: Configure External Data Storage for Archiving"</b> for more information.</p>
+    </body></html>

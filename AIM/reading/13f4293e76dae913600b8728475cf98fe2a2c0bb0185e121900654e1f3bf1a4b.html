@@ -1,0 +1,160 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Work Order Process Summary: Process Flows</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56">Work Order Process Summary</h1>
+        <p data-source-node="n57"><a href="7ce64df7dccc3aa20a98d55da3bebc5982d6628fd234699353055014fb625c05.html" style="font-style: normal;color: #000000;font-weight: bold" data-source-node="n58">Functionality</a>
+        </p>
+        <p data-source-node="n59"><b data-source-node="n60">** Process Flows **</b>
+        </p>
+        <p data-source-node="n61"> </p>
+        <p data-source-node="n62"> </p>
+        <p data-source-node="n63"> </p>
+        <p data-source-node="n64">This process diagram illustrates how the system manages the movement 
+ of work orders through the system. </p>
+        <p data-source-node="n65"> </p>
+        <p data-source-node="n66">
+            <img src="../source/assets/ab04fefe9d379657a5489657bdbc5727bf332ce7e3e02a6b49b4c6120eae6c21.gif" loading="eager" data-source-node="n67">
+        </p>
+        <p data-source-node="n68"> </p>
+        <p data-source-node="n69">Work orders manage how a finished item will be assembled. They are defined 
+ on the Work Order screen. All work order related information, 
+ such as components and instructions, can be stored on a bill of material 
+ record or manually entered when the work order is created.</p>
+        <p data-source-node="n70"> </p>
+        <h4 data-source-node="n71">Step 1: A work order is created.</h4>
+        <p data-source-node="n72">An employee creates the work order on the Work Order screen; 
+ or, the system creates a work order using the "Work Order Creation" 
+ wave step:</p>
+        <ul type="disc" class="ul_1" data-source-node="n73">
+            <li data-source-node="n74">
+                <p data-source-node="n75">If a bill of material record exists 
+ for this finished item, the system retrieves the finished item 
+ values, component information and instructions from this record.</p>
+                <p data-source-node="n76"> </p>
+            </li>
+            <li data-source-node="n77">If a bill of 
+ material record does not exist, the user will need to provide the 
+ finished item values, component information and instructions for this 
+ work order. The system will not maintain this information for future work 
+ orders.</li>
+        </ul>
+        <p data-source-node="n78"> </p>
+        <h4 data-source-node="n79">Step 2:The build components are allocated &amp; the work order is released.</h4>
+        <ol class="ol_1" data-source-node="n80">
+            <li value="1" data-source-node="n81">When the work order is created, the Work Allocation 
+ Method system value is referenced to determine when components should 
+ be allocated for a work order. If you want the system to allocate the 
+ components immediately, this value should be set to "Allocate on 
+ Work Order Creation." If you do not need to allocate the components 
+ until the finished item can be assembled, this value should be set to 
+ "Allocate on Work Order Release." Later, an employee can manually 
+ allocate the components. <br data-source-node="n82"> </li>
+            <li value="2" data-source-node="n83">At this time, if the components were set to allocate 
+ immediately, the system will increase the component quantity if these 
+ two conditions are met: there is a quantity increase specified on the 
+ component's bill of materials, and 
+ the requested component quantity meets the minimum quantity required (also 
+ defined on the BOM).<br data-source-node="n84"> </li>
+            <li value="3" data-source-node="n85">The employee releases the work order (if it was 
+ not automatically released at the time of creation). Work orders are manually 
+ released from the Work Order Insight screen. If the Work Allocation Method 
+ value is set to "Allocate on Work Order Release," the system 
+ now allocates the components, and performs the component quantity increase 
+ (if appropriate) as described in step 2b.</li>
+        </ol>
+        <p data-source-node="n86"> </p>
+        <h4 data-source-node="n87">Step 3: The component parts are transferred to the build location.</h4>
+        <ol class="ol_1" data-source-node="n88">
+            <li class="li_1" value="1" data-source-node="n89">
+                <p data-source-node="n90">The system references the user's 
+ work order preference record to check the Create Work Checkbox.</p>
+                <p data-source-node="n91"> </p>
+            </li>
+            <ul type="disc" class="ul_1" style="font-size: 10pt" data-source-node="n92">
+                <li data-source-node="n93">
+                    <p data-source-node="n94">If the checkbox is selected, 
+ the system will check the work order component work criteria records to 
+ see if any apply to this work order.</p>
+                    <p data-source-node="n95"> </p>
+                </li>
+                <p data-source-node="n96">- If a record applies to 
+ this work order, the system generates work to move the components 
+ to the build location. The necessary inventory is allocated from the storage 
+ location(s) and set as in transit to the build location. The user may generate 
+ the Work Order Pick List to identify the appropriate components, pick 
+ locations and build location, or he/she may complete the work on an RF 
+ device.</p>
+                <p data-source-node="n97"> </p>-                     
+                    If a 
+ record does not apply to this work order, the system cannot create 
+ work to move the allocated components. The user will need to deallocate 
+ the build components, create a work criteria record to accommodate the 
+ work order and select to allocate the components again.
+               
+                <p data-source-node="n98"> </p><li data-source-node="n99">If the checkbox 
+ is NOT selected, the system performs an inventory transaction to 
+ move the components to the build location. Instead, the components are 
+ removed from the storage location(s) On Hand Quantity and transferred 
+ to the build location automatically. Usually when work is not created, 
+ the user generates the Work Order Pick List to identify the appropriate 
+ components, pick locations and build location.</li></ul>
+            <p data-source-node="n100"> </p>
+            <li value="2" data-source-node="n101">The build components are physically delivered 
+ to the build location.</li>
+        </ol>
+        <p data-source-node="n102"> </p>
+        <h4 data-source-node="n103">Step 4: The finished item is assembled and confirmed.</h4>
+        <ol class="ol_1" data-source-node="n104">
+            <li value="1" data-source-node="n105">
+                <p data-source-node="n106">Employees use the instructions defined on the work order to assemble 
+ the finished items. The Work Order Instruction List provides both instructions 
+ and a list of the build components.</p>
+                <p data-source-node="n107"> </p>
+            </li>
+            <li value="2" data-source-node="n108">
+                <p data-source-node="n109">The system references the user's work order preference record to 
+ check the Create Work Checkbox.</p>
+                <p data-source-node="n110"> </p>
+            </li>
+            <ul type="disc" class="ul_1" style="font-size: 10pt" data-source-node="n111">
+                <li data-source-node="n112">
+                    <p data-source-node="n113">If the checkbox is selected, 
+ the system will check the work order finished item work criteria records 
+ to see if any apply to this work order.</p>
+                    <p data-source-node="n114"> </p>
+                </li>
+                <p data-source-node="n115">- If a record applies to 
+ this finished item, the system generates work to move the finished 
+ items to the storage location(s). The necessary inventory is allocated 
+ from the build location and set as in transit to the storage location. 
+ The user may generate the Work Order Finished Item Putaway List to identify 
+ the finished item and storage location(s), or he/she may complete the 
+ work on an RF device.</p>
+                <p data-source-node="n116"> </p>-                     
+                   If a 
+ record does not apply to this finished item, the system cannot 
+ create work to move the finished items to the appropriate storage location(s).
+            
+                <p data-source-node="n117"> </p><li data-source-node="n118"><p data-source-node="n119">If the checkbox is NOT selected, 
+ the system cannot create work to move the finished item to the appropriate 
+ storage location(s). Instead, the items are removed from the build location's 
+ On Hand Quantity and transferred to the storage location(s) automatically. 
+ Usually when work is not created, the user generates the Work Order Finished 
+ Item Putaway List to identify the appropriate finished item and putaway 
+ locations.</p><p data-source-node="n120"> </p></li></ul>
+            <li value="3" data-source-node="n121">
+                <p data-source-node="n122">The finished item is delivered to the build location. It can now 
+ be allocated.</p>
+                <p class="p_5" data-source-node="n123">  </p>
+            </li>
+        </ol>
+        <p data-source-node="n124"> </p>
+        <p data-source-node="n125"> </p>
+        <p data-source-node="n126"> </p>
+        <p data-source-node="n127"> </p>
+        <p data-source-node="n128"> </p>
+        <p data-source-node="n129"> </p>
+        <p data-source-node="n130"> </p>
+        <p data-source-node="n131"> </p>
+        <p data-source-node="n132"> </p>
+        <p data-source-node="n133"> </p>
+    </body></html>

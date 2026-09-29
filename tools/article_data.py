@@ -12,7 +12,7 @@ from urllib.parse import urljoin, urlsplit
 from collector import Store, ROOTS, source_identity, digest, atomic_bytes, atomic_json, writer_lock, now, VERSION
 
 SCHEMA = 1
-CONVERTER = 'aim-static-1'
+CONVERTER = 'aim-static-2'
 VOID = set('area base br col embed hr img input link meta param source track wbr'.split())
 SAFE_TAGS = set(('a abbr address article aside b bdi bdo blockquote br caption cite code col colgroup dd del details dfn div dl dt em '
                  'figcaption figure h1 h2 h3 h4 h5 h6 header hr i img ins kbd li main map area mark nav ol p pre q s samp section '
@@ -201,9 +201,9 @@ def inventory(content):
     controls=[]
     for node in nodes(content):
         attrs=node['attrs']
-        evidence={k:v for k,v in attrs.items() if k in ('hidden','aria-expanded','aria-hidden','data-mc-conditions','data-mc-target-name') or
+        evidence={k:v for k,v in attrs.items() if k in ('hidden','aria-expanded','aria-hidden','data-mc-conditions','data-mc-target-name','data-mc-targets','targets') or
                   (k=='style' and re.search(r'display\s*:\s*none|visibility\s*:\s*hidden',v or '',re.I)) or
-                  (k=='class' and re.search(r'dropdown|expanding|popup|tabbody|tabpanel|tooltip|collapse',v or '',re.I))}
+                  (k=='class' and re.search(r'dropdown|expanding|popup|tabbody|tabpanel|tooltip|collapse|toggler',v or '',re.I))}
         if evidence:
             entry={'node_id':node['node_id'],'condition':evidence,'text_sha256':digest(text_of(node).encode('utf-8')),
                    'representation':'all_published_static_content_expanded'}
@@ -224,7 +224,7 @@ def inventory(content):
     return {'tags':dict(sorted(tags.items())),'text_sha256':digest(text_of(content).encode('utf-8')),
             'text_characters':len(text_of(content)), 'tables':tables,'code':code,'variants':variants,'documentary_controls':controls,
             'headings':[{'node_id':n['node_id'],'level':int(n['tag'][1]),'text':text_of(n)} for n in nodes(content) if re.fullmatch('h[1-6]',n['tag'])],
-            'anchors':[n['attrs'].get('id') or n['attrs'].get('name') for n in nodes(content) if n['attrs'].get('id') or n['attrs'].get('name')]}
+            'anchors':[n['attrs'][key] for n in nodes(content) for key in ('id','name') if n['attrs'].get(key)]}
 
 
 def safe_style(value):
@@ -333,6 +333,9 @@ def convert(store, record):
           'verification':{'checks':fidelity_checks,'missing_direct_assets':missing,'unresolved_image_references':missing_image_mapping,'parse_errors':parser.errors,
                           'content_checks_passed':all(fidelity_checks.values()),'reading_copy_verified':False,
                           'pending':['CSS dependency closure','documentary variant reconciliation','internal anchor/link audit']}}
+    if record['module']=='AIM':
+        from documentary_states import reconcile
+        data['documentary_states']=reconcile(content,references,resources)
     prefix=record['module']+'/reading/'+record['id']
     csp="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"
     styles=[]

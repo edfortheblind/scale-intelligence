@@ -1,0 +1,113 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Localizing Values On Paperwork Documents (SSRS Reports)</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor343" data-source-node="n57"></a>Localizing Values On Paperwork Documents (SSRS Reports)</h1>
+        <p data-source-node="n58">Localizing a paperwork document/report essentially means that you are putting the structure of a <i data-source-node="n59">non-English language</i> into the document/report. You need to do this step so that when the system renders a document to print(and the actual translation text for a language is retrieved), the  
+ document fields will match the language you are using for SCALE. The localizing 
+ process is performed for every language that you have installed on your 
+ server. Note that you should not 
+perform this action during peak work times, as system processing may 
+ be affected. You can localize documents from the Actions Menu in the System Text Editor Window (see picture below). Note that the system will run the localizing process for any SQL Server Reporting Services (SSRS) documents that exist (i.e. you do not need to run this process separately for each type of document).</p>
+        <p data-source-node="n60"> </p>
+        <p data-source-node="n61">
+            <img src="../source/assets/6a37a072fc059439250d4cb4fa16d8ee2ba052fbe4590f1352974586d8d5efe9.gif" loading="eager" data-source-node="n62">
+        </p>
+        <p data-source-node="n63"> </p>
+        <h5 data-source-node="n64">Notes On Localizing SSRS Documents</h5>
+        <ul data-source-node="n65">
+            <li data-source-node="n66">When localizing SSRS .rdl documents, the system modifies the .rdl file directly on the server.  Then, the .rdl file needs to be manually uploaded to SSRS using the SSRS Report Manager.</li>
+        </ul>
+        <p data-source-node="n67"> </p>
+        <p data-source-node="n68"> Each field on a document contains an embedded formula which the system uses 
+ to decide what language to display the field's text label in. For example: </p>
+        <blockquote data-source-node="n69">
+            <p class="p_62" data-source-node="n70">Select {?LANG}</p>
+            <p class="p_62" data-source-node="n71">Case "en" : 
+ "&lt;Output English Text String&gt;" </p>
+            <p class="p_62" data-source-node="n72">Case "fr" : 
+ "&lt;Output French Text String&gt;" </p>
+            <p class="p_62" data-source-node="n73">Case "jp" : 
+ "&lt;Output Japanese Text String&gt;" </p>
+            <p class="p_62" data-source-node="n74">Case "ko" : 
+ "&lt;Output Korean Text String&gt;" </p>
+            <p class="p_62" data-source-node="n75">Case "zh" : 
+ "&lt;Output Simplified Chinese Text String&gt;" </p>
+            <p class="p_62" data-source-node="n76">Default : "&lt;English 
+ Text String&gt;"</p>
+        </blockquote>
+        <p data-source-node="n77"> </p>
+        <h4 data-source-node="n78">Related Topics...</h4>
+        <p data-source-node="n79"><a href="62470f051ed57f24c0d7d9e59111662d32d64353aee9f242c70a9c048d6b3311.html" data-source-node="n80">Technical Process Summary</a>
+        </p>
+        <p data-source-node="n81"><a href="55af77d15ea086df1525f231a6b3792823d2c0be73ad904b830fb751012a0e56.html" data-source-node="n82">Paperwork Process Summary</a>
+        </p>
+        <p data-source-node="n83"><a href="482986c5f73da065af27fd1340dceef414d1314d1de4e1e793c6c0d33771e526.html" data-source-node="n84">Miscellaneous Technical Setup 
+ Overview</a>
+        </p>
+        <p class="p_6" data-source-node="n85"><a href="c66ee028db60c409f1c6407cb2902e98af9f9023aca423fab516b65d8e0073ca.html" data-source-node="n86">Using the Translation Wizard</a>
+        </p>
+        <p class="p_6" data-source-node="n87"><a href="fb8df1eb83ede1f4841c91bc83d8ba3b726c5647beaddda205d8618a19ac5efb.html" data-source-node="n88">Using the System Text Editor</a>
+        </p>
+        <p data-source-node="n89"> </p>
+        <p data-source-node="n90"> </p>
+        <h4 data-source-node="n91">Procedures...</h4>
+        <ol class="ol_1" data-source-node="n92">
+            <li value="1" data-source-node="n93">Access the System 
+ Text Editor Window.<br data-source-node="n94"> </li>
+            <li value="2" data-source-node="n95">Choose the Localize 
+ Reports option from the Actions Menu.<br data-source-node="n96"> </li>
+            <li value="3" data-source-node="n97">A message will 
+ appear asking you to confirm that you want to localize all the 
+ reports that are in your document template file directory (\\YourServer\ILS\Document 
+ Serving\). 
+ Also, you must regenerate each language's text resources in order to localize 
+ the most current text values.<br data-source-node="n98"><br data-source-node="n99">	Press Yes, and the system will begin the localizing process. 
+ It will generate the new field value resources for the document(s) that 
+ have had changes applied to them.        <br data-source-node="n100"><br data-source-node="n101">	Press No, and the system will return you to the System Text 
+ Editor.<br data-source-node="n102"></li>
+        </ol>
+        <p data-source-node="n103"> </p>
+        <p data-source-node="n104"> </p>
+        <p data-source-node="n105"> </p>
+        <p data-source-node="n106"> </p>
+        <p data-source-node="n107"> </p>
+        <p data-source-node="n108"> </p>
+        <p data-source-node="n109"> </p>
+        <p data-source-node="n110"> </p>
+        <p data-source-node="n111"> </p>
+        <p data-source-node="n112"> </p>
+        <p data-source-node="n113"> </p>
+        <p data-source-node="n114"> </p>
+        <p data-source-node="n115"> </p>
+        <p data-source-node="n116"> </p>
+        <p data-source-node="n117"> </p>
+        <p data-source-node="n118"> </p>
+        <p data-source-node="n119"> </p>
+        <p data-source-node="n120"> </p>
+        <p data-source-node="n121"> </p>
+        <p data-source-node="n122"> </p>
+        <p data-source-node="n123"> </p>
+        <p data-source-node="n124"> </p>
+        <p data-source-node="n125"> </p>
+        <p data-source-node="n126"> </p>
+        <p data-source-node="n127"> </p>
+        <p data-source-node="n128"> </p>
+        <p data-source-node="n129"> </p>
+        <p data-source-node="n130"> </p>
+        <p data-source-node="n131"> </p>
+        <p data-source-node="n132"> </p>
+        <p data-source-node="n133"> </p>
+        <p data-source-node="n134"> </p>
+        <p data-source-node="n135"> </p>
+        <p data-source-node="n136"> </p>
+        <p data-source-node="n137"> </p>
+        <p data-source-node="n138"> </p>
+        <p data-source-node="n139"> </p>
+        <p data-source-node="n140"> </p>
+        <p data-source-node="n141"> </p>
+        <p data-source-node="n142"> </p>
+        <p data-source-node="n143"> </p>
+        <p data-source-node="n144"> </p>
+        <p data-source-node="n145"> </p>
+        <p data-source-node="n146"> </p>
+        <p data-source-node="n147"> </p>
+    </body></html>

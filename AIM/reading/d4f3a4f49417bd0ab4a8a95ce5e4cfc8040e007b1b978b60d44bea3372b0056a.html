@@ -1,0 +1,262 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Immediate Needs Process Summary: Process Flows</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56">Immediate Needs Process Summary</h1>
+        <p style="font-weight: bold" data-source-node="n57"><a href="5dc3ad182d2fa6eed29085709e0c784b0b831ddb4bf10e21616b711279fd1c2d.html" style="font-style: normal" data-source-node="n58">Functionality</a>
+        </p>
+        <p data-source-node="n59"><b data-source-node="n60">** Process Flows **</b>
+        </p>
+        <p data-source-node="n61"> </p>
+        <p data-source-node="n62"> </p>
+        <p data-source-node="n63">- <a href="#basicFlow" style="font-weight: bold" data-source-node="n64">Basic Immediate Needs Functional Flow</a></p>
+        <p data-source-node="n65">- <a href="#genFulfillGuide" style="font-weight: bold" data-source-node="n66">General Fulfillment Guidelines</a></p>
+        <p data-source-node="n67">- <a href="#locruleLP" style="font-weight: bold" data-source-node="n68">Immediate Needs Locating Rule and License Plate Guidelines</a></p>
+        <p data-source-node="n69">- <a href="#putawayGroups" style="font-weight: bold" data-source-node="n70">Fulfilling Immediate Needs Using Putaway Groups</a></p>
+        <p data-source-node="n71">- <a href="#workOrderBuild" style="font-weight: bold" data-source-node="n72">Immediate Needs Allocation and Work Order Build Locations</a></p>
+        <p data-source-node="n73"> </p>
+        <p data-source-node="n74"> </p>
+        <hr width="100%" align="center" data-source-node="n75">
+        <p data-source-node="n76"> </p>
+        <p data-source-node="n77"> </p>
+        <h4 data-source-node="n78"><a name="basicFlow" data-source-node="n79"></a>Basic Flow...</h4>
+        <p data-source-node="n80"> </p>
+        <h5 data-source-node="n81">[1] The Logging of an Immediate Needs Request</h5>
+        <p data-source-node="n82">The following discusses the complete process 
+ of the triggering of an immediate need by the shipment allocation rejection 
+ trigger. </p>
+        <p class="p_20" data-source-node="n83"> </p>
+        <p class="p_19" data-source-node="n84">Suppose a shipment in a wave consists of 
+ two detail lines: a quantity of 10 for item A1 and 10 of B1. The wave 
+ is run, but during the allocation wave step, the system can only allocate 
+ 6 of the 10 of item B1. If allocation complete is on (at the shipment 
+ level), allocation will then fail for this detail line. If this is the only allocation failure, then the system will process normally and Immediate Needs request will be generated. Note that Immediate Needs only get generated if the item is immediate need enabled and shipment allocation fails for that item. When  allocation 
+ fails for an item that is not immediate need enabled, then  the entire shipment will 
+ be placed back into the pool. The system will not log an Immediate Needs 
+ request for that. This request will outline the item/quantity that is required 
+ to fulfill this shipment line.  </p>
+        <p class="p_20" data-source-node="n85"> </p>
+        <p data-source-node="n86">Therefore...</p>
+        <p class="p_19" data-source-node="n87">- If allocate 
+ complete is on, the entire shipment will be rejected.</p>
+        <p class="p_19" data-source-node="n88"> </p>
+        <p class="p_19" data-source-node="n89">- If allocate 
+ complete is on OR off, and Immediate Needs is active, the 
+ need information is written and the quantity is moved in to the new “awaiting 
+ Immediate Need” status.  But, 
+ the whole shipment stays together and is moved to the outbound side. </p>
+        <p class="p_19" data-source-node="n90"> </p>
+        <p class="p_21" data-source-node="n91">- If Immediate Needs is  inactive, when allocation is run and a detail line 
+ is partially or completely rejected, that detail is returned to the order 
+ pool under a copy of the current shipment.</p>
+        <p data-source-node="n92"> </p>
+        <p data-source-node="n93"> </p>
+        <p data-source-node="n94">Setup Note: For the above scenario 
+ to occur, the following configurations must be activated: the appropriate 
+ immediate needs trigger will need to be activated (in this case, shipment 
+ allocation rejection); and the item in question must be eligible for immediate 
+ needs processing (in this case, item B1).</p>
+        <p data-source-node="n95"> </p>
+        <p data-source-node="n96"> </p>
+        <h5 data-source-node="n97">[2] The Fulfillment of an Immediate Need</h5>
+        <p data-source-node="n98">Suppose a week goes by before your warehouse receives another quantity 
+ of item B1. A receipt for 20 units of B1 is processed at the receiving 
+ dock. When that quantity is located, the system will realize that there 
+ is an immediate need for this item. The system will check to see if the 
+ immediate need is still valid. If it is, the system will prompt the user 
+ with an Immediate Needs window that alerts the user that a quantity of 
+ this item is needed to fulfill an immediate need. Four of the 20 B1's 
+ are then located based on the item Immediate Need locating rule or the 
+ system default rule. However, If the immediate need is no longer still 
+ valid, the system will delete the request and processing of this item 
+ quantity will continue as normal. </p>
+        <p data-source-node="n99"> </p>
+        <p data-source-node="n100">Note that if the Create Work flag is off, the quantity would be located 
+ and putaway in one step. However, if the Create Work flag is on, the system 
+ would locate the quantity and create work that must be executed to actually 
+ put the quantity in the location.</p>
+        <p data-source-node="n101"> </p>
+        <p data-source-node="n102">When the wave is 
+ run, allocation is successful for all (assuming the B1's can be allocated 
+ by the allocation rule chosen) and then processing occurs normally from 
+ here.</p>
+        <p data-source-node="n103"> </p>
+        <p data-source-node="n104"> </p>
+        <hr width="100%" align="center" data-source-node="n105">
+        <p data-source-node="n106"> </p>
+        <h4 data-source-node="n107"><a name="genFulfillGuide" data-source-node="n108"></a>General Guidelines...</h4>
+        <p data-source-node="n109"> </p>
+        <p data-source-node="n110">Immediate needs fulfillment occurs when a license plate fulfills one or more immediate need requests for different shipments.  These license plates are located to immediate needs locations (inventory locations).</p>
+        <ul data-source-node="n111">
+            <li data-source-node="n112">License plate can fulfill one or more immediate need requests.
+<br data-source-node="n113"><br data-source-node="n114"></li>
+            <li data-source-node="n115">License plate can fulfill immediate need requests for different shipments.<br data-source-node="n116"><br data-source-node="n117"></li>
+            <li data-source-node="n118"> 
+
+License plate will be split into two or more license plates.<br data-source-node="n119"><br data-source-node="n120">- The original license plate will become a parent license plate and each split license plate will become a child license plate.<br data-source-node="n121"><br data-source-node="n122">- The parent license plate will maintain the original license plate ID (e.g., LP1).<br data-source-node="n123"><br data-source-node="n124">- The child license plates will have the original license plate ID plus the “Delimiter used to ensure unique license plate IDs” value plus the next number starting with 01 (e.g., LP1@01, LP1@02, and LP1@03).<br data-source-node="n125"><br data-source-node="n126">- Child license plates already on a parent license plate will be moved off the parent license plate and create parent child license plates as mentioned in the previous bullet points.<br data-source-node="n127"><br data-source-node="n128"></li>
+            <li data-source-node="n129">License plate quantity must be greater than the total immediate need request quantity.<br data-source-node="n130"><br data-source-node="n131"></li>
+            <li data-source-node="n132">License plate(s) are located to the immediate needs locations based on the configured immediate needs locating rule.<br data-source-node="n133"><br data-source-node="n134"></li>
+            <li data-source-node="n135">Residual quantity is located to inventory locations based on the license plate’s original locating rule.<br data-source-node="n136"><br data-source-node="n137"></li>
+            <li data-source-node="n138">Parent license plates do NOT fulfill immediate need requests when using the Locate by Parent locating method.</li>
+        </ul>
+        <p data-source-node="n139"> </p>
+        <hr width="100%" align="center" data-source-node="n140">
+        <h4 data-source-node="n141"><a name="locruleLP" data-source-node="n142"></a>Immediate Needs Locating Rule &amp; License Plate Guidelines...</h4>
+        <p data-source-node="n143">The following are some guidelines on how the system handles the locating of license plates using immediate needs: The immediate needs process assigns the original license plate’s to location and locating rule to the child license plate when the system fails to assign an immediate needs locating rule.</p>
+        <p data-source-node="n144"> </p>
+        <p data-source-node="n145">Below is the order of immediate needs locating rule assignment that the system will use:
+</p>
+        <ol data-source-node="n146">
+            <li value="1" data-source-node="n147">Shipment line<br data-source-node="n148"><br data-source-node="n149"></li>
+            <li value="2" data-source-node="n150">Immediate needs default locating rule (as defined by an immediate needs system value)<br data-source-node="n151"><br data-source-node="n152"></li>
+            <li value="3" data-source-node="n153">Original license plate's to location and locating rule</li>
+        </ol>
+        <p data-source-node="n154"> </p>
+        <p data-source-node="n155">Note that once the immediate needs process assigns a locating rule to a license plate, it does not attempt to assign another locating rule.
+</p>
+        <p data-source-node="n156"> </p>
+        <h5 data-source-node="n157">Parent License Plate
+Notes...</h5>
+        <ul data-source-node="n158">
+            <li data-source-node="n159">Locate By Parent: 
+
+A parent license plate with child license plates that can fulfill immediate needs does not fulfill immediate needs when locating by parent.<br data-source-node="n160"><br data-source-node="n161"></li>
+            <li data-source-node="n162">Locate By Child:
+
+Child license plates that can fulfill immediate needs on a parent license plate will be moved to a new parent license plate.  This parent license plate will have the empty container type used when splitting license plates during immediate needs processing.
+<br data-source-node="n163"><br data-source-node="n164"></li>
+            <li data-source-node="n165">Container Type:
+
+A parent license plate that is created as a result of splitting into child license plates displays as an empty (blank) container type.  </li>
+        </ul>
+        <p data-source-node="n166"> </p>
+        <hr width="100%" align="center" data-source-node="n167">
+        <p data-source-node="n168"> </p>
+        <h4 data-source-node="n169"><a name="putawayGroups" data-source-node="n170"></a>Fulfilling Immediate Needs Using Putaway Groups...</h4>
+        <p data-source-node="n171">Immediate needs can be fulfilled using putaway groups. However, the system must have putaway location groups configured, which include the locations used to fulfill immediate needs (shipping dock/put to store/immediate needs). 
+
+</p>
+        <p data-source-node="n172"> </p>
+        <p data-source-node="n173">The table below illustrates the expected system behavior in the different scenarios when using group putaway to fulfill immediate needs:
+</p>
+        <p data-source-node="n174"> </p>
+        <table style="width: 100%;border-spacing: 1px 1px;margin-left: 0;margin-right: auto" data-source-node="n175">
+            <col style="width: 88px" data-source-node="n176">
+            <col style="width: 243px" data-source-node="n177">
+            <col style="width: 224px" data-source-node="n178">
+            <col data-source-node="n179">
+            <tbody data-source-node="n180">
+                <tr data-source-node="n181">
+                    <td style="text-align: center;font-weight: normal" data-source-node="n182">
+                        <p data-source-node="n183"><i data-source-node="n184">Scenario</i>
+                        </p>
+                        <p data-source-node="n185"> </p>
+                        <p data-source-node="n186"> </p>
+                    </td>
+                    <td style="text-align: center;font-weight: normal" data-source-node="n187">
+                        <p style="font-style: italic" data-source-node="n188">Put-To-Store /Immediate Needs </p>
+                        <p style="font-style: italic" data-source-node="n189">Location Configured in the</p>
+                        <p style="font-style: italic" data-source-node="n190">Putaway Location Group</p>
+                    </td>
+                    <td style="text-align: center;font-weight: normal" data-source-node="n191">
+                        <p style="font-style: italic" data-source-node="n192">Other Inventory Locations</p>
+                        <p style="font-style: italic" data-source-node="n193">Configured in the Putaway</p>
+                        <p style="font-style: italic" data-source-node="n194">Location Groups</p>
+                    </td>
+                    <td style="text-align: center;font-weight: normal" data-source-node="n195">
+                        <p data-source-node="n196"><i data-source-node="n197">System Behavior</i>
+                        </p>
+                        <p data-source-node="n198"> </p>
+                        <p data-source-node="n199"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n200">
+                    <td style="text-align: center" data-source-node="n201">
+                        <p data-source-node="n202">1</p>
+                        <p data-source-node="n203"> </p>
+                    </td>
+                    <td style="text-align: center" data-source-node="n204">
+                        <p data-source-node="n205">Yes</p>
+                        <p data-source-node="n206"> </p>
+                    </td>
+                    <td style="text-align: center" data-source-node="n207">
+                        <p data-source-node="n208">Yes</p>
+                        <p data-source-node="n209"> </p>
+                    </td>
+                    <td data-source-node="n210">
+                        <p data-source-node="n211">Execute Group putaway to fulfill immediate needs and also to locate the rest of the inventory.</p>
+                        <p data-source-node="n212"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n213">
+                    <td style="text-align: center" data-source-node="n214">
+                        <p data-source-node="n215">2</p>
+                        <p data-source-node="n216"> </p>
+                        <p data-source-node="n217"> </p>
+                    </td>
+                    <td style="text-align: center" data-source-node="n218">
+                        <p data-source-node="n219">Yes</p>
+                        <p data-source-node="n220"> </p>
+                        <p data-source-node="n221"> </p>
+                    </td>
+                    <td style="text-align: center" data-source-node="n222">
+                        <p data-source-node="n223">No</p>
+                        <p data-source-node="n224"> </p>
+                        <p data-source-node="n225"> </p>
+                    </td>
+                    <td data-source-node="n226">
+                        <p data-source-node="n227">Execute Group putaway to fulfill immediate needs, locate the rest of the inventory without using group putaway.</p>
+                        <p data-source-node="n228"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n229">
+                    <td style="text-align: center" data-source-node="n230">
+                        <p data-source-node="n231">3</p>
+                        <p data-source-node="n232"> </p>
+                        <p data-source-node="n233"> </p>
+                    </td>
+                    <td style="text-align: center" data-source-node="n234">
+                        <p data-source-node="n235">No</p>
+                        <p data-source-node="n236"> </p>
+                        <p data-source-node="n237"> </p>
+                    </td>
+                    <td style="text-align: center" data-source-node="n238">
+                        <p data-source-node="n239">Yes</p>
+                        <p data-source-node="n240"> </p>
+                        <p data-source-node="n241"> </p>
+                    </td>
+                    <td data-source-node="n242">
+                        <p data-source-node="n243">Fulfill immediate needs without using group putaway, locate the rest of the inventory using putaway groups.</p>
+                        <p data-source-node="n244"> </p>
+                    </td>
+                </tr>
+                <tr data-source-node="n245">
+                    <td style="text-align: center" data-source-node="n246">
+                        <p data-source-node="n247">4</p>
+                        <p data-source-node="n248"> </p>
+                        <p data-source-node="n249"> </p>
+                    </td>
+                    <td style="text-align: center" data-source-node="n250">
+                        <p data-source-node="n251">No</p>
+                        <p data-source-node="n252"> </p>
+                        <p data-source-node="n253"> </p>
+                    </td>
+                    <td style="text-align: center" data-source-node="n254">
+                        <p data-source-node="n255">No</p>
+                        <p data-source-node="n256"> </p>
+                        <p data-source-node="n257"> </p>
+                    </td>
+                    <td data-source-node="n258">
+                        <p data-source-node="n259">Fulfill immediate needs without using group putaway, and also locate the rest of the inventory without using putaway groups.</p>
+                        <p data-source-node="n260"> </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p data-source-node="n261"> </p>
+        <p data-source-node="n262"> </p>
+        <hr width="100%" align="center" data-source-node="n263">
+        <p data-source-node="n264"> </p>
+        <p data-source-node="n265"> </p>
+        <h4 data-source-node="n266"><a name="workOrderBuild" data-source-node="n267"></a>Immediate Needs Allocation and Work Order Build Locations...</h4>
+        <p data-source-node="n268">The system does not allow immediate needs allocation from a work order build location.  You should not set up immediate needs locating to go to a work order build location.</p>
+        <p data-source-node="n269"> </p>
+    </body></html>

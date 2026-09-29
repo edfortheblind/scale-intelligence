@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Time Zones in SCALE</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1049" data-source-node="n57"></a>Time Zones in SCALE</h1>
+        <p data-source-node="n58">This topic discusses the time zone settings for date fields followed in the insight or web screens of the application. Primarily insight screen here is referred to insight, monitoring, details and transaction screens.</p>
+        <p data-source-node="n59"> </p>
+        <p data-source-node="n60">NOTE: Coordinated Universal Time (UTC) is the primary time standard by which the world regulates clocks and time.</p>
+        <p data-source-node="n61"> </p>
+        <p data-source-node="n62"> </p>
+        <h4 data-source-node="n63">Warehouse Date</h4>
+        <p data-source-node="n64"> </p>
+        <p data-source-node="n65">The warehouse date is determined by the time zone specified for the warehouse. The time zone setting is present on the Warehouse configuration screen.</p>
+        <p data-source-node="n66"> </p>
+        <h4 data-source-node="n67">Date Offsets for Date Only Fields</h4>
+        <p data-source-node="n68"> </p>
+        <p data-source-node="n69">The determination of "Today" in filter configurations, for date only fields, is based on the time zone of the warehouse where processing is taking place. The system takes the current UTC time and applies the offset from the time zone of the Warehouse configuration of the warehouse of the transaction.</p>
+        <p data-source-node="n70"> </p>
+        <p data-source-node="n71">For example, if the Receipt Date on receipt header is 2018-06-01 at 02:00am UTC and the warehouse is in US Eastern Standard Time (UTC minus 5), then the warehouse date would be 2018-05-31.  Therefore, the date used for "Today" in the calculation is 2018-05-31.</p>
+        <p data-source-node="n72"> </p>
+        <p data-source-node="n73"> </p>
+        <h4 data-source-node="n74">Date Offsets for Date Time Fields</h4>
+        <p data-source-node="n75"> </p>
+        <p data-source-node="n76">With fields that specify both date and time, the value in the database is always stored using UTC time. When the field is viewed on a browser, the date and time displayed will be the browser date and time based on the user's browser offset. The browser uses the Windows configurations setting to determine the time zone offset.</p>
+        <p data-source-node="n77"> </p>
+        <p data-source-node="n78">For example, on performing adjustment to the inventory quantity,  the date and time of the Aging Date Time field will be calculated and written in UTC. When a user views the inventory in the browser, the date and time displayed will be the date and time of the user's browser.</p>
+        <p data-source-node="n79"> </p>
+        <p data-source-node="n80"> </p>
+        <h4 data-source-node="n81">Expiration Date</h4>
+        <p data-source-node="n82"> </p>
+        <p data-source-node="n83">If the user manually enters an expiration date value (for example, during an inventory adjustment), the system will write that date value to the database as entered and no conversion will be done.</p>
+    </body></html>

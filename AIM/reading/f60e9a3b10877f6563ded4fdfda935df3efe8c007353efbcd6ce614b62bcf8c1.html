@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Maximum Number of License Plates in a Location</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1354" data-source-node="n57"></a>Maximum Number of License Plates in a Location
+        </h1>
+        <p data-source-node="n58">This feature allows you to define the maximum number of license plates (LPs) that can be placed in a location.</p>
+        <p data-source-node="n59">Previously, SCALE allowed an unlimited number of LPs in an inventory location. With this enhancement, you can define a location-level limit that supports your warehouse picking and storage practices.</p>
+        <p data-source-node="n60"> </p>
+        <h4 data-source-node="n61">Configuration</h4>
+        <p data-source-node="n62"> </p>
+        <p data-source-node="n63">A new configuration value, <b data-source-node="n64">Max Number of License Plates</b>, is available in the <b data-source-node="n65">Location Wizard</b> under <b data-source-node="n66">Inventory Options</b>.</p>
+        <ul data-source-node="n67">
+            <li data-source-node="n68">
+                <p data-source-node="n69">Default value: <b data-source-node="n70">0</b> (unlimited LPs).</p>
+            </li>
+            <li data-source-node="n71">
+                <p data-source-node="n72">When set to a value greater than 0, the location enforces that maximum LP count.</p>
+            </li>
+        </ul>
+        <p data-source-node="n73">The <b data-source-node="n74">Max Number of License Plates</b> value is available only when:</p>
+        <ul data-source-node="n75">
+            <li data-source-node="n76">
+                <p data-source-node="n77">The location is configured to <b data-source-node="n78">Track License Plates</b>.</p>
+            </li>
+            <li data-source-node="n79">
+                <p data-source-node="n80">The location class is <b data-source-node="n81">Inventory Storage</b>.</p>
+            </li>
+        </ul>
+        <p data-source-node="n82"> </p>
+        <h4 data-source-node="n83">Validation Rules</h4>
+        <p data-source-node="n84"> </p>
+        <p data-source-node="n85">The number of LPs counted against a location’s maximum value is determined by the following rules:</p>
+        <ul data-source-node="n86">
+            <li data-source-node="n87">
+                <p data-source-node="n88"><b data-source-node="n89">Parent LP designation:</b> A parent LP counts as 1 toward the location maximum. A parent LP is counted only once.</p>
+            </li>
+            <li data-source-node="n90">
+                <p data-source-node="n91"><b data-source-node="n92">Standalone LP:</b> A standalone LP counts as 1 toward the location maximum.</p>
+            </li>
+            <li data-source-node="n93">
+                <p data-source-node="n94"><b data-source-node="n95">In-transit LPs:</b> LPs in transit to the location are included in the maximum LP count (using the same parent/standalone counting logic).</p>
+            </li>
+        </ul>
+        <p data-source-node="n96"> </p>
+        <h4 data-source-node="n97">System Behavior</h4>
+        <ul data-source-node="n98">
+            <li data-source-node="n99">
+                <p data-source-node="n100">If placing an LP keeps the location at or below the configured maximum, the placement succeeds.</p>
+            </li>
+            <li data-source-node="n101">
+                <p data-source-node="n102">If placing an LP would exceed the configured maximum, the placement is blocked and the user receives an error message.</p>
+            </li>
+        </ul>
+        <p data-source-node="n103"> </p>
+        <h4 data-source-node="n104">Example</h4>
+        <p data-source-node="n105"> </p>
+        <p data-source-node="n106">If <b data-source-node="n107">MaxLP = 3</b> and the current LP count is 2, adding one more qualifying LP succeeds (count becomes 3).</p>
+        <p data-source-node="n108">If <b data-source-node="n109">MaxLP = 3</b> and the current LP count is already 3, adding another qualifying LP fails (count would become 4).</p>
+        <p data-source-node="n110"> </p>
+        <p data-source-node="n111"> </p>
+    </body></html>

@@ -270,9 +270,11 @@ class Store:
                     failures.append({"id": record["id"], "error": "HASH_OR_LENGTH_MISMATCH"})
                     continue
                 count += 1
+        state_path = self.root / "_project/STATE.json"
+        state = read_json(state_path) if state_path.exists() else {}
         return {"checked_at": now(), "stored_bodies_verified": count, "failures": failures,
                 "local_integrity_passed": not failures, "corpus_complete": False,
-                "discovery": "DISCOVERY_INCOMPLETE", "pilot": "NOT_RUN"}
+                "discovery": "DISCOVERY_INCOMPLETE", "pilot": state.get("pilot", "NOT_RUN")}
 
     def checkpoint(self, owner=None, *, phase=None, blockers=None, worker_running=False):
         state_path = self.root / "_project/STATE.json"
@@ -295,7 +297,8 @@ class Store:
                         "denominators": {k: None for k in ("articles", "variants", "assets", "attachments", "internal_links")},
                         "ratios": None, "pilot": "NOT_RUN", "discovery_reconciled": False,
                         "reason": "Complete published inventory has not been acquired."}
-            coverage.update(status=modules[module]["status"], counts=counts)
+            coverage.update(status=modules[module]["status"], counts=counts,
+                            pilot=previous.get("pilot", "NOT_RUN") if module == "AIM" else old_module.get("pilot", "NOT_RUN"))
             atomic_json(coverage_path, coverage)
         state = {**previous, "scope_revision": REVISION, "collector_version": VERSION,
                  "phase": phase or previous.get("phase", "BLOCKED_CAPABILITY"),

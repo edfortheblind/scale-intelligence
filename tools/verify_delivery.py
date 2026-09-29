@@ -5,10 +5,38 @@ from pathlib import Path
 from collector import Store, digest, read_json
 
 
+def verify_inventory(root):
+    """Check an independently published expected file list, including derivatives."""
+    root=Path(root).resolve()
+    path=root/'_project/artifact-inventory.json'
+    if not path.is_file():
+        return 0,[{'error':'ARTIFACT_INVENTORY_MISSING'}]
+    inventory=read_json(path)
+    files=inventory.get('files',[])
+    failures=[]
+    if inventory.get('schema_version')!=1 or not files or len(files)!=inventory.get('file_count'):
+        failures.append({'error':'ARTIFACT_INVENTORY_INVALID'})
+    seen=set();checked=0
+    for item in files:
+        relative=item['path'];target=(root/relative).resolve()
+        if relative in seen or not target.is_relative_to(root):
+            failures.append({'path':relative,'error':'INVENTORY_PATH_INVALID'});continue
+        seen.add(relative)
+        if not target.is_file() or target.stat().st_size!=item['byte_count'] or digest(target.read_bytes())!=item['sha256']:
+            failures.append({'path':relative,'error':'INVENTORY_HASH_OR_LENGTH_MISMATCH'})
+        else:checked+=1
+    return checked,failures
+
+
 def verify(root):
     store=Store(root)
-    failures=[]
+    inventory_count,failures=verify_inventory(store.root)
+    for required in ('_project/STATE.json','_project/preflight.json','_project/search-index.json',
+                     '01_AIM_MASTER_PROMPT.md','02_SDK_MASTER_PROMPT.md'):
+        if not (store.root/required).is_file():
+            failures.append({'path':required,'error':'MANDATORY_CHECKPOINT_FILE_MISSING'})
     checked={'source_files':0,'reading_files':0,'app_documents':0,'prompts':0}
+    checked['inventory_files']=inventory_count
     def check(relative,sha,kind):
         path=(store.root/relative).resolve()
         if not path.is_relative_to(store.root) or not path.is_file() or digest(path.read_bytes())!=sha:

@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Create Multiple Requests For Excess Demand Checkbox</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor946" data-source-node="n57"></a>Create Multiple Requests For Excess Demand Checkbox</h1>
+        <p data-source-node="n58">Use this checkbox to indicate that you want the system to create additional replenishment requests for "overflow" quantity that remains after a location is completely replenished. When demand replenishment is run, the system retrieves the replenishment master for 
+
+an item. If the item needs replenishing, the system will check the master to see if the Create 
+
+Multiple Requests for Excess Demand Checkbox is selected. Instead of visiting empty locations when the amount the system brings forward surpasses what the location can hold, the system creates additional requests for this one location. </p>
+        <blockquote data-source-node="n59">
+            <p data-source-node="n60"><i data-source-node="n61">If the checkbox is selected</i>, the system will see if the following records exist 
+
+for this item/company/location: an item location assignment record and an item location 
+
+capacity record. If both exist, the system divides the demand quantity by the Maximum 
+
+Replenishment Fill Percent. It will create enough replenishment requests to accommodate 
+
+the quantity needed at the location. Note that if there is available quantity at the location 
+
+(either On Hand or In Transit), the system will subtract that amount before generating 
+
+requests.  Note that when this checkbox is selected, demand replenishment will only support a single permanent location per item within the location selection. It will not fill other permanent locations. Also note that this setting only applies to permanent locations.</p>
+            <p data-source-node="n62"> </p>
+            <p data-source-node="n63">Example:<br data-source-node="n64">- Suppose you have a location that can hold 100 EA, and it is currently empty.<br data-source-node="n65">- Suppose then the system creates a replenishment request is created for 400 EA. If this setting is active, the system will create five replenishment requests for this location/item in the following manner:</p>
+            <blockquote data-source-node="n66">
+                <p data-source-node="n67">[request 1] 100</p>
+                <p data-source-node="n68">[request 2] 80 </p>
+                <p data-source-node="n69">[request 3] 80 </p>
+                <p data-source-node="n70">[request 4] 80 </p>
+                <p data-source-node="n71">[request 5] either 60 or 80 (depending on whether "Fill location" strategy is being used for this master) </p>
+                <p data-source-node="n72"> </p>
+                <p data-source-node="n73">Note that the system takes into account the Minimum Replenishment Threshold value when creating these requests.  Therefore, in this example, the minimum threshold was set 20%, and the system created each request (after the first one) for a quantity of 80 EA (instead of 100 EA).</p>
+            </blockquote>
+            <p data-source-node="n74"> </p>
+            <p data-source-node="n75"><i data-source-node="n76">If the checkbox is not selected</i>, the system will follow this process. If 
+
+the amount to bring forward exceeds the location’s capacity (minus existing On Hand), the 
+
+system will check for other To Locations defined in the empty location criteria record (identified on the 
+
+replenishment master). Once these empty locations are filled, the system will not honor 
+
+any remaining replenishment requests.</p>
+            <p data-source-node="n77"> </p>
+            <p data-source-node="n78">NOTE: It is not recommended that you use this setting if your warehouse uses the "round down" replenishment strategy.</p>
+            <p data-source-node="n79">  </p>
+        </blockquote>
+        <h5 data-source-node="n80">Processing Steps...</h5>
+        <p data-source-node="n81">The following are the system processing steps when using the Create Multiple Requests for Excess Demand setting:</p>
+        <ol data-source-node="n82">
+            <li value="1" data-source-node="n83">        The wave creates all of the requests and marks the first one for work creation.  It puts the wave number on all of these requests.<br data-source-node="n84"><br data-source-node="n85"></li>
+            <li value="2" data-source-node="n86">The "Create Replenishment Work" scheduled job wakes up and creates work for the one request marked for work creation.  When this is done, the system changes the wave number on all requests that it creates work for.  The reason for this is that there could have been multiple waves that created requests or other requests that got marked for work creation since the last time the job ran.  The job processes these all at once and creates work for them all at once.  Note that the         system does not put this work on hold since there is no way to release the “wave” that created it (since it was just a scheduled job that created the work).<br data-source-node="n87"><br data-source-node="n88"></li>
+            <li value="3" data-source-node="n89">When the quantity in the location falls below the Minimum Replenishment Threshold, the system marks the next request for work creation so that the next time the scheduled job wakes up, work gets created for it.<br data-source-node="n90"><br data-source-node="n91"></li>
+            <li value="4" data-source-node="n92">    Then if you cancel the original wave, the system at this point removes all of the requests that have not had work created for them and are still associated with the original wave.  It leaves any requests that have had work created. Since the scheduled job is meant to be “wave independent”, once it creates the work that work and replenishment request is no longer associated with the original wave.</li>
+        </ol>
+        <p data-source-node="n93"> </p>
+        <p data-source-node="n94"> </p>
+        <p data-source-node="n95">  </p>
+        <p data-source-node="n96"> </p>
+        <p data-source-node="n97"> </p>
+        <p data-source-node="n98"> </p>
+    </body></html>

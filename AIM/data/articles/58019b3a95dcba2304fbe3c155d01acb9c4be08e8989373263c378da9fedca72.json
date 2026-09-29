@@ -1,0 +1,3721 @@
+{
+  "schema_version": 1,
+  "id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+  "module": "AIM",
+  "title": "Scan & Weigh Processing: Discussion",
+  "source": {
+    "source_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+    "final_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+    "sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+    "byte_count": 26313,
+    "local_path": "AIM/source/html/9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863.htm",
+    "acquired_at": "2026-09-29T11:57:18.114313+00:00"
+  },
+  "encoding": "utf-8",
+  "collector_version": "0.2.0",
+  "converter_version": "aim-static-2",
+  "titles": [
+    "Scan & Weigh Processing: Discussion"
+  ],
+  "breadcrumbs": [
+    [
+      "System Management",
+      "Scan And Weigh Setup",
+      "Scan & Weigh Processing: Discussion"
+    ]
+  ],
+  "content_tree": {
+    "tag": "body",
+    "attrs": {},
+    "children": [
+      "\r\n        ",
+      "\r\n        ",
+      {
+        "tag": "h1",
+        "attrs": {},
+        "children": [
+          {
+            "tag": "a",
+            "attrs": {
+              "name": "kanchor1501"
+            },
+            "children": [],
+            "node_id": "n57"
+          },
+          "Scan & Weigh Processing: Discussion"
+        ],
+        "node_id": "n56"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {
+          "class": "p_2",
+          "style": "font-size: 10pt;font-weight: normal;"
+        },
+        "children": [
+          "The following is discussed in this topic:"
+        ],
+        "node_id": "n58"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {
+          "class": "p_2",
+          "style": "font-size: 10pt;font-weight: bold;"
+        },
+        "children": [
+          "- ",
+          {
+            "tag": "a",
+            "attrs": {
+              "href": "#introduction",
+              "class": "a_1"
+            },
+            "children": [
+              "Introduction"
+            ],
+            "node_id": "n60"
+          }
+        ],
+        "node_id": "n59"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {
+          "class": "p_2",
+          "style": "font-size: 10pt;font-weight: bold;"
+        },
+        "children": [
+          "- ",
+          {
+            "tag": "a",
+            "attrs": {
+              "href": "#input",
+              "class": "a_1"
+            },
+            "children": [
+              "Input Values"
+            ],
+            "node_id": "n62"
+          }
+        ],
+        "node_id": "n61"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {
+          "class": "p_2",
+          "style": "font-size: 10pt;font-weight: bold;"
+        },
+        "children": [
+          "- ",
+          {
+            "tag": "a",
+            "attrs": {
+              "href": "#scenarios",
+              "class": "a_1"
+            },
+            "children": [
+              "Scenarios"
+            ],
+            "node_id": "n64"
+          }
+        ],
+        "node_id": "n63"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n65"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n66"
+      },
+      "\r\n        ",
+      {
+        "tag": "h4",
+        "attrs": {},
+        "children": [
+          {
+            "tag": "a",
+            "attrs": {
+              "name": "introduction"
+            },
+            "children": [],
+            "node_id": "n68"
+          },
+          "Introduction..."
+        ],
+        "node_id": "n67"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "Scan and Weigh is a functionality physically consisting of a conveyor \r\n which shipment containers are put on and then arrive at a weighing station. \r\n  The weigh \r\n station is as simple as putting the container on a scale and, through \r\n an interface with the system, a record is inserted into the scan_and_weigh_requests \r\n database table to either manifest or close the container. Most importantly, the record inserted into the scan_and_weigh_requests \r\n table consists of a request type, a request string, and a processed field. \r\n  The request \r\n type can be one of two values; manifest container or close container. \r\n  The request \r\n type is specified by a constant in the request_type field and as the first \r\n value in the request string.  The \r\n two constants that can define the request type are:"
+        ],
+        "node_id": "n69"
+      },
+      "\r\n        ",
+      {
+        "tag": "ul",
+        "attrs": {
+          "type": "disc",
+          "class": "ul_1"
+        },
+        "children": [
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "MANIFEST"
+            ],
+            "node_id": "n71"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "CLOSE_CONTAINER"
+            ],
+            "node_id": "n72"
+          },
+          "\r\n        "
+        ],
+        "node_id": "n70"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "The request string is used by the processing class as a serialized DS of specific information.  The request string will contain the following information with a Record Separator character as the delimiter between each value:"
+        ],
+        "node_id": "n73"
+      },
+      "\r\n        ",
+      {
+        "tag": "ul",
+        "attrs": {
+          "type": "disc",
+          "class": "ul_1"
+        },
+        "children": [
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Request Type"
+            ],
+            "node_id": "n75"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Warehouse"
+            ],
+            "node_id": "n76"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Tracking Number"
+            ],
+            "node_id": "n77"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Container ID"
+            ],
+            "node_id": "n78"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Shipment ID"
+            ],
+            "node_id": "n79"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Scanned Date/Time"
+            ],
+            "node_id": "n80"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Scanned by Device"
+            ],
+            "node_id": "n81"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Weight"
+            ],
+            "node_id": "n82"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Weight UM"
+            ],
+            "node_id": "n83"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "End delimiter (ä)"
+            ],
+            "node_id": "n84"
+          },
+          "\r\n        "
+        ],
+        "node_id": "n74"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n85"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "Below is an example of a request string:"
+        ],
+        "node_id": "n86"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n87"
+      },
+      "\r\n        ",
+      {
+        "tag": "ul",
+        "attrs": {},
+        "children": [
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Format: <request type><record separator><container id><record separator><container weight><record separator><end delimiter>"
+            ],
+            "node_id": "n89"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Example: 'MANIFEST'+char(30)+'00011465870025342824'+char(30)+'0.713'+char(30)+char(228)"
+            ],
+            "node_id": "n90"
+          },
+          "\r\n        "
+        ],
+        "node_id": "n88"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n91"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "- As per the example, not all values in the request string are required. \r\n  A request \r\n type is always required.  The \r\n tracking number can also be entered instead of a container id, or the \r\n user can enter a container id and a tracking number."
+        ],
+        "node_id": "n92"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n93"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "- No further information is required for manifesting a container."
+        ],
+        "node_id": "n94"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n95"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "- If closing a container, the processing will look-up the carrier and \r\n carrier service information.  If \r\n no container id is specified, but a shipment id is specified, a new container \r\n will be created during processing.  The \r\n processing will also error if no container id and no shipment id is entered."
+        ],
+        "node_id": "n96"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n97"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "- The processed field can be one of three values; Y for processed, N for \r\n not processed, E for error.  When \r\n a request record is inserted, it initially has a processed field set to \r\n N.  Currently \r\n if a request string contains a weight different than what the system calculates \r\n (contents weight + container weight) as the weight for the shipment, the \r\n request record will error and the processed field will be set to E.  If \r\n a container’s weight matches the calculated system weight, the request \r\n record will be processed and the processed field will be set to Y.  "
+        ],
+        "node_id": "n98"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n99"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "- Once a request has been written to the scan_and_weigh_requests table, \r\n the scan and weigh schedule job (if configured and active to run) will \r\n pick up the record and process it.  "
+        ],
+        "node_id": "n100"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n101"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "- Packing preferences play a large role in the processing during scan \r\n and weigh.  The \r\n packing preference used during scan and weigh is specified on the user \r\n profile of the person working at the scan and weigh station, who happens \r\n to be inserting the request in the scan_and_weigh_requests table.  "
+        ],
+        "node_id": "n102"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "Only two fields on the packing preferences really can have an impact \r\n on what takes place during close container.  These \r\n two fields are ‘Auto Manifest At Close’ and ‘Allow Container Creation \r\n During Close.’"
+        ],
+        "node_id": "n103"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n104"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n105"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n106"
+      },
+      "\r\n        ",
+      {
+        "tag": "h4",
+        "attrs": {},
+        "children": [
+          {
+            "tag": "a",
+            "attrs": {
+              "name": "input"
+            },
+            "children": [],
+            "node_id": "n108"
+          },
+          "Input Values..."
+        ],
+        "node_id": "n107"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n109"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "Below is a table defining the input values in the request string and \r\n the resulting functionality:"
+        ],
+        "node_id": "n110"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n111"
+      },
+      "\r\n        ",
+      {
+        "tag": "table",
+        "attrs": {
+          "style": "margin-left: 0;margin-right: auto;"
+        },
+        "children": [
+          "\r\n            ",
+          {
+            "tag": "col",
+            "attrs": {
+              "style": "width: 137px;"
+            },
+            "children": [],
+            "node_id": "n113"
+          },
+          "\r\n            ",
+          {
+            "tag": "col",
+            "attrs": {
+              "style": "width: 419px;"
+            },
+            "children": [],
+            "node_id": "n114"
+          },
+          "\r\n            ",
+          {
+            "tag": "tbody",
+            "attrs": {},
+            "children": [
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_2",
+                          "style": "font-style: italic;"
+                        },
+                        "children": [
+                          "Functionality"
+                        ],
+                        "node_id": "n118"
+                      },
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_2",
+                          "style": "font-style: italic;"
+                        },
+                        "children": [
+                          " "
+                        ],
+                        "node_id": "n119"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n117"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "style": "font-size: 10pt;font-style: italic;"
+                        },
+                        "children": [
+                          "Request String Required Input Values"
+                        ],
+                        "node_id": "n121"
+                      },
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "style": "font-size: 10pt; font-style: italic;"
+                        },
+                        "children": [
+                          " "
+                        ],
+                        "node_id": "n122"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n120"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n116"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Close Container"
+                        ],
+                        "node_id": "n125"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n124"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, container id, container weight"
+                        ],
+                        "node_id": "n127"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n126"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n123"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Close Container"
+                        ],
+                        "node_id": "n130"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n129"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, container id, tracking number, container weight"
+                        ],
+                        "node_id": "n132"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n131"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n128"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Close Container"
+                        ],
+                        "node_id": "n135"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n134"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, tracking number, container weight"
+                        ],
+                        "node_id": "n137"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n136"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n133"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Close Container"
+                        ],
+                        "node_id": "n140"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n139"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, tracking number"
+                        ],
+                        "node_id": "n142"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n141"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n138"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Close Container"
+                        ],
+                        "node_id": "n145"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n144"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, container id"
+                        ],
+                        "node_id": "n147"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n146"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n143"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Close Container"
+                        ],
+                        "node_id": "n150"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n149"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, container id, tracking number"
+                        ],
+                        "node_id": "n152"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n151"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n148"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Close Container"
+                        ],
+                        "node_id": "n155"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n154"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, shipment id, container weight"
+                        ],
+                        "node_id": "n157"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n156"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n153"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Close Container"
+                        ],
+                        "node_id": "n160"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n159"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, shipment id, container id, container weight"
+                        ],
+                        "node_id": "n162"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n161"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n158"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Close Container"
+                        ],
+                        "node_id": "n165"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n164"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, shipment id, container id"
+                        ],
+                        "node_id": "n167"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n166"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n163"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Close Container"
+                        ],
+                        "node_id": "n170"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n169"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, shipment id"
+                        ],
+                        "node_id": "n172"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n171"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n168"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Manifest"
+                        ],
+                        "node_id": "n175"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n174"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, container id, container weight"
+                        ],
+                        "node_id": "n177"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n176"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n173"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Manifest"
+                        ],
+                        "node_id": "n180"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n179"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, container id, tracking number, container weight"
+                        ],
+                        "node_id": "n182"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n181"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n178"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Manifest"
+                        ],
+                        "node_id": "n185"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n184"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, tracking number, container weight"
+                        ],
+                        "node_id": "n187"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n186"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n183"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Manifest"
+                        ],
+                        "node_id": "n190"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n189"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, container weight, tracking number"
+                        ],
+                        "node_id": "n192"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n191"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n188"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Manifest"
+                        ],
+                        "node_id": "n195"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n194"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, tracking number"
+                        ],
+                        "node_id": "n197"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n196"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n193"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Manifest"
+                        ],
+                        "node_id": "n200"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n199"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, container id"
+                        ],
+                        "node_id": "n202"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n201"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n198"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Manifest"
+                        ],
+                        "node_id": "n205"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n204"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, shipment id, container weight"
+                        ],
+                        "node_id": "n207"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n206"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n203"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Manifest"
+                        ],
+                        "node_id": "n210"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n209"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, shipment id, container id, container weight"
+                        ],
+                        "node_id": "n212"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n211"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n208"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Manifest"
+                        ],
+                        "node_id": "n215"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n214"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, shipment id, container id"
+                        ],
+                        "node_id": "n217"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n216"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n213"
+              },
+              "\r\n                ",
+              {
+                "tag": "tr",
+                "attrs": {},
+                "children": [
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {
+                          "class": "p_3"
+                        },
+                        "children": [
+                          "Manifest"
+                        ],
+                        "node_id": "n220"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n219"
+                  },
+                  "\r\n                    ",
+                  {
+                    "tag": "td",
+                    "attrs": {},
+                    "children": [
+                      "\r\n                        ",
+                      {
+                        "tag": "p",
+                        "attrs": {},
+                        "children": [
+                          "Request type, shipment id"
+                        ],
+                        "node_id": "n222"
+                      },
+                      "\r\n                    "
+                    ],
+                    "node_id": "n221"
+                  },
+                  "\r\n                "
+                ],
+                "node_id": "n218"
+              },
+              "\r\n            "
+            ],
+            "node_id": "n115"
+          },
+          "\r\n        "
+        ],
+        "node_id": "n112"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n223"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "The string input values of Weight UM, Warehouse, Scanned Date/Time, \r\n Scanned Device can be used in combination with any of these request strings."
+        ],
+        "node_id": "n224"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n225"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n226"
+      },
+      "\r\n        ",
+      {
+        "tag": "h4",
+        "attrs": {},
+        "children": [
+          {
+            "tag": "a",
+            "attrs": {
+              "name": "scenarios"
+            },
+            "children": [],
+            "node_id": "n228"
+          },
+          "Scenarios"
+        ],
+        "node_id": "n227"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n229"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          "Below are different scenarios in which one would see the scan and weigh \r\n functionality:"
+        ],
+        "node_id": "n230"
+      },
+      "\r\n        ",
+      {
+        "tag": "ul",
+        "attrs": {
+          "type": "disc",
+          "class": "ul_1"
+        },
+        "children": [
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Close pre-created \r\n containers (Pass CLOSE_CONTAINER, container id, container weight): \r\n A customer may only want containers that are pre-created, either in packing \r\n or in the wave, to be closed when the containers reach the scan and weigh \r\n station.  The \r\n results of the scan and weigh process will change the status of the containers, \r\n as well as the leading status of the shipment to ‘Ship Confirm Pending.’ \r\n  The weight \r\n on the container may also be updated.  This \r\n process will only process correctly if the container is in the minimum \r\n status of ‘In Packing.’",
+              {
+                "tag": "br",
+                "attrs": {},
+                "children": [],
+                "node_id": "n233"
+              },
+              " "
+            ],
+            "node_id": "n232"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Create containers \r\n ‘on-the-fly’, Close Containers(Pass CLOSE_CONTAINER, shipment id, container \r\n weight): The processing during scan and weigh allows for the creation \r\n of containers ‘on-the-fly.’  When \r\n the shipment contents reaches the scan and weigh station, it would be \r\n packed and scan and weighed.  Based \r\n on the information being passed into the request string, the container \r\n will be created in the system before the system calls the close container \r\n processing.  The \r\n close container processing will change the status of the containers, as \r\n well as the leading status of the shipment to ‘Ship Confirm Pending.’ \r\n  The weight \r\n on the container may also be updated.  This \r\n process will only process correctly if the container is in the minimum \r\n status of ‘In Packing.’",
+              {
+                "tag": "br",
+                "attrs": {},
+                "children": [],
+                "node_id": "n235"
+              },
+              " "
+            ],
+            "node_id": "n234"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Create containers \r\n ‘on-the-fly’, Close Containers, ‘Auto Manifest At Close’(Pass CLOSE_CONTAINER, \r\n shipment id, container weight): A customer may not only want the \r\n containers packed when a shipment’s contents reaches the scan and weigh \r\n station, but they also may require the containers to be manifested during \r\n close.  This \r\n situation can still be handled via the scan and weigh processing.  The \r\n ‘Auto Manifest At Close’ flag must be turned on in the Packing Preferences \r\n configuration.  Containers \r\n will be created based on what is passed into the request string.  The \r\n scan and weigh processing will results in the update of the container’s \r\n status, as well as the leading status of the associated shipment to ‘Ship \r\n Confirm Pending’.  The \r\n weight on the container may also be updated if it is different than what \r\n is specified on the container.",
+              {
+                "tag": "br",
+                "attrs": {},
+                "children": [],
+                "node_id": "n237"
+              },
+              " "
+            ],
+            "node_id": "n236"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Close pre-created \r\n containers, ‘Auto Manifest At Close’ (Pass CLOSE_CONTAINER, container \r\n id, container weight): This scenario would allow a customer to \r\n have shipments moving along the conveyor to the scan and weigh station \r\n in pre-created containers, created either from the wave or in packing. \r\n  The request \r\n string would be close containers, but the packing preferences would have \r\n the ‘Auto Manifest At Close’ turned on.  The \r\n scan and weigh process will call the close container processing, which \r\n will update the container’s status, as well as the leading status of the \r\n shipment, to ‘Ship Confirm Pending.’  The \r\n weight on the container will also be updated if it is different than what \r\n is specified on the container.",
+              {
+                "tag": "br",
+                "attrs": {},
+                "children": [],
+                "node_id": "n239"
+              },
+              " "
+            ],
+            "node_id": "n238"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Close pre-created \r\n containers, ‘Allow Container Creation During Close’ (Pass CLOSE_CONTAINER, \r\n container id, container weight): This scenario would be an alternate \r\n way to create containers during the scan and weigh process.  On \r\n the packing preferences configuration, there is a field called, ‘Allow \r\n Container Creation During Close.’  When \r\n a shipment’s contents reaches the scan and weigh station, it is put in \r\n a container and weighed, triggering the scan and weigh processing.  The \r\n scan and weigh processing triggers the close container processing, which \r\n handles not only closing the container, but the container creation in \r\n the system during close.  The \r\n results of all processing, is a new container was created, it’s status \r\n was updated, along with the leading status of the shipment, to ‘Ship Confirm \r\n Pending.’  The \r\n weight on the container will also be updated if it is different than what \r\n is specified on the container.",
+              {
+                "tag": "br",
+                "attrs": {},
+                "children": [],
+                "node_id": "n241"
+              },
+              " "
+            ],
+            "node_id": "n240"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Close Containers, \r\n ‘Allow Container Creation During Close’, ‘Auto Manifest At Close’ (Pass \r\n CLOSE_CONTAINER, container id, container weight): This scenario \r\n is triggered off two flags in the packing preferences; ‘Allow Container \r\n Creation during close’ and ‘Auto Manifest At Close.’  If \r\n both are turn on, and a close container request is submitted to the database, \r\n the scan and weigh processing will trigger the close container processing, \r\n which will not only close the container, but also create this new container \r\n in the system, as well as manifest this new container at close.  The \r\n results of this processing is a new container created and it’s status \r\n was updated, along with the leading status of the shipment, to ‘Ship Confirm \r\n Pending.’  The \r\n weigh on the container will also be updated if it is different than what \r\n is specified on the container.",
+              {
+                "tag": "br",
+                "attrs": {},
+                "children": [],
+                "node_id": "n243"
+              },
+              " "
+            ],
+            "node_id": "n242"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Close pre-created, \r\n pre-manifested containers (Pass CLOSE_CONTAINER, container id, container \r\n weight): Pre-created and pre-manifested containers can also arrive \r\n via conveyor to the scan and weigh station.  This \r\n container only requires closing.  Once \r\n the container is weighed, the record to the scan_and_weigh_requests table \r\n is inserted.  Scan \r\n and weigh processing continues by calling the normal close container processing, \r\n provided neither the ‘Allow Container Creation during Close’ nor the ‘Auto \r\n Manifest at Close’ flags are turned on.  The \r\n results of this processing include the status of the container changed, \r\n as well as the leading status on the associated shipment, is updated to \r\n ‘Ship Confirm Pending.’  The \r\n weight on the container is updated if the weight measured differs from \r\n the weight already on the container.",
+              {
+                "tag": "br",
+                "attrs": {},
+                "children": [],
+                "node_id": "n245"
+              },
+              " "
+            ],
+            "node_id": "n244"
+          },
+          "\r\n            ",
+          {
+            "tag": "li",
+            "attrs": {},
+            "children": [
+              "Manifest pre-created \r\n containers (Pass MANIFEST, container id, container weight): If \r\n a customer is interested in only manifesting containers at the scan and \r\n weigh station, this is the scenario that would best fit.  This \r\n scenario will not close the containers, but only manifest them.  The \r\n request type would be MANIFEST.  Once \r\n the container has been weighed and the request inserted, the scan and \r\n weigh processing will call the manifest processing.  The \r\n result will be a manifested container with an updated tracking number. "
+            ],
+            "node_id": "n246"
+          },
+          "\r\n        "
+        ],
+        "node_id": "n231"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n247"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n248"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n249"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n250"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n251"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n252"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n253"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n254"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n255"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n256"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n257"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n258"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n259"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n260"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n261"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n262"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n263"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n264"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n265"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n266"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n267"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n268"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n269"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n270"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n271"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n272"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n273"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n274"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n275"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n276"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n277"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n278"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n279"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n280"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n281"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n282"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n283"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n284"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n285"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n286"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n287"
+      },
+      "\r\n        ",
+      {
+        "tag": "p",
+        "attrs": {},
+        "children": [
+          " "
+        ],
+        "node_id": "n288"
+      },
+      "\r\n    "
+    ],
+    "node_id": "n53"
+  },
+  "content_text": "\r\n        \r\n        Scan & Weigh Processing: Discussion\r\n        The following is discussed in this topic:\r\n        - Introduction\r\n        - Input Values\r\n        - Scenarios\r\n         \r\n         \r\n        Introduction...\r\n        Scan and Weigh is a functionality physically consisting of a conveyor \r\n which shipment containers are put on and then arrive at a weighing station. \r\n  The weigh \r\n station is as simple as putting the container on a scale and, through \r\n an interface with the system, a record is inserted into the scan_and_weigh_requests \r\n database table to either manifest or close the container. Most importantly, the record inserted into the scan_and_weigh_requests \r\n table consists of a request type, a request string, and a processed field. \r\n  The request \r\n type can be one of two values; manifest container or close container. \r\n  The request \r\n type is specified by a constant in the request_type field and as the first \r\n value in the request string.  The \r\n two constants that can define the request type are:\r\n        \r\n            MANIFEST\r\n            CLOSE_CONTAINER\r\n        \r\n        The request string is used by the processing class as a serialized DS of specific information.  The request string will contain the following information with a Record Separator character as the delimiter between each value:\r\n        \r\n            Request Type\r\n            Warehouse\r\n            Tracking Number\r\n            Container ID\r\n            Shipment ID\r\n            Scanned Date/Time\r\n            Scanned by Device\r\n            Weight\r\n            Weight UM\r\n            End delimiter (ä)\r\n        \r\n         \r\n        Below is an example of a request string:\r\n         \r\n        \r\n            Format: <request type><record separator><container id><record separator><container weight><record separator><end delimiter>\r\n            Example: 'MANIFEST'+char(30)+'00011465870025342824'+char(30)+'0.713'+char(30)+char(228)\r\n        \r\n         \r\n        - As per the example, not all values in the request string are required. \r\n  A request \r\n type is always required.  The \r\n tracking number can also be entered instead of a container id, or the \r\n user can enter a container id and a tracking number.\r\n         \r\n        - No further information is required for manifesting a container.\r\n         \r\n        - If closing a container, the processing will look-up the carrier and \r\n carrier service information.  If \r\n no container id is specified, but a shipment id is specified, a new container \r\n will be created during processing.  The \r\n processing will also error if no container id and no shipment id is entered.\r\n         \r\n        - The processed field can be one of three values; Y for processed, N for \r\n not processed, E for error.  When \r\n a request record is inserted, it initially has a processed field set to \r\n N.  Currently \r\n if a request string contains a weight different than what the system calculates \r\n (contents weight + container weight) as the weight for the shipment, the \r\n request record will error and the processed field will be set to E.  If \r\n a container’s weight matches the calculated system weight, the request \r\n record will be processed and the processed field will be set to Y.  \r\n         \r\n        - Once a request has been written to the scan_and_weigh_requests table, \r\n the scan and weigh schedule job (if configured and active to run) will \r\n pick up the record and process it.  \r\n         \r\n        - Packing preferences play a large role in the processing during scan \r\n and weigh.  The \r\n packing preference used during scan and weigh is specified on the user \r\n profile of the person working at the scan and weigh station, who happens \r\n to be inserting the request in the scan_and_weigh_requests table.  \r\n        Only two fields on the packing preferences really can have an impact \r\n on what takes place during close container.  These \r\n two fields are ‘Auto Manifest At Close’ and ‘Allow Container Creation \r\n During Close.’\r\n         \r\n         \r\n         \r\n        Input Values...\r\n         \r\n        Below is a table defining the input values in the request string and \r\n the resulting functionality:\r\n         \r\n        \r\n            \r\n            \r\n            \r\n                \r\n                    \r\n                        Functionality\r\n                         \r\n                    \r\n                    \r\n                        Request String Required Input Values\r\n                         \r\n                    \r\n                \r\n                \r\n                    \r\n                        Close Container\r\n                    \r\n                    \r\n                        Request type, container id, container weight\r\n                    \r\n                \r\n                \r\n                    \r\n                        Close Container\r\n                    \r\n                    \r\n                        Request type, container id, tracking number, container weight\r\n                    \r\n                \r\n                \r\n                    \r\n                        Close Container\r\n                    \r\n                    \r\n                        Request type, tracking number, container weight\r\n                    \r\n                \r\n                \r\n                    \r\n                        Close Container\r\n                    \r\n                    \r\n                        Request type, tracking number\r\n                    \r\n                \r\n                \r\n                    \r\n                        Close Container\r\n                    \r\n                    \r\n                        Request type, container id\r\n                    \r\n                \r\n                \r\n                    \r\n                        Close Container\r\n                    \r\n                    \r\n                        Request type, container id, tracking number\r\n                    \r\n                \r\n                \r\n                    \r\n                        Close Container\r\n                    \r\n                    \r\n                        Request type, shipment id, container weight\r\n                    \r\n                \r\n                \r\n                    \r\n                        Close Container\r\n                    \r\n                    \r\n                        Request type, shipment id, container id, container weight\r\n                    \r\n                \r\n                \r\n                    \r\n                        Close Container\r\n                    \r\n                    \r\n                        Request type, shipment id, container id\r\n                    \r\n                \r\n                \r\n                    \r\n                        Close Container\r\n                    \r\n                    \r\n                        Request type, shipment id\r\n                    \r\n                \r\n                \r\n                    \r\n                        Manifest\r\n                    \r\n                    \r\n                        Request type, container id, container weight\r\n                    \r\n                \r\n                \r\n                    \r\n                        Manifest\r\n                    \r\n                    \r\n                        Request type, container id, tracking number, container weight\r\n                    \r\n                \r\n                \r\n                    \r\n                        Manifest\r\n                    \r\n                    \r\n                        Request type, tracking number, container weight\r\n                    \r\n                \r\n                \r\n                    \r\n                        Manifest\r\n                    \r\n                    \r\n                        Request type, container weight, tracking number\r\n                    \r\n                \r\n                \r\n                    \r\n                        Manifest\r\n                    \r\n                    \r\n                        Request type, tracking number\r\n                    \r\n                \r\n                \r\n                    \r\n                        Manifest\r\n                    \r\n                    \r\n                        Request type, container id\r\n                    \r\n                \r\n                \r\n                    \r\n                        Manifest\r\n                    \r\n                    \r\n                        Request type, shipment id, container weight\r\n                    \r\n                \r\n                \r\n                    \r\n                        Manifest\r\n                    \r\n                    \r\n                        Request type, shipment id, container id, container weight\r\n                    \r\n                \r\n                \r\n                    \r\n                        Manifest\r\n                    \r\n                    \r\n                        Request type, shipment id, container id\r\n                    \r\n                \r\n                \r\n                    \r\n                        Manifest\r\n                    \r\n                    \r\n                        Request type, shipment id\r\n                    \r\n                \r\n            \r\n        \r\n         \r\n        The string input values of Weight UM, Warehouse, Scanned Date/Time, \r\n Scanned Device can be used in combination with any of these request strings.\r\n         \r\n         \r\n        Scenarios\r\n         \r\n        Below are different scenarios in which one would see the scan and weigh \r\n functionality:\r\n        \r\n            Close pre-created \r\n containers (Pass CLOSE_CONTAINER, container id, container weight): \r\n A customer may only want containers that are pre-created, either in packing \r\n or in the wave, to be closed when the containers reach the scan and weigh \r\n station.  The \r\n results of the scan and weigh process will change the status of the containers, \r\n as well as the leading status of the shipment to ‘Ship Confirm Pending.’ \r\n  The weight \r\n on the container may also be updated.  This \r\n process will only process correctly if the container is in the minimum \r\n status of ‘In Packing.’ \r\n            Create containers \r\n ‘on-the-fly’, Close Containers(Pass CLOSE_CONTAINER, shipment id, container \r\n weight): The processing during scan and weigh allows for the creation \r\n of containers ‘on-the-fly.’  When \r\n the shipment contents reaches the scan and weigh station, it would be \r\n packed and scan and weighed.  Based \r\n on the information being passed into the request string, the container \r\n will be created in the system before the system calls the close container \r\n processing.  The \r\n close container processing will change the status of the containers, as \r\n well as the leading status of the shipment to ‘Ship Confirm Pending.’ \r\n  The weight \r\n on the container may also be updated.  This \r\n process will only process correctly if the container is in the minimum \r\n status of ‘In Packing.’ \r\n            Create containers \r\n ‘on-the-fly’, Close Containers, ‘Auto Manifest At Close’(Pass CLOSE_CONTAINER, \r\n shipment id, container weight): A customer may not only want the \r\n containers packed when a shipment’s contents reaches the scan and weigh \r\n station, but they also may require the containers to be manifested during \r\n close.  This \r\n situation can still be handled via the scan and weigh processing.  The \r\n ‘Auto Manifest At Close’ flag must be turned on in the Packing Preferences \r\n configuration.  Containers \r\n will be created based on what is passed into the request string.  The \r\n scan and weigh processing will results in the update of the container’s \r\n status, as well as the leading status of the associated shipment to ‘Ship \r\n Confirm Pending’.  The \r\n weight on the container may also be updated if it is different than what \r\n is specified on the container. \r\n            Close pre-created \r\n containers, ‘Auto Manifest At Close’ (Pass CLOSE_CONTAINER, container \r\n id, container weight): This scenario would allow a customer to \r\n have shipments moving along the conveyor to the scan and weigh station \r\n in pre-created containers, created either from the wave or in packing. \r\n  The request \r\n string would be close containers, but the packing preferences would have \r\n the ‘Auto Manifest At Close’ turned on.  The \r\n scan and weigh process will call the close container processing, which \r\n will update the container’s status, as well as the leading status of the \r\n shipment, to ‘Ship Confirm Pending.’  The \r\n weight on the container will also be updated if it is different than what \r\n is specified on the container. \r\n            Close pre-created \r\n containers, ‘Allow Container Creation During Close’ (Pass CLOSE_CONTAINER, \r\n container id, container weight): This scenario would be an alternate \r\n way to create containers during the scan and weigh process.  On \r\n the packing preferences configuration, there is a field called, ‘Allow \r\n Container Creation During Close.’  When \r\n a shipment’s contents reaches the scan and weigh station, it is put in \r\n a container and weighed, triggering the scan and weigh processing.  The \r\n scan and weigh processing triggers the close container processing, which \r\n handles not only closing the container, but the container creation in \r\n the system during close.  The \r\n results of all processing, is a new container was created, it’s status \r\n was updated, along with the leading status of the shipment, to ‘Ship Confirm \r\n Pending.’  The \r\n weight on the container will also be updated if it is different than what \r\n is specified on the container. \r\n            Close Containers, \r\n ‘Allow Container Creation During Close’, ‘Auto Manifest At Close’ (Pass \r\n CLOSE_CONTAINER, container id, container weight): This scenario \r\n is triggered off two flags in the packing preferences; ‘Allow Container \r\n Creation during close’ and ‘Auto Manifest At Close.’  If \r\n both are turn on, and a close container request is submitted to the database, \r\n the scan and weigh processing will trigger the close container processing, \r\n which will not only close the container, but also create this new container \r\n in the system, as well as manifest this new container at close.  The \r\n results of this processing is a new container created and it’s status \r\n was updated, along with the leading status of the shipment, to ‘Ship Confirm \r\n Pending.’  The \r\n weigh on the container will also be updated if it is different than what \r\n is specified on the container. \r\n            Close pre-created, \r\n pre-manifested containers (Pass CLOSE_CONTAINER, container id, container \r\n weight): Pre-created and pre-manifested containers can also arrive \r\n via conveyor to the scan and weigh station.  This \r\n container only requires closing.  Once \r\n the container is weighed, the record to the scan_and_weigh_requests table \r\n is inserted.  Scan \r\n and weigh processing continues by calling the normal close container processing, \r\n provided neither the ‘Allow Container Creation during Close’ nor the ‘Auto \r\n Manifest at Close’ flags are turned on.  The \r\n results of this processing include the status of the container changed, \r\n as well as the leading status on the associated shipment, is updated to \r\n ‘Ship Confirm Pending.’  The \r\n weight on the container is updated if the weight measured differs from \r\n the weight already on the container. \r\n            Manifest pre-created \r\n containers (Pass MANIFEST, container id, container weight): If \r\n a customer is interested in only manifesting containers at the scan and \r\n weigh station, this is the scenario that would best fit.  This \r\n scenario will not close the containers, but only manifest them.  The \r\n request type would be MANIFEST.  Once \r\n the container has been weighed and the request inserted, the scan and \r\n weigh processing will call the manifest processing.  The \r\n result will be a manifested container with an updated tracking number. \r\n        \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n    ",
+  "search_text": "\r\n        \r\n        \nScan & Weigh Processing: Discussion\n\r\n        \nThe following is discussed in this topic:\n\r\n        \n- Introduction\n\r\n        \n- Input Values\n\r\n        \n- Scenarios\n\r\n        \n \n\r\n        \n \n\r\n        \nIntroduction...\n\r\n        \nScan and Weigh is a functionality physically consisting of a conveyor \r\n which shipment containers are put on and then arrive at a weighing station. \r\n  The weigh \r\n station is as simple as putting the container on a scale and, through \r\n an interface with the system, a record is inserted into the scan_and_weigh_requests \r\n database table to either manifest or close the container. Most importantly, the record inserted into the scan_and_weigh_requests \r\n table consists of a request type, a request string, and a processed field. \r\n  The request \r\n type can be one of two values; manifest container or close container. \r\n  The request \r\n type is specified by a constant in the request_type field and as the first \r\n value in the request string.  The \r\n two constants that can define the request type are:\n\r\n        \n\r\n            \nMANIFEST\n\r\n            \nCLOSE_CONTAINER\n\r\n        \n\r\n        \nThe request string is used by the processing class as a serialized DS of specific information.  The request string will contain the following information with a Record Separator character as the delimiter between each value:\n\r\n        \n\r\n            \nRequest Type\n\r\n            \nWarehouse\n\r\n            \nTracking Number\n\r\n            \nContainer ID\n\r\n            \nShipment ID\n\r\n            \nScanned Date/Time\n\r\n            \nScanned by Device\n\r\n            \nWeight\n\r\n            \nWeight UM\n\r\n            \nEnd delimiter (ä)\n\r\n        \n\r\n        \n \n\r\n        \nBelow is an example of a request string:\n\r\n        \n \n\r\n        \n\r\n            \nFormat: <request type><record separator><container id><record separator><container weight><record separator><end delimiter>\n\r\n            \nExample: 'MANIFEST'+char(30)+'00011465870025342824'+char(30)+'0.713'+char(30)+char(228)\n\r\n        \n\r\n        \n \n\r\n        \n- As per the example, not all values in the request string are required. \r\n  A request \r\n type is always required.  The \r\n tracking number can also be entered instead of a container id, or the \r\n user can enter a container id and a tracking number.\n\r\n        \n \n\r\n        \n- No further information is required for manifesting a container.\n\r\n        \n \n\r\n        \n- If closing a container, the processing will look-up the carrier and \r\n carrier service information.  If \r\n no container id is specified, but a shipment id is specified, a new container \r\n will be created during processing.  The \r\n processing will also error if no container id and no shipment id is entered.\n\r\n        \n \n\r\n        \n- The processed field can be one of three values; Y for processed, N for \r\n not processed, E for error.  When \r\n a request record is inserted, it initially has a processed field set to \r\n N.  Currently \r\n if a request string contains a weight different than what the system calculates \r\n (contents weight + container weight) as the weight for the shipment, the \r\n request record will error and the processed field will be set to E.  If \r\n a container’s weight matches the calculated system weight, the request \r\n record will be processed and the processed field will be set to Y.  \n\r\n        \n \n\r\n        \n- Once a request has been written to the scan_and_weigh_requests table, \r\n the scan and weigh schedule job (if configured and active to run) will \r\n pick up the record and process it.  \n\r\n        \n \n\r\n        \n- Packing preferences play a large role in the processing during scan \r\n and weigh.  The \r\n packing preference used during scan and weigh is specified on the user \r\n profile of the person working at the scan and weigh station, who happens \r\n to be inserting the request in the scan_and_weigh_requests table.  \n\r\n        \nOnly two fields on the packing preferences really can have an impact \r\n on what takes place during close container.  These \r\n two fields are ‘Auto Manifest At Close’ and ‘Allow Container Creation \r\n During Close.’\n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \nInput Values...\n\r\n        \n \n\r\n        \nBelow is a table defining the input values in the request string and \r\n the resulting functionality:\n\r\n        \n \n\r\n        \n\r\n            \r\n            \r\n            \n\r\n                \n\r\n                    \n\r\n                        \nFunctionality\n\r\n                        \n \n\r\n                    \n\r\n                    \n\r\n                        \nRequest String Required Input Values\n\r\n                        \n \n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nClose Container\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, container id, container weight\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nClose Container\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, container id, tracking number, container weight\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nClose Container\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, tracking number, container weight\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nClose Container\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, tracking number\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nClose Container\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, container id\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nClose Container\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, container id, tracking number\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nClose Container\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, shipment id, container weight\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nClose Container\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, shipment id, container id, container weight\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nClose Container\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, shipment id, container id\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nClose Container\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, shipment id\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nManifest\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, container id, container weight\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nManifest\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, container id, tracking number, container weight\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nManifest\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, tracking number, container weight\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nManifest\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, container weight, tracking number\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nManifest\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, tracking number\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nManifest\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, container id\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nManifest\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, shipment id, container weight\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nManifest\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, shipment id, container id, container weight\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nManifest\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, shipment id, container id\n\r\n                    \n\r\n                \n\r\n                \n\r\n                    \n\r\n                        \nManifest\n\r\n                    \n\r\n                    \n\r\n                        \nRequest type, shipment id\n\r\n                    \n\r\n                \n\r\n            \n\r\n        \n\r\n        \n \n\r\n        \nThe string input values of Weight UM, Warehouse, Scanned Date/Time, \r\n Scanned Device can be used in combination with any of these request strings.\n\r\n        \n \n\r\n        \n \n\r\n        \nScenarios\n\r\n        \n \n\r\n        \nBelow are different scenarios in which one would see the scan and weigh \r\n functionality:\n\r\n        \n\r\n            \nClose pre-created \r\n containers (Pass CLOSE_CONTAINER, container id, container weight): \r\n A customer may only want containers that are pre-created, either in packing \r\n or in the wave, to be closed when the containers reach the scan and weigh \r\n station.  The \r\n results of the scan and weigh process will change the status of the containers, \r\n as well as the leading status of the shipment to ‘Ship Confirm Pending.’ \r\n  The weight \r\n on the container may also be updated.  This \r\n process will only process correctly if the container is in the minimum \r\n status of ‘In Packing.’\n\n \n\r\n            \nCreate containers \r\n ‘on-the-fly’, Close Containers(Pass CLOSE_CONTAINER, shipment id, container \r\n weight): The processing during scan and weigh allows for the creation \r\n of containers ‘on-the-fly.’  When \r\n the shipment contents reaches the scan and weigh station, it would be \r\n packed and scan and weighed.  Based \r\n on the information being passed into the request string, the container \r\n will be created in the system before the system calls the close container \r\n processing.  The \r\n close container processing will change the status of the containers, as \r\n well as the leading status of the shipment to ‘Ship Confirm Pending.’ \r\n  The weight \r\n on the container may also be updated.  This \r\n process will only process correctly if the container is in the minimum \r\n status of ‘In Packing.’\n\n \n\r\n            \nCreate containers \r\n ‘on-the-fly’, Close Containers, ‘Auto Manifest At Close’(Pass CLOSE_CONTAINER, \r\n shipment id, container weight): A customer may not only want the \r\n containers packed when a shipment’s contents reaches the scan and weigh \r\n station, but they also may require the containers to be manifested during \r\n close.  This \r\n situation can still be handled via the scan and weigh processing.  The \r\n ‘Auto Manifest At Close’ flag must be turned on in the Packing Preferences \r\n configuration.  Containers \r\n will be created based on what is passed into the request string.  The \r\n scan and weigh processing will results in the update of the container’s \r\n status, as well as the leading status of the associated shipment to ‘Ship \r\n Confirm Pending’.  The \r\n weight on the container may also be updated if it is different than what \r\n is specified on the container.\n\n \n\r\n            \nClose pre-created \r\n containers, ‘Auto Manifest At Close’ (Pass CLOSE_CONTAINER, container \r\n id, container weight): This scenario would allow a customer to \r\n have shipments moving along the conveyor to the scan and weigh station \r\n in pre-created containers, created either from the wave or in packing. \r\n  The request \r\n string would be close containers, but the packing preferences would have \r\n the ‘Auto Manifest At Close’ turned on.  The \r\n scan and weigh process will call the close container processing, which \r\n will update the container’s status, as well as the leading status of the \r\n shipment, to ‘Ship Confirm Pending.’  The \r\n weight on the container will also be updated if it is different than what \r\n is specified on the container.\n\n \n\r\n            \nClose pre-created \r\n containers, ‘Allow Container Creation During Close’ (Pass CLOSE_CONTAINER, \r\n container id, container weight): This scenario would be an alternate \r\n way to create containers during the scan and weigh process.  On \r\n the packing preferences configuration, there is a field called, ‘Allow \r\n Container Creation During Close.’  When \r\n a shipment’s contents reaches the scan and weigh station, it is put in \r\n a container and weighed, triggering the scan and weigh processing.  The \r\n scan and weigh processing triggers the close container processing, which \r\n handles not only closing the container, but the container creation in \r\n the system during close.  The \r\n results of all processing, is a new container was created, it’s status \r\n was updated, along with the leading status of the shipment, to ‘Ship Confirm \r\n Pending.’  The \r\n weight on the container will also be updated if it is different than what \r\n is specified on the container.\n\n \n\r\n            \nClose Containers, \r\n ‘Allow Container Creation During Close’, ‘Auto Manifest At Close’ (Pass \r\n CLOSE_CONTAINER, container id, container weight): This scenario \r\n is triggered off two flags in the packing preferences; ‘Allow Container \r\n Creation during close’ and ‘Auto Manifest At Close.’  If \r\n both are turn on, and a close container request is submitted to the database, \r\n the scan and weigh processing will trigger the close container processing, \r\n which will not only close the container, but also create this new container \r\n in the system, as well as manifest this new container at close.  The \r\n results of this processing is a new container created and it’s status \r\n was updated, along with the leading status of the shipment, to ‘Ship Confirm \r\n Pending.’  The \r\n weigh on the container will also be updated if it is different than what \r\n is specified on the container.\n\n \n\r\n            \nClose pre-created, \r\n pre-manifested containers (Pass CLOSE_CONTAINER, container id, container \r\n weight): Pre-created and pre-manifested containers can also arrive \r\n via conveyor to the scan and weigh station.  This \r\n container only requires closing.  Once \r\n the container is weighed, the record to the scan_and_weigh_requests table \r\n is inserted.  Scan \r\n and weigh processing continues by calling the normal close container processing, \r\n provided neither the ‘Allow Container Creation during Close’ nor the ‘Auto \r\n Manifest at Close’ flags are turned on.  The \r\n results of this processing include the status of the container changed, \r\n as well as the leading status on the associated shipment, is updated to \r\n ‘Ship Confirm Pending.’  The \r\n weight on the container is updated if the weight measured differs from \r\n the weight already on the container.\n\n \n\r\n            \nManifest pre-created \r\n containers (Pass MANIFEST, container id, container weight): If \r\n a customer is interested in only manifesting containers at the scan and \r\n weigh station, this is the scenario that would best fit.  This \r\n scenario will not close the containers, but only manifest them.  The \r\n request type would be MANIFEST.  Once \r\n the container has been weighed and the request inserted, the scan and \r\n weigh processing will call the manifest processing.  The \r\n result will be a manifested container with an updated tracking number. \n\r\n        \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n        \n \n\r\n    ",
+  "inventory": {
+    "tags": {
+      "a": 7,
+      "body": 1,
+      "br": 7,
+      "col": 2,
+      "h1": 1,
+      "h4": 3,
+      "li": 22,
+      "p": 122,
+      "table": 1,
+      "tbody": 1,
+      "td": 42,
+      "tr": 21,
+      "ul": 4
+    },
+    "text_sha256": "5d4ebc78dc646af15cc2d461e62b6a10006fb0ffb9a1af975cb3b5e0a1bf5c64",
+    "text_characters": 16330,
+    "tables": [
+      {
+        "node_id": "n112",
+        "rows": [
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Functionality\r\n                         \r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request String Required Input Values\r\n                         \r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Close Container\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, container id, container weight\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Close Container\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, container id, tracking number, container weight\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Close Container\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, tracking number, container weight\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Close Container\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, tracking number\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Close Container\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, container id\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Close Container\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, container id, tracking number\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Close Container\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, shipment id, container weight\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Close Container\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, shipment id, container id, container weight\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Close Container\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, shipment id, container id\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Close Container\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, shipment id\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Manifest\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, container id, container weight\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Manifest\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, container id, tracking number, container weight\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Manifest\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, tracking number, container weight\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Manifest\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, container weight, tracking number\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Manifest\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, tracking number\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Manifest\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, container id\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Manifest\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, shipment id, container weight\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Manifest\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, shipment id, container id, container weight\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Manifest\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, shipment id, container id\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ],
+          [
+            {
+              "tag": "td",
+              "text": "\r\n                        Manifest\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            },
+            {
+              "tag": "td",
+              "text": "\r\n                        Request type, shipment id\r\n                    ",
+              "rowspan": "1",
+              "colspan": "1",
+              "headers": null,
+              "scope": null
+            }
+          ]
+        ],
+        "groups": [
+          "tbody"
+        ],
+        "cells": [
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Functionality\r\n                         \r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request String Required Input Values\r\n                         \r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Close Container\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, container id, container weight\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Close Container\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, container id, tracking number, container weight\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Close Container\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, tracking number, container weight\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Close Container\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, tracking number\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Close Container\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, container id\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Close Container\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, container id, tracking number\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Close Container\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, shipment id, container weight\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Close Container\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, shipment id, container id, container weight\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Close Container\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, shipment id, container id\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Close Container\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, shipment id\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Manifest\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, container id, container weight\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Manifest\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, container id, tracking number, container weight\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Manifest\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, tracking number, container weight\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Manifest\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, container weight, tracking number\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Manifest\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, tracking number\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Manifest\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, container id\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Manifest\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, shipment id, container weight\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Manifest\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, shipment id, container id, container weight\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Manifest\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, shipment id, container id\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Manifest\r\n                    "
+          },
+          {
+            "tag": "td",
+            "rowspan": "1",
+            "colspan": "1",
+            "headers": null,
+            "text": "\r\n                        Request type, shipment id\r\n                    "
+          }
+        ]
+      }
+    ],
+    "code": [],
+    "variants": [],
+    "documentary_controls": [],
+    "headings": [
+      {
+        "node_id": "n56",
+        "level": 1,
+        "text": "Scan & Weigh Processing: Discussion"
+      },
+      {
+        "node_id": "n67",
+        "level": 4,
+        "text": "Introduction..."
+      },
+      {
+        "node_id": "n107",
+        "level": 4,
+        "text": "Input Values..."
+      },
+      {
+        "node_id": "n227",
+        "level": 4,
+        "text": "Scenarios"
+      }
+    ],
+    "anchors": [
+      "kanchor1501",
+      "introduction",
+      "input",
+      "scenarios"
+    ]
+  },
+  "references": [
+    {
+      "node_id": "n7",
+      "tag": "link",
+      "attribute": "href",
+      "original_href": "../Skins/Default/Stylesheets/Slideshow.css",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "stylesheet",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Skins/Default/Stylesheets/Slideshow.css",
+      "target_id": "9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "stylesheet"
+    },
+    {
+      "node_id": "n8",
+      "tag": "link",
+      "attribute": "href",
+      "original_href": "../Skins/Default/Stylesheets/TextEffects.css",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "stylesheet",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Skins/Default/Stylesheets/TextEffects.css",
+      "target_id": "f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "stylesheet"
+    },
+    {
+      "node_id": "n9",
+      "tag": "link",
+      "attribute": "href",
+      "original_href": "../Skins/Default/Stylesheets/Topic.css",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "stylesheet",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Skins/Default/Stylesheets/Topic.css",
+      "target_id": "9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "stylesheet"
+    },
+    {
+      "node_id": "n10",
+      "tag": "link",
+      "attribute": "href",
+      "original_href": "../Skins/Default/Stylesheets/Components/Styles.css",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "stylesheet",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Skins/Default/Stylesheets/Components/Styles.css",
+      "target_id": "2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "stylesheet"
+    },
+    {
+      "node_id": "n11",
+      "tag": "link",
+      "attribute": "href",
+      "original_href": "../Skins/Default/Stylesheets/Components/Print.css",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "stylesheet",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Skins/Default/Stylesheets/Components/Print.css",
+      "target_id": "15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "stylesheet"
+    },
+    {
+      "node_id": "n13",
+      "tag": "link",
+      "attribute": "href",
+      "original_href": "default.css",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "stylesheet",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/default.css",
+      "target_id": "efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "stylesheet"
+    },
+    {
+      "node_id": "n14",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/jquery.min.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/jquery.min.js",
+      "target_id": "c97325fd346349f2409c62e4ae845bb99e9f8bb3e1dafcc86a72a3066fa377a5",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n15",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/purify.min.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/purify.min.js",
+      "target_id": "c027357a3459fc6d0f489bd9320c71c342b1653533231ca20c38674dd2e2f6b1",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n16",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/require.min.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/require.min.js",
+      "target_id": "b733c8f443aa51b8f66365a73a2221d3b70f1f2710048dbc70a2893c7cb6cdd5",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n17",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/require.config.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/require.config.js",
+      "target_id": "6adc378545e8e2366c0e3b36d580c28f637504131f14e1defa2fd027b7f51e90",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n18",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/foundation.min.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/foundation.min.js",
+      "target_id": "83e8c3aa859cf6136851796d841b81c4943b911cf4adc0cdf855ed4ab9769529",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n19",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/plugins.min.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/plugins.min.js",
+      "target_id": "454323da77b28debc78e658ab86671596cca387f53742af75531097568707a9a",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n20",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapGlobal.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapGlobal.js",
+      "target_id": "592e998c2812075465cb151767bf8431fb28ef082409297b5c2fd8d8702b6915",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n21",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapDom.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapDom.js",
+      "target_id": "95137a5d39cdd5049ee017af457b0bd08e0c4bda7d5b56b584ff14b04c6c9fcd",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n22",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapUtilities.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapUtilities.js",
+      "target_id": "57f5d7ebc1b0b696c1e78159dfed062b10b4ce5c5acfd162cbbdd8b943c79389",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n23",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapXhr.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapXhr.js",
+      "target_id": "d643a211f37037703fcd9e8c89854545ff6e72e1852bc485e0cbcf5fb74a1dfe",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n24",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapTextEffects.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapTextEffects.js",
+      "target_id": "7b30b6bc359ff569feea7bb40b50512c6818c044a881798277d723b932522933",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n25",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapSlideshow.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapSlideshow.js",
+      "target_id": "05693baae2371bbc4b9b374a34e2afa1efe761634750361eb1bd5c29ab3de4a9",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n26",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapMessageBus.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapMessageBus.js",
+      "target_id": "330fb87c062eff6a344e8914d60db2cb414e6b6ce170ba3b3c81f01bf8382f7a",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n27",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapMessageBus.CrossFrame.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapMessageBus.CrossFrame.js",
+      "target_id": "10ef5ecd0aeb504115afb1124e5e47e62a7a39e849057c11d86469c825c22e0c",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n28",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapDefault.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapDefault.js",
+      "target_id": "2c9d6374f1e464166b9bdd55f25010479c7913af17cea868bc54454f9d216bd7",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n29",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapMediaQueries.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapMediaQueries.js",
+      "target_id": "af898af92b638214d303066768c90c292439df71fcc4ef16854bb903a419f6e3",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n30",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapAccessibility.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapAccessibility.js",
+      "target_id": "22c9421969aa33571199138b17d6fb751107d57a921d93b6f162851dbc1ddd86",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n31",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapHelpSystem.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapHelpSystem.js",
+      "target_id": "811760f22cfd821f17b263b9999079d7ad4672934e7103bca0744def59545245",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n32",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapAliasFile.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapAliasFile.js",
+      "target_id": "4d312f0fc6fd8f71a12730afb688b1bebd45e4a0d05d68a80e121bcbe61720d6",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n33",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapTopicFeedback.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapTopicFeedback.js",
+      "target_id": "8f1b805243a802b1e685be71c2642ff7b668750cdc1500ed61578348d7fabc04",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n34",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapFeedbackHelper.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapFeedbackHelper.js",
+      "target_id": "e24e0a3814431e4462c169361ef72cb42b8d3ce625fc7740d5dca57c72405053",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n35",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapSkinHelper.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapSkinHelper.js",
+      "target_id": "775bf5fc9775c592d1c3f08f82b10c02d27e1a0751c97d6976d4310462b0e3ab",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n36",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapToc.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapToc.js",
+      "target_id": "29f94bf3fd6584d2d70ab1f63bb9379d04e7429da6a4211006ed40c55084578d",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n37",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapToc.Breadcrumbs.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapToc.Breadcrumbs.js",
+      "target_id": "5bdc383112b7a6fc17f2eec4f0f351ce6bcbafd6b844f32ca88bb526ec90a8dc",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n38",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapToc.MiniToc.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapToc.MiniToc.js",
+      "target_id": "b35b4d03cae8e8d0efc1eb8eb3454787574804c027f66672d07da8d585fda115",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n39",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapToc.SideMenu.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapToc.SideMenu.js",
+      "target_id": "2b5ed8bdbe3fd1bf489c19249874c5f5a4ccd2323bd8dec3d77a3ba736b51bef",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n40",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapIndex.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapIndex.js",
+      "target_id": "832dcc1d1ddb0b78a59c9586aee0f7539079ef280cd7ebbc382414abe686a99c",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n41",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapGlossary.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapGlossary.js",
+      "target_id": "57f1c5a7ad29524a0710f320edec01790a594d749cf4f826f664f69366746a06",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n42",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapParser.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapParser.js",
+      "target_id": "0c9df6caa8d85879355da7c737f31b1341b32de8e08c98752282cf71808ec68d",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n43",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapSearch.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapSearch.js",
+      "target_id": "723c15dac01ea2979b75dce4ba5e4afcd850273326113c74bc2579e67c1141a4",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n44",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapNavigateTopics.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapNavigateTopics.js",
+      "target_id": "3e27f4eb31e82e4bb54be00333bd4bd2e73aba1c6d99bef541b964d91142d5a5",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n45",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapLms.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapLms.js",
+      "target_id": "7bc1f11606d490f37c30b20263a8c3e8650463b81d639892275db3f7ae2474c4",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n46",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapELearning.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapELearning.js",
+      "target_id": "b6e7cec9d27c220b49db786f49eba973b477ab5a890cda4c2733f15a6db296ae",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n47",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapTopic.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapTopic.js",
+      "target_id": "496f8dc5723ee1451fb74b4cc1b4fe139b47deec9f01e0d81dda1f84479b89a4",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n48",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapFeedback.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapFeedback.js",
+      "target_id": "8400c59de6b2645871c499ce8731d001d431f6b6c7ddb7fa14382748cb9b6f0f",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n49",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapMicroContentComponent.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapMicroContentComponent.js",
+      "target_id": "3438a68f58eac3e94f0f5cadea69c9ebeef5d098e17dc3a2ceef3bdc62d079f6",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n50",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapSearchHelper.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapSearchHelper.js",
+      "target_id": "87c91310f4cc7be19a92d37824744c1ddade0ad9b678a9dc108c420d15c0f775",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n51",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapTopicElements.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapTopicElements.js",
+      "target_id": "591d765093174e3d66e35ade781e47ed3bc82c0a043141c4fe031a3c64ef2a14",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n52",
+      "tag": "script",
+      "attribute": "src",
+      "original_href": "../Resources/Scripts/MadCapTriPane.js",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "script",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Resources/Scripts/MadCapTriPane.js",
+      "target_id": "005eb4080fb6a8dbe8af9a0fc1bdec414ae8d4221e99a92146ad70ae5ce13f8a",
+      "fragment": "",
+      "classification": "internal",
+      "target_type": "script"
+    },
+    {
+      "node_id": "n55",
+      "tag": "a",
+      "attribute": "href",
+      "original_href": "../OnlineHelp.htm#scanWeighDisc.htm",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "kind": "article",
+      "resolved_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/OnlineHelp.htm#scanWeighDisc.htm",
+      "target_id": "e4feb071f5e657c82a45f618505fb410fd59f2d525ff7deb7fed5394a2f380b6",
+      "fragment": "scanWeighDisc.htm",
+      "classification": "internal",
+      "target_type": "navigation"
+    },
+    {
+      "node_id": "n60",
+      "tag": "a",
+      "attribute": "href",
+      "original_href": "#introduction",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "classification": "same_document",
+      "target_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "fragment": "introduction"
+    },
+    {
+      "node_id": "n62",
+      "tag": "a",
+      "attribute": "href",
+      "original_href": "#input",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "classification": "same_document",
+      "target_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "fragment": "input"
+    },
+    {
+      "node_id": "n64",
+      "tag": "a",
+      "attribute": "href",
+      "original_href": "#scenarios",
+      "effective_base": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/scanWeighDisc.htm",
+      "source_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "source_sha256": "9b2acdde557e40ae5c57c94f442a051a931e1b1dc82303d766da677545026863",
+      "classification": "same_document",
+      "target_id": "58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72",
+      "fragment": "scenarios"
+    }
+  ],
+  "excluded_shell_nodes": [
+    {
+      "reason": "executable_or_shell_chrome",
+      "node": {
+        "tag": "p",
+        "attrs": {
+          "class": "MCWebHelpFramesetLink MCWebHelpFramesetLinkTop"
+        },
+        "children": [
+          {
+            "tag": "a",
+            "attrs": {
+              "href": "../OnlineHelp.htm#scanWeighDisc.htm"
+            },
+            "children": [
+              "Open topic with navigation"
+            ],
+            "node_id": "n55"
+          },
+          "\r\n        "
+        ],
+        "node_id": "n54"
+      }
+    }
+  ],
+  "format_exceptions": [],
+  "verification": {
+    "checks": {
+      "exact_decoded_text": true,
+      "table_cell_structure": true,
+      "exact_code_whitespace": true,
+      "headings": true,
+      "parse_without_repair": true,
+      "supported_elements": true,
+      "image_reference_classification": true,
+      "direct_assets_available": true
+    },
+    "missing_direct_assets": [],
+    "unresolved_image_references": [],
+    "parse_errors": [],
+    "content_checks_passed": true,
+    "reading_copy_verified": false,
+    "pending": [
+      "CSS dependency closure",
+      "documentary variant reconciliation",
+      "internal anchor/link audit"
+    ]
+  },
+  "documentary_states": {
+    "schema_version": 1,
+    "control_body_edges": [],
+    "condition_nodes": [],
+    "issues": [],
+    "static_relationships_passed": true,
+    "renderer_semantics_evidence_sha256": "7c1af71802e734ceae9e9eb001cb2b12a72ef2d9726d7518a52df93f5975d214"
+  },
+  "reading": {
+    "html": "AIM/reading/58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72.html",
+    "markdown": "AIM/reading/58019b3a95dcba2304fbe3c155d01acb9c4be08e8989373263c378da9fedca72.md",
+    "html_sha256": "1fcb227186bd1c3915b8e039fdb7ec1f1f011a154cf5c9f9d81079da00873749",
+    "markdown_sha256": "870caa68a4f440c0bc45cee5c95117bd9434e1fc906056d200b7afeb1c312211",
+    "format": "HTML in Markdown preserves mixed inline content and table structure; inert HTML companion supplies offline rendering."
+  }
+}

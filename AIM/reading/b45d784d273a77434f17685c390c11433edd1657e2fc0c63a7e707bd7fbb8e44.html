@@ -1,0 +1,46 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Shipment BOM Action Field</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor1829" data-source-node="n57"></a>Shipment BOM Action Field</h1>
+        <p data-source-node="n58">You can choose one of the following options for this field:</p>
+        <ul type="disc" class="ul_1" data-source-node="n59">
+            <li data-source-node="n60">If you choose the "Create 
+ Work Order for Rejected Quantity" option, the system will create a work 
+ order based on what was rejected on that line (when allocation 
+ is rejected &amp; the "Work Order Creation" wave step is in 
+ your wave flow). The system will create a single work order for the total 
+ rejected quantity (for that item/company) in the entire wave. For example, 
+ if you had 10 shipments each rejecting 5 of an item, the system then would 
+ create one work order for 50. 	This option would be typically used for items which have a build process 
+ that needs to occur before the 
+ shipping process. The finished item, then, ships assembled.<br data-source-node="n61"> </li>
+            <li data-source-node="n62">If you choose the "Add 
+ BOM Components as Shipment Details" option, the system (for each of the 
+ BOM components, per item/company combination), will create a shipment 
+ line for each component item on the same shipment. In order for the system to do this, you must have the "Add BOM Components" wave step present in your wave flow. This option would be typically 
+ used when a finished item (such as a table) is ordered, and you 
+ want its children item components (the table top and the legs) broken out as separate 
+ shipment lines. Note that this option does not use the work order functionality. <br data-source-node="n63"><br data-source-node="n64">Suppose in the following example, you have a finished item (a kitchen 
+ table), of which the table top and the legs are both separate components. 
+  The original 
+ shipment would have a line item for the table:<br data-source-node="n65"><br data-source-node="n66"><i data-source-node="n67">1.000  Item 
+ 001 TABLE                    Quantity 
+ 10</i><br data-source-node="n68"><br data-source-node="n69">	After the "Add BOM Components" wave step has run, the components would be added 
+ as shipment lines (with line numbers incremented by .001):<br data-source-node="n70"><br data-source-node="n71"><i data-source-node="n72">1.000  Item 
+ 001    TABLE 
+                 Quantity 
+ 10</i><br style="font-style: italic" data-source-node="n73"><i data-source-node="n74">	1.001  Item 
+ 001.1 TABLE TOP          Quantity 
+ 10</i><br style="font-style: italic" data-source-node="n75"><i data-source-node="n76">	1.002  Item 
+ 001.2 TABLE LEG          Quantity 
+ 40</i><br data-source-node="n77"><br data-source-node="n78">The system would first try to allocate the parent (for example, if 
+ you had some pre-assembled tables for shipment available) and if it could not 
+ do that, the system would then try to allocate the children. When it allocates 
+ the parent, it sets the status of the corresponding quantity on the child 
+ lines to indicate that the parent is allocated. When it allocates the 
+ children, it sets the corresponding quantity on the parent line to indicate 
+ that the children are allocated. </li>
+        </ul>
+        <p data-source-node="n79">Note: Only one level of BOM in a shipment line  will be created. When we have the shipment line as BOM inside which we have another BOM component, then the system will not process further to its component.  </p>
+        <p data-source-node="n80"> </p>
+        <p data-source-node="n81"> </p>
+    </body></html>

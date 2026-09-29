@@ -1,0 +1,362 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Cycle Counting Process Summary: Process Flows</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56">Cycle Counting Process Summary</h1>
+        <p data-source-node="n57"><a href="548d817cbc4d0efb1392d60c7811bc8f3021bcab5f4dbe675984c54a883ca5b3.html" style="font-style: normal;color: #000000;font-weight: bold" data-source-node="n58">Functionality</a>
+        </p>
+        <p data-source-node="n59"><b style="font-style: italic" data-source-node="n60">** Process Flows **</b>
+        </p>
+        <p data-source-node="n61"> </p>
+        <p data-source-node="n62"> </p>
+        <p data-source-node="n63">- <a href="#creationdiscInTransit" data-source-node="n64">Cycle Count Creation Discussion</a></p>
+        <p data-source-node="n65">- <a href="#plan" data-source-node="n66">Plan-Based Cycle Counting</a></p>
+        <p data-source-node="n67">- <a href="#nonPlan" data-source-node="n68">Non-Plan Based (Activity Driven)</a></p>
+        <p data-source-node="n69">- <a href="#LP" data-source-node="n70">Counting Locations With License Plates</a></p>
+        <p data-source-node="n71"> </p>
+        <p data-source-node="n72"> </p>
+        <p data-source-node="n73"> </p>
+        <h4 data-source-node="n74"><a name="creationdiscInTransit" data-source-node="n75"></a>Cycle Count Creation Discussion...</h4>
+        <p data-source-node="n76">The following outlines exactly how in transit quantities, permanent locations, and lots/license plates are handled during cycle count creation.</p>
+        <ul data-source-node="n77">
+            <li data-source-node="n78">When the system creates the request, it doesn’t denote the item quantity. Instead it identifies the location/item/company/lot/license plate.<br data-source-node="n79"><br data-source-node="n80"></li>
+            <li data-source-node="n81">When there is only in transit inventory for a given warehouse/location/item/company/lot/license plate, the system creates the request as if that inventory does not exist.  Therefore if there is no on hand inventory at the location, it creates the request with no item/company on it.  If there is inventory at the location but not for the specific lot or license plate, it does not create a request for that lot or license plate.  This logic can be summarized as follows:<br data-source-node="n82"><br data-source-node="n83">IF On Hand Quantity for this specific location inventory record (i.e. this warehouse/location/item/company/lot/license plate) = 0 THEN<br data-source-node="n84"><br data-source-node="n85">- IF there are no other records for this same warehouse/location where On Hand Quantity &gt; 0<br data-source-node="n86"><br data-source-node="n87">- AND this warehouse/location is not already on the list of empty locations to have requests created THEN<br data-source-node="n88">*****Put this warehouse/location on the list of empty locations to have a cycle count created.<br data-source-node="n89"><br data-source-node="n90">- ELSE<br data-source-node="n91">*****Do not create a request for this record.<br data-source-node="n92"><br data-source-node="n93"></li>
+            <li data-source-node="n94">An item/location can only be included in one cycle count plan (that is not closed).<br data-source-node="n95"><br data-source-node="n96"></li>
+            <li data-source-node="n97">The location can be in multiple plans, if it’s a multiple item location.<br data-source-node="n98"><br data-source-node="n99"></li>
+            <li data-source-node="n100">Requests are broken down at the following level: location/item/company/lot/license plate. This means that if there are 3 lots for one item in a location, the System will create three individual cycle count requests. If those 3 lots are in one container (LP), the System will still create three individual cycle count requests.<br data-source-node="n101"><br data-source-node="n102"></li>
+            <li data-source-node="n103">For a multi-item location whose threshold is set to 0, the system will not generate a cycle count request unless <u data-source-node="n104">entire</u> location is empty.<br data-source-node="n105"><br data-source-node="n106"></li>
+            <li data-source-node="n107">Cycle counts will not be created when a location is inactive.  <br data-source-node="n108"><br data-source-node="n109"></li>
+            <li data-source-node="n110">Cycle counts will be created when a location has a "frozen" status.<br data-source-node="n111"><br data-source-node="n112"></li>
+            <li data-source-node="n113">When executing the cycle count work for a license plate tracked location, if there are license plates for that item/company for which a count was not created, the system will attempt to create them.  When doing this, it uses the "activity based" logic, and therefore references the threshold record set up for the location.  It only creates the counts for the new license plates if the location has not been counted within the number of days specified on the threshold record. <br data-source-node="n114"><br data-source-node="n115"></li>
+            <li data-source-node="n116">When creating a threshold based request for a multi-item location, the system writes the item/company to the cycle count request even if the inventory transaction drives the inventory for that item/company to 0.  This allows you to verify that the quantity for that item is 0 when performing the count. </li>
+        </ul>
+        <p data-source-node="n117"> </p>
+        <hr width="100%" align="center" data-source-node="n118">
+        <p data-source-node="n119"> </p>
+        <p data-source-node="n120"> </p>
+        <h4 data-source-node="n121"><a name="plan" data-source-node="n122"></a>Plan-Based Cycle Counting...</h4>
+        <p data-source-node="n123">This process diagram illustrates one of the two methods of cycle counting: 
+ plan-based (both paper-based and with work). Each step in this process is further 
+ explained in the diagram and descriptions below.</p>
+        <p data-source-node="n124"> </p>
+        <p data-source-node="n125"> </p>
+        <p data-source-node="n126">
+            <img src="../source/assets/be6c6ff663fe6ffb8ec08caf6bbb4509aa36ad333952c1d22c88adcb5487ed08.gif" loading="eager" data-source-node="n127">
+        </p>
+        <p data-source-node="n128"> </p>
+        <h4 data-source-node="n129">Plan-Based Cycle Counting</h4>
+        <p data-source-node="n130"> </p>
+        <h5 data-source-node="n131">step 1: the user creates a cycle count plan</h5>
+        <p data-source-node="n132">When you are ready to perform cycle counts on a location or group of 
+ locations, you will need to create a cycle count plan. There are two types of plans: master plans and quick plans. Master plans are driven off of the settings defined on the appropriate Cycle Count Master Window configuration record. When 
+ creating a master plan, a few key decisions will have to be made: which master 
+ record to have the system use for creating requests, how many requests 
+ (counts) to include per group, and if they want the system to automatically 
+ print a cycle count list for this plan. A quick plan is generated manually by the user in the Cycle Count Plan Insight screen.</p>
+        <p data-source-node="n133"> </p>
+        <p data-source-node="n134">The user will create either type of plan in 
+ the Cycle Count Plan Insight screen. </p>
+        <p data-source-node="n135"> </p>
+        <p data-source-node="n136"> </p>
+        <h5 data-source-node="n137">step 2: the system creates cycle count requests</h5>
+        <p data-source-node="n138">When a plan is created, the system will also create cycle count requests 
+ based on the settings in the plan. The system will either create the requests 
+ with corresponding work units, or create the requests and generate a cycle 
+ count list which displays each request. This decision is based on whether 
+ or not you decided to create work for this cycle count plan.  If so, the system will create a work unit that will contain all 
+ of the cycle count requests for this plan. Workers then could use their 
+ RF devices or the Work Insight Screen to perform these counts. However, 
+ if you choose not to create work, the cycle count requests will only appear 
+ on a cycle count list. Workers then would have to execute this plan from 
+ this paperwork, and then use the Cycle Count Request Insight screen to confirm or reconcile 
+ the count.</p>
+        <p data-source-node="n139"> </p>
+        <p data-source-node="n140">Note that if there is already a pending request (in an "Open" 
+ status) for an item/location/license plate/lot combination, then the system 
+ will not create a new cycle count request for anything at that location. For example, suppose you create 
+ a cycle count plan with a large number of requests. Soon after, some workers 
+ execute picks on locations that should trigger the creation of activity-driven 
+ requests; however, none of the workers will see cycle count requests when 
+ doing that work. This is because your original cycle count plan already 
+ created a pending request for that location. Therefore, a new request 
+ was not created.</p>
+        <p data-source-node="n141"> </p>
+        <p data-source-node="n142">Also, the system can arrange the cycle count requests into groups. When 
+ a plan is created, the user can indicate the number of counts that they 
+ want per group. The system then would use this value when deciding which 
+ requests appear on each cycle count list.  This is one method that makes work manageable as you can define work's "Create Work Unit" at the group level.</p>
+        <p data-source-node="n143"> </p>
+        <p data-source-node="n144"> </p>
+        <h5 data-source-node="n145">step 3: the plan is released; the system decides whether to create 
+ work for the cycle count request</h5>
+        <p data-source-node="n146">After the system creates a cycle count request, it then needs to decide 
+ whether or not it should create work for this request. This setting is 
+ indicated on the cycle count master record. If you decide that work should 
+ be created, the system will create a work unit using the appropriate work 
+ creation master. If you decide that work should not be created, the system 
+ will generate paperwork documents (if "Auto Print" was chosen 
+ on plan), so that the user can execute the cycle count work instructions.</p>
+        <p data-source-node="n147"> </p>
+        <p data-source-node="n148">The cycle count plan will then need to be released, so user(s) 
+ can execute the cycle count work instructions generated from the plan. 
+ The plan can be manually released by the user (via the Cycle Count Plan Insight screen), 
+ or the system can automatically release the plan (via a scheduled job, the Cycle Count Master Plan Window’s “auto release” setting, or because of a user short pick). Keep in mind that both master and quick plans are released in the same manner. Also note that a cycle count system 
+ value determines whether or not a plan is released when running via a 
+ scheduled job. Do not choose to auto-release a plan unless you want the 
+ system to begin processing the cycle count requests immediately.</p>
+        <p data-source-node="n149"> </p>
+        <p data-source-node="n150"> </p>
+        <h5 data-source-node="n151">step 4: the user performs cycle count on location</h5>
+        <p data-source-node="n152">The user will now initiate the cycle count using either of these methods:</p>
+        <p data-source-node="n153"> </p>
+        <p class="p_4" data-source-node="n154">If work was 
+ not created for the cycle count requests:</p>
+        <ul type="disc" class="ul_1" data-source-node="n155">
+            <li data-source-node="n156">Use the Reconcile action on the Cycle Count Request Insight screen 
+ if the count was different than the item quantity at the location.<span class="span_15" data-source-node="n157"><br data-source-node="n158"><br data-source-node="n159">~ OR ~<br data-source-node="n160"><br data-source-node="n161"></span></li>
+            <li data-source-node="n162">Use the Confirm action on the Cycle Count Request Insight screen 
+ if the count was the same as the item's quantity at the location.</li>
+        </ul>
+        <p class="p_4" data-source-node="n163"> </p>
+        <p class="p_4" data-source-node="n164">If work was 
+ created for the cycle count requests:</p>
+        <ul type="disc" class="ul_1" data-source-node="n165">
+            <li data-source-node="n166">Access the work screen on an RF device, and choose 
+ a work profile that can execute cycle count work.<span class="span_15" data-source-node="n167"><br data-source-node="n168"><br data-source-node="n169">~ OR ~<br data-source-node="n170"><br data-source-node="n171"></span></li>
+            <li data-source-node="n172">Access the Work Insight Screen, 
+ and enter an open cycle count work unit. </li>
+        </ul>
+        <p data-source-node="n173"> </p>
+        <p data-source-node="n174">The user then will go to the specified location and physically count 
+ the item quantity that resides there: </p>
+        <ul type="disc" class="ul_1" data-source-node="n175">
+            <li data-source-node="n176">If using an RF 
+ device, the system will display a cycle count work instruction, 
+ depending on how the work was created. Note that cycle count work is treated 
+ like any other type of work in the system. They would then perform a physical 
+ count of the item in that location, and enter this count into the RF.<br data-source-node="n177"> </li>
+            <li data-source-node="n178">If using paperwork, 
+ a user will go to the first location indicated on the cycle count list. 
+ They will perform a physical count of the item in that location. Next, 
+ they will write down the number that they counted on the paperwork. When 
+ finished, they will take the cycle count list to their supervisor, who 
+ will reconcile any locations that had quantity discrepancies, or confirm 
+ locations that have the correct item quantities. The paper-based cycle count process ends here.</li>
+        </ul>
+        <p data-source-node="n179"> </p>
+        <p data-source-node="n180"> </p>
+        <p data-source-node="n181">Adding item(s) during cycle counts:</p>
+        <ul data-source-node="n182">
+            <li data-source-node="n183">Note that it is possible to add item(s) to the location that you are counting. This is helpful if you get to a location to count and find that the item you are supposed to count is not there, or there is an additional item present (for multi-item locations). See the diagram for the validations that the system performs when you add an item quantity to a location.</li>
+        </ul>
+        <p data-source-node="n184"> </p>
+        <h5 data-source-node="n185">step 5: system processes cycle count (if work was created)</h5>
+        <p data-source-node="n186">After the user enters the cycle count, the system needs to perform some 
+ processing steps to process the cycle count. The system checks to see 
+ if the Immediate Reconcile of Bad Count Checkbox is selected: </p>
+        <ul type="disc" class="ul_1" data-source-node="n187">
+            <li data-source-node="n188">If yes, 
+ the system will check the minimum and maximum tolerance values. If the 
+ value is within these tolerances, The system will automatically update 
+ the On Hand and Available quantities at the location to the cycle count 
+ amount. If the value is not within the tolerances, The system puts the 
+ cycle count detail in a Pending Review (Reconcile) status. The system automatically 
+ updates the On Hand quantity at the location to the cycle count amount. 
+ The available quantity remains at the original amount until the cycle 
+ count detail is reviewed and its status changes to Closed. If the count 
+ is negative, the negative amount goes into Suspense.  <br data-source-node="n189"> </li>
+            <li data-source-node="n190">If no, 
+ the system puts this cycle count into a Pending Review (Reconcile) Status. The system 
+ does not have to review the tolerance Min/Max values. The system then 
+ updates the quantities at the location to prevent an incorrect allocation. 
+ The user must confirm or reconcile the location quantity via the Cycle 
+ Count Request Insight screen.</li>
+        </ul>
+        <p data-source-node="n191"> </p>
+        <h5 data-source-node="n192">step 6: cycle count execution process ends</h5>
+        <p data-source-node="n193">The cycle count process ends when:</p>
+        <ul type="disc" class="ul_1" data-source-node="n194">
+            <li data-source-node="n195">There are no more open requests associated with 
+ the current work unit; and all Pending Review (Reconcile) requests have 
+ been reconciled. <br data-source-node="n196"><br data-source-node="n197">OR<br data-source-node="n198"><br data-source-node="n199"></li>
+            <li data-source-node="n200">When the user has finished all counts on a cycle 
+ count list, and all Pending Review (Reconcile) requests have been reconciled. 
+ </li>
+        </ul>
+        <p data-source-node="n201"> </p>
+        <hr width="100%" align="center" data-source-node="n202">
+        <p data-source-node="n203"> </p>
+        <h4 data-source-node="n204"><a name="nonPlan" data-source-node="n205"></a>Activity Driven (Non-Plan Based) Cycle Counting...</h4>
+        <p data-source-node="n206">This process diagram illustrates one of two different methods of cycle 
+ counting: non-plan based (also known as "activity-driven"). 
+ </p>
+        <p data-source-node="n207"> </p>
+        <p data-source-node="n208">
+            <img src="../source/assets/a7bd4415a2c0fc64139c3a6d2effdb6960debeb61de6065f741c9384973bc38a.gif" loading="eager" data-source-node="n209">
+        </p>
+        <p data-source-node="n210"> </p>
+        <h4 data-source-node="n211">non-plan based (activity-driven) cycle counting</h4>
+        <p class="p_5" data-source-node="n212">Non-plan based (activity-driven) cycle counting 
+ is the concept of triggering the generation of a cycle count request after 
+ a warehouse activity (like a pick). The triggering of these requests is 
+ tied to the location being processed (e.g. a pick being done to a location). 
+ After the transaction is executed, the location will be reviewed to see 
+ if a cycle count request should be generated. These requests are created 
+ one at a time and "on the fly," versus the plan-based method 
+ where a whole bunch of requests can be created at once. This 
+ type of cycle counting is typically done on an RF device.</p>
+        <p class="p_5" data-source-node="n213"> </p>
+        <p class="p_5" data-source-node="n214">The Cycle Count Preference Window has a setting 
+ that controls whether these activity-driven requests should be executed 
+ immediately or created as pending requests. If these requests are to be 
+ executed immediately, the system will display a cycle count screen on 
+ the RF device. The user then can execute the cycle count. However, if 
+ the system creates a pending request, then the request will be executed 
+ at another time either through RF or full-screen (depending on if the 
+ system flags are set up to create work for activity-driven cycle counts).</p>
+        <p class="p_5" data-source-node="n215"> </p>
+        <p class="p_5" data-source-node="n216">NOTE: 
+ If you are not executing work, this concept of immediate reconciliation 
+ does not apply; therefore, the system will create all records as pending 
+ requests (only if there is no open requests already out there for this 
+ item/location/license plate/lot).</p>
+        <p class="p_5" data-source-node="n217"> </p>
+        <p class="p_5" data-source-node="n218"> </p>
+        <h5 data-source-node="n219">step 1: the user executes a processing action</h5>
+        <p data-source-node="n220">A user will perform a processing action at a location on an RF device, 
+ such as picking or an item adjustment, and the system executes that action. 
+ </p>
+        <p data-source-node="n221"> </p>
+        <p data-source-node="n222">After the processing action has been performed, the system will decide 
+ if a cycle count needs to be performed at this location. This is done 
+ by checking the location's cycle count tolerance level, which is defined 
+ in the cycle count threshold record. If this tolerance level is met, the 
+ system will determine that a cycle count needs to be performed this location, 
+ and a request for this location/item quantity will be created. If this 
+ tolerance level is not met, the system will continue processing the next 
+ work instruction (if one exists for this work profile/user). </p>
+        <p data-source-node="n223"> </p>
+        <p data-source-node="n224">After the system creates a cycle count request, it then needs to decide 
+ whether or not it should create work for this request. This setting ("CC 
+ WORK UNIT") is defined on the Cycle Count System Values Window.</p>
+        <ul type="disc" class="ul_1" data-source-node="n225">
+            <li data-source-node="n226">If you decide 
+ that work should be created, the system will create a work unit. 
+ The system will use the "Work unit field for activity-driven work" 
+ (in the Cycle Count System Values Window) value when creating these work 
+ units.<br data-source-node="n227"> </li>
+            <li data-source-node="n228">If you decide 
+ that work should not be created, the system will generate paperwork 
+ documents (if "Auto Print" was chosen on plan), so that the 
+ user can execute the cycle count work instructions.</li>
+        </ul>
+        <p data-source-node="n229"> </p>
+        <h4 data-source-node="n230">step 2: the user performs cycle count on location</h4>
+        <p data-source-node="n231">The user will now initiate the cycle count using either of these methods:</p>
+        <p class="p_4" data-source-node="n232"> </p>
+        <p class="p_4" data-source-node="n233">If work was 
+ created for the cycle count requests:</p>
+        <ul type="disc" class="ul_1" data-source-node="n234">
+            <li data-source-node="n235">Access the work screen on an RF device, and choose 
+ a work profile that can execute cycle count work.<br data-source-node="n236"> </li>
+            <li data-source-node="n237">Access the Work Insight Screen in the system, 
+ and enter a cycle count work unit.</li>
+        </ul>
+        <p data-source-node="n238"> </p>
+        <p data-source-node="n239">The user then will go to the specified location and physically count 
+ the item quantity that resides there. <span class="span_1" style="font-weight: normal" data-source-node="n240">On the RF 
+ device</span>, the system will display a cycle count work instruction, 
+ depending on how the work was created. Note that cycle count work is treated 
+ like any other type of work in the system. They would then perform a physical 
+ count of the item in that location, and enter this count into the RF.<br data-source-node="n241"></p>
+        <p data-source-node="n242"> </p>
+        <p data-source-node="n243"> </p>
+        <p data-source-node="n244">Adding item(s) during cycle counts:</p>
+        <ul data-source-node="n245">
+            <li data-source-node="n246">Note that it is possible to add item(s) to the location that you are counting. This is helpful if you get to a location to count and find that the item you are supposed to count is not there, or there is an additional item present (for multi-item locations). See the diagram for the validations that the system performs when you add an item quantity to a location.</li>
+        </ul>
+        <p data-source-node="n247"> </p>
+        <h4 data-source-node="n248">step 3: system processes cycle count</h4>
+        <p data-source-node="n249">After the user enters the cycle count, the system needs to perform some 
+ processing steps to process the cycle count. The system checks to see 
+ if the Immediate Reconcile of Bad Count Checkbox is selected. </p>
+        <ul type="disc" class="ul_1" data-source-node="n250">
+            <li data-source-node="n251">If yes, 
+ The system will check the minimum and maximum tolerance values. If the 
+ value is within these tolerances, The system will automatically update 
+ the On Hand and Available quantities at the location to the cycle count 
+ amount. If the value is not within the tolerances, The system puts the 
+ cycle count detail in a Pending Review (Reconcile) status. The system automatically 
+ updates the On Hand quantity at the location to the cycle count amount. 
+ The available quantity remains at the original amount until the cycle 
+ count detail is reviewed and its status changes to Closed. If the count 
+ is negative, the negative amount goes into Suspense.  <br data-source-node="n252"> </li>
+            <li data-source-node="n253">If no, 
+ The system puts this cycle count into a Pending Review (Reconcile) Status. The system 
+ does not have to review the tolerance Min/Max values. The system then 
+ updates the quantities at the location to prevent an incorrect allocation. 
+ The user must confirm or reconcile the location quantity via the Cycle 
+ Count Request Insight screen.</li>
+        </ul>
+        <p data-source-node="n254"> </p>
+        <h4 data-source-node="n255">step 4: cycle count process ends</h4>
+        <p data-source-node="n256">The cycle count process ends when the user has executed the cycle count 
+ request created for the decremented location.</p>
+        <p data-source-node="n257"> </p>
+        <p data-source-node="n258"> </p>
+        <hr width="100%" align="center" data-source-node="n259">
+        <p data-source-node="n260"> </p>
+        <p data-source-node="n261"> </p>
+        <h4 data-source-node="n262"><a name="LP" data-source-node="n263"></a>Counting Locations With License Plates... </h4>
+        <p data-source-node="n264">This process diagram illustrates the process of cycle counting locations that house product in license plates</p>
+        <p data-source-node="n265"> </p>
+        <p data-source-node="n266">
+            <img src="../source/assets/c34519734733005dee92b591a68c7d8344bb359df39bf017aca25cb1352456aa.gif" loading="eager" data-source-node="n267">
+        </p>
+        <p data-source-node="n268"> </p>
+        <p data-source-node="n269"> </p>
+        <p data-source-node="n270"> </p>
+        <p data-source-node="n271"> </p>
+        <p data-source-node="n272"> </p>
+        <p data-source-node="n273"> </p>
+        <p data-source-node="n274"> </p>
+        <p data-source-node="n275"> </p>
+        <p data-source-node="n276"> </p>
+        <p data-source-node="n277"> </p>
+        <p data-source-node="n278"> </p>
+        <p data-source-node="n279"> </p>
+        <p data-source-node="n280"> </p>
+        <p data-source-node="n281"> </p>
+        <p data-source-node="n282"> </p>
+        <p data-source-node="n283"> </p>
+        <p data-source-node="n284"> </p>
+        <p data-source-node="n285"> </p>
+        <p data-source-node="n286"> </p>
+        <p data-source-node="n287"> </p>
+        <p data-source-node="n288"> </p>
+        <p data-source-node="n289"> </p>
+        <p data-source-node="n290"> </p>
+        <p data-source-node="n291"> </p>
+        <p data-source-node="n292"> </p>
+        <p data-source-node="n293"> </p>
+        <p data-source-node="n294"> </p>
+        <p data-source-node="n295"> </p>
+        <p data-source-node="n296"> </p>
+        <p data-source-node="n297"> </p>
+        <p data-source-node="n298"> </p>
+        <p data-source-node="n299"> </p>
+        <p data-source-node="n300"> </p>
+        <p data-source-node="n301"> </p>
+        <p data-source-node="n302"> </p>
+        <p data-source-node="n303"> </p>
+        <p data-source-node="n304"> </p>
+        <p data-source-node="n305"> </p>
+        <p data-source-node="n306"> </p>
+        <p data-source-node="n307"> </p>
+        <p data-source-node="n308"> </p>
+        <p data-source-node="n309"> </p>
+        <p data-source-node="n310"> </p>
+        <p data-source-node="n311"> </p>
+        <p data-source-node="n312"> </p>
+        <p data-source-node="n313"> </p>
+        <p data-source-node="n314"> </p>
+        <p data-source-node="n315"> </p>
+    </body></html>

@@ -1,0 +1,121 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Defining Editable Field Decimal Positions</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56">Defining Editable Field Decimal Positions</h1>
+        <p data-source-node="n57">The decimal positions (number digits to the right of the decimal) of 
+ editable fields in the system are tied to the resource file and not the 
+ Decimal Positions Window. To adjust the number of positions on these fields, 
+ you will need to address these fields in the System Text Editor. </p>
+        <p data-source-node="n58"> </p>
+        <p data-source-node="n59"> </p>
+        <h4 data-source-node="n60">Note About Keeping 14 Digits To the Left of the Decimal...</h4>
+        <p data-source-node="n61">Below are the settings that are allowed for numeric fields in the System Text Editor if you want to keep 14 digits to the left of the decimal. This is applicable for any numeric fields throughout the system which have a maximum field length of 19,5:</p>
+        <p data-source-node="n62"> </p>
+        <p data-source-node="n63">[<i data-source-node="n64">field length, decimal position</i>]</p>
+        <ol data-source-node="n65">
+            <li value="1" data-source-node="n66">14,0</li>
+            <li value="2" data-source-node="n67">15,1</li>
+            <li value="3" data-source-node="n68">16,2</li>
+            <li value="4" data-source-node="n69">17,3</li>
+            <li value="5" data-source-node="n70">18,4</li>
+            <li value="6" data-source-node="n71">19,5</li>
+        </ol>
+        <p data-source-node="n72">Note that anything having more than 14 digits to the left of the decimal would be an invalid setting.</p>
+        <p data-source-node="n73"> </p>
+        <p data-source-node="n74"> </p>
+        <p data-source-node="n75"> </p>
+        <h4 data-source-node="n76">Procedures...</h4>
+        <ol class="ol_1" data-source-node="n77">
+            <li value="1" data-source-node="n78">Open the System 
+ Text Editor from the desktop. <br data-source-node="n79"> </li>
+            <li value="2" data-source-node="n80">Search for the 
+ field(s) that you want to change the decimal positions. Enter the 
+ search criteria in the Key Field and press the Search Button. The system 
+ will display the results in the record list. <br data-source-node="n81"><br data-source-node="n82">For example, suppose you want to change all quantity fields to not 
+ show any decimal positions. You would then want to search for any field 
+ that has a resource key containing the terms "Quantity" 
+ and/or      "Qty".<br data-source-node="n83"> </li>
+            <li value="3" data-source-node="n84">Select the entry 
+ you want to customize, right click, and choose the Open Custom 
+ Value option. The system will display the Custom System Text dialog.<br data-source-node="n85"> </li>
+            <li style="font-style: normal" value="4" data-source-node="n86">Use the Decimal 
+ Position Field to define how many decimal positions this field 
+ will display and press OK.<br data-source-node="n87"> </li>
+            <li value="5" data-source-node="n88">Repeat for all 
+ field(s) that you would like to change. <br data-source-node="n89"> </li>
+            <li value="6" data-source-node="n90">Choose Apply 
+ on the System Text Editor Window. <br data-source-node="n91"></li>
+        </ol>
+        <p data-source-node="n92"> </p>
+        <p data-source-node="n93"> </p>
+        <h4 data-source-node="n94">Updating All Fields To Zero Decimal Positions...<br data-source-node="n95"></h4>
+        <p data-source-node="n96">If you do not have any specific fields that you want to edit the decimal 
+ positions, you can run a quick query to update all of the fields at once 
+ to have a decimal position value of zero.  The 
+ queries below will insert custom records for QUANTITY and QTY resources 
+ with a decimal position value of 0. 
+ You could pull out the resource key section that narrows the results down 
+ to QUANTITY if you wanted to do this over all keys. </p>
+        <p data-source-node="n97"> </p>
+        <p data-source-node="n98"> </p>
+        <p data-source-node="n99"> </p>
+        <h4 data-source-node="n100">SQL Server Queries...<br data-source-node="n101"></h4>
+        <p data-source-node="n102">-- First update all existing custom records:<br data-source-node="n103"></p>
+        <blockquote data-source-node="n104">
+            <p data-source-node="n105">UPDATE RESOURCE_FILE_CUSTOM</p>
+            <p data-source-node="n106">SET DECIMAL_POS = 0, USER_STAMP = 'System', PROCESS_STAMP = 'Decimal 
+ Pos = 0', DATE_TIME_STAMP = getDate()</p>
+            <p data-source-node="n107">WHERE (RESOURCE_KEY like '%QUANTITY%' OR RESOURCE_KEY LIKE '%QTY%')</p>
+            <p data-source-node="n108">AND DECIMAL_POS = 5 AND RESOURCE_GROUP = 'Text';</p>
+        </blockquote>
+        <p data-source-node="n109"> </p>
+        <p data-source-node="n110">-- Next insert any missing custom records:<br data-source-node="n111"></p>
+        <blockquote data-source-node="n112">
+            <p data-source-node="n113">INSERT INTO RESOURCE_FILE_CUSTOM</p>
+            <p data-source-node="n114">(RESOURCE_LANGUAGE, RESOURCE_GROUP,RESOURCE_KEY,TEXT,FIELD_LENGTH,DECIMAL_POS,USER_STAMP,PROCESS_STAMP,DATE_TIME_STAMP)</p>
+            <p data-source-node="n115">SELECT</p>
+            <p data-source-node="n116">RESOURCE_LANGUAGE,RESOURCE_GROUP,RESOURCE_KEY,TEXT,FIELD_LENGTH,0,'System','Decimal 
+ Pos = 0',getDate()</p>
+            <p data-source-node="n117">FROM RESOURCE_FILE_BASE</p>
+            <p data-source-node="n118">WHERE (RESOURCE_KEY like '%QUANTITY%' OR RESOURCE_KEY LIKE '%QTY%')</p>
+            <p data-source-node="n119">AND DECIMAL_POS = 5 AND RESOURCE_GROUP = 'Text'</p>
+            <p data-source-node="n120">AND NOT RESOURCE_KEY IN (SELECT RESOURCE_KEY FROM RESOURCE_FILE_CUSTOM</p>
+            <p data-source-node="n121">   WHERE 
+ (RESOURCE_KEY like '%QUANTITY%' OR RESOURCE_KEY LIKE '%QTY%')AND RESOURCE_GROUP 
+ = 'Text');</p>
+        </blockquote>
+        <p data-source-node="n122"> </p>
+        <p data-source-node="n123"> </p>
+        <p data-source-node="n124"> </p>
+        <p data-source-node="n125"> </p>
+        <p data-source-node="n126"> </p>
+        <p data-source-node="n127"> </p>
+        <p data-source-node="n128"> </p>
+        <p data-source-node="n129"> </p>
+        <p data-source-node="n130"> </p>
+        <p data-source-node="n131"> </p>
+        <p data-source-node="n132"> </p>
+        <p data-source-node="n133"> </p>
+        <p data-source-node="n134"> </p>
+        <p data-source-node="n135"> </p>
+        <p data-source-node="n136"> </p>
+        <p data-source-node="n137"> </p>
+        <p data-source-node="n138"> </p>
+        <p data-source-node="n139"> </p>
+        <p data-source-node="n140"> </p>
+        <p data-source-node="n141"> </p>
+        <p data-source-node="n142"> </p>
+        <p data-source-node="n143"> </p>
+        <p data-source-node="n144"> </p>
+        <p data-source-node="n145"> </p>
+        <p data-source-node="n146"> </p>
+        <p data-source-node="n147"> </p>
+        <p data-source-node="n148"> </p>
+        <p data-source-node="n149"> </p>
+        <p data-source-node="n150"> </p>
+        <p data-source-node="n151"> </p>
+        <p data-source-node="n152"> </p>
+        <p data-source-node="n153"> </p>
+        <p data-source-node="n154"> </p>
+        <p data-source-node="n155"> </p>
+        <p data-source-node="n156"> </p>
+    </body></html>

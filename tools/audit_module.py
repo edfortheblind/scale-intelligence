@@ -6,7 +6,21 @@ import os
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 from collector import Store, read_json, atomic_json, digest, writer_lock, now
-from article_data import TreeParser, nodes, text_of, parse_article
+from article_data import TreeParser, nodes, text_of, parse_article, inventory, CONVERTER
+from reading_audit import verify_reading
+
+
+def required_external_reference(ref,source_nodes):
+    """Distinguish document navigation from a required file by its source role."""
+    if ref.get('tag') not in ('a','area') or ref.get('attribute')!='href':return True
+    node=source_nodes.get(ref.get('node_id'),{})
+    if 'download' in node.get('attrs',{}):return True
+    if ref.get('kind') in ('image','stylesheet','font','video','script'):return True
+    if ref.get('kind')=='attachment':
+        suffix=Path(urlsplit(ref.get('resolved_url') or ref['original_href']).path).suffix.lower()
+        # Dynamic document routes are editorial navigation, not downloadable attachments.
+        return suffix not in ('.aspx','.asp','.php','.jsp','.jspx','.cgi','.cfm','.do','.action')
+    return False
 
 
 def css_closure(store,module,identifier,catalog,seen=None):
@@ -47,6 +61,11 @@ def audit(store,module):
     verified=[]
     link_counts=Counter()
     variant_counts=Counter()
+    css_results={}
+    integrity=store.verify()
+    state_path=store.root/module/'reports/documentary-states.json'
+    state_report=read_json(state_path) if state_path.exists() else {}
+    state_generations={r['id']:r for r in state_report.get('generations',[])}
     for record in articles:
         if record['status']!='BODY_SAVED':continue
         try:
@@ -58,15 +77,31 @@ def audit(store,module):
             if data['source']['sha256']!=record['sha256']:errors.append('STALE_SOURCE_GENERATION')
             source=(store.root/record['local_path']).read_bytes()
             if digest(source)!=record['sha256']:errors.append('SOURCE_HASH_MISMATCH')
-            _,content,_,title,_=parse_article(record,source)
+            parser,content,_,title,_=parse_article(record,source)
+            source_nodes={n['node_id']:n for n in nodes(parser.root)}
             if content!=data['content_tree'] or text_of(content)!=data['content_text'] or title!=data['title']:
                 errors.append('SOURCE_TO_APP_MISMATCH')
+            if inventory(content)!=data['inventory']:errors.append('SOURCE_INVENTORY_MISMATCH')
+            static_states_passed=not data['inventory']['variants']
+            if module=='AIM':
+                from documentary_states import reconcile
+                relationships=reconcile(content,data['references'],catalog)
+                if relationships!=data.get('documentary_states') or relationships['issues']:
+                    errors.append('DOCUMENTARY_RELATIONSHIP_MISMATCH')
+                if data['inventory']['variants'] or relationships['control_body_edges']:
+                    generation=state_generations.get(record['id'],{})
+                    static_states_passed=(state_report.get('status')=='PASSED' and state_report.get('converter_version')==CONVERTER and
+                        generation.get('source_sha256')==record['sha256'] and generation.get('reading_sha256')==data['reading']['html_sha256'])
+                    if not static_states_passed:errors.append('DOCUMENTARY_STATE_PROOF_MISSING_OR_STALE')
             for key,value in data['verification']['checks'].items():
                 if not value:errors.append(key)
             for kind in ('html','markdown'):
                 derivative=store.root/data['reading'][kind]
                 if not derivative.is_file() or digest(derivative.read_bytes())!=data['reading'][kind+'_sha256']:
                     errors.append('READING_HASH_MISMATCH')
+            actual_reading=verify_reading(store.root,record,data,content,catalog)
+            if not actual_reading['passed']:
+                errors.extend('READING_'+item['check'] for item in actual_reading['errors'])
             for ref in data['references']:
                 classification=ref['classification']
                 if classification=='same_document':
@@ -84,21 +119,23 @@ def audit(store,module):
                         else:link_counts['verified']+=1
                     else:link_counts['verified']+=1
                     if target and target['type']=='stylesheet':
-                        if not css_closure(store,module,target['id'],catalog):
+                        if target['id'] not in css_results:
+                            css_results[target['id']]=css_closure(store,module,target['id'],catalog)
+                        if not css_results[target['id']]:
                             errors.append('CSS_CLOSURE_INCOMPLETE')
                 elif classification=='deferred_cross_module':link_counts['deferred_cross_module']+=1
                 elif classification=='classification_required':
                     errors.append('UNCLASSIFIED_REFERENCE');link_counts['unclassified']+=1
                 elif classification=='out_of_scope_reference':
-                    if ref.get('tag') not in ('a','area') or ref.get('kind') in ('image','stylesheet','attachment','font','video','script'):
+                    if required_external_reference(ref,source_nodes):
                         errors.append('REQUIRED_DEPENDENCY_OUTSIDE_SCOPE');link_counts['required_outside_scope']+=1
                     else:link_counts['external_reference']+=1
             variant_counts['discovered']+=len(data['inventory']['variants'])
+            if static_states_passed:variant_counts['verified_in_static_copy']+=len(data['inventory']['variants'])
             if errors:
                 issues.append({'id':record['id'],'errors':dict(Counter(errors))})
             else:
                 verified.append(record['id'])
-                variant_counts['verified_in_static_copy']+=len(data['inventory']['variants'])
         except (OSError,ValueError,KeyError,TypeError) as error:
             issues.append({'id':record['id'],'error':'ARTICLE_AUDIT_FAILED','detail':type(error).__name__+': '+str(error)})
     # Navigation completeness and article-link closure cannot be inferred from a high capture ratio.
@@ -114,6 +151,7 @@ def audit(store,module):
             'discovery_reconciled':discovery_complete,'denominator_status':'LOWER_BOUND_UNTIL_PUBLICATION_AND_LINK_CLOSURE_RECONCILE',
             'counts':counts,'source_failures':failures,'fidelity_issues':issues,'structurally_verified_article_ids':verified,
             'module_local_complete':False,'pilot':read_json(store.root/'_project/STATE.json').get('pilot','NOT_RUN')}
+    report['original_byte_integrity']=integrity
     atomic_json(store.root/module/'reports/module-audit.json',report)
     atomic_json(store.root/module/'reports/errors.json',{'source_failures':failures,'fidelity_issues':issues})
     return report

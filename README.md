@@ -2,7 +2,7 @@
 
 Universal SCALE reference library: [AIM](AIM/README.md) and [SDK](SDK/README.md).
 
-Status: **AIM capture in progress; eight-article pilot passed**. Byte-preserving acquisition through the owner's dedicated Edge session is verified. The corpora remain incomplete; SDK acquisition waits for AIM local completion. Current counts and unresolved resources are recorded in `_project/STATE.json` and module reports.
+Status: **AIM captured to the available-source boundary; source repairs required**. Byte-preserving acquisition through the owner's dedicated Edge session is verified. The local AIM checkpoint contains 2,446 articles and all currently discovered accessible assets and attachments. The corpora remain incomplete; SDK acquisition waits for AIM local completion or an explicit owner exception to collection order. Current counts and unresolved resources are recorded in `_project/STATE.json` and module reports.
 
 The owner defines one universal reference library. Stage is the acquisition environment only. Source qualifications must be retained verbatim. Newly authored project material is English.
 
@@ -29,6 +29,6 @@ See [_project/RESUME.md](_project/RESUME.md) for continuation commands. `verify`
 
 The collector supports original response bytes and transport metadata, static TOC/index/search parsing, source-to-JSON conversion, inert reading copies, and a rebuildable SQLite full-text index. The [data architecture](_project/DATA_ARCHITECTURE.md) supports the future interactive SCALE consultation app. Original HTML and assets remain the fidelity authority; app JSON preserves structure and relationships. The search database is derived and explicitly provisional until corpus verification succeeds.
 
-Pilot selection is durable. Its eight articles passed source-text, table, code, asset, expanded-state, offline browser, idempotent conversion and recovery tests. Full AIM capture proceeds automatically. Source failures and incomplete coverage remain visible. Automatic module handoff and final corpus verification are still pending implementation and acceptance against the acquired data; this checkpoint does not claim completion.
+Pilot selection is durable. Its eight articles passed source-text, table, code, asset, expanded-state, offline browser, idempotent conversion and recovery tests. Corpus checks now compare the actual saved reading files against source node order, text, attributes and resource mappings. All 478 captured static state nodes and the linked popup passed offline browser checks. [Unresolved published URLs and anchors](AIM/reports/source-gaps.md) remain visible. Automatic module handoff and final corpus verification remain incomplete; this checkpoint does not claim completion.
 
 Private runtime locks are outside OneDrive and Git. Resource manifests are reconstructable per-resource checkpoints; partial writes do not count as saved bodies. No AEKR runtime or private assets are included.

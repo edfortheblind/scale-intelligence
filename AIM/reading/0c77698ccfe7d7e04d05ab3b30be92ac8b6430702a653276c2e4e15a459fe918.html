@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Dock Management Process Summary: Process Flows</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56">Dock Management Process Summary...</h1>
+        <p data-source-node="n57"><a href="9857f2ac70834cdabe3e8245f2ee06c0451ed99523ada65852b8863953ad7b1c.html" style="font-style: normal;color: #000000;font-weight: bold" data-source-node="n58">Functionality</a>
+        </p>
+        <p data-source-node="n59"><b data-source-node="n60">** Process Flows **</b>
+        </p>
+        <p data-source-node="n61"> </p>
+        <p data-source-node="n62"> </p>
+        <p data-source-node="n63">The following process diagrams illustrate how the system uses dock management 
+ to store items/containers at the shipping dock. </p>
+        <p data-source-node="n64"> </p>
+        <img src="../source/assets/13758c4da99b2608f29fa8a834dfdf8e4703e10b6a02950b21678f3594bef6fa.gif" loading="eager" data-source-node="n65">
+        <p data-source-node="n66"> </p>
+        <p data-source-node="n67"><span class="span_4" data-source-node="n68">Dock Location Strategy Assignment</span>
+        </p>
+        <p data-source-node="n69"> </p>
+        <p data-source-node="n70"><b data-source-node="n71">Assign One Dock Position Per Pallet</b>
+        </p>
+        <p data-source-node="n72"> </p>
+        <p data-source-node="n73">First the assignment strategy will order the provided dock locations to facilitate assigning dock locations by Dock Location type (dock area or dock positions). This ordering may rearrange the list of eligible dock locations. Dock areas with dock positions will move to the top of the list, followed by dock areas without dock positions. Dock positions will be at the bottom of the list.</p>
+        <p data-source-node="n74"> </p>
+        <p data-source-node="n75">Dock Location Order: Dock areas with dock positions, Dock Areas without dock positions, Dock Positions</p>
+        <p data-source-node="n76"> </p>
+        <p data-source-node="n77">Next the system will attempt to assign shipments to dock area with dock positions.</p>
+        <p data-source-node="n78"> </p>
+        <p data-source-node="n79">Thereafter the system will attempt to assign shipment to dock areas without dock positions</p>
+        <p data-source-node="n80"> </p>
+        <p data-source-node="n81">Finally it will attempt to assign shipments to dock positions</p>
+        <ul data-source-node="n82">
+            <li data-source-node="n83">If Open dock position, then assign to open dock position</li>
+            <li data-source-node="n84">if closed dock position, then assign to closed dock position parent dock area</li>
+        </ul>
+        <p data-source-node="n85"> </p>
+        <p data-source-node="n86">Note: The select Dock Area using Carrier selection strategy will provide only dock areas. In this case, the assignment strategy will only see the dock areas. However if the strategy does not find any eligible dock areas, Dock Assignment will use the dock Management flow details default location. This default location can either be a dock area or dock position. When provided with a dock position, the assignment strategy will either assign to that dock position or the dock position parent dock area.</p>
+        <p data-source-node="n87">Dock Location Order</p>
+        <p data-source-node="n88"> </p>
+        <p data-source-node="n89"><b data-source-node="n90">Assign Dock Door to Shipping Load</b>
+        </p>
+        <p data-source-node="n91"> </p>
+        <p data-source-node="n92">The assignment strategy first filter out the ineligible dock doors (dock doors assigned to open shipping loads) from the eligible dock doors provided from the selection strategy.</p>
+        <p data-source-node="n93">Thereafter the assignment strategy will assign the first dock door in the new list.</p>
+        <p data-source-node="n94"> </p>
+        <p data-source-node="n95"> </p>
+        <p data-source-node="n96">
+            <img src="../source/assets/1c5bb67c638f2163fd1145a227695c3fac120b32436798d4593432ab826d5c7a.gif" loading="eager" data-source-node="n97">
+        </p>
+        <p data-source-node="n98"> </p>
+        <p data-source-node="n99">
+            <img src="../source/assets/d6cec0d632be7890f208fc2ddde444318bb868ad75b6cbd13d13a83302e7423e.gif" loading="eager" data-source-node="n100">
+        </p>
+        <p data-source-node="n101"> </p>
+        <p data-source-node="n102"> </p>
+        <p data-source-node="n103"> </p>
+    </body></html>

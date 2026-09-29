@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>Item Balance Touchpoint</title><link rel="stylesheet" href="assets/9ee336e7bdf369bca0041e309cbcba153eb6e691c9b0d2e2463406b9d5eee4c0.css"><link rel="stylesheet" href="assets/f3379c9375d6bb48de7adc2969ffd4eb0afe611fc0904e942301a1b59701afc4.css"><link rel="stylesheet" href="assets/9d3185131a67f53bab13359a6ea8d047f393c6a9b42a35ee33a9f0832d277951.css"><link rel="stylesheet" href="assets/2d7d196c31420e6f2d106b8d6f7a7cfc0f13ce88f828552a169829b6c84e8905.css"><link rel="stylesheet" href="assets/15fa5ef2285205eeb7889b734aa5ffdee6509567eda67eeb14009d58d7fed2b5.css"><link rel="stylesheet" href="assets/efe7bc17dd03ad5a07ff1680334d86b97a35f43a61a9716d7123a040ddeb832c.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.MCDropDownBody,.MCExpandingBody,[role="tabpanel"]{display:block!important;visibility:visible!important}</style></head><body>
+        
+        <h1 data-source-node="n56"><a name="kanchor624" data-source-node="n57"></a>Item Balance Touchpoint</h1>
+        <p data-source-node="n58">Item balance data can be uploaded from SCALE to your ERP via the system 
+ interface. This allows you to reconcile the current item quantities in 
+ your warehouse with the ERP's item master table. This is helpful so your 
+ ERP has a current and accurate listing of the items in your warehouse 
+ and how many are available.</p>
+        <p data-source-node="n59"> </p>
+        <p class="p_6" data-source-node="n60">To see actual examples of 
+ the inventory transaction touchpoint, see the following topics:</p>
+        <blockquote data-source-node="n61">
+            <p data-source-node="n62">- <a href="58b5ae8d05cbf3b5b6623fcd623a02e851de605fd6f70769c1d5bc0e2cd7f401.html#RECEIPTSECTION" data-source-node="n63">Delimited Interface Tutorial</a></p>
+            <p data-source-node="n64">- <a href="e1ed73385d021aa00b6241a9a975fe1c63320c5cddac0ba2ff9de5c142aee738.html" data-source-node="n65">Fixed Length Interface Tutorial</a></p>
+            <p data-source-node="n66">- <a href="e483e9325f41acd0c372563f36ce84946196fbfbb58a029a2a9e95d27941a471.html" data-source-node="n67">Direct Interface Tutorial</a></p>
+            <p data-source-node="n68">- <a href="454345924a1071f9f511d89e406a31641c26bcdcc8fa4c2a268168bae9e0420e.html" data-source-node="n69">XML Interface Tutorial</a></p>
+        </blockquote>
+        <p data-source-node="n70"> </p>
+        <h4 data-source-node="n71">General Guidelines...</h4>
+        <ul type="disc" class="ul_1" data-source-node="n72">
+            <li data-source-node="n73">In order to gather the item balance data, the 
+ system:<br data-source-node="n74"><br data-source-node="n75">1) Groups all location inventory records by warehouse, item, company, 
+ and inventory status. <br data-source-node="n76"><br data-source-node="n77">2) Excludes the records that are associated to a location classes that 
+ are not defined to be included in item balance uploads.<br data-source-node="n78"><br data-source-node="n79">3) Summarizes the quantity buckets across the remaining records in 
+ the group.<br data-source-node="n80"><br data-source-node="n81">4) Checks to see if the Include Zero On Hand Items flag is on. If so, 
+ then the system cycles through the item master and adds a record for each 
+ item/company that is not yet represented in the upload. <br data-source-node="n82"><br data-source-node="n83">5) Writes the information to the upload table/delimited output file.<br data-source-node="n84"> </li>
+            <li data-source-node="n85">Serial number information is included in item 
+ balance uploads.</li>
+        </ul>
+        <p data-source-node="n86"> </p>
+        <p data-source-node="n87"> </p>
+        <h4 data-source-node="n88">Catch Weight Fields (XML Upload Only)</h4>
+        <p data-source-node="n89"> </p>
+        <ul type="disc" class="ul_1" data-source-node="n90">
+            <li data-source-node="n91"><b data-source-node="n92">CatchWeight</b> and <b data-source-node="n93">CatchWeightUM</b> are available only when the upload output method is <b data-source-node="n94">XML</b>.</li>
+        </ul>
+        <p data-source-node="n95"> </p>
+        <h4 data-source-node="n96">Rejection Causes / Validations / Notes...</h4>
+        <ul type="disc" class="ul_1" data-source-node="n97">
+            <li data-source-node="n98">The SCALE interface process does not support using 
+ a comma as a "seperator" for numeric values. These values will 
+ need to be interfaced into the system using decimals as seperators (4.95, not       4,95). 
+ The system can, however, display these values with a comma seperator on 
+ SCALE windows, but in the database they must be in a decimal format.</li>
+        </ul>
+        <p data-source-node="n99"> </p>
+        <p class="p_4" data-source-node="n100"> </p>
+        <p class="p_4" data-source-node="n101"> </p>
+        <p data-source-node="n102"> </p>
+        <p data-source-node="n103"> </p>
+        <p data-source-node="n104"> </p>
+        <p data-source-node="n105"> </p>
+        <p data-source-node="n106"> </p>
+        <p data-source-node="n107"> </p>
+        <p data-source-node="n108"> </p>
+        <p data-source-node="n109"> </p>
+        <p data-source-node="n110"> </p>
+        <p data-source-node="n111"> </p>
+        <p data-source-node="n112"> </p>
+        <p data-source-node="n113"> </p>
+        <p data-source-node="n114"> </p>
+        <p data-source-node="n115"> </p>
+        <p data-source-node="n116"> </p>
+        <p data-source-node="n117"> </p>
+        <p data-source-node="n118"> </p>
+        <p data-source-node="n119"> </p>
+        <p data-source-node="n120"> </p>
+        <p data-source-node="n121"> </p>
+        <p data-source-node="n122"> </p>
+        <p data-source-node="n123"> </p>
+        <p data-source-node="n124"> </p>
+        <p data-source-node="n125"> </p>
+        <p data-source-node="n126"> </p>
+        <p data-source-node="n127"> </p>
+        <p data-source-node="n128"> </p>
+        <p data-source-node="n129"> </p>
+        <p data-source-node="n130"> </p>
+        <p data-source-node="n131"> </p>
+        <p data-source-node="n132"> </p>
+        <p data-source-node="n133"> </p>
+        <p data-source-node="n134"> </p>
+        <p data-source-node="n135"> </p>
+        <p data-source-node="n136"> </p>
+        <p data-source-node="n137"> </p>
+        <p data-source-node="n138"> </p>
+    </body></html>

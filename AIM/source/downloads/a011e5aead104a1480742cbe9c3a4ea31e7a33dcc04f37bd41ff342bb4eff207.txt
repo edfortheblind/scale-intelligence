@@ -1,0 +1,134 @@
+<!--
+	LabelSchema XML tells SCALE how to generate and print a label.
+	Please see the ContainerContents.lbl for an example of the LabelSchema in action.
+
+	Within each "template" section, you can embed tokens, either related to the
+	tables retrieved by LabelConnections or the following list of special tokens.
+
+	Special Label Level Tokens : can only be used in the PageHeader and PageFooter
+		[[CURRENTDATE]] : The current date in short format (e.g. 01/01/01)
+		[[CURRENTDATETIME]] : The current date and time (e.g. 01/01/2001 16:00:00) 
+		[[CURRENTDATECUSTOM.<DateTimeFormatInfo>]] : The current date and/or time
+			formatted using the .NET DateTimeFormatInfo.
+		
+	Special Page Level Tokens : can only be used in the PageHeader and PageFooter
+		[[CURRENTPAGE]] : The current page number
+		[[TOTALPAGES]] : The total number of pages
+
+	Special Row Level Tokens : can only be used in the RowTemplate
+		[[ROWY]] : The vertical position of the current row.
+		[[ROWY+<offset>]] : The vertical position of the current row plus the given
+			offset.  This allows for multiple line rows.
+		[[ROWINDEX]] : The 1-base row index of the current row.
+		[[ROWINDEXZEROBASE]] : the 0-base row index of the current row.
+
+	Table Data Tokens: linked to the tables retrieved by LabelConnections.  
+		When used in the PageHeader and PageFooter sections, only the first record
+		of the table will be used. The following formats are acceptable:
+
+		[[<TableName>.<ColumnName>]] : Displays the data as a string.
+		[[<TableName>.<ColumnName>.<type>]] : Displays the data as the specified type.
+			Here is a list of valid types (case insensitive):
+					
+				string
+				int
+				long
+				double
+				decimal
+				DateTime
+
+		[[<TableName>.<ColumnName>.<type>.<format>]] : Displays the data as the 
+			specified type and uses the specified format.  Note that the type's
+			ToString(format) method is simply invoked, except for the following
+			exceptions:
+
+				type=string : format is the max length displayed to prevent
+					field overflow.
+				type=bool : format is of the form "<trueValue>|<falseValue>".
+					This allows you to print Y/N database fields in a
+					prettier format.  You can also use it to insert special
+					printer specific codes if a condition is true (bold
+					fields, etc).
+
+	For custom tokens, such as formulas, simply add the token, override the 
+	appropriate ILabelGenerator's EvaluateUnknownToken method, and add the 
+	necessary logic when that token is passed into the method.
+-->
+
+
+<!-- 
+	Element: LabelSchema
+
+	Attributes:
+		GeneratingClass : The ILabelGenerator's LocalObject identifier used to 
+			generate labels using this schema.
+		RowTableName : The LabelConnection.TableName that drives the number of 
+			rows will be generated.
+		RowStart : The starting value of [[ROWY]]
+		RowHeight : The amount to increment [[ROWY]] on each printed row.
+		RowsPerPage : The number of rows to print before moving to the next page.
+-->	
+<LabelSchema 
+	GeneratingClass="" 
+	RowTableName="" 
+	RowStart="" 
+	RowHeight=""
+	RowsPerPage="">
+
+	<!--
+		Element: LabelConnections
+
+			An array of LabelConnection Elements
+	--!>
+	<LabelConnections>
+
+		<!--
+			Element: LabelConnection
+		
+				Used to fill tokens throughout the label.
+
+				Note that the default parameters to the stored procedures follow
+				the same naming convention as if using the same Document Generator
+				as a CrystalReport.  For example, for Container Contents and Vendor
+				Labels, the parameter should be of the form INTERNAL_CONTAINER_NUM.
+
+				If additional parameters need to be supplied, override the appropriate
+				ILabelGenerator's GetLabelConnectionParameters method.
+
+			Attributes:
+
+				TableName: The first field of every data token in this schema.
+				StoredProcedure: The name of the actual stored procedure.
+		--!>
+		<LabelConnection
+			TableName="" 
+			StoredProcedure="" />
+	</LabelConnections>
+
+	<!--
+		Element: PageHeader
+
+			Contains string data that is placed at the head of each page.
+	-->
+	<PageHeader>
+	</PageHeader>
+
+	<!--
+		Element: RowTemplate
+	
+			Contains string data that is printed for each row.
+			Remember to use the special [[ROWY]] and [[ROWY+<offset>]] tokens 
+			for all vertical positioning.
+	-->
+	<RowTemplate>
+	</RowTemplate>
+
+	<!--
+		Element: PageFooter
+
+			Contains string data that is placed at the foot of each page.
+	-->
+	<PageFooter>
+	</PageFooter>
+
+</LabelSchema>
