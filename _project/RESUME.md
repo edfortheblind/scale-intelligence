@@ -1,6 +1,6 @@
 # Resume SCALE Intelligence
 
-Current local checkpoint generated 2026-09-29T19:00:51.051018+00:00. AIM is owner-accepted complete with documented exceptions: 99.71% known article capture (2,446/2,453). Deprecation remains an unverified owner hypothesis.
+Current local checkpoint generated 2026-09-29T19:07:23.735143+00:00. AIM is owner-accepted complete with documented exceptions: 99.71% known article capture (2,446/2,453). Deprecation remains an unverified owner hypothesis.
 
 SDK technical status: **DISCOVERY_INCOMPLETE**. 363/380 known SDK article originals are saved (95.53%). 691/734 required original resources are saved; 43 failed and 0 pending. All currently eligible acquisition work is exhausted. SDK remains technically incomplete; acquisition continuation is authorized and documented source/proof gaps remain open.
 
