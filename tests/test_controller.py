@@ -60,8 +60,9 @@ class ControllerTests(unittest.TestCase):
                 return SimpleNamespace(returncode=0)
             with patch.object(run_aim,'__file__',str(root/'tools/run_aim.py')),patch.dict(os.environ,LOCALAPPDATA=folder),patch.object(run_aim.subprocess,'run',side_effect=child):
                 self.assertEqual(run_aim.main(),0)
-            self.assertEqual(calls.count('tools/discover_aim.py'),2)
+            self.assertEqual(calls.count('tools/discover_aim.py'),3)
             self.assertEqual(calls.count('tools/audit_module.py'),1)
+            self.assertEqual(calls[-2:],['tools/build_delivery_inventory.py','tools/verify_delivery.py'])
             state=read_json(root/'_project/STATE.json')
             self.assertNotEqual(state['modules']['AIM']['status'],'MODULE_LOCAL_COMPLETE')
             self.assertFalse(state['controller']['running'])
@@ -77,7 +78,8 @@ class ControllerTests(unittest.TestCase):
             self.assertFalse(result['module_local_complete'])
             self.assertFalse(result['discovery_reconciled'])
             self.assertEqual(result['fidelity_issues'][0]['errors']['INTERNAL_TARGET_NOT_CAPTURED'],1)
-            self.assertEqual(result['counts']['articles']['structurally_verified'],0)
+            self.assertEqual(result['counts']['articles']['structurally_verified'],1)
+            self.assertEqual(result['counts']['articles']['locally_verified'],0)
 
     def test_recursive_css_and_damaged_json_are_audited_independently(self):
         with tempfile.TemporaryDirectory() as folder:

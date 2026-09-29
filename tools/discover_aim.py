@@ -59,6 +59,7 @@ def toc_tree(primary, chunks):
 
 def reconcile(store):
     records = store.records('AIM')
+    before_ids={r['id'] for r in records}
     help_record = by_path(records, '/Data/HelpSystem.xml')
     if not help_record:
         raise ValueError('Published HelpSystem.xml required')
@@ -159,9 +160,18 @@ def reconcile(store):
             atomic_json(store.root / 'AIM/manifests/toc.json', toc)
     atomic_json(store.root/'AIM/manifests/discovery-membership.json',{name:sorted(ids) for name,ids in memberships.items()})
     atomic_json(store.root/'AIM/manifests/navigation-partitions.json',partitions)
+    from completion_gates import discovery_evidence
+    proof=discovery_evidence(store,parsed,toc,errors,before_ids)
+    atomic_json(store.root/'AIM/manifests/discovery-closure.json',proof)
+    if toc:
+        toc['discovery_complete']=proof['discovery_reconciled']
+        toc['reason']='Source-bound publication and reference closure; see manifests/discovery-closure.json.'
+        atomic_json(store.root/'AIM/manifests/toc.json',toc)
     report = {'checked_at':now(), 'toc_nodes':toc['node_count'] if toc else None,
               'roots':toc['root_count'] if toc else None, 'parse_errors':errors,
-              'discovery_reconciled':False, 'navigation_parsed':len(parsed),
+              'discovery_reconciled':proof['discovery_reconciled'], 'navigation_parsed':len(parsed),
+              'catalog_sha256':proof['catalog_sha256'],'fixed_point':proof['fixed_point'],
+              'issues':proof['issues'],'closure_report':'AIM/manifests/discovery-closure.json',
               'membership_counts':{name:len(ids) for name,ids in memberships.items()}}
     atomic_json(store.root / 'AIM/reports/discovery.json', report)
     return report

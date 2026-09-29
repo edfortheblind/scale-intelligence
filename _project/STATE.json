@@ -3,16 +3,16 @@
   "collector_version": "0.2.0",
   "phase": "AIM_SOURCE_BLOCKED",
   "module": "AIM",
-  "updated_at": "2026-09-29T13:46:53.396055+00:00",
+  "updated_at": "2026-09-29T14:29:19.441192+00:00",
   "worker_running": false,
   "writer": {
     "protocol": "external_os_file_lock",
     "last_operation": {
-      "pid": 13452,
-      "acquired_at": "2026-09-29T13:46:51.618510+00:00",
+      "pid": 32112,
+      "acquired_at": "2026-09-29T14:28:54.836549+00:00",
       "root": "C:\\Users\\ed.lopez\\OneDrive - TRAVIS ASSOCIATION FOR THE BLIND\\Documents\\VS Code\\SCALE Int"
     },
-    "heartbeat_at": "2026-09-29T13:46:53.396067+00:00"
+    "heartbeat_at": "2026-09-29T14:29:19.441208+00:00"
   },
   "modules": {
     "AIM": {
@@ -21,7 +21,7 @@
         "discovered": 3253,
         "pending": 0,
         "bodies_saved": 3205,
-        "articles_verified": 0,
+        "articles_verified": 2446,
         "failed": 8
       },
       "manifests": "AIM/manifests/resources/"
@@ -45,13 +45,22 @@
       "report": "AIM/reports/source-gaps.json"
     },
     {
-      "code": "BROKEN_SOURCE_ANCHORS",
-      "count": 23,
-      "report": "AIM/reports/source-gaps.json"
+      "code": "SOURCE_LINK_OR_FIDELITY_GAPS",
+      "articles": 26,
+      "report": "AIM/reports/errors.json"
+    },
+    {
+      "code": "NAVIGATION_SOURCE_GAPS",
+      "count": 4,
+      "report": "AIM/reports/navigation-links.json"
+    },
+    {
+      "code": "DISCOVERY_INCOMPLETE",
+      "report": "AIM/manifests/discovery-closure.json"
     }
   ],
   "pilot": "PASSED",
-  "next_invocation": "Review AIM/reports/source-gaps.md; resume affected source URLs after publisher repair, or record the owner collection-order decision before SDK acquisition.",
+  "next_invocation": "Repair the source gaps or local proof failures listed in AIM/reports/module-audit.json; rerun the offline completion pipeline.",
   "publication": {
     "repository": "edfortheblind/scale-intelligence",
     "visibility": "PRIVATE",
@@ -60,9 +69,9 @@
     "complete_corpus_delivered": false,
     "verified_commit": "1b9eb7e540de004733a41b7b74ab5c3777b1dc80",
     "clean_clone_verified": true,
-    "current_checkpoint_clean_clone_verified": true,
+    "current_checkpoint_clean_clone_verified": false,
     "proof": "_project/delivery-checkpoint.json",
-    "current_local_changes_pending_publication": false,
+    "current_local_changes_pending_publication": true,
     "artifact_inventory_sha256": "12c260c0cbc5b92cf887f1132c380469eeaece9c724da6b39b6988d224a00734"
   },
   "controller": {
@@ -78,10 +87,20 @@
       "recorded_at": "2026-09-29T13:11:30.044328+00:00",
       "instruction": "The review has passed and it's approved, proceed with the rest.",
       "effect": "Continued implementation, source recheck and verification authorized. Source failures remain actual evidence gaps."
+    },
+    {
+      "recorded_at": "2026-09-29T13:54:56.508764+00:00",
+      "instruction": "Consider all done until now approved",
+      "effect": "Owner accepts the existing partial AIM checkpoint and all completed work; recorded source gaps remain visible."
+    },
+    {
+      "recorded_at": "2026-09-29T13:54:56.508773+00:00",
+      "instruction": "what else is missing or pending in AIM? Solve it, get AIM 100% completed.",
+      "effect": "Current priority is completing AIM; SDK preparation is deferred while all remaining AIM gates are investigated."
     }
   ],
   "collection_order_question": {
-    "status": "AWAITING_OWNER_REPLY",
+    "status": "SUPERSEDED_BY_AIM_COMPLETION_REQUEST",
     "reason": "AIM master prompt section 16 requires local completion; 8 resource failures and 23 source anchor gaps remain.",
     "requested_exception": "Acquire SDK while retaining AIM incomplete and all final completeness requirements."
   }

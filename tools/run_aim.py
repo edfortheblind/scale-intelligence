@@ -9,7 +9,9 @@ from pathlib import Path
 import subprocess
 import sys
 import signal
+import argparse
 from collector import Store, atomic_json, read_json, writer_lock, digest, now
+from completion_gates import browser_proof_current
 
 RETRYABLE={'DNS','CONNECTION','TIMEOUT','RATE_LIMIT','TRANSIENT_HTTP','BLOCKED_AUTH','BLOCKED_PERMISSION','BLOCKED_AUTH_OR_SCOPE','CIRCUIT_OPEN','RATE_LIMIT_WAIT','EMPTY_BODY'}
 
@@ -18,7 +20,7 @@ def eligible(record):
     return record['status']=='PENDING' or (record['status']=='FAILED' and record.get('last_failure',{}).get('class') in RETRYABLE)
 
 
-def main():
+def main(offline=False):
     root=Path(__file__).resolve().parents[1]
     private=Path(os.environ['LOCALAPPDATA'])/'TAB/SCALE-Intelligence/private'
     runtime=private.parent/'runtime'
@@ -48,41 +50,46 @@ def main():
             state=read_json(root/'_project/STATE.json')
             if result.returncode:
                 raise RuntimeError('LOCAL_STEP_FAILED: '+script)
-            if state.get('blockers'):
+            if any(b.get('code') in ('BLOCKED_AUTH','BLOCKED_PERMISSION','BLOCKED_AUTH_OR_SCOPE','CIRCUIT_OPEN','TLS','RATE_LIMIT_WAIT') for b in state.get('blockers',[])):
                 raise RuntimeError('EXTERNAL_ACQUISITION_BLOCKER: '+state['blockers'][0]['code'])
         try:
             for cycle in range(100):
-                step('tools/acquire.py','--kind','article','--limit','100','--convert')
-                for kind in ('navigation','script','stylesheet'):
-                    step('tools/acquire.py','--kind',kind,'--limit','10000')
+                if not offline:
+                    step('tools/acquire.py','--kind','article','--limit','100','--convert')
+                    for kind in ('navigation','script','stylesheet'):
+                        step('tools/acquire.py','--kind',kind,'--limit','10000')
                 step('tools/style_data.py')
-                for kind in ('image','font','video','attachment'):
-                    step('tools/acquire.py','--kind',kind,'--limit','10000')
+                if not offline:
+                    for kind in ('image','font','video','attachment'):
+                        step('tools/acquire.py','--kind',kind,'--limit','10000')
                 step('tools/discover_aim.py')
                 records=Store(root).records('AIM')
                 log.write(json.dumps({'at':now(),'cycle':cycle+1,'eligible_remaining':sum(eligible(r) for r in records)})+'\n')
-                if not any(eligible(r) for r in records):break
+                if offline or not any(eligible(r) for r in records):break
             else:
                 raise RuntimeError('DISCOVERY_ITERATION_LIMIT_REQUIRES_REVIEW')
             step('tools/style_data.py')
             step('tools/article_data.py')
-            step('tools/build_search.py','--provisional')
+            # Reconcile the final derivative/reference generation before granting any gate.
+            step('tools/discover_aim.py')
+            for kind,script in (('resources','tools/verify_resources.py'),('states','tools/verify_bound_states.py')):
+                if browser_proof_current(Store(root),kind):
+                    log.write(json.dumps({'at':now(),'reused_source_hash_current_proof':kind})+'\n')
+                else:
+                    step(script)
+            step('tools/build_navigation.py')
             step('tools/audit_module.py')
-            step('tools/verify_delivery.py')
             audit=read_json(root/'AIM/reports/module-audit.json')
-            blockers=[]
-            if audit['source_failures']:
-                blockers.append({'code':'SOURCE_RESOURCES_UNAVAILABLE','count':len(audit['source_failures']),'report':'AIM/reports/errors.json'})
-            if audit['fidelity_issues']:
-                blockers.append({'code':'FIDELITY_REPAIR_REQUIRED','count':len(audit['fidelity_issues']),'report':'AIM/reports/errors.json'})
-            if not audit.get('discovery_reconciled'):
-                blockers.append({'code':'DISCOVERY_RECONCILIATION_REQUIRED','report':'AIM/reports/module-audit.json'})
-            remaining=sum(r['status']=='PENDING' for r in Store(root).records('AIM'))
-            if remaining:
-                blockers.append({'code':'PENDING_RESOURCES','count':remaining,'report':'AIM/manifests/resources/'})
-            controller.update(running=False,finished_at=now(),result='AIM_AUDIT_REQUIRES_REVIEW')
-            mark('AIM_AUDIT_REQUIRES_REVIEW',blockers)
-            log.write(json.dumps({'at':now(),'result':'AIM_AUDIT_REQUIRES_REVIEW','blockers':blockers})+'\n')
+            step('tools/build_search.py',*(() if audit.get('module_local_complete') else ('--provisional',)))
+            step('tools/report_source_gaps.py')
+            state=read_json(root/'_project/STATE.json')
+            phase='MODULE_LOCAL_COMPLETE' if audit.get('module_local_complete') else ('AIM_SOURCE_BLOCKED' if audit['source_failures'] else 'AIM_VERIFICATION_INCOMPLETE')
+            controller.update(running=False,finished_at=now(),result=phase)
+            mark(phase,state.get('blockers',[]))
+            # No corpus-mutating step may follow the frozen delivery inventory.
+            step('tools/build_delivery_inventory.py')
+            step('tools/verify_delivery.py')
+            log.write(json.dumps({'at':now(),'result':phase,'blockers':state.get('blockers',[])})+'\n')
         except (Exception,KeyboardInterrupt) as error:
             controller.update(running=False,finished_at=now(),result=str(error))
             state=read_json(root/'_project/STATE.json')
@@ -95,4 +102,7 @@ def main():
     return 0
 
 
-if __name__=='__main__':raise SystemExit(main())
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--offline',action='store_true',help='Rebuild and verify saved AIM artifacts without Stage acquisition.')
+    raise SystemExit(main(parser.parse_args().offline))

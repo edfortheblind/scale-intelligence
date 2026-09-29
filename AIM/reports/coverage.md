@@ -1,11 +1,26 @@
-# AIM acquisition checkpoint
+# AIM coverage
 
-Status: DISCOVERY_INCOMPLETE. The eight-article pilot passed. The authenticated Edge transport is verified.
+Status: **DISCOVERY_INCOMPLETE**.
 
-Known valid resources: 3,213; saved original bodies: 3,205; failed source requests: 8. Forty historical CSS resolution mistakes remain recorded separately. Captured articles: 2,446 of 2,453 currently known. All captured articles have structured JSON and HTML/Markdown reading copies.
+3205 original bodies are saved from 3213 currently known required resources. The 40 corrected collector-resolution records remain preserved separately.
 
-All 355 captured images decoded, all 13 attachments passed format checks, and all 478 static state nodes plus the linked popup passed offline browser verification. Current structural/link checks pass for 2,420 captured articles. The remaining 26 article findings concern unavailable source links or absent source anchors.
+2446 captured articles pass reading-preservation checks; 2420 pass all article checks including source links.
+Known article inventory: 2453. Unavailable source material remains in the denominator.
 
-The original publication contains 23 broken anchor references. See [source gaps](source-gaps.md) for exact URLs, occurrences, and evidence. These gaps prevent module completion. SDK has not started.
+All percentages in coverage.json are explicitly known-inventory ratios. The complete publication denominator remains unknown until missing source closure is resolved.
 
-Discovery has not reconciled completely: final denominators remain unknown. Ratios of currently known resources are acquisition progress only, never final corpus-completion percentages.
+8 required resource requests remain unresolved. See source-gaps.md for exact published URLs and source anchor failures.
+
+## Completion gates
+
+- pilot_passed: PASS
+- discovery_reconciled: BLOCKED
+- required_originals_captured: BLOCKED
+- original_integrity: PASS
+- resource_fidelity: PASS
+- article_reading_and_links: BLOCKED
+- navigation_links: BLOCKED
+- local_reading_navigation: PASS
+- representative_visual_review: PASS
+
+Passing local reading or resource checks does not waive source failures. Cross-module topic references are deferred only where explicitly recorded.

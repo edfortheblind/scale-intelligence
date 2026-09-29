@@ -45,7 +45,7 @@ def main():
         lines.extend('| `'+r['url']+'` | '+r['last_failure']['detail']+' |' for r in missing)
         lines+=['','## Broken anchors','', '| Referring article | Literal href | Target original SHA-256 |','| --- | --- | --- |']
         lines.extend('| `'+r['source_url'].rsplit('/',1)[-1]+'` | `'+r['literal_href']+'` | `'+r['target_sha256']+'` |' for r in broken)
-        lines+=['','See `source-gaps.json` for source hashes, node locations, publication occurrences, and scoped references. These findings require source repair or an explicit collection-order exception; neither constitutes corpus completion.','']
+        lines+=['','See `source-gaps.json` for source hashes, node locations, publication occurrences, and scoped references. Completion requires repaired published sources or authoritative in-scope mappings, followed by recollection and verification. Approval cannot waive these missing resources or anchors. SDK waits for verified AIM local completion under the current owner priority.','']
         atomic_bytes(root/'AIM/reports/source-gaps.md','\n'.join(lines).encode('utf-8'))
         print(json.dumps({'missing_resources':len(missing),'broken_anchor_references':len(broken),'outside_authorized_roots':len(outside)}))
 
