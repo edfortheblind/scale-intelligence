@@ -8,6 +8,7 @@ from article_data import parse_article,nodes
 
 
 def main():
+    from module_policy import acceptance_readiness,stable_exceptions,ACCEPTED
     root=Path(__file__).resolve().parents[1]
     runtime=Path(os.environ['LOCALAPPDATA'])/'TAB/SCALE-Intelligence/runtime'
     with writer_lock(root,runtime) as owner:
@@ -39,13 +40,21 @@ def main():
         report={'checked_at':now(),'module':'AIM','missing_resources':missing,'broken_anchor_references':broken,
                 'same_origin_references_outside_authorized_roots':outside,'complete_corpus':False,
                 'required_source_action':'Restore or correct the published resource targets and anchor destinations on Stage. Recollect affected source generations and reconcile; never fabricate replacements.'}
+        disposition=acceptance_readiness(store)
+        accepted=(disposition['ready'] and disposition['basis']=='owner_accepted_exceptions'
+                  and stable_exceptions(report)==disposition['record']['exceptions'])
+        if accepted:
+            report.update(work_status=ACCEPTED,owner_acceptance=disposition['acceptance'],
+                source_deprecation='Owner hypothesis; publisher deprecation is unverified')
         atomic_json(root/'AIM/reports/source-gaps.json',report)
         lines=['# AIM source gaps','',f'{len(missing)} unavailable resources and {len(broken)} anchor references remain unresolved. Originals and literal links are preserved.','',
                '## Resource requests','', '| Published URL | Result |','| --- | --- |']
         lines.extend('| `'+r['url']+'` | '+r['last_failure']['detail']+' |' for r in missing)
         lines+=['','## Broken anchors','', '| Referring article | Literal href | Target original SHA-256 |','| --- | --- | --- |']
         lines.extend('| `'+r['source_url'].rsplit('/',1)[-1]+'` | `'+r['literal_href']+'` | `'+r['target_sha256']+'` |' for r in broken)
-        lines+=['','See `source-gaps.json` for source hashes, node locations, publication occurrences, and scoped references. Completion requires repaired published sources or authoritative in-scope mappings, followed by recollection and verification. Approval cannot waive these missing resources or anchors. SDK waits for verified AIM local completion under the current owner priority.','']
+        disposition_text=('The owner accepts these documented AIM exceptions for this delivery and authorizes SDK continuation. Source material remains missing; publisher deprecation is unverified.' if accepted else
+            'These technical gaps remain unaccepted. Repaired sources or an explicit documented owner decision are required before treating AIM work as accepted.')
+        lines+=['','See `source-gaps.json` for source hashes, node locations, publication occurrences, and scoped references. '+disposition_text+' Obtaining the missing content still requires repaired published sources or authoritative in-scope mappings, followed by recollection and verification.','']
         atomic_bytes(root/'AIM/reports/source-gaps.md','\n'.join(lines).encode('utf-8'))
         print(json.dumps({'missing_resources':len(missing),'broken_anchor_references':len(broken),'outside_authorized_roots':len(outside)}))
 

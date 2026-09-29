@@ -29,12 +29,27 @@ def verify_inventory(root):
 
 
 def verify(root):
+    from module_policy import required_acceptance_paths,acceptance_readiness
     store=Store(root)
     inventory_count,failures=verify_inventory(store.root)
     for required in ('_project/STATE.json','_project/preflight.json','_project/search-index.json',
                      '01_AIM_MASTER_PROMPT.md','02_SDK_MASTER_PROMPT.md'):
         if not (store.root/required).is_file():
             failures.append({'path':required,'error':'MANDATORY_CHECKPOINT_FILE_MISSING'})
+    state_path=store.root/'_project/STATE.json'
+    state=read_json(state_path) if state_path.is_file() else {}
+    try:acceptance_paths=required_acceptance_paths(state)
+    except ValueError as error:
+        acceptance_paths=[];failures.append({'error':'OWNER_ACCEPTANCE_REFERENCE_INVALID','detail':str(error)})
+    if acceptance_paths:
+        inventory_path=store.root/'_project/artifact-inventory.json'
+        listed={item['path'] for item in read_json(inventory_path).get('files',[])} if inventory_path.is_file() else set()
+        for relative in acceptance_paths:
+            if not (store.root/relative).is_file() or relative not in listed:
+                failures.append({'path':relative,'error':'MANDATORY_OWNER_ACCEPTANCE_MISSING_OR_UNINVENTORIED'})
+        disposition=acceptance_readiness(store,state)
+        if not disposition['ready']:
+            failures.append({'error':'OWNER_ACCEPTANCE_INVALID_OR_STALE','detail':disposition.get('detail',disposition.get('reason'))})
     checked={'source_files':0,'reading_files':0,'app_documents':0,'prompts':0}
     checked['inventory_files']=inventory_count
     def check(relative,sha,kind):

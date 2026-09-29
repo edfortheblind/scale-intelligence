@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to configure Web API Exit Point</title>
+    <meta name="Title" content="How to configure Web API Exit Point"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="Web API exit point can be configure as API, Web Service or Stored Procedure." />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="ced85549-cc72-40be-adfb-3e6c004105de"/>
+    <meta name="Microsoft.Help.TocParent" content="266b773c-c551-4606-b72c-292eb050ca64"/>
+    <meta name="Microsoft.Help.TocOrder" content="2"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to configure Web API Exit Point</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+Extensibility
+ > <a href="WebApiExitPoint.html">Web API Exit Point</a>
+ > How to configure Web API Exit Point</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>Web API exit point can be configure as API, Web Service or Stored Procedure.</p>
+
+<p>Here is an example to add Exit Point for&nbsp;<b>http://ServerName/general/scaleapi/WorkInstructionsApi/workInstructions</b>&nbsp; URI.</p>
+
+<p>The&nbsp;<strong>POST-WorkInstructionsApi-workInstructions-After</strong>&nbsp;exit point added for the above URI and Stored Procedure configured as exit point program.</p>
+
+<p>"@CUSTOM" argument&nbsp;contains &nbsp;the API parameters&nbsp; as serialized json which has the value for&nbsp;&nbsp;InternalInstructionNum.</p>
+
+<p>In this example&nbsp; system is fetching the Item color based on the Item for the InternalInstructionNum.</p>
+
+<p>JSON string created &nbsp;for the Item Color and assign to output parameter.</p>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Sample stored procedure exit point program for&nbsp; <b>POST-WorkInstructionsApi-workInstructions-After</b> &nbsp;exit point</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">CREATE</span> <span style="COLOR: #0000ff">PROCEDURE</span> <span style="COLOR: #ff0000">[EXP_WarehouseMobileExample]</span> (   
+    <span style="COLOR: #008000">@SESSIONVALUE</span> xml,   
+    <span style="COLOR: #008000">@URL</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="COLOR: #ff00ff">max</span>),   
+    <span style="COLOR: #008000">@CUSTOM</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="COLOR: #ff00ff">max</span>),   
+    <span style="COLOR: #008000">@RETURNVALUE</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="COLOR: #ff00ff">max</span>) output   
+)   
+<span style="COLOR: #0000ff">AS</span>    
+    <span style="COLOR: #0000ff">SET</span> NOCOUNT <span style="COLOR: #0000ff">ON</span>;    
+  <span style="COLOR: #0000ff">declare</span> <span style="COLOR: #008000">@customIndex</span> numeric(<span style="FONT-WEIGHT: bold; COLOR: #800000">9</span>);
+  <span style="COLOR: #0000ff">declare</span> <span style="COLOR: #008000">@itemcolor</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">25</span>);
+
+     <span style="COLOR: #0000ff">Declare</span> <span style="COLOR: #008000">@id</span> numeric(<span style="FONT-WEIGHT: bold; COLOR: #800000">9</span>)    
+     <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #008000">@id</span> <span style="COLOR: #808080">=</span> insNum   
+     <span style="COLOR: #0000ff">FROM</span> OPENJSON(<span style="COLOR: #008000">@CUSTOM</span>)       
+       <span style="COLOR: #0000ff">WITH</span> (   
+       insNum numeric(<span style="FONT-WEIGHT: bold; COLOR: #800000">9</span>) <span style="COLOR: #ff0000">'$.WorkExecutionChildEntities[0].InternalInstructionNum'</span>   
+       )
+       <span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #008000">@itemcolor</span> <span style="COLOR: #808080">=</span>item_COLOR  <span style="COLOR: #0000ff">from</span> ITEM i <span style="COLOR: #0000ff">Inner</span> <span style="COLOR: #808080">join</span> work_instruction w <span style="COLOR: #0000ff">on</span> w.item <span style="COLOR: #808080">=</span> i.item
+       <span style="COLOR: #808080">and</span>(( i.company <span style="COLOR: #808080">=</span> w.company) <span style="COLOR: #808080">or</span> i.company <span style="COLOR: #0000ff">is</span> <span style="COLOR: #0000ff">null</span> <span style="COLOR: #808080">and</span> w.company <span style="COLOR: #0000ff">is</span> <span style="COLOR: #0000ff">null</span>
+       )
+     <span style="COLOR: #0000ff">where</span> w.internal_instruction_num <span style="COLOR: #808080">=</span><span style="COLOR: #008000">@id</span>
+     <span style="COLOR: #0000ff">set</span> <span style="COLOR: #008000">@RETURNVALUE</span> <span style="COLOR: #808080">=</span><span style="COLOR: #ff0000">'{"ItemColor":'''</span><span style="COLOR: #808080">+</span><span style="COLOR: #008000">@itemcolor</span><span style="COLOR: #808080">+</span><span style="COLOR: #ff0000">'''}'</span>;
+         
+   
+  
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p>API response contains the Exit point return value inside the "custom" attribute.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;<img border="0" alt="" src="images/ExitPoint/WebApiExitPoint-7.png" /></p>
+
+<p>&nbsp;<span lang="EN" xml:lang="EN"><strong>Support for Error Messages</strong></span></p>
+
+<p dir="ltr" align="left"><span lang="EN" xml:lang="EN">The application supports displaying error messages from the exit point stored procedures. To display an error, add the below statement in Stored Procedure with a valid message.</span></p>
+
+<p dir="ltr" align="left"><font color="blue" size="2" face="Consolas"><font color="blue" size="2" face="Consolas"><font color="blue" size="2" face="Consolas">EXEC</font></font></font> <font size="2" face="Consolas"><font size="2" face="Consolas">ThrowError</font></font> <font size="2" face="Consolas"><font size="2" face="Consolas">@MESSAGE</font></font></p>
+
+<p dir="ltr" align="left"><span lang="EN" xml:lang="EN">This error statement can be used while configuring store procedures for any exit points.</span></p>
+
+<p dir="ltr" align="left"><span lang="EN" xml:lang="EN">Note</span></p>
+
+<ul>
+    <li><span lang="EN" xml:lang="EN">Errors displayed with the above syntax will be shown to the user and further execution will be stopped.</span></li>
+</ul>
+
+<p dir="ltr" align="left"></p>
+
+<ul>
+    <li><font face="Consolas"><font size="2" face="Arial">Errors displayed from Stored procedures in any other way will be ignored and the system will proceed with further execution.</font></font></li>
+</ul>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

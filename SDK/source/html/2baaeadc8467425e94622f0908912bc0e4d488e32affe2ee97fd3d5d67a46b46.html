@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>Warehouse Mobile Extensibility</title>
+    <meta name="Title" content="Warehouse Mobile Extensibility"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"isNew":true,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="We would like to enable warehouse mobile platform, to achieve extensibility in a very easy way, even in SaaS environment, without having access to the Application server, having to the disposition only the remotely accessible tools:" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="74992106-47ac-41cf-8c67-e64378bb6333"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="5"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">Warehouse Mobile Extensibility</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+Extensibility
+ > Warehouse Mobile Extensibility</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>We would like to enable warehouse mobile platform, to achieve extensibility in a very easy way, even in SaaS environment, without having access to the Application server, having to the disposition only the remotely accessible tools:</p>
+
+<ul>
+    <li>ActivityArchitect to change Warehouse Mobile Flows</li>
+
+    <li>Creation of Web API exit points</li>
+
+    <li>Creation of REST Web Service Exit Point Programs calling Azure Web functions or custom REST web services on different reachable hosting</li>
+
+    <li>Creation of Stored Procedure Exit Point Programs in the database</li>
+</ul>
+
+<p></p>
+
+<p>For example, we will have the possibility to insert a new step to the header/item receiving process. Extending the current flow with a new step, checking for truck status for receiving:</p>
+
+<p align="center"><img style="WIDTH: 800px" border="0" alt="" src="images/WarehouseMobileExtensibility/Example.PNG" /></p>
+
+<h1>Configuration steps</h1>
+
+<h2>Configuration schema to achieve extensibility</h2>
+
+<p>The main idea is that with the help of exit point we have to attach to the normal execution of the Warehouse Mobile flow, and redirect it to our new flow step we desire to be shown to the user, capture data input, and once again with the help of the exit points we save the data and we redirect the execution flow to continue with the original flow.</p>
+
+<p align="center"><img style="WIDTH: 800px" border="0" alt="" src="images/WarehouseMobileExtensibility/Flow.PNG" /></p>
+
+<h2>Screen Flow configuration</h2>
+
+<p></p>
+
+<ol>
+    <li>
+        <p><b>Customize the header/item receiving flow</b></p>
+
+        <ol type="a">
+            <li>
+                <p>Open the ActivityArchitect and make a duplicate for the existing Receiving flow in the activity architect</p>
+
+                <p align="center"><img style="WIDTH: 800px" border="0" alt="" src="images/WarehouseMobileExtensibility/ScreenFlowStep1.PNG" /></p>
+            </li>
+
+            <li>
+                <p>Give a new Screenflow name and File name for the extended receiving</p>
+
+                <p align="center"><img style="WIDTH: 800px" border="0" alt="" src="images/WarehouseMobileExtensibility/ScreenFlowStep2.PNG" /></p>
+            </li>
+
+            <li>
+                <p>Add a new flow step <b>CustomEntry</b></p>
+
+                <p align="center"><img style="WIDTH: 800px" border="0" alt="" src="images/WarehouseMobileExtensibility/ScreenFlowStep3.PNG" /></p>
+            </li>
+
+            <li>
+                <p>Set title and add a custom picker control “Truck status”</p>
+
+                <p align="center"><img style="WIDTH: 800px" border="0" alt="" src="images/WarehouseMobileExtensibility/ScreenFlowStep4.PNG" /></p>
+            </li>
+
+            <li>
+                <p>On the Go action add the URI call that points to the configured endpoint and in the Next Flow textbox you need to add the next screen in the flow. In this exampled we used the <b>LPEntry</b> screen. The URI is <b>/general/scaleapi/GenericWhsMobileApi/whmendpoint-executed?identifier=manhValidateCustomEntry</b></p>
+
+                <p>We are doing this because we want to continue the execution, after the <b>CustomEntry</b> as it was continued from <b>QtyEntry</b>. Basically our intention is to insert the <b>CustomEntry</b> step between the <b>QtyEntry</b> and <b>LPEntry</b>.</p>
+
+                <p align="center"><img style="WIDTH: 800px" border="0" alt="" src="images/WarehouseMobileExtensibility/ScreenFlowStep5.PNG" /></p>
+            </li>
+        </ol>
+    </li>
+
+    <li>
+        <p><b>Assign the Extended Receiving flow to the desired receiving preference menu</b></p>
+
+        <ol type="a">
+            <li>
+                <p>Open Warehouse Mobile menu configuration from Activity Architect main page</p>
+
+                <p align="center"><img style="WIDTH: 800px" border="0" alt="" src="images/WarehouseMobileExtensibility/ScreenFlowStep6.PNG" /></p>
+            </li>
+
+            <li>
+                <p>Search for the Receiving preference, and choose to edit from actions, or click preference name link</p>
+
+                <p align="center"><img style="WIDTH: 800px" border="0" alt="" src="images/WarehouseMobileExtensibility/ScreenFlowStep7.PNG" /></p>
+            </li>
+
+            <li>
+                <p>Assign the new Extended Receiving flow</p>
+
+                <p align="center"><img style="WIDTH: 800px" border="0" alt="" src="images/WarehouseMobileExtensibility/ScreenFlowStep8.PNG" /></p>
+            </li>
+        </ol>
+    </li>
+</ol>
+
+<h2>End Point configuration</h2>
+
+<p>We need to create a new Warehouse Mobile Endpoint that will send the data from the Custom screen to the external webservice. In the below example we used an Azure web function written in Node.js to handle the screen change and to save the data to an Azure Blob Storage account.</p>
+
+<p>How to configure a <a href="Warehouse Mobile Endpoint.html" data-auto-update-caption="true">Warehouse Mobile Endpoint</a></p>
+
+<h2>Exit Points configuration</h2>
+
+<ol>
+    <li>
+        <p><b>Add the Web API exit points to capture and modify WarehouseMobile payload</b></p>
+
+        <p>How to create a&nbsp;<a href="WebApiExitPoint.html">Web API exit point</a></p>
+    </li>
+
+    <li>
+        <p><b>Write the custom web service to update the payload coming back from SCALE ReceiptApi/receipt-check-in</b></p>
+
+        <p>You can use whatever you prefer, as this can even be on a different hosting, Azure web function, etc. There are couple of guidelines we need to take into account.</p>
+
+        <p>The SCALE web api invoking methodology is sending in the POST body an array with following input parameters:</p>
+
+        <ol>
+            <li>
+                <p><b>@SessionXML</b>, containing essential values as user, warehouse, etc.</p>
+            </li>
+
+            <li>
+                <p><b>@URI</b> is the uri for the SCALE api was captured by the exit point, in our case will be '/inbound/scaleapi/ReceiptApi/receipt-check-in'</p>
+            </li>
+
+            <li>
+                <p><b>@DataModel</b> this is the essential dataModel we have to update to redirect the WarehouseMobile execution to the new CustomEntry flow, that is why in the sample we take this value and update it.</p>
+            </li>
+
+            <li>
+                <p><b>null value</b> – not used for now</p>
+            </li>
+        </ol>
+
+        <p></p>
+
+        <p>When writing the external web service, please note that the Warehouse Mobile Exit Point and the Warehouse Mobile End Point send data in two different modes. The Warehouse Mobile End Point only sends the 3rd parameter. In this case the data needs to be handled a bit differently.</p>
+
+        <p>For convenience we put here a Nodejs code a simple web service to achieve our goal.</p>
+
+        <div class="i-filtered-content-JavaScript" data-title="JavaScript" data-itemid="JavaScript">
+            <table class="i-syntax-table">
+                <tbody>
+                    <tr>
+                        <th>Sample Node JS Web Service Code</th>
+
+                        <th>
+                            <div class="i-copy-code-wrapper">
+                                <span class="i-copy-code">Copy Code</span>
+                            </div>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td class="i-code" colspan="2">
+                            <pre>
+const multipart = require(<span style="COLOR: #800000">"parse-multipart"</span>);
+module.exports = async <span style="COLOR: #0000ff">function</span> (context, req) {
+   <span style="COLOR: #0000ff">var</span> data_parsed = <span style="COLOR: #0000ff">false</span>;
+   <span style="COLOR: #0000ff">try</span> {
+      <span style="COLOR: #0000ff">var</span> dataModel = JSON.parse(req.body.Parameters[2]);
+      data_parsed = <span style="COLOR: #0000ff">true</span>;
+   }
+   <span style="COLOR: #0000ff">catch</span>(error) {
+   }
+   <span style="COLOR: #0000ff">if</span>(data_parsed==<span style="COLOR: #0000ff">false</span>) {
+      <span style="COLOR: #0000ff">try</span> {
+         <span style="COLOR: #0000ff">var</span> dataModel = JSON.parse(JSON.stringify(req.body));
+         data_parsed = <span style="COLOR: #0000ff">true</span>;
+      }
+      <span style="COLOR: #0000ff">catch</span>(error) {
+      }
+   }
+   
+   <span style="COLOR: #0000ff">if</span>(dataModel.SRCFlow == <span style="COLOR: #800000">'LPEntry'</span> &amp;&amp; dataModel.ReceivingPreference == <span style="COLOR: #800000">'5607-RP'</span>) {
+      dataModel.CustomEntry = <span style="COLOR: #800000">''</span>;
+      dataModel.SRCFlow = <span style="COLOR: #800000">'CustomEntry'</span>;
+   }
+   <span style="COLOR: #0000ff">else</span> <span style="COLOR: #0000ff">if</span>(dataModel.SRCFlow == <span style="COLOR: #800000">'CustomEntry'</span>) {
+      dataModel.SRCFlow = <span style="COLOR: #800000">'LPEntry'</span>;
+      <span style="COLOR: #0000ff">try</span>{
+         dataModel.custom.SRCFlow = <span style="COLOR: #800000">'LPEntry'</span>;
+      }
+      <span style="COLOR: #0000ff">catch</span>(error){
+      
+      }
+   }
+   <span style="COLOR: #0000ff">if</span>(dataModel.SRCFlow == <span style="COLOR: #800000">'LPEntry'</span> &amp;&amp; dataModel.ReceivingPreference == <span style="COLOR: #800000">'5607-RP'</span>) {
+      context.bindings.storage = dataModel.custom.CustomEntry;
+   }
+   
+   context.res = {
+      body: dataModel
+   };
+}
+</pre>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </li>
+</ol>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    <script type="text/javascript">setIsNew = true;</script>
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; script-src 'none'; base-uri 'none'; form-action 'none'"><title>How to configure Web API Exit Point</title><link rel="stylesheet" href="assets/bb3476b440a7298dd8364269b8e101c94a35de10d7da9f255c39bdbbdcb3a06f.css"><link rel="stylesheet" href="assets/6ed73e3e167a190f604aa313be51b855a88890b46d1d38aa9b5993a4b447a4ee.css"><link rel="stylesheet" href="assets/28c30e5a97cbe1ca2e11dfbe1852a56af4469b0d5af203376b784fa0fa111265.css"><link rel="stylesheet" href="assets/325af48d4373c73d786e162440b9f154530765a7ff8fbe259fb0fb13fe9a49d3.css"><link rel="stylesheet" href="assets/0d11b5fa88753f13e0c362f43de51cdaa190faaac11ec1898725052cd928bcbb.css"><link rel="stylesheet" href="assets/712d1868e129f3485744c24c2a9c1c4fc2c705c2beb8eb78b0675455ccdc8061.css"><link rel="stylesheet" href="assets/40c3609ea55c0653c1aa1337e339c0adf886082c66204aeb817451e6f3c00f67.css"><style>body{max-width:80rem;margin:2rem auto;padding:0 1rem;font:16px/1.5 system-ui}table{border-collapse:collapse}td,th{border:1px solid #aaa;padding:.4rem}img{max-width:100%;height:auto}pre{white-space:pre-wrap}.i-section-content,.i-dropdown-content,.i-popup-content,[class*="i-filtered-content-"],.hs-collapsed,.hs-expanded,[role="tabpanel"]{display:block!important;visibility:visible!important}.i-body-content,.i-header-content,.i-footer-content,.i-after-header-content{position:static!important;height:auto!important;overflow:visible!important}</style></head><body>
+    <div id="i-before-header-content" class="i-before-header-content" data-source-node="n31">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content" data-source-node="n32">
+        <img class="logoimage" src="../source/assets/c09d7c6ca334c512c3ad6e70ce32d4bc8349fd6d67689dfe3d884b85c52de517.PNG" border="0" loading="eager" data-source-node="n33">
+            <div class="i-project-title" data-source-node="n34">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title" data-source-node="n35"><div class="i-page-title-text" data-source-node="n36">How to configure Web API Exit Point</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content" data-source-node="n37">
+         <span class="i-toggle-all-sections i-function-link" data-source-node="n38">
+                <label class="i-collapse-all" data-source-node="n39">Collapse All</label>
+                <label class="i-expand-all" data-source-node="n40">Expand All</label>
+            </span>
+        <a class="i-page-link i-view-in-frame-link" title="Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)" data-source-node="n41">View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container" data-source-node="n42"><table data-source-node="n43"><tr data-source-node="n44"><td data-source-node="n45">
+Extensibility
+ &gt; <a href="5ca8e3aeb921ac3e1bb345accd1188f2811a2c37334fe414d5fa0022aa51ee08.html" data-source-node="n46">Web API Exit Point</a>
+ &gt; How to configure Web API Exit Point</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content" data-source-node="n47">
+        <p data-source-node="n48">Web API exit point can be configure as API, Web Service or Stored Procedure.</p>
+
+<p data-source-node="n49">Here is an example to add Exit Point for <b data-source-node="n50">http://ServerName/general/scaleapi/WorkInstructionsApi/workInstructions</b>  URI.</p>
+
+<p data-source-node="n51">The <strong data-source-node="n52">POST-WorkInstructionsApi-workInstructions-After</strong> exit point added for the above URI and Stored Procedure configured as exit point program.</p>
+
+<p data-source-node="n53">"@CUSTOM" argument contains  the API parameters  as serialized json which has the value for  InternalInstructionNum.</p>
+
+<p data-source-node="n54">In this example  system is fetching the Item color based on the Item for the InternalInstructionNum.</p>
+
+<p data-source-node="n55">JSON string created  for the Item Color and assign to output parameter.</p>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL" data-source-node="n56">
+    <table class="i-syntax-table" data-source-node="n57">
+        <tbody data-source-node="n58">
+            <tr data-source-node="n59">
+                <th data-source-node="n60">Sample stored procedure exit point program for  <b data-source-node="n61">POST-WorkInstructionsApi-workInstructions-After</b>  exit point</th>
+
+                <th data-source-node="n62">
+                    <div class="i-copy-code-wrapper" data-source-node="n63">
+                        <span class="i-copy-code" data-source-node="n64">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr data-source-node="n65">
+                <td class="i-code" colspan="2" data-source-node="n66">
+                    <pre data-source-node="n67">
+<span style="COLOR: #0000ff" data-source-node="n68">CREATE</span> <span style="COLOR: #0000ff" data-source-node="n69">PROCEDURE</span> <span style="COLOR: #ff0000" data-source-node="n70">[EXP_WarehouseMobileExample]</span> (   
+    <span style="COLOR: #008000" data-source-node="n71">@SESSIONVALUE</span> xml,   
+    <span style="COLOR: #008000" data-source-node="n72">@URL</span> <span style="COLOR: #0000ff" data-source-node="n73">nvarchar</span>(<span style="COLOR: #ff00ff" data-source-node="n74">max</span>),   
+    <span style="COLOR: #008000" data-source-node="n75">@CUSTOM</span> <span style="COLOR: #0000ff" data-source-node="n76">nvarchar</span>(<span style="COLOR: #ff00ff" data-source-node="n77">max</span>),   
+    <span style="COLOR: #008000" data-source-node="n78">@RETURNVALUE</span> <span style="COLOR: #0000ff" data-source-node="n79">nvarchar</span>(<span style="COLOR: #ff00ff" data-source-node="n80">max</span>) output   
+)   
+<span style="COLOR: #0000ff" data-source-node="n81">AS</span>    
+    <span style="COLOR: #0000ff" data-source-node="n82">SET</span> NOCOUNT <span style="COLOR: #0000ff" data-source-node="n83">ON</span>;    
+  <span style="COLOR: #0000ff" data-source-node="n84">declare</span> <span style="COLOR: #008000" data-source-node="n85">@customIndex</span> numeric(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n86">9</span>);
+  <span style="COLOR: #0000ff" data-source-node="n87">declare</span> <span style="COLOR: #008000" data-source-node="n88">@itemcolor</span> <span style="COLOR: #0000ff" data-source-node="n89">nvarchar</span>(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n90">25</span>);
+
+     <span style="COLOR: #0000ff" data-source-node="n91">Declare</span> <span style="COLOR: #008000" data-source-node="n92">@id</span> numeric(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n93">9</span>)    
+     <span style="COLOR: #0000ff" data-source-node="n94">SELECT</span> <span style="COLOR: #008000" data-source-node="n95">@id</span> <span style="COLOR: #808080" data-source-node="n96">=</span> insNum   
+     <span style="COLOR: #0000ff" data-source-node="n97">FROM</span> OPENJSON(<span style="COLOR: #008000" data-source-node="n98">@CUSTOM</span>)       
+       <span style="COLOR: #0000ff" data-source-node="n99">WITH</span> (   
+       insNum numeric(<span style="FONT-WEIGHT: bold;COLOR: #800000" data-source-node="n100">9</span>) <span style="COLOR: #ff0000" data-source-node="n101">'$.WorkExecutionChildEntities[0].InternalInstructionNum'</span>   
+       )
+       <span style="COLOR: #0000ff" data-source-node="n102">SELECT</span> <span style="COLOR: #008000" data-source-node="n103">@itemcolor</span> <span style="COLOR: #808080" data-source-node="n104">=</span>item_COLOR  <span style="COLOR: #0000ff" data-source-node="n105">from</span> ITEM i <span style="COLOR: #0000ff" data-source-node="n106">Inner</span> <span style="COLOR: #808080" data-source-node="n107">join</span> work_instruction w <span style="COLOR: #0000ff" data-source-node="n108">on</span> w.item <span style="COLOR: #808080" data-source-node="n109">=</span> i.item
+       <span style="COLOR: #808080" data-source-node="n110">and</span>(( i.company <span style="COLOR: #808080" data-source-node="n111">=</span> w.company) <span style="COLOR: #808080" data-source-node="n112">or</span> i.company <span style="COLOR: #0000ff" data-source-node="n113">is</span> <span style="COLOR: #0000ff" data-source-node="n114">null</span> <span style="COLOR: #808080" data-source-node="n115">and</span> w.company <span style="COLOR: #0000ff" data-source-node="n116">is</span> <span style="COLOR: #0000ff" data-source-node="n117">null</span>
+       )
+     <span style="COLOR: #0000ff" data-source-node="n118">where</span> w.internal_instruction_num <span style="COLOR: #808080" data-source-node="n119">=</span><span style="COLOR: #008000" data-source-node="n120">@id</span>
+     <span style="COLOR: #0000ff" data-source-node="n121">set</span> <span style="COLOR: #008000" data-source-node="n122">@RETURNVALUE</span> <span style="COLOR: #808080" data-source-node="n123">=</span><span style="COLOR: #ff0000" data-source-node="n124">'{"ItemColor":'''</span><span style="COLOR: #808080" data-source-node="n125">+</span><span style="COLOR: #008000" data-source-node="n126">@itemcolor</span><span style="COLOR: #808080" data-source-node="n127">+</span><span style="COLOR: #ff0000" data-source-node="n128">'''}'</span>;
+         
+   
+  
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p data-source-node="n129">API response contains the Exit point return value inside the "custom" attribute.</p>
+
+<p data-source-node="n130"> </p>
+
+<p data-source-node="n131"> <img border="0" alt="" src="../source/assets/46299c9319951c4d9e599c124dcdbc952674f550ee4a41de12af0f8cfcc8313f.png" loading="eager" data-source-node="n132"></p>
+
+<p data-source-node="n133"> <span lang="EN" data-source-node="n134"><strong data-source-node="n135">Support for Error Messages</strong></span></p>
+
+<p dir="ltr" align="left" data-source-node="n136"><span lang="EN" data-source-node="n137">The application supports displaying error messages from the exit point stored procedures. To display an error, add the below statement in Stored Procedure with a valid message.</span></p>
+
+<p dir="ltr" align="left" data-source-node="n138"><font color="blue" size="2" face="Consolas" data-source-node="n139"><font color="blue" size="2" face="Consolas" data-source-node="n140"><font color="blue" size="2" face="Consolas" data-source-node="n141">EXEC</font></font></font> <font size="2" face="Consolas" data-source-node="n142"><font size="2" face="Consolas" data-source-node="n143">ThrowError</font></font> <font size="2" face="Consolas" data-source-node="n144"><font size="2" face="Consolas" data-source-node="n145">@MESSAGE</font></font></p>
+
+<p dir="ltr" align="left" data-source-node="n146"><span lang="EN" data-source-node="n147">This error statement can be used while configuring store procedures for any exit points.</span></p>
+
+<p dir="ltr" align="left" data-source-node="n148"><span lang="EN" data-source-node="n149">Note</span></p>
+
+<ul data-source-node="n150">
+    <li data-source-node="n151"><span lang="EN" data-source-node="n152">Errors displayed with the above syntax will be shown to the user and further execution will be stopped.</span></li>
+</ul>
+
+<p dir="ltr" align="left" data-source-node="n153"></p>
+
+<ul data-source-node="n154">
+    <li data-source-node="n155"><font face="Consolas" data-source-node="n156"><font size="2" face="Arial" data-source-node="n157">Errors displayed from Stored procedures in any other way will be ignored and the system will proceed with further execution.</font></font></li>
+</ul>
+
+<p data-source-node="n158"></p>
+            <a name="seealsobookmark" data-source-node="n159"></a>
+            
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content" data-source-node="n160">
+        
+<p data-source-node="n161"> </p><p data-source-node="n162"> </p><hr style="height: 1px" data-source-node="n163"><p data-source-node="n164">©2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    
+    
+</body></html>

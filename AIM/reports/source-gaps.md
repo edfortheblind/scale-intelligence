@@ -43,4 +43,4 @@
 | `updatequanpackwin.htm` | `FIlot.htm#FIlot.htm` | `515f6ada0907be3ee69ed5ce2be716309000e59872d9108adfd5758b50aada12` |
 | `CancelWave.htm` | `Launchdiscuss.htm#step` | `7cc9576de1f1a7765ef4ef299b2e23fb6b4924faa76a84fe27223d5f51a38b5b` |
 
-See `source-gaps.json` for source hashes, node locations, publication occurrences, and scoped references. Completion requires repaired published sources or authoritative in-scope mappings, followed by recollection and verification. Approval cannot waive these missing resources or anchors. SDK waits for verified AIM local completion under the current owner priority.
+See `source-gaps.json` for source hashes, node locations, publication occurrences, and scoped references. The owner accepts these documented AIM exceptions for this delivery and authorizes SDK continuation. Source material remains missing; publisher deprecation is unverified. Obtaining the missing content still requires repaired published sources or authoritative in-scope mappings, followed by recollection and verification.

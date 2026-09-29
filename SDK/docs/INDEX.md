@@ -1,0 +1,398 @@
+# SDK reading index
+
+TOC order and labels follow the original publication. Availability notes are collector metadata.
+
+- [Welcome to the SDK](../../SDK/reading/a765ba03a3d04da292276c2f32b5c29d7e3295e8144487b9cec83c5eae7d7632.md)
+- Extensibility
+  - Movement Class Analysis
+    - Extensibility — queued for collection or verification
+    - Overview — queued for collection or verification
+  - Web API Exit Point — queued for collection or verification
+    - [How To Add Web API Exit Point](../../SDK/reading/1972e3b6030b02549d5ef617853d643c533cd4701b7d46b587443f18964c1b33.md)
+    - [How to configure Web API Exit Point](../../SDK/reading/49392a2e5e805555800984604ab78d98c34890e4489e28092a5957cb75250dbc.md)
+  - System Configuration Type Range — queued for collection or verification
+  - Warehouse Mobile Endpoint — queued for collection or verification
+  - [Warehouse Mobile Extensibility](../../SDK/reading/2065ee0a19ff55f051512667fc76b3717cdbbdf40197692ad98c06327b042956.md)
+- Implementation Overriding
+  - 3DCubing — queued for collection or verification
+  - Feature flags and runtime settings — queued for collection or verification
+- Interfaces
+  - Interface Batch Size — queued for collection or verification
+- Integration Endpoints — queued for collection or verification
+  - Azure Functions — queued for collection or verification
+  - DIF Event Execution Endpoint — queued for collection or verification
+  - DIF Outgoing Endpoint — queued for collection or verification
+  - Exit Point Programs — queued for collection or verification
+  - Exit points
+    - Adjustment Type Authorization Retrieval Exit Point — queued for collection or verification
+    - Container Type Authorization Retrieval Exit Point — queued for collection or verification
+    - Exit Points For Customizing The Vocollect Request And Response Messages — queued for collection or verification
+    - Receiving Preference Authorization Retrieval Exit Point — queued for collection or verification
+    - RF View Picks SQL \- Modify Exit Point — queued for collection or verification
+    - Wave Master Authorization Retrieval Exit Point — queued for collection or verification
+    - Work Profile Authorization Retrieval Exit Point — queued for collection or verification
+    - WM Capture Inventory Attributes — queued for collection or verification
+    - Image capture \- Link internal reference number — queued for collection or verification
+  - Rating Service Endpoints — queued for collection or verification
+    - Delete Manifest — queued for collection or verification
+    - Get Containers — queued for collection or verification
+    - Get Manifests — queued for collection or verification
+    - Manifest Parcel — queued for collection or verification
+    - Print Label — queued for collection or verification
+    - Print Manifest — queued for collection or verification
+    - Transmit Manifest — queued for collection or verification
+    - Unmanifest Parcel — queued for collection or verification
+- Localization
+  - How to: Change Decimal Positions on Resources — queued for collection or verification
+- Notifications
+  - Overview — queued for collection or verification
+  - Extensibility — queued for collection or verification
+- Printing
+  - SQL Server Reporting Service&#32;
+    - How to: Customize the Bill of Lading — queued for collection or verification
+- PowerShell
+  - SCALE SaaS PowerShell — queued for collection or verification
+  - How to: Configure External Data Storage for Archiving — queued for collection or verification
+- Reporting
+  - How to: Author SQL Server Reporting Services Reports — queued for collection or verification
+- User Interface Extensibility
+  - Metadata Web Pages
+    - Actions
+      - How to: Create a Dynamic Action Requiring User Input via Modal Dialog — queued for collection or verification
+      - How to: Configure Security for a Dynamic Action — queued for collection or verification
+      - How to: Create a Dynamic Action Requiring User Input via Modal Dialog with Yes/No Confirmation Prompt — queued for collection or verification
+      - How to: Enable/Disable Metadata Actions Based on Screen Data — queued for collection or verification
+      - How to: Override the Default Success Callback — queued for collection or verification
+      - How to: Perform a DELETE Service Call from Metadata Action — queued for collection or verification
+      - How to: Perform a GET Service Call from Metadata Action — queued for collection or verification
+      - How to: Perform a POST Service Call from Metadata Action — queued for collection or verification
+      - How to: Retrieve Parameter Values from a JavaScript Function Call — queued for collection or verification
+      - How to: Retrieve Parameter Values from an Input Control — queued for collection or verification
+      - How to: Retrieve Parameter Values from the Insight Detail Pane Model — queued for collection or verification
+      - How to: Retrieve Parameter Values from the Insight Grid — queued for collection or verification
+      - How to: Show a Metadata Page Inside a Modal Dialog — queued for collection or verification
+    - Detail Pages
+      - Detail Routing — queued for collection or verification
+      - Field Restrictions — queued for collection or verification
+      - How to: Add a Grid to a Detail/Transaction Screen — queued for collection or verification
+      - How to: Add Detail/Transaction Screen Menu Options — queued for collection or verification
+      - How to: Add Menu Options to a Details/Transaction Screen Grid — queued for collection or verification
+      - How to: Bind Detail Controls — queued for collection or verification
+      - How to: Create a New Details Page — queued for collection or verification
+      - How to: Create Section Headers on a Detail/Transaction Screen — queued for collection or verification
+      - How to: Customize Field Restrictions through Exit Point Programs — queued for collection or verification
+      - How to: Modify an Existing Details Page — queued for collection or verification
+      - How to: Set Field Defaults through Exit Point Programs — queued for collection or verification
+      - How to: Tie a Detail Page to a Table or View — queued for collection or verification
+    - Extensibility Tooling
+      - How to: Use Insight Architect to Customize a Metadata Page&#32; — queued for collection or verification
+    - Insight Pages
+      - Detail Pane
+        - How to: Add Detail Pane Menu Options — queued for collection or verification
+        - How to: Bind Detail Pane Controls — queued for collection or verification
+        - [How to: Create a Detail Pane Stored Procedure](../../SDK/reading/35cdfcbe2823f6394fe2644f35985b4dd4c0b5f9cf4e66f1d6d0d8f7fa5b8339.md)
+        - How to: Create an Indicator Tile on an Insight Detail Pane — queued for collection or verification
+        - How to: Create the Detail Pane — queued for collection or verification
+      - How to: Add Custom Action with Multiple Selection on Insight Page — queued for collection or verification
+      - How to Add Custom Detail Pane Tile With Multiple Selection on InsightPage — queued for collection or verification
+      - How to: Create a New Insight Page — queued for collection or verification
+      - How to: Modify an Existing Insight Page — queued for collection or verification
+      - How to: Tie an Insight Page to a Table or View — queued for collection or verification
+      - How to: Use a Toggle to Dynamically tie an Insight Page to an Alternate Table or View — queued for collection or verification
+      - Insight Routing — queued for collection or verification
+      - List Pane
+        - How to: Add a Summary Tile to an Insight List Pane — queued for collection or verification
+        - How to: Add a Grid to an Insight List Pane — queued for collection or verification
+        - How to: Add List Pane Menu Options — queued for collection or verification
+        - How to: Create the List Pane — queued for collection or verification
+      - Search Pane
+        - How to: Add Advanced Criteria to Search Pane — queued for collection or verification
+        - How to: Add Basic Criteria to Search Pane — queued for collection or verification
+        - How to: Add Checked List Box to Search Pane — queued for collection or verification
+        - How to: Add Complex Filters to the Search Pane — queued for collection or verification
+        - How to: Add Multi\-Selection Combo Box to Search Pane — queued for collection or verification
+        - How to: Add Search Pane Menu Options — queued for collection or verification
+        - How to: Create the Search Pane — queued for collection or verification
+        - How to: Tie Advanced Criteria Fields to Operand Lists and Field Types — queued for collection or verification
+    - Monitor Pages
+      - How to: Add a Drilldown Level to a Chart on a Monitor Page — queued for collection or verification
+      - How to:  Bind Controls on a Monitor Page — queued for collection or verification
+      - How to: Configure Critical Level on Indicator Tile — queued for collection or verification
+      - How to: Create a Breadcrumb on a Monitor Page — queued for collection or verification
+      - How to: Create a New Monitor Page — queued for collection or verification
+      - How to: Create an Indicator Tile on a Monitor Page — queued for collection or verification
+      - How to: Create Monitor Page Stored Procedure — queued for collection or verification
+      - How to: Drilldown to Insight Screen from a Chart on a Monitor Page — queued for collection or verification
+      - How to: Go to Insight from Indicator Tile — queued for collection or verification
+      - How to: Jump to an Insight Screen from a Monitor Page — queued for collection or verification
+      - How to: Modify an Existing Monitor Page — queued for collection or verification
+    - Shared
+      - Complex Page Architecture — queued for collection or verification
+      - How to: Activate Inline Deleting in a Grid — queued for collection or verification
+      - How to: Add a New Section to an Accordion — queued for collection or verification
+      - How to: Add Validation to Modal Dialog Controls — queued for collection or verification
+      - How to: Change an Editor Control to a Combo Box — queued for collection or verification
+      - How to: Change the Days Viewed for a Calendar — queued for collection or verification
+      - How to: Configure Cascading Combo Boxes — queued for collection or verification
+      - How to: Configure Item Images for Metadata screens — queued for collection or verification
+      - How to: Configure Layout of Metadata Pages — queued for collection or verification
+      - How to: Create a Dynamic Modal Dialog — queued for collection or verification
+      - How to: Create Screen Control Attributes — queued for collection or verification
+      - How to: Create Screen Control Event Parameters — queued for collection or verification
+      - How to: Create Screen Control Events — queued for collection or verification
+      - How to: Create Screen Control Grid Columns — queued for collection or verification
+      - How to: Create Screen Controls — queued for collection or verification
+      - How to: Create Screen Group Columns — queued for collection or verification
+      - How to: Create Screen Groups — queued for collection or verification
+      - How to: Create Screen Parts — queued for collection or verification
+      - How to: Default the Group By Column in a Grid — queued for collection or verification
+      - How to: Default the Order By Column in a Grid — queued for collection or verification
+      - How to: Define Lists tied to Controls — queued for collection or verification
+      - How to: Display a Column Value as a Link in a Grid — queued for collection or verification
+      - How to: Set Content Loading Type — queued for collection or verification
+      - How to: Set Default Action for Enter Key — queued for collection or verification
+      - How to: Set Default State for a Control — queued for collection or verification
+      - How to: Set Label Orientation — queued for collection or verification
+      - How to: Set Template Name for a Screen Control — queued for collection or verification
+      - How to: Setup Colors on a Grid — queued for collection or verification
+      - How to: Setup Icons on a Grid — queued for collection or verification
+      - Metadata Page Architecture — queued for collection or verification
+      - Screen Control Event Parameter Naming Conventions — queued for collection or verification
+      - Screen Navigation — queued for collection or verification
+      - Supported Screen Controls — queued for collection or verification
+      - [Supported Control Properties](../../SDK/reading/d21cc61c2998b9d4fb746c8c94ff35727e408efd164cfce086c91d5e07a3acc3.md)
+      - Supported Screen Control Events — queued for collection or verification
+      - Supported Screen Groups — queued for collection or verification
+      - Supported Screen Parts — queued for collection or verification
+    - Single Signon Page
+      - How to: Customize the Single Signon Page — queued for collection or verification
+    - Transaction Pages
+      - How to: Create a New Transaction Page — queued for collection or verification
+      - How to: Customize the Appointment Calendar Page Appointment Colors — queued for collection or verification
+      - How to: Customize the Appointment Calendar Page Appointment Preview Fields — queued for collection or verification
+      - How to: Customize the Dashboard KPI Calculations — queued for collection or verification
+      - How to: Manually Configure the Drilldown for a Dashboard Tile — queued for collection or verification
+      - How to: Modify an Existing Transaction Page — queued for collection or verification
+- Web
+  - Getting Started: Metadata Web Pages — queued for collection or verification
+  - How to: Customize Style Sheet files for the RF Pages — queued for collection or verification
+  - Warehouse Mobile
+    - Warehouse Mobile Overview — queued for collection or verification
+
+## Published index destinations outside the TOC
+
+- Address Validation Web Service — queued for collection or verification
+- Appointment Calendar Events SQL \- Modify Exit Point — queued for collection or verification
+- Assign Work — queued for collection or verification
+- Authentication in REST\-Based Web Services — queued for collection or verification
+- Bill Of Materials Download — queued for collection or verification
+- BolGenerationBefore Class — queued for collection or verification
+- Members — queued for collection or verification
+- Bootstrap — queued for collection or verification
+- Calling a REST\-Based Web Service — queued for collection or verification
+- Cancel Inventory Transactions Web Service — queued for collection or verification
+- ClientSession Class — queued for collection or verification
+- Members — queued for collection or verification
+- Close Container Web Service — queued for collection or verification
+- Close Putaway Group Web Service — queued for collection or verification
+- Compression in REST\-Based WCF and Web API Web Services — queued for collection or verification
+- Compression in REST\-Based WCF Web Services — queued for collection or verification
+- Compression in REST\-Based Web API Web Services — queued for collection or verification
+- Compression in REST\-Based Web Services — queued for collection or verification
+- Configure Base Execution Identifier — queued for collection or verification
+- Confirm into Shipping Container Outbound Work Instruction — queued for collection or verification
+- Confirm into Tote Outbound Work Instruction — queued for collection or verification
+- Confirm Outbound Work Instruction — queued for collection or verification
+- Copyright Notice — queued for collection or verification
+- Cycle Count Plan Web Service — queued for collection or verification
+- Cycle Count Quick Plan Web Service — queued for collection or verification
+- Define Custom Endpoint Handlers — queued for collection or verification
+- Define Execution Identifier — queued for collection or verification
+- Device Integration Framework — queued for collection or verification
+- Discussion: SOA Strategy — queued for collection or verification
+- Dock Management Web Services — queued for collection or verification
+- ExitPointProgramException Class — queued for collection or verification
+- Members — queued for collection or verification
+- Force QC Web Service — queued for collection or verification
+- Get Work Unit — queued for collection or verification
+- How to: Add Detail Screen Menu Options — queued for collection or verification
+- How to: Change Displayed Language — queued for collection or verification
+- How to: Customize the Background Image on the Dashboard Screen — queued for collection or verification
+- How to: Customize the Calendar Event Preview — queued for collection or verification
+- [How to: Customize the Full Calendar Now Indicator](../../SDK/reading/105eb85e6c169c8f255adc2818e77af583b4e68f2314066b9decad6c15808456.md)
+- How to: Customize the Signon Page Logo&#32; — queued for collection or verification
+- How to: Extract values from Xml through SQL — queued for collection or verification
+- How to: Replace the Insight Sign On Logo — queued for collection or verification
+- How to: Use Swagger — queued for collection or verification
+- HTTP Headers in REST\-Based Web Services — queued for collection or verification
+- ILegacyExitPointProgram Interface — queued for collection or verification
+- Immediate Dock Transfer Web Service — queued for collection or verification
+- IntegrationServicesAsyncCallback Delegate — queued for collection or verification
+- IntegrationServicesRequest Class — queued for collection or verification
+- Members — queued for collection or verification
+- IntegrationServicesResponse Class — queued for collection or verification
+- Members — queued for collection or verification
+- Interface Web Services — queued for collection or verification
+- Inventory Override Info Web Service — queued for collection or verification
+- Inventory Transactions Web Service — queued for collection or verification
+- Inventory Web Service — queued for collection or verification
+- Inventory Web Services — queued for collection or verification
+- InvMgmtWithWorkCreation — queued for collection or verification
+- Item Cross Reference Web Service — queued for collection or verification
+- Item Download — queued for collection or verification
+- Item Unit of Measure Web Service — queued for collection or verification
+- Item Web Service — queued for collection or verification
+- Item Web Services — queued for collection or verification
+- Labor Event Web Service — queued for collection or verification
+- Labor Search Web Service — queued for collection or verification
+- Labor Update Web Service — queued for collection or verification
+- Labor Web Services — queued for collection or verification
+- Links in REST\-Based Web Service Entities — queued for collection or verification
+- Locate Shipping Containers Web Service — queued for collection or verification
+- Location Inventory Attributes Web services — queued for collection or verification
+- Managing Endpoints — queued for collection or verification
+- Manh\.SDK\.General Namespace — queued for collection or verification
+- Manh\.SDK\.IntegrationEndpoints\.ExitPointPrograms Namespace — queued for collection or verification
+- Manh\.SDK\.IntegrationServices Namespace — queued for collection or verification
+- Microsoft Owin — queued for collection or verification
+- Multi Order Pallet Immediate Dock Transfer Web Service — queued for collection or verification
+- Multi Order Pallet Nesting Web Service — queued for collection or verification
+- Multi Order Pallet Unnesting Web Service — queued for collection or verification
+- New Topic — queued for collection or verification
+- Outbound Work Workflow — queued for collection or verification
+- Pallet Building Web Service — queued for collection or verification
+- PalletBuildingAfter Class — queued for collection or verification
+- Members — queued for collection or verification
+- PalletBuildingBefore Class — queued for collection or verification
+- Members — queued for collection or verification
+- PDF\.js — queued for collection or verification
+- Pick into Shipping Container Outbound Work Instruction — queued for collection or verification
+- Pick into Tote Outbound Work Instruction — queued for collection or verification
+- Pick Outbound Work Instruction — queued for collection or verification
+- Print Default Documents Web Service — queued for collection or verification
+- Printing Web Services — queued for collection or verification
+- Process Dock Assignment Wave Step Web Service — queued for collection or verification
+- Property Placeholders in Spring\.NET — queued for collection or verification
+- Putaway into Shipping Container Outbound Work Instruction — queued for collection or verification
+- Putaway Outbound Work Instruction — queued for collection or verification
+- QC Assignment Web Service — queued for collection or verification
+- QC Confirmation Web Service — queued for collection or verification
+- Rate Shopping Web Service — queued for collection or verification
+- Rating Web Service — queued for collection or verification
+- Receipts Web Service — queued for collection or verification
+- Receiving Download — queued for collection or verification
+- Receiving Web Service — queued for collection or verification
+- Receiving Web Services — queued for collection or verification
+- Remove Container From Group — queued for collection or verification
+- Remove Container Group — queued for collection or verification
+- REST\-Based Web Service Configuration — queued for collection or verification
+- REST\-Based Web Services — queued for collection or verification
+- RestMethod Enumeration — queued for collection or verification
+- [RestRequest Class](../../SDK/reading/af37f75677fcfdd49221fae0e8ae72afc48b6acce03c16c2f2acd021fad8b783.md)
+- Members — queued for collection or verification
+- RestResponse Class — queued for collection or verification
+- Members — queued for collection or verification
+- SDK\.General Assembly — queued for collection or verification
+- SDK\.IntegrationEndpoints\.ExitPointPrograms Assembly — queued for collection or verification
+- SDK\.IntegrationServices Assembly — queued for collection or verification
+- Shipping Container Web Service — queued for collection or verification
+- Shipping Download — queued for collection or verification
+- Shipping Web Service — queued for collection or verification
+- Shipping Web Services — queued for collection or verification
+- Short Pick Replenishment Web Service — queued for collection or verification
+- Signature Pad — queued for collection or verification
+- Standard Responses from REST\-Based Web Services — queued for collection or verification
+- Tenant And User Level Feature Flags — queued for collection or verification
+- ThreeDCubingContainerCreationBefore Class — queued for collection or verification
+- Members — queued for collection or verification
+- Transaction Page Stored Procedures — queued for collection or verification
+- Transfer Shipment Headers Web Service — queued for collection or verification
+- Transfer Shipping Containers Web Service — queued for collection or verification
+- Unassign Or Pass Work — queued for collection or verification
+- VAS Confirmation Web Service — queued for collection or verification
+- Web Api routing — queued for collection or verification
+- Work Order Download — queued for collection or verification
+- Work Profile Warehouse Authorization Exit Point — queued for collection or verification
+- Work Web Services — queued for collection or verification
+- WOWrkbench Class — queued for collection or verification
+- Members — queued for collection or verification
+- XmlManager Class — queued for collection or verification
+- Members — queued for collection or verification
+
+## Published search destinations outside the TOC and index
+
+- WOWrkbench Class Methods — queued for collection or verification
+- Topic Not Found — queued for collection or verification
+- IsRestMethodInError Field — queued for collection or verification
+- ExecuteExitPointProgram Method \(ILegacyExitPointProgram\) — queued for collection or verification
+- DeserializeXml&lt;T&gt; Method — queued for collection or verification
+- ClientSession Class Fields — queued for collection or verification
+- ExecuteStep Method \(PalletBuildingBefore\) — queued for collection or verification
+- IntegrationServicesRequest Class Properties — queued for collection or verification
+- ExitPointProgramException Class Methods — queued for collection or verification
+- RestRequest Class Properties — queued for collection or verification
+- ExitPointProgramException Class Properties — queued for collection or verification
+- PalletBuildingBefore Class Methods — queued for collection or verification
+- Method Field — queued for collection or verification
+- ILegacyExitPointProgram Interface Members — queued for collection or verification
+- Validate Method \(RestRequest\) — queued for collection or verification
+- UserName Field — queued for collection or verification
+- TransactionId Property \(IntegrationServicesRequest\) — queued for collection or verification
+- ThreeDCubingContainerCreationBefore Class Methods — queued for collection or verification
+- XmlManager Constructor — queued for collection or verification
+- Uri Field — queued for collection or verification
+- IntegrationServicesResponse Class Properties — queued for collection or verification
+- RestResponse Class Properties — queued for collection or verification
+- PalletBuildingBefore Constructor — queued for collection or verification
+- Headers Field \(RestRequest\) — queued for collection or verification
+- XmlManager Class Methods — queued for collection or verification
+- Empty Index Entry — queued for collection or verification
+- IsTimeoutMillisInError Field — queued for collection or verification
+- IntegrationServicesResponse Class Methods — queued for collection or verification
+- BeginGetResponse Method \(IntegrationServicesRequest\) — queued for collection or verification
+- WOWrkbench Constructor — queued for collection or verification
+- TimedOut Field — queued for collection or verification
+- BeginGetResponse Method \(RestRequest\) — queued for collection or verification
+- ExecuteExitPointProgram Method \(BolGenerationBefore\) — queued for collection or verification
+- InputXml Field — queued for collection or verification
+- ILegacyExitPointProgram Interface Methods — queued for collection or verification
+- Data Field — queued for collection or verification
+- IntegrationServicesResponse Class Fields — queued for collection or verification
+- Warehouse Field — queued for collection or verification
+- RestResponse Class Fields — queued for collection or verification
+- TimeoutMillis Field — queued for collection or verification
+- Headers Field \(RestResponse\) — queued for collection or verification
+- PalletBuildingAfter Class Methods — queued for collection or verification
+- Environment Field — queued for collection or verification
+- IntegrationServicesRequest Class Methods — queued for collection or verification
+- SessionId Property — queued for collection or verification
+- ClientSession Class Properties — queued for collection or verification
+- Manh\.SDK\.General Namespace Inheritance Hierarchy — queued for collection or verification
+- BolGenerationBefore Class Methods — queued for collection or verification
+- ExitPointProgramException Class Events — queued for collection or verification
+- RestRequest Class Methods — queued for collection or verification
+- ExecuteStep Method \(ThreeDCubingContainerCreationBefore\) — queued for collection or verification
+- RestResponse Constructor — queued for collection or verification
+- ExecuteStep Method \(PalletBuildingAfter\) — queued for collection or verification
+- GetResponse Method \(RestRequest\) — queued for collection or verification
+- IsUriInError Field — queued for collection or verification
+- IntegrationServicesRequest Class Fields — queued for collection or verification
+- GetResponse Method \(IntegrationServicesRequest\) — queued for collection or verification
+- Manh\.SDK\.IntegrationServices Namespace Inheritance Hierarchy — queued for collection or verification
+- PalletBuildingAfter Constructor — queued for collection or verification
+- ClientSession Constructor — queued for collection or verification
+- IsInputXmlInError Field — queued for collection or verification
+- Manh\.SDK\.IntegrationEndpoints\.ExitPointPrograms Namespace Inheritance Hierarchy — queued for collection or verification
+- RestResponse Class Methods — queued for collection or verification
+- TransactionId Property \(IntegrationServicesResponse\) — queued for collection or verification
+- Validate Method \(IntegrationServicesRequest\) — queued for collection or verification
+- BolGenerationBefore Constructor — queued for collection or verification
+- ClientSession Class Methods — queued for collection or verification
+- ThreeDCubingContainerCreationBefore Constructor — queued for collection or verification
+- ExitPointProgramException Constructor — queued for collection or verification
+- ExecuteExitPointProgram Method \(WOWrkbench\) — queued for collection or verification
+- Fault Field — queued for collection or verification
+- ValidateXml Method — queued for collection or verification
+- RestRequest Class Fields — queued for collection or verification
+- StatusCode Field — queued for collection or verification
+- RestRequest Constructor — queued for collection or verification

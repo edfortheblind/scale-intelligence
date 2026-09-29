@@ -12,6 +12,7 @@ import signal
 import argparse
 from collector import Store, atomic_json, read_json, writer_lock, digest, now
 from completion_gates import browser_proof_current
+from module_policy import acceptance_readiness,effective_module_status,ACCEPTED
 
 RETRYABLE={'DNS','CONNECTION','TIMEOUT','RATE_LIMIT','TRANSIENT_HTTP','BLOCKED_AUTH','BLOCKED_PERMISSION','BLOCKED_AUTH_OR_SCOPE','CIRCUIT_OPEN','RATE_LIMIT_WAIT','EMPTY_BODY'}
 
@@ -34,7 +35,13 @@ def main(offline=False):
             atomic_json(root/'_project/STATE.json',state)
             store.checkpoint(owner,phase=phase,blockers=blockers,worker_running=False)
     with writer_lock(root,runtime/'controller-lease'), (private/'aim-controller.log').open('a',encoding='utf-8',buffering=1) as log:
-        if read_json(root/'_project/STATE.json').get('pilot')!='PASSED':
+        initial=read_json(root/'_project/STATE.json')
+        if initial.get('modules',{}).get('AIM',{}).get('status')==ACCEPTED:
+            readiness=acceptance_readiness(Store(root,cache_records=True),initial)
+            if not readiness['ready']:raise ValueError(readiness['reason'])
+            log.write(json.dumps({'at':now(),'result':ACCEPTED,'next_module':'SDK','acquisition_started':False})+'\n')
+            return 0
+        if initial.get('pilot')!='PASSED':
             raise ValueError('Verified pilot required before continuous acquisition')
         mark('AIM_CAPTURE_READY',[])
         stopping=[]
@@ -84,6 +91,9 @@ def main(offline=False):
             step('tools/report_source_gaps.py')
             state=read_json(root/'_project/STATE.json')
             phase='MODULE_LOCAL_COMPLETE' if audit.get('module_local_complete') else ('AIM_SOURCE_BLOCKED' if audit['source_failures'] else 'AIM_VERIFICATION_INCOMPLETE')
+            work_status=effective_module_status(Store(root,cache_records=True),'AIM',phase,state)
+            if work_status==ACCEPTED:
+                phase=state['phase'] if state.get('module')=='SDK' else 'SDK_READY'
             controller.update(running=False,finished_at=now(),result=phase)
             mark(phase,state.get('blockers',[]))
             # No corpus-mutating step may follow the frozen delivery inventory.

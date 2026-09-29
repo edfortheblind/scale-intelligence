@@ -1,22 +1,22 @@
 {
   "scope_revision": "STAGE-CHATGPT-EN-2.0",
   "collector_version": "0.2.0",
-  "phase": "AIM_SOURCE_BLOCKED",
-  "module": "AIM",
-  "updated_at": "2026-09-29T14:40:41.794631+00:00",
+  "phase": "SDK_SOURCE_BLOCKED_AWAITING_DISPOSITION",
+  "module": "SDK",
+  "updated_at": "2026-09-29T16:04:43.381678+00:00",
   "worker_running": false,
   "writer": {
     "protocol": "external_os_file_lock",
     "last_operation": {
-      "pid": 29708,
-      "acquired_at": "2026-09-29T14:40:41.765032+00:00",
+      "pid": 26976,
+      "acquired_at": "2026-09-29T16:02:13.120258+00:00",
       "root": "C:\\Users\\ed.lopez\\OneDrive - TRAVIS ASSOCIATION FOR THE BLIND\\Documents\\VS Code\\SCALE Int"
     },
-    "heartbeat_at": "2026-09-29T14:40:41.794640+00:00"
+    "heartbeat_at": "2026-09-29T16:03:58.959747+00:00"
   },
   "modules": {
     "AIM": {
-      "status": "DISCOVERY_INCOMPLETE",
+      "status": "OWNER_ACCEPTED_COMPLETE_WITH_EXCEPTIONS",
       "counts": {
         "discovered": 3253,
         "pending": 0,
@@ -24,55 +24,97 @@
         "articles_verified": 2446,
         "failed": 8
       },
-      "manifests": "AIM/manifests/resources/"
+      "manifests": "AIM/manifests/resources/",
+      "technical_status": "DISCOVERY_INCOMPLETE",
+      "owner_acceptance": "_project/owner-acceptance-AIM.json",
+      "accepted_exceptions": "AIM/reports/source-gaps.json",
+      "blockers": [
+        {
+          "code": "SOURCE_RESOURCES_UNAVAILABLE",
+          "count": 8,
+          "report": "AIM/reports/source-gaps.json"
+        },
+        {
+          "code": "SOURCE_LINK_OR_FIDELITY_GAPS",
+          "articles": 26,
+          "report": "AIM/reports/errors.json"
+        },
+        {
+          "code": "NAVIGATION_SOURCE_GAPS",
+          "count": 4,
+          "report": "AIM/reports/navigation-links.json"
+        },
+        {
+          "code": "DISCOVERY_INCOMPLETE",
+          "report": "AIM/manifests/discovery-closure.json"
+        }
+      ],
+      "module_local_complete": false
     },
     "SDK": {
-      "status": "WAITING_FOR_AIM",
+      "status": "PILOT_REPAIR_REQUIRED",
       "counts": {
-        "discovered": 0,
-        "pending": 0,
-        "bodies_saved": 0,
+        "discovered": 478,
+        "pending": 355,
+        "bodies_saved": 99,
         "articles_verified": 0,
-        "failed": 0
+        "failed": 24
       },
-      "manifests": "SDK/manifests/resources/"
+      "manifests": "SDK/manifests/resources/",
+      "pilot": "FAILED",
+      "blockers": [
+        {
+          "code": "SDK_SOURCE_IMAGES_UNAVAILABLE",
+          "count": 24,
+          "report": "SDK/reports/source-gaps.json"
+        },
+        {
+          "code": "SDK_PILOT_FIDELITY_GAPS",
+          "report": "SDK/reports/pilot.json",
+          "issues": 26
+        },
+        {
+          "code": "SDK_BULK_DISPOSITION_PENDING",
+          "record": "_project/sdk-pilot-disposition.json"
+        }
+      ],
+      "pilot_proof": {
+        "path": "SDK/reports/pilot.json",
+        "sha256": "9e16fd08fa1536975406b06a6702379abb32ebb8a30e5881390b0231d327b28e"
+      }
     }
   },
   "blockers": [
     {
-      "code": "SOURCE_RESOURCES_UNAVAILABLE",
-      "count": 8,
-      "report": "AIM/reports/source-gaps.json"
+      "code": "SDK_SOURCE_IMAGES_UNAVAILABLE",
+      "count": 24,
+      "report": "SDK/reports/source-gaps.json"
     },
     {
-      "code": "SOURCE_LINK_OR_FIDELITY_GAPS",
-      "articles": 26,
-      "report": "AIM/reports/errors.json"
+      "code": "SDK_PILOT_FIDELITY_GAPS",
+      "report": "SDK/reports/pilot.json",
+      "issues": 26
     },
     {
-      "code": "NAVIGATION_SOURCE_GAPS",
-      "count": 4,
-      "report": "AIM/reports/navigation-links.json"
-    },
-    {
-      "code": "DISCOVERY_INCOMPLETE",
-      "report": "AIM/manifests/discovery-closure.json"
+      "code": "SDK_BULK_DISPOSITION_PENDING",
+      "record": "_project/sdk-pilot-disposition.json"
     }
   ],
   "pilot": "PASSED",
-  "next_invocation": "Repair the source gaps or local proof failures listed in AIM/reports/module-audit.json; rerun the offline completion pipeline.",
+  "next_invocation": "Await SDK pilot disposition or source repair; preserve pilot failures and existing checkpoints.",
   "publication": {
     "repository": "edfortheblind/scale-intelligence",
     "visibility": "PRIVATE",
     "permission": "ADMIN",
-    "stage": "AIM_AUDIT_CHECKPOINT_VERIFIED",
+    "stage": "AIM_ACCEPTED_SDK_PILOT_CHECKPOINT_PENDING",
     "complete_corpus_delivered": false,
     "verified_commit": "bc829bea78f8c57f5061418363326063664bd532",
     "clean_clone_verified": true,
-    "current_checkpoint_clean_clone_verified": true,
+    "current_checkpoint_clean_clone_verified": false,
     "proof": "_project/delivery-checkpoint.json",
-    "current_local_changes_pending_publication": false,
-    "artifact_inventory_sha256": "8207e511d684ce67c90549abe206635e4e06f65e276db050c613013303e82758"
+    "current_local_changes_pending_publication": true,
+    "artifact_inventory_sha256": "8207e511d684ce67c90549abe206635e4e06f65e276db050c613013303e82758",
+    "current_changes_pending": true
   },
   "controller": {
     "pid": 14408,
@@ -97,11 +139,18 @@
       "recorded_at": "2026-09-29T13:54:56.508773+00:00",
       "instruction": "what else is missing or pending in AIM? Solve it, get AIM 100% completed.",
       "effect": "Current priority is completing AIM; SDK preparation is deferred while all remaining AIM gates are investigated."
+    },
+    {
+      "recorded_at": "2026-09-29T15:17:23.214426+00:00",
+      "instruction": "I think those missing ones are deprecated. Let's consider 99.71% done, keep documentation of what's missing and consider AIM completed. Let's continue with the next task.",
+      "effect": "AIM completed by explicit owner acceptance with documented exceptions; continue SDK. Deprecation is unverified.",
+      "record": "_project/owner-acceptance-AIM.json"
     }
   ],
   "collection_order_question": {
-    "status": "SUPERSEDED_BY_AIM_COMPLETION_REQUEST",
-    "reason": "AIM master prompt section 16 requires local completion; 8 resource failures and 23 source anchor gaps remain.",
-    "requested_exception": "Acquire SDK while retaining AIM incomplete and all final completeness requirements."
-  }
+    "status": "RESOLVED_BY_OWNER_ACCEPTANCE",
+    "record": "_project/owner-acceptance-AIM.json"
+  },
+  "legacy_pilot_module": "AIM",
+  "pilot_status_authority": "modules.<module>.pilot; legacy top-level pilot applies only to AIM"
 }

@@ -15,6 +15,10 @@ def build(store, output, provisional=False):
     docs=[]
     resource_map={r['id']:r for module in ROOTS for r in store.records(module)}
     for module in ROOTS:
+        if module == 'SDK':
+            from sdk_article_data import CONVERTER as module_converter, parse_article as module_parser
+        else:
+            module_converter, module_parser = CONVERTER, parse_article
         for path in sorted((store.root/module/'data/articles').glob('*.json')):
             data=read_json(path)
             verification=data['verification']
@@ -24,12 +28,12 @@ def build(store, output, provisional=False):
                 current=resource_map.get(data['id'],{})
                 if current.get('sha256')!=data['source']['sha256'] or current.get('app_data_path')!=path.relative_to(store.root).as_posix():
                     raise ValueError('Stale app JSON generation')
-                if data.get('converter_version')!=CONVERTER:
+                if data.get('converter_version')!=module_converter:
                     raise ValueError('Unsupported app JSON converter')
                 original=store.root/data['source']['local_path']
                 if digest(original.read_bytes())!=data['source']['sha256']:
                     raise ValueError('Index source hash mismatch')
-                _,tree,_,title,_=parse_article(current,original.read_bytes())
+                _,tree,_,title,_=module_parser(current,original.read_bytes())
                 if text_of(tree)!=data['content_text'] or title!=data['title']:
                     raise ValueError('App JSON content differs from its source')
                 for kind in ('html','markdown'):

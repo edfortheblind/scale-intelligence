@@ -162,8 +162,10 @@ class Store:
         if module == "SDK":
             state_path = self.root / "_project/STATE.json"
             state = read_json(state_path) if state_path.exists() else {}
-            if state.get("modules", {}).get("AIM", {}).get("status") not in ("MODULE_LOCAL_COMPLETE", "CORPUS_COMPLETE"):
-                raise ValueError("SDK_REQUIRES_AIM_LOCAL_COMPLETE")
+            from module_policy import acceptance_readiness
+            readiness = acceptance_readiness(self, state)
+            if not readiness['ready']:
+                raise ValueError('SDK_REQUIRES_AIM_COMPLETION_OR_ACCEPTANCE: ' + readiness['reason'])
         path = self.root / module / "manifests/resources" / (identity["id"] + ".json")
         record = read_json(path) if path.exists() else {
             "id": identity["id"], "module": module, "source_url": identity["fetch_key"],
@@ -252,10 +254,12 @@ class Store:
         self.save_record(record)
         return record
 
-    def verify(self):
+    def verify(self, module=None):
         failures, count = [], 0
-        for module in ROOTS:
-            for record in self.records(module):
+        if module is not None and module not in ROOTS:
+            raise ValueError('Unknown module')
+        for selected in ([module] if module else ROOTS):
+            for record in self.records(selected):
                 if not record.get("local_path"):
                     continue
                 path = (self.root / record["local_path"]).resolve()
@@ -272,9 +276,14 @@ class Store:
                 count += 1
         state_path = self.root / "_project/STATE.json"
         state = read_json(state_path) if state_path.exists() else {}
+        pilot = state.get("pilot", "NOT_RUN")
+        if module is not None:
+            pilot = state.get("modules", {}).get(module, {}).get(
+                "pilot", pilot if module == "AIM" else "NOT_RUN")
         return {"checked_at": now(), "stored_bodies_verified": count, "failures": failures,
                 "local_integrity_passed": not failures, "corpus_complete": False,
-                "discovery": "DISCOVERY_INCOMPLETE", "pilot": state.get("pilot", "NOT_RUN")}
+                "discovery": "DISCOVERY_INCOMPLETE", "pilot": pilot,
+                "scope": module or "ALL_MODULES"}
 
     def checkpoint(self, owner=None, *, phase=None, blockers=None, worker_running=False):
         state_path = self.root / "_project/STATE.json"

@@ -10,6 +10,7 @@ from article_data import TreeParser, nodes, text_of, parse_article, inventory, C
 from reading_audit import verify_reading
 from completion_gates import catalog_hash, navigation_links, resource_proofs, visual_proof, completion_decision, reading_index_proof, discovery_proof
 from proof_inputs import render_inputs,bound_report_current
+from module_policy import effective_module_status,ACCEPTED
 
 
 def required_external_reference(ref,source_nodes):
@@ -52,6 +53,7 @@ def css_closure(store,module,identifier,catalog,seen=None):
 
 
 def audit(store,module):
+    prior_state=read_json(store.root/'_project/STATE.json')
     records=store.records(module)
     catalog={r['id']:r for r in records}
     articles=[r for r in records if r['type']=='article' and r['status']!='INVALID_RESOLUTION']
@@ -196,7 +198,9 @@ def audit(store,module):
             'variants':dict(variant_counts),'links':dict(link_counts),'invalid_resolution_history':sum(r['status']=='INVALID_RESOLUTION' for r in records)}
     counts['navigation_links']=nav_links['counts']
     status='MODULE_LOCAL_COMPLETE' if complete else ('DISCOVERY_INCOMPLETE' if not discovery_complete else 'FIDELITY_VERIFICATION_INCOMPLETE')
+    work_status=effective_module_status(store,module,status,prior_state)
     report={'checked_at':now(),'module':module,'status':status,
+            'technical_status':status,'work_status':work_status,
             'discovery_reconciled':bool(discovery_complete),'denominator_status':'RECONCILED' if discovery_complete else 'KNOWN_LOWER_BOUND',
             'counts':counts,'source_failures':failures,'fidelity_issues':issues,'structurally_verified_article_ids':reading_verified,
             'locally_verified_article_ids':verified,'module_local_complete':complete,'pilot':pilot,'gates':gates,
@@ -216,13 +220,13 @@ def audit(store,module):
         'internal_links':link_counts['verified']+nav_links['counts'].get('verified',0)}
     ratios={k:{'verified':numerators[k],'known':v,'percent':round(100*numerators[k]/v,4) if v else None,
                'basis':'complete publication' if discovery_complete else 'known inventory only; missing sources may expose more'} for k,v in known.items()}
-    atomic_json(store.root/module/'reports/coverage.json',{'module':module,'status':status,'pilot':pilot,
+    atomic_json(store.root/module/'reports/coverage.json',{'module':module,'status':work_status,'technical_status':status,'work_status':work_status,'pilot':pilot,
         'discovery_reconciled':bool(discovery_complete),'denominator_status':report['denominator_status'],
         'denominators':known if discovery_complete else {k:None for k in known},'known_denominators':known,
         'ratios':ratios if discovery_complete else None,'known_inventory_ratios':ratios,
         'required_resources':len(required),'saved_originals':sum(r['status']=='BODY_SAVED' for r in required),
         'reading_copies_verified':len(reading_verified),'completion_gates':gates})
-    summary=['# AIM coverage','','Status: **'+status+'**.','',
+    summary=['# AIM coverage','','Work status: **'+work_status+'**. Technical status: **'+status+'**.','',
         str(sum(r['status']=='BODY_SAVED' for r in required))+' original bodies are saved from '+str(len(required))+' currently known required resources. The '+str(counts['invalid_resolution_history'])+' corrected collector-resolution records remain preserved separately.' if module=='AIM' else 'Coverage is evaluated against the recorded module inventory.',
         '',str(len(reading_verified))+' captured articles pass reading-preservation checks; '+str(len(verified))+' pass all article checks including source links.',
         'Known article inventory: '+str(len(articles))+'. Unavailable source material remains in the denominator.',
@@ -230,10 +234,11 @@ def audit(store,module):
         '',str(len(failures))+' required resource requests remain unresolved. See source-gaps.md for exact published URLs and source anchor failures.',
         '', '## Completion gates','']
     summary.extend('- '+name+': '+('PASS' if value else 'BLOCKED') for name,value in gates.items())
-    summary.extend(['','Passing local reading or resource checks does not waive source failures. Cross-module topic references are deferred only where explicitly recorded.',''])
+    summary.extend(['',('The owner accepts the documented AIM exceptions for this delivery. Source failures and technical completion gates remain unchanged.' if work_status==ACCEPTED else 'Passing local reading or resource checks does not waive source failures.'),
+                    'Cross-module topic references are deferred only where explicitly recorded.',''])
     atomic_bytes(store.root/module/'reports/coverage.md','\n'.join(summary).encode('utf-8'))
     state=read_json(store.root/'_project/STATE.json')
-    state['modules'][module]['status']=status
+    state['modules'][module].update(status=work_status,technical_status=status)
     blockers=[]
     if failures:blockers.append({'code':'SOURCE_RESOURCES_UNAVAILABLE','count':len(failures),'report':module+'/reports/source-gaps.json'})
     if issues:blockers.append({'code':'SOURCE_LINK_OR_FIDELITY_GAPS','articles':len(issues),'report':module+'/reports/errors.json'})
@@ -242,9 +247,15 @@ def audit(store,module):
     if resource_validation['issues']:blockers.append({'code':'RESOURCE_FIDELITY_GAPS','count':len(resource_validation['issues'])})
     if not visual['passed']:blockers.append({'code':visual['error']})
     if not local_index['passed']:blockers.append({'code':'LOCAL_READING_INDEX_GAPS','issues':local_index['issues']})
-    state.update(phase='MODULE_LOCAL_COMPLETE' if complete else ('AIM_SOURCE_BLOCKED' if failures else 'AIM_VERIFICATION_INCOMPLETE'),
-        blockers=blockers,worker_running=False,updated_at=now(),
-        next_invocation='Continue SDK under the supplied SDK master prompt.' if complete else 'Repair the source gaps or local proof failures listed in AIM/reports/module-audit.json; rerun the offline completion pipeline.')
+    state['modules'][module]['technical_findings']=blockers
+    if work_status==ACCEPTED:
+        state['modules'][module]['accepted_exceptions']=state['modules'][module]['owner_acceptance']
+    # A maintenance audit of AIM must not replace the current SDK phase/blockers.
+    if state.get('module','AIM')==module:
+        state.update(phase='SDK_READY' if work_status==ACCEPTED else ('MODULE_LOCAL_COMPLETE' if complete else ('AIM_SOURCE_BLOCKED' if failures else 'AIM_VERIFICATION_INCOMPLETE')),
+            blockers=[] if work_status==ACCEPTED else blockers,worker_running=False,
+            next_invocation='Continue SDK under the supplied SDK master prompt.' if complete or work_status==ACCEPTED else 'Repair the source gaps or local proof failures listed in AIM/reports/module-audit.json; rerun the offline completion pipeline.')
+    state['updated_at']=now()
     state.setdefault('publication',{}).update(current_local_changes_pending_publication=True,current_checkpoint_clean_clone_verified=False)
     atomic_json(store.root/'_project/STATE.json',state)
     return report

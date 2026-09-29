@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" value="IE=9" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    
+
+    <title>How to: Create a Detail Pane Stored Procedure</title>
+    <meta name="Title" content="How to: Create a Detail Pane Stored Procedure"/>    
+    
+
+    <script src="template/packages/jquery/script/default/jquery-1.11.3.min.js" type="text/javascript" id="mshs_support_script"></script>
+    <script src="template/packages/jquery-ui/script/default/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="template/packages/jquery-ui/css/default/jquery-ui-1.11.4.css"></link>
+    
+    <script type="text/javascript">var Innovasys=(Innovasys||{});$.extend(true,Innovasys,{settings:{versions:{popupContainer:'#i-after-header-content'}}},{settings:{"dynamictoc":{"initialNodeId":"n0","initialNodeContainer":"c0"},"currentLocale":"-","isFrameless":false,"responsive":{"isEnabled":true},"navigationKind":"frames","versions":{"locale":{"currentId":"-"}}}});</script>
+
+    <meta name="Description" content="The GenericDataBind web service can be used to retrieve data from a stored procedure call and return it. Also see the How to: Bind Detail Pane Controls topic for more information on getting the GenericDataBind web service to call the proper stored pr" />
+    
+    <link rel="stylesheet" type="text/css" href="template/packages/plugins-topics/css/default/jquery-plugins.css"></link>
+    <link rel="stylesheet" type="text/css" href="template/packages/core-topics/css/topics.css"  data-mshv2-stylesheet="/template/packages/core-topics/topics.mshv2.css" data-mshv1-stylesheet="/template/packages/core-topics/topics.mshv1.css" data-responsive-mobile="template/packages/core-topics/topics.mobile.css" data-responsive-tablet="template/packages/core-topics/topics.tablet.css"></link>
+    <script src="template/packages/plugins-topics/script/default/jquery-plugins.min.js" type="text/javascript"></script>
+    <script src="template/packages/core-topics/script/topics.min.js" type="text/javascript"></script>
+    
+    <meta name="Microsoft.Help.Id" content="c9d3b1ae-ab59-467e-bd18-99629f2bc30f"/>
+    <meta name="Microsoft.Help.TocParent" content="-1"/>
+    <meta name="Microsoft.Help.TocOrder" content="3"/>
+    <meta name="Microsoft.Help.F1" content=""/>
+    <meta name="Microsoft.Help.ContentType" content="Concepts" />
+    
+    
+    
+    
+    
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-heading-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="stylesheets/hs-boxes.css"></link>
+    <link rel="stylesheet" type="text/css" href="Stylesheets/hs-expandcollapse.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/custom.css"></link>
+    <link rel="stylesheet" type="text/css" href="Samples/monitor.css"></link>
+    <script src="script/hs-common.js" type="text/javascript"></script>
+    <script src="script/hs-heading-expandcollapse.js" type="text/javascript"></script>
+    <script src="script/hs-expandcollapse.js" type="text/javascript"></script>
+
+    
+
+    
+
+    
+</head>
+
+<body>
+    <div id="i-before-header-content" class="i-before-header-content">
+        
+    </div>
+    <div id="i-header-content" class="i-header-content">
+        <img class="logoimage" src="images/Manh_logo.PNG" border="0"></img>
+            <div class="i-project-title">Manhattan Active SCALE Documentation</div>
+        <div class="i-page-title"><div class="i-page-title-text">How to: Create a Detail Pane Stored Procedure</div></div>
+    </div>
+    <div id="i-after-header-content" class="i-after-header-content">
+        <!-- Spacing --> <span class="i-toggle-all-sections i-function-link">
+                <label class="i-collapse-all">Collapse All</label>
+                <label class="i-expand-all" style="display: none;">Expand All</label>
+            </span>
+        <a href='#' class='i-page-link i-view-in-frame-link' title='Open this Topic in a view that includes Navigation tools (Table of Contents, Index, Search)' style='display: none' data-root-page='webframe.html' target='_top'>View with Navigation Tools</a>
+    </div>
+    <div class="i-breadcrumbs-container"><table><tr><td>
+User Interface Extensibility
+ > Metadata Web Pages
+ > Insight Pages
+ > Detail Pane
+ > How to: Create a Detail Pane Stored Procedure</td></tr></table></div>
+    
+    
+    <div id="i-body-content" class="i-body-content">
+        <p>The GenericDataBind web service can be used to retrieve data from a stored procedure call and return it. Also see the <a href="How_to_Bind_Detail_Pane_Controls.html"><font color="navy">How to: Bind Detail Pane Controls</font></a> topic for more information on getting the GenericDataBind web service to call the proper stored procedure and binding the data to the controls. The stored procedure can return several different types of data as noted&nbsp;in the table below.</p>
+
+<table>
+    <tbody>
+        <tr>
+            <td><strong>Stored Procedure Section</strong></td>
+
+            <td><strong>Description</strong></td>
+        </tr>
+
+        <tr>
+            <td>SCALAR</td>
+
+            <td>Tables returned from the stored procedure that are single row data which is intended to bind with labels or non-array structures should have the first column named "SCALAR". The other column names in this type of&nbsp;table will be used to bind with controls in the detail pane.</td>
+        </tr>
+
+        <tr>
+            <td>TABLE</td>
+
+            <td>Tables returned from the stored procedure that will bind to an array or table structure should have the first column named "Table_&lt;ControlName&gt;". The other column names in this type of table serve as resource keys that translate to the specified culture and are shown as grid header text.</td>
+        </tr>
+
+        <tr>
+            <td>TEMPLATE</td>
+
+            <td>Tables returned from the stored procedure that will bind to a templated control should have the first column named "Template_&lt;ControlName&gt;".</td>
+        </tr>
+
+        <tr>
+            <td>HIERARCHICAL</td>
+
+            <td>Tables returned from the stored procedure that will bind to a hierarchical grid should have the first column named "Hierarchical_&lt;ControlName&gt;". The other column names in this type of table serve as resource keys that translate to the specified culture and are shown as grid header text.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p></p>
+
+<div class="i-filtered-content-SQL" data-title="SQL" data-itemid="SQL">
+    <table class="i-syntax-table">
+        <tbody>
+            <tr>
+                <th>Example GenericDataBind Stored Procedure</th>
+
+                <th>
+                    <div class="i-copy-code-wrapper">
+                        <span class="i-copy-code">Copy Code</span>
+                    </div>
+                </th>
+            </tr>
+
+            <tr>
+                <td class="i-code" colspan="2">
+                    <pre>
+<span style="COLOR: #0000ff">CREATE</span> <span style="COLOR: #0000ff">PROCEDURE</span> SHP_InsightDetailPaneData(<span style="COLOR: #008000">@internalShipmentNum</span> <span style="COLOR: #0000ff">int</span> , <span style="COLOR: #008000">@culture</span> <span style="COLOR: #0000ff">nvarchar</span>(<span style="FONT-WEIGHT: bold; COLOR: #800000">10</span>)) 
+<span style="COLOR: #0000ff">AS</span>
+<span style="COLOR: #0000ff">BEGIN</span>
+<span style="COLOR: #0000ff">declare</span> <span style="COLOR: #008000">@dockDoorInternalNum</span> numeric(<span style="FONT-WEIGHT: bold; COLOR: #800000">9</span>,<span style="FONT-WEIGHT: bold; COLOR: #800000">0</span>);
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #808080">*</span> <span style="COLOR: #0000ff">INTO</span> #tempShipment
+<span style="COLOR: #0000ff">FROM</span> SHIPMENT_HEADER_VIEW
+<span style="COLOR: #0000ff">WHERE</span> INTERNAL_SHIPMENT_NUM <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@internalShipmentNum</span>;
+<span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #0000ff">top</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #ff0000">'SCALAR'</span> <span style="COLOR: #0000ff">AS</span> SCALAR,
+    sh.SHIPMENT_ID <span style="COLOR: #0000ff">AS</span> ShipmentID,
+    sh.INTERNAL_SHIPMENT_NUM <span style="COLOR: #0000ff">AS</span> InternalShipmentNum,
+    sh.ORDER_TYPE <span style="COLOR: #0000ff">AS</span> OrderType ,
+    sh.CUSTOMER_name <span style="COLOR: #0000ff">AS</span> Customer,
+    sh.ship_to_name <span style="COLOR: #0000ff">AS</span> ShipTo,
+    sh.CARRIER <span style="COLOR: #0000ff">AS</span> Carrier ,
+    sh.CARRIER_SERVICE <span style="COLOR: #0000ff">AS</span> CarrierService,
+    dbo.STSfn_RtrvStsName(<span style="COLOR: #ff0000">'outbound'</span> ,sh.TRAILING_STS) <span style="COLOR: #0000ff">AS</span> TrailingSts ,
+    dbo.STSfn_RtrvStsName (<span style="COLOR: #ff0000">'outbound'</span> ,sh.LEADING_STS) <span style="COLOR: #0000ff">AS</span> LeadingSts ,
+    TOTAL_LINES <span style="COLOR: #0000ff">as</span> SummaryDetails,
+    TOTAL_QTY <span style="COLOR: #0000ff">as</span> SummaryUnits,
+    TOTAL_VALUE <span style="COLOR: #0000ff">as</span> SummaryValue,
+    TOTAL_CONTAINERS <span style="COLOR: #0000ff">as</span> SummaryContainers
+<span style="COLOR: #0000ff">FROM</span> #tempShipment sh;
+<span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #008000">@dockDoorInternalNum</span><span style="COLOR: #808080">=</span>sl.DOCK_DOOR
+<span style="COLOR: #0000ff">FROM</span> #tempShipment sh
+<span style="COLOR: #808080">LEFT</span> <span style="COLOR: #808080">OUTER</span> <span style="COLOR: #808080">JOIN</span> Shipping_load sl <span style="COLOR: #0000ff">ON</span> sh.SHIPPING_LOAD_NUM <span style="COLOR: #808080">=</span> sl.INTERNAL_LOAD_NUM;
+<span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #0000ff">top</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #ff0000">'SCALAR'</span> <span style="COLOR: #0000ff">AS</span> SCALAR,
+    LOCATION <span style="COLOR: #0000ff">AS</span> DockDoor,
+    LOCATION <span style="COLOR: #0000ff">AS</span> LoadDockDoor
+<span style="COLOR: #0000ff">FROM</span> LOCATION
+<span style="COLOR: #0000ff">WHERE</span> <span style="COLOR: #ff00ff">OBJECT_ID</span><span style="COLOR: #808080">=</span><span style="COLOR: #008000">@dockDoorInternalNum</span>;
+<span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #ff0000">'Template_DetailPaneCustomerAddress'</span> <span style="COLOR: #0000ff">AS</span> Template_DetailPaneCustomerAddress ,
+    sh.CUSTOMER_ATTENTION_TO <span style="COLOR: #0000ff">AS</span> AttentionTo,
+    sh.customer <span style="COLOR: #0000ff">AS</span> BeforeName ,
+    sh.CUSTOMER_NAME <span style="COLOR: #0000ff">AS</span> Name,
+    sh.CUSTOMER_ADDRESS1 <span style="COLOR: #0000ff">AS</span> Address1,
+    sh.CUSTOMER_ADDRESS2 <span style="COLOR: #0000ff">AS</span> Address2,
+    sh.CUSTOMER_ADDRESS3 <span style="COLOR: #0000ff">AS</span> Address3,
+    sh.CUSTOMER_CITY <span style="COLOR: #0000ff">AS</span> City,
+    sh.customer_state <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">[State]</span>,
+    gcd.<span style="COLOR: #ff0000">[DESCRIPTION]</span> <span style="COLOR: #0000ff">AS</span> Country,
+    sh.CUSTOMER_POSTAL_CODE <span style="COLOR: #0000ff">AS</span> PostalCode,
+    sh.CUSTOMER_PHONE_NUM <span style="COLOR: #0000ff">AS</span> Phone ,
+    sh.CUSTOMER_FAX_NUM <span style="COLOR: #0000ff">AS</span> Fax,
+    sh.CUSTOMER_EMAIL_ADDRESS <span style="COLOR: #0000ff">AS</span> Email
+<span style="COLOR: #0000ff">FROM</span> #tempShipment sh <span style="COLOR: #808080">LEFT</span> <span style="COLOR: #808080">OUTER</span> <span style="COLOR: #808080">JOIN</span>
+GENERIC_CONFIG_DETAIL gcd <span style="COLOR: #0000ff">on</span> sh.CUSTOMER_COUNTRY <span style="COLOR: #808080">=</span> gcd.IDENTIFIER <span style="COLOR: #808080">AND</span> gcd.RECORD_TYPE<span style="COLOR: #808080">=</span><span style="COLOR: #ff0000">'Country'</span>;
+<span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #ff0000">'Template_DetailPaneShipToAddress'</span> <span style="COLOR: #0000ff">AS</span> Template_DetailPaneShipToAddress ,
+    sh.Ship_To_ATTENTION_TO <span style="COLOR: #0000ff">AS</span> AttentionTo,
+    sh.Ship_To <span style="COLOR: #0000ff">AS</span> BeforeName ,
+    sh.Ship_To_NAME <span style="COLOR: #0000ff">AS</span> Name,
+    sh.Ship_To_ADDRESS1 <span style="COLOR: #0000ff">AS</span> Address1,
+    sh.Ship_To_ADDRESS2 <span style="COLOR: #0000ff">AS</span> Address2,
+    sh.Ship_To_ADDRESS3    <span style="COLOR: #0000ff">AS</span> Address3,
+    sh.Ship_To_CITY <span style="COLOR: #0000ff">AS</span> City,
+    sh.Ship_To_state <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">[State]</span>,
+    gcd.<span style="COLOR: #ff0000">[DESCRIPTION]</span> <span style="COLOR: #0000ff">AS</span> Country,
+    sh.Ship_To_POSTAL_CODE <span style="COLOR: #0000ff">AS</span> PostalCode,
+    sh.Ship_To_PHONE_NUM <span style="COLOR: #0000ff">AS</span> Phone ,
+    sh.Ship_To_FAX_NUM <span style="COLOR: #0000ff">AS</span> Fax,
+    sh.Ship_To_EMAIL_ADDRESS <span style="COLOR: #0000ff">AS</span> Email
+<span style="COLOR: #0000ff">FROM</span> #tempShipment sh <span style="COLOR: #808080">LEFT</span> <span style="COLOR: #808080">OUTER</span> <span style="COLOR: #808080">JOIN</span>
+GENERIC_CONFIG_DETAIL gcd <span style="COLOR: #0000ff">on</span> sh.SHIP_TO_COUNTRY <span style="COLOR: #808080">=</span> gcd.IDENTIFIER <span style="COLOR: #808080">AND</span> gcd.RECORD_TYPE<span style="COLOR: #808080">=</span><span style="COLOR: #ff0000">'Country'</span>;
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #ff0000">'Table_DetailPaneDetails'</span> <span style="COLOR: #0000ff">AS</span> Table_DetailPaneDetails,
+    ITEM <span style="COLOR: #0000ff">as</span> ITEM,
+    <span style="COLOR: #ff0000">[ITEM_DESC]</span> <span style="COLOR: #0000ff">as</span> <span style="COLOR: #ff0000">[DESCRIPTION]</span>,
+    TOTAL_QTY <span style="COLOR: #0000ff">as</span> TOTALQTY#<span style="FONT-WEIGHT: bold; COLOR: #800000">30</span>,
+    QUANTITY_UM <span style="COLOR: #0000ff">as</span> UM
+<span style="COLOR: #0000ff">FROM</span> SHIPMENT_DETAIL sd
+<span style="COLOR: #0000ff">WHERE</span> sd.INTERNAL_SHIPMENT_NUM <span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@internalShipmentNum</span>;
+<span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #ff0000">'Table_DetailPaneDetailsUserDef'</span> <span style="COLOR: #0000ff">AS</span> Table_DetailPaneDetailsUserDef,
+    USER_DEF1 <span style="COLOR: #0000ff">as</span> UDSHH1,
+    USER_DEF2 <span style="COLOR: #0000ff">as</span> UDSHH2,
+    USER_DEF3 <span style="COLOR: #0000ff">as</span> UDSHH3,
+    USER_DEF4 <span style="COLOR: #0000ff">AS</span> UDSHH4,
+    USER_DEF5 <span style="COLOR: #0000ff">AS</span> UDSHH5,
+    USER_DEF6 <span style="COLOR: #0000ff">AS</span> UDSHH6,
+    USER_DEF7 <span style="COLOR: #0000ff">AS</span> UDSHH7#<span style="FONT-WEIGHT: bold; COLOR: #800000">40</span>,
+    USER_DEF8 <span style="COLOR: #0000ff">AS</span> UDSHH8#<span style="FONT-WEIGHT: bold; COLOR: #800000">40</span>
+<span style="COLOR: #0000ff">FROM</span> #tempShipment;
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #0000ff">top</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #ff0000">'Table_DetailPaneDetailsStatusInfo'</span> <span style="COLOR: #0000ff">AS</span> Table_DetailPaneDetailsStatusInfo,
+    dbo.STSfn_RtrvStsName (<span style="COLOR: #ff0000">'outbound'</span>,LEADING_STS) <span style="COLOR: #0000ff">as</span> LEADINGSTS,
+    dbo.STSfn_RtrvStsName (<span style="COLOR: #ff0000">'outbound'</span>,TRAILING_STS) <span style="COLOR: #0000ff">as</span> TRAILINGSTS,
+    PRIORITY <span style="COLOR: #0000ff">as</span> <span style="COLOR: #ff0000">[PRIORITY]</span>,
+    REJECTION_NOTE <span style="COLOR: #0000ff">as</span> REJECTIONNOTE,
+    <span style="COLOR: #ff00ff">CASE</span> <span style="COLOR: #0000ff">WHEN</span> IMMEDIATE_NEEDS_NOTE <span style="COLOR: #0000ff">is</span> <span style="COLOR: #808080">NOT</span> <span style="COLOR: #0000ff">NULL</span> <span style="COLOR: #0000ff">THEN</span> dbo.RSCMfn_RtrvResource(IMMEDIATE_NEEDS_NOTE,<span style="COLOR: #ff0000">'msg'</span>,<span style="COLOR: #008000">@culture</span>)
+    <span style="COLOR: #0000ff">ELSE</span> IMMEDIATE_NEEDS_NOTE <span style="COLOR: #0000ff">END</span> <span style="COLOR: #0000ff">AS</span> IMMEDIATENEEDSNOTE
+<span style="COLOR: #0000ff">FROM</span> #tempShipment;
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #0000ff">top</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #ff0000">'Table_DetailPaneDetailsCarrierInfo'</span> <span style="COLOR: #0000ff">AS</span> Table_DetailPaneDetailsCarrierInfo,
+    CARRIER <span style="COLOR: #0000ff">AS</span> CARRIER,
+    CARRIER_SERVICE <span style="COLOR: #0000ff">AS</span> CARRIERSERVICE,
+    CARRIER_GROUP <span style="COLOR: #0000ff">AS</span> CARRIERGROUP,
+    TOTAL_FREIGHT_CHARGE <span style="COLOR: #0000ff">AS</span> TOTALFREIGHT#<span style="FONT-WEIGHT: bold; COLOR: #800000">40</span>,
+    FREIGHT_TERMS <span style="COLOR: #0000ff">AS</span> FREIGHTTERMS,
+    BOL_NUM_ALPHA <span style="COLOR: #0000ff">AS</span> BOLNUMBER,
+    PRO_NUM_ALPHA <span style="COLOR: #0000ff">AS</span> PRONUMBER,
+    ROUTE <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">[ROUTE]</span>
+<span style="COLOR: #0000ff">FROM</span> #tempShipment;
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #0000ff">top</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #ff0000">'Table_DetailPaneDetailsDates'</span> <span style="COLOR: #0000ff">AS</span> Table_DetailPaneDetailsDates,
+    PLANNED_SHIP_DATE <span style="COLOR: #0000ff">AS</span> PLANNEDSHIPDATE ,
+    SCHEDULED_SHIP_DATE <span style="COLOR: #0000ff">AS</span> SCHEDULEDSHIPDATE,
+    ACTUAL_SHIP_DATE_TIME <span style="COLOR: #0000ff">AS</span> ACTUALSHIPDATE,
+    <span style="COLOR: #ff00ff">CASE</span> <span style="COLOR: #0000ff">WHEN</span> REQUESTED_DELIVERY_TYPE <span style="COLOR: #0000ff">is</span> <span style="COLOR: #808080">NOT</span> <span style="COLOR: #0000ff">NULL</span> <span style="COLOR: #0000ff">THEN</span> dbo.RSCMfn_RtrvResource(<span style="COLOR: #ff0000">'DELIVER'</span><span style="COLOR: #808080">+</span>REQUESTED_DELIVERY_TYPE,<span style="COLOR: #ff0000">'text'</span>,<span style="COLOR: #008000">@culture</span>)
+    <span style="COLOR: #0000ff">ELSE</span> REQUESTED_DELIVERY_TYPE <span style="COLOR: #0000ff">END</span> <span style="COLOR: #0000ff">AS</span> REQUESTEDDELIVERYTYPE ,
+    PLANNED_DELIVERY_DATE_TIME <span style="COLOR: #0000ff">AS</span> PLANNEDDELIVERYDATE,
+    ACTUAL_DELIVERY_DATE_TIME <span style="COLOR: #0000ff">AS</span> ACTUALDELIVERYDATETIME,
+    REQUESTED_DELIVERY_DATE <span style="COLOR: #0000ff">AS</span> REQUESTEDDELIVERYDATE
+<span style="COLOR: #0000ff">FROM</span> #tempShipment;
+<span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #ff0000">'Hierarchical_DetailPaneDetailsContainers'</span> <span style="COLOR: #0000ff">AS</span> Hierarchical_DetailPaneDetailsContainers,
+    INTERNAL_CONTAINER_NUM <span style="COLOR: #0000ff">AS</span> META_ID,
+    PARENT <span style="COLOR: #0000ff">AS</span> META_PARENTID ,
+    CONTAINER_ID <span style="COLOR: #0000ff">AS</span> ID,
+    CONTAINER_TYPE <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">[TYPE]</span>,
+    dbo.STSfn_RtrvStsName (<span style="COLOR: #ff0000">'outbound'</span>,<span style="COLOR: #ff0000">[STATUS]</span>) <span style="COLOR: #0000ff">AS</span> <span style="COLOR: #ff0000">[STATUS]</span>,
+    dbo.SHIPCONTfn_RtrvCurrentLocation(INTERNAL_CONTAINER_NUM) <span style="COLOR: #0000ff">AS</span> LOCATION,
+    INTERNAL_CONTAINER_NUM <span style="COLOR: #0000ff">AS</span> HIDDEN_INTERNALCONTAINERNUM
+<span style="COLOR: #0000ff">FROM</span> SHIPPING_CONTAINER
+<span style="COLOR: #0000ff">WHERE</span> INTERNAL_SHIPMENT_NUM<span style="COLOR: #808080">=</span> <span style="COLOR: #008000">@INTERNALSHIPMENTNUM</span> <span style="COLOR: #808080">AND</span> CONTAINER_ID <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #808080">NOT</span> <span style="COLOR: #0000ff">NULL</span>;
+<span style="COLOR: #0000ff">select</span> <span style="COLOR: #0000ff">top</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #ff0000">'Table_DetailPaneDetailsLoadInfo'</span> <span style="COLOR: #0000ff">AS</span> Table_DetailPaneDetailsLoadInfo,
+    sl.INTERNAL_LOAD_NUM <span style="COLOR: #0000ff">as</span> LOADNUMBER,
+    sl.CARRIER <span style="COLOR: #0000ff">as</span> CARRIER,
+    sl.SCHEDULED_SHIP_DATE <span style="COLOR: #0000ff">AS</span> SCHEDULEDSHIPDATE,
+    dbo.STSfn_RtrvStsName (<span style="COLOR: #ff0000">'outbound'</span>,sl.LEADING_STS) <span style="COLOR: #0000ff">as</span> LEADINGSTS,
+    dbo.STSfn_RtrvStsName (<span style="COLOR: #ff0000">'outbound'</span>,sl.TRAILING_STS) <span style="COLOR: #0000ff">as</span> TRAILINGSTS
+<span style="COLOR: #0000ff">FROM</span> #tempShipment sh
+<span style="COLOR: #808080">LEFT</span> <span style="COLOR: #808080">OUTER</span> <span style="COLOR: #808080">JOIN</span> Shipping_load sl <span style="COLOR: #0000ff">ON</span> sh.SHIPPING_LOAD_NUM <span style="COLOR: #808080">=</span> sl.INTERNAL_LOAD_NUM;
+<span style="COLOR: #0000ff">SELECT</span> <span style="COLOR: #0000ff">top</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #ff0000">'Table_DetailPaneDetailsReferenceInfo'</span> <span style="COLOR: #0000ff">AS</span> Table_DetailPaneDetailsReferenceInfo,
+    ERP_ORDER                    <span style="COLOR: #0000ff">AS</span> ERPORDER,
+    INTERNAL_SHIPMENT_NUM        <span style="COLOR: #0000ff">AS</span> INTERNALSHIPMENTNUM ,
+    INTERNAL_ORDER_NUM            <span style="COLOR: #0000ff">AS</span> INTERNALORDERNUM,
+    STORE_DISTRIBUTION            <span style="COLOR: #0000ff">AS</span> STOREDISTRIBUTION,
+    ORDER_TYPE                    <span style="COLOR: #0000ff">AS</span> ORDERTYPE,
+    PROCESS_TYPE                <span style="COLOR: #0000ff">AS</span> PROCESSTYPE,
+    (<span style="COLOR: #ff00ff">CASE</span> <span style="COLOR: #0000ff">WHEN</span> CONSOLIDATION_DOCK_LOC_AREA <span style="COLOR: #0000ff">IS</span> <span style="COLOR: #808080">NOT</span> <span style="COLOR: #0000ff">NULL</span> <span style="COLOR: #0000ff">THEN</span> (CONSOLIDATION_DOCK_LOC_AREA <span style="COLOR: #808080">+</span> N<span style="COLOR: #ff0000">'-'</span> <span style="COLOR: #808080">+</span> CONSOLIDATION_DOCK_LOC_POS) <span style="COLOR: #0000ff">ELSE</span> <span style="COLOR: #0000ff">NULL</span> <span style="COLOR: #0000ff">END</span>)    <span style="COLOR: #0000ff">AS</span> CONSOLIDATIONLOCATION,
+    <span style="COLOR: #ff00ff">CONVERT</span>(<span style="COLOR: #0000ff">BIT</span>, (<span style="COLOR: #ff00ff">CASE</span> <span style="COLOR: #0000ff">WHEN</span> <span style="COLOR: #ff00ff">ISNULL</span>(ALLOCATE_COMPLETE, N<span style="COLOR: #ff0000">'N'</span>)<span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span> <span style="COLOR: #0000ff">THEN</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #0000ff">ELSE</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span> <span style="COLOR: #0000ff">END</span>))            <span style="COLOR: #0000ff">AS</span> ALLOCATECOMPLETE,
+    <span style="COLOR: #ff00ff">CONVERT</span>(<span style="COLOR: #0000ff">BIT</span>, (<span style="COLOR: #ff00ff">CASE</span> <span style="COLOR: #0000ff">WHEN</span> <span style="COLOR: #ff00ff">ISNULL</span>(CONSOLIDATION_ALLOWED, N<span style="COLOR: #ff0000">'N'</span>)<span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span> <span style="COLOR: #0000ff">THEN</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #0000ff">ELSE</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span> <span style="COLOR: #0000ff">END</span>))        <span style="COLOR: #0000ff">AS</span> CONSOLIDATIONALLOWED,
+    <span style="COLOR: #ff00ff">CONVERT</span>(<span style="COLOR: #0000ff">BIT</span>, (<span style="COLOR: #ff00ff">CASE</span> <span style="COLOR: #0000ff">WHEN</span> <span style="COLOR: #ff00ff">ISNULL</span>(CONSOLIDATED, N<span style="COLOR: #ff0000">'N'</span>)<span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span> <span style="COLOR: #0000ff">THEN</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #0000ff">ELSE</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span> <span style="COLOR: #0000ff">END</span>))                <span style="COLOR: #0000ff">AS</span> CONSOLIDATED,
+    <span style="COLOR: #ff00ff">CONVERT</span>(<span style="COLOR: #0000ff">BIT</span>, (<span style="COLOR: #ff00ff">CASE</span> <span style="COLOR: #0000ff">WHEN</span> <span style="COLOR: #ff00ff">ISNULL</span>(MANUALLY_ENTERED, N<span style="COLOR: #ff0000">'N'</span>)<span style="COLOR: #808080">=</span> N<span style="COLOR: #ff0000">'Y'</span> <span style="COLOR: #0000ff">THEN</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">1</span> <span style="COLOR: #0000ff">ELSE</span> <span style="FONT-WEIGHT: bold; COLOR: #800000">0</span> <span style="COLOR: #0000ff">END</span>))            <span style="COLOR: #0000ff">AS</span> MANUALLYENTERED
+<span style="COLOR: #0000ff">FROM</span> #tempShipment;
+<span style="COLOR: #0000ff">END</span>
+</pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<p></p>
+
+<p></p>
+
+<div class="i-box i-box-note">
+    These stored procedures require the "culture" parameter to properly translate resources.
+</div>
+
+<p></p>
+            <a name="seealsobookmark"></a>
+            <div class="i-section-heading" id="i-seealso-section-heading"><span class="i-section-heading-icon"><!-- --></span><span class="i-section-heading-text">See Also</span></div><div id="i-seealso-section-content" class="i-section-content"><div class="i-see-also-link">
+<a href="How_to_Create_Detail_Pane.html">How to: Create the Detail Pane</a></div>
+
+</div>
+        
+    </div>
+    <div id="i-footer-content" class="i-footer-content">
+        
+<p>&nbsp;</p><p>&nbsp;</p><hr style="height: 1px" /><p>&copy;2026 Manhattan Associates. All Rights Reserved.</p>
+
+    </div>
+    
+
+    
+    <script type="text/javascript">setIsResponsiveEnabled = true;</script>
+    <script type="text/javascript">
+        $(function() {
+            var documentInstance = new Innovasys.Content.Document(document.body);
+            documentInstance.isNew = !(typeof setIsNew === "undefined");
+            documentInstance.isResponsiveEnabled = !(typeof setIsResponsiveEnabled === "undefined");
+            documentInstance.load();
+        });
+    </script>
+</body>
+</html>
