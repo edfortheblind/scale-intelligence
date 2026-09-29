@@ -8,6 +8,8 @@ Credentials were subsequently moved under explicit owner instruction to `%LOCALA
 
 The owner also requested `SDD/README.md` be prepared and obsolete prompts archived. SDD now inventories nine supplied documents and defines their intake/reconciliation method; document-body extraction is not yet performed. The active `01_AIM_MASTER_PROMPT.md` and `02_SDK_MASTER_PROMPT.md` remain because collector/policy/tests consume them. Obsolete kickoff material has a local ignored archive with restoration metadata. This does not reopen accepted AIM/SDK collection or start the interactive application.
 
+Private main delivery of the DB/SDD generation is verified at content commit `920c2aa50afeed5030b8ff9eef7e48026831c3a0`; `_project/db-delivery-checkpoint.json` records the clean clone, all 5,971 artifact hashes, nine source-document originals and 12 passing clone tests. The receipt itself is published in a subsequent metadata commit. Documented semantic/runtime gaps remain unchanged.
+
 ## Owner-closed collection
 
 AIM is accepted complete at 99.71% (2,446/2,453 known article originals). SDK is accepted complete at 95.53% (363/380). Both use OWNER_ACCEPTED_COMPLETE_WITH_EXCEPTIONS. Read owner-acceptance-AIM.json, owner-acceptance-SDK.json, collection-closure.json and COLLECTION_CLOSURE.md. No acquisition is pending, and no routine retries or repeated approval are required.

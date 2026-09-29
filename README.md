@@ -2,7 +2,7 @@
 
 Universal SCALE reference library: [AIM](AIM/README.md) and [SDK](SDK/README.md).
 
-The [database architecture assessment](DB%20Architecture/README.md) adds a metadata-only replica inventory, routine contracts, dependency maps, runtime evidence and source-linked process explanations. The [SDD intake](SDD/README.md) organizes the owner's supplied solution-design and supporting documents. Database structural coverage, semantic review and complete process runtime are tracked separately; the interactive application remains a subsequent implementation phase.
+The [database architecture assessment](DB%20Architecture/README.md) adds a metadata-only replica inventory, routine contracts, dependency maps, runtime evidence and source-linked process explanations. The [SDD intake](SDD/README.md) organizes the owner's supplied solution-design and supporting documents. Database structural coverage, semantic review and complete process runtime are tracked separately; the interactive application remains a subsequent implementation phase. The [DB/SDD delivery receipt](_project/db-delivery-checkpoint.json) records its verified private main publication and clean checkout.
 
 AIM is owner-accepted complete with documented exceptions: 99.71% known article capture (2,446/2,453). Deprecation remains an unverified owner hypothesis. SDK is also owner-accepted complete with documented exceptions at 95.53%. The documentation collection phase is closed; source-fidelity measurements remain unchanged.
 
