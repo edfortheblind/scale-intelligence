@@ -28,7 +28,7 @@ The knowledge foundation is incomplete. Percentages below measure named tasks ag
 | C | Source assets with authored descriptions | 605 / 613 | 98.69% | Per-document unique asset paths; separate from slide/page viewing. |
 | C | PDF table candidates reconciled | 93 / 219 | 42.47% | Candidates are merged into logical tables; undetected/raster table denominator remains unknown. |
 | C | PDF table candidates with reviewed disposition | 219 / 219 | 100.00% | Includes explicitly rejected layout/fragment artifacts; rejection is not additional semantic table review. |
-| C | Extracted nodes cited in bounded reviews | 2,757 / 11,618 | 23.73% | A citation does not certify every claim within the node. |
+| C | Extracted nodes cited in bounded reviews | 2,795 / 11,618 | 24.06% | A citation does not certify every claim within the node. |
 | D | Retained runtime rows accounted for | 1,795 / 1,795 | 100.00% | Weighted statement profiles preserve execution/replica dimensions and source row identities. |
 | D | Historical runtime IDs matched to current catalog | 154 / 163 | 94.48% | Current name lookup only; historical definition identity and ID reuse are not established. |
 | E | Selected-topic presentation/citation checks | 725 / 725 | 100.00% | Actual local HTTP checks; not semantic answer acceptance. |
@@ -41,8 +41,8 @@ The knowledge foundation is incomplete. Percentages below measure named tasks ag
 - help topics: **340**.
 - ordered steps: **858**.
 - aim setting contracts: **14**.
-- sdd setting contracts: **279**.
-- sdd claims: **309**.
+- sdd setting contracts: **283**.
+- sdd claims: **316**.
 - sdd visual descriptions: **398**.
 - logical pdf tables: **79**.
 - process documentary refinements: **130**.
