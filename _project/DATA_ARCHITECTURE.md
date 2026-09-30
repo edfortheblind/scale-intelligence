@@ -19,10 +19,25 @@ The complete outgoing reference graph lives in each article JSON's `references` 
 
 Only verified reading documents enter the production search index. Incomplete discovery and failed resources remain visible in coverage and error reports. A provisional index, if generated before completion, is explicitly marked incomplete. The database is disposable and reproducible from JSON and manifests; the app can later import the same records into a server database without recollecting SCALE. Embeddings may be added as another derived index later, but are not required for exact keyword search and never replace the original text.
 
-The acquisition sequence remains AIM, then SDK, then cross-module reconciliation and private delivery verification. Building the interactive app itself is a subsequent implementation task; this corpus preserves the data and relationships it will need.
+The acquisition sequence was AIM, SDK, cross-module reconciliation and private delivery verification. The separate local help prototype now consumes reviewed functional records while preserving the original corpus and its relationships.
 
 ## Replica architecture and supporting design evidence
 
 The owner-authorized database assessment adds a separate generation under `DB Architecture/`: snapshot-scoped object records, catalog attributes, source-definition fingerprints, redacted SQL reading copies, static dependency edges, process-summary references and aggregate runtime observations. Its [intelligence contract](../DB%20Architecture/INTELLIGENCE_CONTRACT.md) defines claim types and joins to existing article IDs, original hashes and node IDs. Structural coverage, semantic review and observed process runtime remain independent measures. No operational rows enter the app corpus, and credentials/raw definitions stay in protected local storage outside OneDrive and Git.
 
 `SDD/README.md` registers the supplied solution-design/configuration/training documents as another evidence class. Their product/version and implementation context must survive extraction. A design statement is not proof of current deployment behavior. Preserve all original AIM/SDK source records and accepted gaps when adding these derived relationships; the existing search database has not yet been extended or rebuilt for DB/SDD retrieval.
+
+
+## Curated functional and SDD records
+
+`DB Architecture/mappings/batches/` stores bounded reviewed SQL contracts and exact evidence references. The shared help, role, family, configuration and source-reconciliation ledgers remain distinct from the structural catalog. `object-review-ledger.json` preserves reviewed and unreviewed states for every eligible object; a generated identity row is not semantic review.
+
+`SDD/derived/inventory.json` binds all nine originals to eight unique content records. Each document JSON preserves text, table/slide/page coordinates, media hashes and fidelity exceptions. `reviewed-knowledge.json` overlays only the cited product markers, claims, settings and diagram descriptions. A body extraction does not make every node reviewed or production-index eligible. The existing AIM/SDK search database remains unchanged.
+
+## Local curated help implementation
+
+`tools/serve_help.py` serves native HTML and bounded JSON APIs on loopback. `help_knowledge.py` loads one verified knowledge generation, uses a disposable FTS5 index for each search and excludes evaluation questions/answer keys. It serves authored answers, with no model, database connection or generated SQL.
+
+SQL citations bind redacted-copy and original-definition hashes; vendor citations bind original bytes and content nodes. Four selected SDD claims additionally bind the exact reviewed record, original document and extracted node identities. Only their reviewed conclusions and locations enter the local prototype; raw SDD bodies remain outside production indexing. Retained configuration/runtime citations preserve their aggregate, temporal and replica boundaries.
+
+`runtime-profiles.json` preserves historical object/replica/execution-type dimensions and every retained source-row position. `help_app/evaluation.json` separates actual HTTP retrieval from selected-topic integrity. Neither is evidence of historical SQL-definition identity, whole-process timing, production deployment or intended-user accessibility acceptance.

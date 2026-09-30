@@ -1,0 +1,132 @@
+"""Report separate evidence-based completion measures; never invent an overall percentage."""
+import hashlib
+import json
+from collections import Counter
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def report():
+    inputs = {}
+    def read(relative):
+        raw = (ROOT/relative).read_bytes()
+        inputs[relative] = hashlib.sha256(raw).hexdigest()
+        return json.loads(raw)
+    ledger = read('DB Architecture/mappings/object-review-ledger.json')
+    backlog = read('DB Architecture/mappings/review-backlog.json')
+    families = read('DB Architecture/mappings/functional-coverage.json')
+    help_data = read('DB Architecture/mappings/help-topics.json')
+    sdd = read('SDD/derived/reviewed-knowledge.json')
+    sdd_coverage = read('SDD/derived/review-coverage.json')
+    tables = read('SDD/derived/reviewed-tables.json')
+    inventory = read('SDD/derived/inventory.json')
+    runtime = read('DB Architecture/mappings/runtime-profiles.json')
+    evaluation = read('help_app/evaluation.json')
+    config = read('DB Architecture/mappings/configuration-guide.json')
+    # Reject stale app metrics instead of silently attributing old results to new content.
+    if evaluation['source_generation_sha256'] != inputs['DB Architecture/mappings/help-topics.json']:
+        raise ValueError('Run the help evaluation against current knowledge before reporting completion.')
+    from help_knowledge import IMPLEMENTATION_SHA256
+    if evaluation['implementation_sha256'] != IMPLEMENTATION_SHA256:
+        raise ValueError('Run the help evaluation against current implementation before reporting completion.')
+    read('help_app/vendor-source-manifest.json')
+    if evaluation.get('vendor_manifest_sha256') != inputs['help_app/vendor-source-manifest.json']:
+        raise ValueError('Run the help evaluation against the current vendor citation manifest.')
+    rows = []
+    def metric(section, name, completed, total, meaning):
+        rows.append({'section': section, 'task': name, 'completed': completed, 'total': total,
+                     'percent': round(completed/total*100, 2) if total else None, 'meaning': meaning})
+    counts=ledger['counts']
+    metric('A', 'Functional object roles', counts['role_reviewed'], counts['eligible'], 'Bounded role evidence; not full routine or deployment acceptance.')
+    metric('A', 'Module semantic contracts', counts['bounded_semantic_contracts'], counts['semantic_eligible_modules'], 'Source-defined inputs/effects/branches/errors and explicit remaining limits.')
+    for types, label in [({'P'}, 'Stored procedures'), ({'FN','IF','TF'}, 'Functions'), ({'V'}, 'Views'), ({'TR'}, 'Triggers')]:
+        group = [r for r in ledger['records'] if r['object_type'] in types]
+        metric('A', label, sum(r['semantic_review']=='BOUNDED_STATIC_CONTRACT' for r in group), len(group), 'Bounded static contract coverage for this captured type.')
+    table_roles = [r for r in ledger['records'] if r['object_type']=='U']
+    metric('A', 'Table functional roles', sum(r['role_review']=='BOUNDED_ROLE_REVIEWED' for r in table_roles), len(table_roles), 'Reviewed structural/use role; not a full table behavior or operational acceptance claim.')
+    metric('A', 'Dynamic-execution candidates reviewed', backlog['counts']['dynamic_candidates_with_bounded_review'], backlog['counts']['dynamic_candidates'], 'Candidate disposition; does not prove runtime target or caller behavior.')
+    metric('A', 'Unresolved dependency entries reviewed', backlog['counts']['unresolved_entries_with_bounded_review'], backlog['counts']['unresolved_catalog_entries'], 'Catalog NULL targets remain unresolved even after explanatory review.')
+    metric('B', 'Families with reviewed introductory passages', families['counts']['families_with_reviewed_documentary_passages'], families['counts']['indexed_families'], 'Captured summary families are not all SCALE capabilities.')
+    process_path='DB Architecture/mappings/process-documentary-review.json'
+    process_summary = None
+    if (ROOT/process_path).is_file():
+        process_summary=read(process_path)
+        p=process_summary['coverage']
+        metric('B', 'Families with complete captured documentary review', p['families_reviewed'], p['families_total'], 'All captured process-summary bodies and local figures; not installed application behavior.')
+        metric('B', 'Process-summary text bodies reviewed', p['text_articles_reviewed'], p['text_articles_total'], 'Complete retained text within the process catalog; not every AIM article.')
+        metric('B', 'Process-summary image references inspected', p['image_references_inspected'], p['image_references_total'], 'Static source assets, including separately identified decorative references.')
+        metric('B', 'Reviewed process refinements available in local help',
+               sum(len(t.get('documentary_refinements',[])) for t in help_data['topics']),p['authored_refinements'],
+               'Previously reviewed statements joined with original article/node fingerprints; deployment and production eligibility remain separate.')
+    metric('B', 'Families fully reconciled to deployment', families['counts']['families_with_complete_deployment_review'], families['counts']['indexed_families'], 'Missing application/service/configuration evidence remains explicit.')
+    metric('C', 'Supplied originals preserved', len(inventory['originals']), inventory['original_count'], 'Original hash verification is recorded in the validation receipt.')
+    metric('C', 'Unique bodies extracted', len(inventory['documents']), inventory['unique_document_count'], 'Extraction retains fidelity exceptions; duplicate pair indexed once.')
+    docs=sdd_coverage['documents']
+    slides=sum(len(d['visually_inspected_static_slides']) for d in docs)
+    # Supplied deck has 45 physical slides; extraction count, not authored-review count.
+    slide_numbers=set()
+    candidate_nodes=set()
+    all_nodes=0
+    for doc in inventory['documents']:
+        body=read('SDD/derived/'+doc['document_path'])
+        all_nodes += len(body['nodes'])
+        slide_numbers.update((doc['document_id'], n['slide']) for n in body['nodes'] if n.get('slide'))
+        candidate_nodes.update((doc['document_id'],n['id']) for n in body['nodes'] if n['kind']=='pdf_table_candidate')
+    metric('C', 'PowerPoint static slides visually inspected', slides, len(slide_numbers), 'Static layout only; not animations, font fidelity or screen-reader acceptance.')
+    metric('C', 'PDF pages visually inspected', sum(len(d['visually_inspected_pdf_pages']) for d in docs), sum(d['physical_page_count'] or 0 for d in docs), 'Physical page review; not all claims or tables on every page.')
+    metric('C', 'Source assets with authored descriptions', sum(d['described_asset_count'] for d in docs), sum(d['unique_extracted_asset_count'] for d in docs), 'Per-document unique asset paths; separate from slide/page viewing.')
+    cited_table_nodes={(c['document_id'],n) for t in tables['tables'] for c in t['citations'] for n in c['nodes']}
+    metric('C', 'PDF table candidates reconciled', len(candidate_nodes & cited_table_nodes), len(candidate_nodes), 'Candidates are merged into logical tables; undetected/raster table denominator remains unknown.')
+    rejected={(c['document_id'],c['node']) for c in tables.get('rejected_candidates',[])}
+    if rejected & cited_table_nodes or not rejected <= candidate_nodes:
+        raise ValueError('SDD candidate dispositions overlap or reference unknown candidates.')
+    metric('C', 'PDF table candidates with reviewed disposition', len((candidate_nodes & cited_table_nodes) | rejected), len(candidate_nodes), 'Includes explicitly rejected layout/fragment artifacts; rejection is not additional semantic table review.')
+    metric('C', 'Extracted nodes cited in bounded reviews', sum(d['cited_reviewed_node_count'] for d in docs), all_nodes, 'A citation does not certify every claim within the node.')
+    metric('D', 'Retained runtime rows accounted for', sum(p['retained_interval_rows'] for p in runtime['profiles']), runtime['counts']['source_rows'], 'Weighted statement profiles preserve execution/replica dimensions and source row identities.')
+    metric('D', 'Historical runtime IDs matched to current catalog', runtime['counts']['current_catalog_matches'], runtime['counts']['historical_object_ids'], 'Current name lookup only; historical definition identity and ID reuse are not established.')
+    metric('E', 'Selected-topic presentation/citation checks', evaluation['selected_topic_contract']['passed'], evaluation['case_count'], 'Actual local HTTP checks; not semantic answer acceptance.')
+    metric('E', 'Question retrieval: expected topic in first eight', evaluation['question_only_retrieval']['expected_topic_in_first_eight'], evaluation['case_count'], 'Authored questions; evaluation text is excluded from the search index. Not independent holdout.')
+    metric('E', 'Question retrieval: expected topic first', evaluation['question_only_retrieval']['expected_topic_first'], evaluation['case_count'], 'Ambiguous questions may require choosing a topic. No semantic score is inferred.')
+    result={'schema_version':1,'overall_percent':None,'overall_state':'INCOMPLETE',
+            'policy':'Separate measures have different denominators. No average or structural-to-semantic completion inference.',
+            'snapshot_id':ledger['snapshot_id'],'metrics':rows,'counts_without_complete_denominator':{
+                'help_topics':len(help_data['topics']),'ordered_steps':sum(len(t['execution_steps']) for t in help_data['topics']),
+                'aim_setting_contracts':config['setting_count'],'sdd_setting_contracts':len(sdd['configuration']),
+                'sdd_claims':len(sdd['claims']),'sdd_visual_descriptions':len(sdd['diagrams']),
+                'logical_pdf_tables':len(tables['tables']),
+                'process_documentary_refinements':process_summary['coverage']['authored_refinements'] if process_summary else 0},
+            'unperformed_or_unestablished':['Complete functional/deployment reconciliation','Full DOCX page fidelity',
+                'Whole-process elapsed timing','Actual browser/keyboard/screen-reader and intended-user acceptance',
+                'Production deployment and authenticated warehouse/company authorization','Insight navigation/SOP registration'],
+            'process_documentary_detail':process_path if process_summary else None,'input_sha256':inputs}
+    return result
+
+
+def markdown(data):
+    text=['# Completion by task and section', '',
+          'The knowledge foundation is incomplete. Percentages below measure named tasks against explicit captured denominators; '
+          'there is no defensible overall completion percentage.', '',
+          '| Section | Task | Complete / total | Progress | Meaning |',
+          '| --- | --- | ---: | ---: | --- |']
+    for r in data['metrics']:
+        pct=f"{r['percent']:.2f}%" if r['percent'] is not None else 'Unknown denominator'
+        text.append(f"| {r['section']} | {r['task']} | {r['completed']:,} / {r['total']:,} | {pct} | {r['meaning']} |")
+    text += ['', '## Delivered counts without an exhaustive denominator', '']
+    text += [f"- {key.replace('_',' ')}: **{value:,}**." for key,value in data['counts_without_complete_denominator'].items()]
+    text += ['', '## Remaining evidence and acceptance', '']
+    text += ['- '+item+'.' for item in data['unperformed_or_unestablished']]
+    text += ['', 'Word preference: the prior diagnostic recorded `Options.UpdateLinksAtOpen=false`. '
+             'The earlier value was not retained, so historical restoration cannot be verified. '
+             'This continuation made no Word preference writes or document opens.', '',
+             'Detailed source hashes and reproducible counters: [section-progress.json](section-progress.json). '
+             'Validation, bounded peer review, audit limits and delivery state: [concern-resolution-20260930.json](concern-resolution-20260930.json). '
+             'The earlier [progress-20260930.json](progress-20260930.json) and [max-progress.json](max-progress.json) remain historical receipts.', '']
+    return '\n'.join(text)
+
+
+if __name__=='__main__':
+    data=report()
+    (ROOT/'_project/section-progress.json').write_text(json.dumps(data,indent=2)+'\n',encoding='utf-8',newline='\n')
+    (ROOT/'_project/COMPLETION_REPORT.md').write_text(markdown(data),encoding='utf-8',newline='\n')
+    print(json.dumps({'measures':len(data['metrics']),'overall_percent':None,**data['counts_without_complete_denominator']}))

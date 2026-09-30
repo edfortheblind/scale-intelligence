@@ -1,102 +1,50 @@
 # SCALE Intelligence project status
 
-Status date: 2026-09-29. Current direction: build an accessible, source-grounded SCALE knowledge base for fast help to novice users, including visually impaired users. The complete interactive intelligence application is not yet built.
+Publication handoff, 2026-09-30. The owner accepts local files plus the existing private GitHub repository as the delivery boundary and explicitly authorizes commit, push and merge. [Completion by task and section](_project/COMPLETION_REPORT.md) gives current measured progress. There is no defensible overall percentage.
 
-Start the next session with [03_SCALE_INTELLIGENCE_MASTER_PROMPT.md](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md). It directs continued functional review, runtime explanation, configuration guidance and SDD reconciliation. The future Insight screen register/navigation and functionality SOP task remains separate.
+Start with [the master prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) and [resume instructions](_project/RESUME.md). [The functional verification receipt](_project/concern-resolution-20260930.json) binds the preceding local checkpoint. [The publication receipt](_project/publication-20260930.json) records the subsequent GitHub delivery. Previous progress, max-progress and functional-continuation receipts and manifests remain immutable historical evidence.
 
-## Completion and evidence by workstream
-
-| Workstream | Current evidence | Status / remaining work |
+| Section/task | Current evidence | Remaining scope |
 | --- | --- | --- |
-| AIM acquisition | 2,446/2,453 known article originals: 99.71% | Owner-accepted complete with documented exceptions. No routine acquisition retry pending. |
-| SDK acquisition | 363/380 known article originals: 95.53%; 691/734 required original resources retained | Owner-accepted complete with documented exceptions. Known inventory is a lower bound; missing/invalid source content stays visible. |
-| Reusable corpus/search | 2,809 article JSONs and FTS5 search entries, preserved originals and reading copies | Existing reference foundation. Search remains qualified by its source gaps; no complete answer engine is claimed. |
-| DB structural assessment | 3,022 visible objects; all 1,142 SQL definitions captured in snapshot `20260929T214106Z` | 100% of the observed visible-object inventory structurally documented. This percentage does not measure functional or runtime completeness. |
-| Functional object roles | 35/1,656 eligible tables/procedures/functions/views/triggers: 2.11% | 21 tables, eight procedures, two functions, two triggers and two views reviewed. 1,621 remain unreviewed. A role review is narrower than full routine semantics. |
-| Help explanations | Eight topics; 35 ordered execution steps; 16 evaluation cases authored | Initial static pilot verified. Complete SCALE functionality coverage and app evaluation remain open. |
-| Process families | 34 captured AIM summary families / 62 source articles indexed | Zero families marked fully reconciled to deployment. Indexing is not semantic completion; other capabilities may exist outside these headings. |
-| Configuration validation | Five fixed checks succeeded; 107 configuration rows inspected across their separate scopes | Aggregate-only observations retained. No transactional records selected. Full configuration guide, precedence and per-user effective settings remain incomplete. |
-| Retained DB telemetry | Statement history for 163 historical object IDs; 154 currently matched and nine unresolved | Useful prioritization evidence, not whole-process elapsed runtime or procedure-call counts. |
-| SDD/supporting material | Nine original files inventoried and preserved; eight unique byte contents | Body extraction, fidelity review, product/version mapping and claim reconciliation not yet performed. |
-| Insight navigation and SOPs | Future task identified | No screen register, verified navigation or screen-based SOP capture performed. |
-| Interactive app/accessibility | Content model and accessibility requirements documented | App implementation, retrieval evaluation, keyboard/screen-reader tests, intended-user acceptance and deployment not performed. |
+| A: Object roles | 668/1,656 (40.34%) | 988 identities unreviewed. |
+| A: Module contracts | 505/1,138 (44.38%) | 633 procedures lack bounded full-body contracts. |
+| A: Stored procedures | 288/921 (31.27%) | Static review retains caller/configuration/runtime limits. |
+| A: Table roles | 162/518 (31.27%) | 356 table roles unreviewed. |
+| A: Other captured types | 76/76 functions, 135/135 views, 6/6 triggers | No live execution acceptance follows. |
+| A: Dynamic/dependency review | 60/60 candidates and 169/169 unresolved entries dispositioned | Catalog NULL targets remain unresolved. |
+| B: Documentary process review | 34/34 captured families, 62/62 bodies, 53/53 image references; 130/130 refinements available in local help | 0/34 full deployment reconciliations. |
+| C: SDD | Nine originals/eight unique bodies; 66 claims, 101 settings, 46 visual descriptions and 76 logical PDF tables | 231/231 PDF pages viewed; 45/45 static slides. Full DOCX layout and unreviewed semantic content/assets remain open. |
+| C: PDF candidate review | 93/219 candidates support 76 logical tables; 126 rejected artifacts; 0 pending | Candidate disposition is 219/219; undetected/raster table total is unknown. |
+| D: Runtime | 1,795/1,795 retained rows in 163 dimension-preserving profiles; 154 catalog matches | No whole-process timing or historical-definition identity guarantee. |
+| E: Help | 201 topics, 450 ordered steps; cited routine details and process refinements | Production authentication, user and assistive-technology acceptance unperformed. |
+| E: Actual HTTP | 445/445 selected-topic checks; 420/445 expected-topic top eight; 290/445 first | 25 retrieval misses. Semantic expectations are not automatically scored; questions are not independent holdout. |
 
-There is **no defensible single overall completion percentage**. Structural capture, functional interpretation, configuration coverage, measured runtime and application acceptance have different denominators. Full SCALE knowledge completion remains open.
+This continuation adds 46 module contracts, 98 net object roles, 14 help topics and 28 authored questions. The unchanged 417-question baseline improves from 380 to 392 expected-topic top-eight results; 16 cases recover and four regress after corpus expansion. All 28 new questions retrieve the expected topic within eight results. These are authored retrieval checks, not independent usability or answer-quality acceptance.
 
-## What the database assessment contains
+## Implemented and corrected
 
-The observed engine is Azure SQL Database with compatibility level 150. The connection reported `READ_ONLY`; this differs from the catalog `is_read_only` flag, which was false. TLS certificate validation remained enabled. Collection used ODBC independently of the VS Code extension UI.
+The [local help app](help_app/README.md) now separates identifier words and numbers, searches displayed evidence limits and short explanatory passages, and uses stemmed whole words. Evaluation questions and expected/forbidden answers remain excluded. The dynamic XML/units explanation now distinguishes bound values from concatenated query text. Source and implementation hashes bind the actual HTTP evaluation. Start `python tools/serve_help.py --port 8765` and open `http://127.0.0.1:8765`.
 
-The object inventory includes 518 tables, 921 stored procedures, 76 functions, 135 views, six triggers, 407 foreign keys, 400 primary keys and associated constraints/defaults/sequence. Every object has JSON documentation; 1,657 principal objects also have Markdown references. Repository SQL copies redact literals/comments and retain original source fingerprints. Private original definitions remain outside Git and OneDrive.
+[Administration continuation](DB%20Architecture/ADMINISTRATION_CONTINUATION.md) adds 46 full-source contracts and 27 table roles covering settings, actions, filters, screens and controls. [Inventory table roles](DB%20Architecture/INVENTORY_TABLE_ROLES.md) adds 25 schema/use reviews, preserving nullable defaults, uniqueness and foreign-key limits. No warehouse routine was executed.
 
-The catalog contains 2,714 static dependencies, including 169 unresolved references. Sixty modules are lexical dynamic-execution candidates. These require targeted review; a static dependency is not automatically a READS/WRITES/CALLS relationship. Layout observations include 120 user tables without primary keys, 22 untrusted foreign keys and one disabled foreign key. They are observed design/review points, not automatically reproduced operational defects.
+[SDD review](SDD/derived/REVIEW.md) completes the remaining 77 Grupo Julio page views and adds 26 claims, 12 settings and seven visual descriptions. The source's open issue says Receiving with Putaway Groups is unavailable in Warehouse Mobile 24.1.2278; its final document title does not establish later availability. A new source-bound help topic and the eighth cross-source comparison retain this conflict. Load-confirm prerequisites also conflict within the document. Current deployed behavior remains unestablished. A-PNP retains the actual visible assignment wording. Raw SDD production indexing remains disabled.
 
-Existing source alignment contains 689 conservative identifier mentions connecting 120 objects to 140 AIM/SDK articles. A mention supports discovery, not behavioral equivalence. The [process guide](DB%20Architecture/PROCESS_GUIDE.md), [help topics](DB%20Architecture/HELP_TOPICS.md) and [role register](DB%20Architecture/FUNCTIONAL_ROLES.md) contain bounded reviewed interpretations.
+## Preservation and verification
 
-## Functional-help foundation delivered
+AIM remains owner-closed at 2,446/2,453 (99.71%); SDK at 363/380 (95.53%, known lower-bound denominator). The existing search contains 2,809 AIM/SDK articles. Original 01/02 prompts and source acquisitions remain unchanged. The structural snapshot contains 3,022 objects and all 1,142 captured definitions. Five fixed configuration observations remain at 2026-09-29 22:50:28–30 UTC.
 
-The eight initial topics explain shipment-detail blanks, work-monitor counts, work selection, inventory adjustment, ship confirmation, print selection, receipt/trailer trigger behavior and background/scheduled processing. Each includes a short user answer, input context, ordered flow, configuration dependencies, expected results, evidence and limits.
+Exact commands, exit codes, hashes, author/peer scopes and changed-file inventory are in [the current receipt](_project/concern-resolution-20260930.json). Bounded peer reviews are independent of the corresponding writers. A requested fresh-context parent audit could not start because the agent thread limit was reached; these peers do not replace that audit. Actual browser inventory was empty and the explicit in-app browser attempt returned unavailable. No browser/keyboard/screen-reader or intended-user acceptance is claimed. Full DOCX page rendering remains unavailable in this environment.
 
-The [functional report](DB%20Architecture/SCALE_FUNCTIONAL_REPORT.md) makes novice comprehension and accessibility explicit: short answers first, jargon explained, ordered text alternatives, optional supporting detail, keyboard operation, meaningful headings/labels, visible focus and screen-reader announcements. These are design/content requirements. No accessibility-conformance claim is made for an unbuilt application.
+The prior read-only diagnostic recorded `Options.UpdateLinksAtOpen=false`. The earlier pre-export value was not retained and cannot be reconstructed. This continuation opened no Word documents and changed no Word preferences. The owner preference question remains unanswered; historical restoration is unverified.
 
-Role classifications distinguish transactional data, configuration, master/reference information, reporting/read models, orchestration, integration staging, audit/history and UI metadata. Objects may have several roles. Scheduling tables and work instructions are not automatically classified as the vendor's generic process queue.
+The functional continuation made no new database connection, transactional-data import or warehouse execution. The owner has now separately authorized GitHub publication; its evidence is recorded in the publication receipt. External AEKR remained read-only native governance; no runtime/provider/scaffold/control switches or archive payload. Private SQL and protected credentials remain external. Delivery requires local and private GitHub parity. External deployment and OneDrive verification are outside this delivery requirement.
 
-The captured AIM names `QUEUE_PROCESS_REQUEST`, `QUEUE_PROCESS`, `QUEUE_SERVICE` and `Q_PROCESS`; none of those exact names occurs in this replica. Existing `SCHEDULED_JOBS` and `BATCH_SUBMISSION_CONFIG` are not proven aliases. This deployment gap remains visible in help answers.
+Next: review the remaining 633 stored-procedure bodies and 356 table roles; continue uncited SDD claims, undescribed assets and raster tables; resolve retrieval ambiguity with reviewed explanations and independent user questions; obtain fresh-context review and the specific caller/service/configuration/interaction evidence named in the ledgers. Do not repeat the completed PDF page views. Insight screen registration and SOP navigation remain a separately initiated future task.
 
-## Configuration and runtime findings
+Outcome: DONE_WITH_CONCERNS
 
-The owner explicitly authorized a reviewed configuration allowlist. Five fixed SELECTs were independently reviewed, tested and executed against the verified read-only replica. Final observation: **2026-09-29 22:50:28-30 UTC**. No query hit its 10,001-row cap. Only aggregate integer counts were retained; no names, free-text values, user records, secrets or transaction rows were returned.
+Delivery state: Owner-approved local and private GitHub delivery; commit, push, merge and parity evidence are recorded in the publication receipt. Bounded product peer review is preserved; fresh-context parent audit remains unavailable.
 
-| Reviewed configuration scope | Rows | Observation |
-| --- | ---: | --- |
-| Allocation-rule headers | 9 | All nine ACTIVE flags Y. |
-| Locating-rule headers | 36 | ACTIVE: 35 Y / one N; DELAYED_LOCATING: all N. |
-| Work-profile detail rows | 33 | GROUP_ON_RF: all Y. AUTOMATIC_PUTAWAY, USE_CROSS_DOCK_LP and ASSIGN_MULTIPLE_WORK_UNITS: all N. |
-| Standard inbound/outbound status-flow rows | 26 | MANDATORY: nine Y; IN_DEFAULT_FLOW: 16 Y; CHANGE_ALLOWED: seven Y; INCLUDE_IN_INTERFACE_UPLOAD: one Y. Remaining values N. |
-| Custom inbound/outbound status-flow headers | 3 | All three ACTIVE flags Y. |
+Product state: Expanded knowledge and functional local help; full coverage and deployment/accessibility acceptance remain incomplete.
 
-All checked flag NULL/OTHER buckets were zero. These are configuration-row counts, not distinct profiles or effective settings for an operator. The five checks ran separately, without a cross-table snapshot guarantee. Replica freshness is unestablished. Evidence and executable scope are in [configuration validation](DB%20Architecture/CONFIGURATION_VALIDATION.md).
-
-Runtime has two separate meanings: processing behavior and measured elapsed execution. The current source review describes selected behavior. Query Store provides 1,795 aggregate rows covering retained statement observations, with primary/geo-primary role attribution recorded. Historical IDs/source versions, irregular intervals and replica capture limits prevent treating this as complete current procedure or application timing. No workload, stored procedure, trigger, report, print command or job was executed to measure runtime.
-
-## Supporting sources and preserved gaps
-
-SDD contains implementation examples, Insight configuration material, label slides, a configuration walkthrough and work/picking material. Two LAND MAWM files are byte-identical; both originals are retained and should yield one indexed content item. Other-deployment settings and MAWM behavior cannot be assumed to apply to this SCALE installation. Document-body extraction and reconciliation are the next parallel workstream.
-
-Accepted AIM/SDK acquisition gaps remain unchanged. AIM retains eight missing resources and 23 broken-anchor occurrences. SDK retains 43 source 404s: 17 article routes, 24 images and two attachments. Three saved attachments fail strict source decoding; 50 attachment examples have source-format diagnostics, with possible overlap. Preserve those originals and qualifications. See [collection closure](_project/COLLECTION_CLOSURE.md).
-
-## Prompt, credential and archive disposition
-
-The new root [master continuation prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) governs the next workflow. The two original root prompts are **retained unchanged**, because they are still used by `tools/collector.py`, SDK policy/revalidation, delivery inventory and verification, and associated tests. Their exact bytes are bound into preflight and owner-authority receipts. Moving them would break active consumers and integrity checks; the owner's condition “if we are not using them anymore” is not satisfied.
-
-The old `00_START_PROMPT.md` and `START_HERE.md` were already archived byte-identically under the ignored local `.aekr/archive/2026-09-29-obsolete-launch-prompts/`, with restoration metadata. Their payload is outside normal AI context. No additional prompt archive move or dependency migration is performed in this handoff.
-
-The former root `dbstring.txt` was moved to `%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/credentials/replica.connection.txt`. The file and credential directory were verified with current-user-only ACLs and inheritance disabled. No credentials are tracked or published. Private raw SQL definitions and working receipts remain outside the repository. Historical OneDrive retention/exposure has not been audited or claimed removed.
-
-## Verification and delivery
-
-The original structural assessment passed independent review; the functional slice passed a fresh-context bounded static audit. Configuration/schema/output boundary tests cover non-read-only identity, schema drift, unknown fields/text, invalid bucket counts and failed schema preflight. Minor provenance/encoding findings were corrected. The [functional review record](DB%20Architecture/evidence/FUNCTIONAL_REVIEW.md) distinguishes audit scope from later coordinator integration edits.
-
-The current DB verifier checks 3,022 object records, 1,142 SQL fingerprints, 689 identifier citations, 62 process-source identities, eight help topics, 15 help-source bindings, 35 role records/61 spans, five configuration contracts, 34 family identities, local links and accidental credential exposure. The closed DB manifest contains 5,982 artifacts. These checks establish artifact integrity, not complete semantics or app acceptance.
-
-Handoff regression run: `python -m unittest discover -s tests` exited 0 with **256 passed, zero failed, zero skipped** in 44.662 seconds. All 5,982 manifested DB artifacts matched their recorded hashes. The four handoff/navigation documents had 53 valid local links; the changed-file credential-value scan found no exposure. A separate reviewer checked the continuation plan, status, routing and active-prompt dependencies without modifying the repository.
-
-The exact current test results, content commit, remote privacy/ref checks, staged-file scope and clean-checkout verification are recorded in [_project/continuation-delivery.json](_project/continuation-delivery.json). The older [_project/db-delivery-checkpoint.json](_project/db-delivery-checkpoint.json) remains evidence for its earlier commit; it does not automatically verify subsequent edits. Publication target is the private `edfortheblind/scale-intelligence` repository, `main`. No application deployment or database mutation is included.
-
-## Next executable work and closure criteria
-
-1. Expand work/inventory functional contracts and role coverage, including dynamic SQL and meaningful read/write/call relationships. Continue through receiving, allocation/waves, shipping/printing, interfaces and remaining domains.
-2. In parallel, extract and verify SDD bodies, preserve duplicate/product/version distinctions and build source-grounded configuration guidance.
-3. Reconcile every captured process family with deployed implementation and application/service evidence. Expand the help library and evaluate its claims, contradictions and unsupported questions.
-4. Identify minimally scoped external evidence needed for execution timing and deployment gaps. Complete independent work while such facts remain unavailable; never invent successful execution or effective configuration.
-5. Preserve the separately planned Insight-screen/SOP task and later app/accessibility acceptance. These should consume the reviewed knowledge, not replace it with undocumented click sequences.
-
-Close the knowledge foundation only when required functional coverage, semantic contracts, source/configuration mappings, help content and evidence-gap dispositions are verified and accepted. Report app/SOP/operational acceptance separately.
-
-Outcome: **DONE_WITH_CONCERNS**
-
-Delivery state: Versioned continuation handoff; exact publication evidence is in the delivery receipt.
-
-Product state: Verified static foundation and bounded configuration observations; broader knowledge completion remains open.
-
-Gate/authority state: Owner-authorized handoff publication; final knowledge/app/operational acceptance is not implied.
+Gate/authority state: Owner explicitly authorized commit, push and merge. Local plus private GitHub satisfies delivery scope; product evidence gaps remain recorded separately.

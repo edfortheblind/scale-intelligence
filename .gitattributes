@@ -1,4 +1,7 @@
 * text=auto
+.gitattributes text eol=lf
+*.html text eol=lf
+*.css text eol=lf
 *.py text eol=lf
 *.ps1 text eol=lf
 *.json text eol=lf
@@ -15,8 +18,12 @@ SDK/reading/** -text -filter -diff -merge
 01_AIM_MASTER_PROMPT.md -text
 02_SDK_MASTER_PROMPT.md -text
 # Database evidence hashes bind exact local bytes, including line endings.
-"DB Architecture/**" -text -filter
+"DB Architecture/**" -text -filter whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Owner-supplied supporting documents remain byte-preserved originals.
 SDD/*.docx -text -filter -diff -merge
 SDD/*.pdf -text -filter -diff -merge
 SDD/*.pptx -text -filter -diff -merge
+# Derived source and review manifests bind exact bytes, including line endings.
+SDD/derived/** -text -filter whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Reading copies retain extracted source spacing verbatim.
+SDD/derived/reading/** -whitespace

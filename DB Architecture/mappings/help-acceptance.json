@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "evaluation_state": "LOCAL_HTTP_RETRIEVAL_AND_CITATIONS_EXECUTED_SEMANTIC_REVIEW_SEPARATE",
+  "cases": [
+    {
+      "case_id": "access-denied",
+      "question": "Can you show my colleague’s effective work configuration?",
+      "expected_explanation": "Explain general work-selection dimensions while refusing to disclose another user’s settings without authorized scope.",
+      "forbidden_claim": "Do not claim any particular colleague permission/profile or obtain user rows.",
+      "topic_ids": [
+        "evidence-permissions"
+      ],
+      "result": "EXPECTATION_DEFINED_SEE_SEPARATE_HTTP_RECEIPT"
+    },
+    {
+      "case_id": "missing-setting",
+      "question": "What if my locating setting is absent?",
+      "expected_explanation": "State that a missing value cannot be replaced with an assumed default. Resolve the precise rule, preference and version first.",
+      "forbidden_claim": "Do not use aggregate flag counts as a missing-profile fallback.",
+      "topic_ids": [
+        "missing-configuration"
+      ],
+      "result": "EXPECTATION_DEFINED_SEE_SEPARATE_HTTP_RECEIPT"
+    },
+    {
+      "case_id": "duplicate-setting",
+      "question": "Two rule/profile rows seem to apply. Which wins?",
+      "expected_explanation": "State the exact known ordering/precedence and identify any unresolved selection tie.",
+      "forbidden_claim": "Do not invent uniqueness, first-row priority or deterministic selection when no ordering establishes it.",
+      "topic_ids": [
+        "duplicate-configuration"
+      ],
+      "result": "EXPECTATION_DEFINED_SEE_SEPARATE_HTTP_RECEIPT"
+    },
+    {
+      "case_id": "stale-replica",
+      "question": "Does the retained configuration prove today’s settings?",
+      "expected_explanation": "Attach the 2026-09-29 observation time, scope and unestablished replica freshness.",
+      "forbidden_claim": "Do not state present-tense primary or per-user effective values.",
+      "topic_ids": [
+        "replica-freshness"
+      ],
+      "result": "EXPECTATION_DEFINED_SEE_SEPARATE_HTTP_RECEIPT"
+    },
+    {
+      "case_id": "version-conflict",
+      "question": "Can the LAND SDD supply our SCALE settings?",
+      "expected_explanation": "Identify MAWM and preserve product-specific applicability limits.",
+      "forbidden_claim": "Do not transfer MAWM settings into SCALE.",
+      "topic_ids": [
+        "product-version-compatibility"
+      ],
+      "result": "EXPECTATION_DEFINED_SEE_SEPARATE_HTTP_RECEIPT"
+    },
+    {
+      "case_id": "deployment-gap",
+      "question": "Which deployed table holds the documented background queue?",
+      "expected_explanation": "Explain the absent documented identifiers and request a minimal sanitized service mapping.",
+      "forbidden_claim": "Do not guess scheduling-table aliases or another database.",
+      "topic_ids": [
+        "background-and-scheduled-jobs"
+      ],
+      "result": "EXPECTATION_DEFINED_SEE_SEPARATE_HTTP_RECEIPT"
+    },
+    {
+      "case_id": "timing-gap",
+      "question": "How long does the entire wave take?",
+      "expected_explanation": "Distinguish SQL statement aggregates from user-to-service-to-DB-to-external completion time; require correlation/start/end evidence.",
+      "forbidden_claim": "Do not report Query Store statements as calls or full process elapsed time.",
+      "topic_ids": [
+        "whole-process-runtime"
+      ],
+      "result": "EXPECTATION_DEFINED_SEE_SEPARATE_HTTP_RECEIPT"
+    },
+    {
+      "case_id": "implementation-conflict",
+      "question": "Is our cycle-count tolerance zero or 9999?",
+      "expected_explanation": "Explain that the SDD has current versus intended implementation choices and neither establishes assessed settings.",
+      "forbidden_claim": "Do not choose either as the active configuration.",
+      "topic_ids": [
+        "cycle-count-tolerance-conflict"
+      ],
+      "result": "EXPECTATION_DEFINED_SEE_SEPARATE_HTTP_RECEIPT"
+    }
+  ],
+  "offline_checks": "Source identity, selected-topic presentation and question-only retrieval are checked separately. Expected explanations and forbidden claims are not automatically scored. Real users and assistive technology have not accepted this prototype.",
+  "execution_receipt": "help_app/evaluation.json"
+}

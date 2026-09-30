@@ -1,0 +1,325 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "20260929T214106Z",
+  "status": "DOCUMENTARY_GUIDANCE_DEPLOYMENT_PRECEDENCE_PARTIAL",
+  "source_registry": "DB Architecture/mappings/help-topics.json#/sources",
+  "setting_count": 14,
+  "boundary": "Settings labels are documentary concepts, not inferred database-column mappings. Five existing aggregate checks remain unchanged. SDD guidance is separately product/version scoped.",
+  "settings": [
+    {
+      "setting_id": "allocation-sequence",
+      "label": "Allocation rule sequence",
+      "process_family": "Allocation",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Allocation rule/sequence",
+      "purpose": "Select candidate locations and strategy in numerical sequence order.",
+      "accepted_values": "Ordered sequences and a configured selection/strategy; exhaustive accepted-value list not established.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "Sequences are processed in numeric order. No item/class/assignment override precedence is asserted.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-allocation-aim"
+      ],
+      "node_ids": [
+        "n71",
+        "n73"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "locating-sequence",
+      "label": "Locating rule sequence and selection",
+      "process_family": "Locating",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Locating rule/sequence",
+      "purpose": "Choose storage destinations using a selection and strategy.",
+      "accepted_values": "Documented strategies include permanent assignment, consolidation, empty location and specific multi-item location. See source for their separate constraints.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "Sequences use numeric order. Manual item assignment and rule-set assignment are documented; conflict precedence between them is not established.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-locating-aim"
+      ],
+      "node_ids": [
+        "n81",
+        "n83",
+        "n85",
+        "n87",
+        "n90",
+        "n94",
+        "n96",
+        "n98",
+        "n102",
+        "n105",
+        "n108"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "delayed-locating",
+      "label": "Delayed Locating",
+      "process_family": "Locating",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Locating rule plus receiving preference",
+      "purpose": "Route located product through a receiving pre-locate location with work when both required settings are active.",
+      "accepted_values": "Active/inactive documented. The reviewed database checker counts Y/N/NULL/OTHER for LOCATING_RULE_HEADER.DELAYED_LOCATING.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "Both Delayed Locating and Create Putaway Work must be active. Parent locating uses the parent rule; child locating uses the nested-container rule. Otherwise locating uses rule details.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-locating-aim"
+      ],
+      "node_ids": [
+        "n113"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version.",
+      "observation_reference": {
+        "path": "DB Architecture/evidence/configuration-observations.json",
+        "scope": "At 2026-09-29 22:50:28-30 UTC, 36 inspected locating-rule headers had DELAYED_LOCATING N. This is not a per-container effective setting or current-primary guarantee."
+      }
+    },
+    {
+      "setting_id": "create-putaway-work",
+      "label": "Create Putaway Work",
+      "process_family": "Locating",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Receiving preference",
+      "purpose": "Determine whether receiving creates putaway work; participates in the delayed-locating decision.",
+      "accepted_values": "Active/inactive; exact deployed field encoding not established by this vendor passage.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "For delayed locating, this setting combines with the locating-rule flag; neither setting alone is sufficient.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-locating-aim"
+      ],
+      "node_ids": [
+        "n64",
+        "n113"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "replenishment-threshold",
+      "label": "Minimum replenishment threshold",
+      "process_family": "Replenishment",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Location/location type or item/item class",
+      "purpose": "Trigger real-time replenishment when quantity falls below a configured minimum percentage.",
+      "accepted_values": "Percentage; allowed range, rounding and missing-value defaults require detailed source review.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "The summary lists multiple scopes but does not establish their override order.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-replenishment-aim"
+      ],
+      "node_ids": [
+        "n69",
+        "n120"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "replenishment-strategy",
+      "label": "Replenishment quantity strategy",
+      "process_family": "Replenishment",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Replenishment master/strategy",
+      "purpose": "Choose how much product to replenish.",
+      "accepted_values": "Fill Destination; Round Down to previous whole increment; Round Up to next whole increment.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "Fill Destination ignores Maximum Replenishment Percentage. The summary does not establish other capacity override rules.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-replenishment-aim"
+      ],
+      "node_ids": [
+        "n93",
+        "n100",
+        "n104",
+        "n108"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "replenishment-create-work",
+      "label": "Create Work Method",
+      "process_family": "Replenishment",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Replenishment master and originating process",
+      "purpose": "Control whether movement work is created automatically or later.",
+      "accepted_values": "Automatic and Manual are documented here; do not claim these exhaust every installed value.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "Wave-generated requests require both a work-creation step in the wave and Automatic on the master. Manual/real-time requests use the master method.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-replenishment-aim"
+      ],
+      "node_ids": [
+        "n127",
+        "n130",
+        "n133",
+        "n138"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "status-flow-assignment",
+      "label": "Default versus custom status flow",
+      "process_family": "Status",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Receipt/shipment line and defined status flow",
+      "purpose": "Select the sequence of processing stages for a line.",
+      "accepted_values": "A defined custom flow or the default flow; exact custom identifiers are deployment-specific.",
+      "default": "Documented default flow when no custom flow is associated.",
+      "precedence": "The documented default is assigned when no custom flow is associated. A custom flow must be defined and associated before interface processing.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-status-aim"
+      ],
+      "node_ids": [
+        "n74",
+        "n80",
+        "n96",
+        "n185"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "qc-priority",
+      "label": "Outbound QC assignment priority",
+      "process_family": "Quality Control",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Active QC assignment records",
+      "purpose": "Choose which matching rule marks a container for inspection.",
+      "accepted_values": "Priority ordering and assignment reason; numeric bounds and defaults are not established here.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "Evaluate active records in ascending priority; mark QC Pending at a match and increment the current-container count on all matching records as documented.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-quality-control-aim"
+      ],
+      "node_ids": [
+        "n104"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "inbound-qc-eligibility",
+      "label": "Inbound QC eligibility",
+      "process_family": "Quality Control",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Item master",
+      "purpose": "Select product eligible for inbound inspection and hold relevant quantities until disposition.",
+      "accepted_values": "Eligible/ineligible; exact deployed field/default not established.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "The documented inbound path supports check-in-created license plates, not downloaded receipt containers.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-quality-control-aim"
+      ],
+      "node_ids": [
+        "n87"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "window-security-precedence",
+      "label": "Window security record selection",
+      "process_family": "General System Concepts",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "System-level versus user-level window security",
+      "purpose": "Determine which documented permission records are consulted.",
+      "accepted_values": "Window/action permissions; exact active matrix is outside the captured evidence.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "The captured vendor model references user-level records when present, otherwise system-level records. This is not verified application authorization for the installed version.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-general-system-concepts-aim"
+      ],
+      "node_ids": [
+        "n91",
+        "n93",
+        "n95",
+        "n97",
+        "n100"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "language-resource-selection",
+      "label": "Interface language and resource selection",
+      "process_family": "Multi-Language Support",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Client/OS/browser/device/TPM setting and translated resources",
+      "purpose": "Display text in an available language for the specific interface.",
+      "accepted_values": "Installed resource languages; translated text availability is a prerequisite.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "Desktop Windows-user language, browser language for other application screens, RF device language and TPM server-side setting are distinct documented paths. Missing help language folder falls back to base help.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-multi-language-support-aim"
+      ],
+      "node_ids": [
+        "n80",
+        "n82",
+        "n87",
+        "n92",
+        "n97",
+        "n104"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "immediate-needs-priority",
+      "label": "Immediate-needs request priority",
+      "process_family": "Immediate Needs",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Trigger default and request-level value",
+      "purpose": "Order fulfillment of competing requests for the same item.",
+      "accepted_values": "Priority value; exact range and deployment default not established.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "The trigger supplies a default, a request can be changed manually, and priorities apply to requests for the same item.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-immediate-needs-aim"
+      ],
+      "node_ids": [
+        "n67"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    },
+    {
+      "setting_id": "dock-process-enablement",
+      "label": "Dock-process enablement",
+      "process_family": "Dock Management",
+      "claim_class": "VENDOR_BEHAVIOR",
+      "scope": "Consolidation, staging and loading processes",
+      "purpose": "Choose which dock stages are used.",
+      "accepted_values": "Each documented process can be enabled or disabled independently.",
+      "default": "NOT_ESTABLISHED_FROM_REVIEWED_PASSAGES",
+      "precedence": "No mandatory all-stages sequence or installed override precedence is established.",
+      "validation_method": "Compare the sanitized installed setting definition and its application binding with this cited rule. No new database query is authorized by this guide.",
+      "current_effective_setting": "NOT_ESTABLISHED",
+      "evidence_refs": [
+        "family-dock-management-aim"
+      ],
+      "node_ids": [
+        "n65"
+      ],
+      "missing_duplicate_unexpected": "Do not substitute a value or precedence rule when the applicable contract is absent or conflicting; obtain the exact configured scope and version."
+    }
+  ]
+}

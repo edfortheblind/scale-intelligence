@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "ADDITIVE_FUNCTIONAL_BATCH_FRAGMENT",
+  "batch_id": "sdd-version-conflicts",
+  "snapshot_id": "20260929T214106Z",
+  "review_state": "BOUNDED_SOURCE_CONFLICT_REVIEW",
+  "scope": "One local help topic for an explicit historical SDD version conflict; no new object or module review credit.",
+  "sources": {
+    "sdd-boundary-grupo-putaway-groups-version-conflict": {
+      "kind": "REVIEWED_SDD_CLAIM",
+      "register_path": "SDD/derived/reviewed-knowledge.json",
+      "claim_id": "grupo-putaway-groups-version-conflict",
+      "claim_sha256": "a2ca3e7862ed92bbdbbcfc7a4ddf97ddad7a8235b0f2b3cab3565c084b13127a",
+      "citations": [
+        {
+          "document_id": "sdd-d50ca4a96095c930",
+          "source_sha256": "d50ca4a96095c930e1e54fd04c55804bed05a5139451118cc5ce201eab814e34",
+          "nodes": [
+            "p033-b002",
+            "p033-b004",
+            "p037-b002",
+            "p106-b005",
+            "p106-b006"
+          ]
+        }
+      ],
+      "documents": [
+        {
+          "document_id": "sdd-d50ca4a96095c930",
+          "source_path": "SDD/Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf",
+          "extracted_path": "SDD/derived/documents/sdd-d50ca4a96095c930.json",
+          "extracted_sha256": "6a2fd8a9783856a2fa75d591b10be285ee1ccccd8053e0391a190cb89ce88a6e"
+        }
+      ]
+    }
+  },
+  "reviewed_roles": [],
+  "semantic_contracts": [],
+  "help_topics": [
+    {
+      "topic_id": "putaway-groups-version-limit",
+      "title": "Putaway groups: design intent and mobile version limits",
+      "business_question": "Does a documented putaway-group workflow prove it is available in my Warehouse Mobile version?",
+      "plain_answer": "No. The Grupo Julio example describes receiving and putting away items as a group, but also records that receiving with putaway groups was unavailable in Warehouse Mobile 24.1.2278 on 9 August 2024. The document gives no delivery date. Confirm the installed version and supported workflow before applying that design to your warehouse.",
+      "trigger": "Comparing an implementation design with a mobile version or an installed warehouse.",
+      "input_context": [
+        "The exact application version and the workflow being evaluated.",
+        "The cited SDD describes another implementation and a historical version."
+      ],
+      "execution_steps": [
+        {
+          "order": 1,
+          "action": "Identify the intended workflow.",
+          "explanation": "The design describes receiving items into a putaway group and moving the group together. These paragraphs explain intended behavior in that implementation.",
+          "objects": [],
+          "evidence_refs": [
+            "sdd-boundary-grupo-putaway-groups-version-conflict"
+          ]
+        },
+        {
+          "order": 2,
+          "action": "Read the recorded availability exception.",
+          "explanation": "The same document keeps an open issue stating that receiving with putaway groups was unavailable in Warehouse Mobile 24.1.2278, with no expected date. A final document title does not remove that qualification.",
+          "objects": [],
+          "evidence_refs": [
+            "sdd-boundary-grupo-putaway-groups-version-conflict"
+          ]
+        },
+        {
+          "order": 3,
+          "action": "Establish applicability before using the example.",
+          "explanation": "Use version-matched release or application evidence to determine support in the installed system. Captured database tables and views do not establish the mobile screen, feature availability or effective receiving preference.",
+          "objects": [],
+          "evidence_refs": [
+            "sdd-boundary-grupo-putaway-groups-version-conflict"
+          ]
+        }
+      ],
+      "configuration_dependencies": [
+        "Receiving preferences and group assignments describe choices; their presence does not establish mobile support or current activation."
+      ],
+      "expected_results": [
+        "A distinction between intended design, its historical version limitation, and the current deployment question that remains unanswered."
+      ],
+      "explanation_paths": [
+        "Check the installed Warehouse Mobile build and version-matched feature or release evidence.",
+        "Check the applicable receiving workflow and configuration using a sanitized configuration contract; do not infer values from another implementation."
+      ],
+      "boundaries": [
+        "No claim is made about later versions, a delivery date or this deployment.",
+        "No live receiving, putaway or screen-navigation test was performed.",
+        "Raw SDD production indexing remains disabled. Only the selected reviewed claim is bound in this local help topic."
+      ],
+      "evidence_refs": [
+        "sdd-boundary-grupo-putaway-groups-version-conflict"
+      ],
+      "review": {
+        "semantic_state": "DOCUMENTARY_VERSION_CONFLICT_REVIEWED_DEPLOYMENT_OPEN",
+        "method": "Reviewed source nodes plus visual confirmation of the unstruck page106 issue.",
+        "independent_verification": "SEE_CURRENT_CHECKPOINT_REVIEW",
+        "live_process_execution": "NOT_PERFORMED",
+        "whole_process_duration": "NOT_ESTABLISHED",
+        "current_configuration_claim": "NONE_IN_THIS_TOPIC"
+      },
+      "evaluation": {
+        "status": "CASES_AUTHORED_NOT_EXECUTED",
+        "cases": [
+          {
+            "question": "Does the Grupo Julio putaway-group design prove Warehouse Mobile 24.1.2278 supports it?",
+            "must_explain": [
+              "intended workflow and open issue differ",
+              "unavailable in cited version",
+              "current deployment unknown"
+            ],
+            "must_not_claim": [
+              "feature is enabled here",
+              "all later versions lack it"
+            ]
+          },
+          {
+            "question": "When did receiving with putaway groups become available after the 24.1.2278 issue?",
+            "must_explain": [
+              "no delivery date in cited issue",
+              "later release evidence required"
+            ],
+            "must_not_claim": [
+              "invented release date",
+              "final title proves delivery"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "family_associations": [],
+  "global_limits": [
+    "No claim is made about later versions, a delivery date or this deployment.",
+    "No live receiving, putaway or screen-navigation test was performed.",
+    "Raw SDD production indexing remains disabled. Only the selected reviewed claim is bound in this local help topic."
+  ]
+}

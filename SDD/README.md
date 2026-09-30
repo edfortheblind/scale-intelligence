@@ -6,25 +6,29 @@ These documents add implementation context to [AIM](../AIM/README.md), extension
 
 ## Current state
 
-The owner supplied nine source files. This README records their intended use and the method for assessing them. Document bodies have **not yet been reviewed, extracted, indexed, or validated for the application** as part of this intake. Versions and dates listed below come from filenames and require confirmation against each document.
+The nine supplied originals are preserved and hash-inventoried. All **eight unique bodies** now have provisional JSON and Markdown extraction in [derived](derived/inventory.json), with DOCX structural nodes, PDF page/block references and PPTX slide/shape references. The duplicate LAND copy is indexed once. Extraction includes 11,618 nodes, 231 PDF pages and the retained media assets; extraction is broader than semantic review.
+
+The bounded [review register](derived/reviewed-knowledge.json) contains eight body-derived product/version records, 66 reviewed claims, 101 configuration contracts and 46 visually inspected diagram/screenshot descriptions. Read the [findings and text descriptions](derived/REVIEW.md), [configuration guide](derived/CONFIGURATION_GUIDE.md) and [76 reviewed logical PDF tables](derived/TABLE_REVIEW.md). Exact source hashes and cited node IDs accompany every reviewed record. [Per-document review denominators](derived/REVIEW_COVERAGE.md), [extraction exceptions](derived/EXTRACTION.md) and the [current receipt](../_project/concern-resolution-20260930.json) distinguish extraction from fidelity and suitability acceptance.
+
+This material has **not entered the production search index**. All 45 PPTX static slides and all 231 PDF pages have now been visually inspected. Page viewing does not establish review of every claim, figure or table on those pages. DOCX full-page rendering, remaining figure/table content, complete semantic reconciliation and suitability acceptance remain open. Current deployment settings and verified Insight navigation are not established by these sources. MAWM configuration examples remain explicitly separate from SCALE.
 
 The existing AIM/SDK collection remains [closed with owner-accepted exceptions](../_project/COLLECTION_CLOSURE.md). Adding SDD material does not reopen that acquisition or change its fidelity measurements. The consultation application remains a separate implementation phase.
 
 ## Source inventory
 
-| Supplied document | Intended use to assess | Filename version / date |
+| Supplied document | Intended use to assess | Body identity / date |
 | --- | --- | --- |
 | [Covetrus implementation SDD](<Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx>) | SCALE implementation decisions and process examples | v1.4 / 2023-08-31 |
 | [Grupo Julio implementation SDD](<Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf>) | SCALE implementation decisions and process examples | v1.5 / 2024-09-03 |
-| [J Knipper implementation SDD](<J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf>) | SCALE implementation decisions and process examples | v1.3 / 2024-12-10 |
-| [LAND MAWM SDD](<LAND MAWM Solution Design Document v2.11.docx>) | Product-specific comparison material; applicability to SCALE requires review | v2.11 / date unspecified |
-| [LAND MAWM SDD — second supplied copy](<LAND MAWM Solution Design Document v2.11 (1).docx>) | Same bytes as the preceding file; retain supplied copy and avoid duplicate indexing | v2.11 / date unspecified |
-| [Insight Architect configuration](<MA Documentation - Insight Architect Configuration.pdf>) | Screen configuration and metadata concepts | Unspecified |
-| [Manhattan SCALE labels](<Manhattan SCALE - Labels.pptx>) | Label concepts and supporting illustrations | Unspecified |
-| [HADDAD configuration walkthrough](<SCALE Configuration Walkthrough - HADDAD.docx>) | Configuration sequence and implementation examples | Unspecified |
+| [J Knipper implementation SDD](<J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf>) | SCALE implementation decisions and process examples | Cover says 1.0; revision history ends 1.3 / 2024-12-10 |
+| [LAND MAWM SDD](<LAND MAWM Solution Design Document v2.11.docx>) | Product-specific comparison material; applicability to SCALE requires review | MAWM; revision 2.11 / 2025-04-29 |
+| [LAND MAWM SDD — second supplied copy](<LAND MAWM Solution Design Document v2.11 (1).docx>) | Same bytes as the preceding file; retain supplied copy and avoid duplicate indexing | Same body as preceding row |
+| [Insight Architect configuration](<MA Documentation - Insight Architect Configuration.pdf>) | Screen configuration and metadata concepts | Manhattan Active SCALE; printed 2026-08-13, release unspecified |
+| [Manhattan SCALE labels](<Manhattan SCALE - Labels.pptx>) | Label concepts and supporting illustrations | SCALE 2021 on slide 3; document version unspecified |
+| [HADDAD configuration walkthrough](<SCALE Configuration Walkthrough - HADDAD.docx>) | Configuration sequence and implementation examples | SCALE 2020; revision history 1.1 / 2023-07-29, cover 2026-01-07 |
 | [SCALE work and picking functionality](<SCALE Work and Picking Functionality.docx>) | Work execution and picking explanations | Unspecified |
 
-The two LAND files were verified as byte-identical on 2026-09-29: each is 19,727,099 bytes, with SHA-256 `de62bfaf88f5d35b6c7e4a9719a1d5102eaa8b9fe317919912c25f6f6db8193f`. Both originals remain in place. Their filenames identify MAWM; retain that product distinction until review establishes which concepts, if any, apply to SCALE.
+The two LAND files were verified as byte-identical on 2026-09-29: each is 19,727,099 bytes, with SHA-256 `de62bfaf88f5d35b6c7e4a9719a1d5102eaa8b9fe317919912c25f6f6db8193f`. Both originals remain in place. Their body identifies Manhattan Active Warehouse Management; retain that product distinction until claim-specific evidence establishes applicability to SCALE. Document revision numbers do not identify a SCALE product release.
 
 ## AEKR working method
 
@@ -65,4 +69,4 @@ The source documents may describe named implementations. Derived user-facing exp
 
 SDD intake is ready for application indexing when the declared source set has a provenance inventory, verified extraction or explicit exceptions, stable citations, duplicate handling, product/version labels, reviewed mappings, and an accepted suitability decision. Completeness should use the supplied inventory as its denominator; missing or unreadable material remains recorded.
 
-Until those checks are completed, this folder is a **supporting source collection with a documented intake method**. No SDD-derived explanation is marked verified solely because its original file is present.
+This folder is a **supporting source collection with provisional full-body extraction and bounded source review**. No document receives full fidelity or application-suitability acceptance solely because extraction succeeded. Regeneration uses `python tools/extract_sdd.py` with PyMuPDF installed in the chosen Python environment; it preserves separately authored review records. Run `python -m unittest tests.test_sdd_extraction tests.test_sdd_review` for provenance, duplicate, structural, citation and review-coverage checks. These checks do not run an application or certify every table/diagram.
