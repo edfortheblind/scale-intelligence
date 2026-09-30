@@ -48,6 +48,8 @@ class HelpKnowledgeTests(unittest.TestCase):
         self.assertNotIn('<script', rendered)
         self.assertIn('href="#main"', rendered)
         self.assertIn('label for="question"', rendered)
+        self.assertIn('form action="/#results-heading" method="get"', rendered)
+        self.assertIn('id="results-heading" tabindex="-1"', rendered)
 
     def test_blank_invoice_question_retrieves_explanation(self):
         result = self.knowledge.search('Why is the invoice blank in my summary?')

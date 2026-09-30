@@ -25,7 +25,7 @@ def render_page(knowledge, question='', topic_id=None):
         raise ValueError('Use a question of 500 characters or fewer.')
     parts = ['<section aria-labelledby="search-heading" class="search-panel">',
              '<h2 id="search-heading">Find an explanation</h2>',
-             '<form action="/" method="get"><label for="question">Your question or process name</label>',
+             '<form action="/#results-heading" method="get"><label for="question">Your question or process name</label>',
              '<p id="search-help">Name the process, screen, setting, or routine so the search can find the right explanation.</p>',
              '<div class="search-row"><input id="question" name="q" type="search" aria-describedby="search-help" maxlength="500" value="'+escape(question, quote=True)+'" placeholder="For example: Why is my shipment summary blank?">',
              '<button type="submit">Search guidance</button></div></form>',
@@ -36,7 +36,7 @@ def render_page(knowledge, question='', topic_id=None):
     parts.append('</ul></details></section>')
     if question.strip():
         result = knowledge.search(question)
-        parts.append('<section aria-labelledby="results-heading"><h2 id="results-heading">Related explanations</h2>')
+        parts.append('<section aria-labelledby="results-heading"><h2 id="results-heading" tabindex="-1">Related explanations</h2>')
         if result.get('state') == 'NEEDS_CONTEXT':
             parts.append(element('p', result['clarification'], ' role="status"'))
         elif result['results']:

@@ -6031,9 +6031,11 @@ Assets: [925443c5d1a132dc80b572da0ac3453166539fbb5109ff568291ed9f600c775a.png](a
 
 Two distinct Wave Insight images highlight Release and the Reprint documents/Reprint labels actions. The body associates release with removing Wave Not Released work holds and configured printing; comments locate work hold details in Work Insight.
 
+The page-90 comment requests released/held/canceled wave status in Work Quick Find and times for release, hold, release from hold and cancellation in transaction/process history. A follow-up asks for confirmation of held/canceled visibility. The reply says wave release/cancel status is in Wave Insight and hold code is in Work Insight, followed by a resolved marker. Neither the requested Quick Find display nor the event timestamps are confirmed as implemented. This source comment is a request and reply, not a deployed feature claim.
+
 Limit: Original extracted figures and complete relevant PDF pages visually inspected; xref/page membership checked against unchanged original. Historical design illustrations, including legacy and other-context samples, are not current deployment, successful execution or universal defaults. Personal and sample operational values omitted.
 
-[sdd-1c25f20de1eafc3e p089-b009, p089-b010, p090-b004, p090-b008, p090-b009, p090-b010, p091-b004](reading/sdd-1c25f20de1eafc3e.md#p089-b009)
+[sdd-1c25f20de1eafc3e p089-b009, p089-b010, p090-b004, p090-b006, p090-b007, p090-b008, p090-b009, p090-b010, p091-b004](reading/sdd-1c25f20de1eafc3e.md#p089-b009)
 
 Assets: [820d79b6e92ed225a55e012f8f98fe932d3c0348ee05e12bf428f7e6fc3f14ff.png](assets/sdd-1c25f20de1eafc3e/820d79b6e92ed225a55e012f8f98fe932d3c0348ee05e12bf428f7e6fc3f14ff.png); [823d553f7cbe81e0f1650aaec2bd2c0aa2d9ada6dd4503fae39c919aed973ef9.png](assets/sdd-1c25f20de1eafc3e/823d553f7cbe81e0f1650aaec2bd2c0aa2d9ada6dd4503fae39c919aed973ef9.png)
 

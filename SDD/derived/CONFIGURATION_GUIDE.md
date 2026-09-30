@@ -3773,10 +3773,10 @@ Describe source prerequisites for releasing work and triggering documents.
 - Default: Not established as a universal product default; cited selections are historical design examples.
 - Precedence and dependencies: Hold visibility is in Work Insight; wave release/cancel visibility is in Wave Insight per comment. Reprint actions are separate from normal release printing.
 - Related process: Wave release
-- Validation: Proposed review only, not executed: Review hold creation/removal and paperwork associations; do not infer execution from highlighted Release. No configuration read, write or operational execution occurred.
+- Validation: Proposed review only, not executed: Review hold creation/removal and paperwork associations; do not infer execution from highlighted Release. The page-90 request asks for wave status in Work Quick Find and release/hold/release-from-hold/cancel times in history. The follow-up asks for confirmation of held/canceled visibility; the reply redirects visibility to Wave Insight and Work Insight, then marks the comment resolved. It does not establish the requested Quick Find display or event timestamps. No configuration read, write or operational execution occurred.
 - Classification: `implementation_specific_choice`.
 
-Sources: [sdd-1c25f20de1eafc3e p089-b009, p089-b010, p090-b008, p090-b009, p090-b010, p091-b004](reading/sdd-1c25f20de1eafc3e.md#p089-b009)
+Sources: [sdd-1c25f20de1eafc3e p089-b009, p089-b010, p090-b006, p090-b007, p090-b008, p090-b009, p090-b010, p091-b004](reading/sdd-1c25f20de1eafc3e.md#p089-b009)
 
 
 ## Packing subclass guard for container-content edits
