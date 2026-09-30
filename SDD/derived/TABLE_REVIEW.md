@@ -2,7 +2,7 @@
 
 These are human-reviewed source overlays. Raw extracted grids remain unchanged in document JSON. Captions, split-page continuity and blank cells were checked against private page renders. All rows describe a named implementation; no live database meaning is established.
 
-76 logical tables. Candidate disposition and unreviewed IDs are in [reviewed-tables.json](reviewed-tables.json).
+79 logical tables, including three page-8 raster tables outside the heuristic candidate inventory. Candidate disposition and unreviewed IDs are in [reviewed-tables.json](reviewed-tables.json).
 
 ## Knipper replenishment location characteristics
 
@@ -1188,3 +1188,91 @@ Three data rows retained. The immediately preceding paragraph says Knipper may e
 | <code>Receipt Order Header</code> | <code>Header Level Receipt Data</code> |
 | <code>Receipt Order Detail</code> | <code>Line Item Detail Receipt Data</code> |
 | <code>Receipt Container</code> | <code>Box level Receipt Data</code> |
+
+## Grupo Julio first-floor storage calculation criteria
+
+Transcribed the top-right raster grid. Repeated the merged Prendas label on its second row; accents omitted by the source are not supplied. The two garment-density values are preserved independently, without rounding one into the other.
+
+[Original raster table](assets/sdd-d50ca4a96095c930/0f8b478d05abe05f73ce869c95924e22e86a80ab03e63dac00974a5ec3c1d433.png) - PDF page 8, sdd-d50ca4a96095c930; source and asset hashes are in reviewed-tables.json.
+
+| Tipo | Cant. | Ud. |
+| --- | --- | --- |
+| Prendas | 85 | Prendas/1.5 m |
+| Prendas | 56 | Prendas/m |
+| Accesorios | 32 | Cajas/Ubicacion |
+
+Historical first-floor layout/design capacity only, not SCALE effective configuration, observed inventory or an operational limit. The extracted text node anchors the page heading; the hash-bound raster asset is the table authority. Dashes mean source dashes, not zero; values are not recalculated.
+
+## Grupo Julio first-floor storage capacity scenarios
+
+Transcribed the middle-right raster grid. The two colored scenario headers become an explicit Scenario column; visual color is not needed to distinguish them. Source thousands separators and decimal values are retained; superscript square metres becomes m2, accents normalized to ASCII. PB/PA and MR abbreviations remain unexpanded. 2018 and 2019 are source scenario labels, not the assessed deployment or a document release.
+
+[Original raster table](assets/sdd-d50ca4a96095c930/0f8b478d05abe05f73ce869c95924e22e86a80ab03e63dac00974a5ec3c1d433.png) - PDF page 8, sdd-d50ca4a96095c930; source and asset hashes are in reviewed-tables.json.
+
+| Scenario | Zona | Cant. | Ud. | Cant. | Ud. |
+| --- | --- | --- | --- | --- | --- |
+| CAPACIDAD AMPLIACION 2018 | Pulmon de recibo I | 382 | m | 21,392 | Prendas |
+| CAPACIDAD AMPLIACION 2018 | Pulmon de recibo (Colgado PA) | 763.75 | m | 42,770 | Prendas |
+| CAPACIDAD AMPLIACION 2018 | Pulmon de Clasificador | - | m | - | Prendas |
+| CAPACIDAD AMPLIACION 2018 | Clasificador | 510 | m | 28,560 | Prendas |
+| CAPACIDAD AMPLIACION 2018 | Colgado PB | 2,436 | m | 136,416 | Prendas |
+| CAPACIDAD AMPLIACION 2018 | Embarque | 249 | m | 13,944 | Prendas |
+| CAPACIDAD AMPLIACION 2018 | Colgado PA | 1,833 | m | 102,648 | Prendas |
+| CAPACIDAD AMPLIACION 2018 | Anaqueles PB+PA | 549 | m2 | 11,712 | Cajas |
+| CAPACIDAD AMPLIACION 2018 | Clasificador de cajas | 102 | m2 | 76 | Cajas |
+| CAPACIDAD AMPLIACION 2018 | Zona de calzado (MR) | 43 | Mod. | - | - |
+| CAPACIDAD AMPLIACION 2018 | Mezzanine 1 | 88 | m2 | - | - |
+| CAPACIDAD AMPLIACION 2018 | Mezzanine 2 | 166 | m2 | - | - |
+| CAPACIDAD AMPLIACION 2018 | Mezzanine 3 | 99 | m2 | - | - |
+| CAPACIDAD CON AMPLIACION 2019 | Pulmon de recibo I | 382 | m | 21,392 | Prendas |
+| CAPACIDAD CON AMPLIACION 2019 | Pulmon de recibo (Colgado PA) | 764 | m | 42,770 | Prendas |
+| CAPACIDAD CON AMPLIACION 2019 | Pulmon de Clasificador | - | m | - | Prendas |
+| CAPACIDAD CON AMPLIACION 2019 | Clasificador | 510 | m | 28,560 | Prendas |
+| CAPACIDAD CON AMPLIACION 2019 | Colgado PB | 1,524 | m | 85,344 | Prendas |
+| CAPACIDAD CON AMPLIACION 2019 | Empaque I | 237 | m | 13,272 | Prendas |
+| CAPACIDAD CON AMPLIACION 2019 | Empaque II | 253 | m | 14,168 | Prendas |
+| CAPACIDAD CON AMPLIACION 2019 | Etiquetado | 48 | m2 | - | Cajas |
+| CAPACIDAD CON AMPLIACION 2019 | Colgado PA | 3,410 | m | 190,960 | Prendas |
+| CAPACIDAD CON AMPLIACION 2019 | Anaqueles PB+PA | 549 | m2 | 11,712 | Cajas |
+| CAPACIDAD CON AMPLIACION 2019 | Clasificador de cajas | 156 | m2 | 116 | Cajas |
+| CAPACIDAD CON AMPLIACION 2019 | Zona de calzado (MR) | 43 | Mod. | - | - |
+| CAPACIDAD CON AMPLIACION 2019 | Mezzanine 1 | 88 | m2 | - | - |
+| CAPACIDAD CON AMPLIACION 2019 | Mezzanine 2 | 166 | m2 | - | - |
+| CAPACIDAD CON AMPLIACION 2019 | Mezzanine 3 | 99 | m2 | - | - |
+
+Historical first-floor layout/design capacity only, not SCALE effective configuration, observed inventory or an operational limit. The extracted text node anchors the page heading; the hash-bound raster asset is the table authority. Dashes mean source dashes, not zero; values are not recalculated.
+
+## Grupo Julio Empaque II buffer capacity by line
+
+Transcribed the lower-right raster grid, rows 1-24. The source line quantities sum to 14,163 garments while the storage-capacity grid shows 14,168 for Empaque II. Preserve that five-garment discrepancy; do not repair either source value or treat either as an observed inventory balance.
+
+[Original raster table](assets/sdd-d50ca4a96095c930/0f8b478d05abe05f73ce869c95924e22e86a80ab03e63dac00974a5ec3c1d433.png) - PDF page 8, sdd-d50ca4a96095c930; source and asset hashes are in reviewed-tables.json.
+
+| Linea | Prendas, pzas. | Trolleys, pzas. |
+| --- | --- | --- |
+| 1 | 504 | 10 |
+| 2 | 599 | 12 |
+| 3 | 599 | 12 |
+| 4 | 599 | 12 |
+| 5 | 599 | 12 |
+| 6 | 599 | 12 |
+| 7 | 599 | 12 |
+| 8 | 599 | 12 |
+| 9 | 599 | 12 |
+| 10 | 599 | 12 |
+| 11 | 599 | 12 |
+| 12 | 599 | 12 |
+| 13 | 599 | 12 |
+| 14 | 599 | 12 |
+| 15 | 599 | 12 |
+| 16 | 599 | 12 |
+| 17 | 599 | 12 |
+| 18 | 599 | 12 |
+| 19 | 599 | 12 |
+| 20 | 599 | 12 |
+| 21 | 599 | 12 |
+| 22 | 599 | 12 |
+| 23 | 599 | 12 |
+| 24 | 481 | 9 |
+
+Historical first-floor layout/design capacity only, not SCALE effective configuration, observed inventory or an operational limit. The extracted text node anchors the page heading; the hash-bound raster asset is the table authority. Dashes mean source dashes, not zero; values are not recalculated.

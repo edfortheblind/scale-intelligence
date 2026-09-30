@@ -1342,3 +1342,245 @@ Limit: The displayed current-container counter is sample state. Method selection
 [sdd-f46806ef53e15f07 b00657, b00658](reading/sdd-f46806ef53e15f07.md#b00657)
 
 Assets: [18595db9c33b40dc302bda1b4e4d7bb94a1224072da27ed78447a5c2a742e8d6.png](assets/sdd-f46806ef53e15f07/18595db9c33b40dc302bda1b4e4d7bb94a1224072da27ed78447a5c2a742e8d6.png); [b2b780989cf4e6960e92f095ca41db8b7db9444b6466931449e6f48b849b4c8a.png](assets/sdd-f46806ef53e15f07/b2b780989cf4e6960e92f095ca41db8b7db9444b6466931449e6f48b849b4c8a.png)
+
+## Work and picking continuation 2026-09-30
+
+This batch adds 24 source-bound claims, 18 configuration contracts and four asset descriptions. Three newly described assets are status icons; one is blank/decorative. No PDF-page, slide or full DOCX-layout credit is added. The existing partial-close setting is narrowed to the RF execution scope in the source.
+
+### work-picking-creation-request-reservation
+
+Work creation first selects masters for the requesting process and orders them by ascending priority number. It compares each request against the selected master criteria; a matching request is reserved for that master and is not reviewed by a later master. Declined requests are tried against the next master.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Tie handling and behavior after all masters decline a request are not supplied. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00704, b00706, b00707, b00709, b00711, b00713, b00714, b00716, b00718, b00720](reading/sdd-61bfda888fe30365.md#b00704)
+
+### work-picking-creation-order-and-estimate
+
+After selecting requests, work creation applies the criteria Order By attributes in sequence, assigns an internal instruction number to each detail and uses an applicable estimated work-rate record to estimate instruction time. Work-unit breaks group instructions into units; example order-level or location-level grouping is illustrative.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Estimated work time is not measured elapsed time. This does not identify which rate or grouping is active. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00722, b00723, b00724, b00726, b00733, b00734, b00736, b00738, b00740, b00742, b00746](reading/sdd-61bfda888fe30365.md#b00722)
+
+### work-picking-wave-replenishment-work-type
+
+When replenishment work is created out of the wave process and Wave Replen Work Type is activated in Work System Values, the source says that special replenishment work type replaces the work type on the creation master.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00741](reading/sdd-61bfda888fe30365.md#b00741)
+
+### work-picking-special-handling-scope
+
+Work special handling supplies verification and processing restrictions in Warehouse Mobile or RF, and the source explicitly excludes Work Insight. The flow also describes constraints selected by item/company, account/company or user profile/work zone/work type, but gives no conflict-resolution order between these scopes.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00080, b00082, b00090, b00091, b00094, b00097, b00100, b00840, b00841, b00842, b00843, b00844](reading/sdd-61bfda888fe30365.md#b00080)
+
+### work-picking-cycle-count-exceptions
+
+Counting license plates can fall back to counting their actual contents when the plate count differs; multi-item locations require individual quantities. Group Count By Item/Company combines quantity across lot, inventory attribute and plate, but a mismatch, added item or enabled lot/plate verification ungroups work. Multiple-item and empty-location counts require individual confirmations.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The source supplies no tolerance values or observed count outcomes. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00143, b00144, b00145, b00146, b00147, b00148, b00149, b00150](reading/sdd-61bfda888fe30365.md#b00143)
+
+### work-picking-work-type-and-group
+
+A Work Group organizes related activities and can contain multiple Work Types. Work Types identify processing categories; predefined and custom types can be associated with profile processing rules. The work-type description also serves as a numeric voice identifier for Vocollect in this source.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Example type names are not evidence that those types exist in the assessed deployment. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00171, b00172, b00173, b00176, b00177, b00178, b00180, b00181, b00182, b00183, b00188](reading/sdd-61bfda888fe30365.md#b00171)
+
+### work-picking-cart-container-method-conflict
+
+The cart section describes assigning totes and work units before picking and later says grouping is supported for pick-to-tote carts. A nearby note says only Pick into shipping container is currently supported. These statements conflict within this undated compilation; tote-cart availability is unresolved by this source alone.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Do not select either account as the installed behavior or infer a release chronology. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00282, b00283, b00285, b00286, b00287, b00288, b00289, b00290, b00291, b00331, b00332, b00336, b00337](reading/sdd-61bfda888fe30365.md#b00282)
+
+### work-picking-cart-actions
+
+Cart picking distinguishes Partial Pick, which asks for confirmation, from Short Pick, which asks for a reason; Skip moves to the next instruction without completing the current quantity. Pass stops the current execution instance and its warning depends on Work System Value 50. Partial or short picking ungroups batched instructions.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The source does not establish inventory effects for every cart action or every configured value of Work System Value 50. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00304, b00305, b00307, b00309, b00310, b00312, b00314, b00338](reading/sdd-61bfda888fe30365.md#b00304)
+
+### work-picking-cart-start-and-putaway
+
+The cart procedure assigns containers to user-chosen or system-assigned spots, starts picking after assignment and applies configured verifications at confirmation. With put-to-store work and putaway into a container, it requests a container ID and requests a type only for a new container. New Cart allows assignment of another cart before picking the first.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This is a documentary sequence; it is not verified navigation in the owner environment. The tote-cart conflict is retained separately. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00268, b00269, b00270, b00271, b00275, b00276, b00277, b00278, b00279, b00280, b00281, b00292, b00293, b00294, b00295, b00296, b00297, b00300, b00301, b00302, b00303](reading/sdd-61bfda888fe30365.md#b00268)
+
+### work-picking-system-cart-empty-and-back
+
+System-built carts assign eligible shipping containers to spots at work initiation and show spot, container type and the last four container-ID digits for physical cart building. With no eligible work, Build Cart has no assigned spots. Back returns to profile selection while leaving the newly built cart built.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Walking-path efficiency is an intended benefit, not a measured timing result. Do not treat the displayed suffix as a unique identifier outside the source UI. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00341, b00360, b00361, b00362, b00363, b00364, b00365, b00366, b00367, b00369, b00370](reading/sdd-61bfda888fe30365.md#b00341)
+
+### work-picking-picking-management-zone-readiness
+
+Picking Management splits work by zone so multiple users can execute portions of a work unit. The selected-zone list includes open, held and assigned units and orders them by Zones Away; the procedure chooses a unit with Zones Away equal to zero as ready for that zone. A user may be assigned multiple work units.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Displayed availability is not proof that a held unit is executable; the hold rule is separately documented. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00389, b00499, b00501, b00505, b00515, b00652](reading/sdd-61bfda888fe30365.md#b00389)
+
+### work-picking-picking-management-assignment
+
+The documented Picking Management sequence assigns a user and work unit before starting. Details can be reviewed and a pick list can be printed; starting confirms the assignment, and entering an already assigned unit opens completion. Unassign removes the associated user from an open unit, while a unit on hold cannot be unassigned.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This explains the source sequence without asserting current permissions or registered SOP navigation. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00511, b00513, b00517, b00519, b00521, b00523, b00527, b00528, b00530, b00532, b00534, b00536, b00540, b00545, b00546, b00547, b00549](reading/sdd-61bfda888fe30365.md#b00511)
+
+### work-picking-picking-management-hold-short
+
+In the Complete Picking procedure, normal confirmation performs the pick and closes the work unit. Hold requires a business hold code, leaves the current instructions unconfirmed and blocks actions until release; the source names Work Insight as the release screen. Short Pick requests item and quantity, lot when controlled, then a quality-measures reason before processing the short pick.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The source paragraph uses both instruction and work-unit terminology. No database status values, current role permissions or live release action are established. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00539, b00540, b00541, b00542](reading/sdd-61bfda888fe30365.md#b00539)
+
+### work-picking-wave-group-capacity
+
+Wave picking groups represent physical picking aids and constrain full and loose container counts and eligible allocation locations/work zones. During the wave, the group step assigns containers created earlier. Group-detail sequences must be unique and process lower numbers first.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The medium-container sizing hint is source guidance, not a safe capacity calculation for a particular cart. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00554, b00555, b00587, b00589, b00591, b00593, b00598, b00600, b00602, b00604](reading/sdd-61bfda888fe30365.md#b00554)
+
+### work-picking-paper-versus-rf-group
+
+Paper-based group picking consolidates containers into a capacity- and location-defined group during the wave and uses the Group Picking Pick List; the source places it outside work execution. RF group picking operates through work, supports shipping containers or totes, and can introduce a transport container during picking. The two documented methods must not be treated as the same confirmation path.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. No live group creation, printing or warehouse movement was performed. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00622, b00642, b00647](reading/sdd-61bfda888fe30365.md#b00622)
+
+### work-picking-direct-container-packing
+
+When RF picking directly into a shipping container, the source says picking also performs packing: the picked item and quantity are assigned to that container, and more items from the same shipment may be added until it is closed. Picking into a tote groups products for the shipment instead.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This does not waive container close validations or establish shipping confirmation. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00657](reading/sdd-61bfda888fe30365.md#b00657)
+
+### work-picking-vocollect-boundary
+
+The source describes Vocollect voice picking as a request/response integration: individual TalkMan devices initiate requests and SCALE issues responses. It requires configuration on both sides and Vocollect software on an application or separate server. Its listed capabilities include outbound, user/system-directed picking, final-container or tote picking, equipment types, lot tracking, verification, short picks and spoken comments/text.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This undated capability list does not establish installed voice equipment, service topology, present product support or execution. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00662, b00664, b00665, b00666, b00667, b00668, b00669, b00670, b00671, b00672, b00673, b00674, b00675, b00676, b00677, b00678, b00679, b00680](reading/sdd-61bfda888fe30365.md#b00662)
+
+### work-picking-nonrf-confirmation-evidence
+
+The non-RF flow generates a work-unit pick list, distributes it to workers and has an administrator record the performed activity in Work Insight. The source requires user/warehouse access to a profile supporting the instruction work type and zones; confirmation includes worker, quantity, check digits, optional recorded times and exception reasons. Its described outbound transition is Ready for Packing or an intervening configured status.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This outbound example is not a universal status transition for all work types. Recorded operator timestamps do not by themselves establish end-to-end measured runtime. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00757, b00760, b00761, b00763, b00765, b00767, b00769, b00771, b00773, b00775, b00777, b00779, b00781, b00783, b00785, b00786, b00788, b00789, b00791, b00793, b00795, b00797, b00799, b00801, b00803, b00805, b00807](reading/sdd-61bfda888fe30365.md#b00757)
+
+### work-picking-rf-profile-selection
+
+The RF flow first uses the default work profile on the employee user profile. If none is associated, it prompts with user- and warehouse-authorized profiles. Eligible instructions must match profile work type and a work zone accepting the detail equipment type; if no detail matches, the source directs the employee to obtain work from a supervisor.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The source does not establish full permission precedence or this user current authorization. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00821, b00822, b00823, b00824, b00826, b00827, b00828](reading/sdd-61bfda888fe30365.md#b00821)
+
+### work-picking-rf-initiation-and-prelocate
+
+RF system-directed initiation starts from a nearest-location scan; a location eligible for system-directed work-unit selection can expose a choice subject to the same unit validations as user-directed initiation, including not closed or active. User-directed initiation scans a chosen unit. Starting receipt putaway when the To location is the receiving pre-locate location relocates the receipt container in this documented flow.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Location ordering details remain constrained by the From Assignment source; physical-distance optimization is not established. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00831, b00832, b00833, b00834](reading/sdd-61bfda888fe30365.md#b00831)
+
+### work-picking-rf-partial-close-scope
+
+The RF flow limits partial-pick-and-close to replenishment and work-order picks when the special-handling option enables it. It removes the remainder from the instruction and closes it; without that behavior the remainder stays available to pick. Partial picking into a tote or shipping container returns to the remaining quantity until all quantity is picked.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Removing remaining work quantity is not a claim that physical inventory is deleted. The general setting paragraph must be read with this narrower execution scope. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00125, b00851](reading/sdd-61bfda888fe30365.md#b00125)
+
+### work-picking-rf-short-over-pick
+
+The RF flow says a short pick rejects the short quantity and reduces On Hand quantity at the source location. Over-picking increases transaction quantity and processes the pick as complete, but is limited to configured RF replenishment/work-order picks within available location quantity.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. These are documentary effects; no current inventory quantity, full ledger transaction, reason-code policy or observed execution is established. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00123, b00849, b00850, b00852](reading/sdd-61bfda888fe30365.md#b00123)
+
+### work-picking-automatic-putaway-wording-conflict
+
+The settings section calls the option Automatic Putaway, excludes dock-management work and disables Consolidation After Putaway when it is selected. The later RF flow instead names Select After Putaway and says any work scenario. The name and scope differ; the broader flow wording cannot establish equivalence or remove the explicit dock-management exclusion.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. No alias, newer version or live field identity was inferred. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00235, b00236, b00853, b00854, b00855](reading/sdd-61bfda888fe30365.md#b00235)
+
+### work-picking-rf-putaway-followthrough
+
+The RF putaway flow requests a shipping-container ID when putting to a put-to-store location or shipping dock and a type for a new container. It then puts quantity in the specified location, offers nesting when the profile requests it and continues remaining putaway instructions before checking for more profile-detail work.
+
+Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Nesting remains subject to the separately documented single-shipment and Putaway Into Shipping Container restrictions; the broad flow does not override them. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00234, b00237, b00858, b00859](reading/sdd-61bfda888fe30365.md#b00234)
+
+### Retained asset descriptions
+
+#### Blank field-description source asset
+
+The retained 16 by 16 GIF appears blank at original resolution and when composited on white. It occurs beside Field Descriptions headings in the Picking Management and Wave Picking Group portions; it carries no readable label or process information.
+
+Limit: Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This is an inspected blank/decorative asset, not a process diagram or evidence of missing hidden text.
+
+[sdd-61bfda888fe30365 b00404, b00563](reading/sdd-61bfda888fe30365.md#b00404)
+
+Assets: [1d600a0343eef0b105f4dd86d1b7572306777214a30e5b8d49e91c153d7bca31.gif](assets/sdd-61bfda888fe30365/1d600a0343eef0b105f4dd86d1b7572306777214a30e5b8d49e91c153d7bca31.gif)
+
+#### Open work-unit status icon
+
+A small outlined document with horizontal blue lines marks an open work unit in the source legend. The first row of table b00510 binds this icon to the explicit text Open work unit.
+
+Limit: Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The original DOCX relationship in row 1 identifies image5.gif; extracted asset-list order alone cannot establish this mapping.
+
+[sdd-61bfda888fe30365 b00505, b00507, b00508, b00510](reading/sdd-61bfda888fe30365.md#b00505)
+
+Assets: [80b40168ae9cd32aef1337311cddd2fca8c550807d47129a17d605811c40cc89.gif](assets/sdd-61bfda888fe30365/80b40168ae9cd32aef1337311cddd2fca8c550807d47129a17d605811c40cc89.gif)
+
+#### Assigned work-unit status icon
+
+A small person silhouette beside a document marks a work unit with a user assigned in the source legend. The second row of table b00510 supplies the meaning, so the explanation does not require recognizing the icon.
+
+Limit: Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The original DOCX relationship in row 2 identifies image6.gif. This is a legend meaning, not evidence that an actual unit has been assigned.
+
+[sdd-61bfda888fe30365 b00507, b00508, b00510](reading/sdd-61bfda888fe30365.md#b00507)
+
+Assets: [d436bfc07ebcdf2fee155e49df221e5c8806ecc079486b988953bcbb4c084eaf.gif](assets/sdd-61bfda888fe30365/d436bfc07ebcdf2fee155e49df221e5c8806ecc079486b988953bcbb4c084eaf.gif)
+
+#### Held work-unit status icon
+
+An outlined document overlaid by a red circular stop-like badge with a white cross marks a held work unit in the source legend. The third row of table b00510 explicitly states the hold status; color and shape are supplementary.
+
+Limit: Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The original DOCX relationship in row 3 identifies image7.gif. Held work cannot be processed or unassigned under the cited source rules until released.
+
+[sdd-61bfda888fe30365 b00507, b00508, b00510, b00542, b00546](reading/sdd-61bfda888fe30365.md#b00507)
+
+Assets: [7732b668cccd5cadf15cbd50fa9e81e0f1c9b2d77424b4a712dd3da96420fb48.gif](assets/sdd-61bfda888fe30365/7732b668cccd5cadf15cbd50fa9e81e0f1c9b2d77424b4a712dd3da96420fb48.gif)
+
+### Remaining source conflicts
+
+The compilation describes tote cart picking but also contains a shipping-container-only note. Its automatic-putaway flow uses a different setting name and broader scope than the settings section. Both conflicts remain explicit. Current configuration, full DOCX layout and operational navigation remain unverified.

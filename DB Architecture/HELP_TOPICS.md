@@ -1,6 +1,6 @@
 # SCALE functionality help topics
 
-334 bounded help topics; 705 authored evaluation cases. These reviewed explanations are also served by the local help prototype. Deployment reconciliation remains incomplete.
+340 bounded help topics; 717 authored evaluation cases. These reviewed explanations are also served by the local help prototype. Deployment reconciliation remains incomplete.
 
 Answers follow what it does, what happens, what can affect it, what you can check, and sources. Screen names in sources are documentary references; verified Insight navigation and SOPs remain separate. No process, label, job or transaction was executed. Browser, keyboard, screen-reader and intended-user acceptance remain unperformed.
 
@@ -16151,14 +16151,15 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 **Question:** Why a failed split may already have created a new instruction?
 
-**What it does.** The split helpers clone the original before checking whether the relevant side quantity can cover the requested split. A later failure has no local rollback. The original and clone also retain different from/to quantities depending on the mode.
+**What it does.** The split helpers clone the original before checking whether the relevant side quantity can cover the requested split. A later failure has no local rollback. The original and clone also retain different from/to quantities depending on the mode. A missing confirmation mode (SQL NULL) selects the destination/putaway quantity branch in WTH_SplitWorkWithReturnInstr; it does not mean non-putaway confirmation.
 
 **What happens**
 
 Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
 
 1. Check the selected split mode and source versus destination quantity. Evidence: `work-config-1434800519`, `work-config-1450800576`, `work-config-1466800633`, `work-config-1482800690`.
-2. Treat a failed return as a reason to inspect the authorized workflow state, not to repeat blindly. Evidence: `work-config-1434800519`, `work-config-1450800576`, `work-config-1466800633`, `work-config-1482800690`.
+2. When work splitting receives a NULL confirmation mode, its comparison with 1 is unknown and the ELSE branch uses destination quantities. The wrapper also skips its conditional replenishment-request split. Check the supplied mode and caller transaction before interpreting the result. Evidence: `work-config-1434800519`, `work-config-1482800690`.
+3. Treat a failed return as a reason to inspect the authorized workflow state, not to repeat blindly. Evidence: `work-config-1434800519`, `work-config-1450800576`, `work-config-1466800633`, `work-config-1482800690`.
 
 **What can affect it**
 
@@ -16294,3 +16295,314 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 - Does the captured batch-status procedure contain an executable batch loop? Expected: No executable statements appear after its declaration. Must not claim: The procedure name proves batch processing.
 - Does dock status lookup fall back to a generic flow when a custom flow is supplied but absent? Expected: Its predicate requires the supplied custom flow; no such fallback appears. Must not claim: It always falls back to a generic flow.
+
+## 335. Stuck work: deletion, wave cancellation and receipt reversal
+
+**Question:** Which cancellation route fits a work instruction and its inventory movement?
+
+**What it does.** Cancellation depends on what created the work and what has already happened. Work Insight Delete, Cancel Wave, receipt Unlocate and Cancel Check In are separate actions with different restrictions. First compare the instruction and transaction history with the physical product location; deleting a record does not establish that product has physically moved back.
+
+**What happens**
+
+Trigger: A user needs a source-bound explanation of the named warehouse action or configuration.
+
+1. Identify the work type, originating wave or receipt, From/To location, license plate, lot, remaining detail and current condition. Compare the last confirmed pick/putaway and transaction history with the product location reported by the operator. This comparison is an authored triage step, not an automatic reconciliation function. Evidence: `operator-work-processing`, `operator-container-insight`.
+2. Work Insight Delete removes the instruction and supporting inventory allocations; for shipment work it also updates shipment header, details and containers using Default Status When Shipment Is Rejected. The Processing Work article explicitly lists work that is not closed, active work, unreleased-wave work, allocated replenishment/inventory-transfer work at the To location, and specified shipment-allocation/container links as deletion restrictions. Do not reverse its not-closed wording into permission to delete open work. Evidence: `operator-work-processing`.
+3. Cancel Wave is documented for a wave that has run but has not been released. It validates eligibility, reports a rejection and writes history when ineligible. Allocation rollback and replenishment retention depend on the wave and its configuration; replenishments supporting another wave may be retained/extracted or prevent cancellation. It is not a general rollback for released work. Evidence: `operator-wave-cancel`.
+4. For receipt work, Cancel Check In applies only to product that has not been located. Unlocate is a separate preceding possibility for located product, but the source disallows it when created work has already executed. Cancel Check In returns the quantity to open receipt quantity; an interface-upload warning needs separate ERP reconciliation under the authorized procedure. Evidence: `operator-receipt-workbench`.
+5. If physical movement and recorded confirmation disagree, retain the precise discrepancy and escalate to the authorized warehouse owner before selecting a reversal. The retained documentation does not establish a universal repair for partially moved or already executed work. An operator must verify the permitted action and actual result; this help cannot authorize cancellation. Evidence: `operator-work-processing`, `operator-receipt-workbench`.
+
+**What can affect it**
+
+- Work type and condition; wave release and Wave Master replenishment-retention policy; receipt locating/executed-work state.
+- Default Status When Shipment Is Rejected controls shipment statuses for the documented deletion route.
+
+**What you can check**
+
+- Record the screen/action, exact rejection, last successful confirmation and whether the product is at From, To or another observed location. Review the corresponding process/transaction history before deciding whether a reversal fits.
+
+**Expected results and limits**
+
+- Identify the documented route, the checks it requires and any fact the available sources cannot establish.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+- The literal not-closed deletion restriction is a documentary statement; no installed action or polarity correction was verified.
+
+**More detail and sources**
+
+`operator-work-processing`: [Processing Work](../AIM/reading/2a849da2c18bc5244f4e44f5346f871a765c86c96d43a011314a5857cfea60c5.md); AIM article `2a849da2c18bc5244f4e44f5346f871a765c86c96d43a011314a5857cfea60c5`, original SHA-256 `2a00aeeb302e41866c8b8f4b91bb84245976cb5fb4366177c3185b2ab3488cb0`, nodes n121, n123, n139, n151, n173, n189, n215, n324, n369, n377, n389, n406, n442, n444, n453, n456.
+
+`operator-wave-cancel`: [Canceling a Wave](../AIM/reading/f95431ca9a42f8cc326def4b0c44563876797b45e44e9268cf9b9a4d634f5f9f.md); AIM article `f95431ca9a42f8cc326def4b0c44563876797b45e44e9268cf9b9a4d634f5f9f`, original SHA-256 `9bfe45cfd7a4942002d0107110ae7c8149a7ada1ef9853347fdce43ad290c3e2`, nodes n58, n65, n68, n92, n125, n188, n195, n200, n335.
+
+`operator-receipt-workbench`: [Checking In and Locating Product (Receipt Workbench)](../AIM/reading/a357eac1f7ebf1b8fcf6edee90c086783da65f07d18fbdcc06236891e314cebc.md); AIM article `a357eac1f7ebf1b8fcf6edee90c086783da65f07d18fbdcc06236891e314cebc`, original SHA-256 `d17a1f9b5a6e3db726b8fdce3c6368c6702a56e6b32b98c5c864c0e4885d4d01`, nodes n206, n233, n237, n267, n434, n435, n438, n480, n486, n489, n492, n495, n512, n574, n598, n611, n613, n636.
+
+`operator-container-insight`: [Using the Shipping Container Insight Screen](../AIM/reading/56f58af05b639903354ee78fe799f51fefee04136179aa4cf2c434fc9c82a65a.md); AIM article `56f58af05b639903354ee78fe799f51fefee04136179aa4cf2c434fc9c82a65a`, original SHA-256 `4a61e596554a32153d6b748d38952aabd4ec8a0cc84295a3b78214b5d2c0ce0a`, nodes n58, n283, n319, n332, n336, n354, n364, n385, n430, n434.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_VERIFICATION_CONTINUATION3`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does deleting an instruction prove the pallet moved back? Expected: No; compare the physical location and recorded confirmation, then use the eligible originating-process route. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
+- Can receipt putaway be unlocated after its work was executed? Expected: The Receipt Workbench source disallows unlocating when its created work was executed. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
+
+## 336. Unexpected putaway destination: ordered rules and decision history
+
+**Question:** How can I explain an unexpected locating destination when another slot appears empty?
+
+**What it does.** An empty-looking slot is not enough to make it an eligible putaway destination. SCALE evaluates the applicable locating rule in sequence, with each strategy restricted by its location selection and capacity rules. Use Process History for locating decisions and Transaction History for actual locating events; the word exception alone does not identify a documented fallback rule.
+
+**What happens**
+
+Trigger: A user needs a source-bound explanation of the named warehouse action or configuration.
+
+1. Identify the receipt container and its locating rule. Receipt Workbench first shows the assigned rule in Destination after check-in, then the chosen location after successful locating. Parent locating uses the parent rule; child locating uses the nested container rule. Evidence: `operator-receipt-workbench`, `operator-locating-process`.
+2. Read the rule details in ascending sequence. For each detail, inspect the locating strategy and optional Location Selection, including its sort. A location outside that selection is not a candidate just because it looks empty. Evidence: `operator-locating-rules`, `operator-locating-process`.
+3. Compare rejected or unsuitable candidates with the actual strategy: Empty Location excludes an empty permanent location assigned to another item; same-lot consolidation has a lot requirement; Fill One And Only One Location stops looking within that selection after the selected location is full. These examples are distinct algorithms, not universal rules applied together. Evidence: `operator-locating-process`.
+4. Check quantity/unit compatibility and capacity. Item/location capacity records take precedence over the documented multi-item volume calculation. Split Quantity permits remaining quantity to continue to another rule detail; a serial-number-linked receipt container cannot be split. Without a satisfiable detail, locating can fail. Evidence: `operator-receipt-workbench`, `operator-locating-rules`.
+5. Check whether Delayed Locating and Create Putaway Work both apply: that combination uses a receiving pre-locate location. Otherwise rule details govern. Quick Receive can ask the user for a location if none is found; that is not proof of an automatic exception destination. Evidence: `operator-locating-process`, `operator-mobile-receiving`.
+6. Research Process History for the locating decision and any recorded failure or rejected choice, and Transaction History for the actual event. Compare the recorded rule/sequence and reason with the candidate checks above. The source identifies these history purposes, but does not promise a complete list of every rejected location. Evidence: `operator-locating-process`.
+
+**What can affect it**
+
+- Receipt container locating rule, parent/child locating mode, ordered detail strategy and location selection.
+- Item/location capacity, unit of measure, lot restrictions, Split Quantity and delayed-locating/putaway-work flags.
+
+**What you can check**
+
+- Provide the exact destination description, effective rule/sequence, selected strategy and the recorded decision or error. If history does not expose a rejected candidate, its rejection reason remains unestablished.
+
+**Expected results and limits**
+
+- Identify the documented route, the checks it requires and any fact the available sources cannot establish.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+- No retained source in this review establishes a universal exception-location fallback or the effective rule for a specific pallet.
+
+**More detail and sources**
+
+`operator-locating-process`: [Locating Process Summary: Functionality](../AIM/reading/4007cca3ce3ca3273f3ee4e6d51d7027ae1816c6f7ce71af9f254400514146aa.md); AIM article `4007cca3ce3ca3273f3ee4e6d51d7027ae1816c6f7ce71af9f254400514146aa`, original SHA-256 `e215745a6d81b87363e12c8d05d0ac51d7b6337430ce4b448bc6edcedf67b24a`, nodes n64, n66, n83, n87, n94, n96, n102, n105, n108, n113.
+
+`operator-locating-rules`: [Defining Locating Rules](../AIM/reading/a3869416433c59c85b566e9a0be734881a8f8c0a3757934f651c97c14db936eb.md); AIM article `a3869416433c59c85b566e9a0be734881a8f8c0a3757934f651c97c14db936eb`, original SHA-256 `1a22af46e7904e61aa299862372a5f075f9ac75fa4cdc4773ca65f46b6952ab4`, nodes n58, n62, n112, n115, n118, n122, n125, n131, n134.
+
+`operator-receipt-workbench`: [Checking In and Locating Product (Receipt Workbench)](../AIM/reading/a357eac1f7ebf1b8fcf6edee90c086783da65f07d18fbdcc06236891e314cebc.md); AIM article `a357eac1f7ebf1b8fcf6edee90c086783da65f07d18fbdcc06236891e314cebc`, original SHA-256 `d17a1f9b5a6e3db726b8fdce3c6368c6702a56e6b32b98c5c864c0e4885d4d01`, nodes n206, n233, n237, n267, n434, n435, n438, n480, n486, n489, n492, n495, n512, n574, n598, n611, n613, n636.
+
+`operator-mobile-receiving`: [Warehouse Mobile Receiving](../AIM/reading/21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99.md); AIM article `21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99`, original SHA-256 `c778b2f4c14458602e67139dffde7a0b7bf1315cbe7b33f3df785ab0bf26bd13`, nodes n276, n311, n329, n357, n360, n363, n367, n371, n418, n420, n423, n430, n432, n433, n435, n450, n454, n462, n464, n466, n475, n477, n478, n479, n480, n797.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_VERIFICATION_CONTINUATION3`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Why is an empty permanent slot excluded from putaway? Expected: The Empty Location strategy excludes a permanent location assigned to another item. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
+- Which history explains a locating decision? Expected: Process History covers decisions; Transaction History covers actual locating events. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
+
+## 337. Receiving prompts for lot and serial numbers
+
+**Question:** Which item controls explain lot or serial entry during receipt check-in?
+
+**What it does.** Receiving prompts start with the item tracking requirements and the exact receiving flow. A lot-controlled item may need a lot ID when the receipt line does not already supply it. Serial-number tracking has separate inbound, inventory and outbound options; inspect those options and any template before treating a prompt as an error.
+
+**What happens**
+
+Trigger: A user needs a source-bound explanation of the named warehouse action or configuration.
+
+1. On the item definition, inspect Lot Controlled and Lot Template, then Serial Number options and its Template field. The lot template controls the lot-ID structure; serial options specify the warehouse flow being tracked. A serial template constrains the serial format; without one the article allows free-format characters. These are item controls, not a Packing preference. Evidence: `operator-item-tracking`.
+2. In Warehouse Mobile Receiving, a lot-controlled item with an assigned lot template uses the Enter Lot screen for header-item, license-plate and blind receiving. Template autofill can populate the lot and expiration date. Without a template the documented flow still asks for lot, expiration/frozen state and inventory status; no template does not mean no lot control. Evidence: `operator-mobile-receiving`.
+3. Compare the receipt line with the prompt. Mobile documents a lot prompt when no lot is configured on the receipt line. Existing lot data can supply expiration/status, and changing expiration or frozen inventory status can lead to Confirm Lot Update. Do not change tracking solely to suppress that confirmation. Evidence: `operator-mobile-receiving`.
+4. For serial entry in mobile receiving, the documented prompt count follows check-in quantity: one serial for one unit and serials for multiple units. Duplicate serial entries are rejected and linked serial-number templates are validated. Inspect the applicable inbound/inventory tracking and whether serials already arrived through the interface. The nested-parent flow specifically supports inbound/inventory serials already supplied in the interface, and outbound-only tracking. Evidence: `operator-mobile-receiving`, `operator-item-tracking`.
+5. For Receipt Workbench, the documented Lot Entry and Serial Number Entry screens collect tracking values during check-in. Review the selected user-authorized receiving preference and the exact displayed screen; mobile and Workbench have different prompt sequences. A receipt line with an existing lot can follow a different path from a line without one. Evidence: `operator-receipt-workbench`.
+6. If check-in splits quantity into multiple receipt containers, mobile can request tracking information for each container. Check the storage-template Group During Check In setting and unit of measure before interpreting repeated prompts as duplicate work. Evidence: `operator-mobile-receiving`.
+
+**What can affect it**
+
+- Item Lot Controlled, Lot Template, Serial Number flow options and serial Template.
+- Receiving initiation/execution method, receipt-line supplied lot/serial data, storage-template grouping and check-in quantity/unit.
+
+**What you can check**
+
+- Record the exact screen label and tracking prompt, receipt entry method, item tracking flow, template presence and whether values were already supplied. These checks distinguish a required collection prompt from duplicate or format validation; current item values are not available to this library.
+
+**Expected results and limits**
+
+- Identify the documented route, the checks it requires and any fact the available sources cannot establish.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-item-tracking`: [Defining Items](../AIM/reading/505c5c4630e085fc146ea8699fd6ca8b29c4f269b413b1ce93e0e981d01241b2.md); AIM article `505c5c4630e085fc146ea8699fd6ca8b29c4f269b413b1ce93e0e981d01241b2`, original SHA-256 `fe23b80dc74ea96572b3a0f913853b8c6ab28e85fb76932b44d53aa1a42caf83`, nodes n58, n153, n155, n157, n159, n282, n284, n286, n291, n301.
+
+`operator-mobile-receiving`: [Warehouse Mobile Receiving](../AIM/reading/21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99.md); AIM article `21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99`, original SHA-256 `c778b2f4c14458602e67139dffde7a0b7bf1315cbe7b33f3df785ab0bf26bd13`, nodes n276, n311, n329, n357, n360, n363, n367, n371, n418, n420, n423, n430, n432, n433, n435, n450, n454, n462, n464, n466, n475, n477, n478, n479, n480, n797.
+
+`operator-receipt-workbench`: [Checking In and Locating Product (Receipt Workbench)](../AIM/reading/a357eac1f7ebf1b8fcf6edee90c086783da65f07d18fbdcc06236891e314cebc.md); AIM article `a357eac1f7ebf1b8fcf6edee90c086783da65f07d18fbdcc06236891e314cebc`, original SHA-256 `d17a1f9b5a6e3db726b8fdce3c6368c6702a56e6b32b98c5c864c0e4885d4d01`, nodes n206, n233, n237, n267, n434, n435, n438, n480, n486, n489, n492, n495, n512, n574, n598, n611, n613, n636.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_VERIFICATION_CONTINUATION3`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can lot entry still be required without a lot template? Expected: Yes; lot control and receipt-line data drive the need, while a template affects the entry structure and autofill. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
+- Why does mobile receiving reject the second identical serial scan? Expected: The receiving serial entry flow validates uniqueness and does not allow duplicate serials. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
+
+## 338. Packing station container choices: company and warehouse access
+
+**Question:** How are eligible container types selected for manual Packing?
+
+**What it does.** Define the container types used for packing, then authorize them for the shipment company and warehouse. The user packing preference controls how packing starts and how container IDs are assigned; it is not the same as the type authorization. An existing container keeps its established type.
+
+**What happens**
+
+Trigger: A user needs a source-bound explanation of the named warehouse action or configuration.
+
+1. In Defining Container Types, the Company Access and Warehouse Access tabs govern eligibility during Packing, Close Container, nesting and picking/putaway into shipping containers. If the shipment header has a company, both company and warehouse authorization are required; warehouse authorization also applies when company is blank. Evidence: `operator-container-types`.
+2. Check the employee User Profile Packing Preferences field. A blank field selects the preference named *Default. In Packing, compare New versus Existing and manual versus system container assignment; an existing container type cannot be changed through the Packing type field. Evidence: `operator-user-preferences`, `operator-packing-screen`.
+3. For a new package, choose a type eligible for the shipment context and appropriate for its dimensions/weight. Defining a physical workstation supports document routing and printing; this retained Workstation article does not establish a separate workstation-specific list of container types. Evidence: `operator-container-types`, `operator-workstation`.
+4. Keep wave Container Group choices separate from manual Packing authorization. The Container Types article explicitly says company/warehouse authorization is not used by wave container creation or pallet building; those paths use packing classes/groups/types or pallet-building criteria/masters. Evidence: `operator-container-types`.
+5. Do not use Use As Default as a universal Packing default. The documented checkbox supplies a default type for scan-and-weigh container creation when no type is interfaced, and sets company authorization to All. It has no stated effect outside that scan-and-weigh use. Evidence: `operator-container-types`.
+
+**What can affect it**
+
+- Container Type Company Access and Warehouse Access; shipment header company/warehouse.
+- User Profile Packing Preferences (*Default when blank), Packing initiation and container-assignment method.
+
+**What you can check**
+
+- For a missing type, compare the shipment company and warehouse with the type access lists, then check whether the selected container already has a type. Capture the exact field/action and error; this does not establish the current user permission or installed configuration.
+
+**Expected results and limits**
+
+- Identify the documented route, the checks it requires and any fact the available sources cannot establish.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-container-types`: [Defining Container Types](../AIM/reading/b8520236e77bf1d9729a56d56a398123183351403f9a3eff7e86595795483b9e.md); AIM article `b8520236e77bf1d9729a56d56a398123183351403f9a3eff7e86595795483b9e`, original SHA-256 `ab44226d2496a7f8cc604d66ede0285a6c10a1d78bffb5e3a6d09f677e62e18e`, nodes n58, n66, n128, n131, n139, n145, n148, n150, n155.
+
+`operator-user-preferences`: [Defining User Profiles](../AIM/reading/80b3ffb7968806f7f9c954f5e2af42c649492c456ff19cd59e91cecca1bd3f51.md); AIM article `80b3ffb7968806f7f9c954f5e2af42c649492c456ff19cd59e91cecca1bd3f51`, original SHA-256 `07be810ab7cb93c9ffe412176f460f3987f253e766b84616a9b003235d28de6f`, nodes n58, n172, n189.
+
+`operator-packing-screen`: [Packing a Container](../AIM/reading/9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac.md); AIM article `9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac`, original SHA-256 `d583b87e4904b3186103603a6378e213a5be4aafb82bc936b3397b0b6bd6be57`, nodes n59, n138, n141, n144, n147, n150, n161, n164, n167, n169, n172, n175, n178, n186, n188, n193, n195, n198, n202, n206, n210, n213, n216, n224, n227, n231, n233, n236, n243, n252, n255, n258.
+
+`operator-workstation`: [Workstation Configuration](../AIM/reading/b8d6ad6ff9d28497e03fe77e2e384a39d93718f9fb7bb39c83706b3b8c603bf7.md); AIM article `b8d6ad6ff9d28497e03fe77e2e384a39d93718f9fb7bb39c83706b3b8c603bf7`, original SHA-256 `6a8ab82f7c10053906a23d880f9e729facc1b53225db46d271c4123935020ab0`, nodes n58.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_VERIFICATION_CONTINUATION3`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Why can a box type be available in wave creation but absent from manual packing? Expected: Wave creation and manual Packing use different eligibility mechanisms; manual Packing uses shipment company/warehouse authorization. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
+- Does a workstation printer assignment define its carton choices? Expected: The workstation source establishes printing context, while Container Type access controls establish documented manual Packing eligibility. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
+
+## 339. Replacement license plate rejected: distinguish Packing from Override Pick
+
+**Question:** What can the retained SCALE sources establish about replacing a license plate while packing?
+
+**What it does.** The retained SCALE Packing instructions describe selecting a shipping container and packing shipment-line items. They do not establish a Packing action called replacement LPN or its validation rules. First identify whether the rejection is in Packing or in Warehouse Mobile Override Pick; an item that looks the same does not prove that either action accepts it.
+
+**What happens**
+
+Trigger: A user needs a source-bound explanation of the named warehouse action or configuration.
+
+1. In Packing, identify whether the scanned value is the shipment initiation value, shipping Container ID, item/item cross-reference or serial number. Check Status Info and open the specific Error-column message. Existing shipping-container selection is documented; replacement of an inventory license plate in Packing is not established by these sources. Evidence: `operator-packing-screen`.
+2. If the actual screen is mobile Pick Confirmation or Override Pick, apply the separate picking contract: Override Pick security and the relevant Work Special Handling license-plate override must allow it. Quantity differences, grouping and container verification have their own documented conditions. These are picking controls, not a Packing substitution procedure. Evidence: `operator-override-pick-continuation3`.
+3. For an Override Pick from another location/license plate, the inventory-attributes article requires the new pick location to have the same attribute values as the original. Lot/location/LP changes must also pass the applicable override validation. Visual similarity or an item name alone is therefore insufficient evidence that a pick override is eligible. Evidence: `operator-inventory-attributes`, `operator-work-processing`, `operator-override-pick-continuation3`.
+4. Provide the exact screen/action label, error text, scanned identifier type, whether the item has already been picked/packed, and a sanitized description of differing quantity, lot or inventory attributes. If it is truly a Packing-specific replacement action, the missing evidence is its installed screen/action contract or source documentation; do not borrow another product's LPN rules. Evidence: `operator-packing-screen`, `operator-override-pick-continuation3`.
+
+**What can affect it**
+
+- Packing preference initiation/item validation versus Override Pick security and Work Special Handling; these apply to different flows.
+- Picking inventory attributes, lot, quantity/grouping and LP/container verification, only when the actual action is Override Pick.
+
+**What you can check**
+
+- No current-state diagnosis or replacement-LPN permission is supported. Use the exact application error and screen context to choose the documented action, and retain the unknown if it is a separate/custom Packing action.
+
+**Expected results and limits**
+
+- Identify the documented route, the checks it requires and any fact the available sources cannot establish.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+- Corpus discovery found no retained replacement-LPN Packing contract. This is a bounded source gap, not proof the installed application cannot provide one.
+
+**More detail and sources**
+
+`operator-packing-screen`: [Packing a Container](../AIM/reading/9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac.md); AIM article `9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac`, original SHA-256 `d583b87e4904b3186103603a6378e213a5be4aafb82bc936b3397b0b6bd6be57`, nodes n59, n138, n141, n144, n147, n150, n161, n164, n167, n169, n172, n175, n178, n186, n188, n193, n195, n198, n202, n206, n210, n213, n216, n224, n227, n231, n233, n236, n243, n252, n255, n258.
+
+`operator-override-pick-continuation3`: [Warehouse Mobile Override Pick](../AIM/reading/f586c2d66cc03deffc95bea01eb4a2ab97713125c8aabc4d2e37f152b3ddf672.md); AIM article `f586c2d66cc03deffc95bea01eb4a2ab97713125c8aabc4d2e37f152b3ddf672`, original SHA-256 `2daf50f9f30d561e009801c64ce9b84faac53646cd0d3be1d7066115039417c4`, nodes n57, n71, n75, n76, n78, n79, n82, n84, n85, n89, n92, n93, n94, n97, n98, n100, n104, n108, n109, n129, n131, n133, n163, n169, n170, n184, n186, n188, n192, n194, n196, n198, n200, n205, n206, n207, n213, n214, n215.
+
+`operator-inventory-attributes`: [Inventory Attributes - Introduction](../AIM/reading/c3f65ac4de2fc3dce97e4180f4db0eaaa010a10166193e50df4370c1ee3c7799.md); AIM article `c3f65ac4de2fc3dce97e4180f4db0eaaa010a10166193e50df4370c1ee3c7799`, original SHA-256 `cbecc1b8cdea88793c1fdeb2fbafdbdfd4dcec7b8197a5cc215ff86a2ce36764`, nodes n224, n229.
+
+`operator-work-processing`: [Processing Work](../AIM/reading/2a849da2c18bc5244f4e44f5346f871a765c86c96d43a011314a5857cfea60c5.md); AIM article `2a849da2c18bc5244f4e44f5346f871a765c86c96d43a011314a5857cfea60c5`, original SHA-256 `2a00aeeb302e41866c8b8f4b91bb84245976cb5fb4366177c3185b2ab3488cb0`, nodes n121, n123, n139, n151, n173, n189, n215, n324, n369, n377, n389, n406, n442, n444, n453, n456.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_VERIFICATION_CONTINUATION3`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does matching the item name guarantee an alternate pick license plate is accepted? Expected: No; the documented picking override has permission, quantity/grouping and inventory-attribute constraints. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
+- Can the Picking override rules prove a Packing replacement action is supported? Expected: No; the retained sources do not establish that Packing-specific action or its validation contract. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
+
+## 340. Moving packed items: unpack, repack or nest
+
+**Question:** What documented actions can change the container holding packed product?
+
+**What it does.** For an individual item in a loose packed container, Shipping Container Insight provides Update Packed Quantity to unpack some quantity. Enter the quantity that should remain, then use the documented Packing flow for an eligible open destination. Moving a whole child container through nesting is a different action. A closed destination cannot accept more items.
+
+**What happens**
+
+Trigger: A user needs a source-bound explanation of the named warehouse action or configuration.
+
+1. Identify whether the selected record is an individual item in a loose packed container, a full container, or a parent/child container. Update Packed Quantity is documented only for individual items in a loose packed container; it is unavailable on parent records and full-container records. Evidence: `operator-container-insight`.
+2. Update Packed Quantity takes the quantity remaining in the source container, not the quantity to remove. SCALE unpacks the difference and writes transaction history. Serial-number or catch-weight tracking prompts for the serials or weights removed. For example, to remove 2 from 8, the remaining quantity is 6. Evidence: `operator-container-insight`, `operator-unpack-quantity`.
+3. Before repacking, verify that the intended shipment line has quantity available to pack and that the destination is an eligible existing or new shipping container for that entity. Packing works with picked lines and reports errors for ineligible input. The documented close process means packing is complete and no additional items can be packed into that closed container. Evidence: `operator-packing-screen`, `operator-close-container`.
+4. If moving an entire child container, evaluate Nest/Combine or the documented re-nest flow instead of treating it as an item-quantity move. Nesting requires the same shipment and dock, and active work can block it. Combining two loose containers nests the source under the destination; it does not merge their item quantities into one loose container. Evidence: `operator-container-nesting`.
+5. Check both container statuses, outstanding work, shipment/dock relationship and the exact allowed action before physical movement. Re-nesting has additional release/pending-work/security constraints. The Update Packed Quantity paragraph does not define every closed-source status or a general reopen action, so those permissions remain unestablished. Verify the resulting source quantity, destination quantity and transaction history after any separately authorized operation. Evidence: `operator-container-insight`, `operator-container-nesting`, `operator-close-container`.
+
+**What can affect it**
+
+- Container structure (loose item/full/parent/child), source and destination status, available picked quantity and tracking.
+- Shipment/company/warehouse eligibility, dock location, work/release state, and permission for the selected item or nesting action.
+
+**What you can check**
+
+- Record source/destination structure and status, quantity remaining versus quantity moved, exact error, and whether the move concerns an item or an intact child container. Do not physically shift contents on the assumption that a container-ID change updates inventory.
+
+**Expected results and limits**
+
+- Identify the documented route, the checks it requires and any fact the available sources cannot establish.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+- The sources do not establish blanket permission to unpack a closed source, reopen containers, or repack between arbitrary shipments. The described unpack/repack sequence is an authored composition of separately documented actions, subject to their eligibility checks.
+
+**More detail and sources**
+
+`operator-container-insight`: [Using the Shipping Container Insight Screen](../AIM/reading/56f58af05b639903354ee78fe799f51fefee04136179aa4cf2c434fc9c82a65a.md); AIM article `56f58af05b639903354ee78fe799f51fefee04136179aa4cf2c434fc9c82a65a`, original SHA-256 `4a61e596554a32153d6b748d38952aabd4ec8a0cc84295a3b78214b5d2c0ce0a`, nodes n58, n283, n319, n332, n336, n354, n364, n385, n430, n434.
+
+`operator-unpack-quantity`: [Quantity In Container Field](../AIM/reading/a1faa0e1355de431b077b9a3474599d133c6df165074b84f2689fab45de39271.md); AIM article `a1faa0e1355de431b077b9a3474599d133c6df165074b84f2689fab45de39271`, original SHA-256 `4dd83973786658f3453dbe6c9ff71f4ad0badfe2085939e03f7bfaf6217bcfb4`, nodes n58.
+
+`operator-packing-screen`: [Packing a Container](../AIM/reading/9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac.md); AIM article `9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac`, original SHA-256 `d583b87e4904b3186103603a6378e213a5be4aafb82bc936b3397b0b6bd6be57`, nodes n59, n138, n141, n144, n147, n150, n161, n164, n167, n169, n172, n175, n178, n186, n188, n193, n195, n198, n202, n206, n210, n213, n216, n224, n227, n231, n233, n236, n243, n252, n255, n258.
+
+`operator-close-container`: [Closing a Container](../AIM/reading/f992a81240ef21071a0c60e111f7a41770da3bcd1ad4ca55d2f3db634e255a7f.md); AIM article `f992a81240ef21071a0c60e111f7a41770da3bcd1ad4ca55d2f3db634e255a7f`, original SHA-256 `be502f76ac9fe2ec6ac77845a740c73838548bea5c04b30b17d80b3594db2913`, nodes n58, n63, n66, n69, n72, n135, n138, n143, n145, n147, n149, n155, n157, n158, n160, n163, n170, n180, n188, n195, n197, n200, n203, n205.
+
+`operator-container-nesting`: [Nesting a Container](../AIM/reading/7b4a6ef1c835af34ee3893ec7445fc39b81925227dcfef1fff39adfb2392e9e9.md); AIM article `7b4a6ef1c835af34ee3893ec7445fc39b81925227dcfef1fff39adfb2392e9e9`, original SHA-256 `d8d9012cd890755545465652842cd70ec20c1f653a492c150f23c34327568d33`, nodes n58, n60, n139, n214, n217, n226, n229, n232, n235, n238, n389, n392, n395, n398, n407, n410.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_VERIFICATION_CONTINUATION3`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- When unpacking three of ten units, what quantity is entered? Expected: Seven, the quantity remaining; SCALE unpacks the difference and records history. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
+- Does combining two loose containers merge their item quantities? Expected: No; the documented behavior nests the source under the destination, and a closed destination cannot accept additional packed items. Must not claim: A confirmed cause, authorization or active setting for a specific warehouse record.
