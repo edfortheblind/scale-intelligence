@@ -25,10 +25,10 @@ The knowledge foundation is incomplete. Percentages below measure named tasks ag
 | C | Unique bodies extracted | 8 / 8 | 100.00% | Extraction retains fidelity exceptions; duplicate pair indexed once. |
 | C | PowerPoint static slides visually inspected | 45 / 45 | 100.00% | Static layout only; not animations, font fidelity or screen-reader acceptance. |
 | C | PDF pages visually inspected | 231 / 231 | 100.00% | Physical page review; not all claims or tables on every page. |
-| C | Source assets with authored descriptions | 144 / 613 | 23.49% | Per-document unique asset paths; separate from slide/page viewing. |
+| C | Source assets with authored descriptions | 238 / 613 | 38.83% | Per-document unique asset paths; separate from slide/page viewing. |
 | C | PDF table candidates reconciled | 93 / 219 | 42.47% | Candidates are merged into logical tables; undetected/raster table denominator remains unknown. |
 | C | PDF table candidates with reviewed disposition | 219 / 219 | 100.00% | Includes explicitly rejected layout/fragment artifacts; rejection is not additional semantic table review. |
-| C | Extracted nodes cited in bounded reviews | 1,465 / 11,618 | 12.61% | A citation does not certify every claim within the node. |
+| C | Extracted nodes cited in bounded reviews | 1,791 / 11,618 | 15.42% | A citation does not certify every claim within the node. |
 | D | Retained runtime rows accounted for | 1,795 / 1,795 | 100.00% | Weighted statement profiles preserve execution/replica dimensions and source row identities. |
 | D | Historical runtime IDs matched to current catalog | 154 / 163 | 94.48% | Current name lookup only; historical definition identity and ID reuse are not established. |
 | E | Selected-topic presentation/citation checks | 725 / 725 | 100.00% | Actual local HTTP checks; not semantic answer acceptance. |
@@ -39,11 +39,11 @@ The knowledge foundation is incomplete. Percentages below measure named tasks ag
 ## Delivered counts without an exhaustive denominator
 
 - help topics: **340**.
-- ordered steps: **853**.
+- ordered steps: **858**.
 - aim setting contracts: **14**.
-- sdd setting contracts: **175**.
-- sdd claims: **163**.
-- sdd visual descriptions: **121**.
+- sdd setting contracts: **217**.
+- sdd claims: **205**.
+- sdd visual descriptions: **189**.
 - logical pdf tables: **79**.
 - process documentary refinements: **130**.
 
@@ -51,7 +51,7 @@ The knowledge foundation is incomplete. Percentages below measure named tasks ag
 
 On the unchanged 445-question subset, expected-topic top-eight retrieval changed from 420 to 409. The 280 new cases retrieve 277 expected topics in the first eight. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.
 
-[Exact comparison and remaining case IDs](retrieval-change-continuation4.json).
+[Exact comparison and remaining case IDs](retrieval-change-continuation5.json).
 
 ## Remaining evidence and acceptance
 

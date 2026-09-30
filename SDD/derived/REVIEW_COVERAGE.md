@@ -5,13 +5,13 @@ Nine originals produce eight unique extracted bodies. Counts separate authored s
 | Source | Cited nodes / extracted | Described assets / unique assets | PDF pages viewed / total | Static slides viewed / total |
 | --- | ---: | ---: | ---: | ---: |
 | J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf | 151 / 1608 | 14 / 90 | 119 / 119 | N/A |
-| Manhattan SCALE - Labels.pptx | 43 / 209 | 18 / 43 | Not rendered | 45 / 45 |
+| Manhattan SCALE - Labels.pptx | 83 / 209 | 40 / 43 | Not rendered | 45 / 45 |
 | SCALE Work and Picking Functionality.docx | 417 / 995 | 13 / 13 | Not rendered | N/A |
-| Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx | 405 / 2450 | 34 / 137 | Not rendered | N/A |
+| Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx | 592 / 2450 | 52 / 137 | Not rendered | N/A |
 | MA Documentation - Insight Architect Configuration.pdf | 10 / 20 | 0 / 0 | 2 / 2 | N/A |
 | Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf | 195 / 973 | 13 / 73 | 110 / 110 | N/A |
 | LAND MAWM Solution Design Document v2.11.docx | 22 / 4605 | 4 / 37 | Not rendered | N/A |
-| SCALE Configuration Walkthrough - HADDAD.docx | 222 / 758 | 48 / 220 | Not rendered | N/A |
+| SCALE Configuration Walkthrough - HADDAD.docx | 321 / 758 | 102 / 220 | Not rendered | N/A |
 
 A cited node can contain more material than a claim uses. Its presence does not certify every sentence. Asset descriptions count unique retained paths separately from page views; 614 asset records correspond to 613 unique paths.
 
@@ -62,3 +62,9 @@ Described assets count the union of diagram paths and reviewed-table source asse
 Work/Picking, Labels, Covetrus and HADDAD add 57 claims, 44 settings and 47 descriptions for 57 previously undescribed assets. The exact citation union adds 426 nodes, reaching 1465/11,618; descriptions reach 144/613 unique assets. These are bounded source counts, not full semantic or production acceptance.
 
 Covetrus review covers inventory and outbound design through packing and manifests. HADDAD covers configuration examples and their visible screenshot/prose differences. Labels review preserves mixed-era paths, incomplete code and context-poor speaker notes. Work/Picking retains undefined summary terminology and field-list limits. Existing page and slide viewing counts, raster tables, source contradictions and original bytes are preserved. No DOCX pagination, printer output, live configuration or user acceptance was performed.
+
+## Continuation 5 source and asset review
+
+Labels, Covetrus and HADDAD add 42 claims, 42 settings and 68 descriptions for 94 previously undescribed assets. The exact citation union adds 326 nodes, reaching 1791/11,618; descriptions reach 238/613 unique assets. These are bounded source counts, not full semantic or production acceptance.
+
+Covetrus review covers master data, interfaces, receiving, labor, conversion and security design. HADDAD covers wave/cycle/replenishment/interface/printing examples, including three original EMFs rendered as private image previews; date and selection disagreements remain explicit. Labels descriptions cover remaining node-bound assets, including five decorative overlays, while three unbound media receive no description credit. Existing page and slide viewing counts, raster tables, source contradictions and original bytes are preserved. No DOCX pagination, printer output, live configuration or user acceptance was performed.

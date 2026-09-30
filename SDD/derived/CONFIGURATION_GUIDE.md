@@ -2,7 +2,7 @@
 
 These records explain supplied documentation, not active settings. Each states its product/version scope. Proposed validation steps have not been executed. Defaults and precedence remain unknown where the source does not state them. MAWM examples are explicitly separate and cannot be transferred to SCALE.
 
-175 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
+217 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
 
 ## Work Unit Field
 
@@ -2487,3 +2487,633 @@ Orders location-selection attempts and associates eligible UMs with each rule de
 - Classification: `configuration_example`.
 
 Sources: [sdd-f46806ef53e15f07 b00446, b00463, b00464](reading/sdd-f46806ef53e15f07.md#b00446)
+
+
+## Company assignment in receipt and shipment downloads
+
+Keep interfaced work associated with the intended company.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Master data and interfaces.
+- Accepted values: Company supplied by the host; items are not shared across companies in this design.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: Later company additions require the described change process. No company fallback or cross-company override precedence is supplied.
+- Related process: Master data and interfaces
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00210, b00213, b00217](reading/sdd-c4c7e01f8ccad48a.md#b00210)
+
+
+## Dimension, weight and quantity conventions
+
+Provide consistent units for storage, cubing and conversion.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Item master.
+- Accepted values: IN dimensions, LB weights and whole-number quantity UOMs; EA-IP-SB-CS-PL storage hierarchy.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: Host-versus-SCALE field ownership conflicts remain unresolved; neither set of values is a product default.
+- Related process: Item master
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00214, b00215, b00216, b00219, b00220, b00224, b00227, b00238, b00343](reading/sdd-c4c7e01f8ccad48a.md#b00214)
+
+
+## Group during check-in by item UOM
+
+Group received units in the documented storage template.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Receiving.
+- Accepted values: Yes for EA, IP, SB and CS; a PL setting is not specified in this passage.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: The UOM illustration is explicitly not the baseline. Do not infer a PL grouping value from the other four settings.
+- Related process: Receiving
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00219, b00220, b00225, b00226, b00305](reading/sdd-c4c7e01f8ccad48a.md#b00219)
+
+
+## Item cross-reference maintenance and UOM scope
+
+Identify item/UOM combinations during scanning.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Item master.
+- Accepted values: GTIN-format references described as 12 or 14 digits, separate for non-PL UOMs; shared across items is allowed in the assumptions.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: Direct/diagnostics maintenance is asserted in assumptions while the download list also includes cross-reference; ownership and overwrite precedence remain unresolved.
+- Related process: Item master
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00218, b00221, b00222, b00226, b00343, b00350](reading/sdd-c4c7e01f8ccad48a.md#b00218)
+
+
+## Item serial tracking scope
+
+Track selected serialized items at outbound processing.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Item tracking.
+- Accepted values: Selected items marked outbound-serial-only on item master in the design.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: DSCSA workflow is explicitly outside the document scope despite named inbound/outbound extensions. Serial scope must not be substituted for a DSCSA implementation contract.
+- Related process: Item tracking
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00228, b00229](reading/sdd-c4c7e01f8ccad48a.md#b00228)
+
+
+## Lot tracking with placeholder expiration dates
+
+Retain legacy lot identity for items not managed by expiration.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Lot tracking.
+- Accepted values: Some items use a dummy expiration date; no literal date is supplied as a standard.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: The source says these lots/dates are not used for FEFO. Do not infer FEFO eligibility merely from a populated date field.
+- Related process: Lot tracking
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00232, b00233](reading/sdd-c4c7e01f8ccad48a.md#b00232)
+
+
+## Treat as Loose interface value
+
+Distinguish product requiring repack from product shippable in its stored package.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Item master and packing.
+- Accepted values: Y when repacking is required; N when the stored package can ship.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: The value is described on the item-master interface. It does not by itself establish all container-creation or carrier-eligibility rules.
+- Related process: Item master and packing
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00237, b00238](reading/sdd-c4c7e01f8ccad48a.md#b00237)
+
+
+## Item-location capacity key
+
+Size forward-pick replenishment by actual item/location combination.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Storage and replenishment.
+- Accepted values: Item and location; item class and location type are not used for this capacity design.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: Existing assignments and capacities are ported as-is; actual values and migration completion are not supplied.
+- Related process: Storage and replenishment
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00240, b00243](reading/sdd-c4c7e01f8ccad48a.md#b00240)
+
+
+## User-defined obsolete-item marker
+
+Identify obsolete items without deleting or inactivating master records.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Item-master lifecycle.
+- Accepted values: A consistent user-defined field, whose name and allowed values are not specified.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: The host does not send deletes and the ordinary inactive flag is not used in the stated design. Consumers of the marker are unestablished.
+- Related process: Item-master lifecycle
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00260](reading/sdd-c4c7e01f8ccad48a.md#b00260)
+
+
+## Receipt upload status threshold and level
+
+Release receipt completion messages at container completion.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Receipt confirmation interface.
+- Accepted values: Upload Receipt Containers at This Status or Higher = Closed; Receiving Upload Level = Container.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: The source states these settings apply globally to all receipt types, including its manually closed-container path. Host acknowledgement is a separate missing fact.
+- Related process: Receipt confirmation interface
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00442, b00444, b00446](reading/sdd-c4c7e01f8ccad48a.md#b00442)
+
+
+## Interface invocation schedule
+
+Determine when downloads and uploads run.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Interfaces.
+- Accepted values: Manual/on-demand or scheduled execution; current timings are initially reused and final values are deferred to integration testing.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: API invocation through Boomi is described for downloads, but no job intervals, ordering guarantees or latency targets are established.
+- Related process: Interfaces
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00327, b00329, b00331](reading/sdd-c4c7e01f8ccad48a.md#b00327)
+
+
+## Receipt ID Type and Receipt Type
+
+Group receipts and select processing rules while preserving the free-format classification field.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Pre-receiving.
+- Accepted values: Configured ID types Vendor, Vendor Override, ASN, ASN override, RA and DRP; Receipt Type is free format and not validated in the cited text.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: All listed ID types are marked interfaced. ASN lot/expiration information does not mean receipt-container information is downloaded.
+- Related process: Pre-receiving
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b00480, b00500, b00502, b00504, b00506](reading/sdd-c4c7e01f8ccad48a.md#b00480)
+
+
+## Labor-plan execution wave step
+
+Enable estimated labor calculation for the intended labor groups.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Labor planning.
+- Accepted values: Labor plan with ordered groups and a labor-plan execution step in the wave flow.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: The wave step must be present; merely defining a plan is insufficient. Reports may be developed, but no reporting implementation is supplied.
+- Related process: Labor planning
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b02103, b02108, b02111](reading/sdd-c4c7e01f8ccad48a.md#b02103)
+
+
+## Shipment Labor Planning Criteria
+
+Select the shipments or lines contributing to a labor group estimate.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Labor planning.
+- Accepted values: Criteria associated with a labor group; the source gives work-zone-based shipment-line selection as an example.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: The configured filter is evaluated by the labor-plan execution wave step. Example screenshot values are not active assessed configuration.
+- Related process: Labor planning
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b02108, b02111, b02112](reading/sdd-c4c7e01f8ccad48a.md#b02108)
+
+
+## Manual labor activity/work types
+
+Record labor not captured by normal warehouse actions.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Labor entry.
+- Accepted values: Custom work types; box building and cleaning are examples rather than a complete required vocabulary.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: Manual labor entry is described for indirect labor; the source says RF does not track that indirect work. No default duration or productivity target is supplied.
+- Related process: Labor entry
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b02097, b02115, b02116, b02117, b02118, b02119, b02120, b02122](reading/sdd-c4c7e01f8ccad48a.md#b02097)
+
+
+## Window and action security permissions
+
+Control access to processing/configuration windows and their actions.
+
+- Scope: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Administration.
+- Accepted values: User-level records or security-group checkpoints; mass assignment across selected windows is described.
+- Default: Not established as a product default by the reviewed source.
+- Precedence and dependencies: User-level records are applied on access in the text, but conflict resolution between user and group records is not specified.
+- Related process: Administration
+- Validation: Compare the cited design choice and unresolved conditions with authorized configuration and application evidence. No current configuration query, change or process execution was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-c4c7e01f8ccad48a b02379, b02381, b02383](reading/sdd-c4c7e01f8ccad48a.md#b02379)
+
+
+## HADDAD wave-master build mode examples
+
+Controls whether and how a wave is built from shipments in the pool.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Automatic, Manual and Build inactive are visible choices. Both inspected masters select Manual, priority 1, blank Wave maximums and unchecked Auto release.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: Mode belongs to the wave master; wave criteria and flow are linked separately. Priority direction and automatic-release timing are not established by these images.
+- Related process: Wave building and release
+- Validation: Proposed review, not executed: Resolve full flow/criteria identifiers and the selected mode; confirm the matching release contract before deriving build/release behavior. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00505, b00506, b00507](reading/sdd-f46806ef53e15f07.md#b00505)
+
+
+## HADDAD wave-flow sequence positions
+
+Orders wave steps within a flow that is later associated with a wave master.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Visible positions include Start Wave 10, Replenishment 60, Rule Assignment 80, Allocation 90, Container Creation 120, VAS Assignment 190 and Complete Wave 280. Other rows have clipped labels or lie outside the captured scroll positions.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The source uses Sequence to order steps; these overlapping screenshots are not a complete exported flow or proof of every intermediate step.
+- Related process: Wave orchestration
+- Validation: Proposed review, not executed: Compare the full ordered flow with compatible step definitions; do not fill absent sequence positions or cropped labels. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00492, b00493, b00494, b00495](reading/sdd-f46806ef53e15f07.md#b00492)
+
+
+## HADDAD wave criteria user-defined-field test
+
+Selects eligible shipment records for the example wave.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Commandes sans Booking uses Shipment detail. A fully visible condition requires Shipment_Header_View.USER_DEF2 IS NULL; the preceding internal-shipment-number condition is cut off at the right edge.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: Existing prose says one matching line selects the whole shipment. The source does not define USER_DEF2 as a universal booking field or show the complete first predicate.
+- Related process: Wave shipment selection
+- Validation: Proposed review, not executed: Resolve complete predicate text and implementation meaning of USER_DEF2 before using the example. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00501, b00502, b00503](reading/sdd-f46806ef53e15f07.md#b00501)
+
+
+## HADDAD immediate threshold-count and RF verification preference
+
+Controls threshold-count handling and bad-count verification in the example preference.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Cambrai - Inventaires checks Perform threshold counts immediately and Verify bad count on RF, uses Cycle Counting work type and blank work team. Immediate reconcile of bad count is unchecked; four displayed tolerance values are 0.00000.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The screenshot clarifies the prose typo Verify bad on FR. It does not establish whether tolerance fields are quantities/percentages, how zeros behave, or effective user assignment.
+- Related process: Cycle count execution
+- Validation: Proposed review, not executed: Review full tolerance labels, associated users and reconciliation contract before prescribing thresholds or assuming immediate stock adjustment. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00523, b00524, b00525](reading/sdd-f46806ef53e15f07.md#b00523)
+
+
+## HADDAD cycle-count technical values example
+
+Supplies the pictured adjustment types and work/count processing parameters.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Activity and planned positive/negative adjustments all display Ajustement. Auto Print Cycle Count List N; Auto Release Cycle Count Plan Y; Default cycle count group size 50; SRC identifier for activity driven work 80; Work unit field FromLoc. The create-work row shows Y but its full caption is clipped.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: These are source example system values. A system-created flag does not prove a release-independent default or the current assessed setting.
+- Related process: Cycle count generation and reconciliation
+- Validation: Proposed review, not executed: Resolve each key against the matching technical-value contract and adjustment-type record; keep group size and SRC example values separate from business count limits. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00518, b00519, b00520, b00521](reading/sdd-f46806ef53e15f07.md#b00518)
+
+
+## HADDAD cycle-count item filter example
+
+Filters items for association with a cycle-count master.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: All uses record type CC IT CRIT, table Item and ITEM IS NOT NULL; Inactive and System created are unchecked.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: Item selection is separate from the location criterion and master execution options; the label All is not a proof that other process filters cannot apply.
+- Related process: Cycle count planning
+- Validation: Proposed review, not executed: Compare the actual item predicate with the intended master and location eligibility. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00527, b00528](reading/sdd-f46806ef53e15f07.md#b00527)
+
+
+## HADDAD cycle-count location filter source disagreement
+
+Defines location eligibility for planned counts while exposing conflicting source examples.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: All image: LOCATION_TEMPLATE = Stock / Prel. CC LOCATION Annuel image: LAST_CYCLE_COUNT_DATE > Today + 360. Prose instead describes all active locations and locations not counted during the last 360 days.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: No corrected operator, date expression or hidden active-location predicate is selected. The intended annual filter needs source-owner or version-matched configuration evidence.
+- Related process: Cycle count planning
+- Validation: Proposed review, not executed: Reconcile the original prose and exact stored criteria with the intended business date rule before using either filter operationally. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00530, b00531, b00532, b00533, b00537, b00541](reading/sdd-f46806ef53e15f07.md#b00530)
+
+
+## HADDAD annual cycle-count master example
+
+Combines item/location filters and count-work options in the illustrated master.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Inventaire Annuel: item All, location All, maximum 300 with 0 = No max, Randomize checked, Create work checked, Update cycle count work to include all items unchecked, scheduled-job option checked and Inactive checked.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The master does not visibly select CC LOCATION Annuel; checked scheduled-job intent is separate from an active job or master. The scheduled-option label is cropped.
+- Related process: Planned cycle counting
+- Validation: Proposed review, not executed: Review master activation, full schedule-option text and actual associated job/filter records without inferring the yearly schedule from its name. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00544, b00550, b00551](reading/sdd-f46806ef53e15f07.md#b00544)
+
+
+## HADDAD picking-zone empty-count thresholds
+
+Provides the pictured activity-count thresholds for picking zones.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: The rows show blank Location type and Movement class, named picking Work zones, quantity 0 UVC and Days between cycle counts 0. The selected W-Picking PCB row is active.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The prose lookup sequence does not explicitly explain work-zone-only records. Zero-day and blank-key matching behavior remain unresolved.
+- Related process: Activity-driven cycle counts
+- Validation: Proposed review, not executed: Resolve blank-key lookup and count-interval semantics in a matching release before deciding when the shown rows trigger. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00553, b00554, b00555, b00556, b00557](reading/sdd-f46806ef53e15f07.md#b00553)
+
+
+## HADDAD cycle-count work-request filter
+
+Selects count requests for work generation.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Inventaires Cambrai uses CC WK CRIT, Cycle count request and WAREHOUSE = 001. Its Order by tab is present but unopened.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: This is work eligibility, separate from the item/location criteria that create count requests. Sort and group-break rows are unestablished.
+- Related process: Cycle count work creation
+- Validation: Proposed review, not executed: Reconcile the request filter with the associated work master, and inspect saved Order by rows before claiming work grouping/order. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00559, b00560](reading/sdd-f46806ef53e15f07.md#b00559)
+
+
+## HADDAD illustrative bill of materials
+
+Defines a finished item and component requirements in a help-derived example.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Finished item XYZ, revision 1, quantity UM UVC; components X, Y and Z each have quantity per item 1.00000 UVC at level 1 and sequences 1, 2, 3. Build location is blank and planned build time is0:0.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The guide declares no work-order configuration in its example environment. The pictured values are illustrations, not observed production BOMs or valid assembly times.
+- Related process: Work-order assembly
+- Validation: Proposed review, not executed: Resolve the intended BOM revision, build location and measured build requirements from an authorized design before using the example. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00564, b00565, b00568, b00569](reading/sdd-f46806ef53e15f07.md#b00564)
+
+
+## HADDAD illustrative work-order preference
+
+Provides example processing options for a user/group preference.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: The *Default picture has blank build/storage locations, inventory status DISPONIBILE and System logistics-unit assignment. Create work and Generate paperwork on release/confirm are unchecked.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The screenshot has a different warehouse context and is not a HADDAD deployment record. The name *Default does not establish current user assignment or universal defaults.
+- Related process: Work-order processing
+- Validation: Proposed review, not executed: Verify the actual warehouse/user preference and status meanings before transferring any pictured option. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00565, b00571, b00572](reading/sdd-f46806ef53e15f07.md#b00565)
+
+
+## HADDAD Picking UVC replenishment location criterion
+
+Identifies locations considered by the associated replenishment master.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Picking UVC uses record type RPLN CRIT and table Location; the visible rule is ALLOCATION_ZONE = A-Picking UVC. Inactive and System created are unchecked.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: Its role depends on capacity-based versus pool/wave demand. The Order by contents are not shown.
+- Related process: Replenishment destination selection
+- Validation: Proposed review, not executed: Check the associated master type and complete location sort rules before inferring destination order. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00585, b00586, b00587, b00588](reading/sdd-f46806ef53e15f07.md#b00585)
+
+
+## HADDAD replenishment rotation or sales-class criterion
+
+Restricts demand-based replenishment to the pictured item characteristics and grade.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Articles rotation A GRA visibly groups ITEM_CATEGORY5 = A OR ITEM_CATEGORY6 = A in parentheses, then AND SHIPMENT_DETAIL.LOT = A.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The grouped category alternatives both remain subject to the lot condition. The Item table selector does not explain the shipment-detail join or missing-value behavior.
+- Related process: Wave/pool replenishment eligibility
+- Validation: Proposed review, not executed: Preserve the parentheses and review category meanings and the evaluator join/null contract before applying the criterion. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00590, b00591](reading/sdd-f46806ef53e15f07.md#b00590)
+
+
+## HADDAD empty-location eligibility example
+
+Identifies additional destination locations when replenishment needs empty-location selection.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Picking PCB Stock Grade A shows ALLOCATION_ZONE = A-Picking PCB AND LOCATING_ZONE = L-Classe A/B AND MAX_LOTS =1. Inactive and System created are unchecked.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The visible criterion does not itself contain a lot Grade A test; its name must not be substituted for an additional predicate. Empty-location processing has separate source-described triggers.
+- Related process: Replenishment overflow or initial placement
+- Validation: Proposed review, not executed: Review the full master-to-filter association and actual empty-location evaluation contract before concluding how grade or existing stock is tested. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00593, b00594, b00596, b00597](reading/sdd-f46806ef53e15f07.md#b00593)
+
+
+## HADDAD wave-demand replenishment master example
+
+Combines demand type, allocation rule, increment and work-creation method.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Reappro Rot A GRA PCB: Demand from wave, Automatic create-work method, priority 12 and PCB increment. Allocate all ums to clear reserve location and Create multiple requests for excess demand are unchecked; Consolidate replenishment requests is disabled/unchecked.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The grid supplies allocation rule Réappro RSV PCB; the dialog field is clipped. Priority direction, disabled-option dependencies and exact calculation outcomes remain unestablished.
+- Related process: Replenishment request and work creation
+- Validation: Proposed review, not executed: Resolve full stored rule identifiers and the matching demand/work contract; do not infer numeric replenishment quantities from the increment label. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00599, b00600, b00601](reading/sdd-f46806ef53e15f07.md#b00599)
+
+
+## HADDAD demand UMs and rounding example
+
+Limits demand UMs and configures the displayed replenishment-mode and rounding rows.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: The master checks PCB and UVC demand UMs, leaves Pallet/SPCS unchecked, selects Wave mode only and has strategy sequence 10/code 30 Round up to the next whole number increment. Location criterion is Picking UVC; other criterion names are clipped.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The increment is PCB on General, distinct from two eligible demand UMs. More than one strategy is allowed in the prose, but only one saved row is visible.
+- Related process: Demand conversion and replenishment rounding
+- Validation: Proposed review, not executed: Review conversion quantities, full criteria identifiers and ordered strategy rows before computing requested quantity. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00601, b00602, b00603, b00604, b00605](reading/sdd-f46806ef53e15f07.md#b00601)
+
+
+## HADDAD replenishment work filter and source order
+
+Filters replenishment requests and orders work creation by source location.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Reappro Rot A Grade A PCB shows non-null FROM_WORK_ZONE and LOT = A; master and destination-zone literal values are clipped. The saved Order by row is FROM_LOC Ascending with Create work unit No.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: Saved row No differs from the earlier receipt example Yes. This criterion does not prove the grouping policy of every replenishment work master.
+- Related process: Replenishment work creation
+- Validation: Proposed review, not executed: Retrieve full saved predicates and reconcile Order by with the associated work-unit field; do not reconstruct clipped values from names. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00607, b00608, b00609](reading/sdd-f46806ef53e15f07.md#b00607)
+
+
+## HADDAD interface technical-value examples
+
+Shows example duplicate-ID, delimiter, date and upload-level configuration.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Allow duplicate Receipt IDs on add Y; Allow duplicate Shipment IDs on add Y; delimiter vertical bar; Interface Date Format yyyyMMdd; Receiving Upload Level Header; Upload deleted shipments Y. Other displayed labels and directory strings are clipped or omitted from this guidance.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: These examples do not define duplicate detection scope, downstream idempotency or universal defaults. Source directories are implementation endpoints, not destinations authorized by this review.
+- Related process: Host interfaces
+- Validation: Proposed review, not executed: Compare the exact technical keys and duplicate-processing contract with the approved interface design; do not contact source-example directories. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00666, b00667, b00668](reading/sdd-f46806ef53e15f07.md#b00666)
+
+
+## HADDAD interface process mode and activation
+
+Separates a functional-area process and its ordered download/upload detail records.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Receiving list shows delimited-file, interface-table, XML and fixed-length modes in sequence. The inspected Receiving Direct Upload detail 40 uses interface-table Upload and has Inactive checked.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: A listed record is not necessarily active; sequence orders configured details, but the image alone does not show which caller or schedule selects them.
+- Related process: Interface orchestration
+- Validation: Proposed review, not executed: Inspect active detail records and their callers/schedules separately from the existence of a system process catalog. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00674, b00675, b00676](reading/sdd-f46806ef53e15f07.md#b00674)
+
+
+## HADDAD XML interface file settings
+
+Shows distinct settings for item/receiving downloads and inventory-transaction upload.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Item XML Download: max-trans display1, data-source-batch display500, UTF-8, imxml/imerr/txt extensions, Save processed data checked. Receiving XML Download:10/500, UTF-8, rcxml/rcerr/txt, Save processed data checked. Inventory Transaction XML Upload:50/0, UTF-8, ituxml, Save processed data unchecked; error/processed extensions blank.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: All three pictured details have Inactive unchecked. Captions for maximum transactions and batch size are clipped, so their full operational scope, zero meaning and accepted ranges remain unestablished.
+- Related process: XML interfaces
+- Validation: Proposed review, not executed: Resolve complete field labels, zero-value semantics and file/error handling before using the numeric examples as limits or tuning recommendations. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00682, b00683, b00685](reading/sdd-f46806ef53e15f07.md#b00682)
+
+
+## HADDAD label document-type classification
+
+Distinguishes label generation from paperwork document generation.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Shipping Label type 160 and the later Prefomato Label example both select Label. The latter shows Shipping Container data source and Shipping Label document generator; Allow print preview is unchecked.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: Document type describes output category/data generation and is separate from a Document template or routing device. It does not identify an active label job.
+- Related process: Document and label generation
+- Validation: Proposed review, not executed: Review the selected type, actual document renderer/template and routing together; avoid treating label classification as successful output. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00717, b00718, b00719, b00720, b00731, b00732](reading/sdd-f46806ef53e15f07.md#b00717)
+
+
+## HADDAD document template and renderer example
+
+Connects the document definition to its physical template and generating application.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Generic Ship Label references Shipping Label type and a .lbl template; Printed as selects SCALE label. The adjacent prose separately discusses Reporting Services documents.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: Renderer choice must match the template; the screenshot does not demonstrate the SSRS path described in prose or confirm template accessibility.
+- Related process: Printing
+- Validation: Proposed review, not executed: Resolve the template and matching renderer in authorized source evidence, keeping the SSRS and SCALE-label examples separate. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00722, b00723, b00724, b00725, b00726](reading/sdd-f46806ef53e15f07.md#b00722)
+
+
+## HADDAD label-master print mode and criteria links
+
+Associates a label-generation class and document type with master/detail selection criteria.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: The illustrated Prefomato master selects Print during wave; Print at release and Manual are unselected. It shows ShippingLabelGenerator and detail Document type Prefomato Label with separate Label selection criteria.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The master data-selection criterion and detail label-selection criterion are distinct. The source does not show a wave-master binding for this example.
+- Related process: Wave labels
+- Validation: Proposed review, not executed: Resolve both full criterion identifiers and the consuming wave master; verify that the intended label passes both stages. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00728, b00729, b00730, b00732](reading/sdd-f46806ef53e15f07.md#b00728)
+
+
+## HADDAD label master and detail predicate examples
+
+Shows different eligibility conditions at master and detail selection stages.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: Master filter: INTERNAL_CONTAINER_NUM >=0 AND (ORDER_TYPE = OP OR ORDER_TYPE = OPB). Detail filter: ORDER_TYPE = OP. Parentheses are visible around the master order-type alternatives.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The two predicates are not interchangeable. Final eligibility and join/null behavior are not established by the screenshot alone.
+- Related process: Label selection
+- Validation: Proposed review, not executed: Compare the full evaluator contract and both saved filters for OP, OPB and absent order-type cases before drawing an execution conclusion. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00728, b00732](reading/sdd-f46806ef53e15f07.md#b00728)
+
+
+## HADDAD document-routing criteria and output selection
+
+Associates an eligible document type with a document definition, printer and copy count.
+
+- Scope: HADDAD SCALE 2020 configuration example; cover date 2026 does not establish a newer product release.
+- Accepted values: The Shipping Label example uses warehouse 001, Generic Ship Label and copy count 1 with a selected print device. Most other displayed routing criteria are blank; lower numeric user-defined fields show0.00000.
+- Default: Not established by the cited source; screenshot selections are examples, not system defaults.
+- Precedence and dependencies: The prose requires a configured print device before selection. Blank fields and numeric zeros are not assigned wildcard semantics by this review; effective workstation/user routing remains unproved.
+- Related process: Document delivery to printers
+- Validation: Proposed review, not executed: Review print-device registration, complete routing criteria and match precedence; no printer access or print action is authorized or performed. No configuration query, write or operational execution was performed.
+- Classification: `configuration_example`.
+
+Sources: [sdd-f46806ef53e15f07 b00734, b00735, b00736, b00737](reading/sdd-f46806ef53e15f07.md#b00734)
