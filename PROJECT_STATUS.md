@@ -1,12 +1,12 @@
 # SCALE Intelligence project status
 
-Continuation 6, 2026-09-30. The owner approved remaining source work. The requested AIM base Packing/Close Container clarification is published through private PR #5; the possible installed extension remains a separate, unverified question. This continuation reviews remaining SDD media and their relevant source context.
+Continuation 7, 2026-09-30. The owner approved continued source work. Three existing help answers now explain work-profile selection, work-order summary values and receipt-batch marking more clearly. The requested AIM base Packing/Close Container clarification is published through private PR #5, and the SDD media review through private PR #6. A possible installed extension remains a separate, unverified question.
 
-[Task measures](_project/COMPLETION_REPORT.md) · [Verification](_project/continuation6-20260930.json) · [Independent audit](_project/independent-audit-continuation6.json) · [Publication](_project/continuation6-publication-20260930.json) · [Remaining media ledger](_project/sdd-media-continuation6.json). No overall completion percentage is claimed.
+[Task measures](_project/COMPLETION_REPORT.md) · [Verification](_project/continuation7-20260930.json) · [Independent audit](_project/independent-audit-continuation7.json) · [Publication](_project/continuation7-publication-20260930.json) · [Remaining media ledger](_project/sdd-media-continuation6.json). No overall completion percentage is claimed.
 
-## Source review delivered
+## Preserved SDD review
 
-The batch adds **59 claims, 48 settings and 209 visual descriptions for 367 additional assets** across Covetrus, HADDAD, Knipper, Grupo Julio and LAND. Totals are **264 claims, 265 settings, 398 visual descriptions and 79 logical PDF tables**. Described assets reach **605/613 (98.69%)**; cited nodes reach **2,628/11,618 (22.62%)**. Citation coverage does not certify every statement in a node.
+Continuation 6 added **59 claims, 48 settings and 209 visual descriptions for 367 additional assets** across Covetrus, HADDAD, Knipper, Grupo Julio and LAND. Totals are **264 claims, 265 settings, 398 visual descriptions and 79 logical PDF tables**. Described assets reach **605/613 (98.69%)**; cited nodes reach **2,628/11,618 (22.62%)**. Citation coverage does not certify every statement in a node.
 
 All remaining source-bound media now have descriptions. **8 retained media assets lack node associations** and remain outside authored-description credit: HADDAD 2, Covetrus 1, LAND 2 and Labels 3. They are decorative or empty media, inventoried explicitly. Native image previews resolve the previously uninspected Covetrus workbook icon and empty Labels EMF; workbook contents and full document layout are separate evidence. PDF masks and decorative fragments are identified as such, not new process contracts.
 
@@ -16,7 +16,9 @@ Originals, extracted source identities, previous review records, 231 PDF page vi
 
 AIM distinguishes Warehouse Mobile Close Container from Insight Packing. The documented desktop scale-interface exit point does not prove an installed DB extension or an inventory-LPN replacement rule. The source-grounded base explanation is complete within the available AIM evidence; the replacement contract remains unknown.
 
-Help remains **340 topics and 858 ordered steps**. The preceding verified HTTP results remain **725/725 selected-topic checks**, **686/725 top-eight matches**, 419 first-place matches and **39 misses**. The frozen known questions remain **23 adequate, one partial, zero missing**. Complete current topic/source payload, search-index and implementation identities are checked against C5 before carrying this evidence forward. These HTTP and scenario checks were not rerun or relabeled as new user acceptance.
+The focused review examined 16 previously identified cases across 14 topics. Thirteen needed no content edit; three received a total of **83 additional words** in their existing short answers. The additions explain that work-profile options can come from different detail rows, independently calculated minimum values can describe different work-order components, and a receipt batch mark does not prove external delivery. The underlying source contracts, questions, expected results and ranking implementation are unchanged.
+
+Help remains **340 topics and 858 ordered steps**. Fresh actual HTTP evaluation passes **725/725 selected-topic checks**, with **686/725 top-eight matches**, 419 first-place matches and **39 misses**. No new expected-topic miss or recovery occurred; returned-topic lists or order changed in eight authored cases. The [current independent known-scenario review](_project/help-question-continuation7.json) retains **23 adequate, one partial and zero missing**, bound to 152 successful current HTTP requests. It records 14 complete-payload reuses, six metadata-only revalidations and four rank/content reviews. These checks do not establish real-user acceptance.
 
 ## Remaining evidence
 
@@ -26,14 +28,14 @@ Browser/keyboard/screen-reader/intended-user acceptance, full DOCX layout fideli
 
 ## Verification and continuation
 
-Relevant SDD, help-source and report checks are recorded in the current verification receipt. Independent source Verification and fresh parent Audit bind exact frozen outputs; private publication and clean-checkout parity are recorded separately. The C5 full suite of 368 tests and HTTP/scenario evidence are retained with their exact scopes. The accepted-corpus verifier and unchanged database-documentation checks were not repeated.
+Fresh validation passed: **368 tests, zero failures and zero skips**, actual HTTP evaluation, and the database-documentation verifier. The [current verification receipt](_project/continuation7-20260930.json) records exact commands, exit codes and independent source/scenario verification. The [parent Audit](_project/independent-audit-continuation7.json) binds the frozen output scope; [private publication and clean-checkout parity](_project/continuation7-publication-20260930.json) are recorded separately. The accepted AIM/SDK corpus verifier was not repeated because those acquisition inputs remain unchanged.
 
 Resume through [the master prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) and [resume instructions](_project/RESUME.md). Run `python tools/serve_help.py --port 8765` for the local help when a browser is available.
 
 Outcome: DONE_WITH_CONCERNS
 
-Delivery state: Verified source continuation; private publication and exact parity recorded separately.
+Delivery state: Source clarifications integrated; verification, parent Audit, private publication and exact parity recorded in their separate receipts.
 
-Product state: AIM base behavior documented and source-bound media described; semantic, deployment and accessibility gaps remain.
+Product state: AIM base behavior documented, source-bound media described and three help explanations clarified; semantic, retrieval, deployment and accessibility gaps remain.
 
 Gate/authority state: Continued source work and normal private publication authorized. New-result owner and operational acceptance are not asserted.
