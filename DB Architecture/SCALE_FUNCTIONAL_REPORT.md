@@ -6,7 +6,7 @@ The intended reader is a person with little or no SCALE experience and limited t
 
 The initial [help topics](HELP_TOPICS.md) contain concrete answers and execution flows. The [functional role register](FUNCTIONAL_ROLES.md) distinguishes transactional state, configuration, master/reference information, reporting, orchestration, history and integration. The [configuration validation report](CONFIGURATION_VALIDATION.md) records the separately authorized, bounded replica checks. These are inputs for the help section; an interactive help application has not been deployed.
 
-Current foundation: **eight help topics, 35 reviewed object roles, five successful configuration checks, and 34 indexed process families awaiting full deployment review**. Structural inventory remains 3,022 objects. These are different measures; eight topics or complete inventory does not mean the SCALE brain is functionally complete. See the [review and remaining work](evidence/FUNCTIONAL_REVIEW.md).
+Current foundation: **187 help topics, 570 reviewed object roles, 459 bounded module contracts, 103 documentary setting contracts, and 34 families with complete captured documentary review**. All 130 process refinements are available in local help. Five configuration observations are unchanged; zero families have full deployment reconciliation. Actual HTTP checks cover417 questions. See [section progress](../_project/COMPLETION_REPORT.md).
 
 ## What a user should receive
 
@@ -27,7 +27,7 @@ Use a short first answer: what the function does, why it matters, and the next u
 
 The future interface must support keyboard navigation, visible focus, meaningful control labels, logical headings, screen-reader reading order, text resizing and sufficient contrast. Status and evidence confidence must have text labels rather than color alone. Every flow diagram needs equivalent ordered text. Expandable detail must expose its name and expanded state; validation results and errors must be announced without unexpectedly moving focus. Do not make hover, icons, position on a screen or visual inspection the only route to information.
 
-Keep the answer order consistent: **What it does → What happens → What can affect it → What you can check → More detail and sources**. Numbered instructions use one action per step and describe the expected result. The current Markdown topics support this content structure; they do not establish accessibility conformance of an unbuilt application. Acceptance requires keyboard and screen-reader testing with intended users, including visually impaired users.
+Keep the answer order consistent: **What it does → What happens → What can affect it → What you can check → More detail and sources**. Numbered instructions use one action per step and describe the expected result. The current Markdown topics and native HTML prototype support this content structure; they do not establish accessibility conformance. Acceptance requires keyboard and screen-reader testing with intended users, including visually impaired users.
 
 ## Source roles in the central knowledge base
 
@@ -37,7 +37,7 @@ Keep the answer order consistent: **What it does → What happens → What can a
 | SDK | Extension points, application contracts and implementation examples | Examples do not prove an installed customization or enabled feature. |
 | Replica schema and SQL | Observed implementation, table roles, effects and branch logic | Static source alone does not prove a particular execution or current transaction. |
 | Reviewed configuration observations and configuration guide | Explain settings and validate the permitted scope | Configuration guides and effective values require their own provenance, version and scope. |
-| SDD samples from other deployments | Design patterns, requirements and implementation choices worth comparing | A sample design is not evidence of configuration in this SCALE deployment. Current supplied documents have an intake inventory; body-level reconciliation remains outstanding. |
+| SDD samples from other deployments | Design patterns, requirements and implementation choices worth comparing | A sample design is not evidence of configuration in this SCALE deployment. Eight unique bodies are extracted; selected claims, settings and diagrams have bounded review. Product/version conflicts and remaining fidelity/applicability gaps are explicit in the SDD review. |
 | Future Insight screen register and SOPs | Verified screen/function/navigation associations, task steps and expected results | Screen navigation/capture is a future separately requested task; no screen paths or completed SOPs are invented here. |
 
 Connect sources by reviewed functional claims and deployment/version identity. Preserve contradictions and uncertainty. A future SOP should reuse the reviewed explanation and add verified navigation, permissions, steps and recovery paths; it must not silently replace the explanation with a sequence of clicks.

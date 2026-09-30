@@ -41,4 +41,6 @@ The [functional report](SCALE_FUNCTIONAL_REPORT.md) defines the question-first h
 | Does no runtime row mean unused? | No. Explain observation window, cache, capture mode, inlining and external callers. |
 | Does SDD describe the current installed implementation? | Requires source/version and implementation reconciliation; filename or design intent alone is insufficient. |
 
-App acceptance must test citation correctness, contradiction handling, unsupported-question behavior and accessibility with actual intended users. These are design criteria; no interactive app or evaluation run is claimed by this assessment.
+The [local help prototype](../help_app/README.md) implements curated search, native HTML answers and expandable citations. Startup verifies source fingerprints; selected SDD claims bind reviewed records, original documents and exact extracted nodes. Raw SDD bodies remain outside production indexing. Retained observation sources are restricted to the existing configuration aggregate and Query Store artifacts.
+
+Actual HTTP evaluation measures question-only retrieval separately from selected-topic presentation/citation integrity. Its authored questions are not an independent holdout set; evaluation text is excluded from search. Expected explanations and forbidden claims are not automatically scored. Application authentication, production deployment and browser/keyboard/screen-reader/intended-user acceptance remain unperformed. Exact results are in [evaluation.json](../help_app/evaluation.json).

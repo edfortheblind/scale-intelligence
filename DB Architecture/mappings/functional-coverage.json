@@ -5,13 +5,19 @@
   "counts": {
     "indexed_families": 34,
     "source_articles": 62,
-    "families_with_complete_deployment_review": 0
+    "families_with_complete_deployment_review": 0,
+    "families_with_reviewed_documentary_passages": 34,
+    "source_articles_with_reviewed_passages": 34,
+    "source_articles_fully_reconciled_to_deployment": 0,
+    "families_with_complete_captured_documentary_review": 34,
+    "process_text_bodies_reviewed": 62,
+    "process_image_references_inspected": 53
   },
   "completion_rule": "Complete requires reviewed application and SQL flow, branches/effects/errors, configuration dependencies, source conflicts and SME acceptance. A pilot topic alone does not complete a family.",
   "families": [
     {
       "family": "Allocation",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "07389991e41715f41b06fe903bb2e10d79c84341d24367dfa9f5cdc93288f9c5",
@@ -27,11 +33,116 @@
           "json_path": "AIM/data/articles/a2d8089500b1e693033fa7cbf77ca4b879de2a70a0a976f2d5cb926deb137ba3.json",
           "reading_path": "AIM/reading/a2d8089500b1e693033fa7cbf77ca4b879de2a70a0a976f2d5cb926deb137ba3.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Allocation chooses which storage locations will supply a request for product. Work creation then turns the allocated quantity into warehouse tasks.",
+        "initiating_event": "The allocation step runs in a wave before work creation.",
+        "documented_stages": [
+          "Apply allocation-rule sequences in numeric order; each sequence combines eligible locations with a selection strategy.",
+          "Reserve selected inventory when pick confirmation is used. The documented alternative removes inventory when the load is confirmed."
+        ],
+        "configuration_decisions": [
+          "Allocation rules combine location selection and strategy. Item and location characteristics can affect selection and ordering.",
+          "Pick-confirmation behavior changes when inventory is removed."
+        ],
+        "outcome": "Reserve selected inventory when pick confirmation is used. The documented alternative removes inventory when the load is confirmed.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "a2d8089500b1e693033fa7cbf77ca4b879de2a70a0a976f2d5cb926deb137ba3",
+            "title": "Allocation Process Summary: Functionality",
+            "source_sha256": "4bb0846eaeda14b5bf3a42ee4d3887811eb92d8143191fcdfba8c732c51c2043",
+            "source_path": "AIM/source/html/4bb0846eaeda14b5bf3a42ee4d3887811eb92d8143191fcdfba8c732c51c2043.htm",
+            "reading_path": "AIM/reading/a2d8089500b1e693033fa7cbf77ca4b879de2a70a0a976f2d5cb926deb137ba3.md",
+            "node_ids": [
+              "n67",
+              "n69",
+              "n71",
+              "n73",
+              "n75"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which allocation rule and pick-confirmation mode does the application select for this deployment? Obtain sanitized rule-assignment and wave-step bindings, without inventory or shipment records.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized rule-assignment and wave-step bindings, without inventory or shipment records."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/allocation-wave-replenishment.json#/family_associations/0",
+          "family": "Allocation",
+          "object_ids": [
+            1834801944,
+            1388180341,
+            1404180398,
+            1420180455
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Allocation-request conversion, splitting and destination/container linkage are concrete supporting behaviors; location-selection strategy and effective allocation rules remain unreconciled.",
+          "evidence_refs": [
+            "awr-allocation-aim",
+            "awr-batch-1834801944",
+            "awr-batch-1388180341",
+            "awr-batch-1404180398",
+            "awr-batch-1420180455"
+          ],
+          "fully_reconciled": false
+        },
+        {
+          "batch_ref": "DB Architecture/mappings/batches/function-semantics.json#/family_associations/0",
+          "family": "Allocation",
+          "object_ids": [
+            1704705471,
+            1816705870,
+            1832705927
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "UOM candidate precedence and conversion helpers support allocation metadata; no complete allocation strategy, stock reservation or effective rule assignment established.",
+          "evidence_refs": [
+            "fn-allocation-aim",
+            "fn-batch-1704705471",
+            "fn-batch-1816705870",
+            "fn-batch-1832705927"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/0",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Billing Management Integration",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "07dfda3003b2e06f5c5ab468f983c79caca43080bedaf1f3d7554f6321715a41",
@@ -47,11 +158,72 @@
           "json_path": "AIM/data/articles/93b67a5e861866a83006663aa86b2dc1260d4b60f07e573a2a274b5380c5e1d4.json",
           "reading_path": "AIM/reading/93b67a5e861866a83006663aa86b2dc1260d4b60f07e573a2a274b5380c5e1d4.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "The documented integration sends SCALE data to a separate Billing Management application so warehouse work can support third-party charges.",
+        "initiating_event": "A configured integration uploads SCALE data to Billing Management.",
+        "documented_stages": [
+          "Upload relevant system data to the separate billing application.",
+          "The billing application calculates, tracks and charges for warehouse work."
+        ],
+        "configuration_decisions": [
+          "The integration and the separate billing product must be configured; this summary does not establish field mappings or retry settings."
+        ],
+        "outcome": "The billing application calculates, tracks and charges for warehouse work.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "07dfda3003b2e06f5c5ab468f983c79caca43080bedaf1f3d7554f6321715a41",
+            "title": "Billing Management Integration Process Summary: Functionality",
+            "source_sha256": "de2b53f4e532ff96b20d7797a0d17b4447c55e256519ecab5bf5e786b51d2d92",
+            "source_path": "AIM/source/html/de2b53f4e532ff96b20d7797a0d17b4447c55e256519ecab5bf5e786b51d2d92.htm",
+            "reading_path": "AIM/reading/07dfda3003b2e06f5c5ab468f983c79caca43080bedaf1f3d7554f6321715a41.md",
+            "node_ids": [
+              "n65"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Is this deployment integrated with Billing Management, and what upload contract applies? Obtain a sanitized integration/version mapping and acknowledgment contract.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain a sanitized integration/version mapping and acknowledgment contract."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/1",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Carrier Management",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "0f22f1f323600031ea5c3cc568dd2af321864f30780e3c575cac1c2905eaa2e4",
@@ -67,11 +239,93 @@
           "json_path": "AIM/data/articles/4f356b32ad2ac2eb79097e963385c7d8c2904bd465c065373343b4dea5f47659.json",
           "reading_path": "AIM/reading/4f356b32ad2ac2eb79097e963385c7d8c2904bd465c065373343b4dea5f47659.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Carrier management controls carrier selection and shipping rules. Routing guides, shipping calendars and estimated container counts can affect the available shipping choices.",
+        "initiating_event": "Carrier assignment or rating during outbound processing.",
+        "documented_stages": [
+          "Use routing guides to identify a carrier or group for a customer/company and weight or container range.",
+          "Apply carrier no-ship calendars; wave container estimates can be used for rating."
+        ],
+        "configuration_decisions": [
+          "Routing guides can vary by weight and container count. Calendars identify excluded dates or weekend days.",
+          "Carrier records can inherit shared setup; additional shipping services have their own configuration."
+        ],
+        "outcome": "Apply carrier no-ship calendars; wave container estimates can be used for rating.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "0f22f1f323600031ea5c3cc568dd2af321864f30780e3c575cac1c2905eaa2e4",
+            "title": "Carrier Management Process Summary: Functionality",
+            "source_sha256": "6cae75f2a3d61f172808f8acc5a96ad0bc3875fc54c44c6a26bfe7d8b8ae2bd2",
+            "source_path": "AIM/source/html/6cae75f2a3d61f172808f8acc5a96ad0bc3875fc54c44c6a26bfe7d8b8ae2bd2.htm",
+            "reading_path": "AIM/reading/0f22f1f323600031ea5c3cc568dd2af321864f30780e3c575cac1c2905eaa2e4.md",
+            "node_ids": [
+              "n65",
+              "n67",
+              "n69",
+              "n71",
+              "n73",
+              "n75"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which carrier/rating service version and routing guide apply here? Obtain sanitized carrier-service bindings and routing precedence, without addresses or shipment data.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized carrier-service bindings and routing precedence, without addresses or shipment data."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/shipping-interfaces.json#/family_associations/0",
+          "family": "Carrier Management",
+          "help_topic_ids": [
+            "shipping-carrier-active-lookups",
+            "shipping-freight-rollup"
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Reviewed module bodies support the linked bounded topics. Vendor passage association does not establish installed application binding or complete process reconciliation.",
+          "evidence_refs": [
+            "si-aim-carrier-management"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/2",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Container Creation in the Wave",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "58b174b614d3d98ce179aa9b0caea4e04491798b8bb583ec3c58787a502560eb",
@@ -87,11 +341,72 @@
           "json_path": "AIM/data/articles/ac1a4d877d9ffe1b990794887848f749622dd7c2cd0a9ad41e79766deab74780.json",
           "reading_path": "AIM/reading/ac1a4d877d9ffe1b990794887848f749622dd7c2cd0a9ad41e79766deab74780.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "A wave can create shipping containers for allocated line quantities. A container strategy determines how those quantities are combined or split.",
+        "initiating_event": "The container-creation wave step executes.",
+        "documented_stages": [
+          "Use the allocated shipment-line quantities as the input to container creation.",
+          "Apply the configured strategy to determine the containers and distribute quantities."
+        ],
+        "configuration_decisions": [
+          "The documented strategies are Consolidate And Do Not Split, Split And Do Not Consolidate, Consolidate And Split Only Once, and 3D Cubing."
+        ],
+        "outcome": "Apply the configured strategy to determine the containers and distribute quantities.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "ac1a4d877d9ffe1b990794887848f749622dd7c2cd0a9ad41e79766deab74780",
+            "title": "Container Creation in the Wave Process Summary: Functionality",
+            "source_sha256": "bf4db6f7da1b69fb0d340568d3638f92ca64c2a646be9f5f2f756715e2983c15",
+            "source_path": "AIM/source/html/bf4db6f7da1b69fb0d340568d3638f92ca64c2a646be9f5f2f756715e2983c15.htm",
+            "reading_path": "AIM/reading/ac1a4d877d9ffe1b990794887848f749622dd7c2cd0a9ad41e79766deab74780.md",
+            "node_ids": [
+              "n65"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which container strategy and packing constraints are assigned to the wave? Obtain sanitized wave-step and strategy contracts; do not infer a strategy from existing containers.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized wave-step and strategy contracts; do not infer a strategy from existing containers."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/3",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 9,
+          "image_references_total": 9,
+          "substantive_figures_inspected": 9,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Cycle Counting",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "548d817cbc4d0efb1392d60c7811bc8f3021bcab5f4dbe675984c54a883ca5b3",
@@ -107,11 +422,83 @@
           "json_path": "AIM/data/articles/71e9cfa8294b965b70be00b564408c726a41da70ba6c002fe00adf6da5a0b3f7.json",
           "reading_path": "AIM/reading/71e9cfa8294b965b70be00b564408c726a41da70ba6c002fe00adf6da5a0b3f7.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Cycle counting compares a physical count at a location with the quantity recorded by SCALE. It can start from a count plan or from activity that makes a location due for counting.",
+        "initiating_event": "A user creates a count plan, or the system creates activity-driven count instructions.",
+        "documented_stages": [
+          "Select work through a plan-based or activity-driven count request.",
+          "Physically verify whether the location inventory matches the recorded inventory."
+        ],
+        "configuration_decisions": [
+          "Plan-based and activity-driven counting have different triggers; reconciliation tolerances and approval rules need further source review."
+        ],
+        "outcome": "Physically verify whether the location inventory matches the recorded inventory.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "548d817cbc4d0efb1392d60c7811bc8f3021bcab5f4dbe675984c54a883ca5b3",
+            "title": "Cycle Counting Process Summary: Functionality",
+            "source_sha256": "62b53306bb40dde023f7fe8b495cff98a3604c93e7613707f4547202de3ae47c",
+            "source_path": "AIM/source/html/62b53306bb40dde023f7fe8b495cff98a3604c93e7613707f4547202de3ae47c.htm",
+            "reading_path": "AIM/reading/548d817cbc4d0efb1392d60c7811bc8f3021bcab5f4dbe675984c54a883ca5b3.md",
+            "node_ids": [
+              "n66"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which count tolerances, recount and approval rules are enabled? Obtain sanitized cycle-count configuration and application handling; no physical counts are available here.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized cycle-count configuration and application handling; no physical counts are available here."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [
+        "cycle-count-tolerance-conflict"
+      ],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/inventory.json#/family_associations/2",
+          "family": "Cycle Counting",
+          "help_topic_ids": [
+            "inventory-activity-count"
+          ],
+          "status": "BOUNDED_STATIC_ASSOCIATION_FULL_FAMILY_REVIEW_PENDING"
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/4",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 3,
+          "image_references_total": 3,
+          "substantive_figures_inspected": 3,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 5,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Device Integration Framework",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "3c63bdf0272ec9766ff0f09ad26edf86b80acc7a3e3ca5d322c6845dbf3b9d59",
@@ -127,11 +514,88 @@
           "json_path": "AIM/data/articles/6678efaf48f28c0a44b2e1460d2ab6c18050a333a56de1c53ba503cb274c6b60.json",
           "reading_path": "AIM/reading/6678efaf48f28c0a44b2e1460d2ab6c18050a333a56de1c53ba503cb274c6b60.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "The Device Integration Framework connects SCALE with automation equipment, such as conveyors or pick-to-light systems. It exchanges messages; a received file alone does not prove the requested warehouse action finished.",
+        "initiating_event": "Equipment exchanges messages, or files arrive for a configured transfer process.",
+        "documented_stages": [
+          "The configured file transfer reads supported files from designated folders into incoming-message handling.",
+          "Configured post-processing can change an extension, move the file and insert an incoming-message record for subsequent processing."
+        ],
+        "configuration_decisions": [
+          "File formats, extension rules, destination handling and whether to insert a message are configuration choices."
+        ],
+        "outcome": "Configured post-processing can change an extension, move the file and insert an incoming-message record for subsequent processing.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "6678efaf48f28c0a44b2e1460d2ab6c18050a333a56de1c53ba503cb274c6b60",
+            "title": "Device Integration Framework Process Summary: Functionality",
+            "source_sha256": "74bb52247a8d357f0ae9e8639f45f24337864b942d0f0c28254ea313a5f68966",
+            "source_path": "AIM/source/html/74bb52247a8d357f0ae9e8639f45f24337864b942d0f0c28254ea313a5f68966.htm",
+            "reading_path": "AIM/reading/6678efaf48f28c0a44b2e1460d2ab6c18050a333a56de1c53ba503cb274c6b60.md",
+            "node_ids": [
+              "n65",
+              "n67",
+              "n69"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which device service, message handler and acknowledgment/retry rules are installed? Obtain sanitized service/version and message-schema evidence, without endpoints or live payloads.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized service/version and message-schema evidence, without endpoints or live payloads."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/shipping-interfaces.json#/family_associations/1",
+          "family": "Device Integration Framework",
+          "help_topic_ids": [
+            "shipping-reprint-dif-request"
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Reviewed module bodies support the linked bounded topics. Vendor passage association does not establish installed application binding or complete process reconciliation.",
+          "evidence_refs": [
+            "si-aim-device-integration-framework"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/5",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 2,
+          "image_references_total": 2,
+          "substantive_figures_inspected": 2,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Dock Management",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "0c77698ccfe7d7e04d05ab3b30be92ac8b6430702a653276c2e4e15a459fe918",
@@ -147,11 +611,72 @@
           "json_path": "AIM/data/articles/9857f2ac70834cdabe3e8245f2ee06c0451ed99523ada65852b8863953ad7b1c.json",
           "reading_path": "AIM/reading/9857f2ac70834cdabe3e8245f2ee06c0451ed99523ada65852b8863953ad7b1c.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Dock management tracks containers through packing-area consolidation, staging and truck loading. These stages use distinct inventory-tracked locations and can be enabled separately.",
+        "initiating_event": "Shipment containers reach the outbound dock area.",
+        "documented_stages": [
+          "Consolidate items or containers at a packing-area location when that process is enabled.",
+          "Use staging locations and dock-door locations for enabled staging and loading stages."
+        ],
+        "configuration_decisions": [
+          "Each dock-management process can be independently enabled or disabled."
+        ],
+        "outcome": "Use staging locations and dock-door locations for enabled staging and loading stages.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "9857f2ac70834cdabe3e8245f2ee06c0451ed99523ada65852b8863953ad7b1c",
+            "title": "Dock Management Process Summary: Functionality",
+            "source_sha256": "d3c20015a2fe617a03fced72f7bc976f250507efe52b67d6febe460194ff44c3",
+            "source_path": "AIM/source/html/d3c20015a2fe617a03fced72f7bc976f250507efe52b67d6febe460194ff44c3.htm",
+            "reading_path": "AIM/reading/9857f2ac70834cdabe3e8245f2ee06c0451ed99523ada65852b8863953ad7b1c.md",
+            "node_ids": [
+              "n65"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which consolidation, staging and loading stages and status flows apply here? Obtain sanitized stage configuration and location-class mapping.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized stage configuration and location-class mapping."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/6",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 3,
+          "image_references_total": 3,
+          "substantive_figures_inspected": 3,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "GS1 Barcode",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "5f876e2632897c1569720f398a7ed5a564bc2d5792bad79a2a06d674e41e6069",
@@ -160,11 +685,74 @@
           "json_path": "AIM/data/articles/5f876e2632897c1569720f398a7ed5a564bc2d5792bad79a2a06d674e41e6069.json",
           "reading_path": "AIM/reading/5f876e2632897c1569720f398a7ed5a564bc2d5792bad79a2a06d674e41e6069.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "A GS1 barcode can carry several data elements, such as an item, quantity or lot. SCALE uses application-identifier templates to interpret those elements; the template may be associated with a receiving preference.",
+        "initiating_event": "A barcode is interpreted during a supported process; label creation can occur in a wave or when closing a container.",
+        "documented_stages": [
+          "Interpret barcode segments using the applicable application-identifier template.",
+          "The documented wave and close-container processes can generate GS1 labels from configured templates."
+        ],
+        "configuration_decisions": [
+          "Application-identifier templates determine parsing. Receiving preferences can select a template; generic supplied labels can be customized."
+        ],
+        "outcome": "The documented wave and close-container processes can generate GS1 labels from configured templates.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "5f876e2632897c1569720f398a7ed5a564bc2d5792bad79a2a06d674e41e6069",
+            "title": "GS1 Barcode Process Summary: Functionality",
+            "source_sha256": "56aefab9a84d3879c034c2d09a2f71c62781a1cbd314d2c38c6254e205c88c6c",
+            "source_path": "AIM/source/html/56aefab9a84d3879c034c2d09a2f71c62781a1cbd314d2c38c6254e205c88c6c.htm",
+            "reading_path": "AIM/reading/5f876e2632897c1569720f398a7ed5a564bc2d5792bad79a2a06d674e41e6069.md",
+            "node_ids": [
+              "n64",
+              "n66",
+              "n68"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which barcode/template version and receiving-preference binding apply? Obtain a sanitized template definition and synthetic barcode example; current GS1 standard compliance is not established by this captured summary.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain a sanitized template definition and synthetic barcode example; current GS1 standard compliance is not established by this captured summary."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/7",
+        "coverage": {
+          "text_articles_reviewed": 1,
+          "text_articles_total": 1,
+          "image_references_inspected": 0,
+          "image_references_total": 0,
+          "substantive_figures_inspected": 0,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 2,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "General System Concepts",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "85149c7693291207b2c43b2565198094a6af1ad3eaa3cb03fe2dfa28c7a351d1",
@@ -173,11 +761,82 @@
           "json_path": "AIM/data/articles/85149c7693291207b2c43b2565198094a6af1ad3eaa3cb03fe2dfa28c7a351d1.json",
           "reading_path": "AIM/reading/85149c7693291207b2c43b2565198094a6af1ad3eaa3cb03fe2dfa28c7a351d1.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Warehouse, company and user setup provide the context for SCALE activity. A warehouse identifies where transactions occur, while user profiles and security records influence access.",
+        "initiating_event": "An authorized user opens a function in a configured warehouse.",
+        "documented_stages": [
+          "Associate transactions with a warehouse; the vendor summary requires at least one warehouse.",
+          "The captured window-security description checks user-level records when present and otherwise references system-level records."
+        ],
+        "configuration_decisions": [
+          "Company setup supports multi-company processing. User profiles carry preferences and company authorizations.",
+          "The historical documented security default must not be treated as the permissions of this deployment."
+        ],
+        "outcome": "The captured window-security description checks user-level records when present and otherwise references system-level records.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "85149c7693291207b2c43b2565198094a6af1ad3eaa3cb03fe2dfa28c7a351d1",
+            "title": "General System Concepts Process Summary: Functionality",
+            "source_sha256": "2abb64aa793ebb9b72cbcfc007af8c24f6508deebb57bcf432a46085bd48bfaf",
+            "source_path": "AIM/source/html/2abb64aa793ebb9b72cbcfc007af8c24f6508deebb57bcf432a46085bd48bfaf.htm",
+            "reading_path": "AIM/reading/85149c7693291207b2c43b2565198094a6af1ad3eaa3cb03fe2dfa28c7a351d1.md",
+            "node_ids": [
+              "n76",
+              "n81",
+              "n86",
+              "n91",
+              "n93",
+              "n95",
+              "n97",
+              "n100"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which deployed version and authorization layer govern access? Obtain a sanitized security model and application-version contract, never another user profile or password.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain a sanitized security model and application-version contract, never another user profile or password."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [
+        "insight-screen-future-association"
+      ],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/8",
+        "coverage": {
+          "text_articles_reviewed": 1,
+          "text_articles_total": 1,
+          "image_references_inspected": 0,
+          "image_references_total": 0,
+          "substantive_figures_inspected": 0,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Immediate Needs",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "5dc3ad182d2fa6eed29085709e0c784b0b831ddb4bf10e21616b711279fd1c2d",
@@ -193,11 +852,75 @@
           "json_path": "AIM/data/articles/d4f3a4f49417bd0ab4a8a95ce5e4cfc8040e007b1b978b60d44bea3372b0056a.json",
           "reading_path": "AIM/reading/d4f3a4f49417bd0ab4a8a95ce5e4cfc8040e007b1b978b60d44bea3372b0056a.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Immediate needs record product that cannot yet fulfill a shipment, work order, replenishment or short pick. Newly received stock can then be allocated to fill that shortage.",
+        "initiating_event": "A supported request cannot be completely fulfilled.",
+        "documented_stages": [
+          "Log an immediate-needs request for the unmet quantity.",
+          "Use newly received quantity to fulfill the need; requests for the same item are considered using their priorities.",
+          "The documented viewer removes the request after fulfillment closes it."
+        ],
+        "configuration_decisions": [
+          "The trigger defines a default priority, which can be changed for a request. Priority comparison is documented for requests of the same item."
+        ],
+        "outcome": "The documented viewer removes the request after fulfillment closes it.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "5dc3ad182d2fa6eed29085709e0c784b0b831ddb4bf10e21616b711279fd1c2d",
+            "title": "Immediate Needs Process Summary: Functionality",
+            "source_sha256": "f909c9c7b964714a286e52d66ffbc21159ed3371740322e650197b40dd19d0e3",
+            "source_path": "AIM/source/html/f909c9c7b964714a286e52d66ffbc21159ed3371740322e650197b40dd19d0e3.htm",
+            "reading_path": "AIM/reading/5dc3ad182d2fa6eed29085709e0c784b0b831ddb4bf10e21616b711279fd1c2d.md",
+            "node_ids": [
+              "n65",
+              "n67",
+              "n69"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which immediate-needs triggers and priority rules apply to the process? Obtain sanitized trigger definitions and fulfillment bindings, without shortage records.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized trigger definitions and fulfillment bindings, without shortage records."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/9",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 0,
+          "image_references_total": 0,
+          "substantive_figures_inspected": 0,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Interface",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "178aec6d3faf8830199512924f58cf463d20acfbc6b6485c40a0948c32a1cd0e",
@@ -213,11 +936,90 @@
           "json_path": "AIM/data/articles/ff9dff8815dd0430808523fa60275e20a08e169d0544515beb1c9909c27bdea3.json",
           "reading_path": "AIM/reading/ff9dff8815dd0430808523fa60275e20a08e169d0544515beb1c9909c27bdea3.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Interfaces exchange records between SCALE and an order system. A job can be started manually or by a schedule, and one failed file does not necessarily stop other files from being processed.",
+        "initiating_event": "A manual or scheduled upload/download starts.",
+        "documented_stages": [
+          "Process appropriate files or records from earliest to latest last-modified time.",
+          "Record detailed errors for failures; when processing several files, continue with other files after a file-data error."
+        ],
+        "configuration_decisions": [
+          "Transport mode, touchpoint and schedule determine the interface path; those active settings are not supplied by this summary."
+        ],
+        "outcome": "Record detailed errors for failures; when processing several files, continue with other files after a file-data error.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "178aec6d3faf8830199512924f58cf463d20acfbc6b6485c40a0948c32a1cd0e",
+            "title": "Interface Process Summary: Functionality",
+            "source_sha256": "16a5da0368ba8d3c53860134e3270982414a29c92ad4c62f1c13da24e4067a7c",
+            "source_path": "AIM/source/html/16a5da0368ba8d3c53860134e3270982414a29c92ad4c62f1c13da24e4067a7c.htm",
+            "reading_path": "AIM/reading/178aec6d3faf8830199512924f58cf463d20acfbc6b6485c40a0948c32a1cd0e.md",
+            "node_ids": [
+              "n66",
+              "n68"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "What installed interface mode, schema, idempotency and acknowledgment rules apply? Obtain sanitized interface contracts and version evidence; do not inspect live payload/error files under this task.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized interface contracts and version evidence; do not inspect live payload/error files under this task."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/shipping-interfaces.json#/family_associations/2",
+          "family": "Interface",
+          "help_topic_ids": [
+            "interface-configuration-selection",
+            "interface-upload-batch-contract",
+            "interface-cleanup-variants",
+            "interface-errors-and-retained-views"
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Reviewed module bodies support the linked bounded topics. Vendor passage association does not establish installed application binding or complete process reconciliation.",
+          "evidence_refs": [
+            "si-aim-interface"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/10",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Inventory Management",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "9c9b2f34d8c2aeee8291236b7db3a8d7712db3a3188eda0681cc00157c1ccdfe",
@@ -233,11 +1035,88 @@
           "json_path": "AIM/data/articles/edca94441e91a9acd50d8668b047aec7beeba2b981c755b883a5e875295359e0.json",
           "reading_path": "AIM/reading/edca94441e91a9acd50d8668b047aec7beeba2b981c755b883a5e875295359e0.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Inventory management corrects recorded stock outside ordinary picking or putaway. The adjustment class determines how an adjustment type is processed; license-plate transactions can handle mixed product together.",
+        "initiating_event": "An authorized user completes an inventory adjustment or transfer.",
+        "documented_stages": [
+          "Process the selected adjustment type according to its adjustment class.",
+          "Apply the documented inventory change when the transaction completes; license-plate tracking can extend the context."
+        ],
+        "configuration_decisions": [
+          "Adjustment types/classes and license-plate tracking affect processing.",
+          "The captured summary restricts Lot Insight adjustment/status-change/transfer when inventory attributes are linked."
+        ],
+        "outcome": "Apply the documented inventory change when the transaction completes; license-plate tracking can extend the context.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "9c9b2f34d8c2aeee8291236b7db3a8d7712db3a3188eda0681cc00157c1ccdfe",
+            "title": "Inventory Management Process Summary: Functionality",
+            "source_sha256": "9fe93dc5c192f74ebe3d424157aa85d024f7079485cbc7e9c9c475c794e7eee6",
+            "source_path": "AIM/source/html/9fe93dc5c192f74ebe3d424157aa85d024f7079485cbc7e9c9c475c794e7eee6.htm",
+            "reading_path": "AIM/reading/9c9b2f34d8c2aeee8291236b7db3a8d7712db3a3188eda0681cc00157c1ccdfe.md",
+            "node_ids": [
+              "n66",
+              "n68",
+              "n70",
+              "n74",
+              "n75",
+              "n76"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which adjustment class, permissions and attribute restrictions apply? Obtain sanitized adjustment definitions and caller transaction behavior; individual balances remain outside scope.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized adjustment definitions and caller transaction behavior; individual balances remain outside scope."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/inventory.json#/family_associations/1",
+          "family": "Inventory Management",
+          "help_topic_ids": [
+            "inventory-empty-source",
+            "inventory-destination-units"
+          ],
+          "status": "BOUNDED_STATIC_ASSOCIATION_FULL_FAMILY_REVIEW_PENDING"
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/11",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Inventory Tracking",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "de1742b64ef4309ef4218ae2c31c0200d48c4bbe37e994ff9b64365ea255a28c",
@@ -246,11 +1125,83 @@
           "json_path": "AIM/data/articles/de1742b64ef4309ef4218ae2c31c0200d48c4bbe37e994ff9b64365ea255a28c.json",
           "reading_path": "AIM/reading/de1742b64ef4309ef4218ae2c31c0200d48c4bbe37e994ff9b64365ea255a28c.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Inventory tracking records where stock is and what state it is in. Quantity categories distinguish inventory states, and lots, serial numbers, catch weights and attributes provide additional identification.",
+        "initiating_event": "Product enters, moves through or leaves the warehouse.",
+        "documented_stages": [
+          "Track product location and state through its warehouse journey.",
+          "Use quantity categories and applicable lot, serial, weight and attribute identification."
+        ],
+        "configuration_decisions": [
+          "The summary names the tracking dimensions; item-specific activation and quantity equations require the detailed contracts."
+        ],
+        "outcome": "Use quantity categories and applicable lot, serial, weight and attribute identification.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "de1742b64ef4309ef4218ae2c31c0200d48c4bbe37e994ff9b64365ea255a28c",
+            "title": "Inventory Tracking Process Summary: Functionality",
+            "source_sha256": "b87db78c2d841a850fc229481eabccd5eea820d3fee31495a2578a92707c5a88",
+            "source_path": "AIM/source/html/b87db78c2d841a850fc229481eabccd5eea820d3fee31495a2578a92707c5a88.htm",
+            "reading_path": "AIM/reading/de1742b64ef4309ef4218ae2c31c0200d48c4bbe37e994ff9b64365ea255a28c.md",
+            "node_ids": [
+              "n64"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which item tracking controls and quantity-category rules apply to this workflow? Obtain sanitized rule definitions and application bindings; no current quantities are known.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized rule definitions and application bindings; no current quantities are known."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/inventory.json#/family_associations/0",
+          "family": "Inventory Tracking",
+          "help_topic_ids": [
+            "inventory-quantity-buckets",
+            "inventory-serial-linkage",
+            "inventory-lot-lifecycle"
+          ],
+          "status": "BOUNDED_STATIC_ASSOCIATION_FULL_FAMILY_REVIEW_PENDING"
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/12",
+        "coverage": {
+          "text_articles_reviewed": 1,
+          "text_articles_total": 1,
+          "image_references_inspected": 0,
+          "image_references_total": 0,
+          "substantive_figures_inspected": 0,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Item",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "d805afb741af2fe0359ea6a96de0677c5ef0bb1532f7454099e15ce9f148c9b0",
@@ -259,11 +1210,72 @@
           "json_path": "AIM/data/articles/d805afb741af2fe0359ea6a96de0677c5ef0bb1532f7454099e15ce9f148c9b0.json",
           "reading_path": "AIM/reading/d805afb741af2fe0359ea6a96de0677c5ef0bb1532f7454099e15ce9f148c9b0.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Item setup defines product characteristics and handling controls, including locating, allocation, lot and serial behavior. The captured summary also describes using shipment-line item values when separate item records are not maintained.",
+        "initiating_event": "An item is configured or supplied through interface/shipment-line data.",
+        "documented_stages": [
+          "Use item characteristics and handling controls when processing the product.",
+          "In the documented optional-item-master path, reference values supplied on shipment lines."
+        ],
+        "configuration_decisions": [
+          "Item controls can include allocation/locating rules and tracking requirements. Company context matters in multi-company use."
+        ],
+        "outcome": "In the documented optional-item-master path, reference values supplied on shipment lines.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "d805afb741af2fe0359ea6a96de0677c5ef0bb1532f7454099e15ce9f148c9b0",
+            "title": "Item Process Summary: Functionality",
+            "source_sha256": "ac7b4d20dd4c56102e0606305932bbc6c3688cab1a4fdf0f3a6a141f6c0505a7",
+            "source_path": "AIM/source/html/ac7b4d20dd4c56102e0606305932bbc6c3688cab1a4fdf0f3a6a141f6c0505a7.htm",
+            "reading_path": "AIM/reading/d805afb741af2fe0359ea6a96de0677c5ef0bb1532f7454099e15ce9f148c9b0.md",
+            "node_ids": [
+              "n64"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Does this deployment require item masters, and which field defaults/overrides apply? Obtain the installed item/interface contract; optional behavior in the summary is not a deployment guarantee.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain the installed item/interface contract; optional behavior in the summary is not a deployment guarantee."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/13",
+        "coverage": {
+          "text_articles_reviewed": 1,
+          "text_articles_total": 1,
+          "image_references_inspected": 0,
+          "image_references_total": 0,
+          "substantive_figures_inspected": 0,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 2,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "LTL Rating",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "66f522d9ea61a79265d4f554eefaa3cf9eb580ca5083eb1e4a3282e7a7c55376",
@@ -286,11 +1298,78 @@
           "json_path": "AIM/data/articles/dc00c5fc10d6dcd7c8ab0f4764c6a743bff2853b818ec60bcaee60e39a1280f9.json",
           "reading_path": "AIM/reading/dc00c5fc10d6dcd7c8ab0f4764c6a743bff2853b818ec60bcaee60e39a1280f9.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Less-than-truckload rating calculates freight for a shipment using route, weight and freight class. SCALE’s documented internal rating also considers minimum charges and whether the next weight break would be cheaper.",
+        "initiating_event": "An LTL shipment is rated.",
+        "documented_stages": [
+          "Determine a rate base using warehouse origin, shipment destination and any additional configured criteria.",
+          "Rate each freight class and weight, total mixed classes and check carrier minimums.",
+          "Apply the documented deficit-weight comparison against the next weight break."
+        ],
+        "configuration_decisions": [
+          "Rate bases contain class/weight breaks; carrier minimums and route criteria influence the calculation."
+        ],
+        "outcome": "Apply the documented deficit-weight comparison against the next weight break.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "66f522d9ea61a79265d4f554eefaa3cf9eb580ca5083eb1e4a3282e7a7c55376",
+            "title": "LTL Rating Process Summary: Functionality",
+            "source_sha256": "ecf370ae2e20127447eeb2276766ecffcb7d9e7f73ecd56a1097f70a134337d2",
+            "source_path": "AIM/source/html/ecf370ae2e20127447eeb2276766ecffcb7d9e7f73ecd56a1097f70a134337d2.htm",
+            "reading_path": "AIM/reading/66f522d9ea61a79265d4f554eefaa3cf9eb580ca5083eb1e4a3282e7a7c55376.md",
+            "node_ids": [
+              "n67",
+              "n69",
+              "n71",
+              "n73",
+              "n75",
+              "n77"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Is internal LTL rating or an external rating service used, and what contract/version applies? Obtain sanitized rating configuration; no current price, tariff or shipment quote is established.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized rating configuration; no current price, tariff or shipment quote is established."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/14",
+        "coverage": {
+          "text_articles_reviewed": 3,
+          "text_articles_total": 3,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Labor Management",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "1577dee17cd3cea384f5b8e40cd757565dffd0a44971e2ddedcc12a2428f0a2b",
@@ -313,11 +1392,74 @@
           "json_path": "AIM/data/articles/7dd4c71c4fffda7e9ee1126c5142b92f5d6ebf82faf4a4f204c59dfe5f1bfd65.json",
           "reading_path": "AIM/reading/7dd4c71c4fffda7e9ee1126c5142b92f5d6ebf82faf4a4f204c59dfe5f1bfd65.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Labor management collects productivity information from warehouse actions such as picking, packing and receiving. It supports comparing work and plans with expected performance.",
+        "initiating_event": "Workers perform supported warehouse actions.",
+        "documented_stages": [
+          "Generate labor data from supported work execution, packing and receiving activities.",
+          "Use the recorded data to assess productivity and compare labor plans with expectations."
+        ],
+        "configuration_decisions": [
+          "Activity definitions, standards and plan configuration are not established by the reviewed summary."
+        ],
+        "outcome": "Use the recorded data to assess productivity and compare labor plans with expectations.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "7dd4c71c4fffda7e9ee1126c5142b92f5d6ebf82faf4a4f204c59dfe5f1bfd65",
+            "title": "Labor Management Process Summary: Functionality",
+            "source_sha256": "54c9034017f6e99c435f01fb8113c4cbb342583be0357d049f2bf4364b00d066",
+            "source_path": "AIM/source/html/54c9034017f6e99c435f01fb8113c4cbb342583be0357d049f2bf4364b00d066.htm",
+            "reading_path": "AIM/reading/7dd4c71c4fffda7e9ee1126c5142b92f5d6ebf82faf4a4f204c59dfe5f1bfd65.md",
+            "node_ids": [
+              "n68"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "What time boundaries, standards and exclusions define each labor measure here? Obtain sanitized measurement definitions and correlation design; no employee performance data is authorized.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized measurement definitions and correlation design; no employee performance data is authorized."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [
+        "automatic-putaway-timing"
+      ],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/15",
+        "coverage": {
+          "text_articles_reviewed": 3,
+          "text_articles_total": 3,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Locating",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "4007cca3ce3ca3273f3ee4e6d51d7027ae1816c6f7ce71af9f254400514146aa",
@@ -326,11 +1468,109 @@
           "json_path": "AIM/data/articles/4007cca3ce3ca3273f3ee4e6d51d7027ae1816c6f7ce71af9f254400514146aa.json",
           "reading_path": "AIM/reading/4007cca3ce3ca3273f3ee4e6d51d7027ae1816c6f7ce71af9f254400514146aa.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Locating chooses a storage destination for checked-in product. Rules select candidate locations and a strategy; creating putaway work is a separate choice. Delayed locating can first send the container to a receiving pre-locate area.",
+        "initiating_event": "Checked-in containers are submitted for locating.",
+        "documented_stages": [
+          "Select the applicable locating rule, using the parent rule when locating by parent and the nested-container rule when locating by child.",
+          "Evaluate rule sequences in numeric order, applying each location selection and strategy.",
+          "If both Delayed Locating and Create Putaway Work are active, locate with work to the receiving pre-locate location; otherwise use rule details."
+        ],
+        "configuration_decisions": [
+          "Rules can be assigned on the item or through rule-set assignment. Strategies and eligible locations govern placement.",
+          "Delayed locating requires both flags; one active flag is insufficient."
+        ],
+        "outcome": "If both Delayed Locating and Create Putaway Work are active, locate with work to the receiving pre-locate location; otherwise use rule details.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "4007cca3ce3ca3273f3ee4e6d51d7027ae1816c6f7ce71af9f254400514146aa",
+            "title": "Locating Process Summary: Functionality",
+            "source_sha256": "e215745a6d81b87363e12c8d05d0ac51d7b6337430ce4b448bc6edcedf67b24a",
+            "source_path": "AIM/source/html/e215745a6d81b87363e12c8d05d0ac51d7b6337430ce4b448bc6edcedf67b24a.htm",
+            "reading_path": "AIM/reading/4007cca3ce3ca3273f3ee4e6d51d7027ae1816c6f7ce71af9f254400514146aa.md",
+            "node_ids": [
+              "n64",
+              "n66",
+              "n81",
+              "n83",
+              "n85",
+              "n87",
+              "n90",
+              "n94",
+              "n96",
+              "n98",
+              "n102",
+              "n105",
+              "n108",
+              "n113"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which rule assignment and receiving preference are effective for the container? Obtain sanitized assignment and preference contracts. Aggregate delayed-locating flags cannot establish per-container behavior.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized assignment and preference contracts. Aggregate delayed-locating flags cannot establish per-container behavior."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [
+        "automatic-putaway-timing"
+      ],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/receiving-shipping.json#/family_associations/1",
+          "family": "Locating",
+          "object_ids": [
+            1175323597,
+            1266819575,
+            1487344363
+          ],
+          "association_type": "CONFIGURATION_RETRIEVAL_AND_SCHEMA_LINK",
+          "claim": "Named rule-header retrieval and receipt-container locating-rule FK support configuration linkage only; strategy execution and effective assignment remain unknown.",
+          "evidence_refs": [
+            "rs-locating-aim",
+            "rs-batch-1175323597"
+          ],
+          "constraint_object_ids": [
+            67531324
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/16",
+        "coverage": {
+          "text_articles_reviewed": 1,
+          "text_articles_total": 1,
+          "image_references_inspected": 0,
+          "image_references_total": 0,
+          "substantive_figures_inspected": 0,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Location",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "21428da0ae44e13ca2c0bcefba196f6df8418538d3c715c19189eea8ec30c5ae",
@@ -339,11 +1579,72 @@
           "json_path": "AIM/data/articles/21428da0ae44e13ca2c0bcefba196f6df8418538d3c715c19189eea8ec30c5ae.json",
           "reading_path": "AIM/reading/21428da0ae44e13ca2c0bcefba196f6df8418538d3c715c19189eea8ec30c5ae.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "A location is a defined place where stock can be picked, put away or replenished. Location types share dimensions and capacity settings, while movement classes describe what kinds of product can be stored there.",
+        "initiating_event": "Warehouse locations are defined and referenced by warehouse work.",
+        "documented_stages": [
+          "Associate a location with a location type where common dimensions and quantity limits are needed.",
+          "Use movement-class rules to identify the types of product allowed in that location."
+        ],
+        "configuration_decisions": [
+          "Location type, capacity and movement class influence use; actual availability remains operational data."
+        ],
+        "outcome": "Use movement-class rules to identify the types of product allowed in that location.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "21428da0ae44e13ca2c0bcefba196f6df8418538d3c715c19189eea8ec30c5ae",
+            "title": "Location Process Summary: Functionality",
+            "source_sha256": "d517ff8730848df37cb3418877be0cb80e0e68650ed39845945145bad5425462",
+            "source_path": "AIM/source/html/d517ff8730848df37cb3418877be0cb80e0e68650ed39845945145bad5425462.htm",
+            "reading_path": "AIM/reading/21428da0ae44e13ca2c0bcefba196f6df8418538d3c715c19189eea8ec30c5ae.md",
+            "node_ids": [
+              "n63"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "What inheritance/override rules apply between a location and its type? Obtain sanitized definitions and the installed resolution contract.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized definitions and the installed resolution contract."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/17",
+        "coverage": {
+          "text_articles_reviewed": 1,
+          "text_articles_total": 1,
+          "image_references_inspected": 0,
+          "image_references_total": 0,
+          "substantive_figures_inspected": 0,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 2,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Multi-Language Support",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "3e7f7707cbad374ac9e9f33aea0d9c046ee877c02eff247d8fd4776e6a8038ea",
@@ -352,11 +1653,80 @@
           "json_path": "AIM/data/articles/3e7f7707cbad374ac9e9f33aea0d9c046ee877c02eff247d8fd4776e6a8038ea.json",
           "reading_path": "AIM/reading/3e7f7707cbad374ac9e9f33aea0d9c046ee877c02eff247d8fd4776e6a8038ea.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Language behavior depends on which SCALE interface is being used and which translations are installed. Desktop, browser, RF device and TPM settings are described separately in the captured documentation.",
+        "initiating_event": "A user opens an interface or online help.",
+        "documented_stages": [
+          "Use the applicable translated resources; the documented desktop path follows Windows-user language and other application screens follow browser language.",
+          "RF language can be selected on the device; the documented TPM language uses its server-side web-user setting.",
+          "For online help, use a matching language folder when available, otherwise fall back to the base help."
+        ],
+        "configuration_decisions": [
+          "Resource files and translated help must exist; a language preference alone does not supply a translation."
+        ],
+        "outcome": "For online help, use a matching language folder when available, otherwise fall back to the base help.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "3e7f7707cbad374ac9e9f33aea0d9c046ee877c02eff247d8fd4776e6a8038ea",
+            "title": "Multi-Language Support Process Summary: Functionality",
+            "source_sha256": "1b7d8d6f4ca55bcae49fb22b6cf405789100c3d2c1f8b11214c085cad5b45a33",
+            "source_path": "AIM/source/html/1b7d8d6f4ca55bcae49fb22b6cf405789100c3d2c1f8b11214c085cad5b45a33.htm",
+            "reading_path": "AIM/reading/3e7f7707cbad374ac9e9f33aea0d9c046ee877c02eff247d8fd4776e6a8038ea.md",
+            "node_ids": [
+              "n63",
+              "n80",
+              "n82",
+              "n87",
+              "n92",
+              "n97",
+              "n102",
+              "n104"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which client types and localization version are installed? Obtain sanitized client/resource-language inventory and fallback rules; the historical desktop model may differ from current clients.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized client/resource-language inventory and fallback rules; the historical desktop model may differ from current clients."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/18",
+        "coverage": {
+          "text_articles_reviewed": 1,
+          "text_articles_total": 1,
+          "image_references_inspected": 0,
+          "image_references_total": 0,
+          "substantive_figures_inspected": 0,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Packing/Shipping",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "5ac29e4a274425e27625988f719182ef57034ce6339602c8fa1afa288cacbe66",
@@ -372,11 +1742,110 @@
           "json_path": "AIM/data/articles/8f70dc416df0ae3806d85fde427d282bf3000100ec5ea52cad950ef69216791c.json",
           "reading_path": "AIM/reading/8f70dc416df0ae3806d85fde427d282bf3000100ec5ea52cad950ef69216791c.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Packing associates shipment lines with containers, validates items and generates packing labels. Shipping then manages packed shipments through dock processing and confirmation.",
+        "initiating_event": "Allocated/picked shipment quantities enter the applicable packing and shipping flow.",
+        "documented_stages": [
+          "Associate lines with containers, validate items and generate packing labels in the documented packing process.",
+          "Manage packed shipments at the dock through load confirmation and departure processing."
+        ],
+        "configuration_decisions": [
+          "The reviewed summary separates packing and shipping; exact status-flow, validation and confirmation settings need deployed evidence."
+        ],
+        "outcome": "Manage packed shipments at the dock through load confirmation and departure processing.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "5ac29e4a274425e27625988f719182ef57034ce6339602c8fa1afa288cacbe66",
+            "title": "Packing/Shipping Process Summary: Functionality",
+            "source_sha256": "3e1681439112d83ef8fba00cc2eb8510f26367574d860634bfb01850bf937e8c",
+            "source_path": "AIM/source/html/3e1681439112d83ef8fba00cc2eb8510f26367574d860634bfb01850bf937e8c.htm",
+            "reading_path": "AIM/reading/5ac29e4a274425e27625988f719182ef57034ce6339602c8fa1afa288cacbe66.md",
+            "node_ids": [
+              "n65"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which packing validation and shipping confirmation steps are active? Obtain sanitized status-flow/application bindings, carrier handoffs and print acknowledgments.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized status-flow/application bindings, carrier handoffs and print acknowledgments."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [
+        "labels-selection-versus-output",
+        "status-995-meaning"
+      ],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/receiving-shipping.json#/family_associations/2",
+          "family": "Packing/Shipping",
+          "object_ids": [
+            1809753850,
+            768057822
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Container root identity initialization and confirmation status propagation implement bounded storage effects; packing, carrier, labels and departure remain external.",
+          "evidence_refs": [
+            "rs-shipping-aim",
+            "rs-batch-1809753850",
+            "rs-batch-768057822"
+          ],
+          "fully_reconciled": false
+        },
+        {
+          "batch_ref": "DB Architecture/mappings/batches/shipping-interfaces.json#/family_associations/3",
+          "family": "Packing/Shipping",
+          "help_topic_ids": [
+            "shipping-presentation-selection",
+            "shipping-container-numbering",
+            "shipping-container-location-flow",
+            "shipping-group-and-transfer",
+            "shipping-split-contract",
+            "shipping-deallocation-history"
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Reviewed module bodies support the linked bounded topics. Vendor passage association does not establish installed application binding or complete process reconciliation.",
+          "evidence_refs": [
+            "si-aim-packing-shipping"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/19",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 3,
+          "image_references_total": 3,
+          "substantive_figures_inspected": 3,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Paperwork",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "55af77d15ea086df1525f231a6b3792823d2c0be73ad904b830fb751012a0e56",
@@ -392,11 +1861,89 @@
           "json_path": "AIM/data/articles/d941c46e5ddb6d9c2b8cb286d95148937ab7ae9372293deca87a2a35004aca82.json",
           "reading_path": "AIM/reading/d941c46e5ddb6d9c2b8cb286d95148937ab7ae9372293deca87a2a35004aca82.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Paperwork produces documents and labels at warehouse processing points such as waves, container closure and shipment or load confirmation. A configured rendering or printing service produces the output.",
+        "initiating_event": "A configured inbound or outbound processing point requests documents or labels.",
+        "documented_stages": [
+          "Choose the configured document/label template for the processing point.",
+          "Use the configured renderer/printer, such as the vendor-described reporting or label application."
+        ],
+        "configuration_decisions": [
+          "Renderer selection and customized templates change the output. A listed document does not prove successful dispatch or physical printing."
+        ],
+        "outcome": "Use the configured renderer/printer, such as the vendor-described reporting or label application.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "55af77d15ea086df1525f231a6b3792823d2c0be73ad904b830fb751012a0e56",
+            "title": "Paperwork Process Summary: Functionality",
+            "source_sha256": "f7d597f378321afb3251784f133a91d233a2f24534422bf53cfcefa420168688",
+            "source_path": "AIM/source/html/f7d597f378321afb3251784f133a91d233a2f24534422bf53cfcefa420168688.htm",
+            "reading_path": "AIM/reading/55af77d15ea086df1525f231a6b3792823d2c0be73ad904b830fb751012a0e56.md",
+            "node_ids": [
+              "n66"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which renderer, template version and delivery acknowledgment apply? Obtain sanitized document-service bindings and a synthetic output sample; do not print labels for diagnosis.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized document-service bindings and a synthetic output sample; do not print labels for diagnosis."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [
+        "labels-selection-versus-output"
+      ],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/shipping-interfaces.json#/family_associations/4",
+          "family": "Paperwork",
+          "help_topic_ids": [
+            "shipping-print-selection-contract",
+            "shipping-label-image-contract"
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Reviewed module bodies support the linked bounded topics. Vendor passage association does not establish installed application binding or complete process reconciliation.",
+          "evidence_refs": [
+            "si-aim-paperwork"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/20",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Performance Management",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "b9f415be06c542c5d9cfde6e82f215db824f5cfc894b21e3c1db55c08bdb7b3c",
@@ -405,11 +1952,79 @@
           "json_path": "AIM/data/articles/b9f415be06c542c5d9cfde6e82f215db824f5cfc894b21e3c1db55c08bdb7b3c.json",
           "reading_path": "AIM/reading/b9f415be06c542c5d9cfde6e82f215db824f5cfc894b21e3c1db55c08bdb7b3c.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Performance management combines history, alerts and reporting to help explain warehouse activity. Transaction history describes inventory changes; process history describes system decisions. An alert request still needs later processing.",
+        "initiating_event": "A warehouse event, decision, discrepancy or configured alert condition occurs.",
+        "documented_stages": [
+          "Record the relevant transaction, process, quality or receipt-quality history described by the vendor.",
+          "Create an alert request for a configured condition. A scheduled alert job subsequently processes it into alert output."
+        ],
+        "configuration_decisions": [
+          "Alerts can produce history, email or both; configured jobs run reporting and other scheduled processes."
+        ],
+        "outcome": "Create an alert request for a configured condition. A scheduled alert job subsequently processes it into alert output.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "b9f415be06c542c5d9cfde6e82f215db824f5cfc894b21e3c1db55c08bdb7b3c",
+            "title": "Performance Management Process Summary",
+            "source_sha256": "e416ac0d38d63480fb6f4326ad6e321d40c0d947b7c6a77295d33305e4846363",
+            "source_path": "AIM/source/html/e416ac0d38d63480fb6f4326ad6e321d40c0d947b7c6a77295d33305e4846363.htm",
+            "reading_path": "AIM/reading/b9f415be06c542c5d9cfde6e82f215db824f5cfc894b21e3c1db55c08bdb7b3c.md",
+            "node_ids": [
+              "n63",
+              "n87",
+              "n91",
+              "n94",
+              "n97",
+              "n100",
+              "n104",
+              "n109"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which history retention and alert-delivery jobs are configured, and what proves delivery? Obtain sanitized job/retention contracts and correlation semantics; no event completeness is assumed.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized job/retention contracts and correlation semantics; no event completeness is assumed."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/21",
+        "coverage": {
+          "text_articles_reviewed": 1,
+          "text_articles_total": 1,
+          "image_references_inspected": 0,
+          "image_references_total": 0,
+          "substantive_figures_inspected": 0,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Quality Control",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "3ee97470fbd2629832ec1589bf0a1993a6b6df3dfd4f08ec3e4bbc0b18eab522",
@@ -425,11 +2040,95 @@
           "json_path": "AIM/data/articles/7fee83bedacc280d73ab8604d7da77e350970595a7d54a61a63799eeb27494ff.json",
           "reading_path": "AIM/reading/7fee83bedacc280d73ab8604d7da77e350970595a7d54a61a63799eeb27494ff.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Quality control checks inbound product or outbound container contents before normal processing continues. The inbound process holds the relevant receipt quantity for inspection; outbound failures need resolution before the next status step.",
+        "initiating_event": "Eligible inbound items are received, or outbound containers are selected for QC.",
+        "documented_stages": [
+          "For inbound QC, route a portion to inspection and hold the remaining quantity in the inspection status; disposition after inspection depends on the result.",
+          "For outbound QC, assign during the wave, at eligible work start or through an authorized manual action.",
+          "Evaluate active QC assignment rules in ascending priority and mark a matching container QC Pending; resolve failures before continuation."
+        ],
+        "configuration_decisions": [
+          "Inbound eligibility is configured on the item. The captured documentation supports check-in-created license plates, not downloaded receipt containers.",
+          "Work-start assignment applies to existing wave-created containers, not new containers introduced during RF picking."
+        ],
+        "outcome": "Evaluate active QC assignment rules in ascending priority and mark a matching container QC Pending; resolve failures before continuation.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "7fee83bedacc280d73ab8604d7da77e350970595a7d54a61a63799eeb27494ff",
+            "title": "Quality Control Process Summary: Functionality",
+            "source_sha256": "51b07421090b73e4d97f4a49f4d74557d4ca6d71bb35156614a6e641675ce7ce",
+            "source_path": "AIM/source/html/51b07421090b73e4d97f4a49f4d74557d4ca6d71bb35156614a6e641675ce7ce.htm",
+            "reading_path": "AIM/reading/7fee83bedacc280d73ab8604d7da77e350970595a7d54a61a63799eeb27494ff.md",
+            "node_ids": [
+              "n64",
+              "n87",
+              "n92",
+              "n96",
+              "n99",
+              "n102",
+              "n104",
+              "n106"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which QC assignment, item eligibility and disposition rules apply? Obtain sanitized rule definitions and status transitions; actual inspection results are not available.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized rule definitions and status transitions; actual inspection results are not available."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/shipping-interfaces.json#/family_associations/5",
+          "family": "Quality Control",
+          "help_topic_ids": [
+            "shipping-qc-context"
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Reviewed module bodies support the linked bounded topics. Vendor passage association does not establish installed application binding or complete process reconciliation.",
+          "evidence_refs": [
+            "si-aim-quality-control"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/22",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Receiving",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "7ce243224234ef2a085f503382eb7608a270aeae80192c654d977e0ec2da1eb4",
@@ -445,11 +2144,89 @@
           "json_path": "AIM/data/articles/b9c3ffa9a81498cb548bdb61d00ba2dd34e5bfb79695f24b28a31d26d9eb8369.json",
           "reading_path": "AIM/reading/b9c3ffa9a81498cb548bdb61d00ba2dd34e5bfb79695f24b28a31d26d9eb8369.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Receiving first checks product into the warehouse and then locates it for storage. Check-in creates receipt containers for all or part of a line; locating chooses their destination.",
+        "initiating_event": "Product arrives against an interfaced or application-created receipt.",
+        "documented_stages": [
+          "Check in quantity and create receipt containers, consolidating into the largest unit of measure the quantity accommodates.",
+          "Allow uncheck/recheck while successful locating has not occurred.",
+          "Locate the checked-in containers using the separate locating process."
+        ],
+        "configuration_decisions": [
+          "Receipt quantities and units of measure affect container creation; locating and putaway preferences govern subsequent steps."
+        ],
+        "outcome": "Locate the checked-in containers using the separate locating process.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "b9c3ffa9a81498cb548bdb61d00ba2dd34e5bfb79695f24b28a31d26d9eb8369",
+            "title": "Receiving Process Summary: Functionality",
+            "source_sha256": "b34355dc06ff7bda053191f657f72735d152012a6fe33cee1a2f714c9453d8b2",
+            "source_path": "AIM/source/html/b34355dc06ff7bda053191f657f72735d152012a6fe33cee1a2f714c9453d8b2.htm",
+            "reading_path": "AIM/reading/b9c3ffa9a81498cb548bdb61d00ba2dd34e5bfb79695f24b28a31d26d9eb8369.md",
+            "node_ids": [
+              "n65"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "What receiving preferences, over/under-receipt controls and locating handoffs apply? Obtain sanitized configuration and application contracts; no receipt quantities are inspected.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized configuration and application contracts; no receipt quantities are inspected."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/receiving-shipping.json#/family_associations/4",
+          "family": "Receiving",
+          "object_ids": [
+            2103678542,
+            1487344363
+          ],
+          "association_type": "PARTIAL_IDENTIFIER_BEHAVIOR",
+          "claim": "Receipt container identity mutation is related to vendor-described receiving containers, but this helper does not implement check-in quantities or locating.",
+          "evidence_refs": [
+            "rs-receiving-aim",
+            "rs-batch-2103678542"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/23",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 3,
+          "image_references_total": 3,
+          "substantive_figures_inspected": 2,
+          "decorative_references_inspected": 1,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 5,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Replenishment",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "4487deee330a6c980837ba465722a9328cf6f7df7e89ecc7d624955d5625d1bb",
@@ -472,11 +2249,132 @@
           "json_path": "AIM/data/articles/b254d4db09e26e4051dbd17a72fdac027fe6db1686788a4353a109d9882819c1.json",
           "reading_path": "AIM/reading/b254d4db09e26e4051dbd17a72fdac027fe6db1686788a4353a109d9882819c1.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Replenishment moves stock from bulk storage toward forward picking locations. Creating a replenishment request and creating the work to move it are separate stages controlled by the replenishment master and wave flow.",
+        "initiating_event": "A manual request, configured wave step or real-time minimum-threshold condition starts replenishment.",
+        "documented_stages": [
+          "Use the replenishment master and allocation rule to obtain product from bulk and represent quantity in transit to the forward location.",
+          "Apply a fill or whole-increment rounding strategy to the requested quantity.",
+          "For wave-generated requests, automatic work needs both a work-creation wave step and an Automatic Create Work Method; manual and real-time requests follow the master method."
+        ],
+        "configuration_decisions": [
+          "Minimum thresholds may be defined at location/location-type or item/item-class scope. The reviewed summary does not resolve all override precedence.",
+          "Fill Destination disregards Maximum Replenishment Percentage; rounding down and rounding up have different quantity results."
+        ],
+        "outcome": "For wave-generated requests, automatic work needs both a work-creation wave step and an Automatic Create Work Method; manual and real-time requests follow the master method.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "b254d4db09e26e4051dbd17a72fdac027fe6db1686788a4353a109d9882819c1",
+            "title": "Replenishment Process Summary: Functionality",
+            "source_sha256": "9b560a988caa9db9aaa507fc0d4cecf68e8f7961c13c99fa1c954cd7b332d6be",
+            "source_path": "AIM/source/html/9b560a988caa9db9aaa507fc0d4cecf68e8f7961c13c99fa1c954cd7b332d6be.htm",
+            "reading_path": "AIM/reading/b254d4db09e26e4051dbd17a72fdac027fe6db1686788a4353a109d9882819c1.md",
+            "node_ids": [
+              "n69",
+              "n72",
+              "n93",
+              "n100",
+              "n104",
+              "n108",
+              "n116",
+              "n120",
+              "n127",
+              "n130",
+              "n133",
+              "n138"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which threshold inheritance, master and work-creation method apply? Obtain sanitized scope/precedence and wave-step bindings; do not infer that every replenishment creates work immediately.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized scope/precedence and wave-step bindings; do not infer that every replenishment creates work immediately."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/allocation-wave-replenishment.json#/family_associations/2",
+          "family": "Replenishment",
+          "object_ids": [
+            23319493,
+            197224103,
+            1130799436,
+            1656705300,
+            988178916,
+            1288703989,
+            2085230829,
+            588581185
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Capacity fallback, evaluation flag, request splitting/counting and cancellation implement bounded replenishment behavior; configured master, scheduler, routing and physical execution remain unreconciled.",
+          "evidence_refs": [
+            "awr-replenishment-aim",
+            "awr-batch-23319493",
+            "awr-batch-197224103",
+            "awr-batch-1130799436",
+            "awr-batch-1656705300",
+            "awr-batch-988178916",
+            "awr-batch-1288703989",
+            "awr-batch-2085230829",
+            "awr-batch-588581185"
+          ],
+          "fully_reconciled": false
+        },
+        {
+          "batch_ref": "DB Architecture/mappings/batches/function-semantics.json#/family_associations/1",
+          "family": "Replenishment",
+          "object_ids": [
+            1672705357,
+            1688705414,
+            1736705585
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Availability and measurement functions support replenishment decisions; branch-specific NULL/filter/fallback behavior does not establish actual replenishment amount or work creation.",
+          "evidence_refs": [
+            "fn-replenishment-aim",
+            "fn-batch-1672705357",
+            "fn-batch-1688705414",
+            "fn-batch-1736705585"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/24",
+        "coverage": {
+          "text_articles_reviewed": 3,
+          "text_articles_total": 3,
+          "image_references_inspected": 6,
+          "image_references_total": 6,
+          "substantive_figures_inspected": 4,
+          "decorative_references_inspected": 2,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 5,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Retail",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "825362ce63eec82d03b279c1117d144ef548a82c34da4150fee050de9ddb4ecb",
@@ -499,11 +2397,72 @@
           "json_path": "AIM/data/articles/d66501685943e369aafe700282173d0b45d991727af47ccc51e47478b4a362fe.json",
           "reading_path": "AIM/reading/d66501685943e369aafe700282173d0b45d991727af47ccc51e47478b4a362fe.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Retail functionality supports distributing product to multiple stores and cross-docking received product toward outbound delivery. Cross-docking moves product through receiving to shipping without the ordinary storage path.",
+        "initiating_event": "Store orders are processed or received product is designated for cross-docking.",
+        "documented_stages": [
+          "Use store orders, also called distros, to distribute product to multiple store destinations.",
+          "Where configured, transfer received product to the shipping dock for customer delivery."
+        ],
+        "configuration_decisions": [
+          "The reviewed summary identifies capabilities; distribution, allocation and cross-dock eligibility rules require further review."
+        ],
+        "outcome": "Where configured, transfer received product to the shipping dock for customer delivery.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "d66501685943e369aafe700282173d0b45d991727af47ccc51e47478b4a362fe",
+            "title": "Retail Process Summary: Functionality",
+            "source_sha256": "a1a9a1e3afc8fdfb208c84f118d9b70cb9741ea40636bdbf944a8aace23d8d7d",
+            "source_path": "AIM/source/html/a1a9a1e3afc8fdfb208c84f118d9b70cb9741ea40636bdbf944a8aace23d8d7d.htm",
+            "reading_path": "AIM/reading/d66501685943e369aafe700282173d0b45d991727af47ccc51e47478b4a362fe.md",
+            "node_ids": [
+              "n68"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which distro/cross-dock strategy and order-matching rules apply? Obtain sanitized retail configuration and application bindings, without store order data.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized retail configuration and application bindings, without store order data."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/25",
+        "coverage": {
+          "text_articles_reviewed": 3,
+          "text_articles_total": 3,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Returns",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "ab511acd0eb85811a8567d2fc518dc5865a8177edddadafe02ff1c95ed87d456",
@@ -519,11 +2478,72 @@
           "json_path": "AIM/data/articles/c38f2b3691834ac9c82b749b9183b656120c137536624a7e17bfdfab84c8c072.json",
           "reading_path": "AIM/reading/c38f2b3691834ac9c82b749b9183b656120c137536624a7e17bfdfab84c8c072.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Returns processing handles unwanted or damaged product from arrival through preparation for putaway. Putaway groups can combine related returned items for one trip.",
+        "initiating_event": "Returned merchandise arrives at the receiving dock.",
+        "documented_stages": [
+          "Check in and locate the returned items.",
+          "Arrange items into putaway location groups so related items or items in the same locating zone can move together."
+        ],
+        "configuration_decisions": [
+          "Putaway location grouping influences the trip; disposition rules for usable and damaged goods are not established by this summary."
+        ],
+        "outcome": "Arrange items into putaway location groups so related items or items in the same locating zone can move together.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "ab511acd0eb85811a8567d2fc518dc5865a8177edddadafe02ff1c95ed87d456",
+            "title": "Returns Process Summary: Functionality",
+            "source_sha256": "875b8f400ce5607b4ff4cea042183deff1cd8de801a72f01876ec507a40e2987",
+            "source_path": "AIM/source/html/875b8f400ce5607b4ff4cea042183deff1cd8de801a72f01876ec507a40e2987.htm",
+            "reading_path": "AIM/reading/ab511acd0eb85811a8567d2fc518dc5865a8177edddadafe02ff1c95ed87d456.md",
+            "node_ids": [
+              "n65"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which return disposition, inventory status and grouping rules apply? Obtain sanitized returns definitions and resolution paths.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized returns definitions and resolution paths."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/26",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Status",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "5457fa08c32aa8b1137227340752ca7675d89f3e0a75f512094c3fb5a453b39d",
@@ -532,11 +2552,156 @@
           "json_path": "AIM/data/articles/5457fa08c32aa8b1137227340752ca7675d89f3e0a75f512094c3fb5a453b39d.json",
           "reading_path": "AIM/reading/5457fa08c32aa8b1137227340752ca7675d89f3e0a75f512094c3fb5a453b39d.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Statuses show progress through receiving or shipping. Lines follow their assigned flow, and header leading/trailing values summarize the most and least advanced progress. A Closed receipt does not always prove physical putaway when work creation is not required.",
+        "initiating_event": "A receipt or shipment line enters a status flow and processing advances.",
+        "documented_stages": [
+          "Use the line’s assigned custom flow, or the default flow when no custom flow is assigned.",
+          "Process the configured statuses in sequence and update parent progress as lines and containers advance.",
+          "Interpret leading and trailing status together. For the documented no-work receiving path, locating can lead to Closed without a work-confirmation step."
+        ],
+        "configuration_decisions": [
+          "Custom flows can use fewer statuses and must be defined and associated before interface processing.",
+          "The documented meaning of outbound 995 is Finished Item Is Allocated on a component line; this is vendor meaning, not verified effective deployment configuration."
+        ],
+        "outcome": "Interpret leading and trailing status together. For the documented no-work receiving path, locating can lead to Closed without a work-confirmation step.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "5457fa08c32aa8b1137227340752ca7675d89f3e0a75f512094c3fb5a453b39d",
+            "title": "Status Process Summary: Functionality",
+            "source_sha256": "2cc05e7c1cef1d68ccd7fc8901c12905c61f6b49b9e3d4d1a3ae28f3a0f59119",
+            "source_path": "AIM/source/html/2cc05e7c1cef1d68ccd7fc8901c12905c61f6b49b9e3d4d1a3ae28f3a0f59119.htm",
+            "reading_path": "AIM/reading/5457fa08c32aa8b1137227340752ca7675d89f3e0a75f512094c3fb5a453b39d.md",
+            "node_ids": [
+              "n63",
+              "n74",
+              "n80",
+              "n83",
+              "n86",
+              "n89",
+              "n92",
+              "n96",
+              "n103",
+              "n106",
+              "n109",
+              "n112",
+              "n115",
+              "n121",
+              "n124",
+              "n127",
+              "n130",
+              "n133",
+              "n136",
+              "n139",
+              "n142",
+              "n145",
+              "n148",
+              "n151",
+              "n154",
+              "n157",
+              "n160",
+              "n163",
+              "n166",
+              "n169",
+              "n172",
+              "n175",
+              "n178",
+              "n182",
+              "n185",
+              "n190"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which active default/custom flow, labels and application transitions apply? Obtain sanitized flow definitions and bindings; aggregate flags cannot prove a valid transition for an individual transaction.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized flow definitions and bindings; aggregate flags cannot prove a valid transition for an individual transaction."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [
+        "status-995-meaning"
+      ],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/function-semantics.json#/family_associations/3",
+          "family": "Status",
+          "object_ids": [
+            199320120,
+            2097754876,
+            2129754990,
+            87319721,
+            103319778,
+            119319835,
+            1489752710
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Configured mapping/adjacency and slot transforms support status interpretation; active flow assignments and valid process transitions remain unreconciled.",
+          "evidence_refs": [
+            "fn-status-aim",
+            "fn-batch-199320120",
+            "fn-batch-2097754876",
+            "fn-batch-2129754990",
+            "fn-batch-87319721",
+            "fn-batch-103319778",
+            "fn-batch-119319835",
+            "fn-batch-1489752710"
+          ],
+          "fully_reconciled": false
+        },
+        {
+          "batch_ref": "DB Architecture/mappings/batches/receiving-shipping.json#/family_associations/3",
+          "family": "Status",
+          "object_ids": [
+            1809753850,
+            2113754933,
+            1000702963
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Action mapping, supplied confirmation status propagation and warehouse-local date conversion relate to documented status concepts without proving current allowed transitions/custom flow.",
+          "evidence_refs": [
+            "rs-status-aim",
+            "rs-batch-1809753850",
+            "rs-batch-2113754933",
+            "rs-batch-1000702963"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/27",
+        "coverage": {
+          "text_articles_reviewed": 1,
+          "text_articles_total": 1,
+          "image_references_inspected": 0,
+          "image_references_total": 0,
+          "substantive_figures_inspected": 0,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Technical",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "62470f051ed57f24c0d7d9e59111662d32d64353aee9f242c70a9c048d6b3311",
@@ -545,11 +2710,73 @@
           "json_path": "AIM/data/articles/62470f051ed57f24c0d7d9e59111662d32d64353aee9f242c70a9c048d6b3311.json",
           "reading_path": "AIM/reading/62470f051ed57f24c0d7d9e59111662d32d64353aee9f242c70a9c048d6b3311.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "The documented process queue accepts batch requests and processes them in the background according to priority. The queue names in the captured documentation are not yet reconciled to this replica.",
+        "initiating_event": "An application batch process submits background work.",
+        "documented_stages": [
+          "The documented service writes a process request.",
+          "Process requests in the background according to the configured thread priority."
+        ],
+        "configuration_decisions": [
+          "Active service topology, polling and concurrency need separate deployment evidence. Existing scheduling tables are not proven queue aliases."
+        ],
+        "outcome": "Process requests in the background according to the configured thread priority.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "62470f051ed57f24c0d7d9e59111662d32d64353aee9f242c70a9c048d6b3311",
+            "title": "Technical Process Summary: Functionality",
+            "source_sha256": "491f681174642377dd197e62fc880b3fdcf9a7d737ce1d6611e228ae528363ea",
+            "source_path": "AIM/source/html/491f681174642377dd197e62fc880b3fdcf9a7d737ce1d6611e228ae528363ea.htm",
+            "reading_path": "AIM/reading/62470f051ed57f24c0d7d9e59111662d32d64353aee9f242c70a9c048d6b3311.md",
+            "node_ids": [
+              "n63",
+              "n68"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "What installed component implements the documented process queue? Obtain a sanitized service-to-database architecture mapping; do not guess another database or rename scheduling objects.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain a sanitized service-to-database architecture mapping; do not guess another database or rename scheduling objects."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/28",
+        "coverage": {
+          "text_articles_reviewed": 1,
+          "text_articles_total": 1,
+          "image_references_inspected": 0,
+          "image_references_total": 0,
+          "substantive_figures_inspected": 0,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Trading Partner Management",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "30da060b42a91d41911358c40ad130de83d9dee39759303024cfdf8ad73ec5a7",
@@ -558,11 +2785,72 @@
           "json_path": "AIM/data/articles/30da060b42a91d41911358c40ad130de83d9dee39759303024cfdf8ad73ec5a7.json",
           "reading_path": "AIM/reading/30da060b42a91d41911358c40ad130de83d9dee39759303024cfdf8ad73ec5a7.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Trading Partner Management is a documented website for order entry, status and supply-chain collaboration. It can expose inbound, outbound and inventory information in a multi-company context.",
+        "initiating_event": "An authorized trading partner uses a configured TPM website.",
+        "documented_stages": [
+          "Provide the configured order-entry, status, statistics and inventory-information functions.",
+          "Apply the website’s company context and presentation setup."
+        ],
+        "configuration_decisions": [
+          "TPM is a separate web surface in the documentation; existence, version and access controls are not established for this deployment."
+        ],
+        "outcome": "Apply the website’s company context and presentation setup.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "30da060b42a91d41911358c40ad130de83d9dee39759303024cfdf8ad73ec5a7",
+            "title": "Trading Partner Management Process Summary: Functionality",
+            "source_sha256": "70c06d03187e0259c8678d60bd71d16d3f215f7e6512f1eaceda34b5c2ff5585",
+            "source_path": "AIM/source/html/70c06d03187e0259c8678d60bd71d16d3f215f7e6512f1eaceda34b5c2ff5585.htm",
+            "reading_path": "AIM/reading/30da060b42a91d41911358c40ad130de83d9dee39759303024cfdf8ad73ec5a7.md",
+            "node_ids": [
+              "n63"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Is TPM installed, and how is company/user authorization enforced? Obtain a sanitized component and authorization contract; no public availability or user access is assumed.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain a sanitized component and authorization contract; no public availability or user access is assumed."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/29",
+        "coverage": {
+          "text_articles_reviewed": 1,
+          "text_articles_total": 1,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 3,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Wave",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "4febf633605a81b90e6d8ff137a852b584aca0eaaed3dd92f20023b9749906cb",
@@ -578,11 +2866,101 @@
           "json_path": "AIM/data/articles/ff0d6dcb383f13d0f16ae9e21279d28c7b9f03cb6c555d98422f3e3acb47cc5e.json",
           "reading_path": "AIM/reading/ff0d6dcb383f13d0f16ae9e21279d28c7b9f03cb6c555d98422f3e3acb47cc5e.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "A wave groups the steps that bring orders from the pool into outbound processing. Its master defines the steps to run and the resulting entities, such as allocation requests or containers.",
+        "initiating_event": "A configured wave is run against selected orders.",
+        "documented_stages": [
+          "Use the wave master to determine processing steps.",
+          "Execute those configured steps to move orders into outbound processing and create the required entities."
+        ],
+        "configuration_decisions": [
+          "Wave-master configuration determines step selection and execution; the reviewed summary does not establish every step or failure/restart behavior."
+        ],
+        "outcome": "Execute those configured steps to move orders into outbound processing and create the required entities.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "ff0d6dcb383f13d0f16ae9e21279d28c7b9f03cb6c555d98422f3e3acb47cc5e",
+            "title": "Wave Process Summary: Functionality",
+            "source_sha256": "7cc9576de1f1a7765ef4ef299b2e23fb6b4924faa76a84fe27223d5f51a38b5b",
+            "source_path": "AIM/source/html/7cc9576de1f1a7765ef4ef299b2e23fb6b4924faa76a84fe27223d5f51a38b5b.htm",
+            "reading_path": "AIM/reading/ff0d6dcb383f13d0f16ae9e21279d28c7b9f03cb6c555d98422f3e3acb47cc5e.md",
+            "node_ids": [
+              "n65"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which wave-master step order, failure policy and retry rules are installed? Obtain sanitized master/application contracts and correlation design, without wave/order records.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized master/application contracts and correlation design, without wave/order records."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/allocation-wave-replenishment.json#/family_associations/1",
+          "family": "Wave",
+          "object_ids": [
+            254272311,
+            286272425,
+            302272482,
+            318272539,
+            334272596,
+            350272653,
+            270272368,
+            277224388
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Shipment membership, summary/progress refresh, limited step guards and display projections support wave management; complete master execution/restart policy remains external.",
+          "evidence_refs": [
+            "awr-wave-aim",
+            "awr-batch-254272311",
+            "awr-batch-286272425",
+            "awr-batch-302272482",
+            "awr-batch-318272539",
+            "awr-batch-334272596",
+            "awr-batch-350272653",
+            "awr-batch-270272368",
+            "awr-batch-277224388"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/30",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 4,
+          "image_references_total": 4,
+          "substantive_figures_inspected": 4,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 7,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Work",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "76770f4602f9b9e52b4fce3fb8973ffa25b3e882ead4fd0e2faea14766f877a3",
@@ -598,11 +2976,114 @@
           "json_path": "AIM/data/articles/d114e048049d66584a42a020611a6659f5b2950e0912f87d395e30d98dbed9c0.json",
           "reading_path": "AIM/reading/d114e048049d66584a42a020611a6659f5b2950e0912f87d395e30d98dbed9c0.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Work creation turns product-handling needs into warehouse instructions. Work execution is the employee carrying out an instruction, such as picking or counting. A work unit groups the relevant product work.",
+        "initiating_event": "An allocation, inventory adjustment, replenishment or other supported need requests work.",
+        "documented_stages": [
+          "Determine which entities need work using configured values and create work units/instructions.",
+          "An employee performs the action specified by the instruction, such as a pick or cycle count."
+        ],
+        "configuration_decisions": [
+          "Creation criteria and execution profiles influence work; this overview does not prove current tasks or assignments."
+        ],
+        "outcome": "An employee performs the action specified by the instruction, such as a pick or cycle count.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "76770f4602f9b9e52b4fce3fb8973ffa25b3e882ead4fd0e2faea14766f877a3",
+            "title": "Work Process Summary: Functionality",
+            "source_sha256": "8fe175033aa7df42a105d4f6f4761a35c333680abae209074c8a16c16cad10e6",
+            "source_path": "AIM/source/html/8fe175033aa7df42a105d4f6f4761a35c333680abae209074c8a16c16cad10e6.htm",
+            "reading_path": "AIM/reading/76770f4602f9b9e52b4fce3fb8973ffa25b3e882ead4fd0e2faea14766f877a3.md",
+            "node_ids": [
+              "n65"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which creation criteria, execution profile and application caller govern this work? Obtain sanitized bindings; use the separate reviewed SQL contracts for bounded selection behavior.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized bindings; use the separate reviewed SQL contracts for bounded selection behavior."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [
+        "work-monitor-meaning",
+        "automatic-putaway-timing"
+      ],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/allocation-wave-replenishment.json#/family_associations/3",
+          "family": "Work",
+          "object_ids": [
+            1162799550,
+            1258799892,
+            1130799436,
+            1656705300
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Work-created flags, replenishment instruction relinking and open-work predicates support work lifecycle observations; these helpers do not establish creation or execution.",
+          "evidence_refs": [
+            "awr-work-aim",
+            "awr-batch-1162799550",
+            "awr-batch-1258799892",
+            "awr-batch-1130799436",
+            "awr-batch-1656705300"
+          ],
+          "fully_reconciled": false
+        },
+        {
+          "batch_ref": "DB Architecture/mappings/batches/function-semantics.json#/family_associations/2",
+          "family": "Work",
+          "object_ids": [
+            1784705756,
+            1386800348,
+            1612181139
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Zone predicate, work-name suggestion and dashboard work formulas are bounded supporting behavior; actual user enforcement, unique reservation and complete execution are external.",
+          "evidence_refs": [
+            "fn-work-aim",
+            "fn-batch-1784705756",
+            "fn-batch-1386800348",
+            "fn-batch-1612181139"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/31",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 6,
+          "image_references_total": 6,
+          "substantive_figures_inspected": 6,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 8,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Work Order",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "13f4293e76dae913600b8728475cf98fe2a2c0bb0185e121900654e1f3bf1a4b",
@@ -618,11 +3099,73 @@
           "json_path": "AIM/data/articles/7ce64df7dccc3aa20a98d55da3bebc5982d6628fd234699353055014fb625c05.json",
           "reading_path": "AIM/reading/7ce64df7dccc3aa20a98d55da3bebc5982d6628fd234699353055014fb625c05.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "A work order manages making a finished item from component parts. Components and instructions can come from a bill of material or be entered for the order; movement can use created work or paperwork.",
+        "initiating_event": "A work order is created or released, or components are manually allocated.",
+        "documented_stages": [
+          "Use the selected bill of material/revision or entered components and instructions.",
+          "Allocate components automatically at creation/release when configured, or manually.",
+          "Use work creation to move components and finished items, or use the documented paperwork-based path."
+        ],
+        "configuration_decisions": [
+          "Bill-of-material revisions support versions of a finished item. Allocation timing and use of work creation are separate decisions."
+        ],
+        "outcome": "Use work creation to move components and finished items, or use the documented paperwork-based path.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "7ce64df7dccc3aa20a98d55da3bebc5982d6628fd234699353055014fb625c05",
+            "title": "Work Order Process Summary: Functionality",
+            "source_sha256": "acdec9a54988db2a6a542b95a64220f7f40bd22747ad02d5849c6fa77a826383",
+            "source_path": "AIM/source/html/acdec9a54988db2a6a542b95a64220f7f40bd22747ad02d5849c6fa77a826383.htm",
+            "reading_path": "AIM/reading/7ce64df7dccc3aa20a98d55da3bebc5982d6628fd234699353055014fb625c05.md",
+            "node_ids": [
+              "n64"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which bill-of-material revision, allocation timing and completion/consumption rules apply? Obtain sanitized work-order configuration and application contracts.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized work-order configuration and application contracts."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/32",
+        "coverage": {
+          "text_articles_reviewed": 2,
+          "text_articles_total": 2,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 6,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     },
     {
       "family": "Yard Management",
-      "status": "INDEXED_FULL_FUNCTIONAL_REVIEW_PENDING",
+      "status": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
       "sources": [
         {
           "article_id": "19121afbb15611fdef34a586884686e2483c2abdfeb6dc2dc7f3897d0369337e",
@@ -645,7 +3188,88 @@
           "json_path": "AIM/data/articles/ea0dcdbe8b292306e502eb84dc28fca30d15b41c916d24a683648f70412fd7a9.json",
           "reading_path": "AIM/reading/ea0dcdbe8b292306e502eb84dc28fca30d15b41c916d24a683648f70412fd7a9.md"
         }
-      ]
+      ],
+      "documentary_review": {
+        "claim_class": "VENDOR_BEHAVIOR",
+        "review_scope": "DECLARED_TEXT_NODES_ONLY",
+        "user_goal": "Yard management tracks trailers outside the warehouse and their moves to receiving. Trailer check-in, yard moves and final checkout are distinct events; receipts need an associated trailer ID.",
+        "initiating_event": "A trailer arrives and is checked into a yard location.",
+        "documented_stages": [
+          "Assign the arriving trailer to a yard or queuing location.",
+          "Move it within the yard or to the receiving dock when ready.",
+          "After its inbound processing finishes, move it back to the yard or check it out."
+        ],
+        "configuration_decisions": [
+          "Receipt/trailer association is required for the described yard process. Arrival appointments are optional."
+        ],
+        "outcome": "After its inbound processing finishes, move it back to the yard or check it out.",
+        "error_handling": "Only exceptions stated in the cited stages are established; remaining error/rollback/retry paths require source and caller review.",
+        "sources": [
+          {
+            "kind": "VENDOR_DOCUMENTATION",
+            "module": "AIM",
+            "article_id": "ea0dcdbe8b292306e502eb84dc28fca30d15b41c916d24a683648f70412fd7a9",
+            "title": "Yard Management Process Summary: Functionality",
+            "source_sha256": "85deed38d0afc11b33c579084e36ad8b555b9d554a1b6a6061670c08991e683b",
+            "source_path": "AIM/source/html/85deed38d0afc11b33c579084e36ad8b555b9d554a1b6a6061670c08991e683b.htm",
+            "reading_path": "AIM/reading/ea0dcdbe8b292306e502eb84dc28fca30d15b41c916d24a683648f70412fd7a9.md",
+            "node_ids": [
+              "n68"
+            ]
+          }
+        ],
+        "reviewed_deployed_object_ids": [],
+        "evidence_gaps": [
+          {
+            "question": "Which yard status values, appointment rules and receipt associations apply? Obtain sanitized status/configuration definitions; numeric trigger conditions alone do not name business statuses.",
+            "why_it_matters": "Required to distinguish documented capability from the configured, running deployment.",
+            "disposition": "OPEN_EXTERNAL_OR_DETAILED_SOURCE_EVIDENCE",
+            "minimum_evidence": "Obtain sanitized status/configuration definitions; numeric trigger conditions alone do not name business statuses."
+          }
+        ],
+        "limits": [
+          "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record."
+        ]
+      },
+      "source_reconciliation_ids": [],
+      "batch_associations": [
+        {
+          "batch_ref": "DB Architecture/mappings/batches/receiving-shipping.json#/family_associations/0",
+          "family": "Yard Management",
+          "object_ids": [
+            720057651,
+            736057708,
+            784057879
+          ],
+          "association_type": "PARTIAL_DEPLOYED_BEHAVIOR",
+          "claim": "Vendor-required receipt/trailer association has a concrete trigger-based link/stamp implementation; check-in/movement/checkout and coded-status meaning remain unreconciled.",
+          "evidence_refs": [
+            "rs-yard-aim",
+            "rs-batch-720057651",
+            "rs-batch-736057708",
+            "rs-batch-784057879"
+          ],
+          "fully_reconciled": false
+        }
+      ],
+      "complete_documentary_review": {
+        "source_ref": "DB Architecture/mappings/process-documentary-review.json#/families/33",
+        "coverage": {
+          "text_articles_reviewed": 3,
+          "text_articles_total": 3,
+          "image_references_inspected": 1,
+          "image_references_total": 1,
+          "substantive_figures_inspected": 1,
+          "decorative_references_inspected": 0,
+          "text_review_complete": true,
+          "all_captured_figures_inspected": true,
+          "original_html_render_fidelity_certified": false,
+          "full_deployment_reconciliation": false
+        },
+        "refinement_count": 4,
+        "scope": "Complete captured process-summary text and static image review; installed application reconciliation remains separate.",
+        "full_deployment_reconciliation": false
+      }
     }
   ]
 }

@@ -1,0 +1,84 @@
+"""Cross-artifact checks for the bounded SDD review overlays."""
+import json
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1] / 'SDD' / 'derived'
+
+
+class SddReviewTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.docs = {p.stem: json.loads(p.read_text(encoding='utf-8')) for p in (ROOT / 'documents').glob('*.json')}
+        cls.review = json.loads((ROOT / 'reviewed-knowledge.json').read_text(encoding='utf-8'))
+        cls.tables = json.loads((ROOT / 'reviewed-tables.json').read_text(encoding='utf-8'))
+        cls.coverage = json.loads((ROOT / 'review-coverage.json').read_text(encoding='utf-8'))
+
+    def test_citation_union_matches_document_denominators(self):
+        records = sum((self.review[k] for k in ('products', 'claims', 'configuration', 'diagrams')), []) + self.tables['tables']
+        self.assertEqual(set(self.docs), {c['document_id'] for c in self.coverage['documents']})
+        for c in self.coverage['documents']:
+            sid = c['document_id']
+            d = self.docs[sid]
+            ids = {n['id'] for n in d['nodes']}
+            cited = {n for r in records for ref in r['citations'] if ref['document_id'] == sid for n in ref['nodes']}
+            self.assertTrue(cited <= ids)
+            self.assertEqual(c['source_sha256'], d['source_sha256'])
+            self.assertEqual(c['cited_reviewed_node_ids'], sorted(cited))
+            self.assertEqual(c['cited_reviewed_node_count'] + c['nodes_not_cited_by_review_count'], len(ids))
+            self.assertEqual(c['extracted_node_count'], len(ids))
+            unique_assets = {a['path'] for a in d['assets']}
+            described = set(c['described_asset_paths'])
+            self.assertTrue(described <= unique_assets)
+            self.assertEqual(c['unique_extracted_asset_count'], len(unique_assets))
+            self.assertEqual(c['described_asset_count'] + c['assets_without_authored_description_count'], len(unique_assets))
+            if d.get('page_count'):
+                pages = c['visually_inspected_pdf_pages']
+                self.assertEqual(pages, sorted(set(pages)))
+                self.assertTrue(all(1 <= p <= d['page_count'] for p in pages))
+                self.assertEqual(len(pages) + c['pdf_pages_not_visually_inspected_count'], d['page_count'])
+
+    def test_every_pdf_candidate_has_one_disposition(self):
+        for c in self.tables['coverage']:
+            source = self.docs[c['document_id']]
+            candidates = {n['id'] for n in source['nodes'] if '-t' in n['id'] and 'rows' in n}
+            reviewed, rejected, pending = (set(c[k]) for k in ('candidates_supporting_reviewed_tables', 'rejected_candidates', 'unreviewed_candidate_ids'))
+            self.assertFalse(reviewed & rejected or reviewed & pending or rejected & pending)
+            self.assertEqual(reviewed | rejected | pending, candidates)
+            self.assertEqual(c['candidate_count'], len(candidates))
+            supporting = {n for t in self.tables['tables'] for ref in t['citations'] if ref['document_id'] == c['document_id'] for n in ref['nodes']}
+            self.assertEqual(reviewed, supporting)
+        for t in self.tables['tables']:
+            self.assertTrue(t['rows'])
+            self.assertTrue(all(len(row) == len(t['columns']) for row in t['rows']))
+            for ref in t['citations']:
+                self.assertEqual(ref['source_sha256'], self.docs[ref['document_id']]['source_sha256'])
+                coverage = next(c for c in self.coverage['documents'] if c['document_id'] == ref['document_id'])
+                self.assertTrue(set(t['source_pages']) <= set(coverage['visually_inspected_pdf_pages']))
+
+    def test_blank_cells_and_split_page_continuations_are_preserved(self):
+        tables = {t['id']: t for t in self.tables['tables']}
+        disposition = tables['grupo-p036-t001']
+        self.assertEqual(next(row for row in disposition['rows'] if row[0] == 'Cuarentena'), ['Cuarentena', ''])
+        knipper = tables['knipper-standard-wave']
+        self.assertEqual(len(knipper['rows']), 19)
+        self.assertEqual(knipper['rows'][0], ['10', 'Start Wave'])
+        self.assertEqual(knipper['rows'][-1], ['1000', 'Complete Wave'])
+        online = tables['grupo-wave-online']
+        self.assertEqual(online['source_pages'], [57, 58])
+        self.assertIn(['117', 'Set Alloc Zone on Work Online'], online['rows'])
+        self.assertEqual(online['rows'][-1], ['140', 'Complete Wave'])
+
+    def test_review_never_promotes_deployment_or_mawm_equivalence(self):
+        for overlay in (self.review, self.tables, self.coverage):
+            self.assertFalse(overlay['production_index_eligible'])
+        for record in self.review['configuration']:
+            self.assertEqual(record['deployment_state'], 'NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT')
+            if any(c['document_id'] == 'sdd-de62bfaf88f5d35b' for c in record['citations']):
+                self.assertIn('MAWM', record['scope'])
+                self.assertIn('excluded from SCALE', record['scope'])
+        self.assertTrue(any('most-available-first' in c['statement'] and 'First In, First Out' in c['statement'] for c in self.review['claims']))
+
+
+if __name__ == '__main__':
+    unittest.main()

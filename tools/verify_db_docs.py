@@ -7,10 +7,15 @@ from urllib.parse import unquote
 from assess_db import ROOT, PRIVATE, parse_connection, utc
 from build_db_docs import OUT, walk_text
 from check_scale_configuration import SPECS, query_for, validate_result
+from verify_functional_knowledge import verify_extension, catalog_source_object_ids
 
 TOOL_PATHS = ['tools/assess_db.py', 'tools/build_db_docs.py', 'tools/verify_db_docs.py',
               'tools/check_scale_configuration.py', 'tests/test_db_assessment.py',
-              'tests/test_scale_configuration.py', 'requirements-db-assessment.txt']
+              'tests/test_scale_configuration.py', 'requirements-db-assessment.txt',
+              'tools/render_functional_docs.py', 'tools/verify_functional_knowledge.py',
+              'tests/test_functional_knowledge.py', 'tools/build_runtime_profiles.py',
+              'tests/test_runtime_profiles.py', 'tools/build_help_source_manifest.py',
+              'tools/reviewed_sdd_source.py', 'tools/reviewed_process_source.py', 'help_app/vendor-source-manifest.json']
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -121,9 +126,22 @@ def verify():
                 errors.append('Functional family source mismatch: '+source['article_id'])
     checks['functional_process_families'] = len(families)
     help_data = read(OUT/'mappings/help-topics.json')
+    vendor_manifest=read(ROOT/'help_app/vendor-source-manifest.json')
+    if vendor_manifest['knowledge_generation_sha256'] != sha(OUT/'mappings/help-topics.json'):
+        errors.append('Vendor citation manifest belongs to another help generation')
+    expected_batches={}
+    for batch_path in sorted((OUT/'mappings/batches').glob('*.json')):
+        contracts=read(batch_path).get('semantic_contracts',[])
+        if contracts:
+            expected_batches[batch_path.relative_to(ROOT).as_posix()]={
+                'sha256':sha(batch_path),'object_ids':sorted(c['object_id'] for c in contracts)}
+    if vendor_manifest.get('semantic_batches')!=expected_batches:
+        errors.append('Reviewed semantic batch manifest is stale or incomplete')
+    checks['help_semantic_batch_bindings']=len(expected_batches)
     module_by_id = {m['object_id']: m for m in modules}
     if help_data['snapshot_id'] != summary['snapshot_id']:
         errors.append('Help snapshot mismatch')
+    process_source_cache={}
     for source_id, source in help_data['sources'].items():
         if source['kind'] == 'DEPLOYED_SQL_STATIC':
             module = module_by_id.get(source['object_id'], {})
@@ -137,18 +155,40 @@ def verify():
             if any(not 1 <= start <= end <= line_count for start, end in source['line_spans']):
                 errors.append('Help SQL line span invalid: '+source_id)
         elif source['kind'] == 'VENDOR_DOCUMENTATION':
-            article = read(ROOT/source['module']/'data/articles'/(source['article_id']+'.json'))
+            article_path=f"{source['module']}/data/articles/{source['article_id']}.json"
+            binding=vendor_manifest['articles'].get(article_path,{})
+            article = read(ROOT/article_path)
             node_ids = dict(walk_text(article['content_tree']))
             if (source['source_sha256'] != article['source']['sha256']
                     or source['source_path'] != article['source']['local_path']
                     or sha(ROOT/source['source_path']) != source['source_sha256']
+                    or binding.get('article_sha256') != sha(ROOT/article_path)
+                    or binding.get('source_sha256') != source['source_sha256']
+                    or binding.get('source_path') != source['source_path']
                     or any(n not in node_ids for n in source['node_ids'])):
                 errors.append('Help vendor citation mismatch: '+source_id)
+        elif source['kind'] == 'RETAINED_OBSERVATION':
+            if (source['path'] not in {'DB Architecture/evidence/configuration-observations.json',
+                                       'DB Architecture/catalog/query_store_runtime.json'}
+                    or sha(ROOT/source['path']) != source['sha256']):
+                errors.append('Retained observation binding mismatch: '+source_id)
+        elif source['kind'] == 'REVIEWED_SDD_CLAIM':
+            from reviewed_sdd_source import load_claim
+            try:
+                load_claim(ROOT, source)
+            except (ValueError, KeyError, OSError) as error:
+                errors.append('Reviewed SDD help citation mismatch: '+source_id+' / '+str(error))
+        elif source['kind'] == 'REVIEWED_PROCESS_CLAIM':
+            from reviewed_process_source import load_refinement
+            try:
+                load_refinement(ROOT,source,process_source_cache)
+            except (ValueError,KeyError,OSError) as error:
+                errors.append('Reviewed process help citation mismatch: '+source_id+' / '+str(error))
         elif source['kind'] == 'CATALOG_METADATA':
             path = ROOT/source['path']
             if sha(path) != source['sha256']:
                 errors.append('Help catalog hash mismatch: '+source_id)
-            source_objects = {r['object_id'] for r in read(path)}
+            source_objects = catalog_source_object_ids(path, read(path))
             if not set(source['object_ids']) <= source_objects:
                 errors.append('Help catalog object mismatch: '+source_id)
         else:
@@ -166,7 +206,7 @@ def verify():
             errors.append('Help execution step order invalid: '+topic['topic_id'])
     checks['help_topics'] = len(topics)
     checks['help_source_bindings'] = len(help_data['sources'])
-    checks['help_evaluation_cases_authored_not_executed'] = sum(len(t['evaluation']['cases']) for t in topics)
+    checks['help_evaluation_expectations'] = sum(len(t['evaluation']['cases']) for t in topics)
     roles = read(OUT/'mappings/functional-roles.json')
     reviewed_roles = roles['records']
     role_coverage = roles['coverage']
@@ -209,6 +249,10 @@ def verify():
                 errors.append('Functional role vendor citation mismatch: '+str(record['object_id']))
     checks['reviewed_functional_roles'] = len(reviewed_roles)
     checks['functional_role_evidence_spans'] = role_spans
+    extension_errors, extension_checks = verify_extension(
+        ROOT, OUT, objects, modules, help_data, roles, coverage, summary['snapshot_id'])
+    errors.extend(extension_errors)
+    checks.update(extension_checks)
     links=0
     for path in OUT.rglob('*.md'):
         text=path.read_text(encoding='utf-8')

@@ -1,0 +1,2520 @@
+{
+  "schema_version": 1,
+  "catalog_kind": "BOUNDED_REVIEWED_FUNCTIONAL_ROLES",
+  "snapshot_id": "20260929T214106Z",
+  "reviewed_at": "2026-09-29T22:48:54.130658+00:00",
+  "reviewer": "Native Codex delegated functional-role author; independent validation is separate",
+  "review_state": "STATIC_EVIDENCE_REVIEWED_INDEPENDENT_VALIDATION_PASS",
+  "classification_policy": {
+    "domains_are_distinct_from_roles": true,
+    "multi_role_supported": true,
+    "role_review_is_not_full_business_semantics_review": true,
+    "no_application_rows_read": true,
+    "no_operational_execution": true,
+    "no_automatic_runtime_queue_inference": true,
+    "evidence_line_numbers": "One-based inclusive lines in the exact repository artifact identified by SHA-256. SQL is redacted; original-definition hashes are separate.",
+    "vendor_mentions": "Optional exact identifier mentions corroborate discoverability only; semantic equivalence is not established."
+  },
+  "source_inputs": [
+    {
+      "path": "DB Architecture/catalog/objects.json",
+      "sha256": "c951f937ccd9f4e604cb22c88c029dbfaddcdefda4a9754f19f095cdf07876a7"
+    },
+    {
+      "path": "DB Architecture/catalog/columns.json",
+      "sha256": "d7e1c36f01623fec4dea517243c866f227b9b188eb2fe9005d2779421c101472"
+    },
+    {
+      "path": "DB Architecture/catalog/modules.json",
+      "sha256": "9720c492f8632a45d4a3e0bac38869ffc0da35ec3c9bece317482814b26c4647"
+    },
+    {
+      "path": "DB Architecture/mappings/identifier-crosswalk.json",
+      "sha256": "2fa0ef8f29e26ae7940c90c3c7e76029d1004db008d247936c5038fd0b4fadba"
+    },
+    {
+      "path": "DB Architecture/mappings/articles.json",
+      "sha256": "8defc92c25d6b2f8b6dda8423f74ec86cdc47c3a2287453ed70ca34ed0e4c0fd"
+    }
+  ],
+  "coverage": {
+    "all_catalog_objects": 3022,
+    "eligible_object_types": [
+      "U",
+      "P",
+      "FN",
+      "IF",
+      "TF",
+      "V",
+      "TR"
+    ],
+    "eligible_objects": 1656,
+    "reviewed_objects": 35,
+    "eligible_objects_unreviewed": 1621,
+    "objects_outside_role_review_denominator": 1366,
+    "reviewed_percentage_of_eligible": 2.11,
+    "by_type": {
+      "U": {
+        "eligible": 518,
+        "reviewed": 21,
+        "unreviewed": 497
+      },
+      "P": {
+        "eligible": 921,
+        "reviewed": 8,
+        "unreviewed": 913
+      },
+      "FN": {
+        "eligible": 66,
+        "reviewed": 1,
+        "unreviewed": 65
+      },
+      "IF": {
+        "eligible": 1,
+        "reviewed": 0,
+        "unreviewed": 1
+      },
+      "TF": {
+        "eligible": 9,
+        "reviewed": 1,
+        "unreviewed": 8
+      },
+      "V": {
+        "eligible": 135,
+        "reviewed": 2,
+        "unreviewed": 133
+      },
+      "TR": {
+        "eligible": 6,
+        "reviewed": 2,
+        "unreviewed": 4
+      }
+    },
+    "unlisted_eligible_object_state": "UNREVIEWED",
+    "name_based_domain_labels": "CANDIDATES_ONLY_UNCHANGED"
+  },
+  "role_taxonomy": {
+    "transactional_state": "Stores mutable business-operation quantities, statuses or execution bookkeeping.",
+    "configuration": "Stores parameters, definitions or rules that can govern behavior; values and activation were not inspected.",
+    "master_reference": "Stores reusable identities and descriptive attributes referenced across operations.",
+    "execution_worklist": "Represents warehouse instruction ordering, assignment and execution state; not the generic vendor process queue.",
+    "reporting_read_model": "Projects or aggregates stored data for reading; does not imply materialization or measured workload.",
+    "presentation_metadata": "Stores screen/control definitions, binding properties and display settings.",
+    "presentation_adapter": "Builds result shapes or selections consumed by a user interface or print-selection flow.",
+    "orchestration": "Coordinates conditional database calls or multiple implementation steps; caller transactions remain separate.",
+    "transactional_mutation": "Contains explicit persistent INSERT, UPDATE or DELETE behavior affecting operational state.",
+    "integration_staging": "Stores interface-shaped payloads and processing indicators; direction, transport and delivery need additional evidence.",
+    "audit_history": "Stores events, changes or errors; completeness, retention and immutability are not established.",
+    "workflow_selection": "Builds selection logic for executable warehouse work; not necessarily read-only.",
+    "utility_transform": "Transforms input into derived values or structured parameters.",
+    "event_handler": "Defines trigger behavior for a declared DML event; actual execution was not tested."
+  },
+  "global_inference_limits": [
+    "Only the listed 35 objects have reviewed role assignments; every other eligible object remains unreviewed.",
+    "Roles describe captured column/SQL responsibilities, not active configuration, records, invocation frequency or permissions.",
+    "Selected implementation spans support a role classification, not complete branch, caller, transaction, security or performance review.",
+    "No object is classified as runtime_queue from a scheduling/work name; absent vendor queue identifiers remain unresolved deployment evidence."
+  ],
+  "records": [
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1362819917,
+      "qualified_name": "dbo.LOCATION_INVENTORY",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "inventory"
+      ],
+      "purpose": "Holds location-level inventory state affected by movement routines.",
+      "functional_roles": [
+        {
+          "role": "transactional_state",
+          "rationale": "Location/item/company/lot keys coexist with on-hand, in-transit, allocated and suspense quantities.",
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E3"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/1362819917.md",
+          "sha256": "c77fe1c89b28039d752fbb4beb1f87d35980d9f9976a66951f3fb142bb1344c9",
+          "line_start": 11,
+          "line_end": 50,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "INTERNAL_LOCATION_INV",
+            "ITEM",
+            "COMPANY",
+            "LOT",
+            "ON_HAND_QTY",
+            "IN_TRANSIT_QTY",
+            "ALLOCATED_QTY",
+            "SUSPENSE_QTY",
+            "LOCATION",
+            "warehouse"
+          ],
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1400704388.sql",
+          "sha256": "75f63d082a4062e9b815f5797a8c53d333828c5cf2bec75cea0e22c978d999d2",
+          "line_start": 497,
+          "line_end": 519,
+          "kind": "REDACTED_SQL",
+          "description": "Conditional location-inventory deletion.",
+          "source_definition_sha256": "ee688bd90536748cd6f1eeb1015d39199a62236adeb6ebe97b79d6bbde31398c",
+          "evidence_id": "E2"
+        },
+        {
+          "path": "DB Architecture/sql/1400704388.sql",
+          "sha256": "75f63d082a4062e9b815f5797a8c53d333828c5cf2bec75cea0e22c978d999d2",
+          "line_start": 610,
+          "line_end": 614,
+          "kind": "REDACTED_SQL",
+          "description": "Explicit location-inventory update.",
+          "source_definition_sha256": "ee688bd90536748cd6f1eeb1015d39199a62236adeb6ebe97b79d6bbde31398c",
+          "evidence_id": "E3"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "AIM",
+          "article_id": "a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038",
+          "original_sha256": "8b272f68ff42d8e019fad3849f013ff5c2e8cff98a1409b597a2568082ef42b3",
+          "node_id": "n370",
+          "json_path": "AIM/data/articles/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.json",
+          "reading_path": "AIM/reading/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        },
+        {
+          "module": "SDK",
+          "article_id": "214eb77fcca668e6d3d5cd9070338718eb6ee7521adef16d8be75751c6a0e94f",
+          "original_sha256": "8f8573291f99eace30038a7880e28cb8b3bf022c2a8287b5cdfcb270609468dc",
+          "node_id": "n143",
+          "json_path": "SDK/data/articles/214eb77fcca668e6d3d5cd9070338718eb6ee7521adef16d8be75751c6a0e94f.json",
+          "reading_path": "SDK/reading/214eb77fcca668e6d3d5cd9070338718eb6ee7521adef16d8be75751c6a0e94f.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "No stock quantities were read; quantity effects depend on transaction flags and callers."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 386816440,
+      "qualified_name": "dbo.ITEM",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "inventory",
+        "shared_reference"
+      ],
+      "purpose": "Combines item reference data with item-level warehouse behavior settings.",
+      "functional_roles": [
+        {
+          "role": "master_reference",
+          "rationale": "Item/company identity, description and product attributes define reusable item records.",
+          "evidence_ids": [
+            "E1"
+          ]
+        },
+        {
+          "role": "configuration",
+          "rationale": "Locating/allocation rules and lot/serial/tracking controls attach behavior settings to an item.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/386816440.md",
+          "sha256": "1839edfac39cdeb258b4a3990ac52c361589350d4ba01169db6b4028f6a7678c",
+          "line_start": 12,
+          "line_end": 81,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "ITEM",
+            "COMPANY",
+            "DESCRIPTION",
+            "LOCATING_RULE",
+            "ALLOCATION_RULE",
+            "LOT_CONTROLLED",
+            "INVENTORY_TRACKING",
+            "SERIAL_NUM_TRACKING"
+          ],
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "A control column does not establish its configured value or enabled behavior."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1785773419,
+      "qualified_name": "dbo.COMPANY",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "shared_reference",
+        "configuration"
+      ],
+      "purpose": "Stores company reference details and company-scoped operational settings.",
+      "functional_roles": [
+        {
+          "role": "master_reference",
+          "rationale": "Company identity, name and addresses provide reusable party information.",
+          "evidence_ids": [
+            "E1"
+          ]
+        },
+        {
+          "role": "configuration",
+          "rationale": "Host-interface source and upload options hold company-level integration settings.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/1785773419.md",
+          "sha256": "e89d75b3535e83972f8ed12044d6dc1ee6b58a45316b46301cb57a9af9ba9230",
+          "line_start": 11,
+          "line_end": 80,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "COMPANY",
+            "NAME",
+            "ADDRESS1",
+            "HOST_INTERFACE_SOURCE",
+            "ACTIVE",
+            "UPLOAD_CLOSED_RECEIPT_ZERO_QTY"
+          ],
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "No company records, addresses, endpoints or configured values were read."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 664389436,
+      "qualified_name": "dbo.WAREHOUSE",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "shared_reference",
+        "configuration"
+      ],
+      "purpose": "Defines warehouse identities and facility-scoped settings.",
+      "functional_roles": [
+        {
+          "role": "master_reference",
+          "rationale": "Warehouse identity, description and addresses provide facility reference information.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        },
+        {
+          "role": "configuration",
+          "rationale": "Timezone and upload options hold facility-scoped processing settings.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/664389436.md",
+          "sha256": "abbb274c7b0d84cb2ed978c1062808d02e4d8fdcc80f1a8c9f137b9346843219",
+          "line_start": 11,
+          "line_end": 67,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "warehouse",
+            "DESCRIPTION",
+            "ADDRESS1",
+            "ACTIVE",
+            "TIME_ZONE",
+            "UPLOAD_CLOSED_RECEIPT_ZERO_QTY"
+          ],
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1000702963.sql",
+          "sha256": "6b5bdff46dfcee6ee4cf96dd5356cf4034277711d5b7749bcdb558dab325a3e4",
+          "line_start": 20,
+          "line_end": 25,
+          "kind": "REDACTED_SQL",
+          "description": "Timezone conversion reads WAREHOUSE.TIME_ZONE.",
+          "source_definition_sha256": "6f264491b5ea0bf792fd3243a00196414237a5791c66fdd12d8a225cc3bb3a77",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "The TIME_ZONE column does not establish valid configured values or timezone correctness."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1298819689,
+      "qualified_name": "dbo.LOCATION",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "inventory",
+        "work_execution"
+      ],
+      "purpose": "Combines location definition, movement rules and mutable availability/status fields.",
+      "functional_roles": [
+        {
+          "role": "master_reference",
+          "rationale": "Warehouse/location identity and zone attributes define reusable location references.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        },
+        {
+          "role": "configuration",
+          "rationale": "Picking/putaway sequences and movement controls influence warehouse movement.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        },
+        {
+          "role": "transactional_state",
+          "rationale": "Status/locate-lock fields represent mutable state, and inventory code explicitly updates location status.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/1298819689.md",
+          "sha256": "5344f85ed29f053f01d4188311c415f82c971878416ccbc1b28f4329f490b012",
+          "line_start": 11,
+          "line_end": 52,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "LOCATION",
+            "warehouse",
+            "LOCATION_STS",
+            "PICKING_SEQ",
+            "PUTAWAY_SEQ",
+            "LOCATING_ZONE",
+            "WORK_ZONE",
+            "LOCKED_FOR_LOCATE"
+          ],
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1400704388.sql",
+          "sha256": "75f63d082a4062e9b815f5797a8c53d333828c5cf2bec75cea0e22c978d999d2",
+          "line_start": 325,
+          "line_end": 340,
+          "kind": "REDACTED_SQL",
+          "description": "Inventory handling can insert inventory and update LOCATION.LOCATION_STS.",
+          "source_definition_sha256": "ee688bd90536748cd6f1eeb1015d39199a62236adeb6ebe97b79d6bbde31398c",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "Current availability, capacity and operator eligibility are unknown."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 683865503,
+      "qualified_name": "dbo.SHIPMENT_HEADER",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "shipping"
+      ],
+      "purpose": "Stores shipment-header progress and shipping-level state.",
+      "functional_roles": [
+        {
+          "role": "transactional_state",
+          "rationale": "Shipment identity, load linkage, leading/trailing statuses and actual ship time encode operational progress.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/683865503.md",
+          "sha256": "5f06cae375acbd68def993834ad66533ac745c3b36604ad330480a3f4a52c5b9",
+          "line_start": 11,
+          "line_end": 83,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "INTERNAL_SHIPMENT_NUM",
+            "SHIPMENT_ID",
+            "SHIPPING_LOAD_NUM",
+            "LEADING_STS",
+            "TRAILING_STS",
+            "ACTUAL_SHIP_DATE_TIME"
+          ],
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1809753850.sql",
+          "sha256": "2e4550ba3972ac8d7cb010387214f2bdab3e30ddb1fa8d5d9f0c70a61c2f411f",
+          "line_start": 65,
+          "line_end": 78,
+          "kind": "REDACTED_SQL",
+          "description": "Ship-confirm handling updates header status and timestamps.",
+          "source_definition_sha256": "4ac0db0eff207af65ce8c7c515a77955835a1db218c1610551eb4f3c37930196",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "AIM",
+          "article_id": "1e8e44ed2fc47bbf9f5f517f78b84d204848cba96d0a025c9d19aea589c84c8f",
+          "original_sha256": "687564b705ff3b9598aa44eb3188a22c49909b24a3eada333166bb0e8312cb5d",
+          "node_id": "n79",
+          "json_path": "AIM/data/articles/1e8e44ed2fc47bbf9f5f517f78b84d204848cba96d0a025c9d19aea589c84c8f.json",
+          "reading_path": "AIM/reading/1e8e44ed2fc47bbf9f5f517f78b84d204848cba96d0a025c9d19aea589c84c8f.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        },
+        {
+          "module": "AIM",
+          "article_id": "a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038",
+          "original_sha256": "8b272f68ff42d8e019fad3849f013ff5c2e8cff98a1409b597a2568082ef42b3",
+          "node_id": "n495",
+          "json_path": "AIM/data/articles/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.json",
+          "reading_path": "AIM/reading/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "Status meanings require documented/configured context; no current shipment progress was observed."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 619865275,
+      "qualified_name": "dbo.SHIPMENT_DETAIL",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "shipping",
+        "inventory"
+      ],
+      "purpose": "Tracks shipment-line quantities and their progression through status slots.",
+      "functional_roles": [
+        {
+          "role": "transactional_state",
+          "rationale": "Line identity, requested quantity and quantity-at-status slots retain fulfillment-line progress.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/619865275.md",
+          "sha256": "4f52d15b0420f898ff302a8e2aa72f2f28fb0ac78e5af231d20ad8c41cce8300",
+          "line_start": 11,
+          "line_end": 111,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "INTERNAL_SHIPMENT_LINE_NUM",
+            "INTERNAL_SHIPMENT_NUM",
+            "ITEM",
+            "REQUESTED_QTY",
+            "STATUS1",
+            "STATUS10",
+            "QUANTITY_AT_STS1",
+            "QUANTITY_AT_STS10"
+          ],
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1809753850.sql",
+          "sha256": "2e4550ba3972ac8d7cb010387214f2bdab3e30ddb1fa8d5d9f0c70a61c2f411f",
+          "line_start": 81,
+          "line_end": 119,
+          "kind": "REDACTED_SQL",
+          "description": "Status/quantity updates preserve the explicit 995 exclusion.",
+          "source_definition_sha256": "4ac0db0eff207af65ce8c7c515a77955835a1db218c1610551eb4f3c37930196",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "AIM",
+          "article_id": "361fe34d26f81e223b32fc7457d5058772d80cf26549792eb7ae64034aabdea0",
+          "original_sha256": "3eab1809e787cb010dc63e16d31c488b102155eaca58f85ba426c43902dbc154",
+          "node_id": "n174",
+          "json_path": "AIM/data/articles/361fe34d26f81e223b32fc7457d5058772d80cf26549792eb7ae64034aabdea0.json",
+          "reading_path": "AIM/reading/361fe34d26f81e223b32fc7457d5058772d80cf26549792eb7ae64034aabdea0.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        },
+        {
+          "module": "AIM",
+          "article_id": "a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038",
+          "original_sha256": "8b272f68ff42d8e019fad3849f013ff5c2e8cff98a1409b597a2568082ef42b3",
+          "node_id": "n495",
+          "json_path": "AIM/data/articles/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.json",
+          "reading_path": "AIM/reading/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "Column slots alone do not define status meanings or caller-specific transition rules."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1067866871,
+      "qualified_name": "dbo.SHIPPING_CONTAINER",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "shipping"
+      ],
+      "purpose": "Represents shipping containers, shipment linkage and container hierarchy state.",
+      "functional_roles": [
+        {
+          "role": "transactional_state",
+          "rationale": "Container identity, parent hierarchy, shipment linkage, quantity and manifest/status fields retain packing/shipping state.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/1067866871.md",
+          "sha256": "c6ec254882f0e09716e52205c0c8c6d18522cf3daeac91c94510f1fbbe831a58",
+          "line_start": 11,
+          "line_end": 58,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "INTERNAL_CONTAINER_NUM",
+            "CONTAINER_ID",
+            "PARENT",
+            "TREE_UNIT",
+            "INTERNAL_SHIPMENT_NUM",
+            "INTERNAL_SHIPMENT_LINE_NUM",
+            "QUANTITY",
+            "status",
+            "MANIFEST_STATE"
+          ],
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1809753850.sql",
+          "sha256": "2e4550ba3972ac8d7cb010387214f2bdab3e30ddb1fa8d5d9f0c70a61c2f411f",
+          "line_start": 289,
+          "line_end": 292,
+          "kind": "REDACTED_SQL",
+          "description": "Ship-confirm handling updates container status.",
+          "source_definition_sha256": "4ac0db0eff207af65ce8c7c515a77955835a1db218c1610551eb4f3c37930196",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "AIM",
+          "article_id": "321e7f2dfed009b4ccf91e34724e98fc752e91eb1d2c54088d94ab7d0f327107",
+          "original_sha256": "7b32dd3a5e3c0151412d5f6635cd989104146e8d145adca104f16f0ffe03c7c3",
+          "node_id": "n69",
+          "json_path": "AIM/data/articles/321e7f2dfed009b4ccf91e34724e98fc752e91eb1d2c54088d94ab7d0f327107.json",
+          "reading_path": "AIM/reading/321e7f2dfed009b4ccf91e34724e98fc752e91eb1d2c54088d94ab7d0f327107.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        },
+        {
+          "module": "AIM",
+          "article_id": "d3cfa356a8b3c50852ab775e78eacf888cf1e09da6f7fc24e920b29dc7794e24",
+          "original_sha256": "d8cbc769efb1788d538f7744e3bee04b1052a399358f28fcf734e395f1e50633",
+          "node_id": "n87",
+          "json_path": "AIM/data/articles/d3cfa356a8b3c50852ab775e78eacf888cf1e09da6f7fc24e920b29dc7794e24.json",
+          "reading_path": "AIM/reading/d3cfa356a8b3c50852ab775e78eacf888cf1e09da6f7fc24e920b29dc7794e24.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "Manifest fields do not prove carrier transmission, label printing or successful shipment."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1131867099,
+      "qualified_name": "dbo.SHIPPING_LOAD",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "shipping"
+      ],
+      "purpose": "Tracks shipping-load status and departure/closure information.",
+      "functional_roles": [
+        {
+          "role": "transactional_state",
+          "rationale": "Load identity, progress statuses, closure state and departure timestamps encode transport-load execution state.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/1131867099.md",
+          "sha256": "9b42206ef05a4477fe890540fedb4231d71f698658a3d49a9e9e1e01f55b4ae8",
+          "line_start": 11,
+          "line_end": 50,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "INTERNAL_LOAD_NUM",
+            "LEADING_STS",
+            "TRAILING_STS",
+            "ACTUAL_DEPARTURE_DATE_TIME",
+            "LOAD_CLOSED",
+            "DOCK_DOOR"
+          ],
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1809753850.sql",
+          "sha256": "2e4550ba3972ac8d7cb010387214f2bdab3e30ddb1fa8d5d9f0c70a61c2f411f",
+          "line_start": 295,
+          "line_end": 306,
+          "kind": "REDACTED_SQL",
+          "description": "Load trailing status is derived from child shipment statuses.",
+          "source_definition_sha256": "4ac0db0eff207af65ce8c7c515a77955835a1db218c1610551eb4f3c37930196",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "SDK",
+          "article_id": "35cdfcbe2823f6394fe2644f35985b4dd4c0b5f9cf4e66f1d6d0d8f7fa5b8339",
+          "original_sha256": "6c46ec3389ead3049deb0ff074e7dad5e36fa23163455fd4aa8613a44804200a",
+          "node_id": "n80",
+          "json_path": "SDK/data/articles/35cdfcbe2823f6394fe2644f35985b4dd4c0b5f9cf4e66f1d6d0d8f7fa5b8339.json",
+          "reading_path": "SDK/reading/35cdfcbe2823f6394fe2644f35985b4dd4c0b5f9cf4e66f1d6d0d8f7fa5b8339.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "No departure, closure or carrier activity was observed."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1352391887,
+      "qualified_name": "dbo.WORK_INSTRUCTION",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "work_execution",
+        "inventory"
+      ],
+      "purpose": "Represents warehouse instructions and their ordering, assignment and execution state.",
+      "functional_roles": [
+        {
+          "role": "transactional_state",
+          "rationale": "Conditions, quantities and execution timestamps retain work progress.",
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E3"
+          ]
+        },
+        {
+          "role": "execution_worklist",
+          "rationale": "Work unit, sequence, priority, assignment and movement locations support instruction dispatch.",
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E3"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/1352391887.md",
+          "sha256": "672b7e920d150c7228b500d699d6d8a5566215d7ce93c6b25280aae9ef12f372",
+          "line_start": 14,
+          "line_end": 56,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "WORK_UNIT",
+            "SEQUENCE",
+            "PRIORITY",
+            "CONDITION",
+            "FROM_QTY",
+            "TO_QTY",
+            "FROM_LOC",
+            "TO_LOC",
+            "USER_ASSIGNED",
+            "START_DATE_TIME",
+            "END_DATE_TIME"
+          ],
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/51843597.sql",
+          "sha256": "337a1793a82284ecd9d2c95352ab086d5ee8dae4e6e6a8d6025a62198c6678b0",
+          "line_start": 99,
+          "line_end": 116,
+          "kind": "REDACTED_SQL",
+          "description": "Work-selection logic reads instruction grouping and sequencing.",
+          "source_definition_sha256": "eca08945d5ab9ce42fdf8c01403853dd3addf9a62075e31053e20732f7db87cf",
+          "evidence_id": "E2"
+        },
+        {
+          "path": "DB Architecture/sql/1082799265.sql",
+          "sha256": "5a34e088b302084eeb2eae90fbfc0726d3a11cf9282f597ac5eab59d37d91e13",
+          "line_start": 35,
+          "line_end": 60,
+          "kind": "REDACTED_SQL",
+          "description": "Monitoring counts and groups instructions by work and condition.",
+          "source_definition_sha256": "9f39d9614e0eb5eebcc4bb6ca304351d4e35a8f0ad00e6dad950ac84e308b92f",
+          "evidence_id": "E3"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "AIM",
+          "article_id": "a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038",
+          "original_sha256": "8b272f68ff42d8e019fad3849f013ff5c2e8cff98a1409b597a2568082ef42b3",
+          "node_id": "n809",
+          "json_path": "AIM/data/articles/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.json",
+          "reading_path": "AIM/reading/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        },
+        {
+          "module": "SDK",
+          "article_id": "2f1e464b919bbe6d9db8cf9f7a2eb6d5cfd5866b662fd85c0ef3c9c02005b000",
+          "original_sha256": "8ffbb7c80b927b1c7e10e600060b6bf4e40ee562531deb705745193a32d6fd60",
+          "node_id": "n97",
+          "json_path": "SDK/data/articles/2f1e464b919bbe6d9db8cf9f7a2eb6d5cfd5866b662fd85c0ef3c9c02005b000.json",
+          "reading_path": "SDK/reading/2f1e464b919bbe6d9db8cf9f7a2eb6d5cfd5866b662fd85c0ef3c9c02005b000.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "This is a warehouse instruction worklist, not evidence that the absent generic QUEUE_PROCESS implementation is deployed.",
+        "No current task, assignment or quantity was read."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1599344762,
+      "qualified_name": "dbo.RECEIPT_HEADER",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "receiving"
+      ],
+      "purpose": "Stores receipt-header progress, unitization timestamps and trailer-yard association.",
+      "functional_roles": [
+        {
+          "role": "transactional_state",
+          "rationale": "Receipt identity, leading/trailing statuses and arrival/unitization timestamps retain inbound progress.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/1599344762.md",
+          "sha256": "5a926ff252f226cc241cc0e3205c246e66fb1a3626d7282d9fe70425e5c61f9e",
+          "line_start": 11,
+          "line_end": 91,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "INTERNAL_RECEIPT_NUM",
+            "RECEIPT_ID",
+            "LEADING_STS",
+            "TRAILING_STS",
+            "ARRIVED_DATE_TIME",
+            "START_UNITIZE_DATE_TIME",
+            "END_UNITIZE_DATE_TIME",
+            "TRAILER_YARD_STATUS_ID"
+          ],
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/720057651.sql",
+          "sha256": "b30f95dbe9d69a2adcf3cdd7fa26dc0a986685c363af5b0236683bf888c28f05",
+          "line_start": 3,
+          "line_end": 29,
+          "kind": "REDACTED_SQL",
+          "description": "An AFTER INSERT trigger can update trailer-yard association and stamps.",
+          "source_definition_sha256": "303fc1c5908ab4733761d50c9252f107ab4c8ae7626efcc0bd28f8e09b8df020",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "AIM",
+          "article_id": "a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038",
+          "original_sha256": "8b272f68ff42d8e019fad3849f013ff5c2e8cff98a1409b597a2568082ef42b3",
+          "node_id": "n438",
+          "json_path": "AIM/data/articles/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.json",
+          "reading_path": "AIM/reading/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        },
+        {
+          "module": "SDK",
+          "article_id": "2817aaa4728a81efd3d8fe137711e673a5a8f95979ebfb435211fe505783d25b",
+          "original_sha256": "30936cbe1cca02f121655686da2c3bba5aeca858233e39df58e9343c83186fe5",
+          "node_id": "n59",
+          "json_path": "SDK/data/articles/2817aaa4728a81efd3d8fe137711e673a5a8f95979ebfb435211fe505783d25b.json",
+          "reading_path": "SDK/reading/2817aaa4728a81efd3d8fe137711e673a5a8f95979ebfb435211fe505783d25b.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "Actual receipt progress and trailer matching were not observed."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1551344591,
+      "qualified_name": "dbo.RECEIPT_DETAIL",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "receiving",
+        "inventory"
+      ],
+      "purpose": "Represents receipt lines and quantities used in receiving and placement.",
+      "functional_roles": [
+        {
+          "role": "transactional_state",
+          "rationale": "Line identity, total/open quantity, item/lot and expected inventory status retain inbound line state.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/1551344591.md",
+          "sha256": "8d8ee0dc17de58dc9fd82197597fc85ce7047640ed2ecde7b00526e4ab5ca2dd",
+          "line_start": 11,
+          "line_end": 67,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "INTERNAL_RECEIPT_LINE_NUM",
+            "INTERNAL_RECEIPT_NUM",
+            "ITEM",
+            "LOT",
+            "TOTAL_QTY",
+            "OPEN_QTY",
+            "PUT_LOC",
+            "EXPECTED_INV_STS"
+          ],
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "AIM",
+          "article_id": "a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038",
+          "original_sha256": "8b272f68ff42d8e019fad3849f013ff5c2e8cff98a1409b597a2568082ef42b3",
+          "node_id": "n438",
+          "json_path": "AIM/data/articles/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.json",
+          "reading_path": "AIM/reading/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "No current quantities, placement choices or configured putaway rules were read."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 43863223,
+      "qualified_name": "dbo.SCREEN_CONTROL",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "ui_and_reporting",
+        "configuration"
+      ],
+      "purpose": "Stores metadata used to define and bind user-interface controls.",
+      "functional_roles": [
+        {
+          "role": "presentation_metadata",
+          "rationale": "Control type, resource key, screen group, data binding and template fields describe screen controls.",
+          "evidence_ids": [
+            "E1"
+          ]
+        },
+        {
+          "role": "configuration",
+          "rationale": "Active, default-state and default-action fields carry configurable control behavior.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/43863223.md",
+          "sha256": "a30cae1215b52b4b99d5a24e22b1d2f143e6e12cabc9b444cb7ce964c618a865",
+          "line_start": 12,
+          "line_end": 39,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "SCREEN_GROUP_ID",
+            "CONTROL_NAME",
+            "CONTROL_TYPE",
+            "RESOURCE_KEY",
+            "DATA_SOURCE_TYPE",
+            "DATA_SOURCE",
+            "DEFAULT_STATE",
+            "ACTIVE",
+            "DEFAULT_ACTION",
+            "TEMPLATE_NAME"
+          ],
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "SDK",
+          "article_id": "03b8fac0c26e3ef85f4228bcf5a0d77e4a65f19da066c7ba0e90d6d03def8497",
+          "original_sha256": "a6f119d7b65a976c483ca53c3d4ec278400faa1ffcd39f64c0abd9fd9cb49a8d",
+          "node_id": "n255",
+          "json_path": "SDK/data/articles/03b8fac0c26e3ef85f4228bcf5a0d77e4a65f19da066c7ba0e90d6d03def8497.json",
+          "reading_path": "SDK/reading/03b8fac0c26e3ef85f4228bcf5a0d77e4a65f19da066c7ba0e90d6d03def8497.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        },
+        {
+          "module": "SDK",
+          "article_id": "071c4f9d97c4fa1215b91e216311f489c7d5e910cad5ba1c105e1628507cee34",
+          "original_sha256": "93f919e766ef0353d4ba7411da09aebd673cc8ac6107d07b3df3a7127de8610e",
+          "node_id": "n77",
+          "json_path": "SDK/data/articles/071c4f9d97c4fa1215b91e216311f489c7d5e910cad5ba1c105e1628507cee34.json",
+          "reading_path": "SDK/reading/071c4f9d97c4fa1215b91e216311f489c7d5e910cad5ba1c105e1628507cee34.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "Actual screen composition, activation and user permissions require records/application evidence not collected here."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 11863109,
+      "qualified_name": "dbo.SCHEDULED_JOBS",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "configuration",
+        "work_execution"
+      ],
+      "purpose": "Combines application scheduled-job definitions with last/next-run bookkeeping.",
+      "functional_roles": [
+        {
+          "role": "configuration",
+          "rationale": "Job identity, parameters, recurrence fields, active flag and timezone define scheduling settings.",
+          "evidence_ids": [
+            "E1"
+          ]
+        },
+        {
+          "role": "transactional_state",
+          "rationale": "Last-run and next-run timestamps store scheduler bookkeeping alongside configuration.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/11863109.md",
+          "sha256": "64ec3680b40eb8e59daf774b10a47c76094853b3d7f53030917a7018ece457a9",
+          "line_start": 11,
+          "line_end": 38,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "JOB_NAME",
+            "PARAMETER_DATA",
+            "DAYS_TO_RUN",
+            "MINUTES_FREQUENCY",
+            "NEXT_RUN_DATE_TIME",
+            "LAST_RUN_DATE_TIME",
+            "ACTIVE",
+            "TIME_ZONE"
+          ],
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "AIM",
+          "article_id": "a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038",
+          "original_sha256": "8b272f68ff42d8e019fad3849f013ff5c2e8cff98a1409b597a2568082ef42b3",
+          "node_id": "n964",
+          "json_path": "AIM/data/articles/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.json",
+          "reading_path": "AIM/reading/a5abd9742fcb737e5cbc5122fa6fcdf0fc33600b1cc43541b9a6a9718327e038.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "No schedules or enabled jobs were read; this does not prove SQL Agent use, backlog, polling intervals or actual execution."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1305771709,
+      "qualified_name": "dbo.BATCH_SUBMISSION_CONFIG",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "configuration",
+        "work_execution"
+      ],
+      "purpose": "Describes batch-submission types and their scheduling eligibility.",
+      "functional_roles": [
+        {
+          "role": "configuration",
+          "rationale": "Record type, parameters, scheduling eligibility and description define batch-submission options.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/1305771709.md",
+          "sha256": "337213aafe6a763b7efe6bca74f6985ff88b9bb2b4f07807c7b7d3737ca391ad",
+          "line_start": 11,
+          "line_end": 25,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "RECORD_TYPE",
+            "PARAMETERS",
+            "CAN_BE_SCHEDULED",
+            "DESCRIPTION"
+          ],
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "Submission history, current job state and concrete parameters are not established."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1979870120,
+      "qualified_name": "dbo.TRANSACTION_HISTORY",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "inventory",
+        "work_execution",
+        "audit"
+      ],
+      "purpose": "Stores transaction history with before-and-after inventory/status measures.",
+      "functional_roles": [
+        {
+          "role": "audit_history",
+          "rationale": "Transaction/work identity, actor, activity time and before/after measures describe recorded changes.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/1979870120.md",
+          "sha256": "1ceff5e4fe278dabfa752fa6295841ceaf76b60cc785c4fbced64b3ff4ec30f9",
+          "line_start": 13,
+          "line_end": 53,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "TRANSACTION_TYPE",
+            "WORK_TYPE",
+            "USER_NAME",
+            "BEFORE_ON_HAND_QTY",
+            "AFTER_ON_HAND_QTY",
+            "BEFORE_STS",
+            "AFTER_STS",
+            "ACTIVITY_DATE_TIME"
+          ],
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "SDK",
+          "article_id": "4489584487ad69166a448f4f32b6eb65d720c2573f60926b4fa12d03c8a4164a",
+          "original_sha256": "3306bf32a2d4b8a7687c874ac7c4642413822923ad4927d3e98eac6d8d24c8ab",
+          "node_id": "n47",
+          "json_path": "SDK/data/articles/4489584487ad69166a448f4f32b6eb65d720c2573f60926b4fa12d03c8a4164a.json",
+          "reading_path": "SDK/reading/4489584487ad69166a448f4f32b6eb65d720c2573f60926b4fa12d03c8a4164a.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        },
+        {
+          "module": "SDK",
+          "article_id": "9a6f02525e393c6aca59357b27b2d2cacd5292d6f9bd5a9c9d72cae339b74e09",
+          "original_sha256": "750d5cc96cbb11a3f37259eeed0796f29254fe090bc60f204d9d8de3423d478e",
+          "node_id": "n146",
+          "json_path": "SDK/data/articles/9a6f02525e393c6aca59357b27b2d2cacd5292d6f9bd5a9c9d72cae339b74e09.json",
+          "reading_path": "SDK/reading/9a6f02525e393c6aca59357b27b2d2cacd5292d6f9bd5a9c9d72cae339b74e09.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "Schema does not prove complete logging, immutability or retention."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1643868923,
+      "qualified_name": "dbo.SYSTEM_CONFIG_DETAIL",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "configuration"
+      ],
+      "purpose": "Stores scoped system-configuration entries and validation metadata.",
+      "functional_roles": [
+        {
+          "role": "configuration",
+          "rationale": "System key, record type, lookup/validation metadata and warehouse/company scope surround SYSTEM_VALUE.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/1643868923.md",
+          "sha256": "46ecf273aa5efb984401da189142e2f921429d42936c2be4be3c25e8d51f87d9",
+          "line_start": 12,
+          "line_end": 31,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "SYS_KEY",
+            "SYSTEM_VALUE",
+            "RECORD_TYPE",
+            "LOOKUP_KEY",
+            "VALUE_REQUIRED",
+            "WAREHOUSE",
+            "COMPANY"
+          ],
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/51843597.sql",
+          "sha256": "337a1793a82284ecd9d2c95352ab086d5ee8dae4e6e6a8d6025a62198c6678b0",
+          "line_start": 270,
+          "line_end": 275,
+          "kind": "REDACTED_SQL",
+          "description": "Work selection reads a system value into a numeric selection parameter.",
+          "source_definition_sha256": "eca08945d5ab9ce42fdf8c01403853dd3addf9a62075e31053e20732f7db87cf",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "Configuration values were not read; masking metadata does not establish effective application authorization."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 886294217,
+      "qualified_name": "dbo.DOWNLOAD_ITEM",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "integration",
+        "inventory"
+      ],
+      "purpose": "Stores item interface payloads with processing-control and error fields.",
+      "functional_roles": [
+        {
+          "role": "integration_staging",
+          "rationale": "Interface identity/action/condition/error fields accompany item attributes and rules.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/886294217.md",
+          "sha256": "43fce2f8a73578119c961c2ac1f3f0dd854fb6c0cab9bcf4e670d723564306ea",
+          "line_start": 11,
+          "line_end": 25,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "INTERFACE_RECORD_ID",
+            "INTERFACE_ACTION_CODE",
+            "INTERFACE_CONDITION",
+            "INTERFACE_ERROR",
+            "ITEM",
+            "COMPANY",
+            "DESCRIPTION",
+            "ALLOCATION_RULE"
+          ],
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "AIM",
+          "article_id": "e483e9325f41acd0c372563f36ce84946196fbfbb58a029a2a9e95d27941a471",
+          "original_sha256": "b827684dbd445bd61d5bae5681f471127882bf57e5a82f8d653e77f57dea095c",
+          "node_id": "n491",
+          "json_path": "AIM/data/articles/e483e9325f41acd0c372563f36ce84946196fbfbb58a029a2a9e95d27941a471.json",
+          "reading_path": "AIM/reading/e483e9325f41acd0c372563f36ce84946196fbfbb58a029a2a9e95d27941a471.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "Payload/control columns support the role; direction, consumer, transport and successful processing are not established from names or columns."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 120387498,
+      "qualified_name": "dbo.UPLOAD_ORDER_HEADER",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "integration",
+        "shipping"
+      ],
+      "purpose": "Stores order/shipment interface payloads with processing indicators.",
+      "functional_roles": [
+        {
+          "role": "integration_staging",
+          "rationale": "Interface identity/action/condition/error fields accompany shipment identifiers, statuses and totals.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/120387498.md",
+          "sha256": "7f50678d2020b7070e6a13c7080a67dbcba75430618927e7c99f908e48aebe12",
+          "line_start": 11,
+          "line_end": 167,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "INTERFACE_RECORD_ID",
+            "INTERFACE_ACTION_CODE",
+            "INTERFACE_CONDITION",
+            "INTERFACE_ERROR",
+            "INTERNAL_SHIPMENT_NUM",
+            "SHIPMENT_ID",
+            "TOTAL_QTY",
+            "LEADING_STS",
+            "TRAILING_STS"
+          ],
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "AIM",
+          "article_id": "b36fc80a8094d16a00193b48758f3b199d6ceac99362482cb5a1d522cf5d2520",
+          "original_sha256": "a0d4823f5f4ad713c97568c37bf168bb938707865a27b41804923d049336b3cc",
+          "node_id": "n168",
+          "json_path": "AIM/data/articles/b36fc80a8094d16a00193b48758f3b199d6ceac99362482cb5a1d522cf5d2520.json",
+          "reading_path": "AIM/reading/b36fc80a8094d16a00193b48758f3b199d6ceac99362482cb5a1d522cf5d2520.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "Staging is not proof of transmission or acknowledgment; endpoint, direction and active interface configuration remain unknown."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 194815756,
+      "qualified_name": "dbo.INTERFACE_ERROR",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "integration",
+        "audit"
+      ],
+      "purpose": "Records interface errors and associated process/file references.",
+      "functional_roles": [
+        {
+          "role": "audit_history",
+          "rationale": "Error identity/message, file references, process/mode, notification flag and identifiers describe error records.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/194815756.md",
+          "sha256": "b01877101fd969c0c6eebc64331363af1b0fca937c3563f8d6e715169bf0aaee",
+          "line_start": 11,
+          "line_end": 29,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "INTERNAL_ERROR_NUMBER",
+            "ORIGINAL_FILE_PATH",
+            "ERROR_FILE_PATH",
+            "ERROR_MSG",
+            "INTERFACE_PROCESS",
+            "INTERFACE_MODE",
+            "EMAIL_SENT"
+          ],
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "AIM",
+          "article_id": "28b2818dbc393a3087eb0ebbbac822dde8e0c66d514b2097d56939c2bd265e2e",
+          "original_sha256": "bb96a2898f713f7f8ff3c012ab40ed9d18fa57fa8cba2e84289d9ea3e6327146",
+          "node_id": "n58",
+          "json_path": "AIM/data/articles/28b2818dbc393a3087eb0ebbbac822dde8e0c66d514b2097d56939c2bd265e2e.json",
+          "reading_path": "AIM/reading/28b2818dbc393a3087eb0ebbbac822dde8e0c66d514b2097d56939c2bd265e2e.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        },
+        {
+          "module": "AIM",
+          "article_id": "a9f6e64a97e675678512d2b06814566670108f15ef23c08630dba3ae0e25fe0e",
+          "original_sha256": "46221f06ba231a7d7847a9e767edd08cb1e7842629f75783da13871f94117933",
+          "node_id": "n58",
+          "json_path": "AIM/data/articles/a9f6e64a97e675678512d2b06814566670108f15ef23c08630dba3ae0e25fe0e.json",
+          "reading_path": "AIM/reading/a9f6e64a97e675678512d2b06814566670108f15ef23c08630dba3ae0e25fe0e.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "No messages, paths or error occurrences were read; retention, completeness and replay/retry semantics are unverified."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 911342311,
+      "qualified_name": "dbo.PROCESS_HISTORY",
+      "object_type": "U",
+      "object_type_desc": "USER_TABLE",
+      "business_domains": [
+        "audit",
+        "work_execution"
+      ],
+      "purpose": "Stores timestamped process/action history and contextual identifiers.",
+      "functional_roles": [
+        {
+          "role": "audit_history",
+          "rationale": "Process/action, activity time, identifiers and message columns define process-event records.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "COLUMN_CONTRACT_AND_SELECTED_USAGE",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/objects/911342311.md",
+          "sha256": "73f63239fd81f5bca1fdfaf711c486cebc6b7893c2d468121ef1e87f620961fd",
+          "line_start": 13,
+          "line_end": 20,
+          "kind": "COLUMN_CONTRACT",
+          "description": "Reviewed columns support the stated storage responsibilities.",
+          "column_names": [
+            "PROCESS",
+            "ACTION",
+            "ACTIVITY_DATE_TIME",
+            "IDENTIFIER1",
+            "IDENTIFIER2",
+            "MESSAGE"
+          ],
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "Schema does not prove start/end pairing, complete process durations or immutable history."
+      ]
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1128703419,
+      "qualified_name": "dbo.INV_AdjustInv",
+      "object_type": "P",
+      "object_type_desc": "SQL_STORED_PROCEDURE",
+      "business_domains": [
+        "inventory"
+      ],
+      "purpose": "Coordinates database steps for an inventory adjustment.",
+      "functional_roles": [
+        {
+          "role": "orchestration",
+          "rationale": "Conditional serial validation/picking, location pick/put and serial placement calls coordinate the operation.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/1128703419.sql",
+          "sha256": "b77007a8973b5368936124674524c79420b1816c140e116f148a722f5a6696ce",
+          "line_start": 138,
+          "line_end": 154,
+          "kind": "REDACTED_SQL",
+          "description": "Audit call and a terminating branch.",
+          "source_definition_sha256": "362ff83361dded24aae929aa0cf58685200b21bb3a7991f880fca97a00e8de93",
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1128703419.sql",
+          "sha256": "b77007a8973b5368936124674524c79420b1816c140e116f148a722f5a6696ce",
+          "line_start": 198,
+          "line_end": 250,
+          "kind": "REDACTED_SQL",
+          "description": "Conditional serial/location calls and nonzero error propagation.",
+          "source_definition_sha256": "362ff83361dded24aae929aa0cf58685200b21bb3a7991f880fca97a00e8de93",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "Role review does not establish every flag, status constant or caller transaction; no adjustment was executed."
+      ],
+      "source_definition_sha256": "362ff83361dded24aae929aa0cf58685200b21bb3a7991f880fca97a00e8de93"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1400704388,
+      "qualified_name": "dbo.INV_PickFromLocation",
+      "object_type": "P",
+      "object_type_desc": "SQL_STORED_PROCEDURE",
+      "business_domains": [
+        "inventory"
+      ],
+      "purpose": "Implements pick-side inventory changes and associated location/unit handling.",
+      "functional_roles": [
+        {
+          "role": "transactional_mutation",
+          "rationale": "Explicit location/UOM/inventory updates and deletions change persistent state.",
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E3"
+          ]
+        },
+        {
+          "role": "orchestration",
+          "rationale": "Delegated insert/archive/update calls and an application-lock branch coordinate inventory-side work.",
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E3"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/1400704388.sql",
+          "sha256": "75f63d082a4062e9b815f5797a8c53d333828c5cf2bec75cea0e22c978d999d2",
+          "line_start": 260,
+          "line_end": 340,
+          "kind": "REDACTED_SQL",
+          "description": "Application lock, locked inventory read, inventory insertion and location update.",
+          "source_definition_sha256": "ee688bd90536748cd6f1eeb1015d39199a62236adeb6ebe97b79d6bbde31398c",
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1400704388.sql",
+          "sha256": "75f63d082a4062e9b815f5797a8c53d333828c5cf2bec75cea0e22c978d999d2",
+          "line_start": 432,
+          "line_end": 519,
+          "kind": "REDACTED_SQL",
+          "description": "Serial archival and inventory-related deletion/update paths.",
+          "source_definition_sha256": "ee688bd90536748cd6f1eeb1015d39199a62236adeb6ebe97b79d6bbde31398c",
+          "evidence_id": "E2"
+        },
+        {
+          "path": "DB Architecture/sql/1400704388.sql",
+          "sha256": "75f63d082a4062e9b815f5797a8c53d333828c5cf2bec75cea0e22c978d999d2",
+          "line_start": 564,
+          "line_end": 614,
+          "kind": "REDACTED_SQL",
+          "description": "Delegated and explicit location-inventory updates.",
+          "source_definition_sha256": "ee688bd90536748cd6f1eeb1015d39199a62236adeb6ebe97b79d6bbde31398c",
+          "evidence_id": "E3"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "Caller transactions, complete branches and lock-release guarantees remain outside this role review.",
+        "The shown lock timeout is unbounded; this assessment did not take that lock."
+      ],
+      "source_definition_sha256": "ee688bd90536748cd6f1eeb1015d39199a62236adeb6ebe97b79d6bbde31398c"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1464704616,
+      "qualified_name": "dbo.INV_PutIntoLocation",
+      "object_type": "P",
+      "object_type_desc": "SQL_STORED_PROCEDURE",
+      "business_domains": [
+        "inventory"
+      ],
+      "purpose": "Implements destination-side placement and related attribute/unit processing.",
+      "functional_roles": [
+        {
+          "role": "transactional_mutation",
+          "rationale": "Inventory-attribute insertion and location-UOM updates persist destination-side state.",
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E3",
+            "E4"
+          ]
+        },
+        {
+          "role": "orchestration",
+          "rationale": "Inventory insertion, serial archival, UOM copying and dynamic SQL delegate placement work.",
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E3",
+            "E4"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/1464704616.sql",
+          "sha256": "8986ffa4b9635c50100e3f8b6b00a2b4a29f3cc25f0f8357337d80ac760579de",
+          "line_start": 455,
+          "line_end": 470,
+          "kind": "REDACTED_SQL",
+          "description": "Application lock and locked inventory lookup.",
+          "source_definition_sha256": "6c20f44f12558f31d9ca6765c33a8952275f46ab5718fbe209f5266735494142",
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1464704616.sql",
+          "sha256": "8986ffa4b9635c50100e3f8b6b00a2b4a29f3cc25f0f8357337d80ac760579de",
+          "line_start": 559,
+          "line_end": 595,
+          "kind": "REDACTED_SQL",
+          "description": "Inventory-attribute insertion and delegated inventory insertion.",
+          "source_definition_sha256": "6c20f44f12558f31d9ca6765c33a8952275f46ab5718fbe209f5266735494142",
+          "evidence_id": "E2"
+        },
+        {
+          "path": "DB Architecture/sql/1464704616.sql",
+          "sha256": "8986ffa4b9635c50100e3f8b6b00a2b4a29f3cc25f0f8357337d80ac760579de",
+          "line_start": 650,
+          "line_end": 676,
+          "kind": "REDACTED_SQL",
+          "description": "Dynamic SQL and destination-UOM copying.",
+          "source_definition_sha256": "6c20f44f12558f31d9ca6765c33a8952275f46ab5718fbe209f5266735494142",
+          "evidence_id": "E3"
+        },
+        {
+          "path": "DB Architecture/sql/1464704616.sql",
+          "sha256": "8986ffa4b9635c50100e3f8b6b00a2b4a29f3cc25f0f8357337d80ac760579de",
+          "line_start": 747,
+          "line_end": 758,
+          "kind": "REDACTED_SQL",
+          "description": "Serial archival and location-UOM update.",
+          "source_definition_sha256": "6c20f44f12558f31d9ca6765c33a8952275f46ab5718fbe209f5266735494142",
+          "evidence_id": "E4"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "Dynamic bodies and exact flags are redacted; atomicity, all affected objects and a safe manual call contract are not established."
+      ],
+      "source_definition_sha256": "6c20f44f12558f31d9ca6765c33a8952275f46ab5718fbe209f5266735494142"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1809753850,
+      "qualified_name": "dbo.SHP_SetStatusesAtShipConfirm",
+      "object_type": "P",
+      "object_type_desc": "SQL_STORED_PROCEDURE",
+      "business_domains": [
+        "shipping"
+      ],
+      "purpose": "Applies status changes across the shipment/container/load hierarchy.",
+      "functional_roles": [
+        {
+          "role": "transactional_mutation",
+          "rationale": "Persistent writes create alert requests and update shipment/detail/container/load statuses.",
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E3"
+          ]
+        },
+        {
+          "role": "orchestration",
+          "rationale": "The routine sequences changes across shipping levels and derives load status from child shipments.",
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E3"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/1809753850.sql",
+          "sha256": "2e4550ba3972ac8d7cb010387214f2bdab3e30ddb1fa8d5d9f0c70a61c2f411f",
+          "line_start": 37,
+          "line_end": 78,
+          "kind": "REDACTED_SQL",
+          "description": "Alert insertion and shipment-header status/time updates.",
+          "source_definition_sha256": "4ac0db0eff207af65ce8c7c515a77955835a1db218c1610551eb4f3c37930196",
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1809753850.sql",
+          "sha256": "2e4550ba3972ac8d7cb010387214f2bdab3e30ddb1fa8d5d9f0c70a61c2f411f",
+          "line_start": 81,
+          "line_end": 119,
+          "kind": "REDACTED_SQL",
+          "description": "Detail status/quantity updates preserve the 995 exclusion.",
+          "source_definition_sha256": "4ac0db0eff207af65ce8c7c515a77955835a1db218c1610551eb4f3c37930196",
+          "evidence_id": "E2"
+        },
+        {
+          "path": "DB Architecture/sql/1809753850.sql",
+          "sha256": "2e4550ba3972ac8d7cb010387214f2bdab3e30ddb1fa8d5d9f0c70a61c2f411f",
+          "line_start": 289,
+          "line_end": 306,
+          "kind": "REDACTED_SQL",
+          "description": "Container and load status changes.",
+          "source_definition_sha256": "4ac0db0eff207af65ce8c7c515a77955835a1db218c1610551eb4f3c37930196",
+          "evidence_id": "E3"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "The surrounding application flow, carrier actions and caller commit/rollback are not established; numeric status meanings require separate evidence."
+      ],
+      "source_definition_sha256": "4ac0db0eff207af65ce8c7c515a77955835a1db218c1610551eb4f3c37930196"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 51843597,
+      "qualified_name": "dbo.WRK_GetWorkInstructionsForExecution",
+      "object_type": "P",
+      "object_type_desc": "SQL_STORED_PROCEDURE",
+      "business_domains": [
+        "work_execution",
+        "configuration"
+      ],
+      "purpose": "Builds warehouse-work selection from supplied context and configuration.",
+      "functional_roles": [
+        {
+          "role": "workflow_selection",
+          "rationale": "Instruction group/sequence state and scoped settings participate in selection.",
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E3"
+          ]
+        },
+        {
+          "role": "orchestration",
+          "rationale": "Multiple dynamic statements include an early grouping path and later candidate probes.",
+          "evidence_ids": [
+            "E1",
+            "E2",
+            "E3"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/51843597.sql",
+          "sha256": "337a1793a82284ecd9d2c95352ab086d5ee8dae4e6e6a8d6025a62198c6678b0",
+          "line_start": 99,
+          "line_end": 140,
+          "kind": "REDACTED_SQL",
+          "description": "Grouping/sequencing and dynamic execution precede later selection.",
+          "source_definition_sha256": "eca08945d5ab9ce42fdf8c01403853dd3addf9a62075e31053e20732f7db87cf",
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/51843597.sql",
+          "sha256": "337a1793a82284ecd9d2c95352ab086d5ee8dae4e6e6a8d6025a62198c6678b0",
+          "line_start": 270,
+          "line_end": 281,
+          "kind": "REDACTED_SQL",
+          "description": "System configuration and existing work process reads.",
+          "source_definition_sha256": "eca08945d5ab9ce42fdf8c01403853dd3addf9a62075e31053e20732f7db87cf",
+          "evidence_id": "E2"
+        },
+        {
+          "path": "DB Architecture/sql/51843597.sql",
+          "sha256": "337a1793a82284ecd9d2c95352ab086d5ee8dae4e6e6a8d6025a62198c6678b0",
+          "line_start": 374,
+          "line_end": 420,
+          "kind": "REDACTED_SQL",
+          "description": "Dynamic candidate probes.",
+          "source_definition_sha256": "eca08945d5ab9ce42fdf8c01403853dd3addf9a62075e31053e20732f7db87cf",
+          "evidence_id": "E3"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "Do not classify this routine as read-only: redacted dynamic SQL prevents proving all persistent side effects.",
+        "Exact eligibility, current assignments and active settings remain unknown."
+      ],
+      "source_definition_sha256": "eca08945d5ab9ce42fdf8c01403853dd3addf9a62075e31053e20732f7db87cf"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1082799265,
+      "qualified_name": "dbo.WRK_MonitorWorkGroupChartData",
+      "object_type": "P",
+      "object_type_desc": "SQL_STORED_PROCEDURE",
+      "business_domains": [
+        "work_execution",
+        "ui_and_reporting"
+      ],
+      "purpose": "Builds work-group chart and monitor summaries from filtered work state.",
+      "functional_roles": [
+        {
+          "role": "reporting_read_model",
+          "rationale": "Counts, grouped work units and estimated-time sums derive monitor measures.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        },
+        {
+          "role": "presentation_adapter",
+          "rationale": "Chart-oriented fields and additional summary measures shape results for the caller.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/1082799265.sql",
+          "sha256": "5a34e088b302084eeb2eae90fbfc0726d3a11cf9282f597ac5eab59d37d91e13",
+          "line_start": 17,
+          "line_end": 39,
+          "kind": "REDACTED_SQL",
+          "description": "Filter parameters feed chart counts and chart-oriented fields.",
+          "source_definition_sha256": "9f39d9614e0eb5eebcc4bb6ca304351d4e35a8f0ad00e6dad950ac84e308b92f",
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1082799265.sql",
+          "sha256": "5a34e088b302084eeb2eae90fbfc0726d3a11cf9282f597ac5eab59d37d91e13",
+          "line_start": 46,
+          "line_end": 72,
+          "kind": "REDACTED_SQL",
+          "description": "Grouped totals and time-bounded closed-work count.",
+          "source_definition_sha256": "9f39d9614e0eb5eebcc4bb6ca304351d4e35a8f0ad00e6dad950ac84e308b92f",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "SDK",
+          "article_id": "2f1e464b919bbe6d9db8cf9f7a2eb6d5cfd5866b662fd85c0ef3c9c02005b000",
+          "original_sha256": "8ffbb7c80b927b1c7e10e600060b6bf4e40ee562531deb705745193a32d6fd60",
+          "node_id": "n97",
+          "json_path": "SDK/data/articles/2f1e464b919bbe6d9db8cf9f7a2eb6d5cfd5866b662fd85c0ef3c9c02005b000.json",
+          "reading_path": "SDK/reading/2f1e464b919bbe6d9db8cf9f7a2eb6d5cfd5866b662fd85c0ef3c9c02005b000.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        },
+        {
+          "module": "SDK",
+          "article_id": "87805cd9111e0fa780af41745eecaec6f7c342121195d2ac78cb63c28ef7c81d",
+          "original_sha256": "2f49af19756f38aecc2463a8a035e73514d56694fdb1664cb313b4cb06d8fef7",
+          "node_id": "n56",
+          "json_path": "SDK/data/articles/87805cd9111e0fa780af41745eecaec6f7c342121195d2ac78cb63c28ef7c81d.json",
+          "reading_path": "SDK/reading/87805cd9111e0fa780af41745eecaec6f7c342121195d2ac78cb63c28ef7c81d.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "Arguments, current rows and redacted conditions determine counts; no actual monitor result or user visibility was observed."
+      ],
+      "source_definition_sha256": "9f39d9614e0eb5eebcc4bb6ca304351d4e35a8f0ad00e6dad950ac84e308b92f"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1633753223,
+      "qualified_name": "dbo.SHP_InsightDetailPaneData",
+      "object_type": "P",
+      "object_type_desc": "SQL_STORED_PROCEDURE",
+      "business_domains": [
+        "shipping",
+        "ui_and_reporting"
+      ],
+      "purpose": "Builds shipment result sets for the documented DetailPane example.",
+      "functional_roles": [
+        {
+          "role": "reporting_read_model",
+          "rationale": "Header, container count, dock and detail scalars are read from shipping objects.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        },
+        {
+          "role": "presentation_adapter",
+          "rationale": "Four result sets package values for a DetailPane-style caller.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/1633753223.sql",
+          "sha256": "91be70e93fcaf6cd46bdc9ff8ae8fb5923ba31e252460dcaf62dd1e520a7342c",
+          "line_start": 40,
+          "line_end": 75,
+          "kind": "REDACTED_SQL",
+          "description": "Header/container reads and dock assignment/lookup.",
+          "source_definition_sha256": "78364f898a329680b446b42f8071be5d2d79484a1592c4108f91a36096650147",
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/1633753223.sql",
+          "sha256": "91be70e93fcaf6cd46bdc9ff8ae8fb5923ba31e252460dcaf62dd1e520a7342c",
+          "line_start": 78,
+          "line_end": 90,
+          "kind": "REDACTED_SQL",
+          "description": "Final detail-derived result set and procedure end.",
+          "source_definition_sha256": "78364f898a329680b446b42f8071be5d2d79484a1592c4108f91a36096650147",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "SDK",
+          "article_id": "35cdfcbe2823f6394fe2644f35985b4dd4c0b5f9cf4e66f1d6d0d8f7fa5b8339",
+          "original_sha256": "6c46ec3389ead3049deb0ff074e7dad5e36fa23163455fd4aa8613a44804200a",
+          "node_id": "n80",
+          "json_path": "SDK/data/articles/35cdfcbe2823f6394fe2644f35985b4dd4c0b5f9cf4e66f1d6d0d8f7fa5b8339.json",
+          "reading_path": "SDK/reading/35cdfcbe2823f6394fe2644f35985b4dd4c0b5f9cf4e66f1d6d0d8f7fa5b8339.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "The dock-assignment statement lacks a shipment filter; functional impact was not tested.",
+        "Screen activation and exact rendered labels are not established."
+      ],
+      "source_definition_sha256": "78364f898a329680b446b42f8071be5d2d79484a1592c4108f91a36096650147"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 901226611,
+      "qualified_name": "dbo.MetaTrans_GetPrintSelectedDocuments",
+      "object_type": "P",
+      "object_type_desc": "SQL_STORED_PROCEDURE",
+      "business_domains": [
+        "ui_and_reporting",
+        "shipping",
+        "configuration"
+      ],
+      "purpose": "Returns candidate print documents and defaults for an application printing flow.",
+      "functional_roles": [
+        {
+          "role": "presentation_adapter",
+          "rationale": "User printer defaults, process branches and document eligibility build print-selection data.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        },
+        {
+          "role": "reporting_read_model",
+          "rationale": "The reviewed statements read profile/document/feature information; they do not establish external print execution.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/901226611.sql",
+          "sha256": "5e4b1a969339ecb9c4eb7ad07570b13ff9cc514233bf15e2bc889f2706dd583f",
+          "line_start": 16,
+          "line_end": 43,
+          "kind": "REDACTED_SQL",
+          "description": "Arguments and document/label-printer defaults feed a process branch.",
+          "source_definition_sha256": "3666927fec11eb02d5779ecb9683a8fd53077a15405f6587ff1b74659f4ecc13",
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/901226611.sql",
+          "sha256": "5e4b1a969339ecb9c4eb7ad07570b13ff9cc514233bf15e2bc889f2706dd583f",
+          "line_start": 282,
+          "line_end": 300,
+          "kind": "REDACTED_SQL",
+          "description": "Document/feature conditions determine eligible/default selections.",
+          "source_definition_sha256": "3666927fec11eb02d5779ecb9683a8fd53077a15405f6587ff1b74659f4ecc13",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "SDK",
+          "article_id": "b3abb86eef566392ab2aa6ce2b5f576ef52ba0a341213b3ff03625d30c4a5a7b",
+          "original_sha256": "08d6d2caff7838953e546693c975e85ced3dd716046be663dd9a300de12931fe",
+          "node_id": "n61",
+          "json_path": "SDK/data/articles/b3abb86eef566392ab2aa6ce2b5f576ef52ba0a341213b3ff03625d30c4a5a7b.json",
+          "reading_path": "SDK/reading/b3abb86eef566392ab2aa6ce2b5f576ef52ba0a341213b3ff03625d30c4a5a7b.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "Selection data is not proof a printer received a job; profile values, labels and active features were not read."
+      ],
+      "source_definition_sha256": "3666927fec11eb02d5779ecb9683a8fd53077a15405f6587ff1b74659f4ecc13"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 696701880,
+      "qualified_name": "dbo.fn_GetMonitorFilterParameters",
+      "object_type": "TF",
+      "object_type_desc": "SQL_TABLE_VALUED_FUNCTION",
+      "business_domains": [
+        "ui_and_reporting"
+      ],
+      "purpose": "Parses monitor-filter input into a tabular parameter representation.",
+      "functional_roles": [
+        {
+          "role": "utility_transform",
+          "rationale": "String slicing, delimiter searches and table-variable insertion convert input into filterName/filterValue rows.",
+          "evidence_ids": [
+            "E1",
+            "E2"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/696701880.sql",
+          "sha256": "a791255fa4c57ea50523da58aaf70dee7debfd5714a3b89c68186fab24e07b9a",
+          "line_start": 12,
+          "line_end": 16,
+          "kind": "REDACTED_SQL",
+          "description": "Declared name/value return table.",
+          "source_definition_sha256": "6a84305decd91c089def46c688ab6b14bdff8047447004738868e761ea3ab38d",
+          "evidence_id": "E1"
+        },
+        {
+          "path": "DB Architecture/sql/696701880.sql",
+          "sha256": "a791255fa4c57ea50523da58aaf70dee7debfd5714a3b89c68186fab24e07b9a",
+          "line_start": 27,
+          "line_end": 76,
+          "kind": "REDACTED_SQL",
+          "description": "Looping string slices and parsed-row insertion.",
+          "source_definition_sha256": "6a84305decd91c089def46c688ab6b14bdff8047447004738868e761ea3ab38d",
+          "evidence_id": "E2"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "SDK",
+          "article_id": "2f1e464b919bbe6d9db8cf9f7a2eb6d5cfd5866b662fd85c0ef3c9c02005b000",
+          "original_sha256": "8ffbb7c80b927b1c7e10e600060b6bf4e40ee562531deb705745193a32d6fd60",
+          "node_id": "n59",
+          "json_path": "SDK/data/articles/2f1e464b919bbe6d9db8cf9f7a2eb6d5cfd5866b662fd85c0ef3c9c02005b000.json",
+          "reading_path": "SDK/reading/2f1e464b919bbe6d9db8cf9f7a2eb6d5cfd5866b662fd85c0ef3c9c02005b000.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        },
+        {
+          "module": "SDK",
+          "article_id": "d02698ca3a71f70fbe7de20ededd5e3cff4c2342427d70c3fd0da1da8b7211ce",
+          "original_sha256": "0608ab99bde6d7a560308093f5137f2f4d46cfc6f441f58ff56086c120ea4d8c",
+          "node_id": "n66",
+          "json_path": "SDK/data/articles/d02698ca3a71f70fbe7de20ededd5e3cff4c2342427d70c3fd0da1da8b7211ce.json",
+          "reading_path": "SDK/reading/d02698ca3a71f70fbe7de20ededd5e3cff4c2342427d70c3fd0da1da8b7211ce.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "Redacted delimiters prevent a complete parser grammar or verified input-validation contract."
+      ],
+      "source_definition_sha256": "6a84305decd91c089def46c688ab6b14bdff8047447004738868e761ea3ab38d"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1000702963,
+      "qualified_name": "dbo.GetWarehouseTimezoneValue",
+      "object_type": "FN",
+      "object_type_desc": "SQL_SCALAR_FUNCTION",
+      "business_domains": [
+        "configuration",
+        "shared_reference"
+      ],
+      "purpose": "Converts a timestamp using a warehouse timezone setting.",
+      "functional_roles": [
+        {
+          "role": "utility_transform",
+          "rationale": "The function supplies a default time, reads warehouse timezone and transforms the date through AT TIME ZONE.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/1000702963.sql",
+          "sha256": "6b5bdff46dfcee6ee4cf96dd5356cf4034277711d5b7749bcdb558dab325a3e4",
+          "line_start": 13,
+          "line_end": 26,
+          "kind": "REDACTED_SQL",
+          "description": "Inputs, default time, WAREHOUSE lookup and transformed return.",
+          "source_definition_sha256": "6f264491b5ea0bf792fd3243a00196414237a5791c66fdd12d8a225cc3bb3a77",
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "The base timezone literal is redacted; current values, missing-warehouse behavior and DST outcomes were not executed or verified."
+      ],
+      "source_definition_sha256": "6f264491b5ea0bf792fd3243a00196414237a5791c66fdd12d8a225cc3bb3a77"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 720057651,
+      "qualified_name": "dbo.RECEIPT_HEADER_A_I",
+      "object_type": "TR",
+      "object_type_desc": "SQL_TRIGGER",
+      "business_domains": [
+        "receiving"
+      ],
+      "purpose": "Adds trailer-yard linking behavior when receipt headers are inserted.",
+      "functional_roles": [
+        {
+          "role": "event_handler",
+          "rationale": "The definition attaches AFTER INSERT behavior to RECEIPT_HEADER.",
+          "evidence_ids": [
+            "E1"
+          ]
+        },
+        {
+          "role": "transactional_mutation",
+          "rationale": "A joined UPDATE sets trailer-yard association and receipt-header stamps.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/720057651.sql",
+          "sha256": "b30f95dbe9d69a2adcf3cdd7fa26dc0a986685c363af5b0236683bf888c28f05",
+          "line_start": 3,
+          "line_end": 29,
+          "kind": "REDACTED_SQL",
+          "description": "Trigger event, inserted-row predicate and joined header update.",
+          "source_definition_sha256": "303fc1c5908ab4733761d50c9252f107ab4c8ae7626efcc0bd28f8e09b8df020",
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "The inserted-row gate and update scope must be assessed together; execution and operational matching were not tested."
+      ],
+      "source_definition_sha256": "303fc1c5908ab4733761d50c9252f107ab4c8ae7626efcc0bd28f8e09b8df020"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 800057936,
+      "qualified_name": "dbo.work_instruction_outgoing_pd",
+      "object_type": "TR",
+      "object_type_desc": "SQL_TRIGGER",
+      "business_domains": [
+        "work_execution"
+      ],
+      "purpose": "Sets outgoing location metadata during work-instruction insertion.",
+      "functional_roles": [
+        {
+          "role": "event_handler",
+          "rationale": "The definition attaches AFTER INSERT behavior to WORK_INSTRUCTION.",
+          "evidence_ids": [
+            "E1"
+          ]
+        },
+        {
+          "role": "transactional_mutation",
+          "rationale": "A qualifying-row test gates an UPDATE for joined inserted instruction IDs.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/800057936.sql",
+          "sha256": "d55cbece6b3a1cc82e21c2db9d075e9d74a8aff3c79a8cf3bda6fb571cbad664",
+          "line_start": 2,
+          "line_end": 17,
+          "kind": "REDACTED_SQL",
+          "description": "Trigger event, qualifying-row count and update join.",
+          "source_definition_sha256": "155f13a60fb914314716a9481a9740979b7a1db7521ab805aa47dce41220be7f",
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "The initial gate does not restrict the UPDATE to only qualifying rows; this is static evidence, not a reproduced multi-row defect."
+      ],
+      "source_definition_sha256": "155f13a60fb914314716a9481a9740979b7a1db7521ab805aa47dce41220be7f"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 172579703,
+      "qualified_name": "dbo.WORK_INSTRUCTION_VIEW",
+      "object_type": "V",
+      "object_type_desc": "VIEW",
+      "business_domains": [
+        "work_execution",
+        "ui_and_reporting"
+      ],
+      "purpose": "Combines two work-instruction storage sources into one read surface.",
+      "functional_roles": [
+        {
+          "role": "reporting_read_model",
+          "rationale": "UNION ALL exposes WORK_INSTRUCTION and IA_WORK_INSTRUCTION through a common view.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/172579703.sql",
+          "sha256": "f8ad80899fdf8de790c7a4e5df028bf9981cc3f774a55f1a3f99538f86e109c2",
+          "line_start": 5,
+          "line_end": 9,
+          "kind": "REDACTED_SQL",
+          "description": "Complete UNION ALL definition.",
+          "source_definition_sha256": "8e8dadbd10a8e2f71f85701252fe2cec66c136c883e63de03dc7a6277e777a9d",
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [],
+      "inference_limits": [
+        "The view does not deduplicate; IA_WORK_INSTRUCTION retention/lifecycle and row disjointness are not established."
+      ],
+      "source_definition_sha256": "8e8dadbd10a8e2f71f85701252fe2cec66c136c883e63de03dc7a6277e777a9d"
+    },
+    {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 2032062325,
+      "qualified_name": "dbo.SHIPMENT_HEADER_VIEW",
+      "object_type": "V",
+      "object_type_desc": "VIEW",
+      "business_domains": [
+        "shipping",
+        "ui_and_reporting"
+      ],
+      "purpose": "Provides shipment-header reads enriched with detail/container aggregates.",
+      "functional_roles": [
+        {
+          "role": "reporting_read_model",
+          "rationale": "A header projection joins aggregate detail and parent-container totals.",
+          "evidence_ids": [
+            "E1"
+          ]
+        }
+      ],
+      "review_state": "STATIC_EVIDENCE_REVIEWED",
+      "review_scope": "BOUNDED_FUNCTIONAL_ROLE_ONLY",
+      "review_basis": "SELECTED_IMPLEMENTATION_STATEMENTS",
+      "confidence": "HIGH_FOR_STATED_STRUCTURAL_ROLE",
+      "operational_execution_verified": false,
+      "evidence": [
+        {
+          "path": "DB Architecture/sql/2032062325.sql",
+          "sha256": "f7fa46262701aacff5832542d3c3132abdd77e2968c8eceb83a90d01f9c1b2c6",
+          "line_start": 206,
+          "line_end": 227,
+          "kind": "REDACTED_SQL",
+          "description": "Header and grouped detail/parent-container joins.",
+          "source_definition_sha256": "36084903723b6b4976ecce27eb9329e5cde1e6d420be7abb67a2971d6bb3b10d",
+          "evidence_id": "E1"
+        }
+      ],
+      "vendor_identifier_references": [
+        {
+          "module": "SDK",
+          "article_id": "35cdfcbe2823f6394fe2644f35985b4dd4c0b5f9cf4e66f1d6d0d8f7fa5b8339",
+          "original_sha256": "6c46ec3389ead3049deb0ff074e7dad5e36fa23163455fd4aa8613a44804200a",
+          "node_id": "n80",
+          "json_path": "SDK/data/articles/35cdfcbe2823f6394fe2644f35985b4dd4c0b5f9cf4e66f1d6d0d8f7fa5b8339.json",
+          "reading_path": "SDK/reading/35cdfcbe2823f6394fe2644f35985b4dd4c0b5f9cf4e66f1d6d0d8f7fa5b8339.md",
+          "evidence_type": "EXACT_IDENTIFIER_MENTION_ONLY",
+          "semantic_equivalence": "NOT_ESTABLISHED"
+        }
+      ],
+      "inference_limits": [
+        "NOLOCK hints are present; result consistency and reporting performance were not measured."
+      ],
+      "source_definition_sha256": "36084903723b6b4976ecce27eb9329e5cde1e6d420be7abb67a2971d6bb3b10d"
+    }
+  ]
+}

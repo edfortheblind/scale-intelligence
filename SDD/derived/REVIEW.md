@@ -1,0 +1,972 @@
+# SDD product distinctions and reviewed findings
+
+Only cited portions are reviewed. Full source hashes and exact nodes are in [reviewed-knowledge.json](reviewed-knowledge.json). Later visual/table evidence is an overlay; retained extraction JSON keeps its extraction-time exceptions. See [coverage](REVIEW_COVERAGE.md) and [logical-table audit](TABLE_REVIEW.md).
+
+## Product and document identity
+
+- **SCALE** (`sdd-61bfda888fe30365`): Not established in supplied body; Not established. Training compilation; no exact SCALE release established. Do not inherit a release from nearby files. Sources: [sdd-61bfda888fe30365 b00001, b00002, b00003](reading/sdd-61bfda888fe30365.md#b00001)
+- **SCALE 2020** (`sdd-f46806ef53e15f07`): Revision history ends 1.1; Cover 7 January 2026; revision history 29 July 2023. Cover date and revision history differ; neither makes this a SCALE 2026 guide. Sources: [sdd-f46806ef53e15f07 b00001](reading/sdd-f46806ef53e15f07.md#b00001); [sdd-f46806ef53e15f07 b00006](reading/sdd-f46806ef53e15f07.md#b00006); [sdd-f46806ef53e15f07 b00010](reading/sdd-f46806ef53e15f07.md#b00010)
+- **SCALE 2021** (`sdd-56008a31665dcc23`): Not established; Not established. Slide 3 names SCALE 2021, but slide 44 mixes ILS 2016 and 2021 paths and the deck uses older screenshot/footer dates. Treat as mixed-era training; no document revision or uniform example release established. Sources: [sdd-56008a31665dcc23 s001-sh003, s003-sh003](reading/sdd-56008a31665dcc23.md#s001-sh003); [sdd-56008a31665dcc23 s044-sh004](reading/sdd-56008a31665dcc23.md#s044-sh004)
+- **Manhattan Active SCALE** (`sdd-d4675a92502c23f4`): Not established; Printed 13 August 2026 10:39 AM. Print timestamp is not release date; page 2 limits publishing guidance to Manhattan Active SCALE. Sources: [sdd-d4675a92502c23f4 p001-b001, p001-b006, p002-b004](reading/sdd-d4675a92502c23f4.md#p001-b001)
+- **Manhattan Active SCALE** (`sdd-c4c7e01f8ccad48a`): 1.4; Modified 31 August 2023. Document version is separate from product release. Implementation design, not this deployment. Sources: [sdd-c4c7e01f8ccad48a b00010](reading/sdd-c4c7e01f8ccad48a.md#b00010); [sdd-c4c7e01f8ccad48a b00019](reading/sdd-c4c7e01f8ccad48a.md#b00019); [sdd-c4c7e01f8ccad48a b00153](reading/sdd-c4c7e01f8ccad48a.md#b00153); [sdd-c4c7e01f8ccad48a b02436](reading/sdd-c4c7e01f8ccad48a.md#b02436)
+- **Manhattan Active SCALE** (`sdd-1c25f20de1eafc3e`): Conflict: cover 1.0; revision history ends 1.3; Modified 10 December 2024. Version conflict retained. Filename agrees with revision history, but cover remains 1.0. Sources: [sdd-1c25f20de1eafc3e p001-b006, p001-b010, p001-b013, p005-b010, p118-t002](reading/sdd-1c25f20de1eafc3e.md#p001-b006)
+- **Manhattan Active SCALE** (`sdd-d50ca4a96095c930`): 1.5; Modified 3 September 2024. Implementation design, not this deployment. Sources: [sdd-d50ca4a96095c930 p001-b004, p001-b007, p001-b010, p010-b003](reading/sdd-d50ca4a96095c930.md#p001-b004)
+- **Manhattan Active Warehouse Management (MAWM)** (`sdd-de62bfaf88f5d35b`): 2.11; Revision history 29 April 2025. MAWM is a separate product. No SCALE behavioral equivalence inferred. Duplicate original indexed once. Sources: [sdd-de62bfaf88f5d35b b00005](reading/sdd-de62bfaf88f5d35b.md#b00005); [sdd-de62bfaf88f5d35b b00422](reading/sdd-de62bfaf88f5d35b.md#b00422)
+
+## Reviewed claims
+
+### work-monitor
+
+Work Insight groups work by Open, In Progress and Closed and supports reviewing work-unit details.
+
+Two implementation documents describe this behavior; actual screen content and deployed counts are unobserved. Classification: `vendor_behavior`.
+
+[sdd-c4c7e01f8ccad48a b01632](reading/sdd-c4c7e01f8ccad48a.md#b01632); [sdd-d50ca4a96095c930 p071-b003](reading/sdd-d50ca4a96095c930.md#p071-b003)
+
+### covetrus-auto-putaway-timing
+
+The Covetrus SDD warns that automatic putaway can record put confirmation before travel to the destination finishes, excluding that travel from labor-analysis transactions.
+
+An implementation-specific documented concern, not measured timing or a defect established in this deployment. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b02100](reading/sdd-c4c7e01f8ccad48a.md#b02100)
+
+### covetrus-cycle-tolerance
+
+The Covetrus design specifies zero cycle-count tolerances by default, sending discrepancies to review, while a later note calls for positive tolerances to be revisited.
+
+Do not present the design value or unresolved note as active assessed configuration. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01054, b01055, b01056](reading/sdd-c4c7e01f8ccad48a.md#b01054)
+
+### grupo-cycle-tolerance-conflict
+
+The Grupo Julio SDD states current cycle-count tolerance 9999 should be reviewed, then describes a planned zero tolerance requiring reconciliation.
+
+Current-versus-intended distinction within that design is unresolved; neither value applies to the assessed deployment. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p094-b004, p095-b002](reading/sdd-d50ca4a96095c930.md#p094-b004)
+
+### knipper-cart
+
+The Knipper design describes user-built carts, one work unit per shipping container, and serial capture for serial-tracked items.
+
+Named implementation and custom extensions; no equivalence to deployed cart settings established. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p093-b012, p094-b003](reading/sdd-1c25f20de1eafc3e.md#p093-b012)
+
+### land-product-boundary
+
+The LAND design is Manhattan Active Warehouse Management and its latest revision-history entry is 2.11 dated 29 April 2025.
+
+Retain as MAWM comparison material. No SCALE configuration recommendation derives from it. Classification: `implementation_specific_choice`.
+
+[sdd-de62bfaf88f5d35b b00005](reading/sdd-de62bfaf88f5d35b.md#b00005); [sdd-de62bfaf88f5d35b b00422](reading/sdd-de62bfaf88f5d35b.md#b00422)
+
+### label-prerequisites
+
+The SCALE 2021 label deck lists a label file, sometimes a stored procedure, document type, document, routing, optional wave label step, and 203-dpi-compatible printer as label-generation requirements.
+
+Version-specific training. No local print, installed file, printer support or label execution verified. Classification: `vendor_behavior`.
+
+[sdd-56008a31665dcc23 s007-sh004](reading/sdd-56008a31665dcc23.md#s007-sh004)
+
+### insight-publish-boundary
+
+The Insight Architect document describes Stage-to-Production publishing and expressly limits that note to Manhattan Active SCALE users.
+
+Documentation-only association for the future screen register. No UI navigation, publication or deployment performed. Classification: `vendor_behavior`.
+
+[sdd-d4675a92502c23f4 p002-b002, p002-b003, p002-b004](reading/sdd-d4675a92502c23f4.md#p002-b002)
+
+### configuration-order
+
+The HADDAD guide recommends a dependency-aware configuration order while explicitly saying its exact order is not compulsory.
+
+SCALE 2020 example; not a universal migration or activation procedure. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00016, b00017](reading/sdd-f46806ef53e15f07.md#b00016)
+
+### cart-removal-preconditions
+
+The compilation says removing a container clears its group ID and spot; work must be open, grouped and unassigned to a user.
+
+Documented preconditions only; no operational removal performed. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00317, b00318](reading/sdd-61bfda888fe30365.md#b00317)
+
+### cart-grouping-exceptions
+
+Cart grouping excludes serial-number-tracked and catch-weight-tracked items; partial or short picks ungroup batched instructions.
+
+Version-unspecified compilation. Do not infer that every cart method supports the same grouping. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00331, b00332, b00333, b00334, b00337, b00338](reading/sdd-61bfda888fe30365.md#b00331)
+
+### label-contents-timing
+
+The training deck says container-contents labels can print automatically during container creation or manually from Shipping Container Insight after packing.
+
+Training behavior only; no printing or local printer configuration verified. Classification: `vendor_behavior`.
+
+[sdd-56008a31665dcc23 s011-sh005](reading/sdd-56008a31665dcc23.md#s011-sh005)
+
+### label-template-pipeline
+
+The deck shows label-schema connections to stored procedures and field substitutions inside label templates. Its shorthand statement that ZPL pulls SQL data does not establish direct printer-to-database access.
+
+Inference from visible source examples; exact SCALE substitution/runtime contract is not established. No SQL sample is accepted as executable. Classification: `analyst_inference`.
+
+[sdd-56008a31665dcc23 s021-sh004, s036-sh004, s038-sh004](reading/sdd-56008a31665dcc23.md#s021-sh004)
+
+### insight-delete-effect
+
+Deleting a custom Insight screen removes its related configuration records and activates the related base Insight screen.
+
+Documentation-only behavior. No screen was deleted and no deployment state is asserted. Classification: `vendor_behavior`.
+
+[sdd-d4675a92502c23f4 p001-b012, p001-b013](reading/sdd-d4675a92502c23f4.md#p001-b012)
+
+### covetrus-replenishment-strategy-conflict
+
+Covetrus prose names most-available-first for non-lot replenishment, but its following non-lot table lists First In, First Out.
+
+Unresolved source conflict; neither strategy is selected as authoritative. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01144, b01155](reading/sdd-c4c7e01f8ccad48a.md#b01144)
+
+### knipper-replenishment-strategy-conflict
+
+Knipper page 57 prose names most-available-first for non-lot replenishment; page 58 non-lot tables specify First In, First Out.
+
+Visual comparison confirms source disagreement. No default or deployed allocation strategy is inferred. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p057-b003, p058-t005, p058-t006](reading/sdd-1c25f20de1eafc3e.md#p057-b003)
+
+### knipper-appendix-not-completeness
+
+Knipper Appendix A says no key configuration change was identified to the existing workflow, while the body includes future wave-building and configuration choices.
+
+The appendix does not establish that all body proposals were implemented or that no configuration review remains. Classification: `analyst_inference`.
+
+[sdd-1c25f20de1eafc3e p114-b007, p071-b022, p071-b026](reading/sdd-1c25f20de1eafc3e.md#p114-b007)
+
+### grupo-nonuse-boundary
+
+Grupo Julio includes general descriptions of replenishment and bills of material but explicitly says neither replenishment nor Bill of Materials is used in its operation.
+
+General documentation in an SDD does not establish implementation use. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p097-b004, p097-b005, p097-b006, p097-b007](reading/sdd-d50ca4a96095c930.md#p097-b004)
+
+### grupo-wave-flow-variation
+
+The Grupo Julio design lists ten named wave flows with different step sequences; wave master links flow, replenishment master and paperwork master.
+
+Use reviewed logical tables for complete split-page sequences. Names and custom steps are implementation-specific. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p054-b003, p054-t001, p055-t002, p055-t003, p056-t002, p057-t002, p057-t003, p058-t002](reading/sdd-d50ca4a96095c930.md#p054-b003)
+
+### mawm-work-release-engines
+
+LAND MAWM describes Capacity Manager prioritizing resource capacity and Task Release Manager generating/releasing tasks, with a work-release scheduler. Its MHE tasks start Held pending vendor readiness messaging.
+
+MAWM-specific source and AU03 implementation assumption. This is not evidence for SCALE work execution. Classification: `implementation_specific_choice`.
+
+[sdd-de62bfaf88f5d35b b02661, b02662, b02663, b02664, b02665, b02666, b02669](reading/sdd-de62bfaf88f5d35b.md#b02661)
+
+## Diagram and screenshot text descriptions
+
+### Work creation configuration
+
+The wizard proceeds through work creation information, work types, process, criteria and maximums, then finishes. Arrows show this order; they do not prove installed navigation.
+
+Description covers visible meaning; source version and deployment applicability limits remain. No live screen acceptance.
+
+[sdd-61bfda888fe30365 b00007](reading/sdd-61bfda888fe30365.md#b00007)
+
+### Work profile configuration
+
+The profile sequence covers identity, authorized users and warehouses, assignments, zones and sequence records. Adding a sequence covers work types, container picking, assignment, picking and putaway options, success message, then returns to summary and finish.
+
+Description covers visible meaning; source version and deployment applicability limits remain. No live screen acceptance.
+
+[sdd-61bfda888fe30365 b00053](reading/sdd-61bfda888fe30365.md#b00053)
+
+### Work special handling
+
+The flow covers user filter, work types, work zones, two verification groups, picking, override pick, cycle counting and summary.
+
+Description covers visible meaning; source version and deployment applicability limits remain. No live screen acceptance.
+
+[sdd-61bfda888fe30365 b00086](reading/sdd-61bfda888fe30365.md#b00086)
+
+### Work creation flow
+
+System orders creation masters by priority, tests each work request against a master and tries the next master when it does not fit. After requests are associated, ordering attributes sort them, instruction numbers are assigned and work units are created.
+
+Description covers visible meaning; source version and deployment applicability limits remain. No live screen acceptance.
+
+[sdd-61bfda888fe30365 b00702](reading/sdd-61bfda888fe30365.md#b00702)
+
+### Example ordering table
+
+The screenshot lists SHIPMENT_ID, PICK_LOC and ITEM in ascending order. Create Work Unit is Y for SHIPMENT_ID and N for the other two. These are example criteria, not deployment settings.
+
+Description covers visible meaning; source version and deployment applicability limits remain. No live screen acceptance.
+
+[sdd-61bfda888fe30365 b00728](reading/sdd-61bfda888fe30365.md#b00728)
+
+### Non RF work execution
+
+System generates pick lists. An employee receives a list, moves stock from source to destination and optionally records timestamps when available. The completed list goes to a supervisor, who confirms work in Work Insight.
+
+Description covers visible meaning; source version and deployment applicability limits remain. No live screen acceptance.
+
+[sdd-61bfda888fe30365 b00753](reading/sdd-61bfda888fe30365.md#b00753)
+
+### RF work execution
+
+The flow begins with a default or selected profile, then sequence details and system, user or group-user initiation. Eligibility and assignment precede picking. Short, over and partial picks branch separately. Automatic putaway bypasses manual putaway confirmation; optional nesting follows where applicable. Work and profile-sequence loops continue until no work remains.
+
+Description covers visible meaning; source version and deployment applicability limits remain. No live screen acceptance.
+
+[sdd-61bfda888fe30365 b00814](reading/sdd-61bfda888fe30365.md#b00814)
+
+### Picking management
+
+A picker selects a work zone and signs or scans onto available work. Work is assigned, optionally printed and confirmed through start/complete picking. The picker may unassign or hold. At logoff, remaining instructions become available to the next picker; the container proceeds to another zone until all instructions are executed.
+
+Description covers visible meaning; source version and deployment applicability limits remain. No live screen acceptance.
+
+[sdd-61bfda888fe30365 b00867](reading/sdd-61bfda888fe30365.md#b00867)
+
+### System directed work selection
+
+The flow filters available work by priority when that assignment method applies, prefers work already assigned to the user, considers work ahead versus behind the current location, and chooses priority/location/FIFO, location/priority/FIFO or FIFO. It assigns the selected instruction's work unit, retries if assignment fails and returns work in sequence order. Diagram annotations describe concurrency intent, not a proven deployed guarantee.
+
+Description covers visible meaning; source version and deployment applicability limits remain. No live screen acceptance.
+
+[sdd-61bfda888fe30365 b00875](reading/sdd-61bfda888fe30365.md#b00875)
+
+### Document configuration example
+
+The screenshot associates a named document with a document type and template and selects SCALE label output. The displayed template and values are examples. This is one extracted image, not a rendered whole slide.
+
+Description covers visible meaning; source version and deployment applicability limits remain. No live screen acceptance.
+
+[sdd-56008a31665dcc23 s004-sh003](reading/sdd-56008a31665dcc23.md#s004-sh003)
+
+### Document routing example
+
+The routing screenshot shows warehouse, company, customer, ship-to, carrier/service, work type, user and machine criteria. Visible sample values are not inherited as current configuration. The routing selection tab is present but its contents are not visible in this image.
+
+Description covers visible meaning; source version and deployment applicability limits remain. No live screen acceptance.
+
+[sdd-56008a31665dcc23 s006-sh005](reading/sdd-56008a31665dcc23.md#s006-sh005)
+
+### HADDAD receiving dependency diagram
+
+Locations and zones feed locating selection and putaway location groups. Locating selection feeds locating rules; items feed assignment criteria; both join at location-rule assignment. Work group feeds work type and receiving preferences, alongside receipt ID type. Dotted connections lead from rule assignment and preferences to work. Disposition codes appear as a separate configuration box. Arrows express configuration relationships, not database foreign keys.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-f46806ef53e15f07 b00221](reading/sdd-f46806ef53e15f07.md#b00221)
+
+### HADDAD work dependency diagram
+
+Receipt, shipment-allocation and replenishment criteria feed a work creation master. Work type also feeds that master; work profile and special handling connect to work type. This diagram summarizes dependencies rather than execution ordering.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-f46806ef53e15f07 b00317](reading/sdd-f46806ef53e15f07.md#b00317)
+
+### HADDAD wave dependency diagram
+
+Wave master connects to criteria, optional maximums, wave flow, replenishment master and container-creation criteria. Wave steps and override data feed flow; allocation also connects to flow. Custom status flow connects to overrides and dock management flow. Carrier/service and locations/zones feed dock carrier assignment and then dock flow. Container type is shown independently.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-f46806ef53e15f07 b00470](reading/sdd-f46806ef53e15f07.md#b00470)
+
+### HADDAD replenishment quantity and process diagram
+
+The illustration depicts demand quantity minus available quantity as requested quantity. Demand sources are capacity, top-off, wave and pool, filtered by item criteria. Location criteria determine available inventory. Strategy fills, rounds up or rounds down requested quantity; allocation precedes locating, which uses regular and then empty-location criteria. This is conceptual, not a certified numeric implementation.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-f46806ef53e15f07 b00583](reading/sdd-f46806ef53e15f07.md#b00583)
+
+### Covetrus Cycle Count Plan Insight example
+
+The screen shows plan/date/warehouse filters, an include-released-plans switch, summary tiles for plans, requests, in-review, open and closed, and a plan grid with created/completed dates and count/status columns. Counts and warehouse identifiers belong only to the supplied screenshot.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-c4c7e01f8ccad48a b01023](reading/sdd-c4c7e01f8ccad48a.md#b01023)
+
+### MAWM non-cubed criteria example
+
+One screenshot shows Non-Cubed Strategy with an active cube-to-capacity criteria. The next explicitly shows Residual Cubing Enabled set to No and later wizard stages disabled. This supports the adjacent LAND non-cubed example only.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified. MAWM only; no SCALE equivalence.
+
+[sdd-de62bfaf88f5d35b b02654, b02657](reading/sdd-de62bfaf88f5d35b.md#b02654)
+
+### MAWM pre-VAS production-order overview
+
+Swimlanes distinguish order management, SAP, MAWM, opening station and SAP manufacturing. SAP creates/releases a production order; MAWM waves and bulk-picks it. Branches route to site-specific staging or sorting, then descriptor labeling and outbound putaway. Outsourced versus in-house VAS changes confirmation handling before SAP goods issue and VAS. This description covers visible major branches; small labels and every integration condition are not certified.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified. MAWM only; no SCALE equivalence.
+
+[sdd-de62bfaf88f5d35b b02180](reading/sdd-de62bfaf88f5d35b.md#b02180)
+
+### MAWM post-VAS goods-receipt overview
+
+Swimlanes distinguish SAP manufacturing, MAWM, SAP and carrier. Outsourced/large orders take bulk receiving; other orders branch into singles or multi-unit receiving. Goods-receipt PIX messages update SAP. Completed sales orders release outbound delivery to an MAWM sales-order wave, then pick/pack, shipping and ship confirmation. The diagram ends with SAP shipment/tracking/invoice and carrier delivery. Only major visible branches are described.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified. MAWM only; no SCALE equivalence.
+
+[sdd-de62bfaf88f5d35b b02183](reading/sdd-de62bfaf88f5d35b.md#b02183)
+
+### Label document type screenshot
+
+The example identifies Shipping Label type 160, label classification, Shipping Container data source and Shipping Label generator. Print procedures include shipping-container and wave-label contexts. These displayed identifiers are examples; the screenshot does not establish current values.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-56008a31665dcc23 s005-sh005](reading/sdd-56008a31665dcc23.md#s005-sh005)
+
+### Client-specific label ordering example
+
+The label-master criteria screenshot orders by shipping-container type and then shipment ID. The first ordering row creates a break label and the second does not. The surrounding client case explains container-type grouping and a count on the break label.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-56008a31665dcc23 s033-sh004, s034-sh004](reading/sdd-56008a31665dcc23.md#s033-sh004)
+
+### Label layout before/after example
+
+The paired labels show an enlarged ship-from block, a repositioned postal barcode and a customer-item line beneath SKU. It is a training example of layout changes, not evidence that the barcode scans or meets a current customer specification.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-56008a31665dcc23 s025-sh004, s029-sh003, s029-sh004, s029-sh005](reading/sdd-56008a31665dcc23.md#s025-sh004)
+
+### Label-schema connection example
+
+The break-label example binds a table alias to a named stored procedure and substitutes its container-type and count fields into label output. Some source screenshot lines are cropped. The source does not document the complete runtime that evaluates these substitutions.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-56008a31665dcc23 s036-sh004](reading/sdd-56008a31665dcc23.md#s036-sh004)
+
+### Grupo Julio receiving screen sequence
+
+The rendered page shows receiving menu, preference selection, receipt initiation, item/quantity entry, license-plate entry and successful check-in/locate. The caption says Recibo Importacion while the visible selected preference says Recibo Normal; preserve that illustration-label difference.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-d50ca4a96095c930 p034-b002](reading/sdd-d50ca4a96095c930.md#p034-b002)
+
+### Grupo Julio count execution screenshot
+
+The pictured sequence enters a work unit, location/check digit and quantity, then uses Done from the actions menu. The adjacent text separately describes Verify Bad Count and inconsistent current/planned tolerances; screenshots alone do not resolve those values.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-d50ca4a96095c930 p094-b002, p094-b004](reading/sdd-d50ca4a96095c930.md#p094-b002)
+
+### Knipper replenishment master example
+
+The screenshot selects Demand from wave and Automatic work creation. It displays a Heavy Case example with priority 5 and Pallet increment. The surrounding prose discusses case and pallet demand, and annotations raise quantity-rule questions; displayed example settings are not universal defaults.
+
+Static source illustration only; no live behavior, accessibility or deployed values verified.
+
+[sdd-1c25f20de1eafc3e p054-b003](reading/sdd-1c25f20de1eafc3e.md#p054-b003)
+
+## Unresolved review and fidelity
+
+- No source proves active settings or exact installed product release in the assessed deployment.
+- Knipper cover/version conflict; Grupo Julio cycle-count current/planned tolerance conflict; HADDAD cover/revision-date difference remain explicit.
+- Work/Picking compilation release is unspecified; all of its documented rules need version reconciliation.
+- MAWM design is excluded from SCALE behavior transfer until claim-specific evidence establishes applicability.
+- PDF detected tables include page-border false positives. Candidate tables must not be treated as certified logical tables.
+- Extracted source bodies include source examples and notices. No public redistribution or production search eligibility follows.
+- Only the listed claims, settings, product markers and visual descriptions received this semantic review; extracted nodes outside their citations remain unreviewed.
+- All 45 PPTX slides were visually reviewed after native read-only PowerPoint 16.0 export at 1440x1080. This is static-slide review, not animation, notes, reading-order or font-by-font certification. Several source code screenshots are clipped, notably slides 26, 28, 35 and 36; no complete executable example is inferred.
+- DOCX full-page fidelity remains unverified: native Word export failed to finish and produced no PDF. Selected extracted PNG/EMF assets received separate visual review. Untouched extraction JSON retains original extraction-time limitations; this review overlay records later evidence.
+- PDF prose, comment balloons and screenshots are distinct evidence. Knipper replenishment UOM annotations question body wording; Knipper and Covetrus non-lot strategy prose conflicts with their tables. These remain unresolved.
+- HADDAD b00164 says multiple UMs cannot be created for an item, while surrounding template/item-UM discussion is ambiguous. This sentence is not promoted as a configuration rule.
+- The label deck slide 30 contains incomplete-looking SQL examples ending with AND before a closing delimiter. Embedded code and direct-printer SQL semantics are not validated; source references to external label services were not followed or uploaded to.
+- Reviewed logical-table overlays preserve split-page continuity and blank cells only for the enumerated tables. All other PDF candidates remain unreviewed.
+
+## PDF continuation — 2026-09-30
+
+Ten new bounded claims and nine visual descriptions supplement the earlier review. Existing claim records are unchanged. PDF strike-through and extraction corrections are documented in the table overlay; no source receives production-index eligibility.
+
+### grupo-receipt-type-validation
+
+Grupo Julio distinguishes Receipt ID Type from the free-format Receipt Type field; the design says SCALE does not validate Receipt Type. REC NAC maps to Receipt Type OC in its example.
+
+[sdd-d50ca4a96095c930 p024-b007, p024-t002](reading/sdd-d50ca4a96095c930.md#p024-b007)
+
+Limit: Named implementation document; no claim about a live interface schema or all SCALE versions.
+
+### grupo-putaway-work-identity
+
+Grupo Julio describes receipt putaway work units identified by Putaway Group ID/LPN and a User Directed work profile; scanning that identity assigns the work unit.
+
+[sdd-d50ca4a96095c930 p042-b015, p042-b017](reading/sdd-d50ca4a96095c930.md#p042-b015)
+
+Limit: The execution paragraph continues onto the next page; this claim covers only identity, initiation and assignment, not the complete confirmation sequence.
+
+### grupo-adjustment-location-boundary
+
+Grupo Julio describes inventory adjustments for located inventory and explicitly excludes the receiving dock location. Negative adjustments use negative quantities; adjustment types can restrict quantities, user access and host upload.
+
+[sdd-d50ca4a96095c930 p088-b004, p088-b007](reading/sdd-d50ca4a96095c930.md#p088-b004)
+
+Limit: Source-described behavior; permissions, quantity limits and upload state were not checked in the assessed deployment.
+
+### grupo-transfer-work-entry
+
+Grupo Julio describes transfer creation from the main/mobile menu or Inventory Insight. Selecting an item/location defaults the from-location and item. Transfer with work must be created on the insight screen; RF can execute that work.
+
+[sdd-d50ca4a96095c930 p089-b006](reading/sdd-d50ca4a96095c930.md#p089-b006)
+
+Limit: The source screenshot is a generic sample, not evidence of currently enabled Create Work or live inventory.
+
+### grupo-extension-strike-through-boundary
+
+The Grupo Julio extension tables visibly strike through EX04, EX07, EX02, EX06 and EX08. Their retained text is historical and must not be promoted to normal approved porting requirements. EX01, EX03, EX05 and EX09 appear unstruck and describe planned porting from 2015 to Active SCALE.
+
+[sdd-d50ca4a96095c930 p103-t001, p103-t002, p103-t003, p104-t001, p104-t002](reading/sdd-d50ca4a96095c930.md#p103-t001)
+
+Limit: Visual styling is absent from raw extracted text. Unstruck planned scope is still not proof of delivery; the struck-through EX07 wording about porting is not an active instruction.
+
+### grupo-actions-excluded
+
+Grupo Julio explicitly lists 21 action items that will not migrate in this project, including AI0003–AI0010 and the additional individually enumerated items in the reviewed table.
+
+[sdd-d50ca4a96095c930 p105-b002, p105-t001](reading/sdd-d50ca4a96095c930.md#p105-b002)
+
+Limit: The excluded list is historical project scope, not a statement that the reported issues currently exist or are resolved in any assessed database.
+
+### knipper-work-order-build-location
+
+Knipper describes host work orders containing the finished item and quantity but no build location. Users supply the build location before allocation, select Allocate all in Work Order Insight, verify allocation/work creation, and release the work order.
+
+[sdd-1c25f20de1eafc3e p062-b009](reading/sdd-1c25f20de1eafc3e.md#p062-b009)
+
+Limit: Comments on the page discuss allocation on release; the authored sequence follows the body, and no automatic-release setting or runtime result is inferred.
+
+### knipper-component-allocation-failure
+
+Knipper says a complete component-allocation failure produces an error and moves the work order into In process; after inventory correction, users can select Allocate All again. For partial failure, the source says successful components still receive work.
+
+[sdd-1c25f20de1eafc3e p063-b012](reading/sdd-1c25f20de1eafc3e.md#p063-b012)
+
+Limit: The partial-failure paragraph continues on page 64, which this batch does not review. Its complete recovery procedure is not claimed.
+
+### knipper-allocation-rejection-body
+
+The revised Knipper body says incomplete shipment-line allocation sends the entire shipment back to the pool on a back order, with rejected shipment status In Pool.
+
+[sdd-1c25f20de1eafc3e p080-b029, p080-b026, p080-b027, p080-b028, p080-b030](reading/sdd-1c25f20de1eafc3e.md#p080-b029)
+
+Limit: Margin comments include This does not happen today followed by Updated and a later resolved note. This is design intent in the revised body, not observed current behavior.
+
+### knipper-pnp-assignment
+
+The Knipper A-PNP allocating-zone example lists Single Item, Dynamically Assigned and Permanent, Not License Plate Tracking, Allocate In Transit, and Inventory Status Available.
+
+[sdd-1c25f20de1eafc3e p079-t002](reading/sdd-1c25f20de1eafc3e.md#p079-t002)
+
+Limit: These are documentary zone characteristics, not a claim about any current location or deployed configuration.
+
+### Grupo Julio illustrative unit hierarchy
+
+Arrows label a small Unit inside an Inner, inners within a Case, and cases above a Pallet. The figure explains nesting levels, with four case outlines and one expanded case. The surrounding text explicitly says it is an example, not the baseline unit-of-measure definition.
+
+[sdd-d50ca4a96095c930 p015-b002, p015-b003](reading/sdd-d50ca4a96095c930.md#p015-b002)
+
+[retained asset 1](assets/sdd-d50ca4a96095c930/61ef915aa65775c4f257ae3f22b22e240270f0708029cac7abe8f0c14e24b2b8.png)
+
+Limit: No numeric pack conversion or live item master is inferred from the drawing.
+
+### Grupo Julio Planned Shipment Insight
+
+The screen places basic criteria and shipment-type/advanced criteria on the left, shipment/line/unit counters above a central selectable shipment grid, and a line summary on the right. The grid groups rows by Wave.
+
+[sdd-d50ca4a96095c930 p051-b002](reading/sdd-d50ca4a96095c930.md#p051-b002)
+
+[retained asset 1](assets/sdd-d50ca4a96095c930/aa3d9bccfefad662698cbfc9ee253a4d07b535c7326b5dd4a686763196dec804.jpeg)
+
+Limit: Document screenshot only; displayed example identities and counts are not current Grupo Julio or assessed warehouse telemetry.
+
+### Grupo Julio inventory-adjustment example
+
+The form shows adjustment type, license plate, location, item/company, lot/expiration, quantity/unit and status. The top-right Adjust action is highlighted; Create work appears dimmed. A small broken-image glyph is visible in the source screenshot.
+
+[sdd-d50ca4a96095c930 p088-b005](reading/sdd-d50ca4a96095c930.md#p088-b005)
+
+[retained asset 1](assets/sdd-d50ca4a96095c930/bf512fb4addc1310c3f2569b0032dd6563a315618293ed745c27294f6be109a8.png)
+
+Limit: No action was invoked; dimming and example values do not prove production permissions, product completeness or required fields.
+
+### Grupo Julio inventory-transfer example
+
+The form adds From location and To location to item, status, company, lot, expiration and quantity/unit fields. The top-right Transfer action is highlighted; Create work is visibly dimmed although the caption calls this transfer with work.
+
+[sdd-d50ca4a96095c930 p089-b006, p089-b007](reading/sdd-d50ca4a96095c930.md#p089-b006)
+
+[retained asset 1](assets/sdd-d50ca4a96095c930/37c36d02e7bbaaab6f427ceff4722e15ef561c10b632a3b051111253f02861c5.png)
+
+Limit: Caption and dimmed control are reported separately. The screenshot does not establish that work creation succeeded or was enabled.
+
+### Knipper Work Order Insight release example
+
+A selected work-order row appears below Orders and finished-item counters. The open Actions menu contains Allocate all and other options; Release at the bottom is outlined in red.
+
+[sdd-1c25f20de1eafc3e p062-b009, p062-b015](reading/sdd-1c25f20de1eafc3e.md#p062-b009)
+
+[retained asset 1](assets/sdd-1c25f20de1eafc3e/b9d932f09cda04d62bd835790034ba58c2e70e33605ddea1d51b52ae54d2e22b.png)
+
+Limit: The figure illustrates the Release control, not successful allocation or release.
+
+### Knipper sample component-pull work creation master
+
+The legacy-style edit dialog shows WO Component Pulls, General/Maximum/User Defined Data tabs, Work Type, Work Unit Field, Creation Method Pre-build, Priority 1, Process, Work Criteria All Components and an Auto Print Documents checkbox. Several dropdown values are clipped at the right edge.
+
+[sdd-1c25f20de1eafc3e p063-b004, p063-b005](reading/sdd-1c25f20de1eafc3e.md#p063-b004)
+
+[retained asset 1](assets/sdd-1c25f20de1eafc3e/3c182c11636f7ee0ee94a40f36a14c1c4f65fa89cb13ff7b402065632630e85e.png)
+
+Limit: Clipped dropdown text is not reconstructed into a full executable configuration. The sample does not supersede the body rule of one component-pick work unit per work order.
+
+### Knipper component-pull RF sequence
+
+Four panels connected left-to-right show work-profile/location entry, two Pick confirmation panels for successive component locations, then Putaway confirmation for all items at the build location. The first panel is labeled System directed, while the adjacent body says user directed.
+
+[sdd-1c25f20de1eafc3e p063-b006, p063-b011](reading/sdd-1c25f20de1eafc3e.md#p063-b006)
+
+[retained asset 1](assets/sdd-1c25f20de1eafc3e/4f8e4f04ecb42f0025da2249b7ebd2a17d99b60ff57307318bd1b723118093e2.png)
+
+Limit: Preserved the screenshot/body direction mismatch. No claim that the pictured workflow is the deployed or final intended profile.
+
+### Knipper Planned Shipment Insight
+
+Basic criteria on the left select Scheduled Ship Date; the central shipment grid groups rows by that date beneath shipment/line/unit counters. A line-count panel appears on the right.
+
+[sdd-1c25f20de1eafc3e p069-b003, p069-b004](reading/sdd-1c25f20de1eafc3e.md#p069-b003)
+
+[retained asset 1](assets/sdd-1c25f20de1eafc3e/22a25e6c14346ed30eb7b58efb902d92002174533cefed6021ff19d5dac12268.png)
+
+Limit: Example dates and counts are screenshot data only; they do not establish current planned shipments.
+
+### Knipper QC exception and Force QC pass illustrations
+
+Five images show a QC failure reason-code dialog, the Actions menu with Force QC pass, a Yes/No confirmation, a green passed-QC message, and process-history rows labeled QC Confirmation / Force QC Pass. Some process-history message and identifier text is truncated at the image edge.
+
+[sdd-1c25f20de1eafc3e p101-b004, p101-b008, p101-b012, p101-b006, p101-b007, p101-b009](reading/sdd-1c25f20de1eafc3e.md#p101-b004)
+
+[retained asset 1](assets/sdd-1c25f20de1eafc3e/51dcc6aac39fa173fe8fbefb01d0054e553e635f31557612ba25affa3073eee8.jpeg), [retained asset 2](assets/sdd-1c25f20de1eafc3e/0747916eedca089cea2cba5991b312ecb23f544ad7b5f57555af0e445b755580.jpeg), [retained asset 3](assets/sdd-1c25f20de1eafc3e/1fa4472048505f5c485a5a873245ed36ee60f96ed33a0bccf295c9320ff4af23.jpeg), [retained asset 4](assets/sdd-1c25f20de1eafc3e/6987f2695f5d76adb5f45a6a1969b05053d1676a0501b72d6f2cd33049488aa1.png), [retained asset 5](assets/sdd-1c25f20de1eafc3e/650deeb88cad335acb4264c681b8dc34f975ab764ac8a6587cbb0001dd6c2b47.png)
+
+Limit: These historical illustrations are not a recommendation to bypass quality review. Comments discuss rare exceptions and distinguish base QC workbench from proposed pallet-level RF extensions. No current authorization or workflow acceptance established.
+
+## Knipper source qualifications — 2026-09-30 delta 2
+
+Ten additional bounded claims and four visual descriptions preserve source distinctions and conflicts. All prior records remain unchanged; the new component-recovery continuation extends the earlier page-63-only claim. Page viewing and candidate disposition do not grant complete semantic or production-index acceptance.
+
+### knipper-interface-channels-and-placeholder-host
+
+Knipper describes API-based downloads into SCALE, XML-file uploads to the host, manual or scheduled interface execution, and configurable failure alerts. The download/upload figures show NetSuite and Boomi, but their adjacent comments explicitly say the host and middleware details still need to be supplied and the pictures updated.
+
+[sdd-1c25f20de1eafc3e p011-b004, p011-b005, p011-b006, p011-b007, p011-b008, p013-b003, p013-b005, p013-b006, p013-b007](reading/sdd-1c25f20de1eafc3e.md#p011-b004)
+
+Limit: The pictured vendor names are illustrative pending-update labels, not verified Knipper systems. No endpoints, schedules, alerts or interface runtime were inspected.
+
+### knipper-receipt-interface-present-future
+
+Knipper describes manual receipt creation for most accounts, with automated receipt downloads only for EDI accounts. The current typical ASN/returns format contains receipt header and detail; a separate three-row header/detail/container table is introduced as a capability Knipper may explore in future.
+
+[sdd-1c25f20de1eafc3e p012-b003, p012-b004, p012-b005](reading/sdd-1c25f20de1eafc3e.md#p012-b003)
+
+Limit: The two tables have different temporal scope. Receipt Order Header, Receipt Order Detail and Receipt Container are source display labels, not established physical SQL identities. No future capability is asserted implemented.
+
+### knipper-manual-receipt-close-upload-qualified
+
+The Knipper body says manually closing a receipt in SCALE uploads a receipt-close inventory transaction. Adjacent comments discuss this as a recommendation to confirm for short receiving; a customer comment says receipts close when remaining inventory is received.
+
+[sdd-1c25f20de1eafc3e p014-b003, p014-b004, p014-b005, p014-b006](reading/sdd-1c25f20de1eafc3e.md#p014-b003)
+
+Limit: Body text and review discussion are preserved separately. The comments do not establish host support or acceptance of short-receipt automatic closure.
+
+### knipper-extension-ex40-collision
+
+Knipper uses EX40 for Custom Receipt from Shipment on page 16 and for Printing multiple work unit document from work insight on page 45. The latter is explicitly conditional on Knipper approval.
+
+[sdd-1c25f20de1eafc3e p016-b008, p045-b003, p045-b004, p045-b005, p045-b007](reading/sdd-1c25f20de1eafc3e.md#p016-b008)
+
+Limit: These passages describe different functions under the same document identifier. They must not be merged solely by EX40, and neither identifies a deployed extension or SQL routine.
+
+### knipper-component-partial-recovery-continuation
+
+The page-63 partial component-allocation failure procedure continues onto page 64: after correcting inventory, select the failed component in the component section and use Allocate to retry it. Successful components already have work. The body recommends verifying component inventory through SCI/Inventory Insight before release.
+
+[sdd-1c25f20de1eafc3e p063-b012, p064-b006, p064-b003, p064-b007, p064-b008, p064-b009, p064-b013](reading/sdd-1c25f20de1eafc3e.md#p063-b012)
+
+Limit: This extends the earlier batch, which had not reviewed page 64. Body wording about work being available immediately after creation coexists with comments requiring work-order release and describing header-level release; immediate availability is not treated as permission to bypass release.
+
+### knipper-post-wave-cancellation-dispute
+
+Knipper describes warehouse-user cancellation from Shipment Insight after wave release: shipment inventory is deallocated and shipping work/containers are removed; picked stock needs an Inventory Management transfer back. Replenishment work is not automatically canceled. The body says cancellation fails while related work is actively executed, but an adjacent comment disputes that behavior and is later marked resolved without a replacement rule.
+
+[sdd-1c25f20de1eafc3e p091-b006, p091-b007, p091-b008](reading/sdd-1c25f20de1eafc3e.md#p091-b006)
+
+Limit: This is a documentary conflict, not a verified runtime rule or an instruction to cancel active work. The body separately limits host changes to In Pool shipments. Current release/version behavior and permissions require independent verification.
+
+### knipper-load-confirm-status-ambiguity
+
+Knipper page 107 first says all shipments must reach Load Confirm Pending, through the Ship Confirm All job, before Confirm Load. Its following paragraph instead says the load leading/trailing statuses should be Ship Confirm Pending when describing avoidance of split shipments.
+
+[sdd-1c25f20de1eafc3e p107-b006](reading/sdd-1c25f20de1eafc3e.md#p107-b006)
+
+Limit: The two status phrases are retained as an unresolved source inconsistency. This review does not select a canonical status predicate, map it to database codes, or assert runtime behavior.
+
+### knipper-workbook-icons-not-reviewed-data
+
+Knipper page 5 presents a Warehouse Stats.xlsx icon and page 113 presents a JKNP_ParkingLot_11122024.xlsx icon under Open Issues. These pages do not expose the workbook cells or issue rows.
+
+[sdd-1c25f20de1eafc3e p005-b003, p005-b004, p113-b003, p113-b005, p113-b006](reading/sdd-1c25f20de1eafc3e.md#p005-b003)
+
+Limit: Local PDF-container inspection found no embedded files and no page-5/page-113 link actions. This establishes only absence from this retained PDF container; it does not assert the external workbooks do not exist. Their contents remain unreviewed.
+
+### knipper-signoff-not-executed-evidence
+
+The retained Knipper sign-off page has blank Signature, Printed Name / Title and Date lines. Its acknowledgement text refers to Memphis, while the earlier scope names Lakewood NJ and Charleston IN distribution centers.
+
+[sdd-1c25f20de1eafc3e p006-b017, p119-b003, p119-b004, p119-b005, p119-b006, p119-b007, p119-b009, p119-b011](reading/sdd-1c25f20de1eafc3e.md#p006-b017)
+
+Limit: The blank form is not evidence of executed customer approval. The place-name mismatch is documentary and is not resolved by this review; the source title Final does not remove it.
+
+### knipper-security-documentary-scope
+
+Knipper Appendix C describes Security Permissions by user, security group, processing function and configuration, with mass assignment to selected windows. It says a user-level record is applied when that employee attempts to access the window.
+
+[sdd-1c25f20de1eafc3e p116-b003](reading/sdd-1c25f20de1eafc3e.md#p116-b003)
+
+Limit: The sample configuration screenshot contains no populated Security for Desktop rows. This source does not prove assessed users, groups, privileges, enforcement, or every conflict-resolution rule.
+
+### Knipper illustrative unit-of-measure nesting
+
+A pallet base supports four drawn cases. The upper-left case shows six inner rectangles; the top-left inner contains four unit marks. Arrows label Unit, Inners, Case and Pallet.
+
+[sdd-1c25f20de1eafc3e p010-b004, p010-b005](reading/sdd-1c25f20de1eafc3e.md#p010-b004)
+
+[retained asset 1](assets/sdd-1c25f20de1eafc3e/61ef915aa65775c4f257ae3f22b22e240270f0708029cac7abe8f0c14e24b2b8.png)
+
+Limit: The text explicitly calls this an example and not the baseline UOMs. Drawing counts are illustrative and do not define configured conversion factors.
+
+### Knipper pending-update interface illustrations
+
+The download drawing flows left to right: NetSuite, Download Feeds arrow, Boomi, an arrow labeled Items/Receipts/Shipments/Work Orders, and SCALE. The upload drawing reverses the endpoints: SCALE, receipt confirmations/shipment confirmations/inventory transactions/item balance, Boomi, Upload Feeds arrow, NetSuite.
+
+[sdd-1c25f20de1eafc3e p011-b004, p011-b006, p011-b007, p011-b008, p013-b003, p013-b005, p013-b006, p013-b007](reading/sdd-1c25f20de1eafc3e.md#p011-b004)
+
+[retained asset 1](assets/sdd-1c25f20de1eafc3e/09ec1846cc57a8733ee3d65748f9f076c719b2687ce52eaca64edc41878ccdcd.jpeg), [retained asset 2](assets/sdd-1c25f20de1eafc3e/98ffcb40506e1fe4249a1fa9bcdcdc7b96510cae95f67aee4b659bb6fbf46931.jpeg)
+
+Limit: Both adjacent comment threads require host/middleware details and picture updates. Endpoint names and connectivity are illustrative, not verified architecture. Arrows do not prove actual transport or execution.
+
+### Knipper high-level outbound flow
+
+Six arrows connect Shipment Creation, Wave Processing, Picking, Packing, Staging and Shipping. The first two boxes are rectangular; the latter four are trapezoids. Their captions respectively describe creating the outbound document, reserving stock/determining pick inventory, retrieving from storage, identifying shipping-box contents, moving containers to staging or pack-and-hold, then assigning transport and confirming departure.
+
+[sdd-1c25f20de1eafc3e p066-b004, p066-b005, p066-b007, p066-b008, p066-b009, p066-b013](reading/sdd-1c25f20de1eafc3e.md#p066-b004)
+
+[retained asset 1](assets/sdd-1c25f20de1eafc3e/0f7d01e73c3eb11604d41381e65623aee934c216a530b9b20992ee529faf5c20.png)
+
+Limit: The source legend associates rectangles with normal system processes and trapezoids with normal user interaction. The text also permits manual wave execution. This is a typical overview, not a complete exception flow or deployment acceptance.
+
+### Knipper Security Permissions configuration example
+
+A desktop Security permissions window contains Search criteria and Search, filter radios All/Configurations/Gadgets and a visibly truncated Pr label, a scrollable two-column list of functions, and a lower Security for Desktop grid with Security level, User/security group and System created columns. The lower grid is empty; a Close button appears at bottom right.
+
+[sdd-1c25f20de1eafc3e p116-b003, p116-b004](reading/sdd-1c25f20de1eafc3e.md#p116-b003)
+
+[retained asset 1](assets/sdd-1c25f20de1eafc3e/6dcc52a41a8e6e96fd82278c389ad827e87ad8aa3231cf41202e2d7d036dfd7f.png)
+
+Limit: No populated permission values are visible. The clipped filter text is not expanded by inference; function labels alone do not prove grants or runtime enforcement.
+
+## Grupo Julio complete page-view continuation
+
+The 77 remaining PDF pages were individually inspected, completing 231/231 PDF page views across the source set. This batch adds bounded interpretations and visual descriptions; it does not certify all semantic content or every embedded screenshot/table. The original source and prior records are preserved.
+
+### Additional reviewed claims
+
+#### grupo-source-authority-and-examples
+
+The Grupo Julio design gives English precedence if its English and Spanish passages differ. Its assumptions also state that screenshots are illustrative and actual options can be configured.
+
+This governs interpretation of this document only. Screenshot values and menus do not establish the assessed deployment, an installed release or verified screen navigation. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p006-b003, p012-b002](reading/sdd-d50ca4a96095c930.md#p006-b003)
+
+#### grupo-interface-migration-boundary
+
+The Grupo Julio migration design selects Web Services for downloads into SCALE and XML files in Azure file storage for ERP reads. It says the older 2015 Direct to Table upload option must be disabled for Item, Receipts and Shipments; interface schedules and frequencies remain for integration testing.
+
+Historical migration intent, not a general claim about all database access or this assessed environment. No host endpoint, schedule or interface execution was verified. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p016-b003](reading/sdd-d50ca4a96095c930.md#p016-b003)
+
+#### grupo-early-receipt-upload-risk
+
+Grupo Julio chooses container-level receipt uploads starting at Putaway Pending to support early ERP availability. The design warns that canceling and receiving an already uploaded container again can duplicate ERP inventory; it recommends uploading at Closed instead, or an operational correction procedure for the chosen early-upload flow.
+
+The document records an implementation tradeoff and a warning, not an observed duplicate, verified remediation or transaction-level idempotency guarantee. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p020-b004, p037-b003, p038-b002](reading/sdd-d50ca4a96095c930.md#p020-b004)
+
+#### grupo-shipping-upload-status-transition
+
+The shipping upload criteria in the Grupo Julio design select shipment or shipment-line upload records and eligible trailing statuses. These criteria trigger upload on a status change, not on the initial shipment download even if that initial status is configured for upload.
+
+Source-described shipping-interface behavior. This does not establish configured statuses, retries, file delivery or ERP receipt in the assessed deployment. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p021-b004, p021-b005, p021-b006](reading/sdd-d50ca4a96095c930.md#p021-b004)
+
+#### grupo-receipt-creation-permission-choice
+
+Grupo Julio chooses to remove manual Receipt Insight creation permission from security groups. The document explicitly says this is not a SCALE limitation. It separately describes full or partial returns using Receipt from Shipment, with optional restriction to supervisors.
+
+Implementation access policy only. Actual user/group grants and enforcement were not inspected. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p025-b002](reading/sdd-d50ca4a96095c930.md#p025-b002)
+
+#### grupo-appointment-open-receipt-precondition
+
+The documented inbound appointment workflow requires a receipt already visible in SCALE and allows appointments only for open receipts. Appointment information includes trailer, dock door, start date/time and end date/time; the design assigns receiving docks manually according to availability.
+
+Documentary workflow association for a future verified screen register; no current navigation, capacity validation or scheduling behavior was exercised. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p028-b004, p029-b004, p029-b005, p029-b008, p030-b004](reading/sdd-d50ca4a96095c930.md#p028-b004)
+
+#### grupo-receipt-exit-versus-close
+
+Leaving a receipt during the described mobile check-in workflow does not close it. The design describes automatic receipt closure after the last LPN is put away when all details are fully received; incomplete receipts require manual closure, and a closed receipt can be reopened for more receiving.
+
+Preserve the distinction between exiting, closing a putaway group and closing a receipt. Receiving-with-groups availability remains qualified by the open issue for Warehouse Mobile 24.1.2278. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p033-b004, p038-b005](reading/sdd-d50ca4a96095c930.md#p033-b004)
+
+#### grupo-putaway-groups-version-conflict
+
+Grupo Julio describes intended receiving and putaway-group workflows, but its unstruck open issue dated 9 August 2024 says Receiving with Putaway Groups is unavailable in Warehouse Mobile 24.1.2278 and gives no expected delivery date.
+
+This unresolved source-version qualification limits the earlier grupo-putaway-work-identity claim and the related group examples. Do not infer that the final document title proves implementation, later release availability or deployment readiness. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p033-b002, p033-b004, p037-b002, p106-b005, p106-b006](reading/sdd-d50ca4a96095c930.md#p033-b002)
+
+#### grupo-receiving-exception-workflow
+
+For missing item weight or dimensions, Grupo Julio calls for correcting the host Item Master and downloading it before receipt. For excess quantity, it calls for another ERP receipt instead of over-receiving. For an incomplete receipt with no further balance expected, it calls for manual closure.
+
+Implementation-specific exception procedures, not universal SCALE restrictions or permission to alter inventory. The same passage also describes coordinating inventory adjustments with the Inventory Team and ERP. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p039-b004](reading/sdd-d50ca4a96095c930.md#p039-b004)
+
+#### grupo-putaway-override-audit
+
+The documented putaway override validates the entered location, updates work and the LPN to the new location, and writes transaction history. The alternative Locate action asks the user to choose a locating rule so SCALE can select the destination; the source says an override can optionally create an activity-based count at the original location.
+
+Documented behavior, not observed runtime or proof that count creation is enabled. Permissions and applicable locating/cycle-count configuration still require deployment evidence. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p044-b002, p044-b004](reading/sdd-d50ca4a96095c930.md#p044-b002)
+
+#### grupo-leading-and-trailing-status
+
+The Grupo Julio design defines shipment trailing status as the least advanced associated status and leading status as the most advanced, derived from the containers for the shipment header.
+
+Source explanation only. This is not a mapping to a reviewed SQL aggregation or evidence of any current shipment state. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p047-b003](reading/sdd-d50ca4a96095c930.md#p047-b003)
+
+#### grupo-allocation-rule-selection
+
+The design says allocation rules may default from the Item Master, arrive through the shipment interface, or be assigned by a wave step before allocation. If no rule is set on the shipment detail, it uses *Default. Active assignment records are checked in priority order; replacing a rule assigned by a previous sequence requires Always Override.
+
+The source does not give a complete precedence rule for every competing item/interface/manual assignment. It first describes selecting lines without rules, so the Always Override statement is retained narrowly for previous sequences. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p061-b003, p062-b003](reading/sdd-d50ca4a96095c930.md#p061-b003)
+
+#### grupo-container-creation-configuration
+
+The container-creation description first handles allocated shippable units as full containers. It groups remaining non-shippable items by Packing Class and associated container group, using weight, volume and critical dimensions. It says an item without an item-unit-of-measure record is treated as having zero dimensions and weight.
+
+General behavior described inside an implementation SDD, not a recommendation to omit dimensions or evidence of deployed cartonization. The document proposes a report to identify missing dimensions. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p065-b002, p066-b002](reading/sdd-d50ca4a96095c930.md#p065-b002)
+
+#### grupo-wave-release-and-hold
+
+Releasing a wave is described as removing the Wave Not Released hold from generated work so picking becomes eligible, and printing applicable wave documents/labels. Hold codes may also be added or removed through Work Insight.
+
+Documentary distinction between running and releasing a wave. It does not establish effective permissions, printer output or all other holds being removed. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p069-b004, p069-b005, p069-b009, p070-b002](reading/sdd-d50ca4a96095c930.md#p069-b004)
+
+#### grupo-shipment-cancellation-conditions
+
+The post-wave cancellation description deallocates the order, deletes created shipping containers and work, and returns the shipment to the pool. Picked items need a separate transfer back to inventory. Shipping work is canceled but replenishment work is not; cancellation fails while related work is actively executed. After release, a warehouse user must cancel because host changes are limited to In Pool.
+
+Historical source contract, not an instruction to cancel operational orders or proof of rollback/atomicity. The SDD separately states that this implementation does not use replenishment. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p070-b006, p071-b002](reading/sdd-d50ca4a96095c930.md#p070-b006)
+
+#### grupo-short-pick-permission-and-reason
+
+In the described footwear flow, a picker needs permission to short pick. The permitted path adjusts quantity and selects a short reason; without permission, the user uses Pass to leave the work suspended and contacts a supervisor.
+
+Implementation example. No specific security grant, reason-code set or assessed user behavior is established. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p074-b002](reading/sdd-d50ca4a96095c930.md#p074-b002)
+
+#### grupo-put-to-light-extension-boundary
+
+Hanging-item picking uses the EX01 Put to Light integration: picking delivers to a pick-and-drop location, a custom mobile sorting step interacts with PTL, and a PTL confirmation sends information back to SCALE to confirm the next pick and putaway. Folded-item flow is described as similar.
+
+The SDD explicitly defers the full behavior to a separate EX01 document. Hardware protocol, retry/error handling and installed custom code are not supplied by this high-level account. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p074-b002, p075-b002](reading/sdd-d50ca4a96095c930.md#p074-b002)
+
+#### grupo-container-edit-location-precondition
+
+Shipping Container Insight is described as supporting container type/content changes and unpacking by setting quantity to pack to zero, followed by repacking. The accompanying note requires the container to be in a location whose subclass is Packing before editing its contents.
+
+Documentary prerequisite, not a verified permission or deployed procedure. Closing a container, editing contents and repacking remain distinct actions. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p078-b002, p079-b006](reading/sdd-d50ca4a96095c930.md#p078-b002)
+
+#### grupo-load-confirm-status-conflict
+
+Grupo Julio page 85 says loads can be confirmed when all shipments are Ship Confirm Pending, while its status list on page 48 says Load Confirm Pending (800) means all shipments have been ship confirmed and the load is ready to confirm. Page 87 describes confirmation moving load, shipment, detail and container statuses to Closed and relieving shipping-dock inventory.
+
+The conflicting prerequisite wording is unresolved. Do not choose one as an executable status gate or infer that an upload file has reached the host. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p048-b013, p048-b014, p048-b015, p085-b005, p087-b002](reading/sdd-d50ca4a96095c930.md#p048-b013)
+
+#### grupo-cycle-count-triggers-and-reconciliation
+
+The design distinguishes plan-based counts, which select items/locations and create a separate work unit per selected location, from activity-based requests after warehouse actions such as short picks or crossing a location quantity threshold. It describes reconciliation as confirming on-hand quantity, updating location inventory, recording an inventory transaction and closing the count request.
+
+Frequency examples, threshold screenshots and the existing 9999-versus-zero tolerance conflict are not active deployment settings. No count or reconciliation was executed. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p091-b005, p092-b005, p092-b006, p096-b004](reading/sdd-d50ca4a96095c930.md#p091-b005)
+
+#### grupo-labor-request-service-detail
+
+The Labor Management description separates the warehouse action, a generated labor request, processing by a continuously checking Labor Management service, and the resulting detail record used by Labor Activity Insight or a report. Untracked activities may be entered through Manual Labor Entry.
+
+Source-described execution stages, not measured service health, timing or throughput. No request table or service instance is inferred from the prose. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p098-b006, p098-b008](reading/sdd-d50ca4a96095c930.md#p098-b006)
+
+#### grupo-labor-plan-prerequisites
+
+Labor plans select labor groups and their processing sequence for estimated labor during wave execution. The labor-plan execution wave step must be included in the flow, and Shipment Labor Planning Criteria determine which shipments contribute for a labor group.
+
+Estimated labor is separate from actual labor activity. The source gives no universal estimate, accurate deployment standard or complete service-to-database mapping. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p099-b004, p099-b006, p100-b002](reading/sdd-d50ca4a96095c930.md#p099-b004)
+
+#### grupo-reporting-and-labor-evidence-limits
+
+The labor-report illustration is explicitly a custom example rather than an existing report, with SCI dependency. The later future-functionality note says labor configuration/time values still need review and SCI reports need development. The performance-management page contains headings for reporting, event management and historical analysis without populated requirements.
+
+An empty requirements section and a sample chart are not report acceptance, verified timing or evidence that no reporting requirement exists. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p101-b004, p102-b002, p108-b005, p108-b006](reading/sdd-d50ca4a96095c930.md#p101-b004)
+
+#### grupo-future-vas-and-inbound-qc
+
+VAS and base Inbound QC are listed as future test candidates, with document updates and additional scope needed if adopted. Their inclusion in future-functionality pages does not establish use in the described migration.
+
+Prospective implementation choices only; neither test completion nor implementation acceptance is documented here. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p107-b009, p107-b010, p107-b011, p107-b012, p108-b003, p108-b004](reading/sdd-d50ca4a96095c930.md#p107-b009)
+
+#### grupo-extension-resolved-disposition
+
+The resolved-issues section records no initial migration for EX02, EX04 and EX06. EX04 is described as replaced by EX09. For EX08, the section says no extension documentation exists, describes multi-select Immediate Needs deletion as a base option, and recommends not porting the extension.
+
+Historical scope evidence only. The struck-through earlier open-issue wording is not promoted over these resolved notes, and no current feature equivalence or custom-code inventory is established. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p106-b017, p107-b002, p107-b003, p107-b004, p107-b005, p107-b006, p107-b007, p107-b008](reading/sdd-d50ca4a96095c930.md#p106-b017)
+
+#### grupo-signoff-not-acceptance
+
+The supplied Grupo Julio final page is a Functional Flow Sign-Off form with blank operations and IT signature, printed-name/title and date lines.
+
+The document title and unsigned form do not establish customer approval, a deployed system or present owner acceptance. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p110-b002, p110-b003, p110-b004, p110-b005, p110-b006, p110-b007, p110-b008, p110-b009, p110-b010, p110-b011, p110-b012, p110-b013, p110-b014](reading/sdd-d50ca4a96095c930.md#p110-b002)
+
+### Additional diagram and screenshot descriptions
+
+#### Receiving upload process-detail example
+
+The Interface process detail window shows sequence 80 and Receiving XML Upload. The Upload tab emphasizes Upload directory with a placeholder Azure storage URL; Shipping, Receiving, Inventory transaction, Shipping delete criteria and Item balance filters are visible without selected values.
+
+Illustrative source screenshot; the placeholder is not a verified endpoint and blank criteria do not prove deployed filtering.
+
+[sdd-d50ca4a96095c930 p023-b002, p020-b005](reading/sdd-d50ca4a96095c930.md#p023-b002)
+
+#### Putaway-group reopening permission example
+
+A Security permissions search for putaway selects Putaway group insight. Its edit dialog shows Form specific permissions with Close checked and Open and Rename unchecked; User and Group fields are blank and System is selected.
+
+The selected example scope does not prove effective employee/group rights. The Warehouse Mobile putaway-group availability issue remains separate.
+
+[sdd-d50ca4a96095c930 p038-b002, p038-b003](reading/sdd-d50ca4a96095c930.md#p038-b002)
+
+#### Putaway confirmation screen sequence
+
+Five overlapping mobile screens and arrows show Work execution, the Putaway profile, entry of a user-directed work unit, Pick confirmation and Putaway confirmation. The final screen shows an entered destination location and GO action, distinguishing work selection, pick and destination confirmation.
+
+Document illustration, not executed navigation. Item, lot and location examples do not establish use in the Grupo or assessed deployment.
+
+[sdd-d50ca4a96095c930 p043-b002, p043-b003, p043-b004](reading/sdd-d50ca4a96095c930.md#p043-b002)
+
+#### Locate action within putaway override
+
+Three mobile views show an Actions menu with Locate highlighted above Override, a Locate dialog with a locating-rule choice, and a Putaway override confirmation showing a different destination. Arrows connect these screens in that order.
+
+The diagram illustrates rule-based locating within an override workflow; it does not prove grants, valid locations or an executed movement.
+
+[sdd-d50ca4a96095c930 p044-b002, p044-b003, p044-b004](reading/sdd-d50ca4a96095c930.md#p044-b002)
+
+#### Outbound process and actor distinction
+
+A left-to-right flow shows Shipment Creation, Wave Processing, Picking, Packing, Staging and Shipping. Rectangles denote processes normally done by the system; trapezoids denote those normally requiring user interaction. Labels describe reserving stock, retrieving inventory, identifying box contents, staging and confirming departure.
+
+High-level typical flow, not an exhaustive dependency graph. It does not make every step automatic or establish this deployment.
+
+[sdd-d50ca4a96095c930 p045-b002, p045-b003, p045-b004](reading/sdd-d50ca4a96095c930.md#p045-b002)
+
+#### Activity-based cycle-count threshold example
+
+The Create new Cycle count threshold window shows Location type Primary; blank Work zone and Movement class; threshold quantity 5.00000; UM Each; days between cycle counts 30; and Inactive unchecked. The threshold and day fields are outlined together.
+
+An illustrative new-record screen is not a saved or active configuration, universal default or proof of exact threshold comparison behavior.
+
+[sdd-d50ca4a96095c930 p093-b002, p092-b005, p092-b006](reading/sdd-d50ca4a96095c930.md#p093-b002)
+
+#### Labor estimate and sequencing examples
+
+The Labor Group Estimation tab shows 0.75 minutes per transaction with Quantity selected and Case checked; Each, Inner Pack and Pallet are unchecked. A separate Labor Plan example contains one detail row, sequence 10 and labor group PTS Labor, showing where group-processing order is represented.
+
+These are different illustrative records. The 0.75 value is an estimate, not measured work duration or an adopted standard; the source later calls for labor-time configuration review.
+
+[sdd-d50ca4a96095c930 p099-b002, p099-b004, p099-b005](reading/sdd-d50ca4a96095c930.md#p099-b002)
