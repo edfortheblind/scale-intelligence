@@ -23236,7 +23236,7 @@
       "topic_id": "work-selection",
       "title": "Understanding which work is offered",
       "business_question": "Why can two users receive different work?",
-      "plain_answer": "SCALE offers work using the supplied user, warehouse, work profile, locations, containers and feature settings. A work profile is a set of execution rules. Some branches prefer assigned work, apply location/priority order or limit the candidate list. Cart selection can also rewrite instruction sequence, so this procedure must not be run as a read-only diagnostic.",
+      "plain_answer": "SCALE offers work using the supplied user, warehouse, work profile, locations, containers and feature settings. A work profile is a set of execution rules. Some branches prefer assigned work, apply location/priority order or limit the candidate list. Cart selection can also rewrite instruction sequence, so this procedure must not be run as a read-only diagnostic. A profile can contain several detail rows. Some options are read without the sequence number or a defined selection order, so the settings used together need not all come from the requested sequence.",
       "trigger": "An authorized application request to the named routines; active screen bindings/caller order are not established.",
       "input_context": [
         "Thirteen declared inputs: workUnit nvarchar(50), containerId nvarchar(25), user nvarchar(30), workprofile nvarchar(25), workprofileSequence numeric(5), warehouse nvarchar(25), fromto int, fromLoc nvarchar(25), isSystemDirectedWork bit=0, isCartPickingWork bit=0, groupNumber int, transportContId nvarchar(25), isCcWorkUnit bit=0. Only the three bit flags have declared defaults.",
@@ -35743,7 +35743,7 @@
       "topic_id": "view-work-order-aggregation",
       "title": "Understanding work-order summary quantities",
       "business_question": "Is work-order header insight safe to interpret as one coherent component and unduplicated work sum?",
-      "plain_answer": "The summary independently takes MIN of many component fields while grouping by work order. Components, shipment details and instructions join before SUM(TO_QTY), so fanout can multiply that sum. COUNT DISTINCT protects the dependent shipment count only; COMPLETE is an alias of requested build quantity.",
+      "plain_answer": "The summary independently takes MIN of many component fields while grouping by work order. Components, shipment details and instructions join before SUM(TO_QTY), so fanout can multiply that sum. COUNT DISTINCT protects the dependent shipment count only; COMPLETE is an alias of requested build quantity. Because each minimum is calculated separately, the summary can combine values from different components and should not be read as one component record.",
       "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
@@ -37664,7 +37664,7 @@
       "topic_id": "dynamic-configured-filters",
       "title": "Configured predicates are executable SQL text",
       "business_question": "Are receipt/inventory filter expressions fully parameterized?",
-      "plain_answer": "Values such as batch ID and warehouse date are bound, but stored FILTER_CONFIG_DETAIL predicate text is appended as SQL syntax. Receipt variants also mark upload/batch state.",
+      "plain_answer": "Values such as batch ID and warehouse date are bound, but stored FILTER_CONFIG_DETAIL predicate text is appended as SQL syntax. Receipt variants also mark upload/batch state. A receipt batch mark identifies rows selected for subsequent processing. It does not establish that an external system received the receipt; that outcome requires separate delivery evidence.",
       "trigger": "Explain a cited SQL execution or unresolved dependency boundary from the captured snapshot.",
       "input_context": [
         "Captured module identity and source hash; no current configuration values or operational rows."

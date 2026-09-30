@@ -51,7 +51,7 @@ The knowledge foundation is incomplete. Percentages below measure named tasks ag
 
 On the unchanged 445-question subset, expected-topic top-eight retrieval changed from 420 to 409. The 280 new cases retrieve 277 expected topics in the first eight. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.
 
-[Exact comparison and remaining case IDs](retrieval-change-continuation5.json).
+[Exact comparison and remaining case IDs](retrieval-change-continuation7.json).
 
 ## Remaining evidence and acceptance
 

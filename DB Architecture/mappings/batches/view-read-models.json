@@ -2379,7 +2379,7 @@
       "topic_id": "view-work-order-aggregation",
       "title": "Understanding work-order summary quantities",
       "business_question": "Is work-order header insight safe to interpret as one coherent component and unduplicated work sum?",
-      "plain_answer": "The summary independently takes MIN of many component fields while grouping by work order. Components, shipment details and instructions join before SUM(TO_QTY), so fanout can multiply that sum. COUNT DISTINCT protects the dependent shipment count only; COMPLETE is an alias of requested build quantity.",
+      "plain_answer": "The summary independently takes MIN of many component fields while grouping by work order. Components, shipment details and instructions join before SUM(TO_QTY), so fanout can multiply that sum. COUNT DISTINCT protects the dependent shipment count only; COMPLETE is an alias of requested build quantity. Because each minimum is calculated separately, the summary can combine values from different components and should not be read as one component record.",
       "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."

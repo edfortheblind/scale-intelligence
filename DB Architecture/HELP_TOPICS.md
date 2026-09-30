@@ -110,7 +110,7 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 **Question:** Why can two users receive different work?
 
-**What it does.** SCALE offers work using the supplied user, warehouse, work profile, locations, containers and feature settings. A work profile is a set of execution rules. Some branches prefer assigned work, apply location/priority order or limit the candidate list. Cart selection can also rewrite instruction sequence, so this procedure must not be run as a read-only diagnostic.
+**What it does.** SCALE offers work using the supplied user, warehouse, work profile, locations, containers and feature settings. A work profile is a set of execution rules. Some branches prefer assigned work, apply location/priority order or limit the candidate list. Cart selection can also rewrite instruction sequence, so this procedure must not be run as a read-only diagnostic. A profile can contain several detail rows. Some options are read without the sequence number or a defined selection order, so the settings used together need not all come from the requested sequence.
 
 **What happens**
 
@@ -6007,7 +6007,7 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 **Question:** Is work-order header insight safe to interpret as one coherent component and unduplicated work sum?
 
-**What it does.** The summary independently takes MIN of many component fields while grouping by work order. Components, shipment details and instructions join before SUM(TO_QTY), so fanout can multiply that sum. COUNT DISTINCT protects the dependent shipment count only; COMPLETE is an alias of requested build quantity.
+**What it does.** The summary independently takes MIN of many component fields while grouping by work order. Components, shipment details and instructions join before SUM(TO_QTY), so fanout can multiply that sum. COUNT DISTINCT protects the dependent shipment count only; COMPLETE is an alias of requested build quantity. Because each minimum is calculated separately, the summary can combine values from different components and should not be read as one component record.
 
 **What happens**
 
@@ -6874,7 +6874,7 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 **Question:** Are receipt/inventory filter expressions fully parameterized?
 
-**What it does.** Values such as batch ID and warehouse date are bound, but stored FILTER_CONFIG_DETAIL predicate text is appended as SQL syntax. Receipt variants also mark upload/batch state.
+**What it does.** Values such as batch ID and warehouse date are bound, but stored FILTER_CONFIG_DETAIL predicate text is appended as SQL syntax. Receipt variants also mark upload/batch state. A receipt batch mark identifies rows selected for subsequent processing. It does not establish that an external system received the receipt; that outcome requires separate delivery evidence.
 
 **What happens**
 
