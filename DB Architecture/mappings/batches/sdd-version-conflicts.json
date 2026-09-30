@@ -39,13 +39,13 @@
   "help_topics": [
     {
       "topic_id": "putaway-groups-version-limit",
-      "title": "Putaway groups: design intent and mobile version limits",
-      "business_question": "Does a documented putaway-group workflow prove it is available in my Warehouse Mobile version?",
-      "plain_answer": "No. The Grupo Julio example describes receiving and putting away items as a group, but also records that receiving with putaway groups was unavailable in Warehouse Mobile 24.1.2278 on 9 August 2024. The document gives no delivery date. Confirm the installed version and supported workflow before applying that design to your warehouse.",
-      "trigger": "Comparing an implementation design with a mobile version or an installed warehouse.",
+      "title": "Putaway groups: intended workflow and conflicting examples",
+      "business_question": "Does an implementation example establish the putaway-group workflow in this warehouse?",
+      "plain_answer": "The Grupo Julio example describes receiving and putting away items as a group, but also retains an unresolved availability issue from that implementation. Use it as a qualified design example. The current replica is accepted as the documentation baseline; that does not make another implementation’s design or historical limitation a fact about the current mobile workflow.",
+      "trigger": "Understanding putaway groups when an implementation document contains conflicting design and availability statements.",
       "input_context": [
-        "The exact application version and the workflow being evaluated.",
-        "The cited SDD describes another implementation and a historical version."
+        "The receiving/group-putaway workflow and applicable preference.",
+        "The cited SDD describes another implementation; its historical issue is supporting evidence."
       ],
       "execution_steps": [
         {
@@ -69,7 +69,7 @@
         {
           "order": 3,
           "action": "Establish applicability before using the example.",
-          "explanation": "Use version-matched release or application evidence to determine support in the installed system. Captured database tables and views do not establish the mobile screen, feature availability or effective receiving preference.",
+          "explanation": "Explain the captured configuration as-is and retain the documented conflict. Database structures alone do not demonstrate the mobile screen or effective receiving preference. Version/build is not a prerequisite for this documentation task.",
           "objects": [],
           "evidence_refs": [
             "sdd-boundary-grupo-putaway-groups-version-conflict"
@@ -80,11 +80,11 @@
         "Receiving preferences and group assignments describe choices; their presence does not establish mobile support or current activation."
       ],
       "expected_results": [
-        "A distinction between intended design, its historical version limitation, and the current deployment question that remains unanswered."
+        "A distinction between the intended design, its retained availability exception and the source limits of the current explanation."
       ],
       "explanation_paths": [
-        "Check the installed Warehouse Mobile build and version-matched feature or release evidence.",
-        "Check the applicable receiving workflow and configuration using a sanitized configuration contract; do not infer values from another implementation."
+        "Check the applicable receiving workflow and preference when diagnosing a specific behavior; do not infer effective values from another implementation.",
+        "Retain the historical issue in the source details without treating it as a request for the current build."
       ],
       "boundaries": [
         "No claim is made about later versions, a delivery date or this deployment.",

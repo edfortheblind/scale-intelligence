@@ -1,0 +1,532 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "HELP_QUESTION_RESEARCH",
+  "frozen_utc": "2026-09-30 14:10:35 UTC",
+  "question_count": 24,
+  "questions": [
+    {
+      "question_id": "QS-01",
+      "question": "What is the difference between Work Insight and Warehouse Mobile, and where should I start when a task is stuck?",
+      "intent": "Understand monitoring versus execution",
+      "category": "work-mobile",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S1"
+      ],
+      "source_urls": [
+        "https://www.manh.com/solutions/supply-chain-management-software/manhattan-scale"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    },
+    {
+      "question_id": "QS-02",
+      "question": "I can see the work in Work Insight, but it does not appear on my handheld. What should I check?",
+      "intent": "Investigate missing handheld selection",
+      "category": "work-mobile",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S1",
+        "S7"
+      ],
+      "source_urls": [
+        "https://www.manh.com/solutions/supply-chain-management-software/manhattan-scale",
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/warehouse-app-pack-containers-scenario"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "work status",
+        "selected profile/menu",
+        "user and warehouse scope"
+      ]
+    },
+    {
+      "question_id": "QS-03",
+      "question": "Why does a work unit still show open after I picked everything?",
+      "intent": "Distinguish picking from full completion",
+      "category": "work-completion",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S2"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/create-location-directive"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "remaining instructions",
+        "last completed step",
+        "work status"
+      ]
+    },
+    {
+      "question_id": "QS-04",
+      "question": "I cannot close this work unit. Which incomplete step or status should I look at first?",
+      "intent": "Find unmet close prerequisite",
+      "category": "work-completion",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S4"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/cancel-warehouse-work"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "exact error",
+        "current step",
+        "remaining work"
+      ]
+    },
+    {
+      "question_id": "QS-05",
+      "question": "Can I cancel this stuck work, or will that leave inventory in the wrong place?",
+      "intent": "Understand cancellation effects",
+      "category": "work-exception",
+      "origin": "PUBLIC_WORKFLOW_SCENARIO",
+      "source_ids": [
+        "S4"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/cancel-warehouse-work"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "work progress",
+        "inventory location/state",
+        "authorized action"
+      ]
+    },
+    {
+      "question_id": "QS-06",
+      "question": "Where do I find the reason a pick failed, instead of just trying the same action again?",
+      "intent": "Locate diagnostic evidence",
+      "category": "work-exception",
+      "origin": "PUBLIC_WORKFLOW_SCENARIO",
+      "source_ids": [
+        "S3"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/work-exceptions-log"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    },
+    {
+      "question_id": "QS-07",
+      "question": "How do I configure which work a user can receive on Warehouse Mobile?",
+      "intent": "Configure mobile work eligibility",
+      "category": "work-configuration",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S1",
+        "S7"
+      ],
+      "source_urls": [
+        "https://www.manh.com/solutions/supply-chain-management-software/manhattan-scale",
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/warehouse-app-pack-containers-scenario"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    },
+    {
+      "question_id": "QS-08",
+      "question": "The location has fewer units than my work says to pick. What should I check before reporting a short pick?",
+      "intent": "Handle physical shortage",
+      "category": "work-exception",
+      "origin": "PUBLIC_WORKFLOW_SCENARIO",
+      "source_ids": [
+        "S3"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/work-exceptions-log"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "expected and observed quantity",
+        "work/location context",
+        "exception reason"
+      ]
+    },
+    {
+      "question_id": "QS-09",
+      "question": "What settings decide which putaway location SCALE recommends?",
+      "intent": "Understand destination-selection settings",
+      "category": "putaway-configuration",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S2"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/create-location-directive"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    },
+    {
+      "question_id": "QS-10",
+      "question": "Why is this pallet going to an exception location when another location looks empty?",
+      "intent": "Investigate exception destination",
+      "category": "putaway-exception",
+      "origin": "PUBLIC_WORKFLOW_SCENARIO",
+      "source_ids": [
+        "S2"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/create-location-directive"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "selected rule",
+        "location eligibility/capacity",
+        "incoming work"
+      ]
+    },
+    {
+      "question_id": "QS-11",
+      "question": "How do I set a different receiving process for damaged goods and returns?",
+      "intent": "Configure damaged goods and returns",
+      "category": "receiving-configuration",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S5"
+      ],
+      "source_urls": [
+        "https://docs.oracle.com/cd/E26401_01/doc.122/e48828/T210618T210768.htm"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    },
+    {
+      "question_id": "QS-12",
+      "question": "Why is receiving asking for a lot or serial number for this item?",
+      "intent": "Explain conditional prompt",
+      "category": "receiving-exception",
+      "origin": "PUBLIC_WORKFLOW_SCENARIO",
+      "source_ids": [
+        "S5"
+      ],
+      "source_urls": [
+        "https://docs.oracle.com/cd/E26401_01/doc.122/e48828/T210618T210768.htm"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "item controls",
+        "receipt context",
+        "selected receiving process"
+      ]
+    },
+    {
+      "question_id": "QS-13",
+      "question": "How do I stop users receiving more than the expected quantity?",
+      "intent": "Control excess receipt quantities",
+      "category": "receiving-configuration",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S5"
+      ],
+      "source_urls": [
+        "https://docs.oracle.com/cd/E26401_01/doc.122/e48828/T210618T210768.htm"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    },
+    {
+      "question_id": "QS-14",
+      "question": "How do I configure the packing station so workers get the right container choices?",
+      "intent": "Configure station and container choices",
+      "category": "packing-configuration",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S6"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/packing-containers"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    },
+    {
+      "question_id": "QS-15",
+      "question": "I scanned the shipment at Packing, but no items appeared. What should I check?",
+      "intent": "Investigate missing packable lines",
+      "category": "packing-exception",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S7"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/warehouse-app-pack-containers-scenario"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "packing station",
+        "shipment/line progress",
+        "available quantities"
+      ]
+    },
+    {
+      "question_id": "QS-16",
+      "question": "What does Close Container actually do, and what happens to the container afterward?",
+      "intent": "Understand close effects and next operation",
+      "category": "packing-completion",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S6"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/packing-containers"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    },
+    {
+      "question_id": "QS-17",
+      "question": "I packed all the items, but the container will not close. How do I find what is missing?",
+      "intent": "Diagnose blocked close",
+      "category": "packing-completion",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S6"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/packing-containers"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "exact error",
+        "container/contents state",
+        "required close information"
+      ]
+    },
+    {
+      "question_id": "QS-18",
+      "question": "Why does Packing reject a replacement LPN even though the item looks the same?",
+      "intent": "Investigate replacement rejection",
+      "category": "packing-exception",
+      "origin": "PUBLIC_WORKFLOW_SCENARIO",
+      "source_ids": [
+        "S8"
+      ],
+      "source_urls": [
+        "https://docs.oracle.com/en/cloud/saas/warehouse-management/26a/owmol/packing.html"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "original/replacement attributes",
+        "allocation context",
+        "exact rejection"
+      ]
+    },
+    {
+      "question_id": "QS-19",
+      "question": "Can I move an item from one container to another after packing has started?",
+      "intent": "Understand repacking underway",
+      "category": "packing-configuration",
+      "origin": "PUBLIC_WORKFLOW_SCENARIO",
+      "source_ids": [
+        "S9"
+      ],
+      "source_urls": [
+        "https://docs.oracle.com/cd/E26401_01/doc.122/e48828/T210618T210726.htm"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "container states",
+        "packed quantities",
+        "authorized repack workflow"
+      ]
+    },
+    {
+      "question_id": "QS-20",
+      "question": "How do I configure whether packing happens on a workstation or on a mobile device?",
+      "intent": "Configure desktop and handheld access",
+      "category": "packing-mobile",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S7"
+      ],
+      "source_urls": [
+        "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/warehouse-app-pack-containers-scenario"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    },
+    {
+      "question_id": "QS-21",
+      "question": "What information should I give you when I report that a work unit or container cannot close?",
+      "intent": "Supply useful diagnostic context",
+      "category": "chatbot-diagnostic",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S10"
+      ],
+      "source_urls": [
+        "https://www.manh.com/en-sg/our-solutions/manhattan-active-platform/ready-to-deploy-ai-agents"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    },
+    {
+      "question_id": "QS-22",
+      "question": "Can you explain this setting in plain language and show where the explanation comes from?",
+      "intent": "Request accessible explanation with evidence",
+      "category": "chatbot-explanation",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S10"
+      ],
+      "source_urls": [
+        "https://www.manh.com/en-sg/our-solutions/manhattan-active-platform/ready-to-deploy-ai-agents"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    },
+    {
+      "question_id": "QS-23",
+      "question": "How do I configure when labels print during packing, and what should I check if closing a container prints nothing?",
+      "intent": "Configure triggers and diagnose missing output",
+      "category": "packing-printing",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S9"
+      ],
+      "source_urls": [
+        "https://docs.oracle.com/cd/E26401_01/doc.122/e48828/T210618T210726.htm"
+      ],
+      "answerability_expectation": "REQUIRES_CURRENT_STATE",
+      "current_state_needed": [
+        "document routing",
+        "station/printer selection",
+        "print outcome/error"
+      ]
+    },
+    {
+      "question_id": "QS-24",
+      "question": "How do I configure which items may share a container and which must stay separate?",
+      "intent": "Configure item grouping constraints",
+      "category": "packing-configuration",
+      "origin": "OWNER_SEED_PLUS_PUBLIC_WORKFLOW",
+      "source_ids": [
+        "S9"
+      ],
+      "source_urls": [
+        "https://docs.oracle.com/cd/E26401_01/doc.122/e48828/T210618T210726.htm"
+      ],
+      "answerability_expectation": "KNOWN_PROCESS_OR_CONFIGURATION",
+      "current_state_needed": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Manhattan SCALE product overview",
+      "publisher": "Manhattan Associates",
+      "product": "Manhattan SCALE",
+      "url": "https://www.manh.com/solutions/supply-chain-management-software/manhattan-scale",
+      "reviewed_scope": "Work visibility and mobile-oriented operations; no detailed Work Insight procedure.",
+      "use": "Scenario inspiration only; no source-product settings or capabilities transferred to SCALE."
+    },
+    {
+      "id": "S2",
+      "title": "Work with location directives",
+      "publisher": "Microsoft Learn",
+      "product": "Dynamics 365 Supply Chain Management",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/create-location-directive",
+      "reviewed_scope": "Pick/put steps, rule sequencing, location search and failure behavior.",
+      "use": "Scenario inspiration only; no source-product settings or capabilities transferred to SCALE."
+    },
+    {
+      "id": "S3",
+      "title": "View and manage the work exceptions log",
+      "publisher": "Microsoft Learn",
+      "product": "Dynamics 365 Supply Chain Management",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/work-exceptions-log",
+      "reviewed_scope": "Pick/pack exceptions, short picks and diagnostic logs.",
+      "use": "Scenario inspiration only; no source-product settings or capabilities transferred to SCALE."
+    },
+    {
+      "id": "S4",
+      "title": "Cancel warehouse work for exception handling",
+      "publisher": "Microsoft Learn",
+      "product": "Dynamics 365 Supply Chain Management",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/cancel-warehouse-work",
+      "reviewed_scope": "Blocked work, incomplete put operations and distinct cancellation paths.",
+      "use": "Scenario inspiration only; no source-product settings or capabilities transferred to SCALE."
+    },
+    {
+      "id": "S5",
+      "title": "Inbound Process",
+      "publisher": "Oracle",
+      "product": "Oracle E-Business Suite Warehouse Management 12.2",
+      "url": "https://docs.oracle.com/cd/E26401_01/doc.122/e48828/T210618T210768.htm",
+      "reviewed_scope": "Receipt routing, item controls, inspection and excess-receipt tolerance.",
+      "use": "Scenario inspiration only; no source-product settings or capabilities transferred to SCALE."
+    },
+    {
+      "id": "S6",
+      "title": "Pack containers for shipment",
+      "publisher": "Microsoft Learn",
+      "product": "Dynamics 365 Supply Chain Management",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/packing-containers",
+      "reviewed_scope": "Packing setup, closing/release choices and completion information.",
+      "use": "Scenario inspiration only; no source-product settings or capabilities transferred to SCALE."
+    },
+    {
+      "id": "S7",
+      "title": "Example scenario: Pack containers with the Warehouse Management mobile app",
+      "publisher": "Microsoft Learn",
+      "product": "Dynamics 365 Supply Chain Management",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/supply-chain/warehousing/warehouse-app-pack-containers-scenario",
+      "reviewed_scope": "Worker setup, packing menus, station context and container steps.",
+      "use": "Scenario inspiration only; no source-product settings or capabilities transferred to SCALE."
+    },
+    {
+      "id": "S8",
+      "title": "Packing",
+      "publisher": "Oracle",
+      "product": "Oracle Warehouse Management Cloud 26A",
+      "url": "https://docs.oracle.com/en/cloud/saas/warehouse-management/26a/owmol/packing.html",
+      "reviewed_scope": "LPN substitution examples involving inventory attributes.",
+      "use": "Scenario inspiration only; no source-product settings or capabilities transferred to SCALE."
+    },
+    {
+      "id": "S9",
+      "title": "Packing Workbench implementation considerations",
+      "publisher": "Oracle",
+      "product": "Oracle E-Business Suite Warehouse Management 12.2",
+      "url": "https://docs.oracle.com/cd/E26401_01/doc.122/e48828/T210618T210726.htm",
+      "reviewed_scope": "Station requirements, pack/unpack and closing/printing.",
+      "use": "Scenario inspiration only; no source-product settings or capabilities transferred to SCALE."
+    },
+    {
+      "id": "S10",
+      "title": "Manhattan Active base agents",
+      "publisher": "Manhattan Associates",
+      "product": "Manhattan Active platform, not SCALE",
+      "url": "https://www.manh.com/en-sg/our-solutions/manhattan-active-platform/ready-to-deploy-ai-agents",
+      "reviewed_scope": "Explanation with citations and contextual associate guidance.",
+      "use": "Scenario inspiration only; no source-product settings or capabilities transferred to SCALE."
+    }
+  ],
+  "canonical_question_sha256": "d47d7eae5e69d068162f0e8bd70fad79ddbab2f735e51d2379a53303460681b4",
+  "excluded_from_retrieval_index": true,
+  "method": {
+    "purpose": "Survey plausible questions from owner priorities and primary public workflow/help documentation. Qualitative scenario sample, not a survey of users.",
+    "owner_seeds": [
+      "configuration and how to configure",
+      "work unit or container cannot close",
+      "packing screen",
+      "Work Insight versus Warehouse Mobile"
+    ],
+    "source_selection": "Official Manhattan, Microsoft Learn and Oracle pages. Community forums, secondary blogs and marketing reviews were not used as technical evidence.",
+    "formulation": "24 plain-language questions. No expected topic IDs or answer keys selected.",
+    "independence_limit": "Same inherited conversation and SDD author; prior context included earlier handoff/help metrics. Independently formulated from owner seeds/public docs in this subtask, not fresh-context isolation, independently sampled users or a statistical holdout.",
+    "popularity": "No usage logs, representative sampling, frequency ranking or statistical popularity evidence. Plausible questions, not proven common questions.",
+    "answerability": "KNOWN_PROCESS_OR_CONFIGURATION describes documentary intent, not measured local app knowledge. REQUIRES_CURRENT_STATE needs case-specific facts for a factual cause; a documentary checklist may still help.",
+    "product_boundary": "Microsoft/Oracle/Manhattan Active sources inspire scenarios only. Their settings, screens and rules are not transferred to SCALE. Work Insight terminology is owner-provided. SCALE answers need appropriate SCALE evidence.",
+    "owner_attestation": "Replica current per owner. No build/version identification requested as a user-facing gate. Unobserved transaction/UI state remains separate.",
+    "evaluation_rule": "Freeze before evaluation; keep outside search and separate from authored regression questions. Assess retrieval and answer relevance/unsupported certainty separately. Do not change questions after scores are visible.",
+    "not_acceptance": "No real-user, keyboard, screen-reader, deployed-workflow or statistical popularity acceptance."
+  }
+}

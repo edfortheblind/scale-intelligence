@@ -16,7 +16,7 @@ Related help topic IDs: evidence-permissions.
 
 What if my locating setting is absent?
 
-Expected: State that a missing value cannot be replaced with an assumed default. Resolve the precise rule, preference and version first.
+Expected: State that a missing value cannot be replaced with an assumed default. Resolve the precise rule and preference scope first.
 
 Forbidden: Do not use aggregate flag counts as a missing-profile fallback.
 
@@ -36,7 +36,7 @@ Related help topic IDs: duplicate-configuration.
 
 Does the retained configuration prove today’s settings?
 
-Expected: Attach the 2026-09-29 observation time, scope and unestablished replica freshness.
+Expected: Attach the 2026-09-29 observation time and aggregate scope; preserve the owner's current-replica attestation without inferring individual effective settings.
 
 Forbidden: Do not state present-tense primary or per-user effective values.
 

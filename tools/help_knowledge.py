@@ -148,6 +148,11 @@ class Knowledge:
             body['steps']=[s['explanation'] for s in topic['execution_steps']]
             self.rows.append((topic['topic_id'], topic['title'], topic['business_question'],
                               ' '.join(text_values(body)), ''))
+            # Keep the reviewed heading searchable without the length penalty
+            # of its full topic. This is authored guidance, not evaluation text.
+            if topic['business_question'].strip():
+                self.rows.append((topic['topic_id'], topic['title'],
+                                  topic['business_question'], '', ''))
             for passage in dict.fromkeys(text_values(body)):
                 self.rows.append((topic['topic_id'], topic['title'], '', passage, ''))
             for refinement in topic.get('documentary_refinements', []):
@@ -246,7 +251,7 @@ class Knowledge:
                 description = 'Capture began '+observation['started_at']+'. Checks: '+', '.join(c['check_id'] for c in observation['checks'])+'.'
             result.update(label=allowed[source['path']], source_hash=source['sha256'],
                           excerpts=[{'location': source['path'], 'text': description}],
-                          qualification='Retained snapshot only. Replica freshness, current effective user settings and end-to-end process duration are not established.')
+                          qualification='Timestamped aggregate evidence. The owner accepts the current replica as the documentation baseline; individual effective settings and end-to-end process duration are not established.')
         elif kind == 'CATALOG_METADATA':
             self._verified_text(source['path'], source['sha256'])
             result.update(label=Path(source['path']).name, source_hash=source['sha256'],
@@ -293,6 +298,21 @@ class Knowledge:
         terms = list(dict.fromkeys(tokens(question)))[:40]
         if not terms:
             return {'question': question, 'state': 'EMPTY_QUERY', 'scope': GENERAL_SCOPE, 'results': []}
+        # A demonstrative such as "this setting" identifies no searchable
+        # subject. Ask for the missing context instead of ranking unrelated
+        # settings merely because they contain common configuration words.
+        generic = set(('a an and are as at be by can could do does for from how i in is it me my of on or our '
+                       'please should tell the their there these this that those to was we what when which who why will with '
+                       'would you your explain understand configure configuration configurations setting settings '
+                       'option options field fields mean means meaning work works change set setup use using enable '
+                       'disable need want help about affect affects behavior behaviour plain language show where '
+                       'explanation explanations explains explained explaining comes source sources documentation documented evidence simple terms').split())
+        configuration_words = {'configure', 'configuration', 'configurations', 'setting', 'settings', 'option', 'options', 'field', 'fields'}
+        named_work = 'work' in terms and not set(terms) & {'this', 'that', 'these', 'those', 'it'}
+        if set(terms) & configuration_words and not set(terms) - generic and not named_work:
+            return {'question': question, 'state': 'NEEDS_CONTEXT', 'scope': GENERAL_SCOPE,
+                    'clarification': 'Enter the setting or field name, the screen where you see it, and what you want it to do. For example: Packing Preferences — Validate Item. Do not include credentials or transaction data.',
+                    'results': []}
         # Common words do not distinguish processes. Never index evaluation
         # questions/expectations: held-out retrieval remains an actual check.
         stop = set('a an and are as at be by can do does for from how i in is it me my of on or our the their there these this to was we what when which who why will with you your'.split())

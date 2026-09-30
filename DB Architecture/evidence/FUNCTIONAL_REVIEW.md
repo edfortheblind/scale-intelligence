@@ -1,8 +1,16 @@
 # Functional-help foundation review
 
+## Continuation2 checkpoint, 2026-09-30
+
+Bounded module contracts: 1,138/1,138 (100.00%); object roles: 1,655/1,656 (99.94%); help: 334 topics. Added 633 procedure contracts and 355 table roles. Exact changed-output hashes, author/peer scopes and verification are in [the current receipt](../../_project/continuation2-20260930.json). Older sections below remain scoped historical records.
+
+Actual HTTP selected-topic checks: 713/713 (100.00%); expected-topic top8: 670/713 (93.97%). Manual 24-scenario follow-up: 18 adequate, 5 partial, 1 missing; baseline was 5 adequate. The 18 adequate results comprise 17 content answers and one appropriate ambiguity clarification. Known-scenario remediation is separate from authored retrieval and untouched holdout. Source-bound operator help and context clarification were independently peer-reviewed and corrected.
+
+Owner-attested current replica; no version/build request. No new warehouse connection or execution. Remaining source, SDD, user/accessibility and fresh-context audit limits are explicit in the handoff. Local/private GitHub delivery is authorized; see the publication receipt for actual Git evidence.
+
 ## Concern-resolution checkpoint, 2026-09-30
 
-Current scope:201 help topics,668 reviewed object roles,505 bounded module contracts,115 documentary setting contracts;450 ordered steps. This continuation adds46 full-body procedure contracts and98 object roles (46 procedures and52 tables). SDD adds26 claims,12 settings and7 visual descriptions;231/231 PDF pages are now viewed. Page viewing is not exhaustive semantic review.
+Current scope:201 help topics,668 reviewed object roles,505 bounded module contracts,115 documentary setting contracts;450 ordered steps. This continuation adds46 full-body procedure contracts and98 object roles (46 procedures and52 tables). SDD adds26 claims, 12 settings and7 visual descriptions;231/231 PDF pages are now viewed. Page viewing is not exhaustive semantic review.
 
 Actual HTTP:445/445 selected-topic checks,420/445 expected-topic top8,290/445 first. On the unchanged417-question baseline, top8 improves380->392 with16 recoveries and4 regressions; all28 added cases retrieve an expected topic. Evaluation text stays outside search. The dynamic XML/unit explanation distinguishes bound values from concatenated text; the new putaway-group topic preserves the specific Warehouse Mobile version conflict. Neither answers nor active deployment are automatically accepted.
 

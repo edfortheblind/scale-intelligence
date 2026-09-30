@@ -7,11 +7,11 @@ Nine originals produce eight unique extracted bodies. Counts separate authored s
 | J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf | 151 / 1608 | 14 / 90 | 119 / 119 | N/A |
 | Manhattan SCALE - Labels.pptx | 20 / 209 | 7 / 43 | Not rendered | 45 / 45 |
 | SCALE Work and Picking Functionality.docx | 143 / 995 | 9 / 13 | Not rendered | N/A |
-| Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx | 18 / 2450 | 1 / 137 | Not rendered | N/A |
+| Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx | 137 / 2450 | 22 / 137 | Not rendered | N/A |
 | MA Documentation - Insight Architect Configuration.pdf | 10 / 20 | 0 / 0 | 2 / 2 | N/A |
 | Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf | 194 / 973 | 12 / 73 | 110 / 110 | N/A |
 | LAND MAWM Solution Design Document v2.11.docx | 22 / 4605 | 4 / 37 | Not rendered | N/A |
-| SCALE Configuration Walkthrough - HADDAD.docx | 114 / 758 | 4 / 220 | Not rendered | N/A |
+| SCALE Configuration Walkthrough - HADDAD.docx | 134 / 758 | 14 / 220 | Not rendered | N/A |
 
 A cited node can contain more material than a claim uses. Its presence does not certify every sentence. Asset descriptions count unique retained paths separately from page views; 614 asset records correspond to 613 unique paths.
 
@@ -40,3 +40,9 @@ There are 76 reviewed logical tables supported by 93 heuristic candidates; 126 c
 - Native Word export previously failed and produced no PDF. Selected DOCX images and five EMF diagrams were reviewed separately. Full DOCX pagination, embedded objects, SmartArt and ancillary revision/comment fidelity remain incomplete. No Word automation occurred in these PDF review batches.
 - Deployment settings, runtime behavior, printer output and production-index suitability remain unobserved. LAND MAWM remains a separate product, excluded from SCALE equivalence.
 - Original files, extraction JSON, inert reading copies and retained assets remain unchanged. Renders and receipts remain private.
+
+## DOCX semantic/asset continuation, 2026-09-30
+
+Covetrus inbound nodes b00614-b00915 and HADDAD container/QC nodes b00617-b00659 received retained-text review, with 31 distinct substantive PNG assets individually inspected. This adds 16 claims, 12 settings and 24 visual descriptions. Covetrus now has 22/137 described assets and HADDAD 14/220. No additional PDF page or static-slide credit is claimed. DOCX tables used as cited text remain outside the logical PDF-table denominator.
+
+HADDAD QC prose/image filter and evaluation-method conflicts remain explicit. Covetrus Workbench caption and item-picture mismatches are preserved. No Word, LibreOffice, full DOCX pagination, live configuration or runtime evidence was used. All originals, extraction bodies, retained assets and prior authored records remain unchanged.

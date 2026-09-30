@@ -2,7 +2,7 @@
 
 These records explain supplied documentation, not active settings. Each states its product/version scope. Proposed validation steps have not been executed. Defaults and precedence remain unknown where the source does not state them. MAWM examples are explicitly separate and cannot be transferred to SCALE.
 
-89 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
+113 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
 
 ## Work Unit Field
 
@@ -1417,3 +1417,161 @@ Suppress selected shipping labels at packing stations for specified flows.
 - Validation: Compare the exact version-matched setting and authorized deployment evidence before use; no configuration query or operational action was performed.
 
 [sdd-d50ca4a96095c930 p077-b004](reading/sdd-d50ca4a96095c930.md#p077-b004)
+
+## Covetrus inbound and HADDAD container/QC additions
+
+### Covetrus item-level receiving preference
+
+Control single-item single-lot pallet check-in and locating.
+
+- Scope: Covetrus Manhattan Active SCALE design v1.4 (2023-08-31); exact product release unestablished. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: Design: Create Putaway Work Yes; Nest During Check In No; Disposition Code Required No; License Plate Assignment System; RF Workflow Header–Item; Check in and Locate (immediate); Container Locating Method Parent; inventory status Available.
+- Default: No universal default is established by this source.
+- Precedence and dependencies: These eight settings belong to the documented item-receiving preference, not all preferences. Its selection screen does not itself display these field values.
+- Related process: Receipt check-in and work creation.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-c4c7e01f8ccad48a b00628, b00630, b00632, b00633, b00634, b00635, b00636, b00637, b00638, b00639, b00663](reading/sdd-c4c7e01f8ccad48a.md#b00628)
+
+### Covetrus Allow over receiving
+
+Prevent excess receipt-line quantities in the intended process.
+
+- Scope: Covetrus Manhattan Active SCALE design v1.4 (2023-08-31); exact product release unestablished. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: Receiving Preferences: Allow over receiving disabled. Excess product follows a new host receipt/PO path.
+- Default: No universal default is established by this source.
+- Precedence and dependencies: The source provides a policy and preference choice, not exact quantity tolerance or all exception handling.
+- Related process: Receiving overage.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-c4c7e01f8ccad48a b00777, b00779](reading/sdd-c4c7e01f8ccad48a.md#b00777)
+
+### Covetrus return receiving status/location
+
+Keep the documented return flow under review.
+
+- Scope: Covetrus Manhattan Active SCALE design v1.4 (2023-08-31); exact product release unestablished. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: Return preference default inventory status Quality Hold and a returns location.
+- Default: Quality Hold is the documented return-preference default, not a product-wide default.
+- Precedence and dependencies: Fort Worth description; other sites may use quick receipt into primary locations. No precedence across sites or preferences is supplied.
+- Related process: Return receiving.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-c4c7e01f8ccad48a b00743, b00745, b00747, b00749](reading/sdd-c4c7e01f8ccad48a.md#b00743)
+
+### Covetrus Locating Rule Assignment During
+
+Choose when receiving assignment is evaluated.
+
+- Scope: Covetrus Manhattan Active SCALE design v1.4 (2023-08-31); exact product release unestablished. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: Receiving System Value Locating Rule Assignment During: Receipt Check-In.
+- Default: No universal default is established by this source.
+- Precedence and dependencies: The text assigns a rule on Receipt Detail and mentions item/interface/disposition/function sources, without defining a complete override hierarchy.
+- Related process: Locating at check-in.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-c4c7e01f8ccad48a b00834, b00838, b00840](reading/sdd-c4c7e01f8ccad48a.md#b00834)
+
+### Covetrus locating sequence by item presence
+
+Select storage in the documented item-present or item-absent design.
+
+- Scope: Covetrus Manhattan Active SCALE design v1.4 (2023-08-31); exact product release unestablished. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: When item absent: ILA to Active with split Yes; reserve consolidation; empty Static/Rack/Floor; SEE Manager fallback. When item already present: reserve consolidation then empty reserves and SEE Manager, all split No.
+- Default: No universal default is established by this source.
+- Precedence and dependencies: Sequence tables b00857/b00862 are separate examples. No executable condition for determining item presence is provided; damaged/QC cases use separate rules.
+- Related process: Inbound locating.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-c4c7e01f8ccad48a b00855, b00857, b00860, b00862, b00865, b00867, b00870, b00872, b00874, b00876](reading/sdd-c4c7e01f8ccad48a.md#b00855)
+
+### Covetrus putaway work identity/profile
+
+Let an operator select putaway work by scanning the LPN.
+
+- Scope: Covetrus Manhattan Active SCALE design v1.4 (2023-08-31); exact product release unestablished. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: Work unit equals Pallet/LPN ID; putaway profile is User Directed.
+- Default: No universal default is established by this source.
+- Precedence and dependencies: Work must already exist for the located pallet; splitting can produce additional work-unit identifiers. Exact assignment/authentication rules are not established.
+- Related process: Putaway execution.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-c4c7e01f8ccad48a b00874, b00881, b00883, b00888, b00890](reading/sdd-c4c7e01f8ccad48a.md#b00874)
+
+### HADDAD default container creation criteria
+
+Select eligible allocation requests during a wave.
+
+- Scope: HADDAD SCALE 2020 walkthrough; revision history 1.1/2023-07-29 and different 2026 cover date. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: The screenshot shows Shipment alloc request and LAUNCH_NUM IS NOT NULL for *Default.
+- Default: A named *Default sample is shown; current warehouse default selection is unobserved.
+- Precedence and dependencies: The prose describes selecting wave items/shipments. This predicate is not an explicit equality to a particular current launch and must not be treated as proof of its complete runtime scoping.
+- Related process: Container creation wave step.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-f46806ef53e15f07 b00626, b00627, b00628](reading/sdd-f46806ef53e15f07.md#b00626)
+
+### HADDAD container-group details
+
+Define the container choices evaluated for a packing class.
+
+- Scope: HADDAD SCALE 2020 walkthrough; revision history 1.1/2023-07-29 and different 2026 cover date. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: Container-group details are processed in sequence order. The pictured Emballage HADDAD example has sequence 10, type C5, fill percent 100, shape Standard.
+- Default: No universal default is established by this source.
+- Precedence and dependencies: The group is linked through Packing Class. One displayed detail row does not establish an exhaustive ordered type set or a universal fill percentage.
+- Related process: Container selection during container creation.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-f46806ef53e15f07 b00636, b00637, b00639, b00640](reading/sdd-f46806ef53e15f07.md#b00636)
+
+### HADDAD packing-class links
+
+Constrain eligible container types and which items can share a container.
+
+- Scope: HADDAD SCALE 2020 walkthrough; revision history 1.1/2023-07-29 and different 2026 cover date. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: Packing Class links a container group and packing criteria; it can be associated with an item and a shipment line.
+- Default: No universal default is established by this source.
+- Precedence and dependencies: The source does not resolve item-versus-line precedence. The screenshot truncates selected field text, so full group/criteria values are not inferred.
+- Related process: Container creation/packing compatibility.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-f46806ef53e15f07 b00639, b00640](reading/sdd-f46806ef53e15f07.md#b00639)
+
+### HADDAD QC assignment criteria: conflicting examples
+
+Decide which shipping containers qualify for QC.
+
+- Scope: HADDAD SCALE 2020 walkthrough; revision history 1.1/2023-07-29 and different 2026 cover date. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: Prose: warehouse IS NOT NULL in a one-warehouse example. Image: OR predicate using incoming work location and work type. These accounts disagree.
+- Default: No universal default is established by this source.
+- Precedence and dependencies: Neither account establishes the adopted predicate; the image labels Shipping container but references WORK_INSTRUCTION fields. Runtime joins/evaluation scope are not shown.
+- Related process: Outbound QC eligibility.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-f46806ef53e15f07 b00648, b00649, b00650](reading/sdd-f46806ef53e15f07.md#b00648)
+
+### HADDAD QC evaluation-method selection: conflicting examples
+
+Choose the event at which QC selection is evaluated.
+
+- Scope: HADDAD SCALE 2020 walkthrough; revision history 1.1/2023-07-29 and different 2026 cover date. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: Method list shows Manual identifier 30, Start Work 20 and Wave 10. Prose selects Manual; assignment image selects Start Work and Wave, not Manual.
+- Default: No universal default is established by this source.
+- Precedence and dependencies: The method catalog and assignment checkboxes must be distinguished. No reconciliation or current effective selection is supplied.
+- Related process: Outbound QC assignment.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-f46806ef53e15f07 b00652, b00653, b00657, b00658](reading/sdd-f46806ef53e15f07.md#b00652)
+
+### HADDAD QC assignment priority and container application
+
+Relate a QC assignment to eligibility and sampling controls.
+
+- Scope: HADDAD SCALE 2020 walkthrough; revision history 1.1/2023-07-29 and different 2026 cover date. Source example; product/date details are provenance, not a build-identification gate.
+- Accepted values / source choices: The General tab example shows priority 2, criteria Quality control and Apply to 1 of 1.00 Containers.
+- Default: No universal default is established by this source.
+- Precedence and dependencies: The screenshot is one assignment; priority direction, interaction with other assignments and counter reset rules are not documented. Its current counter is illustrative data, not acceptance evidence.
+- Related process: QC container selection.
+- Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
+
+Sources: [sdd-f46806ef53e15f07 b00657, b00658](reading/sdd-f46806ef53e15f07.md#b00657)

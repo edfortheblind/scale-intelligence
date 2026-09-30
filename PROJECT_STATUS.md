@@ -1,50 +1,54 @@
 # SCALE Intelligence project status
 
-Publication handoff, 2026-09-30. The owner accepts local files plus the existing private GitHub repository as the delivery boundary and explicitly authorizes commit, push and merge. [Completion by task and section](_project/COMPLETION_REPORT.md) gives current measured progress. There is no defensible overall percentage.
+Continuation checkpoint, 2026-09-30. The owner accepts the current replica as the documentation baseline and local files plus the existing private GitHub repository as delivery. Commit, push and merge are authorized. Version/build is not a prerequisite.
 
-Start with [the master prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) and [resume instructions](_project/RESUME.md). [The functional verification receipt](_project/concern-resolution-20260930.json) binds the preceding local checkpoint. [The publication receipt](_project/publication-20260930.json) records the subsequent GitHub delivery. Previous progress, max-progress and functional-continuation receipts and manifests remain immutable historical evidence.
+[Full percentages by section/task](_project/COMPLETION_REPORT.md) · [Verification receipt](_project/continuation2-20260930.json) · [Publication receipt](_project/continuation2-publication-20260930.json). No defensible overall percentage is claimed.
 
-| Section/task | Current evidence | Remaining scope |
-| --- | --- | --- |
-| A: Object roles | 668/1,656 (40.34%) | 988 identities unreviewed. |
-| A: Module contracts | 505/1,138 (44.38%) | 633 procedures lack bounded full-body contracts. |
-| A: Stored procedures | 288/921 (31.27%) | Static review retains caller/configuration/runtime limits. |
-| A: Table roles | 162/518 (31.27%) | 356 table roles unreviewed. |
-| A: Other captured types | 76/76 functions, 135/135 views, 6/6 triggers | No live execution acceptance follows. |
-| A: Dynamic/dependency review | 60/60 candidates and 169/169 unresolved entries dispositioned | Catalog NULL targets remain unresolved. |
-| B: Documentary process review | 34/34 captured families, 62/62 bodies, 53/53 image references; 130/130 refinements available in local help | 0/34 full deployment reconciliations. |
-| C: SDD | Nine originals/eight unique bodies; 66 claims, 101 settings, 46 visual descriptions and 76 logical PDF tables | 231/231 PDF pages viewed; 45/45 static slides. Full DOCX layout and unreviewed semantic content/assets remain open. |
-| C: PDF candidate review | 93/219 candidates support 76 logical tables; 126 rejected artifacts; 0 pending | Candidate disposition is 219/219; undetected/raster table total is unknown. |
-| D: Runtime | 1,795/1,795 retained rows in 163 dimension-preserving profiles; 154 catalog matches | No whole-process timing or historical-definition identity guarantee. |
-| E: Help | 201 topics, 450 ordered steps; cited routine details and process refinements | Production authentication, user and assistive-technology acceptance unperformed. |
-| E: Actual HTTP | 445/445 selected-topic checks; 420/445 expected-topic top eight; 290/445 first | 25 retrieval misses. Semantic expectations are not automatically scored; questions are not independent holdout. |
+| Section | Task | Completed / total (%) |
+| --- | --- | ---: |
+| A | Object roles | 1,655/1,656 (99.94%) |
+| A | Module contracts | 1,138/1,138 (100.00%) |
+| A | Stored procedures | 921/921 (100.00%) |
+| A | Table roles | 517/518 (99.81%) |
+| A | Table-reference cross-check | 518/518 (100.00%) |
+| B | Captured process-family documentary review | 34/34 (100.00%) |
+| B | Deployment reconciliation | 0/34 (0.00%) |
+| C | Originals preserved | 9/9 (100.00%) |
+| C | PDF page views | 231/231 (100.00%) |
+| C | Static slide views | 45/45 (100.00%) |
+| C | Described source assets | 82/613 (13.38%) |
+| C | Cited extracted nodes | 811/11,618 (6.98%) |
+| D | Retained runtime rows | 1,795/1,795 (100.00%) |
+| E | Selected-topic HTTP checks | 713/713 (100.00%) |
+| E | Authored question retrieval, top8 | 670/713 (93.97%) |
+| E | Known question scenarios adequate | 18/24 (75.00%) |
 
-This continuation adds 46 module contracts, 98 net object roles, 14 help topics and 28 authored questions. The unchanged 417-question baseline improves from 380 to 392 expected-topic top-eight results; 16 cases recover and four regress after corpus expansion. All 28 new questions retrieve the expected topic within eight results. These are authored retrieval checks, not independent usability or answer-quality acceptance.
+## Completed in this continuation
 
-## Implemented and corrected
+Added 633 complete stored-procedure contracts across warehouse/access, reports/labels, inventory/cycle counting, work/configuration and operations. All 921 captured procedures now have bounded static contracts. Added 355 table-role reviews; one table remains structurally described with purpose unconfirmed. No routine was executed.
 
-The [local help app](help_app/README.md) now separates identifier words and numbers, searches displayed evidence limits and short explanatory passages, and uses stemmed whole words. Evaluation questions and expected/forbidden answers remain excluded. The dynamic XML/units explanation now distinguishes bound values from concatenated query text. Source and implementation hashes bind the actual HTTP evaluation. Start `python tools/serve_help.py --port 8765` and open `http://127.0.0.1:8765`.
+Help now contains 334 topics and 821 steps. [Operator/configuration explanations](DB%20Architecture/OPERATOR_CONFIGURATION_HELP.md) cover Work Insight versus mobile, profiles, work completion, packing, QC/VAS/weight closure checks, receiving, printing and compatibility criteria. Unnamed setting requests now ask for context. Peer corrections preserve partial-pick verification polarity, Quick Receive exceptions and source conflicts.
 
-[Administration continuation](DB%20Architecture/ADMINISTRATION_CONTINUATION.md) adds 46 full-source contracts and 27 table roles covering settings, actions, filters, screens and controls. [Inventory table roles](DB%20Architecture/INVENTORY_TABLE_ROLES.md) adds 25 schema/use reviews, preserving nullable defaults, uniqueness and foreign-key limits. No warehouse routine was executed.
+SDD adds 16 claims, 12 settings and 24 visual descriptions covering 31 additional assets. Totals: 82 claims, 113 settings, 70 descriptions and 76 logical PDF tables. All prior reviewed records and originals are preserved; the five updated authored files were normalized from CRLF to LF.
 
-[SDD review](SDD/derived/REVIEW.md) completes the remaining 77 Grupo Julio page views and adds 26 claims, 12 settings and seven visual descriptions. The source's open issue says Receiving with Putaway Groups is unavailable in Warehouse Mobile 24.1.2278; its final document title does not establish later availability. A new source-bound help topic and the eighth cross-source comparison retain this conflict. Load-confirm prerequisites also conflict within the document. Current deployed behavior remains unestablished. A-PNP retains the actual visible assignment wording. Raw SDD production indexing remains disabled.
+[Question research and quality review](_project/HELP_QUESTION_REVIEW.md) uses 24 frozen plausible questions. Baseline 5/24 adequate improved to 18/24; 5 remain partial and 1 missing. The 18 adequate results comprise 17 content answers and one appropriate ambiguity clarification. Questions stay out of the index. These are manually judged known scenarios after repair, not independent user acceptance or measured chatbot popularity.
 
-## Preservation and verification
+On the unchanged 445-question retrieval subset, expected-topic top-eight results declined from 420 to 407 after corpus expansion. New cases achieved 263/268; the combined result is 670/713. [Exact retrieval comparison](_project/retrieval-change-review.json) preserves the remaining misses and case identities.
 
-AIM remains owner-closed at 2,446/2,453 (99.71%); SDK at 363/380 (95.53%, known lower-bound denominator). The existing search contains 2,809 AIM/SDK articles. Original 01/02 prompts and source acquisitions remain unchanged. The structural snapshot contains 3,022 objects and all 1,142 captured definitions. Five fixed configuration observations remain at 2026-09-29 22:50:28–30 UTC.
+## Remaining evidence
 
-Exact commands, exit codes, hashes, author/peer scopes and changed-file inventory are in [the current receipt](_project/concern-resolution-20260930.json). Bounded peer reviews are independent of the corresponding writers. A requested fresh-context parent audit could not start because the agent thread limit was reached; these peers do not replace that audit. Actual browser inventory was empty and the explicit in-app browser attempt returned unavailable. No browser/keyboard/screen-reader or intended-user acceptance is claimed. Full DOCX page rendering remains unavailable in this environment.
+The [table-reference cross-check](DB%20Architecture/TABLE_USAGE_REVIEW.md) records direct, indirect, dynamic-candidate and unresolved evidence separately. Owner backup/date naming is a hypothesis, not a deletion recommendation. One table, `dbo.Interface_Item_Failure_1024`, has 160 nullable columns and no supported consumer/purpose in the captured sources. A bounded search found no references in 1,142 original definitions, catalog dependencies or vendor articles. Do not assume it is unused or assign a business role from its name.
 
-The prior read-only diagnostic recorded `Options.UpdateLinksAtOpen=false`. The earlier pre-export value was not retained and cannot be reconstructed. This continuation opened no Word documents and changed no Word preferences. The owner preference question remains unanswered; historical restoration is unverified.
+Continue uncited SDD semantics, undescribed assets and raster tables; complete application/caller and effective-configuration reconciliation where supported evidence exists. Query Store remains statement telemetry, not whole-process timing. Full DOCX layout, browser/keyboard/screen-reader and intended-user acceptance remain unperformed. A fresh-context parent audit could not be created because of the thread limit; bounded peers do not replace it.
 
-The functional continuation made no new database connection, transactional-data import or warehouse execution. The owner has now separately authorized GitHub publication; its evidence is recorded in the publication receipt. External AEKR remained read-only native governance; no runtime/provider/scaffold/control switches or archive payload. Private SQL and protected credentials remain external. Delivery requires local and private GitHub parity. External deployment and OneDrive verification are outside this delivery requirement.
+Insight navigation/SOP registration is a separately initiated future task. External deployment and OneDrive upload are outside this delivery. No new database connection, transactional-data import, operational action, Word preference write or external AEKR mutation occurred. Historical receipts remain unchanged.
 
-Next: review the remaining 633 stored-procedure bodies and 356 table roles; continue uncited SDD claims, undescribed assets and raster tables; resolve retrieval ambiguity with reviewed explanations and independent user questions; obtain fresh-context review and the specific caller/service/configuration/interaction evidence named in the ledgers. Do not repeat the completed PDF page views. Insight screen registration and SOP navigation remain a separately initiated future task.
+Run `python tools/serve_help.py --port 8765` and open `http://127.0.0.1:8765`. Start future work with [the master prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) and [resume instructions](_project/RESUME.md).
 
 Outcome: DONE_WITH_CONCERNS
 
-Delivery state: Owner-approved local and private GitHub delivery; commit, push, merge and parity evidence are recorded in the publication receipt. Bounded product peer review is preserved; fresh-context parent audit remains unavailable.
+Delivery state: Local functional checkpoint; authorized private GitHub commit/push/merge and final parity are recorded in the publication receipt.
 
-Product state: Expanded knowledge and functional local help; full coverage and deployment/accessibility acceptance remain incomplete.
+Product state: Complete bounded contracts for captured modules; remaining table, SDD, reconciliation and user-acceptance gaps stay explicit.
 
-Gate/authority state: Owner explicitly authorized commit, push and merge. Local plus private GitHub satisfies delivery scope; product evidence gaps remain recorded separately.
+Gate/authority state: Owner-authorized local/private delivery. No build/version gate or external deployment requirement.

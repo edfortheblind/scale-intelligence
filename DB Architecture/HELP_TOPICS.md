@@ -1,6 +1,6 @@
 # SCALE functionality help topics
 
-201 bounded help topics; 437 authored evaluation cases. These reviewed explanations are also served by the local help prototype. Deployment reconciliation remains incomplete.
+334 bounded help topics; 705 authored evaluation cases. These reviewed explanations are also served by the local help prototype. Deployment reconciliation remains incomplete.
 
 Answers follow what it does, what happens, what can affect it, what you can check, and sources. Screen names in sources are documentary references; verified Insight navigation and SOPs remain separate. No process, label, job or transaction was executed. Browser, keyboard, screen-reader and intended-user acceptance remain unperformed.
 
@@ -5514,7 +5514,7 @@ Trigger: A request to understand the evidence and applicability of a SCALE expla
 
 `work-batch-51843597`: [dbo.WRK_GetWorkInstructionsForExecution](sql/51843597.sql); source-definition SHA-256 `eca08945d5ab9ce42fdf8c01403853dd3addf9a62075e31053e20732f7db87cf`, reading-copy SHA-256 `337a1793a82284ecd9d2c95352ab086d5ee8dae4e6e6a8d6025a62198c6678b0`, one-based inclusive lines [[1, 752]].
 
-`retained-config-observation`: [DB Architecture/evidence/configuration-observations.json](evidence/configuration-observations.json); SHA-256 `65b601ee627c80ad3920d3e4bd04722b6af3f77b0ba981e75527eeccb1bc9264`. Retained aggregate evidence only; freshness and individual effective settings remain unestablished.
+`retained-config-observation`: [DB Architecture/evidence/configuration-observations.json](evidence/configuration-observations.json); SHA-256 `65b601ee627c80ad3920d3e4bd04722b6af3f77b0ba981e75527eeccb1bc9264`. Timestamped aggregate evidence; the owner accepts the current replica as the documentation baseline. Individual effective settings remain unestablished.
 
 Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_CURRENT_CHECKPOINT_AUDIT`.
 
@@ -5528,7 +5528,7 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 **Question:** What happens if a locating setting is missing?
 
-**What it does.** A missing setting does not have one universal SCALE fallback. First identify the exact locating rule, item or rule-set assignment, product version and application path. The documented delayed-locating behavior requires both flags; absence of evidence is not permission to invent an active value.
+**What it does.** A missing setting does not have one universal SCALE fallback. First identify the exact locating rule, item or rule-set assignment, applicable preference and application path. The documented delayed-locating behavior requires both flags; absence of evidence is not permission to invent an active value.
 
 **What happens**
 
@@ -5543,7 +5543,7 @@ Trigger: A request to understand the evidence and applicability of a SCALE expla
 
 **What you can check**
 
-- Obtain a sanitized rule identifier, setting name, version and application-to-rule binding. Inspect the matching documented or source-defined missing-value branch.
+- Obtain a sanitized rule identifier, setting name and application-to-rule binding. Inspect the matching documented or source-defined missing-value branch.
 
 **Expected results and limits**
 
@@ -5602,36 +5602,36 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 - Does the first row shown on a configuration screen always take precedence? Expected: Explain exact-query scope, ordering and possible ties. Must not claim: Invent a universal first-row priority.
 
-## 113. Interpreting retained configuration and stale replicas
+## 113. Current documentation baseline and retained configuration checks
 
 **Question:** Do the retained checks prove today’s effective settings?
 
-**What it does.** No. The five configuration checks ran on 29 September 2026 at 22:50:28–30 UTC. They establish only the recorded aggregate fields at that observation point. Replica freshness and an individual user’s effective configuration were not established.
+**What it does.** The owner confirms the replica is current and accepts it as the documentation baseline. The five retained configuration checks still describe aggregate fields observed on 29 September 2026 at 22:50:28–30 UTC; they do not identify an individual user’s effective preference or prove a specific runtime outcome.
 
 **What happens**
 
 Trigger: A request to understand the evidence and applicability of a SCALE explanation.
 
 1. Keep the capture time and fixed check scope attached to the result. Evidence: `retained-config-observation`.
-2. Before making a present-tense claim, establish the relevant replica synchronization time and the application’s effective setting scope. Evidence: `retained-config-observation`.
+2. For a specific user or action, identify the effective setting scope. Current replica status does not turn aggregate counts into individual configuration values. Evidence: `retained-config-observation`.
 
 **What can affect it**
 
-- Replication delay, changes after capture and profile/sequence precedence can make a retained aggregate unsuitable for a current-user answer.
+- Profile assignment and sequence precedence determine which configuration applies; aggregate checks do not expose those per-user values.
 
 **What you can check**
 
-- Request the smallest sanitized freshness/version evidence and exact setting scope needed for the question. A metadata or source snapshot alone cannot supply them.
+- Use the named setting, screen and applicable preference/profile to explain the question. Version/build and replica synchronization evidence are not prerequisites for this documentation task.
 
 **Expected results and limits**
 
 - A bounded explanation and the smallest evidence needed to resolve remaining uncertainty.
-- No primary-versus-replica agreement or current activation guarantee is claimed.
+- Current replica status is owner-attested. The retained checks are timestamped aggregate observations, not a live per-user configuration lookup.
 - No operational records, user profiles, procedures, jobs or printer outputs were requested or executed.
 
 **More detail and sources**
 
-`retained-config-observation`: [DB Architecture/evidence/configuration-observations.json](evidence/configuration-observations.json); SHA-256 `65b601ee627c80ad3920d3e4bd04722b6af3f77b0ba981e75527eeccb1bc9264`. Retained aggregate evidence only; freshness and individual effective settings remain unestablished.
+`retained-config-observation`: [DB Architecture/evidence/configuration-observations.json](evidence/configuration-observations.json); SHA-256 `65b601ee627c80ad3920d3e4bd04722b6af3f77b0ba981e75527eeccb1bc9264`. Timestamped aggregate evidence; the owner accepts the current replica as the documentation baseline. Individual effective settings remain unestablished.
 
 Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_CURRENT_CHECKPOINT_AUDIT`.
 
@@ -5639,7 +5639,7 @@ Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_CURRENT_CH
 
 Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
 
-- Can yesterday’s configuration snapshot guarantee my setting now? Expected: State the timestamp, aggregation scope and unknown freshness. Must not claim: Guarantee current primary or per-user settings.
+- Can yesterday’s configuration snapshot guarantee my setting now? Expected: State owner-attested current baseline, retained timestamp and aggregate-versus-user scope. Must not claim: Guarantee current primary or per-user settings.
 
 ## 114. Using LAND and other product-specific SDDs
 
@@ -5697,7 +5697,7 @@ Trigger: A request to understand the evidence and applicability of a SCALE expla
 
 **What can affect it**
 
-- Tolerance units, scope, version and recount/reconciliation permissions must be established for the actual deployment.
+- Tolerance units, scope and recount/reconciliation permissions must be established for the actual deployment.
 
 **What you can check**
 
@@ -5745,7 +5745,7 @@ Trigger: A request to understand the evidence and applicability of a SCALE expla
 
 **What you can check**
 
-- Use a sanitized event-schema example with correlation ID and UTC stage start/end semantics, plus version/freshness context. Do not execute warehouse work to manufacture a timing result.
+- Use a sanitized event-schema example with correlation ID and UTC stage start/end semantics, plus observation time and process scope. Do not execute warehouse work to manufacture a timing result.
 
 **Expected results and limits**
 
@@ -5757,7 +5757,7 @@ Trigger: A request to understand the evidence and applicability of a SCALE expla
 
 `family-wave-aim`: [Wave Process Summary: Functionality](../AIM/reading/ff0d6dcb383f13d0f16ae9e21279d28c7b9f03cb6c555d98422f3e3acb47cc5e.md); AIM article `ff0d6dcb383f13d0f16ae9e21279d28c7b9f03cb6c555d98422f3e3acb47cc5e`, original SHA-256 `7cc9576de1f1a7765ef4ef299b2e23fb6b4924faa76a84fe27223d5f51a38b5b`, nodes n65.
 
-`retained-statement-timing`: [DB Architecture/catalog/query_store_runtime.json](catalog/query_store_runtime.json); SHA-256 `e2d9c165500485a9db06156da434e9455141d0c796770787daee7a05c1e66dd1`. Retained aggregate evidence only; freshness and individual effective settings remain unestablished.
+`retained-statement-timing`: [DB Architecture/catalog/query_store_runtime.json](catalog/query_store_runtime.json); SHA-256 `e2d9c165500485a9db06156da434e9455141d0c796770787daee7a05c1e66dd1`. Timestamped aggregate evidence; the owner accepts the current replica as the documentation baseline. Individual effective settings remain unestablished.
 
 Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_CURRENT_CHECKPOINT_AUDIT`.
 
@@ -5777,17 +5777,17 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 Trigger: A request to understand the evidence and applicability of a SCALE explanation.
 
-1. Check the version-specific template and configuration dependencies documented for the label. Evidence: `sdd-boundary-label-prerequisites`.
+1. Check the cited template and configuration dependencies documented for the label. Evidence: `sdd-boundary-label-prerequisites`.
 2. When printing during a wave, the deck includes a Documents–Labels step. Evidence: `sdd-boundary-label-prerequisites`.
 3. Installed printer support and actual output need their own evidence; a returned document choice is not that evidence. Evidence: `sdd-boundary-label-prerequisites`.
 
 **What can affect it**
 
-- Template, renderer, routing, wave step and printer support depend on the installed product/version.
+- Template, renderer, routing, wave step and printer support depend on the configured printing path.
 
 **What you can check**
 
-- Use a sanitized installed template/renderer/version mapping and acknowledgment contract. No label, report or print job is executed by this help.
+- Use a sanitized installed template/renderer mapping and acknowledgment contract. No label, report or print job is executed by this help.
 
 **Expected results and limits**
 
@@ -5805,7 +5805,7 @@ Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_CURRENT_CH
 
 Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
 
-- Does the training deck prove our installed printer supports this label? Expected: Explain version-specific prerequisites and missing installed/output evidence. Must not claim: Claim verified printer support or physical output.
+- Does the training deck prove our installed printer supports this label? Expected: Explain documented prerequisites and missing installed/output evidence. Must not claim: Claim verified printer support or physical output.
 
 ## 118. Understanding DIF message view row counts
 
@@ -9646,19 +9646,19 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 - Does supplying new text to an existing resource key update its label? Expected: No. Unequal text raises RAISERROR at severity 18/state 1; existing text is preserved. Must not claim: The label is automatically replaced.
 - Does the resource helper treat NULL as unequal to existing text? Expected: No. A NULL inequality comparison is UNKNOWN and does not enter that branch. Must not claim: NULL always triggers the conflict error.
 
-## 201. Putaway groups: design intent and mobile version limits
+## 201. Putaway groups: intended workflow and conflicting examples
 
-**Question:** Does a documented putaway-group workflow prove it is available in my Warehouse Mobile version?
+**Question:** Does an implementation example establish the putaway-group workflow in this warehouse?
 
-**What it does.** No. The Grupo Julio example describes receiving and putting away items as a group, but also records that receiving with putaway groups was unavailable in Warehouse Mobile 24.1.2278 on 9 August 2024. The document gives no delivery date. Confirm the installed version and supported workflow before applying that design to your warehouse.
+**What it does.** The Grupo Julio example describes receiving and putting away items as a group, but also retains an unresolved availability issue from that implementation. Use it as a qualified design example. The current replica is accepted as the documentation baseline; that does not make another implementation’s design or historical limitation a fact about the current mobile workflow.
 
 **What happens**
 
-Trigger: Comparing an implementation design with a mobile version or an installed warehouse.
+Trigger: Understanding putaway groups when an implementation document contains conflicting design and availability statements.
 
 1. The design describes receiving items into a putaway group and moving the group together. These paragraphs explain intended behavior in that implementation. Evidence: `sdd-boundary-grupo-putaway-groups-version-conflict`.
 2. The same document keeps an open issue stating that receiving with putaway groups was unavailable in Warehouse Mobile 24.1.2278, with no expected date. A final document title does not remove that qualification. Evidence: `sdd-boundary-grupo-putaway-groups-version-conflict`.
-3. Use version-matched release or application evidence to determine support in the installed system. Captured database tables and views do not establish the mobile screen, feature availability or effective receiving preference. Evidence: `sdd-boundary-grupo-putaway-groups-version-conflict`.
+3. Explain the captured configuration as-is and retain the documented conflict. Database structures alone do not demonstrate the mobile screen or effective receiving preference. Version/build is not a prerequisite for this documentation task. Evidence: `sdd-boundary-grupo-putaway-groups-version-conflict`.
 
 **What can affect it**
 
@@ -9666,12 +9666,12 @@ Trigger: Comparing an implementation design with a mobile version or an installe
 
 **What you can check**
 
-- Check the installed Warehouse Mobile build and version-matched feature or release evidence.
-- Check the applicable receiving workflow and configuration using a sanitized configuration contract; do not infer values from another implementation.
+- Check the applicable receiving workflow and preference when diagnosing a specific behavior; do not infer effective values from another implementation.
+- Retain the historical issue in the source details without treating it as a request for the current build.
 
 **Expected results and limits**
 
-- A distinction between intended design, its historical version limitation, and the current deployment question that remains unanswered.
+- A distinction between the intended design, its retained availability exception and the source limits of the current explanation.
 - No claim is made about later versions, a delivery date or this deployment.
 - No live receiving, putaway or screen-navigation test was performed.
 - Raw SDD production indexing remains disabled. Only the selected reviewed claim is bound in this local help topic.
@@ -9688,3 +9688,6609 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 - Does the Grupo Julio putaway-group design prove Warehouse Mobile 24.1.2278 supports it? Expected: intended workflow and open issue differ unavailable in cited version current deployment unknown Must not claim: feature is enabled here all later versions lack it
 - When did receiving with putaway groups become available after the 24.1.2278 issue? Expected: no delivery date in cited issue later release evidence required Must not claim: invented release date final title proves delivery
+
+## 202. Why a cycle-count request may not be created
+
+**Question:** Why a cycle-count request may not be created?
+
+**What it does.** A request can be skipped because the minimum time since the last count has not elapsed, or because another open request already covers the same inventory identity. The duplicate check spans plans. The creation routine also uses the last insertion result, so its final return alone does not prove that nothing was created earlier.
+
+**What happens**
+
+Trigger: An operator or support analyst needs to understand the documented inventory or cycle-count behavior.
+
+1. Check the location, inventory identity and applicable count threshold. Evidence: `icc-sql-1068179201`, `icc-sql-1132179429`, `icc-sql-1052179144`.
+2. Distinguish a time-threshold skip from an existing-request duplicate; inspect the existing request through an authorized application view. Evidence: `icc-sql-1068179201`, `icc-sql-1132179429`, `icc-sql-1052179144`.
+3. Use the retained source explanation for edge cases; no SQL execution or unsupported record edit is recommended. Evidence: `icc-sql-1068179201`, `icc-sql-1132179429`, `icc-sql-1052179144`.
+
+**What can affect it**
+
+- Threshold selectors allow NULL wildcards for location type/work zone/movement class. A caller-supplied plan changes launch selection, inventory scope and work path. Effective stored configuration is not captured.
+- Group size controls one local increment. Work-created initial flag depends on two coded create-work values. Existing request duplication ignores the caller plan/group/launch.
+- Location/warehouse and inventory identity determine request selection; permanent assignment changes empty-location handling. Coded condition/action/type equality groups were verified privately; actual application callers remain unobserved.
+
+**What you can check**
+
+- The linked source contracts provide optional technical details and known edge cases.
+
+**Expected results and limits**
+
+- A request can be skipped because the minimum time since the last count has not elapsed, or because another open request already covers the same inventory identity. The duplicate check spans plans. The creation routine also uses the last insertion result, so its final return alone does not prove that nothing was created earlier.
+- Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.
+- No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.
+- Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL.
+
+**More detail and sources**
+
+`icc-sql-1068179201`: [dbo.CCP_CreateCCRequest](sql/1068179201.sql); source-definition SHA-256 `b7dc50d6cfe86c6378357d52288b0dd0151f734f4cfe297a43c337da755c8a54`, reading-copy SHA-256 `4fbae264092473429a19aa87075e24b42c059d931996530ebb97c736cad8a1b1`, one-based inclusive lines [[1, 422]].
+
+`icc-sql-1132179429`: [dbo.CCP_InsertCCRequest](sql/1132179429.sql); source-definition SHA-256 `b37d03b13fc380d5856a7b45870f638d34fe44cb4605f81fd19c9b595e531775`, reading-copy SHA-256 `c88742ad609d1d99d1f68426f803e164b0dabc7c8da778a60abe4b53386e75af`, one-based inclusive lines [[1, 187]].
+
+`icc-sql-1052179144`: [dbo.CCP_CheckToUpdateCCRequest](sql/1052179144.sql); source-definition SHA-256 `34df4f8f009bc26af9590d3b0cf42e5cafe8e2fa6d2ff5dc6e653865c8806269`, reading-copy SHA-256 `8f005bae62f9bc7840bc36e67011f919b16983c654f172ce482ffce2083a00c8`, one-based inclusive lines [[1, 398]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can an open count request in another plan prevent creating a new request? Expected: The duplicate check spans all plans. Must not claim: Only requests in the same plan are checked.
+- Does a zero final request count prove this call inserted nothing earlier? Expected: The child resets TotalReq on each call, so the last attempt can be zero after earlier inserts. Must not claim: Zero always means no earlier inserts.
+
+## 203. Why cycle-count plan totals may overlap
+
+**Question:** Why cycle-count plan totals may overlap?
+
+**What it does.** The reviewed plan recalculation includes the reviewed category in the open total. Adding open, reviewed and closed therefore can double-count requests. Plan completion also depends on having a master name and no nonclosed requests. The detail pane combines stored plan values with separately counted work and transactions.
+
+**What happens**
+
+Trigger: An operator or support analyst needs to understand the documented inventory or cycle-count behavior.
+
+1. Read each counter according to its source category; do not sum overlapping categories. Evidence: `icc-sql-1036179087`, `icc-sql-1850802001`, `icc-sql-1148179486`.
+2. Separate a plan completion stamp from proof that all related application work is complete. Evidence: `icc-sql-1036179087`, `icc-sql-1850802001`, `icc-sql-1148179486`.
+
+**What can affect it**
+
+- Plan identity alone scopes both aggregation and update; there is no warehouse or user-authorization predicate. MASTER_NAME controls completion stamping.
+- Caller supplies group size and warehouse; flags are coded values rather than effective configuration reads.
+- Counts have different scope: work reference alone, requests by plan ID, transactions by reference plus warehouse/type40. Equal numeric results would not prove equivalent populations.
+
+**What you can check**
+
+- The linked source contracts provide optional technical details and known edge cases.
+
+**Expected results and limits**
+
+- The reviewed plan recalculation includes the reviewed category in the open total. Adding open, reviewed and closed therefore can double-count requests. Plan completion also depends on having a master name and no nonclosed requests. The detail pane combines stored plan values with separately counted work and transactions.
+- Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.
+- No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.
+- Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL.
+
+**More detail and sources**
+
+`icc-sql-1036179087`: [dbo.CCB_UpdateCCPlan](sql/1036179087.sql); source-definition SHA-256 `d9aee133797db49bfb8176eb8c58f50e412c20bf9c6fa9fcc2f97fc9ccea2a37`, reading-copy SHA-256 `5018f25a656381f75bbb8e07131b2540d1f8cba928f28bd0c93f93685ad57e8a`, one-based inclusive lines [[1, 64]].
+
+`icc-sql-1850802001`: [dbo.CCP_InsertCCPlan](sql/1850802001.sql); source-definition SHA-256 `b1604fc8850781e48899efc2e984ef545d9b4cb227c67daed6b30a4c20d45ced`, reading-copy SHA-256 `5c321140f55835c0c24898c50e765baaaf9a95144da005e5e18404b8bb411702`, one-based inclusive lines [[1, 55]].
+
+`icc-sql-1148179486`: [dbo.CCP_InsightDetailPaneData](sql/1148179486.sql); source-definition SHA-256 `954993ab12939bce820d8275dc59d4dc10264f72da197c80c4be7261704cacc1`, reading-copy SHA-256 `bfb33483873fc862947e9050a5452f1e36ad2e2f4fcf54e552da6e3d3232abad`, one-based inclusive lines [[1, 56]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Should open, reviewed and closed cycle-count totals be added together? Expected: Reviewed overlaps open in this implementation. Must not claim: The three counters are mutually exclusive.
+- Is an unnamed plan always given a completed date when no requests remain open? Expected: MASTER_NAME must be non-NULL for completion stamping. Must not claim: Every zero-open plan is completed.
+
+## 204. How cycle-count preferences affect work creation
+
+**Question:** How cycle-count preferences affect work creation?
+
+**What it does.** Cycle-count work creation reads the user cycle-count preference for work type and team, then work-type defaults for priority and group. It also needs the source-identifier configuration. The bulk routine creates detail instructions and an aggregate parent; the logistics-unit routine creates one detail using existing work. These paths have different effects.
+
+**What happens**
+
+Trigger: An operator or support analyst needs to understand the documented inventory or cycle-count behavior.
+
+1. Identify which work-creation path the application uses. Evidence: `icc-sql-1100179315`, `icc-sql-1084179258`, `icc-sql-1212179714`.
+2. Check the assigned preference, work type and required source-identifier setting using authorized configuration screens. Evidence: `icc-sql-1100179315`, `icc-sql-1084179258`, `icc-sql-1212179714`.
+3. Review the resulting parent and detail work separately; a successful insert is not a completed count. Evidence: `icc-sql-1100179315`, `icc-sql-1084179258`, `icc-sql-1212179714`.
+
+**What can affect it**
+
+- User preference -> cycle-count preference -> work-type defaults, plus coded source-identifier and work-unit-field settings. This is a source rule, not an observed current configuration.
+- Source identifier comes from a coded SYSTEM_CONFIG_DETAIL key/type. Existing work supplies type/team/priority/group; the request supplies inventory dimensions.
+- Caller identity plus coded instruction/internal-number types defines scope; no active user setting is loaded.
+
+**What you can check**
+
+- The linked source contracts provide optional technical details and known edge cases.
+
+**Expected results and limits**
+
+- Cycle-count work creation reads the user cycle-count preference for work type and team, then work-type defaults for priority and group. It also needs the source-identifier configuration. The bulk routine creates detail instructions and an aggregate parent; the logistics-unit routine creates one detail using existing work. These paths have different effects.
+- Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.
+- No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.
+- Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL.
+
+**More detail and sources**
+
+`icc-sql-1100179315`: [dbo.CCP_CreateWorkFromRequest](sql/1100179315.sql); source-definition SHA-256 `59d0a4fa4e706f59c8bd2d20c6416966d8596988ff10a92960d4e51f6f3ee89a`, reading-copy SHA-256 `4cb9d1cd1dc5215763fabb420710d15464fa6e44d6c76d4686124cd60a69e0d9`, one-based inclusive lines [[1, 400]].
+
+`icc-sql-1084179258`: [dbo.CCP_CreateWorkForLogisticsUnit](sql/1084179258.sql); source-definition SHA-256 `fd8425ab52e7eab527dc2e07f9d5bad611bc01b91529a32a0e3b592b2a7847d7`, reading-copy SHA-256 `f1ccc7f8d41e3944ae698da8614ebcf6a1c263db693001bed6934c1eebcea77f`, one-based inclusive lines [[1, 210]].
+
+`icc-sql-1212179714`: [dbo.CCP_UpdateWorkForNewInventory](sql/1212179714.sql); source-definition SHA-256 `670ed105ae229e4f9f896e236e9575840b703870493cd6540fca4afc0028ad8e`, reading-copy SHA-256 `c472dea819e4c7e7a802548231e45eb05763c2d3ada3ae56bd34fb1236c15602`, one-based inclusive lines [[1, 44]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a valid cycle-count work type alone guarantee work creation? Expected: The source-identifier configuration query also participates in the required check. Must not claim: A valid work type is sufficient.
+- Does logistics-unit work creation always increment the parent child count? Expected: The reviewed body inserts detail but does not directly increment that counter. Must not claim: The parent count is always incremented here.
+
+## 205. Why count work identity and sequence can differ
+
+**Question:** Why count work identity and sequence can differ?
+
+**What it does.** Count-request reconciliation can move or remove related work and can merge work units. Several selectors use different identity fields or scopes. Empty-location cleanup removes selected work without deleting the request; merging can remove an old parent and its remaining children. These source rules explain possible behavior but do not identify the cause of a particular stuck work unit.
+
+**What happens**
+
+Trigger: An operator or support analyst needs to understand the documented inventory or cycle-count behavior.
+
+1. Inspect the request, parent/detail work relationship and work-unit context in an authorized view. Evidence: `icc-sql-1180179600`, `icc-sql-1196179657`, `icc-sql-1116179372`, `icc-sql-1164179543`, `icc-sql-1228179771`.
+2. Keep request existence, open-work count, work sequence and merge outcome separate. Evidence: `icc-sql-1180179600`, `icc-sql-1196179657`, `icc-sql-1116179372`, `icc-sql-1164179543`, `icc-sql-1228179771`.
+3. Escalate a specific stuck record with its exact application message and sanitized state; do not infer a repair from a count alone. Evidence: `icc-sql-1180179600`, `icc-sql-1196179657`, `icc-sql-1116179372`, `icc-sql-1164179543`, `icc-sql-1228179771`.
+
+**What can affect it**
+
+- Selection uses exact plan/warehouse and opaque condition selectors, not current-user access or a caller-confirmed process state.
+- Warehouse/location/condition scope applies to lookup; subsequent writes use internal count ID only. No caller access or work-condition filter is applied.
+- An empty-item request qualifies regardless of its request CONDITION; selected work filters are hard-coded rather than the similarly named caller parameters.
+- Current-parent lookups use work unit and coded type without warehouse qualification. Destination plan/launch equivalence is assumed in assignments, not verified.
+- Internal ID only; no explicit warehouse/company authorization. Culture does not change either output.
+
+**What you can check**
+
+- The linked source contracts provide optional technical details and known edge cases.
+
+**Expected results and limits**
+
+- Count-request reconciliation can move or remove related work and can merge work units. Several selectors use different identity fields or scopes. Empty-location cleanup removes selected work without deleting the request; merging can remove an old parent and its remaining children. These source rules explain possible behavior but do not identify the cause of a particular stuck work unit.
+- Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.
+- No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.
+- Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL.
+
+**More detail and sources**
+
+`icc-sql-1180179600`: [dbo.CCP_UpdateCCRequest](sql/1180179600.sql); source-definition SHA-256 `e32d2732c03a0767bac99854e137ed7af396a88bf759042db61a716dcb11df71`, reading-copy SHA-256 `00179a22c428b2782f348c731207dc690912e8f178417b58074d9148b69e44f6`, one-based inclusive lines [[1, 69]].
+
+`icc-sql-1196179657`: [dbo.CCP_UpdateCCRequestWithWork](sql/1196179657.sql); source-definition SHA-256 `72eab8ce3a952d731a3c7dd3b646864c02fc715232eeabb210737cf8dd47448c`, reading-copy SHA-256 `f72ee105c5bb9afdb784ee031f001934a1d3c1372cf96545c929f0962c6c54ce`, one-based inclusive lines [[1, 79]].
+
+`icc-sql-1116179372`: [dbo.CCP_DeleteCCWorkInstrForEmptyLoc](sql/1116179372.sql); source-definition SHA-256 `2b212574bf3d562b7c6d703b5715eaa2d5c14d3c7cb174bcf5936459bc4e2994`, reading-copy SHA-256 `40f50cdd1db8abf5cd63b65dd41c15ee9800320fd6fae8e52a5a29514673ee99`, one-based inclusive lines [[1, 56]].
+
+`icc-sql-1164179543`: [dbo.CCP_MergeCCRequestsFromDifferentWorkUnits](sql/1164179543.sql); source-definition SHA-256 `6da2617035b0692b47dd15581d6923ecbaab0a3aef373adbdf21f274424e1cf6`, reading-copy SHA-256 `771ac651c57fb0dafa9f444e42b959d898e025098ecd7bb96ed13e47f359f2a9`, one-based inclusive lines [[1, 111]].
+
+`icc-sql-1228179771`: [dbo.CCR_InsightDetailPaneData](sql/1228179771.sql); source-definition SHA-256 `5ba7e6eea1f7e269924025a00187344098a194b0c0c5a6e37f4de566395c9557`, reading-copy SHA-256 `d412a50242c928fa7bdae813672be19fb3aadfe2cfa951a6c7e02bb8d8db687e`, one-based inclusive lines [[1, 40]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does empty-location count cleanup delete the count request itself? Expected: It deletes selected work instructions, not the request. Must not claim: The request is deleted.
+- Does updating count work always clear its OUTPUT request identity before searching? Expected: The identity is not initialized; an unmatched lookup can retain an incoming value. Must not claim: The output is always reset before lookup.
+
+## 206. Why an inventory update can affect no row
+
+**Question:** Why an inventory update can affect no row?
+
+**What it does.** The source and destination update routines require all four initial quantities to still match. If another change has occurred, no row may be updated even when the SQL return code is zero. The caller must check the affected-row output. Clearing stock metadata also differs between the source and destination paths.
+
+**What happens**
+
+Trigger: An operator or support analyst needs to understand the documented inventory or cycle-count behavior.
+
+1. Compare the expected initial allocated, in-transit, on-hand and suspense quantities with the authorized current record. Evidence: `icc-sql-1528704844`, `icc-sql-1560704958`.
+2. Read the affected-row result as well as the return code; this documentation does not retry or change stock. Evidence: `icc-sql-1528704844`, `icc-sql-1560704958`.
+
+**What can affect it**
+
+- Coded default inventory-status setting is used only for the metadata-empty branch.
+- Coded default status used for empty state; item defaults depend on item/company/UOM/location/warehouse. Existing metadata has explicit precedence.
+
+**What you can check**
+
+- The linked source contracts provide optional technical details and known edge cases.
+
+**Expected results and limits**
+
+- The source and destination update routines require all four initial quantities to still match. If another change has occurred, no row may be updated even when the SQL return code is zero. The caller must check the affected-row output. Clearing stock metadata also differs between the source and destination paths.
+- Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.
+- No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.
+- Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL.
+
+**More detail and sources**
+
+`icc-sql-1528704844`: [dbo.INV_UpdateFromLocInv](sql/1528704844.sql); source-definition SHA-256 `f76598a7a60fc7a72a8c509571a9c8e740d8734a8a2ca94044b602ab1717b117`, reading-copy SHA-256 `e83f7306d59033ca7d911f7175885090ede4f7f0e621eb92ae488361aaf27c1f`, one-based inclusive lines [[1, 154]].
+
+`icc-sql-1560704958`: [dbo.INV_UpdateToLocInv](sql/1560704958.sql); source-definition SHA-256 `f3833f1f32f42eb4cce2175fa8471503297fd9fc0ee0fe93175ab8cf46705495`, reading-copy SHA-256 `a89d5104d5d411bb9b5e1c3e82702781ac2155083ddc875b0d96370812f9ecfe`, one-based inclusive lines [[1, 289]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a zero SQL return code prove the inventory row was updated? Expected: No. The caller must inspect row count because initial quantity mismatches can affect zero rows. Must not claim: Zero return guarantees an updated row.
+- Do source and destination empty-state checks use the same suspense quantity? Expected: Source metadata clearing tests initial suspense; destination tests new suspense. Must not claim: Both always test new suspense.
+
+## 207. How destination inventory defaults and restrictions are selected
+
+**Question:** How destination inventory defaults and restrictions are selected?
+
+**What it does.** New inventory uses location rules, item defaults and supplied source values. A missing location may be created with fixed defaults. Supplying only a volume or weight override still enables a shared override mode, so the other total can become NULL. UOM copying also has its own location and partial-mode rules.
+
+**What happens**
+
+Trigger: An operator or support analyst needs to understand the documented inventory or cycle-count behavior.
+
+1. Review the destination location class and multi-item rule before interpreting a rejected addition. Evidence: `icc-sql-1240703818`, `icc-sql-1224703761`, `icc-sql-1176703590`, `icc-sql-1576705015`.
+2. Check both override values and the applicable UOM; a missing value is not necessarily filled automatically. Evidence: `icc-sql-1240703818`, `icc-sql-1224703761`, `icc-sql-1176703590`, `icc-sql-1576705015`.
+
+**What can affect it**
+
+- Location class/multi-item flags, item defaults and one reference-type exemption affect the path. No observed stored setting is asserted.
+- Defaults are coded in the procedure, not copied from a location template. Caller supplies warehouse/location.
+- No destination warehouse predicate and no source/destination warehouse join. Location names repeated across warehouses can broaden the destination scope.
+- A coded flag selects location-UOM dimensions versus item-default helper. No conversion factor is applied in this body.
+
+**What you can check**
+
+- The linked source contracts provide optional technical details and known edge cases.
+
+**Expected results and limits**
+
+- New inventory uses location rules, item defaults and supplied source values. A missing location may be created with fixed defaults. Supplying only a volume or weight override still enables a shared override mode, so the other total can become NULL. UOM copying also has its own location and partial-mode rules.
+- Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.
+- No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.
+- Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL.
+
+**More detail and sources**
+
+`icc-sql-1240703818`: [dbo.INV_InsertLocationInventory](sql/1240703818.sql); source-definition SHA-256 `bf9192018e74b2769fd9c7c625427ea2b7a69f93679fc175bc18bb93063f6e42`, reading-copy SHA-256 `bbd3622bb394f46cef6a5faf15b4052ea9878fa99d31dffefeacf8cb82fd3074`, one-based inclusive lines [[1, 350]].
+
+`icc-sql-1224703761`: [dbo.INV_InsertLocation](sql/1224703761.sql); source-definition SHA-256 `872275d252698011e576942e68f9d2b0c83c7fac592f391953fdb240e3740ba9`, reading-copy SHA-256 `febb0ba80f1135601bd7cd42a8858d84b5c8e32ab0d4f52cbf64ae58a6c763db`, one-based inclusive lines [[1, 39]].
+
+`icc-sql-1176703590`: [dbo.INV_CopyLocUmsForDestInventory](sql/1176703590.sql); source-definition SHA-256 `0139e742135894e22a1dda7b0e280604bf60ad8a7fc0e6c42fc00050dd010f66`, reading-copy SHA-256 `8c780c40b0e0b8553c291dae3bd31ebbb2c203eb0edd686bd003412d1d9b066a`, one-based inclusive lines [[1, 78]].
+
+`icc-sql-1576705015`: [dbo.INV_UpdateTotalsonLocInv](sql/1576705015.sql); source-definition SHA-256 `cc823c3246d820baf8b8e6d7d16ba31f2e9fa99a160ae19669d7d3ff15e62e56`, reading-copy SHA-256 `cc92dcd6391d77654c4c7b7cff6173a9f62301c9522919b1a73584719a3b1242`, one-based inclusive lines [[1, 60]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can supplying only a weight override leave volume unknown? Expected: The shared override flag can use a NULL volume override. Must not claim: The other total always falls back to item defaults.
+- Does UOM copying always restrict the destination warehouse? Expected: The join selects destination location without a warehouse predicate. Must not claim: The destination is necessarily limited to one warehouse.
+
+## 208. Why Inventory Insight counts can differ from the selected detail
+
+**Question:** Why Inventory Insight counts can differ from the selected detail?
+
+**What it does.** Insight detail panes combine several result sets. Inventory detail can be selected by inventory identity while its related-work counts use the caller item and location context. Load tiles mix stored totals with a line count. Lot transaction counts use item, company, lot and warehouse. These counts are useful context, not a complete diagnosis or permission to close work.
+
+**What happens**
+
+Trigger: An operator or support analyst needs to understand the documented inventory or cycle-count behavior.
+
+1. Confirm that the selected row and the caller context refer to the same inventory. Evidence: `icc-sql-1272703932`, `icc-sql-1304704046`, `icc-sql-1320704103`.
+2. Check what each count includes before comparing it with another screen. Evidence: `icc-sql-1272703932`, `icc-sql-1304704046`, `icc-sql-1320704103`.
+
+**What can affect it**
+
+- Counts have different scopes: immediate needs use item/company/warehouse, BOM uses item/company only. Detail inventory ID does not validate the caller context.
+- Internal load ID only; status names use coded functional-area selectors.
+- History scope uses inventory dimensions, not lot OBJECT_ID in history or a date restriction.
+
+**What you can check**
+
+- The linked source contracts provide optional technical details and known edge cases.
+
+**Expected results and limits**
+
+- Insight detail panes combine several result sets. Inventory detail can be selected by inventory identity while its related-work counts use the caller item and location context. Load tiles mix stored totals with a line count. Lot transaction counts use item, company, lot and warehouse. These counts are useful context, not a complete diagnosis or permission to close work.
+- Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.
+- No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.
+- Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL.
+
+**More detail and sources**
+
+`icc-sql-1272703932`: [dbo.INV_InsightDetailPaneData](sql/1272703932.sql); source-definition SHA-256 `ac23dca7032953dbb5ca16e307696bd637e198a723775b264d315cc9693f751f`, reading-copy SHA-256 `2531cd70d8eec5225b29cee8307244e614d77d419504dcfc9ba5d3d5339888f7`, one-based inclusive lines [[1, 267]].
+
+`icc-sql-1304704046`: [dbo.INV_LoadInsightDetailPaneData](sql/1304704046.sql); source-definition SHA-256 `528cf307f9b3b6bb392840fef785ebc52372e1f254a81890c1a4d506b211516e`, reading-copy SHA-256 `02544b814969a0cfeb128feea54cf6f6e02accfff69a0293e3c20fa2e2d9cb94`, one-based inclusive lines [[1, 53]].
+
+`icc-sql-1320704103`: [dbo.INV_LotInsightDetailPaneData](sql/1320704103.sql); source-definition SHA-256 `68b555d66b61feb1e243f65bf7524b8ba10a118cd9a480535dbd99e5f0abfde9`, reading-copy SHA-256 `e5e2fa885aa73accd57b2d800fb989b67356c5299e3ba70e438de53f40ff3491`, one-based inclusive lines [[1, 53]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does inventory identity determine every related-work count in the pane? Expected: Counts still use the supplied item/location/company/lot/warehouse. Must not claim: All counts derive their context from the identity row.
+- Are load shipment totals and line totals calculated in the same way? Expected: Shipment/container totals are stored view values; lines are counted separately. Must not claim: All totals are the same aggregate.
+
+## 209. Why inventory monitor tiles and drilldowns can disagree
+
+**Question:** Why inventory monitor tiles and drilldowns can disagree?
+
+**What it does.** Some monitor tiles display distinct work units while their warning thresholds count instruction rows. Drilldown summaries also differ in scope: the location-type frozen-empty tile omits the selected zone, and frozen-empty exclusions compare location names across warehouses. A difference can therefore reflect the query rules; it does not by itself prove missing inventory.
+
+**What happens**
+
+Trigger: An operator or support analyst needs to understand the documented inventory or cycle-count behavior.
+
+1. Compare the displayed measure with the caution/warning measure. Evidence: `icc-sql-1336704160`, `icc-sql-1352704217`, `icc-sql-1368704274`, `icc-sql-1384704331`.
+2. Check selected warehouse, zone and type, then the exact scope of the summary tile. Evidence: `icc-sql-1336704160`, `icc-sql-1352704217`, `icc-sql-1368704274`, `icc-sql-1384704331`.
+
+**What can affect it**
+
+- Warehouse comes from parsed criteria; caution/warning expressions pass to a helper. The almost-empty quantity threshold is fixed at 10, not read from configuration.
+- Warehouse filter scopes outer queries; culture affects only NULL-category resource. Location/status grouping can count a location more than once if view rows expose differing statuses.
+- Outer warehouse restriction applies; selected zone is not applied to the frozen-empty tile. culture localizes the NULL type label.
+- culture localizes the NULL template-field category. Inner NOT IN inventory exclusion has no warehouse restriction.
+
+**What you can check**
+
+- The linked source contracts provide optional technical details and known edge cases.
+
+**Expected results and limits**
+
+- Some monitor tiles display distinct work units while their warning thresholds count instruction rows. Drilldown summaries also differ in scope: the location-type frozen-empty tile omits the selected zone, and frozen-empty exclusions compare location names across warehouses. A difference can therefore reflect the query rules; it does not by itself prove missing inventory.
+- Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.
+- No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.
+- Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL.
+
+**More detail and sources**
+
+`icc-sql-1336704160`: [dbo.INV_MonitorInventoryIndicatorTile](sql/1336704160.sql); source-definition SHA-256 `0b144f9e0ccf7718b0512397908eeb56a3059d674bcd016b83a92635f6893a3d`, reading-copy SHA-256 `9ca9261209ef6def9900c046f67256a02f003d69ca7e39017067b1e81816ce68`, one-based inclusive lines [[1, 83]].
+
+`icc-sql-1352704217`: [dbo.INV_MonitorLocationChartData](sql/1352704217.sql); source-definition SHA-256 `3130773aec0011554b0804f5a0a6b21c00566b4efd98eccba4d0855b09a2adc7`, reading-copy SHA-256 `67e1118085c909c794a7c17ff0952b0186c0969f86124be5e9b4fd2236ee4e0d`, one-based inclusive lines [[1, 63]].
+
+`icc-sql-1368704274`: [dbo.INV_MonitorLocationTypeChartData](sql/1368704274.sql); source-definition SHA-256 `5c5debe11aeb50b42a37805c0d3fc0db83df8a5892e40e2b8512a7d99bab7bd0`, reading-copy SHA-256 `db28f519afb2683b026275f10bb571abaae3dace62f4fd2b5bbd22e2ead6f7e8`, one-based inclusive lines [[1, 71]].
+
+`icc-sql-1384704331`: [dbo.INV_MonitorTemplateFieldChartData](sql/1384704331.sql); source-definition SHA-256 `bbd828a8252d98403bac4e5cb13483eaae345ccdcde6ba6e1e8111f0e76f8cc1`, reading-copy SHA-256 `b3db98fd59e004de08c2948b8598387eaf43464d0b2cc9ff1e5986cde390f4d0`, one-based inclusive lines [[1, 99]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the pending work warning always use the displayed distinct-work-unit count? Expected: Warnings use row counts in the reviewed pending-work branches. Must not claim: The warning count is always identical to the displayed count.
+- Does a NULL locating-zone filter select every zone? Expected: It selects NULL zone values only. Must not claim: NULL means all zones.
+
+## 210. How inventory changes affect lot status, replenishment and history
+
+**Question:** How inventory changes affect lot status, replenishment and history?
+
+**What it does.** Lot status is summarized from distinct location-inventory statuses. Replenishment evaluation uses capacity, minimum percentage and existing requests; it can mark a request without creating work. Inventory history computes before/after values from caller inputs and delegates storage. A history value is therefore not independent confirmation of an actual stock change.
+
+**What happens**
+
+Trigger: An operator or support analyst needs to understand the documented inventory or cycle-count behavior.
+
+1. Separate inventory state, lot summary, replenishment request and transaction history. Evidence: `icc-sql-39319550`, `icc-sql-1544704901`, `icc-sql-1496704730`, `icc-sql-1208703704`, `icc-sql-1192703647`.
+2. For a specific discrepancy, retain the exact screen message and relevant sanitized workflow context. Evidence: `icc-sql-39319550`, `icc-sql-1544704901`, `icc-sql-1496704730`, `icc-sql-1208703704`, `icc-sql-1192703647`.
+
+**What can affect it**
+
+- Item/company/lot/warehouse scope only, with no quantity, frozen-lot or active-location filter.
+- Location type, item class and capacity/UOM helpers determine threshold. No effective settings or current request are fetched for this documentation.
+- User shipping preference applies for one coded transaction. Location class/container tracking changes container fallback. Caller supplies initial quantities rather than this routine rereading inventory.
+- One coded argument name selects serial validation; no warehouse/company predicate on the serial identity.
+- Group ID alone scopes deletion; no user, warehouse or argument-name predicate.
+
+**What you can check**
+
+- The linked source contracts provide optional technical details and known edge cases.
+
+**Expected results and limits**
+
+- Lot status is summarized from distinct location-inventory statuses. Replenishment evaluation uses capacity, minimum percentage and existing requests; it can mark a request without creating work. Inventory history computes before/after values from caller inputs and delegates storage. A history value is therefore not independent confirmation of an actual stock change.
+- Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.
+- No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.
+- Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL.
+
+**More detail and sources**
+
+`icc-sql-39319550`: [dbo.INV_UpdateLotStatus](sql/39319550.sql); source-definition SHA-256 `425623b0b53820eecc2632376eb1aef159abd1f064ba10a982404c0a560d18f5`, reading-copy SHA-256 `690a2754ef58123a014bfac90aea0b86e69ec3e8a49aa7938930fcbf701cf39b`, one-based inclusive lines [[1, 62]].
+
+`icc-sql-1544704901`: [dbo.INV_UpdateLocation](sql/1544704901.sql); source-definition SHA-256 `bf0f3b85509467ecc4ce29f2c3b910cde5eaeefab80569e4209c8ebd83d6c540`, reading-copy SHA-256 `ad6cbda55c2def8dfa8601251f3b893ac1f3c390c3ddfea91ebdd79d680318dd`, one-based inclusive lines [[1, 273]].
+
+`icc-sql-1496704730`: [dbo.INV_SaveHistInvChg](sql/1496704730.sql); source-definition SHA-256 `d69abcd6bfa890ca75ffb7d6670c4b61e4feb1576dbe41fe79154d50e2486dcc`, reading-copy SHA-256 `90604c2d1b6522ada1cb3a9808f1ef2909538780199b72dc9fa5b9c8fb7636b0`, one-based inclusive lines [[1, 382]].
+
+`icc-sql-1208703704`: [dbo.INV_InsertArgument](sql/1208703704.sql); source-definition SHA-256 `ad0a5254709ec04a501bbcf18cd0926ee9f06c538bb79ca848a3edd33a6be2a7`, reading-copy SHA-256 `712931b3de4dd5339afd757c6648d9dbdb3015f8d32a343f59954c6ab7d3d705`, one-based inclusive lines [[1, 57]].
+
+`icc-sql-1192703647`: [dbo.INV_DeleteArgumentGroup](sql/1192703647.sql); source-definition SHA-256 `9d9a6aa54208a8643467628db6de468a64ac24538c43e7711c9709f55bde6e01`, reading-copy SHA-256 `d9895eb6632c8a3aa6fb696c8b66b35d46a23a14a4e9328ef654df482f509f24`, one-based inclusive lines [[1, 20]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does replenishment reevaluation directly create warehouse work? Expected: It can mark a request and flag a location; it does not itself create work. Must not claim: Reevaluation always creates work.
+- Does the history routine reread stock to prove the before quantity? Expected: It computes from caller-supplied initial quantities. Must not claim: History independently verifies actual stock mutation.
+
+## 211. Company transfer and catch-weight boundaries
+
+**Question:** Company transfer and catch-weight boundaries?
+
+**What it does.** Company transfer requires eligible positive stock with no allocated, in-transit or suspense quantity. It may merge destination stock and reconcile serials, lots and catch weight. Catch-weight updates have separate container and inventory paths; the container path adjusts only the immediate parent. A container weight update is not a container-close operation.
+
+**What happens**
+
+Trigger: An operator or support analyst needs to understand the documented inventory or cycle-count behavior.
+
+1. Check transfer eligibility and destination identity before interpreting the result. Evidence: `icc-sql-1512704787`, `icc-sql-1592705072`.
+2. Distinguish catch weight from container status and closure requirements. Evidence: `icc-sql-1512704787`, `icc-sql-1592705072`.
+3. Use application error/state evidence for an open container; these routines do not establish the cause or close it. Evidence: `icc-sql-1512704787`, `icc-sql-1592705072`.
+
+**What can affect it**
+
+- Two feature helper calls gate catch-weight behavior; current feature values are unobserved. Catch-weight-required ITEM existence is not company-scoped.
+- Work-type/group controls the inventory proportional-delta branch; the shipping branch does not use that work-type test.
+
+**What you can check**
+
+- The linked source contracts provide optional technical details and known edge cases.
+
+**Expected results and limits**
+
+- Company transfer requires eligible positive stock with no allocated, in-transit or suspense quantity. It may merge destination stock and reconcile serials, lots and catch weight. Catch-weight updates have separate container and inventory paths; the container path adjusts only the immediate parent. A container weight update is not a container-close operation.
+- Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.
+- No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.
+- Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL.
+
+**More detail and sources**
+
+`icc-sql-1512704787`: [dbo.INV_TransferCompany](sql/1512704787.sql); source-definition SHA-256 `4dfc5f4d8526e36ccbb1c0dee6b56728d39694adbd658be783bbbbc98ca801ba`, reading-copy SHA-256 `ef048510e76f35a133fbdbd5dcfa0838fd5407e22c239c71c4ebb3944ef41dc0`, one-based inclusive lines [[1, 638]].
+
+`icc-sql-1592705072`: [dbo.INV_UpsertCatchWeightInfo](sql/1592705072.sql); source-definition SHA-256 `1ec62e20e4a14a131b110c0346adc7dcdcf5235967821ce5934f32eef89aca3e`, reading-copy SHA-256 `a830f111dfed6a99a95b01f1aa28557922da5f6f840b4e1bcc678fc5e1967106`, one-based inclusive lines [[1, 196]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does catch-weight propagation update every ancestor container? Expected: Only the immediate parent is updated here. Must not claim: All ancestors are updated recursively.
+- Can an ineligible company transfer return normally after logging? Expected: Validation/no-eligible-row branches can return normally after successful audit logging. Must not claim: A normal return always proves stock was transferred.
+
+## 212. Why shipment detail panels can show unexpected shared fields
+
+**Question:** Why shipment detail panels can show unexpected shared fields
+
+**What it does.** The panels summarize stored shipment, line and lot data. A common field may be blank when lines disagree. In the shipment header panel, the dock lookup has no shipment filter, so the returned dock can come from another shipment.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The header common-value checks use COUNT DISTINCT, which ignores NULL values. Evidence: `ops-sql-1633753223`, `ops-sql-1649753280`, `ops-sql-1665753337`, `ops-sql-1617753166`.
+2. The dock variable is assigned from an unfiltered shipment/load join without an ordering rule. Evidence: `ops-sql-1633753223`, `ops-sql-1649753280`, `ops-sql-1665753337`, `ops-sql-1617753166`.
+3. These queries display data and do not pick, ship or change a dock assignment. Evidence: `ops-sql-1633753223`, `ops-sql-1649753280`, `ops-sql-1665753337`, `ops-sql-1617753166`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The panels summarize stored shipment, line and lot data. A common field may be blank when lines disagree. In the shipment header panel, the dock lookup has no shipment filter, so the returned dock can come from another shipment.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1633753223`: [dbo.SHP_InsightDetailPaneData](sql/1633753223.sql); source-definition SHA-256 `78364f898a329680b446b42f8071be5d2d79484a1592c4108f91a36096650147`, reading-copy SHA-256 `91be70e93fcaf6cd46bdc9ff8ae8fb5923ba31e252460dcaf62dd1e520a7342c`, one-based inclusive lines [[1, 90]].
+
+`ops-sql-1649753280`: [dbo.SHP_LineInsightDetailPaneData](sql/1649753280.sql); source-definition SHA-256 `5f5cd39cfaee049d31b327677449ac806392ffc58247a63aac55329a775f47f3`, reading-copy SHA-256 `d830be8b5f0188abc253732a3ea15b43bbf934b196747cfe86c5bfd4d1f62d4b`, one-based inclusive lines [[1, 34]].
+
+`ops-sql-1665753337`: [dbo.SHP_LotInsightDetailPaneData](sql/1665753337.sql); source-definition SHA-256 `82641e4f7b810752fb98a499d44fcdf000db3d4d94eccc475a2d6a5bc60a4414`, reading-copy SHA-256 `f7973187384addf779bef5769b0e00c3e435523838bcd6dd6cae73083544db33`, one-based inclusive lines [[1, 24]].
+
+`ops-sql-1617753166`: [dbo.SHP_InsighInPoolDetailPaneData](sql/1617753166.sql); source-definition SHA-256 `106dcd23d87b15df2cb7e9871945d5929122a46da6afee581b61ec29dd032a56`, reading-copy SHA-256 `f9e394a9d5866e941111b5ebd70e8e88c15d1dc399a8b8ebbe40234405474dfb`, one-based inclusive lines [[1, 28]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can the shipment panel dock come from another shipment? Expected: Yes. Its dock lookup has no WHERE filter. Must not claim: It always uses the selected shipment dock.
+- Do NULL line values count as another distinct common value? Expected: No. COUNT DISTINCT ignores NULL. Must not claim: NULL necessarily forces a mixed-value result.
+
+## 213. Why a container panel count differs from its work count
+
+**Question:** Why a container panel count differs from its work count
+
+**What it does.** Container panels use different scopes for children, work and order status. A child count can cover direct children while work is counted across a recursive subtree. Item and lot joins can also repeat a displayed row.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The shipping-container panel item join can include a company-specific and generic item; the lot join omits warehouse. Evidence: `ops-sql-1937754306`, `ops-sql-78271684`, `ops-sql-110271798`, `ops-sql-126271855`.
+2. The displayed serial flag comes from item tracking configuration, not a count of recorded serials. Evidence: `ops-sql-1937754306`, `ops-sql-78271684`, `ops-sql-110271798`, `ops-sql-126271855`.
+3. The order-status panel requires a matching detail aggregate despite its LEFT JOIN. Evidence: `ops-sql-1937754306`, `ops-sql-78271684`, `ops-sql-110271798`, `ops-sql-126271855`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Container panels use different scopes for children, work and order status. A child count can cover direct children while work is counted across a recursive subtree. Item and lot joins can also repeat a displayed row.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1937754306`: [dbo.SHPContainer_InsightListPaneData](sql/1937754306.sql); source-definition SHA-256 `2616f3ea63cdf4f88870f6cc5d081c563d3bf55b8a3f83b4d2d1dfe9841b9976`, reading-copy SHA-256 `3043d908da3a0b1584c239bb4c7702774e46e0d0556c75238bc22d86ec8ec47b`, one-based inclusive lines [[1, 93]].
+
+`ops-sql-78271684`: [dbo.TpmOrderContainerStatus_InsightDetailPaneData](sql/78271684.sql); source-definition SHA-256 `88e23ff83c3e2f58a2e713405fb29ca55f12f888d8a74797971e9646f5129144`, reading-copy SHA-256 `b956647c63c50650cdd907633e300722009ca3beadf7dbebc809895ec99a5429`, one-based inclusive lines [[1, 52]].
+
+`ops-sql-110271798`: [dbo.TpmOrderLineStatus_InsightDetailPaneData](sql/110271798.sql); source-definition SHA-256 `50711eaba4cb46aa2e7a02d1df080c34df1bd582e2400f94ce06587573a4cf39`, reading-copy SHA-256 `8430c94303d7ceb051405fafaf77b041125024ce0a5ed83119af33117b4e06d9`, one-based inclusive lines [[1, 33]].
+
+`ops-sql-126271855`: [dbo.TpmOrderStatus_InsightDetailPaneData](sql/126271855.sql); source-definition SHA-256 `e9a6ffe1f6f32f41c7b57a8aa426ab9c9d9617efb5d2f3af9bdf2b1095daaa4b`, reading-copy SHA-256 `a239e2c66e90f7caa9f348a363a625219d17b77d7c783a9acbc277494967bf39`, one-based inclusive lines [[1, 37]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the container serial flag prove serial rows exist? Expected: No. It reflects the item tracking setting. Must not claim: It counts captured serial numbers.
+- Can an order header without detail disappear from the status panel? Expected: Yes. Its WHERE predicate requires the detail aggregate. Must not claim: LEFT JOIN guarantees every header remains.
+
+## 214. Why work-order counts and putaway fields can be ambiguous
+
+**Question:** Why work-order counts and putaway fields can be ambiguous
+
+**What it does.** Work-order panels summarize stored work and related shipments. The same shipment can appear in two status counts when its lines lie on both sides of the boundary. Available-to-build quantity uses the smallest grouped component coverage ratio, capped at one before subtracting quantity already built.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Putaway lookup by unit ID lacks a warehouse filter; separate unordered TOP 1 lookups need not select the same candidate. Evidence: `ops-sql-794798239`, `ops-sql-810798296`, `ops-sql-842798410`, `ops-sql-826798353`.
+2. A zero component-needed total can cause division by zero. Missing detail groups leave coverage at one. Evidence: `ops-sql-794798239`, `ops-sql-810798296`, `ops-sql-842798410`, `ops-sql-826798353`.
+3. A feature flag determines whether the resulting build quantity keeps fractions or is floored; negative results are not clamped. Evidence: `ops-sql-794798239`, `ops-sql-810798296`, `ops-sql-842798410`, `ops-sql-826798353`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Work-order panels summarize stored work and related shipments. The same shipment can appear in two status counts when its lines lie on both sides of the boundary. Available-to-build quantity uses the smallest grouped component coverage ratio, capped at one before subtracting quantity already built.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-794798239`: [dbo.WOD_LineInsightDetailPaneData](sql/794798239.sql); source-definition SHA-256 `e6b2ee71e6f585f895d03a922a47526632fdb2639088ff862b7ae6116ac01a46`, reading-copy SHA-256 `b2b3b76908be7a025cfe05ebc3f0d1a08867022b520992505c0ea1bdc4225178`, one-based inclusive lines [[1, 60]].
+
+`ops-sql-810798296`: [dbo.WOH_InsightDetailPaneData](sql/810798296.sql); source-definition SHA-256 `49b57e38e54621cb5df417abf867ed0d6991df10ee5c1d624350de1c2f27a9d0`, reading-copy SHA-256 `6f8c383ae74a161ac96ec5e8ed220c1a3f85c0b2a2034caf4a1eba8394fee68c`, one-based inclusive lines [[1, 94]].
+
+`ops-sql-842798410`: [dbo.WOLP_InsightDetailPaneData](sql/842798410.sql); source-definition SHA-256 `239f1056af4d833a2de286b0acb3cf87506476fa5c154af87dfe2ed0629d0b54`, reading-copy SHA-256 `25a0d8d2e1e0723d052cea54db51bdf4e7f1cf7040c485babbbf75678e3f0f62`, one-based inclusive lines [[1, 59]].
+
+`ops-sql-826798353`: [dbo.WOHB_UpdateQtyAvailToBuild](sql/826798353.sql); source-definition SHA-256 `8f4c14182c44098d8be3c6c788620a5cb9ca11fe952efe23cc5c54b45316e85b`, reading-copy SHA-256 `5c2d31b35fcb6385c52ab7e0e4b47b1a1a2a50c7a368afc55d3d6cecf76cf2e3`, one-based inclusive lines [[1, 99]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Must the two work-order shipment status counts be disjoint? Expected: No. Different lines from the same shipment can satisfy both groups. Must not claim: Each shipment belongs to exactly one count.
+- Is available-to-build always a nonnegative integer? Expected: No. A feature branch retains fractions and neither branch clamps negative results. Must not claim: The calculation always floors and clamps to zero.
+
+## 215. What receipt, purchase-order and history panels establish
+
+**Question:** What receipt, purchase-order and history panels establish
+
+**What it does.** These panels read the selected receipt, purchase order, container or stored history. Their result is evidence of the fields and relationships selected by the query. It does not perform receiving, putaway, inspection or a purchase-order change.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Use the internal identifier expected by the exact panel; each body has its own joins and missing-row rules. Evidence: `ops-sql-1925230259`, `ops-sql-1941230316`, `ops-sql-1957230373`, `ops-sql-1973230430`, `ops-sql-1989230487`, `ops-sql-1813229860`, `ops-sql-1829229917`, `ops-sql-1845229974`, `ops-sql-1861230031`, `ops-sql-1893230145`, `ops-sql-1624705186`.
+2. A stored process or transaction-history entry is separate from independent confirmation of physical work. Evidence: `ops-sql-1925230259`, `ops-sql-1941230316`, `ops-sql-1957230373`, `ops-sql-1973230430`, `ops-sql-1989230487`, `ops-sql-1813229860`, `ops-sql-1829229917`, `ops-sql-1845229974`, `ops-sql-1861230031`, `ops-sql-1893230145`, `ops-sql-1624705186`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- These panels read the selected receipt, purchase order, container or stored history. Their result is evidence of the fields and relationships selected by the query. It does not perform receiving, putaway, inspection or a purchase-order change.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1925230259`: [dbo.RCPT_ContainerInsightDetailPaneData](sql/1925230259.sql); source-definition SHA-256 `08332a2b2546baaf9cd455d2852387e8f58bcf72b860b5b3a35d4bebb5473d96`, reading-copy SHA-256 `86bee6a46c4a78b4eaf2c0107ba5d190584930c05bb7164616d0d45bdf751550`, one-based inclusive lines [[1, 35]].
+
+`ops-sql-1941230316`: [dbo.RCPT_ContainerInsightListPaneData](sql/1941230316.sql); source-definition SHA-256 `2da160466138d8ca498082710dc0ee9a8bb8ca21dbfb1ec5e47b5bc6a84755fe`, reading-copy SHA-256 `2f4b589f5892265e33f51c997809e4fb307d05dd9d428427fe43de83fbf26b7d`, one-based inclusive lines [[1, 21]].
+
+`ops-sql-1957230373`: [dbo.RCPT_InsightDetailPaneData](sql/1957230373.sql); source-definition SHA-256 `b3a3141eaf4ed5d9b2986c7f8d458c6dcb3b348957a681d0840c9bd68e90e22a`, reading-copy SHA-256 `6e5a5a809c5cac310c2af3222eca0c6b312109a87c7b093534f1642241be693f`, one-based inclusive lines [[1, 31]].
+
+`ops-sql-1973230430`: [dbo.RCPT_InsightListPaneData](sql/1973230430.sql); source-definition SHA-256 `c7f0b3dd3c4e9cd886b0e2741b400d7833d9cdf68db3900259d0f14324b8849d`, reading-copy SHA-256 `35aa08ba84e249d162e02ec71e00299d18bf60ce43be0680936321ed99208d96`, one-based inclusive lines [[1, 18]].
+
+`ops-sql-1989230487`: [dbo.RCPT_LineInsightDetailPaneData](sql/1989230487.sql); source-definition SHA-256 `c9cdf963853d66969639ec8170a1962cd545430b75059e9c75341039906bbc3a`, reading-copy SHA-256 `25597435a6cef76b696c45d82ff65e27d88c1ce8f9a2294d06fcff54dc6f7871`, one-based inclusive lines [[1, 39]].
+
+`ops-sql-1813229860`: [dbo.POD_InsightDetailPaneData](sql/1813229860.sql); source-definition SHA-256 `91bbe5f4c3e49d66337cce702be73dc37902c8e5cac05ad00deaf9aaefed7f2e`, reading-copy SHA-256 `537a43f31865445afc5bade3baadd124778ff497c7862b247469707b97925cd4`, one-based inclusive lines [[1, 30]].
+
+`ops-sql-1829229917`: [dbo.POH_InsightDetailPaneData](sql/1829229917.sql); source-definition SHA-256 `da37786c1a449670022f74448cb26605b6c72580eb7822b4cea816ba75e03697`, reading-copy SHA-256 `41a6a7fb7248ce377b7298dd119416860f0f2a4eace498c6827cd9d5b2f62e16`, one-based inclusive lines [[1, 42]].
+
+`ops-sql-1845229974`: [dbo.POH_TpmInsightDetailPaneData](sql/1845229974.sql); source-definition SHA-256 `dc8bcc04fcc2bc8c1c1fecea3fa37493fa3a7d4617f388a96728e1a82b179b14`, reading-copy SHA-256 `d4d72401081b7799708634cb9b47ce528e07e8bbcfe3dc39258829a54db8c28c`, one-based inclusive lines [[1, 40]].
+
+`ops-sql-1861230031`: [dbo.PROCHST_InsightDetailPaneData](sql/1861230031.sql); source-definition SHA-256 `06000af4dfca580a74584d2d20fb19d4e5871d42e1ead298f3c909750e245dd0`, reading-copy SHA-256 `bdf3094e93eafacbede2b1eb8c1331a95e0428ecbac724c8242123d8d35f696b`, one-based inclusive lines [[1, 57]].
+
+`ops-sql-1893230145`: [dbo.QLTYHST_InsightDetailPaneData](sql/1893230145.sql); source-definition SHA-256 `f1545c06df777bba6a65c08a87cfeb4267a04d61a440f2902ccd2e9dffa8eb28`, reading-copy SHA-256 `bcc97bc3a57ba6eaaf3621b1f2f2bdf8c89ec0ee976e57edb2d85ed2c191825f`, one-based inclusive lines [[1, 32]].
+
+`ops-sql-1624705186`: [dbo.InventoryInsightDetailPaneTransactionHistoryData](sql/1624705186.sql); source-definition SHA-256 `ed8a0e6be59ce8f6bbdf6e0945a895756f7f64791337a0c403eecb648567a5b5`, reading-copy SHA-256 `fd89376f48a27ed260bd9df9e3e981769ea1139fbfded0b1c156ea26cfa18fe2`, one-based inclusive lines [[1, 31]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does opening a receipt detail panel perform receiving? Expected: No. These panel bodies select stored data. Must not claim: The panel completes receiving.
+- Does a history panel independently verify the physical warehouse action? Expected: No. It displays stored history records. Must not claim: Displaying history proves physical completion.
+
+## 216. Why a detail panel can use a different identity than expected
+
+**Question:** Why a detail panel can use a different identity than expected
+
+**What it does.** The panel helpers have specific identity and join rules. The tote-detail helper looks up a tote header using the supplied detail identifier directly, without following a parent relationship. The movement-analysis panel includes a context row even when its later data selection is empty.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. A name ending in DetailPaneData does not guarantee a parent lookup or one result set. Evidence: `ops-sql-14271456`, `ops-sql-174272026`, `ops-sql-190272083`, `ops-sql-213224160`, `ops-sql-382272767`, `ops-sql-584701481`, `ops-sql-600701538`, `ops-sql-616701595`, `ops-sql-892178574`, `ops-sql-924178688`, `ops-sql-1073751228`, `ops-sql-1096703305`, `ops-sql-1461228606`, `ops-sql-1745753622`, `ops-sql-1877230088`, `ops-sql-2072706782`, `ops-sql-2145755047`.
+2. The optional complete source contract records projected fields, joins, NULL handling and ordering for each panel. Evidence: `ops-sql-14271456`, `ops-sql-174272026`, `ops-sql-190272083`, `ops-sql-213224160`, `ops-sql-382272767`, `ops-sql-584701481`, `ops-sql-600701538`, `ops-sql-616701595`, `ops-sql-892178574`, `ops-sql-924178688`, `ops-sql-1073751228`, `ops-sql-1096703305`, `ops-sql-1461228606`, `ops-sql-1745753622`, `ops-sql-1877230088`, `ops-sql-2072706782`, `ops-sql-2145755047`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The panel helpers have specific identity and join rules. The tote-detail helper looks up a tote header using the supplied detail identifier directly, without following a parent relationship. The movement-analysis panel includes a context row even when its later data selection is empty.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-14271456`: [dbo.TH_InsightDetailPaneData](sql/14271456.sql); source-definition SHA-256 `99842dc29d01f2d0f1e23203cc4d52838c7d95109febd24ba85ef2754368615d`, reading-copy SHA-256 `a72847b66d3dc0602f9c962e12aab8fc0f1f4ce9e7333126418dbf801543a59c`, one-based inclusive lines [[1, 28]].
+
+`ops-sql-174272026`: [dbo.TRNHST_InsightDetailPaneData](sql/174272026.sql); source-definition SHA-256 `d7a03dfcec2418cd9c635cfde5833e03be0d3a283eef1bc847293f347df6b75b`, reading-copy SHA-256 `50033ada47b498f34e4eb77c5654cbc6bb5eb56727fd4b7da1eb476dc5ba5293`, one-based inclusive lines [[1, 30]].
+
+`ops-sql-190272083`: [dbo.UA_InsightDetailPaneData](sql/190272083.sql); source-definition SHA-256 `637300733fb7b725151bd4ccaa7daecba7f6f08aba75b1b11f919bc739c15d1a`, reading-copy SHA-256 `b891967c341fce8e5080ef4d651781cf5ad703618b95386fb564b4a236590626`, one-based inclusive lines [[1, 22]].
+
+`ops-sql-213224160`: [dbo.MCA_InsightDetailPaneData](sql/213224160.sql); source-definition SHA-256 `34399acd3cda52499beb57e3c4b58ec05cf1218465d9c76c0baab7f2f289dfe3`, reading-copy SHA-256 `3fe98d316cc66828ba6e3073097eab45d6ecf9712d1f8b52a3f2f7980d1458e4`, one-based inclusive lines [[1, 35]].
+
+`ops-sql-382272767`: [dbo.WEG_InsightDetailPaneData](sql/382272767.sql); source-definition SHA-256 `88d6649ef1c69261a4ecdd0e0c2f3b7068cc8c604a8876cd26e77ef64528436b`, reading-copy SHA-256 `f48f9dd2c81378dd72c6b803310e6eb2de2299cda9efd7a68c61cd10ab2290cf`, one-based inclusive lines [[1, 31]].
+
+`ops-sql-584701481`: [dbo.DIM_InsightDetailPaneData](sql/584701481.sql); source-definition SHA-256 `af93ddfbb056d60a76caf0a52110292db609d124dfc639d88d9d62a765bd7b5c`, reading-copy SHA-256 `e5f257bcd5eabbcdb20ba45b40bdf416bef0d061efa673adff752b5e9f91cc8e`, one-based inclusive lines [[1, 18]].
+
+`ops-sql-600701538`: [dbo.DM_InsightDetailPaneData](sql/600701538.sql); source-definition SHA-256 `b0a7a4eea9d845b84762a839a9a71cc140dfcc9120e40041884ed2ddf020d4a9`, reading-copy SHA-256 `8a7af6a60894b7ab3097f778c52dcdc30b6edfa47f436721b661f59620b89b6c`, one-based inclusive lines [[1, 33]].
+
+`ops-sql-616701595`: [dbo.DOM_InsightDetailPaneData](sql/616701595.sql); source-definition SHA-256 `b43dbb3b77c4b93e602dfd425c610bf5b1489e98d05a22c14991e669ac228a68`, reading-copy SHA-256 `8af1875b9fba452f2328cb1c5b6b2e51ec07b5fef11b146138c9d9a5b70624b1`, one-based inclusive lines [[1, 18]].
+
+`ops-sql-892178574`: [dbo.AD_InsightDetailPaneData](sql/892178574.sql); source-definition SHA-256 `858628db39efcab120c5184af1f078c394bd4c3bdb1cc3eff6e824a4da326835`, reading-copy SHA-256 `3fd6a1218a7d5403b5b61af3fe9785df59fa6042f0c446e7b9d1d8298eb24cc6`, one-based inclusive lines [[1, 20]].
+
+`ops-sql-924178688`: [dbo.ADT_InsightDetailPaneData](sql/924178688.sql); source-definition SHA-256 `9aca3adf7db49d7f04c3a8bff77b4f3765893eaf10f5e6215b91de1a3051edf2`, reading-copy SHA-256 `5c07ea0246316ae5b5a7c56b21621ec37c9f24264670c797b6f5d35d79f6fbaa`, one-based inclusive lines [[1, 27]].
+
+`ops-sql-1073751228`: [dbo.RQH_InsightDetailPaneData](sql/1073751228.sql); source-definition SHA-256 `2e29d63ec1acfe8df5d7cd6b1f9ad8dbc1686f0b78311d9d5735166812c13034`, reading-copy SHA-256 `68710e948d7ac845079bc1a7a91686ceeaef8a984b31de4b4e855027ef2e5254`, one-based inclusive lines [[1, 29]].
+
+`ops-sql-1096703305`: [dbo.IN_InsightDetailPaneData](sql/1096703305.sql); source-definition SHA-256 `71498a5c1d76cf2c790b6210c402a106acb7c7b7c7b1e2705b833acf28f575cb`, reading-copy SHA-256 `67ec081774a8e52997b97bef4d23cc3a5753a532af26b6c6417fc2bd38f96a67`, one-based inclusive lines [[1, 30]].
+
+`ops-sql-1461228606`: [dbo.PGPT_InsightDetailPaneData](sql/1461228606.sql); source-definition SHA-256 `7c5fe7690607dc9631272874071990e77b129dfb6def1c61f36f279fd18f241e`, reading-copy SHA-256 `44beb41fdee4b18218f2bb26ed7c0a39bc4fca12cd8d281c50cb9c0dec39a842`, one-based inclusive lines [[1, 28]].
+
+`ops-sql-1745753622`: [dbo.SHP_MOPInsightDetailPaneData](sql/1745753622.sql); source-definition SHA-256 `346a4a23dcf7c162f5a312b832c366618a70134baac4c79793fa18c0cb312df9`, reading-copy SHA-256 `ad925b45f7affc5187e882ba8a55578d64e9eb7d43bd161938b3c12c2f3e227e`, one-based inclusive lines [[1, 21]].
+
+`ops-sql-1877230088`: [dbo.PWL_InsightDetailPaneData](sql/1877230088.sql); source-definition SHA-256 `f9a4a1202a360989717814ae7b69df79b7912d484dcad89de4c76a915358a743`, reading-copy SHA-256 `7f8ae3d4ab4fe7b5990b20d23be939d5abadf678feb28e5e1a49ed5bff7aa04f`, one-based inclusive lines [[1, 23]].
+
+`ops-sql-2072706782`: [dbo.LA_InsightDetailPaneData](sql/2072706782.sql); source-definition SHA-256 `a440c9f7b222c92a94e669617fb4dc57c2a31fa4961faa51052a5bdc3035ad50`, reading-copy SHA-256 `e5112c2878ea89fd838948da9b420f56ea1deffbbbc06f4b8730f39369e4051e`, one-based inclusive lines [[1, 23]].
+
+`ops-sql-2145755047`: [dbo.TD_InsightDetailPaneData](sql/2145755047.sql); source-definition SHA-256 `a702b60f5fbda493511362b526ab058ba5606295442375107401d2c31546f6d8`, reading-copy SHA-256 `bd5019fe9961c1449441409d286d2c51ffab40fc8c4b3cb2501c87481bb56bef`, one-based inclusive lines [[1, 24]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the tote-detail helper follow a detail-to-header link? Expected: No. It compares the supplied identifier directly to TOTE_HEADER.OBJECT_ID. Must not claim: It joins through the detail parent relationship.
+- Can the movement-analysis pane return context without matching analysis data? Expected: Yes. Its initial SELECT has no FROM and returns caller context. Must not claim: No matching data means no result sets at all.
+
+## 217. Why a serial uniqueness check can miss a duplicate
+
+**Question:** Why a serial uniqueness check can miss a duplicate
+
+**What it does.** The check changes scope according to duplicate-serial configuration and the supplied item context. A missing object identifier is especially significant: the default NULL value makes the exclusion comparison fail to match existing serial rows, so the routine can report unique despite a duplicate.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Receipt container context takes precedence over location inventory, then shipping container. Evidence: `ops-sql-206272140`.
+2. One branch compares item, company and template; another compares item only; the global branch checks serial text across the table. Evidence: `ops-sql-206272140`.
+3. The routine returns a check result and does not create a uniqueness constraint or insert a serial. Evidence: `ops-sql-206272140`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The check changes scope according to duplicate-serial configuration and the supplied item context. A missing object identifier is especially significant: the default NULL value makes the exclusion comparison fail to match existing serial rows, so the routine can report unique despite a duplicate.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-206272140`: [dbo.ValidateSerialNumberIsUnique](sql/206272140.sql); source-definition SHA-256 `398d383007dee4dea1142c5f0344b106fc440706a5461c1dd8e18b072f7973f5`, reading-copy SHA-256 `2cd84fc25ee61c92d30b43ac636bd30cd004af907ae08ef560ff32c024315ac0`, one-based inclusive lines [[1, 140]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can the default NULL objectId allow a duplicate serial to pass? Expected: Yes. OBJECT_ID <> NULL does not match existing rows. Must not claim: The default always checks every existing serial.
+- Does the check enforce uniqueness by writing a constraint? Expected: No. It only returns zero or one from queries. Must not claim: It adds database uniqueness protection.
+
+## 218. How container status changes reach a receipt header
+
+**Question:** How container status changes reach a receipt header
+
+**What it does.** The container helper updates the selected status and rolls the minimum child status up its parent chain. The receipt header then combines container statuses with open detail quantity and can queue a close alert. These are database changes, separate from physical receipt completion.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. A missing positive ancestor or a cycle has no explicit loop guard. Evidence: `ops-sql-1909230202`, `ops-sql-1121751399`.
+2. Header close date is set on a change to the configured closed status and is not cleared on reopening. Evidence: `ops-sql-1909230202`, `ops-sql-1121751399`.
+3. The alert check prevents an existing matching request in the query, but its NOLOCK check is not a concurrency guarantee. Evidence: `ops-sql-1909230202`, `ops-sql-1121751399`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The container helper updates the selected status and rolls the minimum child status up its parent chain. The receipt header then combines container statuses with open detail quantity and can queue a close alert. These are database changes, separate from physical receipt completion.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1909230202`: [dbo.RCB_SetStatus](sql/1909230202.sql); source-definition SHA-256 `62ad853ddc49e7960ed6bdcc8a2dcc96851aea27b1296f1fdd6ca788c1d994a1`, reading-copy SHA-256 `5a7fe96644b388612309018b3d3a825022b907c5fb09a141ec9f3051db4ae351`, one-based inclusive lines [[1, 67]].
+
+`ops-sql-1121751399`: [dbo.RTH_UpdateHeader](sql/1121751399.sql); source-definition SHA-256 `c0ab4f803e766695698fd12ec2d7d282e6b80b2fc8f1c8e1bf766e9fb364537b`, reading-copy SHA-256 `4a4c6a68831f6ebf8291d688a837c3659cdbcc2fc4c317e8346e558c5a942378`, one-based inclusive lines [[1, 125]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Is receipt CLOSE_DATE cleared when status reopens? Expected: No. The update preserves the existing close date outside the change-to-closed branch. Must not claim: Reopening automatically clears it.
+- Does the container parent loop guard against cycles? Expected: No explicit cycle or visited-parent guard is present. Must not claim: The loop guarantees termination for any hierarchy.
+
+## 219. How shipment and load status rollups retry
+
+**Question:** How shipment and load status rollups retry
+
+**What it does.** Shipment and load helpers calculate a status range and update only when the stored old statuses still match. They retry without a fixed limit. NULL old statuses can affect both change detection and matching, while alert insertion can occur before the shipment update succeeds.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The load fallback repeats the minimum-status test and does not reliably repair a nonpositive maximum. Evidence: `ops-sql-71319664`, `ops-sql-2065754762`, `ops-sql-2081754819`, `ops-sql-1515152443`.
+2. Order completion checks only detail status1 below 900; it does not inspect all ten status buckets. Evidence: `ops-sql-71319664`, `ops-sql-2065754762`, `ops-sql-2081754819`, `ops-sql-1515152443`.
+3. The bodies do not supply an encompassing transaction for the whole chain. Evidence: `ops-sql-71319664`, `ops-sql-2065754762`, `ops-sql-2081754819`, `ops-sql-1515152443`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Shipment and load helpers calculate a status range and update only when the stored old statuses still match. They retry without a fixed limit. NULL old statuses can affect both change detection and matching, while alert insertion can occur before the shipment update succeeds.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-71319664`: [dbo.SCB_SetStatus](sql/71319664.sql); source-definition SHA-256 `55591eeef196c8ce6b5026732541813d2ce7fad1d7cf6fa646a159c9a79a24a5`, reading-copy SHA-256 `3e49bbb87349f31132602011d753773c02a01100c661fd4632da26e043fa9c84`, one-based inclusive lines [[1, 58]].
+
+`ops-sql-2065754762`: [dbo.STH_UpdateHeader](sql/2065754762.sql); source-definition SHA-256 `94304e8fe246dc7c4a5c67dccb38c2246029d095efa7c246803d1bfc51a738f8`, reading-copy SHA-256 `363c6a189e422cd4fa34382a8cedee3a7e543130d41a857d6a91d687e72a4bf0`, one-based inclusive lines [[1, 224]].
+
+`ops-sql-2081754819`: [dbo.STH_UpdateLoad](sql/2081754819.sql); source-definition SHA-256 `b3179e7999357d29e0ae1356feb1e0f249295107a557a3bc4147ab4f82f0035a`, reading-copy SHA-256 `7d45c6b1323129eb40418c9ba67aaabdd3b347dc0738fcac012e6430c5d66711`, one-based inclusive lines [[1, 111]].
+
+`ops-sql-1515152443`: [dbo.STH_UpdateOrderStatus](sql/1515152443.sql); source-definition SHA-256 `dfd2f996cee9a80ad56290d63c6a85bc8ae67c3efc3396d6495482e6b58119d4`, reading-copy SHA-256 `1356b148c8375fd1b62f3407888364a49b2dcc81b19d26801f023ec9527f734e`, one-based inclusive lines [[1, 77]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Do shipment and load rollups have a bounded retry count? Expected: No. Their retry loops have no fixed limit. Must not claim: They stop after a documented number of retries.
+- Does order completion test all ten detail status buckets? Expected: No. It removes orders with a detail STATUS1 below 900. Must not claim: Every status bucket is checked.
+
+## 220. Why quantity movement variants can leave different header statuses
+
+**Question:** Why quantity movement variants can leave different header statuses
+
+**What it does.** Both helpers move quantity between the ten shipment-detail status buckets. The unsuffixed helper refreshes the shipment header when the leading or trailing status changes. The 01 variant stops after updating the detail.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The source status must exist and the remaining source quantity cannot be negative. Evidence: `ops-sql-1457752596`, `ops-sql-1473752653`.
+2. There is no explicit rejection of a negative move amount or a guard against an eleventh occupied status. Evidence: `ops-sql-1457752596`, `ops-sql-1473752653`.
+3. UPDLOCK is present, but a transaction spanning the read and write must come from the caller. Evidence: `ops-sql-1457752596`, `ops-sql-1473752653`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Both helpers move quantity between the ten shipment-detail status buckets. The unsuffixed helper refreshes the shipment header when the leading or trailing status changes. The 01 variant stops after updating the detail.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1457752596`: [dbo.SDB_MoveQtyToSts](sql/1457752596.sql); source-definition SHA-256 `fa104e94e393842afe3be154df8f564aa49c281569187ab1b23288ebf7f12c64`, reading-copy SHA-256 `a254de63173809d545ffdff76add2f835b6b50276f91da5dd2a38ec86a9b260c`, one-based inclusive lines [[1, 414]].
+
+`ops-sql-1473752653`: [dbo.SDB_MoveQtyToSts01](sql/1473752653.sql); source-definition SHA-256 `777b07b9857f25008e51fe7d4282d9e37c8897d75a36387d2e7dd3d8622179dd`, reading-copy SHA-256 `8c547ca0dacd2a5b4ceed97f66a2732fdafe848e0b899c5e06032bec327d76a8`, one-based inclusive lines [[1, 403]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does SDB_MoveQtyToSts01 refresh the shipment header? Expected: No. Only the unsuffixed body contains that child call. Must not claim: Both variants refresh the header.
+- Does the routine reject every negative move quantity? Expected: No explicit negative-input guard exists. Must not claim: All negative movement input is rejected.
+
+## 221. What transferring a rejected detail copies and resets
+
+**Question:** What transferring a rejected detail copies and resets
+
+**What it does.** The transfer helper copies a detail to another shipment, resets its status buckets and marks the original rejected. It copies existing total quantity, weight, volume and value to the new line rather than recomputing them from the supplied moved quantity. A separate cancellation helper subtracts shipment totals from an order and can subtract again if repeated.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The transfer owns a transaction and rethrows caught errors; its rollback can include an existing caller transaction. Evidence: `ops-sql-158271969`, `ops-sql-972178859`.
+2. Original status-bucket quantities are not all cleared when original totals become zero. Evidence: `ops-sql-158271969`, `ops-sql-972178859`.
+3. Header child return codes are not captured by the transfer, so a nonzero return without an exception is different from a caught failure. Evidence: `ops-sql-158271969`, `ops-sql-972178859`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The transfer helper copies a detail to another shipment, resets its status buckets and marks the original rejected. It copies existing total quantity, weight, volume and value to the new line rather than recomputing them from the supplied moved quantity. A separate cancellation helper subtracts shipment totals from an order and can subtract again if repeated.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-158271969`: [dbo.TransferRejectedDetail](sql/158271969.sql); source-definition SHA-256 `62d929b26c6189a4c719ccb3aeac93f384f8fad07c2d07f35b8c12b6b904206b`, reading-copy SHA-256 `e139e86309559d55ebfb12cd638e4738225425bdee11e9187f9766db5a784349`, one-based inclusive lines [[1, 417]].
+
+`ops-sql-972178859`: [dbo.CancelShipment_UpdateOrderHeader](sql/972178859.sql); source-definition SHA-256 `fa45c5ac9c5519c8176ffd830a1ac2959682871f422e9c7e1e43a8becd7bf97d`, reading-copy SHA-256 `2fcf462ecc8bda41c970d582fd5a944a17732b66ca63cef80ce5bf1fda866e2d`, one-based inclusive lines [[1, 55]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Are new detail totals recalculated from the supplied status quantity? Expected: No. Existing total fields are copied. Must not claim: Every total is recalculated proportionally.
+- Is the order-subtraction cancellation helper idempotent? Expected: No. Repeated qualifying calls subtract again. Must not claim: Repeated calls leave totals unchanged after the first.
+
+## 222. Why an alert request can be deleted during validation
+
+**Question:** Why an alert request can be deleted during validation
+
+**What it does.** The batch helper sends selected requests to inbound or outbound validators. A validator deletes a request when its receipt or shipment status is missing, or when a configured criterion fails. It does not send an alert or mark the batch processed.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Inbound criteria compare text even for numeric fields. Outbound lines, value and weight use numeric casts with zero default scale. Evidence: `ops-sql-215320177`, `ops-sql-222272197`, `ops-sql-238272254`.
+2. No criteria leaves the request intact. NULL comparisons can avoid marking a failure. Evidence: `ops-sql-215320177`, `ops-sql-222272197`, `ops-sql-238272254`.
+3. Deletion uses the supplied request identifier without an added warehouse ownership check. Evidence: `ops-sql-215320177`, `ops-sql-222272197`, `ops-sql-238272254`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The batch helper sends selected requests to inbound or outbound validators. A validator deletes a request when its receipt or shipment status is missing, or when a configured criterion fails. It does not send an alert or mark the batch processed.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-215320177`: [dbo.WAP_ValAllRequests](sql/215320177.sql); source-definition SHA-256 `30f3523512d26c37785c744c474da555ac213d6c4ac2a5f6736c9b2bc8fa17a5`, reading-copy SHA-256 `6f4381b8a6fb902e90393d9714b2a8d5770e58d5e9e5f5fc3551d6eb6ba0cfd4`, one-based inclusive lines [[1, 50]].
+
+`ops-sql-222272197`: [dbo.WAP_ValInboundReq](sql/222272197.sql); source-definition SHA-256 `68368f319ba78aed29284628e5c90e2a66702edb5dc3dfdde3dba63c3f1a0896`, reading-copy SHA-256 `4d53ab0ceeeba972e969a35f992fcd510d70630d1e120c446da1f5597d517acd`, one-based inclusive lines [[1, 158]].
+
+`ops-sql-238272254`: [dbo.WAP_ValOutboundReq](sql/238272254.sql); source-definition SHA-256 `ddf1cee1d15514f6c8f372d8769afd31bf6c604a64c2990d9acd538d3e94ef2e`, reading-copy SHA-256 `e19da5ba26fae02e3d604c43c778987f0da2172328e9c9b031b9a05f3beba34b`, one-based inclusive lines [[1, 209]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does inbound validation compare total value numerically? Expected: No. Its mapped source values are compared as uppercase text. Must not claim: All numeric-looking fields use numeric comparison.
+- Does WAP_ValAllRequests send the alerts? Expected: No. It calls validators and does not send or mark processed. Must not claim: Validation proves alert delivery.
+
+## 223. Why an audit record can lack a short value
+
+**Question:** Why an audit record can lack a short value
+
+**What it does.** The audit logger creates a header and passes optional values to a chunk helper. That helper uses a strict length comparison, so a one-character value and a final one-character remainder after a 1998-character chunk can be omitted. Process-history logging separately depends on an activation flag that a caller may supply.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The chunk length uses LEN, which ignores trailing spaces. Evidence: `ops-sql-908178631`, `ops-sql-940178745`, `ops-sql-1064703191`.
+2. Audit header and value writes are not wrapped in a local transaction. Evidence: `ops-sql-908178631`, `ops-sql-940178745`, `ops-sql-1064703191`.
+3. A non-NULL process-history activation flag bypasses its configuration lookup. Evidence: `ops-sql-908178631`, `ops-sql-940178745`, `ops-sql-1064703191`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The audit logger creates a header and passes optional values to a chunk helper. That helper uses a strict length comparison, so a one-character value and a final one-character remainder after a 1998-character chunk can be omitted. Process-history logging separately depends on an activation flag that a caller may supply.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-908178631`: [dbo.ADT_IAuditLogValue](sql/908178631.sql); source-definition SHA-256 `17484604cc41cc0b15d8dab63ef28d465cfeb0498856a1cb5d9ff884ee85ef0d`, reading-copy SHA-256 `fc84c5c1e44c9eaa51a889abc1dc5a6b141e3a0d874089c415bd811f5d6fab9f`, one-based inclusive lines [[1, 52]].
+
+`ops-sql-940178745`: [dbo.ADT_LogAudit](sql/940178745.sql); source-definition SHA-256 `192b4b60c48e6d6b917d9653c3676e7f6c309afa5fa97384f8e2693951ac9f54`, reading-copy SHA-256 `f6ee6692e6c0666053d1570e18f013f1557a338d7efd48f33f60acbb830a7cc2`, one-based inclusive lines [[1, 170]].
+
+`ops-sql-1064703191`: [dbo.HIST_SaveProcHist](sql/1064703191.sql); source-definition SHA-256 `dde4e8f66307129ea6420040714e240d9bb07c5b21424c46b2e2f51e321e88d9`, reading-copy SHA-256 `e75c1217030612a4c1b6920abc46392ed9b20022c308345c88c3c12b1562ea65`, one-based inclusive lines [[1, 69]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can a one-character audit value produce no value row? Expected: Yes. The loop starts at one and runs only while position is less than LEN. Must not claim: Every nonempty value is inserted.
+- Does process-history logging always reread activation configuration? Expected: No. A non-NULL caller flag bypasses lookup. Must not claim: Configuration is always authoritative on each call.
+
+## 224. Why a history error can occur after rows were inserted
+
+**Question:** Why a history error can occur after rows were inserted
+
+**What it does.** Transaction-history helpers record or infer quantities; they do not independently prove the inventory operation. The general logger inserts history and attributes before some serial checks. Without a caller rollback, a later error can leave partial history.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The general logger captures @@IDENTITY, which can be affected by trigger inserts. Evidence: `ops-sql-1048703134`, `ops-sql-1080703248`.
+2. Deallocation-history running balances depend on consecutive rows from an unordered insert, and the comparison tuple omits company. Evidence: `ops-sql-1048703134`, `ops-sql-1080703248`.
+3. Supplying both wave and shipment identifiers broadens the deallocation selection through OR. Evidence: `ops-sql-1048703134`, `ops-sql-1080703248`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Transaction-history helpers record or infer quantities; they do not independently prove the inventory operation. The general logger inserts history and attributes before some serial checks. Without a caller rollback, a later error can leave partial history.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1048703134`: [dbo.HIST_LogShipDeAlloc](sql/1048703134.sql); source-definition SHA-256 `9b40e0f2fc36538cd52d2481e8bd24ea3704b9efddae4d4d7be307f14d42e99f`, reading-copy SHA-256 `eb4dc9afbff124a01323072bf27af77b956da8613a9da0d0b9e5eebcc328d045`, one-based inclusive lines [[1, 208]].
+
+`ops-sql-1080703248`: [dbo.HIST_SaveTransHist](sql/1080703248.sql); source-definition SHA-256 `297e8e60397483a4632abda22909979ff21bb643a5db203f069303883f4a1cfc`, reading-copy SHA-256 `d37efb6fe5e229784c5b29dfc438664bd755accf35b4753f82b9b48949ba761d`, one-based inclusive lines [[1, 384]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Are all serial checks performed before transaction-history insertion? Expected: No. Some checks occur after history and attribute inserts. Must not claim: A serial failure guarantees no history rows were written.
+- Does deallocation history change inventory balances? Expected: No. It calculates table-variable before/after values and inserts history. Must not claim: It updates LOCATION_INVENTORY balances.
+
+## 225. What deactivating a work unit changes
+
+**Question:** What deactivating a work unit changes
+
+**What it does.** Deactivation copies the work unit to inactive storage and then deletes its active instructions. The helper has no local transaction around those two steps and does not check a completion condition. The reconciliation wrapper selects a narrower set first, updates a condition and calls deactivation.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Copy uses NOLOCK while the later delete selects the work unit again. Evidence: `ops-sql-552701367`, `ops-sql-988842885`.
+2. The reconciliation count applies to its filtered instructions, not every instruction for the work unit. Evidence: `ops-sql-552701367`, `ops-sql-988842885`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Deactivation copies the work unit to inactive storage and then deletes its active instructions. The helper has no local transaction around those two steps and does not check a completion condition. The reconciliation wrapper selects a narrower set first, updates a condition and calls deactivation.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-552701367`: [dbo.DeactivateWork](sql/552701367.sql); source-definition SHA-256 `819132075487b4a743f956e210d2d580996ba4143b07f3f7adf977a30c477379`, reading-copy SHA-256 `5e256e6d3d260b1e6b9e8c4c457c75965fed741f90115e1e95f62c2aef59163b`, one-based inclusive lines [[1, 216]].
+
+`ops-sql-988842885`: [dbo.TRAV_CC_Reconcile](sql/988842885.sql); source-definition SHA-256 `936ee7a19d583060b46ed552301c7242ef28f1ec890eb81336f6dac43848a57e`, reading-copy SHA-256 `56fdac8b5520e6a7304c06415b5ac1579465dee9d777430999d31ae216ead830`, one-based inclusive lines [[1, 60]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does DeactivateWork require all work to be completed? Expected: No completion/status guard appears in its body. Must not claim: It verifies completion before moving rows.
+- Is copy-and-delete atomic inside DeactivateWork? Expected: No local transaction wraps those statements. Must not claim: The helper guarantees atomic transfer.
+
+## 226. Why pallet destinations can be overwritten after work creation
+
+**Question:** Why pallet destinations can be overwritten after work creation
+
+**What it does.** Work-creation callbacks collect selected work instructions and upsert pallet destinations by work-unit name. More than one destination for a work unit can overwrite the same pallet row in an unspecified order. The outgoing-location callback can replace an existing value, including with NULL when no mapping branch matches.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. EX02 also copies WORK_UNIT into instruction USER_DEF1; EX08 does not. Evidence: `ops-sql-148507908`, `ops-sql-1323151759`, `ops-sql-1941581955`, `ops-sql-132507851`.
+2. Pallet renaming reads an old name from instruction USER_DEF1 and updates pallet rows without a warehouse filter. Evidence: `ops-sql-148507908`, `ops-sql-1323151759`, `ops-sql-1941581955`, `ops-sql-132507851`.
+3. A stored callback definition does not establish that the application invokes it. Evidence: `ops-sql-148507908`, `ops-sql-1323151759`, `ops-sql-1941581955`, `ops-sql-132507851`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Work-creation callbacks collect selected work instructions and upsert pallet destinations by work-unit name. More than one destination for a work unit can overwrite the same pallet row in an unspecified order. The outgoing-location callback can replace an existing value, including with NULL when no mapping branch matches.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-148507908`: [dbo.TRAV_EX02_WorkCreationAfterExitPoint](sql/148507908.sql); source-definition SHA-256 `f75744d09743e4ccffc78fac5ed6f92e3cdb53cbaba78efcaa20d7b6d933719d`, reading-copy SHA-256 `6465aef65ed20d3ea71102284b4a221eb9a3649852c4ef02004df7bdb8ee89a7`, one-based inclusive lines [[1, 99]].
+
+`ops-sql-1323151759`: [dbo.TRAV_EX08_WorkCreationAfterExitPoint](sql/1323151759.sql); source-definition SHA-256 `33f78951a2b397351374bb6fab66ca656242d7623b605b99e02019d17a9d606b`, reading-copy SHA-256 `f788af52057875bd913fd88c0816601311712b6965670551aa122caeddbc759c`, one-based inclusive lines [[1, 97]].
+
+`ops-sql-1941581955`: [dbo.EXP_WorkCreationAfterExitPoint](sql/1941581955.sql); source-definition SHA-256 `56ac88720b6f8f12f58a2be021f322163151c574895268334178973215220855`, reading-copy SHA-256 `3a1899d38fb991b627af7f1fda166caa2e04fc1e079e75affa0068c950545120`, one-based inclusive lines [[1, 70]].
+
+`ops-sql-132507851`: [dbo.TRAV_UpdateWorkUnitName](sql/132507851.sql); source-definition SHA-256 `c48518646822ddba7088240c6cb3735d5d0d47b20d4634f2bf85bd5de7944edb`, reading-copy SHA-256 `a56d68963bf53fa4990b201d28f6bdc9fb4b66691fcb319b828aae7abb259156`, one-based inclusive lines [[1, 36]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Do EX02 and EX08 both populate instruction USER_DEF1? Expected: No. The EX02 body does; EX08 does not. Must not claim: Their effects are identical.
+- Can the outgoing-location callback clear an existing destination? Expected: Yes. Its CASE has no ELSE and its update does not require the old value to be NULL. Must not claim: It only fills missing destinations.
+
+## 227. Why escalation can change more than one instruction
+
+**Question:** Why escalation can change more than one instruction
+
+**What it does.** Lane insertion checks only the lane/work-unit pair. The escalation jobs mark lanes by work unit and, when any instruction has missing priority or priority above three, set every instruction for that work unit to three. Existing lower priorities can therefore also change.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The existence check and insert have no concurrency protection against duplicate pairs. Evidence: `ops-sql-1522208573`, `ops-sql-1538208630`, `ops-sql-1339151816`.
+2. EX08 additionally maintains pallet rows and mapped outgoing locations; its NOT IN cleanup can be suppressed by a NULL work-unit value. Evidence: `ops-sql-1522208573`, `ops-sql-1538208630`, `ops-sql-1339151816`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Lane insertion checks only the lane/work-unit pair. The escalation jobs mark lanes by work unit and, when any instruction has missing priority or priority above three, set every instruction for that work unit to three. Existing lower priorities can therefore also change.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1522208573`: [dbo.TRAV_EX02LANEDataProcess](sql/1522208573.sql); source-definition SHA-256 `e304b1fec819b45b2f21adceaed7eccf387861000a2ef8ee6e119e5b59369115`, reading-copy SHA-256 `d50227b545135be5c65b61f7a3ab9b6434903c544cdf107f41c4a58879f3b515`, one-based inclusive lines [[1, 13]].
+
+`ops-sql-1538208630`: [dbo.TRAV_EX02_ScheduledJob](sql/1538208630.sql); source-definition SHA-256 `10484880fcded0896e91c5c4cc52de519030c9f3139bbf8048435243f210173d`, reading-copy SHA-256 `0c48dafd94ef90dfe2445ae7fc17cacd4382cf8c70bc7d1254b39fa0610ce534`, one-based inclusive lines [[1, 49]].
+
+`ops-sql-1339151816`: [dbo.TRAV_EX08_ScheduledJob](sql/1339151816.sql); source-definition SHA-256 `51079ad2fba65f10840e10bd23083fda3078dcf45618c4251ea569df5c27d796`, reading-copy SHA-256 `0b27501c833ef363ecca4f45e0a497e7ce431e7a5a98fe2cc40adcfb787b2ba9`, one-based inclusive lines [[1, 136]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can escalation change an instruction whose priority was already below three? Expected: Yes. One qualifying instruction triggers an update of all instructions for the work unit. Must not claim: Only rows above three are updated.
+- Can NULL work-unit data suppress the EX08 pallet cleanup? Expected: Yes. The DELETE uses NOT IN over work-instruction work units. Must not claim: NULLs have no effect on this cleanup.
+
+## 228. What a wave or pallet queue success means
+
+**Question:** What a wave or pallet queue success means
+
+**What it does.** These helpers set a wave flag or insert DIF queue messages. A success output does not confirm that an external system received or processed the message. Some wrappers assign success without checking whether any row was inserted or updated.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Wave enqueue requires the stored selection flag and looks up an event and endpoint without ordering. Evidence: `ops-sql-1474208402`, `ops-sql-1490208459`, `ops-sql-1602208858`, `ops-sql-1861177976`, `ops-sql-1849317898`.
+2. Pallet outgoing data comes from the selected work unit plus a padded next number; missing values can make the payload NULL. Evidence: `ops-sql-1474208402`, `ops-sql-1490208459`, `ops-sql-1602208858`, `ops-sql-1861177976`, `ops-sql-1849317898`.
+3. The mark-for-PS helper sets success even when no launch row matched. Evidence: `ops-sql-1474208402`, `ops-sql-1490208459`, `ops-sql-1602208858`, `ops-sql-1861177976`, `ops-sql-1849317898`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- These helpers set a wave flag or insert DIF queue messages. A success output does not confirm that an external system received or processed the message. Some wrappers assign success without checking whether any row was inserted or updated.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1474208402`: [dbo.TRAV_EX01_InsertDataForPS](sql/1474208402.sql); source-definition SHA-256 `679415b21020ef4dc72c25ace20ebe6b4d30d1345c02a5ff110426a5d9561d4c`, reading-copy SHA-256 `00c0316c2133ba6b9e3534e5e143627aec5782a23b6188698b389a9553612730`, one-based inclusive lines [[1, 40]].
+
+`ops-sql-1490208459`: [dbo.TRAV_EX01_ResendPSData](sql/1490208459.sql); source-definition SHA-256 `b8793d03b4738af086ab02adc67263ee7e3e3e6f67cc8f9181300bd47cd55d1b`, reading-copy SHA-256 `bfc4b76d431263dbc3489886885293c218592fcbb897e4d5ffc24d40ad6d9b7a`, one-based inclusive lines [[1, 34]].
+
+`ops-sql-1602208858`: [dbo.TRAV_EXP_ReleaseWaveAfter](sql/1602208858.sql); source-definition SHA-256 `a2f6c29ad94db9bcbb7d617e65e5ba7d3523db5615ccc71a27ade5b488c482f3`, reading-copy SHA-256 `2799f91737f1560e4358ca0ad27754e9dfd629f6d5a971aba6a668f99da9ffeb`, one-based inclusive lines [[1, 21]].
+
+`ops-sql-1861177976`: [dbo.TRAV_EX01_MarkForPS](sql/1861177976.sql); source-definition SHA-256 `90c18322d18e23f9651d549358c2c1ebce06d8c99956a9d6cdce5d51781fbf01`, reading-copy SHA-256 `0b8d4c1869970b145994a54058a4e4687e400e2a42f025c8b68f24b077040b61`, one-based inclusive lines [[1, 23]].
+
+`ops-sql-1849317898`: [dbo.TRAV_EX02_SCALEtoWCSDIFOutUpdate](sql/1849317898.sql); source-definition SHA-256 `0e1a8a9b0830bf77e837a823799141ce8757d4fd095c7822a487aeb74d54b3a9`, reading-copy SHA-256 `c6b04903bbd88ac9d465aa5ab8042adc2074b738b45a99f451f9177e59e492c5`, one-based inclusive lines [[1, 45]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does resend success prove external delivery? Expected: No. It is assigned after the queue helper without a delivery acknowledgement. Must not claim: Success confirms WCS delivery.
+- Can mark-for-PS return success when the wave was not found? Expected: Yes. It does not check affected rows. Must not claim: A matching wave is required before success is set.
+
+## 229. Why carton export quantities and sequence differ by helper
+
+**Question:** Why carton export quantities and sequence differ by helper
+
+**What it does.** The carton export helpers rank containers by pick-count grouping and source location. The EX01 helper casts quantity to a whole number; EX06 keeps its stored fractional quantity. Separate dimension and pallet helpers change stored values and do not establish a completed export.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Parent-child export joins use text container IDs without warehouse or company scope. Evidence: `ops-sql-1355151873`, `ops-sql-1833317841`, `ops-sql-1746209371`, `ops-sql-1570208744`, `ops-sql-1586208801`.
+2. Dimension update matches container ID only and converts supplied text before multiplying volume. Evidence: `ops-sql-1355151873`, `ops-sql-1833317841`, `ops-sql-1746209371`, `ops-sql-1570208744`, `ops-sql-1586208801`.
+3. Pallet-weight validation can return a success-shaped row, an error-shaped row or no result set; stored weight text is converted to decimal. Evidence: `ops-sql-1355151873`, `ops-sql-1833317841`, `ops-sql-1746209371`, `ops-sql-1570208744`, `ops-sql-1586208801`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The carton export helpers rank containers by pick-count grouping and source location. The EX01 helper casts quantity to a whole number; EX06 keeps its stored fractional quantity. Separate dimension and pallet helpers change stored values and do not establish a completed export.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1355151873`: [dbo.TRAV_EX06_GetPackSizeWaveContainerData](sql/1355151873.sql); source-definition SHA-256 `dd69ccd0d880e604f0c62eb4362ba51d3850f8cd3620214f7d755677f7ddd216`, reading-copy SHA-256 `b41a6f0ecf570c477a18c980dae822b6de32a12feb30d0043a7543b9e36f0703`, one-based inclusive lines [[1, 129]].
+
+`ops-sql-1833317841`: [dbo.TRAV_EX01_GetPackSizeWaveContainerData](sql/1833317841.sql); source-definition SHA-256 `80b2b4b30f1b587abacca43981d32aefd72da291bb799c51caf56a38a0dc34fe`, reading-copy SHA-256 `59acecdea4054b593d21464509e953dee8696244cfd523e1eb7e0770d1324139`, one-based inclusive lines [[1, 59]].
+
+`ops-sql-1746209371`: [dbo.TRAV_EX01_UpdateContainerDetails](sql/1746209371.sql); source-definition SHA-256 `cd9c76eb0f115e333dd88e997701969d07349b48af4a2067e58ba3ef8d11ed97`, reading-copy SHA-256 `58fd0c2d01e5f2592b5a7dbaa3655a57721ba1b18ccf6b7460b153e14d555378`, one-based inclusive lines [[1, 27]].
+
+`ops-sql-1570208744`: [dbo.TRAV_EX06UpdateMOPValues](sql/1570208744.sql); source-definition SHA-256 `9fcff46598be0b118036aedb709e1ea532300ba884ce9f3a5080b43375032597`, reading-copy SHA-256 `eec450473b974b5a9b522809252df8b29de003030ff82d3f901d08f3bf714c28`, one-based inclusive lines [[1, 12]].
+
+`ops-sql-1586208801`: [dbo.EX06ValidateMOPNum_Weights](sql/1586208801.sql); source-definition SHA-256 `63449bc016c6ea7de9286a8c6016328f1405fb58d93d9d9abaed2da2aae38b2f`, reading-copy SHA-256 `0dc14ccacb3943ac4e7825743fcf04ef612ff6e30d339355fe6b7cb860af1420`, one-based inclusive lines [[1, 34]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Do EX01 and EX06 preserve the same quantity precision? Expected: No. EX01 casts to numeric(19,0), while EX06 returns source quantity. Must not claim: Both preserve fractional quantities.
+- Does the dimension update restrict by warehouse? Expected: No. It matches CONTAINER_ID only. Must not claim: Warehouse always limits the update.
+
+## 230. Where the RF quantity warning comes from
+
+**Question:** Where the RF quantity warning comes from
+
+**What it does.** The RF helper generates JavaScript that compares the form quantity to one configured maximum. It does not itself validate a scan or prove that the browser ran the code. Its configuration lookup has no warehouse filter even though it extracts warehouse and user from session XML.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. A missing maximum can make the generated return value NULL; duplicate configuration rows can fail the scalar lookup. Evidence: `ops-sql-940582439`, `ops-sql-1016703020`.
+2. The XML helper parameterizes the document but concatenates the supplied XPath and namespace syntax. Evidence: `ops-sql-940582439`, `ops-sql-1016703020`.
+3. Informational source messages include session/debug content; none was generated during this review. Evidence: `ops-sql-940582439`, `ops-sql-1016703020`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The RF helper generates JavaScript that compares the form quantity to one configured maximum. It does not itself validate a scan or prove that the browser ran the code. Its configuration lookup has no warehouse filter even though it extracts warehouse and user from session XML.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-940582439`: [dbo.TRAV_EXP_RfCheckInAddValidationJavascript](sql/940582439.sql); source-definition SHA-256 `6abcaad37eb3747411030d04c6ac2122aa32cea4a168387fb60c6380453e4e0d`, reading-copy SHA-256 `dea13aef19c3fabc88b32ae012752e975ae6bdad03f71f35154ae7795b427592`, one-based inclusive lines [[1, 71]].
+
+`ops-sql-1016703020`: [dbo.GetXMLAttributeValueByAttributeName](sql/1016703020.sql); source-definition SHA-256 `8e0cf55b396eac4dcfb3b832443980df2c61ad6e64709d2304616275dbd22f74`, reading-copy SHA-256 `fe1d403bbfc2472281d11051f05877dc0f11d304052c77afad16403231e35b77`, one-based inclusive lines [[1, 51]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Is the RF maximum selected per warehouse in this body? Expected: No. The maximum lookup uses fixed record type/key without warehouse. Must not claim: The extracted warehouse filters the maximum.
+- Does receiving generated JavaScript prove the quantity was checked? Expected: No. Browser invocation remains separate. Must not claim: The SQL helper itself validates the form quantity.
+
+## 231. Why inventory staging can be replaced before validation finishes
+
+**Question:** Why inventory staging can be replaced before validation finishes
+
+**What it does.** Inventory staging is cleared globally before the selected warehouse conversion rows are copied and checked. A validation error can therefore leave the new staging data in place. The loader later processes positive quantities with an empty processing flag, using a child inventory-adjustment routine.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The loader commits each successful adjustment before marking staging and updating received timestamps. Evidence: `ops-sql-1228687575`, `ops-sql-1244687632`.
+2. Some grouped validation subqueries can fail when more than one offending group exists. Evidence: `ops-sql-1228687575`, `ops-sql-1244687632`.
+3. The received-date update omits the inventory attribute identifier and may stamp several matching records. Evidence: `ops-sql-1228687575`, `ops-sql-1244687632`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Inventory staging is cleared globally before the selected warehouse conversion rows are copied and checked. A validation error can therefore leave the new staging data in place. The loader later processes positive quantities with an empty processing flag, using a child inventory-adjustment routine.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1228687575`: [dbo.POPULATE_INVENTORY_STAGING](sql/1228687575.sql); source-definition SHA-256 `5110b933a7a54008f1430603ab1e507b9728867fc36c91bc680cb467470f2b63`, reading-copy SHA-256 `8e29b5c94117c1edc1423703830dead301349a3c1ccdf12d5f3971f26a39accf`, one-based inclusive lines [[1, 649]].
+
+`ops-sql-1244687632`: [dbo.LOAD_INVENTORY](sql/1244687632.sql); source-definition SHA-256 `ad9db4eb978a95dd46ce7146c90c60c243e03ae60d59a89810ecb4c7aeb64536`, reading-copy SHA-256 `75e3020977fa44aafecec61bb55923bfe7672143617a50fb579cce8e1e71f452`, one-based inclusive lines [[1, 207]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does inventory population validate everything before clearing staging? Expected: No. It deletes staging and copies rows before most checks. Must not claim: Existing staging is preserved until all checks pass.
+- Are adjustment and success marker committed together by the loader? Expected: No. The marker is written after the adjustment commit. Must not claim: The marker and adjustment are one atomic local transaction.
+
+## 232. Why a warehouse argument does not always limit a conversion load
+
+**Question:** Why a warehouse argument does not always limit a conversion load
+
+**What it does.** The assignment and capacity conversion routines use warehouse scope inconsistently. Their cleanup and staging clears can affect every warehouse. Capacity loader v2 ignores the warehouse argument for insertion and marks every staging row after its bulk operation.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Assignment load inserts the assignment first, commits, then creates or marks permanent inventory and updates staging. Evidence: `ops-sql-401540614`, `ops-sql-417540671`, `ops-sql-1116687176`, `ops-sql-1132687233`.
+2. Capacity population copies all conversion rows after a global staging clear. Evidence: `ops-sql-401540614`, `ops-sql-417540671`, `ops-sql-1116687176`, `ops-sql-1132687233`.
+3. Capacity loader reads @@ERROR only after a separate SET statement, so its error check is not a reliable capture of the insert error. Evidence: `ops-sql-401540614`, `ops-sql-417540671`, `ops-sql-1116687176`, `ops-sql-1132687233`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The assignment and capacity conversion routines use warehouse scope inconsistently. Their cleanup and staging clears can affect every warehouse. Capacity loader v2 ignores the warehouse argument for insertion and marks every staging row after its bulk operation.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-401540614`: [dbo.POPULATE_Staging_ILA](sql/401540614.sql); source-definition SHA-256 `cf7473b219a9a794d313749bbc5556deaec9408d8f9f862ba6a6986e6cfd88e3`, reading-copy SHA-256 `f3068dbea6f9fb3abf4e5c22dc41707608fe462a549299af86b3a8d796e01123`, one-based inclusive lines [[1, 325]].
+
+`ops-sql-417540671`: [dbo.LOAD_ILA](sql/417540671.sql); source-definition SHA-256 `e4db894036775462d983e8c175f4bee5ea6d5f3142dabcd9759b5fbc21945860`, reading-copy SHA-256 `84d05735cbbcdd61bc86be285bad6bbed669d526bdafa588e46bc8888cae8877`, one-based inclusive lines [[1, 219]].
+
+`ops-sql-1116687176`: [dbo.POPULATE_STAGING_ILC](sql/1116687176.sql); source-definition SHA-256 `45d8207f0053503a86a85d8d78b9e396e2c43d76b54a7af7d93d48810bac75c7`, reading-copy SHA-256 `cd35ac1c798ffd0c4fc8aac2aed7d0a2abf40a343801fb927732998f7c61fed7`, one-based inclusive lines [[1, 293]].
+
+`ops-sql-1132687233`: [dbo.LOAD_ILC_v2](sql/1132687233.sql); source-definition SHA-256 `ded7b2bc1103606f8f5a96b4883e621f2ad1c4b2c40cb5b1cd4927c636ace5fb`, reading-copy SHA-256 `6f861eb40d4df89f72bc7dd2b0283f28513efc9eb06316635fd3d60f66203e8b`, one-based inclusive lines [[1, 77]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does LOAD_ILC_v2 insert only the requested warehouse? Expected: No. Its source query has no warehouse predicate. Must not claim: The parameter limits every inserted row.
+- Can the assignment insert commit before inventory creation? Expected: Yes. LOAD_ILA commits the assignment before its inventory work. Must not claim: Both are in one local transaction.
+
+## 233. What generic configuration staging changes
+
+**Question:** What generic configuration staging changes
+
+**What it does.** Generic configuration population normalizes raw rows and validates a requested record type, then clears the whole staging table before copying that type. The loader inserts selected staged rows one at a time. The separate configuration-summary helper counts selected existing configuration; it does not load those rows.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Raw normalization is broader than the requested record type. Evidence: `ops-sql-1161315447`, `ops-sql-1145315390`, `ops-sql-181224046`.
+2. Loader success commits the configuration insert before marking its staging row processed. Evidence: `ops-sql-1161315447`, `ops-sql-1145315390`, `ops-sql-181224046`.
+3. Existing configuration conflicts are checked during population; the loader itself does not perform an upsert. Evidence: `ops-sql-1161315447`, `ops-sql-1145315390`, `ops-sql-181224046`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Generic configuration population normalizes raw rows and validates a requested record type, then clears the whole staging table before copying that type. The loader inserts selected staged rows one at a time. The separate configuration-summary helper counts selected existing configuration; it does not load those rows.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1161315447`: [dbo.POPULATE_Generic_Config_Dtl](sql/1161315447.sql); source-definition SHA-256 `055de6a55870ac9bfa7bbdd167f8985c3cad475502046fd52bdc79b805fbb103`, reading-copy SHA-256 `6c722bd216bb7321a1ff4cd0336b0dae1a34ea8c9220260dc6649dc65b5f6b35`, one-based inclusive lines [[1, 304]].
+
+`ops-sql-1145315390`: [dbo.Load_Generic_Config_Dtl](sql/1145315390.sql); source-definition SHA-256 `773f9858112a045190d4a8b260fb6c2083ed4eada7b19c0d3ab57a10e9cde652`, reading-copy SHA-256 `3d513388cb15ba60fa09118ae1715eb5288d6728662d94984ab59ef0dbb98d73`, one-based inclusive lines [[1, 135]].
+
+`ops-sql-181224046`: [dbo.LoadAdditionalConfigsSummary](sql/181224046.sql); source-definition SHA-256 `7a4677693db618182ff148632027de75556094412774dc0f0332b4bf55d3beed`, reading-copy SHA-256 `13480cd8e5d714719971dba937f66737472a080a72c5f2912f1b4dc68e6c2bd3`, one-based inclusive lines [[1, 1348]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does generic configuration population clear only the selected type from staging? Expected: No. Its DELETE clears the entire staging table. Must not claim: Other staging types are preserved.
+- Does the loader replace an existing configuration row? Expected: No. It uses INSERT, with constraints governing conflicts. Must not claim: It performs an upsert automatically.
+
+## 234. Why accessorial choices or values are missing
+
+**Question:** Why accessorial choices or values are missing
+
+**What it does.** Accessorial choices depend on the shipment carrier and service matching rating configuration. Container branches apply extra per-container and contents rules. A missing required join can return no choices; an existing override value may fall back to the detail default when it is NULL.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Detail lookup only runs for a positive header identifier. Evidence: `ops-sql-808702279`, `ops-sql-856702450`.
+2. Override lookups are scalar and can fail if multiple matching assignments exist. Evidence: `ops-sql-808702279`, `ops-sql-856702450`.
+3. These helpers list configuration and stored values; they do not rate or charge the shipment. Evidence: `ops-sql-808702279`, `ops-sql-856702450`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Accessorial choices depend on the shipment carrier and service matching rating configuration. Container branches apply extra per-container and contents rules. A missing required join can return no choices; an existing override value may fall back to the detail default when it is NULL.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-808702279`: [dbo.GetAccessorialDetails](sql/808702279.sql); source-definition SHA-256 `65aa9c135e8661c0da19133dd663644acb9bb590dba2f92f2ef8ea3f718ac1dc`, reading-copy SHA-256 `dc850eb19ad91cd4c1b122f3dda2ad3bdce9a39af3e45d6d414232e84a528544`, one-based inclusive lines [[1, 99]].
+
+`ops-sql-856702450`: [dbo.GetAvailableAccessorials](sql/856702450.sql); source-definition SHA-256 `2f35ca16feb3c60315f027b6ee8049898a2e1345a757a23a15b00249c10a5cc6`, reading-copy SHA-256 `7e9ce4d358f9be7e05aa7d7c66a3f7adf516be071edf62a47bf98adb3870e727`, one-based inclusive lines [[1, 66]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a NULL stored override always remain NULL? Expected: No. ISNULL falls back to the detail default. Must not claim: The override is returned unchanged in every case.
+- Does listing an accessorial charge the shipment? Expected: No. These bodies read choices and values. Must not claim: The lookup applies a freight charge.
+
+## 235. How a parent logistics unit is assigned
+
+**Question:** How a parent logistics unit is assigned
+
+**What it does.** The parent-logistics helper identifies group inventory in a requested location class and updates it only when the candidate class is not spread over multiple locations. Its joins and the separate consolidation lookup have scope limits that can affect which record is chosen.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The parent-logistics LOCATION join uses location text without warehouse equality; company is not matched. Evidence: `ops-sql-1445228549`, `ops-sql-648701709`, `ops-sql-872702507`, `ops-sql-1137751456`.
+2. The consolidation helper selects one container ID candidate before its final warehouse filter, without trying another candidate when that filter fails. Evidence: `ops-sql-1445228549`, `ops-sql-648701709`, `ops-sql-872702507`, `ops-sql-1137751456`.
+3. The receipt attribute lookup returns attribute rows linked by receipt-container IDs; it does not create attributes. Evidence: `ops-sql-1445228549`, `ops-sql-648701709`, `ops-sql-872702507`, `ops-sql-1137751456`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The parent-logistics helper identifies group inventory in a requested location class and updates it only when the candidate class is not spread over multiple locations. Its joins and the separate consolidation lookup have scope limits that can affect which record is chosen.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1445228549`: [dbo.PG_UpdateParentLogisticsUnit](sql/1445228549.sql); source-definition SHA-256 `d652f8d4d1416b837f8928b43bb8eec931ea42dd4e723bc35c7b11d6bd8f2983`, reading-copy SHA-256 `6918b29c237d3c476e731337bceec76701ce39dbf5ace615ed655da654043cb2`, one-based inclusive lines [[1, 53]].
+
+`ops-sql-648701709`: [dbo.FetchLPDetails](sql/648701709.sql); source-definition SHA-256 `e428c1fcdfcd4d86ff1e81d6e522277cc575805945d571e257d4cfd758e99a59`, reading-copy SHA-256 `7819e69be7f6a98b53e93ee377c7599da24b227fc63757ccafdb0a3197f7ea03`, one-based inclusive lines [[1, 19]].
+
+`ops-sql-872702507`: [dbo.GetConsolidateAfterPutaway](sql/872702507.sql); source-definition SHA-256 `f4eb69ab9eb9958204cd10cc662502cf638bc198fedd6ab138a9c42488ac9985`, reading-copy SHA-256 `1fee11a3e7d426bfaaf6f49c870fa2eb9d9b1cf1c8b8e5ad0e793e1ba75bd4d6`, one-based inclusive lines [[1, 60]].
+
+`ops-sql-1137751456`: [dbo.Rtv_LocationInventoryAttributes](sql/1137751456.sql); source-definition SHA-256 `9198e6c0e903f20865b68dd7bb7b8d8700a8654d70e445358a11b38e682102db`, reading-copy SHA-256 `167832b96af4331ec96422d1746e7bbda505db6e277e1d0d5d2b32e21b305dc3`, one-based inclusive lines [[1, 15]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the parent-logistics LOCATION join include warehouse? Expected: No. It joins LOCATION by location text. Must not claim: All joins enforce warehouse equality.
+- Does consolidation retry another container-ID candidate if the warehouse differs? Expected: No. Its initial TOP 1 choice is not retried. Must not claim: It searches until it finds the requested warehouse.
+
+## 236. What rewriting server paths affects
+
+**Question:** What rewriting server paths affects
+
+**What it does.** The path setter rewrites a fixed set of configuration keys and the PDF directory of every warehouse. It chooses separators using fixed HTTPS patterns. It does not check whether a directory exists or whether the application can use it.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The warehouse PDF-directory UPDATE has no WHERE clause. Evidence: `ops-sql-46271570`, `ops-sql-62271627`.
+2. NULL input takes the alternate branch and can write NULL through concatenation. Evidence: `ops-sql-46271570`, `ops-sql-62271627`.
+3. The path reader returns UNION ALL rows without deduplicating or accessing the paths. Private paths are not reproduced here. Evidence: `ops-sql-46271570`, `ops-sql-62271627`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The path setter rewrites a fixed set of configuration keys and the PDF directory of every warehouse. It chooses separators using fixed HTTPS patterns. It does not check whether a directory exists or whether the application can use it.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-46271570`: [dbo.TOOLBOX_GetServerPathValues](sql/46271570.sql); source-definition SHA-256 `61694df5f2de430532b2beb6eeefbf8fa24cbd2dde39fec8ea1a547db3d7d802`, reading-copy SHA-256 `4296cd42f3326b5b1820b0c1865738945c147b1c045e0ff91c82cf8f1453b67d`, one-based inclusive lines [[1, 50]].
+
+`ops-sql-62271627`: [dbo.TOOLBOX_SetServerPathValues](sql/62271627.sql); source-definition SHA-256 `519e167fe5da4d051ff06aaa903a3c6b5df68ee7b52ab5abfdecfc29bc775d50`, reading-copy SHA-256 `ca73a2fd682025fb652f269f1b58578cce20b35549daa1be3119f2e5e4a203f9`, one-based inclusive lines [[1, 157]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the path setter update just one warehouse? Expected: No. The warehouse update has no filter. Must not claim: It updates a selected warehouse only.
+- Does the path reader verify filesystem access? Expected: No. It selects stored strings and flags. Must not claim: A returned path has been tested for access.
+
+## 237. Why maintenance dummy mode is not a preview
+
+**Question:** Why maintenance dummy mode is not a preview
+
+**What it does.** The maintenance procedures execute their queued commands. Their dummy mode broadens selection and is not a dry run. Other helpers can reseed a shipping-load identity or alter columns and overwrite values. These definitions are documented for understanding and were not executed.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Even an invalid maintenance operation can reach persistent log-table creation. Evidence: `ops-sql-956178802`, `ops-sql-2122646805`, `ops-sql-366272710`, `ops-sql-1893178090`, `ops-sql-1536724527`.
+2. The two Azure maintenance variants use different index options and statistics sampling commands. Evidence: `ops-sql-956178802`, `ops-sql-2122646805`, `ops-sql-366272710`, `ops-sql-1893178090`, `ops-sql-1536724527`.
+3. The column helper in check-constraint mode can run an unfiltered UPDATE setting the column to the supplied default. Evidence: `ops-sql-956178802`, `ops-sql-2122646805`, `ops-sql-366272710`, `ops-sql-1893178090`, `ops-sql-1536724527`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The maintenance procedures execute their queued commands. Their dummy mode broadens selection and is not a dry run. Other helpers can reseed a shipping-load identity or alter columns and overwrite values. These definitions are documented for understanding and were not executed.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-956178802`: [dbo.AzureSQLMaintenance](sql/956178802.sql); source-definition SHA-256 `6ca30420775ab5d138dbdcbc31e33c7fb25823c657af7d8bab3f7867e06957c2`, reading-copy SHA-256 `3193f62b3a13faa55eaf64f004a88d4cbb81cf1e93048af35a1780bcd75c9055`, one-based inclusive lines [[1, 246]].
+
+`ops-sql-2122646805`: [dbo.AzureSQLMaintenance_1](sql/2122646805.sql); source-definition SHA-256 `34abe0f45532c7643bcd4ab5dee09e1a72876d88ea30156d14c473dc0269fc4e`, reading-copy SHA-256 `9153ba3f75d37b8fbd07d4ce5258fef01b99e6af0c9699642d4471e32dfa6d56`, one-based inclusive lines [[1, 269]].
+
+`ops-sql-366272710`: [dbo.WC_UpdateWorkStats](sql/366272710.sql); source-definition SHA-256 `30d3cbb654bd3fe8bf72be8f54b81727cc1f87c7ae060925ea16b707c47599ea`, reading-copy SHA-256 `ac5c883b3a33f26c4499601ea64589ac27c17967b3155a2ca05e8b0e4623d8b1`, one-based inclusive lines [[1, 14]].
+
+`ops-sql-1893178090`: [dbo.TRAV_RESEED_DB](sql/1893178090.sql); source-definition SHA-256 `18b08d376374864742ce6c944abd095d9beb9f55753758e372ebf3aa8b7ae48e`, reading-copy SHA-256 `a9579c60864bef4374e7a4d070e942b3088545b57dda7cb270dcdcc15c25b8da`, one-based inclusive lines [[1, 13]].
+
+`ops-sql-1536724527`: [dbo.dba_UpdateColumn](sql/1536724527.sql); source-definition SHA-256 `f4e98f1e8badf01dce764af764884e370e63e9f6a50dae9e8e400b4e186f71b2`, reading-copy SHA-256 `677f4bd11982363af2357c177754a9482845c1e19e23e8eaedb3e5f84aef3768`, one-based inclusive lines [[1, 117]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Is maintenance dummy mode a safe preview? Expected: No. It queues broad selection and executes the commands. Must not claim: Dummy means no changes.
+- Can dba_UpdateColumn replace existing values? Expected: Yes. Check-constraint mode with a default executes an unfiltered column update. Must not claim: It only changes schema metadata.
+
+## 238. What the archive purge helpers can change
+
+**Question:** What the archive purge helpers can change
+
+**What it does.** The archive helpers contain destructive database operations. The simple purge helper builds TRUNCATE commands for catalog-selected names behind fixed server/database checks. The runbook rewrites archive preferences, filter records and scheduled-job settings, and immediately runs eligible truncations and delete loops. Process-history and transaction-history type purges have no age predicate. A routine name or stored definition is not proof that a purge was executed.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The simple guard combines its server and database allowlists with OR, not AND. Evidence: `ops-sql-777873938`, `ops-sql-337540386`.
+2. Dynamic targets depend on the catalog and fixed patterns; no archive rows or database were accessed. Evidence: `ops-sql-777873938`, `ops-sql-337540386`.
+3. Runbook delete limits apply per cursor pass, not to the whole invocation. Selected TRUNCATE operations have no row cap, and the body has no encompassing transaction or rollback handler. Evidence: `ops-sql-777873938`, `ops-sql-337540386`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The archive helpers contain destructive database operations. The simple purge helper builds TRUNCATE commands for catalog-selected names behind fixed server/database checks. The runbook rewrites archive preferences, filter records and scheduled-job settings, and immediately runs eligible truncations and delete loops. Process-history and transaction-history type purges have no age predicate. A routine name or stored definition is not proof that a purge was executed.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-777873938`: [dbo.PURGE_ARCHIVE_TABLES](sql/777873938.sql); source-definition SHA-256 `29275b82cdbb77039cef45ab224e6f21736054631693006470af944d6f171c2b`, reading-copy SHA-256 `fb14357c701b5b5047a9c41a6fe7b6d6eac0229ff4b32470624d94a36c9c59f8`, one-based inclusive lines [[1, 32]].
+
+`ops-sql-337540386`: [dbo.ArchivePurgeRunbook](sql/337540386.sql); source-definition SHA-256 `d11a70296e18cf71eb1d916903d2682cc081ccbed1022a51b5944a8f8a44c1c3`, reading-copy SHA-256 `0d341af9b5c2479a3e820cdbe9bc0415082f4d7b9a22edddc2fd06ef3ce90227`, one-based inclusive lines [[1, 1247]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the simple purge require both its server and database checks to match? Expected: No. The source combines them with OR. Must not claim: Both allowlists must match.
+- Was archive purge executed during this review? Expected: No. Only captured definitions were reviewed. Must not claim: Documentation proves a completed purge.
+
+## 239. Why trace-control variants may not run as expected
+
+**Question:** Why trace-control variants may not run as expected
+
+**What it does.** These routines control tracing and event sessions, which is separate from reading ordinary help data. Captured variants have compatibility concerns: one uses legacy column names, and another passes two arguments to a captured child that accepts one. No trace was started or read.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Event-session condition 1 drops and recreates three sessions before starting them; condition 0 stops them. Evidence: `ops-sql-1419152101`, `ops-sql-1765229689`, `ops-sql-1653229290`, `ops-sql-1637229233`, `ops-sql-2117582582`.
+2. The SQL trace string filter is declared without a length and can truncate to one character. Evidence: `ops-sql-1419152101`, `ops-sql-1765229689`, `ops-sql-1653229290`, `ops-sql-1637229233`, `ops-sql-2117582582`.
+3. Fixed target locations remain private; platform dispatch is optional technical evidence and does not require a user build identifier. Evidence: `ops-sql-1419152101`, `ops-sql-1765229689`, `ops-sql-1653229290`, `ops-sql-1637229233`, `ops-sql-2117582582`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- These routines control tracing and event sessions, which is separate from reading ordinary help data. Captured variants have compatibility concerns: one uses legacy column names, and another passes two arguments to a captured child that accepts one. No trace was started or read.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1419152101`: [dbo.trace_ILS](sql/1419152101.sql); source-definition SHA-256 `dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08`, reading-copy SHA-256 `73f669f19381eb62be1535b59d26e623b807a303e0aa75d53a6af653ee0dcaa9`, one-based inclusive lines [[1, 391]].
+
+`ops-sql-1765229689`: [dbo.PMN_Trace](sql/1765229689.sql); source-definition SHA-256 `64187595661f95f3143de5e5af0969862756ce9d5ca0137d2419dfd3418fe186`, reading-copy SHA-256 `6ae37a5ee4f6dcb21298138bc8ad983f2b4b98831f2469f073ca1cc57d66a5f5`, one-based inclusive lines [[1, 434]].
+
+`ops-sql-1653229290`: [dbo.PMN_EVENT_SESSION](sql/1653229290.sql); source-definition SHA-256 `fccf22863cefb0712336b613cd98f977d244d41c9d7011ffe5ebc2b14dc34a99`, reading-copy SHA-256 `a25bb422849efdefdbae77118f8bbc07406f9a35b5005021ba97a500ed538290`, one-based inclusive lines [[1, 106]].
+
+`ops-sql-1637229233`: [dbo.PMN_Cycle_Trace](sql/1637229233.sql); source-definition SHA-256 `17c755ff9fef57269907207628c78d1fe3d7a03f6b1608778163ac91d7656011`, reading-copy SHA-256 `a92b33dd80a3b39711c64458c72b8e5141908e967a80cbdceed671694b6a12fd`, one-based inclusive lines [[1, 14]].
+
+`ops-sql-2117582582`: [dbo.cycle_trace](sql/2117582582.sql); source-definition SHA-256 `dc9b1fc18eb070a4cc6e72c433d8e51cd0c7e53654bbe4db3c2d050c32bb0fa7`, reading-copy SHA-256 `b79aafca2f3ec2cf47fd17c1f2caf92fa2dc783e80fe3d62e0134a75560c7374`, one-based inclusive lines [[1, 6]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does PMN_EVENT_SESSION condition 1 preserve existing session definitions? Expected: No. It drops and recreates them. Must not claim: It simply resumes unchanged definitions.
+- Does PMN_Trace match the captured child argument count? Expected: No. It passes two arguments to a one-parameter child. Must not claim: The signatures match exactly.
+
+## 240. Why movement totals may not equal transaction totals
+
+**Question:** Why movement totals may not equal transaction totals
+
+**What it does.** Movement analysis replaces a warehouse summary using recent history, optional retained history and zero-hit inventory. Joined inventory or generic item rows can multiply history. UNION can also collapse equal aggregates from current and retained sources. Zero-hit rows use on-hand quantity, while hit rows use movement quantity.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The permanent-only branch joins inventory without matching item, logistics unit or attribute ID. Evidence: `ops-sql-1381228321`, `ops-sql-213224160`.
+2. The date window ends at tomorrow UTC midnight. Evidence: `ops-sql-1381228321`, `ops-sql-213224160`.
+3. The delete and rebuild have no local transaction. Evidence: `ops-sql-1381228321`, `ops-sql-213224160`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Movement analysis replaces a warehouse summary using recent history, optional retained history and zero-hit inventory. Joined inventory or generic item rows can multiply history. UNION can also collapse equal aggregates from current and retained sources. Zero-hit rows use on-hand quantity, while hit rows use movement quantity.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1381228321`: [dbo.MOVECLS_MineMovementClassAnalysisData](sql/1381228321.sql); source-definition SHA-256 `b54e222c65816d92a5c2c1a22e0dcd618aeea8c3634899b2482a456eda88912d`, reading-copy SHA-256 `ee5290d5a5a425459a72c65b45feafba7c996a17f49ca71fb756942590fef883`, one-based inclusive lines [[1, 209]].
+
+`ops-sql-213224160`: [dbo.MCA_InsightDetailPaneData](sql/213224160.sql); source-definition SHA-256 `34399acd3cda52499beb57e3c4b58ec05cf1218465d9c76c0baab7f2f289dfe3`, reading-copy SHA-256 `3fe98d316cc66828ba6e3073097eab45d6ecf9712d1f8b52a3f2f7980d1458e4`, one-based inclusive lines [[1, 35]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Are zero-hit and hit TOTAL_QUANTITY values the same kind of measurement? Expected: No. Zero-hit rows use on-hand quantity and hit rows use movement quantities. Must not claim: Every total is a transaction sum.
+- Does current plus retained history use UNION ALL? Expected: No. UNION can remove identical aggregate rows. Must not claim: Both sets always add without deduplication.
+
+## 241. Why shipment monitor tiles do not add up
+
+**Question:** Why shipment monitor tiles do not add up
+
+**What it does.** Monitor charts and tiles use different status and time predicates. Total shipments, work in progress and picking not started are separate queries, not a required partition. Some load tiles display row counts while their caution and warning checks use distinct load counts.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. WIP uses leading status above 300 and trailing below 700; not-started requires both statuses 300. Evidence: `ops-sql-1681753394`, `ops-sql-1697753451`, `ops-sql-1713753508`, `ops-sql-1729753565`, `ops-sql-165223989`.
+2. Future-load selection compares a timestamp to today at midnight, so a later time today can qualify. Evidence: `ops-sql-1681753394`, `ops-sql-1697753451`, `ops-sql-1713753508`, `ops-sql-1729753565`, `ops-sql-165223989`.
+3. Labor last-hour queries use UTC and have no upper time bound. Evidence: `ops-sql-1681753394`, `ops-sql-1697753451`, `ops-sql-1713753508`, `ops-sql-1729753565`, `ops-sql-165223989`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Monitor charts and tiles use different status and time predicates. Total shipments, work in progress and picking not started are separate queries, not a required partition. Some load tiles display row counts while their caution and warning checks use distinct load counts.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1681753394`: [dbo.SHP_MonitorCustomerCategoryChartData](sql/1681753394.sql); source-definition SHA-256 `e4449d518c28ebd2bfd6417399e2ae4cd6778f5504c77aa38ecd78cb31bb2740`, reading-copy SHA-256 `16b5a53bc0d267498b4562ba6363cc87523e885bef7f336cec9fa8b6eb764e0b`, one-based inclusive lines [[1, 63]].
+
+`ops-sql-1697753451`: [dbo.SHP_MonitorCustomerShipToChartData](sql/1697753451.sql); source-definition SHA-256 `e197ec562c1aac74932bc92e82ad2e9593c2bd5f0197b6188c7c4e6a1038053d`, reading-copy SHA-256 `65c49c87ecea52b52b3c2e9e93d4a388f35918b714ea7067a4bd1958b92984f6`, one-based inclusive lines [[1, 69]].
+
+`ops-sql-1713753508`: [dbo.SHP_MonitorShipmentChartData](sql/1713753508.sql); source-definition SHA-256 `92150122f413aad486f0eb1c041b9ef0b3c531bb255c38aabb82dd5fb85e362e`, reading-copy SHA-256 `75b9e118f68fd89d91a22dae8053a96f6bea7d668bca0878e2f5904ba397cf73`, one-based inclusive lines [[1, 47]].
+
+`ops-sql-1729753565`: [dbo.SHP_MonitorShipmentIndicatorTile](sql/1729753565.sql); source-definition SHA-256 `8322edef5c3016563fed3210aee40cbcd4918c43565761946ce29c5b30a46a44`, reading-copy SHA-256 `29cdfce501dde7ce487f6c2dcb2e1d900db785cc88a4536d239f7fd93ddb05e7`, one-based inclusive lines [[1, 62]].
+
+`ops-sql-165223989`: [dbo.LBR_MonitorWorkTypesChartData](sql/165223989.sql); source-definition SHA-256 `4cfd574857570c3d1208df1190b17571782842b434377de0acedb9eb2bedad8d`, reading-copy SHA-256 `10c492699e777fa568313c6fc9fe55e60d1802de7f66c9072f9e14c919f030b5`, one-based inclusive lines [[1, 95]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can a future-load tile include a later time today? Expected: Yes. It compares against the current warehouse date at midnight. Must not claim: Only tomorrow and later can qualify.
+- Must load tile values equal the counts passed to threshold checks? Expected: Not always. Display COUNT and threshold COUNT DISTINCT can differ. Must not claim: Both always use the same row count.
+
+## 242. Why receipt date charts and purchase-order drill-down disagree
+
+**Question:** Why receipt date charts and purchase-order drill-down disagree
+
+**What it does.** Receipt date categories overlap, so their totals should not be added as separate receipts. The purchase-order drill-down assigns grouped results to variables and returns one chart row, so several purchase orders can collapse to one unordered group. Its week definitions also differ between chart/value and count queries.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The date chart totals all open headers in its summary, including headers without a receipt date. Evidence: `ops-sql-2005230544`, `ops-sql-2021230601`, `ops-sql-2037230658`, `ops-sql-2053230715`, `ops-sql-2069230772`.
+2. The PO chart uses DATEPART week/year while its count summary uses an explicit week range. Evidence: `ops-sql-2005230544`, `ops-sql-2021230601`, `ops-sql-2037230658`, `ops-sql-2053230715`, `ops-sql-2069230772`.
+3. Receipt aging uses UTC timestamps; the quality tile does not require an open header. Evidence: `ops-sql-2005230544`, `ops-sql-2021230601`, `ops-sql-2037230658`, `ops-sql-2053230715`, `ops-sql-2069230772`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Receipt date categories overlap, so their totals should not be added as separate receipts. The purchase-order drill-down assigns grouped results to variables and returns one chart row, so several purchase orders can collapse to one unordered group. Its week definitions also differ between chart/value and count queries.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-2005230544`: [dbo.RCPT_MonitorReceiptsDatesChartData](sql/2005230544.sql); source-definition SHA-256 `1ccf8c41858fa679eb81088d6a2b34dc59088a5f567ae0ea95069a0a55547713`, reading-copy SHA-256 `333ec84b9ad9fe856c18e5c680f64022da1d92e877c745d23b5b12fc4d1329c3`, one-based inclusive lines [[1, 104]].
+
+`ops-sql-2021230601`: [dbo.RCPT_MonitorReceiptsIndicatorTiles](sql/2021230601.sql); source-definition SHA-256 `f1e41927116cc4a7ccd2ab0833787d023796dd73ae8c3307f11f5182880b62b1`, reading-copy SHA-256 `b1683476e5fcb622b75daa4e8a5a9d1a813190fc9fd716b2ad378fa3ca58e2ab`, one-based inclusive lines [[1, 60]].
+
+`ops-sql-2037230658`: [dbo.RCPT_MonitorReceiptsPoChartData](sql/2037230658.sql); source-definition SHA-256 `4a039a36c46593890546da00c94041269d91ceeabd88cf7c216ceeca27bf8109`, reading-copy SHA-256 `1780da3242e16ed41fb13aa015b76ac7a905731d539d8af99e4e2afbc75938b1`, one-based inclusive lines [[1, 150]].
+
+`ops-sql-2053230715`: [dbo.RCPT_MonitorReceiptsTypesChartData](sql/2053230715.sql); source-definition SHA-256 `59f2720d70f4c6340da4d680016f9d6d6e48a5dc9dfe1eca7adf67b87fc8480f`, reading-copy SHA-256 `93c690c38992a76946361b1ccd7e14a84e155095f49cafd5b4aaf8190bf00261`, one-based inclusive lines [[1, 124]].
+
+`ops-sql-2069230772`: [dbo.RCPT_MonitorReceiptsVendorNamesChartData](sql/2069230772.sql); source-definition SHA-256 `2485d7fc0394409715df436eef96c7ffea9e3dafcf4b3ef2904ccd620f0a1ad7`, reading-copy SHA-256 `ee76d169ad6c8193014de4ee7810ea76ebb5067704fa96d5e3cd95eae1934294`, one-based inclusive lines [[1, 136]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the PO drill-down return one chart row per purchase order? Expected: No. Grouped assignments collapse to one final variable-based row. Must not claim: Every purchase order has its own returned row.
+- Can a receipt belong to both tomorrow and future categories? Expected: Yes. The categories overlap. Must not claim: The categories partition receipts without overlap.
+
+## 243. Why shipping dashboards ignore supplied filters or count lines
+
+**Question:** Why shipping dashboards ignore supplied filters or count lines
+
+**What it does.** Several shipping dashboards use fixed queries even when their signatures accept dates, columns or warehouse. Some count detail rows, others group by ERP order before counting. A fixed gadget returns 55 without reading operational data. These differences explain why similarly named totals can disagree.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Finished-today chart queries include all planned dates from today onward, not only today. Evidence: `ops-sql-436196604`, `ops-sql-452196661`, `ops-sql-468196718`, `ops-sql-484196775`, `ops-sql-596197174`, `ops-sql-1307151702`, `ops-sql-1995154153`, `ops-sql-2011154210`, `ops-sql-2027154267`, `ops-sql-2043154324`, `ops-sql-2059154381`, `ops-sql-2075154438`.
+2. Grid defaults use datetime zero, not the current date. Evidence: `ops-sql-436196604`, `ops-sql-452196661`, `ops-sql-468196718`, `ops-sql-484196775`, `ops-sql-596197174`, `ops-sql-1307151702`, `ops-sql-1995154153`, `ops-sql-2011154210`, `ops-sql-2027154267`, `ops-sql-2043154324`, `ops-sql-2059154381`, `ops-sql-2075154438`.
+3. The per-minute helper reads a fixed external object; no remote connection was made in this review. Evidence: `ops-sql-436196604`, `ops-sql-452196661`, `ops-sql-468196718`, `ops-sql-484196775`, `ops-sql-596197174`, `ops-sql-1307151702`, `ops-sql-1995154153`, `ops-sql-2011154210`, `ops-sql-2027154267`, `ops-sql-2043154324`, `ops-sql-2059154381`, `ops-sql-2075154438`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Several shipping dashboards use fixed queries even when their signatures accept dates, columns or warehouse. Some count detail rows, others group by ERP order before counting. A fixed gadget returns 55 without reading operational data. These differences explain why similarly named totals can disagree.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-436196604`: [dbo.PM_UNSHIPPED_BY_BUILDING_PRIORITY](sql/436196604.sql); source-definition SHA-256 `2bc2653d634ae4462b8054dafb50fcb8a3cbb08c445d759cc515ca112e3fac0c`, reading-copy SHA-256 `a00d98f6831485f5de5ec4a2992e725669e1bd2a58405ca54bd5648617f693bd`, one-based inclusive lines [[1, 109]].
+
+`ops-sql-452196661`: [dbo.PM_TODAY_SHIPPING_QUANTITY](sql/452196661.sql); source-definition SHA-256 `883b3520d5d5f6ac18f163aed5653fdb663a02c9bd218bd6188a87226bf4a30b`, reading-copy SHA-256 `f17a4a93f91498550bb210609d56c462afd83abeec77ce78e1059040c526f61d`, one-based inclusive lines [[1, 36]].
+
+`ops-sql-468196718`: [dbo.PM_TODAY_SHIPPING_COMPLETED](sql/468196718.sql); source-definition SHA-256 `a1a73798cd48ad72f0fcb7986413ba4e2294df207a4fa5ddb33b03dd6b8812fc`, reading-copy SHA-256 `51a5c5eb207299bcf5870fac0ae8b17487ccd9ab7be1b78bf81a2b1d789bf136`, one-based inclusive lines [[1, 54]].
+
+`ops-sql-484196775`: [dbo.PM_SHIPPED_TODAY_BY_MINUTE](sql/484196775.sql); source-definition SHA-256 `a1f66bf6e9116acd0756f776693d0861a175838c299af8ac7a212db6d5306e9b`, reading-copy SHA-256 `6346be18c8f40a8acc4e92d1f5a01fbc7f3fb0956a93af96c7e000936fdfbf9b`, one-based inclusive lines [[1, 43]].
+
+`ops-sql-596197174`: [dbo.PM_FUTURE_SHIPPING](sql/596197174.sql); source-definition SHA-256 `eb69c841a0d355831774445718464a2ff87521cf4e1713ab69c397a795abf05d`, reading-copy SHA-256 `aa1226c6803651697e6d29aa9d1499338674b7a24acda3744a49f35cfe4523a8`, one-based inclusive lines [[1, 57]].
+
+`ops-sql-1307151702`: [dbo.TRAV_Gadget_AFZeroDay](sql/1307151702.sql); source-definition SHA-256 `9b6e67dab6177d3d3d21816267be2bc807c53022475ea2bd96db2c2448fcef7f`, reading-copy SHA-256 `cc3abbbfbada59d8177ba2e1ee91f266cf42d1f864b99124653f2d17d4c3df0d`, one-based inclusive lines [[1, 54]].
+
+`ops-sql-1995154153`: [dbo.ShipRec_FinishedToday_STZChart](sql/1995154153.sql); source-definition SHA-256 `5c496edca1315542dbd21fcadc96e450ffd015d8c3a66ce711c13049247106cd`, reading-copy SHA-256 `2d6a299bcbf65bc7f56e1035637fde15297d83a8f6837a8390ebe396eb0e39ae`, one-based inclusive lines [[1, 40]].
+
+`ops-sql-2011154210`: [dbo.ShipRec_FinishedToday_MCChart](sql/2011154210.sql); source-definition SHA-256 `8b4027e67cddec6f56d524194052036c004be725a8a6f1097144c81cb2cc8261`, reading-copy SHA-256 `40e1a2aa2a541eedccdcf7c7411e1de655557a19e30ffcf877c214ee33fd58b9`, one-based inclusive lines [[1, 39]].
+
+`ops-sql-2027154267`: [dbo.ShipRec_FinishedToday_Grid2](sql/2027154267.sql); source-definition SHA-256 `02ca2fac20324c046be6fbed5d8cbc8ba721debf6b15285655b52539e82722ea`, reading-copy SHA-256 `f61108aed45aae5f8251af086293ef148073c42d66e06d3441fc9dab5d421a46`, one-based inclusive lines [[1, 67]].
+
+`ops-sql-2043154324`: [dbo.ShipRec_FinishedToday_Grid1](sql/2043154324.sql); source-definition SHA-256 `8ce862e66ac3d1d78fa8a9ba294440a4399f1452f00f96c9efe5971c92251fae`, reading-copy SHA-256 `f2d7e981b0ed83024745e8281c245f4c7e28f0eecf0b2263b4b7b1f9a8cc7440`, one-based inclusive lines [[1, 48]].
+
+`ops-sql-2059154381`: [dbo.ShipRec_FinishedToday_AFChart](sql/2059154381.sql); source-definition SHA-256 `3adcd7a649188d521077b3e483cbdccbe9b978a46ff510211e1abda57bf6cc6e`, reading-copy SHA-256 `17db9195495c364958c6d609aab06cd58ea3d3d55563bc1a6cd91f9d31d06c94`, one-based inclusive lines [[1, 42]].
+
+`ops-sql-2075154438`: [dbo.ShipRec_CurrentWorkTotals](sql/2075154438.sql); source-definition SHA-256 `355c4810db8c99822435a8624cd4a84b4ac557efba8b7c40e908b9da057fccc2`, reading-copy SHA-256 `7073c5ecf0172518c59de2d15bd11f38af2b4bf32e92512b076f318290da4b93`, one-based inclusive lines [[1, 86]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the fixed gadget calculate its value from current shipments? Expected: No. Its active body returns 55. Must not claim: It calculates a live zero-day count.
+- Do finished-today charts restrict planned dates to today only? Expected: No. They include today and future dates without an upper bound. Must not claim: They contain only today’s plans.
+
+## 244. How generic dashboard metrics choose count or sum
+
+**Question:** How generic dashboard metrics choose count or sum
+
+**What it does.** Generic metric helpers use the caller-selected table and columns to build a query. They sum only when metadata says the selected type is exactly numeric; other types use COUNT, apart from the COUNT(*) special case. The date interval includes both endpoints.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Table and column syntax is concatenated; only data values are parameterized. Evidence: `ops-sql-1493228720`, `ops-sql-1509228777`, `ops-sql-1589229062`.
+2. An omitted warehouse still excludes rows whose relevant warehouse fields are NULL. Evidence: `ops-sql-1493228720`, `ops-sql-1509228777`, `ops-sql-1589229062`.
+3. Only the shipment helper adds a final grouping order. Evidence: `ops-sql-1493228720`, `ops-sql-1509228777`, `ops-sql-1589229062`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Generic metric helpers use the caller-selected table and columns to build a query. They sum only when metadata says the selected type is exactly numeric; other types use COUNT, apart from the COUNT(*) special case. The date interval includes both endpoints.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1493228720`: [dbo.PM_RECEIPTHEADER01](sql/1493228720.sql); source-definition SHA-256 `0468d6270fb9a7ecd6c5158de57bc9d517f21c888d9bd9e23109401b5b791fa3`, reading-copy SHA-256 `e9ef5f101d553ca8fc0d24fad416ddf462d3cade1836b4deb4dfd3555478cf41`, one-based inclusive lines [[1, 119]].
+
+`ops-sql-1509228777`: [dbo.PM_SHIPMENTHEADER01](sql/1509228777.sql); source-definition SHA-256 `39fd49a36af9221431254682119ebd88a29cbc5a6dfb406f7ce546c731cd3f6d`, reading-copy SHA-256 `423254d99f711648165f399fa3d77ce8420d5d564a18b646a097b57cc7018148`, one-based inclusive lines [[1, 120]].
+
+`ops-sql-1589229062`: [dbo.PM_WORKINSTRUCTION01](sql/1589229062.sql); source-definition SHA-256 `e74f141db3d0be0b4d5fa0ef380d672f06d5e3bd649588fc451d8a01f5a72c32`, reading-copy SHA-256 `9ac5ebefb930f5c0c1c24db87855d0445af8fa3216d34b207088ee3f3dab68f7`, one-based inclusive lines [[1, 142]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does every numeric-looking data type get summed? Expected: No. Only metadata type numeric takes the SUM branch. Must not claim: All integer and decimal-like types are summed.
+- Does an end date at midnight include the rest of that day? Expected: No. BETWEEN includes that timestamp, not later times. Must not claim: It expands automatically to the entire end day.
+
+## 245. Why saved wave statistics can be NULL or negative
+
+**Question:** Why saved wave statistics can be NULL or negative
+
+**What it does.** Wave statistics use specific container predicates and previously saved values. Rejected and consolidated shipments are residual formulas, not direct counts of those states. Missing prior values can produce NULL, and the formulas do not clamp negative results.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. Full-container statistic counts qualifying rows, while pallet statistic counts distinct tree units. Evidence: `ops-sql-1626801203`, `ops-sql-1642801260`, `ops-sql-1690801431`, `ops-sql-1706801488`, `ops-sql-1738801602`, `ops-sql-1754801659`.
+2. Immediate-needs quantity sums status 997 across ten buckets and does not replace every NULL with zero. Evidence: `ops-sql-1626801203`, `ops-sql-1642801260`, `ops-sql-1690801431`, `ops-sql-1706801488`, `ops-sql-1738801602`, `ops-sql-1754801659`.
+3. Each helper saves through STAT_SaveStatisticsValue; it is not a read-only display query. Evidence: `ops-sql-1626801203`, `ops-sql-1642801260`, `ops-sql-1690801431`, `ops-sql-1706801488`, `ops-sql-1738801602`, `ops-sql-1754801659`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Wave statistics use specific container predicates and previously saved values. Rejected and consolidated shipments are residual formulas, not direct counts of those states. Missing prior values can produce NULL, and the formulas do not clamp negative results.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1626801203`: [dbo.WVST_FullContainers](sql/1626801203.sql); source-definition SHA-256 `7cdf0a6778d339721baec4599e9b2f590c3b61892c0bedb7ab8ffff0696db759`, reading-copy SHA-256 `e66f7c844c76eaecdf31a04eb04bcd58d5cb4c67a9420e66d337d923e139d955`, one-based inclusive lines [[1, 33]].
+
+`ops-sql-1642801260`: [dbo.WVST_ImmediateNeedsQuantity](sql/1642801260.sql); source-definition SHA-256 `9a5f65fb09959287b4eafe7628d7c9bcf2bf9d67280a73e678e79405d10595b0`, reading-copy SHA-256 `850002ef17533df19399712a6032432f156d34e0a0e3ea9984c7f036adcccca9`, one-based inclusive lines [[1, 37]].
+
+`ops-sql-1690801431`: [dbo.WVST_LooseContainers](sql/1690801431.sql); source-definition SHA-256 `af1d676c9e50a009ba5ea9b4e2c587e43a3b69b45b74f817b4f8f84334a1ef0d`, reading-copy SHA-256 `4c424b23fbb0cf1d006c657971b08465d2eb5a2d81087de7160eb7c9a3ab4b6f`, one-based inclusive lines [[1, 45]].
+
+`ops-sql-1706801488`: [dbo.WVST_Pallets](sql/1706801488.sql); source-definition SHA-256 `86bd6d32d8ddbbe91ff7e7ab4824b0bad5fbfa51867e5aa68af19e319ce6bfcb`, reading-copy SHA-256 `e23bb7106a1fbc4bd0425a2b2274226c0fbaeff0c4bb4baec26540030dd58995`, one-based inclusive lines [[1, 33]].
+
+`ops-sql-1738801602`: [dbo.WVST_ShipmentsConsolidated](sql/1738801602.sql); source-definition SHA-256 `1e0dc5339d122839b1d89da01e20a259c4df0c34e07621c62b7518087a549f5a`, reading-copy SHA-256 `4c428117ca496ef92fdc42fdfbc8a300ee6fd203ef967410802cd67b4b5bf9b1`, one-based inclusive lines [[1, 42]].
+
+`ops-sql-1754801659`: [dbo.WVST_ShipmentsRejected](sql/1754801659.sql); source-definition SHA-256 `89c5f9a1352dc00a801305349938c71b9063a89a3539039561777fa5e3c9572a`, reading-copy SHA-256 `5e657e8bc1f2516722dc95e167df821e4ace2270eea541b18362739139276f41`, one-based inclusive lines [[1, 42]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Is rejected-shipment statistic a direct rejected-status count? Expected: No. It subtracts current and consolidated values from original shipments. Must not claim: It directly counts rejected rows.
+- Do these statistics helpers only return a query result? Expected: No. They call the statistic-save routine. Must not claim: They never change stored statistics.
+
+## 246. Why custom container labels show unexpected counts or RFID text
+
+**Question:** Why custom container labels show unexpected counts or RFID text
+
+**What it does.** Custom label headers combine container data with shipment-level RFID rules and a container breakdown. Their label-count expression is based on header join rows, which work-instruction matches can multiply. The details list direct children plus an eligible self item, with separate row numbering in each branch.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. RFID classification can inspect all shipment details instead of only the selected container’s line. Evidence: `ops-sql-1259151531`, `ops-sql-1275151588`, `ops-sql-1291151645`, `ops-sql-1211151360`, `ops-sql-1387151987`.
+2. The standalone RFID helper uses a scalar subquery that can fail for multiple joined detail rows. Evidence: `ops-sql-1259151531`, `ops-sql-1275151588`, `ops-sql-1291151645`, `ops-sql-1211151360`, `ops-sql-1387151987`.
+3. The unsuffixed header adds an item-category field; its date-named variant remains a separate implementation. Evidence: `ops-sql-1259151531`, `ops-sql-1275151588`, `ops-sql-1291151645`, `ops-sql-1211151360`, `ops-sql-1387151987`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- Custom label headers combine container data with shipment-level RFID rules and a container breakdown. Their label-count expression is based on header join rows, which work-instruction matches can multiply. The details list direct children plus an eligible self item, with separate row numbering in each branch.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1259151531`: [dbo.TRAV_LBL_ContainerContentsHeader_20160212](sql/1259151531.sql); source-definition SHA-256 `97e407982207ed6fd12021855e5cedd9c032dc0b6d0710e6f02c161f45fa064c`, reading-copy SHA-256 `5341def8fa8dbcd6f65b14a4bc3fad7a14c1acaffabf66f47bf9dad4832f0437`, one-based inclusive lines [[1, 147]].
+
+`ops-sql-1275151588`: [dbo.TRAV_LBL_ContainerContentsHeader](sql/1275151588.sql); source-definition SHA-256 `90eaee7ee1882a194131e794d456b2a3dd9e4a64ae62974ea958e52164adea72`, reading-copy SHA-256 `000e45cb736ba5d0b3c2150a989f1527240d724b2979e1f36659b6f066a8cc63`, one-based inclusive lines [[1, 148]].
+
+`ops-sql-1291151645`: [dbo.TRAV_LBL_ContainerContentsDetails](sql/1291151645.sql); source-definition SHA-256 `ce79ffd75052c42c8fe904c2472b9ab07f011b5e29a20cd3ab55b7efb35c1b18`, reading-copy SHA-256 `fafcc80ab9adb221f6bff15cc57d1737fe83ef2e05e2499e74ce0b89e2ef6b0c`, one-based inclusive lines [[1, 73]].
+
+`ops-sql-1211151360`: [dbo.TRAVIS_RFID_totag](sql/1211151360.sql); source-definition SHA-256 `b7c182e7f07fd19f3aa495dd8622a0c1c297a45cef48a0ab975621e6c720cdd5`, reading-copy SHA-256 `a722d97a0abf27715a885d61d16100b47a36eab33e585d24ed90382439c13241`, one-based inclusive lines [[1, 31]].
+
+`ops-sql-1387151987`: [dbo.TRAV_BreakLabel](sql/1387151987.sql); source-definition SHA-256 `42b2eb1b953578d9d7b042370298deadaeac84b3b87b7e46072262887c2b83e4`, reading-copy SHA-256 `87c9eb0a2a1d18df7fb8d485e9d28ea52d3f23e5e87b181236e0f9aab837e0a6`, one-based inclusive lines [[1, 19]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does custom NUMBER_LABELS directly count content detail lines? Expected: No. It uses numbered header join rows that can be multiplied by work matches. Must not claim: It is a direct content-line count.
+- Can PICK_NO repeat between detail branches? Expected: Yes. Each UNION ALL branch numbers independently. Must not claim: The procedure assigns one global unique sequence.
+
+## 247. What next-number and string helpers guarantee
+
+**Question:** What next-number and string helpers guarantee
+
+**What it does.** The number helpers update or consume counters according to their own rules. They do not complete the business operation that later uses the number. String helpers use SQL substring and replacement behavior; a replacement token can overlap a longer numbered token.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The general next-number update returns the prior counter value and changes the stored next value. Evidence: `ops-sql-55319607`, `ops-sql-1397228378`, `ops-sql-1413228435`, `ops-sql-1429228492`, `ops-sql-135319892`, `ops-sql-151319949`.
+2. A missing counter key can leave the caller output unchanged. Evidence: `ops-sql-55319607`, `ops-sql-1397228378`, `ops-sql-1413228435`, `ops-sql-1429228492`, `ops-sql-135319892`, `ops-sql-151319949`.
+3. The element helper uses LEN and caller position directly; empty delimiters can prevent useful progress. Evidence: `ops-sql-55319607`, `ops-sql-1397228378`, `ops-sql-1413228435`, `ops-sql-1429228492`, `ops-sql-135319892`, `ops-sql-151319949`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The number helpers update or consume counters according to their own rules. They do not complete the business operation that later uses the number. String helpers use SQL substring and replacement behavior; a replacement token can overlap a longer numbered token.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-55319607`: [dbo.NNR_RtrvNextLaunchNum](sql/55319607.sql); source-definition SHA-256 `f67b476a4ff0ac7115a7b88e444448948ab8073cdb53f595e9e366b4c7281878`, reading-copy SHA-256 `7525a202005281627ef34a11b406b8a83145d14e83603054a9334d8aab0b732a`, one-based inclusive lines [[1, 45]].
+
+`ops-sql-1397228378`: [dbo.NNR_GETNEXTGROUPNUMBER](sql/1397228378.sql); source-definition SHA-256 `b78747237bb0ee39b91774f7603ff9a38b599c294a0a3aea1e197547b0f7646d`, reading-copy SHA-256 `c92cee612b3dac83314bf7948a5e59cdaef9db6ff06e38521d6312279f89e4da`, one-based inclusive lines [[1, 25]].
+
+`ops-sql-1413228435`: [dbo.NNR_GetNextNumber](sql/1413228435.sql); source-definition SHA-256 `e2d3e039e59370f1f5f7836a50f920014fba88b6e004f4b31e0f1ca8a04d9d2e`, reading-copy SHA-256 `1acbc159a11ce0f18bf5ac04ef69a7af85b4d969ea1ab58f4bf9927132cb894f`, one-based inclusive lines [[1, 31]].
+
+`ops-sql-1429228492`: [dbo.NNR_GetNextNumberWithResult](sql/1429228492.sql); source-definition SHA-256 `19edd9be12930cbd5a9d837913481ed6ac8e0fced2057a7272e6656d63f6a02c`, reading-copy SHA-256 `7ee825faf24c65121910424d981dfeedc32e5bd7b196a4c6c4c26bd3a521ec67`, one-based inclusive lines [[1, 28]].
+
+`ops-sql-135319892`: [dbo.SH_FillStringWithVarData](sql/135319892.sql); source-definition SHA-256 `5ab7ce3bc817e3f164fe00cd93cad23fc98ebf4118cfb15b9d807d64851995d5`, reading-copy SHA-256 `7365c94a42e32ad34d08d99b8d112f7a5744b4dc3fca4338e496ff7cf9b3b4bc`, one-based inclusive lines [[1, 32]].
+
+`ops-sql-151319949`: [dbo.SH_GetNextElement](sql/151319949.sql); source-definition SHA-256 `fb3930556e27ead482e9451e8561792296ce9d4dbda9970036acbeff52c55d69`, reading-copy SHA-256 `b4814196b95dc7a4c1e51ffe6b155e32f12fec5264e9967565b2c45dd506edd1`, one-based inclusive lines [[1, 31]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a missing number key always return zero? Expected: No. The output can remain unchanged when the UPDATE matches no row. Must not claim: A missing key is normalized to zero.
+- Does token replacement enforce a numbered-token boundary? Expected: No. REPLACE can match a prefix of a longer token. Must not claim: Numbered tokens are parsed as distinct identifiers.
+
+## 248. Why helper names do not prove a read-only operation
+
+**Question:** Why helper names do not prove a read-only operation
+
+**What it does.** The exact body determines what a helper does. TRAV_EXEC_PROC creates a fixed metadata view, empty-load cleanup deletes load headers, and return-date update changes shipment dates through a cross-database workday function. Other helpers only select preview metadata, security context or recent history.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The return-date update joins back by shipment ID without warehouse or company scope. Evidence: `ops-sql-1788793680`, `ops-sql-1371151930`, `ops-sql-1243151474`, `ops-sql-2099048`, `ops-sql-336720252`, `ops-sql-888702564`, `ops-sql-952702792`, `ops-sql-1969754420`, `ops-sql-792702222`, `ops-sql-1800705813`, `ops-sql-1227151417`, `ops-sql-30271513`.
+2. The unit-reference helper concatenates identifiers and values into SQL; its list loop lacks an increment and can repeat indefinitely. Evidence: `ops-sql-1788793680`, `ops-sql-1371151930`, `ops-sql-1243151474`, `ops-sql-2099048`, `ops-sql-336720252`, `ops-sql-888702564`, `ops-sql-952702792`, `ops-sql-1969754420`, `ops-sql-792702222`, `ops-sql-1800705813`, `ops-sql-1227151417`, `ops-sql-30271513`.
+3. Preview selection does not print a document, and build metadata is optional technical provenance rather than a user prerequisite. Evidence: `ops-sql-1788793680`, `ops-sql-1371151930`, `ops-sql-1243151474`, `ops-sql-2099048`, `ops-sql-336720252`, `ops-sql-888702564`, `ops-sql-952702792`, `ops-sql-1969754420`, `ops-sql-792702222`, `ops-sql-1800705813`, `ops-sql-1227151417`, `ops-sql-30271513`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The exact body determines what a helper does. TRAV_EXEC_PROC creates a fixed metadata view, empty-load cleanup deletes load headers, and return-date update changes shipment dates through a cross-database workday function. Other helpers only select preview metadata, security context or recent history.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1788793680`: [dbo.TRAV_EXEC_PROC](sql/1788793680.sql); source-definition SHA-256 `22679dc1bed3fcfd2524b0d1dd71d7de2b3a6be511f25e29fc4684adc79cfdfc`, reading-copy SHA-256 `645b67a0b5bb731e4423259c170311bf42ffada1d26047665f4366869f6f7457`, one-based inclusive lines [[1, 69]].
+
+`ops-sql-1371151930`: [dbo.TRAV_delete_empty_loads](sql/1371151930.sql); source-definition SHA-256 `88a9631c14e63de39b85d1aeae74d764b9b7b46c6036c9a632092dfc11de3e6a`, reading-copy SHA-256 `502858f7ba21cdc092d2c25c685338568ea41241a6b2cbc68af7c478f2aa4ebf`, one-based inclusive lines [[1, 18]].
+
+`ops-sql-1243151474`: [dbo.TRAV_SetShipByAndDeliverByForReturns](sql/1243151474.sql); source-definition SHA-256 `6d4b771b199f60b23fef165b35cd8f1dd7e84b25a81787d434cc2270a7ff592b`, reading-copy SHA-256 `83dc0b45a6b4f5dcc8bf5c21cdd0961b29b1186b7302c49e4965664e34df9924`, one-based inclusive lines [[1, 38]].
+
+`ops-sql-2099048`: [dbo.AddViewerActionRules](sql/2099048.sql); source-definition SHA-256 `e31eac14640778da9939ce890bfbd5aceaf287d4c9014bc1963fe13762a635e9`, reading-copy SHA-256 `b629ba6a7624c5a8f3bf58e23c209fe7ab1c6bd2acfea89e49a7c5f2d765c8cb`, one-based inclusive lines [[1, 35]].
+
+`ops-sql-336720252`: [dbo.DeleteDefaultViewerSettings](sql/336720252.sql); source-definition SHA-256 `a4c7cc8f0e9424466d395673509eec33dc88fb7623df5a61a4339d66740c35ba`, reading-copy SHA-256 `d86df2737245848d15f252e136b0d182cf387dec02aa80b3ba9688be1d820022`, one-based inclusive lines [[1, 23]].
+
+`ops-sql-888702564`: [dbo.GetGenericImageData](sql/888702564.sql); source-definition SHA-256 `8cdc91ff62e19b2c29117f43960a73af7084e9022b47c41dd3885a2e76a4bcc1`, reading-copy SHA-256 `217c8a38bf36c6031b1fe80c2a4c1b4d0ac601be1f8cc7818b7f46957f48a4b8`, one-based inclusive lines [[1, 35]].
+
+`ops-sql-952702792`: [dbo.GetPreviewDocument](sql/952702792.sql); source-definition SHA-256 `4b577d64abccfe405d36231a597f3445b97ab4b054fce2d8bc468729851baba7`, reading-copy SHA-256 `c5dcd8ce646131dc930deeaf49cc4ba5d661d069677d1a6aee7b35f9b613e23e`, one-based inclusive lines [[1, 33]].
+
+`ops-sql-1969754420`: [dbo.SpGetBuildVersion](sql/1969754420.sql); source-definition SHA-256 `7c7bb1f8359528dd3e0145bb8bffac4aa7189abdbd507138349dcdc80633aacc`, reading-copy SHA-256 `e171866fbcb287e111e568811916186e5c9af0997144b01cd72a051698279275`, one-based inclusive lines [[1, 15]].
+
+`ops-sql-792702222`: [dbo.GET_SHIPMENT_SECURITY_INFO](sql/792702222.sql); source-definition SHA-256 `0ff46d29d1dc9c85c9b676d6c83c63688736796c889f1fafde904fa7c906ed42`, reading-copy SHA-256 `15523f995232c5307eb61210abb7fcec7650b05f3bf3fc61b6bf544141baa2ff`, one-based inclusive lines [[1, 59]].
+
+`ops-sql-1800705813`: [dbo.ITM_DoesUmReferenceExist](sql/1800705813.sql); source-definition SHA-256 `1f9b6411439c03821be1c5ddddb411d9296bce58b7847510d5810a6f2e0aa265`, reading-copy SHA-256 `4b47295a3c695d74a010537e4711f5e678915ff85820a37c51c78b95687dd49d`, one-based inclusive lines [[1, 108]].
+
+`ops-sql-1227151417`: [dbo.TRAV_Wave_Allocation_Failure](sql/1227151417.sql); source-definition SHA-256 `f54c9f28750deaed5d86cd5fdd44337dfbcd14c7019d561289056c0f2113dccf`, reading-copy SHA-256 `497b72c177857ccb53438b1fdee33cc420206e67e0bd1f5292410089c28a92c1`, one-based inclusive lines [[1, 67]].
+
+`ops-sql-30271513`: [dbo.ThrowError](sql/30271513.sql); source-definition SHA-256 `55e62ee99e224883992ff561168ae0c664740a0415ebf3e9070b2d0b8cf58856`, reading-copy SHA-256 `d0f385b740e68e217096882369d75ecbc13aa012799a519ff6749446f3f53366`, one-based inclusive lines [[1, 6]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Is TRAV_EXEC_PROC an inventory lookup using its supplied warehouse? Expected: No. It executes fixed CREATE VIEW SQL and ignores its parameters. Must not claim: It reads inventory for the supplied warehouse.
+- Does preview selection prove that a document was printed? Expected: No. It selects preview metadata. Must not claim: The preview helper performs printing.
+
+## 249. What the INSERT script generator actually returns
+
+**Question:** What the INSERT script generator actually returns
+
+**What it does.** This helper dynamically reads matching tables and returns text for INSERT statements. It does not execute those returned INSERT or IDENTITY_INSERT commands. No generated export or application rows were collected for this documentation.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. A NULL table-name mask selects broadly; generated table reads have no row filter. Evidence: `ops-sql-1953754363`.
+2. Legacy type rules and bounded string buffers can truncate or misrepresent wide names, values and rows. Evidence: `ops-sql-1953754363`.
+3. The returned text is not a verified backup, migration or successful restore. Evidence: `ops-sql-1953754363`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- This helper dynamically reads matching tables and returns text for INSERT statements. It does not execute those returned INSERT or IDENTITY_INSERT commands. No generated export or application rows were collected for this documentation.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-1953754363`: [dbo.sp_generate_insert_script](sql/1953754363.sql); source-definition SHA-256 `70717108c7e2ac3419d717ab9e34d7bc497116e59fdc147ebdecfcfaf4422249`, reading-copy SHA-256 `8b297ae6ac0bc7e7b222226b1805378cc090562366a0c9ed18264b3fb89d4adb`, one-based inclusive lines [[1, 223]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does generating INSERT text insert those rows into a target? Expected: No. The helper returns commands as text and does not execute them. Must not claim: It performs the generated inserts.
+- Is the generated text a verified lossless export? Expected: No. Source buffer and conversion limits can lose information; no roundtrip was tested. Must not claim: Every table and value is represented losslessly.
+
+## 250. Why a configuration summary can omit a selected group
+
+**Question:** Why a configuration summary can omit a selected group
+
+**What it does.** The summary builds selected count queries from a JSON selection. It reads configuration and only writes local temporary state. An empty selection can produce no result set; that differs from a count query returning zero.
+
+**What happens**
+
+Trigger: A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.
+
+1. The reviewed dynamic templates read 73 fixed source tables through 78 SELECT templates; an invocation need not select them all. Evidence: `ops-sql-181224046`.
+2. System configuration has an extra detail-side exclusion, so its LEFT JOIN does not guarantee an empty header appears with zero. Evidence: `ops-sql-181224046`.
+3. Counts differ by branch: some count rows, some non-NULL detail fields, and the carrier-reference branch counts distinct rating identifiers. There is no final result ordering. Evidence: `ops-sql-181224046`.
+
+**What can affect it**
+
+- Predicates, NULL rules and lookup precedence are described in the cited contracts. No current effective user settings or application rows were collected.
+
+**What you can check**
+
+- Expand the source contract for exact input/output, write, error, transaction and evidence details.
+
+**Expected results and limits**
+
+- The summary builds selected count queries from a JSON selection. It reads configuration and only writes local temporary state. An empty selection can produce no result set; that differs from a count query returning zero.
+- The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.
+- No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.
+- Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.
+- Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.
+- Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection.
+
+**More detail and sources**
+
+`ops-sql-181224046`: [dbo.LoadAdditionalConfigsSummary](sql/181224046.sql); source-definition SHA-256 `7a4677693db618182ff148632027de75556094412774dc0f0332b4bf55d3beed`, reading-copy SHA-256 `13480cd8e5d714719971dba937f66737472a080a72c5f2912f1b4dc68e6c2bd3`, one-based inclusive lines [[1, 1348]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does LoadAdditionalConfigsSummary load selected configuration records? Expected: No. It constructs count queries and only writes local temporary state. Must not claim: It inserts the selected configuration records.
+- Will every selected empty system-config header appear with count zero? Expected: No. The detail-side exclusion can remove an empty header. Must not claim: LEFT JOIN guarantees a zero row for every header.
+
+## 251. Work unit remains open: confirmation and holds
+
+**Question:** What should I check when work is still open after picking?
+
+**What it does.** A pick is one step of work execution. Remaining picks, putaway, a partial quantity or a release hold can leave work unfinished. Check the header and its detail instructions before confirming anything; Work Insight confirmation has different rules for a header and a single detail.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. In Work Insight, find the work unit and inspect the condition, hold code, assigned user/team and individual open or in-process details. Opening a header alone does not show that all work has completed. Evidence: `operator-work-insight`, `operator-work-mobile`.
+2. Confirming a header executes every open and in-process detail under it. Header or multiple-row confirmation permits full picks; partial, short, over picks and serial prompts require a single detail. Evidence: `operator-work-insight`, `operator-work-mobile`.
+3. Mobile partial picks normally leave the remainder open. Close After Partial Pick can remove the remainder and close the instruction only for supported replenishment/work-order picks. It is not a general close-work switch. Evidence: `operator-work-insight`, `operator-work-mobile`.
+4. Mobile Skip moves past an instruction; Pass stops processing the work unit. Neither description says that the outstanding quantity is completed. Putaway confirmation is a separate step. Evidence: `operator-work-insight`, `operator-work-mobile`.
+5. Work Insight Remove Hold cannot clear wave-not-released, cycle-count-plan-not-released or work-order-not-released holds. Check the associated release process instead of treating Remove Hold as a universal remedy. Evidence: `operator-work-insight`, `operator-work-mobile`.
+
+**What can affect it**
+
+- Work Special Handling: partial/short permissions, Close After Partial Pick and verification.
+- Work profile and underlying wave, count-plan or work-order release.
+
+**What you can check**
+
+- Record the failing action, exact message, instruction level, condition and remaining pick/putaway step. A support reviewer can then distinguish a release issue from quantity/verification handling.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-work-insight`: [Using the Work Insight Screen](../AIM/reading/bc959a12270971649a68dcdb9ae1ed10ccdae19f400bb17d963723993fb0761a.md); AIM article `bc959a12270971649a68dcdb9ae1ed10ccdae19f400bb17d963723993fb0761a`, original SHA-256 `7b2d787921f8461f5e3ddac94209dee77ec801dbd75afafc457f0221d6af5503`, nodes n58, n244, n249, n252, n255, n256, n291, n299, n303, n307, n316, n317, n321, n324, n327, n330, n333, n336, n344, n348, n353, n363, n367, n371, n372, n373, n374, n378, n387.
+
+`operator-work-mobile`: [Warehouse Mobile Work Execution](../AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md); AIM article `c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0`, original SHA-256 `30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c`, nodes n58, n110, n113, n126, n148, n155, n162, n173, n181, n186, n214, n215, n216, n225, n233, n241, n248, n260, n262, n263, n266, n267, n273, n275, n277, n279, n281, n287, n294, n295, n296, n396, n401, n407, n414, n416, n493, n495, n497, n507, n588, n611, n612, n616, n617, n619, n620, n622, n623, n624, n625, n670, n675, n677, n678, n679, n680, n681, n698, n714, n722, n723, n724, n725, n726, n734, n735, n736.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Why does a partial pick leave work unfinished? Expected: Remainder stays open unless the supported close-after-partial behavior applies. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- Does Pass finish all remaining work? Expected: Pass returns to initiation; it does not confirm outstanding instructions. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 252. Work Insight and Warehouse Mobile: choosing the screen
+
+**Question:** How do Work Insight and mobile work execution differ?
+
+**What it does.** Use Work Insight to find and manage instructions across a work unit; use Warehouse Mobile to follow the operator pick/putaway flow and scan the required values. Both can confirm work, but they expose different controls. The documentation is not a complete permission-by-permission feature matrix.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. Work Insight offers filters, a results list and a detail pane. Its documented management actions include header user/team assignment, priority changes, holds, eligible unassignment, pick/putaway overrides and paperwork. Evidence: `operator-work-insight`, `operator-work-mobile`.
+2. Its Edit action requires Change access. User/team assignment applies to headers; changing a header priority affects its details. Unassign requires inactive header work and clears both user and team. Evidence: `operator-work-insight`, `operator-work-mobile`.
+3. Warehouse Mobile starts with an authorized work profile and work unit, then walks through pick and putaway. Work Special Handling controls location, item, quantity, license-plate and lot verification. Evidence: `operator-work-insight`, `operator-work-mobile`.
+4. Mobile supports operator actions such as Skip, Pass, short/partial pick and configured overrides. Work Insight header or bulk confirmation handles full picks; use a single detail for exceptional quantities or serial prompts. Evidence: `operator-work-insight`, `operator-work-mobile`.
+
+**What can affect it**
+
+- Security checkpoints determine which actions are visible.
+- Work profiles and Work Special Handling determine mobile flow.
+
+**What you can check**
+
+- For a missing action, name the screen and action first. Compare the applicable permission and profile rather than assuming a desktop action exists identically on mobile.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-work-insight`: [Using the Work Insight Screen](../AIM/reading/bc959a12270971649a68dcdb9ae1ed10ccdae19f400bb17d963723993fb0761a.md); AIM article `bc959a12270971649a68dcdb9ae1ed10ccdae19f400bb17d963723993fb0761a`, original SHA-256 `7b2d787921f8461f5e3ddac94209dee77ec801dbd75afafc457f0221d6af5503`, nodes n58, n244, n249, n252, n255, n256, n291, n299, n303, n307, n316, n317, n321, n324, n327, n330, n333, n336, n344, n348, n353, n363, n367, n371, n372, n373, n374, n378, n387.
+
+`operator-work-mobile`: [Warehouse Mobile Work Execution](../AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md); AIM article `c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0`, original SHA-256 `30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c`, nodes n58, n110, n113, n126, n148, n155, n162, n173, n181, n186, n214, n215, n216, n225, n233, n241, n248, n260, n262, n263, n266, n267, n273, n275, n277, n279, n281, n287, n294, n295, n296, n396, n401, n407, n414, n416, n493, n495, n497, n507, n588, n611, n612, n616, n617, n619, n620, n622, n623, n624, n625, n670, n675, n677, n678, n679, n680, n681, n698, n714, n722, n723, n724, n725, n726, n734, n735, n736.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Which screen can assign a user to a work header? Expected: Work Insight header assignment and permission limits. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- How does mobile verification differ from Work Insight confirmation? Expected: Guided field checks versus header/detail confirmation scope. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 253. Configuring a work profile and its sequence rules
+
+**Question:** How are users, work types and assignment order configured?
+
+**What it does.** A work profile groups sequence rules for the users and teams that execute work. Configure who can use it, which warehouses/zones it covers, then the numbered rules that choose work and control picking and putaway. A user can be associated with one work profile at a time.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. On the header, define Authorized Users, Warehouse Access, Work Team/Equipment Type and Work Zone. Apply the header, then create its detail sequences. Evidence: `operator-work-profile`, `operator-work-mobile`.
+2. Sequences run in numeric order. Choose work types for each sequence; selecting none means all work types. The next sequence is used when available work for the current types is completed. Evidence: `operator-work-profile`, `operator-work-mobile`.
+3. Choose User Initiated, Cart Picking or System Initiated. From Assign Method orders system-directed work by the documented priority/location/FIFO combinations. To Assign Method selects LIFO or location order for putaway. Evidence: `operator-work-profile`, `operator-work-mobile`.
+4. Set the container picking method and putaway options for the intended operation. Automatic Putaway and Consolidation After Putaway are not simultaneously selectable; automatic putaway is unsupported for dock-management work. Evidence: `operator-work-profile`, `operator-work-mobile`.
+5. On mobile, an authorized default profile in User Profile can bypass profile selection. Different prompts may come from Work Special Handling even when the work profile is the same. Evidence: `operator-work-profile`, `operator-work-mobile`.
+
+**What can affect it**
+
+- Assign Multiple Work Units is restricted to system-directed work and the documented receiving-dock location option.
+- Print at WM Work Start also needs the document type flag and work created from shipping containers.
+
+**What you can check**
+
+- Check the actual authorized/default profile and its first applicable sequence before changing sequence order. Compare work type, zone, warehouse and equipment eligibility.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-work-profile`: [Creating Work Profiles](../AIM/reading/671ff642f3216ae5a948a064d208b7b4bf66e0f9e75327a7802cd2f83a97d544.md); AIM article `671ff642f3216ae5a948a064d208b7b4bf66e0f9e75327a7802cd2f83a97d544`, original SHA-256 `77322984b236e8069442ab059c6c735ac231870c5aeaa6618b96b06eead1e20d`, nodes n58, n172, n175, n177, n180, n183, n185, n194, n196, n198, n202, n211, n218, n232, n254, n263, n270, n289.
+
+`operator-work-mobile`: [Warehouse Mobile Work Execution](../AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md); AIM article `c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0`, original SHA-256 `30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c`, nodes n58, n110, n113, n126, n148, n155, n162, n173, n181, n186, n214, n215, n216, n225, n233, n241, n248, n260, n262, n263, n266, n267, n273, n275, n277, n279, n281, n287, n294, n295, n296, n396, n401, n407, n414, n416, n493, n495, n497, n507, n588, n611, n612, n616, n617, n619, n620, n622, n623, n624, n625, n670, n675, n677, n678, n679, n680, n681, n698, n714, n722, n723, n724, n725, n726, n734, n735, n736.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- What happens if a profile sequence selects no work types? Expected: All work types are included. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- Where are work profile users and sequence priority configured? Expected: Header authorizations and ordered detail rules. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 254. Pick fails or requests a reason: verification and short picks
+
+**Question:** Which checks explain a failed pick or a reason-code prompt?
+
+**What it does.** First distinguish a field-validation failure from a short pick. Mobile validates the fields selected in Work Special Handling; a short pick follows its own quantity and reason-code flow. Capture the precise message and failing field before retrying, because the available action depends on work type, permissions and grouping.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. Check the highlighted field: location/check digit, item, quantity, shipping container, license plate or lot. Work Special Handling overrides location-level verification when both define it. Evidence: `operator-work-mobile`, `operator-work-insight`.
+2. In verification mode each field must pass; submitting the last valid field sends the pick for processing. Check whether that submission already produced a success message or moved to putaway before retrying. Evidence: `operator-work-mobile`, `operator-work-insight`.
+3. A short pick requires its reason-code flow; Work Insight explicitly requires a reason code. Partial pick is a different action and normally keeps the remainder open. Evidence: `operator-work-mobile`, `operator-work-insight`.
+4. For mobile batched work, different attributes require ungrouping before a short or partial pick. The separate Partial Pick action is unavailable when the user lacks the permission or quantity verification is turned on. Evidence: `operator-work-mobile`, `operator-work-insight`.
+5. Short-pick inventory actions can have material inventory consequences. The source warns that certain no-count options remove serial numbers automatically; a reason code alone does not determine that policy. Evidence: `operator-work-mobile`, `operator-work-insight`.
+
+**What can affect it**
+
+- Work Special Handling verification and short-pick behavior.
+- Short/partial permissions, grouped attributes, serial tracking and inventory-control short-pick policy.
+
+**What you can check**
+
+- Capture the exact message, failing field, intended quantity and unit, work type, grouped/single instruction state, and whether the screen advanced after submission. Do not repeatedly submit an uncertain action.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-work-mobile`: [Warehouse Mobile Work Execution](../AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md); AIM article `c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0`, original SHA-256 `30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c`, nodes n58, n110, n113, n126, n148, n155, n162, n173, n181, n186, n214, n215, n216, n225, n233, n241, n248, n260, n262, n263, n266, n267, n273, n275, n277, n279, n281, n287, n294, n295, n296, n396, n401, n407, n414, n416, n493, n495, n497, n507, n588, n611, n612, n616, n617, n619, n620, n622, n623, n624, n625, n670, n675, n677, n678, n679, n680, n681, n698, n714, n722, n723, n724, n725, n726, n734, n735, n736.
+
+`operator-work-insight`: [Using the Work Insight Screen](../AIM/reading/bc959a12270971649a68dcdb9ae1ed10ccdae19f400bb17d963723993fb0761a.md); AIM article `bc959a12270971649a68dcdb9ae1ed10ccdae19f400bb17d963723993fb0761a`, original SHA-256 `7b2d787921f8461f5e3ddac94209dee77ec801dbd75afafc457f0221d6af5503`, nodes n58, n244, n249, n252, n255, n256, n291, n299, n303, n307, n316, n317, n321, n324, n327, n330, n333, n336, n344, n348, n353, n363, n367, n371, n372, n373, n374, n378, n387.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Why does a short pick ask for a reason code? Expected: Short-pick action differs from partial confirmation. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- Why is the partial-pick action missing on mobile? Expected: Permissions and quantity verification are documented factors. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 255. Using the Packing screen
+
+**Question:** How do I pack items and understand an empty packing grid?
+
+**What it does.** Initiate the shipment or other configured identifier, choose the container, identify the item and quantity, then Pack. The screen shows open lines for that entity. No lines left to pack, a different initiation field, an unreleased wave or line eligibility can explain why the expected work is absent.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. Check Packing Preferences Initiation Field: it may expect shipment number, ERP order or invoice. After initiation the screen lists open lines; if nothing remains to pack it reports no available lines. Evidence: `operator-packing-screen`, `operator-packing-preferences`.
+2. Choose Existing for an associated packed container or New for a new one. Manual container assignment allows an entered ID; System creates the ID. An existing container keeps its established container type. Evidence: `operator-packing-screen`, `operator-packing-preferences`.
+3. With Validate Item enabled, scan/enter the item or cross-reference and quantity. Otherwise select the grid row and use quantity controls. Read header instructions and any line instruction popup. Evidence: `operator-packing-screen`, `operator-packing-preferences`.
+4. Pack applies the selected quantity. Pack All applies all remaining item quantities. Completed lines leave the grid; totals update. Serial-tracked and catch-weight items can require additional entry. Evidence: `operator-packing-screen`, `operator-packing-preferences`.
+5. Use the Error-column checkbox to read a packing error. The Close button opens Close Container after the container is completely packed; it does not itself establish successful closure. Evidence: `operator-packing-screen`, `operator-packing-preferences`.
+
+**What can affect it**
+
+- Packing Preferences: initiation, status range, validation, quantity entry and container assignment.
+- Wave release, available lines, container-type authorization and item tracking.
+
+**What you can check**
+
+- Confirm the input identifier and remaining lines, read Status Info and the exact row error. Check the effective Status Range before assuming every In Picking line is excluded.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+- The basic Packing article says unpicked lines cannot be packed, while the preference article explicitly permits a configured range starting at In Picking. Preserve this qualification; do not universalize either statement without the effective range.
+
+**More detail and sources**
+
+`operator-packing-screen`: [Packing a Container](../AIM/reading/9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac.md); AIM article `9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac`, original SHA-256 `d583b87e4904b3186103603a6378e213a5be4aafb82bc936b3397b0b6bd6be57`, nodes n59, n138, n141, n144, n147, n150, n161, n164, n167, n169, n172, n175, n178, n186, n188, n193, n195, n198, n202, n206, n210, n213, n216, n224, n227, n231, n233, n236, n243, n252, n255, n258.
+
+`operator-packing-preferences`: [Establishing Packing Preferences](../AIM/reading/b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60.md); AIM article `b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60`, original SHA-256 `0e2e312bae162513a7cf5930ac06edc6e2a231a9c66d499231453b25038c2e34`, nodes n58, n135, n139, n142, n145, n148, n151, n154, n157, n161, n164, n166, n170, n172, n174, n177, n181, n183, n185, n188, n190, n194, n196, n199, n208, n212, n215, n218, n229, n236, n239, n248, n253, n256, n258, n262.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Why are there no available lines after packing initiation? Expected: Correct initiation field and remaining eligible lines. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- What changes between Validate Item and selecting grid rows? Expected: Scanning/entry versus grid selection, then Pack. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 256. Configuring packing preferences for users
+
+**Question:** Which packing preference options change the packing screen?
+
+**What it does.** Packing Preferences controls how an assigned user identifies a shipment, enters items and quantities, creates container IDs and closes containers. Start with the user assignment, then configure each tab for the intended process; a setting on an unassigned preference does not explain that user’s screen.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. Create a preference record with a description. Use Assigned Users to associate it with users. *Default automatically takes users without a specific packing preference and newly created users unless specifically assigned. Evidence: `operator-packing-preferences`.
+2. Set Initiation Field, Status Range and Validate Item. Validation enables item/quantity inputs; without it, operators select items in the grid. Allow Over Packing permits quantities above those available on a shipment line. Evidence: `operator-packing-preferences`.
+3. Verify Container ID selected resets the displayed container to New after packing; unchecked retains the previous container and type. Container Assignment Method selects System or Manual IDs. Evidence: `operator-packing-preferences`.
+4. Read quantity behavior carefully: the retained article says Require Entry Of Quantity unchecked sets Packed Quantity to zero and requires manual entry. Do not infer the opposite from the checkbox name. Evidence: `operator-packing-preferences`.
+5. Configure close options separately: auto manifest, load assignment, pending-VAS handling and Auto Print at Close. Packing Work Type is for labor tracking; the documented packing action does not create work instructions. Evidence: `operator-packing-preferences`.
+
+**What can affect it**
+
+- User assignment, *Default fallback and the relevant Packing/Close Container tab.
+- Workbench Modify changes lot/quantity; Verify confirms actual contents.
+
+**What you can check**
+
+- Compare the user’s assigned preference and exact checkbox value with the documented screen behavior before changing it.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-packing-preferences`: [Establishing Packing Preferences](../AIM/reading/b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60.md); AIM article `b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60`, original SHA-256 `0e2e312bae162513a7cf5930ac06edc6e2a231a9c66d499231453b25038c2e34`, nodes n58, n135, n139, n142, n145, n148, n151, n154, n157, n161, n164, n166, n170, n172, n174, n177, n181, n183, n185, n188, n190, n194, n196, n199, n208, n212, n215, n218, n229, n236, n239, n248, n253, n256, n258, n262.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Why does the container ID reset to New after each Pack? Expected: Verify Container ID selected clears the last displayed container. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- Does Packing Work Type create packing work instructions? Expected: It supplies labor tracking; no packing instructions are created by that action. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 257. Container will not close: packing, QC, VAS and weight
+
+**Question:** What should I inspect when Close Container fails?
+
+**What it does.** Read the close error first. Documented causes include pending or failed QC, pending VAS under the applicable preference, and scale or weight handling. Closing advances the container beyond packing, so it is separate from picking, packing and printing. This library cannot identify the current blocker on a particular container.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. Confirm the intended container and completed packing. From Packing, Close becomes active after complete packing. In Close Container, verify the ID, container information, weight and applicable carrier/service. Evidence: `operator-close-container`, `operator-packing-preferences`, `operator-packing-screen`, `operator-mobile-close`.
+2. Pending or failed QC prevents closure until the inspection is performed or resolved. Treat the QC result as a distinct check from whether the container is physically full. Evidence: `operator-close-container`, `operator-packing-preferences`, `operator-packing-screen`, `operator-mobile-close`.
+3. When pending VAS exists, Allow VAS Override unchecked blocks closing. If checked, closing offers an override choice and records history when used. This explanation does not authorize bypassing VAS. Evidence: `operator-close-container`, `operator-packing-preferences`, `operator-packing-screen`, `operator-mobile-close`.
+4. Weight tolerance can prompt confirmation. For desktop Use Scale Weight, an unavailable service or client configuration error produces a close error; the source points respectively to audit or client event logs. RemoteApp/RDP uses the documented wedge input behavior instead. Evidence: `operator-close-container`, `operator-packing-preferences`, `operator-packing-screen`, `operator-mobile-close`.
+5. After successful close, additional product cannot be packed into that container. Auto manifest, auto print and load assignment depend on separate preference and integration settings. Evidence: `operator-close-container`, `operator-packing-preferences`, `operator-packing-screen`, `operator-mobile-close`.
+
+**What can affect it**
+
+- Packing Preferences: VAS override, auto manifest/print and load assignment.
+- QC result, weight/tolerance and the configured scale path.
+
+**What you can check**
+
+- Record screen/action, exact error, QC/VAS indication and whether weight entry is manual or scale-based. Resolve the named prerequisite through the warehouse procedure before retrying.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+- VAS behavior at load confirmation differs: with override allowed, the source describes ignoring pending VAS while retaining VAS Pending and writing no history. Do not substitute close-container history behavior for load confirmation.
+
+**More detail and sources**
+
+`operator-close-container`: [Closing a Container](../AIM/reading/f992a81240ef21071a0c60e111f7a41770da3bcd1ad4ca55d2f3db634e255a7f.md); AIM article `f992a81240ef21071a0c60e111f7a41770da3bcd1ad4ca55d2f3db634e255a7f`, original SHA-256 `be502f76ac9fe2ec6ac77845a740c73838548bea5c04b30b17d80b3594db2913`, nodes n58, n63, n66, n69, n72, n135, n138, n143, n145, n147, n149, n155, n157, n158, n160, n163, n170, n180, n188, n195, n197, n200, n203, n205.
+
+`operator-packing-preferences`: [Establishing Packing Preferences](../AIM/reading/b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60.md); AIM article `b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60`, original SHA-256 `0e2e312bae162513a7cf5930ac06edc6e2a231a9c66d499231453b25038c2e34`, nodes n58, n135, n139, n142, n145, n148, n151, n154, n157, n161, n164, n166, n170, n172, n174, n177, n181, n183, n185, n188, n190, n194, n196, n199, n208, n212, n215, n218, n229, n236, n239, n248, n253, n256, n258, n262.
+
+`operator-packing-screen`: [Packing a Container](../AIM/reading/9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac.md); AIM article `9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac`, original SHA-256 `d583b87e4904b3186103603a6378e213a5be4aafb82bc936b3397b0b6bd6be57`, nodes n59, n138, n141, n144, n147, n150, n161, n164, n167, n169, n172, n175, n178, n186, n188, n193, n195, n198, n202, n206, n210, n213, n216, n224, n227, n231, n233, n236, n243, n252, n255, n258.
+
+`operator-mobile-close`: [Warehouse Mobile Close Container](../AIM/reading/b33a75f313a267b2873999318c8752e9ddbe07fbd8201653f8f3aa6b757253b5.md); AIM article `b33a75f313a267b2873999318c8752e9ddbe07fbd8201653f8f3aa6b757253b5`, original SHA-256 `9993e9e6a1c1b0d3c7db41486e42317efc9499c4bcd71a7fc83ed80680a63475`, nodes n56, n57, n82, n84, n87, n88, n90, n91, n92, n93, n94, n95, n96, n97, n98, n111, n112, n113, n114, n115, n119, n120, n121, n122.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can pending QC prevent a container from closing? Expected: Pending/failed QC must be performed or resolved. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- Why might Use Scale Weight stop close-container processing? Expected: Documented service or client configuration errors; no live diagnosis. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 258. Printing packing and closing documents
+
+**Question:** Why might a label not print when a container closes?
+
+**What it does.** Check the trigger and document type before the printer. Auto Print at Close can print automatically, ask which documents to print, or print none. Close Last Container documents also require that print procedure on the document type and the qualifying last-container condition.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. Auto Print at Close Yes prints packing documents; Prompt opens document selection; No suppresses automatic close printing while manual printing remains available. Evidence: `operator-close-container`, `operator-packing-preferences`, `operator-printer`, `operator-work-profile`.
+2. Close Last Container must be selected on the document type. The desktop source says that closing while quantities remain unpacked does not print those documents, except for its stated create-container-at-close case. Evidence: `operator-close-container`, `operator-packing-preferences`, `operator-printer`, `operator-work-profile`.
+3. For mobile label routing, Assign Printer accepts the label-printer name and stores it in User Profile Preference > Default Label. An invalid name produces an error; Clear removes the assignment. Evidence: `operator-close-container`, `operator-packing-preferences`, `operator-printer`, `operator-work-profile`.
+4. Print at WM Work Start is a different trigger. It requires that work-profile option, a Start WM Work document-type flag, and work created from shipping containers. Evidence: `operator-close-container`, `operator-packing-preferences`, `operator-printer`, `operator-work-profile`.
+
+**What can affect it**
+
+- Packing preference, document-type print procedure and user label-printer assignment.
+- The selected trigger may be work start, each close or the qualifying last close.
+
+**What you can check**
+
+- Identify which trigger was expected, check its document-type selection and assigned printer, then retain the precise print error. These sources do not prove printer connectivity or physical output.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-close-container`: [Closing a Container](../AIM/reading/f992a81240ef21071a0c60e111f7a41770da3bcd1ad4ca55d2f3db634e255a7f.md); AIM article `f992a81240ef21071a0c60e111f7a41770da3bcd1ad4ca55d2f3db634e255a7f`, original SHA-256 `be502f76ac9fe2ec6ac77845a740c73838548bea5c04b30b17d80b3594db2913`, nodes n58, n63, n66, n69, n72, n135, n138, n143, n145, n147, n149, n155, n157, n158, n160, n163, n170, n180, n188, n195, n197, n200, n203, n205.
+
+`operator-packing-preferences`: [Establishing Packing Preferences](../AIM/reading/b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60.md); AIM article `b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60`, original SHA-256 `0e2e312bae162513a7cf5930ac06edc6e2a231a9c66d499231453b25038c2e34`, nodes n58, n135, n139, n142, n145, n148, n151, n154, n157, n161, n164, n166, n170, n172, n174, n177, n181, n183, n185, n188, n190, n194, n196, n199, n208, n212, n215, n218, n229, n236, n239, n248, n253, n256, n258, n262.
+
+`operator-printer`: [Warehouse Mobile Assign Printer](../AIM/reading/d3ded73e3c4cd4c058cf366dac2337cea31f922628ab7fb9f72351db3f110daa.md); AIM article `d3ded73e3c4cd4c058cf366dac2337cea31f922628ab7fb9f72351db3f110daa`, original SHA-256 `6d4c5deaf1244fe9dd8ea64f69538f29f9fd831b459cf94b1eac89f326d24d68`, nodes n57, n74, n75, n76, n77, n78, n79, n80, n81, n82, n89, n90, n91, n92.
+
+`operator-work-profile`: [Creating Work Profiles](../AIM/reading/671ff642f3216ae5a948a064d208b7b4bf66e0f9e75327a7802cd2f83a97d544.md); AIM article `671ff642f3216ae5a948a064d208b7b4bf66e0f9e75327a7802cd2f83a97d544`, original SHA-256 `77322984b236e8069442ab059c6c735ac231870c5aeaa6618b96b06eead1e20d`, nodes n58, n172, n175, n177, n180, n183, n185, n194, n196, n198, n202, n211, n218, n232, n254, n263, n270, n289.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Why does Auto Print at Close No still allow manual paperwork? Expected: No suppresses automatic print only. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- What controls labels at WM work start? Expected: Work-profile option plus document-type trigger and container-created work. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 259. Configuring over-receiving and receipt execution
+
+**Question:** Which setting controls receiving more than the receipt quantity?
+
+**What it does.** Receiving Preferences Allow Over Receiving determines whether an employee can receive above the receipt line’s Original Total Quantity. Leave it unselected when the intended policy disallows that capability; confirm the preference actually selected for the user and receiving flow. Do not substitute an unrelated purchase-order tolerance for this setting.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. Create or select the relevant receiving preference and set Allow Over Receiving on its General tab. With it selected, the cited source says RF over-receiving raises no warning and requires no override. Evidence: `operator-receiving-preferences`.
+2. Use Authorized Users to restrict which preferences the user can choose. A user can be authorized for multiple receiving preferences; newly created preferences initially authorize all users. Evidence: `operator-receiving-preferences`.
+3. Execution Method controls check-in versus locate, batch versus immediate processing and Quick Receive. In the documented check-in/locate flow, Create Putaway Work determines whether locating creates released work or directly places quantity on hand at the destination. Quick Receive-User and Quick Receive-System do not create putaway work. Evidence: `operator-receiving-preferences`.
+4. Single Unit Scan is disabled by several incompatible choices, including Allow Over Receiving, manual LP assignment, disposition, QC and dimension/unit verification. Review these interactions when the entry screen differs. Evidence: `operator-receiving-preferences`.
+
+**What can affect it**
+
+- Selected receiving preference and its authorized users.
+- Allow Over Receiving, Execution Method, Create Putaway Work and Single Unit Scan.
+
+**What you can check**
+
+- For an unexpected over-receipt, compare the selected preference, original receipt-line quantity and requested unit/quantity through authorized support evidence. No operational rows are read by this library.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-receiving-preferences`: [Defining Receiving Preferences](../AIM/reading/94624e721fdc8b17b7fdcc4232de4870a98eedbb852d63a0230abd86008588b2.md); AIM article `94624e721fdc8b17b7fdcc4232de4870a98eedbb852d63a0230abd86008588b2`, original SHA-256 `ec5aff1b03fb4b19047dc23da46208b9ef62b09fc111e5fd53f1d97beef8bbc1`, nodes n58, n139, n143, n145, n147, n151, n153, n155, n160, n168, n192, n205, n210, n213, n216, n221, n225, n228, n231, n234, n237, n240, n243, n251.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Which receiving option allows quantities above Original Total Quantity? Expected: Allow Over Receiving on the applicable receiving preference. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- Does disabling Create Putaway Work stop quantity from reaching on hand? Expected: Source instead describes automatic locating/on-hand placement and physical delivery responsibility. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 260. Receiving returns or damaged stock
+
+**Question:** How do receiving status, disposition and allocation rules interact?
+
+**What it does.** Receiving Preferences can set an initial inventory status such as hold or damaged and require disposition/reason details. A status name alone does not stop allocation: the inventory-status documentation explicitly says allocation rules must exclude held inventory. Configure the receiving and allocation policies together.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. Default Inventory Status supplies the status during check-in. A dedicated receiving preference can support a returns process with hold or damaged status. Evidence: `operator-receiving-preferences`, `operator-inventory-status`.
+2. Disposition Code Required records condition during check-in. Reason Code Required is available only when disposition is required; the cited configuration uses Quality History Reason Codes for Receiving. Evidence: `operator-receiving-preferences`, `operator-inventory-status`.
+3. QC Inspection Active checks received items for QC eligibility. That setting and a disposition code are distinct from the allocation rules that determine whether inventory can be shipped. Evidence: `operator-receiving-preferences`, `operator-inventory-status`.
+4. Review allocation rules before relying on a held/damaged status to exclude stock. The retained documentation does not automatically prohibit allocation merely because an inventory status sounds unavailable. Evidence: `operator-receiving-preferences`, `operator-inventory-status`.
+
+**What can affect it**
+
+- Receiving preference, disposition and receiving reason codes, QC eligibility and allocation-rule exclusions.
+
+**What you can check**
+
+- Keep the stock within the warehouse’s approved damaged/return handling process while the responsible owner verifies the receiving and allocation rules. This topic does not authorize releasing it.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-receiving-preferences`: [Defining Receiving Preferences](../AIM/reading/94624e721fdc8b17b7fdcc4232de4870a98eedbb852d63a0230abd86008588b2.md); AIM article `94624e721fdc8b17b7fdcc4232de4870a98eedbb852d63a0230abd86008588b2`, original SHA-256 `ec5aff1b03fb4b19047dc23da46208b9ef62b09fc111e5fd53f1d97beef8bbc1`, nodes n58, n139, n143, n145, n147, n151, n153, n155, n160, n168, n192, n205, n210, n213, n216, n221, n225, n228, n231, n234, n237, n240, n243, n251.
+
+`operator-inventory-status`: [Reviewing Inventory Statuses](../AIM/reading/ac3f13ba881f41d48d5cb58449fb1b516d4bbfbfea3b948c6c5428ab9832abdd.md); AIM article `ac3f13ba881f41d48d5cb58449fb1b516d4bbfbfea3b948c6c5428ab9832abdd`, original SHA-256 `0bd4e0f169a33304679bc48a66b6ad0322701aa171a145b366c2e8c74225fac7`, nodes n58, n87, n90.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a held inventory status automatically prevent allocation? Expected: No; allocation rules must enforce exclusion. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- When can receiving require a reason code for damage? Expected: Reason requirement depends on disposition requirement and Receiving reason setup. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 261. Keeping container contents together or separate
+
+**Question:** How do packing classes and criteria control mixed contents?
+
+**What it does.** Packing classes choose eligible container types during wave container creation and link packing criteria. Criteria compare shipment-line field values to decide which items may share a container. Full-screen packing can warn or block on a mismatch; container creation and RF pick/pack require matching values regardless of the Required checkbox.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. Select the packing class on the shipment line when required. Item packing class defaults onto the line when interfaced but does not override an existing line value. If neither supplies it, the documented fallback is *Default. Evidence: `operator-packing-classes`, `operator-packing-criteria`.
+2. On the packing class choose Container Group for candidate container types, and Packing Criteria for content compatibility. Evidence: `operator-packing-classes`, `operator-packing-criteria`.
+3. Create criteria details with sequence and Field Name. The compared shipment-line fields must match; choose fields that represent the actual separation requirement, such as destination. Evidence: `operator-packing-classes`, `operator-packing-criteria`.
+4. Required selected blocks differing values during full-screen packing. Unselected prompts for confirmation there. Wave container creation and RF pick/pack ignore that warning option and require all fields to match. Evidence: `operator-packing-classes`, `operator-packing-criteria`.
+
+**What can affect it**
+
+- Shipment-line/item/default packing class precedence.
+- Container Group, criteria detail fields and screen-specific Required behavior.
+
+**What you can check**
+
+- Compare the actual class and mismatching criterion before changing container contents. Clearing Required is not a universal way to allow mixing.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-packing-classes`: [Working With Packing Classes](../AIM/reading/3ff5fb22a9c9e784bbfd20177c44b01634dd3b5559a647ce820724ff201fed31.md); AIM article `3ff5fb22a9c9e784bbfd20177c44b01634dd3b5559a647ce820724ff201fed31`, original SHA-256 `4ad39a8ac9898c6016ed142ac7cdd87fcf50a0a71019ed828fcb66673fed11fe`, nodes n58, n60, n61, n63, n65, n68, n71, n72, n109, n111, n113.
+
+`operator-packing-criteria`: [Creating Packing Criteria Records](../AIM/reading/ecb1502a71d0ed8f2279e48af9324bf72bc24b5a2e2fde3ada94ce41214c40ae.md); AIM article `ecb1502a71d0ed8f2279e48af9324bf72bc24b5a2e2fde3ada94ce41214c40ae`, original SHA-256 `5d5920706e49ffa1d662bc3d5a3378e29805181a8c62f073fd5a7a29c015046e`, nodes n58, n100, n104, n106, n110, n114, n121.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Why does RF pick/pack reject mixing when Required is unchecked? Expected: RF still requires all criteria fields to match. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- Which packing class wins: shipment line or item? Expected: Existing line value takes precedence over item default. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 262. Choosing a replacement license plate during picking
+
+**Question:** What controls changing the license plate or lot used for a pick?
+
+**What it does.** Use the documented Override Pick flow only when the work type, security and Work Special Handling allow it. Matching the item name alone is insufficient: location, lot, available quantity, grouping and container verification can affect the permitted replacement. The library cannot certify a particular replacement license plate.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. Override Pick is documented for outbound allocation/container, replenishment and inventory-transfer work. License-plate override requires Override Pick security and the relevant override/LP verification settings. Evidence: `operator-override-pick`, `operator-work-mobile`.
+2. The mobile override article explicitly describes different-quantity replacements under Allow Override To Different Quantity and related container/grouping settings. The work-execution article separately lists same-quantity cases; its short list is not a universal equal-quantity restriction. Evidence: `operator-override-pick`, `operator-work-mobile`.
+3. Location and lot overrides have their own settings. The source gives specific same-location lot cases for replenishment or full-unit shipping containers; do not generalize those examples to every work type. Evidence: `operator-override-pick`, `operator-work-mobile`.
+4. Container verification can require pallet and nested-container scans. After an accepted override, the source says location inventory, work instructions and relevant records are updated; this is an operational change. Evidence: `operator-override-pick`, `operator-work-mobile`.
+
+**What can affect it**
+
+- Override Pick security; Work Special Handling LP/location/lot override and verification.
+- Allow Override To Different Quantity, Container Verify and Group Picks By Loc/LP where applicable.
+
+**What you can check**
+
+- Compare intended replacement item, location, lot, quantity/unit and tracking with the failed validation. Escalate the exact message if the documented eligibility does not explain it; do not bypass validation or infer attribute equivalence.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-override-pick`: [Warehouse Mobile Override Pick](../AIM/reading/f586c2d66cc03deffc95bea01eb4a2ab97713125c8aabc4d2e37f152b3ddf672.md); AIM article `f586c2d66cc03deffc95bea01eb4a2ab97713125c8aabc4d2e37f152b3ddf672`, original SHA-256 `2daf50f9f30d561e009801c64ce9b84faac53646cd0d3be1d7066115039417c4`, nodes n57, n71, n75, n76, n78, n79, n82, n85, n89, n92, n94, n97, n98, n100, n104, n108, n109, n129, n131, n133, n163, n169, n170, n184, n186, n188, n192, n194, n196, n198, n200, n205, n206, n207, n213, n214, n215.
+
+`operator-work-mobile`: [Warehouse Mobile Work Execution](../AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md); AIM article `c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0`, original SHA-256 `30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c`, nodes n58, n110, n113, n126, n148, n155, n162, n173, n181, n186, n214, n215, n216, n225, n233, n241, n248, n260, n262, n263, n266, n267, n273, n275, n277, n279, n281, n287, n294, n295, n296, n396, n401, n407, n414, n416, n493, n495, n497, n507, n588, n611, n612, n616, n617, n619, n620, n622, n623, n624, n625, n670, n675, n677, n678, n679, n680, n681, n698, n714, n722, n723, n724, n725, n726, n734, n735, n736.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Must every replacement license plate have equal quantity? Expected: Different-quantity support is conditional in the override article. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- What needs enabling before mobile LP override? Expected: Security plus applicable Work Special Handling override/verification. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 263. Desktop packing and mobile picking/closing settings
+
+**Question:** Do packing preferences make desktop and mobile workflows identical?
+
+**What it does.** No. Desktop Packing enters shipment lines into containers, while mobile can pick directly into shipping containers through work-profile settings and close them through a separate screen. Some preferences apply across flows; other controls are explicitly restricted to a screen.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. For desktop Packing, check the assigned packing preference: initiation, status range, item/quantity entry and container assignment. Evidence: `operator-packing-preferences`, `operator-work-profile`, `operator-work-mobile`, `operator-mobile-close`.
+2. For mobile pick/pack, check Work Profile Container Picking Method and Work Special Handling verification/override. Pick Into Shipping Container, Pick Into Tote and no RF pick/pack describe different behaviors. Evidence: `operator-packing-preferences`, `operator-work-profile`, `operator-work-mobile`, `operator-mobile-close`.
+3. Mobile Close Container takes a container ID and displays system/actual weight. The operator can use calculated weight or enter actual weight; tolerance can require confirmation. Evidence: `operator-packing-preferences`, `operator-work-profile`, `operator-work-mobile`, `operator-mobile-close`.
+4. The retained Packing Preferences article limits its described QC tab settings to the full-screen QC Workbench and excludes RF Shipping Container QC. It limits create-container-during-close to the specified remote-desktop menu path. Do not transfer these options to every mobile screen. Evidence: `operator-packing-preferences`, `operator-work-profile`, `operator-work-mobile`, `operator-mobile-close`.
+
+**What can affect it**
+
+- Packing preference, work profile, Work Special Handling, security and the exact screen being used.
+
+**What you can check**
+
+- Name the screen and intended action first: Packing, mobile work execution, Close Container or QC. Check the settings documented for that flow.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-packing-preferences`: [Establishing Packing Preferences](../AIM/reading/b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60.md); AIM article `b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60`, original SHA-256 `0e2e312bae162513a7cf5930ac06edc6e2a231a9c66d499231453b25038c2e34`, nodes n58, n135, n139, n142, n145, n148, n151, n154, n157, n161, n164, n166, n170, n172, n174, n177, n181, n183, n185, n188, n190, n194, n196, n199, n208, n212, n215, n218, n229, n236, n239, n248, n253, n256, n258, n262.
+
+`operator-work-profile`: [Creating Work Profiles](../AIM/reading/671ff642f3216ae5a948a064d208b7b4bf66e0f9e75327a7802cd2f83a97d544.md); AIM article `671ff642f3216ae5a948a064d208b7b4bf66e0f9e75327a7802cd2f83a97d544`, original SHA-256 `77322984b236e8069442ab059c6c735ac231870c5aeaa6618b96b06eead1e20d`, nodes n58, n172, n175, n177, n180, n183, n185, n194, n196, n198, n202, n211, n218, n232, n254, n263, n270, n289.
+
+`operator-work-mobile`: [Warehouse Mobile Work Execution](../AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md); AIM article `c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0`, original SHA-256 `30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c`, nodes n58, n110, n113, n126, n148, n155, n162, n173, n181, n186, n214, n215, n216, n225, n233, n241, n248, n260, n262, n263, n266, n267, n273, n275, n277, n279, n281, n287, n294, n295, n296, n396, n401, n407, n414, n416, n493, n495, n497, n507, n588, n611, n612, n616, n617, n619, n620, n622, n623, n624, n625, n670, n675, n677, n678, n679, n680, n681, n698, n714, n722, n723, n724, n725, n726, n734, n735, n736.
+
+`operator-mobile-close`: [Warehouse Mobile Close Container](../AIM/reading/b33a75f313a267b2873999318c8752e9ddbe07fbd8201653f8f3aa6b757253b5.md); AIM article `b33a75f313a267b2873999318c8752e9ddbe07fbd8201653f8f3aa6b757253b5`, original SHA-256 `9993e9e6a1c1b0d3c7db41486e42317efc9499c4bcd71a7fc83ed80680a63475`, nodes n56, n57, n82, n84, n87, n88, n90, n91, n92, n93, n94, n95, n96, n97, n98, n111, n112, n113, n114, n115, n119, n120, n121, n122.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does desktop Validate Item configure all mobile pick verification? Expected: Mobile verification is governed by Work Special Handling. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- Can I assume all Packing Preferences QC options apply on RF? Expected: The cited source explicitly restricts its described QC options to full-screen QC. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 264. Understanding lot, license-plate and serial prompts
+
+**Question:** Why does one picking or packing flow request tracking details?
+
+**What it does.** Tracking prompts depend on both the item and the operation’s configuration. Mobile lot and license-plate verification comes from Work Special Handling; desktop packing can prompt for serials based on outbound or inventory tracking. Grouped work and full-unit containers have documented exceptions.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. Mobile verifies the lot for lot-controlled quantities and the LP for LP-tracked locations when the relevant verification is configured. Each enabled field is validated before the instruction is submitted. Evidence: `operator-work-mobile`, `operator-packing-screen`, `operator-packing-preferences`.
+2. For receipt putaway, parent locating can group nested containers going to the same destination without honoring item/lot verification; child locating honors those verifications. Entire Quantity also has a quantity-verification exception. Evidence: `operator-work-mobile`, `operator-packing-screen`, `operator-packing-preferences`.
+3. Packing prompts for serials when configured for outbound or inventory tracking. Mobile full-unit containers created in the wave have a documented no-serial-prompt exception; do not treat every missing prompt as a fault. Evidence: `operator-work-mobile`, `operator-packing-screen`, `operator-packing-preferences`.
+4. In full-screen QC, Lot Verification Required changes the entry fields and item/lot grouping. The documentation advises against switching it off during an active inspection because failed quantities can lose their correct lot association. Evidence: `operator-work-mobile`, `operator-packing-screen`, `operator-packing-preferences`.
+
+**What can affect it**
+
+- Item/location tracking, Work Special Handling, grouping/locating method and the specific packing or QC flow.
+
+**What you can check**
+
+- Compare the exact tracking mode, work type and grouped/full-unit state before changing a verification flag.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+
+**More detail and sources**
+
+`operator-work-mobile`: [Warehouse Mobile Work Execution](../AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md); AIM article `c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0`, original SHA-256 `30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c`, nodes n58, n110, n113, n126, n148, n155, n162, n173, n181, n186, n214, n215, n216, n225, n233, n241, n248, n260, n262, n263, n266, n267, n273, n275, n277, n279, n281, n287, n294, n295, n296, n396, n401, n407, n414, n416, n493, n495, n497, n507, n588, n611, n612, n616, n617, n619, n620, n622, n623, n624, n625, n670, n675, n677, n678, n679, n680, n681, n698, n714, n722, n723, n724, n725, n726, n734, n735, n736.
+
+`operator-packing-screen`: [Packing a Container](../AIM/reading/9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac.md); AIM article `9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac`, original SHA-256 `d583b87e4904b3186103603a6378e213a5be4aafb82bc936b3397b0b6bd6be57`, nodes n59, n138, n141, n144, n147, n150, n161, n164, n167, n169, n172, n175, n178, n186, n188, n193, n195, n198, n202, n206, n210, n213, n216, n224, n227, n231, n233, n236, n243, n252, n255, n258.
+
+`operator-packing-preferences`: [Establishing Packing Preferences](../AIM/reading/b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60.md); AIM article `b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60`, original SHA-256 `0e2e312bae162513a7cf5930ac06edc6e2a231a9c66d499231453b25038c2e34`, nodes n58, n135, n139, n142, n145, n148, n151, n154, n157, n161, n164, n166, n170, n172, n174, n177, n181, n183, n185, n188, n190, n194, n196, n199, n208, n212, n215, n218, n229, n236, n239, n248, n253, n256, n258, n262.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Why might parent receipt putaway omit lot verification? Expected: Documented parent grouping exception differs from child locating. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- What does Lot Verification Required change in full-screen QC? Expected: Lot entry and per-item/lot rows; active inspection caveat. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 265. Describing a runtime problem for support
+
+**Question:** What details help explain a warehouse action that failed?
+
+**What it does.** Describe the exact screen, action, message and point where progress stopped. Work confirmation, packing, QC/VAS checks, close-container weight and print triggers are separate stages. A small, sanitized description lets support select the relevant configuration instead of guessing from a generic symptom.
+
+**What happens**
+
+Trigger: A user needs to understand the named configuration or warehouse action.
+
+1. For work execution, note header versus detail, work type, remaining pick/putaway step, hold indication and the field being verified. Say whether a success message appeared or the screen advanced after submission. Evidence: `operator-work-insight`, `operator-work-mobile`, `operator-packing-screen`, `operator-close-container`, `operator-packing-preferences`.
+2. For packing, record the initiation field used, whether lines remain, Status Info and the specific Error-column message. For close, identify QC/VAS and manual/scale weight conditions. Evidence: `operator-work-insight`, `operator-work-mobile`, `operator-packing-screen`, `operator-close-container`, `operator-packing-preferences`.
+3. For configuration, give the setting label, screen/tab, intended result and the applicable preference/profile scope. A total count of profiles does not identify which one applied. Evidence: `operator-work-insight`, `operator-work-mobile`, `operator-packing-screen`, `operator-close-container`, `operator-packing-preferences`.
+4. For printing, distinguish work start, close and last-container print triggers. Record document type, assigned printer and the observed error without assuming that a successful close means printing succeeded. Evidence: `operator-work-insight`, `operator-work-mobile`, `operator-packing-screen`, `operator-close-container`, `operator-packing-preferences`.
+
+**What can affect it**
+
+- The relevant preference/profile and permission depend on the action.
+
+**What you can check**
+
+- Suggested support summary: screen/action; expected result; exact message; last successful step; applicable preference/profile; whether it affects one flow or several. Omit credentials, personal data and transaction exports.
+
+**Expected results and limits**
+
+- A source-bound explanation of the applicable options and the next check.
+- This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.
+- The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.
+- No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.
+- The support-summary format is an authored troubleshooting aid derived from documented decision points, not a vendor-mandated ticket format or proof of an actual incident.
+
+**More detail and sources**
+
+`operator-work-insight`: [Using the Work Insight Screen](../AIM/reading/bc959a12270971649a68dcdb9ae1ed10ccdae19f400bb17d963723993fb0761a.md); AIM article `bc959a12270971649a68dcdb9ae1ed10ccdae19f400bb17d963723993fb0761a`, original SHA-256 `7b2d787921f8461f5e3ddac94209dee77ec801dbd75afafc457f0221d6af5503`, nodes n58, n244, n249, n252, n255, n256, n291, n299, n303, n307, n316, n317, n321, n324, n327, n330, n333, n336, n344, n348, n353, n363, n367, n371, n372, n373, n374, n378, n387.
+
+`operator-work-mobile`: [Warehouse Mobile Work Execution](../AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md); AIM article `c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0`, original SHA-256 `30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c`, nodes n58, n110, n113, n126, n148, n155, n162, n173, n181, n186, n214, n215, n216, n225, n233, n241, n248, n260, n262, n263, n266, n267, n273, n275, n277, n279, n281, n287, n294, n295, n296, n396, n401, n407, n414, n416, n493, n495, n497, n507, n588, n611, n612, n616, n617, n619, n620, n622, n623, n624, n625, n670, n675, n677, n678, n679, n680, n681, n698, n714, n722, n723, n724, n725, n726, n734, n735, n736.
+
+`operator-packing-screen`: [Packing a Container](../AIM/reading/9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac.md); AIM article `9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac`, original SHA-256 `d583b87e4904b3186103603a6378e213a5be4aafb82bc936b3397b0b6bd6be57`, nodes n59, n138, n141, n144, n147, n150, n161, n164, n167, n169, n172, n175, n178, n186, n188, n193, n195, n198, n202, n206, n210, n213, n216, n224, n227, n231, n233, n236, n243, n252, n255, n258.
+
+`operator-close-container`: [Closing a Container](../AIM/reading/f992a81240ef21071a0c60e111f7a41770da3bcd1ad4ca55d2f3db634e255a7f.md); AIM article `f992a81240ef21071a0c60e111f7a41770da3bcd1ad4ca55d2f3db634e255a7f`, original SHA-256 `be502f76ac9fe2ec6ac77845a740c73838548bea5c04b30b17d80b3594db2913`, nodes n58, n63, n66, n69, n72, n135, n138, n143, n145, n147, n149, n155, n157, n158, n160, n163, n170, n180, n188, n195, n197, n200, n203, n205.
+
+`operator-packing-preferences`: [Establishing Packing Preferences](../AIM/reading/b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60.md); AIM article `b11f0ebd7cbea45a5ee74c4fce6f70b1c1851343ff369ef90ee6cabd60514a60`, original SHA-256 `0e2e312bae162513a7cf5930ac06edc6e2a231a9c66d499231453b25038c2e34`, nodes n58, n135, n139, n142, n145, n148, n151, n154, n157, n161, n164, n166, n170, n172, n174, n177, n181, n183, n185, n188, n190, n194, n196, n199, n208, n212, n215, n218, n229, n236, n239, n248, n253, n256, n258, n262.
+
+Review: `DOCUMENTARY_STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CONTINUATION2_PEER_RECEIPT`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- What should a useful close-container support summary include? Expected: Exact message, QC/VAS and weight path. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+- What context identifies which configuration controls a failed action? Expected: Setting label, screen/tab, scope and intended result. Must not claim: A confirmed cause or active setting for a specific warehouse record.
+
+## 266. Why a GS1 label can show a fallback instead of one item or serial
+
+**Question:** Why a GS1 label can show a fallback instead of one item or serial?
+
+**What it does.** The label helper checks whether the selected container can be represented by one item, lot and serial. Its search covers a limited number of nested container levels. Multiple serial rows can trigger a fallback, including the same serial present in both current and retained records. The quantity is not always a total of everything in the container.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. The direct item-container path sets quantity to 1 and uses the container type as its unit. The alternate cursor path groups descendants and retains the current group quantity. Evidence: `rptlbl-sql-21223476`, `rptlbl-sql-37223533`.
+2. The descendant checks cover the selected container and up to three child levels. Active and retained serial rows are combined without deduplication. Evidence: `rptlbl-sql-21223476`, `rptlbl-sql-37223533`.
+3. The header removes the first two characters of the container ID and keeps at most 18 more; it does not validate a prefix. Evidence: `rptlbl-sql-21223476`, `rptlbl-sql-37223533`.
+4. The lot-expiry lookup has no warehouse filter. Multiple matching lot rows assign the expiry variable without a defined order. Evidence: `rptlbl-sql-21223476`, `rptlbl-sql-37223533`.
+5. Optional technical evidence: the cursor fallback tests @@CURSOR_ROWS < 1, including negative row-count reporting. Cursor kind/defaults and runtime count behavior are unverified, so the fallback does not by itself prove that no rows qualify. Evidence: `rptlbl-sql-21223476`, `rptlbl-sql-37223533`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The label helper checks whether the selected container can be represented by one item, lot and serial. Its search covers a limited number of nested container levels. Multiple serial rows can trigger a fallback, including the same serial present in both current and retained records. The quantity is not always a total of everything in the container.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-21223476`: [dbo.LBL_GS1AILabelDetail](sql/21223476.sql); source-definition SHA-256 `07394ca9b42eafba549683e29f8d851b428d38de439861e7aa0bbc23c8b451b6`, reading-copy SHA-256 `a6b13543f94328d4d61ef7f648702b1cfeb6ed7e3fd8fcb94ec8392a3b333439`, one-based inclusive lines [[1, 264]].
+
+`rptlbl-sql-37223533`: [dbo.LBL_GS1AILabelHeader](sql/37223533.sql); source-definition SHA-256 `0eccf6c21fc799f3d89a3116883bc4204a3ed8150c854578f2156c0b68723381`, reading-copy SHA-256 `c4bce8c5862e5f570fc8b8d597b543c5276608142bd681c3baa44049dac38f45`, one-based inclusive lines [[1, 51]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the GS1 helper search every nesting level? Expected: No. The reviewed descendant expressions are bounded to three child levels. Must not claim: It recursively searches unlimited depth.
+- Can the same serial in current and retained records cause the GS1 fallback? Expected: Yes. UNION ALL preserves both rows for the multiple-serial check. Must not claim: The serial rows are deduplicated.
+
+## 267. Where location, break and finished-good label fields come from
+
+**Question:** Where location, break and finished-good label fields come from?
+
+**What it does.** These label routines read stored fields for the selected record. The location label converts on-hand quantity to a whole number and formats expiration as a date. The finished-good label reads the putaway unit; the break label joins its container to the shipment. Reading these fields does not move stock or print a label.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. A missing optional company keeps the location row but leaves company output blank. Integer conversion can lose fractional quantity. Evidence: `rptlbl-sql-53223590`, `rptlbl-sql-5223419`, `rptlbl-sql-2104706896`.
+2. The break label requires a matching shipment; the finished-good label reads its stored item, quantity and destination directly. Evidence: `rptlbl-sql-53223590`, `rptlbl-sql-5223419`, `rptlbl-sql-2104706896`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- These label routines read stored fields for the selected record. The location label converts on-hand quantity to a whole number and formats expiration as a date. The finished-good label reads the putaway unit; the break label joins its container to the shipment. Reading these fields does not move stock or print a label.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-53223590`: [dbo.LBL_LocationInventory](sql/53223590.sql); source-definition SHA-256 `ed7bfcd49e6ddad1c30a3a643011e8d2ac7dd6aa48a4ebfebc66489e1529f295`, reading-copy SHA-256 `e2b363338948fa1c37d0d913a6a306f7cb3d5ab43bc1ac6f897f2bda481adf91`, one-based inclusive lines [[1, 39]].
+
+`rptlbl-sql-5223419`: [dbo.LBL_FinishedGoodPutaway](sql/5223419.sql); source-definition SHA-256 `11a37446ca6c9fe601b3497c0fa1845dfd4d7bc7d97cb5bc35d0fd6a3de828e1`, reading-copy SHA-256 `dc876b963c2157cfb1331bc56caea6b6ca17e03fbcb4b10d0baa75e7e8ceb8e1`, one-based inclusive lines [[1, 30]].
+
+`rptlbl-sql-2104706896`: [dbo.LBL_BreakLabel](sql/2104706896.sql); source-definition SHA-256 `c5868485fcadfde5d358e3e51d9c39c1711ec74750c747cbf8297097f16faa2d`, reading-copy SHA-256 `729fc9a345bc1acd51267633e3a5d584cfa14edd2567b6bc82251786b31fb20b`, one-based inclusive lines [[1, 37]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Why can a location label lose the fractional part of on-hand quantity? Expected: It casts ON_HAND_QTY to INT. Must not claim: It rounds inventory through a unit conversion.
+- Does reading the finished-good putaway label move the unit? Expected: No. It selects stored WORK_ORDER_PUTAWAY_UNIT fields. Must not claim: It performs the putaway.
+
+## 268. Why a work-instruction label header and details can differ
+
+**Question:** Why a work-instruction label header and details can differ?
+
+**What it does.** The header reads the parent work unit when the selected instruction has a parent. The detail helper either groups the children of a parent instruction or selects the chosen child. It adds quantities and chooses the smallest unit text; it does not convert quantities between units.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Compare whether the selected instruction has a parent before comparing header and detail identities. Evidence: `rptlbl-sql-69223647`, `rptlbl-sql-85223704`.
+2. A displayed unit chosen by MIN does not establish that all quantities use one unit. Evidence: `rptlbl-sql-69223647`, `rptlbl-sql-85223704`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The header reads the parent work unit when the selected instruction has a parent. The detail helper either groups the children of a parent instruction or selects the chosen child. It adds quantities and chooses the smallest unit text; it does not convert quantities between units.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-69223647`: [dbo.LBL_WorkInstructionDetail](sql/69223647.sql); source-definition SHA-256 `4918f492b72028daa83ff751d2faeacf19c89e1b2311d2305140e19875b97036`, reading-copy SHA-256 `3d1f4bbd5eba6b7b882710333edf3fa26c8e2798849298c21dd4e21540699b31`, one-based inclusive lines [[1, 36]].
+
+`rptlbl-sql-85223704`: [dbo.LBL_WorkInstructionHeader](sql/85223704.sql); source-definition SHA-256 `339f946f028ebe21c108417630e0bf50bf52b9e81a26ae1ccc0c2ea117d72719`, reading-copy SHA-256 `bd279101068c78e00d7053a396b210be11136c7bcfc7134103fbde0474def198`, one-based inclusive lines [[1, 29]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the work label convert mixed units before summing? Expected: No. It sums quantity and separately selects MIN(quantity_um). Must not claim: MIN performs unit conversion.
+- Can the work label header use the parent while details use the selected child? Expected: Yes. Their parent/self selection rules differ. Must not claim: Both always select the same instruction identity.
+
+## 269. Why a cycle-count report can omit a group or repeat a request
+
+**Question:** Why a cycle-count report can omit a group or repeat a request?
+
+**What it does.** The cycle-count detail reports select requests from a plan and join matching location inventory. A positive group number narrows the results. The other branch still excludes requests whose group is NULL. Multiple matching inventory records can repeat a request; the report does not total them into one row.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. The inventory join includes location, warehouse, item, company, lot and logistics unit. Missing inventory is allowed by the left join. Evidence: `rptlbl-sql-17747466`, `rptlbl-sql-145747922`, `rptlbl-sql-161747979`.
+2. The serial version adds helper-produced serial text; the header reads plan metadata separately. Evidence: `rptlbl-sql-17747466`, `rptlbl-sql-145747922`, `rptlbl-sql-161747979`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The cycle-count detail reports select requests from a plan and join matching location inventory. A positive group number narrows the results. The other branch still excludes requests whose group is NULL. Multiple matching inventory records can repeat a request; the report does not total them into one row.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-17747466`: [dbo.RPT_CCListDetailsWSerns](sql/17747466.sql); source-definition SHA-256 `767b4b01dab920df30adb4146c22cbed3c3cc8d74cb2df2ff99bac14ed521c63`, reading-copy SHA-256 `0a65f5e55fd647fd488e782c62d8bbf70b709548c85cc2382830b6cf392f34b5`, one-based inclusive lines [[1, 85]].
+
+`rptlbl-sql-145747922`: [dbo.RPT_CycleCountListDetails](sql/145747922.sql); source-definition SHA-256 `170e85d73cc8d3f84f145b1962178a73b11ab5b18206753524808366e05fcd78`, reading-copy SHA-256 `fdeaeb506940fb1d16cd40630d5fc83aa25d3181b168c5aa89fe2453e4d3cd38`, one-based inclusive lines [[1, 86]].
+
+`rptlbl-sql-161747979`: [dbo.RPT_CycleCountListHeader](sql/161747979.sql); source-definition SHA-256 `7cfc49655628af1609141c6f11b7cfb518fe3e7759e98e72eb3fedd7ad6b2fe6`, reading-copy SHA-256 `ce46452060d5b65538d3a95b7a01177bd510a3c80f8420d4573e15e715c5155a`, one-based inclusive lines [[1, 43]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does group zero include cycle-count requests with NULL group? Expected: No. The fallback compares group to itself, which excludes NULL. Must not claim: Zero includes every possible group.
+- Why might a cycle-count request appear more than once? Expected: Multiple matching inventory rows can multiply its joined output. Must not claim: The procedure guarantees one row per request.
+
+## 270. Why purchase-order receipt reports show different totals or blanks
+
+**Question:** Why purchase-order receipt reports show different totals or blanks?
+
+**What it does.** One report shows each linked receipt line, so the purchase-order quantity repeats beside several receipts. Another groups receipt quantities under purchase-order display fields. Their missing-receipt values differ: some fields become zero while others stay NULL. Repeated purchase-order quantities should not be added as separate orders.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. The receipt-row version keeps individual receipt matches. The summary groups by displayed purchase-order fields rather than the detail object ID. Evidence: `rptlbl-sql-305748492`, `rptlbl-sql-321748549`, `rptlbl-sql-337748606`, `rptlbl-sql-353748663`, `rptlbl-sql-369748720`.
+2. A header with no detail rows can show a line count of zero while quantity sums stay NULL. Evidence: `rptlbl-sql-305748492`, `rptlbl-sql-321748549`, `rptlbl-sql-337748606`, `rptlbl-sql-353748663`, `rptlbl-sql-369748720`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- One report shows each linked receipt line, so the purchase-order quantity repeats beside several receipts. Another groups receipt quantities under purchase-order display fields. Their missing-receipt values differ: some fields become zero while others stay NULL. Repeated purchase-order quantities should not be added as separate orders.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-305748492`: [dbo.RPT_POStatusDetailsAndReceipts](sql/305748492.sql); source-definition SHA-256 `f962063e0b43cebc036162b51bdf08726ca1900b82659b5df61849b30615e283`, reading-copy SHA-256 `8fd8709a76180493cf140fa3d039bcf8a33ba21f06b74dc23604d67759a5d8c9`, one-based inclusive lines [[1, 66]].
+
+`rptlbl-sql-321748549`: [dbo.RPT_PurchaseOrderDetails](sql/321748549.sql); source-definition SHA-256 `c6acd48e92b47a555c0d5fa0cf3391b30b0671a1eea530e021673472dcac5d8d`, reading-copy SHA-256 `9e18a63bf06424ad43a40048f8d6de569e8021f5f7ad62c32e4e0b2199b76c95`, one-based inclusive lines [[1, 39]].
+
+`rptlbl-sql-337748606`: [dbo.RPT_PurchaseOrderHeader](sql/337748606.sql); source-definition SHA-256 `1705077497aa284b2b7a32c0997ef0b3bb2532af08df5d1a2e863a0818db697f`, reading-copy SHA-256 `b9b6d9da113d80c1bdc0900dad25e3a3c3f7ee8e824ed1b266c12fd4bfffdee0`, one-based inclusive lines [[1, 41]].
+
+`rptlbl-sql-353748663`: [dbo.RPT_PurchaseOrderStatusDetails](sql/353748663.sql); source-definition SHA-256 `f8b6c30b94759b714e72cd863e0deeb6f230da32eba731e63e012147b9fbecf9`, reading-copy SHA-256 `4c01f7b08e55ec2c5c9e28a2f72d68ab0e3fb5a7e6362fdca15ef6707c8c4d16`, one-based inclusive lines [[1, 66]].
+
+`rptlbl-sql-369748720`: [dbo.RPT_PurchaseOrderStatusHeader](sql/369748720.sql); source-definition SHA-256 `cc4b5c79a402019713de4d5faa74720511feb3f3865c60466094e4d4b3f8d307`, reading-copy SHA-256 `777bab3f8304d685d0873800a6404e6dac20b5ed750df325a380eb3db237fb97`, one-based inclusive lines [[1, 53]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can I sum every repeated PO quantity in the receipt-row report? Expected: No. One PO line can repeat for each linked receipt line. Must not claim: Each repeated quantity represents a different PO line.
+- Why is received quantity blank while receipt total is zero in the PO summary? Expected: Only the receipt-total sum is explicitly zero-filled; other empty sums remain NULL. Must not claim: All missing receipt aggregates are zero.
+
+## 271. How receipt status reports choose container quantities
+
+**Question:** How receipt status reports choose container quantities?
+
+**What it does.** Receipt status totals use selected container status numbers and only containers whose type is NULL. Empty sets can produce blank totals. The detail-with-containers report can retain a detail with no container, yet exclude a detail whose existing containers all have a non-NULL type.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. The header sums status 200, 300, 301 and 900 into separate named quantity fields. It does not change those statuses. Evidence: `rptlbl-sql-417748891`, `rptlbl-sql-433748948`, `rptlbl-sql-449749005`, `rptlbl-sql-465749062`.
+2. The receiving worksheet repeats the receipt header total for each line; its DOCUMENT_TYPE parameter is unused. Evidence: `rptlbl-sql-417748891`, `rptlbl-sql-433748948`, `rptlbl-sql-449749005`, `rptlbl-sql-465749062`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- Receipt status totals use selected container status numbers and only containers whose type is NULL. Empty sets can produce blank totals. The detail-with-containers report can retain a detail with no container, yet exclude a detail whose existing containers all have a non-NULL type.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-417748891`: [dbo.RPT_ReceiptStatusDetails](sql/417748891.sql); source-definition SHA-256 `ab0cdb15d601f3e935ec02f36d3c5a88aa6bb7d4d3e42fbdc43e3088ebb85d94`, reading-copy SHA-256 `e395c38df15969a4e2352d233699f09d0db3d5a65332c92273818e1780e0b318`, one-based inclusive lines [[1, 40]].
+
+`rptlbl-sql-433748948`: [dbo.RPT_ReceiptStatusDtlsAndConts](sql/433748948.sql); source-definition SHA-256 `b65850523cd24263797dad4c47c159247bf8181b742811b5fe75513fd692500d`, reading-copy SHA-256 `03342c4e9614ff5a7b142ce1ae5767a2c257e5edda54a45bd6bcdbc9ca89816c`, one-based inclusive lines [[1, 70]].
+
+`rptlbl-sql-449749005`: [dbo.RPT_ReceiptStatusHeader](sql/449749005.sql); source-definition SHA-256 `547474e23113f8ced86d97d6e7d58bbe8880a744ce17cf8da6143d77eef691a5`, reading-copy SHA-256 `80a8fca67469fe8f7188cb43438475dfdae8928362533372146a51baece99afc`, one-based inclusive lines [[1, 101]].
+
+`rptlbl-sql-465749062`: [dbo.RPT_ReceivingWorksheet](sql/465749062.sql); source-definition SHA-256 `ebe979086b18f6ce73db053e08b0a019400fbc600d0d77ca02b348c34037d14c`, reading-copy SHA-256 `d5b9d638acaafceef945714fe65f0f28c2f137be47b8344cfa974c3be8c8daa0`, one-based inclusive lines [[1, 56]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the receipt status header make an empty quantity total zero? Expected: Not universally. Empty SUM values can remain NULL. Must not claim: Every missing status quantity is zero.
+- Does changing DOCUMENT_TYPE change the receiving worksheet query? Expected: No. That parameter is declared but unused in this body. Must not claim: The parameter selects a different worksheet branch.
+
+## 272. Which receipt containers appear on a putaway list
+
+**Question:** Which receipt containers appear on a putaway list?
+
+**What it does.** The detail report lists direct children of the selected receipt container. A child qualifies when it has a destination or matches the coded failed-status condition. The header describes the selected container itself. Neither report performs a putaway or recursively lists every descendant.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Details join receipt lines and sort by destination then item. They show stored converted and base quantities separately. Evidence: `rptlbl-sql-113747808`, `rptlbl-sql-129747865`.
+2. The header requires the matching receipt header and has no detail eligibility filter. Evidence: `rptlbl-sql-113747808`, `rptlbl-sql-129747865`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The detail report lists direct children of the selected receipt container. A child qualifies when it has a destination or matches the coded failed-status condition. The header describes the selected container itself. Neither report performs a putaway or recursively lists every descendant.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-113747808`: [dbo.RPT_ContPutawayListDetails](sql/113747808.sql); source-definition SHA-256 `a6680844e4a127d4fa23424a51d10774a46c5d835ffadfeb401d16b5f27d0142`, reading-copy SHA-256 `602bbb804812704f80fb999b33f2c727f7c2b5f7211a978b7c5ae13f5c14d21b`, one-based inclusive lines [[1, 74]].
+
+`rptlbl-sql-129747865`: [dbo.RPT_ContPutawayListHeader](sql/129747865.sql); source-definition SHA-256 `ff00979255d064c1e16abb256152797987f5c6ab94da2365f751ef8806352a78`, reading-copy SHA-256 `cbb6d46ab17598b1850c148099974623161dc98fe922d3539930c7565b9281db`, one-based inclusive lines [[1, 80]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the receipt putaway detail include grandchildren? Expected: No. It filters parent equal to the selected container. Must not claim: All descendants are recursively included.
+- Can a child with no destination appear on the putaway list? Expected: Yes, if its failed-status value satisfies the coded condition. Must not claim: A destination is always required.
+
+## 273. Why packing-list versions include different containers
+
+**Question:** Why packing-list versions include different containers?
+
+**What it does.** Packing-list variants use different container selection rules. Some use stored tree membership; the SSRS versions walk parent links from selected roots. A root may appear in one version and be excluded by another. The recursive queries do not add a shipment check to every descendant step.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Compare the root selection and the descendant predicate in the exact routine. Stored tree membership and recursive parent traversal are not interchangeable. Evidence: `rptlbl-sql-49747580`, `rptlbl-sql-65747637`, `rptlbl-sql-593749518`, `rptlbl-sql-609749575`.
+2. The SSRS versions use UNION ALL and a limited text path for sorting; they have no custom cycle guard or MAXRECURSION override. Evidence: `rptlbl-sql-49747580`, `rptlbl-sql-65747637`, `rptlbl-sql-593749518`, `rptlbl-sql-609749575`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- Packing-list variants use different container selection rules. Some use stored tree membership; the SSRS versions walk parent links from selected roots. A root may appear in one version and be excluded by another. The recursive queries do not add a shipment check to every descendant step.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-49747580`: [dbo.RPT_ContainerPackListDetails](sql/49747580.sql); source-definition SHA-256 `6220a1dbe702607632c9bcc63d4d74fdc7e3dab752fe0f7b81e1fbcd3a19fc9d`, reading-copy SHA-256 `3658489fe9fc69a7ea5ae3ed81c1dabcf8a2efa6f8f00c8d22b6eb8a5d2be515`, one-based inclusive lines [[1, 88]].
+
+`rptlbl-sql-65747637`: [dbo.RPT_ContainerPackListDetailsForSSRS](sql/65747637.sql); source-definition SHA-256 `9be05930b2b4a26456acb654584e9cd31031626f249c5d2d028e811878ab9d4e`, reading-copy SHA-256 `e54bcbc7c3d5803b7d617434915e0fbeca8ecf69782bf051b27de9caada17f59`, one-based inclusive lines [[1, 127]].
+
+`rptlbl-sql-593749518`: [dbo.RPT_ShipmentPackListDetails](sql/593749518.sql); source-definition SHA-256 `3ff547a7f75b52fe7dfa3ddf546021df106027f01fd8b8b6910646eeb62d2086`, reading-copy SHA-256 `4c5a040b3231190b45f1322029b0fe0caa1199dd8342fe212a18bb6800f071ff`, one-based inclusive lines [[1, 74]].
+
+`rptlbl-sql-609749575`: [dbo.RPT_ShipmentPackListDetailsForSSRS](sql/609749575.sql); source-definition SHA-256 `94322ba507929a7c47f6d0391d98c7eac37dcf36060ec8acab7dd2c7452933c7`, reading-copy SHA-256 `a373be44a2622d031925ce26c6b87e3b09012c8772b9a279f1b2e60d87f23007`, one-based inclusive lines [[1, 96]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can a recursive packing-list descendant come from a different shipment? Expected: The recursive step follows parent links without a descendant shipment predicate. Must not claim: Every recursive row is filtered to the root shipment.
+- Do all packing-list versions exclude the selected root? Expected: No. The reviewed root and membership rules differ by procedure. Must not claim: Root handling is identical in all versions.
+
+## 274. How serial text is added to a packing list
+
+**Question:** How serial text is added to a packing list?
+
+**What it does.** Serial packing lists call a helper that returns serial display text for each selected container. They do not directly join one report row per serial. The SSRS variant also walks parent links and rejoins the selected container, while other variants use stored tree membership. The source does not prove that a serial or container was physically shipped.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. The report calls RPTfn_GetShipContSernText for a container identity; the helper text is one projected value. Its internal behavior is a separate contract. Evidence: `rptlbl-sql-97747751`, `rptlbl-sql-737750031`, `rptlbl-sql-753750088`.
+2. Shipment-detail joins and the SSRS container rejoin can affect row multiplicity. The source container quantity is not a count of serial text entries. Evidence: `rptlbl-sql-97747751`, `rptlbl-sql-737750031`, `rptlbl-sql-753750088`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- Serial packing lists call a helper that returns serial display text for each selected container. They do not directly join one report row per serial. The SSRS variant also walks parent links and rejoins the selected container, while other variants use stored tree membership. The source does not prove that a serial or container was physically shipped.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-97747751`: [dbo.RPT_ContPackListWSernsDetails](sql/97747751.sql); source-definition SHA-256 `662d1c8562272b2c36763dead7a68dd35fea72dbcf912d558b64b1954f53a9b2`, reading-copy SHA-256 `397746c63ce4ff6b4c21c73fff2f7529ca7364b22e9e05f7d04e1f2905fce497`, one-based inclusive lines [[1, 89]].
+
+`rptlbl-sql-737750031`: [dbo.RPT_ShipPackListWSernsDetails](sql/737750031.sql); source-definition SHA-256 `a5edb3a95b56eda16e1e5816e2544bf2d152d37bdf11c696231f4f5c316064f5`, reading-copy SHA-256 `dac7b4f3b118731027269c366f33c20da0ba813cea5b6d0ac8e3ad95579f92f4`, one-based inclusive lines [[1, 74]].
+
+`rptlbl-sql-753750088`: [dbo.RPT_ShipPackListWSernsDetailsForSSRS](sql/753750088.sql); source-definition SHA-256 `ee56691c917069254ab2d9275dbda6f47a147803dcd444c0519e63c8a4961eb4`, reading-copy SHA-256 `86d2b0ec88d3c69f86173f82b7fb45747289ea057c27aa50dc39e1e5b659356f`, one-based inclusive lines [[1, 112]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the serial packing procedure directly join one row per serial? Expected: No. It projects a scalar serial-text helper result per selected container row. Must not claim: It directly joins serial records into separate report rows.
+- Do serial SSRS and stored-tree packing reports use identical traversal? Expected: No. Their source contracts retain separate traversal rules. Must not claim: The SSRS suffix changes only visual formatting.
+
+## 275. Which items and purchase order appear on a container contents label
+
+**Question:** Which items and purchase order appear on a container contents label?
+
+**What it does.** The detail helper lists direct children and can also include the selected container itself when it has an item and container ID. It does not automatically include grandchildren. The header chooses one candidate purchase order without a defined order, so that value does not prove every line has the same purchase order.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Both detail branches require a matching shipment detail. The self branch has item and container-ID checks that the direct-child branch does not have. Evidence: `rptlbl-sql-2120706953`, `rptlbl-sql-2136707010`.
+2. Details combine with UNION ALL; a self-referential row could qualify twice. The header keeps its container when the optional purchase-order candidate is missing. Evidence: `rptlbl-sql-2120706953`, `rptlbl-sql-2136707010`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The detail helper lists direct children and can also include the selected container itself when it has an item and container ID. It does not automatically include grandchildren. The header chooses one candidate purchase order without a defined order, so that value does not prove every line has the same purchase order.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-2120706953`: [dbo.LBL_ContainerContentsDetails](sql/2120706953.sql); source-definition SHA-256 `37cd794c12a3006b2146f5d7339935791c386319c9b84497175e60e1f8191683`, reading-copy SHA-256 `581ba012bab6d73a538f5f2045b95fbf603ffebefc2c16cb552d6efca512a12e`, one-based inclusive lines [[1, 76]].
+
+`rptlbl-sql-2136707010`: [dbo.LBL_ContainerContentsHeader](sql/2136707010.sql); source-definition SHA-256 `e310066f9c284463bbc9fb3456098fa293092d3e7f17494b25af13b1a5fd1785`, reading-copy SHA-256 `41e7c36aba4d7e1e5e5bea5dff5ffeb87c326b74f653c114df36b378a7ca853f`, one-based inclusive lines [[1, 70]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the container contents label list every nested descendant? Expected: No. It selects direct children and the separately guarded self row. Must not claim: It recursively expands the whole tree.
+- Does the header purchase order certify that all contents share that order? Expected: No. It selects TOP1 candidate without ORDER BY. Must not claim: The procedure validates purchase-order consistency.
+
+## 276. Where packing-list component quantities come from
+
+**Question:** Where packing-list component quantities come from?
+
+**What it does.** Component packing data first uses an associated positive work-order number. Without that path it can use the highest BOM revision. A positive work-order number with no matching component does not automatically fall back to the BOM. The latest revision lookup does not test an active flag or effective date.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Identify whether the routine is scoped to a shipment or a shipment line. Evidence: `rptlbl-sql-689749860`, `rptlbl-sql-705749917`, `rptlbl-sql-721749974`.
+2. Tied BOM candidates or multiple matching components can create multiple output rows; quantity is computed from the selected source. Evidence: `rptlbl-sql-689749860`, `rptlbl-sql-705749917`, `rptlbl-sql-721749974`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- Component packing data first uses an associated positive work-order number. Without that path it can use the highest BOM revision. A positive work-order number with no matching component does not automatically fall back to the BOM. The latest revision lookup does not test an active flag or effective date.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-689749860`: [dbo.RPT_ShipPackListWCompsComps](sql/689749860.sql); source-definition SHA-256 `7ac5114389c716c0f90895608d0386f350021a6b2bd65ca52078ea12f9d093a6`, reading-copy SHA-256 `5f7e4f972ae1672d7021b8ceb5d668f8e440693e4d2faf3713ba1e99eb363c6f`, one-based inclusive lines [[1, 94]].
+
+`rptlbl-sql-705749917`: [dbo.RPT_ShipPackListWCompsCompsForSSRS](sql/705749917.sql); source-definition SHA-256 `2a88d4bf1d5705ccb798a50b524145761dbb88e22d5fbaa10c80dede3a70d717`, reading-copy SHA-256 `6960b4c7eac2821c85347ff0b02251bcbee1f29a46d1bd0e5fba80ff897a3089`, one-based inclusive lines [[1, 72]].
+
+`rptlbl-sql-721749974`: [dbo.RPT_ShipPackListWCompsDetails](sql/721749974.sql); source-definition SHA-256 `673203708c6d333c33b106e021a5d7be11f5b659807096bab27184ece1376151`, reading-copy SHA-256 `27a8a466ef5f1784a5890ab0722493bd595327bd4936223b125171e6361cd1cb`, one-based inclusive lines [[1, 77]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Will a missing component on a positive work order automatically use the BOM? Expected: No. The positive-work-order branch does not provide that fallback. Must not claim: Missing work-order components always fall back to BOM.
+- Does the packing component lookup choose the latest active effective BOM? Expected: It chooses the maximum revision without an active/effective-date test. Must not claim: The maximum revision is proven active and effective.
+
+## 277. Why report ship-from addresses can remain blank
+
+**Question:** Why report ship-from addresses can remain blank?
+
+**What it does.** Several report headers prefer a warehouse-company address, then a company address, then the warehouse. They choose the source by whether a matching row exists. A blank field in the preferred row does not automatically fall back to the same field in the next source.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Check which address row wins before investigating an individual missing phone, country or address line. Evidence: `rptlbl-sql-33747523`, `rptlbl-sql-81747694`, `rptlbl-sql-273748378`, `rptlbl-sql-625749632`, `rptlbl-sql-641749689`, `rptlbl-sql-2133231000`.
+2. The SSRS packing header container count subtracts distinct non-NULL parent IDs among named containers from the named-container count; it is not a universal root count. Evidence: `rptlbl-sql-33747523`, `rptlbl-sql-81747694`, `rptlbl-sql-273748378`, `rptlbl-sql-625749632`, `rptlbl-sql-641749689`, `rptlbl-sql-2133231000`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- Several report headers prefer a warehouse-company address, then a company address, then the warehouse. They choose the source by whether a matching row exists. A blank field in the preferred row does not automatically fall back to the same field in the next source.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-33747523`: [dbo.RPT_CommonShipmentHeaderInfo](sql/33747523.sql); source-definition SHA-256 `2efcafcbc2343fe27333f6e293566741f536a8d94b57929c95fb162f72b6bd98`, reading-copy SHA-256 `3f3f1311d58f2417830c5b4a3d8c4c8e15756224abf76644729feb23539edcec`, one-based inclusive lines [[1, 166]].
+
+`rptlbl-sql-81747694`: [dbo.RPT_ContainerPackListHeader](sql/81747694.sql); source-definition SHA-256 `d1a2261ce1874ce32964706bd45a16d695b11d84ce9353bc460d3606dfe8b6bc`, reading-copy SHA-256 `47fd9b17e8c33bc2f8ecb8209d573560812e497b74dece308cb544db20bfd436`, one-based inclusive lines [[1, 145]].
+
+`rptlbl-sql-273748378`: [dbo.RPT_OrderPickListHeader](sql/273748378.sql); source-definition SHA-256 `d9cb7c153c3973029c49db859600956249bb772c486ee7b9693ba7b328c7c7f8`, reading-copy SHA-256 `7f0f99a20bd84475438acc41406d386e51dc8ab31ca148bb95abcb7648c6ac63`, one-based inclusive lines [[1, 144]].
+
+`rptlbl-sql-625749632`: [dbo.RPT_ShipmentPackListHeader](sql/625749632.sql); source-definition SHA-256 `1c39a57e43ab2b05f5ebbaa06b97120bc508604ce400bf5f530445a9ebe36f38`, reading-copy SHA-256 `160aae348676d053c0c1c32ac041324911daa5f6df4fe75a797b85e1e4f5eb37`, one-based inclusive lines [[1, 138]].
+
+`rptlbl-sql-641749689`: [dbo.RPT_ShipmentPackListHeaderForSSRS](sql/641749689.sql); source-definition SHA-256 `3314184825c6eaf58a515f579ab1053282fc5ffefd508f9f4bd590769c21dcfb`, reading-copy SHA-256 `12441d3c2f43247b78e14253b3ce4e9c262641cc06ccbce3aeb39228f3dfd505`, one-based inclusive lines [[1, 250]].
+
+`rptlbl-sql-2133231000`: [dbo.RPT_BatchPickListHeader](sql/2133231000.sql); source-definition SHA-256 `25ab525a8537f439c2900e91085052adb3b93d9666ccf25704054ea3e417f764`, reading-copy SHA-256 `13960d8c42e56ea6c182f2ae6ec1643341016a56c6f528459f2b54a924233f7c`, one-based inclusive lines [[1, 101]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Why is ship-from phone blank even though the warehouse has a phone? Expected: A preferred warehouse-company or company row can win while its phone is NULL. Must not claim: Each blank phone automatically falls back to the warehouse.
+- Is the SSRS packing header count always the number of root containers? Expected: No. It uses named-container count minus distinct non-NULL parent IDs. Must not claim: It directly counts roots.
+
+## 278. Why allocation and shipment pick-list backorders differ
+
+**Question:** Why allocation and shipment pick-list backorders differ?
+
+**What it does.** The allocation pick list subtracts allocated quantity from requested quantity. The shipment pick list subtracts total quantity instead. Both clamp a nonpositive difference to zero, and both use their own quantity basis for extended weight and price. NULL values can leave the calculated result blank.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Allocation rows come from shipment allocation requests and show from-location; shipment rows come from shipment detail and show pick-location. Evidence: `rptlbl-sql-2101230886`, `rptlbl-sql-657749746`.
+2. These procedures read existing quantities; they do not allocate or pick inventory. Evidence: `rptlbl-sql-2101230886`, `rptlbl-sql-657749746`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The allocation pick list subtracts allocated quantity from requested quantity. The shipment pick list subtracts total quantity instead. Both clamp a nonpositive difference to zero, and both use their own quantity basis for extended weight and price. NULL values can leave the calculated result blank.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-2101230886`: [dbo.RPT_AllocationPickListDetails](sql/2101230886.sql); source-definition SHA-256 `d3d84aee5aa0016e1d7d6f43d178e92e3dc51b053de5ba1584f0923c542537c4`, reading-copy SHA-256 `eae1f520d098056221ae9a680d65d6004b17e52e9f57897db8b1ac362da7c800`, one-based inclusive lines [[1, 78]].
+
+`rptlbl-sql-657749746`: [dbo.RPT_ShipmentPickListDetails](sql/657749746.sql); source-definition SHA-256 `78b287f7384c1d83cba8fb03966a65329c788925606d53e37b37b0b24ec5d935`, reading-copy SHA-256 `a2b9dfb6272733e246b51863f7693299f01e8609f987c426cf81dfd387059f5b`, one-based inclusive lines [[1, 78]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Which quantity does the allocation pick-list backorder subtract? Expected: Allocated quantity, not shipment-detail total quantity. Must not claim: Both pick-list procedures use total quantity.
+- Can a pick-list backorder be NULL instead of zero? Expected: Yes. NULL requested or quantity input propagates through the arithmetic. Must not claim: The clamp replaces every NULL with zero.
+
+## 279. Why batch and order pick lists handle missing detail differently
+
+**Question:** Why batch and order pick lists handle missing detail differently?
+
+**What it does.** Both detail reports select child instructions of the requested parent and use a coded instruction type. The order pick report requires a matching shipment detail. The batch pick report keeps the instruction when the shipment detail is missing, leaving its optional detail fields blank.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. The detail sort is sequence, source location and item. Parent header routines select the instruction identified by the parameter. Evidence: `rptlbl-sql-257748321`, `rptlbl-sql-2117230943`, `rptlbl-sql-273748378`, `rptlbl-sql-2133231000`.
+2. Report comment helpers receive DOCUMENT_TYPE; this does not itself establish a rendered document. Evidence: `rptlbl-sql-257748321`, `rptlbl-sql-2117230943`, `rptlbl-sql-273748378`, `rptlbl-sql-2133231000`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- Both detail reports select child instructions of the requested parent and use a coded instruction type. The order pick report requires a matching shipment detail. The batch pick report keeps the instruction when the shipment detail is missing, leaving its optional detail fields blank.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-257748321`: [dbo.RPT_OrderPickListDetails](sql/257748321.sql); source-definition SHA-256 `8d21624aae02fff1923444cc51f1b94c30784bf813e8e265b04f811f84b98bc8`, reading-copy SHA-256 `221036e2f57351ec7dee3d58d7f0a524c56ce5385e537a14079895e5d356f0e6`, one-based inclusive lines [[1, 72]].
+
+`rptlbl-sql-2117230943`: [dbo.RPT_BatchPickListDetails](sql/2117230943.sql); source-definition SHA-256 `2373c4a268f974deba0f5630e735831cc1af0ecef9f0e23e1da55b8eac845a58`, reading-copy SHA-256 `b88fbc0157ccff8e33b650853c0f9f20dcadb957db438d022e63008a348a1147`, one-based inclusive lines [[1, 80]].
+
+`rptlbl-sql-273748378`: [dbo.RPT_OrderPickListHeader](sql/273748378.sql); source-definition SHA-256 `d9cb7c153c3973029c49db859600956249bb772c486ee7b9693ba7b328c7c7f8`, reading-copy SHA-256 `7f0f99a20bd84475438acc41406d386e51dc8ab31ca148bb95abcb7648c6ac63`, one-based inclusive lines [[1, 144]].
+
+`rptlbl-sql-2133231000`: [dbo.RPT_BatchPickListHeader](sql/2133231000.sql); source-definition SHA-256 `25ab525a8537f439c2900e91085052adb3b93d9666ccf25704054ea3e417f764`, reading-copy SHA-256 `13960d8c42e56ea6c182f2ae6ec1643341016a56c6f528459f2b54a924233f7c`, one-based inclusive lines [[1, 101]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can a batch pick instruction remain visible when its shipment detail is missing? Expected: Yes. Its shipment-detail join is left outer. Must not claim: Both reports remove it.
+- Why might that instruction disappear from the order pick detail? Expected: The order-pick detail uses an inner shipment-detail join. Must not claim: The report automatically recreates the missing detail.
+
+## 280. How a picking-group report displays container quantities
+
+**Question:** How a picking-group report displays container quantities?
+
+**What it does.** The picking-group report joins each selected group container to its shipment line and immediate parent. The displayed container type can come from the parent. Separate coded conditions decide whether the display quantity is the stored quantity or one, and whether the display unit is a quantity unit or container type.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Only the immediate parent is consulted; there is no recursive type lookup. Evidence: `rptlbl-sql-289748435`.
+2. The two conditions use separately redacted literals, so their equivalence is not assumed. Rows sort by location and group position. Evidence: `rptlbl-sql-289748435`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The picking-group report joins each selected group container to its shipment line and immediate parent. The displayed container type can come from the parent. Separate coded conditions decide whether the display quantity is the stored quantity or one, and whether the display unit is a quantity unit or container type.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-289748435`: [dbo.RPT_PickingGroupPickList](sql/289748435.sql); source-definition SHA-256 `ae9eaf4c3479cd330070c99511ccdc2551da1b80c00d8881ac81871272c4fd46`, reading-copy SHA-256 `0adfad9edbc3225494da707a1b8e8a6bdb32fdb38adc42e49ed93b9492f971ef`, one-based inclusive lines [[1, 83]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can a picking-group container type come from its parent? Expected: Yes, when the immediate parent type is non-NULL. Must not claim: Only the child type is displayed.
+- Does the picking-group display quantity always equal stored quantity? Expected: No. Its CASE expression can return one. Must not claim: Every row uses stored quantity.
+
+## 281. Why replenishment report rows or headers can be missing
+
+**Question:** Why replenishment report rows or headers can be missing?
+
+**What it does.** The request detail report filters by master, launch and a coded work-created value, then groups stored quantities by location, item, lot, units and user fields. Its header takes one matching row and can show launch -1 when launch statistics are absent. A separate work-instruction report also requires item descriptions to match.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Grouping preserves differences in destination, lot, units and user fields; it does not convert units. Evidence: `rptlbl-sql-481749119`, `rptlbl-sql-497749176`, `rptlbl-sql-513749233`.
+2. The header order does not break ties between matching warehouses. A description mismatch can exclude an instruction even when its item matches. Evidence: `rptlbl-sql-481749119`, `rptlbl-sql-497749176`, `rptlbl-sql-513749233`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The request detail report filters by master, launch and a coded work-created value, then groups stored quantities by location, item, lot, units and user fields. Its header takes one matching row and can show launch -1 when launch statistics are absent. A separate work-instruction report also requires item descriptions to match.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-481749119`: [dbo.RPT_ReplenishmentWorkPickList](sql/481749119.sql); source-definition SHA-256 `cf47dd8f996105f98ab773e57562c486dea673392b178f173f8592f1a2b4625d`, reading-copy SHA-256 `1ad65ec463bbcefbb73d52583c41818c3e157ab8d73d737a2cde120c4701b259`, one-based inclusive lines [[1, 65]].
+
+`rptlbl-sql-497749176`: [dbo.RPT_ReplenPickListDetails](sql/497749176.sql); source-definition SHA-256 `d58fa1c396d7cc23914f7774a7f2ef105ceabcdd751035dc0d4c031358419b93`, reading-copy SHA-256 `eda872cfe4f3b6933e398df8c37c605a38e09b6a8fc094e983c6d181de19efd2`, one-based inclusive lines [[1, 89]].
+
+`rptlbl-sql-513749233`: [dbo.RPT_ReplenPickListHeader](sql/513749233.sql); source-definition SHA-256 `0927e249b9672510adf92f21788f255d1be3a5df4cd7e742f41d535f07506e6a`, reading-copy SHA-256 `ff11c0d28c6991adab18a4a6ee07b0e987c68e6a11722bc812702530b3956ca6`, one-based inclusive lines [[1, 56]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does launch -1 in the replenishment header mean there was no request? Expected: No. A matching request can lack a launch-statistics row. Must not claim: It proves no replenishment request exists.
+- Can an item-description mismatch remove a replenishment work row? Expected: Yes. The item join includes description equality. Must not claim: Only the item code is compared.
+
+## 282. What work-order assembly, component and putaway reports show
+
+**Question:** What work-order assembly, component and putaway reports show?
+
+**What it does.** Assembly details show stored build levels and sequences. Component picks show only details matching the coded allocated flag and use stored needed quantities. The putaway report selects a putaway unit and joins its work-order header. Reading these reports does not build, allocate or move inventory.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Assembly instructions sort by build level and sequence; component picks sort by source location. Evidence: `rptlbl-sql-817750316`, `rptlbl-sql-833750373`, `rptlbl-sql-849750430`, `rptlbl-sql-865750487`, `rptlbl-sql-881750544`.
+2. The header and putaway unit must match their supplied internal identifiers; the putaway join requires an existing work-order header. Evidence: `rptlbl-sql-817750316`, `rptlbl-sql-833750373`, `rptlbl-sql-849750430`, `rptlbl-sql-865750487`, `rptlbl-sql-881750544`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- Assembly details show stored build levels and sequences. Component picks show only details matching the coded allocated flag and use stored needed quantities. The putaway report selects a putaway unit and joins its work-order header. Reading these reports does not build, allocate or move inventory.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-817750316`: [dbo.RPT_WOAssmblyInstrsDetails](sql/817750316.sql); source-definition SHA-256 `69672f6b3b4f412c38bcd809394de9fa2184fdcb3ebeb881f0d734b7b25ea8f4`, reading-copy SHA-256 `3259ec399ced3ea0b5bf71faa46e832e868bb305fe3db173c0225b93eb8ab60e`, one-based inclusive lines [[1, 57]].
+
+`rptlbl-sql-833750373`: [dbo.RPT_WOAssmblyInstrsHeader](sql/833750373.sql); source-definition SHA-256 `b556c58a55ca4d65333dbef0c7222aeef49d08c0df27218037a69dd3e76310be`, reading-copy SHA-256 `e5d30818c6346be08493d6edf7e62cb21bc8b5d35d6c6b2cb72c9e03f8874867`, one-based inclusive lines [[1, 53]].
+
+`rptlbl-sql-849750430`: [dbo.RPT_WOComponentPickListDetails](sql/849750430.sql); source-definition SHA-256 `5ee22266197de43b9d9bc7383179c8f154e45b7b69a788b1ceccf7db3caf209a`, reading-copy SHA-256 `88c538343cb9bc167d3e8b946452b1aa037095f3b1e852d90bc6b45b03f1f1e2`, one-based inclusive lines [[1, 55]].
+
+`rptlbl-sql-865750487`: [dbo.RPT_WOComponentPickListHeader](sql/865750487.sql); source-definition SHA-256 `1be417b4c5b09d3ee6ee988beed5c7a53338ef357bd576c9c5d4d87133a5e1fb`, reading-copy SHA-256 `14f00c8542fb0fcdf58ccb51fdb88e520458938e323f6adb174b26bf0a6ed597`, one-based inclusive lines [[1, 56]].
+
+`rptlbl-sql-881750544`: [dbo.RPT_WOPutawayList](sql/881750544.sql); source-definition SHA-256 `c342e225aef3e10b229dd790b1806883b7518dec142c340b4333b3725ad9296c`, reading-copy SHA-256 `814b18ace3bcab0de0c50adde6ddb6dd662f8388e50bb03df90589ead47db615`, one-based inclusive lines [[1, 68]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the assembly report recalculate the BOM? Expected: No. It reads stored work-order detail quantities and sequence. Must not claim: It rebuilds the BOM.
+- Does the component-pick report include every work-order detail? Expected: No. It applies the coded ALLOCATED equality filter. Must not claim: No allocation filter exists.
+
+## 283. Why a receiving appointment is shown only at certain hours
+
+**Question:** Why a receiving appointment is shown only at certain hours?
+
+**What it does.** The daily schedule creates 24 hourly rows, then attaches an appointment at its start hour or end hour. It does not fill every hour in between. The day input is compared to a date at midnight, so a time-bearing day input can leave the appointment side empty. Multiple appointments can share an hour.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. The daily schedule requires exact dock and warehouse. Its trailer annotation counts matching trailer IDs across receipt headers without a date or warehouse restriction. Evidence: `rptlbl-sql-385748777`, `rptlbl-sql-401748834`.
+2. The date-range summary includes both boundary dates and counts appointment join rows, not distinct receipts; repeated appointments can repeat receipt totals. Evidence: `rptlbl-sql-385748777`, `rptlbl-sql-401748834`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The daily schedule creates 24 hourly rows, then attaches an appointment at its start hour or end hour. It does not fill every hour in between. The day input is compared to a date at midnight, so a time-bearing day input can leave the appointment side empty. Multiple appointments can share an hour.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-385748777`: [dbo.RPT_RecApptDaySchedule](sql/385748777.sql); source-definition SHA-256 `dc830feb48f8bbdc0e030a488d777fc3d6c175eeeeb7d464b5bc30930384a623`, reading-copy SHA-256 `550015680dcf96af3a6e593b042074815e09b6815481fa67a4e14f8bfe36f114`, one-based inclusive lines [[1, 112]].
+
+`rptlbl-sql-401748834`: [dbo.RPT_RecApptHeaderInfo](sql/401748834.sql); source-definition SHA-256 `29a879cab2d74ebf55bbaca9c1472c4df7a6cd85e5e0e7c5b1b196ebb0cbb49e`, reading-copy SHA-256 `fbefef9395547ee13e73d5dfd227a8cd892d95b54a6b6ffa5a5861d1c6f1b614`, one-based inclusive lines [[1, 65]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a receiving appointment from hour 8 to hour 11 occupy all four schedule rows? Expected: The join attaches it only at its start and end hours. Must not claim: It fills each intervening hour.
+- Does total_receipts in the appointment summary count distinct receipts? Expected: No. It uses COUNT(*) over appointment/receipt joins. Must not claim: It deduplicates receipt identities.
+
+## 284. Why load container detail and carrier totals do not match row for row
+
+**Question:** Why load container detail and carrier totals do not match row for row?
+
+**What it does.** Load container details select containers whose parent is NULL. Carrier totals come from shipment-view totals grouped by carrier and service. Those are different sources and groupings. The header chooses one available weight unit without a tie-breaking order, so it does not prove that every container uses that unit.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Manifest details sort shipments by route and stop and use helpers for PO and comment text. Freight-term configuration can multiply rows when its join is not unique. Evidence: `rptlbl-sql-529749290`, `rptlbl-sql-545749347`, `rptlbl-sql-561749404`, `rptlbl-sql-769750145`, `rptlbl-sql-785750202`.
+2. A missing warehouse suppresses the load header; the optional carrier row requires service IS NULL. Evidence: `rptlbl-sql-529749290`, `rptlbl-sql-545749347`, `rptlbl-sql-561749404`, `rptlbl-sql-769750145`, `rptlbl-sql-785750202`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- Load container details select containers whose parent is NULL. Carrier totals come from shipment-view totals grouped by carrier and service. Those are different sources and groupings. The header chooses one available weight unit without a tie-breaking order, so it does not prove that every container uses that unit.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-529749290`: [dbo.RPT_ShipContListDetails](sql/529749290.sql); source-definition SHA-256 `e0ec28200d16cf2b6f2dce318b4922e8426140a50a2689366927ae3695397f22`, reading-copy SHA-256 `3177f4b94723599ac20278f5190c24ec7afd5f8f9e6089b2b4d185aa256e81b3`, one-based inclusive lines [[1, 58]].
+
+`rptlbl-sql-545749347`: [dbo.RPT_ShipContListHeader](sql/545749347.sql); source-definition SHA-256 `c757769691279d328ff8148482f9d46807cdc248f8726bbb7e93a9d17f2b6138`, reading-copy SHA-256 `9ea4714576c86aab54bc3610b5949685de56701b37fc80a400fb23e77e9cfd38`, one-based inclusive lines [[1, 76]].
+
+`rptlbl-sql-561749404`: [dbo.RPT_ShipContListTotals](sql/561749404.sql); source-definition SHA-256 `b603413bfa572a5186d61ff90e004177a4c593e5034a366f3fe9a8db56790099`, reading-copy SHA-256 `cf01705e1d184874739603823d3bb4d13fb1db123c45f3087037d0411f19cafc`, one-based inclusive lines [[1, 49]].
+
+`rptlbl-sql-769750145`: [dbo.RPT_TruckManifestDetails](sql/769750145.sql); source-definition SHA-256 `63aa0f9936e993b4627ffbc458ef213606aa72f2dcb7bbafb63f139a6a31a5e3`, reading-copy SHA-256 `4bc60b1827402dd7e35fa7b905b838cdad1507e98d9acbcbbc6a519b1cdcdac9`, one-based inclusive lines [[1, 83]].
+
+`rptlbl-sql-785750202`: [dbo.RPT_TruckManifestHeader](sql/785750202.sql); source-definition SHA-256 `618fd143b1dfd227db2467ece4746cae7bef53f4f1b4c169a33fbe54d8341e28`, reading-copy SHA-256 `77cd1efca902d56cecdc032b77835ddaea54aec5432f31a60efb6cf80ab21bb0`, one-based inclusive lines [[1, 70]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the load container list include a container whose parent is zero? Expected: No. Its root predicate is parent IS NULL. Must not claim: Zero and NULL parent are treated identically.
+- Does the header weight unit prove all load weights were converted? Expected: No. It samples TOP1 non-NULL unit without conversion or ordering. Must not claim: It normalizes all container weights.
+
+## 285. Why value-added activity and container lists have different row counts
+
+**Question:** Why value-added activity and container lists have different row counts?
+
+**What it does.** The activity report returns individual activity rows joined to an activity name. The container report returns a container when at least one activity exists, so multiple activities do not multiply that container through the EXISTS check. Neither report filters to only incomplete activities.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Both exclude a coded container type; NULL types also fail the inequality condition. Evidence: `rptlbl-sql-577749461`, `rptlbl-sql-673749803`.
+2. The container list uses NOLOCK and does not require the activity master row that the activity detail join requires. Evidence: `rptlbl-sql-577749461`, `rptlbl-sql-673749803`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The activity report returns individual activity rows joined to an activity name. The container report returns a container when at least one activity exists, so multiple activities do not multiply that container through the EXISTS check. Neither report filters to only incomplete activities.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-577749461`: [dbo.RPT_ShipContVasActivityList](sql/577749461.sql); source-definition SHA-256 `4600e6037ce2445a8fe460c4f2f337e0420f752262964c43bdae03ba2e58168b`, reading-copy SHA-256 `38b3d19f7b3147806ec272d998bbcc492d87d6928268e4e86e36fd602c837d1b`, one-based inclusive lines [[1, 45]].
+
+`rptlbl-sql-673749803`: [dbo.RPT_ShipmentVasActivityListDetails](sql/673749803.sql); source-definition SHA-256 `a3b619932bad5789cb5f53b09fdbe41b51aeeaa926b88b193564ae9ebb393765`, reading-copy SHA-256 `ce4dc0364182abbecfee7c6baee8182f2d773af03bb0a236eca8ffbd9b0ca228`, one-based inclusive lines [[1, 44]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Will five VAS activities make five rows in the container-only list? Expected: Not through that relationship; the procedure uses EXISTS. Must not claim: It joins and repeats the container five times.
+- Does the VAS activity report include only unfinished work? Expected: No. It projects COMPLETED without a completion filter. Must not claim: Completed activities are always excluded.
+
+## 286. How consolidated and multi-stop master BOL datasets differ
+
+**Question:** How consolidated and multi-stop master BOL datasets differ?
+
+**What it does.** Both procedures return a header and a separate container result set. The consolidated version uses a load shipping-address row for the destination and includes all container levels. The multi-stop version takes the shipment with the highest stop sequence and includes containers matching the tree root or its direct tree-parent relationship.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Ship-from company is chosen only when the load has one distinct non-NULL company; NULL company values do not increase that count. Evidence: `rptlbl-sql-225748207`, `rptlbl-sql-241748264`.
+2. The highest stop sequence has no tie breaker. Both detail outputs use customer PO when non-NULL, otherwise ERP order, without a final order guarantee. Evidence: `rptlbl-sql-225748207`, `rptlbl-sql-241748264`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- Both procedures return a header and a separate container result set. The consolidated version uses a load shipping-address row for the destination and includes all container levels. The multi-stop version takes the shipment with the highest stop sequence and includes containers matching the tree root or its direct tree-parent relationship.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-225748207`: [dbo.RPT_MasterBOLConsolHeader](sql/225748207.sql); source-definition SHA-256 `15d629bb0654a955c18cc8633a33ff548b74406f1bc5eb35af37553c78407aed`, reading-copy SHA-256 `7b0085b32620a571405675ec2b8d2453b1db4ab335bd1fc3b0d66cecd9275af1`, one-based inclusive lines [[1, 211]].
+
+`rptlbl-sql-241748264`: [dbo.RPT_MasterBOLMultiStopHeader](sql/241748264.sql); source-definition SHA-256 `26c9283c225013b4edd096f80e30bd3a769b8718f4eec64337fed1932805199a`, reading-copy SHA-256 `e96f1038afd23e1d5325d1261b7bbbb82d4939993873d218e141dc55165155af`, one-based inclusive lines [[1, 212]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a master BOL procedure return only a header row set? Expected: No. Each reviewed procedure also returns a second container result set. Must not claim: There is only one result set.
+- Does one non-NULL company plus NULL companies force warehouse fallback? Expected: No. COUNT(DISTINCT company) ignores NULL. Must not claim: NULL counts as a second company.
+
+## 287. Why a commercial invoice dataset can be empty
+
+**Question:** Why a commercial invoice dataset can be empty?
+
+**What it does.** The commercial invoice requires a matching country configuration and at least one named container. Without those matches, it can return no lines. It repeats shipment container totals beside each line and only falls back to retained detail totals when an existing container group has a NULL sum. The export declaration uses different fields and formatting rules.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Container totals count all named container rows, including nested ones; adding repeated line totals can overcount a shipment. Evidence: `rptlbl-sql-839062125`, `rptlbl-sql-487672785`.
+2. Both datasets cast quantities to whole numbers and amounts to fixed decimals. The export declaration uses the execution date and tests some flags only for NULL, not their values. Evidence: `rptlbl-sql-839062125`, `rptlbl-sql-487672785`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The commercial invoice requires a matching country configuration and at least one named container. Without those matches, it can return no lines. It repeats shipment container totals beside each line and only falls back to retained detail totals when an existing container group has a NULL sum. The export declaration uses different fields and formatting rules.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-839062125`: [dbo.RPT_Travis_Commercial_Invoice](sql/839062125.sql); source-definition SHA-256 `a5533775b484bdb87b1522afc803aae93e66bc365d4d54d24a91d7eebe9a876f`, reading-copy SHA-256 `487066ef3c3d583b4e9a66261ef48c1c060168664f2efc2e3fc5fa06f48ffb40`, one-based inclusive lines [[1, 81]].
+
+`rptlbl-sql-487672785`: [dbo.RPT_Shippers_Export_Declaration](sql/487672785.sql); source-definition SHA-256 `c8c2e485fbf6a2c2d61e02307e9cdb2cc830ced90cc318653044d47f62a8ddd6`, reading-copy SHA-256 `10fea0955730e0113fb564371c77873e99a30495c8f64f1c8ab2e15175f3953f`, one-based inclusive lines [[1, 116]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Will the commercial invoice fallback produce lines when there are no named containers? Expected: No. The required TOTALS group is absent and the final inner join removes lines. Must not claim: Retained totals always rescue a shipment with no containers.
+- Why can invoice lines disappear despite the country configuration being left joined? Expected: A WHERE predicate on config record_type requires a matching configuration row. Must not claim: A missing country configuration always preserves the line.
+
+## 288. Why an exchange-shipment report shows receipt data
+
+**Question:** Why an exchange-shipment report shows receipt data?
+
+**What it does.** The reviewed exchange report reads receipt header and receipt detail. Its status field is the receipt trailing status, and extended price is receipt total quantity times item net price. The report name does not mean that the procedure creates an exchange shipment.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. The header filters the internal receipt number; details sort by ERP order line and item. Evidence: `rptlbl-sql-177748036`, `rptlbl-sql-193748093`.
+2. NULL quantity or price leaves extended price NULL. Evidence: `rptlbl-sql-177748036`, `rptlbl-sql-193748093`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The reviewed exchange report reads receipt header and receipt detail. Its status field is the receipt trailing status, and extended price is receipt total quantity times item net price. The report name does not mean that the procedure creates an exchange shipment.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-177748036`: [dbo.RPT_ExchangeShipmentDetails](sql/177748036.sql); source-definition SHA-256 `9c50aeb0e45c11e898304b9ba6c9aee82bac158ade408861739339befc1a48ec`, reading-copy SHA-256 `fa64556193ca14fc39f10a1f6acbf4150538ec116edd1c9655a383b2b41446c6`, one-based inclusive lines [[1, 54]].
+
+`rptlbl-sql-193748093`: [dbo.RPT_ExchangeShipmentHeader](sql/193748093.sql); source-definition SHA-256 `c37b65345a84fc75c544f19092d56334e20e7a51c7c154a4dc52d15ecd197e78`, reading-copy SHA-256 `78f04006d5acee4ed9adcf5d28d533d1ddcef8087b0a201e31f5c1b80df3a829`, one-based inclusive lines [[1, 58]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Where does the exchange-shipment report status come from? Expected: RECEIPT_HEADER.TRAILING_STS. Must not claim: It is newly computed shipping completion.
+- Does the exchange report create a shipment? Expected: No. These bodies select receipt data without writes. Must not claim: It performs an exchange transaction.
+
+## 289. How the unsuffixed 1348 procedure selects and formats its data
+
+**Question:** How the unsuffixed 1348 procedure selects and formats its data?
+
+**What it does.** The unsuffixed 1348 procedure starts with a selected parent container and its direct children by text container identifiers. It reads each matched shipment line, uses line metadata for formatting, and applies its eligibility expression. It does not execute a printer. The chosen quantity can differ from the stored line total when status 2 is 999.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. Completed quantity adds qualifying quantities from ten status slots using threshold 600. Eligibility compares that sum with requested quantity, with a separate coded MARK_FOR override. Evidence: `rptlbl-sql-2071678428`.
+2. Formatting uses detail user_def6 and detail priority; another prefixed field uses detail user_def5. The procedure does not join item cross-reference. Evidence: `rptlbl-sql-2071678428`.
+3. The effective total quantity becomes quantity_at_sts1 when status2 is 999. Integer and fixed-width formatting can lose fractions or width; DISTINCT removes identical projected rows. Evidence: `rptlbl-sql-2071678428`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The unsuffixed 1348 procedure starts with a selected parent container and its direct children by text container identifiers. It reads each matched shipment line, uses line metadata for formatting, and applies its eligibility expression. It does not execute a printer. The chosen quantity can differ from the stored line total when status 2 is 999.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-2071678428`: [dbo.RPT_1348](sql/2071678428.sql); source-definition SHA-256 `5c4e385d3c0d349af069f6345f0a065438560139bda810810ef7a4c35c1b1743`, reading-copy SHA-256 `c2db3529419dcff22f75410c4e596f9f9f4328ebeba735c89d7c7aefcae7058c`, one-based inclusive lines [[1, 210]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does unsuffixed RPT_1348 look up its extra reference field in ITEM_CROSS_REFERENCE? Expected: No. It uses detail user_def5. Must not claim: It performs an item cross-reference lookup.
+- Does unsuffixed RPT_1348 use status threshold 650? Expected: No. Its completed-quantity expression uses 600. Must not claim: All 1348 variants use 650.
+
+## 290. Why 1348 reprints and named variants can produce different results
+
+**Question:** Why 1348 reprints and named variants can produce different results?
+
+**What it does.** The captured 1348 procedures are separate implementations. Some take a container number, others a shipment ID or load input. Several reprint variants calculate an eligibility flag without filtering on it. Older variants also use different status thresholds, metadata sources and item-reference joins. A date suffix alone does not establish which version an application selects.
+
+**What happens**
+
+Trigger: A user is explaining the report or label dataset selected by an existing application flow.
+
+1. The shipment-ID reprints join both shipment and line identities; the load reprint joins its detail by line and compares a text load input directly with SHIPPING_LOAD_NUM. Evidence: `rptlbl-sql-1943677972`, `rptlbl-sql-1959678029`, `rptlbl-sql-1975678086`, `rptlbl-sql-1991678143`, `rptlbl-sql-2007678200`, `rptlbl-sql-2023678257`, `rptlbl-sql-2039678314`, `rptlbl-sql-2055678371`, `rptlbl-sql-2071678428`.
+2. Archive2 adds item/unit cross-reference; the 20220315 variant joins cross-reference by item alone; the unsuffixed body instead uses detail user_def5. Evidence: `rptlbl-sql-1943677972`, `rptlbl-sql-1959678029`, `rptlbl-sql-1975678086`, `rptlbl-sql-1991678143`, `rptlbl-sql-2007678200`, `rptlbl-sql-2023678257`, `rptlbl-sql-2039678314`, `rptlbl-sql-2055678371`, `rptlbl-sql-2071678428`.
+3. The 20200807 variant tests the length of header priority but formats detail priority. The 20170913 variant formats header priority and uses threshold 650. Evidence: `rptlbl-sql-1943677972`, `rptlbl-sql-1959678029`, `rptlbl-sql-1975678086`, `rptlbl-sql-1991678143`, `rptlbl-sql-2007678200`, `rptlbl-sql-2023678257`, `rptlbl-sql-2039678314`, `rptlbl-sql-2055678371`, `rptlbl-sql-2071678428`.
+
+**What can affect it**
+
+- Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required.
+
+**What you can check**
+
+- Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations.
+
+**Expected results and limits**
+
+- The captured 1348 procedures are separate implementations. Some take a container number, others a shipment ID or load input. Several reprint variants calculate an eligibility flag without filtering on it. Older variants also use different status thresholds, metadata sources and item-reference joins. A date suffix alone does not establish which version an application selects.
+- These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.
+- Names and date suffixes do not establish which caller selects a variant.
+- Opaque constants remain qualified in optional technical evidence.
+
+**More detail and sources**
+
+`rptlbl-sql-1943677972`: [dbo.RPT_1348_Reprinting_byLOAD](sql/1943677972.sql); source-definition SHA-256 `c6a4de87ff78808422d6823aa2084c4e2eb129f15d4e8f7b906fcb2c72b9904f`, reading-copy SHA-256 `179d8ff54b2f76726d01a96931faca770a94566d1be687e766eeeec72536a279`, one-based inclusive lines [[1, 160]].
+
+`rptlbl-sql-1959678029`: [dbo.RPT_1348_Reprinting_Archive2](sql/1959678029.sql); source-definition SHA-256 `7b262919a58d5a84785e32e9fc22c21d87775993b99cc06930f1a3d050abaaff`, reading-copy SHA-256 `0b65b774d243fa7e53c0893d9b918146d4b1cb801c43d6c4cd3272314f512a83`, one-based inclusive lines [[1, 172]].
+
+`rptlbl-sql-1975678086`: [dbo.RPT_1348_Reprinting_Archive](sql/1975678086.sql); source-definition SHA-256 `5cd1d51862a282c5a458ac3f14f5f48ec174eb2afde3baec57adc188985f6486`, reading-copy SHA-256 `9df7888a36a6eccf7b3a580014ba448e752deda0394abfaff63a62848a000ee1`, one-based inclusive lines [[1, 167]].
+
+`rptlbl-sql-1991678143`: [dbo.RPT_1348_bak20121206](sql/1991678143.sql); source-definition SHA-256 `a3c77f7f993310bed067397f4196bc051c11321c437aba431ec75a3fe76459b2`, reading-copy SHA-256 `eaa669a5be8ea55fcb60a6f7a595149f01c37f5e9d2fc2890c4941021f8e63dc`, one-based inclusive lines [[1, 84]].
+
+`rptlbl-sql-2007678200`: [dbo.RPT_1348_bak20120921](sql/2007678200.sql); source-definition SHA-256 `355eaae408cc83ea117c96ec219ddd4ba26c293b7baaa071aec4fed61188c764`, reading-copy SHA-256 `b8a41a6db2f06810b1b81ade87b8014f9dad0fae59290354e9af7253c6198a14`, one-based inclusive lines [[1, 80]].
+
+`rptlbl-sql-2023678257`: [dbo.RPT_1348_20220315](sql/2023678257.sql); source-definition SHA-256 `780abc99a24349c61543b8600e50ea916850674b2c4de2e2ad54ede8a75bb1e6`, reading-copy SHA-256 `3e38ba5e16ea3df624470bf7460eb059815ee6aeb8407062cff922f634ff91a3`, one-based inclusive lines [[1, 175]].
+
+`rptlbl-sql-2039678314`: [dbo.RPT_1348_20200807](sql/2039678314.sql); source-definition SHA-256 `8e37da73fd9d668e9b9748fc54565e2cff1f82f4df1dc6b5ee7beb8bfc4f7c1f`, reading-copy SHA-256 `864480e6c6f9f0b753fb69b43c3b669d22a8c8eff8952ee3d955f54fdf3708ac`, one-based inclusive lines [[1, 168]].
+
+`rptlbl-sql-2055678371`: [dbo.RPT_1348_20170913](sql/2055678371.sql); source-definition SHA-256 `bb815c37c7f5ec46e9134ebcbe62641f41ac55c10a4642cca7d9c8cef3b1ec79`, reading-copy SHA-256 `f8d771abec45d974241bd38b23ced4e110eedd7529f161baaa06146f6dbbeccd`, one-based inclusive lines [[1, 160]].
+
+`rptlbl-sql-2071678428`: [dbo.RPT_1348](sql/2071678428.sql); source-definition SHA-256 `5c4e385d3c0d349af069f6345f0a065438560139bda810810ef7a4c35c1b1743`, reading-copy SHA-256 `c2db3529419dcff22f75410c4e596f9f9f4328ebeba735c89d7c7aefcae7058c`, one-based inclusive lines [[1, 210]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Do shipment-ID 1348 reprints always filter to OK_1348? Expected: No. The reviewed shipment-ID and load reprints project the flag without a final OK filter. Must not claim: Every variant applies the same eligibility filter.
+- Does a date suffix prove a 1348 procedure is the active report source? Expected: No. The procedures remain distinct and names do not establish caller selection. Must not claim: The latest-looking name is automatically active.
+
+## 291. Does a warehouse lookup change records?
+
+**Question:** Does a warehouse lookup change records?
+
+**What it does.** Check the exact routine. Some calls only read data, while interface claim routines also change processing markers. For example, the transaction-history RU routine is read-only, the shipment RU routine marks a batch, and the accessorial-header lookup returns every header despite accepting an accessorial-code input.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Identify the captured routine and its actual body; prefixes are not proof of behavior. Evidence: `wh-access-423320918`, `wh-access-1543324908`, `wh-access-202796130`, `wh-access-298796472`, `wh-access-362796700`, `wh-access-394796814`.
+2. Distinguish returned rows, output parameters and explicit RETURN values. Evidence: `wh-access-423320918`, `wh-access-1543324908`, `wh-access-202796130`, `wh-access-298796472`, `wh-access-362796700`, `wh-access-394796814`.
+3. For interface claims, inspect the writes before treating the returned rows as a simple lookup. Evidence: `wh-access-423320918`, `wh-access-1543324908`, `wh-access-202796130`, `wh-access-298796472`, `wh-access-362796700`, `wh-access-394796814`.
+
+**What can affect it**
+
+- Private conditions: claim ready or NULL rows as in process; output excludes processed rows. The leading unnamed literal is an item-download record marker. Its raw spelling is not part of this explanation.
+- Private constants create a receiving-interface-batch process label, a new-action label, a processed-condition label and slash-separated tree path. The projected UTC stamp is rounded to seconds. These are returned interface labels, not writes to the source container rows.
+- The excluded IN_CONFIRMATION selector is affirmative. NULL load confirmation fails the inequality, and shipments lacking a matching shipping load fail the inner join.
+- The private attribute selectors represent catch weight and catch-weight unit. TRY_CAST uses numeric(14,5); multiple values aggregate independently, and invalid weight text contributes NULL.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Check the exact routine. Some calls only read data, while interface claim routines also change processing markers. For example, the transaction-history RU routine is read-only, the shipment RU routine marks a batch, and the accessorial-header lookup returns every header despite accepting an accessorial-code input.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-423320918`: [dbo.wm_RAccessorialHeader01](sql/423320918.sql); source-definition SHA-256 `ad427eda18d38991216a72198845f76a8f6ef68e12e71822b8a2aea039c58bec`, reading-copy SHA-256 `d9ff727dce7b03b6a71cc52c338ffd55fd7da252dee451c6e2f6e237377f102a`, one-based inclusive lines [[1, 7]].
+
+`wh-access-1543324908`: [dbo.wm_RShipmentHeader03](sql/1543324908.sql); source-definition SHA-256 `dceceb30e35e2b91b4109bf06fc3bcacff1ef11b370f19846330aa3fb4ca7ad7`, reading-copy SHA-256 `307654abdb63ae383bc23c84b8746719c5c6f5d07209732ca56a343c8f149c1a`, one-based inclusive lines [[1, 19]].
+
+`wh-access-202796130`: [dbo.wm_RUDownloadItem01](sql/202796130.sql); source-definition SHA-256 `0481d364c1d5dfa9f69c2f5210e91dd7be58f4dbd87e9a84c31080762a5dd2ba`, reading-copy SHA-256 `bb729f29a111e3b1151718bbb0c10a5c5a2fed2e22c06ab26f2766f0d0db9c11`, one-based inclusive lines [[1, 32]].
+
+`wh-access-298796472`: [dbo.wm_RUReceiptContainer05](sql/298796472.sql); source-definition SHA-256 `2ea9347a7a42f8c1a926028cc9cbcfba0af697cb4c0b637c170c3a2528321b26`, reading-copy SHA-256 `0b47cacc34fd20613858d266716a3e795364b7dd276787bad3d8017662acb9d2`, one-based inclusive lines [[1, 280]].
+
+`wh-access-362796700`: [dbo.wm_RUShipmentHeader01](sql/362796700.sql); source-definition SHA-256 `f92c971152f7344666dc342ba35eddace8bc23e5043a5030897cb35f209923bf`, reading-copy SHA-256 `aa37bbe662648c8e48bfeda219512e9dcf2ebef9d133e2d3ef528aeb967ee89a`, one-based inclusive lines [[1, 32]].
+
+`wh-access-394796814`: [dbo.wm_RUTransactionHistory01](sql/394796814.sql); source-definition SHA-256 `f0c4c8c009a04f0e9799463342769335f29379b0d0a56cf6846348611d39e9b8`, reading-copy SHA-256 `f20bc26258fe0ad5b39953d4cb6113e790a656ddddf993e3b12156ae9bef1869`, one-based inclusive lines [[1, 47]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does wm_RUTransactionHistory01 update transaction history? Expected: No. It reads batch history and adds catch-weight information. Must not claim: RU always means an update.
+- Does wm_RAccessorialHeader01 filter by its accessorial code parameter? Expected: No. The parameter is unused and all accessorial headers are selected. Must not claim: The input filters the rows.
+- What does wm_RShipmentHeader03 return? Expected: An integer RETURN value: one when a matching header exists, otherwise zero; no rowset. Must not claim: It returns the complete shipment header.
+
+## 292. Why can a customer or vendor lookup return several matches?
+
+**Question:** Why can a customer or vendor lookup return several matches?
+
+**What it does.** Several lookups include a company-specific record and a generic record whose company is blank in database terms (NULL). Most return all matches. Customer variant 04 alone limits the result to one, ranking specific ship-to and company combinations before generic combinations. Vendor and customer sort rules differ.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Check whether ship-to or ship-from must match exactly, may be NULL, or must be NULL on both sides. Evidence: `wh-access-663321773`, `wh-access-679321830`, `wh-access-1150275503`, `wh-access-1799325820`, `wh-access-1815325877`.
+2. Read the variant-specific ordering before interpreting the first row. Evidence: `wh-access-663321773`, `wh-access-679321830`, `wh-access-1150275503`, `wh-access-1799325820`, `wh-access-1815325877`.
+3. Treat tied preferred rows as unresolved unless another source establishes uniqueness. Evidence: `wh-access-663321773`, `wh-access-679321830`, `wh-access-1150275503`, `wh-access-1799325820`, `wh-access-1815325877`.
+
+**What can affect it**
+
+
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Several lookups include a company-specific record and a generic record whose company is blank in database terms (NULL). Most return all matches. Customer variant 04 alone limits the result to one, ranking specific ship-to and company combinations before generic combinations. Vendor and customer sort rules differ.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-663321773`: [dbo.wm_RCustomer02](sql/663321773.sql); source-definition SHA-256 `61ecdc262dac18e41071e3adfcc84e51506872f0627f45812ecd6022e28af813`, reading-copy SHA-256 `358682b56705cda761cbed4f18207466ad93ef76f62a520b91b70050e774ec6f`, one-based inclusive lines [[1, 17]].
+
+`wh-access-679321830`: [dbo.wm_RCustomer03](sql/679321830.sql); source-definition SHA-256 `eeeae98980d16d61fa9e9c6ab2a6a3c6f09b99ecb37edc67007666cb5821e99c`, reading-copy SHA-256 `d1bbe38e051cee5dfe7a795ec01077d1dbac9a04d1274d75c46ea7694b8d49b4`, one-based inclusive lines [[1, 19]].
+
+`wh-access-1150275503`: [dbo.wm_RCustomer04](sql/1150275503.sql); source-definition SHA-256 `6fc2a30d08607d0084d6035ca31b076bbb20c339fe1ab972da48bb117ea643c2`, reading-copy SHA-256 `81a1a016fdfd10b393e54b617cfefddc988d6a5881c00d1fc86915692cddc4cb`, one-based inclusive lines [[1, 34]].
+
+`wh-access-1799325820`: [dbo.wm_RVendor02](sql/1799325820.sql); source-definition SHA-256 `42decbef14f27719c2714867ab66eb7fd68d24fd883cde21ee19c93073151086`, reading-copy SHA-256 `d964e56409d8d24a38cbc44782442522d583935df47a39ced40cbadae49aa857`, one-based inclusive lines [[1, 22]].
+
+`wh-access-1815325877`: [dbo.wm_RVendor03](sql/1815325877.sql); source-definition SHA-256 `9f9c5f782ccad87a0fb4f41957da0e40fab8df6ac790b9c718e85d6abcdcb6e3`, reading-copy SHA-256 `1bc3654fb2814450337afb66f295308027b6482c169596d5ae99024b7892e740`, one-based inclusive lines [[1, 20]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a customer company match always suppress generic customer rows? Expected: No. Several variants return both requested-company and NULL-company matches. Must not claim: Every routine returns a unique preferred record.
+- How does customer lookup 04 choose a record? Expected: It limits to one and ranks both-specific, ship-to-specific, company-specific, then generic. Ties lack a further order. Must not claim: It sorts only alphabetically.
+
+## 293. How do item lookups handle company and cross-references?
+
+**Question:** How do item lookups handle company and cross-references?
+
+**What it does.** Item lookups have different company rules. Some require exact company or both values NULL; others include generic items. Cross-reference joins can return the same item more than once. Item variant 03 does not prove that an item belongs to only one company; variant 11 separately counts all item rows.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Identify the exact item variant and company predicate. Evidence: `wh-access-967322856`, `wh-access-983322913`, `wh-access-999322970`, `wh-access-1015323027`, `wh-access-1031323084`, `wh-access-1047323141`, `wh-access-1294276016`, `wh-access-1342276187`, `wh-access-1358276244`, `wh-access-1063323198`.
+2. Separate generic fallback from exact-or-both-NULL matching. Evidence: `wh-access-967322856`, `wh-access-983322913`, `wh-access-999322970`, `wh-access-1015323027`, `wh-access-1031323084`, `wh-access-1047323141`, `wh-access-1294276016`, `wh-access-1342276187`, `wh-access-1358276244`, `wh-access-1063323198`.
+3. Check join multiplication and explicit uniqueness tests before assuming a single item. Evidence: `wh-access-967322856`, `wh-access-983322913`, `wh-access-999322970`, `wh-access-1015323027`, `wh-access-1031323084`, `wh-access-1047323141`, `wh-access-1294276016`, `wh-access-1342276187`, `wh-access-1358276244`, `wh-access-1063323198`.
+
+**What can affect it**
+
+- Both company-normalization literals are the same nonempty one-character sentinel; NULL equals NULL or that exact sentinel value, while empty string remains distinct.
+- Both company-normalization literals are the same nonempty one-character sentinel; NULL equals NULL or that exact sentinel value, while empty string remains distinct.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Item lookups have different company rules. Some require exact company or both values NULL; others include generic items. Cross-reference joins can return the same item more than once. Item variant 03 does not prove that an item belongs to only one company; variant 11 separately counts all item rows.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-967322856`: [dbo.wm_RItem02](sql/967322856.sql); source-definition SHA-256 `f4bf752f718d736d3aec71dcabe678e6a0f1d81d2568abe5d9b0d57c8d39cf1a`, reading-copy SHA-256 `4b00de68b8e60620ba58cde80518b7fa695a7dff7f8e3d4fee60bdb4b2048c3a`, one-based inclusive lines [[1, 16]].
+
+`wh-access-983322913`: [dbo.wm_RItem03](sql/983322913.sql); source-definition SHA-256 `92c6aaf834a30991538a05ab1bc22c87af86a83191b8bd75b7d3a40237bc0543`, reading-copy SHA-256 `9d711d386b983a6318544e822763932c01bf7693935e50dfe25420a1ffd676cc`, one-based inclusive lines [[1, 19]].
+
+`wh-access-999322970`: [dbo.wm_RItem04](sql/999322970.sql); source-definition SHA-256 `7edfc644c19d5e67000ac922fd10fde4d6ec980f46e14a37e99e44d378d57dc3`, reading-copy SHA-256 `b175af401105e549c1295a3634b06d5d58dbc0122fdef827425b4d0af90e7be4`, one-based inclusive lines [[1, 16]].
+
+`wh-access-1015323027`: [dbo.wm_RItem05](sql/1015323027.sql); source-definition SHA-256 `9d5db87cd4591ddfbb7768121b88595a85f7ac8a2d278acfc43c90c14f2d6634`, reading-copy SHA-256 `c20333af4a7a6e3c7ea18d23609d1d1720f9196c2ebb6070e8b5c1e9d7e0d29d`, one-based inclusive lines [[1, 16]].
+
+`wh-access-1031323084`: [dbo.wm_RItem06](sql/1031323084.sql); source-definition SHA-256 `a8cb09c869ec30d377cad7600003f877068941a3d7e395b60815492020d118da`, reading-copy SHA-256 `ef089dcdbe67a0ab26e544b821bb397ccb8aa54013e3e4c5040d2dd13698df8f`, one-based inclusive lines [[1, 19]].
+
+`wh-access-1047323141`: [dbo.wm_RItem07](sql/1047323141.sql); source-definition SHA-256 `3e83b111dbd9afe9f125ad197823dbb51c0f6b92d7c35b1e54d9086b3e3b3e20`, reading-copy SHA-256 `8a5640329fc6e7dbbcd35d964b08aa332c879042cde628d680b66d65b6bd8c6e`, one-based inclusive lines [[1, 18]].
+
+`wh-access-1294276016`: [dbo.wm_RItem08](sql/1294276016.sql); source-definition SHA-256 `bfe2fb8d09b32f7a5b46af094a7b5ebd755982c183e2bce6d34ded7042229b12`, reading-copy SHA-256 `c62b7cc5d98d0ca3abea1191db76fa57f9a0cb8efb65ac8a7783d08b4e4b6ade`, one-based inclusive lines [[1, 20]].
+
+`wh-access-1342276187`: [dbo.wm_RItem11](sql/1342276187.sql); source-definition SHA-256 `33781c9e7e56953de582a9e967bed611ca34469ff104e8c1a66ecc3fc10cf9c3`, reading-copy SHA-256 `c5442922aba529e8ec1b3be6ecfc2340b76ad06c507fdb192afb97c8252a7eea`, one-based inclusive lines [[1, 19]].
+
+`wh-access-1358276244`: [dbo.wm_RItemCrossReference02](sql/1358276244.sql); source-definition SHA-256 `57f208adf502e1aa2a020e778ab58b08fd166b0453f0a5c029bd9f70b84e5550`, reading-copy SHA-256 `709d7f50c2d30364f56ff94196e87d79a1806df991240978de2d5241a2c4150d`, one-based inclusive lines [[1, 20]].
+
+`wh-access-1063323198`: [dbo.wm_RItemCrossReference03](sql/1063323198.sql); source-definition SHA-256 `b28edde52649e3d3b0a40908e1a75750ab2945b1e4b6fe6616af22d949a3a0c4`, reading-copy SHA-256 `6fa075ea96fc777ebb32739b96c3f0c1cdfb6d6dd6bd7a551b0862676f9e8f8a`, one-based inclusive lines [[1, 17]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does wm_RItem03 enforce one company for the item? Expected: No. It groups by company, so its per-company count does not enforce one company across the item. Must not claim: It proves company uniqueness.
+- Can an item cross-reference lookup return duplicate item rows? Expected: Yes. Matching cross-reference joins can repeat ITEM rows because no DISTINCT is used. Must not claim: Each item is deduplicated automatically.
+
+## 294. How are item units and their sequence selected?
+
+**Question:** How are item units and their sequence selected?
+
+**What it does.** Unit lookup 02 falls back by an entire set: exact item/company, then generic item, then item class. Other variants branch on whether an item was supplied. The sequence helper calculates a candidate number; the update helper shifts qualifying existing sequences. Neither helper creates the new unit row.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Distinguish set-level fallback from choosing a fallback separately for each unit. Evidence: `wh-access-1374276301`, `wh-access-1111323369`, `wh-access-1127323426`, `wh-access-1198627313`, `wh-access-590273508`, `wh-access-1170103209`.
+2. Check whether a NULL item switches the lookup to item class. Evidence: `wh-access-1374276301`, `wh-access-1111323369`, `wh-access-1127323426`, `wh-access-1198627313`, `wh-access-590273508`, `wh-access-1170103209`.
+3. Treat sequence calculation, shifting and insertion as separate steps with caller-owned coordination. Evidence: `wh-access-1374276301`, `wh-access-1111323369`, `wh-access-1127323426`, `wh-access-1198627313`, `wh-access-590273508`, `wh-access-1170103209`.
+
+**What can affect it**
+
+- The literals inside EXISTS projections are irrelevant to membership; those subqueries test row existence, not the projection value.
+- All four storage-template fallback literals name the default template; this fallback applies when the selected item's template is NULL. No matching item yields no template row instead of automatically creating a default item.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Unit lookup 02 falls back by an entire set: exact item/company, then generic item, then item class. Other variants branch on whether an item was supplied. The sequence helper calculates a candidate number; the update helper shifts qualifying existing sequences. Neither helper creates the new unit row.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-1374276301`: [dbo.wm_RItemUnitOfMeasure02](sql/1374276301.sql); source-definition SHA-256 `9c8b466bf824b5132c162de3c0ace4894e678e31e75ff11f6669034205cdd85c`, reading-copy SHA-256 `ed3dda5a3c24d436d5ab23aca4aaa5f754fa9e7fa0de029e8e45b5029f78b2df`, one-based inclusive lines [[1, 40]].
+
+`wh-access-1111323369`: [dbo.wm_RItemUnitOfMeasure03](sql/1111323369.sql); source-definition SHA-256 `8b6901c374f26fc47d089d3adc00b2167edc168fba794af6885c077ce7618109`, reading-copy SHA-256 `8108119efd28f6f1fdd19058ca212f86a5d0c35b5be52cb190107ed4965a6982`, one-based inclusive lines [[1, 26]].
+
+`wh-access-1127323426`: [dbo.wm_RItemUnitOfMeasure04](sql/1127323426.sql); source-definition SHA-256 `f65bd443214253bffee4b79909281d1d4802d3aeaf0b02626d5ed559dbee8bb8`, reading-copy SHA-256 `795799ff0c58b3e1aeb3485f3f4af88259e1675638c7c1c3d46ba673075f2368`, one-based inclusive lines [[1, 25]].
+
+`wh-access-1198627313`: [dbo.wm_RItemUnitOfMeasure07](sql/1198627313.sql); source-definition SHA-256 `df9f82f4dda8ff9d4548afecc282aeb8d4c226999d6a6fb3ddb76d48495be330`, reading-copy SHA-256 `f3455a8cda21208f5b7d31c2787b20a1255d4114b4685a0757f4599993f8b623`, one-based inclusive lines [[1, 79]].
+
+`wh-access-590273508`: [dbo.wm_IItemUnitOfMeasure01](sql/590273508.sql); source-definition SHA-256 `f2df23871927c54ea6dd6af7644018bd7a0a2ff0a09b504107bdd4ef8d922c97`, reading-copy SHA-256 `1e7a9108c3110b60c12f4505f152f4a5f98e38c87ea6a91b82f061feccb9fcef`, one-based inclusive lines [[1, 110]].
+
+`wh-access-1170103209`: [dbo.wm_UItemUnitOfMeasure08](sql/1170103209.sql); source-definition SHA-256 `422cf97e2ee33d1b806e2f310a1b01932b8a6330f3558244c70719e095678405`, reading-copy SHA-256 `8fc3ba206e858761c6504bcef06d5dbcbbb829816cf65d96ecfd178214e8f9d4`, one-based inclusive lines [[1, 44]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Is item-unit fallback applied separately to each missing unit? Expected: No. Lookup 02 tests whether an item/company set exists before falling back. Must not claim: It fills every missing unit independently.
+- Does the sequence helper insert the new unit? Expected: No. The read helper computes a sequence and the update helper shifts qualifying rows; insertion is separate. Must not claim: The helper completes unit creation.
+
+## 295. Why do operational and upload comments differ?
+
+**Question:** Why do operational and upload comments differ?
+
+**What it does.** Comment routines can read operational comments or an upload copy depending on interface link. Their line rules differ: one treats line zero as including an operational NULL line, another uses ordinary equality, and a positive internal number can control whether an extra filter applies. The delete routine uses exact key equality.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Identify operational versus upload branch from the interface-link input. Evidence: `wh-access-1054275161`, `wh-access-1070275218`, `wh-access-1086275275`, `wh-access-1102275332`, `wh-access-430272938`.
+2. Compare line-zero and NULL handling in the chosen routine. Evidence: `wh-access-1054275161`, `wh-access-1070275218`, `wh-access-1086275275`, `wh-access-1102275332`, `wh-access-430272938`.
+3. Do not assume a displayed comment will match the delete predicate. Evidence: `wh-access-1054275161`, `wh-access-1070275218`, `wh-access-1086275275`, `wh-access-1102275332`, `wh-access-430272938`.
+
+**What can affect it**
+
+
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Comment routines can read operational comments or an upload copy depending on interface link. Their line rules differ: one treats line zero as including an operational NULL line, another uses ordinary equality, and a positive internal number can control whether an extra filter applies. The delete routine uses exact key equality.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-1054275161`: [dbo.wm_RCommentText03](sql/1054275161.sql); source-definition SHA-256 `227747a79ecb46d9e733b113f6858c5a03df87a413736410ae7b670018319499`, reading-copy SHA-256 `fe68f97bbb7ac0467aece3d8c681b26c3d0ed86daf21be8f8ddff059c068ceb9`, one-based inclusive lines [[1, 21]].
+
+`wh-access-1070275218`: [dbo.wm_RCommentText04](sql/1070275218.sql); source-definition SHA-256 `8efaea286d4321f8ff47c328722fd8852dcb7252136a54c00756d8568b1d5074`, reading-copy SHA-256 `183c214342fa9493b7d61bfc78998ab6a1f42507d5677b6e14644cefe1ef072a`, one-based inclusive lines [[1, 20]].
+
+`wh-access-1086275275`: [dbo.wm_RCommentText05](sql/1086275275.sql); source-definition SHA-256 `506bddd81ded6848c6e01fcff73d42d2757ea6973a08ad879d48f6db3627ca75`, reading-copy SHA-256 `c9d2783cabbbf3c527f6025d51734a65d690eb5a845f0d9010d9f7a7f43957d5`, one-based inclusive lines [[1, 29]].
+
+`wh-access-1102275332`: [dbo.wm_RCommentText06](sql/1102275332.sql); source-definition SHA-256 `1126e6016289a48c6812c93c52ad7cf656202d2677feaaca7e7cac1878f4c5cc`, reading-copy SHA-256 `ec692d5c747dfa2b8c438382d099475227b7db1c45d0d1c46ec7781288f3b1db`, one-based inclusive lines [[1, 17]].
+
+`wh-access-430272938`: [dbo.wm_DCommentText01](sql/430272938.sql); source-definition SHA-256 `2422b0f0a3b28218b21643454668bbdd374929f98dab7339d42d06490f770d1e`, reading-copy SHA-256 `2c547b12bbc2b664dd10fcf764965cdadd97a3624700f59d7418dca6079db893`, one-based inclusive lines [[1, 23]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can line zero include comments with a NULL internal line? Expected: Yes in the operational branch of wm_RCommentText05; this is not universal across comment routines. Must not claim: All comment routines equate zero and NULL.
+- Does a NULL line parameter delete a NULL-line comment? Expected: No. wm_DCommentText01 uses ordinary line equality. Must not claim: NULL equals NULL in its delete predicate.
+
+## 296. Which receipt and purchase-order records are selected?
+
+**Question:** Which receipt and purchase-order records are selected?
+
+**What it does.** Business IDs are not the only scope. Some receipt and purchase-order lookups require warehouse and an open header, while others do not. A positive purchase-order line narrows one receipt-detail lookup; zero, negative or NULL line input selects all lines for that order. Projected columns also differ between variants.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Use the routine with the needed warehouse and open/closed restrictions. Evidence: `wh-access-1582277042`, `wh-access-1598277099`, `wh-access-1614277156`, `wh-access-1662277327`, `wh-access-1303324053`, `wh-access-1335324167`, `wh-access-1678277384`, `wh-access-1367324281`, `wh-access-1694277441`, `wh-access-1710277498`, `wh-access-1726277555`, `wh-access-1415324452`, `wh-access-1431324509`, `wh-access-1742277612`, `wh-access-1758277669`.
+2. Check whether company/type/ERP-order values use ordinary equality or explicit NULL normalization. Evidence: `wh-access-1582277042`, `wh-access-1598277099`, `wh-access-1614277156`, `wh-access-1662277327`, `wh-access-1303324053`, `wh-access-1335324167`, `wh-access-1678277384`, `wh-access-1367324281`, `wh-access-1694277441`, `wh-access-1710277498`, `wh-access-1726277555`, `wh-access-1415324452`, `wh-access-1431324509`, `wh-access-1742277612`, `wh-access-1758277669`.
+3. Check the output projection before treating joined receipt/header rows as detail-only data. Evidence: `wh-access-1582277042`, `wh-access-1598277099`, `wh-access-1614277156`, `wh-access-1662277327`, `wh-access-1303324053`, `wh-access-1335324167`, `wh-access-1678277384`, `wh-access-1367324281`, `wh-access-1694277441`, `wh-access-1710277498`, `wh-access-1726277555`, `wh-access-1415324452`, `wh-access-1431324509`, `wh-access-1742277612`, `wh-access-1758277669`.
+
+**What can affect it**
+
+- Both ERP-order normalization literals use the same nonempty one-character sentinel; two NULL orders match, and the sentinel itself can collide with NULL. ERP line remains ordinary equality.
+- All receipt-type and ERP-order normalization pairs use the same nonempty one-character sentinel; NULLs match each other and collide with that sentinel. ERP line remains ordinary equality.
+- All receipt-type and ERP-order normalization pairs use the same nonempty one-character sentinel; NULLs match each other and collide with that sentinel. ERP line and warehouse remain ordinary equality.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Business IDs are not the only scope. Some receipt and purchase-order lookups require warehouse and an open header, while others do not. A positive purchase-order line narrows one receipt-detail lookup; zero, negative or NULL line input selects all lines for that order. Projected columns also differ between variants.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-1582277042`: [dbo.wm_RPurchaseOrderDetail02](sql/1582277042.sql); source-definition SHA-256 `a18babf85c66a77272278670ad74cc64b4254bc79c1b366852412041ce84dbf7`, reading-copy SHA-256 `9ee7635de7dacd485533a13bafd1329d4ccf3b823e64428309b539089ffa786a`, one-based inclusive lines [[1, 22]].
+
+`wh-access-1598277099`: [dbo.wm_RPurchaseOrderDetail03](sql/1598277099.sql); source-definition SHA-256 `2b887d559c8ebe63a8b17f7354a454be655ee4afa35e775b511b59275b81e0cf`, reading-copy SHA-256 `da6da4bd4529f529734ac5360c80dc1c3fdf08f0cc73df8717657d4f84576163`, one-based inclusive lines [[1, 17]].
+
+`wh-access-1614277156`: [dbo.wm_RPurchaseOrderDetail04](sql/1614277156.sql); source-definition SHA-256 `383eff7047a50a896e121edb15b65e6ea6c4f1683cb3e9d785dd04e3df7178a4`, reading-copy SHA-256 `71704e80b347a7046c669c9b9c41bbf094079e03e06710a1b450b896330ac125`, one-based inclusive lines [[1, 54]].
+
+`wh-access-1662277327`: [dbo.wm_RPurchaseOrderHeader03](sql/1662277327.sql); source-definition SHA-256 `b84018983b39d570a004221a799b201cfef220aebda8f6f88fbd5cae9c65eb30`, reading-copy SHA-256 `21207af6796d0d2ee1f8b97a0b7c5ef721f8a116cc7984db15ae0d62df1bb1d2`, one-based inclusive lines [[1, 19]].
+
+`wh-access-1303324053`: [dbo.wm_RReceiptContainer02](sql/1303324053.sql); source-definition SHA-256 `d8e85ef48a15d41e9fe9f6e738c001ce1b6394b27e2863bbee170d71c3d7065e`, reading-copy SHA-256 `ca331a3afffdd377e6e81ce8927c50ff62c63fb5590e2b8d3d04e76020712adc`, one-based inclusive lines [[1, 23]].
+
+`wh-access-1335324167`: [dbo.wm_RReceiptContainer04](sql/1335324167.sql); source-definition SHA-256 `b57b8b05948d3ad4b744dc2ebb0156df252da077404de0b0be2827fd29eb5448`, reading-copy SHA-256 `93f28e1ac7e1843a5ec27c9fbbd3922bf63f61de20512d1e6a29cc686a804690`, one-based inclusive lines [[1, 18]].
+
+`wh-access-1678277384`: [dbo.wm_RReceiptDetail02](sql/1678277384.sql); source-definition SHA-256 `ceaa1e2c606ff00eb98023ab256fd1b2befa7611907372c88787e4de45735d4a`, reading-copy SHA-256 `69a42c74a112647040d6ea3672acbdb2e856c40cd8436b793a489293fca17624`, one-based inclusive lines [[1, 22]].
+
+`wh-access-1367324281`: [dbo.wm_RReceiptDetail03](sql/1367324281.sql); source-definition SHA-256 `bc1e7dd728460f1a1abec21b853780c8508bc8d00920146c4b8a538abadda8f7`, reading-copy SHA-256 `ec436acdd079bd0c9caded9516f2bde830c94f8285ab41edd561ceae55348aed`, one-based inclusive lines [[1, 22]].
+
+`wh-access-1694277441`: [dbo.wm_RReceiptDetail05](sql/1694277441.sql); source-definition SHA-256 `a137bc4a5f232d22739e20c24fafbe9e6b2df99faf96a493f0bca2d9aa413484`, reading-copy SHA-256 `7e2ed7b196ec1e27f5d66d6ca233f8fe5d9c9886d8fef330586c5698a3db94c6`, one-based inclusive lines [[1, 27]].
+
+`wh-access-1710277498`: [dbo.wm_RReceiptDetail06](sql/1710277498.sql); source-definition SHA-256 `da30be58ef1a647b4e183517ba587d299c173e92ec899f0f7c1f98ff73736672`, reading-copy SHA-256 `9de29e33df90118d3eea3ab1d4e5360a5a24d54ee556f275cfa679a9a3ef79a4`, one-based inclusive lines [[1, 33]].
+
+`wh-access-1726277555`: [dbo.wm_RReceiptDetail07](sql/1726277555.sql); source-definition SHA-256 `04d0825306cfc00543acd148bd34524e46a86212f412129971c8906734efae58`, reading-copy SHA-256 `a225b1c09b0205a2407f297118356c0b764e3a75566e0e79733d042ac0097a54`, one-based inclusive lines [[1, 35]].
+
+`wh-access-1415324452`: [dbo.wm_RReceiptHeader02](sql/1415324452.sql); source-definition SHA-256 `508147730ab10df14bc0e914fafd22469022c8b6afa2e97ee371f2afcbd4e29b`, reading-copy SHA-256 `0f5eb8f50e32c63ac25b451e2568e8291bc59643248b67a9d2005b2f7264df7e`, one-based inclusive lines [[1, 21]].
+
+`wh-access-1431324509`: [dbo.wm_RReceiptHeader03](sql/1431324509.sql); source-definition SHA-256 `54042188db26b0835dff8ee832308694a46e2363df37a76845438e9ca1750dac`, reading-copy SHA-256 `df08ed6936b1c967093fffc6259aafa501278bc3c8da970fab51c2a9e1233960`, one-based inclusive lines [[1, 22]].
+
+`wh-access-1742277612`: [dbo.wm_RReceiptHeader07](sql/1742277612.sql); source-definition SHA-256 `0d96504694f5826f4e50a834ffb8096e68295fc343d91f4ae0937662b368ea53`, reading-copy SHA-256 `160718e0d3dae774736ee681cd3dde76941c80a70f15d5466da4f756471d697d`, one-based inclusive lines [[1, 28]].
+
+`wh-access-1758277669`: [dbo.wm_RReceiptHeader08](sql/1758277669.sql); source-definition SHA-256 `acc1b76f3f9b5217cf8a16c0192ca42c80b9ded3884fed69f8a116cd902ef8aa`, reading-copy SHA-256 `f5769cfcee00c0b4cf70a93833c72414928d28e0f3d7af1009b35d33b6cb0bd7`, one-based inclusive lines [[1, 26]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does wm_RReceiptHeader03 require an open receipt? Expected: No. It filters receipt ID and warehouse without testing CLOSE_DATE. Must not claim: Every receipt-header lookup excludes closed receipts.
+- What does a zero line number mean to wm_RReceiptDetail05? Expected: It removes the purchase-order-line restriction and reads all lines for the order. Must not claim: It selects only line zero.
+
+## 297. How are receipt upload candidates chosen?
+
+**Question:** How are receipt upload candidates chosen?
+
+**What it does.** The read-only candidate routines use container status, receipt closure and parent-container relationships. Variant 05 adds completed-detail checks. Variant 06 contains a comparison to NULL that does not act like an is-not-NULL test. A configuration branch can include closed unbatched receipts without qualifying containers; these reads do not claim a batch.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Identify the candidate variant and status threshold. Evidence: `wh-access-558625033`, `wh-access-542624976`, `wh-access-526624919`.
+2. Distinguish completed-detail, header-status and closed-receipt alternatives. Evidence: `wh-access-558625033`, `wh-access-542624976`, `wh-access-526624919`.
+3. Keep candidate selection separate from batch marking and completed delivery. Evidence: `wh-access-558625033`, `wh-access-542624976`, `wh-access-526624919`.
+
+**What can affect it**
+
+- The private system key in the interface record-type group controls inclusion of closed receipts without containers; the tested value is affirmative. No effective setting value was queried.
+- The private system key in the interface record-type group controls inclusion of closed receipts without containers; the tested value is affirmative. No effective setting value was queried.
+- The private system key in the interface record-type group controls inclusion of closed receipts without containers; the tested value is affirmative. Captured module metadata confirms ANSI_NULLS enabled, so CLOSE_DATE <> NULL does not mean a closed receipt.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- The read-only candidate routines use container status, receipt closure and parent-container relationships. Variant 05 adds completed-detail checks. Variant 06 contains a comparison to NULL that does not act like an is-not-NULL test. A configuration branch can include closed unbatched receipts without qualifying containers; these reads do not claim a batch.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-558625033`: [dbo.wm_RReceiptHeader04](sql/558625033.sql); source-definition SHA-256 `aca8d2e9934014c733538e844fa7590c1a377c662df3bc5f6dd737e20a23a8a9`, reading-copy SHA-256 `1110bfb2f48f1057f0cdea363407cb13c289fa58516d5dd15bd80f96c947ee51`, one-based inclusive lines [[1, 99]].
+
+`wh-access-542624976`: [dbo.wm_RReceiptHeader05](sql/542624976.sql); source-definition SHA-256 `0058a08761daa5f70af4d7608a439552141b2ee600487af623e9cc1c32722bf3`, reading-copy SHA-256 `c0c05df16fb90669ebdd37f8ec3e4ff6a97a838fa961b2a5fd659d07e9046495`, one-based inclusive lines [[1, 139]].
+
+`wh-access-526624919`: [dbo.wm_RReceiptHeader06](sql/526624919.sql); source-definition SHA-256 `5c770d6726a7a2b999a721058e4719aa80a9abbc159d492c05a1245e612f6ab3`, reading-copy SHA-256 `671a4f0c1250bcf7a6f920307342a047212e4e1e5eb5ad2be1a196b8e602b061`, one-based inclusive lines [[1, 148]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does finding a receipt upload candidate mark it uploaded? Expected: No. These RReceiptHeader candidate routines only select headers. Must not claim: Selection assigns the upload batch.
+- Does CLOSE_DATE <> NULL prove a receipt is closed in variant 06? Expected: No. Captured ANSI_NULLS is enabled and that comparison is UNKNOWN. Must not claim: It is equivalent to IS NOT NULL.
+
+## 298. What changes when receipt upload batches are selected?
+
+**Question:** What changes when receipt upload batches are selected?
+
+**What it does.** The three receipt RU routines mark qualifying containers and headers with a batch, then return matching headers. They differ in completion and status conditions. Company and warehouse flags also differ: variant 03 lets the warehouse line-upload flag qualify a detail even when a company exists. Clearing a batch is a separate two-table update.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Compare the exact RU variant; do not substitute conditions from similarly named read-only routines. Evidence: `wh-access-314796529`, `wh-access-330796586`, `wh-access-346796643`, `wh-access-618797612`.
+2. Apply the documented company/warehouse precedence for each marking step. Evidence: `wh-access-314796529`, `wh-access-330796586`, `wh-access-346796643`, `wh-access-618797612`.
+3. Account for four separate dynamic writes and a later read; there is no encompassing transaction in these bodies. Evidence: `wh-access-314796529`, `wh-access-330796586`, `wh-access-346796643`, `wh-access-618797612`.
+
+**What can affect it**
+
+- Private statements in order: (1) batch unbatched receipt line-containers with status at least Sts, joined to their header; (2) batch unbatched parent containers with line number NULL/zero whose children already bear BatchId; (3) batch closed unbatched headers joined to receipt detail, warehouse and optional company when detail-company settings permit zero-quantity-line uploads, using warehouse fallback only for a NULL detail company; (4) batch closed unbatched headers with TOTAL_CONTAINERS=0 when company allows zero-container uploads, using warehouse fallback only for NULL header company. Step 3 does not itself test a detail quantity despite its flag name. Each optional filter is appended after AND without added parentheses, so OR in stored text retains SQL operator precedence. Four executions are separate; no encompassing transaction exists.
+- Private first statement requires unbatched positive-line containers at or above Sts, matching header and detail, and (detail OPEN_QTY=0 OR exactly one closed matching header), plus no container below Sts for that detail. Second statement marks parents and additionally joins RECEIPT_DETAIL by receipt number. Third/fourth header statements use the same company-first, NULL-company warehouse fallback as RUReceiptHeader01; the line-upload flag does not add an explicit quantity predicate. Filters are appended without parentheses. The dynamic variant is not identical to the read-only RReceiptHeader05 conditions.
+- Private first statement requires unbatched positive-line containers at or above Sts and either header leading/trailing statuses both at least Sts, or header CLOSE_DATE IS NOT NULL with minimum container status at least Sts. Unlike read-only RReceiptHeader06, it uses IS NOT NULL and >= status comparisons. Parent marking is followed by the two closed-header flag branches. In the third statement warehouse UPLOAD_REC_LINES_ZERO_QTY can authorize inclusion even with non-NULL detail company; the fourth zero-container statement still limits warehouse fallback to NULL header company. Optional filters are appended without parentheses.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- The three receipt RU routines mark qualifying containers and headers with a batch, then return matching headers. They differ in completion and status conditions. Company and warehouse flags also differ: variant 03 lets the warehouse line-upload flag qualify a detail even when a company exists. Clearing a batch is a separate two-table update.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-314796529`: [dbo.wm_RUReceiptHeader01](sql/314796529.sql); source-definition SHA-256 `eb37f482b9d009aee040d6d00903b039d6073b4faeeef4ef5a46c1c95f61d2e9`, reading-copy SHA-256 `85e7d344146cf5c46432ea961e07275b46d187d947df6888b32511c91f42923c`, one-based inclusive lines [[1, 140]].
+
+`wh-access-330796586`: [dbo.wm_RUReceiptHeader02](sql/330796586.sql); source-definition SHA-256 `37360be2efe79e5dac8f52afbdab88c6e1fa82a03eeba2ec55bd7f1db20e7570`, reading-copy SHA-256 `33e226d65c5963d182f5db832b3643283f625c14cc60ade3a0f9fe44fc3ab155`, one-based inclusive lines [[1, 157]].
+
+`wh-access-346796643`: [dbo.wm_RUReceiptHeader03](sql/346796643.sql); source-definition SHA-256 `454bd71df901d53cd87b55fa63f728b62a11e8ab79d8cbcbad7faf7d2456afec`, reading-copy SHA-256 `4fcfe968349063ded85619aa2b7603a4a9d84890799ea7245d60beb87a7f77b8`, one-based inclusive lines [[1, 148]].
+
+`wh-access-618797612`: [dbo.wm_UReceiptInterfaceBatch](sql/618797612.sql); source-definition SHA-256 `535d325b205407dba77f0931d69e972dbdadcf99aa450a1654ba0f3bba9f5caf`, reading-copy SHA-256 `7e98c8d3e150f3edb7a4e1fc0a57bef3acb60e75aed1f547be66296c8df20a20`, one-based inclusive lines [[1, 14]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does RUReceiptHeader03 contain the same NULL comparison as RReceiptHeader06? Expected: No. The dynamic RU routine uses IS NOT NULL and at-least status comparisons. Must not claim: The two predicates are identical.
+- Can warehouse settings qualify a company detail in RUReceiptHeader03? Expected: Yes, in its line-upload header-marking branch; variants 01 and 02 restrict that warehouse fallback to NULL company. Must not claim: Every variant has identical company precedence.
+
+## 299. Why can a receipt container tree include other batch roots?
+
+**Question:** Why can a receipt container tree include other batch roots?
+
+**What it does.** The recursive receipt export has an anchor where every NULL-parent container qualifies. Its batch restriction applies to the zero-parent alternative and to recursive children. This can include roots outside the requested batch. Other container lookups read immediate children only, and shipping roots require NULL rather than the receipt rule of NULL or zero.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Separate a root-selection predicate from recursive child selection. Evidence: `wh-access-1319324110`, `wh-access-1335324167`, `wh-access-1639325250`, `wh-access-1655325307`, `wh-access-298796472`.
+2. Apply AND-before-OR precedence to the captured anchor. Evidence: `wh-access-1319324110`, `wh-access-1335324167`, `wh-access-1639325250`, `wh-access-1655325307`, `wh-access-298796472`.
+3. Treat tree output order as a text path order, not numeric container ordering or a cycle guarantee. Evidence: `wh-access-1319324110`, `wh-access-1335324167`, `wh-access-1639325250`, `wh-access-1655325307`, `wh-access-298796472`.
+
+**What can affect it**
+
+- Private constants create a receiving-interface-batch process label, a new-action label, a processed-condition label and slash-separated tree path. The projected UTC stamp is rounded to seconds. These are returned interface labels, not writes to the source container rows.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- The recursive receipt export has an anchor where every NULL-parent container qualifies. Its batch restriction applies to the zero-parent alternative and to recursive children. This can include roots outside the requested batch. Other container lookups read immediate children only, and shipping roots require NULL rather than the receipt rule of NULL or zero.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-1319324110`: [dbo.wm_RReceiptContainer03](sql/1319324110.sql); source-definition SHA-256 `5615321aa51fcfc9f83a81efafd9c0bf40a5b6b60d42b70edcdb1c667f8c154e`, reading-copy SHA-256 `310a06378662bd15c0881bb1c6dda642ff84d8dfecacb5055d45e5c4b539b0d7`, one-based inclusive lines [[1, 17]].
+
+`wh-access-1335324167`: [dbo.wm_RReceiptContainer04](sql/1335324167.sql); source-definition SHA-256 `b57b8b05948d3ad4b744dc2ebb0156df252da077404de0b0be2827fd29eb5448`, reading-copy SHA-256 `93f28e1ac7e1843a5ec27c9fbbd3922bf63f61de20512d1e6a29cc686a804690`, one-based inclusive lines [[1, 18]].
+
+`wh-access-1639325250`: [dbo.wm_RShippingContainer04](sql/1639325250.sql); source-definition SHA-256 `1cde22ea8a3e3c770e1eba75d0035b47eb5b7141871f72fca9a4a9572d08d7cf`, reading-copy SHA-256 `912b7d948a6059c8fc656dcc1191fabfcc22c599d6f7acb49e49df71854dc4f9`, one-based inclusive lines [[1, 22]].
+
+`wh-access-1655325307`: [dbo.wm_RShippingContainer05](sql/1655325307.sql); source-definition SHA-256 `9a05f5ed0a7c3ce5669c7a2614ec4b2e4df2a9314f4444572023f6f923918b3d`, reading-copy SHA-256 `0ec11a122b38b3346a3373c4285617e4c642770050d5a085dc1f098ca05a523d`, one-based inclusive lines [[1, 20]].
+
+`wh-access-298796472`: [dbo.wm_RUReceiptContainer05](sql/298796472.sql); source-definition SHA-256 `2ea9347a7a42f8c1a926028cc9cbcfba0af697cb4c0b637c170c3a2528321b26`, reading-copy SHA-256 `0b47cacc34fd20613858d266716a3e795364b7dd276787bad3d8017662acb9d2`, one-based inclusive lines [[1, 280]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does wm_RUReceiptContainer05 restrict every root to the batch? Expected: No. NULL-parent roots qualify independently of the batch because of predicate precedence. Must not claim: All returned roots necessarily belong to the batch.
+- Does a shipping root lookup treat parent zero as NULL? Expected: No. wm_RShippingContainer04 explicitly requires PARENT IS NULL. Must not claim: Zero always means a root in every container routine.
+
+## 300. How are serial numbers combined with archives and uploads?
+
+**Question:** How are serial numbers combined with archives and uploads?
+
+**What it does.** Some serial lookups read only operational rows; others combine operational and archive rows with UNION ALL. The latter preserve duplicates. Template-aware branches usually include no-template serials and template sequence zero. Upload context can select source serial IDs through upload records rather than returning the upload record itself.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Check whether archives participate and whether the operation uses UNION ALL. Evidence: `wh-access-1790277783`, `wh-access-1854278011`, `wh-access-1870278068`, `wh-access-1886278125`, `wh-access-1902278182`, `wh-access-1918278239`, `wh-access-1934278296`.
+2. Check no-template and template-sequence-zero branches. Evidence: `wh-access-1790277783`, `wh-access-1854278011`, `wh-access-1870278068`, `wh-access-1886278125`, `wh-access-1902278182`, `wh-access-1918278239`, `wh-access-1934278296`.
+3. Keep upload-record identities distinct from original serial identities. Evidence: `wh-access-1790277783`, `wh-access-1854278011`, `wh-access-1870278068`, `wh-access-1886278125`, `wh-access-1902278182`, `wh-access-1918278239`, `wh-access-1934278296`.
+
+**What can affect it**
+
+- All four attribute-type selectors identify serial-number references in transaction history.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Some serial lookups read only operational rows; others combine operational and archive rows with UNION ALL. The latter preserve duplicates. Template-aware branches usually include no-template serials and template sequence zero. Upload context can select source serial IDs through upload records rather than returning the upload record itself.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-1790277783`: [dbo.wm_RSerialNumber02](sql/1790277783.sql); source-definition SHA-256 `c625af79ce03aed899ab40de39620ba5022f0a79f5d3fdd541bb6a6b7d64a037`, reading-copy SHA-256 `2d565d7a778f0b6725a4eb9f2b40a38c4daa3e28b148835fcd52f3de33ba28e0`, one-based inclusive lines [[1, 28]].
+
+`wh-access-1854278011`: [dbo.wm_RSerialNumber06](sql/1854278011.sql); source-definition SHA-256 `1e4cccf8c73bb4a5e4b043765be5e152578b1a331d16dc5f791ccff20cba3fed`, reading-copy SHA-256 `dc649660ec1e333b38405e29d05f0c4e53878620741615dfabbfb786110d9a41`, one-based inclusive lines [[1, 43]].
+
+`wh-access-1870278068`: [dbo.wm_RSerialNumber07](sql/1870278068.sql); source-definition SHA-256 `983a0bb38735f4261280229197222b17d38ccbb4c2ac877de074f0c687bd64c3`, reading-copy SHA-256 `d6a59bded643ee7b3a1b3997d845772969e8cddca0f0b1e2e6914d98ee8d4492`, one-based inclusive lines [[1, 24]].
+
+`wh-access-1886278125`: [dbo.wm_RSerialNumber08](sql/1886278125.sql); source-definition SHA-256 `3fb61e191a079cb6887285f2846eccdd45681e0305f62c65ed71f3207a3220ab`, reading-copy SHA-256 `e6c332f4540e9a4a5771ef63eb162682bff31160625b03ec09d8a4bdce14aff6`, one-based inclusive lines [[1, 49]].
+
+`wh-access-1902278182`: [dbo.wm_RSerialNumber09](sql/1902278182.sql); source-definition SHA-256 `860ffcc5956b7e50a61b1fbdbf7ac450a434736f61e8cb408bb8dfb107d62e12`, reading-copy SHA-256 `9830414e877e3e2bc8e578c8046aff6abede28b1c9542e58e7c004ebfbffb0c7`, one-based inclusive lines [[1, 40]].
+
+`wh-access-1918278239`: [dbo.wm_RSerialNumber10](sql/1918278239.sql); source-definition SHA-256 `4d94faaaf51cef20bf3ec739abca5042be9342d4b72667c1e8e2a521143731d2`, reading-copy SHA-256 `dc801f6629280a53cb45c14945dd11395aaf994bbfa013b4a610829daf4ba66b`, one-based inclusive lines [[1, 89]].
+
+`wh-access-1934278296`: [dbo.wm_RSerialNumber11](sql/1934278296.sql); source-definition SHA-256 `42e979211bc937f9594265843785b9f6672ca2f95aef8590b1572567995d0ff8`, reading-copy SHA-256 `9a9b91f338ae48572df5ef48cf081ddcf5c467437ca80f0389d0f7c23cedbfba`, one-based inclusive lines [[1, 52]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does serial lookup 07 prefer operational rows over archive rows? Expected: No. It combines both by UNION ALL and can return both. Must not claim: The archive is used only when operational rows are absent.
+- Which identity is excluded in the upload branch of serial lookup 09? Expected: The OBJECT_ID inequality is on UPLOAD_SERIAL_NUMBER inside its source-ID selection. Must not claim: It always excludes the original serial object ID directly.
+
+## 301. How are inventory attributes resolved across history and upload?
+
+**Question:** How are inventory attributes resolved across history and upload?
+
+**What it does.** Attribute reads can use operational, archive or upload context. The history lookup combines selected operational/archive attribute columns before joining history links. The upload helper writes matching attribute rows and then deletes a caller-selected upload row even if no replacement matched; that is a mutation with separate statements.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Identify whether the source is operational, archive or upload data. Evidence: `wh-access-638273679`, `wh-access-1422276472`, `wh-access-1454276586`, `wh-access-1470276643`.
+2. Distinguish an operational-first fallback from a union of sources. Evidence: `wh-access-638273679`, `wh-access-1422276472`, `wh-access-1454276586`, `wh-access-1470276643`.
+3. Review the insert/delete helper as a multi-statement change with possible zero or multiple replacement rows. Evidence: `wh-access-638273679`, `wh-access-1422276472`, `wh-access-1454276586`, `wh-access-1470276643`.
+
+**What can affect it**
+
+- All forty-four ISNULL replacement literals are the same one-character sentinel: each pair treats two NULLs as equal and also equates a NULL to the actual sentinel value. Empty strings remain distinct from NULL. No raw literal is reproduced here.
+- The private attribute-type selector identifies inventory-attribute references in transaction history.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Attribute reads can use operational, archive or upload context. The history lookup combines selected operational/archive attribute columns before joining history links. The upload helper writes matching attribute rows and then deletes a caller-selected upload row even if no replacement matched; that is a mutation with separate statements.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-638273679`: [dbo.wm_InsertLocationInventoryAttributes](sql/638273679.sql); source-definition SHA-256 `b31581673601826fecd5b28559a8bfeea8d3bc6f61139f88205ba1cb70008f67`, reading-copy SHA-256 `d27373a1ebdf90696641227213db0ce93a62d7319ae0f925b7b4c206e34e484b`, one-based inclusive lines [[1, 135]].
+
+`wh-access-1422276472`: [dbo.wm_RLocationInventoryAttributes01](sql/1422276472.sql); source-definition SHA-256 `c4ddde67312621a2640edde82ec4bef47c0652bb38647c755facdb62f89c5076`, reading-copy SHA-256 `ff776e9e157f0f5cc511daf2fc89cdbf1fb551db6b025bb509d42218ab976e55`, one-based inclusive lines [[1, 22]].
+
+`wh-access-1454276586`: [dbo.wm_RLocationInventoryAttributes03](sql/1454276586.sql); source-definition SHA-256 `63e7a295cb8d0a90aa10293d55c8b5a1fe9ea50488ae9004a9d1d0e55c189c91`, reading-copy SHA-256 `e0b8e92663e457783bf0c31c68e5da7b0ec275a0ee527ccbe1d391730e89fca9`, one-based inclusive lines [[1, 27]].
+
+`wh-access-1470276643`: [dbo.wm_RLocationInventoryAttributes04](sql/1470276643.sql); source-definition SHA-256 `4c14a825be1b0297a95d62adedd0113e761873e83176350e52f0bc5f64b1fbdd`, reading-copy SHA-256 `d1f225d1624e672f04c898d4bba7c412b73b8dfb93a46b590e71c2908e1fefbb`, one-based inclusive lines [[1, 15]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the upload attribute helper keep the original row if no match is inserted? Expected: No. The final delete by LOC_OBJECT_ID is unconditional after the insert statement. Must not claim: It deletes only when a replacement was inserted.
+- Does attribute lookup 04 combine operational and archive rows? Expected: No. It reads operational rows if they exist, otherwise the archive. Must not claim: It always UNIONs both sources.
+
+## 302. Why does shipment lookup return an upload copy?
+
+**Question:** Why does shipment lookup return an upload copy?
+
+**What it does.** Shipment lookup context can be controlled by interface link or by a positive trailing-status input. Positive status switches several header routines to upload order headers; zero, negative or NULL switches them to operational shipment headers. Operational and upload detail filters are not always the same.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Identify whether context is selected by interface link or trailing status. Evidence: `wh-access-1479324680`, `wh-access-1511324794`, `wh-access-2062278752`, `wh-access-10795446`, `wh-access-26795503`, `wh-access-42795560`, `wh-access-1575325022`, `wh-access-1767325706`, `wh-access-1570104634`.
+2. Check warehouse, company and excluded-closed-status restrictions for that exact variant. Evidence: `wh-access-1479324680`, `wh-access-1511324794`, `wh-access-2062278752`, `wh-access-10795446`, `wh-access-26795503`, `wh-access-42795560`, `wh-access-1575325022`, `wh-access-1767325706`, `wh-access-1570104634`.
+3. Do not infer an operational status transition from a read of an upload copy. Evidence: `wh-access-1479324680`, `wh-access-1511324794`, `wh-access-2062278752`, `wh-access-10795446`, `wh-access-26795503`, `wh-access-42795560`, `wh-access-1575325022`, `wh-access-1767325706`, `wh-access-1570104634`.
+
+**What can affect it**
+
+- The fixed interface condition denotes system-deletion upload records.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Shipment lookup context can be controlled by interface link or by a positive trailing-status input. Positive status switches several header routines to upload order headers; zero, negative or NULL switches them to operational shipment headers. Operational and upload detail filters are not always the same.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-1479324680`: [dbo.wm_RShipmentDetail01](sql/1479324680.sql); source-definition SHA-256 `0124afd264304c7c3d7751ed1e145fc616c77b5467e70d801adddd8788c9d869`, reading-copy SHA-256 `18abc6e8641aaa60e8e9ec218aa4f5f7b879d3e0818ff8fb19d822ad76ada5f0`, one-based inclusive lines [[1, 20]].
+
+`wh-access-1511324794`: [dbo.wm_RShipmentDetail03](sql/1511324794.sql); source-definition SHA-256 `13985fd1478e74ea1bf4a718cc360b9df337c3d561144c3148b75eb735e47240`, reading-copy SHA-256 `6f7d5ed6dd57f37bdc8de97c15cdcdfc4208646bf9def4cc16b16211c437ac7f`, one-based inclusive lines [[1, 27]].
+
+`wh-access-2062278752`: [dbo.wm_RShipmentDetail04](sql/2062278752.sql); source-definition SHA-256 `fd9f25e72ee627628b80661bf1e988837c2acc48bec7800990b6d5495479a920`, reading-copy SHA-256 `8610899bdd4f8dc010c5fa966e6d5c3826a433d93c2f9bd79a98abe71c73069a`, one-based inclusive lines [[1, 32]].
+
+`wh-access-10795446`: [dbo.wm_RShipmentHeader01](sql/10795446.sql); source-definition SHA-256 `fea4a5d0e2d18128ea587176fad0161b0f44258a983552d874443f7892036c94`, reading-copy SHA-256 `dec1cf0cd2cfa234fbff5f46ad93790dcbac862676de2240ed799952be5a6738`, one-based inclusive lines [[1, 26]].
+
+`wh-access-26795503`: [dbo.wm_RShipmentHeader02](sql/26795503.sql); source-definition SHA-256 `0ba056a43d479f09249280b432874bc9b6437ba8517f41d9715d1f5d88984cc7`, reading-copy SHA-256 `8ef5f4e9ba31243b4d27223872d6ecf5d8ea40e13d0400f5585f44cd31aa4881`, one-based inclusive lines [[1, 23]].
+
+`wh-access-42795560`: [dbo.wm_RShipmentHeader07](sql/42795560.sql); source-definition SHA-256 `072879e97eb61e9eff6cc23c080327f783de3d9d2b6e6733a2d070ca6f017697`, reading-copy SHA-256 `1e85f409844d7e5cf64b000c53372b6d8eff5d882ed0b2ca7f1b49528f40d04a`, one-based inclusive lines [[1, 23]].
+
+`wh-access-1575325022`: [dbo.wm_RShipmentHeader10](sql/1575325022.sql); source-definition SHA-256 `27406d6fe5317ce6c64f852e8e5bbcfcb15e70df168b34872ffd317c6855b2a6`, reading-copy SHA-256 `7ea852e78530da85ab9a7f95b3765ca07b91c68ee2641a3f58c478d896f350cb`, one-based inclusive lines [[1, 25]].
+
+`wh-access-1767325706`: [dbo.wm_RUploadOrderHeader01](sql/1767325706.sql); source-definition SHA-256 `a49016103888bc154292eb9ae05788281403595e1122150927f6de810d277a2d`, reading-copy SHA-256 `761c59cf9e0f4ba391efb6bb7662377d2eadaa6e240e31b0956e559578408342`, one-based inclusive lines [[1, 15]].
+
+`wh-access-1570104634`: [dbo.wm_RUploadOrderHeader02](sql/1570104634.sql); source-definition SHA-256 `b5b42afbcbbf1ba3c0669a9ebf1dcbbb44a2fc1f139623ad4f7fcdc8e5f234d1`, reading-copy SHA-256 `1d95570e17c3ba0ffed53c868b9f782205c0a8ccabc210214c527cd4aca3b48f`, one-based inclusive lines [[1, 16]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- What does a positive trailing status do in shipment header lookup 01? Expected: It reads upload order headers at that exact status instead of operational shipment headers. Must not claim: It updates the operational shipment status.
+- Does shipment detail lookup 03 exclude related lines in both contexts? Expected: No. That restriction appears only in the operational branch. Must not claim: Both branches use the same related-line filter.
+
+## 303. Can shipment batch selection overwrite an existing marker?
+
+**Question:** Can shipment batch selection overwrite an existing marker?
+
+**What it does.** The status-based batch selector first captures eligible unbatched shipment IDs, then marks them. The wave-based selector overwrites the batch on all headers for the wave without checking an existing batch. Both return all headers with the supplied batch, which can include earlier rows if the batch ID is reused.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Distinguish status/load eligibility from the wave-only update. Evidence: `wh-access-2082106458`, `wh-access-362796700`, `wh-access-378796757`, `wh-access-698797897`.
+2. Keep selection time separate from update time for the status-based routine. Evidence: `wh-access-2082106458`, `wh-access-362796700`, `wh-access-378796757`, `wh-access-698797897`.
+3. Treat resetting a marker as a separate update, not proof that external delivery completed. Evidence: `wh-access-2082106458`, `wh-access-362796700`, `wh-access-378796757`, `wh-access-698797897`.
+
+**What can affect it**
+
+- The excluded IN_CONFIRMATION selector is affirmative. NULL load confirmation fails the inequality, and shipments lacking a matching shipping load fail the inner join.
+- The fixed process-stamp value identifies this reset procedure rather than preserving the prior caller process stamp.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- The status-based batch selector first captures eligible unbatched shipment IDs, then marks them. The wave-based selector overwrites the batch on all headers for the wave without checking an existing batch. Both return all headers with the supplied batch, which can include earlier rows if the batch ID is reused.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-2082106458`: [dbo.wm_RShipmentHeader05](sql/2082106458.sql); source-definition SHA-256 `188a74612c50191117c6389a2640d09e5f191189c368ad036ff797c5965f7a66`, reading-copy SHA-256 `d030a657403ffae180558e52823861774c4e29a8524749d821bdf2bf9a1a5f3b`, one-based inclusive lines [[1, 16]].
+
+`wh-access-362796700`: [dbo.wm_RUShipmentHeader01](sql/362796700.sql); source-definition SHA-256 `f92c971152f7344666dc342ba35eddace8bc23e5043a5030897cb35f209923bf`, reading-copy SHA-256 `aa37bbe662648c8e48bfeda219512e9dcf2ebef9d133e2d3ef528aeb967ee89a`, one-based inclusive lines [[1, 32]].
+
+`wh-access-378796757`: [dbo.wm_RUShipmentHeader02](sql/378796757.sql); source-definition SHA-256 `04c0760f00d5f3bd7f006528e39bf7dee407da986677b43ed712dd90e74d2663`, reading-copy SHA-256 `23d39a9205277f608f93b795acc3b718ad31b32da1a085fd1ff90c14e2e0cca5`, one-based inclusive lines [[1, 22]].
+
+`wh-access-698797897`: [dbo.wm_UShipmentHeader02](sql/698797897.sql); source-definition SHA-256 `35e2902d3b3b7638b587b338703fa39978eb0315b02a91b9edda6d5f60d6d1d6`, reading-copy SHA-256 `e53cb59a79d1161b66b08378c24e58f3c2046128d042e95c7c2281156d938cc6`, one-based inclusive lines [[1, 13]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can the wave-based shipment RU routine overwrite an existing batch? Expected: Yes. It updates by LAUNCH_NUM without a NULL-batch guard. Must not claim: Existing batches are always preserved.
+- Can same-batch rows outside the new wave be returned? Expected: Yes. The final read filters only the batch ID. Must not claim: The output is restricted to rows newly updated in that wave.
+
+## 304. How are downloaded items claimed for processing?
+
+**Question:** How are downloaded items claimed for processing?
+
+**What it does.** Item claim routines change ready or NULL processing conditions to in process and attach a process stamp before returning records. Variant 02 limits its candidate IDs in order and also reports whether ready records remain. A later routine marks every row for a stamp processed. Reusing or omitting stamps can make selection misleading.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Provide distinct caller context when assessing a claim; the body does not validate stamp uniqueness. Evidence: `wh-access-202796130`, `wh-access-218796187`, `wh-access-1911326219`.
+2. Separate the candidate limit from the rows returned for an already-used stamp. Evidence: `wh-access-202796130`, `wh-access-218796187`, `wh-access-1911326219`.
+3. Interpret the remaining-record result as a global readiness check, not a processing-success result. Evidence: `wh-access-202796130`, `wh-access-218796187`, `wh-access-1911326219`.
+
+**What can affect it**
+
+- Private conditions: claim ready or NULL rows as in process; output excludes processed rows. The leading unnamed literal is an item-download record marker. Its raw spelling is not part of this explanation.
+- Private dynamic stage updates DOWNLOAD_ITEM IDs selected with TOP MaxRecords among ready-or-NULL rows ordered by INTERFACE_RECORD_ID. It assigns in-process condition and process stamp through parameters. MaxRecords is interpolated as numeric text with no validation; negative or NULL limits are not handled explicitly. The first result set excludes processed rows and has an item-download marker plus all columns; AreRecordsRemaining returns a string-valued affirmative/negative digit according to any ready-or-NULL row remaining.
+- The assigned interface condition denotes processed. All rows for the stamp are updated regardless of previous state.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Item claim routines change ready or NULL processing conditions to in process and attach a process stamp before returning records. Variant 02 limits its candidate IDs in order and also reports whether ready records remain. A later routine marks every row for a stamp processed. Reusing or omitting stamps can make selection misleading.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-202796130`: [dbo.wm_RUDownloadItem01](sql/202796130.sql); source-definition SHA-256 `0481d364c1d5dfa9f69c2f5210e91dd7be58f4dbd87e9a84c31080762a5dd2ba`, reading-copy SHA-256 `bb729f29a111e3b1151718bbb0c10a5c5a2fed2e22c06ab26f2766f0d0db9c11`, one-based inclusive lines [[1, 32]].
+
+`wh-access-218796187`: [dbo.wm_RUDownloadItem02](sql/218796187.sql); source-definition SHA-256 `d3c4dc47d509aff7982a0cedfde1a3664a003dc8637ede157efb6bd7d0b6446f`, reading-copy SHA-256 `fc8951b193e915c05e3a77a8a9414f5b3d4bd8252b1d4ec973227aa6b63527ca`, one-based inclusive lines [[1, 51]].
+
+`wh-access-1911326219`: [dbo.wm_UDownloadItem01](sql/1911326219.sql); source-definition SHA-256 `aa51da01a60ebe04171beb023b292c015ca825eefcea8504a95b892f6bdcdc3d`, reading-copy SHA-256 `e07359b044bae664682da133028208d9fd557cd52dc55ef47c6f15c83b1e8ecf`, one-based inclusive lines [[1, 17]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the item download claim only read records? Expected: No. It writes interface condition and process stamp before returning rows. Must not claim: It is a read-only lookup.
+- Does AreRecordsRemaining prove the current item batch succeeded? Expected: No. It indicates whether ready-or-NULL item rows remain globally. Must not claim: It certifies successful processing of returned rows.
+
+## 305. What is included in a downloaded order family?
+
+**Question:** What is included in a downloaded order family?
+
+**What it does.** Order claims can mark headers, details, containers, comments and VAS records, then return separate record sets. Linked children can make the returned family larger than the requested root limit. The processed, error and reset routines have different guards; one processed routine deliberately skips records still marked in process, and another omits VAS records.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Read the exact root and orphan selection rules rather than assuming every link points to a header. Evidence: `wh-access-234796244`, `wh-access-250796301`, `wh-access-1927326276`, `wh-access-1943326333`, `wh-access-458797042`, `wh-access-474797099`.
+2. Count the six data result sets separately from the remaining-record indicator. Evidence: `wh-access-234796244`, `wh-access-250796301`, `wh-access-1927326276`, `wh-access-1943326333`, `wh-access-458797042`, `wh-access-474797099`.
+3. Choose the documented status-update contract; similar routine suffixes are not interchangeable. Evidence: `wh-access-234796244`, `wh-access-250796301`, `wh-access-1927326276`, `wh-access-1943326333`, `wh-access-458797042`, `wh-access-474797099`.
+
+**What can affect it**
+
+- Private conditions: ready or NULL records are claimed as in process; linked-header/detail eligibility and returned rows exclude processed and error conditions. Six leading markers distinguish shipment header, detail, container, comment, header VAS and detail VAS records. Header VAS uses ERP line NULL or nonpositive; detail VAS uses positive line. Marker values are not reproduced.
+- Private dynamic stage order is order header, orphan detail, orphan container, orphan comment, orphan VAS. Each TOP subquery is ordered by INTERFACE_RECORD_ID and selects ready-or-NULL rows; only the header lacks orphan tests. Container orphan conditions are NULL link OR link absent from headers OR link absent from containers OR parent link absent from containers. Comment/VAS orphan tests use OR across absent header/detail. All stages mark in process; returned rows exclude processed and error. The aggregate uses UNION of table counts, so equal count values deduplicate, but the final greater-than-zero test still expresses whether any included count is positive. No SQL error recovery validates the budget or stored condition values.
+- The assigned condition denotes processed, while rows currently in process are excluded. NULL current condition is also excluded by inequality. This is not an in-process-to-processed transition.
+- The assigned condition denotes processed; every stamp-matching row in its four target tables is eligible.
+- Only error-condition rows for the stamp are reset to NULL, enabling later ready-or-NULL claim logic. This body does not clear the process stamp.
+- Only in-process rows for the stamp are changed to error condition.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Order claims can mark headers, details, containers, comments and VAS records, then return separate record sets. Linked children can make the returned family larger than the requested root limit. The processed, error and reset routines have different guards; one processed routine deliberately skips records still marked in process, and another omits VAS records.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-234796244`: [dbo.wm_RUDownloadOrderHeader01](sql/234796244.sql); source-definition SHA-256 `b694675765365f3d3d777111a525b0333b4a5c432433bc382303c44b912924bf`, reading-copy SHA-256 `01a61db4b5779d3403fa1df927382adb936d83c25b36dade7497367130ead7b9`, one-based inclusive lines [[1, 162]].
+
+`wh-access-250796301`: [dbo.wm_RUDownloadOrderHeader02](sql/250796301.sql); source-definition SHA-256 `1cfe27215a2d90d97ac2c1a01d30f88b94b86546a65d56460d8ca03c49bc26d4`, reading-copy SHA-256 `db06daa3a43db5e7f77a5f40c94a4de7e63fca981d7eac3c866e8d469bb7d515`, one-based inclusive lines [[1, 313]].
+
+`wh-access-1927326276`: [dbo.wm_UDownloadOrderHeader01](sql/1927326276.sql); source-definition SHA-256 `e76a0399e40cb6ac69b5229d1f0ca1f22d53d12ac3e50bf940ca05584fcf1703`, reading-copy SHA-256 `0319c8f3a6083135c0ace8cced9b44db1ec0e8d0d9c2cbd142b5b603e31558d0`, one-based inclusive lines [[1, 45]].
+
+`wh-access-1943326333`: [dbo.wm_UDownloadOrderHeader02](sql/1943326333.sql); source-definition SHA-256 `8cb58cec7e599bf15f5036aad781e4c8f49b682feb2aefbaf40791433a5a0842`, reading-copy SHA-256 `99d93646bcd8723763a8e222b0e1552fd19cee42c68ad5392a807648d3580299`, one-based inclusive lines [[1, 35]].
+
+`wh-access-458797042`: [dbo.wm_UDownloadOrderHeader03](sql/458797042.sql); source-definition SHA-256 `d058d1988a3694ba9b0762d173619f32d11fce02e0162cbe47cda19978048461`, reading-copy SHA-256 `a6079b3984a4a9a682bfb7c31a06c523a6e021935554e38542bb1557f77507e0`, one-based inclusive lines [[1, 44]].
+
+`wh-access-474797099`: [dbo.wm_UDownloadOrderHeader04](sql/474797099.sql); source-definition SHA-256 `7cfcc7325acc54dd6b94e11ebc621a6d4cbcf020016cd94847a3f7aedff86f1a`, reading-copy SHA-256 `10f36b3c513741ded06267311a51b5d8c0da19a53e3562663cad5c878279c2ce`, one-based inclusive lines [[1, 44]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does MaxRecords strictly cap all returned order-family rows? Expected: No. Linked child propagation and prior same-stamp rows can expand the results. Must not claim: It is a strict limit on every returned child row.
+- Does wm_UDownloadOrderHeader01 mark in-process rows processed? Expected: No. Its inequality specifically excludes in-process rows, and excludes NULL conditions as well. Must not claim: It specifically targets in-process rows.
+- Does update variant 02 include VAS rows? Expected: No. It updates container, comment, detail and header only. Must not claim: Every variant updates all five order tables.
+
+## 306. What can the receipt download remaining flag miss?
+
+**Question:** What can the receipt download remaining flag miss?
+
+**What it does.** Receipt download claims include purchase-order and receipt records, containers, serials and appointments. The limited variant returns seven data sets, but its remaining-record flag checks only five receipt-side tables. Ready purchase-order rows can therefore remain without making that final flag positive.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Distinguish the seven returned record families from the five tables used for remaining-work detection. Evidence: `wh-access-266796358`, `wh-access-282796415`, `wh-access-490797156`.
+2. Review appointment link-type filters at the stage where they actually appear. Evidence: `wh-access-266796358`, `wh-access-282796415`, `wh-access-490797156`.
+3. Keep these database marker changes separate from receiving inventory or confirming external delivery. Evidence: `wh-access-266796358`, `wh-access-282796415`, `wh-access-490797156`.
+
+**What can affect it**
+
+- Private conditions: ready or NULL records are marked in process; result sets and most parent eligibility exclude processed records, without the order family's additional error exclusion. Appointment link-type selector denotes receiving. Seven unnamed record markers distinguish purchase-order header/detail, receipt header/detail/container, serial and appointment sets; their values are not reproduced.
+- Private dynamic stage order is purchase-order header, orphan purchase-order detail, receipt header, orphan receipt detail, orphan receipt container, orphan receiving appointment, orphan serial. Each TOP selection orders INTERFACE_RECORD_ID and requires ready-or-NULL condition. Container orphan detection uses OR for absence from receipt-header/container; serial detection uses AND for absence from receipt-header and serial tables. Propagated appointments do not repeat the dynamic stage's receiving-link-type filter. Returned rows exclude processed but not error condition. AreRecordsRemaining uses only five receipt-side tables, omitting both purchase-order tables; equal counts deduplicate under UNION without altering the positive-existence interpretation.
+- All assigned conditions denote processed, with receiving link type additionally required for appointment rows.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Receipt download claims include purchase-order and receipt records, containers, serials and appointments. The limited variant returns seven data sets, but its remaining-record flag checks only five receipt-side tables. Ready purchase-order rows can therefore remain without making that final flag positive.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-266796358`: [dbo.wm_RUDownloadReceiptHeader01](sql/266796358.sql); source-definition SHA-256 `a7c0b80d20999809d02df268cd010036560a1175067d1b28b6651e480587377c`, reading-copy SHA-256 `fc31dde01c1d5828a012d7773c4fa00799915ca45f582c013652b9a8fb278419`, one-based inclusive lines [[1, 149]].
+
+`wh-access-282796415`: [dbo.wm_RUDownloadReceiptHeader02](sql/282796415.sql); source-definition SHA-256 `648d41b1389bca28b2af1a67aac280c09df55a5979374df476e2a5e2a351c6ce`, reading-copy SHA-256 `398653ec4df1003d103aae9d2078f985235f6937efde21b50ed8492434a110e4`, one-based inclusive lines [[1, 323]].
+
+`wh-access-490797156`: [dbo.wm_UDownloadReceiptHeader01](sql/490797156.sql); source-definition SHA-256 `1a08ceea9b5f8f13583c398a31a665b5352078de11abc4d61ab7fea58c6a50fe`, reading-copy SHA-256 `706daeb42c834cfcb22f8e8d66fe7a443b037e19f0fc0cc9fecdeb547d67bd7f`, one-based inclusive lines [[1, 55]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can ready purchase-order rows remain while the receipt remaining flag is negative? Expected: Yes. The final query omits both purchase-order tables. Must not claim: The flag checks every returned record family.
+- Does every appointment propagation step require receiving link type? Expected: No. The limited dynamic orphan stage does, but its later linked appointment update does not repeat that filter. Must not claim: Every appointment update has the same link-type restriction.
+
+## 307. Why can inventory export include zero balances?
+
+**Question:** Why can inventory export include zero balances?
+
+**What it does.** Inventory variant 01 returns eligible nonzero location balances. Variant 02 adds zero-balance rows for item/company and warehouse combinations with no eligible nonzero inventory. That added branch is not filtered by the optional criteria applied to existing inventory. Neither base query automatically restricts rows to the warehouse used for date calculation.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Compare the nonzero-balance branch with the synthetic zero-balance branch. Evidence: `wh-access-1262275902`, `wh-access-1278275959`.
+2. Check location-class exclusion and the four quantity tests. Evidence: `wh-access-1262275902`, `wh-access-1278275959`.
+3. Apply filter scope separately: the date warehouse is not an automatic row warehouse filter. Evidence: `wh-access-1262275902`, `wh-access-1278275959`.
+
+**What can affect it**
+
+- Private dynamic body: read LOCATION_INVENTORY left joined to CATCH_WEIGHT_INFORMATION by internal location-inventory ID. Exclude location classes whose generic configuration disables inclusion; require at least one non-NULL, nonzero allocated, on-hand, in-transit or suspense quantity. Add location and inventory-attribute left joins only when nonempty extracted filter criteria exist. The optional criteria are enclosed in parentheses. Return 48 expressions in the listed order, including internal identity twice (first under its own name and later OBJECT_ID), a newly generated UTC stamp, catch weight and catch-weight unit. Order by INTERNAL_LOCATION_INV. The warehouse input supplies only WarehouseDate for use by optional filter text; the base query has no warehouse equality predicate. Blank or missing filter criteria skip the extra filter, while multiple named configuration rows cause the scalar subquery to fail. Text after the first WHERE marker is used; absent markers are not explicitly rejected. The filter content is dynamic syntax rather than a parameter value.
+- Private dynamic body: use the same nonzero location-inventory eligibility and location-class exclusion as variant 01, projecting 47 fields with OBJECT_ID first and no second internal-identity column. Append UNION ALL synthetic zero-balance rows from ITEM cross joined with every WAREHOUSE when no eligible nonzero inventory exists for that item, normalized company and warehouse. Synthetic rows take item descriptive/user fields and warehouse code, zero quantities/cost/value/volume/weight, fresh UTC timestamp and NULL location/attribute/catch-weight fields. The optional stored filter is applied only to the first inventory branch, not the synthetic branch or its NOT EXISTS test. There is no final ORDER BY, item/warehouse ACTIVE restriction or direct filterWarehouse equality. The normalized company comparison equates NULL with its fixed single-character sentinel.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Inventory variant 01 returns eligible nonzero location balances. Variant 02 adds zero-balance rows for item/company and warehouse combinations with no eligible nonzero inventory. That added branch is not filtered by the optional criteria applied to existing inventory. Neither base query automatically restricts rows to the warehouse used for date calculation.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-1262275902`: [dbo.wm_RInventory01](sql/1262275902.sql); source-definition SHA-256 `388bf2fb844dea9d364e52d496ebc55224bb9e802b798f7139202733ab88822a`, reading-copy SHA-256 `63da859bd38f50e0d43fade7c99cb92fd67fde6cb7921be3ca75fa03831bfbe1`, one-based inclusive lines [[1, 113]].
+
+`wh-access-1278275959`: [dbo.wm_RInventory02](sql/1278275959.sql); source-definition SHA-256 `e65fc078c83708ba673f822f136d8419f0e9e6f326433cdd69f29032c56a82f5`, reading-copy SHA-256 `08c7a8063aff6f00d4ea08fc330d677d5bfb77df6f6975bf1793ef7123ec50d7`, one-based inclusive lines [[1, 181]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does inventory variant 02 apply its optional filter to synthetic zero rows? Expected: No. The appended zero-balance branch and its absence test do not receive that filter. Must not claim: Both branches receive identical filtering.
+- Does filterWarehouse automatically restrict inventory rows to one warehouse? Expected: No. It derives WarehouseDate; actual row restriction depends on filter text. Must not claim: The base SQL always filters WAREHOUSE by that input.
+
+## 308. Do item and lot inserts validate business rules?
+
+**Question:** Do item and lot inserts validate business rules?
+
+**What it does.** These insert routines store the supplied item, unit, lot, attribute or serial values. Their bodies do not perform the broader template, conversion, expiration or uniqueness checks that a caller may need. Several return a new identity, but the item cross-reference and unit inserts have unused identity-named inputs and return no generated identity.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Read parameter types and declaration defaults separately from table constraints. Evidence: `wh-access-558273394`, `wh-access-574273451`, `wh-access-590273508`, `wh-access-606273565`, `wh-access-622273622`, `wh-access-798274249`.
+2. Check whether a generated identity is actually assigned to an OUTPUT parameter. Evidence: `wh-access-558273394`, `wh-access-574273451`, `wh-access-590273508`, `wh-access-606273565`, `wh-access-622273622`, `wh-access-798274249`.
+3. Keep database insertion separate from application-level business validation. Evidence: `wh-access-558273394`, `wh-access-574273451`, `wh-access-590273508`, `wh-access-606273565`, `wh-access-622273622`, `wh-access-798274249`.
+
+**What can affect it**
+
+
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- These insert routines store the supplied item, unit, lot, attribute or serial values. Their bodies do not perform the broader template, conversion, expiration or uniqueness checks that a caller may need. Several return a new identity, but the item cross-reference and unit inserts have unused identity-named inputs and return no generated identity.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-558273394`: [dbo.wm_IItem01](sql/558273394.sql); source-definition SHA-256 `9b09fad688ef0f2cbace0d3f535e2e193d106ca6a5f0c764939b02de34062004`, reading-copy SHA-256 `d564bc57c897e61fb4948d63a2530fd5ae853c23a7761532cd981d63dbc519d9`, one-based inclusive lines [[1, 260]].
+
+`wh-access-574273451`: [dbo.wm_IItemCrossReference01](sql/574273451.sql); source-definition SHA-256 `859785406fb7282d9d8577512022643d92b7ffa555238c43c5d029ec90135ed1`, reading-copy SHA-256 `f5df85fd2a8c0eda59b8b1aa7bfd7ce6dcd75c7fa86547ecf764b4bacdeef9da`, one-based inclusive lines [[1, 70]].
+
+`wh-access-590273508`: [dbo.wm_IItemUnitOfMeasure01](sql/590273508.sql); source-definition SHA-256 `f2df23871927c54ea6dd6af7644018bd7a0a2ff0a09b504107bdd4ef8d922c97`, reading-copy SHA-256 `1e7a9108c3110b60c12f4505f152f4a5f98e38c87ea6a91b82f061feccb9fcef`, one-based inclusive lines [[1, 110]].
+
+`wh-access-606273565`: [dbo.wm_ILot01](sql/606273565.sql); source-definition SHA-256 `e8cb4dce568aa06ab75dda7dcaddd1bf6d5e210829eb8fc767f6d42e2ffb1242`, reading-copy SHA-256 `12621366289ea80b1af3917181b8b313572cc662ed5ecdbf9b1045775d9d5b38`, one-based inclusive lines [[1, 70]].
+
+`wh-access-622273622`: [dbo.wm_ILotAttribute01](sql/622273622.sql); source-definition SHA-256 `ccf762ab33c59a20163d5becc02a4b2e910f814505156cb86023398236ccec85`, reading-copy SHA-256 `1a4168d05210b57adcf0b203f88bbfd7c4175990eae6e9c1f89d4f1f4304ce20`, one-based inclusive lines [[1, 58]].
+
+`wh-access-798274249`: [dbo.wm_ISerialNumber01](sql/798274249.sql); source-definition SHA-256 `fd473c4f8371dd32860061dc30868d21aa87c67297dcc8b7df04607e60777707`, reading-copy SHA-256 `039b15127e01a5ffbe14459def434b7ae5b9580ce58a7c8da74336f1386bed8d`, one-based inclusive lines [[1, 71]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the item-unit insert return the InternalItemUm input as a generated ID? Expected: No. That input is unused and no identity is returned. Must not claim: Every identity-named parameter is an OUTPUT.
+- Does a lot-attribute insert validate its value against the template? Expected: No such validation appears in its body. Must not claim: The routine verifies the template rules.
+
+## 309. Do update routines preserve fields when NULL is supplied?
+
+**Question:** Do update routines preserve fields when NULL is supplied?
+
+**What it does.** Most listed fields are replaced directly, including NULLs; these are broad updates, not partial patches. Exceptions are explicit: order-header NULL order date reuses its old value, shipment detail NULL export fields fall back to a header, and shipment-header load zero becomes NULL. Insert and update parameter sets also differ.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Identify exactly which columns the chosen update assigns. Evidence: `wh-access-506797213`, `wh-access-522797270`, `wh-access-570797441`, `wh-access-586797498`, `wh-access-602797555`, `wh-access-650797726`, `wh-access-682797840`, `wh-access-730798011`.
+2. Apply only its explicit fallback rules; do not generalize one exception to other fields. Evidence: `wh-access-506797213`, `wh-access-522797270`, `wh-access-570797441`, `wh-access-586797498`, `wh-access-602797555`, `wh-access-650797726`, `wh-access-682797840`, `wh-access-730798011`.
+3. Check omitted update columns and the lack of an old-version predicate before assuming an unchanged record. Evidence: `wh-access-506797213`, `wh-access-522797270`, `wh-access-570797441`, `wh-access-586797498`, `wh-access-602797555`, `wh-access-650797726`, `wh-access-682797840`, `wh-access-730798011`.
+
+**What can affect it**
+
+
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Most listed fields are replaced directly, including NULLs; these are broad updates, not partial patches. Exceptions are explicit: order-header NULL order date reuses its old value, shipment detail NULL export fields fall back to a header, and shipment-header load zero becomes NULL. Insert and update parameter sets also differ.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-506797213`: [dbo.wm_UOrderDetail01](sql/506797213.sql); source-definition SHA-256 `9dc4a9a23c1f536cca320eb1c6223bbaeeb26dc700bf1fe4c3cfe6b221ead8fc`, reading-copy SHA-256 `2cc43996891fcc2a56809635f7f379f74149caec494315681b93a3232cbfe062`, one-based inclusive lines [[1, 270]].
+
+`wh-access-522797270`: [dbo.wm_UOrderHeader01](sql/522797270.sql); source-definition SHA-256 `e010ae5cd8d70bee18e112f9d63bb0d6acd62483318be1fc6bb64c4ab7b80cd5`, reading-copy SHA-256 `3d0dc88a3c40490f64951cb9cfce6d6f1b21db4f9be69d3634d4cb4176d4a915`, one-based inclusive lines [[1, 251]].
+
+`wh-access-570797441`: [dbo.wm_UReceiptContainer01](sql/570797441.sql); source-definition SHA-256 `2370b64f78d2c7c9d295787ae41d8fdc4aa8f7ff868ddf4ebc20b02d94025cb5`, reading-copy SHA-256 `09185012d9006c7cdbbae658068b96a2d39958b966d7e087cd1aac374f5aaac3`, one-based inclusive lines [[1, 125]].
+
+`wh-access-586797498`: [dbo.wm_UReceiptDetail01](sql/586797498.sql); source-definition SHA-256 `ea0966696619afe9c2db323b75cc22280076b5478bfacec0f6393315fe08a87a`, reading-copy SHA-256 `fdd611e09aa0d32f67934922bf7caa7ecdfe79c0c0141ea20d971ad186faa4f1`, one-based inclusive lines [[1, 179]].
+
+`wh-access-602797555`: [dbo.wm_UReceiptHeader01](sql/602797555.sql); source-definition SHA-256 `4b0fd5c1c02fad4d6488f971621280cf611b2b06344adfb180b16154fc4d6339`, reading-copy SHA-256 `2aa02ec2347c7c2dc08f8212be50d02711cd5241b11cb2bbe9f7b454324fb6a6`, one-based inclusive lines [[1, 170]].
+
+`wh-access-650797726`: [dbo.wm_UShipmentDetail01](sql/650797726.sql); source-definition SHA-256 `a951f773f7166f4a4a27e7e4406dbfa85258fa503a8e44ad0b699a4251b0eb20`, reading-copy SHA-256 `8f9dcfba3a631880ddd9e05a6792ba111534edeadce843389d9667bfef42adec`, one-based inclusive lines [[1, 332]].
+
+`wh-access-682797840`: [dbo.wm_UShipmentHeader01](sql/682797840.sql); source-definition SHA-256 `c43a342ccae0e721c05ca72a58940376477deb2c75caab84c61eb90f0f0043fa`, reading-copy SHA-256 `af0b1e3940e72e90013c5a8e1c22fb6f5a69d1aee401afbd64660927200a0304`, one-based inclusive lines [[1, 325]].
+
+`wh-access-730798011`: [dbo.wm_UShippingContainer01](sql/730798011.sql); source-definition SHA-256 `83c9ea247d28b260513786f126bb5ad53b58713d8aebf4f21d845875f0057885`, reading-copy SHA-256 `0490a2cb83dd98a148a35f6bd155f5c3be8ee652072fa89dc06126830caf5511`, one-based inclusive lines [[1, 151]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a NULL order date clear it in wm_UOrderHeader01? Expected: No. The routine reads and reuses the existing order date first. Other fields do not share this exception. Must not claim: All NULL inputs are preserved or all are cleared uniformly.
+- Does shipment-header update 01 update extended user fields 9 through 20? Expected: No. Those insert fields are absent from this update. Must not claim: Insert and update parameter lists are identical.
+
+## 310. Where do shipment-detail export fields come from?
+
+**Question:** Where do shipment-detail export fields come from?
+
+**What it does.** Shipment-detail insert and update preserve non-NULL caller export fields. For NULL classification, validated license or expiration, they read the corresponding header fields by business shipment ID. The lookup does not restrict warehouse or company and has no ordering when several headers share that ID.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Check whether each export input is NULL independently. Evidence: `wh-access-846274420`, `wh-access-650797726`.
+2. Read the header lookup key; internal shipment input does not narrow that lookup. Evidence: `wh-access-846274420`, `wh-access-650797726`.
+3. Do not treat copied values as export-license validation or regulatory approval. Evidence: `wh-access-846274420`, `wh-access-650797726`.
+
+**What can affect it**
+
+
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Shipment-detail insert and update preserve non-NULL caller export fields. For NULL classification, validated license or expiration, they read the corresponding header fields by business shipment ID. The lookup does not restrict warehouse or company and has no ordering when several headers share that ID.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-846274420`: [dbo.wm_IShipmentDetail01](sql/846274420.sql); source-definition SHA-256 `083878955ff2cb74f4752fe658075528cd12dc92809b0bfcc420bb1e8817bbf3`, reading-copy SHA-256 `487b2f87939490ac42223d202c14db2013b051f25157661916847af7f63a7ef6`, one-based inclusive lines [[1, 483]].
+
+`wh-access-650797726`: [dbo.wm_UShipmentDetail01](sql/650797726.sql); source-definition SHA-256 `a951f773f7166f4a4a27e7e4406dbfa85258fa503a8e44ad0b699a4251b0eb20`, reading-copy SHA-256 `8f9dcfba3a631880ddd9e05a6792ba111534edeadce843389d9667bfef42adec`, one-based inclusive lines [[1, 332]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does shipment-detail fallback use internal shipment number? Expected: No. Its header lookup uses SHIPMENT_ID only. Must not claim: It is scoped by internal shipment, warehouse and company.
+- Are non-NULL export inputs overwritten from the header? Expected: No. Each fallback runs only when that caller input is NULL. Must not claim: The header always takes precedence.
+
+## 311. How is a new shipping container tree identifier set?
+
+**Question:** How is a new shipping container tree identifier set?
+
+**What it does.** The insert stores a QC status of zero and uses the supplied location when original pick location is NULL. If tree unit is NULL, it updates the new container to use its own identity. The captured insert trigger also initializes parentless NULL or negative tree units. The later broad update assigns tree unit directly and does not repeat the insert fallback.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Separate insert-supplied values from the captured trigger effect. Evidence: `wh-access-910274648`, `wh-access-730798011`.
+2. Check the procedure fallback for NULL tree unit even on a child container. Evidence: `wh-access-910274648`, `wh-access-730798011`.
+3. Do not assume the update recalculates original pick location or QC status. Evidence: `wh-access-910274648`, `wh-access-730798011`.
+
+**What can affect it**
+
+
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- The insert stores a QC status of zero and uses the supplied location when original pick location is NULL. If tree unit is NULL, it updates the new container to use its own identity. The captured insert trigger also initializes parentless NULL or negative tree units. The later broad update assigns tree unit directly and does not repeat the insert fallback.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-910274648`: [dbo.wm_IShippingContainer01](sql/910274648.sql); source-definition SHA-256 `21161401feb735fb1943dda5041a497a46a1f9bd59bb604d4d46d62ff3a934fe`, reading-copy SHA-256 `e73572e377a75f0597e214147521718abd93cc8e100a0a92e751ae292439f79f`, one-based inclusive lines [[1, 235]].
+
+`wh-access-730798011`: [dbo.wm_UShippingContainer01](sql/730798011.sql); source-definition SHA-256 `83c9ea247d28b260513786f126bb5ad53b58713d8aebf4f21d845875f0057885`, reading-copy SHA-256 `0490a2cb83dd98a148a35f6bd155f5c3be8ee652072fa89dc06126830caf5511`, one-based inclusive lines [[1, 151]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a NULL tree unit on a newly inserted child remain NULL? Expected: The procedure explicitly sets its tree unit to its own new identity when the input is NULL. Must not claim: Only parentless containers can be initialized by this procedure.
+- Does shipping-container update 01 repeat that identity fallback? Expected: No. It assigns TREE_UNIT directly from the caller input. Must not claim: Insert and update apply identical fallback rules.
+
+## 312. What does a delete affected-row count include?
+
+**Question:** What does a delete affected-row count include?
+
+**What it does.** Most delete routines remove rows from one table and return that statement count. Purchase-order-header delete first removes its details and then the header, returning the sum. The body does not wrap those two deletions in a transaction. Counts do not establish that all related records were cleaned up or that a whole business operation succeeded.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Read the explicit target tables and their deletion order. Evidence: `wh-access-279320405`, `wh-access-478273109`, `wh-access-311320519`, `wh-access-327320576`, `wh-access-343320633`, `wh-access-359320690`, `wh-access-391320804`.
+2. Distinguish the statement count from a sum across statements. Evidence: `wh-access-279320405`, `wh-access-478273109`, `wh-access-311320519`, `wh-access-327320576`, `wh-access-343320633`, `wh-access-359320690`, `wh-access-391320804`.
+3. Account for constraints, trigger effects and caller transaction boundaries separately. Evidence: `wh-access-279320405`, `wh-access-478273109`, `wh-access-311320519`, `wh-access-327320576`, `wh-access-343320633`, `wh-access-359320690`, `wh-access-391320804`.
+
+**What can affect it**
+
+
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Most delete routines remove rows from one table and return that statement count. Purchase-order-header delete first removes its details and then the header, returning the sum. The body does not wrap those two deletions in a transaction. Counts do not establish that all related records were cleaned up or that a whole business operation succeeded.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-279320405`: [dbo.wm_DOrderDetail01](sql/279320405.sql); source-definition SHA-256 `43d595a82c300147fa511daefdd7d3c3b23c55fb6354bf5cc420d91a2def3b77`, reading-copy SHA-256 `267fff0ab12b5d8ff3fe8dbbb2dc4ce41a8fcf3304847dabeb61d1ae5f99af40`, one-based inclusive lines [[1, 15]].
+
+`wh-access-478273109`: [dbo.wm_DPurchaseOrderHeader01](sql/478273109.sql); source-definition SHA-256 `2b4f2dd8a57a368a65953a1b76c6aa014d469a71c3fda23be7e408d27e663064`, reading-copy SHA-256 `7421ee08afe3bb2a19db4d00b42f6867327ca62d04eaf73ec15de56e49590dc1`, one-based inclusive lines [[1, 23]].
+
+`wh-access-311320519`: [dbo.wm_DShipmentDetail01](sql/311320519.sql); source-definition SHA-256 `6787200e34e9e7d14a35ac92f59e8fc36f448673c294b1af427d57b43b10826b`, reading-copy SHA-256 `2ae14b38ba371c0dbd72b5e7e3eb25a612d2170ee5a77b5e67062c944aa26b8b`, one-based inclusive lines [[1, 15]].
+
+`wh-access-327320576`: [dbo.wm_DShipmentHeader01](sql/327320576.sql); source-definition SHA-256 `c8dd6d4cfcc665a022caed71d9d5a694a82320de85d0b050ccf8518e524043f3`, reading-copy SHA-256 `94e44df605d8d11ce982dfc09d4a7a535a786991eb812a17c62bda2a97d2f57f`, one-based inclusive lines [[1, 15]].
+
+`wh-access-343320633`: [dbo.wm_DShippingContainer01](sql/343320633.sql); source-definition SHA-256 `f7f113156f0283392118d0fe43b43e293c452877a73b1905bc63c7cbc355c05d`, reading-copy SHA-256 `757ffdfe31092851ae370572c8c6bf4ac485737391c42c6189fbf5b143cbd8cd`, one-based inclusive lines [[1, 15]].
+
+`wh-access-359320690`: [dbo.wm_DShippingLoad01](sql/359320690.sql); source-definition SHA-256 `3f3d3b490b0d7806eb2834b90aac20bb4a433ecd5f588e448dc497451a0fded0`, reading-copy SHA-256 `f8366e8d880c885b3f29541fe6e9b776e705bd08e66c9326b42a2d94d942ac22`, one-based inclusive lines [[1, 15]].
+
+`wh-access-391320804`: [dbo.wm_DWarehouseAlert01](sql/391320804.sql); source-definition SHA-256 `69b2c6761cac26797c0b90ac6359280e678b55554b02ede9e075d166ce08f4ff`, reading-copy SHA-256 `f34353e41be82567b2d3f741bc43c5e16777108a23c8e1c3d41c7be368aae0cc`, one-based inclusive lines [[1, 15]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- What does the purchase-order-header delete count include? Expected: The deleted purchase-order detail rows plus the header rows. Must not claim: Only the header row.
+- Does the shipment-header delete explicitly delete its details? Expected: No. Its body deletes SHIPMENT_HEADER only. Must not claim: It explicitly performs all child cleanup.
+
+## 313. Do appointment and alert routines complete an operational action?
+
+**Question:** Do appointment and alert routines complete an operational action?
+
+**What it does.** Appointment routines store schedule values; the update can change every appointment for one internal receipt. Alert routines store definitions or request records, and process-history insert records a supplied message. These bodies do not send email, execute the named action or prove that work was completed.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Separate a stored definition/request/history entry from execution. Evidence: `wh-access-526273280`, `wh-access-702273907`, `wh-access-942274762`, `wh-access-958274819`, `wh-access-442796985`, `wh-access-778798182`.
+2. For appointment updates, check the internal-receipt predicate rather than assuming one appointment ID. Evidence: `wh-access-526273280`, `wh-access-702273907`, `wh-access-942274762`, `wh-access-958274819`, `wh-access-442796985`, `wh-access-778798182`.
+3. Treat caller-supplied processed/closed fields as stored values until operational evidence establishes their meaning. Evidence: `wh-access-526273280`, `wh-access-702273907`, `wh-access-942274762`, `wh-access-958274819`, `wh-access-442796985`, `wh-access-778798182`.
+
+**What can affect it**
+
+
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- Appointment routines store schedule values; the update can change every appointment for one internal receipt. Alert routines store definitions or request records, and process-history insert records a supplied message. These bodies do not send email, execute the named action or prove that work was completed.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-526273280`: [dbo.wm_IAppointmentSchedule01](sql/526273280.sql); source-definition SHA-256 `824a5025746ae11888cb3fba1edfae0ee55505ecaa885b1fcb58798a9fc69292`, reading-copy SHA-256 `bd49f6634ce6fa8340a8962becd111d6bb612068791f65319f1b6e87cc0c74da`, one-based inclusive lines [[1, 62]].
+
+`wh-access-702273907`: [dbo.wm_IProcessHistory01](sql/702273907.sql); source-definition SHA-256 `98bfe309e8e2a46ec49da6b1ce0c925c59858b90e03899fd263595c874b8ac92`, reading-copy SHA-256 `3608eedaa98d633b03ea6e090e17226e3f24d8fd9f8cfe6cf420db26e61dd1e0`, one-based inclusive lines [[1, 72]].
+
+`wh-access-942274762`: [dbo.wm_IWarehouseAlert01](sql/942274762.sql); source-definition SHA-256 `884a2224fc447125ede5d0b069fa92bd3a1881f5624dfe183c8345947b6a33e6`, reading-copy SHA-256 `aaf54e0d3dc9720672006cbac19290fae82ca5de4777ae8f3a5f6841267be572`, one-based inclusive lines [[1, 74]].
+
+`wh-access-958274819`: [dbo.wm_IWarehouseAlertRequest01](sql/958274819.sql); source-definition SHA-256 `c1f15668f4caec2605ceabafbf85cebc3606ccb72947c2d1983e9bfab3286697`, reading-copy SHA-256 `15274f2c3d88990def7ccaa0bffad41f5ee924a81ac62efed564da9884aaa4d7`, one-based inclusive lines [[1, 92]].
+
+`wh-access-442796985`: [dbo.wm_UAppointmentSchedule01](sql/442796985.sql); source-definition SHA-256 `d37094b7432d2e1f30c5efcb82ff571032d3554f582f2928e65c800ae2fdad6b`, reading-copy SHA-256 `69166abe4f7351be779f1352b99eb75880290096b7a5f9cd18925f8e6ef09746`, one-based inclusive lines [[1, 47]].
+
+`wh-access-778798182`: [dbo.wm_UWarehouseAlert01](sql/778798182.sql); source-definition SHA-256 `86dc02bf12a7060526a3b43d2b67914348dcb837de9a863b7cfc5f71ed483dfd`, reading-copy SHA-256 `e80addc5cdf6d6d259f36487353708f71817ce61a0a637e03175a2649c26a300`, one-based inclusive lines [[1, 57]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Is appointment update 01 keyed by appointment OBJECT_ID? Expected: No. It updates every matching INTERNAL_RECEIPT_NUM. Must not claim: It always changes exactly one appointment by object ID.
+- Does inserting a warehouse-alert request send its email? Expected: No email or notification call appears in the body. Must not claim: The insert proves delivery.
+
+## 314. When do packing and display defaults apply?
+
+**Question:** When do packing and display defaults apply?
+
+**What it does.** The outbound-QC lookup uses a user packing preference whenever that reference is non-NULL; a missing referenced preference does not fall back. Resource lookup gives matching custom keys precedence over base keys. Storage-template defaults apply to explicit NULL values, while missing configuration rows may simply produce no result.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Distinguish a NULL setting from a reference to a missing record. Evidence: `wh-access-974274876`, `wh-access-1447324566`, `wh-access-1687325421`, `wh-access-1719325535`.
+2. Check custom-key precedence independently of whether the custom text is populated. Evidence: `wh-access-974274876`, `wh-access-1447324566`, `wh-access-1687325421`, `wh-access-1719325535`.
+3. Treat these as selection rules; no current effective user setting was queried. Evidence: `wh-access-974274876`, `wh-access-1447324566`, `wh-access-1687325421`, `wh-access-1719325535`.
+
+**What can affect it**
+
+- The fallback literal names the default packing preference. A user-selected preference has precedence even when its referenced preference row is absent.
+- Both fallback literals name the same default storage template. NULL caller input uses that template; absent rows still yield no result.
+- The fixed record-type category is item-class configuration, and NULL SYS1VALUE maps to the default storage-template name.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- The outbound-QC lookup uses a user packing preference whenever that reference is non-NULL; a missing referenced preference does not fall back. Resource lookup gives matching custom keys precedence over base keys. Storage-template defaults apply to explicit NULL values, while missing configuration rows may simply produce no result.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-974274876`: [dbo.wm_OutboundQCScanMode](sql/974274876.sql); source-definition SHA-256 `6ced4c95fc0775c8c1ebaa726049157b01e41609bbeb635ee8f3f6d7fe125806`, reading-copy SHA-256 `7167640ad382033083cdcac41ecfbe9cee7d171d24859becb5b8d7150748f24c`, one-based inclusive lines [[1, 16]].
+
+`wh-access-1447324566`: [dbo.wm_RResource01](sql/1447324566.sql); source-definition SHA-256 `0ed3a9addeb3fdde99eb299b5d542b7d77d6c0c9fb43c3192b6d2aab0843a120`, reading-copy SHA-256 `f28aec0ff4a3c3c7d2cd8e6566fe19fb6ee25ab1276140c3619051c163911aca`, one-based inclusive lines [[1, 20]].
+
+`wh-access-1687325421`: [dbo.wm_RStorageTemplateDetail03](sql/1687325421.sql); source-definition SHA-256 `4626a63dd5cc28752023c412dd436f8eae143982478d384f84e504a2e5d3a36f`, reading-copy SHA-256 `9bc00803add01b09665cbf39c45d9e87ccb448dd1958063368749b6ca1dd91a0`, one-based inclusive lines [[1, 16]].
+
+`wh-access-1719325535`: [dbo.wm_RStorageTemplateHeader02](sql/1719325535.sql); source-definition SHA-256 `67c7d3f0fb9f72313dd72f50cdf555c03095cca02f6bd57a76f09bc424e14ee8`, reading-copy SHA-256 `4e463011853151392840ec5eb903e4c6e60b314046a9ed97f2ca467410d81836`, one-based inclusive lines [[1, 17]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a missing user-selected packing preference trigger default fallback? Expected: No. A non-NULL user preference chooses the join branch even if it returns no row. Must not claim: The routine falls back whenever a preferred row is missing.
+- Does resource fallback depend on whether custom text is empty? Expected: No. It depends on the presence of the matching custom resource key. Must not claim: Empty custom text automatically uses base text.
+
+## 315. How is catch weight added to transaction history?
+
+**Question:** How is catch weight added to transaction history?
+
+**What it does.** The batch history read adds catch weight and unit from history attributes. Invalid numeric weight text becomes NULL, and multiple weights/units are reduced using separate maxima. This can select a weight and a unit from different attribute rows. The general candidate reader uses configured transaction types and additional adjustment-type gates.
+
+**What happens**
+
+Trigger: A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.
+
+1. Separate candidate selection from reading an already-marked batch. Evidence: `wh-access-1730105204`, `wh-access-394796814`.
+2. Inspect numeric conversion and independent aggregation of weight and unit. Evidence: `wh-access-1730105204`, `wh-access-394796814`.
+3. Do not infer history mutation or completed external delivery from the returned rows. Evidence: `wh-access-1730105204`, `wh-access-394796814`.
+
+**What can affect it**
+
+- The private category denotes history transaction-type configuration and the upload-enabled value is affirmative. Prefix patterns begin with numeric character pairs forty, fifty and sixty followed by a wildcard. Types matching any of these patterns require an affirmative INCLUDE_IN_INTERFACE_UPLOAD adjustment-type reference. The body reads configuration; it does not establish current configured values.
+- The private attribute selectors represent catch weight and catch-weight unit. TRY_CAST uses numeric(14,5); multiple values aggregate independently, and invalid weight text contributes NULL.
+
+**What you can check**
+
+- Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits.
+
+**Expected results and limits**
+
+- The batch history read adds catch weight and unit from history attributes. Invalid numeric weight text becomes NULL, and multiple weights/units are reduced using separate maxima. This can select a weight and a unit from different attribute rows. The general candidate reader uses configured transaction types and additional adjustment-type gates.
+- The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.
+- Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.
+- Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.
+- No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved.
+
+**More detail and sources**
+
+`wh-access-1730105204`: [dbo.wm_RTransactionHistory01](sql/1730105204.sql); source-definition SHA-256 `b1a9a6dc71687c16644352c192e8941b0ef54906bafc50373845b344fd516c8a`, reading-copy SHA-256 `fc71681a10dae0a34ab2524488ea3778ce5a9a8a42ee3a4f48c7a71c72ae6e86`, one-based inclusive lines [[1, 33]].
+
+`wh-access-394796814`: [dbo.wm_RUTransactionHistory01](sql/394796814.sql); source-definition SHA-256 `f0c4c8c009a04f0e9799463342769335f29379b0d0a56cf6846348611d39e9b8`, reading-copy SHA-256 `f20bc26258fe0ad5b39953d4cb6113e790a656ddddf993e3b12156ae9bef1869`, one-based inclusive lines [[1, 47]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_COORDINATOR_REVIEW`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Must the returned catch weight and unit come from the same attribute row? Expected: No. They are computed by independent MAX expressions. Must not claim: The query pairs them from one guaranteed source row.
+- What happens to invalid numeric catch-weight text? Expected: TRY_CAST contributes NULL rather than a numeric value. Must not claim: It is converted to zero.
+
+## 316. Why adding a default configuration may leave an existing value unchanged
+
+**Question:** Why adding a default configuration may leave an existing value unchanged?
+
+**What it does.** Most reviewed configuration helpers insert only when their own duplicate key is absent. They preserve existing rows. Their keys differ, and the operational-goal helper inserts without a duplicate check. Registering a job, report, alert or interface does not run it.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Identify the relevant configuration object and its exact duplicate key. Evidence: `work-config-1676181367`, `work-config-1692181424`, `work-config-1740181595`, `work-config-2055326732`, `work-config-1772181709`, `work-config-1788181766`, `work-config-1804181823`, `work-config-1898802172`, `work-config-1868182051`, `work-config-1930802286`, `work-config-2028182621`, `work-config-2044182678`, `work-config-2060182735`, `work-config-2076182792`, `work-config-2092182849`, `work-config-56699600`, `work-config-72699657`, `work-config-104699771`, `work-config-120699828`, `work-config-184700056`, `work-config-200700113`, `work-config-216700170`, `work-config-232700227`, `work-config-248700284`, `work-config-424700911`, `work-config-440700968`, `work-config-456701025`, `work-config-472701082`, `work-config-2090802856`, `work-config-2106802913`, `work-config-384720423`.
+2. Separate storing a setting from running the configured action. Evidence: `work-config-1676181367`, `work-config-1692181424`, `work-config-1740181595`, `work-config-2055326732`, `work-config-1772181709`, `work-config-1788181766`, `work-config-1804181823`, `work-config-1898802172`, `work-config-1868182051`, `work-config-1930802286`, `work-config-2028182621`, `work-config-2044182678`, `work-config-2060182735`, `work-config-2076182792`, `work-config-2092182849`, `work-config-56699600`, `work-config-72699657`, `work-config-104699771`, `work-config-120699828`, `work-config-184700056`, `work-config-200700113`, `work-config-216700170`, `work-config-232700227`, `work-config-248700284`, `work-config-424700911`, `work-config-440700968`, `work-config-456701025`, `work-config-472701082`, `work-config-2090802856`, `work-config-2106802913`, `work-config-384720423`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- Most reviewed configuration helpers insert only when their own duplicate key is absent. They preserve existing rows. Their keys differ, and the operational-goal helper inserts without a duplicate check. Registering a job, report, alert or interface does not run it.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-1676181367`: [dbo.dbc_IAccessorialDetail](sql/1676181367.sql); source-definition SHA-256 `30a9512cebca3ec8abb1232e91cf7a7ff220e1eb6afe42691f87e6fdc728712a`, reading-copy SHA-256 `78eb05468fa01a92748ff6249411b4d5b604f93ee3efb8d017cc09b2bd837fb5`, one-based inclusive lines [[1, 110]].
+
+`work-config-1692181424`: [dbo.dbc_IAccessorialHeader](sql/1692181424.sql); source-definition SHA-256 `dc265d59188d51c51a8d2a1e1554eba56cc7138b4dd064969143e14ad513ca22`, reading-copy SHA-256 `1060948268cc9f29fef793fcbe43b11604f204b2dbe291d5e8c54554764a607e`, one-based inclusive lines [[1, 78]].
+
+`work-config-1740181595`: [dbo.dbc_IAdjustmentType](sql/1740181595.sql); source-definition SHA-256 `fbf7213772090f62d947c646c58b424806ca542c97d1ddabffe1bfd6d1f1a74f`, reading-copy SHA-256 `378e167d678692adb6cdecf64a7c8d6458a30b788e25b091e7552190b93a7c0c`, one-based inclusive lines [[1, 89]].
+
+`work-config-2055326732`: [dbo.dbc_IAppIdentifier](sql/2055326732.sql); source-definition SHA-256 `48b9be94867337567acf7c7e0a7064d5ba85040c807344f2523839b2f55462e0`, reading-copy SHA-256 `b074bc3ed1e0924edf052ccc885487b924b68815e5cced152cbb70b981484281`, one-based inclusive lines [[1, 74]].
+
+`work-config-1772181709`: [dbo.dbc_IArchivePreferences](sql/1772181709.sql); source-definition SHA-256 `00009d469009ab5c8f5fdbb05a78be5a834ad3e0998c91649ac4c63cd0ae7689`, reading-copy SHA-256 `95c44d916b2f70b8c3c6db819fcaa7df4fce5649f78e2b992979c534fa5c7d82`, one-based inclusive lines [[1, 85]].
+
+`work-config-1788181766`: [dbo.dbc_IArchiveSerialNumbersInShipLoad](sql/1788181766.sql); source-definition SHA-256 `1f6f9993d62909fe8faeaad3b5756fc59b62daf4ff44106ca70b6e6d5842287b`, reading-copy SHA-256 `727664c3b4275e80d28ee6b6cb3b15924f7e53c8ac2b217d2a554158e58f56b2`, one-based inclusive lines [[1, 35]].
+
+`work-config-1804181823`: [dbo.dbc_IArchiveTables](sql/1804181823.sql); source-definition SHA-256 `bb97fe058ffd05712006aa2b1c2a663dd121a93b680b9b88d05c03cae1608eda`, reading-copy SHA-256 `8b9167d41b5aaa699439965d4f6d052d1a65378841bbd20066ae28fcd5f4e03d`, one-based inclusive lines [[1, 56]].
+
+`work-config-1898802172`: [dbo.dbc_ICarrierEDIReference](sql/1898802172.sql); source-definition SHA-256 `a810a557241c5b28b04920cded471aa87a1891125c63e4700cc0d45789dd54ec`, reading-copy SHA-256 `8df247ca9299ca06a615ed87c9b74499584e33bc187ba35bee8ab09fec5988b4`, one-based inclusive lines [[1, 84]].
+
+`work-config-1868182051`: [dbo.dbc_IDocument](sql/1868182051.sql); source-definition SHA-256 `2d40e9aa8b2a9162d41b24d5c0460bab7a9d3d556dc45e0e7a6aee33c4689663`, reading-copy SHA-256 `e139027f8ac43f757460ccd26e06afe8b91ccb3668764e3c274b22c9f58e283a`, one-based inclusive lines [[1, 92]].
+
+`work-config-1930802286`: [dbo.dbc_IDocumentType](sql/1930802286.sql); source-definition SHA-256 `55cfb5b0a0a1e61ad63b3525a92bd9cfbca45fd5633256d6dd4946d2a21b8ccc`, reading-copy SHA-256 `fd78904ea6381ef9a853ebf37a75dae1b18cf350a647bbaeecf6b7babf305855`, one-based inclusive lines [[1, 101]].
+
+`work-config-2028182621`: [dbo.dbc_IGenericAddressHeader](sql/2028182621.sql); source-definition SHA-256 `c569e01cce5927c877e7a75a6f9ce018db62cd61e8229cba80a0e66bbf3e1c76`, reading-copy SHA-256 `139b8cb9d58fbe2b7f3a883430de40c5aa703f5f2a9200e233ddf8c1d9014a95`, one-based inclusive lines [[1, 58]].
+
+`work-config-2044182678`: [dbo.dbc_IInterfaceDataMapDetail](sql/2044182678.sql); source-definition SHA-256 `f529ba8181720b6d99f1f3fc92174ee9ba424240c1065d0716daf1605248f909`, reading-copy SHA-256 `f47bb0d000c107ef3912f5893f333fd095d62103dd87c8bb67e4c993c213c37f`, one-based inclusive lines [[1, 63]].
+
+`work-config-2060182735`: [dbo.dbc_IInterfaceDatamapReqFields](sql/2060182735.sql); source-definition SHA-256 `00c4d0c5e031440cef28880a9649d00ad23e711e9f77e0c7a869f7dde94024a8`, reading-copy SHA-256 `fe9f44192031062fb3e6b61b99c24a80bfd1858e90b8dbc9cc9c380936706bf5`, one-based inclusive lines [[1, 71]].
+
+`work-config-2076182792`: [dbo.dbc_IInterfaceDetail](sql/2076182792.sql); source-definition SHA-256 `ea8594c5c9f1e4a0aef0cc24bf9c89801895c20d29a1ea027cdff306b277762b`, reading-copy SHA-256 `8234f771238f3cc1c0626c0b9df438f8f0578720d07d35edb634f4520a88867e`, one-based inclusive lines [[1, 104]].
+
+`work-config-2092182849`: [dbo.dbc_IInterfaceHeader](sql/2092182849.sql); source-definition SHA-256 `13234b29dcf17ba5c456c0c9263a16cfdacbfea56209b722658b2d798f3c0330`, reading-copy SHA-256 `4f1a4a76431a46c696800db33a53262d304fd56d700d2724038796201ddf1362`, one-based inclusive lines [[1, 58]].
+
+`work-config-56699600`: [dbo.dbc_IMultiSegmentMappedFields](sql/56699600.sql); source-definition SHA-256 `cc3f4571cf7bcec6c84ed1569e3f41a225318f32634b0213d054d56024593938`, reading-copy SHA-256 `3174b8297b5f00c7b2dcada9710cff17f08e7a21b0f50e1842cebe6f40137050`, one-based inclusive lines [[1, 79]].
+
+`work-config-72699657`: [dbo.dbc_INextNumber](sql/72699657.sql); source-definition SHA-256 `0bbae409bfa741021582d105da7e00d8990cb9725ec93712369549e7166f1efc`, reading-copy SHA-256 `d3045c7370191726b9250afc3560a78fa24d5b349a0b25e00d75a55a75882947`, one-based inclusive lines [[1, 66]].
+
+`work-config-104699771`: [dbo.dbc_IOperationalGoal](sql/104699771.sql); source-definition SHA-256 `57db1b90d903597414c8b3204c20578bf548ef7a0363b87907bba53305d889fb`, reading-copy SHA-256 `66b849210bb412e31b41c2e6ffdf8d11e5bb82a2fa099aff223106ec15dce03a`, one-based inclusive lines [[1, 83]].
+
+`work-config-120699828`: [dbo.dbc_IPmChartdata](sql/120699828.sql); source-definition SHA-256 `9482d51ed991cbf519190ebc410ac655f2901aeed04ee564a4c267d3058f2867`, reading-copy SHA-256 `88a2ff73410f201d1df27fa70a804affc448b6da4adac7c1b85cc49dcba7b853`, one-based inclusive lines [[1, 52]].
+
+`work-config-184700056`: [dbo.dbc_IRatingId](sql/184700056.sql); source-definition SHA-256 `2c68e92f1b4979aa526903d98fe13fe981fb66b72a5751bde6c7786f21f3a593`, reading-copy SHA-256 `682ccfc74a0745f7b917d9fd19f278b31a4e77610d34558480c2deee36996340`, one-based inclusive lines [[1, 78]].
+
+`work-config-200700113`: [dbo.dbc_IRatingService](sql/200700113.sql); source-definition SHA-256 `35fa46a60297de319df84ae0b6f94cb67bc674c73c46ec301bc2827fc56e2b2c`, reading-copy SHA-256 `48f25afd9be97d64f17393891b95387450f50e6322eb81eb3ede42a2b339a389`, one-based inclusive lines [[1, 62]].
+
+`work-config-216700170`: [dbo.dbc_IRatingServiceAction](sql/216700170.sql); source-definition SHA-256 `70e1b6bae0f7a3da8411542384c42789593a85734aa28bb35c747b648a956817`, reading-copy SHA-256 `9642839aac3f004efbdbb0733d6084c0350df1852c1731959ccbd53b8b569558`, one-based inclusive lines [[1, 42]].
+
+`work-config-232700227`: [dbo.dbc_IReportConnection](sql/232700227.sql); source-definition SHA-256 `af8a3d8654319f8bbb15ae6b75e618102d218a301f12bc23228228e3229ddd47`, reading-copy SHA-256 `fdce3dd52521dfd24557f190a7f3258103d0ec07f369bd236640c672247a4691`, one-based inclusive lines [[1, 69]].
+
+`work-config-248700284`: [dbo.dbc_IScheduledJobs](sql/248700284.sql); source-definition SHA-256 `5ac85918ae985fa52f2e3687b152e4c8f840610dba941c523b5ba2e30d308879`, reading-copy SHA-256 `791790e5e81daa1c66142c0c40eb60a9ed06836fe02ee8c027c62d577bb7a026`, one-based inclusive lines [[1, 97]].
+
+`work-config-424700911`: [dbo.dbc_ISlottingItemUpFields](sql/424700911.sql); source-definition SHA-256 `c29851e3e1e052c67c9855291739890018652a6244e34eb6aea3697bac56d88e`, reading-copy SHA-256 `c854f3055ab325f074b3af1c0aecb74ccfc56875dfc3c2a159207dcbab9c05aa`, one-based inclusive lines [[1, 69]].
+
+`work-config-440700968`: [dbo.dbc_ISlottingLocUpFields](sql/440700968.sql); source-definition SHA-256 `3af468b9852873f365ac43144df463cb375ab5aefe43b33d04be882d667a1fd8`, reading-copy SHA-256 `1cb0a03fe36df2c334a7ad6e0681e73b84d8ed8f9ec48c01ba309e8a08612904`, one-based inclusive lines [[1, 68]].
+
+`work-config-456701025`: [dbo.dbc_ISlottingMovesDownFields](sql/456701025.sql); source-definition SHA-256 `85ef82443c9ad47bd3552b701f69f79e5876c6321a0ca09d651f167310e2c17d`, reading-copy SHA-256 `235ca09beab6deee716e6285bd0423d5f0898d013d87d3ba34f1ba266e8995e0`, one-based inclusive lines [[1, 73]].
+
+`work-config-472701082`: [dbo.dbc_ISlottingWarehouseUpFields](sql/472701082.sql); source-definition SHA-256 `2670044a38d49e9a148592a01217b7afde73a0c9a47e8842ac8fb5616d93979c`, reading-copy SHA-256 `1faa9766aab69391e1ee0b9ad304c2bcf97d7216bc263758a4449a7fa9c691bf`, one-based inclusive lines [[1, 69]].
+
+`work-config-2090802856`: [dbo.dbc_IWarehouseAlert](sql/2090802856.sql); source-definition SHA-256 `e399d7ae47e3c1ca2cdba17f5e4eb29affa80d156ab6eda789966abd922ba30d`, reading-copy SHA-256 `e730b61fcd67079cb59682615a3f93de29012c8c80756d522f0fb0d0620873e6`, one-based inclusive lines [[1, 79]].
+
+`work-config-2106802913`: [dbo.dbc_IWarehouseAlertType](sql/2106802913.sql); source-definition SHA-256 `5575cd4997943655b8269495a4ac15ac15b303348e5ebdd41d28671e7e0a89bb`, reading-copy SHA-256 `c6c2735ed3fe70d4162f4d7b1e6a8019dec67367a20069ccfa6223988daa97d7`, one-based inclusive lines [[1, 75]].
+
+`work-config-384720423`: [dbo.dbc_IWarehouseMobileMenu](sql/384720423.sql); source-definition SHA-256 `0e0fbf8cb288b2a515505d62f7a5ad665647eec6f6a4ce9422260f176e30568d`, reading-copy SHA-256 `e5f734ccaba6d55dde9bf8d0f06f7260641a2665f0b98deb3389cfa7fccc3b89`, one-based inclusive lines [[1, 81]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Will these default helpers overwrite an existing scheduled job? Expected: Its job-name and record-type guard skips existing rows. Must not claim: All settings are overwritten.
+- Does registering a report connection execute its stored procedure? Expected: The procedure name is stored as configuration only. Must not claim: Registration runs the report.
+
+## 317. Why a blank configuration key can allow another insertion
+
+**Question:** Why a blank configuration key can allow another insertion?
+
+**What it does.** A blank or NULL key is not handled consistently. Accessorial external symbols and alert descriptions use ordinary equality, which does not match NULL to NULL. The required-interface-field helper even uses different replacements for the two NULL values. Report subreports and mobile-menu parents have different, explicit matching rules.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Check whether the supplied value is missing, empty or an actual identifier. Evidence: `work-config-1676181367`, `work-config-2060182735`, `work-config-232700227`, `work-config-2090802856`, `work-config-384720423`.
+2. Use the specific helper contract before treating an insertion as safely repeatable. Evidence: `work-config-1676181367`, `work-config-2060182735`, `work-config-232700227`, `work-config-2090802856`, `work-config-384720423`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- A blank or NULL key is not handled consistently. Accessorial external symbols and alert descriptions use ordinary equality, which does not match NULL to NULL. The required-interface-field helper even uses different replacements for the two NULL values. Report subreports and mobile-menu parents have different, explicit matching rules.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-1676181367`: [dbo.dbc_IAccessorialDetail](sql/1676181367.sql); source-definition SHA-256 `30a9512cebca3ec8abb1232e91cf7a7ff220e1eb6afe42691f87e6fdc728712a`, reading-copy SHA-256 `78eb05468fa01a92748ff6249411b4d5b604f93ee3efb8d017cc09b2bd837fb5`, one-based inclusive lines [[1, 110]].
+
+`work-config-2060182735`: [dbo.dbc_IInterfaceDatamapReqFields](sql/2060182735.sql); source-definition SHA-256 `00c4d0c5e031440cef28880a9649d00ad23e711e9f77e0c7a869f7dde94024a8`, reading-copy SHA-256 `fe9f44192031062fb3e6b61b99c24a80bfd1858e90b8dbc9cc9c380936706bf5`, one-based inclusive lines [[1, 71]].
+
+`work-config-232700227`: [dbo.dbc_IReportConnection](sql/232700227.sql); source-definition SHA-256 `af8a3d8654319f8bbb15ae6b75e618102d218a301f12bc23228228e3229ddd47`, reading-copy SHA-256 `fdce3dd52521dfd24557f190a7f3258103d0ec07f369bd236640c672247a4691`, one-based inclusive lines [[1, 69]].
+
+`work-config-2090802856`: [dbo.dbc_IWarehouseAlert](sql/2090802856.sql); source-definition SHA-256 `e399d7ae47e3c1ca2cdba17f5e4eb29affa80d156ab6eda789966abd922ba30d`, reading-copy SHA-256 `e730b61fcd67079cb59682615a3f93de29012c8c80756d522f0fb0d0620873e6`, one-based inclusive lines [[1, 79]].
+
+`work-config-384720423`: [dbo.dbc_IWarehouseMobileMenu](sql/384720423.sql); source-definition SHA-256 `0e0fbf8cb288b2a515505d62f7a5ad665647eec6f6a4ce9422260f176e30568d`, reading-copy SHA-256 `e5f734ccaba6d55dde9bf8d0f06f7260641a2665f0b98deb3389cfa7fccc3b89`, one-based inclusive lines [[1, 81]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a NULL required-field name necessarily match an existing NULL required-field row? Expected: Its two NULL replacement values differ. Must not claim: Both NULL fields necessarily deduplicate.
+- Does the mobile-menu duplicate check match two NULL parents? Expected: It has an explicit both-NULL parent branch. Must not claim: NULL parents always bypass this guard.
+
+## 318. What the shipping-load serial archive helper actually does
+
+**Question:** What the shipping-load serial archive helper actually does?
+
+**What it does.** The helper copies the initially matching serial rows, then repeatedly selects and deletes currently matching live rows in batches. Those are separate steps. The source does not establish one protected snapshot for the whole move.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Distinguish initial copied rows from later delete eligibility. Evidence: `work-config-1788181766`.
+2. Use an approved operational workflow for archive work; this documentation performed no archive. Evidence: `work-config-1788181766`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- The helper copies the initially matching serial rows, then repeatedly selects and deletes currently matching live rows in batches. Those are separate steps. The source does not establish one protected snapshot for the whole move.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-1788181766`: [dbo.dbc_IArchiveSerialNumbersInShipLoad](sql/1788181766.sql); source-definition SHA-256 `1f6f9993d62909fe8faeaad3b5756fc59b62daf4ff44106ca70b6e6d5842287b`, reading-copy SHA-256 `727664c3b4275e80d28ee6b6cb3b15924f7e53c8ac2b217d2a554158e58f56b2`, one-based inclusive lines [[1, 35]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Are later delete batches limited to a captured list of copied serial IDs? Expected: Each batch reruns the live shipment-load eligibility query. Must not claim: Every delete uses an immutable copied-ID list.
+- Does this helper wrap the entire copy/delete sequence in an explicit transaction? Expected: No enclosing transaction appears. Must not claim: The sequence is explicitly atomic.
+
+## 319. How customized-screen activation and removal choose related screens
+
+**Question:** How customized-screen activation and removal choose related screens?
+
+**What it does.** Activation changes the selected screen, changes one other screen in the same form, then finishes the selected flag. The other-screen lookup expects at most one row. Removal deletes a selected non-system hierarchy and then activates system screens for its form. None of these bodies provides rollback for the whole sequence.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Check the form and screen identities together. Evidence: `work-config-229224217`, `work-config-245224274`, `work-config-261224331`.
+2. Keep screen activation separate from deleting its controls and layout hierarchy. Evidence: `work-config-229224217`, `work-config-245224274`, `work-config-261224331`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- Activation changes the selected screen, changes one other screen in the same form, then finishes the selected flag. The other-screen lookup expects at most one row. Removal deletes a selected non-system hierarchy and then activates system screens for its form. None of these bodies provides rollback for the whole sequence.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-229224217`: [dbo.META_ActivateCustomizeScreen](sql/229224217.sql); source-definition SHA-256 `18d55ff7c62e3d85ca800cd56a176fbddeb24cd8b343db99648f25d21d5b6167`, reading-copy SHA-256 `cc53e6087d29e45fb1629b26140d35bf6ee3adacf531a9181bf5f4bb20eae6b2`, one-based inclusive lines [[1, 42]].
+
+`work-config-245224274`: [dbo.META_DeactivateCustomizeScreen](sql/245224274.sql); source-definition SHA-256 `0f221cb833a3a6382f1c3d359e701824fddb6d030acb9fdd06a29ecd9889e5e8`, reading-copy SHA-256 `bef28c04757a1b930723d3073131684da95aa4c0388dc85bfe23d9610f722239`, one-based inclusive lines [[1, 45]].
+
+`work-config-261224331`: [dbo.META_DELETECUSTOMIZESCREEN](sql/261224331.sql); source-definition SHA-256 `eb82118af46b6d600918a36376f42710315a5fd9efebc07a117c69e2bd39008f`, reading-copy SHA-256 `a09c4e128cf2c2038b7363b9daa654df41974fe11a459de027a97f3c749fc64f`, one-based inclusive lines [[1, 304]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Can activation safely select any number of other same-form screens? Expected: The scalar peer lookup can fail when multiple rows match. Must not claim: All peers are updated by a set-based lookup.
+- Does a NULL system-created flag qualify for customized-screen deletion? Expected: NULL fails the not-equal predicate. Must not claim: NULL always means custom and deletable.
+
+## 320. Why a detail model can contain defaults or more than one matching definition
+
+**Question:** Why a detail model can contain defaults or more than one matching definition?
+
+**What it does.** These helpers prepare display data. Item UOM lookup can return both default-company and company-specific rows. Lot attributes combine a template with stored values, and live versus archived lookup paths differ. Mobile-menu descendant counts include lower levels, but do not include the selected parent.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Identify the selected item, company, lot or menu identity. Evidence: `work-config-293224445`, `work-config-309224502`, `work-config-325224559`, `work-config-398272824`, `work-config-414272881`.
+2. Read defaults and display counts as query results, not changes to operational records. Evidence: `work-config-293224445`, `work-config-309224502`, `work-config-325224559`, `work-config-398272824`, `work-config-414272881`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- These helpers prepare display data. Item UOM lookup can return both default-company and company-specific rows. Lot attributes combine a template with stored values, and live versus archived lookup paths differ. Mobile-menu descendant counts include lower levels, but do not include the selected parent.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-293224445`: [dbo.MetaDetail_GetBOMComponents](sql/293224445.sql); source-definition SHA-256 `c8c6f655e79382139ef66d8f0b80ddd54bfa6978a363f3a9323b665ccdac7b7f`, reading-copy SHA-256 `0f80e6b0b12ff9cb66ede711fd697ae52b6ce8877f05ec043e61878ff6caf8b0`, one-based inclusive lines [[1, 37]].
+
+`work-config-309224502`: [dbo.MetaDetails_GetITEMUOM](sql/309224502.sql); source-definition SHA-256 `8dfcc08f158453150a9cb4d4b53e42f6a1909d3b3efd0b066bb84d9c7db00113`, reading-copy SHA-256 `b5771f12af56c7742fb182364bc5692f451e403cbf0a41f785a1653cc58befda`, one-based inclusive lines [[1, 21]].
+
+`work-config-325224559`: [dbo.MetaDetails_GetLotAttributes](sql/325224559.sql); source-definition SHA-256 `5f6271dd82d538c07563cf99b26002f4fad0013f7d545438ac16fea23cbc1760`, reading-copy SHA-256 `5fc8be9eb6aacadb46fc0e0cb5249bf56e949f01b908de5576f2240e7524fe76`, one-based inclusive lines [[1, 86]].
+
+`work-config-398272824`: [dbo.WHSM_GetMenuChildRecords](sql/398272824.sql); source-definition SHA-256 `d1e3083489a2793ccc8989c471e8fafc21ba4ad89fc0d63898f4683a5acc824a`, reading-copy SHA-256 `d9b21584df5c557c30390c88bfea2a6d4a358c5b7f3089d4ee4ed61b72ee4e3a`, one-based inclusive lines [[1, 15]].
+
+`work-config-414272881`: [dbo.WHSM_InsightDetailPaneData](sql/414272881.sql); source-definition SHA-256 `132bedc481069fb9500049affa1b1cf8377d08566123484564c1d50f3cae00cc`, reading-copy SHA-256 `3892c12feeccf560936a2bbbed875924720e6f2da1f09307684975fd89cbc967`, one-based inclusive lines [[1, 30]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does item UOM lookup choose only the company-specific row when one exists? Expected: Both company-specific and default-company rows may be returned. Must not claim: Default rows are necessarily suppressed.
+- Does the menu descendant count include the selected parent itself? Expected: The recursive anchor starts with its children. Must not claim: The parent is part of the counted anchor.
+
+## 321. How dashboard visibility and available choices are prepared
+
+**Question:** How dashboard visibility and available choices are prepared?
+
+**What it does.** Dashboard and receipt-workbench routines return templates, flags and available choices. Some missing checkpoint values default to allowing a tile. Receipt-workbench authorized preferences are used for one fallback selection, while its returned preference list includes all preferences. A displayed choice is not proof that the caller can successfully perform the action.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Distinguish the returned visibility flag, the choice list and the action itself. Evidence: `work-config-389224787`, `work-config-469225072`, `work-config-1125227409`.
+2. Inspect the exact checkpoint or preference source for a specific screen. Evidence: `work-config-389224787`, `work-config-469225072`, `work-config-1125227409`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- Dashboard and receipt-workbench routines return templates, flags and available choices. Some missing checkpoint values default to allowing a tile. Receipt-workbench authorized preferences are used for one fallback selection, while its returned preference list includes all preferences. A displayed choice is not proof that the caller can successfully perform the action.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-389224787`: [dbo.MetaTpmTrans_Dashboard](sql/389224787.sql); source-definition SHA-256 `369e95ad4276dbd072fdf8113de53530d4a6b4d7fc80e94f36a1a2f933598136`, reading-copy SHA-256 `c0def41adf96d27515d2146535731ed54fd7315ea9be47096ec236a84362dba8`, one-based inclusive lines [[1, 100]].
+
+`work-config-469225072`: [dbo.MetaTrans_Dashboard](sql/469225072.sql); source-definition SHA-256 `2bd39e447d0ffb3377a82aafb28cc7d39f0c013b3f63cacd86b9aff9116e5dff`, reading-copy SHA-256 `ef9375095e82e8cfdc01cfcb0f3ad1c51b09285a7809dd85357f5247ffca24af`, one-based inclusive lines [[1, 111]].
+
+`work-config-1125227409`: [dbo.MetaTrans_ReceiptWorkbench](sql/1125227409.sql); source-definition SHA-256 `96910cb156e60d43d86167ce788e132a45e60e4b77776ae46182288eb1d4b984`, reading-copy SHA-256 `58798c3a5e9c122243ffc4b30aad0e470eace075a4bf73ad05b392a2f53fa4b3`, one-based inclusive lines [[1, 186]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the receipt workbench return only its authorized temporary preference list? Expected: The final preference dataset reads the full preference table. Must not claim: The final list is restricted to the temporary authorized rows.
+- Does ShowWidgets directly filter the widget SELECT in the dashboard body? Expected: It is returned as a model flag; the widget query uses its own filters. Must not claim: A false feature flag prevents the widget query from returning rows.
+
+## 322. What the close-container model can explain
+
+**Question:** What the close-container model can explain?
+
+**What it does.** This routine reads a container and its shipment, proposes container-count numbers and returns a carrier-change restriction after finding a previously closed-status container. It does not close the current container. A cause for a container that remains open needs the actual action and its current error or state.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Check the displayed count proposal and carrier restriction separately. Evidence: `work-config-533225300`.
+2. Use the actual close action and exact message to investigate an open container. Evidence: `work-config-533225300`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- This routine reads a container and its shipment, proposes container-count numbers and returns a carrier-change restriction after finding a previously closed-status container. It does not close the current container. A cause for a container that remains open needs the actual action and its current error or state.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-533225300`: [dbo.MetaTrans_GetCloseContainer](sql/533225300.sql); source-definition SHA-256 `578083f24d54af94239a3e0e69064d9efe3fdf2c314c28b6b9ab41afd5004371`, reading-copy SHA-256 `bd1921dfef85b643940ecbb9af1373de67ba74693f98315adaeae4cbfb749acb`, one-based inclusive lines [[1, 129]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does loading this model close the selected container? Expected: No persistent update or close call appears. Must not claim: The routine closes the container.
+- Can a missing container still produce display rows? Expected: Dummy left joins supply NULL-filled model rows. Must not claim: Missing identity necessarily produces no result sets.
+
+## 323. Why an employee list can differ between users
+
+**Question:** Why an employee list can differ between users?
+
+**What it does.** The employee list always requires active users and can filter by supervisor. When both the SaaS and feature settings are enabled, it also applies a caller-email category rule. A supplied user that cannot be found can therefore produce an empty restricted list.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Check whether the supervisor filter is supplied. Evidence: `work-config-581225471`.
+2. Keep the feature-controlled email rule separate from employee activity status. Evidence: `work-config-581225471`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- The employee list always requires active users and can filter by supervisor. When both the SaaS and feature settings are enabled, it also applies a caller-email category rule. A supplied user that cannot be found can therefore produce an empty restricted list.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-581225471`: [dbo.MetaTrans_GetEmployees](sql/581225471.sql); source-definition SHA-256 `81f295f5c9c00cda1dfddd45eb379bf0410968fad7700ac7e7e93f9f84fcc870`, reading-copy SHA-256 `cd98fc33aff09600ffac4267a6a2fb030ac75cff948fd8a06c8542cc931bc104`, one-based inclusive lines [[1, 90]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a missing caller profile always behave like a NULL caller parameter? Expected: A supplied missing profile can leave classification NULL and exclude all restricted rows. Must not claim: Both cases always return the same list.
+- Is a NULL supervisor filter an instruction to select only employees without supervisors? Expected: It disables that supervisor restriction. Must not claim: It matches only NULL supervisor values.
+
+## 324. Why inventory adjustment or transfer screens can show blank defaults
+
+**Question:** Why inventory adjustment or transfer screens can show blank defaults?
+
+**What it does.** Inventory model routines use different selectors. Some aggregate optional filters when the internal identity is zero; others choose a single minimum identity for a license plate. Mixed values become blank, and several warehouse or destination variables are never assigned. These are screen defaults, not stock changes.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Identify whether the request used an internal ID, a license plate or optional filters. Evidence: `work-config-597225528`, `work-config-613225585`, `work-config-629225642`, `work-config-645225699`, `work-config-661225756`, `work-config-917226668`.
+2. Do not interpret a blank aggregate field as proof that all underlying records have that blank value. Evidence: `work-config-597225528`, `work-config-613225585`, `work-config-629225642`, `work-config-645225699`, `work-config-661225756`, `work-config-917226668`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- Inventory model routines use different selectors. Some aggregate optional filters when the internal identity is zero; others choose a single minimum identity for a license plate. Mixed values become blank, and several warehouse or destination variables are never assigned. These are screen defaults, not stock changes.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-597225528`: [dbo.MetaTrans_GetInventory](sql/597225528.sql); source-definition SHA-256 `903e0d4a396421a0ff77085ca271586f4bd295e918fc8173ec18ca48e63c26fb`, reading-copy SHA-256 `93973d53a2d680a5aa26c791b8070bea57bd5039f2dddc3aaed5aa8b3f3ce1b7`, one-based inclusive lines [[1, 94]].
+
+`work-config-613225585`: [dbo.MetaTrans_GetInventoryAdjustment](sql/613225585.sql); source-definition SHA-256 `f5820bb2d67d61bf6e3cc320128893515daacdb98acd6afe0f95a46b41754811`, reading-copy SHA-256 `9eb3331ea000785c41c702ca633240564af88a24f4b54c8359b6d4e0c2c1c77f`, one-based inclusive lines [[1, 156]].
+
+`work-config-629225642`: [dbo.MetaTrans_GetInventoryCompanyTransfer](sql/629225642.sql); source-definition SHA-256 `980d10778eb7f2706482e3436a56a464b875b18f7dc74896ba5223ebef1d2284`, reading-copy SHA-256 `f11d20839d2a1e74f664683e8265fbecc43fcc282c77fba347a371df7a33c43f`, one-based inclusive lines [[1, 112]].
+
+`work-config-645225699`: [dbo.MetaTrans_GetInventoryStatusChange](sql/645225699.sql); source-definition SHA-256 `10b122586114c20fe3e2ed0d9bd3bb42671b344965a1acbbe4a23e8b0bde9d02`, reading-copy SHA-256 `46f634dbb7e2f7c18bc6c62933a68a278f63612cd96573f90281d961804e8a77`, one-based inclusive lines [[1, 117]].
+
+`work-config-661225756`: [dbo.MetaTrans_GetInventoryTransfer](sql/661225756.sql); source-definition SHA-256 `d08f73fcbc03056c4315e64d9401982ffffce94d45920b25f56ff7effc3445bd`, reading-copy SHA-256 `37584494b34992c664a833c04c40408596d3287b0d080e698ad6a17a7b0e2c17`, one-based inclusive lines [[1, 99]].
+
+`work-config-917226668`: [dbo.MetaTrans_GetRecAppSchedule](sql/917226668.sql); source-definition SHA-256 `49cc069091b48c561452a43ddb837128ee77e4f5877a4273a7730f5b6432d9b0`, reading-copy SHA-256 `0b461b00677a1c00f4eba962cb45c3a818ea06ffefce32e3eb79f95417e02d54`, one-based inclusive lines [[1, 110]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a license plate with several same-item inventory rows always aggregate all of them? Expected: Some paths choose the minimum internal inventory ID first. Must not claim: All matching LP rows are necessarily summarized.
+- Does explicit NULL internal ID behave like default zero in the inventory-transfer model? Expected: Only zero activates its optional-filter branch. Must not claim: NULL and zero are equivalent selectors.
+
+## 325. How analytics extracts select time and status ranges
+
+**Question:** How analytics extracts select time and status ranges?
+
+**What it does.** Activity extracts use timestamps greater than the start and up to and including the end. Shipment extracts instead use modification timestamps and a fixed trailing-status range. Detail and container extracts can include rows after a header change. These read queries do not measure a complete business process or make an export exactly once.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Compare the relevant activity or modification timestamp with the requested interval. Evidence: `work-config-1169751570`, `work-config-1233751798`, `work-config-1249751855`, `work-config-1265751912`, `work-config-1281751969`, `work-config-1297752026`, `work-config-1313752083`, `work-config-1329752140`, `work-config-1345752197`, `work-config-1361752254`, `work-config-1377752311`, `work-config-1393752368`, `work-config-1409752425`, `work-config-1425752482`, `work-config-1441752539`.
+2. Keep dataset-specific joins and status filters when reconciling counts. Evidence: `work-config-1169751570`, `work-config-1233751798`, `work-config-1249751855`, `work-config-1265751912`, `work-config-1281751969`, `work-config-1297752026`, `work-config-1313752083`, `work-config-1329752140`, `work-config-1345752197`, `work-config-1361752254`, `work-config-1377752311`, `work-config-1393752368`, `work-config-1409752425`, `work-config-1425752482`, `work-config-1441752539`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- Activity extracts use timestamps greater than the start and up to and including the end. Shipment extracts instead use modification timestamps and a fixed trailing-status range. Detail and container extracts can include rows after a header change. These read queries do not measure a complete business process or make an export exactly once.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-1169751570`: [dbo.SCI_DATE](sql/1169751570.sql); source-definition SHA-256 `f95103e6b0c2c5cb177683b40d1f6a48308c9d9d5957ecbdcd47770ec446d154`, reading-copy SHA-256 `12a42d156a9612c5b729c2f51e43f936fa1e2213abc231f595264b6423d0364c`, one-based inclusive lines [[1, 21]].
+
+`work-config-1233751798`: [dbo.SCI_LOCATION_CAPACITY](sql/1233751798.sql); source-definition SHA-256 `5341f6576ff2706339ece5c056b38a71f92ca4ac598b18e8f78a1be1798a2926`, reading-copy SHA-256 `1582c2ad9e4656b7d2cff2034edfb6f91992fa745e07e63c6af74a5312f98f14`, one-based inclusive lines [[1, 18]].
+
+`work-config-1249751855`: [dbo.SCI_LOCATION_SNAPSHOT](sql/1249751855.sql); source-definition SHA-256 `19dbeb21a17b9ac6e13a8fb0ed7f024526f808d7ec0f7972bd5ee30ad33a4340`, reading-copy SHA-256 `1a63db794404caed12c5c3bc67458f89e3ec1616dcd6a33e3d4a05541b8b605c`, one-based inclusive lines [[1, 17]].
+
+`work-config-1265751912`: [dbo.SCI_PICK_PUT](sql/1265751912.sql); source-definition SHA-256 `18e3e7ce93718efbc62d4c3a36ff81a28f1dcf052b878922b062febd26c6a37e`, reading-copy SHA-256 `7b3d4e9d81cbad8dae023a8165faf1cedbf4a19e5565d0f4abb6cd3f1bf54a0b`, one-based inclusive lines [[1, 23]].
+
+`work-config-1281751969`: [dbo.SCI_PICK_PUT_COMMON](sql/1281751969.sql); source-definition SHA-256 `e1fb0444dfb94e18320af4a3712660d76b3cd92eb777150f38e01a9566120571`, reading-copy SHA-256 `3afac3a8fdc821f44c3ea8136d0fe5500311fbdb17c6c49656b52c05ee46ee6b`, one-based inclusive lines [[1, 23]].
+
+`work-config-1297752026`: [dbo.SCI_PICK_PUT_INBOUND](sql/1297752026.sql); source-definition SHA-256 `0632bf2d4fd07270e0e9054f2aa0e457f5121ce972a9420e9a51b3b7247509dd`, reading-copy SHA-256 `86fa6f6d41f0f699152f0a0fc9679472466e98c65697e46a58dda273cd25c01a`, one-based inclusive lines [[1, 23]].
+
+`work-config-1313752083`: [dbo.SCI_PICK_PUT_INBOUND_EXT](sql/1313752083.sql); source-definition SHA-256 `ba397e831b86de3a9a75388f4268758be587f0fef786485c30b9fe4d774631d4`, reading-copy SHA-256 `966a5594c9aae5a396a565be2a28b0a1a6e3930aec1c4f9c85a791d74556b812`, one-based inclusive lines [[1, 20]].
+
+`work-config-1329752140`: [dbo.SCI_PICK_PUT_OUTBOUND](sql/1329752140.sql); source-definition SHA-256 `264987d71f2ed11980a3955d460d3da149e1f7d75cd2a213753b38044fd21961`, reading-copy SHA-256 `5760fdb172dfa8df867e145b7ed61b19e0239d2f9382bfac6555ce2e14fe19c5`, one-based inclusive lines [[1, 24]].
+
+`work-config-1345752197`: [dbo.SCI_PICK_PUT_OUTBOUND_EXT](sql/1345752197.sql); source-definition SHA-256 `fed875c90e56417be2b3f9ddc9fe7ff06cd59ef9e697161dc1add3a37f89c646`, reading-copy SHA-256 `b5c4d8a8d5bf6746ed6a2866d52739f25b839c12df5ad35fa7c38a4a22e0ed58`, one-based inclusive lines [[1, 20]].
+
+`work-config-1361752254`: [dbo.SCI_PICK_PUT_WORK_ORDER](sql/1361752254.sql); source-definition SHA-256 `325b49132fcb9ea890fd3db02b29863213bae18b0c9b95f345db199bc6657741`, reading-copy SHA-256 `267363d1a2551eedc7790457e2bb76913ed682fd84e0893a7eca1def7ee03f53`, one-based inclusive lines [[1, 24]].
+
+`work-config-1377752311`: [dbo.SCI_RECEIPT_CONTAINER_CHECKIN](sql/1377752311.sql); source-definition SHA-256 `fb5a2924bd2936ed1c145e20691cb853252b7f518a812016b6165545fd84991e`, reading-copy SHA-256 `69777a82ee11d338dc172237e590eec4c307128c81472a2ad33393b9800c0eb5`, one-based inclusive lines [[1, 48]].
+
+`work-config-1393752368`: [dbo.SCI_RECEIPT_CONTAINER_CHECKIN_CANCEL](sql/1393752368.sql); source-definition SHA-256 `c3fbf83b5981d9f5a9ed42b7fd65af5ad5d226e8214047ab519b9e3ae4baaeb9`, reading-copy SHA-256 `4f339ff185647d00fd043e6353fa2e040d5cfcbb5b1657d722cf0bdd4ec6f560`, one-based inclusive lines [[1, 29]].
+
+`work-config-1409752425`: [dbo.SCI_SHIPMENT_DETAIL](sql/1409752425.sql); source-definition SHA-256 `3f510b63af08decc2caa85d0f53a10a78641db12998b34e653340b02bfef3428`, reading-copy SHA-256 `266c816177e77b8598afae5db472cb55c155b0068b1f8872b1c7e022d068513a`, one-based inclusive lines [[1, 20]].
+
+`work-config-1425752482`: [dbo.SCI_SHIPMENT_HEADER](sql/1425752482.sql); source-definition SHA-256 `7c44444a175c77f8396f86f7b65ee750ae9d3310bbfa4db4d42d6060c8ab95ab`, reading-copy SHA-256 `0a5bbd12021d7618a41b41f9cac951104fd7dafff9e3f96b05b07605f7e8985a`, one-based inclusive lines [[1, 21]].
+
+`work-config-1441752539`: [dbo.SCI_SHIPPING_CONTAINER](sql/1441752539.sql); source-definition SHA-256 `7668748983f91eabc12d5e4c1b3914667fc17cd8ae7419e27e17f30a05870890`, reading-copy SHA-256 `f1ff414714b2c45fcc4fa1ab6b0b22eb786c31892cde79bfaa2f71332ecf55ac`, one-based inclusive lines [[1, 99]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Is the start timestamp included in these activity windows? Expected: The predicate is strictly greater than start. Must not claim: Both endpoints are inclusive.
+- Can a shipment-header update qualify unchanged detail rows? Expected: The detail extractor includes a header-or-detail modification-time condition. Must not claim: Only modified detail rows can be selected.
+
+## 326. Why an analytics event can appear more than once
+
+**Question:** Why an analytics event can appear more than once?
+
+**What it does.** Several extracts join one event to optional item, labor or appointment rows. More than one matching row can multiply an event. The location snapshot also returns per-unit measures under total-named columns, and parent-container quantity is summed from tree-unit membership.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Check the exact join keys before comparing row counts with unique events. Evidence: `work-config-1249751855`, `work-config-1265751912`, `work-config-1281751969`, `work-config-1297752026`, `work-config-1361752254`, `work-config-1377752311`, `work-config-1441752539`.
+2. Distinguish a total from a per-unit value and from a tree aggregate. Evidence: `work-config-1249751855`, `work-config-1265751912`, `work-config-1281751969`, `work-config-1297752026`, `work-config-1361752254`, `work-config-1377752311`, `work-config-1441752539`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- Several extracts join one event to optional item, labor or appointment rows. More than one matching row can multiply an event. The location snapshot also returns per-unit measures under total-named columns, and parent-container quantity is summed from tree-unit membership.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-1249751855`: [dbo.SCI_LOCATION_SNAPSHOT](sql/1249751855.sql); source-definition SHA-256 `19dbeb21a17b9ac6e13a8fb0ed7f024526f808d7ec0f7972bd5ee30ad33a4340`, reading-copy SHA-256 `1a63db794404caed12c5c3bc67458f89e3ec1616dcd6a33e3d4a05541b8b605c`, one-based inclusive lines [[1, 17]].
+
+`work-config-1265751912`: [dbo.SCI_PICK_PUT](sql/1265751912.sql); source-definition SHA-256 `18e3e7ce93718efbc62d4c3a36ff81a28f1dcf052b878922b062febd26c6a37e`, reading-copy SHA-256 `7b3d4e9d81cbad8dae023a8165faf1cedbf4a19e5565d0f4abb6cd3f1bf54a0b`, one-based inclusive lines [[1, 23]].
+
+`work-config-1281751969`: [dbo.SCI_PICK_PUT_COMMON](sql/1281751969.sql); source-definition SHA-256 `e1fb0444dfb94e18320af4a3712660d76b3cd92eb777150f38e01a9566120571`, reading-copy SHA-256 `3afac3a8fdc821f44c3ea8136d0fe5500311fbdb17c6c49656b52c05ee46ee6b`, one-based inclusive lines [[1, 23]].
+
+`work-config-1297752026`: [dbo.SCI_PICK_PUT_INBOUND](sql/1297752026.sql); source-definition SHA-256 `0632bf2d4fd07270e0e9054f2aa0e457f5121ce972a9420e9a51b3b7247509dd`, reading-copy SHA-256 `86fa6f6d41f0f699152f0a0fc9679472466e98c65697e46a58dda273cd25c01a`, one-based inclusive lines [[1, 23]].
+
+`work-config-1361752254`: [dbo.SCI_PICK_PUT_WORK_ORDER](sql/1361752254.sql); source-definition SHA-256 `325b49132fcb9ea890fd3db02b29863213bae18b0c9b95f345db199bc6657741`, reading-copy SHA-256 `267363d1a2551eedc7790457e2bb76913ed682fd84e0893a7eca1def7ee03f53`, one-based inclusive lines [[1, 24]].
+
+`work-config-1377752311`: [dbo.SCI_RECEIPT_CONTAINER_CHECKIN](sql/1377752311.sql); source-definition SHA-256 `fb5a2924bd2936ed1c145e20691cb853252b7f518a812016b6165545fd84991e`, reading-copy SHA-256 `69777a82ee11d338dc172237e590eec4c307128c81472a2ad33393b9800c0eb5`, one-based inclusive lines [[1, 48]].
+
+`work-config-1441752539`: [dbo.SCI_SHIPPING_CONTAINER](sql/1441752539.sql); source-definition SHA-256 `7668748983f91eabc12d5e4c1b3914667fc17cd8ae7419e27e17f30a05870890`, reading-copy SHA-256 `f1ff414714b2c45fcc4fa1ab6b0b22eb786c31892cde79bfaa2f71332ecf55ac`, one-based inclusive lines [[1, 99]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the location snapshot return TOTAL_WEIGHT unchanged from inventory? Expected: It divides normalized total weight by on-hand with a zero denominator fallback. Must not claim: It always returns the unchanged stored total.
+- Can multiple appointment rows multiply a receipt check-in event? Expected: The appointment join includes every matching receipt appointment. Must not claim: The extract always picks one appointment.
+
+## 327. How work-verification controls are derived
+
+**Question:** How work-verification controls are derived?
+
+**What it does.** Work screens combine profile settings, location verification and security checkpoints. Missing special handling uses a fallback row. The captured general configurator has a positional mismatch in three fallback controls, so its returned labels and values need careful interpretation. These models do not execute warehouse work.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Identify the profile sequence, location and special-handling ID. Evidence: `work-config-1985754477`, `work-config-2001754534`, `work-config-2017754591`, `work-config-1340583864`.
+2. Distinguish configured controls from enforcement by the actual action. Evidence: `work-config-1985754477`, `work-config-2001754534`, `work-config-2017754591`, `work-config-1340583864`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- Work screens combine profile settings, location verification and security checkpoints. Missing special handling uses a fallback row. The captured general configurator has a positional mismatch in three fallback controls, so its returned labels and values need careful interpretation. These models do not execute warehouse work.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-1985754477`: [dbo.SRC_CartPickingWorkConfiguratorModel](sql/1985754477.sql); source-definition SHA-256 `610de424113083803a092095bd012b6e055cdb91a96e14d531719ae46580bb2b`, reading-copy SHA-256 `9baeea5ffff4ecd22a08dd0689db57088d6ae451f6a320bd5094d05ef8fd65e9`, one-based inclusive lines [[1, 18]].
+
+`work-config-2001754534`: [dbo.SRC_ReceivingConfiguratorModel](sql/2001754534.sql); source-definition SHA-256 `ea13797a181d2be87f9b6e462c9cd661fd5fefa223b85aa0225853d41a5fbc1c`, reading-copy SHA-256 `d007648321613ce2cada2b480dd31f54cac75a99c65034c9af6dc4dce71c0246`, one-based inclusive lines [[1, 31]].
+
+`work-config-2017754591`: [dbo.SRC_SystemDirectedWorkConfiguratorModel](sql/2017754591.sql); source-definition SHA-256 `4d23fd92856b1d91c7585e381547775d86e141dd76bbc2b354600e6a97e50b39`, reading-copy SHA-256 `9afbba472f1ca0fef04250895d864a9f8242b3908b2ed9f5ba56f06c50d2caf6`, one-based inclusive lines [[1, 39]].
+
+`work-config-1340583864`: [dbo.SRC_WorkConfiguratorModel](sql/1340583864.sql); source-definition SHA-256 `b136c0778eeb1d710ce06ddcb00182dbfe9c84baf571670de1ea18c2444cecc6`, reading-copy SHA-256 `de019f8ea56687ba97ba3de5999131ed9b13de7c8da49ce9c64c34509f70018e`, one-based inclusive lines [[1, 187]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does a missing receiving special-handling row return no verification model? Expected: An ID-zero all-false fallback row is included. Must not claim: There is no fallback row.
+- Are the general configurator fallback SplitContainer, ShortPutaway and ViewPicks values aligned by alias? Expected: UNION aligns by position and those fallback values are shifted. Must not claim: Each fallback alias automatically aligns by name.
+
+## 328. How cart selection differs from spot assignment
+
+**Question:** How cart selection differs from spot assignment?
+
+**What it does.** Cart building selects eligible work/container tuples by priority and zone order, then calls the assignment helper. That helper has a tote-and-work-unit path that updates work without calling the spot routine. The cart builder uses a transaction, but its error path contains no explicit rollback handler.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Identify whether assignment used the tote/work-unit path or container path. Evidence: `work-config-858798467`, `work-config-1338800177`.
+2. Check container identity and profile sequence when interpreting selected cart spots. Evidence: `work-config-858798467`, `work-config-1338800177`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- Cart building selects eligible work/container tuples by priority and zone order, then calls the assignment helper. That helper has a tote-and-work-unit path that updates work without calling the spot routine. The cart builder uses a transaction, but its error path contains no explicit rollback handler.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-858798467`: [dbo.WRK_BuildCart](sql/858798467.sql); source-definition SHA-256 `e75e2b4c80d02eff37066b9a59771671e2d5f1757b18768c0367b11df64709bc`, reading-copy SHA-256 `070e127faa07876c9f4535026a16cad1839790900a955839cab449ce9cc95027`, one-based inclusive lines [[1, 87]].
+
+`work-config-1338800177`: [dbo.WRK_UpdateWorkInstructionForCartPicking](sql/1338800177.sql); source-definition SHA-256 `65ab4a3d5455001cebf75707ba4b1c6d7ea7cd6cbc34474e4c5bba814f5b55d1`, reading-copy SHA-256 `fcac2f0b1359f3c6452973384804f8998a923de1f93851dfc81180ed88752d15`, one-based inclusive lines [[1, 38]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does every cart assignment path call the group-position helper? Expected: The tote/work-unit branch does not. Must not claim: Every branch assigns a spot through the helper.
+- Does DISTINCT TOP guarantee one candidate tuple per container? Expected: Other selected work attributes can make multiple tuples for one container distinct. Must not claim: Distinct always deduplicates by container identity only.
+
+## 329. Why a single work-unit match can bypass profile filters
+
+**Question:** Why a single work-unit match can bypass profile filters?
+
+**What it does.** The work lookup first counts matching work units. Exactly one eligible name takes a branch that does not add the hold or profile work-type restrictions used for multiple matches. The final header query also selects by work-unit name, so its scope is broader than the eligibility subquery.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Check whether the first lookup found exactly one work-unit name. Evidence: `work-config-67843654`.
+2. Review hold, profile and warehouse rules in the branch actually used. Evidence: `work-config-67843654`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- The work lookup first counts matching work units. Exactly one eligible name takes a branch that does not add the hold or profile work-type restrictions used for multiple matches. The final header query also selects by work-unit name, so its scope is broader than the eligibility subquery.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-67843654`: [dbo.WRK_GetWorkUnits](sql/67843654.sql); source-definition SHA-256 `f90473091e71dd6ee59c58e51a53598f78bd696caab7be045ed9c62366c7dea7`, reading-copy SHA-256 `24c5af0fa77633da1b94dbe668479b54dedd78eb17ed84b679603f86ac01a95a`, one-based inclusive lines [[1, 74]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the exactly-one work-unit path apply the profile work-type filter? Expected: That filter is only added in the other branch. Must not claim: Both branches apply identical profile filters.
+- Are LIKE metacharacters escaped in the entered work-unit prefix? Expected: The source concatenates the input into LIKE directly. Must not claim: The input is guaranteed literal prefix text.
+
+## 330. What work-created flags do and do not prove
+
+**Question:** What work-created flags do and do not prove?
+
+**What it does.** The small work-created helpers set flags; they do not create or verify instructions. The broad work writers insert or replace caller-supplied fields. Header updates and renames can affect every matching work-unit name without a warehouse restriction.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Separate a request flag from the presence and condition of its work instructions. Evidence: `work-config-938798752`, `work-config-1178799607`, `work-config-1210799721`, `work-config-1226799778`, `work-config-1242799835`, `work-config-1274799949`, `work-config-1290800006`, `work-config-1306800063`, `work-config-1322800120`, `work-config-1370800291`.
+2. Use exact internal identities and scope when interpreting a broad work-unit update. Evidence: `work-config-938798752`, `work-config-1178799607`, `work-config-1210799721`, `work-config-1226799778`, `work-config-1242799835`, `work-config-1274799949`, `work-config-1290800006`, `work-config-1306800063`, `work-config-1322800120`, `work-config-1370800291`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- The small work-created helpers set flags; they do not create or verify instructions. The broad work writers insert or replace caller-supplied fields. Header updates and renames can affect every matching work-unit name without a warehouse restriction.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-938798752`: [dbo.WRK_InsertWorkInstruction](sql/938798752.sql); source-definition SHA-256 `bb4755a08bb344018fe6a8d000cf7986566249377d31db1e6c9ad79651289bb8`, reading-copy SHA-256 `743c07e16577fc75f7f3b27f2456905c6316c1882a2b221c222bd57b89594316`, one-based inclusive lines [[1, 323]].
+
+`work-config-1178799607`: [dbo.WRK_UpdateCCWorkCreated](sql/1178799607.sql); source-definition SHA-256 `f8394ee19593a19d7b66d68db43aa9d317a2ab3b4c65cec72f70a73a841ab127`, reading-copy SHA-256 `12b02ec2d3c20ed06a19c3c145d7900ab36ea3b824770134199eff3c804b516e`, one-based inclusive lines [[1, 17]].
+
+`work-config-1210799721`: [dbo.WRK_UpdateInventoryWorkCreated](sql/1210799721.sql); source-definition SHA-256 `75f01ffeb679506e634cec5fb48537fe71fe7c3f9a9ef7d08ce090c5aa2d8301`, reading-copy SHA-256 `61a4afb5f20b220c88c665290c5ffd6a3b05063ef7840b5e5a6cb40d50223add`, one-based inclusive lines [[1, 17]].
+
+`work-config-1226799778`: [dbo.WRK_UpdateParentInstructionLnk](sql/1226799778.sql); source-definition SHA-256 `0d01fa5136487e5ef8bef5982f84e688dd3c0c7ee5780e30569532b9e19908d3`, reading-copy SHA-256 `0afe47475cd9c23ed293b550469321b239c706ad7abdbd30a54ad882eda674db`, one-based inclusive lines [[1, 19]].
+
+`work-config-1242799835`: [dbo.WRK_UpdateRecWorkCreated](sql/1242799835.sql); source-definition SHA-256 `f4cbc970cbd32f2701bce148528371b3eb42aec64c4d013ff706ea24717cf6db`, reading-copy SHA-256 `965034099974e83da0e183c7ec367dd74f40b037869d26369196f540f5ea4f40`, one-based inclusive lines [[1, 17]].
+
+`work-config-1274799949`: [dbo.WRK_UpdateShipContWorkCreated](sql/1274799949.sql); source-definition SHA-256 `916cc8733037b8ea9f8887d508fc463d1eb787ef909002cf536a5aa0dbe7d18b`, reading-copy SHA-256 `3f0ed00de1713cd0795f180a18985a3909cae235f9884f87da5756f1dde66f66`, one-based inclusive lines [[1, 24]].
+
+`work-config-1290800006`: [dbo.WRK_UpdateWoDtlWorkCreated](sql/1290800006.sql); source-definition SHA-256 `843873d8a2b35c1885b491f3416af100110fafd114d5eebeda3e7471cd2b8309`, reading-copy SHA-256 `56adf7a2706d4c4fc9df00488b23437b054a28abe824dbdbc7adf1963b40f177`, one-based inclusive lines [[1, 17]].
+
+`work-config-1306800063`: [dbo.WRK_UpdateWoPutawayWorkCreated](sql/1306800063.sql); source-definition SHA-256 `7e2146f70e7b749084f101e233d61818e6fb4591b0547a9251dbd58f3e59e8f1`, reading-copy SHA-256 `e24093b3e6661d376645dae6b618a029177b404eaf99aa339cb8adb881fe2a23`, one-based inclusive lines [[1, 17]].
+
+`work-config-1322800120`: [dbo.WRK_UpdateWorkInstruction](sql/1322800120.sql); source-definition SHA-256 `d33dc18320dcec1e5cd5048098d024b6ed45908e0117bc5093a3b897fd69422f`, reading-copy SHA-256 `361e5ba01cb044632ab3da094d0c2be5442d56ed8484c3b0f82f641f26a3b625`, one-based inclusive lines [[1, 219]].
+
+`work-config-1370800291`: [dbo.WRK_UpdateWorkUnitName](sql/1370800291.sql); source-definition SHA-256 `456d195ad3005f7cd28e5e0d6b291a4d33a1082b69b5ee30b4b945a9ec06f3e8`, reading-copy SHA-256 `6fb574592b6933258d39220f10ffe613bacc6f194d6b5adb28c40560508e7af5`, one-based inclusive lines [[1, 18]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does setting a locating request work-created flag insert work? Expected: The helper only updates the flag. Must not claim: It inserts the necessary instructions.
+- Does WRK_UpdateWorkInstruction use caller InstructionType to choose rows? Expected: That parameter is unused; selection uses a fixed header type. Must not claim: Caller instruction type controls the selector.
+
+## 331. How work moves into inactive storage
+
+**Question:** How work moves into inactive storage?
+
+**What it does.** The shipping-load path selects qualifying closed work, while the work-unit path copies all matching instructions regardless of condition. Both copy an explicit field set and then delete live rows separately. Their stored fields omit some newer work metadata.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Distinguish load-qualified deactivation from name-based work-unit deactivation. Evidence: `work-config-1402800405`, `work-config-1418800462`.
+2. Treat the copy/delete sequence and its field list as part of the source contract. Evidence: `work-config-1402800405`, `work-config-1418800462`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- The shipping-load path selects qualifying closed work, while the work-unit path copies all matching instructions regardless of condition. Both copy an explicit field set and then delete live rows separately. Their stored fields omit some newer work metadata.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-1402800405`: [dbo.WTH_DeactivateShippingLoadWork](sql/1402800405.sql); source-definition SHA-256 `85d186954ce18fa62ba534991fefef7351bcb23e06e41a12c3e610988a5290ed`, reading-copy SHA-256 `856e53852bee6d093a7640197da7b4e2016f895a78479652e64cd52beb79604c`, one-based inclusive lines [[1, 234]].
+
+`work-config-1418800462`: [dbo.WTH_DeactivateWork](sql/1418800462.sql); source-definition SHA-256 `730816eeabee7917c537ee1e198e9ccd878f85768d6e44cddcc0cc13db4c48a2`, reading-copy SHA-256 `9592ebcf4c14f85141bbbaec75dbc41ec4840224045c8043cc794de402433134`, one-based inclusive lines [[1, 217]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does work-unit deactivation require a closed condition? Expected: No condition filter appears in that body. Must not claim: Only closed work units qualify.
+- Are all current work columns copied automatically? Expected: The routines use explicit lists that omit some newer fields. Must not claim: They copy every column with SELECT star.
+
+## 332. Why a failed split may already have created a new instruction
+
+**Question:** Why a failed split may already have created a new instruction?
+
+**What it does.** The split helpers clone the original before checking whether the relevant side quantity can cover the requested split. A later failure has no local rollback. The original and clone also retain different from/to quantities depending on the mode.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Check the selected split mode and source versus destination quantity. Evidence: `work-config-1434800519`, `work-config-1450800576`, `work-config-1466800633`, `work-config-1482800690`.
+2. Treat a failed return as a reason to inspect the authorized workflow state, not to repeat blindly. Evidence: `work-config-1434800519`, `work-config-1450800576`, `work-config-1466800633`, `work-config-1482800690`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- The split helpers clone the original before checking whether the relevant side quantity can cover the requested split. A later failure has no local rollback. The original and clone also retain different from/to quantities depending on the mode.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-1434800519`: [dbo.WTH_SplitWork](sql/1434800519.sql); source-definition SHA-256 `2543b07518bd022774a697c2843630fd069c891284661aa18e947d8d9d18bcc8`, reading-copy SHA-256 `87b879a1c38e9f8ba617ac393e6bab3f474d699c819c33ef06ce807f41f1415e`, one-based inclusive lines [[1, 56]].
+
+`work-config-1450800576`: [dbo.WTH_SplitWorkInPutaway](sql/1450800576.sql); source-definition SHA-256 `4f90faaccc630e62656f6b0c05d36d41241f5b50cfa201c6761e4f29bb861d21`, reading-copy SHA-256 `088ac610a7461fcd89aaa47f21d9e13dd3adf4c14a8cf296b8d5bdb043cb68b9`, one-based inclusive lines [[1, 33]].
+
+`work-config-1466800633`: [dbo.WTH_SplitWorkInPutawayRetInstr](sql/1466800633.sql); source-definition SHA-256 `3f9306a0d0e4f4af6df2e42de34dea32f57cf236d2e962ebba51069a4c717687`, reading-copy SHA-256 `9fda82437626d9ae082a17694cfca84fb7307fcf12e400732e8f74b62cf66db5`, one-based inclusive lines [[1, 99]].
+
+`work-config-1482800690`: [dbo.WTH_SplitWorkWithReturnInstr](sql/1482800690.sql); source-definition SHA-256 `a7476992f8f2e6ba528891d8de5b0c889531f4bed973474df841c50c7b2ce1ac`, reading-copy SHA-256 `d7b4cc9c84d76744cb9aa1710feb6141d3037d75344e1ef1d533f2ecbb957c2f`, one-based inclusive lines [[1, 149]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the quantity sufficiency check run before the new work row is inserted? Expected: The clone insert precedes the guarded update. Must not claim: No clone can exist after a sufficiency failure.
+- Does NULL confirmation mode take the non-putaway branch? Expected: The comparison is UNKNOWN, so the ELSE branch is selected. Must not claim: NULL necessarily means non-putaway.
+
+## 333. How full, partial, short and overpick updates differ
+
+**Question:** How full, partial, short and overpick updates differ?
+
+**What it does.** Full confirmation can move all of one side quantity even when the requested quantity is smaller. Partial confirmation subtracts only the request. Short and underpick rescale totals; overpick has a branch that rescales totals without replacing total quantity. Parent recalculation then sums all children and uses the summed from/to quantities for completion.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Identify the confirmation path and compare its from/to/total quantity effects. Evidence: `work-config-1498800747`, `work-config-1514800804`, `work-config-1530800861`, `work-config-1546800918`, `work-config-1562800975`, `work-config-258099960`.
+2. Check the detail and parent separately after a reported failure. Evidence: `work-config-1498800747`, `work-config-1514800804`, `work-config-1530800861`, `work-config-1546800918`, `work-config-1562800975`, `work-config-258099960`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- Full confirmation can move all of one side quantity even when the requested quantity is smaller. Partial confirmation subtracts only the request. Short and underpick rescale totals; overpick has a branch that rescales totals without replacing total quantity. Parent recalculation then sums all children and uses the summed from/to quantities for completion.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-1498800747`: [dbo.WTH_UpdateDetailFull](sql/1498800747.sql); source-definition SHA-256 `f6ef930a8de0060c9365480909dd38e5bb6aa17582a9c317723c4dc74f527354`, reading-copy SHA-256 `4a17a0f7cad32f1ffa537793b65ed341e3112899f77cc16ff8a347a177e71aa1`, one-based inclusive lines [[1, 128]].
+
+`work-config-1514800804`: [dbo.WTH_UpdateDetailOverPick](sql/1514800804.sql); source-definition SHA-256 `cce2558426169652ecb9ee1e4ff2b6ead8ee213f8411952d8fb1606b634efb96`, reading-copy SHA-256 `f36093a8c00b1f8d6b1f477731f823e861fd291c4e44b1efd2b01d10108b857f`, one-based inclusive lines [[1, 122]].
+
+`work-config-1530800861`: [dbo.WTH_UpdateDetailPartial](sql/1530800861.sql); source-definition SHA-256 `28a42f3174091452626e1188940897f33f154fefe240866b72160f4f9db7d8a2`, reading-copy SHA-256 `4326aea167140ab7f288ddc87218d5adde45b9ab910fa25f8794dfdf6ad49fc2`, one-based inclusive lines [[1, 99]].
+
+`work-config-1546800918`: [dbo.WTH_UpdateDetailShort](sql/1546800918.sql); source-definition SHA-256 `638d3e0ce132165aa1ecc43f21517f2bdc5fd6da477cc0d8c82b647410853440`, reading-copy SHA-256 `8e5e951fdc47aa3f83bd27926b38ce7b48932be863e81753e468737318415415`, one-based inclusive lines [[1, 119]].
+
+`work-config-1562800975`: [dbo.WTH_UpdateDetailUnderPick](sql/1562800975.sql); source-definition SHA-256 `f8ea719f2f73986efa6e68683efed7284553cc2feb6c4a74b52e39193a4fbb82`, reading-copy SHA-256 `23eb9cdddc2307bb0dbda69939bbd3666a4f1d6b52bca097dfa749bc81fa4f18`, one-based inclusive lines [[1, 113]].
+
+`work-config-258099960`: [dbo.WTH_UpdateHeader](sql/258099960.sql); source-definition SHA-256 `78fde2ea10d4e5b9b38fc31eae12f2df04db6dccae57d79423d9283cd56e45c8`, reading-copy SHA-256 `9acb8847acb5420ea7d4c5686eb80141a00a98423a3cbdae3aa3b66c8a21bcd1`, one-based inclusive lines [[1, 74]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does full confirmation always subtract exactly the requested quantity? Expected: Several full branches consume the entire existing side quantity. Must not claim: It always subtracts only the request.
+- Does an empty child set recalculate parent totals to zero? Expected: SUM results are NULL and overwrite totals with NULL. Must not claim: All empty aggregates become zero.
+
+## 334. How work confirmation advances related record status
+
+**Question:** How work confirmation advances related record status?
+
+**What it does.** Status advancement dispatches by the supplied instruction type. Shipment, receipt, work-order and dock paths use different quantity, mode and configuration rules. The captured batch-status procedure contains only its declaration and comments; its name does not establish a batch update implementation.
+
+**What happens**
+
+Trigger: A user needs a source-grounded explanation of this captured configuration or work behavior.
+
+1. Identify the instruction type, confirmation mode and related record identity. Evidence: `work-config-1959326390`, `work-config-1578801032`, `work-config-1975326447`, `work-config-1594801089`.
+2. Keep a configured next status separate from a completed end-to-end workflow. Evidence: `work-config-1959326390`, `work-config-1578801032`, `work-config-1975326447`, `work-config-1594801089`.
+
+**What can affect it**
+
+- See linked contracts for actual scope/default precedence; effective settings are not observed.
+
+**What you can check**
+
+- Optional exact source and contract evidence preserve the technical boundary.
+
+**Expected results and limits**
+
+- Status advancement dispatches by the supplied instruction type. Shipment, receipt, work-order and dock paths use different quantity, mode and configuration rules. The captured batch-status procedure contains only its declaration and comments; its name does not establish a batch update implementation.
+- Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.
+- Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.
+- No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.
+- No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable.
+
+**More detail and sources**
+
+`work-config-1959326390`: [dbo.WTH_UpdateDetailsHeader](sql/1959326390.sql); source-definition SHA-256 `16f6ab9b10a53de81d0882ec73e42fb35d43be70b2c03912d0112232f14ff9a4`, reading-copy SHA-256 `3df170cb207f05d9b81c608015f28ef1dd92547eb3e833d94964a451d5541fad`, one-based inclusive lines [[1, 25]].
+
+`work-config-1578801032`: [dbo.WTH_UpdateStatus](sql/1578801032.sql); source-definition SHA-256 `6ccce9eacdad61531287ae7733108c14c97d6d226f9dfb75debb80e2cbd4dac4`, reading-copy SHA-256 `5a373b692339f4af2c1c15404dc5507f29e5878a29c4035db35f65ffe7b228f7`, one-based inclusive lines [[1, 320]].
+
+`work-config-1975326447`: [dbo.WTH_UpdateStatusBatch](sql/1975326447.sql); source-definition SHA-256 `8d138992b03ce6b8116f314e65f11080def911215116c57521fa5b99ff48c5d3`, reading-copy SHA-256 `1d490e27551aa40005d033c2b2adf3a8886e6d49ad33fa6af74069fcfbb42d33`, one-based inclusive lines [[1, 34]].
+
+`work-config-1594801089`: [dbo.WTH_UpdateStatusDockMgmt](sql/1594801089.sql); source-definition SHA-256 `ae7da301bef12d62ae41a30883ed6b29dd28c3da5fc18b8c5d28dc25ffa53221`, reading-copy SHA-256 `5b24fa8c3fc4f4227314b7e2d85dda08591632feb6bd269ff13e56561a1d2a7b`, one-based inclusive lines [[1, 118]].
+
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_BOUNDED_PEER`.
+
+**Answer evaluation expectations**
+
+Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
+
+- Does the captured batch-status procedure contain an executable batch loop? Expected: No executable statements appear after its declaration. Must not claim: The procedure name proves batch processing.
+- Does dock status lookup fall back to a generic flow when a custom flow is supplied but absent? Expected: Its predicate requires the supplied custom flow; no such fallback appears. Must not claim: It always falls back to a generic flow.

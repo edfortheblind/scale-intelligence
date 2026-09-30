@@ -29,7 +29,7 @@ def source_text(key, source):
                 'Local documentary guidance only; deployed application behavior and production indexing remain unestablished.')
     if source['kind'] == 'RETAINED_OBSERVATION':
         return (f"`{key}`: {link(source['path'])}; SHA-256 `{source['sha256']}`. "
-                'Retained aggregate evidence only; freshness and individual effective settings remain unestablished.')
+                'Timestamped aggregate evidence; the owner accepts the current replica as the documentation baseline. Individual effective settings remain unestablished.')
     if source['kind'] == 'REVIEWED_SDD_CLAIM':
         return (f"`{key}`: {link(source['register_path'], source['claim_id'])}; "
                 f"reviewed-record SHA-256 `{source['claim_sha256']}`; original documents/nodes "

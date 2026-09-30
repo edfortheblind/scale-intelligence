@@ -36,7 +36,9 @@ def render_page(knowledge, question='', topic_id=None):
     if question.strip():
         result = knowledge.search(question)
         parts.append('<section aria-labelledby="results-heading"><h2 id="results-heading">Related explanations</h2>')
-        if result['results']:
+        if result.get('state') == 'NEEDS_CONTEXT':
+            parts.append(element('p', result['clarification'], ' role="status"'))
+        elif result['results']:
             parts.append(element('p', str(len(result['results']))+' related explanations. Choose a topic for its steps, configuration factors and evidence.', ' role="status"'))
             parts.append('<ul id="result-list">')
             for topic in result['results']:

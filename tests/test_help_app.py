@@ -55,6 +55,25 @@ class HelpKnowledgeTests(unittest.TestCase):
         self.assertEqual(result['state'], 'NO_REVIEWED_MATCH')
         self.assertEqual(result['results'], [])
 
+    def test_unnamed_setting_requests_context_without_unrelated_results(self):
+        for question in ['Explain this setting', 'How do I configure this?', 'What does this option mean?',
+                         'Show the source and explain this field in simple language',
+                         'Which documentation explains this setting?']:
+            with self.subTest(question=question):
+                result = self.knowledge.search(question)
+                self.assertEqual(result['state'], 'NEEDS_CONTEXT')
+                self.assertEqual(result['results'], [])
+                self.assertIn('setting or field name', result['clarification'])
+        html = render_page(self.knowledge, question='Explain this setting').decode()
+        self.assertIn('setting or field name', html)
+        self.assertNotIn('No reviewed explanation matched', html)
+
+    def test_named_configuration_still_searches_reviewed_guidance(self):
+        for question in ['How do I configure packing?', 'What does Auto Print at Close mean?', 'Explain WORK_PROFILE',
+                         'How do I configure work?']:
+            with self.subTest(question=question):
+                self.assertEqual(self.knowledge.search(question)['state'], 'REVIEWED_MATCHES')
+
     def test_fts_operators_are_literal_input(self):
         result = self.knowledge.search('" OR title:* - ( SELECT 1; DROP TABLE topics; --')
         self.assertIn(result['state'], {'NO_REVIEWED_MATCH', 'REVIEWED_MATCHES'})
