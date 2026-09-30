@@ -4,14 +4,14 @@ Nine originals produce eight unique extracted bodies. Counts separate authored s
 
 | Source | Cited nodes / extracted | Described assets / unique assets | PDF pages viewed / total | Static slides viewed / total |
 | --- | ---: | ---: | ---: | ---: |
-| J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf | 151 / 1608 | 14 / 90 | 119 / 119 | N/A |
+| J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf | 361 / 1608 | 90 / 90 | 119 / 119 | N/A |
 | Manhattan SCALE - Labels.pptx | 83 / 209 | 40 / 43 | Not rendered | 45 / 45 |
 | SCALE Work and Picking Functionality.docx | 417 / 995 | 13 / 13 | Not rendered | N/A |
-| Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx | 592 / 2450 | 52 / 137 | Not rendered | N/A |
+| Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx | 878 / 2450 | 136 / 137 | Not rendered | N/A |
 | MA Documentation - Insight Architect Configuration.pdf | 10 / 20 | 0 / 0 | 2 / 2 | N/A |
-| Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf | 195 / 973 | 13 / 73 | 110 / 110 | N/A |
-| LAND MAWM Solution Design Document v2.11.docx | 22 / 4605 | 4 / 37 | Not rendered | N/A |
-| SCALE Configuration Walkthrough - HADDAD.docx | 321 / 758 | 102 / 220 | Not rendered | N/A |
+| Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf | 275 / 973 | 73 / 73 | 110 / 110 | N/A |
+| LAND MAWM Solution Design Document v2.11.docx | 118 / 4605 | 35 / 37 | Not rendered | N/A |
+| SCALE Configuration Walkthrough - HADDAD.docx | 486 / 758 | 218 / 220 | Not rendered | N/A |
 
 A cited node can contain more material than a claim uses. Its presence does not certify every sentence. Asset descriptions count unique retained paths separately from page views; 614 asset records correspond to 613 unique paths.
 
@@ -68,3 +68,9 @@ Covetrus review covers inventory and outbound design through packing and manifes
 Labels, Covetrus and HADDAD add 42 claims, 42 settings and 68 descriptions for 94 previously undescribed assets. The exact citation union adds 326 nodes, reaching 1791/11,618; descriptions reach 238/613 unique assets. These are bounded source counts, not full semantic or production acceptance.
 
 Covetrus review covers master data, interfaces, receiving, labor, conversion and security design. HADDAD covers wave/cycle/replenishment/interface/printing examples, including three original EMFs rendered as private image previews; date and selection disagreements remain explicit. Labels descriptions cover remaining node-bound assets, including five decorative overlays, while three unbound media receive no description credit. Existing page and slide viewing counts, raster tables, source contradictions and original bytes are preserved. No DOCX pagination, printer output, live configuration or user acceptance was performed.
+
+## Continuation 6 source and asset review
+
+Covetrus, HADDAD, LAND, Grupo Julio and Knipper add 59 claims, 48 settings and 209 descriptions for 367 previously undescribed assets. The exact citation union adds 837 nodes, reaching 2628/11,618; descriptions reach 605/613 unique assets. These are bounded source counts, not full semantic or production acceptance.
+
+Source qualifications remain explicit, including inconsistent captions and visual/prose rules. Native media previews do not establish complete DOCX layout. LAND remains MAWM evidence excluded from SCALE behavior. Decorative images and masks are identified separately; source-bound description counts do not measure functional contract completeness. Existing page/slide views, table dispositions, original bytes and previous reviewed records are preserved. No current configuration or operational acceptance is asserted.

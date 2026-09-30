@@ -1,49 +1,39 @@
 # SCALE Intelligence project status
 
-Continuation 5, 2026-09-30. The owner authorized continued source-grounded foundation work and clarified that Packing guidance should document AIM base behavior while keeping a possible DB extension separate. Continuation 4 is published through private PR #4. Normal private commit, push and merge remain authorized; each new result keeps its verification and acceptance boundaries.
+Continuation 6, 2026-09-30. The owner approved remaining source work. The requested AIM base Packing/Close Container clarification is published through private PR #5; the possible installed extension remains a separate, unverified question. This continuation reviews remaining SDD media and their relevant source context.
 
-[Exact task percentages](_project/COMPLETION_REPORT.md) · [Verification](_project/continuation5-20260930.json) · [Independent audit](_project/independent-audit-continuation5.json) · [Publication](_project/continuation5-publication-20260930.json). No overall completion percentage is claimed.
+[Task measures](_project/COMPLETION_REPORT.md) · [Verification](_project/continuation6-20260930.json) · [Independent audit](_project/independent-audit-continuation6.json) · [Publication](_project/continuation6-publication-20260930.json) · [Remaining media ledger](_project/sdd-media-continuation6.json). No overall completion percentage is claimed.
 
-## AIM base behavior and the remaining Packing question
+## Source review delivered
 
-The existing Packing help topic now separates the documented workflows. Warehouse Mobile Close Container identifies a shipping container, handles system or actual weight and confirms closing, subject to the documented tolerance behavior. Insight Packing initiates eligible shipment lines, selects an existing or new shipping container, accepts the item/quantity and packs it. Closing and optional downstream manifesting, printing or loading have their own conditions.
+The batch adds **59 claims, 48 settings and 209 visual descriptions for 367 additional assets** across Covetrus, HADDAD, Knipper, Grupo Julio and LAND. Totals are **264 claims, 265 settings, 398 visual descriptions and 79 logical PDF tables**. Described assets reach **605/613 (98.69%)**; cited nodes reach **2,628/11,618 (22.62%)**. Citation coverage does not certify every statement in a node.
 
-The explanation distinguishes mobile from desktop-only create-at-close behavior, preserves QC/VAS restrictions, and identifies the documented Close Container Action exit point for the scale interface. A documented extension hook does **not** establish an installed DB extension. Neither base workflow establishes an inventory-license-plate replacement action merely because an item matches.
+All remaining source-bound media now have descriptions. **8 retained media assets lack node associations** and remain outside authored-description credit: HADDAD 2, Covetrus 1, LAND 2 and Labels 3. They are decorative or empty media, inventoried explicitly. Native image previews resolve the previously uninspected Covetrus workbook icon and empty Labels EMF; workbook contents and full document layout are separate evidence. PDF masks and decorative fragments are identified as such, not new process contracts.
 
-Seven original AIM articles and 58 decisive nodes support the clarified topic. One existing topic expands from four to nine explanation steps; the library is **340 topics and 858 ordered steps**. Evaluation questions, expected results, ranking implementation and original sources remain unchanged. See the Packing topic in [the generated help guide](DB%20Architecture/HELP_TOPICS.md).
+Originals, extracted source identities, previous review records, 231 PDF page views, 45 slide views and 219 table-candidate dispositions are preserved. LAND describes MAWM, so its container and sorter examples do not establish SCALE behavior. Source disagreements remain explicit, including replenishment units and grouping, release-status timing, repeated cubing screenshots, caption/figure mismatches and the HM-flow system legend. No source example is promoted to this deployment's effective setting.
 
-Actual HTTP presentation/citation checks pass **725/725**. Expected-topic top-eight retrieval remains **686/725 (94.62%)**, first-place matches 419/725 and misses **39**, with no new misses or recoveries versus continuation 4. The older 445-question subset remains 409/445 top-eight versus 420/445 historically; individual historical regressions remain explicit.
+## Packing and local help
 
-The 24 frozen known scenarios remain **23 adequate (95.83%), one partial, zero missing**, comprising 22 substantive answers and one appropriate ambiguity clarification. The current snapshot contains **152 successful HTTP requests**. Independent review identifies exact-result reuse and changed results separately. Documenting the requested AIM base behavior does not make the remaining replacement-LPN contract known. These are known-scenario checks, not an untouched holdout or real-user acceptance.
+AIM distinguishes Warehouse Mobile Close Container from Insight Packing. The documented desktop scale-interface exit point does not prove an installed DB extension or an inventory-LPN replacement rule. The source-grounded base explanation is complete within the available AIM evidence; the replacement contract remains unknown.
 
-## Additional SDD review
+Help remains **340 topics and 858 ordered steps**. The preceding verified HTTP results remain **725/725 selected-topic checks**, **686/725 top-eight matches**, 419 first-place matches and **39 misses**. The frozen known questions remain **23 adequate, one partial, zero missing**. Complete current topic/source payload, search-index and implementation identities are checked against C5 before carrying this evidence forward. These HTTP and scenario checks were not rerun or relabeled as new user acceptance.
 
-This batch adds **42 claims, 42 setting contracts and 68 visual descriptions for 94 additional assets**. Covetrus extends master-data, interface, receiving, labor, conversion and security design evidence. HADDAD extends wave, cycle-count, replenishment, interface and printing examples. Labels describes its remaining 22 node-bound assets, including five decorative annotation marks.
+## Remaining evidence
 
-Totals are **205 claims, 217 settings, 189 visual descriptions and 79 logical PDF tables**. Cited nodes reach **1,791/11,618 (15.42%)** and described assets **238/613 (38.83%)**. Independent review checks 372 cited original XML nodes and all 94 new assets, including three HADDAD EMFs rendered only as private image previews. Decorative and repeated-subject images do not become additional functional contracts. The existing 231 PDF page views, 45 slide views and 219 candidate dispositions are unchanged.
+Relevant uncited SDD text still needs bounded semantic review; media coverage is not complete functional understanding. Source contradictions need applicable clarification. Captured module contracts remain 1,138/1,138, including 921 procedures. Functional roles remain 1,655/1,656 and table roles 517/518; `dbo.Interface_Item_Failure_1024` purpose remains unknown. All 34 captured process families have documentary review and **0/34** are fully reconciled to deployment. Effective configuration, callers and end-to-end timing require additional evidence.
 
-Originals and all prior authored SDD records remain unchanged. New source disagreements are explicit: HADDAD annual-count prose and date predicate differ, its All selection is narrower in the image, and its annual master is inactive in the shown example. Covetrus retains conflicting master-data ownership, check-digit/pick-sequence choices, update cutoff and trailer/receipt cardinality. No source sample is treated as this deployment's effective setting.
-
-## Remaining work
-
-**375 assets remain undescribed:** HADDAD 118, Covetrus 85, Knipper 76, Grupo Julio 60, LAND 33 and Labels 3. The last three Labels assets have no extracted node association: two viewed branded backgrounds and one unrendered EMF; none receives description coverage credit. The current citation ledger and bounded remaining-asset inventories prevent repeated review. Uncited text still needs relevant semantic disposition; citation coverage does not certify every statement in a node.
-
-All **1,138 captured module contracts** remain reviewed, including 921 procedures. Functional roles remain 1,655/1,656 and table roles 517/518; `dbo.Interface_Item_Failure_1024` purpose remains unknown. All 34 captured process families have documentary review, with **0/34** fully reconciled to deployment. Effective configuration, callers and end-to-end timing require additional bounded evidence.
-
-The browser surface and required bundled DOCX renderer were unavailable at the preceding verified checkpoint and were not re-probed in this batch. Browser/keyboard/screen-reader/intended-user acceptance, full DOCX layout fidelity and historical Word-preference restoration remain unverified. Native EMF image previews do not close those gaps. No Word document was opened or application preference changed.
-
-AIM/SDK acquisition remains owner-closed with accepted gaps. Insight navigation/SOP registration remains a separately initiated task. No new DB connection, transactional rows, operational routine execution, source-original change or external AEKR mutation occurred.
+Browser/keyboard/screen-reader/intended-user acceptance, full DOCX layout fidelity and historical Word-preference restoration remain unverified. No Word document was opened or preference changed. Prior environment limitations were not re-probed during this source-only batch. AIM/SDK acquisition remains owner-closed; Insight navigation/SOP registration remains separately initiated. No new DB connection, transactional rows, operational execution, original-source mutation or external AEKR mutation occurred.
 
 ## Verification and continuation
 
-The full suite passes **368 tests, zero failed and zero skipped**. Current DB documentation/citation verification, publication exposure checks and independent leaf/parent review are recorded in the verification receipt. The long accepted-corpus verifier was not rerun because acquisition inputs and originals did not change; prior evidence remains scoped historical evidence. Publication and exact Git/clean-checkout parity have a separate receipt.
+Relevant SDD, help-source and report checks are recorded in the current verification receipt. Independent source Verification and fresh parent Audit bind exact frozen outputs; private publication and clean-checkout parity are recorded separately. The C5 full suite of 368 tests and HTTP/scenario evidence are retained with their exact scopes. The accepted-corpus verifier and unchanged database-documentation checks were not repeated.
 
-Run `python tools/serve_help.py --port 8765` and open `http://127.0.0.1:8765` when a local browser is available. Resume through [the master prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) and [resume instructions](_project/RESUME.md).
+Resume through [the master prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) and [resume instructions](_project/RESUME.md). Run `python tools/serve_help.py --port 8765` for the local help when a browser is available.
 
 Outcome: DONE_WITH_CONCERNS
 
-Delivery state: Verified continuation; private publication and parity evidence recorded separately.
+Delivery state: Verified source continuation; private publication and exact parity recorded separately.
 
-Product state: Requested AIM base behavior documented and SDD coverage expanded; source/deployment/accessibility gaps remain.
+Product state: AIM base behavior documented and source-bound media described; semantic, deployment and accessibility gaps remain.
 
 Gate/authority state: Continued source work and normal private publication authorized. New-result owner and operational acceptance are not asserted.
