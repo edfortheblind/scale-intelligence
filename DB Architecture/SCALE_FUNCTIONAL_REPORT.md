@@ -6,7 +6,7 @@ The intended reader is a person with little or no SCALE experience and limited t
 
 The initial [help topics](HELP_TOPICS.md) contain concrete answers and execution flows. The [functional role register](FUNCTIONAL_ROLES.md) distinguishes transactional state, configuration, master/reference information, reporting, orchestration, history and integration. The [configuration validation report](CONFIGURATION_VALIDATION.md) records the separately authorized, bounded replica checks. These are inputs for the help section; an interactive help application has not been deployed.
 
-Current foundation: **187 help topics, 570 reviewed object roles, 459 bounded module contracts, 103 documentary setting contracts, and 34 families with complete captured documentary review**. All 130 process refinements are available in local help. Five configuration observations are unchanged; zero families have full deployment reconciliation. Actual HTTP checks cover417 questions. See [section progress](../_project/COMPLETION_REPORT.md).
+All **1,138 captured eligible modules**, including **921 stored procedures**, have bounded static contracts. Functional roles cover **1,655/1,656 objects**; the remaining table purpose is unestablished. All **34 captured process families** have documentary review and their 130 refinements are available in local help. Five configuration observations retain their original capture time; no family has full deployment reconciliation. Current help, SDD and HTTP evaluation counts come from the hash-bound [section progress report](../_project/COMPLETION_REPORT.md).
 
 ## What a user should receive
 

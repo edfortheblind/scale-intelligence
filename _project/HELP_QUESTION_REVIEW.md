@@ -52,7 +52,7 @@ Baseline: **5/24 adequate (20.83%), 13 partial, 6 missing**. All 136 actual loca
 
 No browser, screen-reader, representative-user or live warehouse acceptance is inferred from these checks.
 
-## Final follow-up
+## Prior follow-up
 
 **18/24 adequate (75%), 5 partial, 1 missing.** The adequate outcomes comprise **17 substantive content answers and one appropriate clarification (QS-22)**. The unspecified-setting question now asks for the setting name, screen and intended outcome; it does not yet return a named-setting explanation or citation. The baseline remains 5/24 adequate, 13 partial and 6 missing.
 
@@ -103,3 +103,15 @@ This is **known-scenario remediation**: baseline findings informed the new conte
 Frozen follow-up SHA256: `11448f16ef7ca4420c6bc8d64d792bb04a0e86746504683575ea4c1f2838d79c`.
 
 Binding scope: the follow-up's `frozen_question_file_sha256` identifies the retained private questionnaire file. Its `frozen_questions_sha256` identifies the canonical 24-question set and matches `canonical_question_sha256` in the public [research artifact](help-question-research.json); the compact public file has a separate whole-file hash.
+
+## Continuation 3 independent follow-up
+
+**23/24 adequate (95.83%), one partial, none missing.** The adequate outcomes comprise **22 substantive bounded answers and one appropriate unspecified-setting clarification**. The same 24 questions remain unchanged and outside search. A fresh-context reviewer assessed only the returned top eight after known-scenario repairs; this is independent review of a known sample, not an untouched holdout or real-user acceptance.
+
+The final capture made **152/152 successful HTTP requests**: 24 searches, 99 distinct topic answers, 27 cited operator-source responses and two status reads. The server stopped after capture. [Exact judgments and source bindings](help-question-continuation3.json) preserve the returned topic identities, evidence, limitations and comparison.
+
+Five previously partial cases (QS-05, QS-10, QS-12, QS-14 and QS-19) now meet the original bounded-triage rubric. QS-18 improved from missing to partial: the answer identifies Packing error/context checks and distinguishes Override Pick, but the actual Packing replacement-LPN action and validation contract remain unsupported. Closed-source unpack/reopen eligibility and actual physical/configuration state are not inferred.
+
+The reviewer found blank source excerpts for nested cited nodes. The source loader now includes the complete cited subtree, retaining its original identity and readable block boundaries. The regression test failed before the repair and passed afterward; the final review binds the repaired implementation and recaptured responses.
+
+No browser, keyboard, screen-reader, installed workflow or representative-user acceptance is claimed. The prior baseline and follow-up JSON receipts remain byte-identical historical evidence.

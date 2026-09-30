@@ -6,10 +6,10 @@ Nine originals produce eight unique extracted bodies. Counts separate authored s
 | --- | ---: | ---: | ---: | ---: |
 | J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf | 151 / 1608 | 14 / 90 | 119 / 119 | N/A |
 | Manhattan SCALE - Labels.pptx | 20 / 209 | 7 / 43 | Not rendered | 45 / 45 |
-| SCALE Work and Picking Functionality.docx | 143 / 995 | 9 / 13 | Not rendered | N/A |
+| SCALE Work and Picking Functionality.docx | 370 / 995 | 13 / 13 | Not rendered | N/A |
 | Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx | 137 / 2450 | 22 / 137 | Not rendered | N/A |
 | MA Documentation - Insight Architect Configuration.pdf | 10 / 20 | 0 / 0 | 2 / 2 | N/A |
-| Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf | 194 / 973 | 12 / 73 | 110 / 110 | N/A |
+| Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf | 195 / 973 | 13 / 73 | 110 / 110 | N/A |
 | LAND MAWM Solution Design Document v2.11.docx | 22 / 4605 | 4 / 37 | Not rendered | N/A |
 | SCALE Configuration Walkthrough - HADDAD.docx | 134 / 758 | 14 / 220 | Not rendered | N/A |
 
@@ -19,9 +19,9 @@ A cited node can contain more material than a claim uses. Its presence does not 
 
 The first 2026-09-30 batch viewed 34 renders (33 new pages) and 13 retained assets; the corrected checkpoint is preserved privately. Delta 2 viewed 89 additional Knipper page renders for candidate geometry and selected reading context, reconciled three tables, and described five additional retained assets.
 
-Delta 3 individually inspected the remaining 77 Grupo Julio pages and eight retained assets at original resolution. The cumulative page-view count is 231 of 231: Knipper 119/119, Grupo Julio 110/110 and Insight Architect 2/2. Full-page coverage is not complete semantic, screenshot-grid, workbook, annotation or figure acceptance. No new logical tables are certified by this page-view completion; Grupo Julio page 8 contains raster capacity tables outside the detected-candidate denominator.
+Delta 3 individually inspected the remaining 77 Grupo Julio pages and eight retained assets at original resolution. The cumulative page-view count is 231 of 231: Knipper 119/119, Grupo Julio 110/110 and Insight Architect 2/2. Full-page coverage is not complete semantic, screenshot-grid, workbook, annotation or figure acceptance. No new logical tables were certified by that page-view completion. The continuation below separately reviews Grupo Julio page 8 raster capacity tables outside the detected-candidate denominator.
 
-There are 76 reviewed logical tables supported by 93 heuristic candidates; 126 candidates are rejected as layout/fragment artifacts and zero of 219 remain undispositioned. This closes the detected-candidate inventory only. The total number of logical tables, including raster or undetected tables, remains unknown.
+There are 79 reviewed logical tables: 76 supported by 93 heuristic candidates and three transcribed from the page 8 raster asset; 126 candidates are rejected as layout/fragment artifacts and zero of 219 remain undispositioned. This closes the detected-candidate inventory only. The total number of logical tables, including raster or undetected tables, remains unknown.
 
 ## Source qualifications
 
@@ -46,3 +46,13 @@ There are 76 reviewed logical tables supported by 93 heuristic candidates; 126 c
 Covetrus inbound nodes b00614-b00915 and HADDAD container/QC nodes b00617-b00659 received retained-text review, with 31 distinct substantive PNG assets individually inspected. This adds 16 claims, 12 settings and 24 visual descriptions. Covetrus now has 22/137 described assets and HADDAD 14/220. No additional PDF page or static-slide credit is claimed. DOCX tables used as cited text remain outside the logical PDF-table denominator.
 
 HADDAD QC prose/image filter and evaluation-method conflicts remain explicit. Covetrus Workbench caption and item-picture mismatches are preserved. No Word, LibreOffice, full DOCX pagination, live configuration or runtime evidence was used. All originals, extraction bodies, retained assets and prior authored records remain unchanged.
+
+## Work and picking semantic continuation and raster table review
+
+The Work/Picking compilation adds 24 claims, 18 configuration contracts and four retained-asset descriptions. The source XML matches all 257 nodes cited by this batch, and all 13 retained image hashes match original DOCX media. Its exact citation union rises from 143 to 370 of 995 nodes, adding 227 previously uncited nodes. All 13 retained assets are now described; the four additions are three status icons and one blank/decorative field-description asset. The icon meanings are mapped through original table-row relationships, not the sorted extracted asset list.
+
+Work creation criteria, profile eligibility, special handling, cart behavior, Picking Management, paper/RF paths and voice-integration boundaries now have additional source explanations. The existing partial-close configuration is narrowed to RF replenishment and work-order picking based on the source execution flow. Tote-cart availability and automatic-putaway name/scope conflicts remain explicit; no current setting or actual execution is established.
+
+The coordinator separately inspected the existing Grupo Julio page 8 raster asset and an enlarged crop. Three logical tables with 55 rows are now transcribed, each bound to the asset hash and page. The page heading is a location anchor; it is not the source of the numeric cells. The source mismatch between line-summed 14,163 garments and the storage table value 14,168 is preserved. This particular raster table gap is closed; the total undetected/raster-table denominator remains unknown. Candidate counts remain 219 total, 93 supporting the original 76 logical tables and 126 rejected.
+
+Described assets count the union of diagram paths and reviewed-table source assets. No new PDF page or static-slide credit is claimed. Full DOCX pagination, complete semantics, deployed navigation, effective configuration and operational/accessibility acceptance remain unverified. Originals and extracted bodies/assets are unchanged.

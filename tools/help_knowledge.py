@@ -7,7 +7,7 @@ import re
 import sqlite3
 from collections import Counter
 
-from build_db_docs import walk_text
+from article_data import nodes as article_nodes, search_text as article_text
 from reviewed_sdd_source import load_claim
 from reviewed_process_source import load_refinement
 
@@ -18,7 +18,7 @@ KINDS = {'VENDOR_DOCUMENTATION': 'Vendor documentation', 'DEPLOYED_SQL_STATIC': 
          'CATALOG_METADATA': 'Captured database metadata', 'REVIEWED_SDD_CLAIM': 'Reviewed implementation example',
          'REVIEWED_PROCESS_CLAIM': 'Reviewed process documentation',
          'RETAINED_OBSERVATION': 'Retained observation with time and scope limits'}
-IMPLEMENTATION_FILES = ['tools/help_knowledge.py', 'tools/serve_help.py', 'tools/render_help_page.py', 'tools/reviewed_sdd_source.py', 'tools/reviewed_process_source.py']
+IMPLEMENTATION_FILES = ['tools/help_knowledge.py', 'tools/serve_help.py', 'tools/render_help_page.py', 'tools/reviewed_sdd_source.py', 'tools/reviewed_process_source.py', 'tools/article_data.py']
 IMPLEMENTATION_SHA256 = hashlib.sha256(json.dumps(
     {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in IMPLEMENTATION_FILES},
     sort_keys=True).encode()).hexdigest()
@@ -219,11 +219,15 @@ class Knowledge:
                     or binding['source_sha256'] != source['source_sha256']
                     or binding['source_path'] != source['source_path']):
                 raise ValueError('Vendor document generation changed')
-            nodes = dict(walk_text(article['content_tree']))
+            # A cited paragraph/list/table can contain its words in child nodes.
+            # Keep that exact subtree, with readable block boundaries, rather
+            # than displaying only whitespace stored directly on its parent.
+            nodes = {node['node_id']: node for node in article_nodes(article['content_tree'])}
             result.update(label=article['title'], source_hash=source['source_sha256'],
                           reading_hash=binding['article_sha256'],
                           article_id=article_id, module=module,
-                          excerpts=[{'location': node, 'text': nodes[node]} for node in source['node_ids']],
+                          excerpts=[{'location': node, 'text': article_text(nodes[node]).strip()}
+                                    for node in source['node_ids']],
                           qualification='Only the cited passages support this answer. Product/version and deployed configuration may differ.')
         elif kind == 'REVIEWED_SDD_CLAIM':
             claim, excerpts = load_claim(self.root, source)

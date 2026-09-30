@@ -1,4 +1,5 @@
 """Cross-artifact checks for the bounded SDD review overlays."""
+import hashlib
 import json
 import unittest
 from pathlib import Path
@@ -47,7 +48,9 @@ class SddReviewTests(unittest.TestCase):
             self.assertEqual(reviewed | rejected | pending, candidates)
             self.assertEqual(c['candidate_count'], len(candidates))
             supporting = {n for t in self.tables['tables'] for ref in t['citations'] if ref['document_id'] == c['document_id'] for n in ref['nodes']}
-            self.assertEqual(reviewed, supporting)
+            # Raster tables use a page text anchor plus a separately hash-bound
+            # image; their existence does not enlarge the heuristic candidates.
+            self.assertEqual(reviewed, supporting & candidates)
         for t in self.tables['tables']:
             self.assertTrue(t['rows'])
             self.assertTrue(all(len(row) == len(t['columns']) for row in t['rows']))
@@ -55,6 +58,28 @@ class SddReviewTests(unittest.TestCase):
                 self.assertEqual(ref['source_sha256'], self.docs[ref['document_id']]['source_sha256'])
                 coverage = next(c for c in self.coverage['documents'] if c['document_id'] == ref['document_id'])
                 self.assertTrue(set(t['source_pages']) <= set(coverage['visually_inspected_pdf_pages']))
+
+    def test_raster_table_sources_bind_retained_image_bytes_and_page(self):
+        raster_tables = [t for t in self.tables['tables'] if t.get('source_assets')]
+        self.assertEqual({t['id'] for t in raster_tables}, {
+            'grupo-p008-raster-criteria', 'grupo-p008-raster-storage', 'grupo-p008-raster-lines'})
+        for table in raster_tables:
+            documents = [self.docs[ref['document_id']] for ref in table['citations']]
+            for asset in table['source_assets']:
+                retained = [a for d in documents for a in d['assets'] if a['path'] == asset['path']]
+                self.assertTrue(retained)
+                self.assertTrue(any(asset['page'] in a.get('pages', []) for a in retained))
+                self.assertIn(asset['page'], table['source_pages'])
+                self.assertEqual(hashlib.sha256((ROOT / asset['path']).read_bytes()).hexdigest(), asset['sha256'])
+
+    def test_raster_capacity_source_disagreement_is_preserved(self):
+        tables = {t['id']: t for t in self.tables['tables']}
+        line_table = tables['grupo-p008-raster-lines']
+        storage = tables['grupo-p008-raster-storage']
+        self.assertEqual(len(line_table['rows']), 24)
+        self.assertEqual(sum(int(r[1]) for r in line_table['rows']), 14163)
+        self.assertEqual(next(r[4] for r in storage['rows'] if r[1] == 'Empaque II'), '14,168')
+        self.assertIn('five-garment discrepancy', line_table['normalization'])
 
     def test_blank_cells_and_split_page_continuations_are_preserved(self):
         tables = {t['id']: t for t in self.tables['tables']}

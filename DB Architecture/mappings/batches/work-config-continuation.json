@@ -87122,7 +87122,7 @@
       "topic_id": "work-splitting-failure-boundary",
       "title": "Why a failed split may already have created a new instruction",
       "business_question": "Why a failed split may already have created a new instruction?",
-      "plain_answer": "The split helpers clone the original before checking whether the relevant side quantity can cover the requested split. A later failure has no local rollback. The original and clone also retain different from/to quantities depending on the mode.",
+      "plain_answer": "The split helpers clone the original before checking whether the relevant side quantity can cover the requested split. A later failure has no local rollback. The original and clone also retain different from/to quantities depending on the mode. A missing confirmation mode (SQL NULL) selects the destination/putaway quantity branch in WTH_SplitWorkWithReturnInstr; it does not mean non-putaway confirmation.",
       "trigger": "A user needs a source-grounded explanation of this captured configuration or work behavior.",
       "input_context": [
         "Use relevant application identity, selected workflow and exact message; no SQL execution is required."
@@ -87147,6 +87147,19 @@
         },
         {
           "order": 2,
+          "action": "REVIEWED_STATIC_STEP",
+          "explanation": "When work splitting receives a NULL confirmation mode, its comparison with 1 is unknown and the ELSE branch uses destination quantities. The wrapper also skips its conditional replenishment-request split. Check the supplied mode and caller transaction before interpreting the result.",
+          "objects": [
+            "dbo.WTH_SplitWork",
+            "dbo.WTH_SplitWorkWithReturnInstr"
+          ],
+          "evidence_refs": [
+            "work-config-1434800519",
+            "work-config-1482800690"
+          ]
+        },
+        {
+          "order": 3,
           "action": "REVIEWED_STATIC_STEP",
           "explanation": "Treat a failed return as a reason to inspect the authorized workflow state, not to repeat blindly.",
           "objects": [

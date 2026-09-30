@@ -239,6 +239,103 @@ Additional limits: The support-summary format is an authored troubleshooting aid
 
 Sources: operator-work-insight, operator-work-mobile, operator-packing-screen, operator-close-container, operator-packing-preferences
 
+## Stuck work: deletion, wave cancellation and receipt reversal
+
+Cancellation depends on what created the work and what has already happened. Work Insight Delete, Cancel Wave, receipt Unlocate and Cancel Check In are separate actions with different restrictions. First compare the instruction and transaction history with the physical product location; deleting a record does not establish that product has physically moved back.
+
+1. Identify the work type, originating wave or receipt, From/To location, license plate, lot, remaining detail and current condition. Compare the last confirmed pick/putaway and transaction history with the product location reported by the operator. This comparison is an authored triage step, not an automatic reconciliation function.
+2. Work Insight Delete removes the instruction and supporting inventory allocations; for shipment work it also updates shipment header, details and containers using Default Status When Shipment Is Rejected. The Processing Work article explicitly lists work that is not closed, active work, unreleased-wave work, allocated replenishment/inventory-transfer work at the To location, and specified shipment-allocation/container links as deletion restrictions. Do not reverse its not-closed wording into permission to delete open work.
+3. Cancel Wave is documented for a wave that has run but has not been released. It validates eligibility, reports a rejection and writes history when ineligible. Allocation rollback and replenishment retention depend on the wave and its configuration; replenishments supporting another wave may be retained/extracted or prevent cancellation. It is not a general rollback for released work.
+4. For receipt work, Cancel Check In applies only to product that has not been located. Unlocate is a separate preceding possibility for located product, but the source disallows it when created work has already executed. Cancel Check In returns the quantity to open receipt quantity; an interface-upload warning needs separate ERP reconciliation under the authorized procedure.
+5. If physical movement and recorded confirmation disagree, retain the precise discrepancy and escalate to the authorized warehouse owner before selecting a reversal. The retained documentation does not establish a universal repair for partially moved or already executed work. An operator must verify the permitted action and actual result; this help cannot authorize cancellation.
+
+Configuration: Work type and condition; wave release and Wave Master replenishment-retention policy; receipt locating/executed-work state. Default Status When Shipment Is Rejected controls shipment statuses for the documented deletion route.
+
+Checks: Record the screen/action, exact rejection, last successful confirmation and whether the product is at From, To or another observed location. Review the corresponding process/transaction history before deciding whether a reversal fits.
+
+Sources: [operator-work-processing](../AIM/reading/2a849da2c18bc5244f4e44f5346f871a765c86c96d43a011314a5857cfea60c5.md), [operator-wave-cancel](../AIM/reading/f95431ca9a42f8cc326def4b0c44563876797b45e44e9268cf9b9a4d634f5f9f.md), [operator-receipt-workbench](../AIM/reading/a357eac1f7ebf1b8fcf6edee90c086783da65f07d18fbdcc06236891e314cebc.md), [operator-container-insight](../AIM/reading/56f58af05b639903354ee78fe799f51fefee04136179aa4cf2c434fc9c82a65a.md)
+
+## Unexpected putaway destination: ordered rules and decision history
+
+An empty-looking slot is not enough to make it an eligible putaway destination. SCALE evaluates the applicable locating rule in sequence, with each strategy restricted by its location selection and capacity rules. Use Process History for locating decisions and Transaction History for actual locating events; the word exception alone does not identify a documented fallback rule.
+
+1. Identify the receipt container and its locating rule. Receipt Workbench first shows the assigned rule in Destination after check-in, then the chosen location after successful locating. Parent locating uses the parent rule; child locating uses the nested container rule.
+2. Read the rule details in ascending sequence. For each detail, inspect the locating strategy and optional Location Selection, including its sort. A location outside that selection is not a candidate just because it looks empty.
+3. Compare rejected or unsuitable candidates with the actual strategy: Empty Location excludes an empty permanent location assigned to another item; same-lot consolidation has a lot requirement; Fill One And Only One Location stops looking within that selection after the selected location is full. These examples are distinct algorithms, not universal rules applied together.
+4. Check quantity/unit compatibility and capacity. Item/location capacity records take precedence over the documented multi-item volume calculation. Split Quantity permits remaining quantity to continue to another rule detail; a serial-number-linked receipt container cannot be split. Without a satisfiable detail, locating can fail.
+5. Check whether Delayed Locating and Create Putaway Work both apply: that combination uses a receiving pre-locate location. Otherwise rule details govern. Quick Receive can ask the user for a location if none is found; that is not proof of an automatic exception destination.
+6. Research Process History for the locating decision and any recorded failure or rejected choice, and Transaction History for the actual event. Compare the recorded rule/sequence and reason with the candidate checks above. The source identifies these history purposes, but does not promise a complete list of every rejected location.
+
+Configuration: Receipt container locating rule, parent/child locating mode, ordered detail strategy and location selection. Item/location capacity, unit of measure, lot restrictions, Split Quantity and delayed-locating/putaway-work flags.
+
+Checks: Provide the exact destination description, effective rule/sequence, selected strategy and the recorded decision or error. If history does not expose a rejected candidate, its rejection reason remains unestablished.
+
+Sources: [operator-locating-process](../AIM/reading/4007cca3ce3ca3273f3ee4e6d51d7027ae1816c6f7ce71af9f254400514146aa.md), [operator-locating-rules](../AIM/reading/a3869416433c59c85b566e9a0be734881a8f8c0a3757934f651c97c14db936eb.md), [operator-receipt-workbench](../AIM/reading/a357eac1f7ebf1b8fcf6edee90c086783da65f07d18fbdcc06236891e314cebc.md), [operator-mobile-receiving](../AIM/reading/21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99.md)
+
+## Receiving prompts for lot and serial numbers
+
+Receiving prompts start with the item tracking requirements and the exact receiving flow. A lot-controlled item may need a lot ID when the receipt line does not already supply it. Serial-number tracking has separate inbound, inventory and outbound options; inspect those options and any template before treating a prompt as an error.
+
+1. On the item definition, inspect Lot Controlled and Lot Template, then Serial Number options and its Template field. The lot template controls the lot-ID structure; serial options specify the warehouse flow being tracked. A serial template constrains the serial format; without one the article allows free-format characters. These are item controls, not a Packing preference.
+2. In Warehouse Mobile Receiving, a lot-controlled item with an assigned lot template uses the Enter Lot screen for header-item, license-plate and blind receiving. Template autofill can populate the lot and expiration date. Without a template the documented flow still asks for lot, expiration/frozen state and inventory status; no template does not mean no lot control.
+3. Compare the receipt line with the prompt. Mobile documents a lot prompt when no lot is configured on the receipt line. Existing lot data can supply expiration/status, and changing expiration or frozen inventory status can lead to Confirm Lot Update. Do not change tracking solely to suppress that confirmation.
+4. For serial entry in mobile receiving, the documented prompt count follows check-in quantity: one serial for one unit and serials for multiple units. Duplicate serial entries are rejected and linked serial-number templates are validated. Inspect the applicable inbound/inventory tracking and whether serials already arrived through the interface. The nested-parent flow specifically supports inbound/inventory serials already supplied in the interface, and outbound-only tracking.
+5. For Receipt Workbench, the documented Lot Entry and Serial Number Entry screens collect tracking values during check-in. Review the selected user-authorized receiving preference and the exact displayed screen; mobile and Workbench have different prompt sequences. A receipt line with an existing lot can follow a different path from a line without one.
+6. If check-in splits quantity into multiple receipt containers, mobile can request tracking information for each container. Check the storage-template Group During Check In setting and unit of measure before interpreting repeated prompts as duplicate work.
+
+Configuration: Item Lot Controlled, Lot Template, Serial Number flow options and serial Template. Receiving initiation/execution method, receipt-line supplied lot/serial data, storage-template grouping and check-in quantity/unit.
+
+Checks: Record the exact screen label and tracking prompt, receipt entry method, item tracking flow, template presence and whether values were already supplied. These checks distinguish a required collection prompt from duplicate or format validation; current item values are not available to this library.
+
+Sources: [operator-item-tracking](../AIM/reading/505c5c4630e085fc146ea8699fd6ca8b29c4f269b413b1ce93e0e981d01241b2.md), [operator-mobile-receiving](../AIM/reading/21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99.md), [operator-receipt-workbench](../AIM/reading/a357eac1f7ebf1b8fcf6edee90c086783da65f07d18fbdcc06236891e314cebc.md)
+
+## Packing station container choices: company and warehouse access
+
+Define the container types used for packing, then authorize them for the shipment company and warehouse. The user packing preference controls how packing starts and how container IDs are assigned; it is not the same as the type authorization. An existing container keeps its established type.
+
+1. In Defining Container Types, the Company Access and Warehouse Access tabs govern eligibility during Packing, Close Container, nesting and picking/putaway into shipping containers. If the shipment header has a company, both company and warehouse authorization are required; warehouse authorization also applies when company is blank.
+2. Check the employee User Profile Packing Preferences field. A blank field selects the preference named *Default. In Packing, compare New versus Existing and manual versus system container assignment; an existing container type cannot be changed through the Packing type field.
+3. For a new package, choose a type eligible for the shipment context and appropriate for its dimensions/weight. Defining a physical workstation supports document routing and printing; this retained Workstation article does not establish a separate workstation-specific list of container types.
+4. Keep wave Container Group choices separate from manual Packing authorization. The Container Types article explicitly says company/warehouse authorization is not used by wave container creation or pallet building; those paths use packing classes/groups/types or pallet-building criteria/masters.
+5. Do not use Use As Default as a universal Packing default. The documented checkbox supplies a default type for scan-and-weigh container creation when no type is interfaced, and sets company authorization to All. It has no stated effect outside that scan-and-weigh use.
+
+Configuration: Container Type Company Access and Warehouse Access; shipment header company/warehouse. User Profile Packing Preferences (*Default when blank), Packing initiation and container-assignment method.
+
+Checks: For a missing type, compare the shipment company and warehouse with the type access lists, then check whether the selected container already has a type. Capture the exact field/action and error; this does not establish the current user permission or installed configuration.
+
+Sources: [operator-container-types](../AIM/reading/b8520236e77bf1d9729a56d56a398123183351403f9a3eff7e86595795483b9e.md), [operator-user-preferences](../AIM/reading/80b3ffb7968806f7f9c954f5e2af42c649492c456ff19cd59e91cecca1bd3f51.md), [operator-packing-screen](../AIM/reading/9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac.md), [operator-workstation](../AIM/reading/b8d6ad6ff9d28497e03fe77e2e384a39d93718f9fb7bb39c83706b3b8c603bf7.md)
+
+## Replacement license plate rejected: distinguish Packing from Override Pick
+
+The retained SCALE Packing instructions describe selecting a shipping container and packing shipment-line items. They do not establish a Packing action called replacement LPN or its validation rules. First identify whether the rejection is in Packing or in Warehouse Mobile Override Pick; an item that looks the same does not prove that either action accepts it.
+
+1. In Packing, identify whether the scanned value is the shipment initiation value, shipping Container ID, item/item cross-reference or serial number. Check Status Info and open the specific Error-column message. Existing shipping-container selection is documented; replacement of an inventory license plate in Packing is not established by these sources.
+2. If the actual screen is mobile Pick Confirmation or Override Pick, apply the separate picking contract: Override Pick security and the relevant Work Special Handling license-plate override must allow it. Quantity differences, grouping and container verification have their own documented conditions. These are picking controls, not a Packing substitution procedure.
+3. For an Override Pick from another location/license plate, the inventory-attributes article requires the new pick location to have the same attribute values as the original. Lot/location/LP changes must also pass the applicable override validation. Visual similarity or an item name alone is therefore insufficient evidence that a pick override is eligible.
+4. Provide the exact screen/action label, error text, scanned identifier type, whether the item has already been picked/packed, and a sanitized description of differing quantity, lot or inventory attributes. If it is truly a Packing-specific replacement action, the missing evidence is its installed screen/action contract or source documentation; do not borrow another product's LPN rules.
+
+Configuration: Packing preference initiation/item validation versus Override Pick security and Work Special Handling; these apply to different flows. Picking inventory attributes, lot, quantity/grouping and LP/container verification, only when the actual action is Override Pick.
+
+Checks: No current-state diagnosis or replacement-LPN permission is supported. Use the exact application error and screen context to choose the documented action, and retain the unknown if it is a separate/custom Packing action.
+
+Sources: [operator-packing-screen](../AIM/reading/9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac.md), [operator-override-pick-continuation3](../AIM/reading/f586c2d66cc03deffc95bea01eb4a2ab97713125c8aabc4d2e37f152b3ddf672.md), [operator-inventory-attributes](../AIM/reading/c3f65ac4de2fc3dce97e4180f4db0eaaa010a10166193e50df4370c1ee3c7799.md), [operator-work-processing](../AIM/reading/2a849da2c18bc5244f4e44f5346f871a765c86c96d43a011314a5857cfea60c5.md)
+
+## Moving packed items: unpack, repack or nest
+
+For an individual item in a loose packed container, Shipping Container Insight provides Update Packed Quantity to unpack some quantity. Enter the quantity that should remain, then use the documented Packing flow for an eligible open destination. Moving a whole child container through nesting is a different action. A closed destination cannot accept more items.
+
+1. Identify whether the selected record is an individual item in a loose packed container, a full container, or a parent/child container. Update Packed Quantity is documented only for individual items in a loose packed container; it is unavailable on parent records and full-container records.
+2. Update Packed Quantity takes the quantity remaining in the source container, not the quantity to remove. SCALE unpacks the difference and writes transaction history. Serial-number or catch-weight tracking prompts for the serials or weights removed. For example, to remove 2 from 8, the remaining quantity is 6.
+3. Before repacking, verify that the intended shipment line has quantity available to pack and that the destination is an eligible existing or new shipping container for that entity. Packing works with picked lines and reports errors for ineligible input. The documented close process means packing is complete and no additional items can be packed into that closed container.
+4. If moving an entire child container, evaluate Nest/Combine or the documented re-nest flow instead of treating it as an item-quantity move. Nesting requires the same shipment and dock, and active work can block it. Combining two loose containers nests the source under the destination; it does not merge their item quantities into one loose container.
+5. Check both container statuses, outstanding work, shipment/dock relationship and the exact allowed action before physical movement. Re-nesting has additional release/pending-work/security constraints. The Update Packed Quantity paragraph does not define every closed-source status or a general reopen action, so those permissions remain unestablished. Verify the resulting source quantity, destination quantity and transaction history after any separately authorized operation.
+
+Configuration: Container structure (loose item/full/parent/child), source and destination status, available picked quantity and tracking. Shipment/company/warehouse eligibility, dock location, work/release state, and permission for the selected item or nesting action.
+
+Checks: Record source/destination structure and status, quantity remaining versus quantity moved, exact error, and whether the move concerns an item or an intact child container. Do not physically shift contents on the assumption that a container-ID change updates inventory.
+
+Sources: [operator-container-insight](../AIM/reading/56f58af05b639903354ee78fe799f51fefee04136179aa4cf2c434fc9c82a65a.md), [operator-unpack-quantity](../AIM/reading/a1faa0e1355de431b077b9a3474599d133c6df165074b84f2689fab45de39271.md), [operator-packing-screen](../AIM/reading/9b67b9530e31965bd804c9ba287844c4c4e58e604703f6bffbfb9b24b1d819ac.md), [operator-close-container](../AIM/reading/f992a81240ef21071a0c60e111f7a41770da3bcd1ad4ca55d2f3db634e255a7f.md), [operator-container-nesting](../AIM/reading/7b4a6ef1c835af34ee3893ec7445fc39b81925227dcfef1fff39adfb2392e9e9.md)
+
 ## Evidence limits
 
 - This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.

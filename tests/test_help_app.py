@@ -30,6 +30,13 @@ class HelpKnowledgeTests(unittest.TestCase):
         self.assertEqual(len(answer['what_happens']), len(original['execution_steps']))
         self.assertTrue(answer['evidence_limits'])
 
+    def test_vendor_parent_citation_includes_nested_source_text(self):
+        source = self.knowledge.source('operator-container-types')
+        passage = next(e['text'] for e in source['excerpts'] if e['location'] == 'n128')
+        self.assertIn('Use as Default Checkbox:', passage)
+        self.assertIn('Company Access', passage)
+        self.assertNotIn('Warehouse Authorization', passage)
+
     def test_source_markup_and_search_are_inert_in_native_html(self):
         attack = '<img src=x onerror=alert(1)>'
         data = copy.copy(self.knowledge)

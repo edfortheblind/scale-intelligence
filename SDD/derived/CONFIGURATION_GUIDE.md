@@ -2,7 +2,7 @@
 
 These records explain supplied documentation, not active settings. Each states its product/version scope. Proposed validation steps have not been executed. Defaults and precedence remain unknown where the source does not state them. MAWM examples are explicitly separate and cannot be transferred to SCALE.
 
-113 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
+131 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
 
 ## Work Unit Field
 
@@ -218,15 +218,15 @@ Sources: [sdd-61bfda888fe30365 b00124](reading/sdd-61bfda888fe30365.md#b00124)
 
 Closes a partly picked instruction and removes its remaining work quantity.
 
-- Scope: Picking special handling
+- Scope: RF replenishment and work-order picking special handling; source execution flow narrows the general setting paragraph.
 - Accepted values: Selected/unselected
 - Default: Not specified by the reviewed source.
-- Precedence and dependencies: When selected the remainder will never be picked by that instruction.
+- Precedence and dependencies: When enabled for eligible work, the remainder is removed from the work instruction and will not be picked by it. The flow limits partial-pick-and-close to RF replenishment/work-order picks; partial picking into a tote or shipping container returns to the remaining quantity.
 - Related process: Picking
 - Validation: Compare the cited source with an authorized version-matched configuration record and process contract. This task performs no configuration query or change.
 - Classification: `vendor_behavior`.
 
-Sources: [sdd-61bfda888fe30365 b00125](reading/sdd-61bfda888fe30365.md#b00125)
+Sources: [sdd-61bfda888fe30365 b00125, b00851](reading/sdd-61bfda888fe30365.md#b00125)
 
 ## Use Converted Quantity
 
@@ -1575,3 +1575,255 @@ Relate a QC assignment to eligibility and sampling controls.
 - Validation: Compare the authorized setting and workflow evidence with the cited source accounts; preserve any conflicting examples instead of prescribing an unsupported value. The owner attests that the replica is current; that attestation does not select an intended value from contradictory documents. No query, configuration write or operational action was performed.
 
 Sources: [sdd-f46806ef53e15f07 b00657, b00658](reading/sdd-f46806ef53e15f07.md#b00657)
+
+## Work creation SRC Identifier
+
+Assign the configured SRC identifier to generated work.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Work creation.
+- Accepted values: Configured SRC identifier; domain not supplied.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: Applies to work creation except cycle count, which takes SRC Identifier from Cycle Count System Values.
+- Related process: Work creation
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00024](reading/sdd-61bfda888fe30365.md#b00024)
+
+## Replenish On Outbound Short Pick
+
+Attempt replenishment for item demand after an outbound short pick.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Outbound short picking.
+- Accepted values: Selected/unselected.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: If enough in-transit quantity is already on its way, the source describes a prompt asking whether to continue the short pick; replenishment success is not guaranteed.
+- Related process: Outbound short picking
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00126](reading/sdd-61bfda888fe30365.md#b00126)
+
+## Maximum Pickup Quantity
+
+Limit quantity confirmed in one pickup so the worker repeatedly counts the displayed amount.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Picking special handling.
+- Accepted values: Maximum number of units per pickup; numeric bounds and zero meaning not stated.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: When instruction quantity exceeds the maximum, the source requests repeated pickups until the instruction is fulfilled. This is distinct from the work-unit creation maximum.
+- Related process: Picking special handling
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00127](reading/sdd-61bfda888fe30365.md#b00127)
+
+## Container Creation During Pick Prompt for Quantity
+
+Prompt for the partial quantity during inline partial picking.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Picking special handling.
+- Accepted values: Quantity prompt setting; full option domain not supplied.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: Applies to inline partial pick for Container Creation During Pick. No general partial-close behavior follows from this prompt alone.
+- Related process: Picking special handling
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00131, b00132](reading/sdd-61bfda888fe30365.md#b00131)
+
+## Cycle Count License Plate Selection Method
+
+Choose who determines which license plate is counted next.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Cycle counting.
+- Accepted values: System Initiated; User Initiated.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: System Initiated supplies plate order; User Initiated lets the user specify a plate. Add License Plates and Set New License Plates To Pending Review require User Initiated, with the added-item exceptions retained in the existing contract.
+- Related process: Cycle counting
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00140, b00141, b00142, b00153, b00160](reading/sdd-61bfda888fe30365.md#b00140)
+
+## Group Picking Work Sequence
+
+Order work units assigned to a transport container.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Group picking.
+- Accepted values: Sequence number, Ascending/Descending Order By and sequencing Attribute, such as From Location.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: Lower sequence numbers process first; attributes determine within-group order. Numeric bounds and tie handling are not supplied.
+- Related process: Group picking
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00162, b00163, b00165, b00166, b00167, b00168, b00169](reading/sdd-61bfda888fe30365.md#b00162)
+
+## Work Type labor fields
+
+Associate a work type with labor records and the label for a manual transaction count.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Work type and labor configuration.
+- Accepted values: Labor Type; Labor Group; Transaction Count Description. Values are configured, not exhaustively listed.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: Labor Type identifies the labor-management record type; Labor Group selects a group performing similar functions. Transaction Count Description labels a numeric field on Manual Labor Entry.
+- Related process: Work type and labor configuration
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00184, b00185, b00186, b00187](reading/sdd-61bfda888fe30365.md#b00184)
+
+## Work Type Default Priority
+
+Supply the work-type priority used by priority-based assignment sorting.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. System-directed work.
+- Accepted values: Priority level; allowed range not supplied.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: Applies when From Assignment includes priority sorting and work is assigned in system-directed RF mode. The source excludes manual full-screen assignment from priority-based sorting.
+- Related process: System-directed work
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00189, b00190, b00191](reading/sdd-61bfda888fe30365.md#b00189)
+
+## Picking Management work type and From Work Zone
+
+Make work eligible for Picking Management.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Picking Management.
+- Accepted values: Pick Management Active on work type and work zone; a defined From Work Zone on the instruction.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: The type section requires its toggle and From Work Zone; the Picking Management section also requires the associated zone active flag. These are combined prerequisites, not a substitute for assignment and hold checks.
+- Related process: Picking Management
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00192, b00193, b00389](reading/sdd-61bfda888fe30365.md#b00192)
+
+## Work Profile Container Picking Method
+
+Choose final shipping-container versus tote picking.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Work profile picking.
+- Accepted values: Pick Into Shipping Container; Pick into tote; Sort Picked Quantity when tote picking.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: Sort Picked Quantity is enabled only for Pick to Tote and described for Putwall sorting. Separate cart notes conflict about tote support; this setting contract does not resolve cart availability.
+- Related process: Work profile picking
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00202, b00203, b00204, b00205, b00206, b00332, b00337](reading/sdd-61bfda888fe30365.md#b00202)
+
+## Default LP ID as container ID on full picks
+
+Offer the source location license plate ID as the shipping-container ID on full picks.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Work profile picking.
+- Accepted values: Selected/unselected.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: The license plate is a proposed value and can be changed; using it is not mandatory.
+- Related process: Work profile picking
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00229](reading/sdd-61bfda888fe30365.md#b00229)
+
+## Putaway into Shipping Container
+
+Place product into a shipping container during Warehouse Mobile putaway.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Work profile putaway.
+- Accepted values: Selected/unselected.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: The process creates a new shipping container or adds the item to an existing one as appropriate; container type is requested only for a new container in the documented flow.
+- Related process: Work profile putaway
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00234, b00294, b00295, b00859](reading/sdd-61bfda888fe30365.md#b00234)
+
+## Group putaway by shipping container
+
+Group putaway instructions by shipping container.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Work profile putaway.
+- Accepted values: Selected/unselected.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: Applies when multiple putaway locations are associated with multiple containers on the work unit; exact sort and grouping keys beyond the stated container are not supplied.
+- Related process: Work profile putaway
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00241](reading/sdd-61bfda888fe30365.md#b00241)
+
+## WM Success Message
+
+Display text after each successful pick or putaway.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Warehouse Mobile work.
+- Accepted values: Selected/unselected.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: A source UI success message is not independent verification of inventory, interfaces or overall process completion. Message wording is not supplied.
+- Related process: Warehouse Mobile work
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00242, b00243](reading/sdd-61bfda888fe30365.md#b00242)
+
+## Wave Picking Group container capacities
+
+Limit how many loose/open and full containers fit in a picking group.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Wave group picking.
+- Accepted values: Separate Number of Loose Containers and Number of Full Containers. Bounds not supplied.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: The source distinguishes a single layer of loose containers from stackable full cases. Physical safe capacity and actual container mix require separate evidence.
+- Related process: Wave group picking
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00555, b00587, b00589, b00591, b00593](reading/sdd-61bfda888fe30365.md#b00555)
+
+## Wave Picking Group detail sequence and location group
+
+Order the eligible picking location groups for a wave picking group.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Wave group picking.
+- Accepted values: Unique numeric sequence per detail; associated Wave Pick Location Group.
+- Default: Source procedure proposes sequence 10 for the first detail and 20 for an added detail; this is not an observed deployment value.
+- Precedence and dependencies: Lower sequence processes sooner. The location group identifies allocation locations/work zones where the picking group may operate.
+- Related process: Wave group picking
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00598, b00600, b00602, b00604](reading/sdd-61bfda888fe30365.md#b00598)
+
+## Wave Replen Work Type
+
+Override creation-master work type for replenishment work from a wave.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. Wave replenishment.
+- Accepted values: Activated special replenishment work-type setting; complete value domain not supplied.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: When active for replenishment work created out of the wave, this setting takes precedence over the creation master work type.
+- Related process: Wave replenishment
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00741](reading/sdd-61bfda888fe30365.md#b00741)
+
+## User default work profile
+
+Determine the first profile selected at RF work sign-on.
+
+- Scope: Supplied SCALE Work/Picking compilation; release unspecified. RF work selection.
+- Accepted values: Associated default work profile, or no associated profile.
+- Default: Not specified by the reviewed source.
+- Precedence and dependencies: A defined default is assigned without the alternative profile prompt. Otherwise the source prompts with profiles authorized for user and warehouse. Eligibility still depends on profile details and zone equipment compatibility.
+- Related process: RF work selection
+- Validation: Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.
+- Classification: `vendor_behavior`.
+
+Sources: [sdd-61bfda888fe30365 b00821, b00822, b00823, b00824, b00826, b00827, b00828](reading/sdd-61bfda888fe30365.md#b00821)

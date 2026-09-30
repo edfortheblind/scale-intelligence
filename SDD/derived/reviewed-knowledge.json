@@ -1799,6 +1799,608 @@
       "review_state": "SOURCE_REVIEWED_BOUNDED",
       "limits": "This is configuration explanation, not a complete operator SOP or evidence that either QC process executed. The conflicting method selections remain unresolved.",
       "review_batch": "SDD-DOCX-20260930-CONTINUATION2"
+    },
+    {
+      "id": "work-picking-creation-request-reservation",
+      "statement": "Work creation first selects masters for the requesting process and orders them by ascending priority number. It compares each request against the selected master criteria; a matching request is reserved for that master and is not reviewed by a later master. Declined requests are tried against the next master.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00704",
+            "b00706",
+            "b00707",
+            "b00709",
+            "b00711",
+            "b00713",
+            "b00714",
+            "b00716",
+            "b00718",
+            "b00720"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Tie handling and behavior after all masters decline a request are not supplied.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-creation-order-and-estimate",
+      "statement": "After selecting requests, work creation applies the criteria Order By attributes in sequence, assigns an internal instruction number to each detail and uses an applicable estimated work-rate record to estimate instruction time. Work-unit breaks group instructions into units; example order-level or location-level grouping is illustrative.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00722",
+            "b00723",
+            "b00724",
+            "b00726",
+            "b00733",
+            "b00734",
+            "b00736",
+            "b00738",
+            "b00740",
+            "b00742",
+            "b00746"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Estimated work time is not measured elapsed time. This does not identify which rate or grouping is active.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-wave-replenishment-work-type",
+      "statement": "When replenishment work is created out of the wave process and Wave Replen Work Type is activated in Work System Values, the source says that special replenishment work type replaces the work type on the creation master.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00741"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-special-handling-scope",
+      "statement": "Work special handling supplies verification and processing restrictions in Warehouse Mobile or RF, and the source explicitly excludes Work Insight. The flow also describes constraints selected by item/company, account/company or user profile/work zone/work type, but gives no conflict-resolution order between these scopes.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00080",
+            "b00082",
+            "b00090",
+            "b00091",
+            "b00094",
+            "b00097",
+            "b00100",
+            "b00840",
+            "b00841",
+            "b00842",
+            "b00843",
+            "b00844"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-cycle-count-exceptions",
+      "statement": "Counting license plates can fall back to counting their actual contents when the plate count differs; multi-item locations require individual quantities. Group Count By Item/Company combines quantity across lot, inventory attribute and plate, but a mismatch, added item or enabled lot/plate verification ungroups work. Multiple-item and empty-location counts require individual confirmations.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00143",
+            "b00144",
+            "b00145",
+            "b00146",
+            "b00147",
+            "b00148",
+            "b00149",
+            "b00150"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The source supplies no tolerance values or observed count outcomes.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-work-type-and-group",
+      "statement": "A Work Group organizes related activities and can contain multiple Work Types. Work Types identify processing categories; predefined and custom types can be associated with profile processing rules. The work-type description also serves as a numeric voice identifier for Vocollect in this source.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00171",
+            "b00172",
+            "b00173",
+            "b00176",
+            "b00177",
+            "b00178",
+            "b00180",
+            "b00181",
+            "b00182",
+            "b00183",
+            "b00188"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Example type names are not evidence that those types exist in the assessed deployment.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-cart-container-method-conflict",
+      "statement": "The cart section describes assigning totes and work units before picking and later says grouping is supported for pick-to-tote carts. A nearby note says only Pick into shipping container is currently supported. These statements conflict within this undated compilation; tote-cart availability is unresolved by this source alone.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00282",
+            "b00283",
+            "b00285",
+            "b00286",
+            "b00287",
+            "b00288",
+            "b00289",
+            "b00290",
+            "b00291",
+            "b00331",
+            "b00332",
+            "b00336",
+            "b00337"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Do not select either account as the installed behavior or infer a release chronology.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-cart-actions",
+      "statement": "Cart picking distinguishes Partial Pick, which asks for confirmation, from Short Pick, which asks for a reason; Skip moves to the next instruction without completing the current quantity. Pass stops the current execution instance and its warning depends on Work System Value 50. Partial or short picking ungroups batched instructions.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00304",
+            "b00305",
+            "b00307",
+            "b00309",
+            "b00310",
+            "b00312",
+            "b00314",
+            "b00338"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The source does not establish inventory effects for every cart action or every configured value of Work System Value 50.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-cart-start-and-putaway",
+      "statement": "The cart procedure assigns containers to user-chosen or system-assigned spots, starts picking after assignment and applies configured verifications at confirmation. With put-to-store work and putaway into a container, it requests a container ID and requests a type only for a new container. New Cart allows assignment of another cart before picking the first.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00268",
+            "b00269",
+            "b00270",
+            "b00271",
+            "b00275",
+            "b00276",
+            "b00277",
+            "b00278",
+            "b00279",
+            "b00280",
+            "b00281",
+            "b00292",
+            "b00293",
+            "b00294",
+            "b00295",
+            "b00296",
+            "b00297",
+            "b00300",
+            "b00301",
+            "b00302",
+            "b00303"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This is a documentary sequence; it is not verified navigation in the owner environment. The tote-cart conflict is retained separately.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-system-cart-empty-and-back",
+      "statement": "System-built carts assign eligible shipping containers to spots at work initiation and show spot, container type and the last four container-ID digits for physical cart building. With no eligible work, Build Cart has no assigned spots. Back returns to profile selection while leaving the newly built cart built.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00341",
+            "b00360",
+            "b00361",
+            "b00362",
+            "b00363",
+            "b00364",
+            "b00365",
+            "b00366",
+            "b00367",
+            "b00369",
+            "b00370"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Walking-path efficiency is an intended benefit, not a measured timing result. Do not treat the displayed suffix as a unique identifier outside the source UI.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-picking-management-zone-readiness",
+      "statement": "Picking Management splits work by zone so multiple users can execute portions of a work unit. The selected-zone list includes open, held and assigned units and orders them by Zones Away; the procedure chooses a unit with Zones Away equal to zero as ready for that zone. A user may be assigned multiple work units.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00389",
+            "b00499",
+            "b00501",
+            "b00505",
+            "b00515",
+            "b00652"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Displayed availability is not proof that a held unit is executable; the hold rule is separately documented.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-picking-management-assignment",
+      "statement": "The documented Picking Management sequence assigns a user and work unit before starting. Details can be reviewed and a pick list can be printed; starting confirms the assignment, and entering an already assigned unit opens completion. Unassign removes the associated user from an open unit, while a unit on hold cannot be unassigned.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00511",
+            "b00513",
+            "b00517",
+            "b00519",
+            "b00521",
+            "b00523",
+            "b00527",
+            "b00528",
+            "b00530",
+            "b00532",
+            "b00534",
+            "b00536",
+            "b00540",
+            "b00545",
+            "b00546",
+            "b00547",
+            "b00549"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This explains the source sequence without asserting current permissions or registered SOP navigation.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-picking-management-hold-short",
+      "statement": "In the Complete Picking procedure, normal confirmation performs the pick and closes the work unit. Hold requires a business hold code, leaves the current instructions unconfirmed and blocks actions until release; the source names Work Insight as the release screen. Short Pick requests item and quantity, lot when controlled, then a quality-measures reason before processing the short pick.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00539",
+            "b00540",
+            "b00541",
+            "b00542"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The source paragraph uses both instruction and work-unit terminology. No database status values, current role permissions or live release action are established.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-wave-group-capacity",
+      "statement": "Wave picking groups represent physical picking aids and constrain full and loose container counts and eligible allocation locations/work zones. During the wave, the group step assigns containers created earlier. Group-detail sequences must be unique and process lower numbers first.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00554",
+            "b00555",
+            "b00587",
+            "b00589",
+            "b00591",
+            "b00593",
+            "b00598",
+            "b00600",
+            "b00602",
+            "b00604"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The medium-container sizing hint is source guidance, not a safe capacity calculation for a particular cart.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-paper-versus-rf-group",
+      "statement": "Paper-based group picking consolidates containers into a capacity- and location-defined group during the wave and uses the Group Picking Pick List; the source places it outside work execution. RF group picking operates through work, supports shipping containers or totes, and can introduce a transport container during picking. The two documented methods must not be treated as the same confirmation path.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00622",
+            "b00642",
+            "b00647"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. No live group creation, printing or warehouse movement was performed.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-direct-container-packing",
+      "statement": "When RF picking directly into a shipping container, the source says picking also performs packing: the picked item and quantity are assigned to that container, and more items from the same shipment may be added until it is closed. Picking into a tote groups products for the shipment instead.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00657"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This does not waive container close validations or establish shipping confirmation.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-vocollect-boundary",
+      "statement": "The source describes Vocollect voice picking as a request/response integration: individual TalkMan devices initiate requests and SCALE issues responses. It requires configuration on both sides and Vocollect software on an application or separate server. Its listed capabilities include outbound, user/system-directed picking, final-container or tote picking, equipment types, lot tracking, verification, short picks and spoken comments/text.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00662",
+            "b00664",
+            "b00665",
+            "b00666",
+            "b00667",
+            "b00668",
+            "b00669",
+            "b00670",
+            "b00671",
+            "b00672",
+            "b00673",
+            "b00674",
+            "b00675",
+            "b00676",
+            "b00677",
+            "b00678",
+            "b00679",
+            "b00680"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This undated capability list does not establish installed voice equipment, service topology, present product support or execution.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-nonrf-confirmation-evidence",
+      "statement": "The non-RF flow generates a work-unit pick list, distributes it to workers and has an administrator record the performed activity in Work Insight. The source requires user/warehouse access to a profile supporting the instruction work type and zones; confirmation includes worker, quantity, check digits, optional recorded times and exception reasons. Its described outbound transition is Ready for Packing or an intervening configured status.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00757",
+            "b00760",
+            "b00761",
+            "b00763",
+            "b00765",
+            "b00767",
+            "b00769",
+            "b00771",
+            "b00773",
+            "b00775",
+            "b00777",
+            "b00779",
+            "b00781",
+            "b00783",
+            "b00785",
+            "b00786",
+            "b00788",
+            "b00789",
+            "b00791",
+            "b00793",
+            "b00795",
+            "b00797",
+            "b00799",
+            "b00801",
+            "b00803",
+            "b00805",
+            "b00807"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This outbound example is not a universal status transition for all work types. Recorded operator timestamps do not by themselves establish end-to-end measured runtime.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-rf-profile-selection",
+      "statement": "The RF flow first uses the default work profile on the employee user profile. If none is associated, it prompts with user- and warehouse-authorized profiles. Eligible instructions must match profile work type and a work zone accepting the detail equipment type; if no detail matches, the source directs the employee to obtain work from a supervisor.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00821",
+            "b00822",
+            "b00823",
+            "b00824",
+            "b00826",
+            "b00827",
+            "b00828"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The source does not establish full permission precedence or this user current authorization.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-rf-initiation-and-prelocate",
+      "statement": "RF system-directed initiation starts from a nearest-location scan; a location eligible for system-directed work-unit selection can expose a choice subject to the same unit validations as user-directed initiation, including not closed or active. User-directed initiation scans a chosen unit. Starting receipt putaway when the To location is the receiving pre-locate location relocates the receipt container in this documented flow.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00831",
+            "b00832",
+            "b00833",
+            "b00834"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Location ordering details remain constrained by the From Assignment source; physical-distance optimization is not established.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-rf-partial-close-scope",
+      "statement": "The RF flow limits partial-pick-and-close to replenishment and work-order picks when the special-handling option enables it. It removes the remainder from the instruction and closes it; without that behavior the remainder stays available to pick. Partial picking into a tote or shipping container returns to the remaining quantity until all quantity is picked.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00125",
+            "b00851"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Removing remaining work quantity is not a claim that physical inventory is deleted. The general setting paragraph must be read with this narrower execution scope.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-rf-short-over-pick",
+      "statement": "The RF flow says a short pick rejects the short quantity and reduces On Hand quantity at the source location. Over-picking increases transaction quantity and processes the pick as complete, but is limited to configured RF replenishment/work-order picks within available location quantity.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00123",
+            "b00849",
+            "b00850",
+            "b00852"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. These are documentary effects; no current inventory quantity, full ledger transaction, reason-code policy or observed execution is established.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-automatic-putaway-wording-conflict",
+      "statement": "The settings section calls the option Automatic Putaway, excludes dock-management work and disables Consolidation After Putaway when it is selected. The later RF flow instead names Select After Putaway and says any work scenario. The name and scope differ; the broader flow wording cannot establish equivalence or remove the explicit dock-management exclusion.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00235",
+            "b00236",
+            "b00853",
+            "b00854",
+            "b00855"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. No alias, newer version or live field identity was inferred.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-rf-putaway-followthrough",
+      "statement": "The RF putaway flow requests a shipping-container ID when putting to a put-to-store location or shipping dock and a type for a new container. It then puts quantity in the specified location, offers nesting when the profile requests it and continues remaining putaway instructions before checking for more profile-detail work.",
+      "classification": "vendor_behavior",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00234",
+            "b00237",
+            "b00858",
+            "b00859"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. Nesting remains subject to the separately documented single-shipment and Putaway Into Shipping Container restrictions; the broad flow does not override them.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
     }
   ],
   "configuration": [
@@ -2190,10 +2792,10 @@
       "name": "Close After Partial Pick",
       "classification": "vendor_behavior",
       "purpose": "Closes a partly picked instruction and removes its remaining work quantity.",
-      "scope": "Picking special handling",
+      "scope": "RF replenishment and work-order picking special handling; source execution flow narrows the general setting paragraph.",
       "accepted_values": "Selected/unselected",
       "default": "Not specified by the reviewed source.",
-      "precedence": "When selected the remainder will never be picked by that instruction.",
+      "precedence": "When enabled for eligible work, the remainder is removed from the work instruction and will not be picked by it. The flow limits partial-pick-and-close to RF replenishment/work-order picks; partial picking into a tote or shipping container returns to the remaining quantity.",
       "process": "Picking",
       "validation": "Compare the cited source with an authorized version-matched configuration record and process contract. This task performs no configuration query or change.",
       "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
@@ -2202,10 +2804,12 @@
           "document_id": "sdd-61bfda888fe30365",
           "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
           "nodes": [
-            "b00125"
+            "b00125",
+            "b00851"
           ]
         }
-      ]
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
     },
     {
       "id": "converted-qty",
@@ -4609,6 +5213,461 @@
         }
       ],
       "review_batch": "SDD-DOCX-20260930-CONTINUATION2"
+    },
+    {
+      "id": "work-picking-src-identifier",
+      "name": "Work creation SRC Identifier",
+      "classification": "vendor_behavior",
+      "purpose": "Assign the configured SRC identifier to generated work.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Work creation.",
+      "accepted_values": "Configured SRC identifier; domain not supplied.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "Applies to work creation except cycle count, which takes SRC Identifier from Cycle Count System Values.",
+      "process": "Work creation",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00024"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-short-pick-replenishment",
+      "name": "Replenish On Outbound Short Pick",
+      "classification": "vendor_behavior",
+      "purpose": "Attempt replenishment for item demand after an outbound short pick.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Outbound short picking.",
+      "accepted_values": "Selected/unselected.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "If enough in-transit quantity is already on its way, the source describes a prompt asking whether to continue the short pick; replenishment success is not guaranteed.",
+      "process": "Outbound short picking",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00126"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-maximum-pickup",
+      "name": "Maximum Pickup Quantity",
+      "classification": "vendor_behavior",
+      "purpose": "Limit quantity confirmed in one pickup so the worker repeatedly counts the displayed amount.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Picking special handling.",
+      "accepted_values": "Maximum number of units per pickup; numeric bounds and zero meaning not stated.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "When instruction quantity exceeds the maximum, the source requests repeated pickups until the instruction is fulfilled. This is distinct from the work-unit creation maximum.",
+      "process": "Picking special handling",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00127"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-inline-partial-prompt",
+      "name": "Container Creation During Pick Prompt for Quantity",
+      "classification": "vendor_behavior",
+      "purpose": "Prompt for the partial quantity during inline partial picking.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Picking special handling.",
+      "accepted_values": "Quantity prompt setting; full option domain not supplied.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "Applies to inline partial pick for Container Creation During Pick. No general partial-close behavior follows from this prompt alone.",
+      "process": "Picking special handling",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00131",
+            "b00132"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-lp-selection",
+      "name": "Cycle Count License Plate Selection Method",
+      "classification": "vendor_behavior",
+      "purpose": "Choose who determines which license plate is counted next.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Cycle counting.",
+      "accepted_values": "System Initiated; User Initiated.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "System Initiated supplies plate order; User Initiated lets the user specify a plate. Add License Plates and Set New License Plates To Pending Review require User Initiated, with the added-item exceptions retained in the existing contract.",
+      "process": "Cycle counting",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00140",
+            "b00141",
+            "b00142",
+            "b00153",
+            "b00160"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-group-work-sequence",
+      "name": "Group Picking Work Sequence",
+      "classification": "vendor_behavior",
+      "purpose": "Order work units assigned to a transport container.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Group picking.",
+      "accepted_values": "Sequence number, Ascending/Descending Order By and sequencing Attribute, such as From Location.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "Lower sequence numbers process first; attributes determine within-group order. Numeric bounds and tie handling are not supplied.",
+      "process": "Group picking",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00162",
+            "b00163",
+            "b00165",
+            "b00166",
+            "b00167",
+            "b00168",
+            "b00169"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-labor-fields",
+      "name": "Work Type labor fields",
+      "classification": "vendor_behavior",
+      "purpose": "Associate a work type with labor records and the label for a manual transaction count.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Work type and labor configuration.",
+      "accepted_values": "Labor Type; Labor Group; Transaction Count Description. Values are configured, not exhaustively listed.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "Labor Type identifies the labor-management record type; Labor Group selects a group performing similar functions. Transaction Count Description labels a numeric field on Manual Labor Entry.",
+      "process": "Work type and labor configuration",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00184",
+            "b00185",
+            "b00186",
+            "b00187"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-work-type-priority",
+      "name": "Work Type Default Priority",
+      "classification": "vendor_behavior",
+      "purpose": "Supply the work-type priority used by priority-based assignment sorting.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. System-directed work.",
+      "accepted_values": "Priority level; allowed range not supplied.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "Applies when From Assignment includes priority sorting and work is assigned in system-directed RF mode. The source excludes manual full-screen assignment from priority-based sorting.",
+      "process": "System-directed work",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00189",
+            "b00190",
+            "b00191"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-picking-management-from-zone",
+      "name": "Picking Management work type and From Work Zone",
+      "classification": "vendor_behavior",
+      "purpose": "Make work eligible for Picking Management.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Picking Management.",
+      "accepted_values": "Pick Management Active on work type and work zone; a defined From Work Zone on the instruction.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "The type section requires its toggle and From Work Zone; the Picking Management section also requires the associated zone active flag. These are combined prerequisites, not a substitute for assignment and hold checks.",
+      "process": "Picking Management",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00192",
+            "b00193",
+            "b00389"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-container-method",
+      "name": "Work Profile Container Picking Method",
+      "classification": "vendor_behavior",
+      "purpose": "Choose final shipping-container versus tote picking.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Work profile picking.",
+      "accepted_values": "Pick Into Shipping Container; Pick into tote; Sort Picked Quantity when tote picking.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "Sort Picked Quantity is enabled only for Pick to Tote and described for Putwall sorting. Separate cart notes conflict about tote support; this setting contract does not resolve cart availability.",
+      "process": "Work profile picking",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00202",
+            "b00203",
+            "b00204",
+            "b00205",
+            "b00206",
+            "b00332",
+            "b00337"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-default-container-lp",
+      "name": "Default LP ID as container ID on full picks",
+      "classification": "vendor_behavior",
+      "purpose": "Offer the source location license plate ID as the shipping-container ID on full picks.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Work profile picking.",
+      "accepted_values": "Selected/unselected.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "The license plate is a proposed value and can be changed; using it is not mandatory.",
+      "process": "Work profile picking",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00229"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-putaway-container",
+      "name": "Putaway into Shipping Container",
+      "classification": "vendor_behavior",
+      "purpose": "Place product into a shipping container during Warehouse Mobile putaway.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Work profile putaway.",
+      "accepted_values": "Selected/unselected.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "The process creates a new shipping container or adds the item to an existing one as appropriate; container type is requested only for a new container in the documented flow.",
+      "process": "Work profile putaway",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00234",
+            "b00294",
+            "b00295",
+            "b00859"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-group-putaway",
+      "name": "Group putaway by shipping container",
+      "classification": "vendor_behavior",
+      "purpose": "Group putaway instructions by shipping container.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Work profile putaway.",
+      "accepted_values": "Selected/unselected.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "Applies when multiple putaway locations are associated with multiple containers on the work unit; exact sort and grouping keys beyond the stated container are not supplied.",
+      "process": "Work profile putaway",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00241"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-success-message",
+      "name": "WM Success Message",
+      "classification": "vendor_behavior",
+      "purpose": "Display text after each successful pick or putaway.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Warehouse Mobile work.",
+      "accepted_values": "Selected/unselected.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "A source UI success message is not independent verification of inventory, interfaces or overall process completion. Message wording is not supplied.",
+      "process": "Warehouse Mobile work",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00242",
+            "b00243"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-wave-group-capacity",
+      "name": "Wave Picking Group container capacities",
+      "classification": "vendor_behavior",
+      "purpose": "Limit how many loose/open and full containers fit in a picking group.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Wave group picking.",
+      "accepted_values": "Separate Number of Loose Containers and Number of Full Containers. Bounds not supplied.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "The source distinguishes a single layer of loose containers from stackable full cases. Physical safe capacity and actual container mix require separate evidence.",
+      "process": "Wave group picking",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00555",
+            "b00587",
+            "b00589",
+            "b00591",
+            "b00593"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-wave-group-sequence",
+      "name": "Wave Picking Group detail sequence and location group",
+      "classification": "vendor_behavior",
+      "purpose": "Order the eligible picking location groups for a wave picking group.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Wave group picking.",
+      "accepted_values": "Unique numeric sequence per detail; associated Wave Pick Location Group.",
+      "default": "Source procedure proposes sequence 10 for the first detail and 20 for an added detail; this is not an observed deployment value.",
+      "precedence": "Lower sequence processes sooner. The location group identifies allocation locations/work zones where the picking group may operate.",
+      "process": "Wave group picking",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00598",
+            "b00600",
+            "b00602",
+            "b00604"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-wave-replen-work-type",
+      "name": "Wave Replen Work Type",
+      "classification": "vendor_behavior",
+      "purpose": "Override creation-master work type for replenishment work from a wave.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. Wave replenishment.",
+      "accepted_values": "Activated special replenishment work-type setting; complete value domain not supplied.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "When active for replenishment work created out of the wave, this setting takes precedence over the creation master work type.",
+      "process": "Wave replenishment",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00741"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
+    },
+    {
+      "id": "work-picking-default-rf-profile",
+      "name": "User default work profile",
+      "classification": "vendor_behavior",
+      "purpose": "Determine the first profile selected at RF work sign-on.",
+      "scope": "Supplied SCALE Work/Picking compilation; release unspecified. RF work selection.",
+      "accepted_values": "Associated default work profile, or no associated profile.",
+      "default": "Not specified by the reviewed source.",
+      "precedence": "A defined default is assigned without the alternative profile prompt. Otherwise the source prompts with profiles authorized for user and warehouse. Eligibility still depends on profile details and zone equipment compatibility.",
+      "process": "RF work selection",
+      "validation": "Compare the cited setting and qualification with authorized configuration and application evidence. This source does not establish a current effective value; no configuration query, change or execution was performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00821",
+            "b00822",
+            "b00823",
+            "b00824",
+            "b00826",
+            "b00827",
+            "b00828"
+          ]
+        }
+      ],
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3"
     }
   ],
   "diagrams": [
@@ -6118,6 +7177,100 @@
       "review_state": "VISUALLY_INSPECTED_BOUNDED",
       "limits": "The displayed current-container counter is sample state. Method selections conflict with the narrative; priority direction, counter resets, actual sampling and effective deployment are not validated.",
       "review_batch": "SDD-DOCX-20260930-CONTINUATION2"
+    },
+    {
+      "id": "work-picking-field-description-blank",
+      "title": "Blank field-description source asset",
+      "description": "The retained 16 by 16 GIF appears blank at original resolution and when composited on white. It occurs beside Field Descriptions headings in the Picking Management and Wave Picking Group portions; it carries no readable label or process information.",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00404",
+            "b00563"
+          ]
+        }
+      ],
+      "asset_paths": [
+        "assets/sdd-61bfda888fe30365/1d600a0343eef0b105f4dd86d1b7572306777214a30e5b8d49e91c153d7bca31.gif"
+      ],
+      "review_state": "VISUALLY_INSPECTED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. This is an inspected blank/decorative asset, not a process diagram or evidence of missing hidden text.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3",
+      "asset_kind": "blank_or_decorative"
+    },
+    {
+      "id": "work-picking-open-icon",
+      "title": "Open work-unit status icon",
+      "description": "A small outlined document with horizontal blue lines marks an open work unit in the source legend. The first row of table b00510 binds this icon to the explicit text Open work unit.",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00505",
+            "b00507",
+            "b00508",
+            "b00510"
+          ]
+        }
+      ],
+      "asset_paths": [
+        "assets/sdd-61bfda888fe30365/80b40168ae9cd32aef1337311cddd2fca8c550807d47129a17d605811c40cc89.gif"
+      ],
+      "review_state": "VISUALLY_INSPECTED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The original DOCX relationship in row 1 identifies image5.gif; extracted asset-list order alone cannot establish this mapping.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3",
+      "asset_kind": "status_icon"
+    },
+    {
+      "id": "work-picking-assigned-icon",
+      "title": "Assigned work-unit status icon",
+      "description": "A small person silhouette beside a document marks a work unit with a user assigned in the source legend. The second row of table b00510 supplies the meaning, so the explanation does not require recognizing the icon.",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00507",
+            "b00508",
+            "b00510"
+          ]
+        }
+      ],
+      "asset_paths": [
+        "assets/sdd-61bfda888fe30365/d436bfc07ebcdf2fee155e49df221e5c8806ecc079486b988953bcbb4c084eaf.gif"
+      ],
+      "review_state": "VISUALLY_INSPECTED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The original DOCX relationship in row 2 identifies image6.gif. This is a legend meaning, not evidence that an actual unit has been assigned.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3",
+      "asset_kind": "status_icon"
+    },
+    {
+      "id": "work-picking-held-icon",
+      "title": "Held work-unit status icon",
+      "description": "An outlined document overlaid by a red circular stop-like badge with a white cross marks a held work unit in the source legend. The third row of table b00510 explicitly states the hold status; color and shape are supplementary.",
+      "citations": [
+        {
+          "document_id": "sdd-61bfda888fe30365",
+          "source_sha256": "61bfda888fe303658f60dedd521af9ed525961aac990a26ac3187fb46c235e9b",
+          "nodes": [
+            "b00507",
+            "b00508",
+            "b00510",
+            "b00542",
+            "b00546"
+          ]
+        }
+      ],
+      "asset_paths": [
+        "assets/sdd-61bfda888fe30365/7732b668cccd5cadf15cbd50fa9e81e0f1c9b2d77424b4a712dd3da96420fb48.gif"
+      ],
+      "review_state": "VISUALLY_INSPECTED_BOUNDED",
+      "limits": "Supplied SCALE Work/Picking compilation; release unspecified. Documented behavior, not observed configuration, a verified Insight SOP, runtime acceptance or a measured efficiency result. The original DOCX relationship in row 3 identifies image7.gif. Held work cannot be processed or unassigned under the cited source rules until released.",
+      "review_batch": "SDD-WORK-PICKING-20260930-CONTINUATION3",
+      "asset_kind": "status_icon"
     }
   ],
   "unresolved": [
@@ -6144,7 +7297,10 @@
     "Grupo Julio page 102 contains unpopulated performance-management requirement headings; pages 107-108 describe future VAS, Inbound QC and labor-report/configuration review. The page 110 signature form is blank.",
     "HADDAD QC prose and images conflict: b00650 warehouse IS NOT NULL versus b00649 work-location/work-type OR; b00652/b00657 Manual versus b00658 Start Work/Wave selected. No adopted rule/method is inferred.",
     "Covetrus inbound examples do not establish a mobile build or resolve Grupo Julio 24.1.2278 putaway-group availability. Covetrus itself retains location-override mobile feasibility questions.",
-    "Covetrus b00822 caption says closing shortages but b00821 depicts unlocating; b00684 item description and bottle image differ. Exact screenshots remain source examples, not current data validation."
+    "Covetrus b00822 caption says closing shortages but b00821 depicts unlocating; b00684 item description and bottle image differ. Exact screenshots remain source examples, not current data validation.",
+    "Work/Picking compilation describes tote cart picking at b00282-b00291 and b00336-b00337 while b00332 says only shipping-container picking is supported; product release and applicable path remain unresolved.",
+    "Work/Picking b00235-b00236 calls the option Automatic Putaway and excludes dock-management work, while b00855 uses Select After Putaway and says any scenario. Do not infer an alias or override the explicit restriction.",
+    "Work/Picking b00510 status legend is structurally mapped to individual assets; full DOCX pagination, accessibility behavior and current screen appearance remain unverified. One inspected retained field-description GIF is blank and supplies no process meaning."
   ],
   "review_batches": [
     {
@@ -6191,6 +7347,19 @@
       "added_claims": 16,
       "added_configuration_records": 12,
       "added_diagram_descriptions": 24,
+      "added_logical_tables": 0
+    },
+    {
+      "id": "SDD-WORK-PICKING-20260930-CONTINUATION3",
+      "basis": "Read retained Work/Picking nodes b00001-b00995 and reviewed selected previously uncaptured semantics; four remaining unique retained GIF assets individually viewed, with exact source-table row relationships checked. One is blank/decorative and three are status icons. No new PDF page or slide views.",
+      "source_mutation": false,
+      "deployment_observed": false,
+      "added_claims": 24,
+      "added_configuration_records": 18,
+      "corrected_configuration_records": [
+        "partial-close"
+      ],
+      "added_diagram_descriptions": 4,
       "added_logical_tables": 0
     }
   ]
