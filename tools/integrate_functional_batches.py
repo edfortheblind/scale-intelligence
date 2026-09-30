@@ -57,6 +57,25 @@ def merge_reviewed_roles(base_records, batches):
             by_id[record['object_id']] = record
     return by_id
 
+def validate_role_taxonomy(base, extensions, records):
+    """Require explicit additive definitions before any output is written."""
+    taxonomy = dict(base)
+    for name, definition in extensions.items():
+        if not isinstance(definition, str) or not definition.strip():
+            raise ValueError('Empty role definition: ' + name)
+        if name in taxonomy and taxonomy[name] != definition:
+            raise ValueError('Conflicting role definition: ' + name)
+        taxonomy[name] = definition
+    for record in records:
+        evidence_ids = {item['evidence_id'] for item in record['evidence']}
+        for role in record['functional_roles']:
+            if role['role'] not in taxonomy:
+                raise ValueError('Undefined functional role: ' + role['role'])
+            if not set(role['evidence_ids']) <= evidence_ids:
+                raise ValueError('Missing role evidence: ' + str(record['object_id']))
+    return taxonomy
+
+
 def integrate():
     help_data=load(OUT/'mappings/help-topics.json')
     role_base_path=OUT/'mappings/functional-role-base.json'
@@ -66,6 +85,11 @@ def integrate():
     batch_paths=sorted((OUT/'mappings/batches').glob('*.json'))
     batches=[load(path) for path in batch_paths]
     by_id=merge_reviewed_roles(roles['records'],batches)
+    taxonomy_path=OUT/'mappings/role-taxonomy-extensions.json'
+    roles['role_taxonomy']=validate_role_taxonomy(
+        roles['role_taxonomy'], load(taxonomy_path)['role_taxonomy'], by_id.values())
+    roles['source_inputs'].append({'path':taxonomy_path.relative_to(ROOT).as_posix(),
+        'sha256':hashlib.sha256(taxonomy_path.read_bytes()).hexdigest()})
     topic_ids={t['topic_id']:t for t in help_data['topics']}
     contracts={};dynamic={};unresolved={}
     coverage=load(OUT/'mappings/functional-coverage.json')

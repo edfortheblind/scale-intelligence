@@ -74,6 +74,15 @@ class RetrievalTests(unittest.TestCase):
             topic('decoy', 'Orphaned reports', 'The report discusses orphaned files.')])
         self.assertEqual(data.search('orphaned labels')['results'][0]['topic_id'], 'large')
 
+    def test_reviewed_question_is_not_hidden_by_large_topic(self):
+        large = topic('large', 'Aster workflow', 'General guidance. '*1000)
+        large['business_question'] = 'Why does robot calibration remain pending?'
+        data = self.knowledge([
+            large,
+            topic('decoy', 'Pending calibration',
+                  'Calibration may be pending when an unrelated reader is offline.')])
+        self.assertEqual(data.search('calibration pending')['results'][0]['topic_id'], 'large')
+
 
 if __name__ == '__main__':
     unittest.main()

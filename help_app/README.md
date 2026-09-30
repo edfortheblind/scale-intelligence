@@ -1,6 +1,6 @@
 # SCALE Knowledge local help
 
-Search reviewed explanations, read their ordered steps and open the exact cited passages. The application uses the existing curated knowledge library, including its explicit configuration, product/version and deployment limits.
+Search reviewed explanations, read their ordered steps and open the exact cited passages. The application uses the existing curated knowledge library. The owner accepts the current replica as the documentation baseline; version/build is not a prerequisite for using these explanations.
 
 Start from the repository root:
 
@@ -18,17 +18,21 @@ Search retrieves authored general guidance; it does not generate a new answer or
 
 The source of truth is `DB Architecture/mappings/help-topics.json` plus its source-bound reviewed routine contracts. Startup verifies source fingerprints. Search ranks short reviewed passages and returns each topic once; exact repeated contract boilerplate stays visible in answers but is omitted from retrieval. Matching routine passages include their supporting source identity. Evaluation questions and expected answers are excluded from the index; authored evaluations are not an independent holdout set. Explicit process names rank before incidental text matches. All source/query text is HTML-escaped; no source scripts, attributes, Markdown or links execute in the page.
 
-Search includes the answer's reviewed limitations and initiating context, as well as short individual explanatory passages. It matches stemmed whole words, preserving exact identifiers while also splitting mixed-case identifiers and adjacent words/numbers. Partial prefixes are not expanded: searching `cap` does not also search `capture`. Normalization affects matching only; displayed source passages retain their original text. Include the process or routine name when asking about a particular result, setting or error: a subject-free question can match several reviewed topics.
+Each reviewed topic heading and business question also has a short index entry, so a long explanation does not bury its introductory wording. The complete explanation and source details remain searchable. This entry uses existing guidance, without importing evaluation questions or expected topics.
+
+Search includes the answer's reviewed limitations and initiating context, as well as short individual explanatory passages. It matches stemmed whole words, preserving exact identifiers while also splitting mixed-case identifiers and adjacent words/numbers. Partial prefixes are not expanded: searching `cap` does not also search `capture`. Normalization affects matching only; displayed source passages retain their original text. An unnamed configuration request such as “explain this setting” asks for its label, screen and intended effect. Name the process or setting to retrieve its reviewed explanation.
 
 This local preview has no application authentication, warehouse/company filtering, external model, cloud hosting or production deployment. It is intended for the authorized local repository user. The existing AIM/SDK search database and provisional SDD extraction are unchanged by app startup; raw SDD bodies are not indexed by this app.
 
-Four selected SDD claims support the product, tolerance and label boundary answers. Each binds the reviewed record, original document hash and exact extracted node identities. Source panels expose the reviewed conclusion and locations only. This local use does not make the SDD corpus eligible for production indexing. Retained configuration and statement-timing citations keep their original time and scope limits.
+Five selected SDD claims support product, tolerance, label and putaway-group boundary answers. Each binds the reviewed record, original document hash and exact extracted node identities. Source panels expose the reviewed conclusion and locations only. This local use does not make the SDD corpus eligible for production indexing. Retained configuration and statement-timing citations keep their original time and scope limits.
 
 `vendor-source-manifest.json` binds the exact parsed AIM/SDK article bytes and reviewed SQL-contract batch bytes to the knowledge generation and original source identities. Startup rejects altered derivative or contract text even if its original-source hash label was left unchanged. The manifest is refreshed during deliberate batch integration, never silently during app startup.
 
 The 34 process-family explanations also expose 130 previously reviewed documentary refinements. Each selected statement binds its reviewed record, original article, parsed article and exact source-node fingerprints. These supplement the introductory explanation without inventing a new execution order. Installed application behavior and production index eligibility remain unestablished. This local use does not index the entire vendor or SDD corpus.
 
 ## Reproduce the evaluation
+
+The [operator/configuration guide](../DB%20Architecture/OPERATOR_CONFIGURATION_HELP.md) adds plain explanations for work profiles, Work Insight versus mobile, picking checks, Packing, container closure, receiving and printing. The [24-question scenario review](../_project/HELP_QUESTION_REVIEW.md) records a separate manual assessment. Its follow-up is known-scenario remediation because baseline findings informed the changes; no scenario questions are indexed.
 
 ```powershell
 python -m unittest tests.test_help_app tests.test_retrieval tests.test_runtime_profiles

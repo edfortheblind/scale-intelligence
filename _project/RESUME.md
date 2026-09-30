@@ -1,27 +1,32 @@
 # Resume SCALE Intelligence
 
-Read [the master prompt](../03_SCALE_INTELLIGENCE_MASTER_PROMPT.md), [current status](../PROJECT_STATUS.md), [section report](COMPLETION_REPORT.md) and [functional verification receipt](concern-resolution-20260930.json) and [publication receipt](publication-20260930.json). Older progress-20260930/max-progress/functional-continuation receipts and manifests are historical and must not be overwritten.
+Read [the master prompt](../03_SCALE_INTELLIGENCE_MASTER_PROMPT.md), [status](../PROJECT_STATUS.md), [section report](COMPLETION_REPORT.md), [verification](continuation2-20260930.json) and [publication](continuation2-publication-20260930.json). Older receipts are immutable historical evidence.
 
-Current scope: 201 help topics, 668 reviewed object roles, 505 bounded module contracts, 115 documentary setting contracts; 450 ordered steps. Module contracts:505/1,138; object roles:668/1,656; stored procedures:288/921; table roles:162/518. Functions 76/76, views 135/135 and triggers 6/6 have bounded static contracts. Dynamic candidates 60/60 and unresolved dependency entries 169/169 have dispositions; catalog NULLs remain unchanged.
+- The owner confirms that the replica is current. Document the captured sources as-is; do not request a SCALE version/build as a prerequisite or infer unseen effective configuration.
+- AIM acquisition remains owner-closed: 2,446/2,453 (99.71%); SDK 363/380 (95.53%, known lower-bound denominator). Existing 2,809-article search and source originals remain unchanged.
+- Snapshot 20260929T214106Z retains 3,022 objects and 1,142 definitions. Bounded module contracts: 1,138/1,138 (100.00%); procedures: 921/921 (100.00%); functions 76/76, views 135/135, triggers 6/6. These are static contracts, not runtime acceptance.
+- Functional object roles: 1,655/1,656 (99.94%); tables: 517/518 (99.81%). Remaining role identities: dbo.Interface_Item_Failure_1024. Purpose must not be inferred from a name or generic columns.
+- The [table-reference cross-check](../DB%20Architecture/TABLE_USAGE_REVIEW.md) compares all captured procedures/functions and supplementary modules with all 518 tables. Owner backup/date-prefix and failed-item explanations remain hypotheses; absent captured references do not establish non-use or safe deletion.
+- All 34 captured process families, 62 bodies and 53 image references have documentary review; 130 refinements are source-bound in local help. Deployment reconciliation remains 0/34.
+- SDD: 9 originals / 8 unique bodies; 82 claims, 113 settings, 70 visual descriptions, 76 logical PDF tables. 231/231 PDF pages and 45/45 slides viewed. Described assets: 82/613 (13.38%); cited nodes: 811/11,618 (6.98%). Candidate dispositions 219/219 do not establish all raster tables or exhaustive semantic review.
+- Runtime: 1,795 retained rows in 163 dimension-preserving profiles; 154 current catalog matches. Historical definition identity and whole-process timing remain unestablished.
+- Help: 334 topics, 821 ordered steps. Actual HTTP selected-topic checks: 713/713 (100.00%); expected-topic top8: 670/713 (93.97%). Authored regression cases remain outside search.
+- Agent question research produced 24 frozen plausible scenarios from owner priorities and official public workflow documentation. Baseline 5/24 adequate; follow-up 18/24 adequate (75.00%), 5 partial, 1 missing. Adequacy includes 17 content answers and one appropriate ambiguity clarification. Follow-up is known-scenario remediation, not untouched holdout, measured popularity or real-user acceptance.
+- Dynamic candidates 60/60 and unresolved dependency entries 169/169 have bounded dispositions; catalog NULLs remain unchanged. No new DB connection, application rows or warehouse execution was used.
+- Browser/keyboard/screen-reader acceptance, full DOCX page rendering and fresh-context parent audit remain unavailable/unperformed. Same-context author-independent bounded peers are recorded separately. Historical Word preference restoration remains unverified; this continuation made no Word opens or preference writes.
 
-All 34 captured process families/62 bodies/53 image references have documentary review. Their 130 previously reviewed refinements are now bound into local help. Zero families have complete deployment reconciliation. Static and documentary review do not establish installed callers or current effective configuration.
-
-SDD:9 originals/8 unique bodies preserved; 66 claims, 101 settings, 46 visual descriptions and 76 logical PDF tables;231/231 PDF pages and 45/45 static slides viewed. PDF candidates93 supported+126 rejected+0 pending=219. The A-PNP visible value includes both dynamic and permanent assignment; do not reintroduce the incorrect extraction correction. Raw SDD production indexing remains disabled.
-
-Actual HTTP:445 authored questions;420 expected-topic top8,290 first,445 selected-topic checks. Unchanged 417-question subset improved380->392top8, with16 recoveries and4 regressions;28/28 new cases retrieve their expected topic. Expected/forbidden answer text is not indexed, semantic quality is not automatically scored, and this is not independent holdout.
-
-The prior read-only diagnostic recorded `Options.UpdateLinksAtOpen=false`. The earlier pre-export value was not retained and cannot be reconstructed. This continuation opened no Word documents and changed no Word preferences. The owner preference question remains unanswered; historical restoration is unverified.
 
 ## Next executable work
 
-1. Select unreviewed identities from `DB Architecture/mappings/object-review-ledger.json`. Remaining 633 procedure contracts and 356 table roles are separate measures. Read complete source bodies for full static credit and relevant columns/keys/use for table roles; do not duplicate reviewed contracts.
-2. Use current SDD candidate dispositions and exact cited-node/asset coverage. All 231 PDF pages are now viewed; continue uncited claims, undescribed assets and raster tables without repeating page-view credit, accepted acquisitions or changing originals.
-3. Resolve remaining retrieval misses with reviewed explanatory language, preserving the evaluation denominator and keeping answer keys out of search. Continue caller/deployment/timing evidence questions without guessing facts.
-4. Freeze owned batches, independently sample exact output bytes, integrate, render, run HTTP evaluation, update counters/handoff, then verify final outputs. Native agents share the checkout; use nonoverlapping ownership.
+1. Keep completed module contracts intact. Resolve only the explicitly unreviewed table role if supported purpose/consumer evidence becomes available; otherwise retain the documented unknown. No application rows are needed.
+2. Continue uncited SDD claims and undescribed assets using exact node/asset coverage. Do not repeat the 231 PDF page views or 219 candidate dispositions.
+3. Address remaining scenario-review and retrieval gaps using SCALE source explanations. Keep the 24 questions frozen, outside search and labeled known-scenario remediation. Do not import behavior from public Microsoft/Oracle scenario sources.
+4. Freeze author outputs, collect bounded independent peers, integrate, render, evaluate over HTTP, update report/handoff and verify. Do not overwrite historical receipts.
 
 ```powershell
 python tools/integrate_functional_batches.py
 python tools/render_functional_docs.py
+python tools/report_table_usage.py --private-modules (Join-Path $env:LOCALAPPDATA 'TAB/SCALE-Intelligence/private/db-assessment/20260929T214106Z/modules.json') --require-complete-contracts
 python tools/evaluate_help.py --serve
 python tools/report_completion.py
 python -m unittest discover -s tests
@@ -30,6 +35,8 @@ python tools/verify_delivery.py
 git diff --check
 ```
 
-Rebuild retained runtime profiles only if their implementation or input changes. Exact private SQL snapshot: `%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/db-assessment/20260929T214106Z`. Use captured sources, not a new connection. No transaction rows, arbitrary configuration dumps, routine/job/report/label execution or DML.
+The scenario follow-up report binds exact content and implementation hashes. If either changes, re-evaluate the frozen questions before using its metric; do not silently reuse stale judgments.
 
-Read-only external AEKR: `C:/Apps/AEKR/.aekr/AGENTS.md` and required active closure. Native manual governance; no provider/runtime/scaffold/control switches or archive payload. Accepted AIM/SDK gaps,01/02 prompts and five aggregate observations stay unchanged. Actual browser/user/assistive-technology acceptance remains unperformed; browser inventory exposed no surfaces and the explicit in-app browser attempt failed. Full DOCX rendering remains unavailable; a fresh-context parent audit hit the agent thread limit. Bounded peers do not replace it. The owner authorized commit/push/merge and accepts local plus private GitHub as the delivery boundary. Read the publication receipt and verify current refs before reporting parity. External deployment and OneDrive checks are not delivery requirements.
+External AEKR remains read-only native governance. Exact private SQL snapshot: `%LOCALAPPDATA%/TAB/SCALE-Intelligence/private/db-assessment/20260929T214106Z`. Reuse retained sources; no new connection, transactional rows, arbitrary configuration dumps, procedure/job/report/label execution or DML. Preserve accepted AIM/SDK gaps and 01/02 prompt bytes.
+
+The owner authorized commit/push/merge to the existing private repository. Verify current refs and filesystem-byte parity before reporting delivery. External deployment and OneDrive checks are outside scope.

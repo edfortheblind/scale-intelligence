@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
-from integrate_functional_batches import merge_reviewed_roles
+from integrate_functional_batches import merge_reviewed_roles, validate_role_taxonomy
 
 
 def record(object_id, role, source, evidence_id='E1'):
@@ -21,6 +21,26 @@ def record(object_id, role, source, evidence_id='E1'):
 
 
 class FunctionalBatchIntegrationTests(unittest.TestCase):
+    def test_new_role_requires_explicit_additive_definition(self):
+        rows = [record(1, 'payload_shape', 'schema.json')]
+        with self.assertRaisesRegex(ValueError, 'Undefined functional role'):
+            validate_role_taxonomy({'configuration': 'Existing definition'}, {}, rows)
+        result = validate_role_taxonomy({'configuration': 'Existing definition'},
+                                        {'payload_shape': 'Structural payload only'}, rows)
+        self.assertEqual(result['configuration'], 'Existing definition')
+        self.assertEqual(result['payload_shape'], 'Structural payload only')
+
+    def test_taxonomy_cannot_redefine_existing_role_or_add_empty_definition(self):
+        for extensions in [{'configuration': 'Changed meaning'}, {'new_role': ' '}]:
+            with self.subTest(extensions=extensions), self.assertRaises(ValueError):
+                validate_role_taxonomy({'configuration': 'Existing definition'}, extensions, [])
+
+    def test_defined_role_still_requires_real_evidence_id(self):
+        row = record(1, 'configuration', 'schema.json')
+        row['functional_roles'][0]['evidence_ids'] = ['missing']
+        with self.assertRaisesRegex(ValueError, 'Missing role evidence'):
+            validate_role_taxonomy({'configuration': 'Existing definition'}, {}, [row])
+
     def test_corrected_batch_does_not_retain_old_classification(self):
         base = [record(1, 'configuration', 'base.json')]
         old = {'reviewed_roles': [record(1, 'obsolete_role', 'body.sql')]}

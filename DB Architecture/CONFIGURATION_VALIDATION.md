@@ -40,7 +40,7 @@ If fewer than 10,001 rows are returned by the bounded source query, the counts c
 
 Different flags are aggregated independently. Counts do not establish which flags coexist on the same configuration row. Checks run separately, so they do not form a transactionally consistent cross-table snapshot. The metadata snapshot and configuration observation also have different capture times.
 
-Read-only replica identity and encrypted certificate validation are checked before any configuration SELECT. Replica freshness is not established as a guaranteed bound. These are replica observations, not proof of the current primary's settings or a user's effective configuration. Client query duration is retained for the check's diagnostics; it is not SCALE process runtime.
+Read-only replica identity and encrypted certificate validation are checked before any configuration SELECT. The owner confirms that the replica is current and accepts it as the documentation baseline. The retained checks still describe fixed aggregate observations at their capture time, not a user's effective configuration. No version/build or synchronization evidence is required for this documentation task. Client query duration is retained for the check's diagnostics; it is not SCALE process runtime.
 
 ## Execution and handling
 

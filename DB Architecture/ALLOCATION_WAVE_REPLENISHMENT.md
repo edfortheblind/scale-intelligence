@@ -257,3 +257,7 @@ Full redacted body line ranges, redacted file hashes and original-definition has
 Two lexical dynamic-SQL candidates are fixed procedure calls assigning a return code. Eleven catalog dependencies retain caller-dependent name-binding gaps; same-name candidates are recorded without marking runtime binding resolved. Five table schema records document identities/nullable columns and unique-key shape; six constraint/default records include the statistics zero default and its explicit-NULL boundary. No sequence allocator is invoked by these reviewed identity-based split bodies.
 
 Sixteen help topics contain 33 authored evaluation cases. These cases specify required explanations and prohibited overclaims; case execution belongs to the coordinator. Four family associations remain partial. Complete application bindings, live settings, caller transaction/error policy, unreviewed dependencies, complete process measurement and accessibility acceptance remain open.
+
+## Table-reference correction, 2026-09-30
+
+The cross-check confirmed that `ALC_UpdateShipAllocReqFP` also reads `ITEM` to obtain item-class values during unit-of-measure fallback. Its contract now includes that table read, alongside the existing allocation-request and unit-of-measure relationships. See [the captured body](sql/1834801944.sql), lines 49, 72, 100 and 123; no routine was executed.

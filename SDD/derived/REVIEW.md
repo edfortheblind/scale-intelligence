@@ -970,3 +970,375 @@ The Labor Group Estimation tab shows 0.75 minutes per transaction with Quantity 
 These are different illustrative records. The 0.75 value is an estimate, not measured work duration or an adopted standard; the source later calls for labor-time configuration review.
 
 [sdd-d50ca4a96095c930 p099-b002, p099-b004, p099-b005](reading/sdd-d50ca4a96095c930.md#p099-b002)
+
+## Covetrus inbound and HADDAD container/QC review, 2026-09-30
+
+This bounded batch adds 16 claims and 24 visual descriptions covering 31 previously undescribed distinct assets. Covetrus remains an implementation design with no established product build; HADDAD remains SCALE 2020. Full DOCX page fidelity and deployment acceptance remain open.
+
+### covetrus-checkin-inventory-and-lot-selection
+
+Covetrus separates unloading/manual quality audit from systematic check-in. Check-in creates inventory according to the receiving user's preference. Item receiving scans a receipt and product, enters quantity/UOM, and uses interfaced lot/expiration values when supplied; multiple receipt details for different lots prompt receipt-line selection.
+
+Limit: Bounded design description. Manual quality standards and referenced Track and Trace/GS1/DSCSA extensions are not fully specified in this section; an example screen does not validate a lot or physical quantity.
+
+[sdd-c4c7e01f8ccad48a b00618, b00623, b00628, b00643, b00644, b00645, b00646, b00648, b00650, b00678, b00680](reading/sdd-c4c7e01f8ccad48a.md#b00618)
+
+### covetrus-mobile-exit-is-not-receipt-close
+
+The Covetrus item-receiving design says leaving a receipt on Warehouse Mobile does not close it; the user may return to continue receiving. A separate close action changes receipt state.
+
+Limit: No current mobile session or reopen authorization was observed. Automatic close conditions and host interface timing require their own evidence.
+
+[sdd-c4c7e01f8ccad48a b00661, b00761, b00763](reading/sdd-c4c7e01f8ccad48a.md#b00661)
+
+### covetrus-putaway-groups-design-release-boundary
+
+The Covetrus design describes receiving small quantities of multiple SKUs into putaway groups organized by putaway zone, then closing a full pallet/cart group to create putaway work. Its text excludes DSCSA receiving from this group workflow. These examples coexist with the separate Grupo Julio document's open issue that Warehouse Mobile 24.1.2278 lacks Receiving with Putaway Groups.
+
+Limit: Covetrus v1.4 is a document revision, not a proven mobile build. Its screenshots do not resolve the Grupo Julio 24.1.2278 limitation or prove availability in the assessed deployment.
+
+[sdd-c4c7e01f8ccad48a b00688, b00690, b00699, b00701, b00703, b00711, b00705, b00708, b00713, b00716](reading/sdd-c4c7e01f8ccad48a.md#b00688); [sdd-d50ca4a96095c930 p106-b005, p106-b006](reading/sdd-d50ca4a96095c930.md#p106-b005)
+
+### covetrus-quick-receive-fefo-boundary
+
+Covetrus proposes user-driven quick receiving for heavy items/full single-item single-lot LPNs and some returns, placing product in primary locations. It excludes DSCSA. Because system-driven locating does not run, the design warns that downstream FEFO/FIFO may not be honored when location selection does not consider primary locations first.
+
+Limit: The stated site rationale is not a guarantee of lot rotation. No actual allocation order, configured location selection or receiving execution was observed.
+
+[sdd-c4c7e01f8ccad48a b00721, b00723, b00739, b00749](reading/sdd-c4c7e01f8ccad48a.md#b00721)
+
+### covetrus-return-receiving-site-scope
+
+The Covetrus Fort Worth return design uses downloaded RA receipts, builds multi-item or single-item pallets according to supervisor choice, and defaults return receiving to Quality Hold in a returns location. The same section notes that some other sites quick-receive into primary locations.
+
+Limit: These are site-specific alternatives. Neither Quality Hold nor quick receiving is established as a universal return default; FEFO/FIFO concerns remain explicit.
+
+[sdd-c4c7e01f8ccad48a b00743, b00745, b00747, b00749](reading/sdd-c4c7e01f8ccad48a.md#b00743)
+
+### covetrus-receipt-close-and-reopen
+
+The Covetrus design closes a fully received receipt after putaway of its final LPN. Incomplete receipts whose remaining balance is not expected require manual close. Closing blocks further receiving, while a separate reopen capability is mentioned.
+
+Limit: The source does not define reopen permission, all status transitions, or host reconciliation after reopen; a depicted Close menu is not proof the action ran.
+
+[sdd-c4c7e01f8ccad48a b00761, b00763, b00783](reading/sdd-c4c7e01f8ccad48a.md#b00761)
+
+### covetrus-overage-and-missing-master-exceptions
+
+Covetrus disallows over-receiving and directs excess quantities to a supervisor/new host PO or receipt. Product cannot be checked in without receipt information. An unknown item first requires supervisor/procurement coordination, item-master interface and a new host receipt.
+
+Limit: This records a supplied implementation SOP, not authorization to create a PO, move inventory or change master data. Host/service behavior is not independently verified.
+
+[sdd-c4c7e01f8ccad48a b00777, b00779, b00790, b00792, b00794, b00795, b00799](reading/sdd-c4c7e01f8ccad48a.md#b00777)
+
+### covetrus-damage-and-host-close-boundaries
+
+The design receives damaged product with a Damage Preference, derives a held inventory status from disposition, and locates it to a damaged area. Separately, host manual close updates the receipt header closed-date/time without changing receipt details.
+
+Limit: A host closed timestamp is not evidence of detail-level completion. Recall processing is separately described as a development note and is not established here as delivered behavior.
+
+[sdd-c4c7e01f8ccad48a b00803, b00805, b00807, b00814](reading/sdd-c4c7e01f8ccad48a.md#b00803)
+
+### covetrus-workbench-caption-conflict
+
+The Covetrus text limits Receipt Workbench to supervisor troubleshooting, such as locating failure, and excludes it as the primary receiving workflow. Its adjacent caption says Closing receipt Shortages, but the retained image is Receipt Workbench showing Receipt containers unlocated successfully and Locate Pending container rows.
+
+Limit: The visual description follows the image rather than its inconsistent caption. This example does not prove that any current receipt was closed or unlocated.
+
+[sdd-c4c7e01f8ccad48a b00819, b00821, b00822](reading/sdd-c4c7e01f8ccad48a.md#b00819)
+
+### covetrus-locating-failure-recheck-guard
+
+Covetrus directs locating exceptions to a Supervisor Location and proposes reviewing transaction/process history to understand locating-rule sequences. Its cancellation/re-check-in troubleshooting path is explicitly qualified by if not uploaded.
+
+Limit: Do not remove the not-uploaded guard or infer that uploaded receiving can be safely cancelled/replayed. Host reconciliation, exact status gates and operator authority remain unverified.
+
+[sdd-c4c7e01f8ccad48a b00805, b00828, b00830](reading/sdd-c4c7e01f8ccad48a.md#b00805)
+
+### covetrus-putaway-work-status-flow
+
+The Covetrus design uses LPN/pallet ID as the putaway work unit in a user-directed profile. After LPN scan and pick confirmation, the LPN becomes In Putaway. The user validates the destination; skipped instructions are revisited after the location sequence. Final putaway closes the LPN, updates destination on-hand quantity and makes it eligible for receipt upload.
+
+Limit: Eligibility for upload is not successful host delivery. The image illustrates prompts, not measured timing or a verified current transaction; DSCSA custom serial updates are outside this bounded review.
+
+[sdd-c4c7e01f8ccad48a b00881, b00888, b00890, b00892, b00894, b00896](reading/sdd-c4c7e01f8ccad48a.md#b00881)
+
+### covetrus-location-override-pending-mobile-feasibility
+
+The Covetrus design gives authorized users an Override path to validate a destination, update work/LPN and write transaction history; Locate can instead rerun a selected locating rule. It also retains an open item evaluating license-plate-tracked versus non-tracked mobile scenarios and possible process changes.
+
+Limit: The stated validation checks are documentary, not exhaustive. Mobile feasibility remains open; no assumed override availability, authorization or automatic cycle-count creation follows.
+
+[sdd-c4c7e01f8ccad48a b00903, b00905, b00906, b00908, b00910, b00912, b00915](reading/sdd-c4c7e01f8ccad48a.md#b00903)
+
+### covetrus-item-picture-mismatch
+
+The retained Covetrus item-information screenshot labels the item description as PANACUR SUSP 10% 40DS 1L while its bottle picture visibly says Enrofloxacin. The illustration therefore cannot validate correspondence between item metadata and product image.
+
+Limit: This is a mismatch within a supplied screenshot, not a conclusion about current item master data or the correctness of a physical product.
+
+[sdd-c4c7e01f8ccad48a b00684, b00685](reading/sdd-c4c7e01f8ccad48a.md#b00684)
+
+### haddad-qc-criteria-prose-image-conflict
+
+HADDAD QC prose says the example selects shipping containers from its single warehouse using IS NOT NULL. The cited criteria screenshot instead shows an OR condition over WORK_INSTRUCTION.INCOMING_PD_LOC and WORK_INSTRUCTION.WORK_TYPE; it does not show the described warehouse-null predicate.
+
+Limit: Source conflict unresolved. The visible work-location/work-type filter must not be silently replaced by the prose rule or presented as a current deployment setting.
+
+[sdd-f46806ef53e15f07 b00648, b00649, b00650](reading/sdd-f46806ef53e15f07.md#b00648)
+
+### haddad-qc-evaluation-prose-image-conflict
+
+HADDAD prose chooses the Manual QC evaluation method and says to check Manual on the assignment. The evaluation-method list does contain Manual, but the assignment screenshot has Manual unchecked and Start Work and Wave checked.
+
+Limit: Method catalog existence and assignment enablement are different. The source does not establish which choice was intended or active; the conflicting examples remain explicit rather than becoming a configuration instruction.
+
+[sdd-f46806ef53e15f07 b00652, b00653, b00657, b00658](reading/sdd-f46806ef53e15f07.md#b00652)
+
+### haddad-qc-scope-and-configuration-chain
+
+The HADDAD walkthrough distinguishes inbound QC routing a portion of receipt quantity to inspection from outbound QC inspecting selected shipping containers. Its example builds an assignment by linking selection criteria and evaluation methods, while its manual-QC narrative conflicts with the shown assignment selections.
+
+Limit: This is configuration explanation, not a complete operator SOP or evidence that either QC process executed. The conflicting method selections remain unresolved.
+
+[sdd-f46806ef53e15f07 b00643, b00644, b00648, b00652, b00657, b00658](reading/sdd-f46806ef53e15f07.md#b00643)
+
+### Item-receiving selection and initiation
+
+Three screenshots show Item Level Receiving highlighted in the preference list, a receipt-ID input for that preference, and a subsequent Item input while retaining the receipt context. The first receipt screen contains a Please wait overlay; it is not a completion record.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-c4c7e01f8ccad48a b00663, b00664, b00666, b00667, b00669, b00670](reading/sdd-c4c7e01f8ccad48a.md#b00663)
+
+Assets: [f7397db0dc01dd28ad190446372c4072a57a667edb413facce9e3a2101f40cf6.png](assets/sdd-c4c7e01f8ccad48a/f7397db0dc01dd28ad190446372c4072a57a667edb413facce9e3a2101f40cf6.png); [49f6df998b79c383223abed957a563c3d46bb8b1f56b614cbdbec5048dfa3d6d.png](assets/sdd-c4c7e01f8ccad48a/49f6df998b79c383223abed957a563c3d46bb8b1f56b614cbdbec5048dfa3d6d.png); [f309420913cfe25c80e4dd15dc8ae90a470368334dd7d1317b575c595c8cf4cb.png](assets/sdd-c4c7e01f8ccad48a/f309420913cfe25c80e4dd15dc8ae90a470368334dd7d1317b575c595c8cf4cb.png)
+
+### Item check-in quantity and UOM
+
+The Receipt check in screen displays receipt, item, company and lot, then quantity with an EA (1.00) UOM selector and a quantity-entry field. A Please wait overlay is present. The screenshot illustrates separate item context and entered quantity, without proving acceptance of that quantity.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-c4c7e01f8ccad48a b00671, b00672](reading/sdd-c4c7e01f8ccad48a.md#b00671)
+
+Assets: [84b6fd936c980bfc9c1be49ed2492af90d03f153fa8d3b4cbf79ad255ee2108a.png](assets/sdd-c4c7e01f8ccad48a/84b6fd936c980bfc9c1be49ed2492af90d03f153fa8d3b4cbf79ad255ee2108a.png)
+
+### Receipt item-information panels
+
+One Information panel repeats item, description, company, quantity and UOM over the receipt screen. A second panel includes a scrollable product picture. In the latter, the PANACUR text differs from the Enrofloxacin bottle label; the image is not catalog correctness evidence.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-c4c7e01f8ccad48a b00675, b00676, b00684, b00685](reading/sdd-c4c7e01f8ccad48a.md#b00675)
+
+Assets: [ac5e89706e4d53984db8d62ff944a1ab66c7fa18e665f82a4a89cf4ab40723c1.png](assets/sdd-c4c7e01f8ccad48a/ac5e89706e4d53984db8d62ff944a1ab66c7fa18e665f82a4a89cf4ab40723c1.png); [55890a8609da35dd8829e0de06cbf04d09715fdc804b18007fea92a03b7624fc.png](assets/sdd-c4c7e01f8ccad48a/55890a8609da35dd8829e0de06cbf04d09715fdc804b18007fea92a03b7624fc.png)
+
+### Lot-specific receipt-line selection
+
+The Select a receipt line view shows position 2/2 and ERP line number, item, company, description, lot, quantity and UOM, with a GO control. The surrounding text explains selection when the same item has receipt details for different interfaced lots.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-c4c7e01f8ccad48a b00678, b00680, b00681](reading/sdd-c4c7e01f8ccad48a.md#b00678)
+
+Assets: [f506169c386dade0425bf7cc0617359e1ca42c325b846489e930b3c1caa4cf2e.png](assets/sdd-c4c7e01f8ccad48a/f506169c386dade0425bf7cc0617359e1ca42c325b846489e930b3c1caa4cf2e.png)
+
+### Putaway-group assignment prompts
+
+The first Assign putaway group screen shows a putaway location group name, empty group-ID input and a receipt check-in/locate success banner. The next screen shows a populated group ID alongside license plate, quantity and UOM. Location group and entered putaway group ID are separate displayed fields.
+
+Limit: Covetrus source illustration only; exact mobile build is not established and it does not close the separate Grupo Julio 24.1.2278 limitation.
+
+[sdd-c4c7e01f8ccad48a b00701, b00703, b00705, b00706, b00708, b00709](reading/sdd-c4c7e01f8ccad48a.md#b00701)
+
+Assets: [f7f898be38d87410059687aa51f5f10bcdef778bc61d8f157ac9c0383895e769.png](assets/sdd-c4c7e01f8ccad48a/f7f898be38d87410059687aa51f5f10bcdef778bc61d8f157ac9c0383895e769.png); [7a80dee77d10d2f426f06a462f859d2cca51ec43dfe487552517c7419f872bbf.png](assets/sdd-c4c7e01f8ccad48a/7a80dee77d10d2f426f06a462f859d2cca51ec43dfe487552517c7419f872bbf.png)
+
+### Putaway-group close request and message
+
+The first Close putaway group screen accepts a group ID. The second clears the input and displays Putaway group successfully closed. The accompanying prose associates close with putaway-task creation; the image itself does not show the generated work records.
+
+Limit: A historical screenshot message is not present execution evidence or proof this option exists in every mobile release.
+
+[sdd-c4c7e01f8ccad48a b00711, b00713, b00714, b00716, b00717](reading/sdd-c4c7e01f8ccad48a.md#b00711)
+
+Assets: [7e2ec3421d14f57a995b0d0c66830d96a7d9cfb08acf109bc09075bb24af1ca9.png](assets/sdd-c4c7e01f8ccad48a/7e2ec3421d14f57a995b0d0c66830d96a7d9cfb08acf109bc09075bb24af1ca9.png); [13cc2f3e09a52514d5a688b450e8295e3ec513c274d41f06fed5842a4f15f55d.png](assets/sdd-c4c7e01f8ccad48a/13cc2f3e09a52514d5a688b450e8295e3ec513c274d41f06fed5842a4f15f55d.png)
+
+### Quick Receipt initiation
+
+The two initiation screenshots retain the Quick Receipt preference while moving from a receipt-ID field to an Item field. They illustrate input stages, not the later location validation or a completed receipt.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-c4c7e01f8ccad48a b00721, b00725, b00726, b00728, b00729](reading/sdd-c4c7e01f8ccad48a.md#b00721)
+
+Assets: [193294fd5c0f27ecccad5033d36b7c5d6cdbfcf0879b61d2720b05d95221b1d5.png](assets/sdd-c4c7e01f8ccad48a/193294fd5c0f27ecccad5033d36b7c5d6cdbfcf0879b61d2720b05d95221b1d5.png); [b547620522dbf7643fd3526a12aadc973dcd7336f44f87101a598a69e6d6a2d8.png](assets/sdd-c4c7e01f8ccad48a/b547620522dbf7643fd3526a12aadc973dcd7336f44f87101a598a69e6d6a2d8.png)
+
+### Quick Receipt quantity input
+
+The Receipt check in image shows item context and quantity with an EA (1.00) selector, followed by an editable Quantity field and GO. No putaway location is visible at this stage.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-c4c7e01f8ccad48a b00731, b00732](reading/sdd-c4c7e01f8ccad48a.md#b00731)
+
+Assets: [b8b4819007da6ebafbd7699191caab98d9c8dcc38b946060eec64482eddfca5a.png](assets/sdd-c4c7e01f8ccad48a/b8b4819007da6ebafbd7699191caab98d9c8dcc38b946060eec64482eddfca5a.png)
+
+### Quick Receipt Done action
+
+Although captioned Ready to putaway, the image shows Receipt initiation with an empty Item field and an open Actions menu containing Done. It does not show a putaway success message or final receipt closure.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-c4c7e01f8ccad48a b00734, b00735](reading/sdd-c4c7e01f8ccad48a.md#b00734)
+
+Assets: [b2a4dd776e8402336e21415c422e6b1e7875c4e7242e102df10ab66b86f043e1.png](assets/sdd-c4c7e01f8ccad48a/b2a4dd776e8402336e21415c422e6b1e7875c4e7242e102df10ab66b86f043e1.png)
+
+### Quick receive location entry
+
+The Quick receive screen shows item context, quantity in CS, a license plate, expiration date and a Location input. It differs from the preceding EA entry illustration; no UOM conversion factor or completed movement is inferred from the two sample quantities.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-c4c7e01f8ccad48a b00736, b00737, b00739](reading/sdd-c4c7e01f8ccad48a.md#b00736)
+
+Assets: [6dc7ccd3405ff245d2cef2de0492893726294eae7fcc626fdaf57f5bd0c0e8a4.png](assets/sdd-c4c7e01f8ccad48a/6dc7ccd3405ff245d2cef2de0492893726294eae7fcc626fdaf57f5bd0c0e8a4.png)
+
+### Receipt disposition selection
+
+The receipt check-in screen includes lot and expiration fields and an open Disposition code selector with several quality-control choices. The image demonstrates a selectable disposition input, without defining the status/location effects of each displayed code.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-c4c7e01f8ccad48a b00752, b00754, b00756, b00757](reading/sdd-c4c7e01f8ccad48a.md#b00752)
+
+Assets: [99588e1abc62eec125770a567516fdb3c0a6694d8fde64f2058a6971158123fd.png](assets/sdd-c4c7e01f8ccad48a/99588e1abc62eec125770a567516fdb3c0a6694d8fde64f2058a6971158123fd.png)
+
+### Receipt Insight Close action
+
+Receipt Insight shows a selected receipt at Check In Pending and an Actions menu with Close outlined. The receipt closed-date/time cell is blank. This is an action-selection example, not a record of completed close.
+
+Limit: The same retained asset also appears at b00785 for shortages; it is counted once. Reopen authorization and resulting host state are not shown.
+
+[sdd-c4c7e01f8ccad48a b00761, b00763, b00765, b00766](reading/sdd-c4c7e01f8ccad48a.md#b00761)
+
+Assets: [c3d14346c1c8d5275689e3740db85eb74d95a594fd73137be2fbb2cf2b3f02c7.png](assets/sdd-c4c7e01f8ccad48a/c3d14346c1c8d5275689e3740db85eb74d95a594fd73137be2fbb2cf2b3f02c7.png)
+
+### Receipt Workbench unlocate result
+
+The image is Receipt workbench with separate lines and containers grids. A banner says Receipt containers unlocated successfully; container rows show Locate Pending and the toolbar includes Locate all/Unlocate all. This differs from the adjacent Closing receipt Shortages caption.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-c4c7e01f8ccad48a b00819, b00821, b00822](reading/sdd-c4c7e01f8ccad48a.md#b00819)
+
+Assets: [8858390ef22f2b701bf506e468e914b132278882cae67c2cf4078b7bf67593b8.png](assets/sdd-c4c7e01f8ccad48a/8858390ef22f2b701bf506e468e914b132278882cae67c2cf4078b7bf67593b8.png)
+
+### User-directed putaway prompt sequence
+
+An arrowed composite links Warehouse Mobile work execution to Putaway profile selection and user-directed work-unit input. Lower panels show pick confirmation at the receiving location followed by putaway confirmation prompting for destination and then item. License plate, lot, expiration, quantity and UOM provide context.
+
+Limit: The composite is an illustrative sequence, not a complete interaction recording or proof of Closed/upload status. Source image was inspected at original resolution subject to display scaling.
+
+[sdd-c4c7e01f8ccad48a b00888, b00890, b00892, b00894, b00896, b00897](reading/sdd-c4c7e01f8ccad48a.md#b00888)
+
+Assets: [c911780adf91356bc8177f534355577278a65972860ddbf3676bdc1903926c03.png](assets/sdd-c4c7e01f8ccad48a/c911780adf91356bc8177f534355577278a65972860ddbf3676bdc1903926c03.png)
+
+### Putaway actions
+
+Putaway confirmation displays an Actions menu containing Locate, Override, Pass and Skip over work/location/item context. The screenshot does not show the override validation dialog or permission configuration.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-c4c7e01f8ccad48a b00905, b00906, b00908, b00910, b00912, b00913, b00915](reading/sdd-c4c7e01f8ccad48a.md#b00905)
+
+Assets: [d0d29db44eb2088666196a333f3c86a6baf9d1b36c72f991c9c67e8ee59117ad.png](assets/sdd-c4c7e01f8ccad48a/d0d29db44eb2088666196a333f3c86a6baf9d1b36c72f991c9c67e8ee59117ad.png)
+
+### Container creation strategy example
+
+The configuration grid identifies Container Creation Strategy as key 10 with system value 20; its edit dialog displays Consolidate and Do Not Split. Value required and System created are checked. This ties the visible example code to its displayed label, not to a universal default.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-f46806ef53e15f07 b00619, b00623, b00624](reading/sdd-f46806ef53e15f07.md#b00619)
+
+Assets: [3650f50f7f0d70b2eba39558312ac0a3997b0f85ce81ccf9249cdad000602ac7.png](assets/sdd-f46806ef53e15f07/3650f50f7f0d70b2eba39558312ac0a3997b0f85ce81ccf9249cdad000602ac7.png)
+
+### Default container-creation filter
+
+The criteria dialog shows record type CONT CREAT, filter *Default and table Shipment alloc request. The visible rule is LAUNCH_NUM IS NOT NULL; Inactive is unchecked and System created is checked. An Order by tab is visible but its contents are not shown.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-f46806ef53e15f07 b00626, b00627, b00628](reading/sdd-f46806ef53e15f07.md#b00626)
+
+Assets: [5c2d19bca269f4c09a3be329023c31f77f7c35df0c4704d5bc9dfda35b7ad801.png](assets/sdd-f46806ef53e15f07/5c2d19bca269f4c09a3be329023c31f77f7c35df0c4704d5bc9dfda35b7ad801.png)
+
+### Container class examples
+
+The list shows CS/Carton, PAL/Palette and PCB/PCB Complet. The selected PCB dialog displays UCC code 0 and EPC filter value 0 with Inactive unchecked. These class examples do not establish dimensions or physical capacity.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-f46806ef53e15f07 b00630, b00631](reading/sdd-f46806ef53e15f07.md#b00630)
+
+Assets: [bd8e7f91d55601162b4d73443a2c5163ac06dac9464a043f348e6c5b7205e237.png](assets/sdd-f46806ef53e15f07/bd8e7f91d55601162b4d73443a2c5163ac06dac9464a043f348e6c5b7205e237.png)
+
+### Container type dimensions
+
+The container-type grid lists C5, FAC, PAL and PCB with class and length/width/height in cm. The examples include C5 at 60×40×40 and PCB at 999×999×999. All four show Use as default No and Active Yes; the large PCB values are displayed data, not validated package dimensions.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-f46806ef53e15f07 b00632, b00633, b00634](reading/sdd-f46806ef53e15f07.md#b00632)
+
+Assets: [af9e2b4b79880110270cb46f33d63167bbcc85e9b986b69e5c6baabaf91971ec.png](assets/sdd-f46806ef53e15f07/af9e2b4b79880110270cb46f33d63167bbcc85e9b986b69e5c6baabaf91971ec.png)
+
+### Container group sequencing
+
+The selected Emballage HADDAD group has one visible detail: sequence 10, C5, fill percent 100 and Standard shape. Other group names appear in the grid. The example illustrates ordering and type membership without proving all eligible containers.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-f46806ef53e15f07 b00636, b00637](reading/sdd-f46806ef53e15f07.md#b00636)
+
+Assets: [4a2cce7de709588440ef72ad0904e969af0ecd8b3c8f3e5d4bc1d837035a9bdb.png](assets/sdd-f46806ef53e15f07/4a2cce7de709588440ef72ad0904e969af0ecd8b3c8f3e5d4bc1d837035a9bdb.png)
+
+### Packing-class relationship fields
+
+The selected CUSTOM / Custom Mono Kit packing class has General-tab fields for container group and packing criteria. Both selected values are clipped in their controls; their full text is not inferred. Other rows distinguish style/color/size combinations.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-f46806ef53e15f07 b00639, b00640](reading/sdd-f46806ef53e15f07.md#b00639)
+
+Assets: [2938602a08a6820fd4d1ce2f2a9e854f9114a47f5a329bc7ad7d4e55b0e895a0.png](assets/sdd-f46806ef53e15f07/2938602a08a6820fd4d1ce2f2a9e854f9114a47f5a329bc7ad7d4e55b0e895a0.png)
+
+### QC criteria image conflicting with prose
+
+The QC assignment criteria dialog labels its source Shipping container, while its visible rule uses an OR over WORK_INSTRUCTION.INCOMING_PD_LOC and WORK_INSTRUCTION.WORK_TYPE. No warehouse IS NOT NULL expression is visible, contrary to the next paragraph. Inactive and System created are unchecked.
+
+Limit: Source disagreement is retained. SQL joins, full runtime eligibility and the intended deployment predicate are unestablished; this is not an executable recipe.
+
+[sdd-f46806ef53e15f07 b00648, b00649, b00650](reading/sdd-f46806ef53e15f07.md#b00648)
+
+Assets: [aabd1b8039cf7626aa02412652ecd5ccad42e71eabcbdaac6ad61a668631755b.png](assets/sdd-f46806ef53e15f07/aabd1b8039cf7626aa02412652ecd5ccad42e71eabcbdaac6ad61a668631755b.png)
+
+### QC evaluation-method catalog
+
+The list shows system-created active methods Manual (30), Start Work (20) and Wave (10). The Manual edit dialog repeats identifier 30 and record type QCEVALMETHOD. Catalog presence does not establish which methods an assignment enables.
+
+Limit: Static source example only; does not establish current configuration, successful execution, user authorization or deployed navigation.
+
+[sdd-f46806ef53e15f07 b00652, b00653](reading/sdd-f46806ef53e15f07.md#b00652)
+
+Assets: [74799190661e364a2cd348595d836e67910e0a82c605efe9d77718dc53908aaf.png](assets/sdd-f46806ef53e15f07/74799190661e364a2cd348595d836e67910e0a82c605efe9d77718dc53908aaf.png)
+
+### QC assignment General and method tabs
+
+Two images show the same Quality control Zone assignment. General has priority 2, criteria Quality control and Apply to 1 of 1.00 Containers. The methods tab leaves Manual unchecked and checks Start Work and Wave, contradicting the prose instruction to select Manual.
+
+Limit: The displayed current-container counter is sample state. Method selections conflict with the narrative; priority direction, counter resets, actual sampling and effective deployment are not validated.
+
+[sdd-f46806ef53e15f07 b00657, b00658](reading/sdd-f46806ef53e15f07.md#b00657)
+
+Assets: [18595db9c33b40dc302bda1b4e4d7bb94a1224072da27ed78447a5c2a742e8d6.png](assets/sdd-f46806ef53e15f07/18595db9c33b40dc302bda1b4e4d7bb94a1224072da27ed78447a5c2a742e8d6.png); [b2b780989cf4e6960e92f095ca41db8b7db9444b6466931449e6f48b849b4c8a.png](assets/sdd-f46806ef53e15f07/b2b780989cf4e6960e92f095ca41db8b7db9444b6466931449e6f48b849b4c8a.png)
