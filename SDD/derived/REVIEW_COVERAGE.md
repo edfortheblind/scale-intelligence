@@ -4,7 +4,7 @@ Nine originals produce eight unique extracted bodies. Counts separate authored s
 
 | Source | Cited nodes / extracted | Described assets / unique assets | PDF pages viewed / total | Static slides viewed / total |
 | --- | ---: | ---: | ---: | ---: |
-| J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf | 484 / 1608 | 90 / 90 | 119 / 119 | N/A |
+| J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf | 485 / 1608 | 90 / 90 | 119 / 119 | N/A |
 | Manhattan SCALE - Labels.pptx | 84 / 209 | 40 / 43 | Not rendered | 45 / 45 |
 | SCALE Work and Picking Functionality.docx | 422 / 995 | 13 / 13 | Not rendered | N/A |
 | Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx | 889 / 2450 | 136 / 137 | Not rendered | N/A |
@@ -92,3 +92,7 @@ Source comments, inconsistent names, implementation choices and unresolved condi
 Three SCALE sources add 7 claims and 4 settings. The citation union gains 38 nodes and reaches 2795/11,618. Described media remain 605/613; existing 231 PDF-page views, 45 slide views and 79 logical tables remain unchanged.
 
 Source comments, inconsistent names, implementation choices and unresolved conditions remain explicit. The separate LAND MAWM text is excluded from this batch. No citation-count or completeness target overrides the supported source meaning.
+
+## Continuation 12 Knipper source packet
+
+Knipper page 84 load-building prose corroborates the reviewed Covetrus sequence, including an ambiguous negative stop-additional-shipments condition. It receives no new claim or citation credit. A distinct Knipper page-85 statement about wave replenishment work creation adds one claim and one cited node. The register now has 317 claims and 283 settings; the citation union is 2796/11,618 (24.07%), including Knipper 485/1608. Described assets remain 605/613, PDF pages viewed 231/231, static slides viewed 45/45 and logical PDF tables 79. No installed-setting or runtime acceptance is inferred.

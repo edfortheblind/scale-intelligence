@@ -6649,3 +6649,15 @@ The following generic Close Container description and Shipping Container Insight
 - C10 Knipper component-rule failure comment and allocation-on-release reply do not identify a proven correction; creation-time availability and mandatory header release remain in documentary tension.
 - C10 Grupo USER_DEF3 grouping and work-unit maximums lack values/full predicates; EX01 scope and actual configuration remain unverified.
 - C10 Cooler Auto Putaway and HADDAD inactive *Default receiving preference are source-specific choices, not deployed or universal defaults.
+
+## Continuation 12 Knipper load and replenishment source packet
+
+Knipper page 84 repeats the reviewed Covetrus Load Building sequence: wave shipments are ordered by carrier, shipments without a carrier are ignored, open loads are matched by carrier, scheduled ship date and route, and a new load is created when no match exists. Both documents retain the ambiguous negative wording around whether a matched load stops additional shipments. These are different named implementations. The page-84 passages provide corroboration only; they add no distinct claim, citation credit or executable stop-flag rule.
+
+### knipper-c12-wave-replenishment-work-creation-scope
+
+In the Knipper wave flow, replenishment work creation applies only to demand-based replenishments already created. The design says this wave step does not change the existing work-creation setup.
+
+This is a Knipper SCALE implementation design statement. It does not establish current deployed behavior, actual work types or the contents of existing setup. It specifies no setting value or trigger timing. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p085-b007](reading/sdd-1c25f20de1eafc3e.md#p085-b007)
