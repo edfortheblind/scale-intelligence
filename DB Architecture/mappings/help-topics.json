@@ -10,7 +10,7 @@
     "live_processes_executed": 0,
     "configured_values_in_topics": 0,
     "semantic_claim": "Bounded static and documentary topics; full functional, deployment and application acceptance remains open.",
-    "execution_step_count": 853,
+    "execution_step_count": 858,
     "authored_evaluation_cases": 717
   },
   "evidence_rules": [
@@ -59141,9 +59141,9 @@
     },
     {
       "topic_id": "packing-replacement-lp-context",
-      "title": "Replacement license plate rejected: distinguish Packing from Override Pick",
+      "title": "Packing and mobile Close Container: AIM base behavior and replacement-LPN limits",
       "business_question": "What can the retained SCALE sources establish about replacing a license plate while packing?",
-      "plain_answer": "The retained SCALE Packing instructions describe selecting a shipping container and packing shipment-line items. They do not establish a Packing action called replacement LPN or its validation rules. First identify whether the rejection is in Packing or in Warehouse Mobile Override Pick; an item that looks the same does not prove that either action accepts it.",
+      "plain_answer": "AIM distinguishes packing items into a shipping container from handling its weight and closing it in Warehouse Mobile. If close fails, read the exact error and check the applicable weight, quality checks (QC) and value-added services (VAS) conditions. Neither flow documents replacing an inventory license plate. The documented desktop scale extension hook does not establish an installed DB extension or a replacement rule.",
       "trigger": "A user needs a source-bound explanation of the named warehouse action or configuration.",
       "input_context": [
         "Exact screen and action, relevant work or container stage, item tracking and applicable preference; provide sanitized context without transaction exports."
@@ -59152,69 +59152,125 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "In Packing, identify whether the scanned value is the shipment initiation value, shipping Container ID, item/item cross-reference or serial number. Check Status Info and open the specific Error-column message. Existing shipping-container selection is documented; replacement of an inventory license plate in Packing is not established by these sources.",
+          "explanation": "Warehouse Mobile Close Container: open Close Container and enter or scan the shipping Container ID. For a valid container, AIM says the screen retrieves Container ID, System Weight and Actual Weight. The documented input identifies the container being closed; this passage does not define an inventory-license-plate replacement action.",
+          "objects": [],
+          "evidence_refs": [
+            "operator-mobile-close"
+          ]
+        },
+        {
+          "order": 2,
+          "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
+          "explanation": "For the mobile system-weight route, tap Go without entering another actual weight; for a measured-weight route, enter Actual Weight and tap Go. AIM describes the resulting Container is Closed confirmation. Shipping weight is container-type weight plus item weight. Closing checks the defined weight tolerance; a weight exceeding the tolerance prompts for confirmation. The article does not provide a full invalid-ID or replacement-ID error contract.",
+          "objects": [],
+          "evidence_refs": [
+            "operator-mobile-close"
+          ]
+        },
+        {
+          "order": 3,
+          "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
+          "explanation": "On the Packing screen, including the full-screen/Insight flow, initiate with the identifier selected in the assigned Packing Preferences, such as shipment number, ERP order or invoice. Open lines are displayed; if no quantity remains to pack, AIM describes a no-lines-available error. The Packing procedure excludes shipments on unreleased waves, and the preference Status Range controls line eligibility. Read Status Info and the exact Error-column message before inferring an item mismatch.",
+          "objects": [],
+          "evidence_refs": [
+            "operator-packing-screen",
+            "operator-packing-preferences"
+          ]
+        },
+        {
+          "order": 4,
+          "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
+          "explanation": "Packing has separate container and item inputs. Existing selects an associated shipping container; New uses a manually entered ID or a system-created ID according to Container Assignment Method. An existing container keeps its established type. With Validate Item active, scan/enter the item or item cross-reference; otherwise select the grid row. Set the packing quantity. These choices document where shipment-line items are packed, not a permission to exchange an inventory license plate.",
+          "objects": [],
+          "evidence_refs": [
+            "operator-packing-screen",
+            "operator-packing-preferences"
+          ]
+        },
+        {
+          "order": 5,
+          "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
+          "explanation": "Pack applies the selected shipment-line quantity, and Pack All applies remaining item quantities. A fully packed line disappears from the grid, and total quantity and weight update. The documented item-tracking conditions can require serial-number or catch-weight entry. An Error-column checkbox opens the specific packing error. When packing is complete, the Packing Close action opens Close Container; that navigation alone does not prove successful closure.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-screen"
           ]
         },
         {
-          "order": 2,
+          "order": 6,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "If the actual screen is mobile Pick Confirmation or Override Pick, apply the separate picking contract: Override Pick security and the relevant Work Special Handling license-plate override must allow it. Quantity differences, grouping and container verification have their own documented conditions. These are picking controls, not a Packing substitution procedure.",
+          "explanation": "Successful close advances container status and means packing is complete; additional items cannot be packed into the closed container. Auto manifesting, auto printing and load assignment depend on Packing Preferences. The mobile article also conditions last-container printing on the document type Close Last Container print procedure. Keep the close confirmation separate from optional downstream delivery or printing outcomes.",
           "objects": [],
           "evidence_refs": [
-            "operator-override-pick-continuation3"
+            "operator-mobile-close",
+            "operator-close-container",
+            "operator-packing-preferences"
           ]
         },
         {
-          "order": 3,
+          "order": 7,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For an Override Pick from another location/license plate, the inventory-attributes article requires the new pick location to have the same attribute values as the original. Lot/location/LP changes must also pass the applicable override validation. Visual similarity or an item name alone is therefore insufficient evidence that a pick override is eligible.",
+          "explanation": "The separate Closing a Container article documents pending/failed QC blocking close until resolved, and Packing Preferences documents how pending VAS can block or offer an override. Its configured new-container-at-close branch checks uniqueness among shipping containers and multiple order pallets. The preference explicitly limits creating containers during close to the remote-desktop system-menu screen; do not transfer that creation branch to Warehouse Mobile or treat it as replacing an existing inventory LP.",
           "objects": [],
           "evidence_refs": [
+            "operator-close-container",
+            "operator-packing-preferences"
+          ]
+        },
+        {
+          "order": 8,
+          "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
+          "explanation": "AIM explicitly documents a Close Container Action exit point: when enabled, it executes instead of the base package scale interface. That is a documented extension hook for the scale action. It does not prove that this site enables the hook, implements it in the DB, changes mobile or Packing validation, or caused the reported rejection. No installed extension or customized replacement-LPN behavior is established here.",
+          "objects": [],
+          "evidence_refs": [
+            "operator-close-container"
+          ]
+        },
+        {
+          "order": 9,
+          "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
+          "explanation": "Only if the actual action is Warehouse Mobile Pick Confirmation or Override Pick should the separate picking rules be used: security and Work Special Handling must allow the override, quantity/grouping/container verification has its own conditions, and the new pick location must have the same inventory-attribute values. Lot/location/LP changes still require applicable validation. These constraints explain why an item name alone is insufficient for an eligible pick override; they do not supply the missing Packing or Close Container replacement-LPN contract.",
+          "objects": [],
+          "evidence_refs": [
+            "operator-override-pick-continuation3",
             "operator-inventory-attributes",
-            "operator-work-processing",
-            "operator-override-pick-continuation3"
-          ]
-        },
-        {
-          "order": 4,
-          "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Provide the exact screen/action label, error text, scanned identifier type, whether the item has already been picked/packed, and a sanitized description of differing quantity, lot or inventory attributes. If it is truly a Packing-specific replacement action, the missing evidence is its installed screen/action contract or source documentation; do not borrow another product's LPN rules.",
-          "objects": [],
-          "evidence_refs": [
-            "operator-packing-screen",
-            "operator-override-pick-continuation3"
+            "operator-work-processing"
           ]
         }
       ],
       "configuration_dependencies": [
-        "Packing preference initiation/item validation versus Override Pick security and Work Special Handling; these apply to different flows.",
-        "Picking inventory attributes, lot, quantity/grouping and LP/container verification, only when the actual action is Override Pick."
+        "Warehouse Mobile Close Container: the documented container weight and defined tolerance; optional closing effects depend on Packing Preferences and document type.",
+        "Packing screen: assigned preference, initiation field, Status Range, Validate Item, Container Assignment Method, eligible container type, quantity and item tracking.",
+        "Keep remote-desktop create-at-close, documented scale exit point and mobile Pick/Override Pick controls within their stated source scope; their availability at this site is not established."
       ],
       "expected_results": [
         "Identify the documented route, the checks it requires and any fact the available sources cannot establish."
       ],
       "explanation_paths": [
-        "No current-state diagnosis or replacement-LPN permission is supported. Use the exact application error and screen context to choose the documented action, and retain the unknown if it is a separate/custom Packing action."
+        "Identify whether the visible action is Packing, Warehouse Mobile Close Container, the separate desktop Close Container screen, or Pick/Override Pick. Identify the scanned field: shipment initiation value, shipping Container ID, item/cross-reference, serial number or inventory LP. Use the corresponding AIM base workflow.",
+        "For an unexplained rejection, retain the exact screen/action label and sanitized error text. The source-backed base behavior is documented here; proving a replacement-specific or locally extended rule requires separate evidence and must not be inferred from a captured DB routine name."
       ],
       "boundaries": [
         "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
         "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
         "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.",
-        "Corpus discovery found no retained replacement-LPN Packing contract. This is a bounded source gap, not proof the installed application cannot provide one."
+        "The retained AIM passages establish the documented base workflows and one scale-interface exit point. They do not establish a Packing or Warehouse Mobile Close Container replacement-LPN acceptance/rejection contract.",
+        "A possible local DB extension remains a hypothesis, not an observed installation fact or a diagnosed cause. No DB source comparison, effective extension configuration, live screen or warehouse action was examined in this continuation.",
+        "Documenting the clarified base workflows does not make the exact frozen replacement-LPN scenario fully answered; that narrower validation contract and the actual screen/error remain unknown."
       ],
       "evidence_refs": [
+        "operator-mobile-close",
         "operator-packing-screen",
+        "operator-packing-preferences",
+        "operator-close-container",
         "operator-override-pick-continuation3",
         "operator-inventory-attributes",
         "operator-work-processing"
       ],
       "review": {
         "semantic_state": "DOCUMENTARY_STATIC_REVIEWED_BOUNDED",
-        "method": "Manually reviewed the exact cited AIM article passages and surrounding flow; original hashes and node bindings checked. Corpus searches support bounded absence statements only.",
-        "independent_verification": "PENDING_COORDINATOR_VERIFICATION_CONTINUATION3",
+        "method": "Continuation 5 AIM-only source review of mobile Close Container, full-screen Packing, documented close settings and scale exit point; exact original/article/node bindings reparsed and checked. No installed extension is inferred.",
+        "independent_verification": "PENDING_FRESH_CONTINUATION5_LEAF_VERIFICATION",
         "live_process_execution": "NOT_PERFORMED",
         "whole_process_duration": "NOT_ESTABLISHED",
         "current_configuration_claim": "NONE_IN_THIS_TOPIC"
