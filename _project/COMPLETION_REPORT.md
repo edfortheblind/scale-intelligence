@@ -58,7 +58,7 @@ On the unchanged 445-question subset, expected-topic top-eight retrieval changed
 - Complete functional/deployment reconciliation.
 - Full DOCX page fidelity.
 - Whole-process elapsed timing.
-- Actual browser/keyboard/screen-reader and intended-user acceptance.
+- Complete browser/keyboard/screen-reader and intended-user acceptance.
 - Insight navigation/SOP registration (separately initiated future task).
 
 Word preference: the prior diagnostic recorded `Options.UpdateLinksAtOpen=false`. The earlier value was not retained, so historical restoration cannot be verified. This continuation made no Word preference writes or document opens.

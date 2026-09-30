@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-09-30T22:10:16.512682+00:00",
+  "state": "PASS_BOUNDED_NATIVE_BROWSER_CHECKS",
+  "prior_url_block": "RESOLVED_BY_CURRENT_OBSERVATION",
+  "observer": "Root coordinator; manual native Computer Use observations, not an independent accessibility audit",
+  "environment": {
+    "os": "Windows",
+    "browser": "Brave",
+    "viewport_observed": [
+      1277,
+      906
+    ],
+    "base_url": "http://127.0.0.1:56580",
+    "application": "Local SCALE Knowledge preview",
+    "browser_version": "Not captured",
+    "zoom": "Not measured or changed"
+  },
+  "owner_observation": "Owner reports the page opens and works great. This is recorded as general page-use feedback only.",
+  "input_bindings": [
+    {
+      "path": "tools/help_knowledge.py",
+      "bytes": 22738,
+      "sha256": "37c64dbccd64844318621232e86bca144d3f83e99ce2c103b82ac0491b9defae"
+    },
+    {
+      "path": "tools/serve_help.py",
+      "bytes": 5379,
+      "sha256": "204d7807dcdb2eb691806875c3101efe17e9bc9a09dd61cc4c6fc305948b0442"
+    },
+    {
+      "path": "tools/render_help_page.py",
+      "bytes": 6656,
+      "sha256": "2ad719dce91150aaaea1e56b384516f8ade6c9f7326ecd732e7359a739fc380e"
+    },
+    {
+      "path": "tools/reviewed_sdd_source.py",
+      "bytes": 2892,
+      "sha256": "f4e34a098954119b421f09dcfe15a0fdb1045a2914f548bed1600bf871e706de"
+    },
+    {
+      "path": "tools/reviewed_process_source.py",
+      "bytes": 4092,
+      "sha256": "f53791c564199e1b03dc8e0057661188d74bb5c25bc65aa878e08a84bfeee43b"
+    },
+    {
+      "path": "tools/article_data.py",
+      "bytes": 22168,
+      "sha256": "b44c9510d9985eaa2484b41e8e08318c7a1afdc74c670c2d4981ed3cfa761951"
+    },
+    {
+      "path": "DB Architecture/mappings/help-topics.json",
+      "bytes": 2624059,
+      "sha256": "efeecaa9079ecb37d214593113ddf227261f7b006b36472e5843a5dcfbcf1129"
+    },
+    {
+      "path": "help_app/vendor-source-manifest.json",
+      "bytes": 52530,
+      "sha256": "d444bc71d7a9523aeb9bbcf6bec56248c7c98cc0ee90fee7405b1f5d338ee305"
+    }
+  ],
+  "checks": [
+    {
+      "id": "GUI-01",
+      "check": "Verify intended browser URL",
+      "result": "PASS",
+      "observed": "Existing Brave SCALE Knowledge window showed http://127.0.0.1:56580/ in address bar and accessibility document URL. Initial unrelated foreground capture was discarded; the chosen Brave window was activated and recaptured."
+    },
+    {
+      "id": "GUI-02",
+      "check": "Read page and search controls",
+      "result": "PASS",
+      "observed": "SCALE Knowledge heading, labeled question input, persistent subject hint, Search guidance button and Browse all 340 reviewed topics were visible. The topic browser was collapsed and the resulting state observed."
+    },
+    {
+      "id": "GUI-03",
+      "check": "Submit search with keyboard",
+      "result": "PASS",
+      "observed": "Clicked the question input, observed focus, entered container close, pressed Tab and observed the orange focus outline on Search guidance; Enter submitted. A later fresh capture showed /?q=container+close and eight related explanations."
+    },
+    {
+      "id": "GUI-04",
+      "check": "Open Packing result",
+      "result": "PASS",
+      "observed": "Scrolled the fourth result into view, then clicked Packing and mobile Close Container: AIM base behavior and replacement-LPN limits. URL changed to /topic/packing-replacement-lp-context#answer and the answer rendered."
+    },
+    {
+      "id": "GUI-05",
+      "check": "Inspect answer target and structure",
+      "result": "PASS",
+      "observed": "The answer card had visible orange focus outline. What it does, When it starts, What happens, What can affect it, Expected results, What you can check, evidence limits and More detail and sources appeared in the accessibility structure; the first three sections were directly visible."
+    },
+    {
+      "id": "GUI-06",
+      "check": "Open citation with keyboard",
+      "result": "PASS",
+      "observed": "Tab from the answer moved to the first vendor-source disclosure and scrolled it into view with an orange focus outline. Space expanded Warehouse Mobile Close Container, showing source and reading-copy hashes plus node n56/n57 text."
+    },
+    {
+      "id": "GUI-07",
+      "check": "Reverse keyboard path",
+      "result": "PASS",
+      "observed": "Shift+Tab moved from the first source disclosure to Browse all 340 reviewed topics, then Search guidance, then the labeled input, then Skip to main content. Each successive visible focus state was inspected."
+    },
+    {
+      "id": "GUI-08",
+      "check": "Activate skip link",
+      "result": "PASS",
+      "observed": "Enter on Skip to main content changed the URL fragment to #main, scrolled to the main content, and showed the main container focus outline."
+    }
+  ],
+  "counts": {
+    "passed": 8,
+    "failed_application_checks": 0
+  },
+  "tool_limitations": [
+    "Accessibility focused_element repeatedly reported the address bar while screenshots showed the actual page focus; focus claims use visible screenshots, not that stale field.",
+    "One attempt to click an off-screen Packing result returned outside-window-bounds; no action credited. After scrolling and recapturing the visible result, the click succeeded.",
+    "Immediate captures can precede page updates; results were confirmed in later fresh captures.",
+    "Screenshots and accessibility output were inspected in the tool conversation. No screenshot file is included in the publication; these are observer receipts, not independently replayed GUI evidence."
+  ],
+  "not_performed": [
+    "JAWS/NVDA or any other screen-reader session",
+    "Intended-user accessibility acceptance",
+    "Complete keyboard traversal of all 340 topics",
+    "Zoom/reflow/contrast audit",
+    "Cross-browser/version matrix",
+    "Warehouse Insight or Mobile operational navigation"
+  ],
+  "final_page": "http://127.0.0.1:56580/topic/packing-replacement-lp-context#main",
+  "boundary": "No warehouse action, login, security bypass, browser/global setting change, operational data entry or unrelated app input."
+}
