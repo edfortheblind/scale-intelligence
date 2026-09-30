@@ -2,7 +2,7 @@
   "schema_version": 1,
   "task": "continuation3/parent",
   "attempt": 1,
-  "completed_utc": "2026-09-30T16:47:36.076832+00:00",
+  "completed_utc": "2026-09-30T16:51:11.559021+00:00",
   "review_scope": "PARENT_AUDIT",
   "independence": "Fresh native reviewer context; no product-author role",
   "audit_verdict": "PASS_WITH_OBSERVATIONS",
@@ -13,8 +13,8 @@
   "base_revision": "d550b7548a671d8116a27a509bc030c5e840d869",
   "product_manifest": {
     "path": "_project/continuation3-changed-outputs.json",
-    "sha256": "f7b96e7666d4619662fdc511072a9ba733c8e1851aa16f956145fee0eed8c046",
-    "artifacts": 35,
+    "sha256": "18bd458e30f01e85afe038221c5887ba09037e99b7e86edaffc9fab00b1d2cda",
+    "artifacts": 36,
     "all_current_bytes_match": true
   },
   "required_child_roots": [
@@ -53,6 +53,14 @@
       "finding": "One Packing replacement-LPN scenario remains partial; 43 authored retrieval misses, partial SDD semantics/assets, source contradictions, one table purpose, deployment/runtime and browser/user/layout acceptance remain unresolved.",
       "disposition": "Preserved in current reports with exact denominators and next evidence; no claim of overall completion.",
       "product_fix_required": false
+    },
+    {
+      "id": "C3-PA-03",
+      "severity": "MAJOR",
+      "category": "DELIVERY_BYTE_INTEGRITY",
+      "finding": "The first publication commit normalized the frozen scenario receipt from CRLF to LF, so its Git blob did not match the reviewed byte hash. JSON meaning was unchanged.",
+      "disposition": "FIXED_AND_DELTA_VERIFIED_IN_INDEX: exact-file text/filter override preserves the original 74,525 bytes. All36 staged blobs now match the manifest. Final commit, remote and fresh-checkout parity remain separately verified publication work.",
+      "product_fix_required": false
     }
   ],
   "unresolved_introduced_correctness_findings": 0,
@@ -67,13 +75,18 @@
     "new_dependencies": 0,
     "new_services": 0,
     "new_operational_connections": 0,
-    "timing_limit": "See C3-PA-01; retrospective details do not establish their earlier recording."
+    "timing_limit": "See C3-PA-01; retrospective details do not establish their earlier recording.",
+    "intentional_repository_configuration_changes": [
+      "One exact receipt-path byte-preservation attribute using the existing text/filter boundary; two added lines including comment."
+    ]
   },
   "checks": {
     "independent_bounded_checks": {
       "passed": 14,
       "failed": 0,
-      "scope": "Product hashes, source text, current identity bindings, metrics, unchanged evaluation subset, frozen questions, report reproduction and verifier log identity"
+      "scope": "Product hashes, source text, current identity bindings, metrics, unchanged evaluation subset, frozen questions, report reproduction and verifier log identity",
+      "bound_original_product_root": "f7b96e7666d4619662fdc511072a9ba733c8e1851aa16f956145fee0eed8c046",
+      "carried_forward_after_byte_identity_check": true
     },
     "focused_regressions": {
       "command": "python -B -m unittest tests.test_help_app.HelpKnowledgeTests.test_vendor_parent_citation_includes_nested_source_text tests.test_help_app.HelpKnowledgeTests.test_source_markup_and_search_are_inert_in_native_html tests.test_report_completion -v",
@@ -123,7 +136,7 @@
     }
   },
   "covered": [
-    "Exact 35-artifact product identity and baseline changed-path scope",
+    "Exact 36-artifact product identity; original35 unchanged; all36 staged blobs match; exact-file Git attribute delta reviewed",
     "Changed source-display/report code and tests, relevant parser/render callers and fingerprint",
     "Six new help topic cores, limits and one existing NULL-mode explanation; child scenario semantic review",
     "Independent SDD child coverage and exact final ten-artifact root",
@@ -138,5 +151,31 @@
     "New-result owner acceptance, Git publication/parity, external deployment or OneDrive status",
     "Complete monitoring of other agents process effects or technical read-only OS containment"
   ],
-  "state_record_boundary": "Root verification/publication/audit receipts are separate from the immutable product root. Truthful state-only updates do not certify new product bytes; changed product bytes require affected-root reevaluation."
+  "state_record_boundary": "Root verification/publication/audit receipts are separate from the immutable product root. Truthful state-only updates do not certify new product bytes; changed product bytes require affected-root reevaluation.",
+  "initial_audit_completed_utc": "2026-09-30T16:47:36.076832+00:00",
+  "audit_update_scope": "BOUNDED_DELTA_AUDIT",
+  "delta_audit": {
+    "reason": "Git normalization violated frozen receipt byte identity",
+    "prior_audit_sha256": "4483223ab5e8a4e0fed8bc1125c8b492deb79380a111c555b65a862b729dfabc",
+    "prior_product_root": "f7b96e7666d4619662fdc511072a9ba733c8e1851aa16f956145fee0eed8c046",
+    "current_product_root": "18bd458e30f01e85afe038221c5887ba09037e99b7e86edaffc9fab00b1d2cda",
+    "changed_product_paths": [
+      ".gitattributes"
+    ],
+    "original_artifacts_unchanged": 35,
+    "required_child_roots_unchanged": true,
+    "checks_passed": 8,
+    "checks_failed": 0,
+    "working_product_hash_matches": 36,
+    "staged_product_blob_hash_matches": 36,
+    "original_scenario_receipt_sha256": "7c26194fc379173a57c5f1eace63a8d9d3f6507c54d1a409cf8cb11e4b2552dd",
+    "original_scenario_receipt_bytes": 74525,
+    "affected_rule": "_project/help-question-continuation3.json -text -filter whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+    "unaffected_attribute_samples": [
+      "The earlier follow-up receipt retains text/eol policy",
+      "help_app/evaluation.json retains text/eol policy"
+    ],
+    "tests_not_repeated": "Runtime, HTTP and semantic reviews carry forward because all original35 artifact bytes and both child roots are unchanged.",
+    "publication_state_at_review": "Correction staged; final remote/clean-checkout verification not asserted by this audit."
+  }
 }

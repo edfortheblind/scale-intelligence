@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "recorded_at": "2026-09-30T16:48:21.256816+00:00",
+  "recorded_at": "2026-09-30T16:51:45.675441+00:00",
   "outcome": "DONE_WITH_CONCERNS",
   "delivery_state": "VERIFIED_LOCAL_CONTENT; AUTHORIZED_PRIVATE_PUBLICATION_RECORDED_SEPARATELY",
   "product_state": "CITATION_DEFECT_FIXED; SOURCE_KNOWLEDGE_EXPANDED; DOCUMENTED_EVIDENCE_GAPS_REMAIN",
@@ -349,6 +349,13 @@
       "checked": 2238,
       "missing": 0,
       "fragment_targets_checked": false
+    },
+    {
+      "check": "Publication exposure and private-path exclusions",
+      "state": "PASS",
+      "changed_paths": 40,
+      "frozen_product_artifacts": 36,
+      "scope": "Exact authorized changed output paths; protected connection values and private-key/token patterns scanned without disclosure."
     }
   ],
   "fixed_concerns": [
@@ -368,9 +375,14 @@
     },
     {
       "id": "FRESH_PARENT_AUDIT",
-      "change": "Fresh-context independent parent audit completed after child verification against the frozen 35-artifact product root.",
+      "change": "Fresh-context independent parent audit completed after child verification, followed by a bounded Git byte-preservation delta review.",
       "verdict": "PASS_WITH_OBSERVATIONS",
       "limits": "Bounded changed-scope audit, not full-project recertification or owner acceptance."
+    },
+    {
+      "id": "GIT_RECEIPT_BYTE_FIDELITY",
+      "change": "An exact-path Git attribute preserves the frozen scenario receipt original CRLF bytes; all original 35 product hashes are unchanged.",
+      "validation": "All 36 staged product blobs equal the frozen manifest; clean checkout verification recorded separately."
     }
   ],
   "known_scenario_review": {
@@ -426,10 +438,11 @@
       "state": "PASS_WITH_OBSERVATIONS",
       "fresh_context": true,
       "receipt": "_project/independent-audit-continuation3.json",
-      "sha256": "4483223ab5e8a4e0fed8bc1125c8b492deb79380a111c555b65a862b729dfabc",
+      "sha256": "3f2f60ead1384630581e4170ae4a54fe9a98c4f0038ab988cd15cd7418d038e4",
       "unresolved_introduced_correctness_findings": 0,
       "independent_checks_passed": 14,
-      "focused_tests_passed": 4
+      "focused_tests_passed": 4,
+      "publication_delta_checks_passed": 8
     }
   },
   "remaining_concerns": [
@@ -490,8 +503,8 @@
   ],
   "changed_outputs": {
     "path": "_project/continuation3-changed-outputs.json",
-    "sha256": "f7b96e7666d4619662fdc511072a9ba733c8e1851aa16f956145fee0eed8c046",
-    "artifacts": 35
+    "sha256": "18bd458e30f01e85afe038221c5887ba09037e99b7e86edaffc9fab00b1d2cda",
+    "artifacts": 36
   },
   "process_observations": [
     {
