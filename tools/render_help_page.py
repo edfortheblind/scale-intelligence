@@ -26,7 +26,8 @@ def render_page(knowledge, question='', topic_id=None):
     parts = ['<section aria-labelledby="search-heading" class="search-panel">',
              '<h2 id="search-heading">Find an explanation</h2>',
              '<form action="/" method="get"><label for="question">Your question or process name</label>',
-             '<div class="search-row"><input id="question" name="q" type="search" maxlength="500" value="'+escape(question, quote=True)+'" placeholder="For example: Why is my shipment summary blank?">',
+             '<p id="search-help">Name the process, screen, setting, or routine so the search can find the right explanation.</p>',
+             '<div class="search-row"><input id="question" name="q" type="search" aria-describedby="search-help" maxlength="500" value="'+escape(question, quote=True)+'" placeholder="For example: Why is my shipment summary blank?">',
              '<button type="submit">Search guidance</button></div></form>',
              element('p', knowledge.summary()['scope'], ' class="scope"'),
              '<details><summary>Browse all '+str(len(knowledge.topics))+' reviewed topics</summary><ul class="topic-list">']

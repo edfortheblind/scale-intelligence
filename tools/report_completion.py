@@ -8,8 +8,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def report(scenario_review='_project/help-question-continuation7.json',
-           retrieval_review='_project/retrieval-change-continuation7.json'):
+def report(scenario_review='_project/help-question-continuation9.json',
+           retrieval_review='_project/retrieval-change-continuation9.json'):
     inputs = {}
     def read(relative):
         raw = (ROOT/relative).read_bytes()
@@ -178,9 +178,9 @@ def markdown(data):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--scenario-review', default='_project/help-question-continuation7.json',
+    parser.add_argument('--scenario-review', default='_project/help-question-continuation9.json',
                         help='Current scenario receipt; historical receipts are never overwritten.')
-    parser.add_argument('--retrieval-review', default='_project/retrieval-change-continuation7.json',
+    parser.add_argument('--retrieval-review', default='_project/retrieval-change-continuation9.json',
                         help='Current retrieval comparison bound to evaluation.json.')
     args=parser.parse_args()
     data=report(args.scenario_review, args.retrieval_review)

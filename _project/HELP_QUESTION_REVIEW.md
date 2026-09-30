@@ -137,3 +137,9 @@ Fresh actual HTTP evaluation passes all 725 selected-topic checks and retains 68
 The [current independent scenario review](help-question-continuation7.json) retains **23/24 adequate (95.83%), one partial and zero missing**, including 22 substantive bounded answers and one appropriate ambiguity clarification. All **152/152 current HTTP requests succeeded**. The review binds all 24 unchanged questions to those responses and records 14 complete-payload reuses, six metadata-only revalidations and four rank/content reviews. This remains known-scenario remediation, without real-user or assistive-technology acceptance. The fresh full test suite passed 368 tests with zero failures or skips; exact checks are recorded in the [current verification receipt](continuation7-20260930.json).
 
 The owner-requested AIM base Mobile Close Container and Insight Packing explanation remains intact. QS-18's replacement-LPN action and validation contract still need applicable source evidence; a documented desktop scale-interface hook does not establish an installed DB extension.
+
+## Continuation 9 current HTTP and unchanged answers
+
+Fresh HTTP capture returned 152/152 successful responses. All24 complete search, answer and cited-source payloads match C7; the current renderer identity is revalidated separately. The [independent C9 receipt](help-question-continuation9.json) preserves 23 adequate and 1 partial with exact-payload reuse, not a new semantic or user-acceptance score. Requested AIM base Packing is complete; the historical replacement-LPN subquestion remains unsupported.
+
+The [39-case retrieval diagnosis](retrieval-diagnosis-continuation9.json) preserves every miss and rejects four regressing ranking alternatives. A persistent subject-naming hint is associated with the search input; ranking, questions and expected topics are unchanged. No browser or screen-reader acceptance is claimed.

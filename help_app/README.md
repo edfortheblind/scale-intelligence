@@ -10,11 +10,13 @@ python tools/serve_help.py --port 8765
 
 Open **http://127.0.0.1:8765**. Stop the server with Ctrl+C in its console. It binds only to loopback, reserves its port exclusively on Windows and serves an explicit route allowlist. It never opens a warehouse database connection or executes operational SQL. A second server cannot bind the same active port.
 
-The interface uses native HTML forms, links, headings, lists and expandable source sections. JavaScript is unnecessary and blocked by the response policy. A skip link, visible focus styling, labels, flexible text sizing and narrow-window layout support accessible use. Browser, screen-reader and intended-user acceptance remain distinct from HTML/HTTP tests; the current automation environment exposed no usable browser surface.
+The interface uses native HTML forms, links, headings, lists and expandable source sections. JavaScript is unnecessary and blocked by the response policy. A skip link, visible focus styling, labels, flexible text sizing and narrow-window layout support accessible use. Browser, screen-reader and intended-user acceptance remain distinct from HTML/HTTP tests; a native browser is available, but the current Computer Use attempt stopped because it could not verify the browser URL. No browser or assistive-technology acceptance is claimed.
 
 ## Answers and sources
 
 Search retrieves authored general guidance; it does not generate a new answer or infer an active configuration. Selecting a topic presents what it does, what happens, what can affect it, expected results, useful checks, evidence limits and sources. Every returned source has an exact identity/hash and cited location. SQL excerpts remain redacted and are not executable examples. Missing evidence remains explicit.
+
+The search field keeps a visible instruction to name the process, screen, setting, or routine. This instruction is associated with the input for assistive technology. A question that omits its subject can match several unrelated processes; search cannot recover an unstated topic. This guidance does not change ranking or count ambiguous questions as successful retrievals.
 
 The source of truth is `DB Architecture/mappings/help-topics.json` plus its source-bound reviewed routine contracts. Startup verifies source fingerprints. Search ranks short reviewed passages and returns each topic once; exact repeated contract boilerplate stays visible in answers but is omitted from retrieval. Matching routine passages include their supporting source identity. Evaluation questions and expected answers are excluded from the index; authored evaluations are not an independent holdout set. Explicit process names rank before incidental text matches. All source/query text is HTML-escaped; no source scripts, attributes, Markdown or links execute in the page.
 

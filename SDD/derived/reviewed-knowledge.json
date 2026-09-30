@@ -6399,6 +6399,257 @@
       "review_state": "SOURCE_REVIEWED_BOUNDED",
       "limits": "English and Spanish repetitions are one documentary account. The existing open-receipt scheduling precondition remains; the passage supplies no deletion permission, cancellation side effect or verified current navigation.",
       "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION8"
+    },
+    {
+      "id": "knipper-c9-inspection-inventory-status-continuation",
+      "statement": "The Knipper note spanning pages 39–40 says LPN inventory status remains QA Hold, or the status assigned during check-in, after putaway. Once inspection is completed or based on its results, each LPN changes to a new inventory status, naming Available and HOLD FOR DEST AUTH.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p039-b007",
+            "p040-b003"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "This closes the previously bounded page-39 continuation. It distinguishes inventory status from the receipt-container Closed status. The source does not define an automatic trigger, inspection outcomes-to-status mapping, responsible role or equivalence among QA Hold, HQ and other status labels.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9",
+      "extends_claim_id": "knipper-dscsa-putaway-ex37-event-boundary"
+    },
+    {
+      "id": "knipper-c9-multi-lot-status-change",
+      "statement": "Knipper describes updating inventory status for multiple selected lots together when managing items for destruction.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p046-b007"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "This is a source-described multi-selection use case. It does not execute destruction, specify a destruction status, establish transaction atomicity or override the separately documented location/LPN status-mixing constraint.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c9-activity-count-short-pick-conflict",
+      "statement": "The Knipper activity-count body says a short pick creates cycle-count work for the affected location. Its adjacent comment says Knipper does not short pick, followed by a reply that the comment can be resolved.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p049-b004",
+            "p049-b005",
+            "p049-b006"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "The resolved annotation supplies no replacement trigger or evidence of actual use. Preserve this difference between a configured-trigger claim and operational practice; do not infer that all short picks occur or all counts are generated.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c9-ptl-count-extension-investigation-boundary",
+      "statement": "Knipper proposes enhancing EX19 to generate a count automatically for PTL mod locations after work-unit completion in the every-wave picking process. A margin comment warns that an unresolved discrepancy and reconciliation-driven inventory adjustment can keep the wave open and prevent further orders from that location; the reply promises follow-up without defining a remedy.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p049-b008",
+            "p049-b011",
+            "p049-b012"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "The body also mixes threshold counts being utilized with a request to enable immediate counts for some work zones. No exact trigger, job configuration, investigation linkage, blocking behavior or implemented fix is established by the proposal and discussion.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c9-inca-reconciliation-comment",
+      "statement": "Knipper describes supervisor reconciliation entering correct on-hand quantity, updating inventory and transaction history, and closing the request; mobile reconciliation is also described. A margin comment separately reports confirming a count and then making a manual adjustment to log an Inventory Check and Adjustment Form (INCA) number for drug product.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p051-b004",
+            "p051-b005",
+            "p051-b006",
+            "p052-b005"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "The reply merely says the comment can be resolved. It does not reconcile those two procedures, specify where to store the INCA number, authorize a second adjustment or establish a compliant operational SOP.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c9-ex38-pick-serial-contract",
+      "statement": "Knipper assigns DSCSA outbound picking validation to EX38: the 3PL Pick DSCSA passage names GTIN and serial validation for different UMs, while the LTL picking passage adds company validation and serial capture at multiple UM levels.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p086-b007",
+            "p097-b003"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "This is the same named outbound extension referenced by the previously reviewed address-verification wave step. The separate specification is not supplied here; no payload, packaging hierarchy, serial uniqueness, integration success or compliance result is proven.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9",
+      "extends_claim_id": "knipper-ex38-address-verification-boundary"
+    },
+    {
+      "id": "knipper-c9-ex19-pick-confirmation-boundary",
+      "statement": "For both PTL and full-case PTL picking, Knipper describes downloading work-unit messages to the Pick to Light system, executing the pick there, and sending confirmations back. EX19 processes those confirmations to complete SCALE work units and advance status according to the status flow.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p087-b003",
+            "p096-b006",
+            "p096-b007"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Documented custom integration intent only; message shape, partial completion, retries, ordering and idempotency are absent. This is Knipper Pick to Light, distinct from Grupo Julio EX01 Put to Light sorting.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c9-vvip-print-file-dependency",
+      "statement": "Knipper describes multiple shipment pack-list templates for customer requirements and an external VVIP printing process for special formats. That process requires an XML input file per wave, to be generated through an extension whose identifier remains TBD.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p088-b005"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "No file schema, destination, scheduling, external process configuration or completed extension is supplied. Printing intent is not delivery or operational proof.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c9-wave-no-work-and-complete-state",
+      "statement": "The Knipper Check for No Work override-data step checks that every shipment has work and marks the wave for failure otherwise. Complete Wave sets shipments to Picking Pending and makes them eligible for release. A separate placeholder acknowledges additional override-data steps for eligibility checks.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p088-b005",
+            "p088-b006",
+            "p088-b007"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "The source does not supply SQL, exact failure status, rollback semantics or all additional steps. Complete Wave and release are distinct; Picking Pending does not prove that work has been released or executed.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c9-cancel-wave-release-boundary",
+      "statement": "Knipper describes Cancel in the Completed Wave window backing out allocations and deleting work instructions/containers, then returning shipments to the pool or another wave. Its review reply limits this path: a released wave cannot be canceled, nor can work units already In Process be canceled/deleted; it recommends completing work and then canceling the shipment.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p088-b009",
+            "p088-b010",
+            "p088-b013",
+            "p088-b014",
+            "p088-b015",
+            "p089-b005"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "This documents the reply to a request to interrupt started waves; the resolved marker is not runtime verification. Keep wave cancellation separate from the existing post-wave shipment-cancellation dispute, whose body and comment differ about active picking.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9",
+      "extends_claim_id": "knipper-post-wave-cancellation-dispute"
+    },
+    {
+      "id": "knipper-c9-machine-type-work-proposal",
+      "statement": "In response to a request to separate reach-truck and order-picker activity, the Knipper review reply proposes separate work types based on replenished quantity UM, assignable to different users.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p093-b004",
+            "p093-b006",
+            "p093-b008",
+            "p093-b010",
+            "p093-b011"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "The discussion asks whether that approach is acceptable and gives no final machine-based assignment algorithm. Do not infer automatic equipment detection, installed work types or a direct machine-type priority setting from the proposal.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c9-pick-validation-extension-boundaries",
+      "statement": "The Knipper cart, full-pallet, LTL and REPS picking descriptions name EX24 for displaying an item alias when present and EX39 for Work Confirmation Item validation. The base-looking pick sequence explicitly references those extensions at the item step.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p093-b012",
+            "p095-b005",
+            "p097-b003",
+            "p097-b006",
+            "p098-b003"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "The source supplies neither extension contract nor its complete validation/error behavior. Generic location/item scanning prose must not be treated as proof that all of these details are base SCALE or installed in the assessed deployment.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "grupo-c9-mixed-status-attribute-qualifier",
+      "statement": "Grupo Julio describes status changes through Inventory Management with transaction-history recording. Its following note restricts holding the same item partly Available and partly Damaged when the location is not license-plate tracked or does not have different inventory attributes.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-d50ca4a96095c930",
+          "source_sha256": "d50ca4a96095c930e1e54fd04c55804bed05a5139451118cc5ce201eab814e34",
+          "nodes": [
+            "p090-b006",
+            "p090-b007"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "The note includes both tracking and attribute wording; its use of or does not supply a full truth table or establish the converse as sufficient. Keep it distinct from Knipper’s LPN-only qualification; do not infer a universal inventory identity key or deployed consolidation rule.",
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
     }
   ],
   "configuration": [
@@ -13424,6 +13675,136 @@
         }
       ],
       "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION8"
+    },
+    {
+      "id": "knipper-c9-adjustment-udf-comment",
+      "name": "Adjustment transaction-history UDF types",
+      "purpose": "Preserve the review reply without treating it as a schema inspection.",
+      "scope": "Knipper v1.3 (2024-12-10) historical Active SCALE implementation design; not a universal product contract.",
+      "accepted_values": "A margin reply says adjustment Transaction History UDF1–UDF6 allow 50 characters and UDF7–UDF8 are numeric.",
+      "default": "No universal default or deployed value is established.",
+      "precedence": "The request asks about current and potential maximum lengths; the reply does not distinguish versions or name SQL columns, numeric precision, null behavior or extension limits. This is not the Inventory Attributes field model.",
+      "process": "Inventory adjustment transaction history",
+      "classification": "implementation_specific_choice",
+      "validation": "Source review only. Compare with separately authorized version-matched configuration before operational use; no database read or execution performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p042-b006",
+            "p042-b007"
+          ]
+        }
+      ],
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c9-cycle-lpn-option",
+      "name": "Cycle-count LPN option discussed in review",
+      "purpose": "Distinguish a location/item count from proposed license-plate scan behavior.",
+      "scope": "Knipper v1.3 (2024-12-10) historical Active SCALE implementation design; not a universal product contract.",
+      "accepted_values": "The reply says an unnamed configuration permits counting total license plates of an item in a location; a later reply describes using configuration to scan the LPN during count. The customer requests both location and LPN options.",
+      "default": "No universal default or deployed value is established.",
+      "precedence": "The same reply keeps the count tied to location/item whether performed by license plate or not. It does not identify the configuration key or establish that counting plate totals and scanning plates are interchangeable, enabled or sufficient to reconcile quantity.",
+      "process": "Cycle-count work execution",
+      "classification": "implementation_specific_choice",
+      "validation": "Source review only. Compare with separately authorized version-matched configuration before operational use; no database read or execution performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p050-b010",
+            "p050-b011",
+            "p050-b012",
+            "p050-b013",
+            "p050-b014"
+          ]
+        }
+      ],
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c9-work-type-unit-granularity",
+      "name": "Work-type work-unit granularity and REPS initiation",
+      "purpose": "Keep distinct pallet, shipping-container and wave work units.",
+      "scope": "Knipper v1.3 (2024-12-10) historical Active SCALE implementation design; not a universal product contract.",
+      "accepted_values": "The design creates a work unit per built pallet for 3PL Pick and 3PL Pick DSCSA; per shipping container for Cooler, DEA, PM, PTL and PTL Case Pick; and per wave for REPS. REPS starts from the Break Label work-unit barcode and later verifies Container ID from the contents label.",
+      "default": "No universal default or deployed value is established.",
+      "precedence": "The DSCSA comment recommends a shared work type across warehouses while allowing warehouse-specific types; a resolved comment does not establish their installed scope. A per-wave REPS work unit is not one work unit per individual shipment/container. Full configurations and sequence tie-breakers are absent.",
+      "process": "Shipping work creation and picking",
+      "classification": "implementation_specific_choice",
+      "validation": "Source review only. Compare with separately authorized version-matched configuration before operational use; no database read or execution performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p086-b003",
+            "p086-b004",
+            "p086-b005",
+            "p086-b006",
+            "p086-b007",
+            "p087-b003",
+            "p097-b006",
+            "p098-b003"
+          ]
+        }
+      ],
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c9-wave-paperwork-carrier-variants",
+      "name": "Wave-release label selection by carrier mode",
+      "purpose": "Distinguish container-content, shipping and vendor label roles.",
+      "scope": "Knipper v1.3 (2024-12-10) historical Active SCALE implementation design; not a universal product contract.",
+      "accepted_values": "The design prints LBL03 container-content plus LBL04 shipping labels for parcel repack boxes and full cases; it prints LBL03 plus LBL02 vendor labels for LTL/TL shipments, at wave release.",
+      "default": "No universal default or deployed value is established.",
+      "precedence": "These are named implementation templates. They do not define printer routing, barcode syntax, actual print success or replace the separate close-container print sequence.",
+      "process": "Wave-release paperwork",
+      "classification": "implementation_specific_choice",
+      "validation": "Source review only. Compare with separately authorized version-matched configuration before operational use; no database read or execution performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p087-b003"
+          ]
+        }
+      ],
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "grupo-c9-cycle-plan-reference-frequencies",
+      "name": "Cycle-count plan reference coverage",
+      "purpose": "Preserve suggested count frequencies as examples, not fixed requirements.",
+      "scope": "Grupo Julio v1.5 (2024-09-03) historical Active SCALE implementation design; not a universal product contract.",
+      "accepted_values": "Suggested plans cover all locations every twelve months through multiple masters, zone counts, movement classes and empty locations. The examples count class A three times yearly and B twice; class C is left to the client.",
+      "default": "No universal default or deployed value is established.",
+      "precedence": "The lead-in says plans the client may use. These examples are neither a measured schedule nor proof of full warehouse coverage, and no class-C frequency is supplied.",
+      "process": "Plan-based cycle counting",
+      "classification": "implementation_specific_choice",
+      "validation": "Source review only. Compare with separately authorized version-matched configuration before operational use; no database read or execution performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-d50ca4a96095c930",
+          "source_sha256": "d50ca4a96095c930e1e54fd04c55804bed05a5139451118cc5ce201eab814e34",
+          "nodes": [
+            "p091-b005",
+            "p091-b006",
+            "p091-b007",
+            "p091-b008"
+          ]
+        }
+      ],
+      "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
     }
   ],
   "diagrams": [
@@ -22754,7 +23135,13 @@
     "C8 Knipper source-specific extensions EX13, EX17, EX37 and receipt-from-shipment EX40 require separate specifications; source references and resolved comments are not implementation evidence.",
     "C8 Knipper page-39 inventory-status text continues outside this bounded packet; no inspection-completion transition was added.",
     "C8 Grupo EX05 required fields depend on the Receiving Preference selecting the extension; installed selection, implementation and ERP receipt are not observed.",
-    "C8 Grupo client-return Receipt ID Type is DEV CIE in the table but DEV CTE in the receipt-from-shipment prose; equivalence or a corrected code is not established."
+    "C8 Grupo client-return Receipt ID Type is DEV CIE in the table but DEV CTE in the receipt-from-shipment prose; equivalence or a corrected code is not established.",
+    "C9 closes the Knipper page-39 inventory-status sentence with page40; exact inspection transition mappings and deployed status labels remain unverified.",
+    "C9 Knipper short-pick count trigger conflicts with a comment saying short picking is not used; resolution markers do not supply an operational rule.",
+    "C9 Knipper EX19 post-wave counting, INCA recording and LPN count/scan comments leave exact configuration and investigation/reconciliation semantics unresolved.",
+    "C9 Knipper EX19, EX24, EX38, EX39 and TBD VVIP references identify custom dependencies, not complete specifications or installed execution.",
+    "C9 Knipper wave-cancellation reply is distinct from the existing shipment-cancellation dispute; neither source passage is live acceptance.",
+    "C9 Grupo mixed-status note includes a different-inventory-attributes qualifier and ambiguous logical wording; no complete allowed-combination rule is inferred."
   ],
   "review_batches": [
     {
@@ -22960,6 +23347,12 @@
     {
       "id": "SDD-PDF-TEXT-20260930-CONTINUATION8",
       "basis": "Five bounded PDF source-text packets: Knipper pages 15-16, 38-39 and 70-85; Grupo pages 24-30 and two selected return/override nodes. Author reproduced original PDF SHA256, text and bbox for 310 text blocks. Four selected context renders distinguish body/comments; no new page, table or asset credit.",
+      "source_mutation": false,
+      "deployment_observed": false
+    },
+    {
+      "id": "SDD-PDF-TEXT-20260930-CONTINUATION9",
+      "basis": "Three bounded source-text packets: Knipper40–52 and86–98, Grupo88–95, plus Knipper39-b007 continuation context. All 321 selected retained text blocks matched original PDF text and bounding boxes. Seven context pages visually inspected. New meaning only; duplicate/headings/table candidates get explicit no-edit dispositions. No new asset, page, slide or logical-table credit.",
       "source_mutation": false,
       "deployment_observed": false
     }

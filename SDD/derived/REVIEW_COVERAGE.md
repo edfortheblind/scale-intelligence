@@ -4,12 +4,12 @@ Nine originals produce eight unique extracted bodies. Counts separate authored s
 
 | Source | Cited nodes / extracted | Described assets / unique assets | PDF pages viewed / total | Static slides viewed / total |
 | --- | ---: | ---: | ---: | ---: |
-| J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf | 413 / 1608 | 90 / 90 | 119 / 119 | N/A |
+| J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf | 451 / 1608 | 90 / 90 | 119 / 119 | N/A |
 | Manhattan SCALE - Labels.pptx | 84 / 209 | 40 / 43 | Not rendered | 45 / 45 |
 | SCALE Work and Picking Functionality.docx | 422 / 995 | 13 / 13 | Not rendered | N/A |
 | Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx | 889 / 2450 | 136 / 137 | Not rendered | N/A |
 | MA Documentation - Insight Architect Configuration.pdf | 12 / 20 | 0 / 0 | 2 / 2 | N/A |
-| Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf | 281 / 973 | 73 / 73 | 110 / 110 | N/A |
+| Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf | 283 / 973 | 73 / 73 | 110 / 110 | N/A |
 | LAND MAWM Solution Design Document v2.11.docx | 118 / 4605 | 35 / 37 | Not rendered | N/A |
 | SCALE Configuration Walkthrough - HADDAD.docx | 498 / 758 | 218 / 220 | Not rendered | N/A |
 
@@ -78,5 +78,11 @@ Source qualifications remain explicit, including inconsistent captions and visua
 ## Continuation 8 bounded source text
 
 Seven SCALE sources add 32 claims and 9 settings. The citation union gains 89 nodes and reaches 2717/11,618. Described media remain 605/613; existing 231 PDF-page views, 45 slide views and 79 logical tables remain unchanged.
+
+Source comments, inconsistent names, implementation choices and unresolved conditions remain explicit. The separate LAND MAWM text is excluded from this batch. No citation-count or completeness target overrides the supported source meaning.
+
+## Continuation 9 bounded source text
+
+Two SCALE sources add 13 claims and 5 settings. The citation union gains 40 nodes and reaches 2757/11,618. Described media remain 605/613; existing 231 PDF-page views, 45 slide views and 79 logical tables remain unchanged.
 
 Source comments, inconsistent names, implementation choices and unresolved conditions remain explicit. The separate LAND MAWM text is excluded from this batch. No citation-count or completeness target overrides the supported source meaning.

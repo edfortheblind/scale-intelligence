@@ -2,7 +2,7 @@
 
 These records explain supplied documentation, not active settings. Each states its product/version scope. Proposed validation steps have not been executed. Defaults and precedence remain unknown where the source does not state them. MAWM examples are explicitly separate and cannot be transferred to SCALE.
 
-274 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
+279 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
 
 ## Work Unit Field
 
@@ -3972,3 +3972,78 @@ Preserve the security recommendation preceding the existing override-validation 
 - Classification: `implementation_specific_choice`.
 
 Sources: [sdd-d50ca4a96095c930 p043-b007](reading/sdd-d50ca4a96095c930.md#p043-b007)
+
+
+## Adjustment transaction-history UDF types
+
+Preserve the review reply without treating it as a schema inspection.
+
+- Scope: Knipper v1.3 (2024-12-10) historical Active SCALE implementation design; not a universal product contract.
+- Accepted values: A margin reply says adjustment Transaction History UDF1–UDF6 allow 50 characters and UDF7–UDF8 are numeric.
+- Default: No universal default or deployed value is established.
+- Precedence and dependencies: The request asks about current and potential maximum lengths; the reply does not distinguish versions or name SQL columns, numeric precision, null behavior or extension limits. This is not the Inventory Attributes field model.
+- Related process: Inventory adjustment transaction history
+- Validation: Source review only. Compare with separately authorized version-matched configuration before operational use; no database read or execution performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p042-b006, p042-b007](reading/sdd-1c25f20de1eafc3e.md#p042-b006)
+
+
+## Cycle-count LPN option discussed in review
+
+Distinguish a location/item count from proposed license-plate scan behavior.
+
+- Scope: Knipper v1.3 (2024-12-10) historical Active SCALE implementation design; not a universal product contract.
+- Accepted values: The reply says an unnamed configuration permits counting total license plates of an item in a location; a later reply describes using configuration to scan the LPN during count. The customer requests both location and LPN options.
+- Default: No universal default or deployed value is established.
+- Precedence and dependencies: The same reply keeps the count tied to location/item whether performed by license plate or not. It does not identify the configuration key or establish that counting plate totals and scanning plates are interchangeable, enabled or sufficient to reconcile quantity.
+- Related process: Cycle-count work execution
+- Validation: Source review only. Compare with separately authorized version-matched configuration before operational use; no database read or execution performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p050-b010, p050-b011, p050-b012, p050-b013, p050-b014](reading/sdd-1c25f20de1eafc3e.md#p050-b010)
+
+
+## Work-type work-unit granularity and REPS initiation
+
+Keep distinct pallet, shipping-container and wave work units.
+
+- Scope: Knipper v1.3 (2024-12-10) historical Active SCALE implementation design; not a universal product contract.
+- Accepted values: The design creates a work unit per built pallet for 3PL Pick and 3PL Pick DSCSA; per shipping container for Cooler, DEA, PM, PTL and PTL Case Pick; and per wave for REPS. REPS starts from the Break Label work-unit barcode and later verifies Container ID from the contents label.
+- Default: No universal default or deployed value is established.
+- Precedence and dependencies: The DSCSA comment recommends a shared work type across warehouses while allowing warehouse-specific types; a resolved comment does not establish their installed scope. A per-wave REPS work unit is not one work unit per individual shipment/container. Full configurations and sequence tie-breakers are absent.
+- Related process: Shipping work creation and picking
+- Validation: Source review only. Compare with separately authorized version-matched configuration before operational use; no database read or execution performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p086-b003, p086-b004, p086-b005, p086-b006, p086-b007, p087-b003, p097-b006, p098-b003](reading/sdd-1c25f20de1eafc3e.md#p086-b003)
+
+
+## Wave-release label selection by carrier mode
+
+Distinguish container-content, shipping and vendor label roles.
+
+- Scope: Knipper v1.3 (2024-12-10) historical Active SCALE implementation design; not a universal product contract.
+- Accepted values: The design prints LBL03 container-content plus LBL04 shipping labels for parcel repack boxes and full cases; it prints LBL03 plus LBL02 vendor labels for LTL/TL shipments, at wave release.
+- Default: No universal default or deployed value is established.
+- Precedence and dependencies: These are named implementation templates. They do not define printer routing, barcode syntax, actual print success or replace the separate close-container print sequence.
+- Related process: Wave-release paperwork
+- Validation: Source review only. Compare with separately authorized version-matched configuration before operational use; no database read or execution performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p087-b003](reading/sdd-1c25f20de1eafc3e.md#p087-b003)
+
+
+## Cycle-count plan reference coverage
+
+Preserve suggested count frequencies as examples, not fixed requirements.
+
+- Scope: Grupo Julio v1.5 (2024-09-03) historical Active SCALE implementation design; not a universal product contract.
+- Accepted values: Suggested plans cover all locations every twelve months through multiple masters, zone counts, movement classes and empty locations. The examples count class A three times yearly and B twice; class C is left to the client.
+- Default: No universal default or deployed value is established.
+- Precedence and dependencies: The lead-in says plans the client may use. These examples are neither a measured schedule nor proof of full warehouse coverage, and no class-C frequency is supplied.
+- Related process: Plan-based cycle counting
+- Validation: Source review only. Compare with separately authorized version-matched configuration before operational use; no database read or execution performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-d50ca4a96095c930 p091-b005, p091-b006, p091-b007, p091-b008](reading/sdd-d50ca4a96095c930.md#p091-b005)
