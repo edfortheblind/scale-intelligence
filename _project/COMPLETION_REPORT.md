@@ -33,13 +33,13 @@ The knowledge foundation is incomplete. Percentages below measure named tasks ag
 | D | Historical runtime IDs matched to current catalog | 154 / 163 | 94.48% | Current name lookup only; historical definition identity and ID reuse are not established. |
 | E | Selected-topic presentation/citation checks | 725 / 725 | 100.00% | Actual local HTTP checks; not semantic answer acceptance. |
 | E | Question retrieval: expected topic in first eight | 686 / 725 | 94.62% | Authored questions; evaluation text is excluded from the search index. Not independent holdout. |
-| E | Question retrieval: expected topic first | 419 / 725 | 57.79% | Ambiguous questions may require choosing a topic. No semantic score is inferred. |
-| E | Known user-question scenarios adequately answered | 23 / 24 | 95.83% | 22 content answers plus 1 appropriate ambiguity clarification. Manual bounded review after baseline-guided repair; not untouched holdout, measured popularity, real users or accessibility acceptance. |
+| E | Question retrieval: expected topic first | 420 / 725 | 57.93% | Ambiguous questions may require choosing a topic. No semantic score is inferred. |
+| E | Known user-question scenarios adequately answered | 23 / 23 | 100.00% | 22 content answers plus 1 appropriate ambiguity clarification; 1 historical extension case excluded by owner scope, not passed. Manual bounded review after baseline-guided repair; not untouched holdout, measured popularity, real users or accessibility acceptance. |
 
 ## Delivered counts without an exhaustive denominator
 
 - help topics: **340**.
-- ordered steps: **858**.
+- ordered steps: **856**.
 - aim setting contracts: **14**.
 - sdd setting contracts: **283**.
 - sdd claims: **317**.
@@ -49,16 +49,16 @@ The knowledge foundation is incomplete. Percentages below measure named tasks ag
 
 ## Retrieval comparison
 
-On the unchanged 445-question subset, expected-topic top-eight retrieval changed from 420 to 409. The 280 new cases retrieve 277 expected topics in the first eight. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.
+On the unchanged 723-question subset, expected-topic top-eight retrieval changed from 684 to 684. The 2 new cases retrieve 2 expected topics in the first eight. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.
 
-[Exact comparison and remaining case IDs](retrieval-change-continuation13.json).
+[Exact comparison and remaining case IDs](retrieval-change-continuation14.json).
 
 ## Remaining evidence and acceptance
 
 - Complete functional/deployment reconciliation.
 - Full DOCX page fidelity.
 - Whole-process elapsed timing.
-- Complete browser/keyboard/screen-reader and intended-user acceptance.
+- Complete browser/keyboard/reflow/contrast observation and intended-user session; JAWS accepted by owner without a captured local run.
 - Insight navigation/SOP registration (separately initiated future task).
 
 Word preference: the prior diagnostic recorded `Options.UpdateLinksAtOpen=false`. The earlier value was not retained, so historical restoration cannot be verified. This continuation made no Word preference writes or document opens.

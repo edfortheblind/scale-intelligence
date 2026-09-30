@@ -8,8 +8,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def report(scenario_review='_project/help-question-continuation13.json',
-           retrieval_review='_project/retrieval-change-continuation13.json'):
+def report(scenario_review='_project/help-question-continuation14.json',
+           retrieval_review='_project/retrieval-change-continuation14.json'):
     inputs = {}
     def read(relative):
         raw = (ROOT/relative).read_bytes()
@@ -123,7 +123,7 @@ def report(scenario_review='_project/help-question-continuation13.json',
         raise ValueError('The scenario review is not bound to current help content and implementation.')
     q = question_review['summary']
     metric('E', 'Known user-question scenarios adequately answered', q['adequately_answered'], q['cases'],
-           f"{q['adequate_content_answers']} content answers plus {q['appropriate_ambiguity_clarifications']} appropriate ambiguity clarification. Manual bounded review after baseline-guided repair; not untouched holdout, measured popularity, real users or accessibility acceptance.")
+           f"{q['adequate_content_answers']} content answers plus {q['appropriate_ambiguity_clarifications']} appropriate ambiguity clarification; {q.get('excluded_from_base_scope', 0)} historical extension case excluded by owner scope, not passed. Manual bounded review after baseline-guided repair; not untouched holdout, measured popularity, real users or accessibility acceptance.")
     result={'schema_version':1,'overall_percent':None,'overall_state':'INCOMPLETE',
             'policy':'Separate measures have different denominators. No average or structural-to-semantic completion inference.',
             'snapshot_id':ledger['snapshot_id'],'metrics':rows,'counts_without_complete_denominator':{
@@ -134,7 +134,7 @@ def report(scenario_review='_project/help-question-continuation13.json',
                 'process_documentary_refinements':process_summary['coverage']['authored_refinements'] if process_summary else 0},
             'delivery_scope':'Local files and the existing private GitHub repository; external deployment and OneDrive upload are outside scope.',
             'unperformed_or_unestablished':['Complete functional/deployment reconciliation','Full DOCX page fidelity',
-                'Whole-process elapsed timing','Complete browser/keyboard/screen-reader and intended-user acceptance',
+                'Whole-process elapsed timing','Complete browser/keyboard/reflow/contrast observation and intended-user session; JAWS accepted by owner without a captured local run',
                 'Insight navigation/SOP registration (separately initiated future task)'],
             'outside_current_delivery_scope':['External production deployment and multiuser authentication','OneDrive cloud-upload verification'],
             'question_scenario_review':question_path if question_review else None,
@@ -178,9 +178,9 @@ def markdown(data):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--scenario-review', default='_project/help-question-continuation13.json',
+    parser.add_argument('--scenario-review', default='_project/help-question-continuation14.json',
                         help='Current scenario receipt; historical receipts are never overwritten.')
-    parser.add_argument('--retrieval-review', default='_project/retrieval-change-continuation13.json',
+    parser.add_argument('--retrieval-review', default='_project/retrieval-change-continuation14.json',
                         help='Current retrieval comparison bound to evaluation.json.')
     args=parser.parse_args()
     data=report(args.scenario_review, args.retrieval_review)

@@ -1,8 +1,16 @@
 # SCALE Intelligence project status
 
-Continuation 13, 2026-09-30. The local search now navigates to its result heading after submission. Knipper page 90 request/reply nodes were reviewed without promoting requested Quick Find status or timestamps to implemented behavior. JAWS acceptance and three external evidence items remain required.
+Continuation 14, 2026-09-30. The owner accepted and closed JAWS without a captured local JAWS run, directed SCALE base-only help, and identified `dbo.Interface_Item_Failure_1024` as Shawn's custom table outside SCALE DB architecture. Deployment mapping with correlated timings remains required.
 
-[Current C13 receipt](_project/continuation13-20260930.json) · [JAWS acceptance sheet](_project/JAWS_ACCEPTANCE_C13.md) · [Master continuation prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) · [Historical C12 receipt](_project/continuation12-20260930.json) · [Historical C11 concern dispositions](_project/C11_CONCERN_DISPOSITIONS.md).
+[Owner scope decision](_project/owner-scope-continuation14.json) · [Current C14 receipt](_project/continuation14-20260930.json) · [Master continuation prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) · [Historical C13 receipt](_project/continuation13-20260930.json) · [Historical C11 concern dispositions](_project/C11_CONCERN_DISPOSITIONS.md).
+
+## C14 owner scope and base help
+
+JAWS is **owner accepted and closed**. The C13 finding that JAWS was absent locally remains true; no JAWS speech or intended-user session was observed here. The owner narrowed the help section to documented SCALE base behavior. The Packing/mobile Close Container topic now contains seven base steps and excludes its extension-hook and unrelated Pick/Override Pick discussion. Historical QS-18 remains a partial extension question outside the current base-help denominator; it was not passed or repaired.
+
+Fresh HTTP evaluation returned 725/725 selected-topic contracts, 686/725 expected topics in the first eight, 420 first, and 39 misses. The 723 unchanged authored questions retained 684 top-eight and 418 first-place results, with no top-eight recovery or loss. Two owner-scoped base questions replaced extension-oriented questions and ranked first. All 23 in-scope known scenarios retained their selected evidence in fresh loopback HTTP checks; the current in-scope judgment is **23/23 adequate**, with QS-18 excluded separately. This denominator change is a scope decision, not a retrieval or semantic repair. [Exact comparison](_project/retrieval-change-continuation14.json) and [scenario scope review](_project/help-question-continuation14.json).
+
+The owner identified Shawn as creator of `dbo.Interface_Item_Failure_1024` and excluded this custom table from SCALE DB architecture. Its captured role remains unreviewed within the unchanged 1,656-object denominator; the decision does not establish consumers, non-use or safe deletion. Deployed application/service/configuration mappings with correlated process timings remain required. [Evidence boundary and minimum deployment fields](_project/REQUIRED_EVIDENCE_C14.md) are recorded. Deployment reconciliation remains 0/34 process families. The remaining 39 retrieval misses and incomplete SDD semantics are separate work.
 
 ## C13 screen-reader preparation and source result
 
@@ -12,7 +20,7 @@ Knipper `p090-b006` requests released/held/canceled wave status in Work Quick Fi
 
 Fresh local HTTP evaluation after the form change passed 725/725 selected-topic checks; expected-topic top-eight remains 686/725, first place 419, and misses 39. All 725 result payloads match the prior run exactly. [Retrieval comparison](_project/retrieval-change-continuation13.json) and [known-scenario carry-forward](_project/help-question-continuation13.json) bind the current implementation without claiming a new semantic or user review.
 
-The owner requires the replacement-LPN extension contract, custom-table creator/consumer provenance, and deployment mapping/correlated timings as completion items. They are not accepted research limits. Available captured evidence has not established them; no warehouse execution or application rows were used.
+At C13, the owner had kept the replacement-LPN extension contract, custom-table creator/consumer provenance, and deployment mapping/correlated timings as completion items. The later C14 owner scope decisions supersede the first two for SCALE base help and architecture. No warehouse execution or application rows were used.
 
 ## C12 source result
 
@@ -32,11 +40,11 @@ Thirteen source issues now have exact source/claim/node bindings, classification
 
 All nine originals match their recorded hashes. The supported DOCX renderer remains unavailable in this Windows environment; five DOCX originals/four unique bodies have no new full-page layout review. No Word opens or preference changes occurred. The missing historical pre-change Word preference cannot be reconstructed from an after-state.
 
-Requested AIM base Warehouse Mobile Close Container and Insight Packing remains complete. Historical QS-18 remains partial for the separate replacement-LPN contract. C9 found zero named references to `dbo.Interface_Item_Failure_1024` in all 1,142 captured definitions, including 921 procedures; no captured SP association is established. Its likely troubleshooting/backup purpose remains the owner's hypothesis. Deployment reconciliation remains 0/34 families; full process timing is not established by Query Store aggregates.
+Requested AIM base Warehouse Mobile Close Container and Insight Packing remains complete. Historical QS-18 remains partial for the separate replacement-LPN contract. C9 found zero named references to `dbo.Interface_Item_Failure_1024` in all 1,142 captured definitions, including 921 procedures; no captured SP association is established. The C14 owner identified Shawn as its creator and excluded this custom table from SCALE DB architecture. Specific function and consumers remain unknown. Deployment reconciliation remains 0/34 families; full process timing is not established by Query Store aggregates.
 
 ## Preserved baseline and checks
 
-Help remains 340 topics and 858 ordered steps. C9 HTTP evidence remains historical: 725 selected-topic checks, 686/725 expected-topic top-eight matches, 419 first, and 24 known scenarios with 23 adequate/one partial. C11 rechecked complete help implementation/input/topic/source/index identity before carrying those results. The report generator changes one word in its acceptance-limit prose, “Actual” to “Complete”; no metric, search or application behavior changes.
+Help currently has 340 topics and 856 ordered steps. C9/C13 help metrics and the frozen 24-scenario result remain historical. C14's base-help scope and current HTTP results are recorded above; the original QS-18 partial finding is preserved outside the base denominator.
 
 C11 ran 29 existing help tests and two existing report tests: **31 passed, zero failed/skipped**. The report generator produced the same 31 measures. Independent diagnostic Verification checked all 725 retrieval comparisons, 13 source issues, 20 citation bindings/95 nodes, nine originals and 38 worker-manifest entries, with no introduced findings. Parent Audit and exact private publication parity are recorded separately. The C9 full 368-test suite, HTTP captures and unchanged C7 DB verifier were not rerun.
 
@@ -44,14 +52,14 @@ SDD currently has 317 claims, 283 settings, 398 visual descriptions, 79 logical 
 
 ## Next bounded packet
 
-Run the pending JAWS sheet on a machine with JAWS and record speech/focus observations. Repair and replay any failures before intended-user acceptance. Continue independent source review outside already closed packets and preserve all 39 retrieval misses. Do not overwrite closed receipts or reopen accepted acquisition.
+Obtain a bounded deployed application/service/configuration map with correlated process timings. Continue independent source review and the seven specific-subject retrieval misses while preserving all 39 raw misses. Do not overwrite historical receipts or reopen accepted acquisition.
 
-JAWS is selected; its session location remains pending. The three external-only unknowns remain required completion items by owner direction. No new acceptance is inferred. The broader knowledge foundation still has documented technical and source limits, so a literal zero-concern foundation handoff is not supported by the evidence. [Historical dispositions](_project/C11_CONCERN_DISPOSITIONS.md).
+JAWS is owner accepted without a captured local run. The extension is outside SCALE base help, and Shawn's custom table is outside SCALE DB architecture by owner direction. Deployment mapping/timings remain required. The broader knowledge foundation still has documented technical and source limits, so a literal zero-concern foundation handoff is not supported by the evidence. [Owner scope](_project/owner-scope-continuation14.json).
 
 Outcome: DONE_WITH_CONCERNS
 
-Delivery state: C13 local source and help changes verified; private publication status is in the C13 receipt.
+Delivery state: C14 base-help scope and current handoff verified; private publication status is in the C14 receipt.
 
-Product state: Search result focus improved; Knipper request qualified without a new claim. Retrieval, source, DOCX, deployment and JAWS acceptance limits remain explicit.
+Product state: SCALE base Packing/Close Container help revised; JAWS owner accepted. Retrieval, source, DOCX and deployment limits remain explicit.
 
-Gate/authority state: Continued work and normal private publication authorized. JAWS machine availability remains pending; three external evidence items are required. No new runtime behavior is inferred.
+Gate/authority state: Continued work and normal private publication authorized. JAWS owner acceptance and the custom-table scope decision are recorded; deployment mapping/timings remain required. No new runtime behavior is inferred.

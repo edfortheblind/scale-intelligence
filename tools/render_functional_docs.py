@@ -56,7 +56,7 @@ def render_help(data):
              'These reviewed explanations are also served by the local help prototype. Deployment reconciliation remains incomplete.', '',
              'Answers follow what it does, what happens, what can affect it, what you can check, and sources. '
              'Screen names in sources are documentary references; verified Insight navigation and SOPs remain separate. '
-             'No process, label, job or transaction was executed. Browser, keyboard, screen-reader and intended-user acceptance remain unperformed.', '',
+             'No process, label, job or transaction was executed. Browser and keyboard observations were bounded; JAWS was owner accepted without a captured local run. Zoom/reflow, contrast and an intended-user session remain unobserved.', '',
              'The [JSON library](mappings/help-topics.json) is the curated source for this reading copy. '
              'Configuration observations retain their [scope and capture time](CONFIGURATION_VALIDATION.md).', '']
     for index, topic in enumerate(topics, 1):
@@ -166,7 +166,7 @@ def render_acceptance(data):
     lines = ['# Help acceptance contract', '',
              'Cross-cutting cases supplement per-topic questions. Actual HTTP retrieval and selected-topic citation checks '
              'are reported in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are '
-             'not automatically scored. Intended-user and assistive-technology acceptance remain open.', '']
+             'not automatically scored. The owner accepted JAWS without a captured local session; broader intended-user and display acceptance remain unobserved.', '']
     for case in data['cases']:
         lines += ['## '+case['case_id'], '', case['question'], '',
                   'Expected: '+case['expected_explanation'], '', 'Forbidden: '+case['forbidden_claim'], '',

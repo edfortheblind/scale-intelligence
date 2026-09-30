@@ -1,6 +1,6 @@
 # Help acceptance contract
 
-Cross-cutting cases supplement per-topic questions. Actual HTTP retrieval and selected-topic citation checks are reported in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored. Intended-user and assistive-technology acceptance remain open.
+Cross-cutting cases supplement per-topic questions. Actual HTTP retrieval and selected-topic citation checks are reported in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored. The owner accepted JAWS without a captured local session; broader intended-user and display acceptance remain unobserved.
 
 ## access-denied
 
