@@ -2,7 +2,7 @@
 
 These records explain supplied documentation, not active settings. Each states its product/version scope. Proposed validation steps have not been executed. Defaults and precedence remain unknown where the source does not state them. MAWM examples are explicitly separate and cannot be transferred to SCALE.
 
-265 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
+274 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
 
 ## Work Unit Field
 
@@ -3837,3 +3837,138 @@ Prevent combining different receiving examples into one global default.
 - Classification: `implementation_specific_choice`.
 
 Sources: [sdd-1c25f20de1eafc3e p023-b003, p027-b007, p027-b008, p045-b010, p045-b011](reading/sdd-1c25f20de1eafc3e.md#p023-b003)
+
+
+## Receipt ID Type and Receipt Type
+
+Keep the configured receipt grouping separate from a free-format supplier-type description.
+
+- Scope: Knipper Active SCALE design v1.3 (2024-12-10); historical implementation-specific source, not a universal product default.
+- Accepted values: Planned Receipt ID Types: ASN, Packing List and Returns. Receipt Type is described as free format, commonly identifying supplier type, and not validated by the system.
+- Default: No universal default or current deployed value is established by the reviewed passage.
+- Precedence and dependencies: Receipt ID Types and Receipt Types can group receipts and drive processing; the no-validation statement concerns Receipt Type, not every receipt field or interface format.
+- Related process: Pre-receiving receipt classification
+- Validation: Proposed review only: compare the source with authorized version-matched configuration and process evidence. No deployed query, execution or change was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p015-b008, p015-b009, p015-b010, p016-b003, p016-b004](reading/sdd-1c25f20de1eafc3e.md#p015-b008)
+
+
+## Override Data: Set Default Status Flow
+
+Assign a shipment-detail status flow during wave processing.
+
+- Scope: Knipper Active SCALE design v1.3 (2024-12-10); historical implementation-specific source, not a universal product default.
+- Accepted values: The design lists Parcel and Non-Parcel/LTL status flows and proposes consolidating redundant site-specific names into generic names.
+- Default: No universal default or current deployed value is established by the reviewed passage.
+- Precedence and dependencies: The passage says the wave step updates Shipment Detail Status Flow; it does not provide a complete selection predicate or prove that consolidation occurred. Exact status sequences remain in the existing reviewed tables.
+- Related process: Wave status-flow assignment
+- Validation: Proposed review only: compare the source with authorized version-matched configuration and process evidence. No deployed query, execution or change was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p076-b004, p076-b005, p076-b007, p076-b008, p076-b010](reading/sdd-1c25f20de1eafc3e.md#p076-b004)
+
+
+## Override Data: Set Packing Class
+
+Assign shipment-detail packing class for special processing.
+
+- Scope: Knipper Active SCALE design v1.3 (2024-12-10); historical implementation-specific source, not a universal product default.
+- Accepted values: Packing class identifies combinable items and shipping-container type; Knipper proposes an override-data wave step where required.
+- Default: No universal default or current deployed value is established by the reviewed passage.
+- Precedence and dependencies: The source calls for reviewing SQL so values come from generic configuration instead of hardcoded values. No SQL definition, adopted mapping, precedence over later changes or completed review is supplied.
+- Related process: Wave packing-class assignment
+- Validation: Proposed review only: compare the source with authorized version-matched configuration and process evidence. No deployed query, execution or change was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p077-b003](reading/sdd-1c25f20de1eafc3e.md#p077-b003)
+
+
+## Override Data: Assign Accessorial
+
+Describe shipment-to-carton third-party billing metadata and the source-listed accessorial scope.
+
+- Scope: Knipper Active SCALE design v1.3 (2024-12-10); historical implementation-specific source, not a universal product default.
+- Accepted values: Source-listed accessorial labels: 3rd Pty Billing; Alternate Address; Auto POD; COD; Collect; Commercial Invoice Method; Consignee 3rd Pty Billing; Delivery Notification; Department; Dlvy Confirm; Dry Ice; Duty Tax Payment Type; DVL; EEI; FedEx Ref; Flats; HAZMAT; HLD; Home Delivery Type; Insurance; Pickup / Delivery; POD; Premier Service; Print Alt Return Add Flag; Proactive Recovery; Proactive Response; Quantum View Dlvy; Quantum View Exception; Reference; References; Registered Mail; Return Delivery; Return Shipment Indicator; Sat Dlvy; SED; Sign Rlse; Signature Required; Signature Required - Adlt; Signature Required - Dirc; VATEIN number.
+- Default: No universal default or current deployed value is established by the reviewed passage.
+- Precedence and dependencies: Shipment downloads provide account/billing metadata to the header; the proposed override-data step applies it to parcel cartons when communicating with FedEx. The document explicitly leaves the override step scope for build-phase evaluation. Labels are not verified carrier service codes, enabled values or a complete carrier contract; no actual account values are copied.
+- Related process: Parcel accessorial and billing assignment
+- Validation: Proposed review only: compare the source with authorized version-matched configuration and process evidence. No deployed query, execution or change was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p082-b003, p082-b004, p082-b005, p082-b006, p083-b003](reading/sdd-1c25f20de1eafc3e.md#p082-b003)
+
+
+## Wave QC assignment scope
+
+Separate wave assignment from later QC execution and its customization.
+
+- Scope: Knipper Active SCALE design v1.3 (2024-12-10); historical implementation-specific source, not a universal product default.
+- Accepted values: Design: every container created in the wave receives QC; when the pallet-building step creates a pallet, assignment is at pallet level.
+- Default: No universal default or current deployed value is established by the reviewed passage.
+- Precedence and dependencies: Containers must be created in the wave for this described assignment. Pallet-level execution is explicitly an extension marked TBD here; the later packing section names EX46 and retains its own custom-scope qualifications. Assignment does not prove executable pallet QC.
+- Related process: Wave QC assignment
+- Validation: Proposed review only: compare the source with authorized version-matched configuration and process evidence. No deployed query, execution or change was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p083-b003](reading/sdd-1c25f20de1eafc3e.md#p083-b003)
+
+
+## Pallet-building strategy and break criteria
+
+Preserve the Knipper choice separately from the similar Covetrus No Split Item strategy.
+
+- Scope: Knipper Active SCALE design v1.3 (2024-12-10); historical implementation-specific source, not a universal product default.
+- Accepted values: Knipper names Build Pallets using Height-Weight. Requirements select/sort containers and may break a new pallet on an attribute; criteria exclude full allocated pallets and may sort by descending shipping-container weight.
+- Default: No universal default or current deployed value is established by the reviewed passage.
+- Precedence and dependencies: Container Type supplies dimensional/weight/height limits. Text also says Maximum Height and Weight may be used and future criteria may vary by product category. The prose describes consolidating same-item containers when they physically fit, but does not name the Covetrus No Split Item variant.
+- Related process: Wave LTL/TL pallet building
+- Validation: Proposed review only: compare the source with authorized version-matched configuration and process evidence. No deployed query, execution or change was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p083-b004, p083-b005, p084-b003](reading/sdd-1c25f20de1eafc3e.md#p083-b004)
+
+
+## Location Picking Sequence
+
+Identify the numeric location order used by source-described shipping work.
+
+- Scope: Knipper Active SCALE design v1.3 (2024-12-10); historical implementation-specific source, not a universal product default.
+- Accepted values: Location Picking Sequence is numeric and can sort picks in an order other than alphabetical location order. The Group (Cart) Pick passage uses pick sequence when the cart has more than one item.
+- Default: No universal default or current deployed value is established by the reviewed passage.
+- Precedence and dependencies: Work Group, Work Type, Work Criteria and Work Creation Master determine generated work. One work unit per shipping container and user grouping onto a cart are already recorded separately; no ascending/descending convention, uniqueness, tie-breaker or current sequence values are supplied.
+- Related process: Shipping work creation and cart pick ordering
+- Validation: Proposed review only: compare the source with authorized version-matched configuration and process evidence. No deployed query, execution or change was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p085-b004, p085-b011](reading/sdd-1c25f20de1eafc3e.md#p085-b004)
+
+
+## EX05 return receiving required fields
+
+Distinguish downloaded RMA receiving from blind returns and conditional extension inputs.
+
+- Scope: Grupo Julio Active SCALE design v1.5 (2024-09-03); historical implementation-specific source, not a universal product default.
+- Accepted values: Downloaded RMA uses a Returns Receipt Type; blind client returns are also interfaced back to the ERP. EX05 captures Source ID (Vendor), Factura (User Defined 2) and Concepto (User Defined 3).
+- Default: No universal default or current deployed value is established by the reviewed passage.
+- Precedence and dependencies: All three fields are required only when the Receiving Preference is configured to use EX05. The separate extension specification is not supplied; no universal mandatory-field rule or verified ERP delivery is inferred.
+- Related process: Returns receipt download/check-in/upload
+- Validation: Proposed review only: compare the source with authorized version-matched configuration and process evidence. No deployed query, execution or change was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-d50ca4a96095c930 p018-b006](reading/sdd-d50ca4a96095c930.md#p018-b006)
+
+
+## Putaway Override permission scope
+
+Preserve the security recommendation preceding the existing override-validation contract.
+
+- Scope: Grupo Julio Active SCALE design v1.5 (2024-09-03); historical implementation-specific source, not a universal product default.
+- Accepted values: Recommendation: grant location override only to a few specific security groups for exceptional scenarios. An authorized user picks the LPN from the receiving dock and selects Override when prompted on the Putaway screen.
+- Default: No universal default or current deployed value is established by the reviewed passage.
+- Precedence and dependencies: The recommendation is distinct from actual grants and from the subsequent location validation/history/count behavior already recorded. No group names, conflict precedence or general access for all users is established.
+- Related process: Exceptional putaway destination override
+- Validation: Proposed review only: compare the source with authorized version-matched configuration and process evidence. No deployed query, execution or change was performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-d50ca4a96095c930 p043-b007](reading/sdd-d50ca4a96095c930.md#p043-b007)

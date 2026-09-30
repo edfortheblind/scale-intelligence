@@ -6191,3 +6191,276 @@ Assets: [7b241276437db86c99733240ce19e21ad42d513b3dc45eff46e6f37711d29836.emf](a
 - Knipper PDF cover version 1.0 versus filename/footer v1.3 is documentary metadata inconsistency, not evidence of a particular product build.
 - Native media follow-up resolves the prior uninspected status for Covetrus b00114: its EMF is an embedded-workbook icon, not the workbook contents. The separate frozen author receipt remains historical evidence.
 - The remaining Labels EMF decodes natively as a one-pixel white preview. It has no retained node association and receives no citation or authored-description credit. This resolves unrendered status only; complete slide/media composition remains a separate boundary.
+
+## Continuation 8 source-text review
+
+This batch adds 32 claims and 9 setting explanations across seven SCALE source bodies. Previous records, source bytes, media descriptions and page/table credit remain unchanged. Source examples are distinct from active deployment.
+
+### haddad-location-generation-increment-examples
+
+HADDAD describes generating a set of locations from a selected template and warehouse using starting and ending values plus increments. For the numeric example 0000 through 1000, it states 1001 locations at increment 0001, 101 at 0010, and two at 1000. Its alpha example treats A to B as increment 1 and A to C as increment 2.
+
+HADDAD SCALE 2020 walkthrough, not observed deployed behavior or a current configuration instruction. The three numeric examples are arithmetically consistent with inclusive endpoints. They do not establish behavior for invalid or zero increments, non-divisible end values, multi-field combinations, alphabet rollover, existing-location collisions or generation limits. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00110, b00111, b00113, b00114, b00115, b00116, b00117](reading/sdd-f46806ef53e15f07.md#b00110)
+
+### haddad-work-order-system-values-source-advice
+
+The HADDAD work-order section says its system values manage work-order processing, are system-created and should not need modification. The guide separately declares that its example environment had no work-order configuration and that this section was based on AIM help.
+
+HADDAD SCALE 2020 walkthrough, not observed deployed behavior or a current configuration instruction. This preserves the guide advice and its lack of implemented work-order examples. It is not an authorization to change values, a universal prohibition on change or evidence of installed defaults. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00565, b00573, b00574](reading/sdd-f46806ef53e15f07.md#b00565)
+
+### haddad-print-trigger-overview
+
+HADDAD introduces document and label printing as warehouse-process output and says it usually occurs during the wave or work-creation process.
+
+HADDAD SCALE 2020 walkthrough, not observed deployed behavior or a current configuration instruction. Usually is a source qualification, not an exhaustive trigger list. The separate reviewed label-master, document and routing examples still need their own associations; this overview establishes no active print job or physical output. Classification: `vendor_behavior`.
+
+[sdd-f46806ef53e15f07 b00705, b00706, b00707](reading/sdd-f46806ef53e15f07.md#b00705)
+
+### haddad-guide-explicit-scope-limit
+
+The HADDAD conclusion explicitly describes the guide as a general outline for a very simple configuration, not a comprehensive list of steps, and directs readers to feature-specific Help for details.
+
+This is a documentary scope limit. Completing review of this walkthrough cannot by itself certify a complete SCALE configuration, a deployment or an operator procedure. Classification: `analyst_inference`.
+
+[sdd-f46806ef53e15f07 b00738, b00739](reading/sdd-f46806ef53e15f07.md#b00738)
+
+### insight-edit-existing-custom-screen
+
+The Insight Architect document says to click View All to list customized screens, select the custom screen and click Edit. The custom form is then displayed for modification.
+
+Documentation-only sequence. No screen was opened, edited or published. The excerpt does not establish role permissions, save behavior, version compatibility or the current navigation of a deployed environment. Classification: `vendor_behavior`.
+
+[sdd-d4675a92502c23f4 p001-b010, p001-b011](reading/sdd-d4675a92502c23f4.md#p001-b010)
+
+### work-picking-sequence-add-wizard-name-qualification
+
+Under Add new Sequence, the Work and Picking compilation says to select an existing sequence and add a record, then names the displayed wizard New Work Type and links to Work Type information.
+
+Undated SCALE Work and Picking compilation; the applicable release and current screen navigation are not established. The section and wizard use different names. This review preserves the literal source labels without deciding that one is a typo, inferring the wizard fields or treating this as verified navigation. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00073, b00075, b00076](reading/sdd-61bfda888fe30365.md#b00073)
+
+### work-picking-sign-on-entry-routes
+
+The Picking Management procedure offers two routes to Picking Signon: choose Picking Signon from the desktop, or right-click a work-unit record in Picking Management Explorer and choose Scan On. After work-zone selection, the scan-on route prepopulates the selected work unit in Picking Selection.
+
+Undated SCALE Work and Picking compilation; the applicable release and current screen navigation are not established. These are the source entry routes. They do not establish present permissions, bypass zone/type eligibility or override the previously documented hold and assignment rules. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00498, b00499, b00500, b00501](reading/sdd-61bfda888fe30365.md#b00498)
+
+### label-zpl-source-command-descriptions
+
+Slide 24 of the Labels training deck names ^PR for print rate, ~SD for darkness, ^MD for a relative darkness adjustment and ^FW for default field orientation. It asserts that ^MD persists across label formats until another ^MD or a power cycle, and lists N, R, I and B as normal, 90-degree, 180-degree and 270-degree orientations.
+
+These are assertions in a mixed-era training slide, not independently verified current Zebra command specifications or printer instructions. Persistence, supported values, units, defaults and device compatibility were not tested or checked against vendor documentation. No command was sent to a printer. Classification: `configuration_example`.
+
+[sdd-56008a31665dcc23 s024-sh004](reading/sdd-56008a31665dcc23.md#s024-sh004)
+
+### covetrus-inbound-manual-visual-qc
+
+The Covetrus assumptions explicitly exclude systemic inbound QC and instead describe a manual SOP using visual QC.
+
+Covetrus Manhattan Active SCALE version 1.4 design, modified 31 August 2023; an implementation example, not the assessed deployment or an executed SOP. The manual SOP details and acceptance criteria are not supplied by this sentence. This inbound choice is separate from the already reviewed outbound QC, Force QC Pass and VAS descriptions; it does not prove recorded or completed inspection. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b00246](reading/sdd-c4c7e01f8ccad48a.md#b00246)
+
+### covetrus-download-upload-document-terminology
+
+For this Covetrus document, download means a file or information sent from another system and processed by SCALE. Upload means a file generated by SCALE and made available to another system.
+
+Covetrus Manhattan Active SCALE version 1.4 design, modified 31 August 2023; an implementation example, not the assessed deployment or an executed SOP. These terms define direction from the SCALE perspective. They do not prove successful processing, external receipt, acknowledgement, delivery guarantees or the transport used by a particular interface. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b00272, b00273](reading/sdd-c4c7e01f8ccad48a.md#b00272)
+
+### covetrus-new-item-dimension-entry-paths
+
+For new items missing weight or dimensions, Covetrus describes capturing dimensions with Cubiscan at its NDSC and updating SCALE through a Boomi export, a diagnostic app or manual entry by operations.
+
+Covetrus Manhattan Active SCALE version 1.4 design, modified 31 August 2023; an implementation example, not the assessed deployment or an executed SOP. These named entry paths do not resolve the previously recorded conflict between SCALE-owned dimensions in the assumptions and host-maintained dimensions in Item Master Download. No field ownership, overwrite precedence, endpoint or successful import is inferred. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b00771, b00773](reading/sdd-c4c7e01f8ccad48a.md#b00771)
+
+### covetrus-special-and-pallet-pick-label-scope
+
+Covetrus gives Special Pick the same stated label combination as Dry Pick: container contents plus vendor or shipping label, with that choice depending on carrier and output ordered by picking sequence. Its wave-label paragraph lists container contents, vendor and pallet labels for Pallet Pick, while the later pallet-build picking paragraph says shipping/vendor, container contents and pallet labels.
+
+Covetrus Manhattan Active SCALE version 1.4 design, modified 31 August 2023; an implementation example, not the assessed deployment or an executed SOP. The source varies the vendor-versus-shipping wording between its pallet-related paragraphs. Keep their contexts and the separately registered label-ID conflicts; the text does not establish one universal pallet print recipe or an authoritative current routing map. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01546, b01548, b01550, b01696, b01697, b01698, b01699, b01701](reading/sdd-c4c7e01f8ccad48a.md#b01546)
+
+### covetrus-wave-result-review-screens
+
+After building and running a wave, the Covetrus design directs the wave supervisor to review its results using full-screen Transaction History Insight and Work Insight before the subsequent cancel-or-release procedures.
+
+Covetrus Manhattan Active SCALE version 1.4 design, modified 31 August 2023; an implementation example, not the assessed deployment or an executed SOP. The sentence names review surfaces, not the result fields, success criteria, permissions or a verified decision rule. No wave was built, reviewed, canceled or released. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01574, b01576, b01579, b01592](reading/sdd-c4c7e01f8ccad48a.md#b01574)
+
+### knipper-manual-receipt-packing-list-origin
+
+Knipper distinguishes manual receipt creation in Receipt Insight from creation through Purchase Order Insight: its design uses the former, based on vendor packing lists for most accounts, and explicitly does not use the latter.
+
+This refines the existing manual-versus-EDI account distinction with source-screen and document origin. It does not establish current account configuration or forbid purchase-order receiving in SCALE generally. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p016-b005](reading/sdd-1c25f20de1eafc3e.md#p016-b005)
+
+### knipper-shipment-return-lot-enhancement-boundary
+
+The Knipper receipt-from-shipment passage describes returns of undelivered shipments in their original packaging. It says current receipt lines lack lot information and requests shipment-derived lot population under EX40; a margin request adds expiration date, with details deferred to a separate design.
+
+A comment marked resolved does not supply the missing extension specification or prove implementation. The existing EX40 collision with the work-document feature remains; line-level locate/unlocate is a request here, not an established capability. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p016-b006, p016-b007, p016-b008, p016-b009, p016-b010, p016-b012](reading/sdd-1c25f20de1eafc3e.md#p016-b006)
+
+### knipper-blind-receipt-body-comment-qualification
+
+Knipper page 16 says blind receiving is used in some no-ASN scenarios. A margin comment asks for future blind receiving and a reply says Knipper already uses blind receipts and the document should be updated.
+
+Preserve the body and review discussion separately. They do not date an activation, settle every scenario or prove installed use; the existing blind-receiving preference example remains separately bounded. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p016-b011, p016-b014, p016-b015](reading/sdd-1c25f20de1eafc3e.md#p016-b011)
+
+### sdd-receipt-insight-record-levels
+
+The Knipper and Grupo Julio designs distinguish receipt-level viewing from Receipt Line Insight and Receipt Container Insight for downloaded or created ASNs.
+
+Knipper calls the receipt-level screens Receiving Insight; Grupo calls them Receipt Insight. These historical source labels do not establish current navigation, permissions, ASNs in use or physical SQL table identities. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p016-b016](reading/sdd-1c25f20de1eafc3e.md#p016-b016); [sdd-d50ca4a96095c930 p025-b005](reading/sdd-d50ca4a96095c930.md#p025-b005)
+
+### knipper-title-transfer-customization-boundary
+
+The Knipper locating section records a request to mass-adjust inventory from one item to another for Title Transfer and explicitly treats it as a SCALE extension.
+
+The passage supplies no extension identifier, transaction semantics, permissions or operational procedure. It is not an instruction or proof that a mass adjustment has been implemented. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p038-b017](reading/sdd-1c25f20de1eafc3e.md#p038-b017)
+
+### knipper-dscsa-putaway-ex37-event-boundary
+
+Knipper describes DSCSA putaway as updating a custom serial-number table and recording a Receive event in rTS through an API, referring to the separate EX37 inbound-processing specification.
+
+The external specification, API contract, execution and compliance were not verified. The following inventory-status note continues beyond this packet and supplies no reviewed inspection-completion rule here. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p039-b007](reading/sdd-1c25f20de1eafc3e.md#p039-b007)
+
+### knipper-wave-flow-template-migration-qualification
+
+The Knipper standard-wave-flow example is not its only proposed flow: a review reply says all existing wave flows will migrate and will still be based on that template. The preceding body says existing wave flows and masters are used.
+
+This qualifies the already reviewed standard-wave table. A resolved comment and migration intent do not prove the number, contents or successful migration of actual flows. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p070-b007, p071-b013, p071-b014, p071-b016, p071-b018, p071-b019](reading/sdd-1c25f20de1eafc3e.md#p070-b007)
+
+### knipper-future-build-wave-selection-criteria
+
+In the section explicitly titled Build Wave - Future Use, Knipper proposes scheduled selection using wave criteria associated with a wave master. A matching shipment line includes the entire shipment; all lines need not match. A reply allows multiple criteria producing waves with different flows.
+
+Future build/run behavior is distinct from work release: Automatic runs a built wave, while a comment requests manual release except for the scheduled scenario. No schedule or release policy is inferred from a resolved annotation or from the legacy sample screenshot. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p071-b017, p071-b020, p071-b021, p071-b022, p071-b023, p071-b024, p071-b025, p071-b026, p071-b027, p071-b028](reading/sdd-1c25f20de1eafc3e.md#p071-b017)
+
+### knipper-ex38-address-verification-boundary
+
+Knipper labels its wave address-verification step as custom EX38, Serialization Integration with Rfxcel for Outbound. It describes verifying ship-to addresses with RTS and returning unsuccessfully verified shipments to the pool.
+
+The same paragraph spells the failure-path system RYS rather than RTS. Preserve that documentary inconsistency; do not infer an endpoint, exact returned status, cancellation atomicity or installed integration. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p077-b004](reading/sdd-1c25f20de1eafc3e.md#p077-b004)
+
+### knipper-successive-allocation-sequences
+
+Knipper describes allocation rules as controlling eligible locations, units of measure and allocation strategy. Allocation starts with the first sequence; when that sequence does not allocate 100 percent, subsequent sequences attempt the remaining inventory. An Item Master rule can default onto the shipment detail before interface or wave assignment paths.
+
+This extends rule selection with sequence progression; it does not establish ordering among all assignment sources, live quantities or complete allocation success. The separate Allocate Complete header guard and rejection rules retain their existing qualifications. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p077-b004, p078-b003](reading/sdd-1c25f20de1eafc3e.md#p077-b004)
+
+### knipper-wave-replenishment-fefo-qualification
+
+Knipper wave-replenishment prose evaluates each/case demand against primary picking availability, rounds requests up in case or configured-UOM increments and creates in-transit inventory for shipment allocation. It calls the associated allocation FEFO without the lot-controlled qualification used in the detailed sequence tables.
+
+This additional prose does not resolve the existing non-lot replenishment disagreement between most-available-first and FIFO. No deployed strategy or precedence among these passages is inferred. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p077-b003](reading/sdd-1c25f20de1eafc3e.md#p077-b003)
+
+### knipper-ex13-virtual-location-subwave-transfer
+
+The EX13 Pick to Light Wave Splitting design first assigns orders allocated at virtual locations to groups of PTL locations across subwaves, using most-common items with the fewest lines. A subsequent step moves shipments, allocations and replenishments into a new subwave, then moves replenishment and allocation requests from virtual to assigned PTL locations.
+
+Custom design intent only. The source gives no complete tie-breaker, capacity rule, transactional boundary or verified extension implementation; this is not base allocation behavior. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p075-b006, p080-b031, p080-b032](reading/sdd-1c25f20de1eafc3e.md#p075-b006)
+
+### knipper-cartonization-dimension-diagnostics
+
+Alongside its zero-dimension/weight behavior for an item without a unit-of-measure record, Knipper proposes an oSCI report for missing dimensions among items in the pool and personal-alert notifications to help handle those exceptions.
+
+The diagnostic options are proposals, not shipped reports or active alerts. Missing dimensions and a missing UOM record are distinct conditions; the source does not define every diagnostic predicate. Generic cartonization behavior is already covered by other reviewed SDDs. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p081-b003](reading/sdd-1c25f20de1eafc3e.md#p081-b003)
+
+### knipper-wave-container-identity
+
+The Knipper container-creation section says SCALE determines container count and contents for shipments on the wave and assigns a unique container number to each created container, calling that number a UCC 128.
+
+This preserves the document terminology only. It does not establish barcode syntax, a GS1/SSCC compliance result, identifier scope across systems, counter configuration or any replacement-LPN rule. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p081-b003](reading/sdd-1c25f20de1eafc3e.md#p081-b003)
+
+### knipper-ex17-seasonal-recartonization
+
+Knipper identifies coolers and freezer items needing icepacks or dry ice in shipping containers and assigns special customer cartonization requirements to EX17, Re-Cartonization of Containers based on Season.
+
+This names a custom design dependency without supplying its temperature, quantity, seasonal, carrier or safety rules. No extension behavior or installed cold-chain configuration is established. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p081-b003](reading/sdd-1c25f20de1eafc3e.md#p081-b003)
+
+### knipper-cross-wave-staging-manual-alignment
+
+Knipper describes a staging location selected by customer and carrier, followed by later manual dock-door assignment. When a shipment on another wave joins an already staged load, its default staging lane can differ; the design uses a manual SOP to align the staging-lane status flow with the existing load.
+
+The SOP steps and permission model are not supplied. This does not resolve the separately recorded parcel dock-management dispute, and no automatic consolidation, fallback precedence or current dock configuration is asserted. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p084-b006, p085-b003](reading/sdd-1c25f20de1eafc3e.md#p084-b006)
+
+### grupo-purchase-order-receipt-day-planning
+
+Grupo Julio creates receipts from Purchase Order Insight, particularly for national vendors, grouping the creation around deliveries planned for a given day. It separately describes blind client returns because the incoming products are not known in advance.
+
+These are implementation choices, not a general requirement for SCALE receiving. The separate no-manual-Receipt-Insight permission choice does not prohibit this purchase-order route; no current receipt or client data was inspected. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p024-b011, p025-b003](reading/sdd-d50ca4a96095c930.md#p024-b011)
+
+### grupo-client-return-type-spelling-mismatch
+
+The Grupo Julio receipt-ID table labels client returns DEV CIE, while the receipt-from-shipment passage says the generated Receipt ID Type is DEV CTE.
+
+The source does not establish whether the codes are distinct or one spelling is erroneous. Keep both source contexts and do not choose a canonical code or infer an installed mapping. Classification: `analyst_inference`.
+
+[sdd-d50ca4a96095c930 p024-b007, p025-b002](reading/sdd-d50ca4a96095c930.md#p024-b007)
+
+### grupo-appointment-deletion-entrypoints
+
+Grupo Julio describes deleting an appointment from Receipt Insight by finding the receipt, opening its context menu and choosing Delete Appointment. It also describes a dock-by-day graphical calendar that can preview, schedule, change and delete appointments, with customizable display information and colors.
+
+English and Spanish repetitions are one documentary account. The existing open-receipt scheduling precondition remains; the passage supplies no deletion permission, cancellation side effect or verified current navigation. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p029-b009, p030-b002, p030-b004](reading/sdd-d50ca4a96095c930.md#p029-b009)
+
+### Additional source qualifications
+
+- C8 source-text review preserves the Work and Picking Add new Sequence versus New Work Type wizard naming ambiguity; current release-specific UI evidence is still needed before using that paragraph as an operator route.
+- C8 source-text review preserves the Covetrus vendor-versus-shipping label wording across wave Pallet Pick and pallet-build picking paragraphs, in addition to the previously recorded label-ID inconsistencies. It does not choose a current routing definition.
+- The new Labels command-description record is expressly a training-slide assertion. Current printer semantics, especially the slide persistence statement, require separate primary vendor verification before operational use. No runnable printer guidance is established.
+- C8 Knipper blind-receipt body and margin comments differ about current versus future use; no installed activation or scenario coverage is established.
+- C8 Knipper EX38 address-verification prose uses RTS and RYS in one paragraph; the target interface and failure semantics remain unverified.
+- C8 Knipper wave-replenishment prose uses FEFO without a lot qualification; it does not resolve the previously recorded non-lot most-available-first versus FIFO disagreement.
+- C8 Knipper source-specific extensions EX13, EX17, EX37 and receipt-from-shipment EX40 require separate specifications; source references and resolved comments are not implementation evidence.
+- C8 Knipper page-39 inventory-status text continues outside this bounded packet; no inspection-completion transition was added.
+- C8 Grupo EX05 required fields depend on the Receiving Preference selecting the extension; installed selection, implementation and ERP receipt are not observed.
+- C8 Grupo client-return Receipt ID Type is DEV CIE in the table but DEV CTE in the receipt-from-shipment prose; equivalence or a corrected code is not established.
