@@ -2393,7 +2393,7 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 **Question:** Why can a work tile disagree with the chart?
 
-**What it does.** Each tile asks a different question: aging work, urgent priority, held work, open/in-process work, or assigned in-process work. It counts distinct work units and evaluates the supplied caution and warning rules separately. The reviewed tiles do not include the chart's detail-instruction restriction, so their counts need not match.
+**What it does.** Each tile asks a different question: aging work, urgent priority, held work, open/in-process work, or assigned in-process work. It counts distinct work units and evaluates the supplied caution and warning rules separately. The reviewed tiles do not include the chart's detail-instruction restriction, so their counts need not match. A recognized tile returns one row even when its count is zero. An unknown or NULL tile selector returns no result set from these branches; absence of a result is different from an empty work count.
 
 **What happens**
 
@@ -3037,7 +3037,7 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 **Question:** Can the unique-container helper be used as a harmless lookup?
 
-**What it does.** No. It computes a numeric candidate and then updates a receipt container. Its one text input is used both as an external identifier to check and as an internal numeric row key for the UPDATE. The name does not guarantee global uniqueness or safe concurrent allocation.
+**What it does.** This helper generates a numeric receipt-container identifier, even though its input parameter is text. Nonnumeric input can fail conversion, and leading zeros can disappear during numeric conversion. It checks the supplied input as an external identifier and also uses it as the internal numeric receipt-container key for the UPDATE. The name does not guarantee global uniqueness or safe concurrent allocation.
 
 **What happens**
 
@@ -3358,7 +3358,7 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 **Question:** Is order open quantity recomputed from every wave?
 
-**What it does.** The reviewed detail helper replaces OPEN_QTY using eligible status slots from only the supplied wave and matching order/ERP line. The order-header helper separately writes a supplied condition. Other waves and current header/line consistency are not automatically reconciled.
+**What it does.** The reviewed detail helper replaces OPEN_QTY using eligible status slots from only the supplied wave and matching order/ERP line. The order-header helper separately writes a supplied condition. Other waves and current header/line consistency are not automatically reconciled. NULL historical quantities are not automatically replaced with zero. A NULL quantity in an included status slot makes that shipment row contribution NULL; SUM ignores that row contribution, and an all-NULL group can leave OPEN_QTY NULL.
 
 **What happens**
 
@@ -11785,7 +11785,7 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 **Question:** How generic dashboard metrics choose count or sum
 
-**What it does.** Generic metric helpers use the caller-selected table and columns to build a query. They sum only when metadata says the selected type is exactly numeric; other types use COUNT, apart from the COUNT(*) special case. The date interval includes both endpoints.
+**What it does.** Generic metric helpers use the caller-selected table and columns to build a query. They sum only when metadata says the selected type is exactly numeric; other types use COUNT, apart from the COUNT(*) special case. The date interval includes both endpoints. The end date is an exact timestamp: midnight includes that instant but excludes later times on the same day. The helper does not expand it to the end of a calendar day.
 
 **What happens**
 
@@ -15695,7 +15695,7 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 **Question:** Why an employee list can differ between users?
 
-**What it does.** The employee list always requires active users and can filter by supervisor. When both the SaaS and feature settings are enabled, it also applies a caller-email category rule. A supplied user that cannot be found can therefore produce an empty restricted list.
+**What it does.** The employee list always requires active users and can filter by supervisor. When both the SaaS and feature settings are enabled, it also applies a caller-email category rule. A supplied user that cannot be found can therefore produce an empty restricted list. In that restricted mode, a NULL caller parameter bypasses the email category test, while a supplied caller name missing from USER_PROFILE leaves its classification NULL and returns no employees. The active-user and optional supervisor filters still apply.
 
 **What happens**
 

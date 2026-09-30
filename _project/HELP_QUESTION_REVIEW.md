@@ -115,3 +115,9 @@ Five previously partial cases (QS-05, QS-10, QS-12, QS-14 and QS-19) now meet th
 The reviewer found blank source excerpts for nested cited nodes. The source loader now includes the complete cited subtree, retaining its original identity and readable block boundaries. The regression test failed before the repair and passed afterward; the final review binds the repaired implementation and recaptured responses.
 
 No browser, keyboard, screen-reader, installed workflow or representative-user acceptance is claimed. The prior baseline and follow-up JSON receipts remain byte-identical historical evidence.
+
+## Continuation 4
+
+The [current independent review](help-question-continuation4.json) retains 23/24 adequate (95.83%), one partial and zero missing. Twenty-two cases reuse exactly unchanged semantic results; two cases with changed incidental returned answers were manually rechecked. Top-eight topic ranks are identical for all 24 known questions. The current snapshot contains 152 successful actual HTTP requests. The Packing-specific replacement-LPN contract remains absent from retained evidence and cannot be inferred from Override Pick or item substitution.
+
+Five source-bound summary additions improve the separate authored retrieval set to 686/725 (94.62%), four recoveries and zero regressions from the prior 725 cases. The original questions, expected results and ranking algorithm remain unchanged and questions remain outside search. See [exact retrieval comparison](retrieval-change-continuation4.json).

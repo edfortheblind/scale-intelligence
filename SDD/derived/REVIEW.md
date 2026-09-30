@@ -1584,3 +1584,954 @@ Assets: [7732b668cccd5cadf15cbd50fa9e81e0f1c9b2d77424b4a712dd3da96420fb48.gif](a
 ### Remaining source conflicts
 
 The compilation describes tote cart picking but also contains a shipping-container-only note. Its automatic-putaway flow uses a different setting name and broader scope than the settings section. Both conflicts remain explicit. Current configuration, full DOCX layout and operational navigation remain unverified.
+
+## Continuation 4 source review
+
+This batch adds 57 claims, 44 setting contracts and 47 visual descriptions covering 57 additional retained assets. The statements preserve source and deployment distinctions. No original source or previous authored record was changed.
+
+### work-picking-override-pick-applicability-boundary
+
+The work special-handling section identifies Override Pick as available for outbound allocation and shipping-container work, replenishment and inventory transfer work. It directs the reader to a separate Override Pick topic for the options.
+
+Supplied SCALE Work/Picking compilation; release unspecified. This is retained documentary evidence, not an observed setting, current screen contract, verified Insight SOP or runtime result. This paragraph supplies applicability only. It does not define replacement-identifier validation or establish a Packing-screen replacement-LPN action. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00133, b00134, b00135](reading/sdd-61bfda888fe30365.md#b00133)
+
+### work-picking-wave-created-receipt-plate-grouping
+
+The grouping example includes receipt containers or license plates created during a wave: three full-case plates allocated from the same location can be verified and confirmed together once during Warehouse Mobile work.
+
+Supplied SCALE Work/Picking compilation; release unspecified. This is retained documentary evidence, not an observed setting, current screen contract, verified Insight SOP or runtime result. The three-case example is illustrative. It does not remove the separately documented serial/catch-weight exceptions, prove cross-item grouping or establish current configuration. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00229, b00230, b00239](reading/sdd-61bfda888fe30365.md#b00229)
+
+### work-picking-cart-removal-selection
+
+The cart-removal procedure distinguishes removing the scanned container from removing all containers on its cart. The all-container path starts from one container on the cart and requires a Yes/No confirmation. Removal clears the shipping container group and spot values; the documented prerequisites are open work, an assigned group and no assigned user.
+
+Supplied SCALE Work/Picking compilation; release unspecified. This is retained documentary evidence, not an observed setting, current screen contract, verified Insight SOP or runtime result. Removal from a cart is not deletion of the shipping-container record. Current permissions and user-visible navigation have not been verified. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00317, b00318, b00320, b00323, b00324, b00327, b00328, b00329](reading/sdd-61bfda888fe30365.md#b00317)
+
+### work-picking-cart-scan-initiation
+
+An already assigned container can be scanned to begin cart picking; the source then asks the user to confirm Begin Picks before moving to pick confirmation.
+
+Supplied SCALE Work/Picking compilation; release unspecified. This is retained documentary evidence, not an observed setting, current screen contract, verified Insight SOP or runtime result. This shortcut does not establish an unassigned-container path. The nearby shipping-container-only versus tote-cart support conflict remains unresolved. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00331, b00332, b00335](reading/sdd-61bfda888fe30365.md#b00331)
+
+### work-picking-picking-field-lists-not-contracts
+
+The Picking Management field lists identify such labels as Zones Away, Hold Code, License Plate and Parent License Plate, and identify a Zone Summary for a multiple-zone selection. Those lists do not themselves specify calculations, validation rules or database mappings.
+
+Supplied SCALE Work/Picking compilation; release unspecified. This is retained documentary evidence, not an observed setting, current screen contract, verified Insight SOP or runtime result. Use the separately reviewed process paragraphs for supported behavior. A field name alone is not evidence of its complete semantic contract. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00404, b00409, b00424, b00440, b00441, b00442, b00443, b00444, b00445, b00469, b00470, b00472, b00476, b00478](reading/sdd-61bfda888fe30365.md#b00404)
+
+### work-picking-picking-group-field-lists
+
+The wave picking-group reference separates header capacity fields from detail records that associate a pick-location group and sequence. Its procedure applies the header before creating detail records.
+
+Supplied SCALE Work/Picking compilation; release unspecified. This is retained documentary evidence, not an observed setting, current screen contract, verified Insight SOP or runtime result. The field list does not add an undocumented capacity default or enforcement rule; use the reviewed capacity and sequence contracts for their stated limits. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00565, b00567, b00568, b00569, b00571, b00572, b00573, b00575, b00576, b00577, b00579, b00580, b00595](reading/sdd-61bfda888fe30365.md#b00565)
+
+### work-picking-work-summary-assignment-terminology
+
+The RF execution flow first says that instructions within a work unit follow the From Assign Method, then explicitly says the system assigns work summaries rather than individual work instructions to the user.
+
+Supplied SCALE Work/Picking compilation; release unspecified. This is retained documentary evidence, not an observed setting, current screen contract, verified Insight SOP or runtime result. Retain both source terms. The cited paragraphs do not define the work-summary data structure or prove a one-to-one relationship between summaries and instructions. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00836, b00837, b00838](reading/sdd-61bfda888fe30365.md#b00836)
+
+### work-picking-creation-print-scope
+
+The creation flow describes immediate pick-list printing for an outbound work unit when Auto Print is enabled. The configuration section warns that also placing the pick-list document type on a document master can print a second set later during paperwork in the same wave.
+
+Supplied SCALE Work/Picking compilation; release unspecified. This is retained documentary evidence, not an observed setting, current screen contract, verified Insight SOP or runtime result. The outbound flow qualification is preserved. No printer, installed document master or actual duplicate print has been observed. Classification: `vendor_behavior`.
+
+[sdd-61bfda888fe30365 b00016, b00744](reading/sdd-61bfda888fe30365.md#b00016)
+
+### label-vendor-compliance-purpose
+
+The deck describes a vendor-compliant label as container identification formatted to the ship-to requirements. Its vendor-label slide says the printer must be accessible through a network share and points to separate printer configuration guidance.
+
+Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. This is a requirement in the supplied training source, not proof of a current cloud printing topology or a reason to alter network shares. Classification: `vendor_behavior`.
+
+[sdd-56008a31665dcc23 s009-sh003, s009-sh005](reading/sdd-56008a31665dcc23.md#s009-sh003)
+
+### label-shipping-label-identity
+
+A shipping label identifies a shipping container for the carrier and includes ship-from and ship-to information. The deck describes automatic generation during container packing and manifesting; when a company is associated with the container, its name and address supply the ship-from values.
+
+Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. The source does not establish that every carrier/configuration prints twice, or that generation equals successful physical printing. Classification: `vendor_behavior`.
+
+[sdd-56008a31665dcc23 s010-sh003, s010-sh005](reading/sdd-56008a31665dcc23.md#s010-sh003)
+
+### label-receipt-label-timing-scope
+
+The deck describes receipt-container labels as the inbound counterpart of vendor labels. A brief speaker note says they print during locating, while the later customer-return example asks for a smaller receipt-container label during check-in.
+
+Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. Keep these different contexts. The note and implementation example do not establish one universal inbound print trigger. Classification: `vendor_behavior`.
+
+[sdd-56008a31665dcc23 s013-sh003, s013-sh005, s013-notes, s042-sh004](reading/sdd-56008a31665dcc23.md#s013-sh003)
+
+### label-combined-wave-label-reference
+
+The vendor-label slide points to a separate Container Contents and Vendor Labels topic when both label types are wanted from a wave. The prerequisite slide separately names a Documents - Labels wave step when wave printing is used.
+
+Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. The referenced combined-label setup is not reproduced in these slides; the reference alone supplies no complete configuration sequence. Classification: `vendor_behavior`.
+
+[sdd-56008a31665dcc23 s009-sh005, s007-sh004](reading/sdd-56008a31665dcc23.md#s009-sh005)
+
+### label-cart-label-grouping-example
+
+A customer example orders parcel labels by container type, prints a break label carrying the type and count, and adds a container-ID barcode to the contents label so staff can assemble the required cart containers.
+
+Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. This is a documented design example, not an observed print order, current default or measured cart-building improvement. Classification: `implementation_specific_choice`.
+
+[sdd-56008a31665dcc23 s033-sh004, s034-sh004, s037-sh004, s039-sh004](reading/sdd-56008a31665dcc23.md#s033-sh004)
+
+### label-vendor-template-example
+
+A customer-specific vendor-label example starts from a generic vendor template and changes its layout to the retailer requirements. The displayed example separates ship-from, ship-to, merchandise and carton-identification areas.
+
+Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. The slide does not prove current retailer compliance or authorize replacement of an installed label file. Classification: `implementation_specific_choice`.
+
+[sdd-56008a31665dcc23 s040-sh004, s041-sh004, s041-sh005](reading/sdd-56008a31665dcc23.md#s040-sh004)
+
+### label-return-label-example
+
+The customer-return example requests a 2 by 3 label for small returned items at check-in and a horizontal layout. Its template and photograph show receipt/return identification, a license plate, item and destination fields.
+
+Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. The photographed example does not establish its physical dimensions, barcode readability or successful output from the assessed installation. Classification: `implementation_specific_choice`.
+
+[sdd-56008a31665dcc23 s042-sh004, s043-sh004, s043-sh005](reading/sdd-56008a31665dcc23.md#s042-sh004)
+
+### label-wave-print-diagnostic-artifacts
+
+The resource slide describes a WLI wave-label file as containing document type, printer, copy count and errors, and a WLD file as containing ZPL output. It lists both ILS 2016 and ILS 2021 installation paths.
+
+Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. Treat these as mixed-version training references. File existence, active paths, job state and printer receipt were not inspected; no spool or label file was opened or executed. Classification: `vendor_behavior`.
+
+[sdd-56008a31665dcc23 s044-sh004](reading/sdd-56008a31665dcc23.md#s044-sh004)
+
+### label-speaker-note-context-limit
+
+The notes on the prerequisites, label-types and ZPL-introduction slides repeat an interface-error or shipment-deletion remark that does not match those slides' subjects.
+
+Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. This is a source-context observation. Do not turn the repeated note into a label workflow, deletion action or interface contract. Classification: `analyst_inference`.
+
+[sdd-56008a31665dcc23 s007-notes, s008-notes, s021-notes](reading/sdd-56008a31665dcc23.md#s007-notes)
+
+### covetrus-adjustment-located-inventory-boundary
+
+The design distinguishes quantity adjustments from physical transfers: adjustments change on-hand inventory and create a transaction history record, while the receiving dock is excluded because Inventory Management adjustments require located inventory. Track-and-trace adjustments have a named EX06 restriction.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The source does not provide the detailed EX06 validation algorithm. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b00922, b00924, b00932, b00954, b02210](reading/sdd-c4c7e01f8ccad48a.md#b00922)
+
+### covetrus-manual-adjustment-tool-caution
+
+The Covetrus notes describe supervisor use of a Manual Inventory Adjustment tool and recommend investigating discrepancy causes because manually changing inventory buckets may have cascading effects. Virtual multi-item locations in a Morgue area are used for dummy systemic inventory such as shortages.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. This is historical design context, not authorization to reconcile real inventory or evidence that a current discrepancy has that cause. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b00956, b00958](reading/sdd-c4c7e01f8ccad48a.md#b00956)
+
+### covetrus-inventory-transfer-work-boundary
+
+In the design, Inventory Management transfers move stock between warehouse locations. Transfer work is created from the Insight screen so a supervisor can choose the movement and an RF user can execute it; starting from selected inventory defaults the source location and item, while blind initiation requires them.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The image caption says transfer with work, but its Create work action is gray; the screenshot alone does not demonstrate successful work creation. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b00965, b00967, b00969](reading/sdd-c4c7e01f8ccad48a.md#b00965)
+
+### covetrus-inventory-status-location-granularity
+
+The Covetrus design receives normal inventory as Available and inbound-QC items as HQ, permits secured status-change types, and records status changes in transaction history. It says a location without license-plate tracking cannot hold the same item partly Available and partly Damaged, and Covetrus does not start one status change by selecting multiple lots.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. These constraints are documented in this implementation example; no deployed inventory or status configuration was read. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b00981, b00983, b00985, b00987](reading/sdd-c4c7e01f8ccad48a.md#b00981)
+
+### covetrus-combined-transfer-status-planned
+
+The SDD says Covetrus does not currently use a combined transfer-and-status-change adjustment type but is considering it; adoption would require interface enhancement.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Planned functionality must not be described as enabled. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b00989, b00991](reading/sdd-c4c7e01f8ccad48a.md#b00989)
+
+### covetrus-cycle-count-generation-and-verification
+
+Cycle-count plans generate one work unit per selected location. The design also creates activity-based counts after short picks, but a direct screen reroute into counting remains an open item. With Verify Bad Count, an initial discrepancy prompts verification and requires two consecutive equal counts to complete that verification.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Existing zero-tolerance versus positive-tolerance review notes remain unresolved; completing count entry is not proof that a discrepant request is closed. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01012, b01027, b01029, b01031, b01033, b01039, b01041, b01047, b01050, b01052](reading/sdd-c4c7e01f8ccad48a.md#b01012)
+
+### covetrus-cycle-reconciliation-and-extension-status
+
+The described reconciliation flow lets a supervisor enter the correct on-hand quantity for a Pending Review count, then updates inventory, records a transaction and closes the request. The EX25 extension is separately described as preventing a cycle-count plan from closing while a request is pending review, while the body says the recent action remains outside original scope and subject to change control.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Request closure and plan closure are different scopes. The source does not establish deployment of EX25. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01062, b01064, b01066, b01073, b01075, b01084, b02210](reading/sdd-c4c7e01f8ccad48a.md#b01062)
+
+### covetrus-capacity-replenishment-prerequisites
+
+Covetrus describes daily manual capacity replenishment for primary bins in each-unit increments, evaluating permanent active locations below their configured minimum percentage. Item-location assignment and capacity records are required. Threshold-based real-time replenishment is explicitly excluded from go-live even though a later paragraph describes possible scheduled use for fast movers.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The later conditional description does not establish that real-time replenishment was enabled. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01114, b01123, b01125, b01131, b01133, b01139](reading/sdd-c4c7e01f8ccad48a.md#b01114)
+
+### covetrus-outbound-status-meaning
+
+The SDD distinguishes physical shipping stages from shipment status summaries: trailing status is the least advanced container status and leading status the most advanced. In Pool Pending shipments cannot enter a wave; In Pool shipments have no work available; Closed follows shipping-load confirmation.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The status list is documentary. No live counts, transitions or shipment state were observed. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01194, b01199, b01200, b01202, b01203, b01205, b01206, b01208, b01209, b01211, b01212, b01214, b01215, b01219, b01221, b01223, b01224, b01228, b01229, b01240](reading/sdd-c4c7e01f8ccad48a.md#b01194)
+
+### covetrus-shipment-import-and-wave-selection
+
+The Covetrus design imports host shipments on a schedule; validation failures require correction before reprocessing. Its priority or cutoff-time waving can produce multiple loads from one wave. A planned-shipment filter that matches a shipment line includes the entire shipment, and a wave master selects the ordered flow, eligible replenishment masters and paperwork master.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The text describes existing criteria and possible additions; it does not identify the assessed deployment filter records. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01248, b01250, b01263, b01265, b01267, b01269, b01271, b01276, b01318](reading/sdd-c4c7e01f8ccad48a.md#b01248)
+
+### covetrus-wave-overrides-remain-under-review
+
+Covetrus intends to reuse wave flows, masters and override-data steps, while explicitly reviewing whether custom overrides remain necessary with base functionality. The Check for No Work override marks a wave failed when shipment work was not created; other override placeholders are not a complete enumerated implementation contract.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. No override was executed or verified against a deployed customization. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01278, b01280, b01282, b01561, b01566, b01572, b02335](reading/sdd-c4c7e01f8ccad48a.md#b01278)
+
+### covetrus-allocation-rules-and-fallback
+
+The SDD describes allocation-rule sequences attempting remaining demand in order. A shipment detail can receive its rule from the item, interface or wave assignment, and the *Default rule applies when no rule is set. Covetrus favors assignment during the wave while retaining manual or interface choices.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Always Override controls reassignment within the described assignment process; the text does not establish an unconditional precedence among every source of a rule. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01368, b01370, b01371, b01372, b01374, b01381, b01383, b01384, b01385, b01386, b01388, b01390, b01392, b01394](reading/sdd-c4c7e01f8ccad48a.md#b01368)
+
+### covetrus-allocate-complete-host-override
+
+For selected Covetrus order profiles, Allocate Complete requires the whole shipment to be allocatable. The host sends the flag as N, so a wave override must set it for the relevant profiles; direct transfers are explicitly included. Otherwise, the design sends an unallocated portion back to the pool on a backorder with In Pool as rejection status.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Do not generalize the selected profiles or flag value to the assessed deployment. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01399, b01401, b01405, b01407](reading/sdd-c4c7e01f8ccad48a.md#b01399)
+
+### covetrus-container-creation-dimension-boundary
+
+Container creation first separates shippable units, then groups loose items by packing class and associated container group. It uses weight, volume and critical dimensions while trying successive container sizes; an item lacking a unit-of-measure record is treated as zero-dimensional and zero-weight in this description, so Covetrus relies on reports and procedures to identify missing dimensions.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The separately named EX26 3D-cubing extension uses custom stabilizing codes and is listed as new scope and under development, rather than established base deployment. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01412, b01414, b01416, b01418, b01420, b01425, b02246](reading/sdd-c4c7e01f8ccad48a.md#b01412)
+
+### covetrus-three-dimensional-cubing-not-accepted
+
+The Covetrus design names EX26 3D cubing with custom stabilizing codes, marks it outside the approved statement of work and later lists it as an open development issue.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. This is an extension requirement, not a delivered or validated capability. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01425, b02210, b02246](reading/sdd-c4c7e01f8ccad48a.md#b01425)
+
+### covetrus-pallet-strategy-source-qualification
+
+The design uses wave pallet building for TL/LTL, with requirements, a container type and strategy controlling selection, grouping and dimensions. It mentions possible Maximum Height and Weight usage, then names Build Pallets using Height-Weight No Split Item as Covetrus usage. Full allocated pallets are excluded by criteria and pallet-unit conversion is not used.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The possible strategy and named usage are retained as different source statements, not reconciled into a single proven setting. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01448, b01451, b01453, b01455, b01457, b01459, b01463](reading/sdd-c4c7e01f8ccad48a.md#b01448)
+
+### covetrus-dock-assignment-and-cross-wave-staging
+
+The design connects dock assignment to status flows, carrier assignment and anchor criteria, with fallback locations when no eligible dock positions are found. A later wave added to an already staged load can receive a different default staging lane, which Covetrus handles through a manual staging procedure.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The source separately describes shipment-based staging and one staging location per load; their configured reconciliation was not supplied. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01483, b01485, b01487, b01489](reading/sdd-c4c7e01f8ccad48a.md#b01483)
+
+### covetrus-shipping-work-grouping-design
+
+The SDD creates dry pick-and-pass, dry-cart, cooler and special-pick work per shipping container, while pallet work is per wave-built pallet and bulk work is constrained by configured maxima. It explicitly says no shipment-allocation work is created and limited quantity is not a separate work type.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Bulk maxima are described as volume in the work-creation section and volume, weight and instruction count in the execution assumptions; actual configured values are absent. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01493, b01497, b01501, b01510, b01514, b01518, b01522, b01526, b01528, b01532, b01813](reading/sdd-c4c7e01f8ccad48a.md#b01493)
+
+### covetrus-wave-cancel-release-and-hold
+
+The Covetrus description separates cancellation from release: canceling a wave reverses allocations and removes created work and containers, while release removes Wave Not Released holds and prints configured paperwork. Conveyor sites additionally send carton and zone-pick information to WCS through EX04 at release.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. These are source procedures only. No cancellation, release, printing or WCS transmission was performed. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01581, b01585, b01589, b01594, b01595, b01596, b01600, b01605, b01607, b01611, b02202](reading/sdd-c4c7e01f8ccad48a.md#b01581)
+
+### covetrus-post-release-cancellation-guards
+
+For Covetrus, canceling a shipment after wave release removes its shipping work and containers and returns it to the pool, but picked items must be transferred back to stock. Replenishment work is not canceled automatically; active picker execution prevents cancellation. After release only a warehouse user can cancel, while the host can change a shipment only in In Pool status.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The named implementation describes these guards; it does not prove permissions or recovery in the assessed environment. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01619, b01622](reading/sdd-c4c7e01f8ccad48a.md#b01619)
+
+### covetrus-pick-pass-and-cart-validation
+
+Dry pick-and-pass uses the container work unit, location/item validation and zone handoff; if no work exists in the current zone, the container is passed onward. Dry and cooler carts are built by assigning scanned containers to spots before Begin Picks, then validating the destination container for single or multiple spots.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Item validation refers to EX07, whose extension note permits turning validation off for flagged items lacking a barcode. The body flow does not establish universal item scanning. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01713, b01714, b01716, b01718, b01739, b01753, b01754, b01757, b01759, b01761, b01767, b01841, b01842, b01844, b01846, b01848, b01854, b01856, b02210](reading/sdd-c4c7e01f8ccad48a.md#b01713)
+
+### covetrus-short-pick-and-putaway-differences
+
+Several pick flows use Skip to continue remaining instructions and Pass to suspend unresolved work for supervisor review. Short-pick access is secured. The bulk section additionally permits an authorized picker to enter the short quantity and reason, while unauthorized cases go to a hospital area. Bulk picking explicitly confirms putaway to Packing; dry/cart/cooler examples use automatic putaway.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The supervisor-only prose and authorized-picker bulk path must not be flattened into one universal role rule. Auto putaway does not measure physical travel completion. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01686, b01688, b01690, b01703, b01705, b01707, b01741, b01743, b01745, b01763, b01765, b01769, b01823, b01825, b01827, b01829, b01831, b01833, b01850, b01852, b01858](reading/sdd-c4c7e01f8ccad48a.md#b01686)
+
+### covetrus-full-carton-and-content-edit-boundary
+
+When a carton fills during dry pick-and-pass or cart picking, Covetrus marks it for a packing station to unpack and repack into a new container. The Shipping Container Insight description unpacks selected items by setting quantity to pack to zero, then repacks them through Packing; editing contents requires the container to be in a location whose subclass is Packing.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. This supports a named unpack/repack procedure, not a general replacement-LPN eligibility contract. It does not establish permission to substitute arbitrary LPNs or bypass picked-stock controls. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01747, b01806, b01946, b01955](reading/sdd-c4c7e01f8ccad48a.md#b01747)
+
+### covetrus-picking-visual-qc-and-vas-boundary
+
+The design distinguishes visual QC/VAS performed during picking from recorded outbound QC/VAS, citing labor and space constraints. It uses text or item-category displays during picking, while systemic VAS is reserved for Pharmacy and requires confirming the assigned activity before carton close.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. EX13 and EX28 are implementation extensions. A visual check during picking does not demonstrate a recorded QC or VAS transaction. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01442, b01444, b01867, b01876, b01878, b01882, b02210, b02267](reading/sdd-c4c7e01f8ccad48a.md#b01442)
+
+### covetrus-outbound-qc-force-pass-distinction
+
+The Covetrus document first describes normal QC scanning, configurable failure reasons and successful QC before carton close, but separately states that TLC orders often use Force QC pass for a visual-QC process. It also says fuller use would need custom barcode parsing.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Forced pass is an explicitly named implementation choice; it must not be rewritten as proof that every item was scanned or that a failed inspection was physically corrected. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01437, b01891, b01893, b01898, b01903, b02267](reading/sdd-c4c7e01f8ccad48a.md#b01437)
+
+### covetrus-close-container-and-manifest-boundaries
+
+Closing a container marks it packed and prevents adding further items while advancing its configured status flow. Parcel manifesting is described before close. For international parcels, however, the SDD also describes closing each container and a shipment-level manifest after the last close, while its profile and future-function sections place international logistics outside SCALE and list integration as future work.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The international statements conflict in integration scope; no deployed manifest sequence is established. EX11 host invoice printing is a separate extension. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01917, b01919, b01921, b01923, b01925, b01931, b01937, b01258, b02293](reading/sdd-c4c7e01f8ccad48a.md#b01917)
+
+### covetrus-carrier-transfer-and-hospital-boundaries
+
+The SDD describes changing an LTL carrier before truck loading by transferring the shipment to a known load or creating a new carrier load. It calls post-wave carrier changes exceptional and handled by an external procedure. Packing exceptions use a hospital station; pallet corrections can require a status flow containing Packing and a systemic move into a packing location.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The described external procedures are not supplied as verified operator instructions. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01960, b01962, b01964, b01966, b01967, b01981, b02007, b02009](reading/sdd-c4c7e01f8ccad48a.md#b01960)
+
+### covetrus-dock-loading-versus-load-confirmation
+
+Covetrus manually assigns the dock door to a shipping load to generate loading work. Immediate Dock Transfer moves a scanned container and advances it to Ship Confirm Pending. Load confirmation then removes dock inventory, closes load/shipment/detail/container statuses and makes host upload available; afterward the shipment cannot be modified.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. The design avoids splitting shipments because of host restrictions, moving unready shipments to another load. Its general status list also names Load Confirm Pending; no live status machine was reconciled. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b02023, b02025, b02032, b02038, b02040, b02052](reading/sdd-c4c7e01f8ccad48a.md#b02023)
+
+### covetrus-parcel-carrier-and-end-of-day-conflict
+
+The parcel section says Covetrus uses only FedEx, excludes FedEx actions from Manifest Insight and requires no FedEx end-of-day processing. The following section nevertheless describes closing a manifest and Allow Multiple Manifests per Day set to Yes, while the earlier order-profile table lists several parcel carriers.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Retain the generic procedure and carrier-specific exclusion as a source-scope conflict. Do not prescribe end-of-day closing for FedEx from this material. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01258, b02057, b02061](reading/sdd-c4c7e01f8ccad48a.md#b01258)
+
+### covetrus-label-id-conflict
+
+Covetrus label identifiers are inconsistent: the label register maps Vendor, Container Contents, Shipping, Break and Pallet labels to LBL02 through LBL06, but full-pallet and close-container passages assign different IDs to some labels.
+
+Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Keep document labels descriptive until the owner supplies authoritative routing definitions. No print job or label certification was performed. Classification: `implementation_specific_choice`.
+
+[sdd-c4c7e01f8ccad48a b01541, b01543, b01546, b01550, b01660, b01928, b01934, b01935, b02225, b02227](reading/sdd-c4c7e01f8ccad48a.md#b01541)
+
+### haddad-work-creation-selection-and-assignment
+
+The HADDAD walkthrough separates work-request selection and instruction ordering in work criteria, work generation in a work creation master, and work-type/work-zone participation in a work profile. It repeats the configuration chain for receiving, shipment allocation, shipment container, replenishment, inventory transfer and cycle count work.
+
+This describes a configuration dependency chain in the SCALE 2020 example. It does not prove a scheduled caller, a complete runtime precedence contract or an active profile for an assessed user. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00292, b00303, b00304, b00310, b00311, b00312, b00313, b00314, b00315, b00340, b00341, b00342, b00343, b00368](reading/sdd-f46806ef53e15f07.md#b00292)
+
+### haddad-receipt-criteria-parent-container-grouping
+
+The Putaway Work CPO receipt-work example filters locating requests to non-null FROM_LOC and non-null PARENT_CONTAINER_ID, orders by PARENT_CONTAINER_ID ascending with Create work unit set to Yes on that sort row, and links the criterion to a pre-build master whose work unit field is Container id.
+
+The unchecked Create work unit control above the sort grid is a row-entry control; the saved row explicitly says Yes. The screenshot does not prove final instruction counts or how Container id and parent-container grouping interact at runtime. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00216, b00217, b00301, b00303, b00304, b00305](reading/sdd-f46806ef53e15f07.md#b00216)
+
+### haddad-receiving-example-does-not-enable-group-putaway
+
+The RECEP STD PCB example selects Check in and locate (immediate) on RF, but its General tab leaves Execute group putaway unchecked. The prose states immediate locating as a prerequisite for group creation; that prerequisite alone does not establish that the shown preference enables group putaway.
+
+Preserves the distinction between a documented prerequisite and a separately displayed option. No correction to either source account or current configuration is inferred. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00268, b00270, b00271, b00272, b00273](reading/sdd-f46806ef53e15f07.md#b00268)
+
+### haddad-work-profile-example-tab-limit
+
+The receiving section says work-profile detail Work Processing settings define assignment and completion. Its two adjacent example images show a Work type selection and the profile detail-record list, not the contents of Work Processing. The later inspected profile images show work-type, warehouse-access and work-zone selections.
+
+These pictures support associations and authorization surfaces only. They cannot establish assignment/completion modes or the effective access of any current operator. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00292, b00293, b00295, b00356, b00358, b00359, b00360](reading/sdd-f46806ef53e15f07.md#b00292)
+
+### haddad-special-handling-example-verification
+
+HADDAD describes special handling as validations or restrictions for a group of work instructions. Its picking example selects Container verify, location verification None, Item verification and Use converted qty, while Quantity, License plate and Lot verification are unchecked. The key-values image selects Work and names work zone W-Picking PCB.
+
+The work-type text is clipped and is not reconstructed. Receipt putaway choices and several lower override labels are clipped or have no visible selection; the images do not establish a complete precedence or override contract. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00363, b00366, b00370](reading/sdd-f46806ef53e15f07.md#b00363)
+
+### haddad-allocation-example-fallback-and-filter
+
+The HADDAD allocation example links Haddad assignment to Affectation Standard. Its rule details use Reserve PAL, Picking PCB and Picking UVC at sequences 10, 20 and 30. Prose describes falling through to the next selection when nothing is found. Reserve PAL is a selection name; the visible predicate actually names allocation zone A-Reserve PCB.
+
+The name/zone distinction is retained, not silently corrected. Strategy and lot captions are clipped, and neither these screenshots nor their names prove the full runtime allocation contract. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00453, b00454, b00459, b00463, b00464, b00466, b00467](reading/sdd-f46806ef53e15f07.md#b00453)
+
+### haddad-inventory-status-provenance-disagreement
+
+HADDAD prose calls Available and Held normally system-created inventory statuses. The accompanying list shows both active with System created set to No; the Available edit dialog also leaves System created unchecked, despite a historical last-updated user label of System.
+
+Source provenance disagreement is retained. A last-updated user label is not equivalent to the System created flag and does not resolve the discrepancy. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00209, b00210](reading/sdd-f46806ef53e15f07.md#b00209)
+
+### haddad-location-new-versus-edit-state
+
+The location prose describes creating locations and says the initial status is usually Empty. Its adjacent screenshot is titled Edit existing and displays Storage. The same picture shows disabled edit controls, Multi item and Track license plates checked, and Allocate in transit unchecked.
+
+The existing-record picture does not contradict a new-record default or establish universal defaults. The separate small checkboxes select fields to edit; they are not the displayed inventory-option values. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00111, b00112, b00118, b00119](reading/sdd-f46806ef53e15f07.md#b00111)
+
+### haddad-inventory-work-scope-example
+
+For inventory movements requiring user work, HADDAD lists Work Group, Work Type, Work Profile, Work Criteria and Work Creation Master. It describes special handling as optional for changing RF confirmation validation fields. The later transfer/adjustment work-criteria subsection says that part is not used in this warehouse example.
+
+A documented prerequisite chain is separate from the example decision not to use that subsection. It is not evidence that the assessed warehouse uses or avoids inventory work. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00197, b00198, b00199, b00200, b00201, b00202, b00203, b00216, b00217, b00218](reading/sdd-f46806ef53e15f07.md#b00197)
+
+### haddad-replenishment-criteria-um-grouping
+
+The inspected replenishment-work criterion visibly groups the converted quantity UM alternatives PAL or PCB in parentheses. The parenthesized group is combined with AND filters for a non-null item, source warehouse, allocation zone, destination work zone, lot and replenishment master.
+
+This is the visible configuration example, not a query executed or an effective rule observed in the assessed deployment. Its example warehouse, zone, lot and master values must not be generalized. Classification: `configuration_example`.
+
+[sdd-f46806ef53e15f07 b00335, b00336](reading/sdd-f46806ef53e15f07.md#b00335)
+
+### Retained asset descriptions
+
+#### Routing selection example
+
+The routing-selection tab shows separate device and document drop-downs and a copy-count field set to one. The paired routing-criteria tab is visible but not its rules in this image. User identity and example printer/document names are not reproduced here.
+
+Limit: Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established.
+
+[sdd-56008a31665dcc23 s006-sh006](reading/sdd-56008a31665dcc23.md#s006-sh006)
+
+Assets: [200b3c4fd48311a7b63e4cab2255dd1ef5a85f8d475cf638760e9dcc34ab6119.png](assets/sdd-56008a31665dcc23/200b3c4fd48311a7b63e4cab2255dd1ef5a85f8d475cf638760e9dcc34ab6119.png)
+
+#### Carrier shipping-label example
+
+The portrait example separates the address block, routing code, service line and tracking barcode, with weight and package sequence at the top. It illustrates carrier-shipping identification rather than a list of packed items.
+
+Limit: Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. Example contact, address and tracking values are omitted; visual inspection cannot validate carrier acceptance or barcode scanning.
+
+[sdd-56008a31665dcc23 s010-sh004](reading/sdd-56008a31665dcc23.md#s010-sh004)
+
+Assets: [bf46bc276ed5d71dd920e424721287363f880966cfbc3c35cef038bc23025ef3.png](assets/sdd-56008a31665dcc23/bf46bc276ed5d71dd920e424721287363f880966cfbc3c35cef038bc23025ef3.png)
+
+#### Container-contents label example
+
+A container header and type appear above shipment/reference fields and a line-item grid with item, description, location and quantity columns. A tracking field is present but empty in this sample.
+
+Limit: Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established.
+
+[sdd-56008a31665dcc23 s011-sh004](reading/sdd-56008a31665dcc23.md#s011-sh004)
+
+Assets: [af523e79cb3a9dd390db0545afd4958cd1a54b279327cbc4041ab9c10fdd2649.png](assets/sdd-56008a31665dcc23/af523e79cb3a9dd390db0545afd4958cd1a54b279327cbc4041ab9c10fdd2649.png)
+
+#### Shipment break-label example
+
+A large Break Label heading is followed by shipment and container identifiers, leaving most of the sample blank. The image illustrates a separator between label groups; it contains no item-content grid.
+
+Limit: Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established.
+
+[sdd-56008a31665dcc23 s012-sh004](reading/sdd-56008a31665dcc23.md#s012-sh004)
+
+Assets: [574b90044d313720c701fdf724b1c9a021b7514372a51f91326057dd3d94cfb1.png](assets/sdd-56008a31665dcc23/574b90044d313720c701fdf724b1c9a021b7514372a51f91326057dd3d94cfb1.png)
+
+#### Receipt-container label example
+
+The sample places a license-plate barcode above destination, receipt identifier/date, item description and quantity with unit of measure. It illustrates inbound container identity and destination information.
+
+Limit: Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established.
+
+[sdd-56008a31665dcc23 s013-sh004](reading/sdd-56008a31665dcc23.md#s013-sh004)
+
+Assets: [64f9775c95eda9fc2141ddc12df353c8a44305f9ed67b4c5c00b4760c2419adb.png](assets/sdd-56008a31665dcc23/64f9775c95eda9fc2141ddc12df353c8a44305f9ed67b4c5c00b4760c2419adb.png)
+
+#### Container-type break-label example
+
+The custom break-label output presents wave number, container type and count in large text. These fields match the customer example's need to assemble cart containers by type.
+
+Limit: Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established.
+
+[sdd-56008a31665dcc23 s037-sh004](reading/sdd-56008a31665dcc23.md#s037-sh004)
+
+Assets: [4d5562848af069d6b28d8b4caedffad054b4ed7366190544a20e96fd1750c281.png](assets/sdd-56008a31665dcc23/4d5562848af069d6b28d8b4caedffad054b4ed7366190544a20e96fd1750c281.png)
+
+#### Container-contents label with identification barcode
+
+The custom contents example adds a wide barcode above the container/type/shipment header and line-item grid. This supplies a scannable container identifier in the design example; no scan test was performed.
+
+Limit: Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established.
+
+[sdd-56008a31665dcc23 s039-sh004](reading/sdd-56008a31665dcc23.md#s039-sh004)
+
+Assets: [dd735c3a95e589ad19f4c750c6466083b14fbe6b09676812d3fd136e87ff64d4.png](assets/sdd-56008a31665dcc23/dd735c3a95e589ad19f4c750c6466083b14fbe6b09676812d3fd136e87ff64d4.png)
+
+#### Vendor-label requirement and output illustrations
+
+Two illustrations organize sender/recipient information above a merchandise grid and a carton barcode. The grids include channel, item/product identifiers, merchandise description, quantity and purchase-order fields. They illustrate the custom-layout example without proving that the layouts satisfy current retailer requirements.
+
+Limit: Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. Example names, addresses, identifiers and order values are omitted.
+
+[sdd-56008a31665dcc23 s041-sh004, s041-sh005](reading/sdd-56008a31665dcc23.md#s041-sh004)
+
+Assets: [016db705d9e1f9148ebfff112ca4ccf396b1f7f02afbeb97e4b77466be973518.png](assets/sdd-56008a31665dcc23/016db705d9e1f9148ebfff112ca4ccf396b1f7f02afbeb97e4b77466be973518.png); [01e99ac722b6b30675f1f8a9533222148ce35e2d6e01fe237cf97ead87041f6d.png](assets/sdd-56008a31665dcc23/01e99ac722b6b30675f1f8a9533222148ce35e2d6e01fe237cf97ead87041f6d.png)
+
+#### Return label template and photographed example
+
+The template image contains field substitutions for receipt, container/license plate, item and destination, with a highlighted rotation command. The photo shows a horizontally arranged receipt/return reference and license-plate barcode, item text and destination label. The photo's destination value is blank.
+
+Limit: Mixed-era SCALE label training deck: slide 3 names SCALE 2021, while examples and paths include other dates/releases. No current deployment, printer output, carrier certification, executable code or verified screen navigation is established. No template was run, barcode decoded or printer configuration validated; color is unnecessary to understand the description.
+
+[sdd-56008a31665dcc23 s043-sh004, s043-sh005](reading/sdd-56008a31665dcc23.md#s043-sh004)
+
+Assets: [4298f3b8bf6d1031aea397a959385b0ff069a38868adfcbf4c86cd2b9b413d7c.jpeg](assets/sdd-56008a31665dcc23/4298f3b8bf6d1031aea397a959385b0ff069a38868adfcbf4c86cd2b9b413d7c.jpeg); [8d2f89558f68a7457389230acf48679e3c7de89ed8625a96ecbfc91fc524a0ae.png](assets/sdd-56008a31665dcc23/8d2f89558f68a7457389230acf48679e3c7de89ed8625a96ecbfc91fc524a0ae.png)
+
+#### Inventory transfer form and inactive Create work action
+
+The form shows adjustment type, license plate, source and destination locations, item, status, company, lot, expiration, quantity and unit of measure. Transfer is highlighted while Create work appears gray. The surrounding text describes Insight-created transfer work, but this static image does not show that action enabled or completed.
+
+Limit: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Retained image individually inspected; full DOCX pagination and actual screen behavior unverified.
+
+[sdd-c4c7e01f8ccad48a b00965, b00967, b00969, b00971, b00972](reading/sdd-c4c7e01f8ccad48a.md#b00965)
+
+Assets: [55d7dc39bc49b361a3c719f251aec25e247755bb4df67cb61968a1dfc7f6af50.png](assets/sdd-c4c7e01f8ccad48a/55d7dc39bc49b361a3c719f251aec25e247755bb4df67cb61968a1dfc7f6af50.png)
+
+#### Cycle-count location and quantity entry sequence
+
+Four panels linked by arrows show user-directed work selection, location/check-digit verification, quantity entry and an Actions menu with Add item and Done. The screenshot still labels the bottom button GO, consistent with the neighboring note that Covetrus planned to remap Go to Done and validate the result.
+
+Limit: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Retained image individually inspected; full DOCX pagination and actual screen behavior unverified. The planned button remapping is not visually demonstrated as deployed.
+
+[sdd-c4c7e01f8ccad48a b01039, b01041, b01043, b01044, b01045](reading/sdd-c4c7e01f8ccad48a.md#b01039)
+
+Assets: [7113e00dc397f67e8c1a5e9bbcc1e8d0fbebe3e79e3d0d6eb18599d9c7b27728.png](assets/sdd-c4c7e01f8ccad48a/7113e00dc397f67e8c1a5e9bbcc1e8d0fbebe3e79e3d0d6eb18599d9c7b27728.png)
+
+#### Shipment creation through shipping overview
+
+A left-to-right flow connects Shipment Creation, Wave Processing, Picking, Packing, Staging and Shipping. Its short labels progress from creating an outbound document and reserving stock to retrieving items, identifying box contents, moving containers to a staging or hold location and confirming departure. The source assigns rectangles to normally system-driven stages and trapezoids to normally user-driven stages.
+
+Limit: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Retained image individually inspected; full DOCX pagination and actual screen behavior unverified.
+
+[sdd-c4c7e01f8ccad48a b01194, b01196, b01197, b01199, b01200, b01202, b01203, b01205, b01206, b01208, b01209, b01211, b01212, b01214, b01215](reading/sdd-c4c7e01f8ccad48a.md#b01194)
+
+Assets: [091788ef99a086319e335dee777119c5836f68db0911d3fb8627dea75c98a0d7.png](assets/sdd-c4c7e01f8ccad48a/091788ef99a086319e335dee777119c5836f68db0911d3fb8627dea75c98a0d7.png)
+
+#### Wave-master manual mode and replenishment master list
+
+The example Wave master window has Manual selected among Automatic, Manual and Build inactive. Its Replenishment Masters tab uses List instead of All and shows one checked master among several candidates. Other tabs include General, Selection criteria and Warehouses, illustrating that a wave master binds several choices rather than one replenishment rule alone.
+
+Limit: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Retained image individually inspected; full DOCX pagination and actual screen behavior unverified. Example checked entries are not active settings of the assessed deployment.
+
+[sdd-c4c7e01f8ccad48a b01306, b01307, b01312, b01318, b01332, b01345](reading/sdd-c4c7e01f8ccad48a.md#b01306)
+
+Assets: [b4a12298550af80c27e154f947f70d42da1b95554827235554b63811ab405078.png](assets/sdd-c4c7e01f8ccad48a/b4a12298550af80c27e154f947f70d42da1b95554827235554b63811ab405078.png)
+
+#### Cart start and destination-container verification
+
+The first image shows a Cart picking container-ID field and an Actions menu with Begin picks and New cart. The second shows Cart container putaway with item, quantity, unit, displayed container and spot, plus an empty Container id confirmation field. Together they illustrate starting a built cart and validating the container at a spot; they do not depict the entire cart-building sequence.
+
+Limit: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Retained image individually inspected; full DOCX pagination and actual screen behavior unverified.
+
+[sdd-c4c7e01f8ccad48a b01757, b01759, b01767, b01784, b01785, b01795, b01796](reading/sdd-c4c7e01f8ccad48a.md#b01757)
+
+Assets: [1a533925daa48d4c2be80babba838dfcba2449dc4248318a4e143069f6f6e648.png](assets/sdd-c4c7e01f8ccad48a/1a533925daa48d4c2be80babba838dfcba2449dc4248318a4e143069f6f6e648.png); [39cca9b40da41498c34d7622d8046d090dcebf3b58823ba89c42d1bab5cd2af0.png](assets/sdd-c4c7e01f8ccad48a/39cca9b40da41498c34d7622d8046d090dcebf3b58823ba89c42d1bab5cd2af0.png)
+
+#### QC workbench counts and failure-reason entry
+
+The QC workbench displays item entry, unit of measure, count controls, Print and Submit, with rows for packed, counted and failed quantities and reason codes. The failure image adds a banner requiring reason quantities to match failed quantities and a dialog listing reasons such as damaged, missing, different item and wrong quantity.
+
+Limit: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Retained image individually inspected; full DOCX pagination and actual screen behavior unverified. The images show Submit while the body calls the action Confirm; neither label is evidence of the current application screen.
+
+[sdd-c4c7e01f8ccad48a b01893, b01895, b01896, b01898, b01900, b01901](reading/sdd-c4c7e01f8ccad48a.md#b01893)
+
+Assets: [3aa3ad01e03e62a4352cce91fe119c799f96ed40782d4c5812e27ad9ac21a907.png](assets/sdd-c4c7e01f8ccad48a/3aa3ad01e03e62a4352cce91fe119c799f96ed40782d4c5812e27ad9ac21a907.png); [6417384282f9b04dde7572cdb6d989932aa6f9516fa8d0e991bda4e6c51f44b3.png](assets/sdd-c4c7e01f8ccad48a/6417384282f9b04dde7572cdb6d989932aa6f9516fa8d0e991bda4e6c51f44b3.png)
+
+#### Force QC pass as a separate workbench action
+
+The QC workbench Actions menu offers Clear counted quantities, Fill all counted quantities and Force QC pass. This visual supports the text distinction between counting all contents and explicitly forcing a pass; the menu alone does not demonstrate a successful QC result.
+
+Limit: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Retained image individually inspected; full DOCX pagination and actual screen behavior unverified.
+
+[sdd-c4c7e01f8ccad48a b01891, b01903, b01905, b01906](reading/sdd-c4c7e01f8ccad48a.md#b01891)
+
+Assets: [aebb985c36eb8eb2e661c1f14eb59bd2ea9ed5b785d16b92ae0ecd52c47b9bdb.png](assets/sdd-c4c7e01f8ccad48a/aebb985c36eb8eb2e661c1f14eb59bd2ea9ed5b785d16b92ae0ecd52c47b9bdb.png)
+
+#### Close-container weight and shipping details
+
+The populated Close container image presents container ID and weight, container count and total containers, carrier and service, container type, dimensions, NMFC code and tracking number. The upper-right action is cropped in the retained image, so its full label and final result are not established by this view.
+
+Limit: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Retained image individually inspected; full DOCX pagination and actual screen behavior unverified. Displayed example values are not imported as recommended or active configuration.
+
+[sdd-c4c7e01f8ccad48a b01917, b01919, b01937, b01941, b01942](reading/sdd-c4c7e01f8ccad48a.md#b01917)
+
+Assets: [62848b30de7378602a26d545bc06d5fb0ff90d957bc588bfd3d47bb1c0486625.png](assets/sdd-c4c7e01f8ccad48a/62848b30de7378602a26d545bc06d5fb0ff90d957bc588bfd3d47bb1c0486625.png)
+
+#### Shipping-load dock-door selection
+
+The Shipping Load edit form groups carrier, route, seal/trailer identifiers and a Dock door dropdown. The open dropdown lists numbered doors, while navigation includes Dates, Status, Consolidator, Totals and Reference info. This shows where the design illustrates assigning a door; no Save action or generated loading work is observed.
+
+Limit: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Retained image individually inspected; full DOCX pagination and actual screen behavior unverified.
+
+[sdd-c4c7e01f8ccad48a b02023, b02025, b02027, b02028](reading/sdd-c4c7e01f8ccad48a.md#b02023)
+
+Assets: [79707dc2981a2cc80a6380eb6f64abe92b1638fe7ed14c228fa21752442aeac9.png](assets/sdd-c4c7e01f8ccad48a/79707dc2981a2cc80a6380eb6f64abe92b1638fe7ed14c228fa21752442aeac9.png)
+
+#### Load confirmation with leading and trailing statuses
+
+The Shipping load insight grid displays separate Trailing Status and Leading Status columns. The selected example has Ship Confirm Pending in both, while other rows show earlier or mixed stages. The Actions menu includes Confirm alongside Close and print choices, supporting the distinction between reviewing readiness and invoking final confirmation.
+
+Limit: Covetrus Manhattan Active SCALE implementation design version 1.4, modified 31 August 2023. This is a named implementation example, not the assessed deployment, a universal product guarantee, a verified Insight SOP or runtime acceptance. Retained image individually inspected; full DOCX pagination and actual screen behavior unverified. No confirmation was invoked; visible totals are example screen contents, not assessed operational metrics.
+
+[sdd-c4c7e01f8ccad48a b02038, b02040, b02043, b02044, b02052](reading/sdd-c4c7e01f8ccad48a.md#b02038)
+
+Assets: [3bf1f9cc2293b1f8df42ffea08b9318335c8e9d32dd4cb4596223f31f533580c.png](assets/sdd-c4c7e01f8ccad48a/3bf1f9cc2293b1f8df42ffea08b9318335c8e9d32dd4cb4596223f31f533580c.png)
+
+#### Receiving preference General example
+
+RECEP STD PCB selects receiving dock QUA.0001.01.01.01, Available inventory, Receiving work type and Manual license-plate assignment. Work team is blank. Allow over receiving and Create putaway work are checked; Execute group putaway and Cross Dock Immediate Needs are unchecked. Inactive is unchecked.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00269, b00270](reading/sdd-f46806ef53e15f07.md#b00269)
+
+Assets: [ca7f5fdb7d23dfaefc1dd16af5170098bd2648d87c8c85b65b5b0f5b2406184d.png](assets/sdd-f46806ef53e15f07/ca7f5fdb7d23dfaefc1dd16af5170098bd2648d87c8c85b65b5b0f5b2406184d.png)
+
+#### Receiving preference RF example
+
+RECEP STD PCB selects Check in and locate (immediate). Check in, Check in and locate, Quick receive - user and Quick receive - system are other visible options. The workflow name is clipped. Nest during check in, Process immediate needs, Bypass location capacity validation and Override system selected location are unchecked; some controls are visibly disabled.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00271, b00272, b00273](reading/sdd-f46806ef53e15f07.md#b00271)
+
+Assets: [23886f878a29e3ba4f13d7854d2394895972b5ae1f9246954cb64e0e81ecaac1.png](assets/sdd-f46806ef53e15f07/23886f878a29e3ba4f13d7854d2394895972b5ae1f9246954cb64e0e81ecaac1.png)
+
+#### Receiving preference Workbench example
+
+Parent is selected as container locating method and Child is not. Verify item dimensions and Verify item unit of measure are checked. Disposition code required and QC inspection active are unchecked; Reason code required is disabled and unchecked.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00274, b00275](reading/sdd-f46806ef53e15f07.md#b00274)
+
+Assets: [5648bad571b8f1c6325f024e6b7b04bb3623fa591bcdf696e792e3fe5f4a651c.png](assets/sdd-f46806ef53e15f07/5648bad571b8f1c6325f024e6b7b04bb3623fa591bcdf696e792e3fe5f4a651c.png)
+
+#### Receipt disposition code list
+
+D01 through D06 and QC are shown active and not system-created. QC is described as Receipt Quality Control with System value 1 QC-Quality Control. The D01 description is clipped; D02 through D06 show reboxing, restoration, data error, deterioration and other categories in French. No rule-assignment dialog is shown.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00253, b00254](reading/sdd-f46806ef53e15f07.md#b00253)
+
+Assets: [228e67ac8eba1e63ee1f56b4319b5e02a4a1ebdf6dea2c5e06664ae308ee671f.png](assets/sdd-f46806ef53e15f07/228e67ac8eba1e63ee1f56b4319b5e02a4a1ebdf6dea2c5e06664ae308ee671f.png)
+
+#### HADDAD work-profile list
+
+The list contains consolidation, cycle-count, picking, Putaway, Putaway CPO and replenishment profiles, all visible rows marked Active Yes. Several long names are clipped. A row name alone does not reveal its work-processing options or user authorization.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00291, b00292](reading/sdd-f46806ef53e15f07.md#b00291)
+
+Assets: [53220fe74107940cd44ddf1f668617939f9b88ffb0272eda6a99dcf2353812a7.png](assets/sdd-f46806ef53e15f07/53220fe74107940cd44ddf1f668617939f9b88ffb0272eda6a99dcf2353812a7.png)
+
+#### Work-profile type detail and saved row
+
+The detail for PREP ACTIF PCB MSGCOL VAS has sequence 10 and only the matching visible work type checked. The adjacent profile image shows one saved detail row at sequence 10 with that work type. Both images concern this picking-named profile despite appearing in the Receiving section; neither shows the contents of the Work processing tab.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00292, b00293](reading/sdd-f46806ef53e15f07.md#b00292)
+
+Assets: [635e9b1967722917bf9bd0d9f970e35b9611b76dffca7b38948871b4121d8cab.png](assets/sdd-f46806ef53e15f07/635e9b1967722917bf9bd0d9f970e35b9611b76dffca7b38948871b4121d8cab.png); [e989272de5c18cc9f4a5d15dc53abb39a8d3f714c6e580dc75cfa3f47039d481.png](assets/sdd-f46806ef53e15f07/e989272de5c18cc9f4a5d15dc53abb39a8d3f714c6e580dc75cfa3f47039d481.png)
+
+#### Receipt work criteria list
+
+The list shows Putaway Work CPO, Putaway Work PAL, Putaway Work PCB SPCS and Putaway Work UVC as active and not system-created. The third filter-name cell is clipped while its description spells out Putaway Work PCB SPCS.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00300](reading/sdd-f46806ef53e15f07.md#b00300)
+
+Assets: [7a28f27a77eab4017d88c3245950530f98992562ce833c7405b9abdda45c9b21.png](assets/sdd-f46806ef53e15f07/7a28f27a77eab4017d88c3245950530f98992562ce833c7405b9abdda45c9b21.png)
+
+#### Receipt work criteria filter and order
+
+Putaway Work CPO uses record type RECEIPT and Locating request. The filter requires non-null FROM_LOC and PARENT_CONTAINER_ID. The Order by image saves PARENT_CONTAINER_ID Ascending with Create work unit Yes. Its separate row-entry Create work unit checkbox is unchecked. Inactive and System created are unchecked.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00216, b00217, b00301](reading/sdd-f46806ef53e15f07.md#b00216)
+
+Assets: [a97b1cec184d1d984b9c0acdef52ed4aadb7fdcec9996928754602efbb41eb03.png](assets/sdd-f46806ef53e15f07/a97b1cec184d1d984b9c0acdef52ed4aadb7fdcec9996928754602efbb41eb03.png); [e7057dec87aa7edeabdfd5ed8edb2e146db213a51d563f1fa486d4e1929be784.png](assets/sdd-f46806ef53e15f07/e7057dec87aa7edeabdfd5ed8edb2e146db213a51d563f1fa486d4e1929be784.png)
+
+#### Receipt work creation master
+
+Putaway Work CPO shows work type Putaway CPO, work unit Container id, method Pre-build, priority 1, process Receipt Work Criteria and matching work criteria. SRC identifier text is clipped. Auto print documents is unchecked. The Maximums tab exists but its contents are not shown.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00303, b00304, b00305](reading/sdd-f46806ef53e15f07.md#b00303)
+
+Assets: [4cc9655506a8d8c14ddced4624616f1e73bbed64f7c6c6658b11fb76a2fc87ae.png](assets/sdd-f46806ef53e15f07/4cc9655506a8d8c14ddced4624616f1e73bbed64f7c6c6658b11fb76a2fc87ae.png)
+
+#### Dock work criteria list fragment
+
+Three visible list rows read MONO BP, MSGCOL and MSGPAL. The headers are outside the image, so the adjacent No/Yes columns are not independently assigned meanings from this crop.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00326, b00327](reading/sdd-f46806ef53e15f07.md#b00326)
+
+Assets: [095053a530bc965d99f016a4603989fa3b19a315ab36e81597d6a1263770a8b4.png](assets/sdd-f46806ef53e15f07/095053a530bc965d99f016a4603989fa3b19a315ab36e81597d6a1263770a8b4.png)
+
+#### Dock work filter example
+
+MONO BP uses record type DOCKMGMTWRKCRIT and Shipping container. Its conjunction requires SHIPPING_CONTAINER.STATUS_FLOW_NAME equal to MSGPAL, SHIPPING_CONTAINER.PARENT non-null and SHIPMENT_HEADER_VIEW.USER_DEF3 null. The filter name differs from the literal status-flow value and must not replace it. Order by contents are not shown.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00326, b00328](reading/sdd-f46806ef53e15f07.md#b00326)
+
+Assets: [4b2c9a8923ebe74eba8c00f16a6eb7a89afd5201acdb2e2ebdd18353586a62c6.png](assets/sdd-f46806ef53e15f07/4b2c9a8923ebe74eba8c00f16a6eb7a89afd5201acdb2e2ebdd18353586a62c6.png)
+
+#### Replenishment work criteria example
+
+The example uses the Replenishment request table. A visibly parenthesized group selects CONVERTED_QTY_UM PAL or PCB. Surrounding AND filters constrain non-null ITEM, source warehouse, allocation zone, destination work zone, lot and replenishment master.
+
+Limit: Parentheses are visible around the two UM alternatives. This describes the source image only; no SQL was executed and no installed rule, effective value or production recommendation is established.
+
+[sdd-f46806ef53e15f07 b00335, b00336](reading/sdd-f46806ef53e15f07.md#b00335)
+
+Assets: [e5270df7ff721318675c344856e89ebd45b56a4206106c36b7d4f7076717ffbf.png](assets/sdd-f46806ef53e15f07/e5270df7ff721318675c344856e89ebd45b56a4206106c36b7d4f7076717ffbf.png)
+
+#### Two picking work creation examples
+
+PREP ACTIF PCB MSGCOL VAS and PREP ACTIF PCB MON BP VAS both show Pre-build, priority 1 and Auto print documents unchecked. The work-unit field begins Internal instruction; work-type, process, criteria and SRC names are clipped. Both images show General, not Maximums, so no work-size ceiling can be established.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00346, b00347](reading/sdd-f46806ef53e15f07.md#b00346)
+
+Assets: [7d2392c36ee0cdc5ab20921726e72b5ad4783eabfe019312452659055ccb14e0.png](assets/sdd-f46806ef53e15f07/7d2392c36ee0cdc5ab20921726e72b5ad4783eabfe019312452659055ccb14e0.png); [d90b8be5eed025dabda78534e9a3e12971a05a664890df23fcbabd2950d8459f.png](assets/sdd-f46806ef53e15f07/d90b8be5eed025dabda78534e9a3e12971a05a664890df23fcbabd2950d8459f.png)
+
+#### Dock transfer work creation examples
+
+CONSO MSGPAL MONO and CONSO MSG COLIS both show Tree unit id, Pre-build and priority 1. Their work criteria are MONO BP and MSGCOL respectively. Work-type, process and SRC labels are clipped. Auto print documents is unchecked and no Maximums contents are visible.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00349, b00351](reading/sdd-f46806ef53e15f07.md#b00349)
+
+Assets: [2e0ad37bfceaa1bfa81591ddbb7412ebc671d1ffa071afa9d901a4e168bddcb5.png](assets/sdd-f46806ef53e15f07/2e0ad37bfceaa1bfa81591ddbb7412ebc671d1ffa071afa9d901a4e168bddcb5.png); [4691311b9d09e43adeabb0e1d3cbff72289053d6193da943dc5a635a202c2de0.png](assets/sdd-f46806ef53e15f07/4691311b9d09e43adeabb0e1d3cbff72289053d6193da943dc5a635a202c2de0.png)
+
+#### Consolidation work-profile detail
+
+CONSO MSG COLIS detail sequence 10 checks CONSO MSG COLIS in the work-type list. The Work processing tab is visible but unopened, so assignment/completion options cannot be read.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00356, b00358](reading/sdd-f46806ef53e15f07.md#b00356)
+
+Assets: [52d05bff6d122d4f5fef3c1f75f55daebb788c2c6f1efa53be344312a72eaef9.png](assets/sdd-f46806ef53e15f07/52d05bff6d122d4f5fef3c1f75f55daebb788c2c6f1efa53be344312a72eaef9.png)
+
+#### Consolidation profile warehouse access
+
+CONSO MSG COLIS has Warehouse authorization All selected and List unselected; the displayed warehouse 001 row is checked. The authorized-users tab is visible but its contents are not shown.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00295, b00359](reading/sdd-f46806ef53e15f07.md#b00295)
+
+Assets: [f0eb504c2ee54d635cda4ac417c78f6014cba5dc96640ccdbb6dada663a095ac.png](assets/sdd-f46806ef53e15f07/f0eb504c2ee54d635cda4ac417c78f6014cba5dc96640ccdbb6dada663a095ac.png)
+
+#### Consolidation profile work-zone selection
+
+CONSO MSG COLIS shows Work zone selections. W-AGV INJ is unchecked. Visible checked zones include W-AKANEA, W-Consolidation, W-Consolidation perso, W-CTRL, W-Emballage, W-Expedition, W-Perso, W-Picking PCB, W-Picking Samples, W-Picking SPCB, two cell-specific UVC zones, UVC Grade A and Grade B, W-Recep and W-Reserve PCB.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00292, b00360](reading/sdd-f46806ef53e15f07.md#b00292)
+
+Assets: [48cf699fbd1b52020cba1828cd17596e4d6ba617b44d17659420a89d1d9dd9ad.png](assets/sdd-f46806ef53e15f07/48cf699fbd1b52020cba1828cd17596e4d6ba617b44d17659420a89d1d9dd9ad.png)
+
+#### Special-handling key grid
+
+The grid exposes Item, Account, Company, Username, Work type and Work zone columns. The displayed rows have blank first four columns and values under Work type and Work zone, with many clipped identifiers. This illustrates key dimensions but does not prove match precedence or the exact identity of every row.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00363, b00364](reading/sdd-f46806ef53e15f07.md#b00363)
+
+Assets: [8d0e9ee94b3e1b42c00bd36a82141a2f193e1c6a216d62c9b66ae7a3c491a27e.png](assets/sdd-f46806ef53e15f07/8d0e9ee94b3e1b42c00bd36a82141a2f193e1c6a216d62c9b66ae7a3c491a27e.png)
+
+#### Picking special-handling General and Key values
+
+General selects Container verify, location verification None, Item verification and Use converted qty. Quantity, License plate and Lot verification, Close after partial pick and Replenish on outbound are unchecked. Key values selects Work and shows zone W-Picking PCB with a clipped work-type value. Several receipt/override labels are cropped or overlapped; their complete values are not transcribed.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00363, b00366, b00370](reading/sdd-f46806ef53e15f07.md#b00363)
+
+Assets: [388e7307beb19a73f60b9f51a810f00d92c96d08137f9d009ab34ce573ea4c09.png](assets/sdd-f46806ef53e15f07/388e7307beb19a73f60b9f51a810f00d92c96d08137f9d009ab34ce573ea4c09.png); [55eb31da7e539b3c6ef7a93f4fc55b73da160c2823b84493c6479d0f3924e7d8.png](assets/sdd-f46806ef53e15f07/55eb31da7e539b3c6ef7a93f4fc55b73da160c2823b84493c6479d0f3924e7d8.png)
+
+#### Allocation assignment criteria list and predicate
+
+The list contains Haddad assignment and Haddad assignment CPO, both active and not system-created. The displayed Haddad assignment uses Shipment detail and requires COMPANY Haddad, non-null INTERNAL_SHIPMENT_NUM and null USER_DEF3. The CPO predicate is not shown.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00451, b00452, b00453, b00454](reading/sdd-f46806ef53e15f07.md#b00451)
+
+Assets: [ffc13011a23cc5833d85d4a1590aebf59526980ce8991d231e2bb57648e8ff8f.png](assets/sdd-f46806ef53e15f07/ffc13011a23cc5833d85d4a1590aebf59526980ce8991d231e2bb57648e8ff8f.png); [e41f40fdc1aceba45d8666ecd703bb23ab31919c33ff21eefb97b510fa9e1082.png](assets/sdd-f46806ef53e15f07/e41f40fdc1aceba45d8666ecd703bb23ab31919c33ff21eefb97b510fa9e1082.png)
+
+#### Reserve PAL allocation selection
+
+Reserve PAL uses record type ALLOC SEL and Location. The displayed AND filter selects allocation zone A-Reserve PCB, active Y, null inventory attribute 1, location status not Frozen, inventory status Available, warehouse 001 and locating zone not L-Articles CPO. Inactive and System created are unchecked. Order by exists but is unopened.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00456, b00459](reading/sdd-f46806ef53e15f07.md#b00456)
+
+Assets: [c6e26ee8b0d49e48109680c1ecff490a6c22b3ba453bf92e76184148ad147c89.png](assets/sdd-f46806ef53e15f07/c6e26ee8b0d49e48109680c1ecff490a6c22b3ba453bf92e76184148ad147c89.png)
+
+#### Affectation Standard allocation detail sequence
+
+The selected rule has detail 10 Reserve PAL eligible PAL, detail 20 Picking PCB eligible PCB SPCS, and detail 30 Picking UVC eligible UVC. Strategy captions begin Closest Match and lot captions begin Specified lot, but neither is fully visible. The list above marks *Default inactive and several named rules active.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00463, b00464](reading/sdd-f46806ef53e15f07.md#b00463)
+
+Assets: [2f9a68041185b76542ad0d5f1456c189847b7171969f452d8ad74eb38cbd876d.png](assets/sdd-f46806ef53e15f07/2f9a68041185b76542ad0d5f1456c189847b7171969f452d8ad74eb38cbd876d.png)
+
+#### Allocation rule assignment priorities
+
+The list maps priority 10 Haddad assignment to Affectation Standard and 20 Haddad assignment CPO to Affectation CPO; both are active. The priority-10 dialog shows Always override unchecked and Inactive unchecked. The screenshot does not describe priority direction or ties.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00466, b00467](reading/sdd-f46806ef53e15f07.md#b00466)
+
+Assets: [c369bcbec44a539489231092ce6db8633218a1f828485b1c0d03f8f167cc0c18.png](assets/sdd-f46806ef53e15f07/c369bcbec44a539489231092ce6db8633218a1f828485b1c0d03f8f167cc0c18.png)
+
+#### Existing location General options
+
+The Edit existing dialog uses template Stock / Prel and warehouse 001; starting and ending components match. Location class is Inventory Storage, type Palletier and status Storage. Multi item and Track license plates are checked, Allocate in transit unchecked. Disabled controls and separate field-edit checkboxes are visible. It is an existing-location example, not a new-location default screen.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00111, b00112, b00118, b00119](reading/sdd-f46806ef53e15f07.md#b00111)
+
+Assets: [ee1ab3c618eab2aec1825c54e035b4d76ca5e91185a22b2b10378f171005faa0.png](assets/sdd-f46806ef53e15f07/ee1ab3c618eab2aec1825c54e035b4d76ca5e91185a22b2b10378f171005faa0.png)
+
+#### Item-class capacity example
+
+Item class PANTALON has visible rows for Bacs pckg carton alveole and Palletier. Each row shows Min. 0, Max. 100 and a further quantity-looking column 0.00000, but that column heading and the rightmost quantity/UM detail are clipped. No physical quantity or UM is inferred from the partial headers.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00190, b00191, b00192](reading/sdd-f46806ef53e15f07.md#b00190)
+
+Assets: [ebdbabe86db4e5ccbb89610077dfd2835e95fea38741e3c4c650c7342c9266bf.png](assets/sdd-f46806ef53e15f07/ebdbabe86db4e5ccbb89610077dfd2835e95fea38741e3c4c650c7342c9266bf.png)
+
+#### Location quantity UM selection
+
+The existing Stock / Prel location shows Pallet, PCB and SPCS checked and UVC unchecked. Edit quantity um is unchecked and the listed controls are disabled. The image shows membership, not conversion quantities.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00125, b00126](reading/sdd-f46806ef53e15f07.md#b00125)
+
+Assets: [3004e811b38ed16770ab90f608044b873fc308812cfaab801a31889edc6f308d.png](assets/sdd-f46806ef53e15f07/3004e811b38ed16770ab90f608044b873fc308812cfaab801a31889edc6f308d.png)
+
+#### Inventory status provenance example
+
+Available and Held are active with System created No in the list. The selected Available record has type INVSTATUS, Inactive unchecked and System created unchecked. The historical last-updated user label reads System; it does not change the unchecked creation flag.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00209, b00210](reading/sdd-f46806ef53e15f07.md#b00209)
+
+Assets: [1de546cc315bee67362b3e543a2c72e94c36649a867c1a6376d7b62e28bb8a70.png](assets/sdd-f46806ef53e15f07/1de546cc315bee67362b3e543a2c72e94c36649a867c1a6376d7b62e28bb8a70.png)
+
+#### Inventory adjustment-type list
+
+The grid lists stock adjustment, multiple EXOTEC transfer/injection variants, inventory, cycle-count reconciliation, Status Change and Transfert. Some identifiers are clipped. No adjustment edit dialog or Include In Interface Uploads checkbox is visible, so the list cannot establish which types are uploaded.
+
+Limit: Individually inspected retained source image; no full DOCX pagination, current deployment, successful execution, user authorization or universal default is established.
+
+[sdd-f46806ef53e15f07 b00213, b00214](reading/sdd-f46806ef53e15f07.md#b00213)
+
+Assets: [52ff9cc9d2234eef743f1e023b0b384833c8902b6ea146812030de506da11ab2.png](assets/sdd-f46806ef53e15f07/52ff9cc9d2234eef743f1e023b0b384833c8902b6ea146812030de506da11ab2.png)
+
+### Additional source qualifications
+
+- Work/Picking b00837-b00838 uses both instruction assignment and work-summary assignment without defining summary structure; retain the distinction rather than equating these records.
+- Labels slide 13 speaker-note locating timing and slide 42 customer-return check-in timing have different source contexts; no universal receipt-label trigger is established.
+- Labels slides 7, 8 and 21 repeat a speaker-note remark unrelated to their label subjects; it is excluded as workflow authority.
+- The label-training deck does not establish current carrier/retailer certification, printer command correctness, installed print paths or successful physical output. Existing clipped/incomplete code limitations remain.
+- Covetrus b01033 leaves the short-pick-to-cycle-count screen reroute unresolved; b01084 places the recent cycle-count action outside original scope while b02210 describes EX25 as preventing plan closure with a pending request. No deployment evidence resolves the request-versus-plan distinction.
+- Covetrus b01425 and b02246 identify custom EX26 3D cubing as additional scope under development. b02244 also leaves group-container close for dry cart picking open. Neither is counted as delivered functionality.
+- Covetrus b01477 describes a load accepting a shipment unless the load is not flagged to stop additional shipments; this negative condition is internally ambiguous and was not converted into an executable load-eligibility rule.
+- Covetrus b01487 describes staging by shipment/customer/carrier while b01991 describes one default staging location per load; b01489 separately requires a manual procedure when a later wave receives another default lane. Effective criteria and reconciliation remain unobserved.
+- Covetrus label IDs in b01660 and b01928-b01935 disagree with the b02225 label register. Authoritative document routing is needed before deriving an exact print SOP.
+- Covetrus b01937 describes international shipment manifesting after final container close, but b01258 places international logistics outside SCALE and b02293 lists parcel integration as future functionality. The implemented integration and timing remain unresolved.
+- Covetrus b02057 excludes FedEx end-of-day processing and says no other parcel carrier is used, whereas b02061 gives a generic manifest-close procedure and b01258 lists multiple carrier examples. Do not apply the generic closing step to FedEx without carrier-specific evidence.
+- Covetrus b01946 and b01955 support unpack/repack at a Packing-subclass location, but do not specify a general replacement-LPN eligibility contract. This bounded implementation example does not close the remaining general Packing replacement-LPN evidence gap.
+- Covetrus b00971 caption calls the picture transfer with work, but Create work appears inactive in the retained image. Cycle-count b01044 still shows GO despite the planned button-remapping note. These pictures do not demonstrate deployment of those choices.
+- HADDAD b00209 calls Available/Held normally system-created, while b00210 shows System created No/unchecked. The historical last-updated System user label is distinct; original intended provenance requires a source correction or authoritative record, not inference.
+- HADDAD b00454 says USER_DEF3 distinguishes standard/CPO allocation, but only the standard IS NULL predicate is shown. The CPO predicate, allocation-priority direction and Always override semantics are not established by this example.
+- HADDAD work-profile prose describes Work Processing assignment/completion settings, but the inspected b00293/b00358 images do not open that tab. Clipped work/SRC/strategy/lot labels and capacity headers are preserved as unknown; full source images or version-matched configuration records would resolve them.

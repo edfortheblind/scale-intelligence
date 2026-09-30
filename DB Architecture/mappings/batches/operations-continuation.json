@@ -84290,7 +84290,7 @@
       "topic_id": "operations-generic-dashboard",
       "title": "How generic dashboard metrics choose count or sum",
       "business_question": "How generic dashboard metrics choose count or sum",
-      "plain_answer": "Generic metric helpers use the caller-selected table and columns to build a query. They sum only when metadata says the selected type is exactly numeric; other types use COUNT, apart from the COUNT(*) special case. The date interval includes both endpoints.",
+      "plain_answer": "Generic metric helpers use the caller-selected table and columns to build a query. They sum only when metadata says the selected type is exactly numeric; other types use COUNT, apart from the COUNT(*) special case. The date interval includes both endpoints. The end date is an exact timestamp: midnight includes that instant but excludes later times on the same day. The helper does not expand it to the end of a calendar day.",
       "trigger": "A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.",
       "input_context": [
         "Use the business context and the existing selected record; the optional source details identify exact routines."

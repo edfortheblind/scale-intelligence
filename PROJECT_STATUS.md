@@ -1,43 +1,45 @@
 # SCALE Intelligence project status
 
-Continuation 3, 2026-09-30. The owner approved the prior checkpoint and authorized continuation. The captured replica remains the accepted documentation baseline; delivery is local files plus the existing private GitHub repository. Commit, push and merge remain authorized.
+Continuation 4, 2026-09-30. The owner accepted continuation 3 and authorized the remaining work. The captured replica remains the accepted documentation baseline. Local files plus the existing private GitHub repository remain the delivery boundary; normal commit, push and merge are authorized.
 
-[Exact task percentages](_project/COMPLETION_REPORT.md) · [Verification receipt](_project/continuation3-20260930.json) · [Publication receipt](_project/continuation3-publication-20260930.json). No overall completion percentage is claimed.
+[Exact task percentages](_project/COMPLETION_REPORT.md) · [Verification receipt](_project/continuation4-20260930.json) · [Independent audit](_project/independent-audit-continuation4.json) · [Publication receipt](_project/continuation4-publication-20260930.json). No overall completion percentage is claimed.
 
-## Concern resolution and continued work
+## Completed continuation
 
-Fixed a source-display defect: citations to parent list/table nodes previously displayed only whitespace when their words were in child nodes. Source panels now show the complete cited subtree with readable block boundaries. The regression failed before the correction and passed afterward; original node and article identities remain intact.
+The SDD register adds **57 claims, 44 configuration contracts and 47 visual descriptions covering 57 additional retained assets**. Work/Picking clarifies remaining applicability, field-list and assignment terminology. Labels adds printing-purpose and routing examples while retaining mixed-version paths and incomplete-code limits. Covetrus adds inventory/outbound/packing/shipping design context; HADDAD adds inventory, receiving, work and allocation configuration examples.
 
-Six source-grounded help topics add cancellation-path checks, locating decision history, receiving lot/serial triggers, eligible container types, Packing identifier/error triage and unpack/repack guidance. An existing work-splitting answer now explains its reviewed NULL confirmation-mode branch. The library contains **340 topics and 853 ordered steps**.
+Totals are **163 claims, 175 settings, 121 visual descriptions and 79 logical PDF tables**. Cited nodes increased from 1,039 to **1,465/11,618 (12.61%)**; described assets increased from 87 to **144/613 (23.49%)**. Citation counts do not certify every sentence in a node. Existing 231 PDF page views, 45 slide views and 219 candidate dispositions remain unchanged.
 
-Fresh-context review of the same 24 frozen questions finds **23/24 adequate (95.83%), one partial, none missing**, up from 18/24. Adequacy comprises 22 substantive bounded answers and one appropriate unspecified-setting clarification. The remaining partial question asks for a Packing replacement-LPN validation contract absent from retained SCALE evidence. These are known-scenario repairs, not an untouched holdout, measured popularity or real-user acceptance.
+Independent verification checked **462 cited nodes against original XML and 57 new assets against original media**, with visual review. It caught a HADDAD screenshot interpretation error: the PAL-or-PCB alternatives are visibly enclosed in parentheses. The claim and description were corrected, and the false ambiguity was removed. Original documents and all previously published authored SDD records remain unchanged. Other documented conflicts remain explicit.
 
-Actual HTTP checks pass **725/725 selected-topic contracts**; expected-topic top-eight retrieval is **682/725 (94.07%)**. On the unchanged immediately preceding 713 questions, retrieval remains **670/713**, with no newly missed cases. The older 445-question comparison remains **407/445 versus 420/445** before corpus expansion. Forty-three misses remain explicit. Generic ranking alternatives introduced other misses and were rejected; the ranking algorithm is unchanged.
+Five existing help answers now explain already-reviewed NULL quantities, exact date endpoints, numeric identifier conversion, caller classification and no-result versus zero-count behavior. The library remains **340 topics and 853 ordered steps**. Ranking code, semantic contracts, expected results, steps and evaluation questions are unchanged.
 
-SDD review adds **24 claims, 18 settings and four asset descriptions**, with one existing partial-close setting narrowed to its supported scope. Three Grupo Julio page-8 raster tables add 55 transcribed rows and preserve a five-garment disagreement between source totals. The Work/Picking document now has descriptions for all **13/13 retained assets**, including three icons and a blank decorative asset. This is not full DOCX layout acceptance.
+Actual HTTP presentation/citation checks passed **725/725**. Expected-topic top-eight retrieval improved from **682/725 to 686/725 (94.62%)**, with four recovered cases and zero new misses. First-place matches are 419/725; **39 misses remain**. On the older unchanged 445-question subset, the result is 409/445 versus 420/445 historically. Existing historical regressions remain visible.
 
-Current SDD totals: **106 claims, 131 settings, 74 visual descriptions and 79 logical tables**. Cited nodes: **1,039/11,618 (8.94%)**; described assets: **87/613 (14.19%)**. All previous 231 PDF page views, 45 slide views and 219 candidate dispositions are preserved. Fresh-context SDD verification checked the additions against original XML and raster evidence. Source contradictions remain explicit.
+An investigative simulation predicted 685 top-eight matches because flattened-text replacement also changed repeated expectation text. Exact field integration preserves those expectations; the resulting passage count and BM25 statistics explain the extra actual recovery. The actual HTTP result governs.
 
-## Preserved completed scope and remaining evidence
+The 24 frozen known scenarios remain **23 adequate (95.83%), one partial, zero missing**: 22 substantive answers and one appropriate ambiguity clarification. Independent review reused 22 exactly unchanged semantic results and manually rechecked two cases whose incidental returned answers changed. These are known-scenario repairs, not an untouched holdout or real-user acceptance. The Packing replacement-LPN contract remains absent after a retained-corpus search; Override Pick and item substitution do not establish that Packing action.
 
-Captured-module contracts remain **1,138/1,138**, including all 921 procedures. Functional roles remain **1,655/1,656** and tables **517/518**. The remaining `dbo.Interface_Item_Failure_1024` purpose is unconfirmed after the existing bounded source search; no unsupported role or non-use conclusion was assigned.
+## Remaining work and evidence
 
-All 34 captured process families have documentary review; **0/34** have full deployment reconciliation. Application/caller evidence, effective configuration and whole-process elapsed timing remain unestablished. Query Store retains statement aggregates only. Continue uncited SDD semantics and undescribed assets; raw citation coverage does not certify every claim in a node.
+All **1,138 captured module contracts** remain reviewed, including 921 procedures. Functional roles remain 1,655/1,656 and table roles 517/518; the purpose of `dbo.Interface_Item_Failure_1024` remains unknown. All 34 captured process families have documentary review; **0/34** have full deployment reconciliation. Effective configuration, external callers and whole-process timing require additional bounded evidence.
 
-Browser inventory returned no available surfaces, and the in-app browser could not be created. Full DOCX page rendering lacks the required bundled runtime. Browser/keyboard/screen-reader and intended-user acceptance remain unperformed. This continuation opened no Word documents and changed no Word preferences; the historical preference-restoration uncertainty remains documented.
+Continue remaining SDD sections and **469 undescribed assets**. HADDAD wave/cycle-count/replenishment nodes b00473-b00616 and interfaces/printing b00665-b00740 are coherent next sections. Use the current citation ledger to avoid repeating reviewed records. Covetrus extension/label/manifest conflicts, HADDAD provenance and missing predicates, Work/Picking terminology and mixed-era Labels qualifications require source or deployment clarification.
 
-Insight navigation/SOP registration remains a separately initiated future task. No new database connection, operational rows, procedure execution, configuration change, source-original modification or external AEKR mutation occurred. Accepted AIM/SDK acquisition gaps and historical receipts remain unchanged.
+Browser inventory again returned no available surfaces. The required bundled DOCX rendering route remains unavailable. Browser/keyboard/screen-reader and intended-user acceptance, full DOCX layout fidelity and historical Word-preference restoration remain unverified. This continuation opened no Word documents and wrote no application preferences.
+
+Insight navigation/SOP registration remains a separately initiated task. No new database connection, transactional rows, procedure execution, configuration change, original modification or external AEKR mutation occurred. AIM/SDK acquisition remains owner-closed with the accepted gaps.
 
 ## Verification and continuation
 
-The full suite passed **368 tests, zero failed, zero skipped**. DB artifact/citation verification and the non-disclosing protected-value scan passed. Independent scenario and SDD leaf verification are recorded separately from the parent audit in the current verification receipt. Publication and exact remote/checkout parity are recorded in the publication receipt.
+The full suite passed **368 tests, zero failed and zero skipped**. Current DB documentation/citation verification and publication exposure checks are recorded in the verification receipt. Existing accepted-corpus integrity evidence is retained because no acquisition artifact or original changed; the long legacy corpus verifier was not rerun. Fresh independent leaf reviews and parent audit are separate receipts. Publication and exact Git/checkout parity are recorded in the publication receipt.
 
 Run `python tools/serve_help.py --port 8765` and open `http://127.0.0.1:8765` when a local browser is available. Resume through [the master prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) and [resume instructions](_project/RESUME.md).
 
 Outcome: DONE_WITH_CONCERNS
 
-Delivery state: Verified local continuation; authorized private GitHub publication evidence is recorded separately.
+Delivery state: Verified continuation; private publication and parity evidence recorded separately.
 
-Product state: Citation defect fixed and source-grounded knowledge expanded; source, retrieval, deployment and user-acceptance gaps remain explicit.
+Product state: Source coverage and question retrieval improved; the documented source, deployment and user-acceptance gaps remain.
 
-Gate/authority state: Prior checkpoint accepted; owner-authorized local/private continuation. Independent review supplies evidence and does not claim final owner or operational acceptance.
+Gate/authority state: Prior checkpoint accepted and continuation/publication authorized. Independent verification supplies evidence; new-result owner and operational acceptance are not asserted.
