@@ -1136,7 +1136,7 @@
       "topic_id": "awr-order-open-quantity",
       "title": "Order condition and open quantity",
       "business_question": "Is order open quantity recomputed from every wave?",
-      "plain_answer": "The reviewed detail helper replaces OPEN_QTY using eligible status slots from only the supplied wave and matching order/ERP line. The order-header helper separately writes a supplied condition. Other waves and current header/line consistency are not automatically reconciled.",
+      "plain_answer": "The reviewed detail helper replaces OPEN_QTY using eligible status slots from only the supplied wave and matching order/ERP line. The order-header helper separately writes a supplied condition. Other waves and current header/line consistency are not automatically reconciled. NULL historical quantities are not automatically replaced with zero. A NULL quantity in an included status slot makes that shipment row contribution NULL; SUM ignores that row contribution, and an all-NULL group can leave OPEN_QTY NULL.",
       "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
       "input_context": [
         "condition nvarchar(25), userStamp nvarchar(30), processStamp nvarchar(100), statusReleased numeric(3), statusShipped numeric(3), launchNum numeric(9); required, no defaults.",

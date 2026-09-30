@@ -5,13 +5,13 @@ Nine originals produce eight unique extracted bodies. Counts separate authored s
 | Source | Cited nodes / extracted | Described assets / unique assets | PDF pages viewed / total | Static slides viewed / total |
 | --- | ---: | ---: | ---: | ---: |
 | J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf | 151 / 1608 | 14 / 90 | 119 / 119 | N/A |
-| Manhattan SCALE - Labels.pptx | 20 / 209 | 7 / 43 | Not rendered | 45 / 45 |
-| SCALE Work and Picking Functionality.docx | 370 / 995 | 13 / 13 | Not rendered | N/A |
-| Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx | 137 / 2450 | 22 / 137 | Not rendered | N/A |
+| Manhattan SCALE - Labels.pptx | 43 / 209 | 18 / 43 | Not rendered | 45 / 45 |
+| SCALE Work and Picking Functionality.docx | 417 / 995 | 13 / 13 | Not rendered | N/A |
+| Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx | 405 / 2450 | 34 / 137 | Not rendered | N/A |
 | MA Documentation - Insight Architect Configuration.pdf | 10 / 20 | 0 / 0 | 2 / 2 | N/A |
 | Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf | 195 / 973 | 13 / 73 | 110 / 110 | N/A |
 | LAND MAWM Solution Design Document v2.11.docx | 22 / 4605 | 4 / 37 | Not rendered | N/A |
-| SCALE Configuration Walkthrough - HADDAD.docx | 134 / 758 | 14 / 220 | Not rendered | N/A |
+| SCALE Configuration Walkthrough - HADDAD.docx | 222 / 758 | 48 / 220 | Not rendered | N/A |
 
 A cited node can contain more material than a claim uses. Its presence does not certify every sentence. Asset descriptions count unique retained paths separately from page views; 614 asset records correspond to 613 unique paths.
 
@@ -56,3 +56,9 @@ Work creation criteria, profile eligibility, special handling, cart behavior, Pi
 The coordinator separately inspected the existing Grupo Julio page 8 raster asset and an enlarged crop. Three logical tables with 55 rows are now transcribed, each bound to the asset hash and page. The page heading is a location anchor; it is not the source of the numeric cells. The source mismatch between line-summed 14,163 garments and the storage table value 14,168 is preserved. This particular raster table gap is closed; the total undetected/raster-table denominator remains unknown. Candidate counts remain 219 total, 93 supporting the original 76 logical tables and 126 rejected.
 
 Described assets count the union of diagram paths and reviewed-table source assets. No new PDF page or static-slide credit is claimed. Full DOCX pagination, complete semantics, deployed navigation, effective configuration and operational/accessibility acceptance remain unverified. Originals and extracted bodies/assets are unchanged.
+
+## Continuation 4 source and asset review
+
+Work/Picking, Labels, Covetrus and HADDAD add 57 claims, 44 settings and 47 descriptions for 57 previously undescribed assets. The exact citation union adds 426 nodes, reaching 1465/11,618; descriptions reach 144/613 unique assets. These are bounded source counts, not full semantic or production acceptance.
+
+Covetrus review covers inventory and outbound design through packing and manifests. HADDAD covers configuration examples and their visible screenshot/prose differences. Labels review preserves mixed-era paths, incomplete code and context-poor speaker notes. Work/Picking retains undefined summary terminology and field-list limits. Existing page and slide viewing counts, raster tables, source contradictions and original bytes are preserved. No DOCX pagination, printer output, live configuration or user acceptance was performed.

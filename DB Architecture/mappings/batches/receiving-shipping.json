@@ -619,7 +619,7 @@
       "topic_id": "receipt-container-id-generation",
       "title": "Understanding receipt container identifier generation",
       "business_question": "Can the unique-container helper be used as a harmless lookup?",
-      "plain_answer": "No. It computes a numeric candidate and then updates a receipt container. Its one text input is used both as an external identifier to check and as an internal numeric row key for the UPDATE. The name does not guarantee global uniqueness or safe concurrent allocation.",
+      "plain_answer": "This helper generates a numeric receipt-container identifier, even though its input parameter is text. Nonnumeric input can fail conversion, and leading zeros can disappear during numeric conversion. It checks the supplied input as an external identifier and also uses it as the internal numeric receipt-container key for the UPDATE. The name does not guarantee global uniqueness or safe concurrent allocation.",
       "trigger": "The named database event or authorized application caller; active UI bindings are unverified.",
       "input_context": [
         "containerId nvarchar(25); required, no default. It is used both as a proposed external identifier and in comparison with numeric INTERNAL_REC_CONT_NUM."

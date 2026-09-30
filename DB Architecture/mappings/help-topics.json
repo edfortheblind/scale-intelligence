@@ -28098,7 +28098,7 @@
       "topic_id": "work-monitor-indicators",
       "title": "Understanding work indicator tiles",
       "business_question": "Why can a work tile disagree with the chart?",
-      "plain_answer": "Each tile asks a different question: aging work, urgent priority, held work, open/in-process work, or assigned in-process work. It counts distinct work units and evaluates the supplied caution and warning rules separately. The reviewed tiles do not include the chart's detail-instruction restriction, so their counts need not match.",
+      "plain_answer": "Each tile asks a different question: aging work, urgent priority, held work, open/in-process work, or assigned in-process work. It counts distinct work units and evaluates the supplied caution and warning rules separately. The reviewed tiles do not include the chart's detail-instruction restriction, so their counts need not match. A recognized tile returns one row even when its count is zero. An unknown or NULL tile selector returns no result set from these branches; absence of a result is different from an empty work count.",
       "trigger": "An authorized application request to the named routines; active screen bindings/caller order are not established.",
       "input_context": [
         "filterCriteria nvarchar(MAX), indicatorTileName nvarchar(100), cautionCriteria nvarchar(MAX), warningCriteria nvarchar(MAX), culture nvarchar(10); no defaults. Culture and two declared numeric variables are unused in the body.",
@@ -29478,7 +29478,7 @@
       "topic_id": "receipt-container-id-generation",
       "title": "Understanding receipt container identifier generation",
       "business_question": "Can the unique-container helper be used as a harmless lookup?",
-      "plain_answer": "No. It computes a numeric candidate and then updates a receipt container. Its one text input is used both as an external identifier to check and as an internal numeric row key for the UPDATE. The name does not guarantee global uniqueness or safe concurrent allocation.",
+      "plain_answer": "This helper generates a numeric receipt-container identifier, even though its input parameter is text. Nonnumeric input can fail conversion, and leading zeros can disappear during numeric conversion. It checks the supplied input as an external identifier and also uses it as the internal numeric receipt-container key for the UPDATE. The name does not guarantee global uniqueness or safe concurrent allocation.",
       "trigger": "The named database event or authorized application caller; active UI bindings are unverified.",
       "input_context": [
         "containerId nvarchar(25); required, no default. It is used both as a proposed external identifier and in comparison with numeric INTERNAL_REC_CONT_NUM."
@@ -30127,7 +30127,7 @@
       "topic_id": "awr-order-open-quantity",
       "title": "Order condition and open quantity",
       "business_question": "Is order open quantity recomputed from every wave?",
-      "plain_answer": "The reviewed detail helper replaces OPEN_QTY using eligible status slots from only the supplied wave and matching order/ERP line. The order-header helper separately writes a supplied condition. Other waves and current header/line consistency are not automatically reconciled.",
+      "plain_answer": "The reviewed detail helper replaces OPEN_QTY using eligible status slots from only the supplied wave and matching order/ERP line. The order-header helper separately writes a supplied condition. Other waves and current header/line consistency are not automatically reconciled. NULL historical quantities are not automatically replaced with zero. A NULL quantity in an included status slot makes that shipment row contribution NULL; SUM ignores that row contribution, and an all-NULL group can leave OPEN_QTY NULL.",
       "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
       "input_context": [
         "condition nvarchar(25), userStamp nvarchar(30), processStamp nvarchar(100), statusReleased numeric(3), statusShipped numeric(3), launchNum numeric(9); required, no defaults.",
@@ -48531,7 +48531,7 @@
       "topic_id": "operations-generic-dashboard",
       "title": "How generic dashboard metrics choose count or sum",
       "business_question": "How generic dashboard metrics choose count or sum",
-      "plain_answer": "Generic metric helpers use the caller-selected table and columns to build a query. They sum only when metadata says the selected type is exactly numeric; other types use COUNT, apart from the COUNT(*) special case. The date interval includes both endpoints.",
+      "plain_answer": "Generic metric helpers use the caller-selected table and columns to build a query. They sum only when metadata says the selected type is exactly numeric; other types use COUNT, apart from the COUNT(*) special case. The date interval includes both endpoints. The end date is an exact timestamp: midnight includes that instant but excludes later times on the same day. The helper does not expand it to the end of a calendar day.",
       "trigger": "A user asks what the captured operational helper does or why its result differs from an expected warehouse outcome.",
       "input_context": [
         "Use the business context and the existing selected record; the optional source details identify exact routines."
@@ -57408,7 +57408,7 @@
       "topic_id": "employee-list-scope",
       "title": "Why an employee list can differ between users",
       "business_question": "Why an employee list can differ between users?",
-      "plain_answer": "The employee list always requires active users and can filter by supervisor. When both the SaaS and feature settings are enabled, it also applies a caller-email category rule. A supplied user that cannot be found can therefore produce an empty restricted list.",
+      "plain_answer": "The employee list always requires active users and can filter by supervisor. When both the SaaS and feature settings are enabled, it also applies a caller-email category rule. A supplied user that cannot be found can therefore produce an empty restricted list. In that restricted mode, a NULL caller parameter bypasses the email category test, while a supplied caller name missing from USER_PROFILE leaves its classification NULL and returns no employees. The active-user and optional supervisor filters still apply.",
       "trigger": "A user needs a source-grounded explanation of this captured configuration or work behavior.",
       "input_context": [
         "Use relevant application identity, selected workflow and exact message; no SQL execution is required."
