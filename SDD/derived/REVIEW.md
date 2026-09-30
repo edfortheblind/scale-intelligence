@@ -6464,3 +6464,120 @@ English and Spanish repetitions are one documentary account. The existing open-r
 - C8 Knipper page-39 inventory-status text continues outside this bounded packet; no inspection-completion transition was added.
 - C8 Grupo EX05 required fields depend on the Receiving Preference selecting the extension; installed selection, implementation and ERP receipt are not observed.
 - C8 Grupo client-return Receipt ID Type is DEV CIE in the table but DEV CTE in the receipt-from-shipment prose; equivalence or a corrected code is not established.
+
+## Continuation 9 source-text review
+
+This batch adds 13 claims and 5 setting explanations across two SCALE source bodies. Previous records, source bytes, media descriptions and page/table credit remain unchanged. Source examples are distinct from active deployment.
+
+### knipper-c9-inspection-inventory-status-continuation
+
+The Knipper note spanning pages 39–40 says LPN inventory status remains QA Hold, or the status assigned during check-in, after putaway. Once inspection is completed or based on its results, each LPN changes to a new inventory status, naming Available and HOLD FOR DEST AUTH.
+
+This closes the previously bounded page-39 continuation. It distinguishes inventory status from the receipt-container Closed status. The source does not define an automatic trigger, inspection outcomes-to-status mapping, responsible role or equivalence among QA Hold, HQ and other status labels. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p039-b007, p040-b003](reading/sdd-1c25f20de1eafc3e.md#p039-b007)
+
+### knipper-c9-multi-lot-status-change
+
+Knipper describes updating inventory status for multiple selected lots together when managing items for destruction.
+
+This is a source-described multi-selection use case. It does not execute destruction, specify a destruction status, establish transaction atomicity or override the separately documented location/LPN status-mixing constraint. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p046-b007](reading/sdd-1c25f20de1eafc3e.md#p046-b007)
+
+### knipper-c9-activity-count-short-pick-conflict
+
+The Knipper activity-count body says a short pick creates cycle-count work for the affected location. Its adjacent comment says Knipper does not short pick, followed by a reply that the comment can be resolved.
+
+The resolved annotation supplies no replacement trigger or evidence of actual use. Preserve this difference between a configured-trigger claim and operational practice; do not infer that all short picks occur or all counts are generated. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p049-b004, p049-b005, p049-b006](reading/sdd-1c25f20de1eafc3e.md#p049-b004)
+
+### knipper-c9-ptl-count-extension-investigation-boundary
+
+Knipper proposes enhancing EX19 to generate a count automatically for PTL mod locations after work-unit completion in the every-wave picking process. A margin comment warns that an unresolved discrepancy and reconciliation-driven inventory adjustment can keep the wave open and prevent further orders from that location; the reply promises follow-up without defining a remedy.
+
+The body also mixes threshold counts being utilized with a request to enable immediate counts for some work zones. No exact trigger, job configuration, investigation linkage, blocking behavior or implemented fix is established by the proposal and discussion. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p049-b008, p049-b011, p049-b012](reading/sdd-1c25f20de1eafc3e.md#p049-b008)
+
+### knipper-c9-inca-reconciliation-comment
+
+Knipper describes supervisor reconciliation entering correct on-hand quantity, updating inventory and transaction history, and closing the request; mobile reconciliation is also described. A margin comment separately reports confirming a count and then making a manual adjustment to log an Inventory Check and Adjustment Form (INCA) number for drug product.
+
+The reply merely says the comment can be resolved. It does not reconcile those two procedures, specify where to store the INCA number, authorize a second adjustment or establish a compliant operational SOP. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p051-b004, p051-b005, p051-b006, p052-b005](reading/sdd-1c25f20de1eafc3e.md#p051-b004)
+
+### knipper-c9-ex38-pick-serial-contract
+
+Knipper assigns DSCSA outbound picking validation to EX38: the 3PL Pick DSCSA passage names GTIN and serial validation for different UMs, while the LTL picking passage adds company validation and serial capture at multiple UM levels.
+
+This is the same named outbound extension referenced by the previously reviewed address-verification wave step. The separate specification is not supplied here; no payload, packaging hierarchy, serial uniqueness, integration success or compliance result is proven. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p086-b007, p097-b003](reading/sdd-1c25f20de1eafc3e.md#p086-b007)
+
+### knipper-c9-ex19-pick-confirmation-boundary
+
+For both PTL and full-case PTL picking, Knipper describes downloading work-unit messages to the Pick to Light system, executing the pick there, and sending confirmations back. EX19 processes those confirmations to complete SCALE work units and advance status according to the status flow.
+
+Documented custom integration intent only; message shape, partial completion, retries, ordering and idempotency are absent. This is Knipper Pick to Light, distinct from Grupo Julio EX01 Put to Light sorting. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p087-b003, p096-b006, p096-b007](reading/sdd-1c25f20de1eafc3e.md#p087-b003)
+
+### knipper-c9-vvip-print-file-dependency
+
+Knipper describes multiple shipment pack-list templates for customer requirements and an external VVIP printing process for special formats. That process requires an XML input file per wave, to be generated through an extension whose identifier remains TBD.
+
+No file schema, destination, scheduling, external process configuration or completed extension is supplied. Printing intent is not delivery or operational proof. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p088-b005](reading/sdd-1c25f20de1eafc3e.md#p088-b005)
+
+### knipper-c9-wave-no-work-and-complete-state
+
+The Knipper Check for No Work override-data step checks that every shipment has work and marks the wave for failure otherwise. Complete Wave sets shipments to Picking Pending and makes them eligible for release. A separate placeholder acknowledges additional override-data steps for eligibility checks.
+
+The source does not supply SQL, exact failure status, rollback semantics or all additional steps. Complete Wave and release are distinct; Picking Pending does not prove that work has been released or executed. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p088-b005, p088-b006, p088-b007](reading/sdd-1c25f20de1eafc3e.md#p088-b005)
+
+### knipper-c9-cancel-wave-release-boundary
+
+Knipper describes Cancel in the Completed Wave window backing out allocations and deleting work instructions/containers, then returning shipments to the pool or another wave. Its review reply limits this path: a released wave cannot be canceled, nor can work units already In Process be canceled/deleted; it recommends completing work and then canceling the shipment.
+
+This documents the reply to a request to interrupt started waves; the resolved marker is not runtime verification. Keep wave cancellation separate from the existing post-wave shipment-cancellation dispute, whose body and comment differ about active picking. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p088-b009, p088-b010, p088-b013, p088-b014, p088-b015, p089-b005](reading/sdd-1c25f20de1eafc3e.md#p088-b009)
+
+### knipper-c9-machine-type-work-proposal
+
+In response to a request to separate reach-truck and order-picker activity, the Knipper review reply proposes separate work types based on replenished quantity UM, assignable to different users.
+
+The discussion asks whether that approach is acceptable and gives no final machine-based assignment algorithm. Do not infer automatic equipment detection, installed work types or a direct machine-type priority setting from the proposal. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p093-b004, p093-b006, p093-b008, p093-b010, p093-b011](reading/sdd-1c25f20de1eafc3e.md#p093-b004)
+
+### knipper-c9-pick-validation-extension-boundaries
+
+The Knipper cart, full-pallet, LTL and REPS picking descriptions name EX24 for displaying an item alias when present and EX39 for Work Confirmation Item validation. The base-looking pick sequence explicitly references those extensions at the item step.
+
+The source supplies neither extension contract nor its complete validation/error behavior. Generic location/item scanning prose must not be treated as proof that all of these details are base SCALE or installed in the assessed deployment. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p093-b012, p095-b005, p097-b003, p097-b006, p098-b003](reading/sdd-1c25f20de1eafc3e.md#p093-b012)
+
+### grupo-c9-mixed-status-attribute-qualifier
+
+Grupo Julio describes status changes through Inventory Management with transaction-history recording. Its following note restricts holding the same item partly Available and partly Damaged when the location is not license-plate tracked or does not have different inventory attributes.
+
+The note includes both tracking and attribute wording; its use of or does not supply a full truth table or establish the converse as sufficient. Keep it distinct from Knipper’s LPN-only qualification; do not infer a universal inventory identity key or deployed consolidation rule. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p090-b006, p090-b007](reading/sdd-d50ca4a96095c930.md#p090-b006)
+
+### Additional source qualifications
+
+- C9 closes the Knipper page-39 inventory-status sentence with page40; exact inspection transition mappings and deployed status labels remain unverified.
+- C9 Knipper short-pick count trigger conflicts with a comment saying short picking is not used; resolution markers do not supply an operational rule.
+- C9 Knipper EX19 post-wave counting, INCA recording and LPN count/scan comments leave exact configuration and investigation/reconciliation semantics unresolved.
+- C9 Knipper EX19, EX24, EX38, EX39 and TBD VVIP references identify custom dependencies, not complete specifications or installed execution.
+- C9 Knipper wave-cancellation reply is distinct from the existing shipment-cancellation dispute; neither source passage is live acceptance.
+- C9 Grupo mixed-status note includes a different-inventory-attributes qualifier and ambiguous logical wording; no complete allowed-combination rule is inferred.
