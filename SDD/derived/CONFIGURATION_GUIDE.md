@@ -2,7 +2,7 @@
 
 These records explain supplied documentation, not active settings. Each states its product/version scope. Proposed validation steps have not been executed. Defaults and precedence remain unknown where the source does not state them. MAWM examples are explicitly separate and cannot be transferred to SCALE.
 
-279 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
+283 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
 
 ## Work Unit Field
 
@@ -4047,3 +4047,63 @@ Preserve suggested count frequencies as examples, not fixed requirements.
 - Classification: `implementation_specific_choice`.
 
 Sources: [sdd-d50ca4a96095c930 p091-b005, p091-b006, p091-b007, p091-b008](reading/sdd-d50ca4a96095c930.md#p091-b005)
+
+
+## Footwear and hanging work-unit grouping
+
+Preserve the different work-creation controls described for the two product families.
+
+- Scope: Grupo Julio Active SCALE design v1.5 (2024-09-03); historical source example, not current deployed configuration.
+- Accepted values: Footwear creates containers in the wave and uses Container ID as Work Unit, with Work Creation Master maximums for instruction count, weight and volume. Hanging uses Shipment Allocation Work, a maximum instruction count and work-unit breaks based on Shipment Alloc Request USER_DEF3. The allocation-request section describes less-than-case picks.
+- Default: No universal product default or deployed value established.
+- Precedence and dependencies: No numeric limits, USER_DEF3 values or complete splitting predicate are supplied. The general less-than-case description does not establish all UOM cases or override the specific flows. EX01 sorting remains a separate custom integration; the source does not demonstrate a deployed database schema.
+- Related process: Outbound work creation and picking
+- Validation: Source review only. Compare with separately authorized version-matched configuration and workflow evidence before operational use. No live query or execution performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-d50ca4a96095c930 p067-b005, p068-b002, p073-b004, p074-b002, p075-b002](reading/sdd-d50ca4a96095c930.md#p067-b005)
+
+
+## Blind receiving execution and locating method
+
+Complete the documented blind-preference choices beyond its existing general flags.
+
+- Scope: Knipper Active SCALE design v1.3 (2024-12-10); historical source example, not current deployed configuration.
+- Accepted values: The blind-receiving continuation selects RF Workflow Blind, Check in and Locate (immediate), Parent container locating and default inventory status QC Hold/Client Hold.
+- Default: No universal product default or deployed value established.
+- Precedence and dependencies: These are source-specific choices. Parent locating does not establish a receipt-line locating operation, and the slash-separated statuses do not define a selection rule or equate them with QA Hold/HQ. The earlier body/comment uncertainty about current versus future blind use remains.
+- Related process: Blind receipt check-in and locating
+- Validation: Source review only. Compare with separately authorized version-matched configuration and workflow evidence before operational use. No live query or execution performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p029-b003](reading/sdd-1c25f20de1eafc3e.md#p029-b003)
+
+
+## Cooler picking Auto Putaway
+
+Distinguish the cooler destination-confirmation choice from other Knipper pick flows.
+
+- Scope: Knipper Active SCALE design v1.3 (2024-12-10); historical source example, not current deployed configuration.
+- Accepted values: The cooler-picking design says Auto Putaway will be configured, so users do not confirm putaway after all picks are completed.
+- Default: No universal product default or deployed value established.
+- Precedence and dependencies: Container/slot verification during the picks still appears in the same procedure; automatic final putaway does not mean every scan is skipped or physical movement has been measured. No selected work-profile setting, destination rule or effective deployment was observed.
+- Related process: Cooler group/cart picking
+- Validation: Source review only. Compare with separately authorized version-matched configuration and workflow evidence before operational use. No live query or execution performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-1c25f20de1eafc3e p099-b003](reading/sdd-1c25f20de1eafc3e.md#p099-b003)
+
+
+## Inactive *Default receiving preference
+
+Distinguish a named inactive receiving preference from the active illustrated receiving example.
+
+- Scope: SCALE 2020 HADDAD configuration walkthrough; historical source example, not current deployed configuration.
+- Accepted values: The HADDAD text says the *Default Reception preference is made Inactive. Nearby receiving-preference sections describe General, RF and Workbench configuration.
+- Default: No universal product default or deployed value established.
+- Precedence and dependencies: The named RECEP STD PCB example is separate; the inactive default allocation-rule example is another configuration object. The text supplies no fallback/selection rule, universal default, current deployed value or recommendation to disable a receiving preference in the user environment.
+- Related process: Receiving preference selection
+- Validation: Source review only. Compare with separately authorized version-matched configuration and workflow evidence before operational use. No live query or execution performed.
+- Classification: `implementation_specific_choice`.
+
+Sources: [sdd-f46806ef53e15f07 b00268, b00269, b00271, b00272, b00274, b00276](reading/sdd-f46806ef53e15f07.md#b00268)

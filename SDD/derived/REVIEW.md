@@ -6581,3 +6581,71 @@ The note includes both tracking and attribute wording; its use of or does not su
 - C9 Knipper EX19, EX24, EX38, EX39 and TBD VVIP references identify custom dependencies, not complete specifications or installed execution.
 - C9 Knipper wave-cancellation reply is distinct from the existing shipment-cancellation dispute; neither source passage is live acceptance.
 - C9 Grupo mixed-status note includes a different-inventory-attributes qualifier and ambiguous logical wording; no complete allowed-combination rule is inferred.
+
+## Continuation 10 source-text review
+
+This batch adds 7 claims and 4 setting explanations across three SCALE source bodies. Previous records, source bytes, media descriptions and page/table credit remain unchanged. Source examples are distinct from active deployment.
+
+### knipper-c10-inbound-qc-status-decision
+
+Knipper says all inbound LPNs receive QC Hold although physical inspection selects only some LPNs after putaway to reserve. For QC pass, a user changes QC Hold to Available through Insight or Warehouse Mobile, finding LPNs one lot at a time because the passage says one lot is received on one receipt. For QC failure, the customer decides disposition and LPNs transfer to a designated location.
+
+This adds the earlier pass/fail procedure to the page39–40 continuation. QC Hold, QA Hold, Client Hold and HQ are not equated. The source also describes visual audit before systematic check-in without fully distinguishing that activity from later reserve inspection. It supplies no sampling formula, automatic transition, customer-decision criteria, current SOP or deployment acceptance. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p021-b004, p021-b006, p022-b003, p022-b004, p022-b005, p022-b006, p022-b007, p022-b008, p022-b009, p022-b011](reading/sdd-1c25f20de1eafc3e.md#p021-b004)
+
+### knipper-c10-cubiscan-manual-versus-integration
+
+For new-item dimensions, Knipper describes Cubiscan measurement with manual updates to SCALE by operations. Its margin discussion treats an integration as being reviewed for HLE and requiring a separate detailed design if Knipper proceeds.
+
+Manual data entry and a proposed integration are different paths. A resolved annotation does not prove the integration was approved, implemented or used; the passage supplies no file/API schema, validation limits or measured dimensions. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p032-b008, p032-b009, p032-b010, p032-b011](reading/sdd-1c25f20de1eafc3e.md#p032-b008)
+
+### knipper-c10-bom-component-origin
+
+Knipper places BOM configuration in its implementation scope and uses a BOM when a work order is manually created in SCALE. Downloaded work orders instead carry component items. An OHW review comment mentions manual production-kitting/labeling orders as well as orders loaded from its internal OMS.
+
+This qualifies the body’s host-work-order description without requiring every work order to originate from the host. It supplies no BOM-version selection rule, component substitution or complete download payload, and no order was inspected. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p062-b003, p062-b004, p062-b005, p062-b006, p062-b007, p062-b008, p062-b009](reading/sdd-1c25f20de1eafc3e.md#p062-b003)
+
+### knipper-c10-component-rule-comment-boundary
+
+The Knipper body says each component has an allocation rule. A review comment attributes a BOM Allocate All failure to a line-level allocation rule and requests removal; the reply instead says automatic allocation on Release can be configured and should work when allocation rules are correct.
+
+The reply does not demonstrate that removing component rules is required or resolves the reported failure. It names no configuration key and supplies no reproduced error or implemented correction. The general allocation-on-release capability is also described by HADDAD; the new meaning here is this unresolved relationship between the body, failure report and reply. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p062-b013, p062-b014, p062-b016, p062-b017, p062-b018](reading/sdd-1c25f20de1eafc3e.md#p062-b013)
+
+### knipper-c10-work-order-release-tension
+
+Knipper’s body calls for verifying allocation/work before releasing a work order, while its recovery continuation says successfully created component work is available immediately for user execution. Review replies say release is mandatory to start work and is at header level; they also say a problem with one line will not hold up other lines, responding to a request for line-level release.
+
+The incremental meaning is the reply about line independence and header-level release plus the reported site variation; prior records already cover the generic release sequence and failed-component retry. These passages do not settle the actual release gate or partial-work eligibility. Preserve the body/reply tension rather than treating creation, header release or a resolved discussion as operational proof. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p062-b009, p063-b012, p064-b003, p064-b004, p064-b005, p064-b006, p064-b007, p064-b008, p064-b009](reading/sdd-1c25f20de1eafc3e.md#p062-b009)
+
+### knipper-c10-component-rf-display-reply
+
+In response to a request for component-pick RF details, the Knipper review reply says lot is displayed but expiration date and conversion are not.
+
+This is a scoped documentary reply, not an exhaustive field inventory or live screen test. It does not resolve the separate system-directed screenshot versus user-directed body mismatch, nor establish missing-field behavior in other screens or versions. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p063-b007, p063-b008, p063-b009, p063-b010](reading/sdd-1c25f20de1eafc3e.md#p063-b007)
+
+### grupo-c10-interleaving-outbound-qc-nonuse
+
+Grupo Julio explicitly says it will not use task interleaving and does not currently use outbound QC in the described implementation.
+
+The following generic Close Container description and Shipping Container Insight QC action do not prove that outbound QC is adopted. The separate future discussion of VAS and inbound QC remains distinct. These historical choices do not disable base SCALE features or establish current site settings. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p076-b003, p076-b004](reading/sdd-d50ca4a96095c930.md#p076-b003)
+
+### Additional source qualifications
+
+- C10 Knipper inbound QC gives user-driven pass/fail handling but does not equate QC Hold, QA Hold, Client Hold and HQ or fully distinguish unloading visual audit from later selected-LPN inspection timing.
+- C10 Knipper Cubiscan integration remains conditional; no detailed integration contract or completed implementation is supplied.
+- C10 Knipper component-rule failure comment and allocation-on-release reply do not identify a proven correction; creation-time availability and mandatory header release remain in documentary tension.
+- C10 Grupo USER_DEF3 grouping and work-unit maximums lack values/full predicates; EX01 scope and actual configuration remain unverified.
+- C10 Cooler Auto Putaway and HADDAD inactive *Default receiving preference are source-specific choices, not deployed or universal defaults.

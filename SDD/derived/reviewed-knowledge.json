@@ -6650,6 +6650,163 @@
       "review_state": "SOURCE_REVIEWED_BOUNDED",
       "limits": "The note includes both tracking and attribute wording; its use of or does not supply a full truth table or establish the converse as sufficient. Keep it distinct from Knipper’s LPN-only qualification; do not infer a universal inventory identity key or deployed consolidation rule.",
       "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "knipper-c10-inbound-qc-status-decision",
+      "statement": "Knipper says all inbound LPNs receive QC Hold although physical inspection selects only some LPNs after putaway to reserve. For QC pass, a user changes QC Hold to Available through Insight or Warehouse Mobile, finding LPNs one lot at a time because the passage says one lot is received on one receipt. For QC failure, the customer decides disposition and LPNs transfer to a designated location.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p021-b004",
+            "p021-b006",
+            "p022-b003",
+            "p022-b004",
+            "p022-b005",
+            "p022-b006",
+            "p022-b007",
+            "p022-b008",
+            "p022-b009",
+            "p022-b011"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "This adds the earlier pass/fail procedure to the page39–40 continuation. QC Hold, QA Hold, Client Hold and HQ are not equated. The source also describes visual audit before systematic check-in without fully distinguishing that activity from later reserve inspection. It supplies no sampling formula, automatic transition, customer-decision criteria, current SOP or deployment acceptance.",
+      "review_batch": "SDD-TEXT-20260930-CONTINUATION10",
+      "extends_claim_id": "knipper-c9-inspection-inventory-status-continuation"
+    },
+    {
+      "id": "knipper-c10-cubiscan-manual-versus-integration",
+      "statement": "For new-item dimensions, Knipper describes Cubiscan measurement with manual updates to SCALE by operations. Its margin discussion treats an integration as being reviewed for HLE and requiring a separate detailed design if Knipper proceeds.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p032-b008",
+            "p032-b009",
+            "p032-b010",
+            "p032-b011"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "Manual data entry and a proposed integration are different paths. A resolved annotation does not prove the integration was approved, implemented or used; the passage supplies no file/API schema, validation limits or measured dimensions.",
+      "review_batch": "SDD-TEXT-20260930-CONTINUATION10"
+    },
+    {
+      "id": "knipper-c10-bom-component-origin",
+      "statement": "Knipper places BOM configuration in its implementation scope and uses a BOM when a work order is manually created in SCALE. Downloaded work orders instead carry component items. An OHW review comment mentions manual production-kitting/labeling orders as well as orders loaded from its internal OMS.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p062-b003",
+            "p062-b004",
+            "p062-b005",
+            "p062-b006",
+            "p062-b007",
+            "p062-b008",
+            "p062-b009"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "This qualifies the body’s host-work-order description without requiring every work order to originate from the host. It supplies no BOM-version selection rule, component substitution or complete download payload, and no order was inspected.",
+      "review_batch": "SDD-TEXT-20260930-CONTINUATION10",
+      "extends_claim_id": "knipper-work-order-build-location"
+    },
+    {
+      "id": "knipper-c10-component-rule-comment-boundary",
+      "statement": "The Knipper body says each component has an allocation rule. A review comment attributes a BOM Allocate All failure to a line-level allocation rule and requests removal; the reply instead says automatic allocation on Release can be configured and should work when allocation rules are correct.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p062-b013",
+            "p062-b014",
+            "p062-b016",
+            "p062-b017",
+            "p062-b018"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "The reply does not demonstrate that removing component rules is required or resolves the reported failure. It names no configuration key and supplies no reproduced error or implemented correction. The general allocation-on-release capability is also described by HADDAD; the new meaning here is this unresolved relationship between the body, failure report and reply.",
+      "review_batch": "SDD-TEXT-20260930-CONTINUATION10"
+    },
+    {
+      "id": "knipper-c10-work-order-release-tension",
+      "statement": "Knipper’s body calls for verifying allocation/work before releasing a work order, while its recovery continuation says successfully created component work is available immediately for user execution. Review replies say release is mandatory to start work and is at header level; they also say a problem with one line will not hold up other lines, responding to a request for line-level release.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p062-b009",
+            "p063-b012",
+            "p064-b003",
+            "p064-b004",
+            "p064-b005",
+            "p064-b006",
+            "p064-b007",
+            "p064-b008",
+            "p064-b009"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "The incremental meaning is the reply about line independence and header-level release plus the reported site variation; prior records already cover the generic release sequence and failed-component retry. These passages do not settle the actual release gate or partial-work eligibility. Preserve the body/reply tension rather than treating creation, header release or a resolved discussion as operational proof.",
+      "review_batch": "SDD-TEXT-20260930-CONTINUATION10",
+      "extends_claim_id": "knipper-component-partial-recovery-continuation"
+    },
+    {
+      "id": "knipper-c10-component-rf-display-reply",
+      "statement": "In response to a request for component-pick RF details, the Knipper review reply says lot is displayed but expiration date and conversion are not.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p063-b007",
+            "p063-b008",
+            "p063-b009",
+            "p063-b010"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "This is a scoped documentary reply, not an exhaustive field inventory or live screen test. It does not resolve the separate system-directed screenshot versus user-directed body mismatch, nor establish missing-field behavior in other screens or versions.",
+      "review_batch": "SDD-TEXT-20260930-CONTINUATION10"
+    },
+    {
+      "id": "grupo-c10-interleaving-outbound-qc-nonuse",
+      "statement": "Grupo Julio explicitly says it will not use task interleaving and does not currently use outbound QC in the described implementation.",
+      "classification": "implementation_specific_choice",
+      "citations": [
+        {
+          "document_id": "sdd-d50ca4a96095c930",
+          "source_sha256": "d50ca4a96095c930e1e54fd04c55804bed05a5139451118cc5ce201eab814e34",
+          "nodes": [
+            "p076-b003",
+            "p076-b004"
+          ]
+        }
+      ],
+      "review_state": "SOURCE_REVIEWED_BOUNDED",
+      "limits": "The following generic Close Container description and Shipping Container Insight QC action do not prove that outbound QC is adopted. The separate future discussion of VAS and inbound QC remains distinct. These historical choices do not disable base SCALE features or establish current site settings.",
+      "review_batch": "SDD-TEXT-20260930-CONTINUATION10",
+      "extends_claim_id": "grupo-nonuse-boundary"
     }
   ],
   "configuration": [
@@ -13805,6 +13962,107 @@
         }
       ],
       "review_batch": "SDD-PDF-TEXT-20260930-CONTINUATION9"
+    },
+    {
+      "id": "grupo-c10-work-unit-grouping-controls",
+      "name": "Footwear and hanging work-unit grouping",
+      "purpose": "Preserve the different work-creation controls described for the two product families.",
+      "scope": "Grupo Julio Active SCALE design v1.5 (2024-09-03); historical source example, not current deployed configuration.",
+      "accepted_values": "Footwear creates containers in the wave and uses Container ID as Work Unit, with Work Creation Master maximums for instruction count, weight and volume. Hanging uses Shipment Allocation Work, a maximum instruction count and work-unit breaks based on Shipment Alloc Request USER_DEF3. The allocation-request section describes less-than-case picks.",
+      "default": "No universal product default or deployed value established.",
+      "precedence": "No numeric limits, USER_DEF3 values or complete splitting predicate are supplied. The general less-than-case description does not establish all UOM cases or override the specific flows. EX01 sorting remains a separate custom integration; the source does not demonstrate a deployed database schema.",
+      "process": "Outbound work creation and picking",
+      "classification": "implementation_specific_choice",
+      "validation": "Source review only. Compare with separately authorized version-matched configuration and workflow evidence before operational use. No live query or execution performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-d50ca4a96095c930",
+          "source_sha256": "d50ca4a96095c930e1e54fd04c55804bed05a5139451118cc5ce201eab814e34",
+          "nodes": [
+            "p067-b005",
+            "p068-b002",
+            "p073-b004",
+            "p074-b002",
+            "p075-b002"
+          ]
+        }
+      ],
+      "review_batch": "SDD-TEXT-20260930-CONTINUATION10"
+    },
+    {
+      "id": "knipper-c10-blind-receiving-method",
+      "name": "Blind receiving execution and locating method",
+      "purpose": "Complete the documented blind-preference choices beyond its existing general flags.",
+      "scope": "Knipper Active SCALE design v1.3 (2024-12-10); historical source example, not current deployed configuration.",
+      "accepted_values": "The blind-receiving continuation selects RF Workflow Blind, Check in and Locate (immediate), Parent container locating and default inventory status QC Hold/Client Hold.",
+      "default": "No universal product default or deployed value established.",
+      "precedence": "These are source-specific choices. Parent locating does not establish a receipt-line locating operation, and the slash-separated statuses do not define a selection rule or equate them with QA Hold/HQ. The earlier body/comment uncertainty about current versus future blind use remains.",
+      "process": "Blind receipt check-in and locating",
+      "classification": "implementation_specific_choice",
+      "validation": "Source review only. Compare with separately authorized version-matched configuration and workflow evidence before operational use. No live query or execution performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p029-b003"
+          ]
+        }
+      ],
+      "review_batch": "SDD-TEXT-20260930-CONTINUATION10"
+    },
+    {
+      "id": "knipper-c10-cooler-auto-putaway",
+      "name": "Cooler picking Auto Putaway",
+      "purpose": "Distinguish the cooler destination-confirmation choice from other Knipper pick flows.",
+      "scope": "Knipper Active SCALE design v1.3 (2024-12-10); historical source example, not current deployed configuration.",
+      "accepted_values": "The cooler-picking design says Auto Putaway will be configured, so users do not confirm putaway after all picks are completed.",
+      "default": "No universal product default or deployed value established.",
+      "precedence": "Container/slot verification during the picks still appears in the same procedure; automatic final putaway does not mean every scan is skipped or physical movement has been measured. No selected work-profile setting, destination rule or effective deployment was observed.",
+      "process": "Cooler group/cart picking",
+      "classification": "implementation_specific_choice",
+      "validation": "Source review only. Compare with separately authorized version-matched configuration and workflow evidence before operational use. No live query or execution performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-1c25f20de1eafc3e",
+          "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+          "nodes": [
+            "p099-b003"
+          ]
+        }
+      ],
+      "review_batch": "SDD-TEXT-20260930-CONTINUATION10"
+    },
+    {
+      "id": "haddad-c10-default-receiving-inactive",
+      "name": "Inactive *Default receiving preference",
+      "purpose": "Distinguish a named inactive receiving preference from the active illustrated receiving example.",
+      "scope": "SCALE 2020 HADDAD configuration walkthrough; historical source example, not current deployed configuration.",
+      "accepted_values": "The HADDAD text says the *Default Reception preference is made Inactive. Nearby receiving-preference sections describe General, RF and Workbench configuration.",
+      "default": "No universal product default or deployed value established.",
+      "precedence": "The named RECEP STD PCB example is separate; the inactive default allocation-rule example is another configuration object. The text supplies no fallback/selection rule, universal default, current deployed value or recommendation to disable a receiving preference in the user environment.",
+      "process": "Receiving preference selection",
+      "classification": "implementation_specific_choice",
+      "validation": "Source review only. Compare with separately authorized version-matched configuration and workflow evidence before operational use. No live query or execution performed.",
+      "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+      "citations": [
+        {
+          "document_id": "sdd-f46806ef53e15f07",
+          "source_sha256": "f46806ef53e15f07b8099a48dcbadc43bcdaf50d01ef15e97c24d6e264ed5586",
+          "nodes": [
+            "b00268",
+            "b00269",
+            "b00271",
+            "b00272",
+            "b00274",
+            "b00276"
+          ]
+        }
+      ],
+      "review_batch": "SDD-TEXT-20260930-CONTINUATION10"
     }
   ],
   "diagrams": [
@@ -23141,7 +23399,12 @@
     "C9 Knipper EX19 post-wave counting, INCA recording and LPN count/scan comments leave exact configuration and investigation/reconciliation semantics unresolved.",
     "C9 Knipper EX19, EX24, EX38, EX39 and TBD VVIP references identify custom dependencies, not complete specifications or installed execution.",
     "C9 Knipper wave-cancellation reply is distinct from the existing shipment-cancellation dispute; neither source passage is live acceptance.",
-    "C9 Grupo mixed-status note includes a different-inventory-attributes qualifier and ambiguous logical wording; no complete allowed-combination rule is inferred."
+    "C9 Grupo mixed-status note includes a different-inventory-attributes qualifier and ambiguous logical wording; no complete allowed-combination rule is inferred.",
+    "C10 Knipper inbound QC gives user-driven pass/fail handling but does not equate QC Hold, QA Hold, Client Hold and HQ or fully distinguish unloading visual audit from later selected-LPN inspection timing.",
+    "C10 Knipper Cubiscan integration remains conditional; no detailed integration contract or completed implementation is supplied.",
+    "C10 Knipper component-rule failure comment and allocation-on-release reply do not identify a proven correction; creation-time availability and mandatory header release remain in documentary tension.",
+    "C10 Grupo USER_DEF3 grouping and work-unit maximums lack values/full predicates; EX01 scope and actual configuration remain unverified.",
+    "C10 Cooler Auto Putaway and HADDAD inactive *Default receiving preference are source-specific choices, not deployed or universal defaults."
   ],
   "review_batches": [
     {
@@ -23353,6 +23616,12 @@
     {
       "id": "SDD-PDF-TEXT-20260930-CONTINUATION9",
       "basis": "Three bounded source-text packets: Knipper40–52 and86–98, Grupo88–95, plus Knipper39-b007 continuation context. All 321 selected retained text blocks matched original PDF text and bounding boxes. Seven context pages visually inspected. New meaning only; duplicate/headings/table candidates get explicit no-edit dispositions. No new asset, page, slide or logical-table credit.",
+      "source_mutation": false,
+      "deployment_observed": false
+    },
+    {
+      "id": "SDD-TEXT-20260930-CONTINUATION10",
+      "basis": "Five frozen-census source-text packets across Knipper, Grupo Julio and HADDAD. 80 PDF original text/bbox comparisons, nine selected PDF context views and original OOXML verification for six HADDAD citation nodes plus immediate context. Exhaustive selected-node dispositions; no new media/page/slide/table credit.",
       "source_mutation": false,
       "deployment_observed": false
     }
