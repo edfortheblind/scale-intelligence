@@ -14,7 +14,7 @@ from urllib.parse import quote, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'tools'))
 from help_guides import GuideLibrary, ROOT, MANIFEST, GUIDES, guide_blocks, fingerprint
 from help_knowledge import Knowledge
-from render_help_guides import render_guide, render_source, source_title, inline
+from render_help_guides import render_guide, render_source, source_title, guide_search, inline
 from serve_help import create_server
 
 
@@ -163,6 +163,57 @@ class GuideTests(unittest.TestCase):
             self.guides.search('x'*501)
         self.assertNotIn('scale-reference', {r['guide_id'] for r in self.guides.sections})
 
+    def test_explicit_src_identifiers_use_declared_catalog_destinations_and_limits(self):
+        catalog = self.guides.evidence['mobile-catalog']['src_base_flows']
+        for flow in catalog:
+            number = flow['src_identifier']
+            forms = [f'SRC{number}', f'SRC {number}', f'  sRc  {number}  ']
+            results = [self.guides.search(query) for query in forms]
+            with self.subTest(src=number):
+                self.assertEqual(results[0], results[1])
+                self.assertEqual(results[1], results[2])
+                self.assertEqual(len(results[0]['results']), 1)
+                hit = results[0]['results'][0]
+                expected = self.guides.link(self.guides.guides['mobile-catalog'], flow['documentation_candidate'])
+                self.assertEqual('/guide/'+hit['guide_id']+'#'+hit['anchor'], expected)
+                self.assertIn(flow['user_task'], hit['section_title'])
+                self.assertIn(flow['limit'], hit['text'])
+                self.assertNotIn(flow['procedure_detail_state'], hit['text'])
+                self.assertEqual(hit['guide_sha256'], self.guides.guides[hit['guide_id']]['sha256'])
+                self.assertEqual(results[0]['manifest_sha256'], self.guides.manifest_sha256)
+
+    def test_explicit_src_unknown_bounds_and_full_escaped_qualification(self):
+        self.assertEqual(self.guides.search('SRC999999')['results'], [])
+        with self.assertRaises(ValueError):
+            self.guides.search('SRC'+'4'*498)
+        library = copy.copy(self.guides)
+        library.evidence = dict(library.evidence)
+        catalog = copy.deepcopy(library.evidence['mobile-catalog'])
+        library.evidence['mobile-catalog'] = catalog
+        flow = catalog['src_base_flows'][0]
+        flow['limit'] = 'Documented qualification. '*30+'<script>unsafe</script> Final limitation.'
+        query = 'SRC'+str(flow['src_identifier'])
+        self.assertIn(flow['limit'], library.search(query)['results'][0]['text'])
+        html = guide_search(library, query)
+        self.assertIn('Final limitation.', html)
+        self.assertNotIn('<script>', html)
+        self.assertIn('&lt;script&gt;', html)
+        flow['documentation_candidate'] = '../../.aekr/private.md'
+        with self.assertRaises(ValueError):
+            library.search(query)
+
+    def test_non_identifier_queries_keep_freeform_results(self):
+        library = copy.copy(self.guides)
+        library.sections = [
+            {'guide_id': 'mobile-work', 'guide_title': 'Fixture', 'section_title': 'Work',
+             'anchor': 'work', 'text': 'SRC400 ASRC400 SRC400x SRC_400 400 inquiry'},
+            {'guide_id': 'mobile-inventory', 'guide_title': 'Fixture', 'section_title': 'Inventory',
+             'anchor': 'inventory', 'text': 'SRC400 ASRC400 SRC400x SRC_400 400 inquiry'},
+        ]
+        for query in ['inquiry', 'SRC400 inquiry', 'SRC 400 inquiry', '400', 'ASRC400', 'SRC400x', 'SRC_400', '"SRC400"']:
+            with self.subTest(query=query):
+                self.assertEqual([row['anchor'] for row in library.search(query)['results']], ['work', 'inventory'])
+
 
 class GuideHTTPTests(unittest.TestCase):
     @classmethod
@@ -199,6 +250,24 @@ class GuideHTTPTests(unittest.TestCase):
         self.assertIn(b'Procedure guide matches', page)
         self.assertIn(b'id="result-list"', page)
         self.assertIn(b'Detailed procedure guides', page)
+
+    def test_exact_src_match_follows_focus_target_before_related_articles(self):
+        status, _, page = self.request('/?q=SRC400')
+        self.assertEqual(status, 200)
+        self.assertIn(b'<form action="/#results-heading"', page)
+        focus = page.index(b'<h2 id="results-heading" tabindex="-1">')
+        guides = page.index(b'id="guide-results-heading"')
+        exact = page.index(b'SRC 400: Transfer between warehouses by license plate')
+        articles = page.index(b'id="result-list"')
+        self.assertLess(focus, guides)
+        self.assertLess(guides, exact)
+        self.assertLess(exact, articles)
+        self.assertIn(b'<h3 id="guide-results-heading" tabindex="-1">', page)
+        self.assertEqual(page.count(b'id="guide-results-heading"'), 1)
+        self.assertIn(b'No distinct steps retained', page)
+        _, _, ordinary = self.request('/?q=Assign%20Printer')
+        self.assertLess(ordinary.index(b'id="result-list"'), ordinary.index(b'id="guide-results-heading"'))
+        self.assertIn(b'<h2 id="guide-results-heading" tabindex="-1">', ordinary)
 
     def test_all_guide_links_are_allowed_routes_and_fragments_exist(self):
         cache = {}

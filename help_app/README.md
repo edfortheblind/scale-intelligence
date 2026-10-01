@@ -20,6 +20,8 @@ The interface uses native HTML forms, links, headings and disclosure controls. J
 
 Open **Detailed procedure guides** from the home page or visit `/guides`. The Warehouse Mobile/RF and Cross Application manuals have section navigation and in-app source views. Search on the home page also returns **Procedure guide matches**, linking directly to the matching sections. Existing article results and guide-section results remain separate.
 
+For a known screen-flow number, enter the complete code, such as **SRC400** or **SRC 400**. The guide result opens the catalog's documented destination and states its source limitations. Unknown codes have no catalog match; custom or installation-specific flows may still exist. Questions containing other words continue to use ordinary guide search. The flow catalog also provides descriptive task and menu links for browsing.
+
 Source views display retained text with node identities. Original scripts, live application links and figures are inactive in those views. The manuals retain operational qualifications, source disagreements and the distinction between source procedures and dated navigation observations. They do not connect to SCALE or execute an operation.
 
 ## Maintaining the library

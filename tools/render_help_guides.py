@@ -76,9 +76,11 @@ def guide_navigation(library):
             '</ul></section>')
 
 
-def guide_search(library, question):
-    matches = library.search(question)['results']
-    parts = ['<section aria-labelledby="guide-results-heading"><h2 id="guide-results-heading" tabindex="-1">Procedure guide matches</h2>',
+def guide_search(library, question, *, matches=None, nested=False):
+    if matches is None:
+        matches = library.search(question)['results']
+    heading = 'h3' if nested else 'h2'
+    parts = ['<section aria-labelledby="guide-results-heading"><'+heading+' id="guide-results-heading" tabindex="-1">Procedure guide matches</'+heading+'>',
              '<p>Step-by-step procedures, conditions and source limits for your search.</p>']
     if not matches:
         parts.append('<p>No guide section matched. Browse the detailed procedure guides below.</p>')

@@ -101,7 +101,15 @@ def render_page(knowledge, question='', topic_id=None, guides=None):
               '</details>' if topic else '</section>']
     if question.strip():
         result = knowledge.search(question)
+        guide_matches = []
+        if guides is not None:
+            from render_help_guides import guide_search
+            guide_matches = guides.search(question)['results']
+        exact_guide = bool(guide_matches and guide_matches[0].get('evidence_scope') == 'DOCUMENTED_SRC_CATALOG_MATCH')
         parts.append('<section aria-labelledby="results-heading"><h2 id="results-heading" tabindex="-1">Search results</h2>')
+        if exact_guide:
+            parts.append(guide_search(guides, question, matches=guide_matches, nested=True))
+            parts.append('<h3>Related articles</h3>')
         if result.get('state') == 'NEEDS_CONTEXT':
             parts.append(element('p', result['clarification'], ' role="status"'))
         elif result['results']:
@@ -113,9 +121,8 @@ def render_page(knowledge, question='', topic_id=None, guides=None):
         else:
             parts.append(element('p', 'No article matched. Try the process or setting name, or browse the topics below.', ' role="status"'))
         parts.append('</section>')
-        if guides is not None:
-            from render_help_guides import guide_search
-            parts.append(guide_search(guides, question))
+        if guides is not None and not exact_guide:
+            parts.append(guide_search(guides, question, matches=guide_matches))
     if topic:
         parts += ['<article id="answer" aria-labelledby="answer-title" tabindex="-1">',
                   element('h2', topic['title'], ' id="answer-title"'), element('p', topic['what_it_does'], ' class="lead"')]

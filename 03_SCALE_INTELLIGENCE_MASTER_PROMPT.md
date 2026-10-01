@@ -1,14 +1,14 @@
 # SCALE Intelligence master continuation prompt
 
-## C25 current searchable Warehouse Mobile guides
+## C26 current Warehouse Mobile flow lookup
 
-The owner accepted C24 and authorized continuation. The [Warehouse Mobile/RF guides](SDD/RF/README.md) are now readable and searchable inside the application through **Detailed procedure guides** and **Procedure guide matches**. Six guides provide 154 searchable sections; the central reference is also readable. Read [C25 verification and limits](_project/CONTINUATION_C25.md) and the [24-question guide evaluation](_project/guide-evaluation-c25.json) before continuing.
+Following C25, the owner requested continuation. Whole-query **SRC400** or **SRC 400** now opens an exact catalog-backed guide result before related articles, retaining its entire source qualification. The existing catalog has 61 descriptive task/menu links and nine corrected destinations. Read [C26 verification and limits](_project/CONTINUATION_C26.md) and the [identifier and guide comparison](_project/guide-navigation-c26.json) before continuing.
 
-Verification: **63 tests passed**; **97 pages, 613 links and 154 section anchors** checked without failures. All **723 existing article case records are unchanged: 675 top-eight, 419 first, 48 misses**. Guide probes found the expected guide in **24/24** top-six lists; required meaning was reachable in all 24, with 20 complete destinations first. Exact expected anchors matched 15/24; child-section matches and remaining differences are explicit. The canonical article evaluation changed only its implementation fingerprint.
+Verification: **67 tests passed**; all 45 codes resolved under 135 HTTP query variants and 225 independent variants. All **723 article case records remain unchanged: 675 top-eight, 419 first, 48 misses**. Guide-probe metrics remain **24/24 top-six guide matches, 23 first, 15 exact anchors, 14 exact anchors first**. Twenty-one lists are unchanged; three lower-rank swaps preserve required meaning. Exact lookup is separate from free-text evaluation.
 
-Document Management search/view steps now have retained-source support. The RF catalog now binds **82 articles**, two agreeing SRC registries with a **45-identity union**, and the original 16-menu dispositions. Six incomplete/ambiguous detail entries, 12 missing direct references and source conflicts remain qualified. No new installed SCALE or warehouse operation occurred.
+Source coverage remains **82 catalog articles, 45 SRC identities and 16 dated menu observations**. Six incomplete/ambiguous SRC entries, 12 missing direct references and source conflicts remain qualified. Nine source-catalog destinations changed; no source-detail classification was upgraded. No installed SCALE or warehouse operation occurred.
 
-**Next work:** preserve both evaluation sets when improving retrieval or adding procedures; resolve named source gaps with evidence or a separately bounded operational walkthrough. Preserve prior accepted acquisition/display/JAWS gates, untracked Video Rec and the **0/34 deployment/timing freeze**. C25 supersedes older current/queued wording below; earlier receipts remain historical. Normal private publication is authorized and verified separately.
+**Next work:** preserve both evaluation sets and the source-catalog lookup contract. Resolve named source gaps through relevant evidence or a separately bounded operational walkthrough. Preserve prior accepted acquisition/display/JAWS gates, untracked Video Rec and the **0/34 deployment/timing freeze**. C26 supersedes older current/queued wording below; earlier receipts remain historical. Normal private publication is authorized and verified separately.
 
 ## C22 current priority
 

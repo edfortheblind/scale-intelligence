@@ -14,24 +14,24 @@ A second retained [Screen Flow reference](../../AIM/reading/677fec1691b81a5d9409
 
 ## Find a task from the menu
 
-| Menu label observed in this session | Operator guide | Retained source topic |
-| --- | --- | --- |
-| Assign Printer | [Steps](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#assign-printer) | [Assign Printer](../../AIM/reading/d3ded73e3c4cd4c058cf366dac2337cea31f922628ab7fb9f72351db3f110daa.md) |
-| Close Container | [Steps](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#close-container) | [Close Container](../../AIM/reading/b33a75f313a267b2873999318c8752e9ddbe07fbd8201653f8f3aa6b757253b5.md) |
-| Close Putaway Group | [Steps](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#close-putaway-group) | [Close Putaway Group](../../AIM/reading/4bf6394a506302ab51f0d295d2c6159739380cb3fe96ba50f65972a616dbcf87.md) |
-| Cycle Count Reconciliation | [Steps](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#cycle-count-reconcile) | [Cycle Count Reconcile](../../AIM/reading/078c69cbff5a2d878611ac79eff6e854f011cc45e4d8ecf57c913b9d268302da.md) |
-| Immediate Dock Transfer | [Steps](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#immediate-dock-transfer) | [Immediate Dock Transfer](../../AIM/reading/838a020258ef840157ff58cbf2976040e90b5843a8ef1d4a715641e354227816.md) |
-| Inventory Management | [Steps](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-transfers) | [Inventory Management](../../AIM/reading/a565889030eee150ec84ace9cab22bf3668bab7fb4030ad068c3021a5ab3d20c.md) |
-| Clear Putwall Location | [Steps](WAREHOUSE_MOBILE_WORK_FLOWS.md#clear-putwall) | [Clear Putwall Location](../../AIM/reading/085f6fc30899c1dd4def9d88eafb27b2e253b9df0e5171080463628f642d2c2e.md) |
-| Location Inquiry | [Steps](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#location-inquiry) | [Location Inquiry](../../AIM/reading/2911d55cf9d9a1c1273285ae061dfab08218101065ff163248aab18e2d76f015.md) |
-| Multiple Order Pallet Nesting | [Steps](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#multiple-order-pallet-nesting) | [Shipping Nest Container MOP](../../AIM/reading/884e0d9b035fd9daaa96ab3b7c84f3301694caa1425e78a985cd0e56995d657e.md) |
-| Putwall Sort | [Steps](WAREHOUSE_MOBILE_WORK_FLOWS.md#putwall-sort) | [Putwall Sort](../../AIM/reading/3d8f8f6522101a7bc14ef4398edcc616bff9c935f925feee79f14386e17209ef.md) |
-| Receipt Container Nesting | [Steps](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#receiving-container-nesting) | [Receiving Container Nesting](../../AIM/reading/cb69e28bbebf37c8567b4b9c1c28a82c204ff1b4024c06c8dd115817ef33e095.md) |
-| Receiving | [Steps](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-initiation) | [Receiving](../../AIM/reading/21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99.md) |
-| Remove Cart Container | [Steps](WAREHOUSE_MOBILE_WORK_FLOWS.md#cart-picking) | [Cart Picking](../../AIM/reading/1673c921c28dc921fb2d4448ac596efddc087cb144434e3f9171a4697606cba3.md) |
-| Work Execution | [Steps](WAREHOUSE_MOBILE_WORK_FLOWS.md#entry-and-profiles) | [Work Execution](../../AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md) |
-| Shipping Container Nesting | [Steps](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#shipping-container-nesting) | [Shipping Nest Container](../../AIM/reading/981acc9687be090e0cd79ec204c950960d3ad374894d883e8597845e7b334789.md) |
-| Shipping Container QC | [Steps](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#shipping-container-qc) | [Shipping Container QC](../../AIM/reading/7850f745854156f9817432e534eb93bf1aa0c4fe36b8f7b7c0751962fd0c42ac.md) |
+| Menu label observed in this session | Retained source topic |
+| --- | --- |
+| [Assign Printer](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#assign-printer) | [Assign Printer](../../AIM/reading/d3ded73e3c4cd4c058cf366dac2337cea31f922628ab7fb9f72351db3f110daa.md) |
+| [Close Container](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#close-container) | [Close Container](../../AIM/reading/b33a75f313a267b2873999318c8752e9ddbe07fbd8201653f8f3aa6b757253b5.md) |
+| [Close Putaway Group](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#close-putaway-group) | [Close Putaway Group](../../AIM/reading/4bf6394a506302ab51f0d295d2c6159739380cb3fe96ba50f65972a616dbcf87.md) |
+| [Cycle Count Reconciliation](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#cycle-count-reconcile) | [Cycle Count Reconcile](../../AIM/reading/078c69cbff5a2d878611ac79eff6e854f011cc45e4d8ecf57c913b9d268302da.md) |
+| [Immediate Dock Transfer](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#immediate-dock-transfer) | [Immediate Dock Transfer](../../AIM/reading/838a020258ef840157ff58cbf2976040e90b5843a8ef1d4a715641e354227816.md) |
+| [Inventory Management](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-transfers) | [Inventory Management](../../AIM/reading/a565889030eee150ec84ace9cab22bf3668bab7fb4030ad068c3021a5ab3d20c.md) |
+| [Clear Putwall Location](WAREHOUSE_MOBILE_WORK_FLOWS.md#clear-putwall) | [Clear Putwall Location](../../AIM/reading/085f6fc30899c1dd4def9d88eafb27b2e253b9df0e5171080463628f642d2c2e.md) |
+| [Location Inquiry](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#location-inquiry) | [Location Inquiry](../../AIM/reading/2911d55cf9d9a1c1273285ae061dfab08218101065ff163248aab18e2d76f015.md) |
+| [Multiple Order Pallet Nesting](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#multiple-order-pallet-nesting) | [Shipping Nest Container MOP](../../AIM/reading/884e0d9b035fd9daaa96ab3b7c84f3301694caa1425e78a985cd0e56995d657e.md) |
+| [Putwall Sort](WAREHOUSE_MOBILE_WORK_FLOWS.md#putwall-sort) | [Putwall Sort](../../AIM/reading/3d8f8f6522101a7bc14ef4398edcc616bff9c935f925feee79f14386e17209ef.md) |
+| [Receipt Container Nesting](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#receiving-container-nesting) | [Receiving Container Nesting](../../AIM/reading/cb69e28bbebf37c8567b4b9c1c28a82c204ff1b4024c06c8dd115817ef33e095.md) |
+| [Receiving](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-initiation) | [Receiving](../../AIM/reading/21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99.md) |
+| [Remove Cart Container](WAREHOUSE_MOBILE_WORK_FLOWS.md#cart-picking) | [Cart Picking](../../AIM/reading/1673c921c28dc921fb2d4448ac596efddc087cb144434e3f9171a4697606cba3.md) |
+| [Work Execution](WAREHOUSE_MOBILE_WORK_FLOWS.md#entry-and-profiles) | [Work Execution](../../AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md) |
+| [Shipping Container Nesting](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#shipping-container-nesting) | [Shipping Nest Container](../../AIM/reading/981acc9687be090e0cd79ec204c950960d3ad374894d883e8597845e7b334789.md) |
+| [Shipping Container QC](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#shipping-container-qc) | [Shipping Container QC](../../AIM/reading/7850f745854156f9817432e534eb93bf1aa0c4fe36b8f7b7c0751962fd0c42ac.md) |
 
 These labels are bound to the [sanitized 2026-10-01 navigation inspection](warehouse-mobile-live-navigation.json). They are a configuration snapshot, not universal menu requirements or evidence that a task succeeded. RF and Warehouse Mobile are separate Cross Application entry points.
 
@@ -41,53 +41,53 @@ The 45 identities comprise 30 dedicated primary procedures, two positive-adjustm
 
 “Dedicated procedure” means the source supplies primary task steps; it does not certify every conditional branch, error-recovery path or undo action. “Shared flow” means common initiation or confirmation behavior rather than a separate complete procedure. “Context unresolved” means the registry label alone does not identify the exact configured route. Positive adjustment steps do not establish a negative-adjustment sequence. Blind-receiving behavior does not establish complete header/detail entry steps.
 
-| SRC | User task | Source registry label | Procedure coverage | Guide |
-| ---: | --- | --- | --- | --- |
-| 10 | Pick outbound work | Outbound Work Execution | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#pick-confirmation) |
-| 20 | Close a shipping container | Close Container | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#close-container) |
-| 30 | Receive by header and item | Receiving | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-initiation) |
-| 40 | Close a putaway group | Close Putaway Group | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#close-putaway-group) |
-| 50 | Receive by license plate | Receiving with initiation via license plate | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-initiation) |
-| 60 | Put away received inventory | Receipt Work Execution | Shared confirmation flow | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#receipt-putaway) |
-| 70 | Execute replenishment work | Replenishment work execution | Shared confirmation flow | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#replenishment-and-production-work) |
-| 80 | Execute cycle-count work | Cycle Count Work Execution | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#cycle-count) |
-| 90 | Transfer containers directly at the dock | Immediate Dock Transfer | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#immediate-dock-transfer) |
-| 100 | Start user-directed work | User Directed work initiation | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#entry-and-profiles) |
-| 110 | Start work for a container | Container Work Initiation | Shared initiation flow | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#entry-and-profiles) |
-| 120 | Start system-directed work | System Directed Work initiation | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#system-directed) |
-| 130 | Execute dock-management work | Dock management work execution | Shared confirmation flow | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#shared-work-types) |
-| 140 | Execute an inventory transfer work instruction | Inventory transfer work execution | Shared confirmation flow | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#shared-work-types) |
-| 150 | Execute an inventory adjustment work instruction | Inventory adjustment work execution | Shared confirmation flow | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#shared-work-types) |
-| 160 | Pick work-order components | Work order component work execution | Shared confirmation flow | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#replenishment-and-production-work) |
-| 170 | Move work-order finished items | Work order finished item work execution | Shared confirmation flow | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#replenishment-and-production-work) |
-| 180 | Start cart picking | Cart picking work initiation | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#cart-picking) |
-| 190 | Assign or clear a label printer | Assign printer | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#assign-printer) |
-| 200 | Transfer inventory by license plate | Inventory transfer by license plate | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-transfers) |
-| 210 | Add an item during a cycle count | Cycle count work execution - Add item | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#count-add-items) |
-| 220 | Transfer inventory by item and location | Inventory transfer by item location | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-transfers) |
-| 230 | Adjust inventory by item and location | Inventory adjustment | Positive steps only; negative sequence incomplete | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-adjustments) |
-| 240 | Put away a cart container | Cart container putaway | Shared confirmation flow | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#cart-picking) |
-| 250 | Remove one or all containers from a cart | Remove cart container | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#cart-picking) |
-| 260 | Reconcile a cycle count | Cycle count reconciliation | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#cycle-count-reconcile) |
-| 270 | Look up inventory at a location | Location inquiry | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#location-inquiry) |
-| 280 | Adjust inventory by license plate | Inventory adjustment by License Plate | Positive steps only; negative sequence incomplete | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-adjustments) |
-| 290 | Sort tote items at a putwall | Putwall sort | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#putwall-sort) |
-| 300 | Start pick-to-tote work | Tote work initiation | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#pick-to-tote) |
-| 310 | Pick to totes on a cart | Initiate cart picking with pick to tote | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#cart-picking) |
-| 320 | Nest shipping containers | Shipping container nesting | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#shipping-container-nesting) |
-| 330 | Clear a putwall location | Clear putwall location | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#clear-putwall) |
-| 340 | Nest containers: confirm the configured context | Nest | Context unresolved | [Read](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#receiving-container-nesting) |
-| 350 | Receive using blind initiation | Receiving Blind | Limited narrative; complete sequence missing | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-appointments-blind) |
-| 360 | Remove containers: confirm the configured context | Remove | Context unresolved | [Read](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#remove-shipping-containers) |
-| 370 | Change inventory status at a location | Inventory Status Change by Location | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-status) |
-| 380 | Build a cart through system selection | Cart Building Work Initiation | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_WORK_FLOWS.md#system-built-carts) |
-| 390 | Transfer between warehouses by item and location | Warehouse Transfer by Item/Location | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#warehouse-transfers) |
-| 400 | Transfer between warehouses by license plate | Warehouse Transfer by LP | No distinct steps retained | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#warehouse-transfers) |
-| 410 | Inspect a shipping container for quality control | Shipping Container QC | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#shipping-container-qc) |
-| 420 | Receive by trailer and item | Receiving Trailer ID-Item | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-initiation) |
-| 430 | Receive by header and license plate | Receiving Header-License Plate | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-initiation) |
-| 440 | Receive by trailer and license plate | Receiving Trailer ID-License Plate | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-initiation) |
-| 450 | Receive by item | Receiving Item | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-initiation) |
+| SRC | User task | Source registry label | Procedure coverage |
+| ---: | --- | --- | --- |
+| 10 | [Pick outbound work](WAREHOUSE_MOBILE_WORK_FLOWS.md#pick-confirmation) | Outbound Work Execution | Dedicated primary procedure |
+| 20 | [Close a shipping container](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#close-container) | Close Container | Dedicated primary procedure |
+| 30 | [Receive by header and item](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#header-item-src-30) | Receiving | Dedicated primary procedure |
+| 40 | [Close a putaway group](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#close-putaway-group) | Close Putaway Group | Dedicated primary procedure |
+| 50 | [Receive by license plate](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#license-plate-src-50) | Receiving with initiation via license plate | Dedicated primary procedure |
+| 60 | [Put away received inventory](WAREHOUSE_MOBILE_WORK_FLOWS.md#receipt-putaway) | Receipt Work Execution | Shared confirmation flow |
+| 70 | [Execute replenishment work](WAREHOUSE_MOBILE_WORK_FLOWS.md#replenishment-and-production-work) | Replenishment work execution | Shared confirmation flow |
+| 80 | [Execute cycle-count work](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#cycle-count) | Cycle Count Work Execution | Dedicated primary procedure |
+| 90 | [Transfer containers directly at the dock](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#immediate-dock-transfer) | Immediate Dock Transfer | Dedicated primary procedure |
+| 100 | [Start user-directed work](WAREHOUSE_MOBILE_WORK_FLOWS.md#entry-and-profiles) | User Directed work initiation | Dedicated primary procedure |
+| 110 | [Start work for a container](WAREHOUSE_MOBILE_WORK_FLOWS.md#entry-and-profiles) | Container Work Initiation | Shared initiation flow |
+| 120 | [Start system-directed work](WAREHOUSE_MOBILE_WORK_FLOWS.md#system-directed) | System Directed Work initiation | Dedicated primary procedure |
+| 130 | [Execute dock-management work](WAREHOUSE_MOBILE_WORK_FLOWS.md#shared-work-types) | Dock management work execution | Shared confirmation flow |
+| 140 | [Execute an inventory transfer work instruction](WAREHOUSE_MOBILE_WORK_FLOWS.md#shared-work-types) | Inventory transfer work execution | Shared confirmation flow |
+| 150 | [Execute an inventory adjustment work instruction](WAREHOUSE_MOBILE_WORK_FLOWS.md#shared-work-types) | Inventory adjustment work execution | Shared confirmation flow |
+| 160 | [Pick work-order components](WAREHOUSE_MOBILE_WORK_FLOWS.md#replenishment-and-production-work) | Work order component work execution | Shared confirmation flow |
+| 170 | [Move work-order finished items](WAREHOUSE_MOBILE_WORK_FLOWS.md#replenishment-and-production-work) | Work order finished item work execution | Shared confirmation flow |
+| 180 | [Start cart picking](WAREHOUSE_MOBILE_WORK_FLOWS.md#cart-picking) | Cart picking work initiation | Dedicated primary procedure |
+| 190 | [Assign or clear a label printer](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#assign-printer) | Assign printer | Dedicated primary procedure |
+| 200 | [Transfer inventory by license plate](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-transfers) | Inventory transfer by license plate | Dedicated primary procedure |
+| 210 | [Add an item during a cycle count](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#count-add-items) | Cycle count work execution - Add item | Dedicated primary procedure |
+| 220 | [Transfer inventory by item and location](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-transfers) | Inventory transfer by item location | Dedicated primary procedure |
+| 230 | [Adjust inventory by item and location](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-adjustments) | Inventory adjustment | Positive steps only; negative sequence incomplete |
+| 240 | [Put away a cart container](WAREHOUSE_MOBILE_WORK_FLOWS.md#cart-picking) | Cart container putaway | Shared confirmation flow |
+| 250 | [Remove one or all containers from a cart](WAREHOUSE_MOBILE_WORK_FLOWS.md#cart-picking) | Remove cart container | Dedicated primary procedure |
+| 260 | [Reconcile a cycle count](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#cycle-count-reconcile) | Cycle count reconciliation | Dedicated primary procedure |
+| 270 | [Look up inventory at a location](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#location-inquiry) | Location inquiry | Dedicated primary procedure |
+| 280 | [Adjust inventory by license plate](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-adjustments) | Inventory adjustment by License Plate | Positive steps only; negative sequence incomplete |
+| 290 | [Sort tote items at a putwall](WAREHOUSE_MOBILE_WORK_FLOWS.md#putwall-sort) | Putwall sort | Dedicated primary procedure |
+| 300 | [Start pick-to-tote work](WAREHOUSE_MOBILE_WORK_FLOWS.md#pick-to-tote) | Tote work initiation | Dedicated primary procedure |
+| 310 | [Pick to totes on a cart](WAREHOUSE_MOBILE_WORK_FLOWS.md#cart-picking) | Initiate cart picking with pick to tote | Dedicated primary procedure |
+| 320 | [Nest shipping containers](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#shipping-container-nesting) | Shipping container nesting | Dedicated primary procedure |
+| 330 | [Clear a putwall location](WAREHOUSE_MOBILE_WORK_FLOWS.md#clear-putwall) | Clear putwall location | Dedicated primary procedure |
+| 340 | [Nest containers: confirm the configured context](WAREHOUSE_MOBILE_SOURCE_CATALOG.md#identify-configured-flow) | Nest | Context unresolved |
+| 350 | [Receive using blind initiation](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-appointments-blind) | Receiving Blind | Limited narrative; complete sequence missing |
+| 360 | [Remove containers: confirm the configured context](WAREHOUSE_MOBILE_SOURCE_CATALOG.md#identify-configured-flow) | Remove | Context unresolved |
+| 370 | [Change inventory status at a location](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#inventory-status) | Inventory Status Change by Location | Dedicated primary procedure |
+| 380 | [Build a cart through system selection](WAREHOUSE_MOBILE_WORK_FLOWS.md#system-built-carts) | Cart Building Work Initiation | Dedicated primary procedure |
+| 390 | [Transfer between warehouses by item and location](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#warehouse-transfers) | Warehouse Transfer by Item/Location | Dedicated primary procedure |
+| 400 | [Transfer between warehouses by license plate](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#license-plate-src-400-documented-identity-incomplete-sequence) | Warehouse Transfer by LP | No distinct steps retained |
+| 410 | [Inspect a shipping container for quality control](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#shipping-container-qc) | Shipping Container QC | Dedicated primary procedure |
+| 420 | [Receive by trailer and item](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#trailer-id-item-src-420) | Receiving Trailer ID-Item | Dedicated primary procedure |
+| 430 | [Receive by header and license plate](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#header-license-plate-src-430) | Receiving Header-License Plate | Dedicated primary procedure |
+| 440 | [Receive by trailer and license plate](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#trailer-id-license-plate-src-440) | Receiving Trailer ID-License Plate | Dedicated primary procedure |
+| 450 | [Receive by item](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#item-src-450) | Receiving Item | Dedicated primary procedure |
 
 <a id="identify-configured-flow"></a>
 ## Identify the configured flow behind a menu

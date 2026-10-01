@@ -27,6 +27,15 @@ EVIDENCE = {
 }
 GUIDE_SCOPE = ('Procedures describe retained documentation. Recorded menu observations are identified '
                'separately; they do not prove installed configuration or successful warehouse execution.')
+PROCEDURE_DETAIL_LABELS = {
+    'DEDICATED_PROCEDURE': 'Dedicated primary procedure',
+    'SHARED_CONFIRMATION_FLOW': 'Shared confirmation flow',
+    'SHARED_INITIATION_FLOW': 'Shared initiation flow',
+    'POSITIVE_ADJUSTMENT_SEQUENCE_ONLY': 'Positive steps only; negative sequence incomplete',
+    'AMBIGUOUS_SRC_LABEL': 'Context unresolved',
+    'LIMITED_NARRATIVE_INCOMPLETE_SEQUENCE': 'Limited narrative; complete sequence missing',
+    'NO_DISTINCT_STEP_SEQUENCE_RETAINED': 'No distinct steps retained',
+}
 
 
 def fingerprint(raw):
@@ -228,9 +237,27 @@ class GuideLibrary:
     def search(self, question, limit=6):
         if not isinstance(question, str) or len(question) > 500:
             raise ValueError('Use a question of 500 characters or fewer.')
+        result = {'scope': GUIDE_SCOPE, 'manifest_sha256': self.manifest_sha256, 'results': []}
+        identifier = re.fullmatch(r'\s*SRC\s*([0-9]+)\s*', question, flags=re.I)
+        if identifier:
+            flow = next((row for row in self.evidence['mobile-catalog']['src_base_flows']
+                         if row['src_identifier'] == int(identifier[1])), None)
+            if flow is None:
+                return result
+            target = self.link(self.guides['mobile-catalog'], flow['documentation_candidate'])
+            section = next((row for row in self.sections
+                            if '/guide/'+row['guide_id']+'#'+row['anchor'] == target), None)
+            if section is None:
+                raise ValueError('The documented SRC destination is unavailable.')
+            state = PROCEDURE_DETAIL_LABELS[flow['procedure_detail_state']]
+            result['results'] = [{**section,
+                                  'section_title': 'SRC '+str(flow['src_identifier'])+': '+flow['user_task'],
+                                  'text': state+'. '+flow['limit'],
+                                  'guide_sha256': self.guides[section['guide_id']]['sha256'],
+                                  'evidence_scope': 'DOCUMENTED_SRC_CATALOG_MATCH'}][:min(max(int(limit), 1), 20)]
+            return result
         stop = set('a an and are as at be by can do does for from how i in is it me my of on or the this to what when which why will with you your'.split())
         terms = [word for word in dict.fromkeys(re.findall(r'[^\W_]+', question.casefold())) if word not in stop][:40]
-        result = {'scope': GUIDE_SCOPE, 'manifest_sha256': self.manifest_sha256, 'results': []}
         if not terms:
             return result
         query = ' OR '.join('"'+term+'"' for term in terms)
