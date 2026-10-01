@@ -8,8 +8,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def report(scenario_review='_project/help-question-continuation18.json',
-           retrieval_review='_project/retrieval-change-continuation18.json'):
+def report(scenario_review='_project/help-question-continuation19.json',
+           retrieval_review='_project/retrieval-change-continuation19.json'):
     inputs = {}
     def read(relative):
         raw = (ROOT/relative).read_bytes()
@@ -23,6 +23,9 @@ def report(scenario_review='_project/help-question-continuation18.json',
     sdd_coverage = read('SDD/derived/review-coverage.json')
     tables = read('SDD/derived/reviewed-tables.json')
     inventory = read('SDD/derived/inventory.json')
+    central = read('SDD/derived/scale-functional-reference.json')
+    from render_scale_reference import validate as validate_reference
+    validate_reference(central, ROOT)
     runtime = read('DB Architecture/mappings/runtime-profiles.json')
     evaluation = read('help_app/evaluation.json')
     config = read('DB Architecture/mappings/configuration-guide.json')
@@ -173,6 +176,10 @@ def report(scenario_review='_project/help-question-continuation18.json',
                 'aim_setting_contracts':config['setting_count'],'sdd_setting_contracts':len(sdd['configuration']),
                 'sdd_claims':len(sdd['claims']),'sdd_visual_descriptions':len(sdd['diagrams']),
                 'logical_pdf_tables':len(tables['tables']),
+                'central_scale_reference_chapters':len(central['chapters']),
+                'central_scale_reference_entries':len(central['claims']),
+                'central_scale_reference_sources':len(central['references']),
+                'central_scale_reference_selected_records':central['provenance']['source_record_count'],
                 'process_documentary_refinements':process_summary['coverage']['authored_refinements'] if process_summary else 0},
             'delivery_scope':'Local files and the existing private GitHub repository; external deployment and OneDrive upload are outside scope.',
             'unperformed_or_unestablished':['Complete functional/deployment reconciliation',
@@ -202,10 +209,16 @@ def markdown(data):
         text.append(f"| {r['section']} | {r['task']} | {r['completed']:,} / {r['total']:,} | {pct} | {r['meaning']} |")
     text += ['', '## Delivered counts without an exhaustive denominator', '']
     text += [f"- {key.replace('_',' ')}: **{value:,}**." for key,value in data['counts_without_complete_denominator'].items()]
+    text += ['', 'The [central SCALE functionality reference](../SDD/SCALE_FUNCTIONAL_REFERENCE.md) is the active SDD. '
+             'Its seven sources are functional references, not core defaults or evidence of a current implementation. '
+             'The larger SDD extraction and review counts above remain historical source-collection measures; they are not the active reference denominator.', '']
     if data.get('retrieval_change_review'):
         r=data['retrieval_change_review'];before=r['baseline_same_cases'];after=r['final_same_cases'];new=r['new_cases']
         comparison = (f"On the unchanged {before['cases']}-question subset, expected-topic top-eight retrieval changed from {before['top8']} to {after['top8']}. "
                       + (f"The {new['cases']} new cases retrieve {new['top8']} expected topics in the first eight. " if new['cases'] else 'No cases were added or rewritten. '))
+        if r.get('scope_changes'):
+            comparison += ('The frozen historical baseline has 725 cases. Two other-product questions are excluded and two named implementation questions have neutral replacements. '
+                           'These scope changes are separately counted, never treated as recovered misses. ')
         if r.get('changed_to_clarification_case_ids'):
             comparison += (f"{len(r['changed_to_clarification_case_ids'])} unnamed-operation questions now request context; "
                            f"{r['same_case_result_lists_identical']} result lists are unchanged. No original miss was recovered and no new miss was introduced. ")
@@ -215,8 +228,8 @@ def markdown(data):
     text += ['', '## Owner acceptance and remaining technical evidence', '',
              'JAWS and the current broader display experience are owner accepted and closed. '
              'Additional owner tests are not required to close those gates. This does not turn unobserved technical checks into performed tests. '
-             'DOCX page review remains authorized. SDDs are references from other deployments; supported SCALE base concepts may be incorporated, while site-specific choices do not establish TAB behavior. '
-             'See [current owner decisions](owner-scope-continuation17.json) and [all 39 search misses with next steps](SEARCH_MISSES_AND_NEXT_STEPS.md).', '']
+             'The active SDD consolidates SCALE functionality without client names or material from another product. Implementation choices do not establish universal defaults or current warehouse behavior. '
+             'See [current owner decisions](owner-scope-continuation19.json) and [the historical 39 search misses with next steps](SEARCH_MISSES_AND_NEXT_STEPS.md).', '']
     text += ['[DOCX PDF creation and layout findings](DOCX_LAYOUT_C18.md) and [runtime identity dispositions](../DB%20Architecture/RUNTIME_IDENTITY_DISPOSITION.md) record the new bounded review measures.', '']
     text += ['- '+item+'.' for item in data['unperformed_or_unestablished']]
     text += ['', 'Word preference: the prior diagnostic recorded `Options.UpdateLinksAtOpen=false`. '
@@ -234,9 +247,9 @@ def markdown(data):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--scenario-review', default='_project/help-question-continuation18.json',
+    parser.add_argument('--scenario-review', default='_project/help-question-continuation19.json',
                         help='Current scenario receipt; historical receipts are never overwritten.')
-    parser.add_argument('--retrieval-review', default='_project/retrieval-change-continuation18.json',
+    parser.add_argument('--retrieval-review', default='_project/retrieval-change-continuation19.json',
                         help='Current retrieval comparison bound to evaluation.json.')
     args=parser.parse_args()
     data=report(args.scenario_review, args.retrieval_review)

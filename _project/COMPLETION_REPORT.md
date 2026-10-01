@@ -35,9 +35,9 @@ The owner has frozen deployed process behavior and correlated timing as the fina
 | D | Retained runtime rows accounted for | 1,795 / 1,795 | 100.00% | Weighted statement profiles preserve execution/replica dimensions and source row identities. |
 | D | Historical runtime IDs matched to current catalog | 154 / 163 | 94.48% | Current name lookup only; historical definition identity and ID reuse are not established. |
 | D | Unmatched runtime IDs with retained-evidence disposition | 9 / 9 | 100.00% | All remain unknown identities; disposition does not recover a historical name or change catalog matching. |
-| E | Selected-topic presentation/citation checks | 725 / 725 | 100.00% | Actual local HTTP checks; not semantic answer acceptance. |
-| E | Question retrieval: expected topic in first eight | 686 / 725 | 94.62% | Authored questions; evaluation text is excluded from the search index. Not independent holdout. |
-| E | Question retrieval: expected topic first | 420 / 725 | 57.93% | Ambiguous questions may require choosing a topic. No semantic score is inferred. |
+| E | Selected-topic presentation/citation checks | 723 / 723 | 100.00% | Actual local HTTP checks; not semantic answer acceptance. |
+| E | Question retrieval: expected topic in first eight | 684 / 723 | 94.61% | Authored questions; evaluation text is excluded from the search index. Not independent holdout. |
+| E | Question retrieval: expected topic first | 417 / 723 | 57.68% | Ambiguous questions may require choosing a topic. No semantic score is inferred. |
 | E | Known user-question scenarios adequately answered | 23 / 23 | 100.00% | 22 content answers plus 1 appropriate ambiguity clarification; 1 historical extension case excluded by owner scope, not passed. Manual bounded review after baseline-guided repair; not untouched holdout, measured popularity, real users or accessibility acceptance. |
 
 ## Delivered counts without an exhaustive denominator
@@ -49,17 +49,24 @@ The owner has frozen deployed process behavior and correlated timing as the fina
 - sdd claims: **373**.
 - sdd visual descriptions: **398**.
 - logical pdf tables: **79**.
+- central scale reference chapters: **14**.
+- central scale reference entries: **86**.
+- central scale reference sources: **7**.
+- central scale reference selected records: **181**.
 - process documentary refinements: **130**.
+
+The [central SCALE functionality reference](../SDD/SCALE_FUNCTIONAL_REFERENCE.md) is the active SDD. Its seven sources are functional references, not core defaults or evidence of a current implementation. The larger SDD extraction and review counts above remain historical source-collection measures; they are not the active reference denominator.
+
 
 ## Retrieval comparison
 
-On the unchanged 725-question subset, expected-topic top-eight retrieval changed from 686 to 686. No cases were added or rewritten. 3 unnamed-operation questions now request context; 722 result lists are unchanged. No original miss was recovered and no new miss was introduced. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.
+On the unchanged 721-question subset, expected-topic top-eight retrieval changed from 682 to 682. The 2 new cases retrieve 2 expected topics in the first eight. The frozen historical baseline has 725 cases. Two other-product questions are excluded and two named implementation questions have neutral replacements. These scope changes are separately counted, never treated as recovered misses. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.
 
-[Exact comparison and remaining case IDs](retrieval-change-continuation18.json).
+[Exact comparison and remaining case IDs](retrieval-change-continuation19.json).
 
 ## Owner acceptance and remaining technical evidence
 
-JAWS and the current broader display experience are owner accepted and closed. Additional owner tests are not required to close those gates. This does not turn unobserved technical checks into performed tests. DOCX page review remains authorized. SDDs are references from other deployments; supported SCALE base concepts may be incorporated, while site-specific choices do not establish TAB behavior. See [current owner decisions](owner-scope-continuation17.json) and [all 39 search misses with next steps](SEARCH_MISSES_AND_NEXT_STEPS.md).
+JAWS and the current broader display experience are owner accepted and closed. Additional owner tests are not required to close those gates. This does not turn unobserved technical checks into performed tests. The active SDD consolidates SCALE functionality without client names or material from another product. Implementation choices do not establish universal defaults or current warehouse behavior. See [current owner decisions](owner-scope-continuation19.json) and [the historical 39 search misses with next steps](SEARCH_MISSES_AND_NEXT_STEPS.md).
 
 [DOCX PDF creation and layout findings](DOCX_LAYOUT_C18.md) and [runtime identity dispositions](../DB%20Architecture/RUNTIME_IDENTITY_DISPOSITION.md) record the new bounded review measures.
 

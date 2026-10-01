@@ -1,74 +1,33 @@
-# SDD — SCALE solution design and supporting documents
+# SCALE Functionality Reference
 
-This folder preserves the solution design documents, configuration guides, and functional training material supplied by the owner for the future **SCALE Intelligence** application. Its purpose is to help users understand how SCALE works: what a process does, how configuration affects it, how its steps connect, and where to find the supporting explanation.
+Read the [central SCALE Functionality Reference](SCALE_FUNCTIONAL_REFERENCE.md), or its equivalent [printable SDD](<../output/pdf/SCALE Functionality Reference SDD.pdf>). These are two formats of one maintained reference. The document contains **86 entries in 14 chapters**, supported by **181 selected records from seven SCALE sources**.
 
-These documents add implementation context to [AIM](../AIM/README.md), extension and integration context to [SDK](../SDK/README.md), and business meaning to the [database architecture assessment](../DB%20Architecture/). Together, these sources can connect a user's question to documented functionality, configuration concepts, and relevant database objects.
+The owner supplied implementation SDDs as functional reference guides. They do not define core-product defaults or describe the current warehouse's effective configuration. The central document merges repeated examples into functional mechanisms, retains conditional configuration and version limits, and excludes client names and all other-product material. Custom or proposed extension contracts are not promoted into base capabilities.
 
-The owner confirmed that the SDDs are **references from other deployments**, not a description of TAB's exact implementation. Continue incorporating supported SCALE base concepts with citations and product/version limits. Keep site-specific settings, extensions, integrations and proposed rules as attributed examples; their appearance in an SDD does not establish a universal default or TAB behavior. LAND describes MAWM and remains separate. [Current scope decision](../_project/owner-scope-continuation17.json).
+## Current reference and evidence
 
-## Current state
+- [Functionality reference](SCALE_FUNCTIONAL_REFERENCE.md): the active explanation of processes, configuration choices, prerequisites, outcomes and exceptions.
+- [Printable SDD](<../output/pdf/SCALE Functionality Reference SDD.pdf>): the equivalent reading and sharing format, with all 41 final pages visually reviewed.
+- [Technical source bindings](derived/scale-functional-reference.json): neutral source codes, selected record identities and exact evidence bindings. This register is provenance, not a second SDD.
+- [C19 reference review](../_project/REFERENCE_SDD_C19.md), [concern dispositions](../_project/CONCERNS_C19.md), and [owner scope](../_project/owner-scope-continuation19.json): the current scope, verification and remaining limits.
+- [Local help](../help_app/README.md) and [C19 retrieval comparison](../_project/retrieval-change-continuation19.json): four neutral reference bindings are integrated. All 723 selected-topic checks passed; 684 questions returned the expected topic in the first eight, 417 first and 39 still missed. No unchanged-case miss was recovered or newly introduced.
 
-The nine supplied originals are preserved and hash-inventoried. All **eight unique bodies** now have provisional JSON and Markdown extraction in [derived](derived/inventory.json), with DOCX structural nodes, PDF page/block references and PPTX slide/shape references. The duplicate LAND copy is indexed once. Extraction includes 11,618 nodes, 231 PDF pages and the retained media assets; extraction is broader than semantic review.
+The active reference has a neutral seven-source code register. Client names are not displayed in its narrative, citations, navigation or PDF metadata. Source revisions remain distinct from installed product releases. A reference example does not prove a chosen setting, operational execution, timing or permission in any deployed environment.
 
-The bounded [review register](derived/reviewed-knowledge.json) contains body-derived product/version records, reviewed claims, configuration contracts and visual descriptions. Read the [findings and text descriptions](derived/REVIEW.md), [configuration guide](derived/CONFIGURATION_GUIDE.md) and [reviewed logical PDF tables](derived/TABLE_REVIEW.md). Exact source hashes and cited node IDs accompany every reviewed record; raster tables additionally bind their source image bytes. Current counts and denominators are maintained in [per-document review coverage](derived/REVIEW_COVERAGE.md) and the [section report](../_project/COMPLETION_REPORT.md). [Extraction exceptions](derived/EXTRACTION.md) and [project status](../PROJECT_STATUS.md) distinguish extraction from fidelity, suitability, verification and delivery acceptance.
+C19 source/code audits passed, and 70 relevant tests passed with zero failures or skips. Final database verification passed. Private publication and exact remote parity are recorded separately after commit. The next active work is source-grounded resolution of the 39 search gaps; the central reference, its current PDF review and its help bindings are complete within the recorded scope.
 
-This material has **not entered the production search index**. All 45 PPTX static slides and all 231 original PDF pages have been visually inspected. C18 created all four DOCX exports; complete page inspection covers **4/4 unique bodies** and **541 pages**. [DOCX layout evidence and limits](../_project/DOCX_LAYOUT_C18.md) are separate from original-PDF coverage. Page viewing does not establish review of every claim, figure or table. Remaining document fidelity, complete semantic reconciliation and suitability acceptance remain open. Current deployment settings and verified Insight navigation are not established by these sources. MAWM examples remain explicitly separate from SCALE.
+## Preserved technical provenance
 
-The existing AIM/SDK collection remains [closed with owner-accepted exceptions](../_project/COLLECTION_CLOSURE.md). Adding SDD material does not reopen that acquisition or change its fidelity measurements. The consultation application remains a separate implementation phase.
+The [original inventory](derived/inventory.json) records nine byte-preserved originals and eight extracted bodies, including a duplicate pair. That historical intake is broader than the seven SCALE sources selected for the central reference. Excluded material stays preserved as evidence but contributes no entry, example or search binding to the active reference.
 
-## Source inventory
+The [reviewed source records](derived/reviewed-knowledge.json), [reviewed tables](derived/reviewed-tables.json), [exact coverage ledger](derived/review-coverage.json) and [extraction qualifications](derived/EXTRACTION.md) retain earlier source findings. Their existing named originals, reading copies and implementation-specific guides are technical provenance and historical review outputs; they are not the active SDD or independent recommendations for an implementation.
 
-| Supplied document | Intended use to assess | Body identity / date |
-| --- | --- | --- |
-| [Covetrus implementation SDD](<Covetrus - Manhattan Active SCALE Implementation Solution Design Document v1.4  2023-08-31 (Final)(2).docx>) | SCALE implementation decisions and process examples | v1.4 / 2023-08-31 |
-| [Grupo Julio implementation SDD](<Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf>) | SCALE implementation decisions and process examples | v1.5 / 2024-09-03 |
-| [J Knipper implementation SDD](<J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf>) | SCALE implementation decisions and process examples | Cover says 1.0; revision history ends 1.3 / 2024-12-10 |
-| [LAND MAWM SDD](<LAND MAWM Solution Design Document v2.11.docx>) | Product-specific comparison material; applicability to SCALE requires review | MAWM; revision 2.11 / 2025-04-29 |
-| [LAND MAWM SDD — second supplied copy](<LAND MAWM Solution Design Document v2.11 (1).docx>) | Same bytes as the preceding file; retain supplied copy and avoid duplicate indexing | Same body as preceding row |
-| [Insight Architect configuration](<MA Documentation - Insight Architect Configuration.pdf>) | Screen configuration and metadata concepts | Manhattan Active SCALE; printed 2026-08-13, release unspecified |
-| [Manhattan SCALE labels](<Manhattan SCALE - Labels.pptx>) | Label concepts and supporting illustrations | SCALE 2021 on slide 3; document version unspecified |
-| [HADDAD configuration walkthrough](<SCALE Configuration Walkthrough - HADDAD.docx>) | Configuration sequence and implementation examples | SCALE 2020; revision history 1.1 / 2023-07-29, cover 2026-01-07 |
-| [SCALE work and picking functionality](<SCALE Work and Picking Functionality.docx>) | Work execution and picking explanations | Unspecified |
+C18 completed four distinct document-body PDF reviews covering 541 rendered pages. Its [layout receipt](../_project/DOCX_LAYOUT_C18.md) and [page ledger](../_project/docx-layout-continuation18.json) remain historical evidence, including disclosed derivative repairs and export-field limits. Do not recreate those exports or repeat their page review as unfinished work. The new central reference has its own rendering and verification record.
 
-The two LAND files were verified as byte-identical on 2026-09-29: each is 19,727,099 bytes, with SHA-256 `de62bfaf88f5d35b6c7e4a9719a1d5102eaa8b9fe317919912c25f6f6db8193f`. Both originals remain in place. Their body identifies Manhattan Active Warehouse Management; retain that product distinction until claim-specific evidence establishes applicability to SCALE. Document revision numbers do not identify a SCALE product release.
+## Maintaining one reference
 
-## AEKR working method
+Update the central Markdown, equivalent PDF and technical bindings together through a reviewed change. Read exact retained passages and qualifications before expanding an entry. Keep general mechanisms, optional patterns, implementation choices and inferred conclusions distinguishable. Preserve contradictions when the source cannot settle them; do not select a convenient value to create a false default.
 
-Apply AEKR as an evidence and review method. This folder does not install an AEKR runtime or contain its private governance material. The owner's current instructions define scope; final acceptance remains with the owner.
+Keep source originals and historical receipt bytes unchanged. Avoid wholesale extraction regeneration for an editorial or citation change. Use a fresh reviewer for source meaning and inspect every final PDF page when the rendered document changes. The coordinator records actual commands, checks, source preservation and publication evidence; an author's self-check is not independent review.
 
-1. **Preserve the supplied originals.** Record filename, format, byte length, SHA-256, product, version, document date, and provenance before creating derived content. Keep extracted text, reading copies, authored explanations, and source files distinguishable.
-2. **Read for process meaning.** Identify the user goal, roles, entry point, prerequisites, configuration dependencies, process steps, status changes, outputs, exceptions, and integration points. Preserve qualifications, diagrams, tables, and relevant context.
-3. **Separate kinds of evidence.** Label vendor functionality, a particular implementation's choices, examples, observed replica metadata, and analyst inferences. A design decision in one implementation does not establish the configuration of the assessed SCALE environment.
-4. **Reconcile claims.** Compare relevant claims with AIM, SDK, and the database assessment. Record differences in product, version, terminology, or behavior as explicit questions or contradictions; do not silently select one account.
-5. **Verify each derived artifact.** Check extraction fidelity, table and diagram meaning, source locations, links, and the support for every authored claim. A coordinator reviews delegated results; author self-review is not described as independent audit.
-6. **Keep acceptance explicit.** Distinguish source intake, technical verification, suitability for user explanations, and owner acceptance. Record limitations where evidence cannot support a conclusion.
-
-Use the existing [data architecture](../_project/DATA_ARCHITECTURE.md) as the common design reference. Reuse its separation of originals, structured documents, reading copies, and rebuildable search indexes. New SDD records should preserve their own provenance and must not overwrite AIM/SDK records or inherit their verification status.
-
-## How this material should serve SCALE Intelligence
-
-The intended explanation path is:
-
-**User question → functional process → documented configuration and behavior → relevant AIM/SDK references → matching database objects → cited answer.**
-
-For example, a question about picking should link to the relevant work and picking documentation, the corresponding AIM process, any applicable SDK extension contract, and database objects actually found in the assessed replica. Missing links remain visible rather than being filled with assumed behavior.
-
-Each useful process explanation should capture:
-
-- The question it answers, intended user, functional domain, and product/version scope.
-- Its trigger, prerequisites, ordered steps, configuration influences, and expected outcome.
-- Error, retry, exception, and status behavior when supported by the source.
-- Related screens, terms, SDK entry points, and database objects, with the basis for each match.
-- Exact source citations, evidence status, unresolved questions, and review state.
-
-SDD citations should identify the source file and SHA-256 plus a verified section, page, slide, table, or figure. DOCX page numbers depend on rendering, so section and structural locations should accompany any rendered-page citation. AIM/SDK links should retain their existing resource ID, original SHA-256, and content node ID.
-
-Documented process flow, static database logic, and measured runtime are separate evidence. These files may describe how a process is intended to execute; actual execution duration, frequency, active configuration, and deployment-specific behavior require appropriate operational evidence. Schema metadata alone cannot establish all of those facts.
-
-## Boundaries and acceptance criteria
-
-The source documents may describe named implementations. Derived user-facing explanations should carry only the implementation detail needed for the question and permitted audience. Preserve source notices and attribution. Placement in this folder does not authorize public redistribution, operational execution, or use of one implementation's details as a universal SCALE rule.
-
-SDD intake is ready for application indexing when the declared source set has a provenance inventory, verified extraction or explicit exceptions, stable citations, duplicate handling, product/version labels, reviewed mappings, and an accepted suitability decision. Completeness should use the supplied inventory as its denominator; missing or unreadable material remains recorded.
-
-This folder is a **supporting source collection with provisional full-body extraction and bounded source review**. No document receives full fidelity or application-suitability acceptance solely because extraction succeeded. Regeneration uses `python tools/extract_sdd.py` with PyMuPDF installed in the chosen Python environment; it preserves separately authored review records. Run `python -m unittest tests.test_sdd_extraction tests.test_sdd_review` for provenance, duplicate, structural, citation and review-coverage checks. These checks do not run an application or certify every table/diagram.
+The [AIM](../AIM/README.md), [SDK](../SDK/README.md), and [database architecture](../DB%20Architecture/README.md) remain complementary evidence. AIM/SDK acquisition stays owner-closed with accepted exceptions. The knowledge foundation and search repair remain incomplete; JAWS/current display owner acceptance stays closed, and deployed behavior with correlated timing remains frozen at 0/34.

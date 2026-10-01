@@ -31,6 +31,13 @@ def source_text(key, source):
         return (f"`{key}`: {link(source['path'])}; SHA-256 `{source['sha256']}`. "
                 'Timestamped aggregate evidence; the owner accepts the current replica as the documentation baseline. Individual effective settings remain unestablished.')
     if source['kind'] == 'REVIEWED_SDD_CLAIM':
+        if source['register_path'] == 'SDD/derived/scale-functional-reference.json':
+            entry = source['claim_id'].replace('_', '-')
+            return (f"`{key}`: " + link('SDD/SCALE_FUNCTIONAL_REFERENCE.md#'+entry, 'SCALE functionality reference')
+                    + f"; reviewed-entry SHA-256 `{source['claim_sha256']}`. "
+                    + 'Neutral references: ' + ', '.join(d['code'] for d in source['documents']) + '. '
+                    + link(source['register_path'], 'Exact source bindings')
+                    + '. Reference functionality with local limits; current deployment behavior is not established.')
         return (f"`{key}`: {link(source['register_path'], source['claim_id'])}; "
                 f"reviewed-record SHA-256 `{source['claim_sha256']}`; original documents/nodes "
                 + '; '.join(c['document_id'] + ': ' + ', '.join(c['nodes']) for c in source['citations'])

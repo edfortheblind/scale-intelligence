@@ -6,12 +6,28 @@
   "review_state": "BOUNDED_SOURCE_CONFLICT_REVIEW",
   "scope": "One local help topic for an explicit historical SDD version conflict; no new object or module review credit.",
   "sources": {
-    "sdd-boundary-grupo-putaway-groups-version-conflict": {
+    "sdd-function-putaway-groups": {
       "kind": "REVIEWED_SDD_CLAIM",
-      "register_path": "SDD/derived/reviewed-knowledge.json",
-      "claim_id": "grupo-putaway-groups-version-conflict",
-      "claim_sha256": "a2ca3e7862ed92bbdbbcfc7a4ddf97ddad7a8235b0f2b3cab3565c084b13127a",
+      "register_path": "SDD/derived/scale-functional-reference.json",
+      "claim_id": "putaway_groups",
+      "claim_sha256": "2a30970d247eedfb103fdc56e1c74278a460c29082539ed44a196907c22f7a83",
       "citations": [
+        {
+          "document_id": "sdd-c4c7e01f8ccad48a",
+          "source_sha256": "c4c7e01f8ccad48a8dc6d2e66fed745b34817b5319aabd054984b3afff42103f",
+          "nodes": [
+            "b00688",
+            "b00690",
+            "b00699",
+            "b00701",
+            "b00703",
+            "b00705",
+            "b00708",
+            "b00711",
+            "b00713",
+            "b00716"
+          ]
+        },
         {
           "document_id": "sdd-d50ca4a96095c930",
           "source_sha256": "d50ca4a96095c930e1e54fd04c55804bed05a5139451118cc5ce201eab814e34",
@@ -22,14 +38,38 @@
             "p106-b005",
             "p106-b006"
           ]
+        },
+        {
+          "document_id": "sdd-f46806ef53e15f07",
+          "source_sha256": "f46806ef53e15f07b8099a48dcbadc43bcdaf50d01ef15e97c24d6e264ed5586",
+          "nodes": [
+            "b00223",
+            "b00224",
+            "b00225"
+          ]
         }
       ],
       "documents": [
         {
+          "code": "R05",
+          "document_id": "sdd-c4c7e01f8ccad48a",
+          "source_sha256": "c4c7e01f8ccad48a8dc6d2e66fed745b34817b5319aabd054984b3afff42103f",
+          "extracted_path": "SDD/derived/documents/sdd-c4c7e01f8ccad48a.json",
+          "extracted_sha256": "6376524c8fc8693adf26b5d2709d78755fcc8b5ad2425d4ca664cf984b5dd170"
+        },
+        {
+          "code": "R07",
           "document_id": "sdd-d50ca4a96095c930",
-          "source_path": "SDD/Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf",
+          "source_sha256": "d50ca4a96095c930e1e54fd04c55804bed05a5139451118cc5ce201eab814e34",
           "extracted_path": "SDD/derived/documents/sdd-d50ca4a96095c930.json",
           "extracted_sha256": "6a2fd8a9783856a2fa75d591b10be285ee1ccccd8053e0391a190cb89ce88a6e"
+        },
+        {
+          "code": "R02",
+          "document_id": "sdd-f46806ef53e15f07",
+          "source_sha256": "f46806ef53e15f07b8099a48dcbadc43bcdaf50d01ef15e97c24d6e264ed5586",
+          "extracted_path": "SDD/derived/documents/sdd-f46806ef53e15f07.json",
+          "extracted_sha256": "bd592f5556926875812bcba17e0a2bcf1fd561ff29b609ebf7d05693b8d804f3"
         }
       ]
     }
@@ -39,64 +79,61 @@
   "help_topics": [
     {
       "topic_id": "putaway-groups-version-limit",
-      "title": "Putaway groups: intended workflow and conflicting examples",
-      "business_question": "Does an implementation example establish the putaway-group workflow in this warehouse?",
-      "plain_answer": "The Grupo Julio example describes receiving and putting away items as a group, but also retains an unresolved availability issue from that implementation. Use it as a qualified design example. The current replica is accepted as the documentation baseline; that does not make another implementation’s design or historical limitation a fact about the current mobile workflow.",
-      "trigger": "Understanding putaway groups when an implementation document contains conflicting design and availability statements.",
+      "title": "Putaway group availability by release",
+      "business_question": "What does the recorded putaway-group availability exception establish?",
+      "plain_answer": "Putaway groups can organize received containers into a common movement unit. The references describe destination grouping and building a pallet or cart from smaller containers. They also retain a material limitation: receiving with putaway groups was recorded as unavailable in Warehouse Mobile 24.1.2278. The design does not establish later availability or current activation.",
+      "trigger": "Checking the recorded availability exception for optional container grouping.",
       "input_context": [
-        "The receiving/group-putaway workflow and applicable preference.",
-        "The cited SDD describes another implementation; its historical issue is supporting evidence."
+        "The named workflow or setting and the scope of the question."
       ],
       "execution_steps": [
         {
           "order": 1,
-          "action": "Identify the intended workflow.",
-          "explanation": "The design describes receiving items into a putaway group and moving the group together. These paragraphs explain intended behavior in that implementation.",
+          "action": "Identify the group mechanism.",
+          "explanation": "A putaway location group can use destination ranges or locating zones. Receiving examples build and close a group before creating group work.",
           "objects": [],
           "evidence_refs": [
-            "sdd-boundary-grupo-putaway-groups-version-conflict"
+            "sdd-function-putaway-groups"
           ]
         },
         {
           "order": 2,
-          "action": "Read the recorded availability exception.",
-          "explanation": "The same document keeps an open issue stating that receiving with putaway groups was unavailable in Warehouse Mobile 24.1.2278, with no expected date. A final document title does not remove that qualification.",
+          "action": "Retain the recorded release limitation.",
+          "explanation": "The source records Receiving with Putaway Groups as unavailable in Warehouse Mobile 24.1.2278. It does not establish a later delivery date or resolution of that exception.",
           "objects": [],
           "evidence_refs": [
-            "sdd-boundary-grupo-putaway-groups-version-conflict"
+            "sdd-function-putaway-groups"
           ]
         },
         {
           "order": 3,
-          "action": "Establish applicability before using the example.",
-          "explanation": "Explain the captured configuration as-is and retain the documented conflict. Database structures alone do not demonstrate the mobile screen or effective receiving preference. Version/build is not a prerequisite for this documentation task.",
+          "action": "Apply the source limit.",
+          "explanation": "Use this pattern only where the applicable receiving workflow supports it. No later delivery date or resolution of the recorded issue is established by the reference.",
           "objects": [],
           "evidence_refs": [
-            "sdd-boundary-grupo-putaway-groups-version-conflict"
+            "sdd-function-putaway-groups"
           ]
         }
       ],
       "configuration_dependencies": [
-        "Receiving preferences and group assignments describe choices; their presence does not establish mobile support or current activation."
+        "Receiving preferences, grouping configuration and supported execution workflow affect applicability."
       ],
       "expected_results": [
         "A distinction between the intended design, its retained availability exception and the source limits of the current explanation."
       ],
       "explanation_paths": [
-        "Check the applicable receiving workflow and preference when diagnosing a specific behavior; do not infer effective values from another implementation.",
-        "Retain the historical issue in the source details without treating it as a request for the current build."
+        "Explain the group mechanism together with its retained availability limitation. A later availability date requires later release evidence."
       ],
       "boundaries": [
-        "No claim is made about later versions, a delivery date or this deployment.",
-        "No live receiving, putaway or screen-navigation test was performed.",
-        "Raw SDD production indexing remains disabled. Only the selected reviewed claim is bound in this local help topic."
+        "No current deployment support, later delivery date or continuing absence in every later release is asserted.",
+        "No receiving, putaway or screen-navigation test is performed by this help."
       ],
       "evidence_refs": [
-        "sdd-boundary-grupo-putaway-groups-version-conflict"
+        "sdd-function-putaway-groups"
       ],
       "review": {
-        "semantic_state": "DOCUMENTARY_VERSION_CONFLICT_REVIEWED_DEPLOYMENT_OPEN",
-        "method": "Reviewed source nodes plus visual confirmation of the unstruck page106 issue.",
+        "semantic_state": "STATIC_REVIEWED_BOUNDED",
+        "method": "CENTRAL_SCALE_FUNCTIONALITY_REFERENCE",
         "independent_verification": "SEE_CURRENT_CHECKPOINT_REVIEW",
         "live_process_execution": "NOT_PERFORMED",
         "whole_process_duration": "NOT_ESTABLISHED",
@@ -106,15 +143,14 @@
         "status": "CASES_AUTHORED_NOT_EXECUTED",
         "cases": [
           {
-            "question": "Does the Grupo Julio putaway-group design prove Warehouse Mobile 24.1.2278 supports it?",
+            "question": "Does a documented putaway-group workflow prove receiving support in Warehouse Mobile 24.1.2278?",
             "must_explain": [
-              "intended workflow and open issue differ",
-              "unavailable in cited version",
-              "current deployment unknown"
+              "The group mechanism and recorded availability limitation differ.",
+              "Receiving with putaway groups was unavailable in the cited version; current deployment support is not established."
             ],
             "must_not_claim": [
-              "feature is enabled here",
-              "all later versions lack it"
+              "The feature is enabled here.",
+              "All later versions lack the feature."
             ]
           },
           {
@@ -137,5 +173,11 @@
     "No claim is made about later versions, a delivery date or this deployment.",
     "No live receiving, putaway or screen-navigation test was performed.",
     "Raw SDD production indexing remains disabled. Only the selected reviewed claim is bound in this local help topic."
-  ]
+  ],
+  "prior_revision": {
+    "commit": "69efc70b27ce5e88f12af1c85988fceb5f2f696d",
+    "path": "DB Architecture/mappings/batches/sdd-version-conflicts.json",
+    "sha256": "3b4b341879a8bec43cd17c232ed3a08f9049de3c162ea10a9adf99b9dd8b5ca3",
+    "scope": "Prior integration manifest before synchronization to the central functionality reference."
+  }
 }

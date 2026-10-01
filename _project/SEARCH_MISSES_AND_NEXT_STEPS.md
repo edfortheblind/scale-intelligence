@@ -1,10 +1,12 @@
 # Search misses and next-session work
 
+C19 current state: the client-neutral SCALE reference and four help bindings are complete. Fresh HTTP checks return **684/723 top-eight (94.61%), 417 first (57.68%), and the same 39 original misses**. The 721 exact retained cases have no new loss or recovery; two neutral replacements and two other-product exclusions are separate scope changes. See the [C19 comparison](retrieval-change-continuation19.json). The case questions, expected IDs, owner-note fields and historical tables below remain unchanged.
+
 C18 owner follow-up: an agent checked whether the newly reviewed documents resolve these misses. They do not supply a new exact missing contract; fresh HTTP results retain all 39 misses. The independently checked [source-to-search assessment](RETRIEVAL_SOURCE_ASSESSMENT_C18.md) records all 39 cases and distinguishes 19 missing subjects, five previously useful alternatives and 15 missing returned distinctions. Original questions, expected IDs and owner-note fields below are preserved.
 
 Prepared 2026-09-30 for owner review. The case lists below preserve the C17 snapshot of **39 search misses**, with the exact question, expected topic, and eight topics then returned. C18 preserves all questions, expectations and 39 raw misses; three unnamed-operation questions now request context. See the [current comparison](retrieval-change-continuation18.json), [seven specific-subject dispositions](retrieval-semantic-dispositions-continuation18.json), and [nineteen missing-referent dispositions](retrieval-context-dispositions-continuation18.json). Original owner-note fields and historical result lists remain unchanged. This report also explains the frozen deployment workstream.
 
-## What the percentages mean
+## Historical C17/C18 percentages
 
 | Measure | Result | Meaning |
 | --- | ---: | --- |

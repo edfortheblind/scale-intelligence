@@ -1,6 +1,24 @@
 # SCALE Intelligence project status
 
-## C18 active continuation
+## C19 current reference and help integration
+
+The owner directed one client-neutral [SCALE Functionality Reference](SDD/SCALE_FUNCTIONAL_REFERENCE.md), also supplied as an equivalent [printable SDD](<output/pdf/SCALE Functionality Reference SDD.pdf>). It contains **86 entries in 14 chapters**, supported by **181 selected records from seven SCALE sources**. The [technical register](SDD/derived/scale-functional-reference.json) binds entries to source evidence; it is not another SDD. Client names and all other-product material are excluded from the central reference.
+
+Implementation SDDs are functional reference guides, not core-product defaults or TAB configuration. The central document explains mechanisms and optional patterns while retaining source qualifications, unresolved conflicts and custom-extension boundaries. Original sources and historical receipts remain preserved. Older named derived guides are technical provenance, not competing active SDDs. See [C19 owner scope](_project/owner-scope-continuation19.json), [reference verification](_project/REFERENCE_SDD_C19.md), and [concern dispositions](_project/CONCERNS_C19.md).
+
+C19 completed four neutral help bindings replacing five legacy SDD bindings. Fresh served HTTP verification passed **723/723 selected-topic contracts**, with **684/723 top-eight (94.61%), 417/723 first (57.68%) and 39 misses**. The **721 unchanged cases** retained **682 top-eight and 416 first**, with **zero recoveries and zero new misses**; 662 result lists were identical and 59 changed rank. The two new neutral cases returned two top-eight and one first result. Two other-product cases were excluded and two former implementation-specific cases replaced; all four scope-changed cases were baseline passes. See the [exact C19 comparison](_project/retrieval-change-continuation19.json).
+
+Independent source/code audits passed. All **41/41** final central-PDF pages were visually reviewed. Relevant unit checks recorded **70 passed, zero failed and zero skipped**. All [23 in-scope known scenarios](_project/help-question-continuation19.json) were preserved; QS-18 remains excluded. Final database verification passed; the [C19 checkpoint](_project/continuation19-20261001.json) records the commands, preservation checks and exact output hashes.
+
+The **historical C18 baseline** remains 725 cases, 686 top-eight results, 420 first-place results and 39 misses. The [C18 source assessment](_project/RETRIEVAL_SOURCE_ASSESSMENT_C18.md) found zero new document-driven resolutions. The new reference does not itself close those search gaps. C18's four-body, 541-page export review and all nine runtime-identity dispositions remain completed historical evidence; they are not reassigned as unfinished work.
+
+**Product state:** the knowledge foundation and search repair remain incomplete. **Next active work:** source-grounded resolution of the 39 search gaps, without repeating completed reference, PDF or help integration. **Owner gates:** JAWS/current display acceptance stays closed; deployed behavior and correlated timing stay frozen at **0/34**. **Delivery state:** C19 local verification is complete. Publication and exact local/origin/live parity are recorded separately after commit; verify current Git refs when resuming. Follow [the restart prompt](04_SCALE_ASTRA_RESTART_PROMPT.md) and [resume instructions](_project/RESUME.md).
+
+## Historical checkpoints
+
+Everything below describes an earlier checkpoint. Its old current/pending/next-action wording is historical and is superseded by C19 owner direction above. Preserve the original receipts; do not reinterpret earlier counts or unfinished work as current instructions.
+
+## Historical C18 checkpoint
 
 Concern review corrected stale acceptance wording and unsupported residual duplicate labels. Search now asks for context in three conservative unnamed-operation cases. Fresh HTTP evaluation preserves all 725 authored questions/expectations: **686/725 top-eight (94.62%), 420/725 first (57.93%), 39 misses**; 722 result lists are unchanged, with no recovered or new misses. Seven specific-subject cases and all 56 returned answer positions were reviewed; two have supported alternatives and five retain discoverability gaps. All 19 missing-referent cases have individual dispositions. [Concerns and actions](_project/CONCERNS_C18.md) and [exact retrieval comparison](_project/retrieval-change-continuation18.json).
 
@@ -14,7 +32,7 @@ All **9/9 unmatched runtime IDs** now have verified retained-evidence dispositio
 
 JAWS/current broader display owner gates remain closed. Deployment reconciliation and correlated process timing remain frozen at **0/34**. C18 source packets, PDF review and the conditional search investigation form a bounded checkpoint; the knowledge foundation and search repair remain active. Private publication is verified after commit. The older sections below are historical checkpoints.
 
-## C17 current handoff and owner acceptance
+## Historical C17 handoff and owner acceptance
 
 The [Astra restart prompt](04_SCALE_ASTRA_RESTART_PROMPT.md) is ready for the next session. The [39-miss report](_project/SEARCH_MISSES_AND_NEXT_STEPS.md) exposes every exact question, expected topic, returned results and recorded diagnosis, with readable context for the frozen final workstream. Search behavior is unchanged: **686/725 top-eight (94.62%), 420/725 first (57.93%), 39 misses**. There are still 31 unlike measures, 22 at 100%; no overall completion percentage is inferred.
 
@@ -22,11 +40,11 @@ The owner accepts the current broader display experience; that gate is closed al
 
 The old C11/Sol restart prompt was archived byte-for-byte, with its old path retained as a redirect. The [archive mapping](_project/ARCHIVE_DISPOSITION_C17.md) records hashes, dependencies and restoration. The 01/02 prompts still have active integrity consumers and remain unchanged. The [C17 receipt](_project/continuation17-20260930.json) records validation for this handoff. All earlier checkpoint sections below describe their historical scope; current owner decisions take precedence.
 
-## C16 active source review
+## Historical C16 source review
 
 The 45-slide SCALE Labels deck now has an exact [209/209 retained-node disposition](SDD/derived/labels-node-disposition.json): 84 nodes already cited in reviewed records and 125 classified as empty text, headings/example titles, agenda text, presenter notes, author credit or corroboration. This adds no claim or citation credit and does not prove printer behavior, animation or exact font fidelity. The [C16 receipt](_project/continuation16-20260930.json) binds the packet. Other source and help work remains active; the C15 deployment freeze still applies.
 
-## C15 owner sequencing
+## Historical C15 owner sequencing
 
 The owner froze deployed process behavior/timing as the final workstream while the remaining SCALE base architecture, help, SDD and document-fidelity work continues. Deployment reconciliation stays **0/34**, and correlated whole-process timing remains unestablished. The [deployment freeze](_project/DEPLOYMENT_FREEZE_C15.md) preserves the requirement for a later owner-planned strategy; it is not a completion claim. The [active completion audit](_project/ACTIVE_COMPLETION_AUDIT_C15.md) distinguishes source work from ratios that cannot truthfully reach 100% by reclassification. The [C15 receipt](_project/continuation15-20260930.json) binds this packet; C14 below remains historical.
 
@@ -38,7 +56,7 @@ Continuation 14, 2026-09-30. The owner accepted and closed JAWS without a captur
 
 [Owner scope decision](_project/owner-scope-continuation14.json) · [Current C14 receipt](_project/continuation14-20260930.json) · [Master continuation prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) · [Historical C13 receipt](_project/continuation13-20260930.json) · [Historical C11 concern dispositions](_project/C11_CONCERN_DISPOSITIONS.md).
 
-## C14 owner scope and base help
+## Historical C14 owner scope and base help
 
 JAWS is **owner accepted and closed**. The C13 finding that JAWS was absent locally remains true; no JAWS speech or intended-user session was observed here. The owner narrowed the help section to documented SCALE base behavior. The Packing/mobile Close Container topic now contains seven base steps and excludes its extension-hook and unrelated Pick/Override Pick discussion. Historical QS-18 remains a partial extension question outside the current base-help denominator; it was not passed or repaired.
 
@@ -46,7 +64,7 @@ Fresh HTTP evaluation returned 725/725 selected-topic contracts, 686/725 expecte
 
 The owner identified Shawn as creator of `dbo.Interface_Item_Failure_1024` and excluded this custom table from SCALE DB architecture. Its captured role remains unreviewed within the unchanged 1,656-object denominator; the decision does not establish consumers, non-use or safe deletion. Deployed application/service/configuration mappings with correlated process timings remain required. [Evidence boundary and minimum deployment fields](_project/REQUIRED_EVIDENCE_C14.md) are recorded. Deployment reconciliation remains 0/34 process families. The remaining 39 retrieval misses and incomplete SDD semantics are separate work.
 
-## C13 screen-reader preparation and source result
+## Historical C13 screen-reader preparation and source result
 
 The owner selected JAWS. No JAWS installation or running instance was found on this Windows machine; its location for an owner-run session remains unanswered. A current Brave keyboard pass showed that the search form submits to `#results-heading`, the result heading receives visible focus, and Tab reaches the first result. The HTML exposes a labeled field, result status text, semantic heading and list. [The acceptance sheet](_project/JAWS_ACCEPTANCE_C13.md) preserves the exact JAWS speech and focus checks as pending; no screen-reader or intended-user pass is claimed.
 
@@ -56,17 +74,17 @@ Fresh local HTTP evaluation after the form change passed 725/725 selected-topic 
 
 At C13, the owner had kept the replacement-LPN extension contract, custom-table creator/consumer provenance, and deployment mapping/correlated timings as completion items. The later C14 owner scope decisions supersede the first two for SCALE base help and architecture. No warehouse execution or application rows were used.
 
-## C12 source result
+## Historical C12 source result
 
 The Knipper PDF still hashes to `1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1`. Page 84 `p084-b004` and `p084-b005` repeat carrier ordering, no-carrier exclusion, carrier/date/route load matching and new-load creation already covered by `covetrus-load-build-match-and-ambiguous-stop-flag`. The negative matched-load condition remains ambiguous. Different named implementations were kept separate; these two nodes received no new claim or citation credit.
 
 Knipper page 85 `p085-b007` added the bounded claim that wave replenishment work creation applies only to demand-based replenishments already created and does not change the existing work-creation setup. It supplies no setting value, work-type inventory, current configuration or runtime proof. [Reviewed source](SDD/derived/REVIEW.md) and [coverage](SDD/derived/REVIEW_COVERAGE.md) preserve the distinction. The C12 register reached **317 claims**, **283 settings**, and **2,796/11,618 cited nodes (24.07%)**; Knipper was 485/1608. One citation does not certify every sentence in that node.
 
-## Browser concern resolved
+## Historical browser concern resolution
 
 The existing Brave window showed the local SCALE Knowledge URL. Search entry, Tab/Enter submission, opening the base Packing explanation, visible answer focus, keyboard source expansion, reverse focus order and the skip link worked in the observed scope. The owner reports that the page opens and works well. These eight checks are coordinator observations; screenshots were inspected in the tool conversation and are not a published replay artifact. No screen-reader session, full keyboard matrix, zoom/reflow or complete intended-user accessibility acceptance is claimed. [Exact browser receipt](_project/browser-check-continuation11.json).
 
-## Remaining work examined
+## Historical remaining-work examination
 
 The independent retrieval probe reproduced all 725 baseline result lists. Restricting topic-ID priority to process topics gave 422 first-place results but reduced top-eight coverage from 686 to 685, recovered no misses and introduced one miss. It was rejected. The seven specific-subject ranks stayed unchanged. All 39 frozen misses remain: 19 missing referents, 13 broad subjects and seven specific semantic subjects. Independent questions and relevance judgments are the next evidence needed for a general semantic design. [C11 retrieval diagnosis](_project/retrieval-diagnosis-continuation11.json).
 
@@ -76,7 +94,7 @@ All nine originals match their recorded hashes. The supported DOCX renderer rema
 
 Requested AIM base Warehouse Mobile Close Container and Insight Packing remains complete. Historical QS-18 remains partial for the separate replacement-LPN contract. C9 found zero named references to `dbo.Interface_Item_Failure_1024` in all 1,142 captured definitions, including 921 procedures; no captured SP association is established. The C14 owner identified Shawn as its creator and excluded this custom table from SCALE DB architecture. Specific function and consumers remain unknown. Deployment reconciliation remains 0/34 families; full process timing is not established by Query Store aggregates.
 
-## Preserved baseline and checks
+## Historical baseline and checks
 
 Help currently has 340 topics and 856 ordered steps. C9/C13 help metrics and the frozen 24-scenario result remain historical. C14's base-help scope and current HTTP results are recorded above; the original QS-18 partial finding is preserved outside the base denominator.
 

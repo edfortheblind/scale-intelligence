@@ -2,6 +2,8 @@
 
 Search reviewed explanations, read their ordered steps and open the exact cited passages. The application uses the existing curated knowledge library. The owner accepts the current replica as the documentation baseline; version/build is not a prerequisite for using these explanations.
 
+The current SDD entry is the [SCALE Functionality Reference](../SDD/SCALE_FUNCTIONAL_REFERENCE.md), with an equivalent [printable PDF](<../output/pdf/SCALE Functionality Reference SDD.pdf>) and a [technical source-binding register](../SDD/derived/scale-functional-reference.json). Its 86 entries across 14 chapters synthesize 181 selected records from seven SCALE sources. Implementation examples remain conditional reference guidance; they do not establish core defaults or TAB configuration. Client names and other-product material are excluded from the central reference. Earlier named reading copies remain historical provenance, not competing active SDDs.
+
 Start from the repository root:
 
 ```powershell
@@ -28,13 +30,19 @@ Search includes the answer's reviewed limitations and initiating context, as wel
 
 This local preview has no application authentication, warehouse/company filtering, external model, cloud hosting or production deployment. It is intended for the authorized local repository user. The existing AIM/SDK search database and provisional SDD extraction are unchanged by app startup; raw SDD bodies are not indexed by this app.
 
-Five selected SDD claims support product, tolerance, label and putaway-group boundary answers. Each binds the reviewed record, original document hash and exact extracted node identities. Source panels expose the reviewed conclusion and locations only. This local use does not make the SDD corpus eligible for production indexing. Retained configuration and statement-timing citations keep their original time and scope limits.
+C19 replaced five legacy SDD bindings with four neutral functionality-reference bindings. The selected reference entries retain exact source-record, original-document and retained-node identities through the technical register. This is a bounded citation integration, not automatic indexing of the complete central document or original source corpus. Retained configuration and statement-timing citations keep their original time and scope limits. Independent source/code audits passed, and all 41 final central-PDF pages were reviewed. See the [C19 reference review](../_project/REFERENCE_SDD_C19.md) and [retrieval comparison](../_project/retrieval-change-continuation19.json) for the frozen implementation and validation result.
 
 `vendor-source-manifest.json` binds the exact parsed AIM/SDK article bytes and reviewed SQL-contract batch bytes to the knowledge generation and original source identities. Startup rejects altered derivative or contract text even if its original-source hash label was left unchanged. The manifest is refreshed during deliberate batch integration, never silently during app startup.
 
 The 34 process-family explanations also expose 130 previously reviewed documentary refinements. Each selected statement binds its reviewed record, original article, parsed article and exact source-node fingerprints. These supplement the introductory explanation without inventing a new execution order. Installed application behavior and production index eligibility remain unestablished. This local use does not index the entire vendor or SDD corpus.
 
 ## Reproduce the evaluation
+
+The final C19 served HTTP evaluation passed **723/723 selected-topic contracts**, with **684/723 top-eight (94.61%), 417/723 first (57.68%) and 39 misses**. The 721 unchanged authored cases retained 682 top-eight and 416 first, with zero recoveries or new misses. Of those result lists, 662 were identical and 59 changed rank. Two new neutral cases returned two top-eight and one first result. Two other-product cases were excluded, while two former implementation-specific questions received neutral replacements; all four scope-changed cases were baseline passes. These are explicit scope changes, not recovered misses.
+
+All [23 in-scope known scenarios](../_project/help-question-continuation19.json) were preserved, with QS-18 separately excluded. C19 verification recorded 70 relevant tests passing, with zero failures or skips. Final database verification passed. Private publication and exact remote parity are recorded separately after commit. The next active work is source-grounded resolution of the 39 remaining search gaps, using the existing per-case assessments without repeating completed reference or integration work.
+
+The preserved historical C18 result is **686/725 top-eight, 420/725 first and 39 misses**, with 725/725 selected-topic contracts. The [C18 source assessment](../_project/RETRIEVAL_SOURCE_ASSESSMENT_C18.md) found zero new document-driven resolutions: 19 cases needed a referent, five already had useful alternatives, and 15 retained missing distinctions. The central reference does not by itself establish that these misses are solved; source quality, search relevance and selected-topic integrity remain separate measures.
 
 The [operator/configuration guide](../DB%20Architecture/OPERATOR_CONFIGURATION_HELP.md) adds plain explanations for work profiles, Work Insight versus mobile, picking checks, Packing, container closure, receiving and printing. The [24-question scenario review](../_project/HELP_QUESTION_REVIEW.md) records a separate manual assessment. Its follow-up is known-scenario remediation because baseline findings informed the changes; no scenario questions are indexed.
 

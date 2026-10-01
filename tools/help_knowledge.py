@@ -8,14 +8,14 @@ import sqlite3
 from collections import Counter
 
 from article_data import nodes as article_nodes, search_text as article_text
-from reviewed_sdd_source import load_claim
+from reviewed_sdd_source import CENTRAL_REGISTER, load_claim
 from reviewed_process_source import load_refinement
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERAL_SCOPE = ('These are reviewed general explanations. Current warehouse records, individual '
                  'permissions, effective settings and end-to-end process times are not established by this library.')
 KINDS = {'VENDOR_DOCUMENTATION': 'Vendor documentation', 'DEPLOYED_SQL_STATIC': 'Captured SQL source',
-         'CATALOG_METADATA': 'Captured database metadata', 'REVIEWED_SDD_CLAIM': 'Reviewed implementation example',
+         'CATALOG_METADATA': 'Captured database metadata', 'REVIEWED_SDD_CLAIM': 'Reviewed SCALE functionality reference',
          'REVIEWED_PROCESS_CLAIM': 'Reviewed process documentation',
          'RETAINED_OBSERVATION': 'Retained observation with time and scope limits'}
 IMPLEMENTATION_FILES = ['tools/help_knowledge.py', 'tools/serve_help.py', 'tools/render_help_page.py', 'tools/reviewed_sdd_source.py', 'tools/reviewed_process_source.py', 'tools/article_data.py']
@@ -231,9 +231,13 @@ class Knowledge:
                           qualification='Only the cited passages support this answer. Product/version and deployed configuration may differ.')
         elif kind == 'REVIEWED_SDD_CLAIM':
             claim, excerpts = load_claim(self.root, source)
+            central = source['register_path'] == CENTRAL_REGISTER
             result.update(label=source['claim_id'], source_hash=source['claim_sha256'],
+                          kind_label=(KINDS[kind] if central else 'Reviewed implementation example'),
                           excerpts=excerpts, classification=claim['classification'],
-                          qualification='Selected reviewed claim only, used in this local prototype. '
+                          qualification=('Selected SCALE functionality reference with local limits. ' if central
+                                         else 'Selected reviewed claim only, used in this local prototype. ')
+                          +
                           'The SDD corpus remains ineligible for production indexing. ' + claim['limits'])
         elif kind == 'REVIEWED_PROCESS_CLAIM':
             claim,excerpts=load_refinement(self.root,source,self._process_cache)

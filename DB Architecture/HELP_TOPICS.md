@@ -1,6 +1,6 @@
 # SCALE functionality help topics
 
-340 bounded help topics; 717 authored evaluation cases. These reviewed explanations are also served by the local help prototype. Deployment reconciliation remains incomplete.
+340 bounded help topics; 716 authored evaluation cases. These reviewed explanations are also served by the local help prototype. Deployment reconciliation remains incomplete.
 
 Answers follow what it does, what happens, what can affect it, what you can check, and sources. Screen names in sources are documentary references; verified Insight navigation and SOPs remain separate. No process, label, job or transaction was executed. Browser and keyboard observations were bounded; JAWS was owner accepted without a captured local run. Zoom/reflow, contrast and an intended-user session remain unobserved.
 
@@ -5563,7 +5563,7 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 - Does an absent locating flag automatically mean delayed locating is enabled? Expected: Explain the two-flag dependency and unresolved specific missing-setting behavior. Must not claim: Assume that a missing value enables locating.
 
-## 112. Understanding duplicate or overlapping configuration
+## 112. Configuration precedence and overlapping rules
 
 **Question:** Two profile or rule rows seem to apply. Which one wins?
 
@@ -5641,89 +5641,86 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 - Can yesterday’s configuration snapshot guarantee my setting now? Expected: State owner-attested current baseline, retained timestamp and aggregate-versus-user scope. Must not claim: Guarantee current primary or per-user settings.
 
-## 114. Using LAND and other product-specific SDDs
+## 114. Design revisions and release applicability
 
-**Question:** Can the LAND SDD supply our SCALE settings?
+**Question:** What does a reference document establish about release applicability?
 
-**What it does.** LAND describes Manhattan Active Warehouse Management (MAWM). Keep it as comparison material. Its configuration choices do not become SCALE defaults merely because both products use Manhattan names or the files share a folder.
+**What it does.** A design revision, training date or printed date does not establish the release or configuration of an installed SCALE system. The functionality reference explains documented mechanisms with local limits. Example values, proposed extensions and unresolved comments do not become universal defaults or deployed behavior.
 
 **What happens**
 
-Trigger: A request to understand the evidence and applicability of a SCALE explanation.
+Trigger: Distinguishing a document revision or training date from supported product behavior.
 
-1. The document body names Manhattan Active Warehouse Management. Evidence: `sdd-boundary-land-product-boundary`.
-2. Its revision history ends at 2.11 dated 29 April 2025. That identifies this design revision, not a SCALE product release. Evidence: `sdd-boundary-land-product-boundary`.
-3. Any proposed cross-product behavior needs separate product- and version-specific applicability evidence. Evidence: `sdd-boundary-land-product-boundary`.
+1. Use the relevant functionality entry and its supporting source locations. Evidence: `sdd-function-reference-applicability`.
+2. Keep release dependencies, configuration choices and unresolved limitations attached to the explanation. Evidence: `sdd-function-reference-applicability`.
+3. An implementation example does not establish an active setting or prove that a feature is enabled in the current workflow. Evidence: `sdd-function-reference-applicability`.
 
 **What can affect it**
 
-- Product, release, implementation choices and document revision are separate dimensions.
+- Release support, effective configuration and design revision are separate facts.
 
 **What you can check**
 
-- Use a SCALE-specific source for a SCALE setting. Record a proposed shared claim and its exact supporting product/version evidence before applying it.
+- Use the reference for a bounded explanation. Establish applicable configuration and support when an operational decision requires those facts.
 
 **Expected results and limits**
 
 - A bounded explanation and the smallest evidence needed to resolve remaining uncertainty.
-- No SCALE configuration recommendation or deployment behavior is derived from LAND. Only this reviewed claim is available in the local prototype; the raw SDD corpus remains outside production search.
-- No operational records, user profiles, procedures, jobs or printer outputs were requested or executed.
+- This synthesis is a reference, not a complete product specification or evidence of current deployment behavior.
+- No operational process is executed by this help.
 
 **More detail and sources**
 
-`sdd-boundary-land-product-boundary`: [land-product-boundary](../SDD/derived/reviewed-knowledge.json); reviewed-record SHA-256 `0297667e1ff2ec39031d27ae14b16fc928eb8ff63df0c12fce8e7009860edf37`; original documents/nodes sdd-de62bfaf88f5d35b: b00005; sdd-de62bfaf88f5d35b: b00422. Selected reviewed claim only; the SDD corpus remains outside production indexing.
+`sdd-function-reference-applicability`: [SCALE functionality reference](../SDD/SCALE_FUNCTIONAL_REFERENCE.md#reference-applicability); reviewed-entry SHA-256 `6b60d3731e2b786ea5030d55b8f82259efd3fe4ed48dc0f4959075ab974c2352`. Neutral references: R03, R04, R07, R02. [Exact source bindings](../SDD/derived/scale-functional-reference.json). Reference functionality with local limits; current deployment behavior is not established.
 
-Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_CURRENT_CHECKPOINT_AUDIT`.
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CURRENT_CHECKPOINT_REVIEW`.
 
 **Answer evaluation expectations**
 
 Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
 
-- Does MAWM revision 2.11 establish a SCALE release or default? Expected: Identify MAWM and separate document revision from product release. Must not claim: Transfer LAND settings into SCALE.
 
-## 115. Explaining conflicting cycle-count tolerances
+## 115. Understanding cycle-count tolerance and review
 
 **Question:** Is our cycle-count tolerance zero or 9999?
 
-**What it does.** These documents do not establish our active tolerance. The Grupo Julio SDD reports a then-current value of 9999 and describes a planned zero tolerance. The Covetrus design separately specifies zero by default and leaves a note about revisiting positive tolerances. These are implementation choices with unresolved context, not a universal SCALE default.
+**What it does.** The reference does not establish this warehouse's active cycle-count tolerance. Verification can require two consecutive equal counts; an out-of-tolerance count can move to Pending Review for reconciliation. Thresholds and review permissions depend on the applicable configuration. Neither zero nor 9999 should be selected solely from an example.
 
 **What happens**
 
-Trigger: A request to understand the evidence and applicability of a SCALE explanation.
+Trigger: Understanding a documented SCALE mechanism and its release or configuration limits.
 
-1. Cycle counting compares physical and recorded stock; tolerance and approval rules influence discrepancy handling. Evidence: `family-cycle-counting-aim`, `sdd-boundary-grupo-cycle-tolerance-conflict`, `sdd-boundary-covetrus-cycle-tolerance`.
-2. Read Grupo’s current-versus-intended statements together across pages 94–95. Evidence: `family-cycle-counting-aim`, `sdd-boundary-grupo-cycle-tolerance-conflict`, `sdd-boundary-covetrus-cycle-tolerance`.
-3. Keep Covetrus’s default and later note attached to that implementation instead of selecting one document value for this deployment. Evidence: `family-cycle-counting-aim`, `sdd-boundary-grupo-cycle-tolerance-conflict`, `sdd-boundary-covetrus-cycle-tolerance`.
+1. Verify Bad Count repeats a discrepant count; two consecutive equal counts establish the reported quantity in the described workflow. Evidence: `family-cycle-counting-aim`, `sdd-function-count-verification-reconciliation`.
+2. Counts outside the user's tolerance move to Pending Review. An authorized reviewer reconciles the correct on-hand quantity and closes the request. Evidence: `family-cycle-counting-aim`, `sdd-function-count-verification-reconciliation`.
+3. No universal tolerance or active warehouse setting is established. The recorded restriction on closing an entire plan is a separate extension, not base behavior. Evidence: `family-cycle-counting-aim`, `sdd-function-count-verification-reconciliation`.
 
 **What can affect it**
 
-- Tolerance units, scope and recount/reconciliation permissions must be established for the actual deployment.
+- Tolerance units, scope and recount/reconciliation permissions must be established for the applicable configuration.
 
 **What you can check**
 
-- Obtain a sanitized installed tolerance definition, units, scope, approval behavior and observation date. Neither sample design establishes those current facts.
+- Use the documented verification and review steps to explain the flow. A question about an active numerical tolerance needs that setting's applicable definition and scope.
 
 **Expected results and limits**
 
 - A bounded explanation and the smallest evidence needed to resolve remaining uncertainty.
-- The word current belongs to the source document’s account; it does not describe this assessed database today.
-- No operational records, user profiles, procedures, jobs or printer outputs were requested or executed.
+- No numerical tolerance is asserted as a universal default or an active setting.
+- No count, reconciliation or inventory change is executed by this help.
 
 **More detail and sources**
 
 `family-cycle-counting-aim`: [Cycle Counting Process Summary: Functionality](../AIM/reading/548d817cbc4d0efb1392d60c7811bc8f3021bcab5f4dbe675984c54a883ca5b3.md); AIM article `548d817cbc4d0efb1392d60c7811bc8f3021bcab5f4dbe675984c54a883ca5b3`, original SHA-256 `62b53306bb40dde023f7fe8b495cff98a3604c93e7613707f4547202de3ae47c`, nodes n66.
 
-`sdd-boundary-grupo-cycle-tolerance-conflict`: [grupo-cycle-tolerance-conflict](../SDD/derived/reviewed-knowledge.json); reviewed-record SHA-256 `5ccc3f9f6ebed5804812b01301ca2e557c6f4f9eac20a8911a06a1d5e2272398`; original documents/nodes sdd-d50ca4a96095c930: p094-b004, p095-b002. Selected reviewed claim only; the SDD corpus remains outside production indexing.
+`sdd-function-count-verification-reconciliation`: [SCALE functionality reference](../SDD/SCALE_FUNCTIONAL_REFERENCE.md#count-verification-reconciliation); reviewed-entry SHA-256 `84b3107952f9df2c331731c0a1f1c973dcdea0eee69d2c69d63c5ce49afb6966`. Neutral references: R05, R07. [Exact source bindings](../SDD/derived/scale-functional-reference.json). Reference functionality with local limits; current deployment behavior is not established.
 
-`sdd-boundary-covetrus-cycle-tolerance`: [covetrus-cycle-tolerance](../SDD/derived/reviewed-knowledge.json); reviewed-record SHA-256 `54b3d1e61e42618cf562d1549f82f7b77a24978afd726942c3b048c239b7850c`; original documents/nodes sdd-c4c7e01f8ccad48a: b01054, b01055, b01056. Selected reviewed claim only; the SDD corpus remains outside production indexing.
-
-Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_CURRENT_CHECKPOINT_AUDIT`.
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CURRENT_CHECKPOINT_REVIEW`.
 
 **Answer evaluation expectations**
 
 Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
 
-- Should I copy 9999 from Grupo or zero from Covetrus? Expected: Explain source-specific current/planned/default values and missing deployment evidence. Must not claim: Select either number as the active setting.
+- Does a cycle-count example establish our active tolerance and review rules? Expected: Separate count verification, configured tolerance and reconciliation; current settings are not established. Must not claim: Select zero or 9999 as the active setting.
 
 ## 116. Understanding wave duration and statement timing
 
@@ -5771,35 +5768,35 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 
 **Question:** Does selecting a document prove the label printed?
 
-**What it does.** No. The SCALE 2021 training deck lists a label file, sometimes a stored procedure, document type, document and routing configuration, an optional wave label step, and a 203-dpi-compatible printer. Choosing a document, dispatching it and receiving physical output are different stages.
+**What it does.** No. A label depends on its definition, document type, document association and output route. Some labels also use a stored procedure, and wave-driven output may require a Documents and Labels step. Generation, routing and physical output are separate stages; training requirements do not certify an installed printer.
 
 **What happens**
 
-Trigger: A request to understand the evidence and applicability of a SCALE explanation.
+Trigger: Understanding a documented SCALE mechanism and its release or configuration limits.
 
-1. Check the cited template and configuration dependencies documented for the label. Evidence: `sdd-boundary-label-prerequisites`.
-2. When printing during a wave, the deck includes a Documents–Labels step. Evidence: `sdd-boundary-label-prerequisites`.
-3. Installed printer support and actual output need their own evidence; a returned document choice is not that evidence. Evidence: `sdd-boundary-label-prerequisites`.
+1. Identify the label file, document type, document definition and output routing for the intended business event. Evidence: `sdd-function-label-prerequisites`.
+2. Some labels use a stored procedure. Wave-driven output may require the Documents and Labels step. Evidence: `sdd-function-label-prerequisites`.
+3. Check printer capability against the label definition and actual device. A returned document choice does not establish physical output. Evidence: `sdd-function-label-prerequisites`.
 
 **What can affect it**
 
-- Template, renderer, routing, wave step and printer support depend on the configured printing path.
+- Template, generation setup, routing, optional wave step and printer support depend on the configured printing path.
 
 **What you can check**
 
-- Use a sanitized installed template/renderer mapping and acknowledgment contract. No label, report or print job is executed by this help.
+- Use applicable template, routing and printer evidence when diagnosing a particular failure. This help does not generate or dispatch a print job.
 
 **Expected results and limits**
 
 - A bounded explanation and the smallest evidence needed to resolve remaining uncertainty.
-- The 203-dpi statement is this training source’s requirement, not a verified inventory of installed printers or support in every SCALE release.
-- No operational records, user profiles, procedures, jobs or printer outputs were requested or executed.
+- Mixed-release training does not establish installed hardware support, present configuration or a complete setup sequence for every label.
+- No label, report or print job is executed by this help.
 
 **More detail and sources**
 
-`sdd-boundary-label-prerequisites`: [label-prerequisites](../SDD/derived/reviewed-knowledge.json); reviewed-record SHA-256 `553972dbf324d5817c86007fb0035af7b2bad184deea038a73abb760559ec05c`; original documents/nodes sdd-56008a31665dcc23: s007-sh004. Selected reviewed claim only; the SDD corpus remains outside production indexing.
+`sdd-function-label-prerequisites`: [SCALE functionality reference](../SDD/SCALE_FUNCTIONAL_REFERENCE.md#label-prerequisites); reviewed-entry SHA-256 `6a9cf745f2f4f3c9c75f005dc62365045f7cd4d85e375aa73d71014406ff697b`. Neutral references: R03. [Exact source bindings](../SDD/derived/scale-functional-reference.json). Reference functionality with local limits; current deployment behavior is not established.
 
-Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `PENDING_CURRENT_CHECKPOINT_AUDIT`.
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CURRENT_CHECKPOINT_REVIEW`.
 
 **Answer evaluation expectations**
 
@@ -9646,47 +9643,45 @@ Actual local HTTP retrieval and selected-topic citation checks are reported sepa
 - Does supplying new text to an existing resource key update its label? Expected: No. Unequal text raises RAISERROR at severity 18/state 1; existing text is preserved. Must not claim: The label is automatically replaced.
 - Does the resource helper treat NULL as unequal to existing text? Expected: No. A NULL inequality comparison is UNKNOWN and does not enter that branch. Must not claim: NULL always triggers the conflict error.
 
-## 201. Putaway groups: intended workflow and conflicting examples
+## 201. Putaway group availability by release
 
-**Question:** Does an implementation example establish the putaway-group workflow in this warehouse?
+**Question:** What does the recorded putaway-group availability exception establish?
 
-**What it does.** The Grupo Julio example describes receiving and putting away items as a group, but also retains an unresolved availability issue from that implementation. Use it as a qualified design example. The current replica is accepted as the documentation baseline; that does not make another implementation’s design or historical limitation a fact about the current mobile workflow.
+**What it does.** Putaway groups can organize received containers into a common movement unit. The references describe destination grouping and building a pallet or cart from smaller containers. They also retain a material limitation: receiving with putaway groups was recorded as unavailable in Warehouse Mobile 24.1.2278. The design does not establish later availability or current activation.
 
 **What happens**
 
-Trigger: Understanding putaway groups when an implementation document contains conflicting design and availability statements.
+Trigger: Checking the recorded availability exception for optional container grouping.
 
-1. The design describes receiving items into a putaway group and moving the group together. These paragraphs explain intended behavior in that implementation. Evidence: `sdd-boundary-grupo-putaway-groups-version-conflict`.
-2. The same document keeps an open issue stating that receiving with putaway groups was unavailable in Warehouse Mobile 24.1.2278, with no expected date. A final document title does not remove that qualification. Evidence: `sdd-boundary-grupo-putaway-groups-version-conflict`.
-3. Explain the captured configuration as-is and retain the documented conflict. Database structures alone do not demonstrate the mobile screen or effective receiving preference. Version/build is not a prerequisite for this documentation task. Evidence: `sdd-boundary-grupo-putaway-groups-version-conflict`.
+1. A putaway location group can use destination ranges or locating zones. Receiving examples build and close a group before creating group work. Evidence: `sdd-function-putaway-groups`.
+2. The source records Receiving with Putaway Groups as unavailable in Warehouse Mobile 24.1.2278. It does not establish a later delivery date or resolution of that exception. Evidence: `sdd-function-putaway-groups`.
+3. Use this pattern only where the applicable receiving workflow supports it. No later delivery date or resolution of the recorded issue is established by the reference. Evidence: `sdd-function-putaway-groups`.
 
 **What can affect it**
 
-- Receiving preferences and group assignments describe choices; their presence does not establish mobile support or current activation.
+- Receiving preferences, grouping configuration and supported execution workflow affect applicability.
 
 **What you can check**
 
-- Check the applicable receiving workflow and preference when diagnosing a specific behavior; do not infer effective values from another implementation.
-- Retain the historical issue in the source details without treating it as a request for the current build.
+- Explain the group mechanism together with its retained availability limitation. A later availability date requires later release evidence.
 
 **Expected results and limits**
 
 - A distinction between the intended design, its retained availability exception and the source limits of the current explanation.
-- No claim is made about later versions, a delivery date or this deployment.
-- No live receiving, putaway or screen-navigation test was performed.
-- Raw SDD production indexing remains disabled. Only the selected reviewed claim is bound in this local help topic.
+- No current deployment support, later delivery date or continuing absence in every later release is asserted.
+- No receiving, putaway or screen-navigation test is performed by this help.
 
 **More detail and sources**
 
-`sdd-boundary-grupo-putaway-groups-version-conflict`: [grupo-putaway-groups-version-conflict](../SDD/derived/reviewed-knowledge.json); reviewed-record SHA-256 `a2ca3e7862ed92bbdbbcfc7a4ddf97ddad7a8235b0f2b3cab3565c084b13127a`; original documents/nodes sdd-d50ca4a96095c930: p033-b002, p033-b004, p037-b002, p106-b005, p106-b006. Selected reviewed claim only; the SDD corpus remains outside production indexing.
+`sdd-function-putaway-groups`: [SCALE functionality reference](../SDD/SCALE_FUNCTIONAL_REFERENCE.md#putaway-groups); reviewed-entry SHA-256 `2a30970d247eedfb103fdc56e1c74278a460c29082539ed44a196907c22f7a83`. Neutral references: R05, R07, R02. [Exact source bindings](../SDD/derived/scale-functional-reference.json). Reference functionality with local limits; current deployment behavior is not established.
 
-Review: `DOCUMENTARY_VERSION_CONFLICT_REVIEWED_DEPLOYMENT_OPEN`. Independent verification: `SEE_CURRENT_CHECKPOINT_REVIEW`.
+Review: `STATIC_REVIEWED_BOUNDED`. Independent verification: `SEE_CURRENT_CHECKPOINT_REVIEW`.
 
 **Answer evaluation expectations**
 
 Actual local HTTP retrieval and selected-topic citation checks are reported separately in [the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.
 
-- Does the Grupo Julio putaway-group design prove Warehouse Mobile 24.1.2278 supports it? Expected: intended workflow and open issue differ unavailable in cited version current deployment unknown Must not claim: feature is enabled here all later versions lack it
+- Does a documented putaway-group workflow prove receiving support in Warehouse Mobile 24.1.2278? Expected: The group mechanism and recorded availability limitation differ. Receiving with putaway groups was unavailable in the cited version; current deployment support is not established. Must not claim: The feature is enabled here. All later versions lack the feature.
 - When did receiving with putaway groups become available after the 24.1.2278 issue? Expected: no delivery date in cited issue later release evidence required Must not claim: invented release date final title proves delivery
 
 ## 202. Why a cycle-count request may not be created

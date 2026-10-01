@@ -156,24 +156,64 @@ class HelpKnowledgeTests(unittest.TestCase):
         self.assertNotIn('Five SELECT statements necessarily produce five results.', ' '.join(self.knowledge.rows[0]))
 
     def test_sdd_claim_fingerprint_drift_is_rejected(self):
-        source = copy.deepcopy(self.knowledge.sources['sdd-boundary-land-product-boundary'])
+        source = copy.deepcopy(self.knowledge.sources['sdd-function-reference-applicability'])
         source['claim_sha256'] = 'changed'
         with self.assertRaisesRegex(ValueError, 'fingerprint'):
             load_claim(ROOT, source)
 
-    def test_sdd_answer_preserves_product_limit_and_excludes_raw_body(self):
+    def test_sdd_answer_preserves_applicability_limit_and_excludes_raw_body(self):
         answer = self.knowledge.topic('product-version-compatibility')
-        self.assertIn('Manhattan Active Warehouse Management', answer['what_it_does'])
-        source = self.knowledge.source('sdd-boundary-land-product-boundary')
+        self.assertIn('does not establish the release or configuration', answer['what_it_does'])
+        source = self.knowledge.source('sdd-function-reference-applicability')
         self.assertIn('ineligible for production indexing', source['qualification'])
-        self.assertEqual(len(source['excerpts']), 3)
+        self.assertEqual(source['kind_label'], 'Reviewed SCALE functionality reference')
+        binding = self.knowledge.sources[source['source_id']]
+        self.assertEqual(len(source['excerpts']), 1 + sum(len(c['nodes']) for c in binding['citations']))
         self.assertTrue(all('Source location:' in e['text'] for e in source['excerpts'][1:]))
 
     def test_sdd_claim_cannot_bind_another_document(self):
-        source = copy.deepcopy(self.knowledge.sources['sdd-boundary-land-product-boundary'])
+        source = copy.deepcopy(self.knowledge.sources['sdd-function-reference-applicability'])
         source['documents'][0]['document_id'] = 'unreviewed'
         with self.assertRaisesRegex(ValueError, 'bindings'):
             load_claim(ROOT, source)
+
+    def test_active_sdd_sources_are_neutral_central_claims_only(self):
+        sources = [(sid, s) for sid, s in self.knowledge.sources.items() if s['kind'] == 'REVIEWED_SDD_CLAIM']
+        self.assertEqual(len(sources), 4)
+        for sid, source in sources:
+            with self.subTest(source_id=sid):
+                self.assertEqual(source['register_path'], 'SDD/derived/scale-functional-reference.json')
+                self.assertNotIn('sdd-de62bfaf88f5d35b', json.dumps(source))
+                self.assertTrue(all('source_path' not in d for d in source['documents']))
+                visible = json.dumps(self.knowledge.source(sid))
+                for forbidden in ['MAWM', 'LAND', 'Covetrus', 'Grupo', 'HADDAD', 'Knipper', '.docx', '.pptx']:
+                    self.assertNotIn(forbidden, visible)
+
+    def test_neutral_help_topics_keep_source_limits_and_stable_identifiers(self):
+        for tid in ['product-version-compatibility', 'cycle-count-tolerance-conflict',
+                    'label-prerequisites', 'putaway-groups-version-limit']:
+            with self.subTest(topic_id=tid):
+                answer = self.knowledge.topic(tid)
+                self.assertEqual(answer['topic_id'], tid)
+                self.assertTrue(answer['evidence_limits'])
+                visible = json.dumps(answer)
+                for forbidden in ['MAWM', 'LAND', 'Covetrus', 'Grupo', 'HADDAD', 'Knipper']:
+                    self.assertNotIn(forbidden, visible)
+        putaway = self.knowledge.topic('putaway-groups-version-limit')
+        self.assertIn('24.1.2278', putaway['what_it_does'])
+        self.assertIn('does not establish later availability', putaway['what_it_does'])
+
+    def test_question_migration_excludes_other_product_and_retains_unmodified_cases(self):
+        topics = self.knowledge.topics
+        self.assertEqual(topics['product-version-compatibility']['evaluation']['cases'], [])
+        acceptance = json.loads((ROOT / 'DB Architecture/mappings/help-acceptance.json').read_text(encoding='utf-8'))
+        self.assertNotIn('version-conflict', {c['case_id'] for c in acceptance['cases']})
+        self.assertEqual(topics['label-prerequisites']['evaluation']['cases'][0]['question'],
+                         'Does the training deck prove our installed printer supports this label?')
+        self.assertEqual(topics['putaway-groups-version-limit']['evaluation']['cases'][1]['question'],
+                         'When did receiving with putaway groups become available after the 24.1.2278 issue?')
+        boundary = next(c for c in acceptance['cases'] if c['case_id'] == 'implementation-conflict')
+        self.assertEqual(boundary['question'], 'Is our cycle-count tolerance zero or 9999?')
 
     def test_vendor_text_tampering_with_unchanged_original_hash_is_rejected(self):
         source=next(s for s in self.knowledge.sources.values() if s['kind']=='VENDOR_DOCUMENTATION')

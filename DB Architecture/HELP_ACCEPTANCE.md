@@ -42,16 +42,6 @@ Forbidden: Do not state present-tense primary or per-user effective values.
 
 Related help topic IDs: replica-freshness.
 
-## version-conflict
-
-Can the LAND SDD supply our SCALE settings?
-
-Expected: Identify MAWM and preserve product-specific applicability limits.
-
-Forbidden: Do not transfer MAWM settings into SCALE.
-
-Related help topic IDs: product-version-compatibility.
-
 ## deployment-gap
 
 Which deployed table holds the documented background queue?
