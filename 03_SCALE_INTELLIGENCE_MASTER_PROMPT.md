@@ -1,5 +1,7 @@
 # SCALE Intelligence master continuation prompt
 
+Current C16 source packet: [Labels node disposition](SDD/derived/labels-node-disposition.json) covers all 209 retained slide nodes without new claim/citation credit; see the [C16 receipt](_project/continuation16-20260930.json). Continue SCALE source/help work while preserving the C15 deployment freeze below.
+
 Latest owner sequencing: deployed process behavior and correlated timing are frozen as the final workstream until the remaining locally supportable work is complete. Preserve the 0/34 deployment measure and its required evidence; see [deployment freeze](_project/DEPLOYMENT_FREEZE_C15.md), [active completion audit](_project/ACTIVE_COMPLETION_AUDIT_C15.md) and [C15 receipt](_project/continuation15-20260930.json). The C14 receipt below remains historical, not evidence that deployment was completed.
 
 Revision: SCALE-BRAIN-CONTINUATION-1.17, 2026-09-30.

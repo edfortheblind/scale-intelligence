@@ -1,5 +1,9 @@
 # SCALE Intelligence project status
 
+## C16 active source review
+
+The 45-slide SCALE Labels deck now has an exact [209/209 retained-node disposition](SDD/derived/labels-node-disposition.json): 84 nodes already cited in reviewed records and 125 classified as empty text, headings/example titles, agenda text, presenter notes, author credit or corroboration. This adds no claim or citation credit and does not prove printer behavior, animation or exact font fidelity. The [C16 receipt](_project/continuation16-20260930.json) binds the packet. Other source and help work remains active; the C15 deployment freeze still applies.
+
 ## C15 owner sequencing
 
 The owner froze deployed process behavior/timing as the final workstream while the remaining SCALE base architecture, help, SDD and document-fidelity work continues. Deployment reconciliation stays **0/34**, and correlated whole-process timing remains unestablished. The [deployment freeze](_project/DEPLOYMENT_FREEZE_C15.md) preserves the requirement for a later owner-planned strategy; it is not a completion claim. The [active completion audit](_project/ACTIVE_COMPLETION_AUDIT_C15.md) distinguishes source work from ratios that cannot truthfully reach 100% by reclassification. The [C15 receipt](_project/continuation15-20260930.json) binds this packet; C14 below remains historical.
