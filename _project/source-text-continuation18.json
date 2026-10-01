@@ -1,0 +1,837 @@
+{
+  "schema_version": 1,
+  "continuation": 18,
+  "source_state": "BOUNDED_SOURCE_REVIEW",
+  "baseline": {
+    "claims": 317,
+    "settings": 283,
+    "cited_nodes": 2798
+  },
+  "current": {
+    "claims": 373,
+    "settings": 292,
+    "cited_nodes": 2901,
+    "extracted_nodes": 11618
+  },
+  "packets": [
+    {
+      "private_packet_sha256": "5ffed30fa42e6aa37cf4bc29ffc4fab2006b01e989e7bbb8f66235acc0708a22",
+      "recorded_packet": {
+        "batch": "SDD-TEXT-20260930-CONTINUATION18",
+        "packets": [
+          {
+            "id": "interfaces",
+            "nodes": [
+              "p021-b003",
+              "p021-b008",
+              "p021-b010"
+            ],
+            "claim_ids": [
+              "grupo-c18-shipment-upload-content",
+              "grupo-c18-inventory-upload-eligibility-versus-timing",
+              "grupo-c18-item-balance-current-versus-proposed"
+            ],
+            "setting_ids": [
+              "grupo-c18-shipping-xml-upload",
+              "grupo-c18-inventory-xml-upload",
+              "grupo-c18-item-balance-proposed-frequency"
+            ],
+            "source_path": "Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf",
+            "source_sha256": "d50ca4a96095c930e1e54fd04c55804bed05a5139451118cc5ce201eab814e34",
+            "scope": "Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration.",
+            "classification": "implementation_specific_choice",
+            "disposition": "ADD_BOUNDED_REFERENCE_MEANING",
+            "assertions": [
+              "The Grupo Julio design describes shipment uploads containing header, detail, comment and shipping-container information, with inventory attributes and serial numbers when that inventory has them. Generation follows configured shipment statuses.",
+              "The Grupo Julio design describes inventory adjustments and status changes as eligible for host upload, while explicitly choosing not to interface every adjustment at the moment it occurs.",
+              "Grupo Julio describes using Item Balance for annual inventory, then evaluating weekly generation for earlier discrepancy detection. Its adjacent configuration note proposes weekly generation with the exact day and time deferred to testing; the prose says this would not automatically affect fiscal inventory."
+            ]
+          },
+          {
+            "id": "quality-shortages",
+            "nodes": [
+              "p031-b003",
+              "p032-b002",
+              "p032-b003",
+              "p039-b004"
+            ],
+            "claim_ids": [
+              "grupo-c18-custom-quality-before-receipt-interface",
+              "grupo-c18-shortage-recording-practice-qualified"
+            ],
+            "setting_ids": [],
+            "source_path": "Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf",
+            "source_sha256": "d50ca4a96095c930e1e54fd04c55804bed05a5139451118cc5ce201eab814e34",
+            "scope": "Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration.",
+            "classification": "implementation_specific_choice",
+            "disposition": "ADD_BOUNDED_REFERENCE_MEANING",
+            "assertions": [
+              "Grupo Julio describes a custom inbound quality process before ERP purchase-order creation and SCALE receipt interfacing, expressly excluding base SCALE Inbound QC. Its example samples 10 to 15 percent, while the unloading section allows a larger sample when quality issues are detected.",
+              "The unloading text continues across pages 31 and 32 by saying Grupo Julio receives a missing quantity and later adjusts it with ERP coordination. The shortage section also describes receiving missing products under a different inventory status and coordinating adjustments, alongside manual receipt closure when the remaining balance is no longer expected."
+            ]
+          },
+          {
+            "id": "unknown-damaged-stock",
+            "nodes": [
+              "p040-b003"
+            ],
+            "claim_ids": [
+              "grupo-c18-unknown-product-master-before-receipt",
+              "grupo-c18-damage-location-allocation-separation"
+            ],
+            "setting_ids": [],
+            "source_path": "Grupo Julio - Manhattan Active SCALE Implementation Solution Design Document - v1.5 - Final - 2024-09-03.pdf",
+            "source_sha256": "d50ca4a96095c930e1e54fd04c55804bed05a5139451118cc5ce201eab814e34",
+            "scope": "Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration.",
+            "classification": "implementation_specific_choice",
+            "disposition": "ADD_BOUNDED_REFERENCE_MEANING",
+            "assertions": [
+              "For product absent from both the receipt and Item Master, Grupo Julio describes supervisor coordination, physical removal from the receiving-dock path, interfacing the item master when the product is to be received, and then creating and interfacing a new host receipt.",
+              "Grupo Julio describes damaged inventory in a specific multi-item location excluded from regular allocation location selections. A separate selection permits shipping damaged product; quality review distinguishes stock to transfer to picking from stock needing adjustment."
+            ]
+          }
+        ],
+        "newly_cited_nodes": [
+          "p021-b003",
+          "p021-b008",
+          "p021-b010",
+          "p031-b003",
+          "p032-b002",
+          "p032-b003",
+          "p040-b003"
+        ],
+        "added_claims": 7,
+        "added_settings": 3,
+        "totals": {
+          "claims": 324,
+          "configuration": 286,
+          "cited_nodes": 2805,
+          "extracted_nodes": 11618
+        },
+        "corroboration": [
+          {
+            "module": "AIM",
+            "article_id": "178aec6d3faf8830199512924f58cf463d20acfbc6b6485c40a0948c32a1cd0e",
+            "title": "Interface Process Summary: Functionality",
+            "source_path": "AIM/source/html/16a5da0368ba8d3c53860134e3270982414a29c92ad4c62f1c13da24e4067a7c.htm",
+            "source_sha256": "16a5da0368ba8d3c53860134e3270982414a29c92ad4c62f1c13da24e4067a7c",
+            "reading_path": "AIM/reading/178aec6d3faf8830199512924f58cf463d20acfbc6b6485c40a0948c32a1cd0e.md",
+            "node_ids": [
+              "n152",
+              "n156",
+              "n164"
+            ],
+            "claim_ids": [
+              "grupo-c18-shipment-upload-content",
+              "grupo-c18-inventory-upload-eligibility-versus-timing",
+              "grupo-c18-item-balance-current-versus-proposed"
+            ],
+            "limits": "Corroborates payload families and interface purposes only; does not prove site schedule, exact XML configuration or deployment."
+          },
+          {
+            "module": "AIM",
+            "article_id": "ac3f13ba881f41d48d5cb58449fb1b516d4bbfbfea3b948c6c5428ab9832abdd",
+            "title": "Reviewing Inventory Statuses",
+            "source_path": "AIM/source/html/0bd4e0f169a33304679bc48a66b6ad0322701aa171a145b366c2e8c74225fac7.htm",
+            "source_sha256": "0bd4e0f169a33304679bc48a66b6ad0322701aa171a145b366c2e8c74225fac7",
+            "reading_path": "AIM/reading/ac3f13ba881f41d48d5cb58449fb1b516d4bbfbfea3b948c6c5428ab9832abdd.md",
+            "node_ids": [
+              "n58"
+            ],
+            "claim_ids": [
+              "grupo-c18-damage-location-allocation-separation"
+            ],
+            "limits": "Corroborates that inventory status alone does not prevent allocation; the site location selections remain SDD-only evidence."
+          }
+        ],
+        "duplicates_no_credit": [
+          {
+            "nodes": [
+              "p017-b008"
+            ],
+            "existing": "grupo-purchase-order-receipt-day-planning",
+            "reason": "Same national-vendor purchase-order to receipt concept; no distinct claim added."
+          },
+          {
+            "nodes": [
+              "p019-b004"
+            ],
+            "existing": "grupo-shipment-cancellation-conditions",
+            "reason": "Host updates before waving restriction already preserved; no citation credit added."
+          },
+          {
+            "nodes": [
+              "p031-b003"
+            ],
+            "existing": "grupo-receiving-documents-current-versus-optional",
+            "reason": "Existing print-workflow context retained; no separate claim for worksheet recommendation."
+          }
+        ],
+        "conflicts_and_qualifiers": [
+          "Annual Item Balance use versus proposed weekly schedule retained separately.",
+          "Quality sample 10-15 percent versus larger sample for quality issues is conditional, not contradictory.",
+          "Shortage recording and closure alternatives are not fully reconciled; no operational instruction derived.",
+          "Damaged status alone is not allocation exclusion, corroborated by AIM."
+        ],
+        "visual_pages_rechecked": [
+          21,
+          31,
+          32,
+          39,
+          40
+        ],
+        "new_visual_credit": 0,
+        "original_mutation": false,
+        "source_verification": "Original PDF hashes match inventory; relevant complete rendered pages compared against retained exact node passages. No new PyMuPDF text/bbox comparison claimed.",
+        "limitations": [
+          "Full source semantic completion not established.",
+          "SDD-only site assertions do not prove SCALE defaults or TAB implementation.",
+          "Poppler missing Symbol/ArialUnicode display-font warnings; relevant body prose legible.",
+          "Fresh reviewer and parent delivery verification pending."
+        ]
+      }
+    },
+    {
+      "private_packet_sha256": "b90e9814ad0b99142da52edf5425cce263c980041009462117037efdc73513dc",
+      "recorded_packet": {
+        "id": "SDD-TEXT-20260930-CONTINUATION18-SECOND",
+        "source_path": "J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf",
+        "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+        "product_version": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. ",
+        "new_claims": [
+          {
+            "id": "knipper-c18-dummy-expiration-fefo-exception",
+            "statement": "Knipper explicitly describes some legacy lot-controlled items without expiration tracking: dummy expiration dates were set at the original implementation, and those lots or dates are not used for FEFO.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p007-b025"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This qualifies the general lot/FEFO descriptions; it does not supply the exclusion predicate, authorize dummy dates or establish TAB lot policy.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND"
+          },
+          {
+            "id": "knipper-c18-location-sequence-assumption-tension",
+            "statement": "Knipper assumption 39 says picking/putaway sequence is not used and location template supplies the order-by clause. A review reply permits location sequences when assigned, while the later cart description says multi-item cart picks use pick sequence.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p008-b027",
+                  "p008-b003",
+                  "p008-b004",
+                  "p008-b005",
+                  "p008-b006",
+                  "p085-b004",
+                  "p085-b011"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. The earlier knipper-pick-sequence-and-cart-order record remains a valid description of the later passage, but cannot alone establish one consistent site ordering. The resolved comment allows flexibility without replacing the nonuse assumption or proving active configuration.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND"
+          },
+          {
+            "id": "knipper-c18-location-check-digit-assumption-conflict",
+            "statement": "Knipper assumption 45 says location check digits are not used for location verification, but the replenishment execution procedure explicitly requires scanning the location check digit for the pick.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p008-b027",
+                  "p061-b003"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. Preserve both statements. The source supplies no explicit exception reconciling the assumption with that procedure, so it cannot establish a site-wide verification rule or TAB prompts.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND"
+          },
+          {
+            "id": "knipper-c18-obsolete-item-host-noncleanup",
+            "statement": "Knipper assumption 46 says its host does not send Item Master delete messages and obsolete items are not marked inactive.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p008-b027"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This is a historical integration choice, not a SCALE inability to delete/deactivate items or proof that an item remaining active is currently used. No cleanup, deletion or data query is authorized.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND"
+          },
+          {
+            "id": "knipper-c18-physical-versus-system-packing-location",
+            "statement": "Knipper distinguishes several possible physical packing locations from one systematic packing location per warehouse in its design.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p008-b027"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This is the source site model, not a SCALE maximum or a recommendation to merge locations. It does not identify a current location record or the layout of TAB.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND"
+          },
+          {
+            "id": "knipper-c18-receiving-entrypoint-account-choice",
+            "statement": "Knipper assumption 59 selects Receipt Workbench for most accounts, mainly MSM, because many products lack item/lot barcodes, and Warehouse Mobile receiving for 3PL accounts.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p008-b027"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. These source choices do not prove that either interface is unavailable for other accounts, that every item lacks a barcode, or that a deployment uses this partition. Existing custom serial/DSCSA requirements remain separate.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND"
+          },
+          {
+            "id": "knipper-c18-wave-not-truck-load-boundary",
+            "statement": "Knipper describes waving by order priority or cutoff time and explicitly says LTL/TL waves are not sized by cubing for one truck, so one wave may produce multiple load numbers.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p070-b006"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This is a site strategy illustrating the distinction between wave and load. It does not establish universal cardinality, actual truck capacity or deployed shipment assignments.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND"
+          },
+          {
+            "id": "knipper-c18-planned-filter-line-includes-shipment",
+            "statement": "Knipper describes Planned Shipment filters using shipment or shipment-line criteria. When a shipment line matches a pool-view rule, the entire shipment is selected for that view.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p070-b006"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This passage concerns which shipments appear in Planned Shipment Insight. It does not itself create a wave, execute allocation or assert that every line matches. The separate future Build Wave claim concerns another operation.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND"
+          },
+          {
+            "id": "knipper-c18-dscsa-excluded-detail-boundary",
+            "statement": "Knipper assumption 19 excludes the DSCSA workflow from this document while pointing to inbound and outbound extensions; it defers integration and deployment strategy to conversion planning. A review reply promises separate serialization design documents.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p007-b025",
+                  "p007-b011"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. The extension callouts elsewhere in the SDD are not a complete serialization or regulatory-compliance contract. No deployment, compliance acceptance or additional document availability is inferred.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND"
+          },
+          {
+            "id": "knipper-c18-split-load-upload-host-assumption",
+            "statement": "Knipper assumption 42 expects middleware or the host to handle multiple upload files when load confirmation splits a shipment.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p008-b027"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This is an integration assumption, not verified host capability, a file schema, retry/idempotency contract or a guarantee that each shipment always produces one upload. Actual integration behavior remains unobserved.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND"
+          }
+        ],
+        "new_settings": [
+          {
+            "id": "knipper-c18-cross-item-duplicate-serial",
+            "name": "Allow duplicate serial numbers across different items",
+            "purpose": "Distinguish a cross-item serial-number allowance from duplicate entry of the same item serial.",
+            "scope": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. Historical site example; not TAB or a universal default.",
+            "accepted_values": "Knipper calls for permitting the same serial number on two different items. Its comment qualifies the discussion to non-DSCSA inventory. Retained AIM Inventory Control Values describes value key 50: N prohibits cross-item duplicates; Y permits them and enables the serial-template Allow Duplicates checkbox.",
+            "default": "No universal default or active deployed value is established.",
+            "precedence": "This does not establish permission for duplicate serials within the same item, disable every receiving validation, or define DSCSA uniqueness rules. The site choice and base configuration semantics are separately sourced.",
+            "process": "Inventory tracking and container creation",
+            "classification": "implementation_specific_choice",
+            "validation": "Source review only; no item, configuration or inventory query/change or warehouse operation was performed.",
+            "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p007-b004",
+                  "p007-b005",
+                  "p007-b006",
+                  "p007-b007"
+                ]
+              }
+            ],
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND",
+            "corroborating_sources": [
+              {
+                "module": "AIM",
+                "article_id": "17c7631372b173331bccefa89340096c52f8384532cc1f65e44defd510aa1606",
+                "title": "Inventory Control Values",
+                "source_path": "AIM/source/html/eddcfe0905ae99234495c6fa484fd66eceec3c3f41216d15bdf0b2cc6225c071.htm",
+                "source_sha256": "eddcfe0905ae99234495c6fa484fd66eceec3c3f41216d15bdf0b2cc6225c071",
+                "reading_path": "AIM/reading/17c7631372b173331bccefa89340096c52f8384532cc1f65e44defd510aa1606.md",
+                "node_ids": [
+                  "n88",
+                  "n90"
+                ],
+                "limits": "Exact value key and cross-item/template-enablement semantics only; no observed site setting or same-item duplicate permission."
+              }
+            ]
+          },
+          {
+            "id": "knipper-c18-treat-as-loose-repacking",
+            "name": "Treat as Loose for repacking",
+            "purpose": "Explain why a unit of measure may be excluded from full-container creation.",
+            "scope": "Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. Historical site example; not TAB or a universal default.",
+            "accepted_values": "Knipper assumption 26 sets Treat as Loose Y for eligible item UMs needing repacking before shipment and N when the existing package can ship.",
+            "default": "No universal default or active deployed value is established.",
+            "precedence": "Retained AIM container-creation flow explains that active Treat as Loose prevents full containers for inventory allocated in that UM; when no item-UOM is configured, it refers to the shipment-line value. This does not imply N guarantees shipment eligibility or that the site flag is deployed.",
+            "process": "Inventory tracking and container creation",
+            "classification": "implementation_specific_choice",
+            "validation": "Source review only; no item, configuration or inventory query/change or warehouse operation was performed.",
+            "deployment_state": "NOT_OBSERVED_IN_ASSESSED_DEPLOYMENT",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p007-b025"
+                ]
+              }
+            ],
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-SECOND",
+            "corroborating_sources": [
+              {
+                "module": "AIM",
+                "article_id": "58b174b614d3d98ce179aa9b0caea4e04491798b8bb583ec3c58787a502560eb",
+                "title": "Container Creation in the Wave Process Summary: Process Flows",
+                "source_path": "AIM/source/html/26e6d6bc2e491b3c9b398e9dc25ac291faae817df10c56f25f22e37c7e2d4f6c.htm",
+                "source_sha256": "26e6d6bc2e491b3c9b398e9dc25ac291faae817df10c56f25f22e37c7e2d4f6c",
+                "reading_path": "AIM/reading/58b174b614d3d98ce179aa9b0caea4e04491798b8bb583ec3c58787a502560eb.md",
+                "node_ids": [
+                  "n99",
+                  "n101"
+                ],
+                "limits": "Full-container-creation and missing-item-UOM fallback only; site repacking choices remain SDD evidence."
+              }
+            ]
+          }
+        ],
+        "previously_cited_context_nodes": [
+          "p061-b003",
+          "p085-b004",
+          "p085-b011"
+        ],
+        "newly_cited_nodes": [
+          "p007-b004",
+          "p007-b005",
+          "p007-b006",
+          "p007-b007",
+          "p007-b011",
+          "p007-b025",
+          "p008-b003",
+          "p008-b004",
+          "p008-b005",
+          "p008-b006",
+          "p008-b027",
+          "p070-b006"
+        ],
+        "counts": {
+          "claims_before": 324,
+          "claims_after": 334,
+          "settings_before": 286,
+          "settings_after": 288,
+          "cited_before": 2805,
+          "cited_after": 2817,
+          "denominator": 11618
+        },
+        "duplicate_conflicts_disposition": "Existing claims/settings remain unchanged. New conflict claims explicitly link assumptions to previously reviewed later text. Full assumption blocks contain other site nonuse choices and existing reviewed concepts; cited-node inclusion does not certify every sentence. No historical Knipper84/85/90 packet repeated;85 nodes reused only as conflict context.",
+        "source_verification": "Original PDF SHA verified; complete original pages7/8/70 re-rendered and read. Corresponding exact retained-node texts and margin context read; clipped comments not reconstructed. AIM original hashes verified.",
+        "residual_disposition": "docx-residual-disposition.json",
+        "visual_pages": [
+          7,
+          8,
+          70
+        ],
+        "new_page_media_table_credit": 0,
+        "production_index_eligible": false
+      }
+    },
+    {
+      "private_packet_sha256": "080b25591e007a6c6ea7ca98d1969077d1ab8ad07fa537c5efc00ac095f96917",
+      "recorded_packet": {
+        "id": "SDD-TEXT-20260930-CONTINUATION18-THIRD",
+        "new_claims": [
+          {
+            "id": "knipper-c18-shipment-upload-content-timing",
+            "statement": "Knipper describes shipment confirmation uploads containing shipment header, detail, comments and shipping-container information. Its passage selects shipments that have reached Load Confirm Pending and also says files are generated after load confirmation.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p013-b010"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The source presents both eligibility and generation wording. It is not a verified polling predicate, timing guarantee, complete schema or resolution of the separate page107 load-status ambiguity.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          },
+          {
+            "id": "knipper-c18-blind-mobile-exit-remains-open",
+            "statement": "Knipper explicitly says exiting a receipt in Warehouse Mobile during blind receiving does not close the receipt; users may return to continue receiving.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p029-b009"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. This is a source-described distinction between leaving a screen and closing the business receipt. It does not establish reopen-after-close behavior, unrestricted editing or authority to perform receiving.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          },
+          {
+            "id": "knipper-c18-missing-receipt-and-item-gates",
+            "statement": "Knipper says product cannot be checked in without receipt information in SCALE. For product absent from both the receipt and item master, its design moves product away from the dock, coordinates supervisor/procurement action, interfaces an item master when receiving is required, then creates and interfaces a new host receipt.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p033-b006",
+                  "p033-b008"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The new-host-receipt path is a site procedure. It is not an instruction to create production records, a universal receipt source restriction or proof that physical delivery has already become system inventory.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          },
+          {
+            "id": "knipper-c18-damage-disposition-location-routing",
+            "statement": "Knipper damage receiving uses a Damage Preference, derives a held Damage Hold inventory status from the entered disposition code and assigns a locating rule directing product to a damaged area.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p033-b009"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. This describes a damage-specific path and extends the separately retained screenshot fields with prose routing meaning. It does not define every preference/status mapping or establish that held status alone prevents allocation.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          },
+          {
+            "id": "knipper-c18-locating-versus-putaway",
+            "statement": "Knipper distinguishes locating, which selects a storage destination for a checked-in receipt container using rule sequences, from putaway, which executes the movement from the receiving dock to that destination. Successful locating in the described flow creates movement work.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p035-b004"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. This is a scoped process explanation, not an assertion that every possible receipt preference creates separate putaway work or a physical movement observation.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          },
+          {
+            "id": "knipper-c18-locating-recheck-in-before-putaway",
+            "statement": "Knipper describes reviewing transaction/process history for Supervisor Location exceptions, correcting the cause and canceling check-in only if the container has not been uploaded before checking in again. A margin reply limits the discussion to correcting the destination before putaway execution.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p035-b007",
+                  "p035-b014",
+                  "p035-b015"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The upload guard and pre-putaway scope are material. This is not a generic recovery procedure for already uploaded or put-away inventory; no cancellation or transaction change was performed.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          },
+          {
+            "id": "knipper-c18-putaway-lpn-work-start",
+            "statement": "Knipper uses the pallet/LPN ID as its receipt-putaway work unit in a user-directed profile. Scanning that LPN assigns the work to the user; after dock/item/quantity display and confirmation, the described flow changes the LPN to In Putaway and displays the destination.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p038-b019",
+                  "p038-b020"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. This addresses work startup only, not completed putaway or inventory-status release. The separate inspection-status and EX37 custom-event claims remain applicable.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          },
+          {
+            "id": "knipper-c18-location-override-validation-and-count-option",
+            "statement": "Knipper allows secured users to scan an alternative putaway location, validates its suitability and that nothing else is directed there, updates work and LPN, and records transaction history. The Locate option instead applies a chosen locating rule. The source also describes an option to create an activity-based count at the original destination.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p040-b005"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The count is optional, not guaranteed after every override. Neither a deployed permission nor the detailed validation predicates are established; no override was executed.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          },
+          {
+            "id": "knipper-c18-cycle-count-proximity-or-user-direction",
+            "statement": "Knipper describes Standard cycle counting for active and reserve locations. In its mobile Work flow a scanned location can anchor selection of nearby count work; a user-directed path instead scans the specific location to count. Assigned work displays location/item information and requests quantity.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p049-b013"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The passage does not specify a distance algorithm, authorize arbitrary locations or complete the later verification/reconciliation rules. Those remain in earlier count records.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          },
+          {
+            "id": "knipper-c18-replenishment-master-need-and-demand",
+            "statement": "Knipper describes replenishment masters as defining request generation for either location need or demand from a wave/order pool; rule sequences specify the replenishment strategy. Its margin comment separately lists wave-generated, permanent-location capacity and manual-transfer means.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p053-b007",
+                  "p053-b008",
+                  "p053-b009"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. This preserves the comment as an attributed distinction without equating every manual inventory transfer to a replenishment-master request. Existing capacity-UOM and future real-time qualifications remain unchanged.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          },
+          {
+            "id": "knipper-c18-staging-loading-confirmation-distinction",
+            "statement": "Knipper separates staging containers for later transport, optional consolidation on parent pallets, loading containers/pallets through a dock door and load confirmation representing departure and removal from four-wall stock. Carrier assignment may occur systematically during a wave or manually afterward.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p067-b003",
+                  "p067-b004",
+                  "p067-b005"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. These are documentary process meanings, not physical departure verification or an automatic real-time ledger guarantee. The source does not make every staging step or parent-pallet consolidation mandatory.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          },
+          {
+            "id": "knipper-c18-shipment-status-summary-and-pool-boundary",
+            "statement": "Knipper describes shipment trailing status as the least advanced associated container status and leading status as the most advanced. Its listed In Pool Pending state prevents wave selection during interface processing; In Pool identifies a shipment not yet processed in a wave against which work cannot yet be performed.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p067-b006",
+                  "p067-b007",
+                  "p067-b008"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. Retained AIM independently supports these base meanings. The source list is not an exhaustive deployment-specific status inventory, and a header summary does not prove every container has the same status.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD",
+            "corroborating_sources": [
+              {
+                "module": "AIM",
+                "article_id": "5457fa08c32aa8b1137227340752ca7675d89f3e0a75f512094c3fb5a453b39d",
+                "title": "Status Process Summary: Functionality",
+                "source_path": "AIM/source/html/2cc05e7c1cef1d68ccd7fc8901c12905c61f6b49b9e3d4d1a3ae28f3a0f59119.htm",
+                "source_sha256": "2cc05e7c1cef1d68ccd7fc8901c12905c61f6b49b9e3d4d1a3ae28f3a0f59119",
+                "reading_path": "AIM/reading/5457fa08c32aa8b1137227340752ca7675d89f3e0a75f512094c3fb5a453b39d.md",
+                "node_ids": [
+                  "n190",
+                  "n121",
+                  "n124"
+                ],
+                "limits": "Base leading/trailing and two pool-state meanings only. No deployed status-flow or site configuration assertion."
+              }
+            ]
+          },
+          {
+            "id": "knipper-c18-shipment-interface-correction-reprocess",
+            "statement": "Knipper describes reviewing failed shipment imports in Interface Error Insight, correcting their errors, then reprocessing through the next scheduled download or a manually invoked interface. An adjacent question about who can perform corrections is marked resolved without a replacement responsibility rule.",
+            "classification": "implementation_specific_choice",
+            "citations": [
+              {
+                "document_id": "sdd-1c25f20de1eafc3e",
+                "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+                "nodes": [
+                  "p068-b017",
+                  "p068-b015",
+                  "p068-b016"
+                ]
+              }
+            ],
+            "review_state": "SOURCE_REVIEWED_BOUNDED",
+            "limits": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The resolved comment does not establish that warehouse staff can fix every interface error, grant permissions or provide a complete diagnostic procedure. Existing host/middleware placeholders remain unresolved.",
+            "review_batch": "SDD-TEXT-20260930-CONTINUATION18-THIRD"
+          }
+        ],
+        "new_settings": [],
+        "source_path": "J Knipper - Manhattan Active SCALE Implementation Solution Design Document v1.3  2024-12-10 (Final).pdf",
+        "source_sha256": "1c25f20de1eafc3e78be4c4c3fc50b5a82dfcab4803f827a9d4d6824179c1ca1",
+        "source_version": "Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. ",
+        "newly_cited_nodes": [
+          "p013-b010",
+          "p029-b009",
+          "p033-b006",
+          "p033-b008",
+          "p033-b009",
+          "p035-b004",
+          "p035-b007",
+          "p035-b014",
+          "p035-b015",
+          "p038-b019",
+          "p038-b020",
+          "p040-b005",
+          "p049-b013",
+          "p053-b007",
+          "p053-b008",
+          "p053-b009",
+          "p067-b003",
+          "p067-b004",
+          "p067-b005",
+          "p067-b006",
+          "p067-b007",
+          "p067-b008",
+          "p068-b015",
+          "p068-b016",
+          "p068-b017"
+        ],
+        "counts": {
+          "claims_before": 334,
+          "claims_after": 347,
+          "settings_after": 288,
+          "cited_before": 2817,
+          "cited_after": 2842,
+          "denominator": 11618
+        },
+        "pages_rerendered": [
+          13,
+          29,
+          33,
+          35,
+          36,
+          38,
+          40,
+          49,
+          53,
+          67,
+          68
+        ],
+        "duplicate_conflict_disposition": "Prior records intact. C8-C16 reviewed scopes not reimplemented; adjacent previously reviewed material used as context only. No fresh claim based on unvalidated table candidate extraction. Upload eligibility/generation wording kept bounded.",
+        "new_page_asset_table_credit": 0,
+        "production_index_eligible": false
+      }
+    }
+  ],
+  "residual_disposition": "SDD/derived/work-haddad-residual-disposition.json",
+  "residual_disposition_sha256": "427483728db1bfc0faf762a09aefd2b969e41d9d685bf88c2a28efb5be9d43e9",
+  "review_state": "FIVE_PACKETS_INDEPENDENTLY_VERIFIED_AND_INTEGRATED",
+  "additional_integrated_packets": {
+    "ledger": "SDD/derived/residual-disposition-continuation18.json",
+    "ledger_sha256": "0f8d09d705a6032ee98dcdf468ebb9cc8d3af900828aff55c6582f9e272ebb0c",
+    "claims_added": 26,
+    "settings_added": 4,
+    "new_citation_nodes": 59,
+    "discovery_hints_dispositioned": 125,
+    "private_integration_receipt_sha256": "47cac152f8036cb7c718332e5e240642b31fd4f717c1b688088e05399b3b3a4b",
+    "knipper_peer_receipt_sha256": "7562b4325db122fb34ed8cf7622a7158282ab583f3fcfc0af5238ab759867d6b",
+    "grupo_peer_receipt_sha256": "2fbe4376731b7735311f12e6072679152dd9cb33189ebff4077ab17b04f6d45c",
+    "limits": "Historical proposal states are retained in the ledger; accepted-record citations alone establish the current union. Three repeated Grupo settings and one repeated Knipper claim were removed before integration."
+  },
+  "preservation": "All nine originals and all pre-C18 curated records preserved; original hashes checked after the final source packet.",
+  "limits": [
+    "No whole-source semantic completion claimed.",
+    "No additional page, slide, media or logical-table credit.",
+    "Reference-site choices and conflicts do not establish TAB behavior or universal defaults.",
+    "Long-prose candidate counts are discovery hints, not unresolved-claim denominators."
+  ]
+}

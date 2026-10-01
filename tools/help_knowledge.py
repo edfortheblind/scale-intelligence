@@ -317,6 +317,21 @@ class Knowledge:
             return {'question': question, 'state': 'NEEDS_CONTEXT', 'scope': GENERAL_SCOPE,
                     'clarification': 'Enter the setting or field name, the screen where you see it, and what you want it to do. For example: Packing Preferences — Validate Item. Do not include credentials or transaction data.',
                     'results': []}
+        # An unnamed operation has no resolvable subject in this stateless
+        # search. Keep any distinguishing term on the ordinary search path;
+        # generic execution/result words alone must not select a routine.
+        operation_words = set(('routine routines function functions procedure procedures helper helpers operation operations gate gates '
+                               'all always any atomic automatically back both change changes commit commits committed each every '
+                               'guarantee guarantees no none result results return returned returning returns roll rolled '
+                               'rollback row rows same serialized sets step steps transaction transactions '
+                               'zero one two three four five six seven eight nine ten').split())
+        has_referent = bool(set(terms) & {'this', 'that', 'these', 'those', 'it', 'its'}) or bool(
+            re.search(r'\bthe\s+(?:routine|function|procedure|helper|operation|gate)\b', question, re.IGNORECASE))
+        subject_terms = {term for term in terms if not term.isdecimal()}
+        if has_referent and set(terms) & operation_words and not subject_terms - generic - operation_words - {'its'}:
+            return {'question': question, 'state': 'NEEDS_CONTEXT', 'scope': GENERAL_SCOPE,
+                    'clarification': 'Enter the operation or routine name, or the screen and action you mean. For example: inventory adjustment — rollback. Do not include credentials or transaction data.',
+                    'results': []}
         # Common words do not distinguish processes. Never index evaluation
         # questions/expectations: held-out retrieval remains an actual check.
         stop = set('a an and are as at be by can do does for from how i in is it me my of on or our the their there these this to was we what when which who why will with you your'.split())

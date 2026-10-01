@@ -2,7 +2,7 @@
 
 These records explain supplied documentation, not active settings. Each states its product/version scope. Proposed validation steps have not been executed. Defaults and precedence remain unknown where the source does not state them. MAWM examples are explicitly separate and cannot be transferred to SCALE.
 
-283 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
+292 records. See [review coverage](REVIEW_COVERAGE.md) and [logical tables](TABLE_REVIEW.md).
 
 ## Work Unit Field
 
@@ -4107,3 +4107,138 @@ Distinguish a named inactive receiving preference from the active illustrated re
 - Classification: `implementation_specific_choice`.
 
 Sources: [sdd-f46806ef53e15f07 b00268, b00269, b00271, b00272, b00274, b00276](reading/sdd-f46806ef53e15f07.md#b00268)
+
+## Shipping XML Upload and directory
+
+Preserve the named enablement and destination example for shipment XML upload.
+
+- Scope: Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration.
+- Accepted values: The source requires Shipping XML Upload under Interface Process and gives https://{storage}/ils/Interface/Upload/Shipping/.
+- Default: No universal product default or active deployed value established.
+- Precedence and dependencies: The source explains that {storage} is replaced with the client Azure Storage information and the directory is configured in Interface Process Detail. Eligibility still depends on the separately reviewed shipping upload criteria. This is a template, not a usable TAB endpoint.
+- Related process: Interfaces
+- Validation: Source review only; no configuration query, change, scheduled job or operational interface executed.
+- Classification: implementation_specific_choice
+
+Sources: [sdd-d50ca4a96095c930 p021-b003, p022-b014](reading/sdd-d50ca4a96095c930.md#p021-b003)
+
+
+## Inventory Transaction XML Upload and directory
+
+Preserve the named enablement and destination example for inventory-transaction XML upload.
+
+- Scope: Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration.
+- Accepted values: The source requires Inventory Transaction XML Upload under Interface Process and gives https://{storage}/ils/Interface/Upload/Inventory/.
+- Default: No universal product default or active deployed value established.
+- Precedence and dependencies: The source client-storage substitution applies. Enablement does not override the site decision not to interface every adjustment at the moment it occurs, establish its selection policy, or prove host receipt. This is a template, not a usable TAB endpoint.
+- Related process: Interfaces
+- Validation: Source review only; no configuration query, change, scheduled job or operational interface executed.
+- Classification: implementation_specific_choice
+
+Sources: [sdd-d50ca4a96095c930 p021-b008, p022-b014](reading/sdd-d50ca4a96095c930.md#p021-b008)
+
+
+## Proposed Item Balance generation frequency
+
+Keep the proposed recurring generation distinct from the described annual use and existing XML enablement contract.
+
+- Scope: Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration.
+- Accepted values: Weekly generation is proposed; exact day and time remain deferred to testing.
+- Default: No universal product default or active deployed value established.
+- Precedence and dependencies: The adjacent prose says weekly use will be evaluated. The existing Item Balance XML Upload record describes enablement and directory, not a completed schedule. No default frequency or executed job is inferred.
+- Related process: Interfaces
+- Validation: Source review only; no configuration query, change, scheduled job or operational interface executed.
+- Classification: implementation_specific_choice
+
+Sources: [sdd-d50ca4a96095c930 p021-b010](reading/sdd-d50ca4a96095c930.md#p021-b010)
+
+## Allow duplicate serial numbers across different items
+
+Distinguish a cross-item serial-number allowance from duplicate entry of the same item serial.
+
+- Scope: Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. Historical site example; not TAB or a universal default.
+- Accepted values: Knipper calls for permitting the same serial number on two different items. Its comment qualifies the discussion to non-DSCSA inventory. Retained AIM Inventory Control Values describes value key 50: N prohibits cross-item duplicates; Y permits them and enables the serial-template Allow Duplicates checkbox.
+- Default: No universal default or active deployed value is established.
+- Precedence and dependencies: This does not establish permission for duplicate serials within the same item, disable every receiving validation, or define DSCSA uniqueness rules. The site choice and base configuration semantics are separately sourced.
+- Related process: Inventory tracking and container creation
+- Validation: Source review only; no item, configuration or inventory query/change or warehouse operation was performed.
+- Classification: implementation_specific_choice
+
+Sources: [sdd-1c25f20de1eafc3e p007-b004, p007-b005, p007-b006, p007-b007](reading/sdd-1c25f20de1eafc3e.md#p007-b004)
+
+Corroboration: [Inventory Control Values](../../AIM/reading/17c7631372b173331bccefa89340096c52f8384532cc1f65e44defd510aa1606.md) nodes n88, n90. Exact value key and cross-item/template-enablement semantics only; no observed site setting or same-item duplicate permission.
+
+## Treat as Loose for repacking
+
+Explain why a unit of measure may be excluded from full-container creation.
+
+- Scope: Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. Historical site example; not TAB or a universal default.
+- Accepted values: Knipper assumption 26 sets Treat as Loose Y for eligible item UMs needing repacking before shipment and N when the existing package can ship.
+- Default: No universal default or active deployed value is established.
+- Precedence and dependencies: Retained AIM container-creation flow explains that active Treat as Loose prevents full containers for inventory allocated in that UM; when no item-UOM is configured, it refers to the shipment-line value. This does not imply N guarantees shipment eligibility or that the site flag is deployed.
+- Related process: Inventory tracking and container creation
+- Validation: Source review only; no item, configuration or inventory query/change or warehouse operation was performed.
+- Classification: implementation_specific_choice
+
+Sources: [sdd-1c25f20de1eafc3e p007-b025](reading/sdd-1c25f20de1eafc3e.md#p007-b025)
+
+Corroboration: [Container Creation in the Wave Process Summary: Process Flows](../../AIM/reading/58b174b614d3d98ce179aa9b0caea4e04491798b8bb583ec3c58787a502560eb.md) nodes n99, n101. Full-container-creation and missing-item-UOM fallback only; site repacking choices remain SDD evidence.
+
+## Group during check-in UOM scope
+
+Preserve the documented grouping choices and pallet warning.
+
+- Scope: Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established.
+- Accepted values: Knipper assumption15 selects Group during check-in Yes for EA, PK, ROLL and CS. A reply warns grouping PL can create one LPN for more than one pallet and recommends one LPN per pallet.
+- Default: No universal default or active deployed value is established.
+- Precedence and dependencies: Do not infer that the omitted PL flag was observed as No. The later resolved marker records review status, not a runtime test or a universal one-pallet rule.
+- Related process: Historical receiving or work-assignment configuration
+- Validation: Source review only; no setting inspection, operational execution or configuration change.
+- Classification: implementation_specific_choice
+
+Sources: [sdd-1c25f20de1eafc3e: p006-b017, p006-b010, p006-b011, p006-b012, p006-b013](reading/sdd-1c25f20de1eafc3e.md#p006-b017)
+
+
+## System-directed assignment order and optional escalation
+
+Distinguish base task-order combinations from later priority escalation.
+
+- Scope: Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established.
+- Accepted values: Knipper lists Priority/Location/FIFO, Location/Priority/FIFO and FIFO. It describes potentially raising selected work priorities using Work Priority Escalation Criteria together with a scheduled-job interval.
+- Default: No universal default or active deployed value is established.
+- Precedence and dependencies: No numeric priority, escalation interval or active job is supplied. The source says comparable priorities permit location proximity ordering; it does not prove physical shortest-route optimization. The separate machine-type reply and C18 sequence-assumption tension remain unchanged.
+- Related process: Historical receiving or work-assignment configuration
+- Validation: Source review only; no setting inspection, operational execution or configuration change.
+- Classification: implementation_specific_choice
+
+Sources: [sdd-1c25f20de1eafc3e: p093-b003, p093-b005](reading/sdd-1c25f20de1eafc3e.md#p093-b003)
+
+
+## Grupo Julio item units and storage assumptions
+
+Preserve the source-site unit and storage choices.
+
+- Scope: Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established.
+- Accepted values: Host supplies UOM dimensions and weights; CM dimensions and KG weights. One pza storage template with one pza UOM; Group during check-in Yes; capacity maintained by Item; item class Doblado; no decimal inventory quantities.
+- Default: Not established as a product default; these are source-site choices or examples.
+- Precedence and dependencies: The source lists these assumptions together; it supplies no conversion factors or assessed configuration.
+- Related process: Item master and receiving storage
+- Validation: Proposed review only: compare against authorized version-matched configuration and operational evidence. No configuration read, write or process execution was performed.
+- Classification: implementation_specific_choice
+
+Sources: [sdd-d50ca4a96095c930: p011-b003](reading/sdd-d50ca4a96095c930.md#p011-b003)
+
+
+## Grupo Julio work selection and possible escalation
+
+Preserve the difference between selection ordering and optional later escalation.
+
+- Scope: Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established.
+- Accepted values: Priority/Location/FIFO, Location/Priority/FIFO or FIFO. Work Priority Escalation Criteria can select task types with an interval supplied by a scheduled job.
+- Default: Not established as a product default; these are source-site choices or examples.
+- Precedence and dependencies: The source says Grupo Julio may want escalation over time; no chosen sort order, job interval or active criteria are established. Equal priorities are discussed so location proximity can govern within priority-led ordering.
+- Related process: System-directed work assignment
+- Validation: Proposed review only: compare against authorized version-matched configuration and operational evidence. No configuration read, write or process execution was performed.
+- Classification: implementation_specific_choice
+
+Sources: [sdd-d50ca4a96095c930: p072-b007, p072-b008, p073-b003](reading/sdd-d50ca4a96095c930.md#p072-b007)

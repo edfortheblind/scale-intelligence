@@ -2,6 +2,8 @@
 
 Only cited portions are reviewed. Full source hashes and exact nodes are in [reviewed-knowledge.json](reviewed-knowledge.json). Later visual/table evidence is an overlay; retained extraction JSON keeps its extraction-time exceptions. See [coverage](REVIEW_COVERAGE.md) and [logical-table audit](TABLE_REVIEW.md).
 
+C18 layout overlay: all four unique DOCX bodies have PDF exports and complete visual inspection of 541 pages. The [fidelity receipt](../../_project/DOCX_LAYOUT_C18.md) documents the HADDAD diagram and LAND header-background compensations, unchanged source hashes, dynamic export fields and source limitations. Earlier per-record statements that a DOCX was not rendered describe their extraction/review stage; they do not override this current layout evidence. Page viewing does not establish complete semantic interpretation, accessible-PDF reading order or live-link behavior.
+
 ## Product and document identity
 
 - **SCALE** (`sdd-61bfda888fe30365`): Not established in supplied body; Not established. Training compilation; no exact SCALE release established. Do not inherit a release from nearby files. Sources: [sdd-61bfda888fe30365 b00001, b00002, b00003](reading/sdd-61bfda888fe30365.md#b00001)
@@ -395,7 +397,7 @@ Static source illustration only; no live behavior, accessibility or deployed val
 - Extracted source bodies include source examples and notices. No public redistribution or production search eligibility follows.
 - Only the listed claims, settings, product markers and visual descriptions received this semantic review; extracted nodes outside their citations remain unreviewed.
 - All 45 PPTX slides were visually reviewed after native read-only PowerPoint 16.0 export at 1440x1080. This is static-slide review, not animation, notes, reading-order or font-by-font certification. Several source code screenshots are clipped, notably slides 26, 28, 35 and 36; no complete executable example is inferred.
-- DOCX full-page fidelity remains unverified: native Word export failed to finish and produced no PDF. Selected extracted PNG/EMF assets received separate visual review. Untouched extraction JSON retains original extraction-time limitations; this review overlay records later evidence.
+- DOCX visual-page review is complete for 4/4 unique bodies and 541 exported pages. Earlier Word export failures are historical. Source defects, compensated PDF changes, dynamic fields and accessibility/link limits remain explicit in the C18 fidelity receipt; unchanged extraction JSON retains its extraction-time limitations.
 - PDF prose, comment balloons and screenshots are distinct evidence. Knipper replenishment UOM annotations question body wording; Knipper and Covetrus non-lot strategy prose conflicts with their tables. These remain unresolved.
 - HADDAD b00164 says multiple UMs cannot be created for an item, while surrounding template/item-UM discussion is ambiguous. This sentence is not promoted as a configuration rule.
 - The label deck slide 30 contains incomplete-looking SQL examples ending with AND before a closing delimiter. Embedded code and direct-printer SQL semantics are not validated; source references to external label services were not followed or uploaded to.
@@ -6663,3 +6665,479 @@ In the Knipper wave flow, replenishment work creation applies only to demand-bas
 This is a Knipper SCALE implementation design statement. It does not establish current deployed behavior, actual work types or the contents of existing setup. It specifies no setting value or trigger timing. Classification: `implementation_specific_choice`.
 
 [sdd-1c25f20de1eafc3e p085-b007](reading/sdd-1c25f20de1eafc3e.md#p085-b007)
+
+## Continuation 18 Grupo Julio interface and receiving packets
+
+### grupo-c18-shipment-upload-content
+
+The Grupo Julio design describes shipment uploads containing header, detail, comment and shipping-container information, with inventory attributes and serial numbers when that inventory has them. Generation follows configured shipment statuses.
+
+Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration. This extends the existing status-transition claim with the described payload families. It is not an exhaustive schema, proof of delivered files, a fixed upload status or a guarantee that every record has serial data. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p021-b003](reading/sdd-d50ca4a96095c930.md#p021-b003)
+
+Corroboration: [Interface Process Summary: Functionality](../../AIM/reading/178aec6d3faf8830199512924f58cf463d20acfbc6b6485c40a0948c32a1cd0e.md) node n152. Corroborates payload families and interface purposes only; does not prove site schedule, exact XML configuration or deployment.
+
+### grupo-c18-inventory-upload-eligibility-versus-timing
+
+The Grupo Julio design describes inventory adjustments and status changes as eligible for host upload, while explicitly choosing not to interface every adjustment at the moment it occurs.
+
+Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration. Eligibility and site timing are distinct. The passage supplies no complete selection predicate, buffering rule, retry guarantee, schedule or proof of ERP receipt. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p021-b008](reading/sdd-d50ca4a96095c930.md#p021-b008)
+
+Corroboration: [Interface Process Summary: Functionality](../../AIM/reading/178aec6d3faf8830199512924f58cf463d20acfbc6b6485c40a0948c32a1cd0e.md) node n156. Corroborates payload families and interface purposes only; does not prove site schedule, exact XML configuration or deployment.
+
+### grupo-c18-item-balance-current-versus-proposed
+
+Grupo Julio describes using Item Balance for annual inventory, then evaluating weekly generation for earlier discrepancy detection. Its adjacent configuration note proposes weekly generation with the exact day and time deferred to testing; the prose says this would not automatically affect fiscal inventory.
+
+Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration. Preserve current-use wording separately from the proposed schedule. No implemented weekly job, reconciliation completion or accounting effect is established. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p021-b010](reading/sdd-d50ca4a96095c930.md#p021-b010)
+
+Corroboration: [Interface Process Summary: Functionality](../../AIM/reading/178aec6d3faf8830199512924f58cf463d20acfbc6b6485c40a0948c32a1cd0e.md) node n164. Corroborates payload families and interface purposes only; does not prove site schedule, exact XML configuration or deployment.
+
+### grupo-c18-custom-quality-before-receipt-interface
+
+Grupo Julio describes a custom inbound quality process before ERP purchase-order creation and SCALE receipt interfacing, expressly excluding base SCALE Inbound QC. Its example samples 10 to 15 percent, while the unloading section allows a larger sample when quality issues are detected.
+
+Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration. These are attributed site procedures and sampling examples, not SCALE default inspection percentages or a general prerequisite for receiving. The source discusses reprocessing or exceptional destruction; it does not authorize either action in TAB. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p031-b003, p032-b003](reading/sdd-d50ca4a96095c930.md#p031-b003)
+
+### grupo-c18-shortage-recording-practice-qualified
+
+The unloading text continues across pages 31 and 32 by saying Grupo Julio receives a missing quantity and later adjusts it with ERP coordination. The shortage section also describes receiving missing products under a different inventory status and coordinating adjustments, alongside manual receipt closure when the remaining balance is no longer expected.
+
+Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration. The passages do not fully explain whether or how their alternatives reconcile. Preserve that ambiguity rather than turn this historical site practice into an instruction to record stock that was not physically received. The prior receiving-exception claim remains valid but is not the complete shortage discussion. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p031-b003, p032-b002, p039-b004](reading/sdd-d50ca4a96095c930.md#p031-b003)
+
+### grupo-c18-unknown-product-master-before-receipt
+
+For product absent from both the receipt and Item Master, Grupo Julio describes supervisor coordination, physical removal from the receiving-dock path, interfacing the item master when the product is to be received, and then creating and interfacing a new host receipt.
+
+Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration. This is the source site procedure. Its separate missing-receipt paragraph allows blind receipts for certain client returns; that exception does not establish permission to receive a product missing from Item Master. No live validation or universal manual-receipt restriction is inferred. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p040-b003](reading/sdd-d50ca4a96095c930.md#p040-b003)
+
+### grupo-c18-damage-location-allocation-separation
+
+Grupo Julio describes damaged inventory in a specific multi-item location excluded from regular allocation location selections. A separate selection permits shipping damaged product; quality review distinguishes stock to transfer to picking from stock needing adjustment.
+
+Grupo Julio Manhattan Active SCALE design v1.5 (2024-09-03); document revision is not a product release. Historical implementation reference, not TAB configuration. The design couples status and location selection. A Damaged label alone is not an allocation block: retained AIM inventory-status documentation also requires allocation rules to enforce exclusion. No active status, location, allocation rule or permission to release damaged stock is established. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930 p040-b003](reading/sdd-d50ca4a96095c930.md#p040-b003)
+
+Corroboration: [Reviewing Inventory Statuses](../../AIM/reading/ac3f13ba881f41d48d5cb58449fb1b516d4bbfbfea3b948c6c5428ab9832abdd.md) nodes n58. Corroborates that inventory status alone does not prevent allocation; the site location selections remain SDD-only evidence.
+
+## Continuation 18 second: Knipper assumptions and residual text
+
+### knipper-c18-dummy-expiration-fefo-exception
+
+Knipper explicitly describes some legacy lot-controlled items without expiration tracking: dummy expiration dates were set at the original implementation, and those lots or dates are not used for FEFO.
+
+Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This qualifies the general lot/FEFO descriptions; it does not supply the exclusion predicate, authorize dummy dates or establish TAB lot policy. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p007-b025](reading/sdd-1c25f20de1eafc3e.md#p007-b025)
+
+### knipper-c18-location-sequence-assumption-tension
+
+Knipper assumption 39 says picking/putaway sequence is not used and location template supplies the order-by clause. A review reply permits location sequences when assigned, while the later cart description says multi-item cart picks use pick sequence.
+
+Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. The earlier knipper-pick-sequence-and-cart-order record remains a valid description of the later passage, but cannot alone establish one consistent site ordering. The resolved comment allows flexibility without replacing the nonuse assumption or proving active configuration. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p008-b027, p008-b003, p008-b004, p008-b005, p008-b006, p085-b004, p085-b011](reading/sdd-1c25f20de1eafc3e.md#p008-b027)
+
+### knipper-c18-location-check-digit-assumption-conflict
+
+Knipper assumption 45 says location check digits are not used for location verification, but the replenishment execution procedure explicitly requires scanning the location check digit for the pick.
+
+Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. Preserve both statements. The source supplies no explicit exception reconciling the assumption with that procedure, so it cannot establish a site-wide verification rule or TAB prompts. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p008-b027, p061-b003](reading/sdd-1c25f20de1eafc3e.md#p008-b027)
+
+### knipper-c18-obsolete-item-host-noncleanup
+
+Knipper assumption 46 says its host does not send Item Master delete messages and obsolete items are not marked inactive.
+
+Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This is a historical integration choice, not a SCALE inability to delete/deactivate items or proof that an item remaining active is currently used. No cleanup, deletion or data query is authorized. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p008-b027](reading/sdd-1c25f20de1eafc3e.md#p008-b027)
+
+### knipper-c18-physical-versus-system-packing-location
+
+Knipper distinguishes several possible physical packing locations from one systematic packing location per warehouse in its design.
+
+Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This is the source site model, not a SCALE maximum or a recommendation to merge locations. It does not identify a current location record or the layout of TAB. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p008-b027](reading/sdd-1c25f20de1eafc3e.md#p008-b027)
+
+### knipper-c18-receiving-entrypoint-account-choice
+
+Knipper assumption 59 selects Receipt Workbench for most accounts, mainly MSM, because many products lack item/lot barcodes, and Warehouse Mobile receiving for 3PL accounts.
+
+Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. These source choices do not prove that either interface is unavailable for other accounts, that every item lacks a barcode, or that a deployment uses this partition. Existing custom serial/DSCSA requirements remain separate. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p008-b027](reading/sdd-1c25f20de1eafc3e.md#p008-b027)
+
+### knipper-c18-wave-not-truck-load-boundary
+
+Knipper describes waving by order priority or cutoff time and explicitly says LTL/TL waves are not sized by cubing for one truck, so one wave may produce multiple load numbers.
+
+Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This is a site strategy illustrating the distinction between wave and load. It does not establish universal cardinality, actual truck capacity or deployed shipment assignments. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p070-b006](reading/sdd-1c25f20de1eafc3e.md#p070-b006)
+
+### knipper-c18-planned-filter-line-includes-shipment
+
+Knipper describes Planned Shipment filters using shipment or shipment-line criteria. When a shipment line matches a pool-view rule, the entire shipment is selected for that view.
+
+Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This passage concerns which shipments appear in Planned Shipment Insight. It does not itself create a wave, execute allocation or assert that every line matches. The separate future Build Wave claim concerns another operation. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p070-b006](reading/sdd-1c25f20de1eafc3e.md#p070-b006)
+
+### knipper-c18-dscsa-excluded-detail-boundary
+
+Knipper assumption 19 excludes the DSCSA workflow from this document while pointing to inbound and outbound extensions; it defers integration and deployment strategy to conversion planning. A review reply promises separate serialization design documents.
+
+Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. The extension callouts elsewhere in the SDD are not a complete serialization or regulatory-compliance contract. No deployment, compliance acceptance or additional document availability is inferred. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p007-b025, p007-b011](reading/sdd-1c25f20de1eafc3e.md#p007-b025)
+
+### knipper-c18-split-load-upload-host-assumption
+
+Knipper assumption 42 expects middleware or the host to handle multiple upload files when load confirmation splits a shipment.
+
+Knipper Manhattan Active SCALE reference design; revision history v1.3 (2024-12-10), cover 1.0. Neither revision identifies the installed product release. This is an integration assumption, not verified host capability, a file schema, retry/idempotency contract or a guarantee that each shipment always produces one upload. Actual integration behavior remains unobserved. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p008-b027](reading/sdd-1c25f20de1eafc3e.md#p008-b027)
+
+The separate exact-difference text pass dispositioned 573 uncited Work/Picking nodes and 259 uncited HADDAD nodes. Of these, 486 are blank/structural and 346 contain headings, field labels, links, table-of-contents text, source-scope labels or related overview/procedure context without claimed equivalence. This pass adds no claim or citation credit and does not certify every statement inside previously cited nodes or DOCX page layout.
+
+## Continuation 18 third: Knipper process distinctions
+
+### knipper-c18-shipment-upload-content-timing
+
+Knipper describes shipment confirmation uploads containing shipment header, detail, comments and shipping-container information. Its passage selects shipments that have reached Load Confirm Pending and also says files are generated after load confirmation.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The source presents both eligibility and generation wording. It is not a verified polling predicate, timing guarantee, complete schema or resolution of the separate page107 load-status ambiguity. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p013-b010](reading/sdd-1c25f20de1eafc3e.md#p013-b010)
+
+### knipper-c18-blind-mobile-exit-remains-open
+
+Knipper explicitly says exiting a receipt in Warehouse Mobile during blind receiving does not close the receipt; users may return to continue receiving.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. This is a source-described distinction between leaving a screen and closing the business receipt. It does not establish reopen-after-close behavior, unrestricted editing or authority to perform receiving. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p029-b009](reading/sdd-1c25f20de1eafc3e.md#p029-b009)
+
+### knipper-c18-missing-receipt-and-item-gates
+
+Knipper says product cannot be checked in without receipt information in SCALE. For product absent from both the receipt and item master, its design moves product away from the dock, coordinates supervisor/procurement action, interfaces an item master when receiving is required, then creates and interfaces a new host receipt.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The new-host-receipt path is a site procedure. It is not an instruction to create production records, a universal receipt source restriction or proof that physical delivery has already become system inventory. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p033-b006, p033-b008](reading/sdd-1c25f20de1eafc3e.md#p033-b006)
+
+### knipper-c18-damage-disposition-location-routing
+
+Knipper damage receiving uses a Damage Preference, derives a held Damage Hold inventory status from the entered disposition code and assigns a locating rule directing product to a damaged area.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. This describes a damage-specific path and extends the separately retained screenshot fields with prose routing meaning. It does not define every preference/status mapping or establish that held status alone prevents allocation. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p033-b009](reading/sdd-1c25f20de1eafc3e.md#p033-b009)
+
+### knipper-c18-locating-versus-putaway
+
+Knipper distinguishes locating, which selects a storage destination for a checked-in receipt container using rule sequences, from putaway, which executes the movement from the receiving dock to that destination. Successful locating in the described flow creates movement work.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. This is a scoped process explanation, not an assertion that every possible receipt preference creates separate putaway work or a physical movement observation. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p035-b004](reading/sdd-1c25f20de1eafc3e.md#p035-b004)
+
+### knipper-c18-locating-recheck-in-before-putaway
+
+Knipper describes reviewing transaction/process history for Supervisor Location exceptions, correcting the cause and canceling check-in only if the container has not been uploaded before checking in again. A margin reply limits the discussion to correcting the destination before putaway execution.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The upload guard and pre-putaway scope are material. This is not a generic recovery procedure for already uploaded or put-away inventory; no cancellation or transaction change was performed. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p035-b007, p035-b014, p035-b015](reading/sdd-1c25f20de1eafc3e.md#p035-b007)
+
+### knipper-c18-putaway-lpn-work-start
+
+Knipper uses the pallet/LPN ID as its receipt-putaway work unit in a user-directed profile. Scanning that LPN assigns the work to the user; after dock/item/quantity display and confirmation, the described flow changes the LPN to In Putaway and displays the destination.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. This addresses work startup only, not completed putaway or inventory-status release. The separate inspection-status and EX37 custom-event claims remain applicable. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p038-b019, p038-b020](reading/sdd-1c25f20de1eafc3e.md#p038-b019)
+
+### knipper-c18-location-override-validation-and-count-option
+
+Knipper allows secured users to scan an alternative putaway location, validates its suitability and that nothing else is directed there, updates work and LPN, and records transaction history. The Locate option instead applies a chosen locating rule. The source also describes an option to create an activity-based count at the original destination.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The count is optional, not guaranteed after every override. Neither a deployed permission nor the detailed validation predicates are established; no override was executed. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p040-b005](reading/sdd-1c25f20de1eafc3e.md#p040-b005)
+
+### knipper-c18-cycle-count-proximity-or-user-direction
+
+Knipper describes Standard cycle counting for active and reserve locations. In its mobile Work flow a scanned location can anchor selection of nearby count work; a user-directed path instead scans the specific location to count. Assigned work displays location/item information and requests quantity.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The passage does not specify a distance algorithm, authorize arbitrary locations or complete the later verification/reconciliation rules. Those remain in earlier count records. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p049-b013](reading/sdd-1c25f20de1eafc3e.md#p049-b013)
+
+### knipper-c18-replenishment-master-need-and-demand
+
+Knipper describes replenishment masters as defining request generation for either location need or demand from a wave/order pool; rule sequences specify the replenishment strategy. Its margin comment separately lists wave-generated, permanent-location capacity and manual-transfer means.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. This preserves the comment as an attributed distinction without equating every manual inventory transfer to a replenishment-master request. Existing capacity-UOM and future real-time qualifications remain unchanged. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p053-b007, p053-b008, p053-b009](reading/sdd-1c25f20de1eafc3e.md#p053-b007)
+
+### knipper-c18-staging-loading-confirmation-distinction
+
+Knipper separates staging containers for later transport, optional consolidation on parent pallets, loading containers/pallets through a dock door and load confirmation representing departure and removal from four-wall stock. Carrier assignment may occur systematically during a wave or manually afterward.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. These are documentary process meanings, not physical departure verification or an automatic real-time ledger guarantee. The source does not make every staging step or parent-pallet consolidation mandatory. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p067-b003, p067-b004, p067-b005](reading/sdd-1c25f20de1eafc3e.md#p067-b003)
+
+### knipper-c18-shipment-status-summary-and-pool-boundary
+
+Knipper describes shipment trailing status as the least advanced associated container status and leading status as the most advanced. Its listed In Pool Pending state prevents wave selection during interface processing; In Pool identifies a shipment not yet processed in a wave against which work cannot yet be performed.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. Retained AIM independently supports these base meanings. The source list is not an exhaustive deployment-specific status inventory, and a header summary does not prove every container has the same status. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p067-b006, p067-b007, p067-b008](reading/sdd-1c25f20de1eafc3e.md#p067-b006)
+
+Corroboration: [Status Process Summary: Functionality](../../AIM/reading/5457fa08c32aa8b1137227340752ca7675d89f3e0a75f512094c3fb5a453b39d.md) nodes n190, n121, n124. Base leading/trailing and two pool-state meanings only. No deployed status-flow or site configuration assertion.
+
+### knipper-c18-shipment-interface-correction-reprocess
+
+Knipper describes reviewing failed shipment imports in Interface Error Insight, correcting their errors, then reprocessing through the next scheduled download or a manually invoked interface. An adjacent question about who can perform corrections is marked resolved without a replacement responsibility rule.
+
+Knipper historical Active SCALE design; revision history v1.3 dated2024-12-10, cover1.0. No installed product release or TAB deployment is established. The resolved comment does not establish that warehouse staff can fix every interface error, grant permissions or provide a complete diagnostic procedure. Existing host/middleware placeholders remain unresolved. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e p068-b017, p068-b015, p068-b016](reading/sdd-1c25f20de1eafc3e.md#p068-b017)
+
+## Continuation 18 residual source review
+
+### Knipper bounded residual meanings
+
+12 claims and 2 settings add 32 exact citation nodes. The [125-candidate disposition ledger](RESIDUAL_DISPOSITION_CONTINUATION18.md) remains separate from semantic credit.
+
+#### knipper-c18r-location-uom-nonuse-comment-pending
+
+Knipper assumption28 says location unit-of-measure override is not used, while adjacent comments report further UOM-discrepancy review and a recommendation awaiting final confirmation.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. The external email thread is not part of the retained evidence. Preserve the body nonuse statement and pending review together; neither proves an enabled override, a resolved UOM issue or a current setting. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p007-b025, p007-b016, p007-b017](reading/sdd-1c25f20de1eafc3e.md#p007-b025)
+
+#### knipper-c18r-fedex-sow-comment-resolution
+
+Knipper initially questions adding FedEx and records a reply that only UPS, USPS and UPS Mail Innovations were named in the SOW. A later reply says the SOW was rechecked and FedEx is included, after discussing migration from SCALE2013.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. The later documentary reply resolves that earlier SOW concern within this comment thread; it is not proof of a signed SOW amendment, completed carrier migration or support for FedEx actions in Manifest Insight. The separately retained manifest-screen scope remains valid. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p008-b007, p008-b008, p008-b009, p008-b010, p008-b011, p008-b012](reading/sdd-1c25f20de1eafc3e.md#p008-b007)
+
+#### knipper-c18r-shipment-download-edi-header-details
+
+Knipper describes manual shipment creation for most accounts and automated downloads for EDI accounts. The EDI message has a warehouse-specific header, one or more item/ordered-quantity details and optional header/detail comments; header examples include customer, addresses, carrier and scheduled ship date.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. This is a site message-level description, not a complete API/XML schema or proof that all accounts interface shipments. The separate In Pool update/delete guard qualifies the paragraph about changes before waving. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p012-b005, p013-b004](reading/sdd-1c25f20de1eafc3e.md#p012-b005)
+
+#### knipper-c18r-inventory-upload-eligible-changes
+
+Knipper describes inventory-transaction uploads for inventory changes. Its continuation says inventory status and quantity changes are eligible and that an initial cycle-count discrepancy suspense transaction is uploaded to the host.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. Eligibility and source-described design do not establish an enabled schedule, exact transaction-type exclusions, delivery or host acceptance. The separately reviewed manual-receipt-close recommendation and its comments are not reinterpreted here. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p013-b011, p014-b004](reading/sdd-1c25f20de1eafc3e.md#p013-b011)
+
+#### knipper-c18r-pallet-receiving-single-item-lot
+
+The Knipper 3PL/Track-and-Trace pallet-receiving section describes single-item, single-lot pallets, either manually built or prebuilt, with DOC01 used to choose the receiving preference.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. This bounds this particular receiving flow; it does not forbid all multi-item/multi-lot workflows or supply the separately excluded complete DSCSA contract. Existing preference, UOM and serial-extension records remain unchanged. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p022-b010](reading/sdd-1c25f20de1eafc3e.md#p022-b010)
+
+#### knipper-c18r-blind-receipt-label-placement
+
+Knipper blind-receiving prose says locating and putaway-work creation accompany printing receipt-container label LBL01, which is applied to the front bottom case of the pallet.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. Placement and print timing are historical site instructions, not a universal SCALE label rule, tested printer output or a reason to repeat earlier UOM/lot/serial-input claims. The next paragraph identifies the label as customized; it does not supply barcode specifications. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p029-b007](reading/sdd-1c25f20de1eafc3e.md#p029-b007)
+
+#### knipper-c18r-container-choice-timing-comment
+
+A Knipper review reply distinguishes a wave-created container that may be changed after picking and before closing from pick-into-container operation, where no container was created in the wave and the user enters an ID and chooses a type while picking.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. This is an attributed reply marked resolved in the document. It does not specify the screen/action, permission, re-cartonization algorithm or every allowed change to a closed container. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p066-b010, p066-b011, p066-b012, p066-b015](reading/sdd-1c25f20de1eafc3e.md#p066-b010)
+
+#### knipper-c18r-pool-view-cleanup-before-migration
+
+A Knipper comment asks whether existing pool views will migrate and requests removing obsolete views. The reply assigns Knipper cleanup before moving to the new SCALE environment.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. The reply is a planned cleanup responsibility. It does not prove any views were removed, identify a migration date or affirm every existing view was imported unchanged. Existing planned-filter selection behavior remains separate. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p070-b004, p070-b005](reading/sdd-1c25f20de1eafc3e.md#p070-b004)
+
+#### knipper-c18r-load-confirmation-closed-rollup
+
+Knipper states that after load confirmation, load, shipment, detail and container statuses move to Closed, shipping-dock inventory is relieved and shipment-upload files are generated for the host.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. This is the stated site end-state contract, not proof of physical departure, atomic rollback behavior, carrier/host acknowledgment or closure of the separately documented page107 status-precondition ambiguity. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p108-b003](reading/sdd-1c25f20de1eafc3e.md#p108-b003)
+
+#### knipper-c18r-conversion-checklist-not-executed
+
+Knipper conversion notes call for reviewing Azure SQL-incompatible objects, documenting warehouse-split configuration, converting inventory by warehouse after the split, and agreeing how many years of data to migrate while planning migration time.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. These are historical planning requirements. The note neither identifies the objects/years nor certifies conversion completion, database compatibility or permission to remove objects, split warehouses, migrate data or inspect archive contents. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p109-b003, p109-b004](reading/sdd-1c25f20de1eafc3e.md#p109-b003)
+
+#### knipper-c18r-document-label-certification-responsibility
+
+Knipper assigns itself development and certification responsibility for the listed documents and labels, except outbound labels that are part of the Top100Retailers scope.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. The responsibility note is separate from the already reviewed label-ID inventory. It does not prove certification occurred or that the exception transfers responsibility to any specifically named party. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p112-b005](reading/sdd-1c25f20de1eafc3e.md#p112-b005)
+
+#### knipper-c18r-exit-point-inventory-open-extension-scope
+
+Knipper comments say the listed exit points are extensible features used by existing customizations and that new points discovered during new or redesigned extensions will be added; the reply says the current-version list was updated and the thread is marked resolved.
+
+Knipper historical Active SCALE design, revision history v1.3 dated2024-12-10 and cover1.0; no installed product version or TAB behavior is established. This is a historical inventory and change-scope statement, not a complete immutable list of every product exit point, a current deployment inventory, an executed extension or proof of function equivalence across versions. Classification: `implementation_specific_choice`.
+
+[sdd-1c25f20de1eafc3e: p112-b006, p112-b007, p112-b008, p112-b009](reading/sdd-1c25f20de1eafc3e.md#p112-b006)
+
+### Grupo Julio bounded residual meanings
+
+14 claims and 2 settings add 27 exact citation nodes. The [125-candidate disposition ledger](RESIDUAL_DISPOSITION_CONTINUATION18.md) remains separate from semantic credit.
+
+#### grupo-c18-company-and-master-assumptions
+
+The Grupo Julio assumptions assign all inventory to company Grupo Julio and have the host supply company on item, receipt and shipment interfaces. They state no manually maintained items and no sharing of company-owned items to fulfill another company's order.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. These assumptions do not prove live company isolation or validate the current host payload. The glossary and generic field lists are not evidence that every described feature is used. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p011-b003](reading/sdd-d50ca4a96095c930.md#p011-b003)
+
+#### grupo-c18-item-feature-nonuse-assumptions
+
+Grupo Julio explicitly does not maintain Item Cross Reference, use item categories, track serial numbers or lots, use Cubiscan for receiving dimensions/weights, or use Location Unit of Measure Override. Hazardous materials are outside this implementation scope.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. The terminology table and generic interface field list also mention cross references and categories. Those descriptions do not override explicit site nonuse; no universal product limitation is inferred. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p011-b003, p013-b005, p017-b004](reading/sdd-d50ca4a96095c930.md#p011-b003)
+
+#### grupo-c18-receiving-lp-and-pd-assumptions
+
+The Grupo Julio assumptions make receiving docks the only license-plate-tracked locations and explicitly make reserve locations untracked. P&D locations are reserved for PTL integration rather than regular picking, and Quick Receive is not used.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. These are source-site assumptions. Existing reviewed records separately preserve base inbound-QC nonuse and extension migration decisions. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p011-b003](reading/sdd-d50ca4a96095c930.md#p011-b003)
+
+#### grupo-c18-import-overage-and-damage-assumptions
+
+Grupo Julio states that imported product is received even when damaged and that imported quantity exceeding the expectation requires a new Purchase Order to check in the additional product.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. This import assumption is not a complete receiving or quality SOP. The separately reviewed receipt-exception account remains distinct; a new purchase order must not be silently relabeled as a receipt. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p013-b002](reading/sdd-d50ca4a96095c930.md#p013-b002)
+
+#### grupo-c18-illustrative-wave-versus-site-nonuse
+
+Grupo Julio explicitly says it does not use 3D cubing during container creation or Pallet Building. Its later generic wave sequence is labeled an example and includes Pallet Building and replenishment-related steps.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. The illustrative sequence does not establish enabled site steps. Existing replenishment nonuse remains applicable; do not infer deployed sequence numbers or override the source-site exclusions. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p013-b002, p053-b003, p053-b005](reading/sdd-d50ca4a96095c930.md#p013-b002)
+
+#### grupo-c18-supervisor-locating-recovery-guard
+
+For a receipt container located to SUPERVISOR-001, Grupo Julio describes a manual troubleshooting SOP using transaction/process history to inspect locating sequences. Canceling check-in and checking in after correction is conditioned on the container not having been uploaded. The design also calls for a season-change SOP spanning SCALE and ERP.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. The SOP itself is not supplied or validated. The explicit not-uploaded guard must be preserved beside the existing early-upload duplication risk. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p040-b004](reading/sdd-d50ca4a96095c930.md#p040-b004)
+
+#### grupo-c18-pool-and-rejected-status-definitions
+
+Grupo Julio describes status 90 In Pool Pending as a temporary interface-download status that prevents adding the shipment to a wave, status 100 In Pool as created or downloaded but not processed in a wave with no work permitted against it, and status 999 Rejected as identifying quantity rejected on a line during allocation.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. These are the source status glossary entries, not measured transitions or universal status semantics. Existing leading/trailing and load-confirm status qualifications remain unchanged. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p048-b003, p048-b004, p049-b002](reading/sdd-d50ca4a96095c930.md#p048-b003)
+
+#### grupo-c18-shipment-validation-reprocessing
+
+Grupo Julio says failed inbound shipment validation is logged for manual review in Interface Error Insight. After correction, shipment interface processing can be attempted at the next scheduled download or manually invoked; successful downloads become visible in the Planned Shipment pool.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. This is documented recovery intent, not permission to invoke an interface or evidence that any retry succeeded. Similar wording in other site designs is corroboration, not a shared deployed schedule. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p050-b005](reading/sdd-d50ca4a96095c930.md#p050-b005)
+
+#### grupo-c18-manual-wave-piece-reconciliation
+
+Grupo Julio describes planning emailing the wave supervisor a shipment list and total piece count. The supervisor filters shipments, adds them to a new wave and reconciles its piece count with planning before execution. The interface description puts a unique item on each line with quantity in the lowest UOM.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. This is a source-site manual control, not evidence of execution or of a supplied SOP. The same passage says a matching shipment line includes the whole shipment in the pool view; that is filter inclusion, not picking only that line or proof that a wave has run. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p051-b008, p052-b002](reading/sdd-d50ca4a96095c930.md#p051-b008)
+
+#### grupo-c18-allocation-sequence-and-selection-distinction
+
+Grupo Julio describes attempting allocation-rule sequences in order and passing the unallocated remainder to the next sequence when the current one cannot allocate 100 percent. It distinguishes the predefined allocation strategy algorithm from Allocation Location Selection criteria over Location or Location Inventory fields; each rule detail combines the two.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. No complete strategy algorithm or real allocation outcome is established. The existing assignment/default/Always Override record remains separate, and the listed allocation zones/rules are explicitly partial examples. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p061-b004, p063-b002](reading/sdd-d50ca4a96095c930.md#p061-b004)
+
+#### grupo-c18-hospital-physical-station-marker
+
+Grupo Julio places packing exceptions at a physically separate hospital station to avoid blocking regular packing. It proposes a manual shipping-container user-defined-field value HOS to identify that station and calls for manual exception SOPs.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. The field identifier and implemented SOP are absent. The passage motivates the marker by saying SCALE tracks one pack location per warehouse; retain that as this source account, not an independently verified universal product limit. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p080-b003, p083-b003](reading/sdd-d50ca4a96095c930.md#p080-b003)
+
+#### grupo-c18-packing-list-print-timing
+
+Grupo Julio lists Packing List DOC02 among documents personnel may print from Shipping Load Insight before or after load confirmation.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. This is an available design action, not evidence that a document was printed. DOC02 is a local reference label; do not equate it with every receiving/packing document elsewhere in the SDD. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p086-b005, p086-b006](reading/sdd-d50ca4a96095c930.md#p086-b005)
+
+#### grupo-c18-labor-group-definition
+
+Grupo Julio defines a labor group as warehouse users performing related duties. The group records include full-time/temporary staffing quantities and quantity UOMs typically processed.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. This defines planning data; it does not supply actual headcounts, labor productivity, live assignments or accepted staffing estimates. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p098-b010](reading/sdd-d50ca4a96095c930.md#p098-b010)
+
+#### grupo-c18-epic-company-removal-decision
+
+Grupo Julio marks the earlier unused EPIC-company removal request as struck out and records a resolved 18 July 2024 decision to remove that company from configuration.
+
+Grupo Julio reference design v1.5, final 2024-09-03, for its Mexico distribution center. The document version is not an installed product release. No assessed-deployment configuration or execution is established. A resolved design decision is not evidence the company was removed. The text must not be reported as an unresolved request or a current configuration observation. Classification: `implementation_specific_choice`.
+
+[sdd-d50ca4a96095c930: p106-b003, p106-b004, p106-b015, p106-b016](reading/sdd-d50ca4a96095c930.md#p106-b003)

@@ -8,6 +8,8 @@ Query Store was already enabled and reported `READ_CAPTURE_SECONDARY`, capture m
 
 Unresolved historical IDs: `140123840`, `558937363`, `622937591`, `638937648`, `776650110`, `906798638`, `1195463633`, `1574556943`, `1811797812`. Their rows remain in the export; no current object name or reason for absence is invented. For example, ID `776650110` has 637,756 statement executions but cannot be named from the captured current catalog. Historical ID reuse or object changes also prevent assuming that every retained statistic necessarily belongs to the current definition with that ID.
 
+C18 completed the [bounded identity review for all nine unmatched IDs](RUNTIME_IDENTITY_DISPOSITION.md). Exact profile pointers and raw-row bindings account for 1,377 rows and 1,251,029 historical statement executions. This 9/9 disposition does not recover a historical name or change the 154/163 current-catalog match. Deployed-process reconciliation and correlated timing remain frozen at 0/34.
+
 | Query Store group | Observed role_type | Meaning | Export rows |
 | --- | ---: | --- | ---: |
 | 1 | 1 | Primary | 1,794 |

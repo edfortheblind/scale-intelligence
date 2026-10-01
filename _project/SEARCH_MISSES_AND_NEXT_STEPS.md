@@ -1,6 +1,8 @@
 # Search misses and next-session work
 
-Prepared 2026-09-30 for owner review. This report lists every one of the **39 current stored search misses**, with the exact question, expected topic, and eight topics actually returned. It also explains the frozen deployment workstream.
+C18 owner follow-up: an agent checked whether the newly reviewed documents resolve these misses. They do not supply a new exact missing contract; fresh HTTP results retain all 39 misses. The independently checked [source-to-search assessment](RETRIEVAL_SOURCE_ASSESSMENT_C18.md) records all 39 cases and distinguishes 19 missing subjects, five previously useful alternatives and 15 missing returned distinctions. Original questions, expected IDs and owner-note fields below are preserved.
+
+Prepared 2026-09-30 for owner review. The case lists below preserve the C17 snapshot of **39 search misses**, with the exact question, expected topic, and eight topics then returned. C18 preserves all questions, expectations and 39 raw misses; three unnamed-operation questions now request context. See the [current comparison](retrieval-change-continuation18.json), [seven specific-subject dispositions](retrieval-semantic-dispositions-continuation18.json), and [nineteen missing-referent dispositions](retrieval-context-dispositions-continuation18.json). Original owner-note fields and historical result lists remain unchanged. This report also explains the frozen deployment workstream.
 
 ## What the percentages mean
 
@@ -27,7 +29,7 @@ Read the question and the expected explanation, then compare the eight returned 
 
 Original spelling and joined words are preserved, including `and100`, `outputs0`, `returnNULL`, and `percentage0`. Technical words in some cases come from the authored database questions: a “routine” is a database procedure or function; “NULL” means no value; “no row” means no matching result; an “atomic” operation succeeds or rolls back as one unit.
 
-The actual result order below comes from the current stored evaluation. Full-list ranks come from the older C9 diagnostic run and are explicitly labeled historical. No fresh search run was performed to create this report. The seven specific-subject ranks were also reproduced in the C11 diagnostic probe.
+The actual result order below comes from the C17 stored evaluation snapshot. Full-list ranks come from the older C9 diagnostic run and are explicitly labeled historical. No fresh search run was performed to create the original report. C18 fresh HTTP comparisons are linked above. The seven specific-subject ranks were also reproduced in the C11 diagnostic probe.
 
 ## Seven specific-subject cases to review first
 
@@ -1283,12 +1285,12 @@ C15 rewrote these seven questions after inspecting the known misses. All seven r
 ## Active next-session work
 
 1. **Search:** use your case comments to check question intent and expected answers. Continue a bounded retrieval improvement with the unchanged 725-case baseline; record recoveries and regressions. Add separately identified independent questions when available. Do not replace original questions with the successful C15 rewrites and call the original misses repaired.
-2. **DOCX page layout:** continue the approved review of the four unique document bodies. The purpose is to check whether extraction preserved tables, diagrams, reading order, and page context that could affect the knowledge. It is source fidelity work, not redesigning the supplied documents. Earlier local export attempts produced no PDF; a reliable render/export path remains needed.
+2. **DOCX page layout:** all four unique bodies now have exports through the established native Word route. Reuse the [C18 page-review and fidelity receipt](DOCX_LAYOUT_C18.md), including compensated output defects and unchanged source hashes. Page inspection is separate from screen-reader reading order, accessible-PDF acceptance and exhaustive semantic coverage. Earlier failed export attempts are historical.
 3. **Display acceptance:** the owner accepts the display for this scope, in addition to the earlier JAWS closure. That is sufficient to record owner acceptance and proceed. It does not create unobserved zoom, reflow, contrast, or screen-reader test results.
 4. **SDD meaning:** continue reviewing useful SCALE base knowledge. The supplied SDDs describe other deployments and are reference examples. A setting, customization, or proposed workflow in an SDD is not proof that TAB uses it. Keep vendor-supported base behavior, implementation choices, and uncertain claims distinguishable; preserve citations and document identity.
-5. **Bounded historical runtime identity:** retain the 154/163 current-catalog matches (94.48%) and the nine unresolved IDs. Resolving identities from existing evidence is separate from executing or timing deployed processes.
+5. **Bounded historical runtime identity:** preserve the completed 9/9 retained-evidence dispositions and 154/163 current-catalog matches (94.48%). Names, historical types/definitions and absence causes remain unknown. Repeat lookup only when new evidence appears; these dispositions are separate from executing or timing deployed processes.
 
-These work items have different denominators. The 24.08% SDD citation fraction measures cited nodes, including repeated or non-substantive nodes in the denominator; it is not a percentage of SCALE functionality understood. Do not combine these measures into a single project completion percentage.
+These work items have different denominators. The current 2,901/11,618 SDD citation fraction (24.97%) measures cited nodes, including repeated or non-substantive nodes in the denominator; it is not a percentage of SCALE functionality understood. Do not combine these measures into a single project completion percentage.
 
 ## Frozen final workstream: actual TAB behavior and timing
 
@@ -1308,14 +1310,14 @@ The direction is to finish the active source/help/document work first, then agre
 
 See [the freeze decision](DEPLOYMENT_FREEZE_C15.md) and [minimum deployment evidence](REQUIRED_EVIDENCE_C14.md).
 
-## Evidence and report verification
+## Historical C17 report evidence and verification
 
-- [Current stored evaluation](../help_app/evaluation.json): exact 725-case metrics, questions, expected IDs, and ordered result IDs.
+- [Stored evaluation](../help_app/evaluation.json): current 725-case metrics, questions, expected IDs, and ordered result IDs. The C17 case-list snapshot above is preserved; the [C18 comparison](retrieval-change-continuation18.json) identifies the three later clarification changes.
 - [Help topic library](../DB%20Architecture/mappings/help-topics.json): current topic titles and expected-topic explanations.
 - [C9 diagnosis](retrieval-diagnosis-continuation9.json): all 39 classifications, explanations, and historical full-list ranks.
 - [C11 diagnosis](retrieval-diagnosis-continuation11.json): seven reproduced specific-subject ranks and rejection of a candidate that introduced a miss.
 - [C15 diagnostic rewrites](retrieval-context-probe-continuation15.json): seven contextualized questions and their recorded HTTP ranks.
 
-Evaluation SHA-256: `419b6d51bf2f8ec0025741431c469c1c3a3de35ac593a819a8608088b96f7cb1`.
+Historical C17 evaluation SHA-256: `419b6d51bf2f8ec0025741431c469c1c3a3de35ac593a819a8608088b96f7cb1`.
 
 Verification matched all 39 report cases to the stored evaluation by stable ID, exact question, expected topic, and ordered eight results; matched all current topic titles; and checked the 19/13/7 category counts and the C9/C11 historical-rank agreement. Report creation changed no questions, expectations, search code, ranking, or source evidence. This is a review document, not a retrieval repair or new acceptance test.

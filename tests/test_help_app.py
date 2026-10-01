@@ -83,6 +83,38 @@ class HelpKnowledgeTests(unittest.TestCase):
             with self.subTest(question=question):
                 self.assertEqual(self.knowledge.search(question)['state'], 'REVIEWED_MATCHES')
 
+    def test_unnamed_operation_requests_context(self):
+        for question in ['Does the routine return five result sets?',
+                         'Does the routine return four result sets?',
+                         'Does the routine return 6 result sets?',
+                         'Does the routine return 170 result sets?',
+                         'Is this always one atomic operation?',
+                         'Are all steps serialized by this gate?',
+                         'Will this procedure roll back?',
+                         'Does it commit every change?',
+                         'Can the function return no rows?']:
+            with self.subTest(question=question):
+                result = self.knowledge.search(question)
+                self.assertEqual(result['state'], 'NEEDS_CONTEXT')
+                self.assertEqual(result['results'], [])
+                self.assertIn('operation or routine name', result['clarification'])
+        html = render_page(self.knowledge, question='Will this procedure roll back?').decode()
+        self.assertIn('operation or routine name', html)
+        self.assertNotIn('No reviewed explanation matched', html)
+
+    def test_named_operation_with_pronoun_still_searches(self):
+        for question in ['Does this inventory adjustment roll back?',
+                         'Does the receiving routine return results?',
+                         'Does dbo.SCI_DST_CONVERT return a local date?',
+                         'Does the dbo.wm_RReceiptHeader06 routine return 6 result sets?',
+                         'Does ITEM_ORDER_QUANTITY_VIEW return allocated quantity?',
+                         'Does this work profile select one row?',
+                         'Can this receipt upload prove delivery?',
+                         'Does the shipment-detail helper return five result sets?',
+                         'Does SCI_GET_AVAILABLE_QTY return zero?']:
+            with self.subTest(question=question):
+                self.assertEqual(self.knowledge.search(question)['state'], 'REVIEWED_MATCHES')
+
     def test_fts_operators_are_literal_input(self):
         result = self.knowledge.search('" OR title:* - ( SELECT 1; DROP TABLE topics; --')
         self.assertIn(result['state'], {'NO_REVIEWED_MATCH', 'REVIEWED_MATCHES'})

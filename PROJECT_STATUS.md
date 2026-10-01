@@ -1,5 +1,19 @@
 # SCALE Intelligence project status
 
+## C18 active continuation
+
+Concern review corrected stale acceptance wording and unsupported residual duplicate labels. Search now asks for context in three conservative unnamed-operation cases. Fresh HTTP evaluation preserves all 725 authored questions/expectations: **686/725 top-eight (94.62%), 420/725 first (57.93%), 39 misses**; 722 result lists are unchanged, with no recovered or new misses. Seven specific-subject cases and all 56 returned answer positions were reviewed; two have supported alternatives and five retain discoverability gaps. All 19 missing-referent cases have individual dispositions. [Concerns and actions](_project/CONCERNS_C18.md) and [exact retrieval comparison](_project/retrieval-change-continuation18.json).
+
+SDD review now contains **373 claims, 292 settings, 2,901/11,618 cited nodes (24.97%)**, 398 visual descriptions and 79 logical PDF tables. These remain bounded reference-deployment claims, not universal defaults or TAB configuration. Existing originals and historical receipts are preserved. Work/Picking and HADDAD residual nodes have an exact 832-node no-credit disposition; related context is not claimed to be an equivalent duplicate.
+
+DOCX page review: **4/4 unique bodies**, **541 rendered pages inspected**. All four PDF exports exist. Native Word and bundled Poppler provide a working route. Work and Picking is untagged; the three native exports contain tags without accessibility certification. A missing HADDAD diagram and obscured LAND header backgrounds were restored from source evidence and independently checked. Source date/filename fields may show export-copy values. [PDF creation and fidelity findings](_project/DOCX_LAYOUT_C18.md) record the compensated derivatives and source limits.
+
+The owner-requested agent assessment found **zero document-driven resolutions** of the 39 search misses. It separates 19 missing referents, five previously useful returned alternatives and 15 missing distinctions. Fresh HTTP results preserve all 725 result lists against the post-clarification C18 baseline. [Document-to-search assessment](_project/RETRIEVAL_SOURCE_ASSESSMENT_C18.md).
+
+All **9/9 unmatched runtime IDs** now have verified retained-evidence dispositions, covering 1,377 aggregate rows and 1,251,029 statement executions. Historical names/types/definitions and absence causes remain unknown; current catalog matches remain **154/163 (94.48%)**. [Runtime identity disposition](DB%20Architecture/RUNTIME_IDENTITY_DISPOSITION.md).
+
+JAWS/current broader display owner gates remain closed. Deployment reconciliation and correlated process timing remain frozen at **0/34**. C18 source packets, PDF review and the conditional search investigation form a bounded checkpoint; the knowledge foundation and search repair remain active. Private publication is verified after commit. The older sections below are historical checkpoints.
+
 ## C17 current handoff and owner acceptance
 
 The [Astra restart prompt](04_SCALE_ASTRA_RESTART_PROMPT.md) is ready for the next session. The [39-miss report](_project/SEARCH_MISSES_AND_NEXT_STEPS.md) exposes every exact question, expected topic, returned results and recorded diagnosis, with readable context for the frozen final workstream. Search behavior is unchanged: **686/725 top-eight (94.62%), 420/725 first (57.93%), 39 misses**. There are still 31 unlike measures, 22 at 100%; no overall completion percentage is inferred.
@@ -68,9 +82,9 @@ Help currently has 340 topics and 856 ordered steps. C9/C13 help metrics and the
 
 C11 ran 29 existing help tests and two existing report tests: **31 passed, zero failed/skipped**. The report generator produced the same 31 measures. Independent diagnostic Verification checked all 725 retrieval comparisons, 13 source issues, 20 citation bindings/95 nodes, nine originals and 38 worker-manifest entries, with no introduced findings. Parent Audit and exact private publication parity are recorded separately. The C9 full 368-test suite, HTTP captures and unchanged C7 DB verifier were not rerun.
 
-SDD currently has 317 claims, 283 settings, 398 visual descriptions, 79 logical tables and 2,798/11,618 cited nodes (24.08%). Described assets remain 605/613; eight decorative/empty assets have no retained node association. Existing 231 PDF-page views and 45 static-slide views gain no new credit. All 1,138 captured module contracts remain reviewed; roles remain 1,655/1,656 and tables 517/518. AIM/SDK acquisition stays owner-closed. No overall completion percentage is claimed.
+At the C17 baseline, SDD had 317 claims, 283 settings, 398 visual descriptions, 79 logical tables and 2,798/11,618 cited nodes (24.08%). Described assets remain 605/613; eight decorative/empty assets have no retained node association. Existing 231 PDF-page views and 45 static-slide views gain no new credit. All 1,138 captured module contracts remain reviewed; roles remain 1,655/1,656 and tables 517/518. AIM/SDK acquisition stays owner-closed. No overall completion percentage is claimed.
 
-## Next bounded packet
+## Historical C17 next bounded packet
 
 Start the next session with the 39-miss report and owner feedback, focusing first on the seven specific-subject misses. Continue supported DOCX rendering/fidelity work and substantive reference-SDD review for reusable SCALE base concepts. Disposition the nine unmatched runtime IDs using retained evidence only. Deployed behavior and timing stays frozen at 0/34 until the owner plans its later strategy.
 
@@ -78,7 +92,7 @@ JAWS and current broader display acceptance are owner closed, with technical obs
 
 Outcome: DONE_WITH_CONCERNS
 
-Delivery state: C17 report, archive and restart handoff; validation and publication evidence are recorded in the C17 receipt and Git history.
+Historical C17 delivery state: report, archive and restart handoff; validation and publication evidence are recorded in the C17 receipt and Git history.
 
 Product state: Help ranking and source metrics unchanged; owner display acceptance closed; next-session active work and frozen deployment limits explicit.
 

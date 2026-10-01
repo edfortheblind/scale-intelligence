@@ -30,9 +30,11 @@ The owner has frozen deployed process behavior and correlated timing as the fina
 | C | Source assets with authored descriptions | 605 / 613 | 98.69% | Per-document unique asset paths; separate from slide/page viewing. |
 | C | PDF table candidates reconciled | 93 / 219 | 42.47% | Candidates are merged into logical tables; undetected/raster table denominator remains unknown. |
 | C | PDF table candidates with reviewed disposition | 219 / 219 | 100.00% | Includes explicitly rejected layout/fragment artifacts; rejection is not additional semantic table review. |
-| C | Extracted nodes cited in bounded reviews | 2,798 / 11,618 | 24.08% | A citation does not certify every claim within the node. |
+| C | Extracted nodes cited in bounded reviews | 2,901 / 11,618 | 24.97% | A citation does not certify every claim within the node. |
+| C | Unique DOCX bodies with every rendered page visually inspected | 4 / 4 | 100.00% | Bounded PDF-export layout review; source defects, small diagrams, PDF tags/links and semantic suitability remain separate. |
 | D | Retained runtime rows accounted for | 1,795 / 1,795 | 100.00% | Weighted statement profiles preserve execution/replica dimensions and source row identities. |
 | D | Historical runtime IDs matched to current catalog | 154 / 163 | 94.48% | Current name lookup only; historical definition identity and ID reuse are not established. |
+| D | Unmatched runtime IDs with retained-evidence disposition | 9 / 9 | 100.00% | All remain unknown identities; disposition does not recover a historical name or change catalog matching. |
 | E | Selected-topic presentation/citation checks | 725 / 725 | 100.00% | Actual local HTTP checks; not semantic answer acceptance. |
 | E | Question retrieval: expected topic in first eight | 686 / 725 | 94.62% | Authored questions; evaluation text is excluded from the search index. Not independent holdout. |
 | E | Question retrieval: expected topic first | 420 / 725 | 57.93% | Ambiguous questions may require choosing a topic. No semantic score is inferred. |
@@ -43,29 +45,31 @@ The owner has frozen deployed process behavior and correlated timing as the fina
 - help topics: **340**.
 - ordered steps: **856**.
 - aim setting contracts: **14**.
-- sdd setting contracts: **283**.
-- sdd claims: **317**.
+- sdd setting contracts: **292**.
+- sdd claims: **373**.
 - sdd visual descriptions: **398**.
 - logical pdf tables: **79**.
 - process documentary refinements: **130**.
 
 ## Retrieval comparison
 
-On the unchanged 723-question subset, expected-topic top-eight retrieval changed from 684 to 684. The 2 new cases retrieve 2 expected topics in the first eight. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.
+On the unchanged 725-question subset, expected-topic top-eight retrieval changed from 686 to 686. No cases were added or rewritten. 3 unnamed-operation questions now request context; 722 result lists are unchanged. No original miss was recovered and no new miss was introduced. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.
 
-[Exact comparison and remaining case IDs](retrieval-change-continuation14.json).
+[Exact comparison and remaining case IDs](retrieval-change-continuation18.json).
 
 ## Owner acceptance and remaining technical evidence
 
-JAWS and the current broader display experience are owner accepted and closed. Additional owner tests are not required to close those gates. This does not turn unobserved technical checks into performed tests. DOCX page review is approved to continue next session. SDDs are references from other deployments; supported SCALE base concepts may be incorporated, while site-specific choices do not establish TAB behavior. See [current owner decisions](owner-scope-continuation17.json) and [all 39 search misses with next steps](SEARCH_MISSES_AND_NEXT_STEPS.md).
+JAWS and the current broader display experience are owner accepted and closed. Additional owner tests are not required to close those gates. This does not turn unobserved technical checks into performed tests. DOCX page review remains authorized. SDDs are references from other deployments; supported SCALE base concepts may be incorporated, while site-specific choices do not establish TAB behavior. See [current owner decisions](owner-scope-continuation17.json) and [all 39 search misses with next steps](SEARCH_MISSES_AND_NEXT_STEPS.md).
+
+[DOCX PDF creation and layout findings](DOCX_LAYOUT_C18.md) and [runtime identity dispositions](../DB%20Architecture/RUNTIME_IDENTITY_DISPOSITION.md) record the new bounded review measures.
 
 - Complete functional/deployment reconciliation.
-- Full DOCX page fidelity.
+- Exhaustive DOCX semantic interpretation and PDF accessibility/link behavior; completed visual-page coverage is reported separately.
 - Whole-process elapsed timing.
 - Complete browser/keyboard/reflow/contrast observations and a local JAWS session were not captured; current JAWS and broader display owner acceptance are closed (C14/C17).
 - Insight navigation/SOP registration (separately initiated future task).
 
-Word preference: the prior diagnostic recorded `Options.UpdateLinksAtOpen=false`. The earlier value was not retained, so historical restoration cannot be verified. This continuation made no Word preference writes or document opens.
+Word preference: the prior diagnostic recorded `Options.UpdateLinksAtOpen=false`. The earlier value was not retained, so historical restoration cannot be verified. C18 opened verified working copies in Word for PDF creation after the owner enabled printing. No C18 Word preference writes were made; historical restoration remains unproved.
 
 Detailed source hashes and reproducible counters: [section-progress.json](section-progress.json). Current validation, review and delivery state: [project status](../PROJECT_STATUS.md). Earlier continuation and publication receipts remain unchanged historical evidence.
 

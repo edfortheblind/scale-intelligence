@@ -8,8 +8,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def report(scenario_review='_project/help-question-continuation14.json',
-           retrieval_review='_project/retrieval-change-continuation14.json'):
+def report(scenario_review='_project/help-question-continuation18.json',
+           retrieval_review='_project/retrieval-change-continuation18.json'):
     inputs = {}
     def read(relative):
         raw = (ROOT/relative).read_bytes()
@@ -102,8 +102,50 @@ def report(scenario_review='_project/help-question-continuation14.json',
         raise ValueError('SDD candidate dispositions overlap or reference unknown candidates.')
     metric('C', 'PDF table candidates with reviewed disposition', len((candidate_nodes & cited_table_nodes) | rejected), len(candidate_nodes), 'Includes explicitly rejected layout/fragment artifacts; rejection is not additional semantic table review.')
     metric('C', 'Extracted nodes cited in bounded reviews', sum(d['cited_reviewed_node_count'] for d in docs), all_nodes, 'A citation does not certify every claim within the node.')
+    layout_path = '_project/docx-layout-continuation18.json'
+    layout = read(layout_path)
+    docx_inventory = {d['document_id']: d for d in inventory['documents'] if Path(d['source_path']).suffix.lower() == '.docx'}
+    layout_ids = [body['document_id'] for body in layout['documents']]
+    if (len(layout_ids) != len(set(layout_ids)) or not set(layout_ids) <= set(docx_inventory)
+            or layout['unique_docx_bodies'] != len(docx_inventory)):
+        raise ValueError('DOCX layout review must use unique bodies from the source inventory.')
+    inspected_bodies = 0
+    for body in layout['documents']:
+        source = docx_inventory[body['document_id']]
+        if body['source_path'] != 'SDD/'+source['source_path'] or body['source_sha256'] != source['source_sha256']:
+            raise ValueError('DOCX layout review source does not match the inventory identity.')
+        for path_key, hash_key in [('source_path', 'source_sha256'), ('pdf_path', 'pdf_sha256')]:
+            if hashlib.sha256((ROOT/body[path_key]).read_bytes()).hexdigest() != body[hash_key]:
+                raise ValueError('Refresh the DOCX layout review after source or PDF changes.')
+        inspected_pages = {p['page'] for p in body['pages']}
+        page_count = body['counts']['pages']
+        if (type(page_count) is not int or page_count <= 0
+                or any(type(p['page']) is not int or not 1 <= p['page'] <= page_count for p in body['pages'])
+                or len(inspected_pages) != len(body['pages'])
+                or body['counts']['visually_inspected_pages'] != len(inspected_pages)):
+            raise ValueError('DOCX layout review requires valid unique inspected page records.')
+        if inspected_pages == set(range(1, page_count + 1)):
+            inspected_bodies += 1
+    if inspected_bodies != layout['fully_viewed_unique_bodies']:
+        raise ValueError('DOCX body and page inspection counts disagree.')
+    metric('C', 'Unique DOCX bodies with every rendered page visually inspected', inspected_bodies, layout['unique_docx_bodies'],
+           'Bounded PDF-export layout review; source defects, small diagrams, PDF tags/links and semantic suitability remain separate.')
     metric('D', 'Retained runtime rows accounted for', sum(p['retained_interval_rows'] for p in runtime['profiles']), runtime['counts']['source_rows'], 'Weighted statement profiles preserve execution/replica dimensions and source row identities.')
     metric('D', 'Historical runtime IDs matched to current catalog', runtime['counts']['current_catalog_matches'], runtime['counts']['historical_object_ids'], 'Current name lookup only; historical definition identity and ID reuse are not established.')
+    identity_path = 'DB Architecture/mappings/runtime-identity-disposition.json'
+    identities = read(identity_path)
+    for source in identities['sources'].values():
+        if hashlib.sha256((ROOT/source['path']).read_bytes()).hexdigest() != source['sha256']:
+            raise ValueError('Refresh runtime identity dispositions after retained-source changes.')
+    # Check the disposition set against the captured catalog directly.
+    current_ids = {r['object_id'] for r in read('DB Architecture/catalog/objects.json')}
+    unmatched_ids = {p['object_id'] for p in runtime['profiles']} - current_ids
+    disposition_ids = [r['object_id'] for r in identities['records']]
+    if len(disposition_ids) != len(set(disposition_ids)) or set(disposition_ids) != unmatched_ids:
+        raise ValueError('Runtime identity dispositions do not match the captured unmatched ID set.')
+    metric('D', 'Unmatched runtime IDs with retained-evidence disposition',
+           sum(r['bounded_identity_review_complete'] for r in identities['records']), len(unmatched_ids),
+           'All remain unknown identities; disposition does not recover a historical name or change catalog matching.')
     metric('E', 'Selected-topic presentation/citation checks', evaluation['selected_topic_contract']['passed'], evaluation['case_count'], 'Actual local HTTP checks; not semantic answer acceptance.')
     metric('E', 'Question retrieval: expected topic in first eight', evaluation['question_only_retrieval']['expected_topic_in_first_eight'], evaluation['case_count'], 'Authored questions; evaluation text is excluded from the search index. Not independent holdout.')
     metric('E', 'Question retrieval: expected topic first', evaluation['question_only_retrieval']['expected_topic_first'], evaluation['case_count'], 'Ambiguous questions may require choosing a topic. No semantic score is inferred.')
@@ -133,13 +175,16 @@ def report(scenario_review='_project/help-question-continuation14.json',
                 'logical_pdf_tables':len(tables['tables']),
                 'process_documentary_refinements':process_summary['coverage']['authored_refinements'] if process_summary else 0},
             'delivery_scope':'Local files and the existing private GitHub repository; external deployment and OneDrive upload are outside scope.',
-            'unperformed_or_unestablished':['Complete functional/deployment reconciliation','Full DOCX page fidelity',
+            'unperformed_or_unestablished':['Complete functional/deployment reconciliation',
+                'Exhaustive DOCX semantic interpretation and PDF accessibility/link behavior; completed visual-page coverage is reported separately',
                 'Whole-process elapsed timing','Complete browser/keyboard/reflow/contrast observations and a local JAWS session were not captured; current JAWS and broader display owner acceptance are closed (C14/C17)',
                 'Insight navigation/SOP registration (separately initiated future task)'],
             'outside_current_delivery_scope':['External production deployment and multiuser authentication','OneDrive cloud-upload verification'],
             'question_scenario_review':question_path if question_review else None,
             'retrieval_change_review_path':retrieval_change_path if retrieval_change else None,
             'retrieval_change_review':retrieval_change,
+            'docx_layout_review':layout_path,
+            'runtime_identity_review':identity_path,
             'table_reference_review':usage_path if table_usage else None,
             'process_documentary_detail':process_path if process_summary else None,'input_sha256':inputs}
     return result
@@ -159,18 +204,24 @@ def markdown(data):
     text += [f"- {key.replace('_',' ')}: **{value:,}**." for key,value in data['counts_without_complete_denominator'].items()]
     if data.get('retrieval_change_review'):
         r=data['retrieval_change_review'];before=r['baseline_same_cases'];after=r['final_same_cases'];new=r['new_cases']
+        comparison = (f"On the unchanged {before['cases']}-question subset, expected-topic top-eight retrieval changed from {before['top8']} to {after['top8']}. "
+                      + (f"The {new['cases']} new cases retrieve {new['top8']} expected topics in the first eight. " if new['cases'] else 'No cases were added or rewritten. '))
+        if r.get('changed_to_clarification_case_ids'):
+            comparison += (f"{len(r['changed_to_clarification_case_ids'])} unnamed-operation questions now request context; "
+                           f"{r['same_case_result_lists_identical']} result lists are unchanged. No original miss was recovered and no new miss was introduced. ")
         text += ['', '## Retrieval comparison', '',
-                 f"On the unchanged {before['cases']}-question subset, expected-topic top-eight retrieval changed from {before['top8']} to {after['top8']}. The {new['cases']} new cases retrieve {new['top8']} expected topics in the first eight. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.", '',
+                 comparison + "Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.", '',
                  f"[Exact comparison and remaining case IDs]({Path(data['retrieval_change_review_path']).name})."]
     text += ['', '## Owner acceptance and remaining technical evidence', '',
              'JAWS and the current broader display experience are owner accepted and closed. '
              'Additional owner tests are not required to close those gates. This does not turn unobserved technical checks into performed tests. '
-             'DOCX page review is approved to continue next session. SDDs are references from other deployments; supported SCALE base concepts may be incorporated, while site-specific choices do not establish TAB behavior. '
+             'DOCX page review remains authorized. SDDs are references from other deployments; supported SCALE base concepts may be incorporated, while site-specific choices do not establish TAB behavior. '
              'See [current owner decisions](owner-scope-continuation17.json) and [all 39 search misses with next steps](SEARCH_MISSES_AND_NEXT_STEPS.md).', '']
+    text += ['[DOCX PDF creation and layout findings](DOCX_LAYOUT_C18.md) and [runtime identity dispositions](../DB%20Architecture/RUNTIME_IDENTITY_DISPOSITION.md) record the new bounded review measures.', '']
     text += ['- '+item+'.' for item in data['unperformed_or_unestablished']]
     text += ['', 'Word preference: the prior diagnostic recorded `Options.UpdateLinksAtOpen=false`. '
              'The earlier value was not retained, so historical restoration cannot be verified. '
-             'This continuation made no Word preference writes or document opens.', '',
+             'C18 opened verified working copies in Word for PDF creation after the owner enabled printing. No C18 Word preference writes were made; historical restoration remains unproved.', '',
              'Detailed source hashes and reproducible counters: [section-progress.json](section-progress.json). '
              'Current validation, review and delivery state: [project status](../PROJECT_STATUS.md). '
              'Earlier continuation and publication receipts remain unchanged historical evidence.', '']
@@ -183,9 +234,9 @@ def markdown(data):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--scenario-review', default='_project/help-question-continuation14.json',
+    parser.add_argument('--scenario-review', default='_project/help-question-continuation18.json',
                         help='Current scenario receipt; historical receipts are never overwritten.')
-    parser.add_argument('--retrieval-review', default='_project/retrieval-change-continuation14.json',
+    parser.add_argument('--retrieval-review', default='_project/retrieval-change-continuation18.json',
                         help='Current retrieval comparison bound to evaluation.json.')
     args=parser.parse_args()
     data=report(args.scenario_review, args.retrieval_review)
