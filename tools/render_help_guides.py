@@ -104,15 +104,21 @@ def render_guide(library, key):
                  for b in guide['blocks'] if b['kind'] == 'heading' and b['level'] == 2)
     parts.append('</ul></nav></details>')
     heading = guide['title']
+    parents = {}
     for index, block in enumerate(guide['blocks']):
         kind = block['kind']
         if kind == 'heading':
             if index == 0 and block['level'] == 1:
                 continue
+            parents = {depth: parent for depth, parent in parents.items() if depth < block['level']}
+            parent = parents[max(parents)] if parents else None
+            parents[block['level']] = block
             level = min(block['level']+1, 6)
             if block['alias'] and block['alias'] != block['anchor']:
                 parts.append('<span id="'+escape(block['alias'], quote=True)+'"></span>')
             parts.append(f'<h{level} id="'+escape(block['anchor'], quote=True)+'" tabindex="-1">'+render(block['text'])+f'</h{level}>')
+            if parent and parent['level'] > 1:
+                parts.append('<p>Procedure context: <a href="#'+escape(parent['anchor'], quote=True)+'">'+escape(plain(parent['text']))+'</a></p>')
             heading = plain(block['text'])
         elif kind == 'paragraph':
             parts.append('<p>'+render(block['text'])+'</p>')

@@ -1,6 +1,16 @@
 # SCALE Intelligence master continuation prompt
 
-## C26 current Warehouse Mobile flow lookup
+## C27 current mobile source concern and procedure context
+
+Child guide headings now link to their parent procedure, making shared prerequisites and conditions accessible after an exact SRC or search jump. Search payloads and order, sources, guide text and catalog classifications are unchanged. Read [C27 verification and evidence needs](_project/CONTINUATION_C27.md) and [the checkpoint](_project/continuation27-20261001.json).
+
+The six source gaps **remain unresolved**. Four additional retained field definitions and one receiving diagram did not establish their missing mobile sequences. The 12 missing direct references are separate availability gaps, not proven missing procedure sources. The C27 report lists the exact evidence needed per code. A retained guide conflicts with the registry on Blind Receiving (330 versus 350); no mapping was overwritten. The documented read-only Activity Architect source view denied access. An accessible export/source location is needed; no operational walkthrough was performed.
+
+Both evaluation sets remain unchanged: **675/723 article top-eight, 419 first, 48 misses; 723 selected-topic contracts passed**. Guides retain **24/24 top-six matches, 23 first; 15 exact anchors, 14 exact anchors first**. Parent navigation does not recover those nine primary-anchor misses.
+
+**Next work:** obtain relevant evidence for the six named contracts or pursue a distinct source/intent-supported retrieval design. Preserve acquisition/display/JAWS closure, untracked Video Rec, and the **0/34 deployment/timing freeze**. C27 governs current work; earlier checkpoint instructions below are historical. Normal private publication and exact Git parity are verified separately.
+
+## Historical C26 Warehouse Mobile flow lookup
 
 Following C25, the owner requested continuation. Whole-query **SRC400** or **SRC 400** now opens an exact catalog-backed guide result before related articles, retaining its entire source qualification. The existing catalog has 61 descriptive task/menu links and nine corrected destinations. Read [C26 verification and limits](_project/CONTINUATION_C26.md) and the [identifier and guide comparison](_project/guide-navigation-c26.json) before continuing.
 

@@ -47,6 +47,30 @@ class GuideTests(unittest.TestCase):
                     self.assertIn(section['anchor'], parsed.ids)
                     self.assertIn('id="'+section['anchor']+'" tabindex="-1"', html)
 
+    def test_child_landing_exposes_parent_receiving_context(self):
+        _, html = render_guide(self.guides, 'mobile-inventory')
+        child = html.split('id="trailer-id-license-plate-src-440"', 1)[1].split('<ol', 1)[0]
+        self.assertIn('<a href="#receiving-initiation">Receiving: choose the initiation method</a>', child)
+        parent = html.split('id="receiving-initiation"', 1)[1].split('<h4', 1)[0]
+        self.assertIn('Authorization determines the preferences available.', parent)
+        self.assertIn('A preference assigned to the user profile loads automatically', parent)
+
+    def test_parent_context_uses_nearest_ancestor_and_clears_previous_branches(self):
+        blocks, _ = guide_blocks('# Guide\n\n#### Orphan\n\n<a id="custom-parent"></a>\n## Parent & context\n\n### Child\n\n#### Deep child\n\n### Sibling\n\n## Next root\n\n#### Next child')
+        library = copy.copy(self.guides)
+        library.guides = dict(library.guides)
+        library.guides['mobile'] = {**library.guides['mobile'], 'blocks': blocks, 'references': {}}
+        _, html = render_guide(library, 'mobile')
+        def after_heading(anchor):
+            return re.split(r'<h[2-6] ', html.split('id="'+anchor+'"', 1)[1], maxsplit=1)[0]
+        self.assertIn('<a href="#custom-parent">Parent &amp; context</a>', after_heading('child'))
+        self.assertIn('<a href="#child">Child</a>', after_heading('deep-child'))
+        self.assertIn('<a href="#custom-parent">Parent &amp; context</a>', after_heading('sibling'))
+        self.assertNotIn('Procedure context:', after_heading('next-root'))
+        self.assertNotIn('Procedure context:', after_heading('orphan'))
+        self.assertIn('<a href="#next-root">Next root</a>', after_heading('next-child'))
+        self.assertNotIn('href="#guide"', html)
+
     def test_step_numbering_table_headers_and_inert_markup(self):
         blocks, _ = guide_blocks('# Test\n\n3. Third step\n4. Fourth step\n\n| Field | Meaning |\n| --- | --- |\n| LP | License plate |')
         self.assertEqual(blocks[1]['start'], 3)
