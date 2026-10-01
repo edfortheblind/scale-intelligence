@@ -23,6 +23,11 @@ def report(scenario_review='_project/help-question-continuation19.json',
     sdd_coverage = read('SDD/derived/review-coverage.json')
     tables = read('SDD/derived/reviewed-tables.json')
     inventory = read('SDD/derived/inventory.json')
+    lifecycle = read('_project/archive-disposition-continuation20.json')
+    from sdd_lifecycle import check_source_identity, retired_document_map
+    retired = retired_document_map(ROOT)
+    original_states = Counter(check_source_identity(ROOT, 'SDD/'+item['path'], item['sha256'])
+                              for item in inventory['originals'])
     central = read('SDD/derived/scale-functional-reference.json')
     from render_scale_reference import validate as validate_reference
     validate_reference(central, ROOT)
@@ -82,8 +87,8 @@ def report(scenario_review='_project/help-question-continuation19.json',
                sum(len(t.get('documentary_refinements',[])) for t in help_data['topics']),p['authored_refinements'],
                'Previously reviewed statements joined with original article/node fingerprints; deployment and production eligibility remain separate.')
     metric('B', 'Families fully reconciled to deployment', families['counts']['families_with_complete_deployment_review'], families['counts']['indexed_families'], 'Missing application/service/configuration evidence remains explicit.')
-    metric('C', 'Supplied originals preserved', len(inventory['originals']), inventory['original_count'], 'Original hash verification is recorded in the validation receipt.')
-    metric('C', 'Unique bodies extracted', len(inventory['documents']), inventory['unique_document_count'], 'Extraction retains fidelity exceptions; duplicate pair indexed once.')
+    metric('C', 'Supplied originals preserved', len(inventory['originals']), inventory['original_count'], 'Historical intake: seven active original hashes verified; two retired originals matched to archival attestations without reading archive bytes.')
+    metric('C', 'Unique bodies extracted', len(inventory['documents']), inventory['unique_document_count'], 'Historical extraction: seven active bodies; one retired body represented by frozen metadata, not freshly reverified. Duplicate pair indexed once.')
     docs=sdd_coverage['documents']
     slides=sum(len(d['visually_inspected_static_slides']) for d in docs)
     # Supplied deck has 45 physical slides; extraction count, not authored-review count.
@@ -91,20 +96,23 @@ def report(scenario_review='_project/help-question-continuation19.json',
     candidate_nodes=set()
     all_nodes=0
     for doc in inventory['documents']:
-        body=read('SDD/derived/'+doc['document_path'])
+        if doc['document_id'] in retired:
+            body={'nodes':retired[doc['document_id']]['node_metadata']}
+        else:
+            body=read('SDD/derived/'+doc['document_path'])
         all_nodes += len(body['nodes'])
         slide_numbers.update((doc['document_id'], n['slide']) for n in body['nodes'] if n.get('slide'))
         candidate_nodes.update((doc['document_id'],n['id']) for n in body['nodes'] if n['kind']=='pdf_table_candidate')
     metric('C', 'PowerPoint static slides visually inspected', slides, len(slide_numbers), 'Static layout only; not animations, font fidelity or screen-reader acceptance.')
     metric('C', 'PDF pages visually inspected', sum(len(d['visually_inspected_pdf_pages']) for d in docs), sum(d['physical_page_count'] or 0 for d in docs), 'Physical page review; not all claims or tables on every page.')
-    metric('C', 'Source assets with authored descriptions', sum(d['described_asset_count'] for d in docs), sum(d['unique_extracted_asset_count'] for d in docs), 'Per-document unique asset paths; separate from slide/page viewing.')
+    metric('C', 'Source assets with authored descriptions', sum(d['described_asset_count'] for d in docs), sum(d['unique_extracted_asset_count'] for d in docs), 'Historical per-document unique asset paths, including retired-source attestations; not current archive-byte verification or slide/page viewing.')
     cited_table_nodes={(c['document_id'],n) for t in tables['tables'] for c in t['citations'] for n in c['nodes']}
     metric('C', 'PDF table candidates reconciled', len(candidate_nodes & cited_table_nodes), len(candidate_nodes), 'Candidates are merged into logical tables; undetected/raster table denominator remains unknown.')
     rejected={(c['document_id'],c['node']) for c in tables.get('rejected_candidates',[])}
     if rejected & cited_table_nodes or not rejected <= candidate_nodes:
         raise ValueError('SDD candidate dispositions overlap or reference unknown candidates.')
     metric('C', 'PDF table candidates with reviewed disposition', len((candidate_nodes & cited_table_nodes) | rejected), len(candidate_nodes), 'Includes explicitly rejected layout/fragment artifacts; rejection is not additional semantic table review.')
-    metric('C', 'Extracted nodes cited in bounded reviews', sum(d['cited_reviewed_node_count'] for d in docs), all_nodes, 'A citation does not certify every claim within the node.')
+    metric('C', 'Extracted nodes cited in bounded reviews', sum(d['cited_reviewed_node_count'] for d in docs), all_nodes, 'Historical coverage includes frozen retired-node metadata. A citation does not certify every claim within the node; archive bodies were not re-read.')
     layout_path = '_project/docx-layout-continuation18.json'
     layout = read(layout_path)
     docx_inventory = {d['document_id']: d for d in inventory['documents'] if Path(d['source_path']).suffix.lower() == '.docx'}
@@ -113,13 +121,13 @@ def report(scenario_review='_project/help-question-continuation19.json',
             or layout['unique_docx_bodies'] != len(docx_inventory)):
         raise ValueError('DOCX layout review must use unique bodies from the source inventory.')
     inspected_bodies = 0
+    layout_identity_states = Counter()
     for body in layout['documents']:
         source = docx_inventory[body['document_id']]
         if body['source_path'] != 'SDD/'+source['source_path'] or body['source_sha256'] != source['source_sha256']:
             raise ValueError('DOCX layout review source does not match the inventory identity.')
         for path_key, hash_key in [('source_path', 'source_sha256'), ('pdf_path', 'pdf_sha256')]:
-            if hashlib.sha256((ROOT/body[path_key]).read_bytes()).hexdigest() != body[hash_key]:
-                raise ValueError('Refresh the DOCX layout review after source or PDF changes.')
+            layout_identity_states[check_source_identity(ROOT, body[path_key], body[hash_key])] += 1
         inspected_pages = {p['page'] for p in body['pages']}
         page_count = body['counts']['pages']
         if (type(page_count) is not int or page_count <= 0
@@ -132,7 +140,7 @@ def report(scenario_review='_project/help-question-continuation19.json',
     if inspected_bodies != layout['fully_viewed_unique_bodies']:
         raise ValueError('DOCX body and page inspection counts disagree.')
     metric('C', 'Unique DOCX bodies with every rendered page visually inspected', inspected_bodies, layout['unique_docx_bodies'],
-           'Bounded PDF-export layout review; source defects, small diagrams, PDF tags/links and semantic suitability remain separate.')
+           'Historical C18 PDF-export review. Four retired PDF hashes match archival attestations; PDFs were not opened, rendered or visually rechecked in this run. Source defects, accessibility and semantic suitability remain separate.')
     metric('D', 'Retained runtime rows accounted for', sum(p['retained_interval_rows'] for p in runtime['profiles']), runtime['counts']['source_rows'], 'Weighted statement profiles preserve execution/replica dimensions and source row identities.')
     metric('D', 'Historical runtime IDs matched to current catalog', runtime['counts']['current_catalog_matches'], runtime['counts']['historical_object_ids'], 'Current name lookup only; historical definition identity and ID reuse are not established.')
     identity_path = 'DB Architecture/mappings/runtime-identity-disposition.json'
@@ -191,6 +199,14 @@ def report(scenario_review='_project/help-question-continuation19.json',
             'retrieval_change_review_path':retrieval_change_path if retrieval_change else None,
             'retrieval_change_review':retrieval_change,
             'docx_layout_review':layout_path,
+            'sdd_lifecycle':{'manifest':'_project/archive-disposition-continuation20.json',
+                'active_originals_bytes_verified':original_states['ACTIVE_BYTES_VERIFIED'],
+                'retired_originals_attestation_only':original_states['ARCHIVED_ATTESTATION_NOT_REVERIFIED'],
+                'active_extracted_bodies':len(inventory['documents'])-len(retired),
+                'retired_extracted_bodies_metadata_only':len(retired),
+                'historical_layout_identity_states':dict(layout_identity_states),
+                'ordinary_archive_payload_reads':0,
+                'verification_scope':'Active originals are hash verified; retired originals, bodies and exports use C20 metadata attestations. Historical page review and HTTP receipts are not rerun.'},
             'runtime_identity_review':identity_path,
             'table_reference_review':usage_path if table_usage else None,
             'process_documentary_detail':process_path if process_summary else None,'input_sha256':inputs}
@@ -212,6 +228,12 @@ def markdown(data):
     text += ['', 'The [central SCALE functionality reference](../SDD/SCALE_FUNCTIONAL_REFERENCE.md) is the active SDD. '
              'Its seven sources are functional references, not core defaults or evidence of a current implementation. '
              'The larger SDD extraction and review counts above remain historical source-collection measures; they are not the active reference denominator.', '']
+    state=data['sdd_lifecycle']
+    text += [f"C20 lifecycle: **{state['active_originals_bytes_verified']} active originals** were hash verified; "
+             f"**{state['retired_originals_attestation_only']} retired originals** and **{state['retired_extracted_bodies_metadata_only']} retired body** "
+             'were matched to frozen metadata only. Ordinary reporting does not open archive payload. '
+             'C18 export/page review and C19 HTTP evaluation remain historical performed checks. '
+             'See [archive disposition and root prompt roles](ARCHIVE_DISPOSITION_C20.md).', '']
     if data.get('retrieval_change_review'):
         r=data['retrieval_change_review'];before=r['baseline_same_cases'];after=r['final_same_cases'];new=r['new_cases']
         comparison = (f"On the unchanged {before['cases']}-question subset, expected-topic top-eight retrieval changed from {before['top8']} to {after['top8']}. "

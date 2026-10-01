@@ -23,15 +23,15 @@ The owner has frozen deployed process behavior and correlated timing as the fina
 | B | Process-summary image references inspected | 53 / 53 | 100.00% | Static source assets, including separately identified decorative references. |
 | B | Reviewed process refinements available in local help | 130 / 130 | 100.00% | Previously reviewed statements joined with original article/node fingerprints; deployment and production eligibility remain separate. |
 | B | Families fully reconciled to deployment | 0 / 34 | 0.00% | Missing application/service/configuration evidence remains explicit. |
-| C | Supplied originals preserved | 9 / 9 | 100.00% | Original hash verification is recorded in the validation receipt. |
-| C | Unique bodies extracted | 8 / 8 | 100.00% | Extraction retains fidelity exceptions; duplicate pair indexed once. |
+| C | Supplied originals preserved | 9 / 9 | 100.00% | Historical intake: seven active original hashes verified; two retired originals matched to archival attestations without reading archive bytes. |
+| C | Unique bodies extracted | 8 / 8 | 100.00% | Historical extraction: seven active bodies; one retired body represented by frozen metadata, not freshly reverified. Duplicate pair indexed once. |
 | C | PowerPoint static slides visually inspected | 45 / 45 | 100.00% | Static layout only; not animations, font fidelity or screen-reader acceptance. |
 | C | PDF pages visually inspected | 231 / 231 | 100.00% | Physical page review; not all claims or tables on every page. |
-| C | Source assets with authored descriptions | 605 / 613 | 98.69% | Per-document unique asset paths; separate from slide/page viewing. |
+| C | Source assets with authored descriptions | 605 / 613 | 98.69% | Historical per-document unique asset paths, including retired-source attestations; not current archive-byte verification or slide/page viewing. |
 | C | PDF table candidates reconciled | 93 / 219 | 42.47% | Candidates are merged into logical tables; undetected/raster table denominator remains unknown. |
 | C | PDF table candidates with reviewed disposition | 219 / 219 | 100.00% | Includes explicitly rejected layout/fragment artifacts; rejection is not additional semantic table review. |
-| C | Extracted nodes cited in bounded reviews | 2,901 / 11,618 | 24.97% | A citation does not certify every claim within the node. |
-| C | Unique DOCX bodies with every rendered page visually inspected | 4 / 4 | 100.00% | Bounded PDF-export layout review; source defects, small diagrams, PDF tags/links and semantic suitability remain separate. |
+| C | Extracted nodes cited in bounded reviews | 2,901 / 11,618 | 24.97% | Historical coverage includes frozen retired-node metadata. A citation does not certify every claim within the node; archive bodies were not re-read. |
+| C | Unique DOCX bodies with every rendered page visually inspected | 4 / 4 | 100.00% | Historical C18 PDF-export review. Four retired PDF hashes match archival attestations; PDFs were not opened, rendered or visually rechecked in this run. Source defects, accessibility and semantic suitability remain separate. |
 | D | Retained runtime rows accounted for | 1,795 / 1,795 | 100.00% | Weighted statement profiles preserve execution/replica dimensions and source row identities. |
 | D | Historical runtime IDs matched to current catalog | 154 / 163 | 94.48% | Current name lookup only; historical definition identity and ID reuse are not established. |
 | D | Unmatched runtime IDs with retained-evidence disposition | 9 / 9 | 100.00% | All remain unknown identities; disposition does not recover a historical name or change catalog matching. |
@@ -56,6 +56,8 @@ The owner has frozen deployed process behavior and correlated timing as the fina
 - process documentary refinements: **130**.
 
 The [central SCALE functionality reference](../SDD/SCALE_FUNCTIONAL_REFERENCE.md) is the active SDD. Its seven sources are functional references, not core defaults or evidence of a current implementation. The larger SDD extraction and review counts above remain historical source-collection measures; they are not the active reference denominator.
+
+C20 lifecycle: **7 active originals** were hash verified; **2 retired originals** and **1 retired body** were matched to frozen metadata only. Ordinary reporting does not open archive payload. C18 export/page review and C19 HTTP evaluation remain historical performed checks. See [archive disposition and root prompt roles](ARCHIVE_DISPOSITION_C20.md).
 
 
 ## Retrieval comparison

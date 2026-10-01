@@ -71,6 +71,27 @@ class ReportReceiptTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'unmatched ID set'):
                 report_completion.report()
 
+    def test_ordinary_report_reference_and_help_never_open_archive(self):
+        from help_knowledge import Knowledge
+        from render_scale_reference import validate
+        original_open = Path.open
+        archive = report_completion.ROOT / 'archive'
+        def active_only(path, *args, **kwargs):
+            if path.resolve().is_relative_to(archive):
+                raise AssertionError('Ordinary consumer attempted to open archive payload')
+            return original_open(path, *args, **kwargs)
+        with patch.object(Path, 'open', active_only):
+            data = report_completion.report()
+            central = json.loads((report_completion.ROOT/'SDD/derived/scale-functional-reference.json').read_text(encoding='utf-8'))
+            validate(central, report_completion.ROOT)
+            Knowledge()
+        state = data['sdd_lifecycle']
+        self.assertEqual(state['active_originals_bytes_verified'], 7)
+        self.assertEqual(state['retired_originals_attestation_only'], 2)
+        self.assertEqual(state['retired_extracted_bodies_metadata_only'], 1)
+        self.assertEqual(state['historical_layout_identity_states'], {
+            'ACTIVE_BYTES_VERIFIED': 3, 'ARCHIVED_ATTESTATION_NOT_REVERIFIED': 5})
+
 
 if __name__ == '__main__':
     unittest.main()

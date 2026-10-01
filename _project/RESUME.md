@@ -1,5 +1,13 @@
 # Resume SCALE Intelligence
 
+## C20 current continuation
+
+C20 archived **52 unused SDD files (91,572,429 bytes)** with exact byte preservation and restoration mappings. Seven SCALE originals and extracted bodies remain active; the central functionality reference, its equivalent PDF, mixed historical review registers and help/evaluation are unchanged. Read the [archive disposition and prompt audit](ARCHIVE_DISPOSITION_C20.md) before following older source paths. Ordinary work must not read archive payload; retired-source counts are metadata attestations, not fresh source verification.
+
+Root prompts were checked against current consumers. **01/02 remain exact-byte acquisition authority and integrity evidence**, with collection closed; do not execute their old collection instructions. **03 is the active project master; 04 Astra is the active restart prompt.** The old 04 Sol file is only a compatibility redirect; its original is already archived. Start with [the active restart prompt](../04_SCALE_ASTRA_RESTART_PROMPT.md) and the latest owner message.
+
+C20 supersedes earlier statements that all nine originals, eight extraction bodies or four older PDF exports remain at their original active paths. Historical receipts retain their original bytes and checkpoint meaning. Archive verification does not constitute a new PDF visual review or full retrieval evaluation. The next product task remains source-grounded resolution of the 39 search gaps; current owner acceptance stays closed and deployment/timing stays frozen at 0/34. Normal authorized private publication requires recorded commit and remote parity.
+
 ## C19 current entrypoint
 
 Use the single [SCALE Functionality Reference](../SDD/SCALE_FUNCTIONAL_REFERENCE.md) and its equivalent [printable SDD](<../output/pdf/SCALE Functionality Reference SDD.pdf>). The [technical source register](../SDD/derived/scale-functional-reference.json) is provenance rather than a second SDD. The central reference contains **86 entries, 14 chapters, 181 selected records and seven SCALE sources**, with no client names or other-product material.

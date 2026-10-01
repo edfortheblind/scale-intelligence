@@ -243,6 +243,11 @@ def extract_pdf(path, out, sid):
 def extract_all(source, out):
     if out.resolve() == source.resolve() or source.resolve().is_relative_to(out.resolve()):
         raise ValueError("Output must not overwrite the source directory")
+    inventory_path = out / "inventory.json"
+    if inventory_path.is_file():
+        previous = json.loads(inventory_path.read_text(encoding="utf-8"))
+        if any(not (source / item["path"]).is_file() for item in previous["originals"]):
+            raise ValueError("Existing inventory includes missing original sources; refuse regeneration")
     originals, documents, seen = [], [], {}
     for path in sorted(source.iterdir(), key=lambda p: (len(p.name), p.name)):
         if path.suffix.lower() not in (".pdf", ".docx", ".pptx") or not path.is_file():

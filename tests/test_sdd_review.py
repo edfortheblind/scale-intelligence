@@ -3,6 +3,7 @@ import hashlib
 import json
 import unittest
 from pathlib import Path
+from tools.sdd_lifecycle import retired_document_map
 
 ROOT = Path(__file__).resolve().parents[1] / 'SDD' / 'derived'
 
@@ -11,9 +12,30 @@ class SddReviewTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.docs = {p.stem: json.loads(p.read_text(encoding='utf-8')) for p in (ROOT / 'documents').glob('*.json')}
+        cls.active_document_ids = set(cls.docs)
+        cls.retired = retired_document_map(ROOT.parent.parent)
+        for identity, frozen in cls.retired.items():
+            if identity in cls.docs:
+                raise ValueError('Retired SDD body remains in active review discovery')
+            cls.docs[identity] = dict(frozen['document_metadata'], nodes=frozen['node_metadata'], assets=frozen['assets'])
         cls.review = json.loads((ROOT / 'reviewed-knowledge.json').read_text(encoding='utf-8'))
         cls.tables = json.loads((ROOT / 'reviewed-tables.json').read_text(encoding='utf-8'))
         cls.coverage = json.loads((ROOT / 'review-coverage.json').read_text(encoding='utf-8'))
+
+    def test_retired_review_rows_are_frozen_historical_identities(self):
+        self.assertEqual(len(self.active_document_ids), 7)
+        self.assertEqual(set(self.retired), {'sdd-de62bfaf88f5d35b'})
+        def fingerprint(value):
+            return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+        for identity, frozen in self.retired.items():
+            expected = {(b['collection'], b['index']): b['sha256'] for b in frozen['review_record_bindings']}
+            actual = {(collection, i): fingerprint(record)
+                      for collection in ('products', 'claims', 'configuration', 'diagrams')
+                      for i, record in enumerate(self.review[collection])
+                      if any(c['document_id'] == identity for c in record['citations'])}
+            self.assertEqual(actual, expected)
+            coverage = next(row for row in self.coverage['documents'] if row['document_id'] == identity)
+            self.assertEqual(fingerprint(coverage), frozen['coverage_record_sha256'])
 
     def test_citation_union_matches_document_denominators(self):
         records = sum((self.review[k] for k in ('products', 'claims', 'configuration', 'diagrams')), []) + self.tables['tables']
