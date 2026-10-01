@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'tools'))
-from help_knowledge import Knowledge
+from help_knowledge import Knowledge, tokens
 
 
 def topic(identity, title, answer='', boundaries=(), evaluation=None):
@@ -49,7 +49,11 @@ class RetrievalTests(unittest.TestCase):
     def test_identifier_and_number_boundaries_match_plain_words(self):
         data = self.knowledge([topic('example', 'Example',
                                      'serialCount has a maximum100 threshold.')])
-        for question in ['serial count', 'maximum 100', 'count', '100']:
+        self.assertIn('count', tokens('serialCount'))
+        # A standalone result noun requests its subject under the clarification
+        # policy; token splitting remains distinct from query intent.
+        self.assertEqual(data.search('count')['state'], 'NEEDS_CONTEXT')
+        for question in ['serial count', 'maximum 100', '100']:
             with self.subTest(question=question):
                 self.assertEqual([r['topic_id'] for r in data.search(question)['results']], ['example'])
 

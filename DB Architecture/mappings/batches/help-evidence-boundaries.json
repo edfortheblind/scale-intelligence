@@ -238,7 +238,7 @@
       "title": "Understanding permissions and personal configuration",
       "business_question": "Can this help show another user’s effective work configuration?",
       "plain_answer": "This help library explains general work-selection rules. It does not access individual users, permissions or effective profiles. A colleague’s settings cannot be inferred from configuration totals or from the parameters a procedure accepts.",
-      "trigger": "A request to understand the evidence and applicability of a SCALE explanation.",
+      "trigger": "",
       "input_context": [
         "The named setting or process, relevant warehouse/profile scope and observation date."
       ],
@@ -267,15 +267,12 @@
       "configuration_dependencies": [
         "User, warehouse, profile, sequence and feature settings can change the work-selection path."
       ],
-      "expected_results": [
-        "A bounded explanation and the smallest evidence needed to resolve remaining uncertainty."
-      ],
+      "expected_results": [],
       "explanation_paths": [
         "For an individual access problem, use an authorized, sanitized explanation of the relevant permission/profile and application binding; do not provide another person’s operational data."
       ],
       "boundaries": [
-        "No user-specific permission decision or access-control result is established by this prototype.",
-        "No operational records, user profiles, procedures, jobs or printer outputs were requested or executed."
+        "No user-specific permission decision or access-control result is established by this prototype."
       ],
       "evidence_refs": [
         "work-batch-51843597",
@@ -308,8 +305,8 @@
       "topic_id": "missing-configuration",
       "title": "Handling missing locating settings",
       "business_question": "What happens if a locating setting is missing?",
-      "plain_answer": "A missing setting does not have one universal SCALE fallback. First identify the exact locating rule, item or rule-set assignment, applicable preference and application path. The documented delayed-locating behavior requires both flags; absence of evidence is not permission to invent an active value.",
-      "trigger": "A request to understand the evidence and applicability of a SCALE explanation.",
+      "plain_answer": "Missing locating settings have no universal SCALE fallback. The result depends on the exact rule, assignment and receiving preference.",
+      "trigger": "",
       "input_context": [
         "The named setting or process, relevant warehouse/profile scope and observation date."
       ],
@@ -326,7 +323,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_EVIDENCE_BOUNDARY",
-          "explanation": "Check the documented assignment and the exact setting’s fallback before predicting the result. The current introductory passage does not establish every missing-row branch.",
+          "explanation": "Inspect the missing-value branch for the selected setting; the introductory locating passage does not define every case.",
           "objects": [],
           "evidence_refs": [
             "family-locating-aim"
@@ -334,17 +331,14 @@
         }
       ],
       "configuration_dependencies": [
-        "Item versus rule-set assignment and the two delayed-locating flags affect the documented path."
+        "The documented delayed-locating path requires both Delayed Locating and Create Putaway Work."
       ],
-      "expected_results": [
-        "A bounded explanation and the smallest evidence needed to resolve remaining uncertainty."
-      ],
+      "expected_results": [],
       "explanation_paths": [
-        "Obtain a sanitized rule identifier, setting name and application-to-rule binding. Inspect the matching documented or source-defined missing-value branch."
+        "Identify the rule, item or rule-set assignment and receiving preference, then check the missing-value behavior for that exact setting."
       ],
       "boundaries": [
-        "No general first-match, enabled or disabled default is inferred for an absent setting.",
-        "No operational records, user profiles, procedures, jobs or printer outputs were requested or executed."
+        "An absent setting must not be treated as enabled, disabled or first-match without its specific fallback definition."
       ],
       "evidence_refs": [
         "family-locating-aim"
@@ -377,7 +371,7 @@
       "title": "Configuration precedence and overlapping rules",
       "business_question": "Two profile or rule rows seem to apply. Which one wins?",
       "plain_answer": "The winner depends on the exact query or application rule. In the reviewed work selector, some options use profile alone and others also use sequence. Do not assume that the first displayed row wins or that a primary key on an unrelated field makes the selection unique.",
-      "trigger": "A request to understand the evidence and applicability of a SCALE explanation.",
+      "trigger": "",
       "input_context": [
         "The named setting or process, relevant warehouse/profile scope and observation date."
       ],
@@ -404,15 +398,12 @@
       "configuration_dependencies": [
         "Changing sequence scope can change which rows qualify. Different routines can use different precedence."
       ],
-      "expected_results": [
-        "A bounded explanation and the smallest evidence needed to resolve remaining uncertainty."
-      ],
+      "expected_results": [],
       "explanation_paths": [
         "Compare only the needed sanitized keys and the applicable rule’s ordering; do not execute the work selector as a read-only diagnostic because a branch changes instruction sequence."
       ],
       "boundaries": [
-        "This explains an ambiguity to check; it does not establish that duplicate rows exist here.",
-        "No operational records, user profiles, procedures, jobs or printer outputs were requested or executed."
+        "This explains an ambiguity to check; it does not establish that duplicate rows exist here."
       ],
       "evidence_refs": [
         "work-batch-51843597"
@@ -442,10 +433,10 @@
     },
     {
       "topic_id": "replica-freshness",
-      "title": "Current documentation baseline and retained configuration checks",
+      "title": "What retained configuration checks can tell you",
       "business_question": "Do the retained checks prove today’s effective settings?",
-      "plain_answer": "The owner confirms the replica is current and accepts it as the documentation baseline. The five retained configuration checks still describe aggregate fields observed on 29 September 2026 at 22:50:28–30 UTC; they do not identify an individual user’s effective preference or prove a specific runtime outcome.",
-      "trigger": "A request to understand the evidence and applicability of a SCALE explanation.",
+      "plain_answer": "Five retained configuration checks describe aggregate fields observed on 29 September 2026 at 22:50:28-30 UTC. They do not identify an individual user's effective preference or a particular action's outcome.",
+      "trigger": "",
       "input_context": [
         "The named setting or process, relevant warehouse/profile scope and observation date."
       ],
@@ -453,7 +444,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_EVIDENCE_BOUNDARY",
-          "explanation": "Keep the capture time and fixed check scope attached to the result.",
+          "explanation": "Match the requested setting to the check's recorded scope and observation time.",
           "objects": [],
           "evidence_refs": [
             "retained-config-observation"
@@ -462,26 +453,19 @@
         {
           "order": 2,
           "action": "EXPLAIN_EVIDENCE_BOUNDARY",
-          "explanation": "For a specific user or action, identify the effective setting scope. Current replica status does not turn aggregate counts into individual configuration values.",
+          "explanation": "Use profile assignment and sequence precedence to determine which configuration applies to a particular user.",
           "objects": [],
           "evidence_refs": [
             "retained-config-observation"
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Profile assignment and sequence precedence determine which configuration applies; aggregate checks do not expose those per-user values."
-      ],
-      "expected_results": [
-        "A bounded explanation and the smallest evidence needed to resolve remaining uncertainty."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
       "explanation_paths": [
-        "Use the named setting, screen and applicable preference/profile to explain the question. Version/build and replica synchronization evidence are not prerequisites for this documentation task."
+        "For a user-specific question, check the assigned profile or preference and its selection sequence."
       ],
-      "boundaries": [
-        "Current replica status is owner-attested. The retained checks are timestamped aggregate observations, not a live per-user configuration lookup.",
-        "No operational records, user profiles, procedures, jobs or printer outputs were requested or executed."
-      ],
+      "boundaries": [],
       "evidence_refs": [
         "retained-config-observation"
       ],
@@ -549,15 +533,10 @@
       "configuration_dependencies": [
         "Release support, effective configuration and design revision are separate facts."
       ],
-      "expected_results": [
-        "A bounded explanation and the smallest evidence needed to resolve remaining uncertainty."
-      ],
-      "explanation_paths": [
-        "Use the reference for a bounded explanation. Establish applicable configuration and support when an operational decision requires those facts."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This synthesis is a reference, not a complete product specification or evidence of current deployment behavior.",
-        "No operational process is executed by this help."
+        "Design examples and proposed extensions do not establish installed functionality."
       ],
       "evidence_refs": [
         "sdd-function-reference-applicability"
@@ -579,8 +558,8 @@
       "topic_id": "cycle-count-tolerance-conflict",
       "title": "Understanding cycle-count tolerance and review",
       "business_question": "Is our cycle-count tolerance zero or 9999?",
-      "plain_answer": "The reference does not establish this warehouse's active cycle-count tolerance. Verification can require two consecutive equal counts; an out-of-tolerance count can move to Pending Review for reconciliation. Thresholds and review permissions depend on the applicable configuration. Neither zero nor 9999 should be selected solely from an example.",
-      "trigger": "Understanding a documented SCALE mechanism and its release or configuration limits.",
+      "plain_answer": "Cycle-count verification can require two consecutive equal counts. Counts outside the applicable tolerance can move to Pending Review for reconciliation.",
+      "trigger": "",
       "input_context": [
         "The named workflow or setting and the scope of the question."
       ],
@@ -608,7 +587,7 @@
         {
           "order": 3,
           "action": "Keep example values bounded.",
-          "explanation": "No universal tolerance or active warehouse setting is established. The recorded restriction on closing an entire plan is a separate extension, not base behavior.",
+          "explanation": "Check whether a separate plan-closing restriction applies to this workflow.",
           "objects": [],
           "evidence_refs": [
             "family-cycle-counting-aim",
@@ -617,17 +596,13 @@
         }
       ],
       "configuration_dependencies": [
-        "Tolerance units, scope and recount/reconciliation permissions must be established for the applicable configuration."
+        "Establish tolerance units, scope and recount/reconciliation permissions for the applicable configuration."
       ],
-      "expected_results": [
-        "A bounded explanation and the smallest evidence needed to resolve remaining uncertainty."
-      ],
-      "explanation_paths": [
-        "Use the documented verification and review steps to explain the flow. A question about an active numerical tolerance needs that setting's applicable definition and scope."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No numerical tolerance is asserted as a universal default or an active setting.",
-        "No count, reconciliation or inventory change is executed by this help."
+        "Example values such as 0 or 9999 do not define a universal default or the active warehouse tolerance.",
+        "The recorded restriction on closing an entire plan is a separate extension, not base behavior."
       ],
       "evidence_refs": [
         "family-cycle-counting-aim",
@@ -661,7 +636,7 @@
       "title": "Understanding wave duration and statement timing",
       "business_question": "How long does an entire wave take?",
       "plain_answer": "The retained Query Store evidence cannot answer the whole-wave duration. It contains statement statistics for 163 historical object IDs. A statement can execute several times inside a procedure, and a wave can include application, queue, database and external stages. Statement counts are not procedure-call counts.",
-      "trigger": "A request to understand the evidence and applicability of a SCALE explanation.",
+      "trigger": "",
       "input_context": [
         "The named setting or process, relevant warehouse/profile scope and observation date."
       ],
@@ -700,15 +675,12 @@
       "configuration_dependencies": [
         "Queue delay, configuration choices, asynchronous work, retries and external completion can fall outside SQL statement measurements."
       ],
-      "expected_results": [
-        "A bounded explanation and the smallest evidence needed to resolve remaining uncertainty."
-      ],
+      "expected_results": [],
       "explanation_paths": [
         "Use a sanitized event-schema example with correlation ID and UTC stage start/end semantics, plus observation time and process scope. Do not execute warehouse work to manufacture a timing result."
       ],
       "boundaries": [
-        "Current object-name matches do not establish the historical definition used by Query Store. Missing history does not prove a routine is unused. No continuous interval coverage is assumed.",
-        "No operational records, user profiles, procedures, jobs or printer outputs were requested or executed."
+        "Current object-name matches do not establish the historical definition used by Query Store. Missing history does not prove a routine is unused. No continuous interval coverage is assumed."
       ],
       "evidence_refs": [
         "family-wave-aim",
@@ -741,8 +713,8 @@
       "topic_id": "label-prerequisites",
       "title": "Checking label prerequisites before assuming print success",
       "business_question": "Does selecting a document prove the label printed?",
-      "plain_answer": "No. A label depends on its definition, document type, document association and output route. Some labels also use a stored procedure, and wave-driven output may require a Documents and Labels step. Generation, routing and physical output are separate stages; training requirements do not certify an installed printer.",
-      "trigger": "Understanding a documented SCALE mechanism and its release or configuration limits.",
+      "plain_answer": "A label needs a definition, document type, document association and output route. Setup depends on the intended business event and printing path.",
+      "trigger": "",
       "input_context": [
         "The named workflow or setting and the scope of the question."
       ],
@@ -775,18 +747,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Template, generation setup, routing, optional wave step and printer support depend on the configured printing path."
-      ],
-      "expected_results": [
-        "A bounded explanation and the smallest evidence needed to resolve remaining uncertainty."
-      ],
-      "explanation_paths": [
-        "Use applicable template, routing and printer evidence when diagnosing a particular failure. This help does not generate or dispatch a print job."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Mixed-release training does not establish installed hardware support, present configuration or a complete setup sequence for every label.",
-        "No label, report or print job is executed by this help."
+        "Mixed-release training does not establish installed printer capability or a complete setup sequence for every label."
       ],
       "evidence_refs": [
         "sdd-function-label-prerequisites"

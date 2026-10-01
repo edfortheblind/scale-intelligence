@@ -703,7 +703,7 @@
       "title": "Why configuration seed calls may preserve old settings",
       "business_question": "Why configuration seed calls may preserve old settings?",
       "plain_answer": "Many administration seed routines insert only when their key is absent. Repeating a call with a changed description or flag can therefore leave the existing row untouched. The action-menu routine also skips when another menu already has the same description.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -774,17 +774,9 @@
         "This header write does not insert or change system configuration detail values.",
         "No template assignment or rendered screen is established by the seed."
       ],
-      "expected_results": [
-        "Many administration seed routines insert only when their key is absent. Repeating a call with a changed description or flag can therefore leave the existing row untouched. The action-menu routine also skips when another menu already has the same description."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-1708181481",
         "adm-sql-1820181880",
@@ -834,7 +826,7 @@
       "title": "Generic configuration updates replace omitted values",
       "business_question": "Generic configuration updates replace omitted values?",
       "plain_answer": "The generic configuration header and detail routines update existing records as well as insert missing ones. Their update branch assigns every listed field. Omitting an optional value supplies its default, often NULL, which can clear the old value. They do not validate detail values against the header definition.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -867,20 +859,11 @@
         }
       ],
       "configuration_dependencies": [
-        "This is a whole listed-field replacement, not an insert-only seed or partial patch. No header field-type/required/lookup validation is performed by this body.",
-        "No migration or validation of stored GENERIC_CONFIG_DETAIL values is performed; changing header metadata alone does not prove existing details conform."
+        "Changing header metadata does not migrate or validate stored GENERIC_CONFIG_DETAIL values."
       ],
-      "expected_results": [
-        "The generic configuration header and detail routines update existing records as well as insert missing ones. Their update branch assigns every listed field. Omitting an optional value supplies its default, often NULL, which can clear the old value. They do not validate detail values against the header definition."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-2026802628",
         "adm-sql-2042802685"
@@ -923,7 +906,7 @@
       "title": "Feature setting updates and unused removed input",
       "business_question": "Feature setting updates and unused removed input?",
       "plain_answer": "The feature-management routine inserts a missing feature or updates its enabled flag, product-release field and modification stamps. The removed input is unused. A stored enabled flag alone does not prove that an application feature is currently available to a user.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -954,17 +937,9 @@
       "configuration_dependencies": [
         "Update preserves CREATED_DATE and USER_STAMP. Storing ENABLED does not prove that every application caller consults this feature."
       ],
-      "expected_results": [
-        "The feature-management routine inserts a missing feature or updates its enabled flag, product-release field and modification stamps. The removed input is unused. A stored enabled flag alone does not prove that an application feature is currently available to a user."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-1980182450"
       ],
@@ -1006,7 +981,7 @@
       "title": "Action menus, missing endpoints and repeated rules",
       "business_question": "Action menus, missing endpoints and repeated rules?",
       "plain_answer": "An action definition needs an endpoint lookup; a menu option resolves a menu and optionally an action. Missing lookups can cause a required-field failure, while the menu option allows a NULL action. The rule routine appends each rule without checking for an existing copy. These routines register metadata and do not run an action.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -1043,21 +1018,13 @@
         }
       ],
       "configuration_dependencies": [
-        "ACTIVE and ALWAYS_AVAILABLE are saved; endpoint code is not invoked. Existing action names are not refreshed.",
-        "Rule text is stored as data, not executed or semantically validated here.",
-        "Duplicate guard ignores action, shortcut and separator; changing supplied values does not update an existing menu/sequence."
+        "ACTIVE and ALWAYS_AVAILABLE are stored; existing action names are preserved.",
+        "Rule text is stored without semantic validation.",
+        "The menu duplicate guard uses menu/sequence and ignores action, shortcut and separator; new values do not refresh an existing entry."
       ],
-      "expected_results": [
-        "An action definition needs an endpoint lookup; a menu option resolves a menu and optionally an action. Missing lookups can cause a required-field failure, while the menu option allows a NULL action. The rule routine appends each rule without checking for an existing copy. These routines register metadata and do not run an action."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-1884182108",
         "adm-sql-1900182165",
@@ -1101,7 +1068,7 @@
       "title": "Endpoint and exit-point definitions do not execute hooks",
       "business_question": "Endpoint and exit-point definitions do not execute hooks?",
       "plain_answer": "Endpoint definitions describe code or transport bindings. Exit-point definitions describe named hooks and ordered parameters. The reviewed routines store those definitions without loading code, contacting a URI or invoking the hook. Existing definitions usually remain unchanged when the seed key already exists.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -1152,17 +1119,9 @@
         "Existing exit-point settings are not updated. Runtime hook selection and category semantics need caller evidence.",
         "This records parameter metadata without binding values or invoking an exit point."
       ],
-      "expected_results": [
-        "Endpoint definitions describe code or transport bindings. Exit-point definitions describe named hooks and ordered parameters. The reviewed routines store those definitions without loading code, contacting a URI or invoking the hook. Existing definitions usually remain unchanged when the seed key already exists."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-1916182222",
         "adm-sql-1932182279",
@@ -1208,7 +1167,7 @@
       "title": "Filter definitions, ordered terms and shared attributes",
       "business_question": "Filter definitions, ordered terms and shared attributes?",
       "plain_answer": "Filter setup stores a record-type definition, a named filter and ordered expression terms. These seed routines do not run the filter or check its expression grammar. Attribute definitions use one global attribute key: supplying another record type does not create another same-named attribute.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -1249,22 +1208,12 @@
         }
       ],
       "configuration_dependencies": [
-        "The supplied filter string is stored and never executed here; existing filter text is not overwritten.",
-        "No join text or table name is executed; existing record-type settings remain unchanged.",
-        "Sequence defines stored position; existing terms are preserved, and no filter execution occurs.",
-        "The duplicate guard uses ATTRIBUTE alone, not RECORD_TYPE; the captured primary key also uses ATTRIBUTE alone."
+        "Existing filter text, record-type settings and ordered terms are preserved.",
+        "The attribute duplicate guard and primary key both use ATTRIBUTE alone, without RECORD_TYPE."
       ],
-      "expected_results": [
-        "Filter setup stores a record-type definition, a named filter and ordered expression terms. These seed routines do not run the filter or check its expression grammar. Attribute definitions use one global attribute key: supplying another record type does not create another same-named attribute."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-1962802400",
         "adm-sql-1978802457",
@@ -1309,7 +1258,7 @@
       "title": "Form setup is a sequence of metadata helper calls",
       "business_question": "Form setup is a sequence of metadata helper calls?",
       "plain_answer": "Form setup wrappers call separate helpers for the base form, display resources and checkpoint definitions. Viewer setup additionally creates viewer and screen metadata. No wrapper starts a transaction or compensates for a later helper failure, so complete setup depends on caller transaction behavior and all child calls succeeding.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -1360,17 +1309,9 @@
         "Distinct helpResourceKey behavior differentiates this wrapper from dbc_IConfigForm. No actual screen interaction is verified.",
         "No resource, screen or user permission is created by this body itself. Existing form IDs are not updated even if other supplied fields change."
       ],
-      "expected_results": [
-        "Form setup wrappers call separate helpers for the base form, display resources and checkpoint definitions. Viewer setup additionally creates viewer and screen metadata. No wrapper starts a transaction or compensates for a later helper failure, so complete setup depends on caller transaction behavior and all child calls succeeding."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-136699885",
         "adm-sql-1914802229",
@@ -1415,8 +1356,8 @@
       "topic_id": "admin-metadata-form-paths",
       "title": "Insight, details and transaction form registrations differ",
       "business_question": "Insight, details and transaction form registrations differ?",
-      "plain_answer": "These wrappers register metadata forms and screen paths with numeric path type 6. Insight builds its path using the form ID. Details and transaction forms use a lowercased abbreviation and pass restriction/default identifiers. The transaction wrapper has an extra checkpoint tail. Registration does not prove the current screen route or actual navigation.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "plain_answer": "Metadata-form wrappers register paths with numeric type 6. Insight builds the path from the form ID; details and transaction forms use a lowercased abbreviation.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -1439,7 +1380,7 @@
         {
           "order": 2,
           "action": "REVIEWED_STATIC_STEP",
-          "explanation": "Establish current screen navigation and effective restrictions separately; literal prefixes remain opaque in this review.",
+          "explanation": "Check the registered restriction/default identifiers through the screen component that consumes them.",
           "objects": [
             "dbc_IMetadataTransactionForm",
             "dbc_IMetadataInsightForm",
@@ -1453,20 +1394,13 @@
         }
       ],
       "configuration_dependencies": [
-        "Restrictions/defaults identifiers are passed to the screen helper; their rules are not interpreted here. The repeated checkpoint-1 call is preserved, not deduplicated in this explanation.",
-        "This wrapper passes no restrictions/defaults identifiers. Source registration does not establish current Insight navigation or screen acceptance.",
-        "Unlike the transaction wrapper, the body ends after menu-resource calls and has no extra checkpoint-1/checkpoint-3 tail."
+        "Details and transaction forms pass restriction/default identifiers to the screen helper; the wrapper does not interpret those rules. Insight passes neither identifier.",
+        "Only the transaction wrapper has the additional checkpoint-1/checkpoint-3 tail, including a repeated checkpoint-1 call."
       ],
-      "expected_results": [
-        "These wrappers register metadata forms and screen paths with numeric path type 6. Insight builds its path using the form ID. Details and transaction forms use a lowercased abbreviation and pass restriction/default identifiers. The transaction wrapper has an extra checkpoint tail. Registration does not prove the current screen route or actual navigation."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
+        "A registered path does not by itself establish the active application route."
       ],
       "evidence_refs": [
         "adm-sql-1989582126",
@@ -1511,7 +1445,7 @@
       "title": "Screen counts, templates and license associations",
       "business_question": "Screen counts, templates and license associations?",
       "plain_answer": "Screen setup checks the existing form rows, may replace the requested active flag, and uses a count guard before inserting. The table also enforces uniqueness on form ID plus active value. Template and license mapping routines register associations; they do not establish user access or license entitlement.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -1562,17 +1496,9 @@
         "This variant selects by FORM_ID; it does not test screen ACTIVE and does not validate license entitlement.",
         "Caller supplies the screen object identity; the procedure stores a mapping, not an entitlement grant."
       ],
-      "expected_results": [
-        "Screen setup checks the existing form rows, may replace the requested active flag, and uses a count guard before inserting. The table also enforces uniqueness on form ID plus active value. Template and license mapping routines register associations; they do not establish user access or license entitlement."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-2124182963",
         "adm-sql-2140183020",
@@ -1617,8 +1543,8 @@
       "topic_id": "admin-lookup-status-metadata",
       "title": "Lookup setup and status-flow metadata boundaries",
       "business_question": "Lookup setup and status-flow metadata boundaries?",
-      "plain_answer": "Lookup setup stores table and field descriptions and can add resource text. Its optional configuration-record-type comparison is not NULL-safe. Status-flow setup inserts area/status metadata but does not move a warehouse transaction to a new status. Neither body proves the settings selected by an active user.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "plain_answer": "Lookup setup stores table/field descriptions and can add resource text. Its optional configuration-record-type comparison is not NULL-safe. Status-flow setup stores area/status metadata.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -1651,20 +1577,12 @@
         }
       ],
       "configuration_dependencies": [
-        "No lookup query executes here. The resource call is independently conditional and can have effects after a no-op insert.",
-        "The body stores status configuration without changing transaction status or checking effective warehouse/company flow. Existing area/status rows remain unchanged."
+        "The resource-text call is independently conditional, so it can still run when the insert finds an existing row.",
+        "Existing area/status rows are preserved. No lookup query or transaction-status change runs in these registration bodies."
       ],
-      "expected_results": [
-        "Lookup setup stores table and field descriptions and can add resource text. Its optional configuration-record-type comparison is not NULL-safe. Status-flow setup inserts area/status metadata but does not move a warehouse transaction to a new status. Neither body proves the settings selected by an active user."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-2108182906",
         "adm-sql-2010802571"
@@ -1707,7 +1625,7 @@
       "title": "Screen parts, groups and controls preserve existing definitions",
       "business_question": "Screen parts, groups and controls preserve existing definitions?",
       "plain_answer": "Screen setup stores parts, groups, layout columns, controls, attributes and event definitions. Most helpers preserve an existing name within its parent. The attribute helper also compares the value, so changing a value can add another row instead of replacing the old one. Event and parameter registration does not execute an event.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -1768,17 +1686,9 @@
         "Existing column name/group pairs preserve earlier CSS and sequence; no rendered layout is established.",
         "Existing part/screen pairs are preserved; source metadata does not verify the actual current screen composition."
       ],
-      "expected_results": [
-        "Screen setup stores parts, groups, layout columns, controls, attributes and event definitions. Most helpers preserve an existing name within its parent. The attribute helper also compares the value, so changing a value can add another row instead of replacing the old one. Event and parameter registration does not execute an event."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-264700341",
         "adm-sql-280700398",
@@ -1825,8 +1735,8 @@
       "topic_id": "admin-grid-viewer-seeding",
       "title": "Grid and viewer bindings are metadata, with distinct duplicate rules",
       "business_question": "Grid and viewer bindings are metadata, with distinct duplicate rules?",
-      "plain_answer": "Grid setup stores expressions and edit/display flags; viewer setup stores header/detail bindings. They do not execute the data source or create database keys. Grid duplicate checks normalize NULL field names using zero, while web-screen setup preserves an existing screen name even when a different company is supplied.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "plain_answer": "Grid setup stores expressions and display/edit flags. Viewer setup stores header/detail bindings. Grid duplicate checks normalize NULL field names using zero; web-screen setup identifies existing records by screen name alone.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -1834,7 +1744,7 @@
         {
           "order": 1,
           "action": "REVIEWED_STATIC_STEP",
-          "explanation": "Distinguish a UI primary-key flag from a real database constraint.",
+          "explanation": "Inspect the stored field flags and the actual database constraints separately.",
           "objects": [
             "dbc_IScreenControlGridColumns",
             "dbc_IViewerTemplate",
@@ -1849,7 +1759,7 @@
         {
           "order": 2,
           "action": "REVIEWED_STATIC_STEP",
-          "explanation": "Check the actual duplicate predicate and data-source consumer; note that the grid helper uses GETDATE, unlike the explicit UTC calls in the other reviewed seed helpers.",
+          "explanation": "Use the component consuming the binding to determine query execution and display behavior.",
           "objects": [
             "dbc_IScreenControlGridColumns",
             "dbc_IViewerTemplate",
@@ -1863,21 +1773,14 @@
         }
       ],
       "configuration_dependencies": [
-        "Duplicate guard ignores sequence, flags and width. IS_PRIMARY_KEY is stored UI metadata; it creates no database key. Server local-time semantics of GETDATE must not be silently relabeled as explicit UTC.",
-        "The viewer-form wrapper passes engineType 0. Existing form bindings are not updated and no viewer query is run.",
-        "The duplicate guard uses SCREEN_NAME alone, not COMPANY; supplying another company does not create a second same-named header through this routine."
+        "Grid duplicate checks ignore sequence, flags and width. IS_PRIMARY_KEY is UI metadata and creates no database constraint.",
+        "The grid helper uses server-local GETDATE; other seed helpers use explicit UTC calls.",
+        "Viewer-form setup passes engineType 0, preserves existing bindings and does not execute the data source.",
+        "Supplying a different company does not create another header with the same screen name."
       ],
-      "expected_results": [
-        "Grid setup stores expressions and edit/display flags; viewer setup stores header/detail bindings. They do not execute the data source or create database keys. Grid duplicate checks normalize NULL field names using zero, while web-screen setup preserves an existing screen name even when a different company is supplied."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-328700569",
         "adm-sql-504701196",
@@ -1921,7 +1824,7 @@
       "title": "Existing resource text can raise a setup error",
       "business_question": "Existing resource text can raise a setup error?",
       "plain_answer": "The resource helper preserves an existing language/group/key. If a new text value compares unequal to the stored text, it raises SQL error severity 18 instead of updating the text. This matters to form wrappers that call it after earlier setup steps. System-configuration detail setup also preserves an existing key, but has no corresponding custom text-conflict check.",
-      "trigger": "A setup or administration caller invokes the reviewed routine; installed caller and permissions are unverified.",
+      "trigger": "",
       "input_context": [
         "Use the exact captured routine declaration and source-bound contract; no production execution is recommended."
       ],
@@ -1955,19 +1858,11 @@
       ],
       "configuration_dependencies": [
         "Comparison follows SQL collation. Repeating an existing key with equal text preserves previous field lengths, decimals and stamps; no language fallback is selected.",
-        "Existing values are not overwritten; this static review reads no actual polymorphic SYSTEM_VALUE contents."
+        "Existing SYSTEM_VALUE contents are preserved."
       ],
-      "expected_results": [
-        "The resource helper preserves an existing language/group/key. If a new text value compares unequal to the stored text, it raises SQL error severity 18 instead of updating the text. This matters to form wrappers that call it after earlier setup steps. System-configuration detail setup also preserves an existing key, but has no corresponding custom text-conflict check."
-      ],
-      "explanation_paths": [
-        "Read the cited routine details for inputs, NULL behavior, effects and limits."
-      ],
-      "boundaries": [
-        "Static source and schema review only; no new database connection, rows, routine execution, UI navigation or production acceptance.",
-        "Opaque string literals were not reconstructed. No claims of live feature activation, authorization, vendor/custom ownership or endpoint availability.",
-        "Catalog references and authored roles do not establish all consumers or full process runtime."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "adm-sql-2058802742",
         "adm-sql-488701139"

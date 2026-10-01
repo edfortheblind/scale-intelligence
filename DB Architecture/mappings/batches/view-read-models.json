@@ -1948,7 +1948,7 @@
       "title": "Understanding DIF message view row counts",
       "business_question": "Does one DIF view row always represent one unique message?",
       "plain_answer": "Incoming messages require their endpoint and event. Outgoing messages join an event to every endpoint associated with that event, so multiple endpoints can repeat a message. Neither view sends or retries a message.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -1980,21 +1980,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Check the distinct incoming versus outgoing endpoint join keys.",
-        "Count unique message identities deliberately and inspect missing required joins."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Check the distinct incoming versus outgoing endpoint join keys.",
-        "Count unique message identities deliberately and inspect missing required joins."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-292248146",
         "vr-sql-308248203"
@@ -2046,7 +2035,7 @@
       "title": "Understanding current and retained view combinations",
       "business_question": "Can current and retained views be treated as one deduplicated current record?",
       "plain_answer": "UNION ALL views preserve duplicate rows across current and retained sources. UNION views remove identical full projected rows, while different values for the same identifier can remain. These views provide no current-source preference.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -2110,21 +2099,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Identify UNION versus UNION ALL and the exact selected fields.",
-        "Use explicit provenance and identity rules in the consuming analysis; no such priority is supplied here."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Identify UNION versus UNION ALL and the exact selected fields.",
-        "Use explicit provenance and identity rules in the consuming analysis; no such priority is supplied here."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-1872061755",
         "vr-sql-1888061812",
@@ -2183,8 +2161,8 @@
       "topic_id": "view-sci-container-ordinals",
       "title": "Understanding SCI container positional mapping",
       "business_question": "Are SCI retained container World Ease and logistics-unit fields aligned?",
-      "plain_answer": "The captured SCI_SHIPPING_CONTAINER_VIEW uses different ordering for four columns in its two UNION branches. The retained branch places logistics-unit fields in the current branch World Ease output positions and World Ease fields in logistics-unit positions. This is a static source concern requiring separate runtime and change review.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "plain_answer": "SCI_SHIPPING_CONTAINER_VIEW places four columns in different positions across its UNION branches. In the retained branch, logistics-unit values occupy World Ease output positions, and World Ease values occupy logistics-unit positions. Consumers therefore cannot assume that each output column has the same meaning in both branches.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -2212,21 +2190,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Compare both explicit projections by ordinal position, not matching column name.",
-        "Preserve the finding without treating this documentation as an executed SQL correction."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Compare both explicit projections by ordinal position, not matching column name.",
-        "Preserve the finding without treating this documentation as an executed SQL correction."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-1856061698"
       ],
@@ -2277,7 +2244,7 @@
       "title": "Understanding shipment and load calculated totals",
       "business_question": "Why can computed shipment totals differ from stored header totals?",
       "plain_answer": "SHIPMENT_HEADER_VIEW calculates detail totals and parentless-container totals separately. Weight, volume and value use a positive manually entered value only with zero root containers, otherwise a root-container sum when roots exist, otherwise detail sums. Load views aggregate these computed rows; address joins may repeat load totals.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -2313,21 +2280,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Check root-container presence and positive manual-value conditions for each measure.",
-        "Account for load-address multiplicity before further summing the returned totals."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Check root-container presence and positive manual-value conditions for each measure.",
-        "Account for load-address multiplicity before further summing the returned totals."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-2032062325",
         "vr-sql-12579133",
@@ -2380,7 +2336,7 @@
       "title": "Understanding work-order summary quantities",
       "business_question": "Is work-order header insight safe to interpret as one coherent component and unduplicated work sum?",
       "plain_answer": "The summary independently takes MIN of many component fields while grouping by work order. Components, shipment details and instructions join before SUM(TO_QTY), so fanout can multiply that sum. COUNT DISTINCT protects the dependent shipment count only; COMPLETE is an alias of requested build quantity. Because each minimum is calculated separately, the summary can combine values from different components and should not be read as one component record.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -2416,21 +2372,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Distinguish independent MIN fields, COUNT DISTINCT and SUM behavior.",
-        "Treat COMPLETE as its source quantity and inspect instruction joins that lack type predicates."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Distinguish independent MIN fields, COUNT DISTINCT and SUM behavior.",
-        "Treat COMPLETE as its source quantity and inspect instruction joins that lack type predicates."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-1520060501",
         "vr-sql-1536060558",
@@ -2483,7 +2428,7 @@
       "title": "Understanding inventory detail and aggregate grain",
       "business_question": "Can detailed inventory rows and aggregate rows be summed interchangeably?",
       "plain_answer": "Detailed inventory joins serial numbers, which can repeat inventory quantities. The aggregate view groups location, item, company, lot, permanent state and location dimensions, uses MIN/sentinels for other fields, and counts distinct logistics units. Availability uses raw nullable quantity arithmetic and clamps negative or nonmatching comparisons to zero.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -2515,21 +2460,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Choose the intended inventory key and account for serial expansion before summing.",
-        "Check raw arithmetic, NULL behavior, mixed units and the aggregate override test that uses only MAX inventory ID."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Choose the intended inventory key and account for serial expansion before summing.",
-        "Check raw arithmetic, NULL behavior, mixed units and the aggregate override test that uses only MAX inventory ID."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-1700513437",
         "vr-sql-1716513494"
@@ -2581,7 +2515,7 @@
       "title": "Understanding catch weight and transaction attribute grain",
       "business_question": "Why can catch weight, its unit and serial number appear on separate history rows?",
       "plain_answer": "METADATA_INSIGHT_TRAN_HIST_VIEW applies each linked attribute row separately, with CASE values and no pivot. TRANSACTION_HISTORY_INVENTORY_ATTRIBUTE_VIEW instead aggregates selected attribute types with MAX. In detailed inventory, a nonzero combined catch weight replaces stored total weight, while the weight-unit choice is evaluated separately.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -2617,21 +2551,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Distinguish row-per-attribute APPLY from MAX-based attribute aggregation.",
-        "Check TRY_CAST outcomes and independent catch-weight versus weight-unit fallback."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Distinguish row-per-attribute APPLY from MAX-based attribute aggregation.",
-        "Check TRY_CAST outcomes and independent catch-weight versus weight-unit fallback."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-1732513551",
         "vr-sql-1796513779",
@@ -2684,7 +2607,7 @@
       "title": "Understanding dock occupancy display states",
       "business_question": "Does a dock empty indicator prove all physical inventory is gone?",
       "plain_answer": "Dock views use selected location statuses, fixed class/subclass filters or summed inventory buckets. One quantity view prioritizes positive transit over positive on-hand quantity; nonpositive or NULL sums fall through. The staging-area empty flag tests the area status, not whether every child is empty.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -2728,21 +2651,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Read the exact status/quantity rule used by the selected view.",
-        "Distinguish child-position counts from area status and root-container grouping by child dock type."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Read the exact status/quantity rule used by the selected view.",
-        "Distinguish child-position counts from area status and root-container grouping by child dock type."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-832058050",
         "vr-sql-848058107",
@@ -2797,7 +2709,7 @@
       "title": "Understanding warehouse boundaries in location views",
       "business_question": "Are all location text joins constrained to the same warehouse?",
       "plain_answer": "Some dock-position views join container LOCATION to LOCATION text without a warehouse predicate. Shipment transit-location branches also differ in warehouse and status checks. Other container transit-location joins explicitly include warehouse. The exact view and branch matter.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -2845,21 +2757,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Compare LOCATION text plus warehouse predicates in each branch.",
-        "Do not transfer a status threshold or warehouse condition from one UNION branch to another."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Compare LOCATION text plus warehouse predicates in each branch.",
-        "Do not transfer a status threshold or warehouse condition from one UNION branch to another."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-880058221",
         "vr-sql-896058278",
@@ -2915,7 +2816,7 @@
       "title": "Understanding multi-order pallet location choices",
       "business_question": "Do multi-order pallet views return a deterministic unique location?",
       "plain_answer": "MOP views use unordered TOP 1 selections for child/self location and work zone. AND conditions bind only to the self arm in those OR expressions, so child rows may satisfy an arm even with NULL values. Some views require a pallet, while one reads warehouse from an optional pallet join.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -2955,21 +2856,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Check parentless/container status and required versus optional pallet joins.",
-        "Inspect TOP 1 ordering and OR/AND grouping before assuming a unique non-NULL location."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Check parentless/container status and required versus optional pallet joins.",
-        "Inspect TOP 1 ordering and OR/AND grouping before assuming a unique non-NULL location."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-60579304",
         "vr-sql-1168059247",
@@ -3023,7 +2913,7 @@
       "title": "Understanding placeholder and display-only view fields",
       "business_question": "Do manifest or split view values demonstrate an executed operation?",
       "plain_answer": "The manifest presentation view returns one row of NULL placeholders plus current UTC time without reading a manifest table. The split view initializes a numeric split quantity to zero. Wave and cycle-count CASE flags classify stored fields; selecting these views does not execute their named operations.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -3063,21 +2953,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Distinguish literal/NULL/time expressions from stored business values.",
-        "Read ordered CASE precedence without interpreting display flags as action authorization."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Distinguish literal/NULL/time expressions from stored business values.",
-        "Read ordered CASE precedence without interpreting display flags as action authorization."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-1152059190",
         "vr-sql-28579190",
@@ -3131,7 +3010,7 @@
       "title": "Understanding authorization metadata in selection views",
       "business_question": "Do these selection views enforce the caller warehouse or company access?",
       "plain_answer": "Container-type, wave-master, manual replenishment and menu views expose authorization metadata. Their bodies do not bind a caller identity to a selected warehouse/company. LEFT JOIN conditions can preserve a master with NULL authorization rows; some views also expose inactive definitions.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -3171,21 +3050,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Separate projected authorization fields from WHERE predicates enforcing a caller scope.",
-        "Account for unmatched LEFT JOIN authorization rows and per-view ACTIVE filters."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Separate projected authorization fields from WHERE predicates enforcing a caller scope.",
-        "Account for unmatched LEFT JOIN authorization rows and per-view ACTIVE filters."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-816057993",
         "vr-sql-1648060957",
@@ -3238,8 +3106,8 @@
       "topic_id": "view-configuration-and-resources",
       "title": "Understanding service configuration and resource projections",
       "business_question": "Do configuration/resource views establish effective settings or secret values?",
-      "plain_answer": "The SSO view unions feature-selected record-type rows with a fixed-key lookup lacking a record-type restriction. A standalone service view uses scalar configuration lookups and unordered TOP 1 active warehouse. The resource view exposes BASE_TEXT and CUSTOM_TEXT separately, without choosing the effective override. No returned configuration or credential values were queried.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "plain_answer": "The SSO view combines feature-selected record types with a fixed-key lookup that has no record-type restriction. The standalone service view uses scalar configuration lookups and an unordered TOP 1 active warehouse. The resource view returns BASE_TEXT and CUSTOM_TEXT separately without selecting an effective override.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -3275,21 +3143,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Compare scalar cardinality, feature selection and the second SSO branch scope.",
-        "Keep source structure separate from actual settings, login success and effective text resolution."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Compare scalar cardinality, feature selection and the second SSO branch scope.",
-        "Keep source structure separate from actual settings, login success and effective text resolution."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-1684513380",
         "vr-sql-1780513722",
@@ -3342,7 +3199,7 @@
       "title": "Understanding purchase-order detail, header and TPM views",
       "business_question": "Are purchase-order header insight rows unique per order?",
       "plain_answer": "Insight header views expand headers by detail and repeat open/closed flags. Their receipt lookup is TOP 1 without ordering. TPM line status requires a header through INNER JOIN, whereas the non-TPM detail insight uses LEFT JOIN. The base header aggregate groups by header ID and calculates detail sums without unit normalization.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -3386,21 +3243,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Identify header expansion versus header aggregation and INNER versus LEFT joins.",
-        "Check unordered receipt selection, repeated flags and weight-unit interpretation."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Identify header expansion versus header aggregation and INNER versus LEFT joins.",
-        "Check unordered receipt selection, repeated flags and weight-unit interpretation."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-1200059361",
         "vr-sql-1216059418",
@@ -3455,7 +3301,7 @@
       "title": "Understanding receipt detail and appointment fanout",
       "business_question": "Why do receipt views sometimes repeat header or line quantities?",
       "plain_answer": "Receipt insight combines lines, appointments, containers and unfulfilled immediate-needs requests. Multiple matches can multiply rows; immediate needs are joined by item/company without warehouse. Receipt header view also repeats headers per appointment. Container pre-check-in quantity uses open receipt sums minus status-100 container quantities and may be NULL.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -3495,21 +3341,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Choose a header, line, container or appointment grain explicitly before aggregation.",
-        "Check missing scalar matches, open-header conditions and the immediate-needs join scope."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Choose a header, line, container or appointment grain explicitly before aggregation.",
-        "Check missing scalar matches, open-header conditions and the immediate-needs join scope."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-66359551",
         "vr-sql-1264059589",
@@ -3563,7 +3398,7 @@
       "title": "Understanding shipment pool and shipment insight boundaries",
       "business_question": "Are shipment pool and shipment insight disjoint complementary sets?",
       "plain_answer": "The standard pool filters leading status below 300, with a redundant status-80 alternative. Shipment insight uses trailing status at least 300 or leading status at least 300 with trailing 80. These are different predicates, not complements. Line expansion repeats header totals; the custom TRAV pool additionally sums header weight after line expansion by customer.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -3603,21 +3438,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Compare leading and trailing status fields rather than relying on view names.",
-        "Account for detail/VAS expansion and the custom customer window sum before aggregating."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Compare leading and trailing status fields rather than relying on view names.",
-        "Account for detail/VAS expansion and the custom customer window sum before aggregating."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-1145875249",
         "vr-sql-1161875306",
@@ -3671,7 +3495,7 @@
       "title": "Understanding lot counts and shipped-lot scope",
       "business_question": "Does lot number of locations count distinct physical locations?",
       "plain_answer": "Lot views count matching LOCATION_INVENTORY rows with any nonzero quantity bucket, including negative values, rather than DISTINCT locations. Retained lots use current inventory for the count. Recall and shipped-lot views combine current and retained containers/headers with UNION ALL and apply a status-function threshold; shipped lots additionally require non-NULL LOT.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -3715,21 +3539,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Distinguish row count from distinct location count and current inventory from retained lot metadata.",
-        "Inspect UNION ALL overlap, strict threshold comparison and non-NULL lot filtering."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Distinguish row count from distinct location count and current inventory from retained lot metadata.",
-        "Inspect UNION ALL overlap, strict threshold comparison and non-NULL lot filtering."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-1056058848",
         "vr-sql-1136059133",
@@ -3784,7 +3597,7 @@
       "title": "Understanding VAS confirmation and QC context",
       "business_question": "Are derived VAS confirmation values equivalent across all views?",
       "plain_answer": "The container VAS view maps one negative completion value to zero and every other value, including NULL, to one. Shipment-level and line-level views derive MIN-based confirmation over selected containers with different empty-result handling. QC history joins may exclude rows through a reason-type filter after a LEFT JOIN. None of these selections completes VAS or QC.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -3828,21 +3641,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Read each CASE, MIN and empty-set fallback separately.",
-        "Check whether WHERE predicates null-reject rows from an apparent LEFT JOIN."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Read each CASE, MIN and empty-set fallback separately.",
-        "Check whether WHERE predicates null-reject rows from an apparent LEFT JOIN."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-2112062610",
         "vr-sql-1936061983",
@@ -3896,8 +3698,8 @@
       "topic_id": "view-order-quantity-and-balance",
       "title": "Understanding ordered quantity and balance aggregates",
       "business_question": "Does ITEM_ORDER_QUANTITY_VIEW show remaining unallocated demand?",
-      "plain_answer": "It sums total shipment-detail quantity for headers with trailing status below 900, grouped by item, raw company, unit and warehouse. Inventory balance separately sums selected nonzero inventory buckets where location-class configuration qualifies. Display company/unit fallbacks do not change the raw GROUP BY keys.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "plain_answer": "The ordered-quantity view sums shipment-detail total quantity for headers whose trailing status is below 900, grouping by item, raw company, unit and warehouse. The inventory-balance view instead sums selected nonzero quantity buckets for qualifying location classes. Display fallbacks for company or unit do not merge the underlying groups.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -3933,21 +3735,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Identify total quantity versus remaining/available demand and the header threshold.",
-        "Preserve unit/status grouping and distinguish NULL absent aggregates from zero."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Identify total quantity versus remaining/available demand and the header threshold.",
-        "Preserve unit/status grouping and distinguish NULL absent aggregates from zero."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-2098314735",
         "vr-sql-2082314678",
@@ -4000,7 +3791,7 @@
       "title": "Understanding managed-document file-name extraction",
       "business_question": "Can reading document metadata retrieve the file or always derive a valid filename?",
       "plain_answer": "The document-management view projects metadata and derives a file name through reverse, substring and a selected path separator. It does not open or retrieve the document. A non-NULL source without the selected separator can yield a negative substring length; NULL source propagates NULL.",
-      "trigger": "A reader compares or aggregates data returned by the named views; installed application binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured view definitions in snapshot 20260929T214106Z. No live query results or operational records were read."
       ],
@@ -4028,21 +3819,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Treat stored source/path text as metadata; actual file access is outside the view.",
-        "Check NULL and missing-separator behavior in the expression."
-      ],
-      "expected_results": [
-        "A source-bounded explanation of row shape and its limits."
-      ],
-      "explanation_paths": [
-        "Treat stored source/path text as metadata; actual file access is outside the view.",
-        "Check NULL and missing-separator behavior in the expression."
-      ],
-      "boundaries": [
-        "Read definitions only; no SQL or business operation executed.",
-        "Opaque selector labels, consuming query filters, complete transitive functions and live acceptance remain outside the stated contract."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "vr-sql-2114314792"
       ],

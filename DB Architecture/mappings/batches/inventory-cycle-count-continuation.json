@@ -523,7 +523,7 @@
       "title": "Why a cycle-count request may not be created",
       "business_question": "Why a cycle-count request may not be created?",
       "plain_answer": "A request can be skipped because the minimum time since the last count has not elapsed, or because another open request already covers the same inventory identity. The duplicate check spans plans. The creation routine also uses the last insertion result, so its final return alone does not prove that nothing was created earlier.",
-      "trigger": "An operator or support analyst needs to understand the documented inventory or cycle-count behavior.",
+      "trigger": "",
       "input_context": [
         "Use the relevant application screen and exact workflow context; no routine execution is required to read this explanation."
       ],
@@ -561,7 +561,7 @@
         {
           "order": 3,
           "action": "REVIEWED_STATIC_STEP",
-          "explanation": "Use the retained source explanation for edge cases; no SQL execution or unsupported record edit is recommended.",
+          "explanation": "A final return based on the last insertion cannot determine whether an earlier request was created; inspect the resulting request set.",
           "objects": [
             "CCP_CreateCCRequest",
             "CCP_InsertCCRequest",
@@ -575,21 +575,13 @@
         }
       ],
       "configuration_dependencies": [
-        "Threshold selectors allow NULL wildcards for location type/work zone/movement class. A caller-supplied plan changes launch selection, inventory scope and work path. Effective stored configuration is not captured.",
+        "Threshold selectors allow NULL wildcards for location type, work zone and movement class. A caller-supplied plan changes launch selection, inventory scope and the work path.",
         "Group size controls one local increment. Work-created initial flag depends on two coded create-work values. Existing request duplication ignores the caller plan/group/launch.",
-        "Location/warehouse and inventory identity determine request selection; permanent assignment changes empty-location handling. Coded condition/action/type equality groups were verified privately; actual application callers remain unobserved."
+        "Location, warehouse and inventory identity determine request selection. Permanent assignment changes how empty locations are handled."
       ],
-      "expected_results": [
-        "A request can be skipped because the minimum time since the last count has not elapsed, or because another open request already covers the same inventory identity. The duplicate check spans plans. The creation routine also uses the last insertion result, so its final return alone does not prove that nothing was created earlier."
-      ],
-      "explanation_paths": [
-        "The linked source contracts provide optional technical details and known edge cases."
-      ],
-      "boundaries": [
-        "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
-        "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
-        "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "icc-sql-1068179201",
         "icc-sql-1132179429",
@@ -632,8 +624,8 @@
       "topic_id": "cycle-count-plan-counters",
       "title": "Why cycle-count plan totals may overlap",
       "business_question": "Why cycle-count plan totals may overlap?",
-      "plain_answer": "The reviewed plan recalculation includes the reviewed category in the open total. Adding open, reviewed and closed therefore can double-count requests. Plan completion also depends on having a master name and no nonclosed requests. The detail pane combines stored plan values with separately counted work and transactions.",
-      "trigger": "An operator or support analyst needs to understand the documented inventory or cycle-count behavior.",
+      "plain_answer": "The cycle-count plan's open total includes reviewed requests. Adding open, reviewed and closed can therefore double-count requests. The detail pane mixes stored plan values with separate work and transaction counts.",
+      "trigger": "",
       "input_context": [
         "Use the relevant application screen and exact workflow context; no routine execution is required to read this explanation."
       ],
@@ -670,21 +662,13 @@
         }
       ],
       "configuration_dependencies": [
-        "Plan identity alone scopes both aggregation and update; there is no warehouse or user-authorization predicate. MASTER_NAME controls completion stamping.",
-        "Caller supplies group size and warehouse; flags are coded values rather than effective configuration reads.",
-        "Counts have different scope: work reference alone, requests by plan ID, transactions by reference plus warehouse/type40. Equal numeric results would not prove equivalent populations."
+        "Plan ID alone scopes recalculation and update; there is no warehouse or user-authorization predicate. Completion stamping requires MASTER_NAME and no nonclosed requests.",
+        "The caller supplies group size and warehouse; flags are coded rather than read as effective settings.",
+        "Work is counted by reference, requests by plan ID, and transactions by reference plus warehouse and type 40. Equal totals do not prove equal populations."
       ],
-      "expected_results": [
-        "The reviewed plan recalculation includes the reviewed category in the open total. Adding open, reviewed and closed therefore can double-count requests. Plan completion also depends on having a master name and no nonclosed requests. The detail pane combines stored plan values with separately counted work and transactions."
-      ],
-      "explanation_paths": [
-        "The linked source contracts provide optional technical details and known edge cases."
-      ],
-      "boundaries": [
-        "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
-        "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
-        "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "icc-sql-1036179087",
         "icc-sql-1850802001",
@@ -728,7 +712,7 @@
       "title": "How cycle-count preferences affect work creation",
       "business_question": "How cycle-count preferences affect work creation?",
       "plain_answer": "Cycle-count work creation reads the user cycle-count preference for work type and team, then work-type defaults for priority and group. It also needs the source-identifier configuration. The bulk routine creates detail instructions and an aggregate parent; the logistics-unit routine creates one detail using existing work. These paths have different effects.",
-      "trigger": "An operator or support analyst needs to understand the documented inventory or cycle-count behavior.",
+      "trigger": "",
       "input_context": [
         "Use the relevant application screen and exact workflow context; no routine execution is required to read this explanation."
       ],
@@ -780,21 +764,13 @@
         }
       ],
       "configuration_dependencies": [
-        "User preference -> cycle-count preference -> work-type defaults, plus coded source-identifier and work-unit-field settings. This is a source rule, not an observed current configuration.",
+        "Default precedence follows user preference, cycle-count preference, then work type, together with source-identifier and work-unit-field settings.",
         "Source identifier comes from a coded SYSTEM_CONFIG_DETAIL key/type. Existing work supplies type/team/priority/group; the request supplies inventory dimensions.",
         "Caller identity plus coded instruction/internal-number types defines scope; no active user setting is loaded."
       ],
-      "expected_results": [
-        "Cycle-count work creation reads the user cycle-count preference for work type and team, then work-type defaults for priority and group. It also needs the source-identifier configuration. The bulk routine creates detail instructions and an aggregate parent; the logistics-unit routine creates one detail using existing work. These paths have different effects."
-      ],
-      "explanation_paths": [
-        "The linked source contracts provide optional technical details and known edge cases."
-      ],
-      "boundaries": [
-        "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
-        "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
-        "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "icc-sql-1100179315",
         "icc-sql-1084179258",
@@ -838,7 +814,7 @@
       "title": "Why count work identity and sequence can differ",
       "business_question": "Why count work identity and sequence can differ?",
       "plain_answer": "Count-request reconciliation can move or remove related work and can merge work units. Several selectors use different identity fields or scopes. Empty-location cleanup removes selected work without deleting the request; merging can remove an old parent and its remaining children. These source rules explain possible behavior but do not identify the cause of a particular stuck work unit.",
-      "trigger": "An operator or support analyst needs to understand the documented inventory or cycle-count behavior.",
+      "trigger": "",
       "input_context": [
         "Use the relevant application screen and exact workflow context; no routine execution is required to read this explanation."
       ],
@@ -908,17 +884,9 @@
         "Current-parent lookups use work unit and coded type without warehouse qualification. Destination plan/launch equivalence is assumed in assignments, not verified.",
         "Internal ID only; no explicit warehouse/company authorization. Culture does not change either output."
       ],
-      "expected_results": [
-        "Count-request reconciliation can move or remove related work and can merge work units. Several selectors use different identity fields or scopes. Empty-location cleanup removes selected work without deleting the request; merging can remove an old parent and its remaining children. These source rules explain possible behavior but do not identify the cause of a particular stuck work unit."
-      ],
-      "explanation_paths": [
-        "The linked source contracts provide optional technical details and known edge cases."
-      ],
-      "boundaries": [
-        "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
-        "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
-        "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "icc-sql-1180179600",
         "icc-sql-1196179657",
@@ -964,7 +932,7 @@
       "title": "Why an inventory update can affect no row",
       "business_question": "Why an inventory update can affect no row?",
       "plain_answer": "The source and destination update routines require all four initial quantities to still match. If another change has occurred, no row may be updated even when the SQL return code is zero. The caller must check the affected-row output. Clearing stock metadata also differs between the source and destination paths.",
-      "trigger": "An operator or support analyst needs to understand the documented inventory or cycle-count behavior.",
+      "trigger": "",
       "input_context": [
         "Use the relevant application screen and exact workflow context; no routine execution is required to read this explanation."
       ],
@@ -985,7 +953,7 @@
         {
           "order": 2,
           "action": "REVIEWED_STATIC_STEP",
-          "explanation": "Read the affected-row result as well as the return code; this documentation does not retry or change stock.",
+          "explanation": "Check the affected-row output as well as the return code before treating the quantity change as complete.",
           "objects": [
             "INV_UpdateFromLocInv",
             "INV_UpdateToLocInv"
@@ -1000,17 +968,9 @@
         "Coded default inventory-status setting is used only for the metadata-empty branch.",
         "Coded default status used for empty state; item defaults depend on item/company/UOM/location/warehouse. Existing metadata has explicit precedence."
       ],
-      "expected_results": [
-        "The source and destination update routines require all four initial quantities to still match. If another change has occurred, no row may be updated even when the SQL return code is zero. The caller must check the affected-row output. Clearing stock metadata also differs between the source and destination paths."
-      ],
-      "explanation_paths": [
-        "The linked source contracts provide optional technical details and known edge cases."
-      ],
-      "boundaries": [
-        "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
-        "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
-        "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "icc-sql-1528704844",
         "icc-sql-1560704958"
@@ -1053,7 +1013,7 @@
       "title": "How destination inventory defaults and restrictions are selected",
       "business_question": "How destination inventory defaults and restrictions are selected?",
       "plain_answer": "New inventory uses location rules, item defaults and supplied source values. A missing location may be created with fixed defaults. Supplying only a volume or weight override still enables a shared override mode, so the other total can become NULL. UOM copying also has its own location and partial-mode rules.",
-      "trigger": "An operator or support analyst needs to understand the documented inventory or cycle-count behavior.",
+      "trigger": "",
       "input_context": [
         "Use the relevant application screen and exact workflow context; no routine execution is required to read this explanation."
       ],
@@ -1094,22 +1054,14 @@
         }
       ],
       "configuration_dependencies": [
-        "Location class/multi-item flags, item defaults and one reference-type exemption affect the path. No observed stored setting is asserted.",
-        "Defaults are coded in the procedure, not copied from a location template. Caller supplies warehouse/location.",
-        "No destination warehouse predicate and no source/destination warehouse join. Location names repeated across warehouses can broaden the destination scope.",
-        "A coded flag selects location-UOM dimensions versus item-default helper. No conversion factor is applied in this body."
+        "Location class, multi-item flags, item defaults and one reference-type exemption govern eligible additions.",
+        "A newly created location uses coded defaults, not a location template. The caller supplies its warehouse/location.",
+        "The UOM-copy path has no destination-warehouse predicate or source/destination warehouse join. Repeated location names can broaden its destination scope.",
+        "A coded flag chooses location-UOM dimensions or the item-default helper; this body applies no conversion factor."
       ],
-      "expected_results": [
-        "New inventory uses location rules, item defaults and supplied source values. A missing location may be created with fixed defaults. Supplying only a volume or weight override still enables a shared override mode, so the other total can become NULL. UOM copying also has its own location and partial-mode rules."
-      ],
-      "explanation_paths": [
-        "The linked source contracts provide optional technical details and known edge cases."
-      ],
-      "boundaries": [
-        "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
-        "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
-        "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "icc-sql-1240703818",
         "icc-sql-1224703761",
@@ -1154,7 +1106,7 @@
       "title": "Why Inventory Insight counts can differ from the selected detail",
       "business_question": "Why Inventory Insight counts can differ from the selected detail?",
       "plain_answer": "Insight detail panes combine several result sets. Inventory detail can be selected by inventory identity while its related-work counts use the caller item and location context. Load tiles mix stored totals with a line count. Lot transaction counts use item, company, lot and warehouse. These counts are useful context, not a complete diagnosis or permission to close work.",
-      "trigger": "An operator or support analyst needs to understand the documented inventory or cycle-count behavior.",
+      "trigger": "",
       "input_context": [
         "Use the relevant application screen and exact workflow context; no routine execution is required to read this explanation."
       ],
@@ -1195,17 +1147,9 @@
         "Internal load ID only; status names use coded functional-area selectors.",
         "History scope uses inventory dimensions, not lot OBJECT_ID in history or a date restriction."
       ],
-      "expected_results": [
-        "Insight detail panes combine several result sets. Inventory detail can be selected by inventory identity while its related-work counts use the caller item and location context. Load tiles mix stored totals with a line count. Lot transaction counts use item, company, lot and warehouse. These counts are useful context, not a complete diagnosis or permission to close work."
-      ],
-      "explanation_paths": [
-        "The linked source contracts provide optional technical details and known edge cases."
-      ],
-      "boundaries": [
-        "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
-        "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
-        "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "icc-sql-1272703932",
         "icc-sql-1304704046",
@@ -1249,7 +1193,7 @@
       "title": "Why inventory monitor tiles and drilldowns can disagree",
       "business_question": "Why inventory monitor tiles and drilldowns can disagree?",
       "plain_answer": "Some monitor tiles display distinct work units while their warning thresholds count instruction rows. Drilldown summaries also differ in scope: the location-type frozen-empty tile omits the selected zone, and frozen-empty exclusions compare location names across warehouses. A difference can therefore reflect the query rules; it does not by itself prove missing inventory.",
-      "trigger": "An operator or support analyst needs to understand the documented inventory or cycle-count behavior.",
+      "trigger": "",
       "input_context": [
         "Use the relevant application screen and exact workflow context; no routine execution is required to read this explanation."
       ],
@@ -1290,21 +1234,14 @@
         }
       ],
       "configuration_dependencies": [
-        "Warehouse comes from parsed criteria; caution/warning expressions pass to a helper. The almost-empty quantity threshold is fixed at 10, not read from configuration.",
-        "Warehouse filter scopes outer queries; culture affects only NULL-category resource. Location/status grouping can count a location more than once if view rows expose differing statuses.",
-        "Outer warehouse restriction applies; selected zone is not applied to the frozen-empty tile. culture localizes the NULL type label.",
-        "culture localizes the NULL template-field category. Inner NOT IN inventory exclusion has no warehouse restriction."
+        "Warehouse is parsed from criteria. Caution/warning expressions are passed to a helper; the almost-empty quantity threshold is fixed at 10.",
+        "Location/status grouping can count one location more than once when view rows expose different statuses.",
+        "Culture localizes NULL zone/type/template categories."
       ],
-      "expected_results": [
-        "Some monitor tiles display distinct work units while their warning thresholds count instruction rows. Drilldown summaries also differ in scope: the location-type frozen-empty tile omits the selected zone, and frozen-empty exclusions compare location names across warehouses. A difference can therefore reflect the query rules; it does not by itself prove missing inventory."
-      ],
-      "explanation_paths": [
-        "The linked source contracts provide optional technical details and known edge cases."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
-        "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
-        "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
+        "The location-type frozen-empty tile omits the selected zone; frozen-empty inventory exclusions compare location names without a warehouse restriction."
       ],
       "evidence_refs": [
         "icc-sql-1336704160",
@@ -1350,7 +1287,7 @@
       "title": "How inventory changes affect lot status, replenishment and history",
       "business_question": "How inventory changes affect lot status, replenishment and history?",
       "plain_answer": "Lot status is summarized from distinct location-inventory statuses. Replenishment evaluation uses capacity, minimum percentage and existing requests; it can mark a request without creating work. Inventory history computes before/after values from caller inputs and delegates storage. A history value is therefore not independent confirmation of an actual stock change.",
-      "trigger": "An operator or support analyst needs to understand the documented inventory or cycle-count behavior.",
+      "trigger": "",
       "input_context": [
         "Use the relevant application screen and exact workflow context; no routine execution is required to read this explanation."
       ],
@@ -1396,22 +1333,14 @@
       ],
       "configuration_dependencies": [
         "Item/company/lot/warehouse scope only, with no quantity, frozen-lot or active-location filter.",
-        "Location type, item class and capacity/UOM helpers determine threshold. No effective settings or current request are fetched for this documentation.",
+        "Location type, item class and capacity/unit-of-measure helpers determine the threshold.",
         "User shipping preference applies for one coded transaction. Location class/container tracking changes container fallback. Caller supplies initial quantities rather than this routine rereading inventory.",
         "One coded argument name selects serial validation; no warehouse/company predicate on the serial identity.",
         "Group ID alone scopes deletion; no user, warehouse or argument-name predicate."
       ],
-      "expected_results": [
-        "Lot status is summarized from distinct location-inventory statuses. Replenishment evaluation uses capacity, minimum percentage and existing requests; it can mark a request without creating work. Inventory history computes before/after values from caller inputs and delegates storage. A history value is therefore not independent confirmation of an actual stock change."
-      ],
-      "explanation_paths": [
-        "The linked source contracts provide optional technical details and known edge cases."
-      ],
-      "boundaries": [
-        "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
-        "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
-        "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "icc-sql-39319550",
         "icc-sql-1544704901",
@@ -1457,7 +1386,7 @@
       "title": "Company transfer and catch-weight boundaries",
       "business_question": "Company transfer and catch-weight boundaries?",
       "plain_answer": "Company transfer requires eligible positive stock with no allocated, in-transit or suspense quantity. It may merge destination stock and reconcile serials, lots and catch weight. Catch-weight updates have separate container and inventory paths; the container path adjusts only the immediate parent. A container weight update is not a container-close operation.",
-      "trigger": "An operator or support analyst needs to understand the documented inventory or cycle-count behavior.",
+      "trigger": "",
       "input_context": [
         "Use the relevant application screen and exact workflow context; no routine execution is required to read this explanation."
       ],
@@ -1506,17 +1435,9 @@
         "Two feature helper calls gate catch-weight behavior; current feature values are unobserved. Catch-weight-required ITEM existence is not company-scoped.",
         "Work-type/group controls the inventory proportional-delta branch; the shipping branch does not use that work-type test."
       ],
-      "expected_results": [
-        "Company transfer requires eligible positive stock with no allocated, in-transit or suspense quantity. It may merge destination stock and reconcile serials, lots and catch weight. Catch-weight updates have separate container and inventory paths; the container path adjusts only the immediate parent. A container weight update is not a container-close operation."
-      ],
-      "explanation_paths": [
-        "The linked source contracts provide optional technical details and known edge cases."
-      ],
-      "boundaries": [
-        "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
-        "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
-        "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "icc-sql-1512704787",
         "icc-sql-1592705072"

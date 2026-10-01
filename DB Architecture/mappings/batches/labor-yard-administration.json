@@ -598,7 +598,7 @@
       "title": "Labor monitor counts and time windows",
       "business_question": "Why can labor monitor tiles and assigned-user charts show different totals?",
       "plain_answer": "The routines use different record sources, timestamp columns and filters. Some count instructions or distinct users; condition-group totals can double-count a work unit. A browser-midnight tile differs from rolling one-hour windows, and unsupported tile codes return no tile.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE LBR_MonitorLaborGroupsChartData @filterCriteria NVARCHAR(MAX), @culture NVARCHAR(10) AS",
         "Captured declaration (string defaults remain opaque): CREATE Procedure LBR_MonitorLaborIndicatorTiles @filterCriteria NVARCHAR(MAX), @indicatorTileName NVARCHAR(100), @cautionCriteria NVARCHAR(MAX), @warningCriteria NVARCHAR(MAX), @culture NVARCHAR(10) AS",
@@ -641,18 +641,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-117223818",
         "lya-sql-133223875",
@@ -697,7 +689,7 @@
       "title": "Intraday labor estimates and active-user counts",
       "business_question": "Does the intraday labor FTE value establish current staffing and actual process duration?",
       "plain_answer": "It counts distinct users with sufficiently recent eligible activity, using group tolerance or 30 minutes. Work quantity, formatted labor-time grouping, throughput and NULL work-group joins affect estimates. These results do not establish attendance or end-to-end elapsed duration.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE GetIntraDayLaborProgressActiveEmployees @WAREHOUSE nvarchar(25), @WAREHOUSE_START_TIME_UTC datetime, @LATEST_CON_JOB_RUN_TIME datetime, @IS_WORK_TYPE_ACTIVE nchar(1) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE GetIntraDayLaborProgressWorkDetails @WAREHOUSE nvarchar(25), @WAREHOUSE_START_TIME_UTC datetime, @CURRENT_TIME_UTC datetime, @INTERNAL_NUM_TYPES NVARCHAR(MAX), @INSTRUCTION_TYPE nvarchar(25), @CONDITION nvarchar(25), @IS_WORK_TYPE_ACTIVE nchar(1) AS"
@@ -730,18 +722,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-904702621",
         "lya-sql-920702678"
@@ -784,7 +768,7 @@
       "title": "Stored labor dashboard values and refresh",
       "business_question": "Does reading the labor KPI dashboard prove its values are fresh?",
       "plain_answer": "The reader pivots MAX stored values without checking expiry. The refresh routine either replaces all five KPI identifiers when one is missing or updates only expired rows. NULL expiry can prevent refresh, and duplicate identifiers are not rejected by the completeness test.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE DASH_GetLaborKPIData( @warehouse nvarchar(25)) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE DASH_RefreshLabor( @warehouse nvarchar(25), @todaysDateWithWarehouseOffset nvarchar(50), @todaysDate DATETIME ) AS"
@@ -817,18 +801,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-1468180626",
         "lya-sql-1548180911"
@@ -871,7 +847,7 @@
       "title": "Labor entry context and consolidation groups",
       "business_question": "Do labor screen helpers save entries or perform consolidation?",
       "plain_answer": "The two MetaTrans log helpers return fixed presentation rows only. The grouping helper returns candidate group identifiers without persisting a consolidation. SaveUserLastActivityEndTime stores a supplied timestamp without enforcing that it increases.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_IndirectLaborWorkbenchLog( @culture nvarchar(10)) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_ManualLaborActivityLog( @culture nvarchar(10)) AS",
@@ -914,18 +890,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-1061227181",
         "lya-sql-1077227238",
@@ -970,7 +938,7 @@
       "title": "Labor reports and incremental export windows",
       "business_question": "Are user labor reports and the labor export filtered by the same dates?",
       "plain_answer": "The labor-type detail report uses inclusive START_DATE_TIME bounds. The user-summary detail routine has no date or warehouse filter. The SCI export uses DATE_TIME_STAMP greater than start and at most end, with non-NULL completion time and coded activity exclusions.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE RPT_LaborTypeSummaryDetails ( @startDate datetime, @endDate datetime ) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE RPT_UserSummaryReportDetails AS",
@@ -1008,18 +976,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-209748150",
         "lya-sql-801750259",
@@ -1063,7 +1023,7 @@
       "title": "Security registration and profile cleanup",
       "business_question": "Are security registration and user cleanup atomic permission checks?",
       "plain_answer": "The registration routines insert missing records and leave existing records unchanged. Profile cleanup performs nine deletes and a final activity insert without its own transaction. None of these bodies authenticates the caller or proves an action is authorized.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE dbc_ISecurity( @formId numeric(5), @processStamp nvarchar(100), @secValues nvarchar(64), @securityLevel nvarchar(10), @userDef1 nvarchar(25) = NULL, @userDef2 nvarchar(25) = NULL, @userDef3 nvarchar(25) = NULL, @userDef4 nvarchar(25) = NULL, @userDef5 nvarchar(25) = NULL, @userDef6 nvarchar(25) = NULL, @userDef7 numeric(19,5) = NULL, @userDef8 numeric(19,5) = NULL, @userName nvarchar(30), @securityGroupId numeric(9) = NULL) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE dbc_ISecurityCheckpoint( @formId numeric(5), @checkPoint numeric(3), @resourceFileKey nvarchar(50), @systemCreated nchar(1) = N'<literal:1>', @processStamp nvarchar(100)) AS",
@@ -1111,18 +1071,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-392700797",
         "lya-sql-408700854",
@@ -1167,8 +1119,8 @@
       "topic_id": "security-form-selection",
       "title": "Security form branches and checkpoint display",
       "business_question": "Do both security form selection branches apply the same restrictions?",
-      "plain_answer": "No. The all-forms branch applies active-form, parent and restricted-ID logic, with a supplied authorized-user bypass. The explicit-user branch selects SECURITY/checkpoint matches without repeating those filters. Resource fallbacks and checkpoint display values are not authentication.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "Security form selection has two different branches. The all-forms branch applies active-form, parent and restricted-ID rules, with a supplied authorized-user bypass. The explicit-user branch selects SECURITY and checkpoint matches without repeating those filters. Resource text and checkpoint values do not authenticate the caller.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE SEC_GetCheckpointsWithResourceFileKeys( @formId numeric(5), @username nvarchar(30)) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE SEC_GetSecurityForms( @userName nvarchar(30), @culture nvarchar(5), @allForms bit, @isManhAuthorizedUser bit, @restrictedFormIds nvarchar(4000) ) AS"
@@ -1201,18 +1153,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-1505752767",
         "lya-sql-1521752824"
@@ -1255,7 +1199,7 @@
       "title": "Security migration report persistent staging",
       "business_question": "Is CheckSecurityPermission a read-only permission query?",
       "plain_answer": "It creates, fills, updates and drops an ordinary table named tempSecurityCheck. The name has no # prefix. It reports old-enabled/new-disabled permission mappings, but concurrent calls can collide and failure before the final DROP can leave the table behind.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE Procedure CheckSecurityPermission as"
       ],
@@ -1283,18 +1227,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-1260179885"
       ],
@@ -1336,7 +1272,7 @@
       "title": "Yard visibility detail and total differences",
       "business_question": "Why can yard visibility detail and header totals differ?",
       "plain_answer": "Detail includes actual or scheduled trailer locations; header totals join actual locations only. Receipt and appointment joins can multiply rows and sums, while only selected identifiers are counted distinctly. NOLOCK also limits consistent interpretation.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE RPT_YardVisibilityDetails ( @paramwarehouse nvarchar(25) ) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE RPT_YardVisibilityHdrDetails ( @paramwarehouse nvarchar(25) ) AS",
@@ -1374,18 +1310,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-897750601",
         "lya-sql-913750658",
@@ -1429,7 +1357,7 @@
       "title": "Dock transfer context, work flags and grid settings",
       "business_question": "Does selecting dock transfer context move a container?",
       "plain_answer": "The transfer context routine only returns container and shipment selections. A different dock-work routine updates a flag then calls a container helper, even if the source lookup produces NULL. Grid customization is a separate insert-if-missing operation.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_DockLocationTransfer ( @internalContainerNum numeric(9), @culture nvarchar(10) ) AS",
         "Captured declaration (string defaults remain opaque): CREATE procedure WRK_UpdateDockWorkCreated( @SourceKey numeric(9)) as",
@@ -1467,18 +1395,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-501225186",
         "lya-sql-1194799664",
@@ -1522,7 +1442,7 @@
       "title": "Session timeout units and activity samples",
       "business_question": "Are activity timeout values minutes and sampled counts distinct employees?",
       "plain_answer": "The timeout routine divides elapsed seconds by 86400.0, so its interval is in days. The sampling report generates 30-second timestamps and counts overlapping session rows by coded user type, not distinct employees; its recursion has no duration cap.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE wm_UUserActivity01 @RowsAffected int OUTPUT, @AutoLogoutInterval numeric(19,5), @LogoffNote nvarchar(50) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE PMN_UserActivity ( @startDateTime datetime, @endDateTime datetime ) AS"
@@ -1555,18 +1475,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-762798125",
         "lya-sql-1781229746"
@@ -1609,7 +1521,7 @@
       "title": "Inventory diagnostic count definitions",
       "business_question": "Do inventory diagnostic names exactly describe their counting units?",
       "plain_answer": "The age reports filter inventory record timestamps. Negative-history reports count negative after-state transaction records, not transitions or distinct locations. The shipping mismatch compares on-hand quantity only; allocated quantity is displayed but not compared, and missing shipping aggregates are excluded.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): create procedure RPT_CSO_UserLocationsGreaterThan1DayOldDetails as",
         "Captured declaration (string defaults remain opaque): create procedure RPT_CSO_UserLocationsGreaterThan1DayOldCount as",
@@ -1662,18 +1574,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-1127675065",
         "lya-sql-1143675122",
@@ -1719,8 +1623,8 @@
       "topic_id": "bom-detail-context",
       "title": "Bill-of-material inventory context",
       "business_question": "Does the bill-of-material inventory flag prove usable company-specific stock?",
-      "plain_answer": "Its EXISTS test uses item, location and warehouse without company or available-quantity logic. Item attributes, configuration status and DISTINCT detail selection add context; the body does not reserve stock or assemble a product.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "The bill-of-material detail lookup tests inventory existence by item, location and warehouse without checking company or available quantity. It also returns item attributes, configuration status and distinct detail rows. Finding a row does not reserve stock or assemble a product.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE METATRANS_GetBillOfMaterialDetails @INTERNAL_BOM_HEADER_NUM int, @location nvarchar(25), @warehouse nvarchar(25) AS"
       ],
@@ -1748,18 +1652,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-517225243"
       ],
@@ -1800,8 +1696,8 @@
       "topic_id": "bill-of-lading-shape",
       "title": "Bill-of-lading address and line selection",
       "business_question": "Can bill-of-lading fallback lines differ from the container result shape?",
-      "plain_answer": "Yes. The container branch includes internal MOP number and container type; the shipment-detail fallback omits those columns. Address selection follows record existence and address-1 selectors, so an individual NULL address field does not necessarily fall back to another source.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "The container branch includes internal MOP number and container type; the shipment-detail fallback omits those columns. Address selection follows record existence and address-1 selectors, so an individual NULL address field does not necessarily fall back to another source.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE RPT_BillOfLadingHeader( @INTERNAL_SHIPMENT_NUM numeric(9), @DOCUMENT_TYPE nvarchar(25)) AS"
       ],
@@ -1829,18 +1725,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "expected_results": [
-        "Only the bounded source-defined selection or mutation described above."
-      ],
-      "explanation_paths": [
-        "Exact procedure, input predicates, NULL behavior and caller transaction must be distinguished."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "lya-sql-1747409"
       ],

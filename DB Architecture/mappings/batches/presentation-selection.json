@@ -448,7 +448,7 @@
       "title": "Presentation defaults and business actions",
       "business_question": "Does opening an appointment, signature or packing presentation execute that action?",
       "plain_answer": "These reviewed routines return presentation defaults and sometimes a localized label. They do not schedule an appointment, save a signature, submit work, replenish inventory or pack a unit.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_ApptSchedule @username nvarchar(30), @culture nvarchar(100) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_SignBOL @username nvarchar(30), @culture nvarchar(10) AS",
@@ -501,18 +501,12 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "Only presentation data is selected. This body does not execute the business action named in the procedure."
       ],
-      "explanation_paths": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "ps-sql-405224844",
         "ps-sql-1221227751",
@@ -559,7 +553,7 @@
       "title": "Cycle-count presentation configuration",
       "business_question": "Why can cycle-count presentation defaults differ when configuration is missing or duplicated?",
       "plain_answer": "Quick-plan setup assigns variables from matching configuration rows; duplicate matches have no defined selection order. Master-plan setup uses scalar subqueries, which fail on duplicate matches. Missing coded flags become false BIT values, while neither routine creates a plan.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_CycleCountQuickPlan( @Warehouse nvarchar(25) = null, @culture nvarchar(200)) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_GetCycleCountMasterPlan( @culture nvarchar(10)) AS"
@@ -592,18 +586,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "expected_results": [
-        "Only presentation data is selected. This body does not execute the business action named in the procedure."
-      ],
-      "explanation_paths": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "ps-sql-453225015",
         "ps-sql-565225414"
@@ -645,8 +631,8 @@
       "topic_id": "receipt-presentation-company-filters",
       "title": "Receipt context and company selection",
       "business_question": "Do ordinary, TPM and shipment-based receipt selectors enforce the same company conditions?",
-      "plain_answer": "No. Ordinary PO lines use profile authority, company membership and a NULL-company alternative. TPM PO lines omit those checks. Shipment details use membership independently of a restricted profile mode and include NULL or coded-sentinel companies. Header selectors have no user authorization predicate; none creates a receipt.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "Receipt source selectors apply different company rules. Ordinary purchase-order lines use profile authority, company membership and a NULL-company alternative; TPM purchase-order lines omit those checks. Shipment details use company membership independently of restricted-profile mode and allow NULL or coded-sentinel companies. Header selectors have no user-authorization predicate. These routines return receipt context without creating a receipt.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_GetItemsForReceiptFromPO( @poHeaderObjectId numeric(9), @userName nvarchar(30), @culture nvarchar(10)) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_GetItemsForTpmReceiptFromPO( @poHeaderObjectId numeric(9), @userName nvarchar(30), @culture nvarchar(10)) AS",
@@ -699,18 +685,12 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "Only presentation data is selected. This body does not execute the business action named in the procedure."
       ],
-      "explanation_paths": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "ps-sql-693225870",
         "ps-sql-709225927",
@@ -757,7 +737,7 @@
       "title": "Lot-change previews and confirmation",
       "business_question": "Does a lot-change preview update inventory or validate the proposed dates and status?",
       "plain_answer": "The preview lists matching inventory and the confirmation returns existing lot context with supplied before/after values. Neither changes inventory nor validates the proposed change. Company and lot NULL matching differs between the inventory preview and the outer lot confirmation.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_GetLotUpdateAffectedInventory ( @item nvarchar(50) = null, @company nvarchar(25) = null, @lot nvarchar(25) = null, @warehouse nvarchar(25) = null, @affectedLocation nvarchar(25) = null, @culture nvarchar(10) ) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_GetLotUpdateConfirmation ( @item nvarchar(50) = null, @company nvarchar(25) = null, @lot nvarchar(25) = null, @warehouse nvarchar(25) = null, @beforeExpirationDate datetime = null, @afterExpirationDate datetime = null, @beforeInventoryStatus nvarchar(50) = null, @afterInventoryStatus nvarchar(50) = null, @affectedLocation nvarchar(25) = null, @culture nvarchar(10) ) AS"
@@ -790,18 +770,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "expected_results": [
-        "Only presentation data is selected. This body does not execute the business action named in the procedure."
-      ],
-      "explanation_paths": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "ps-sql-789226212",
         "ps-sql-837226383"
@@ -844,7 +816,7 @@
       "title": "Transfer presentation results and helper calls",
       "business_question": "Do transfer context getters move a container or establish successful authorization?",
       "plain_answer": "These bodies select context. Two call a shipment-security-info helper before selecting; the inventory getter passes its location-inventory identifier to that helper. The call alone does not prove valid identifier mapping or enforced authorization, and no direct transfer mutation occurs.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_GetLocationInventory( @internalLocationInv numeric(9), @culture nvarchar(10)) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_GetTransferContainer( @internalContainerNum numeric(9), @culture nvarchar(10)) AS",
@@ -887,18 +859,12 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "Only presentation data is selected. This body does not execute the business action named in the procedure."
       ],
-      "explanation_paths": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "ps-sql-757226098",
         "ps-sql-1013227010",
@@ -942,8 +908,8 @@
       "topic_id": "packing-presentation-configuration",
       "title": "Packing preference and checkpoint display",
       "business_question": "Does a missing user profile receive the packing-preference fallback?",
-      "plain_answer": "No. The fallback applies to a NULL preference inside an existing profile row. A missing row makes the scalar result NULL, which leaves packing options unassigned if no preference matches. Checkpoint values are displayed separately; this routine does not pack, close or print.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "The fallback applies to a NULL preference inside an existing profile row. A missing row makes the scalar result NULL, which leaves packing options unassigned if no preference matches. Checkpoint values are displayed separately; this routine does not pack, close or print.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_Packing @username nvarchar(30), @culture nvarchar(10) AS"
       ],
@@ -971,18 +937,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "expected_results": [
-        "Only presentation data is selected. This body does not execute the business action named in the procedure."
-      ],
-      "explanation_paths": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "ps-sql-1109227352"
       ],
@@ -1024,7 +982,7 @@
       "title": "Item, lookup and monitoring selection boundaries",
       "business_question": "Can presentation context be treated as a deterministic choice or a reserved identifier?",
       "plain_answer": "The item selector uses unordered TOP 1 across exact-company and NULL-company matches. Monitoring suggests MAX(form ID)+1 without reserving it. Lookup warehouse values are returned without filtering. Missing receipt context still returns a trailer seed row, and work-order allocation context does not allocate inventory.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_GetItem ( @item nvarchar(50) = null , @company nvarchar(25) = null ) AS",
         "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_GetLookup( @recordType nvarchar(50), @passedWhsVal nvarchar(200), @passedWhsFld nvarchar(50), @culture nvarchar(10)) -- [comment omitted] AS",
@@ -1082,18 +1040,12 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "Only presentation data is selected. This body does not execute the business action named in the procedure."
       ],
-      "explanation_paths": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "ps-sql-677225813",
         "ps-sql-773226155",
@@ -1141,7 +1093,7 @@
       "title": "Screen attribute and object-column description",
       "business_question": "Why can screen-object column descriptions differ by object kind or schema?",
       "plain_answer": "The routine resolves an object type, then uses either a first-result-set metadata function or INFORMATION_SCHEMA.COLUMNS. The fallback filters TABLE_NAME without TABLE_SCHEMA and has a different result shape. It describes metadata; it does not execute the described business routine.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "Captured declaration (string defaults remain opaque): CREATE procedure MetaTrans_DbTableInfo( @screenControlID nvarchar(100),@culture nvarchar(10)) AS"
       ],
@@ -1169,18 +1121,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "expected_results": [
-        "Only presentation data is selected. This body does not execute the business action named in the procedure."
-      ],
-      "explanation_paths": [
-        "Use exact source predicates and distinguish NULL, duplicate and caller behavior."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "ps-sql-485225129"
       ],

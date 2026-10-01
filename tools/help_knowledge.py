@@ -109,6 +109,10 @@ class Knowledge:
             for key in self._refs(topic):
                 if key not in self.citations:
                     raise ValueError('Missing source binding')
+            if topic.get('article_type', 'explanation') not in {'explanation', 'configuration'}:
+                raise ValueError('Unsupported article type')
+            if any(key not in self.topics or key == topic['topic_id'] for key in topic.get('related_topics', [])):
+                raise ValueError('Invalid related article')
         self.contracts = {}
         for relative, binding in self.vendor_manifest.get('semantic_batches', {}).items():
             if not re.fullmatch(r'DB Architecture/mappings/batches/[a-zA-Z0-9_-]+\.json', relative):
@@ -259,7 +263,7 @@ class Knowledge:
                 description = 'Capture began '+observation['started_at']+'. Checks: '+', '.join(c['check_id'] for c in observation['checks'])+'.'
             result.update(label=allowed[source['path']], source_hash=source['sha256'],
                           excerpts=[{'location': source['path'], 'text': description}],
-                          qualification='Timestamped aggregate evidence. The owner accepts the current replica as the documentation baseline; individual effective settings and end-to-end process duration are not established.')
+                          qualification='Timestamped aggregate evidence; individual effective settings and end-to-end process duration are not established.')
         elif kind == 'CATALOG_METADATA':
             self._verified_text(source['path'], source['sha256'])
             result.update(label=Path(source['path']).name, source_hash=source['sha256'],
@@ -286,6 +290,9 @@ class Knowledge:
     def topic(self, topic_id):
         topic = self.topics[topic_id]
         return {'topic_id': topic_id, 'title': topic['title'], 'business_question': topic['business_question'],
+                'article_type': topic.get('article_type', 'explanation'),
+                'related_topics': [{'topic_id': key, 'title': self.topics[key]['title']}
+                                   for key in topic.get('related_topics', [])],
                 'what_it_does': topic['plain_answer'], 'trigger': topic['trigger'],
                 'input_context': topic['input_context'],
                 'what_happens': [{'order': s['order'], 'explanation': s['explanation'], 'evidence_refs': s['evidence_refs']}

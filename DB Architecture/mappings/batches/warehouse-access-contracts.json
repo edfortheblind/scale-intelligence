@@ -205210,7 +205210,7 @@
       "title": "Does a warehouse lookup change records?",
       "business_question": "Does a warehouse lookup change records?",
       "plain_answer": "Check the exact routine. Some calls only read data, while interface claim routines also change processing markers. For example, the transaction-history RU routine is read-only, the shipment RU routine marks a batch, and the accessorial-header lookup returns every header despite accepting an accessorial-code input.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -205280,23 +205280,14 @@
         }
       ],
       "configuration_dependencies": [
-        "Private conditions: claim ready or NULL rows as in process; output excludes processed rows. The leading unnamed literal is an item-download record marker. Its raw spelling is not part of this explanation.",
-        "Private constants create a receiving-interface-batch process label, a new-action label, a processed-condition label and slash-separated tree path. The projected UTC stamp is rounded to seconds. These are returned interface labels, not writes to the source container rows.",
+        "Processing conditions: claim ready or NULL rows as in process; output excludes processed rows. The leading unnamed value identifies an item-download record.",
+        "The output uses fixed receiving-interface-batch, new-action and processed-condition labels and a slash-separated tree path. The projected UTC stamp is rounded to seconds. These are returned interface labels, not writes to the source container rows.",
         "The excluded IN_CONFIRMATION selector is affirmative. NULL load confirmation fails the inequality, and shipments lacking a matching shipping load fail the inner join.",
-        "The private attribute selectors represent catch weight and catch-weight unit. TRY_CAST uses numeric(14,5); multiple values aggregate independently, and invalid weight text contributes NULL."
+        "The attribute selectors identify catch weight and its unit. TRY_CAST uses numeric(14,5); multiple values aggregate independently, and invalid weight text contributes NULL."
       ],
-      "expected_results": [
-        "Check the exact routine. Some calls only read data, while interface claim routines also change processing markers. For example, the transaction-history RU routine is read-only, the shipment RU routine marks a batch, and the accessorial-header lookup returns every header despite accepting an accessorial-code input."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-423320918",
         "wh-access-1543324908",
@@ -205352,7 +205343,7 @@
       "title": "Why can a customer or vendor lookup return several matches?",
       "business_question": "Why can a customer or vendor lookup return several matches?",
       "plain_answer": "Several lookups include a company-specific record and a generic record whose company is blank in database terms (NULL). Most return all matches. Customer variant 04 alone limits the result to one, ranking specific ship-to and company combinations before generic combinations. Vendor and customer sort rules differ.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -205416,18 +205407,9 @@
         }
       ],
       "configuration_dependencies": [],
-      "expected_results": [
-        "Several lookups include a company-specific record and a generic record whose company is blank in database terms (NULL). Most return all matches. Customer variant 04 alone limits the result to one, ranking specific ship-to and company combinations before generic combinations. Vendor and customer sort rules differ."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-663321773",
         "wh-access-679321830",
@@ -205473,7 +205455,7 @@
       "title": "How do item lookups handle company and cross-references?",
       "business_question": "How do item lookups handle company and cross-references?",
       "plain_answer": "Item lookups have different company rules. Some require exact company or both values NULL; others include generic items. Cross-reference joins can return the same item more than once. Item variant 03 does not prove that an item belongs to only one company; variant 11 separately counts all item rows.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -205567,21 +205549,11 @@
         }
       ],
       "configuration_dependencies": [
-        "Both company-normalization literals are the same nonempty one-character sentinel; NULL equals NULL or that exact sentinel value, while empty string remains distinct.",
-        "Both company-normalization literals are the same nonempty one-character sentinel; NULL equals NULL or that exact sentinel value, while empty string remains distinct."
+        "Company normalization uses one nonempty character as the NULL replacement. Two NULL values match, and NULL also matches that exact sentinel value; an empty string remains distinct."
       ],
-      "expected_results": [
-        "Item lookups have different company rules. Some require exact company or both values NULL; others include generic items. Cross-reference joins can return the same item more than once. Item variant 03 does not prove that an item belongs to only one company; variant 11 separately counts all item rows."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-967322856",
         "wh-access-983322913",
@@ -205632,7 +205604,7 @@
       "title": "How are item units and their sequence selected?",
       "business_question": "How are item units and their sequence selected?",
       "plain_answer": "Unit lookup 02 falls back by an entire set: exact item/company, then generic item, then item class. Other variants branch on whether an item was supplied. The sequence helper calculates a candidate number; the update helper shifts qualifying existing sequences. Neither helper creates the new unit row.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -205705,18 +205677,9 @@
         "The literals inside EXISTS projections are irrelevant to membership; those subqueries test row existence, not the projection value.",
         "All four storage-template fallback literals name the default template; this fallback applies when the selected item's template is NULL. No matching item yields no template row instead of automatically creating a default item."
       ],
-      "expected_results": [
-        "Unit lookup 02 falls back by an entire set: exact item/company, then generic item, then item class. Other variants branch on whether an item was supplied. The sequence helper calculates a candidate number; the update helper shifts qualifying existing sequences. Neither helper creates the new unit row."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-1374276301",
         "wh-access-1111323369",
@@ -205763,7 +205726,7 @@
       "title": "Why do operational and upload comments differ?",
       "business_question": "Why do operational and upload comments differ?",
       "plain_answer": "Comment routines can read operational comments or an upload copy depending on interface link. Their line rules differ: one treats line zero as including an operational NULL line, another uses ordinary equality, and a positive internal number can control whether an extra filter applies. The delete routine uses exact key equality.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -205827,18 +205790,9 @@
         }
       ],
       "configuration_dependencies": [],
-      "expected_results": [
-        "Comment routines can read operational comments or an upload copy depending on interface link. Their line rules differ: one treats line zero as including an operational NULL line, another uses ordinary equality, and a positive internal number can control whether an extra filter applies. The delete routine uses exact key equality."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-1054275161",
         "wh-access-1070275218",
@@ -205884,7 +205838,7 @@
       "title": "Which receipt and purchase-order records are selected?",
       "business_question": "Which receipt and purchase-order records are selected?",
       "plain_answer": "Business IDs are not the only scope. Some receipt and purchase-order lookups require warehouse and an open header, while others do not. A positive purchase-order line narrows one receipt-detail lookup; zero, negative or NULL line input selects all lines for that order. Projected columns also differ between variants.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -206008,22 +205962,11 @@
         }
       ],
       "configuration_dependencies": [
-        "Both ERP-order normalization literals use the same nonempty one-character sentinel; two NULL orders match, and the sentinel itself can collide with NULL. ERP line remains ordinary equality.",
-        "All receipt-type and ERP-order normalization pairs use the same nonempty one-character sentinel; NULLs match each other and collide with that sentinel. ERP line remains ordinary equality.",
-        "All receipt-type and ERP-order normalization pairs use the same nonempty one-character sentinel; NULLs match each other and collide with that sentinel. ERP line and warehouse remain ordinary equality."
+        "ERP-order and receipt-type NULL normalization uses the same nonempty one-character sentinel within the applicable variants. NULLs match one another and can collide with a real sentinel value. ERP line uses ordinary equality; the warehouse-scoped variant also requires ordinary warehouse equality."
       ],
-      "expected_results": [
-        "Business IDs are not the only scope. Some receipt and purchase-order lookups require warehouse and an open header, while others do not. A positive purchase-order line narrows one receipt-detail lookup; zero, negative or NULL line input selects all lines for that order. Projected columns also differ between variants."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-1582277042",
         "wh-access-1598277099",
@@ -206079,7 +206022,7 @@
       "title": "How are receipt upload candidates chosen?",
       "business_question": "How are receipt upload candidates chosen?",
       "plain_answer": "The read-only candidate routines use container status, receipt closure and parent-container relationships. Variant 05 adds completed-detail checks. Variant 06 contains a comparison to NULL that does not act like an is-not-NULL test. A configuration branch can include closed unbatched receipts without qualifying containers; these reads do not claim a batch.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -206131,22 +206074,12 @@
         }
       ],
       "configuration_dependencies": [
-        "The private system key in the interface record-type group controls inclusion of closed receipts without containers; the tested value is affirmative. No effective setting value was queried.",
-        "The private system key in the interface record-type group controls inclusion of closed receipts without containers; the tested value is affirmative. No effective setting value was queried.",
-        "The private system key in the interface record-type group controls inclusion of closed receipts without containers; the tested value is affirmative. Captured module metadata confirms ANSI_NULLS enabled, so CLOSE_DATE <> NULL does not mean a closed receipt."
+        "An interface configuration setting controls whether closed receipts without containers are included when its value is affirmative.",
+        "Variant 06 has ANSI_NULLS enabled, so CLOSE_DATE <> NULL does not identify a closed receipt."
       ],
-      "expected_results": [
-        "The read-only candidate routines use container status, receipt closure and parent-container relationships. Variant 05 adds completed-detail checks. Variant 06 contains a comparison to NULL that does not act like an is-not-NULL test. A configuration branch can include closed unbatched receipts without qualifying containers; these reads do not claim a batch."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-558625033",
         "wh-access-542624976",
@@ -206190,7 +206123,7 @@
       "title": "What changes when receipt upload batches are selected?",
       "business_question": "What changes when receipt upload batches are selected?",
       "plain_answer": "The three receipt RU routines mark qualifying containers and headers with a batch, then return matching headers. They differ in completion and status conditions. Company and warehouse flags also differ: variant 03 lets the warehouse line-upload flag qualify a detail even when a company exists. Clearing a batch is a separate two-table update.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -206248,22 +206181,14 @@
         }
       ],
       "configuration_dependencies": [
-        "Private statements in order: (1) batch unbatched receipt line-containers with status at least Sts, joined to their header; (2) batch unbatched parent containers with line number NULL/zero whose children already bear BatchId; (3) batch closed unbatched headers joined to receipt detail, warehouse and optional company when detail-company settings permit zero-quantity-line uploads, using warehouse fallback only for a NULL detail company; (4) batch closed unbatched headers with TOTAL_CONTAINERS=0 when company allows zero-container uploads, using warehouse fallback only for NULL header company. Step 3 does not itself test a detail quantity despite its flag name. Each optional filter is appended after AND without added parentheses, so OR in stored text retains SQL operator precedence. Four executions are separate; no encompassing transaction exists.",
-        "Private first statement requires unbatched positive-line containers at or above Sts, matching header and detail, and (detail OPEN_QTY=0 OR exactly one closed matching header), plus no container below Sts for that detail. Second statement marks parents and additionally joins RECEIPT_DETAIL by receipt number. Third/fourth header statements use the same company-first, NULL-company warehouse fallback as RUReceiptHeader01; the line-upload flag does not add an explicit quantity predicate. Filters are appended without parentheses. The dynamic variant is not identical to the read-only RReceiptHeader05 conditions.",
-        "Private first statement requires unbatched positive-line containers at or above Sts and either header leading/trailing statuses both at least Sts, or header CLOSE_DATE IS NOT NULL with minimum container status at least Sts. Unlike read-only RReceiptHeader06, it uses IS NOT NULL and >= status comparisons. Parent marking is followed by the two closed-header flag branches. In the third statement warehouse UPLOAD_REC_LINES_ZERO_QTY can authorize inclusion even with non-NULL detail company; the fourth zero-container statement still limits warehouse fallback to NULL header company. Optional filters are appended without parentheses."
+        "RUReceiptHeader01 first marks unbatched line containers at or above Sts, then parents with NULL/zero line number whose children bear BatchId. It marks closed unbatched headers under zero-quantity-line or zero-container upload flags. Company settings take precedence; warehouse fallback applies only when the relevant company is NULL. The line-upload flag adds no detail-quantity test.",
+        "RUReceiptHeader02 adds positive-line/header/detail matching and requires detail OPEN_QTY=0 or exactly one closed matching header, with no container below Sts for that detail. Parent marking also joins receipt detail by receipt number. Header flag rules follow variant 01. These predicates differ from the read-only RReceiptHeader05 variant.",
+        "RUReceiptHeader03 selects positive-line containers when both header statuses reach Sts, or the header is closed and minimum container status reaches Sts. Its warehouse line-upload flag can qualify a row even with a company present; zero-container warehouse fallback still requires NULL header company. Unlike read-only RReceiptHeader06, it uses IS NOT NULL and >= comparisons.",
+        "Optional filters are appended after AND without parentheses, so an OR in stored filter text retains normal SQL operator precedence."
       ],
-      "expected_results": [
-        "The three receipt RU routines mark qualifying containers and headers with a batch, then return matching headers. They differ in completion and status conditions. Company and warehouse flags also differ: variant 03 lets the warehouse line-upload flag qualify a detail even when a company exists. Clearing a batch is a separate two-table update."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-314796529",
         "wh-access-330796586",
@@ -206308,7 +206233,7 @@
       "title": "Why can a receipt container tree include other batch roots?",
       "business_question": "Why can a receipt container tree include other batch roots?",
       "plain_answer": "The recursive receipt export has an anchor where every NULL-parent container qualifies. Its batch restriction applies to the zero-parent alternative and to recursive children. This can include roots outside the requested batch. Other container lookups read immediate children only, and shipping roots require NULL rather than the receipt rule of NULL or zero.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -206372,20 +206297,11 @@
         }
       ],
       "configuration_dependencies": [
-        "Private constants create a receiving-interface-batch process label, a new-action label, a processed-condition label and slash-separated tree path. The projected UTC stamp is rounded to seconds. These are returned interface labels, not writes to the source container rows."
+        "The output uses fixed receiving-interface-batch, new-action and processed-condition labels and a slash-separated tree path. The projected UTC stamp is rounded to seconds. These are returned interface labels, not writes to the source container rows."
       ],
-      "expected_results": [
-        "The recursive receipt export has an anchor where every NULL-parent container qualifies. Its batch restriction applies to the zero-parent alternative and to recursive children. This can include roots outside the requested batch. Other container lookups read immediate children only, and shipping roots require NULL rather than the receipt rule of NULL or zero."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-1319324110",
         "wh-access-1335324167",
@@ -206431,7 +206347,7 @@
       "title": "How are serial numbers combined with archives and uploads?",
       "business_question": "How are serial numbers combined with archives and uploads?",
       "plain_answer": "Some serial lookups read only operational rows; others combine operational and archive rows with UNION ALL. The latter preserve duplicates. Template-aware branches usually include no-template serials and template sequence zero. Upload context can select source serial IDs through upload records rather than returning the upload record itself.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -206509,18 +206425,9 @@
       "configuration_dependencies": [
         "All four attribute-type selectors identify serial-number references in transaction history."
       ],
-      "expected_results": [
-        "Some serial lookups read only operational rows; others combine operational and archive rows with UNION ALL. The latter preserve duplicates. Template-aware branches usually include no-template serials and template sequence zero. Upload context can select source serial IDs through upload records rather than returning the upload record itself."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-1790277783",
         "wh-access-1854278011",
@@ -206568,7 +206475,7 @@
       "title": "How are inventory attributes resolved across history and upload?",
       "business_question": "How are inventory attributes resolved across history and upload?",
       "plain_answer": "Attribute reads can use operational, archive or upload context. The history lookup combines selected operational/archive attribute columns before joining history links. The upload helper writes matching attribute rows and then deletes a caller-selected upload row even if no replacement matched; that is a mutation with separate statements.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -206626,21 +206533,12 @@
         }
       ],
       "configuration_dependencies": [
-        "All forty-four ISNULL replacement literals are the same one-character sentinel: each pair treats two NULLs as equal and also equates a NULL to the actual sentinel value. Empty strings remain distinct from NULL. No raw literal is reproduced here.",
-        "The private attribute-type selector identifies inventory-attribute references in transaction history."
+        "All 44 ISNULL replacements use the same one-character sentinel. Each pair matches two NULL values, or NULL to that sentinel value; empty strings remain distinct.",
+        "The transaction-history attribute selector identifies inventory-attribute references."
       ],
-      "expected_results": [
-        "Attribute reads can use operational, archive or upload context. The history lookup combines selected operational/archive attribute columns before joining history links. The upload helper writes matching attribute rows and then deletes a caller-selected upload row even if no replacement matched; that is a mutation with separate statements."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-638273679",
         "wh-access-1422276472",
@@ -206685,7 +206583,7 @@
       "title": "Why does shipment lookup return an upload copy?",
       "business_question": "Why does shipment lookup return an upload copy?",
       "plain_answer": "Shipment lookup context can be controlled by interface link or by a positive trailing-status input. Positive status switches several header routines to upload order headers; zero, negative or NULL switches them to operational shipment headers. Operational and upload detail filters are not always the same.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -206775,18 +206673,9 @@
       "configuration_dependencies": [
         "The fixed interface condition denotes system-deletion upload records."
       ],
-      "expected_results": [
-        "Shipment lookup context can be controlled by interface link or by a positive trailing-status input. Positive status switches several header routines to upload order headers; zero, negative or NULL switches them to operational shipment headers. Operational and upload detail filters are not always the same."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-1479324680",
         "wh-access-1511324794",
@@ -206836,7 +206725,7 @@
       "title": "Can shipment batch selection overwrite an existing marker?",
       "business_question": "Can shipment batch selection overwrite an existing marker?",
       "plain_answer": "The status-based batch selector first captures eligible unbatched shipment IDs, then marks them. The wave-based selector overwrites the batch on all headers for the wave without checking an existing batch. Both return all headers with the supplied batch, which can include earlier rows if the batch ID is reused.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -206897,18 +206786,9 @@
         "The excluded IN_CONFIRMATION selector is affirmative. NULL load confirmation fails the inequality, and shipments lacking a matching shipping load fail the inner join.",
         "The fixed process-stamp value identifies this reset procedure rather than preserving the prior caller process stamp."
       ],
-      "expected_results": [
-        "The status-based batch selector first captures eligible unbatched shipment IDs, then marks them. The wave-based selector overwrites the batch on all headers for the wave without checking an existing batch. Both return all headers with the supplied batch, which can include earlier rows if the batch ID is reused."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-2082106458",
         "wh-access-362796700",
@@ -206953,7 +206833,7 @@
       "title": "How are downloaded items claimed for processing?",
       "business_question": "How are downloaded items claimed for processing?",
       "plain_answer": "Item claim routines change ready or NULL processing conditions to in process and attach a process stamp before returning records. Variant 02 limits its candidate IDs in order and also reports whether ready records remain. A later routine marks every row for a stamp processed. Reusing or omitting stamps can make selection misleading.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -207005,22 +206885,13 @@
         }
       ],
       "configuration_dependencies": [
-        "Private conditions: claim ready or NULL rows as in process; output excludes processed rows. The leading unnamed literal is an item-download record marker. Its raw spelling is not part of this explanation.",
-        "Private dynamic stage updates DOWNLOAD_ITEM IDs selected with TOP MaxRecords among ready-or-NULL rows ordered by INTERFACE_RECORD_ID. It assigns in-process condition and process stamp through parameters. MaxRecords is interpolated as numeric text with no validation; negative or NULL limits are not handled explicitly. The first result set excludes processed rows and has an item-download marker plus all columns; AreRecordsRemaining returns a string-valued affirmative/negative digit according to any ready-or-NULL row remaining.",
-        "The assigned interface condition denotes processed. All rows for the stamp are updated regardless of previous state."
+        "Variant 02 selects TOP MaxRecords candidate IDs ordered by INTERFACE_RECORD_ID. Its dynamic UPDATE binds condition and process stamp, while the numeric limit is inserted as text; negative or NULL limits have no explicit handling.",
+        "Returned rows exclude Processed records and include an item-download record marker. AreRecordsRemaining returns a string-valued affirmative/negative digit for any ready or NULL-condition row.",
+        "Marking a stamp Processed updates all rows for that stamp, regardless of their previous state."
       ],
-      "expected_results": [
-        "Item claim routines change ready or NULL processing conditions to in process and attach a process stamp before returning records. Variant 02 limits its candidate IDs in order and also reports whether ready records remain. A later routine marks every row for a stamp processed. Reusing or omitting stamps can make selection misleading."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-202796130",
         "wh-access-218796187",
@@ -207064,7 +206935,7 @@
       "title": "What is included in a downloaded order family?",
       "business_question": "What is included in a downloaded order family?",
       "plain_answer": "Order claims can mark headers, details, containers, comments and VAS records, then return separate record sets. Linked children can make the returned family larger than the requested root limit. The processed, error and reset routines have different guards; one processed routine deliberately skips records still marked in process, and another omits VAS records.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -207134,25 +207005,16 @@
         }
       ],
       "configuration_dependencies": [
-        "Private conditions: ready or NULL records are claimed as in process; linked-header/detail eligibility and returned rows exclude processed and error conditions. Six leading markers distinguish shipment header, detail, container, comment, header VAS and detail VAS records. Header VAS uses ERP line NULL or nonpositive; detail VAS uses positive line. Marker values are not reproduced.",
-        "Private dynamic stage order is order header, orphan detail, orphan container, orphan comment, orphan VAS. Each TOP subquery is ordered by INTERFACE_RECORD_ID and selects ready-or-NULL rows; only the header lacks orphan tests. Container orphan conditions are NULL link OR link absent from headers OR link absent from containers OR parent link absent from containers. Comment/VAS orphan tests use OR across absent header/detail. All stages mark in process; returned rows exclude processed and error. The aggregate uses UNION of table counts, so equal count values deduplicate, but the final greater-than-zero test still expresses whether any included count is positive. No SQL error recovery validates the budget or stored condition values.",
+        "Processing conditions: ready or NULL records are claimed as in process; linked-header/detail eligibility and returned rows exclude processed and error conditions. Six leading markers distinguish shipment header, detail, container, comment, header VAS and detail VAS records. Header VAS uses ERP line NULL or nonpositive; detail VAS uses positive line.",
+        "Claim stage order is order header, orphan detail, orphan container, orphan comment, orphan VAS. Each TOP subquery is ordered by INTERFACE_RECORD_ID and selects ready-or-NULL rows; only the header lacks orphan tests. Container orphan conditions are NULL link OR link absent from headers OR link absent from containers OR parent link absent from containers. Comment/VAS orphan tests use OR across absent header/detail. All stages mark in process; returned rows exclude processed and error. The aggregate uses UNION of table counts, so equal count values deduplicate, but the final greater-than-zero test still expresses whether any included count is positive. No SQL error recovery validates the budget or stored condition values.",
         "The assigned condition denotes processed, while rows currently in process are excluded. NULL current condition is also excluded by inequality. This is not an in-process-to-processed transition.",
         "The assigned condition denotes processed; every stamp-matching row in its four target tables is eligible.",
         "Only error-condition rows for the stamp are reset to NULL, enabling later ready-or-NULL claim logic. This body does not clear the process stamp.",
         "Only in-process rows for the stamp are changed to error condition."
       ],
-      "expected_results": [
-        "Order claims can mark headers, details, containers, comments and VAS records, then return separate record sets. Linked children can make the returned family larger than the requested root limit. The processed, error and reset routines have different guards; one processed routine deliberately skips records still marked in process, and another omits VAS records."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-234796244",
         "wh-access-250796301",
@@ -207208,7 +207070,7 @@
       "title": "What can the receipt download remaining flag miss?",
       "business_question": "What can the receipt download remaining flag miss?",
       "plain_answer": "Receipt download claims include purchase-order and receipt records, containers, serials and appointments. The limited variant returns seven data sets, but its remaining-record flag checks only five receipt-side tables. Ready purchase-order rows can therefore remain without making that final flag positive.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -207260,22 +207122,15 @@
         }
       ],
       "configuration_dependencies": [
-        "Private conditions: ready or NULL records are marked in process; result sets and most parent eligibility exclude processed records, without the order family's additional error exclusion. Appointment link-type selector denotes receiving. Seven unnamed record markers distinguish purchase-order header/detail, receipt header/detail/container, serial and appointment sets; their values are not reproduced.",
-        "Private dynamic stage order is purchase-order header, orphan purchase-order detail, receipt header, orphan receipt detail, orphan receipt container, orphan receiving appointment, orphan serial. Each TOP selection orders INTERFACE_RECORD_ID and requires ready-or-NULL condition. Container orphan detection uses OR for absence from receipt-header/container; serial detection uses AND for absence from receipt-header and serial tables. Propagated appointments do not repeat the dynamic stage's receiving-link-type filter. Returned rows exclude processed but not error condition. AreRecordsRemaining uses only five receipt-side tables, omitting both purchase-order tables; equal counts deduplicate under UNION without altering the positive-existence interpretation.",
-        "All assigned conditions denote processed, with receiving link type additionally required for appointment rows."
+        "Ready or NULL-condition rows are marked In Process. Results and most parent eligibility exclude Processed, without the order family's extra Error exclusion. The seven outputs identify purchase-order header/detail, receipt header/detail/container, serial and appointment records.",
+        "Limited selection proceeds through purchase-order header, orphan purchase-order detail, receipt header, orphan receipt detail, orphan receipt container, orphan receiving appointment, then orphan serial. Each TOP candidate set orders by INTERFACE_RECORD_ID.",
+        "Container orphan detection uses OR between its receipt-header/container absence checks; serial detection uses AND between receipt-header and serial-table absence checks. Propagated appointments do not repeat the candidate stage's receiving-link filter.",
+        "The final flag combines counts with UNION. Equal counts may collapse, but this does not change whether any checked table has remaining rows.",
+        "The later completion updates use Processed; appointment updates additionally require the receiving link type."
       ],
-      "expected_results": [
-        "Receipt download claims include purchase-order and receipt records, containers, serials and appointments. The limited variant returns seven data sets, but its remaining-record flag checks only five receipt-side tables. Ready purchase-order rows can therefore remain without making that final flag positive."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-266796358",
         "wh-access-282796415",
@@ -207319,7 +207174,7 @@
       "title": "Why can inventory export include zero balances?",
       "business_question": "Why can inventory export include zero balances?",
       "plain_answer": "Inventory variant 01 returns eligible nonzero location balances. Variant 02 adds zero-balance rows for item/company and warehouse combinations with no eligible nonzero inventory. That added branch is not filtered by the optional criteria applied to existing inventory. Neither base query automatically restricts rows to the warehouse used for date calculation.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -207365,21 +207220,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Private dynamic body: read LOCATION_INVENTORY left joined to CATCH_WEIGHT_INFORMATION by internal location-inventory ID. Exclude location classes whose generic configuration disables inclusion; require at least one non-NULL, nonzero allocated, on-hand, in-transit or suspense quantity. Add location and inventory-attribute left joins only when nonempty extracted filter criteria exist. The optional criteria are enclosed in parentheses. Return 48 expressions in the listed order, including internal identity twice (first under its own name and later OBJECT_ID), a newly generated UTC stamp, catch weight and catch-weight unit. Order by INTERNAL_LOCATION_INV. The warehouse input supplies only WarehouseDate for use by optional filter text; the base query has no warehouse equality predicate. Blank or missing filter criteria skip the extra filter, while multiple named configuration rows cause the scalar subquery to fail. Text after the first WHERE marker is used; absent markers are not explicitly rejected. The filter content is dynamic syntax rather than a parameter value.",
-        "Private dynamic body: use the same nonzero location-inventory eligibility and location-class exclusion as variant 01, projecting 47 fields with OBJECT_ID first and no second internal-identity column. Append UNION ALL synthetic zero-balance rows from ITEM cross joined with every WAREHOUSE when no eligible nonzero inventory exists for that item, normalized company and warehouse. Synthetic rows take item descriptive/user fields and warehouse code, zero quantities/cost/value/volume/weight, fresh UTC timestamp and NULL location/attribute/catch-weight fields. The optional stored filter is applied only to the first inventory branch, not the synthetic branch or its NOT EXISTS test. There is no final ORDER BY, item/warehouse ACTIVE restriction or direct filterWarehouse equality. The normalized company comparison equates NULL with its fixed single-character sentinel."
+        "Query behavior: read LOCATION_INVENTORY left joined to CATCH_WEIGHT_INFORMATION by internal location-inventory ID. Exclude location classes whose generic configuration disables inclusion; require at least one non-NULL, nonzero allocated, on-hand, in-transit or suspense quantity. Add location and inventory-attribute left joins only when nonempty extracted filter criteria exist. The optional criteria are enclosed in parentheses. Return 48 expressions in the listed order, including internal identity twice (first under its own name and later OBJECT_ID), a newly generated UTC stamp, catch weight and catch-weight unit. Order by INTERNAL_LOCATION_INV. The warehouse input supplies only WarehouseDate for use by optional filter text; the base query has no warehouse equality predicate. Blank or missing filter criteria skip the extra filter, while multiple named configuration rows cause the scalar subquery to fail. Text after the first WHERE marker is used; absent markers are not explicitly rejected. The filter content is dynamic syntax rather than a parameter value.",
+        "Query behavior: use the same nonzero location-inventory eligibility and location-class exclusion as variant 01, projecting 47 fields with OBJECT_ID first and no second internal-identity column. Append UNION ALL synthetic zero-balance rows from ITEM cross joined with every WAREHOUSE when no eligible nonzero inventory exists for that item, normalized company and warehouse. Synthetic rows take item descriptive/user fields and warehouse code, zero quantities/cost/value/volume/weight, fresh UTC timestamp and NULL location/attribute/catch-weight fields. The optional stored filter is applied only to the first inventory branch, not the synthetic branch or its NOT EXISTS test. There is no final ORDER BY, item/warehouse ACTIVE restriction or direct filterWarehouse equality. The normalized company comparison equates NULL with its fixed single-character sentinel."
       ],
-      "expected_results": [
-        "Inventory variant 01 returns eligible nonzero location balances. Variant 02 adds zero-balance rows for item/company and warehouse combinations with no eligible nonzero inventory. That added branch is not filtered by the optional criteria applied to existing inventory. Neither base query automatically restricts rows to the warehouse used for date calculation."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-1262275902",
         "wh-access-1278275959"
@@ -207422,7 +207268,7 @@
       "title": "Do item and lot inserts validate business rules?",
       "business_question": "Do item and lot inserts validate business rules?",
       "plain_answer": "These insert routines store the supplied item, unit, lot, attribute or serial values. Their bodies do not perform the broader template, conversion, expiration or uniqueness checks that a caller may need. Several return a new identity, but the item cross-reference and unit inserts have unused identity-named inputs and return no generated identity.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -207492,18 +207338,9 @@
         }
       ],
       "configuration_dependencies": [],
-      "expected_results": [
-        "These insert routines store the supplied item, unit, lot, attribute or serial values. Their bodies do not perform the broader template, conversion, expiration or uniqueness checks that a caller may need. Several return a new identity, but the item cross-reference and unit inserts have unused identity-named inputs and return no generated identity."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-558273394",
         "wh-access-574273451",
@@ -207550,7 +207387,7 @@
       "title": "Do update routines preserve fields when NULL is supplied?",
       "business_question": "Do update routines preserve fields when NULL is supplied?",
       "plain_answer": "Most listed fields are replaced directly, including NULLs; these are broad updates, not partial patches. Exceptions are explicit: order-header NULL order date reuses its old value, shipment detail NULL export fields fall back to a header, and shipment-header load zero becomes NULL. Insert and update parameter sets also differ.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -207632,18 +207469,9 @@
         }
       ],
       "configuration_dependencies": [],
-      "expected_results": [
-        "Most listed fields are replaced directly, including NULLs; these are broad updates, not partial patches. Exceptions are explicit: order-header NULL order date reuses its old value, shipment detail NULL export fields fall back to a header, and shipment-header load zero becomes NULL. Insert and update parameter sets also differ."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-506797213",
         "wh-access-522797270",
@@ -207692,7 +207520,7 @@
       "title": "Where do shipment-detail export fields come from?",
       "business_question": "Where do shipment-detail export fields come from?",
       "plain_answer": "Shipment-detail insert and update preserve non-NULL caller export fields. For NULL classification, validated license or expiration, they read the corresponding header fields by business shipment ID. The lookup does not restrict warehouse or company and has no ordering when several headers share that ID.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -207738,18 +207566,9 @@
         }
       ],
       "configuration_dependencies": [],
-      "expected_results": [
-        "Shipment-detail insert and update preserve non-NULL caller export fields. For NULL classification, validated license or expiration, they read the corresponding header fields by business shipment ID. The lookup does not restrict warehouse or company and has no ordering when several headers share that ID."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-846274420",
         "wh-access-650797726"
@@ -207792,7 +207611,7 @@
       "title": "How is a new shipping container tree identifier set?",
       "business_question": "How is a new shipping container tree identifier set?",
       "plain_answer": "The insert stores a QC status of zero and uses the supplied location when original pick location is NULL. If tree unit is NULL, it updates the new container to use its own identity. The captured insert trigger also initializes parentless NULL or negative tree units. The later broad update assigns tree unit directly and does not repeat the insert fallback.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -207838,18 +207657,9 @@
         }
       ],
       "configuration_dependencies": [],
-      "expected_results": [
-        "The insert stores a QC status of zero and uses the supplied location when original pick location is NULL. If tree unit is NULL, it updates the new container to use its own identity. The captured insert trigger also initializes parentless NULL or negative tree units. The later broad update assigns tree unit directly and does not repeat the insert fallback."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-910274648",
         "wh-access-730798011"
@@ -207892,7 +207702,7 @@
       "title": "What does a delete affected-row count include?",
       "business_question": "What does a delete affected-row count include?",
       "plain_answer": "Most delete routines remove rows from one table and return that statement count. Purchase-order-header delete first removes its details and then the header, returning the sum. The body does not wrap those two deletions in a transaction. Counts do not establish that all related records were cleaned up or that a whole business operation succeeded.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -207968,18 +207778,9 @@
         }
       ],
       "configuration_dependencies": [],
-      "expected_results": [
-        "Most delete routines remove rows from one table and return that statement count. Purchase-order-header delete first removes its details and then the header, returning the sum. The body does not wrap those two deletions in a transaction. Counts do not establish that all related records were cleaned up or that a whole business operation succeeded."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-279320405",
         "wh-access-478273109",
@@ -208027,7 +207828,7 @@
       "title": "Do appointment and alert routines complete an operational action?",
       "business_question": "Do appointment and alert routines complete an operational action?",
       "plain_answer": "Appointment routines store schedule values; the update can change every appointment for one internal receipt. Alert routines store definitions or request records, and process-history insert records a supplied message. These bodies do not send email, execute the named action or prove that work was completed.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -208097,18 +207898,9 @@
         }
       ],
       "configuration_dependencies": [],
-      "expected_results": [
-        "Appointment routines store schedule values; the update can change every appointment for one internal receipt. Alert routines store definitions or request records, and process-history insert records a supplied message. These bodies do not send email, execute the named action or prove that work was completed."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-526273280",
         "wh-access-702273907",
@@ -208155,7 +207947,7 @@
       "title": "When do packing and display defaults apply?",
       "business_question": "When do packing and display defaults apply?",
       "plain_answer": "The outbound-QC lookup uses a user packing preference whenever that reference is non-NULL; a missing referenced preference does not fall back. Resource lookup gives matching custom keys precedence over base keys. Storage-template defaults apply to explicit NULL values, while missing configuration rows may simply produce no result.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -208213,22 +208005,13 @@
         }
       ],
       "configuration_dependencies": [
-        "The fallback literal names the default packing preference. A user-selected preference has precedence even when its referenced preference row is absent.",
-        "Both fallback literals name the same default storage template. NULL caller input uses that template; absent rows still yield no result.",
-        "The fixed record-type category is item-class configuration, and NULL SYS1VALUE maps to the default storage-template name."
+        "NULL packing-preference selection uses the default packing preference. A non-NULL user reference retains precedence even when the target record is missing.",
+        "NULL storage-template input uses the default template, but an absent template record returns no row.",
+        "Item-class configuration also maps NULL SYS1VALUE to the default storage-template name."
       ],
-      "expected_results": [
-        "The outbound-QC lookup uses a user packing preference whenever that reference is non-NULL; a missing referenced preference does not fall back. Resource lookup gives matching custom keys precedence over base keys. Storage-template defaults apply to explicit NULL values, while missing configuration rows may simply produce no result."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-974274876",
         "wh-access-1447324566",
@@ -208273,7 +208056,7 @@
       "title": "How is catch weight added to transaction history?",
       "business_question": "How is catch weight added to transaction history?",
       "plain_answer": "The batch history read adds catch weight and unit from history attributes. Invalid numeric weight text becomes NULL, and multiple weights/units are reduced using separate maxima. This can select a weight and a unit from different attribute rows. The general candidate reader uses configured transaction types and additional adjustment-type gates.",
-      "trigger": "A caller uses the described warehouse data-access or interface routine; this explanation follows captured source behavior.",
+      "trigger": "",
       "input_context": [
         "Use the exact routine variant and its parameter/NULL rules. No user-facing version/build choice is required."
       ],
@@ -208319,21 +208102,12 @@
         }
       ],
       "configuration_dependencies": [
-        "The private category denotes history transaction-type configuration and the upload-enabled value is affirmative. Prefix patterns begin with numeric character pairs forty, fifty and sixty followed by a wildcard. Types matching any of these patterns require an affirmative INCLUDE_IN_INTERFACE_UPLOAD adjustment-type reference. The body reads configuration; it does not establish current configured values.",
-        "The private attribute selectors represent catch weight and catch-weight unit. TRY_CAST uses numeric(14,5); multiple values aggregate independently, and invalid weight text contributes NULL."
+        "Upload-enabled transaction-type configuration determines candidate eligibility. Types matching the 40, 50 or 60 prefix families additionally require INCLUDE_IN_INTERFACE_UPLOAD on the adjustment-type reference.",
+        "Catch-weight text is converted with TRY_CAST to numeric(14,5)."
       ],
-      "expected_results": [
-        "The batch history read adds catch weight and unit from history attributes. Invalid numeric weight text becomes NULL, and multiple weights/units are reduced using separate maxima. This can select a weight and a unit from different attribute rows. The general candidate reader uses configured transaction types and additional adjustment-type gates."
-      ],
-      "explanation_paths": [
-        "Read the linked routine contract for exact source projection, predicates, inputs, writes and evidence limits."
-      ],
-      "boundaries": [
-        "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
-        "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
-        "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
-        "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "wh-access-1730105204",
         "wh-access-394796814"

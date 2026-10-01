@@ -1153,7 +1153,7 @@
       "title": "Why a GS1 label can show a fallback instead of one item or serial",
       "business_question": "Why a GS1 label can show a fallback instead of one item or serial?",
       "plain_answer": "The label helper checks whether the selected container can be represented by one item, lot and serial. Its search covers a limited number of nested container levels. Multiple serial rows can trigger a fallback, including the same serial present in both current and retained records. The quantity is not always a total of everything in the container.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -1213,7 +1213,7 @@
         {
           "order": 5,
           "action": "REVIEWED_STATIC_STEP",
-          "explanation": "Optional technical evidence: the cursor fallback tests @@CURSOR_ROWS < 1, including negative row-count reporting. Cursor kind/defaults and runtime count behavior are unverified, so the fallback does not by itself prove that no rows qualify.",
+          "explanation": "The cursor fallback tests @@CURSOR_ROWS < 1, which also includes negative row-count reporting. Cursor defaults and runtime count behavior determine whether that branch means no qualifying rows.",
           "objects": [
             "LBL_GS1AILabelDetail",
             "LBL_GS1AILabelHeader"
@@ -1224,19 +1224,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The label helper checks whether the selected container can be represented by one item, lot and serial. Its search covers a limited number of nested container levels. Multiple serial rows can trigger a fallback, including the same serial present in both current and retained records. The quantity is not always a total of everything in the container."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work."
       ],
       "evidence_refs": [
         "rptlbl-sql-21223476",
@@ -1280,7 +1272,7 @@
       "title": "Where location, break and finished-good label fields come from",
       "business_question": "Where location, break and finished-good label fields come from?",
       "plain_answer": "These label routines read stored fields for the selected record. The location label converts on-hand quantity to a whole number and formats expiration as a date. The finished-good label reads the putaway unit; the break label joins its container to the shipment. Reading these fields does not move stock or print a label.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -1316,20 +1308,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "These label routines read stored fields for the selected record. The location label converts on-hand quantity to a whole number and formats expiration as a date. The finished-good label reads the putaway unit; the break label joins its container to the shipment. Reading these fields does not move stock or print a label."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
-      "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "rptlbl-sql-53223590",
         "rptlbl-sql-5223419",
@@ -1373,7 +1355,7 @@
       "title": "Why a work-instruction label header and details can differ",
       "business_question": "Why a work-instruction label header and details can differ?",
       "plain_answer": "The header reads the parent work unit when the selected instruction has a parent. The detail helper either groups the children of a parent instruction or selects the chosen child. It adds quantities and chooses the smallest unit text; it does not convert quantities between units.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -1405,19 +1387,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The header reads the parent work unit when the selected instruction has a parent. The detail helper either groups the children of a parent instruction or selects the chosen child. It adds quantities and chooses the smallest unit text; it does not convert quantities between units."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work."
       ],
       "evidence_refs": [
         "rptlbl-sql-69223647",
@@ -1461,7 +1435,7 @@
       "title": "Why a cycle-count report can omit a group or repeat a request",
       "business_question": "Why a cycle-count report can omit a group or repeat a request?",
       "plain_answer": "The cycle-count detail reports select requests from a plan and join matching location inventory. A positive group number narrows the results. The other branch still excludes requests whose group is NULL. Multiple matching inventory records can repeat a request; the report does not total them into one row.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -1497,19 +1471,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The cycle-count detail reports select requests from a plan and join matching location inventory. A positive group number narrows the results. The other branch still excludes requests whose group is NULL. Multiple matching inventory records can repeat a request; the report does not total them into one row."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "The dataset supplies report values; printing and completion of warehouse work occur elsewhere in the application."
       ],
       "evidence_refs": [
         "rptlbl-sql-17747466",
@@ -1554,7 +1520,7 @@
       "title": "Why purchase-order receipt reports show different totals or blanks",
       "business_question": "Why purchase-order receipt reports show different totals or blanks?",
       "plain_answer": "One report shows each linked receipt line, so the purchase-order quantity repeats beside several receipts. Another groups receipt quantities under purchase-order display fields. Their missing-receipt values differ: some fields become zero while others stay NULL. Repeated purchase-order quantities should not be added as separate orders.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -1598,19 +1564,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "One report shows each linked receipt line, so the purchase-order quantity repeats beside several receipts. Another groups receipt quantities under purchase-order display fields. Their missing-receipt values differ: some fields become zero while others stay NULL. Repeated purchase-order quantities should not be added as separate orders."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work."
       ],
       "evidence_refs": [
         "rptlbl-sql-305748492",
@@ -1657,7 +1615,7 @@
       "title": "How receipt status reports choose container quantities",
       "business_question": "How receipt status reports choose container quantities?",
       "plain_answer": "Receipt status totals use selected container status numbers and only containers whose type is NULL. Empty sets can produce blank totals. The detail-with-containers report can retain a detail with no container, yet exclude a detail whose existing containers all have a non-NULL type.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -1697,19 +1655,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "Receipt status totals use selected container status numbers and only containers whose type is NULL. Empty sets can produce blank totals. The detail-with-containers report can retain a detail with no container, yet exclude a detail whose existing containers all have a non-NULL type."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "The dataset supplies report values; printing and completion of warehouse work occur elsewhere in the application."
       ],
       "evidence_refs": [
         "rptlbl-sql-417748891",
@@ -1755,7 +1705,7 @@
       "title": "Which receipt containers appear on a putaway list",
       "business_question": "Which receipt containers appear on a putaway list?",
       "plain_answer": "The detail report lists direct children of the selected receipt container. A child qualifies when it has a destination or matches the coded failed-status condition. The header describes the selected container itself. Neither report performs a putaway or recursively lists every descendant.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -1787,20 +1737,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The detail report lists direct children of the selected receipt container. A child qualifies when it has a destination or matches the coded failed-status condition. The header describes the selected container itself. Neither report performs a putaway or recursively lists every descendant."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
-      "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "rptlbl-sql-113747808",
         "rptlbl-sql-129747865"
@@ -1843,7 +1783,7 @@
       "title": "Why packing-list versions include different containers",
       "business_question": "Why packing-list versions include different containers?",
       "plain_answer": "Packing-list variants use different container selection rules. Some use stored tree membership; the SSRS versions walk parent links from selected roots. A root may appear in one version and be excluded by another. The recursive queries do not add a shipment check to every descendant step.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -1883,19 +1823,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "Packing-list variants use different container selection rules. Some use stored tree membership; the SSRS versions walk parent links from selected roots. A root may appear in one version and be excluded by another. The recursive queries do not add a shipment check to every descendant step."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "The dataset supplies report values; printing and completion of warehouse work occur elsewhere in the application."
       ],
       "evidence_refs": [
         "rptlbl-sql-49747580",
@@ -1941,7 +1873,7 @@
       "title": "How serial text is added to a packing list",
       "business_question": "How serial text is added to a packing list?",
       "plain_answer": "Serial packing lists call a helper that returns serial display text for each selected container. They do not directly join one report row per serial. The SSRS variant also walks parent links and rejoins the selected container, while other variants use stored tree membership. The source does not prove that a serial or container was physically shipped.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -1977,20 +1909,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "Serial packing lists call a helper that returns serial display text for each selected container. They do not directly join one report row per serial. The SSRS variant also walks parent links and rejoins the selected container, while other variants use stored tree membership. The source does not prove that a serial or container was physically shipped."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
-      "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "rptlbl-sql-97747751",
         "rptlbl-sql-737750031",
@@ -2034,7 +1956,7 @@
       "title": "Which items and purchase order appear on a container contents label",
       "business_question": "Which items and purchase order appear on a container contents label?",
       "plain_answer": "The detail helper lists direct children and can also include the selected container itself when it has an item and container ID. It does not automatically include grandchildren. The header chooses one candidate purchase order without a defined order, so that value does not prove every line has the same purchase order.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -2066,19 +1988,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The detail helper lists direct children and can also include the selected container itself when it has an item and container ID. It does not automatically include grandchildren. The header chooses one candidate purchase order without a defined order, so that value does not prove every line has the same purchase order."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "The dataset supplies report values; printing and completion of warehouse work occur elsewhere in the application."
       ],
       "evidence_refs": [
         "rptlbl-sql-2120706953",
@@ -2122,7 +2036,7 @@
       "title": "Where packing-list component quantities come from",
       "business_question": "Where packing-list component quantities come from?",
       "plain_answer": "Component packing data first uses an associated positive work-order number. Without that path it can use the highest BOM revision. A positive work-order number with no matching component does not automatically fall back to the BOM. The latest revision lookup does not test an active flag or effective date.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -2158,19 +2072,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "Component packing data first uses an associated positive work-order number. Without that path it can use the highest BOM revision. A positive work-order number with no matching component does not automatically fall back to the BOM. The latest revision lookup does not test an active flag or effective date."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work."
       ],
       "evidence_refs": [
         "rptlbl-sql-689749860",
@@ -2215,7 +2121,7 @@
       "title": "Why report ship-from addresses can remain blank",
       "business_question": "Why report ship-from addresses can remain blank?",
       "plain_answer": "Several report headers prefer a warehouse-company address, then a company address, then the warehouse. They choose the source by whether a matching row exists. A blank field in the preferred row does not automatically fall back to the same field in the next source.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -2263,19 +2169,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "Several report headers prefer a warehouse-company address, then a company address, then the warehouse. They choose the source by whether a matching row exists. A blank field in the preferred row does not automatically fall back to the same field in the next source."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "The dataset supplies report values; printing and completion of warehouse work occur elsewhere in the application."
       ],
       "evidence_refs": [
         "rptlbl-sql-33747523",
@@ -2323,7 +2221,7 @@
       "title": "Why allocation and shipment pick-list backorders differ",
       "business_question": "Why allocation and shipment pick-list backorders differ?",
       "plain_answer": "The allocation pick list subtracts allocated quantity from requested quantity. The shipment pick list subtracts total quantity instead. Both clamp a nonpositive difference to zero, and both use their own quantity basis for extended weight and price. NULL values can leave the calculated result blank.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -2355,20 +2253,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The allocation pick list subtracts allocated quantity from requested quantity. The shipment pick list subtracts total quantity instead. Both clamp a nonpositive difference to zero, and both use their own quantity basis for extended weight and price. NULL values can leave the calculated result blank."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
-      "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "rptlbl-sql-2101230886",
         "rptlbl-sql-657749746"
@@ -2411,7 +2299,7 @@
       "title": "Why batch and order pick lists handle missing detail differently",
       "business_question": "Why batch and order pick lists handle missing detail differently?",
       "plain_answer": "Both detail reports select child instructions of the requested parent and use a coded instruction type. The order pick report requires a matching shipment detail. The batch pick report keeps the instruction when the shipment detail is missing, leaving its optional detail fields blank.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -2451,19 +2339,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "Both detail reports select child instructions of the requested parent and use a coded instruction type. The order pick report requires a matching shipment detail. The batch pick report keeps the instruction when the shipment detail is missing, leaving its optional detail fields blank."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "The dataset supplies report values; printing and completion of warehouse work occur elsewhere in the application."
       ],
       "evidence_refs": [
         "rptlbl-sql-257748321",
@@ -2509,7 +2389,7 @@
       "title": "How a picking-group report displays container quantities",
       "business_question": "How a picking-group report displays container quantities?",
       "plain_answer": "The picking-group report joins each selected group container to its shipment line and immediate parent. The displayed container type can come from the parent. Separate coded conditions decide whether the display quantity is the stored quantity or one, and whether the display unit is a quantity unit or container type.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -2537,19 +2417,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The picking-group report joins each selected group container to its shipment line and immediate parent. The displayed container type can come from the parent. Separate coded conditions decide whether the display quantity is the stored quantity or one, and whether the display unit is a quantity unit or container type."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work."
       ],
       "evidence_refs": [
         "rptlbl-sql-289748435"
@@ -2592,7 +2464,7 @@
       "title": "Why replenishment report rows or headers can be missing",
       "business_question": "Why replenishment report rows or headers can be missing?",
       "plain_answer": "The request detail report filters by master, launch and a coded work-created value, then groups stored quantities by location, item, lot, units and user fields. Its header takes one matching row and can show launch -1 when launch statistics are absent. A separate work-instruction report also requires item descriptions to match.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -2628,19 +2500,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The request detail report filters by master, launch and a coded work-created value, then groups stored quantities by location, item, lot, units and user fields. Its header takes one matching row and can show launch -1 when launch statistics are absent. A separate work-instruction report also requires item descriptions to match."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "The dataset supplies report values; printing and completion of warehouse work occur elsewhere in the application."
       ],
       "evidence_refs": [
         "rptlbl-sql-481749119",
@@ -2685,7 +2549,7 @@
       "title": "What work-order assembly, component and putaway reports show",
       "business_question": "What work-order assembly, component and putaway reports show?",
       "plain_answer": "Assembly details show stored build levels and sequences. Component picks show only details matching the coded allocated flag and use stored needed quantities. The putaway report selects a putaway unit and joins its work-order header. Reading these reports does not build, allocate or move inventory.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -2729,20 +2593,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "Assembly details show stored build levels and sequences. Component picks show only details matching the coded allocated flag and use stored needed quantities. The putaway report selects a putaway unit and joins its work-order header. Reading these reports does not build, allocate or move inventory."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
-      "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "rptlbl-sql-817750316",
         "rptlbl-sql-833750373",
@@ -2788,7 +2642,7 @@
       "title": "Why a receiving appointment is shown only at certain hours",
       "business_question": "Why a receiving appointment is shown only at certain hours?",
       "plain_answer": "The daily schedule creates 24 hourly rows, then attaches an appointment at its start hour or end hour. It does not fill every hour in between. The day input is compared to a date at midnight, so a time-bearing day input can leave the appointment side empty. Multiple appointments can share an hour.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -2820,19 +2674,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The daily schedule creates 24 hourly rows, then attaches an appointment at its start hour or end hour. It does not fill every hour in between. The day input is compared to a date at midnight, so a time-bearing day input can leave the appointment side empty. Multiple appointments can share an hour."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "The dataset supplies report values; printing and completion of warehouse work occur elsewhere in the application."
       ],
       "evidence_refs": [
         "rptlbl-sql-385748777",
@@ -2876,7 +2722,7 @@
       "title": "Why load container detail and carrier totals do not match row for row",
       "business_question": "Why load container detail and carrier totals do not match row for row?",
       "plain_answer": "Load container details select containers whose parent is NULL. Carrier totals come from shipment-view totals grouped by carrier and service. Those are different sources and groupings. The header chooses one available weight unit without a tie-breaking order, so it does not prove that every container uses that unit.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -2920,19 +2766,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "Load container details select containers whose parent is NULL. Carrier totals come from shipment-view totals grouped by carrier and service. Those are different sources and groupings. The header chooses one available weight unit without a tie-breaking order, so it does not prove that every container uses that unit."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work."
       ],
       "evidence_refs": [
         "rptlbl-sql-529749290",
@@ -2979,7 +2817,7 @@
       "title": "Why value-added activity and container lists have different row counts",
       "business_question": "Why value-added activity and container lists have different row counts?",
       "plain_answer": "The activity report returns individual activity rows joined to an activity name. The container report returns a container when at least one activity exists, so multiple activities do not multiply that container through the EXISTS check. Neither report filters to only incomplete activities.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -3011,19 +2849,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The activity report returns individual activity rows joined to an activity name. The container report returns a container when at least one activity exists, so multiple activities do not multiply that container through the EXISTS check. Neither report filters to only incomplete activities."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "The dataset supplies report values; printing and completion of warehouse work occur elsewhere in the application."
       ],
       "evidence_refs": [
         "rptlbl-sql-577749461",
@@ -3067,7 +2897,7 @@
       "title": "How consolidated and multi-stop master BOL datasets differ",
       "business_question": "How consolidated and multi-stop master BOL datasets differ?",
       "plain_answer": "Both procedures return a header and a separate container result set. The consolidated version uses a load shipping-address row for the destination and includes all container levels. The multi-stop version takes the shipment with the highest stop sequence and includes containers matching the tree root or its direct tree-parent relationship.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -3099,19 +2929,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "Both procedures return a header and a separate container result set. The consolidated version uses a load shipping-address row for the destination and includes all container levels. The multi-stop version takes the shipment with the highest stop sequence and includes containers matching the tree root or its direct tree-parent relationship."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work."
       ],
       "evidence_refs": [
         "rptlbl-sql-225748207",
@@ -3155,7 +2977,7 @@
       "title": "Why a commercial invoice dataset can be empty",
       "business_question": "Why a commercial invoice dataset can be empty?",
       "plain_answer": "The commercial invoice requires a matching country configuration and at least one named container. Without those matches, it can return no lines. It repeats shipment container totals beside each line and only falls back to retained detail totals when an existing container group has a NULL sum. The export declaration uses different fields and formatting rules.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -3187,19 +3009,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The commercial invoice requires a matching country configuration and at least one named container. Without those matches, it can return no lines. It repeats shipment container totals beside each line and only falls back to retained detail totals when an existing container group has a NULL sum. The export declaration uses different fields and formatting rules."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "The dataset supplies report values; printing and completion of warehouse work occur elsewhere in the application."
       ],
       "evidence_refs": [
         "rptlbl-sql-839062125",
@@ -3243,7 +3057,7 @@
       "title": "Why an exchange-shipment report shows receipt data",
       "business_question": "Why an exchange-shipment report shows receipt data?",
       "plain_answer": "The reviewed exchange report reads receipt header and receipt detail. Its status field is the receipt trailing status, and extended price is receipt total quantity times item net price. The report name does not mean that the procedure creates an exchange shipment.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -3275,20 +3089,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The reviewed exchange report reads receipt header and receipt detail. Its status field is the receipt trailing status, and extended price is receipt total quantity times item net price. The report name does not mean that the procedure creates an exchange shipment."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
-      "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "rptlbl-sql-177748036",
         "rptlbl-sql-193748093"
@@ -3331,7 +3135,7 @@
       "title": "How the unsuffixed 1348 procedure selects and formats its data",
       "business_question": "How the unsuffixed 1348 procedure selects and formats its data?",
       "plain_answer": "The unsuffixed 1348 procedure starts with a selected parent container and its direct children by text container identifiers. It reads each matched shipment line, uses line metadata for formatting, and applies its eligibility expression. It does not execute a printer. The chosen quantity can differ from the stored line total when status 2 is 999.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -3370,20 +3174,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The unsuffixed 1348 procedure starts with a selected parent container and its direct children by text container identifiers. It reads each matched shipment line, uses line metadata for formatting, and applies its eligibility expression. It does not execute a printer. The chosen quantity can differ from the stored line total when status 2 is 999."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
-      "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "rptlbl-sql-2071678428"
       ],
@@ -3425,7 +3219,7 @@
       "title": "Why 1348 reprints and named variants can produce different results",
       "business_question": "Why 1348 reprints and named variants can produce different results?",
       "plain_answer": "The captured 1348 procedures are separate implementations. Some take a container number, others a shipment ID or load input. Several reprint variants calculate an eligibility flag without filtering on it. Older variants also use different status thresholds, metadata sources and item-reference joins. A date suffix alone does not establish which version an application selects.",
-      "trigger": "A user is explaining the report or label dataset selected by an existing application flow.",
+      "trigger": "",
       "input_context": [
         "Use the report purpose and selected receipt, shipment, load, work instruction or container. Optional technical evidence identifies the exact procedure."
       ],
@@ -3512,19 +3306,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selection, joins, stored values and the exact predicates described below determine the dataset. No version/build identification is required."
-      ],
-      "expected_results": [
-        "The captured 1348 procedures are separate implementations. Some take a container number, others a shipment ID or load input. Several reprint variants calculate an eligibility flag without filtering on it. Older variants also use different status thresholds, metadata sources and item-reference joins. A date suffix alone does not establish which version an application selects."
-      ],
-      "explanation_paths": [
-        "Expand the cited procedure contract for field aliases, source bounds, quantity calculations and SQL limitations."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "These procedures prepare data; a returned dataset does not establish physical printing or completed warehouse work.",
-        "Names and date suffixes do not establish which caller selects a variant.",
-        "Opaque constants remain qualified in optional technical evidence."
+        "The selected dataset still requires rendering and an output route before physical printing can be confirmed."
       ],
       "evidence_refs": [
         "rptlbl-sql-1943677972",

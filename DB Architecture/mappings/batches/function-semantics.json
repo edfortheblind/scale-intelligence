@@ -1099,8 +1099,8 @@
       "topic_id": "fn-security-precedence",
       "title": "Security helper precedence",
       "business_question": "Do these security helpers all apply the same permission fallback?",
-      "plain_answer": "No. fn_GetSecurityValues chooses a whole User, Group, then System row. The per-form checkpoint function falls back only when no characters were produced and its group query omits a level filter. The all-form function makes fallback globally, so one user form can suppress defaults on other forms. SecurityPermissionEnabled instead reads Group, User, System by username and returns1 when no string exists.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "Security helpers use different precedence rules. fn_GetSecurityValues selects a whole User, Group, then System row. Per-form checkpoint fallback occurs only when no characters were produced, and its group query omits a level filter. The all-form helper falls back globally, so one user form can suppress defaults for other forms. SecurityPermissionEnabled instead reads Group, User, System by username and returns 1 when no string exists.",
+      "trigger": "",
       "input_context": [
         "formId numeric(5), userName nvarchar(30); no defaults.",
         "formId numeric(5), username nvarchar(30); no defaults.",
@@ -1111,7 +1111,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Select the helper used by the calling form and apply its own lookup and fallback rules.",
           "objects": [
             "fn_GetSecurityValues",
             "SECfn_GetSecurityCheckPoint",
@@ -1129,15 +1129,10 @@
       "configuration_dependencies": [
         "Form/user/group metadata and literal checkpoint Y; each function has its own lookup predicates."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Form/user/group metadata and literal checkpoint Y; each function has its own lookup predicates."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No actual authentication, policy enforcement or reproduced bypass is claimed.",
-        "Static function semantics only; no operational rows, archive content or function execution."
+        "No actual authentication, policy enforcement or reproduced bypass is claimed."
       ],
       "evidence_refs": [
         "fn-batch-712701937",
@@ -1191,8 +1186,8 @@
       "topic_id": "fn-zone-authorization",
       "title": "Work zone predicate",
       "business_question": "Does a positive zone-helper result authorize an employee to execute work?",
-      "plain_answer": "It only tests profile/zone association. A NULL zone returns1 even for a missing profile. It does not authenticate a user or check warehouse access, selected instruction eligibility or the operation being requested.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "The work-zone function tests whether a profile is associated with a zone. A NULL zone returns 1 even when the profile is missing. This result does not authenticate a user or establish warehouse access, instruction eligibility or permission for an action.",
+      "trigger": "",
       "input_context": [
         "workProfile nvarchar(25), workZone nvarchar(25); no defaults."
       ],
@@ -1200,7 +1195,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Supply the work profile and zone; interpret a returned 1 only as the function's profile/zone result.",
           "objects": [
             "IsWorkZoneAuthorized"
           ],
@@ -1212,16 +1207,9 @@
       "configuration_dependencies": [
         "WORK_PROFILE_ZONE_AUTH and supplied profile/zone."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "WORK_PROFILE_ZONE_AUTH and supplied profile/zone."
-      ],
-      "boundaries": [
-        "Caller enforcement remains external.",
-        "Static function semantics only; no operational rows, archive content or function execution."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "fn-batch-1784705756"
       ],
@@ -1262,8 +1250,8 @@
       "topic_id": "fn-status-slots",
       "title": "Status-slot helpers",
       "business_question": "Does leading status mean the maximum numeric status?",
-      "plain_answer": "These slot helpers use position order. One returns the count before the first zero; another stops at zero or994+, returning the previous slot. Equality helpers return the first matching slot or its quantity, without summing duplicate statuses. None sorts the inputs or validates a status transition.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "Status-slot helpers use the supplied position order. One counts slots before the first zero; another stops at zero or 994 and above, returning the previous slot. Equality helpers return the first matching slot or quantity without summing repeated statuses. They do not sort inputs or validate transitions.",
+      "trigger": "",
       "input_context": [
         "Ten numeric(3) status arguments, each default0. Function callers must use DEFAULT syntax where applicable; explicit NULL is not defaulted.",
         "iSts numeric(3), ten numeric(3) status arguments each default0.",
@@ -1274,7 +1262,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Read the ten slots in supplied order and return the first stopping or matching position.",
           "objects": [
             "SDBfn_GetLeadingStsPos",
             "SDBfn_GetPosOfSts",
@@ -1290,18 +1278,11 @@
         }
       ],
       "configuration_dependencies": [
-        "Supplied ten status/quantity slots; declared defaults require appropriate function DEFAULT syntax."
+        "Declared defaults require function DEFAULT syntax where applicable; explicit NULL is preserved."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Supplied ten status/quantity slots; declared defaults require appropriate function DEFAULT syntax."
-      ],
-      "boundaries": [
-        "Slot ordering is a caller invariant, not established by helper name.",
-        "Static function semantics only; no operational rows, archive content or function execution."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "fn-batch-87319721",
         "fn-batch-103319778",
@@ -1345,8 +1326,8 @@
       "topic_id": "fn-status-flow",
       "title": "Status flow lookup",
       "business_question": "Does a missing custom flow fall back to the default?",
-      "plain_answer": "No. Any non-NULL flow name uses custom-flow detail and can returnNULL when no adjacent status exists. Only NULL flow name selects the default functional-area flow. Direction0 goes backward; other values includingNULL go forward. Name/number helpers simply look up mappings.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "A non-NULL flow name selects custom-flow detail; a missing adjacent status returns NULL without falling back to the default flow. Only a NULL flow name selects the functional-area default. Direction 0 moves backward; all other values, including NULL, move forward. The name and number helpers return status mappings.",
+      "trigger": "",
       "input_context": [
         "functionalArea nvarchar(25), statusName nvarchar(50); no defaults.",
         "functionalArea nvarchar(25), status numeric(3); no defaults.",
@@ -1358,7 +1339,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Use the selected flow, functional area, current status and direction to interpret the adjacent-status result; use mapping helpers separately for names and numbers.",
           "objects": [
             "STSfn_RtrvSts",
             "STSfn_RtrvAdjacentSts",
@@ -1378,15 +1359,10 @@
       "configuration_dependencies": [
         "Custom/default configuration versus fixed text dictionaries are distinct sources."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Custom/default configuration versus fixed text dictionaries are distinct sources."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No allowed-action validation or current deployment code meaning proved.",
-        "Static function semantics only; no operational rows, archive content or function execution."
+        "No allowed-action validation or current deployment code meaning proved."
       ],
       "evidence_refs": [
         "fn-batch-199320120",
@@ -1432,8 +1408,8 @@
       "topic_id": "fn-timezones",
       "title": "Timezone and week helpers",
       "business_question": "Do all warehouse time helpers use the supplied warehouse?",
-      "plain_answer": "No. SCI_DST_CONVERT ignores its warehouse input and uses the email-matched user default warehouse. SCI_DST_CONVERT_WHSE treats its whse input directly as a timezone name. GetWarehouseDate returns a local date. Week helpers convert to warehouse time only when the date input isNULL, and their boundaries depend on DATEFIRST.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "SCI_DST_CONVERT uses the email-matched user's default warehouse and ignores its warehouse input. SCI_DST_CONVERT_WHSE treats whse directly as a timezone name. GetWarehouseDate returns a local date. Week helpers convert to warehouse time only when the date input is NULL; week boundaries depend on DATEFIRST.",
+      "trigger": "",
       "input_context": [
         "warehouse nvarchar(25), date datetime=NULL.",
         "from_date datetime, whse nvarchar(100), log_user nvarchar(100); no defaults. whse unused.",
@@ -1445,7 +1421,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Identify whether the input is a warehouse, timezone name or already supplied timestamp before applying the selected helper.",
           "objects": [
             "GetWarehouseDate",
             "SCI_DST_CONVERT",
@@ -1465,16 +1441,9 @@
       "configuration_dependencies": [
         "Warehouse TIME_ZONE, user email/default warehouse, session DATEFIRST and supplied timestamp convention."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Warehouse TIME_ZONE, user email/default warehouse, session DATEFIRST and supplied timestamp convention."
-      ],
-      "boundaries": [
-        "No current timezone setting or DST execution observed.",
-        "Static function semantics only; no operational rows, archive content or function execution."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "fn-batch-984702906",
         "fn-batch-1185751627",
@@ -1519,8 +1488,8 @@
       "topic_id": "fn-date-transforms",
       "title": "Date-only and fractional-second transforms",
       "business_question": "Does RoundToSec round up fractional seconds?",
-      "plain_answer": "It subtracts the millisecond component. Other small helpers remove time through string conversion, return a time on SQL base date, or reconstruct a compact date string from fixed positions. Their result types and parsing/range boundaries differ.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "The fractional-second helper removes the millisecond component. The date helpers either remove time through string conversion, return a time on the SQL base date, or reconstruct a compact date from fixed character positions. Their return types and accepted date ranges differ.",
+      "trigger": "",
       "input_context": [
         "stLPDateTime nvarchar(50); no default.",
         "dt datetime; no default.",
@@ -1532,7 +1501,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Choose the helper by required output type, then check its input format and supported date range.",
           "objects": [
             "DHfn_TransToSQLDate",
             "DHfn_GetDateNoTime",
@@ -1552,15 +1521,10 @@
       "configuration_dependencies": [
         "SQL date parsing/session conventions; DATEONLY returns narrower SMALLDATETIME."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "SQL date parsing/session conventions; DATEONLY returns narrower SMALLDATETIME."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No timezone transformation in these pure helpers.",
-        "Static function semantics only; no operational rows, archive content or function execution."
+        "No timezone transformation in these pure helpers."
       ],
       "evidence_refs": [
         "fn-batch-7319436",
@@ -1606,8 +1570,8 @@
       "topic_id": "fn-resource-fallback",
       "title": "Resource and description fallback",
       "business_question": "Why can missing translation return a key, empty text orNULL?",
-      "plain_answer": "Resource lookup treats NULL/empty key as empty output, uses supplied or configured language, then custom/base/English text and finally the key. Message lookup has a different missing-language early return and missing-key marker. Generic translated description falls back to raw description only when the resource key isNULL, not whenever translation is missing.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "Resource lookup returns empty text for a NULL or empty key. Otherwise it selects the supplied or configured language, tries custom, base and English text, then returns the key. Message lookup uses a different missing-language early return and missing-key marker. Generic description lookup falls back to the raw description only when the resource key is NULL.",
+      "trigger": "",
       "input_context": [
         "recordType nvarchar(10), identifier nvarchar(25); no defaults.",
         "recordType nvarchar(50), identifier nvarchar(50); no defaults.",
@@ -1620,7 +1584,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Resolve the language and resource source using the selected text helper.",
           "objects": [
             "RSCMfn_RtrvMsg",
             "RSCMfn_RtrvResource",
@@ -1642,16 +1606,9 @@
       "configuration_dependencies": [
         "Language system config, custom/base resource records and generic SYS1VALUE."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Language system config, custom/base resource records and generic SYS1VALUE."
-      ],
-      "boundaries": [
-        "No resource message content or current language read.",
-        "Static function semantics only; no operational rows, archive content or function execution."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "fn-batch-1089751285",
         "fn-batch-1105751342",
@@ -1697,8 +1654,8 @@
       "topic_id": "fn-available-quantity",
       "title": "Available-quantity branch differences",
       "business_question": "Does no inventory always yield available quantity zero?",
-      "plain_answer": "No. SUM branches assignNULL when no rows match; the attribute-specific nonaggregate branch retains initial0 on no match and can choose one of several rows. The without-in-transit function also differs in parent logistics, lot and filter behavior, so it is not simply the first function minus transit stock.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "Availability results depend on the selected function and branch. SUM branches return NULL when no rows match; the attribute-specific nonaggregate branch retains its initial zero, and multiple matches can supply one unordered value. The function excluding in-transit stock also changes parent logistics-unit, lot and filter rules, so its result is not simply the other function minus in-transit quantity.",
+      "trigger": "",
       "input_context": [
         "attributesId1/attributesId2 numeric(9); no defaults.",
         "location/warehouse/company/lot nvarchar(25), item/logisticsUnit nvarchar(50), locInvAttributesID numeric(9), showAllLPInvAttributes/includeInvAttributes nchar(1); expirationDate datetime=NULL, inventorySts nvarchar(50)=NULL.",
@@ -1708,7 +1665,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Identify the function, attribute flags and location rule before interpreting a zero, NULL or negative availability result.",
           "objects": [
             "INVfn_GetAvailableQuantity",
             "INVfn_GetAvailableQuantityWithoutInTransit",
@@ -1724,15 +1681,10 @@
       "configuration_dependencies": [
         "showAll/includeAttributes flags, location allocate-in-transit flag, identity and optional filters."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "showAll/includeAttributes flags, location allocate-in-transit flag, identity and optional filters."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Computed availability does not reserve inventory or clamp negative results.",
-        "Static function semantics only; no operational rows, archive content or function execution."
+        "Computed availability does not reserve inventory or clamp negative results."
       ],
       "evidence_refs": [
         "fn-batch-1672705357",
@@ -1777,7 +1729,7 @@
       "title": "Unit conversion fallback",
       "business_question": "Are UOM settings merged across item, class and location?",
       "plain_answer": "The retrieval functions generally stop at the first stage with rows, and the stages differ by function. Location preference lists can fall back to unrestricted item/class units. Full UOM retrieval can fall through to storage template. Quantity conversion returns the original quantity when no complete factor pair exists, which does not prove equal units.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "trigger": "",
       "input_context": [
         "item nvarchar(50), company/warehouse/location/baseUM/baseMovementClass nvarchar(25), baseTotalQuantity/baseWeight numeric(19,5); no defaults.",
         "item/itemClass nvarchar(50), company/lot/location/warehouse/quantityUM/requestedUM nvarchar(25), containerId nvarchar(50), quantity numeric(19,5), classKnown nchar(1); no defaults.",
@@ -1787,7 +1739,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Use the selected function's set-level fallback chain and return its unit rows or converted quantity.",
           "objects": [
             "INVfn_RtrvConversionInfoForItemAndLocation",
             "ITMfn_CalcQtyForReqUm",
@@ -1803,15 +1755,10 @@
       "configuration_dependencies": [
         "Location UOM list/container tracking, item/company/class factors and storage-template details."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Location UOM list/container tracking, item/company/class factors and storage-template details."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No quantity reservation or verified current configuration; zero divisors and local-return primary keys can fail.",
-        "Static function semantics only; no operational rows, archive content or function execution."
+        "No quantity reservation or verified current configuration; zero divisors and local-return primary keys can fail."
       ],
       "evidence_refs": [
         "fn-batch-1704705471",
@@ -1864,8 +1811,8 @@
       "topic_id": "fn-item-measurements",
       "title": "Item measurement defaults",
       "business_question": "Does a non-NULL override flag preserve normal item measurements?",
-      "plain_answer": "INVfn_RtrvItemInfo runs UOM measurement lookup only when override isNULL. Any non-NULL value skips it, leaving zero-substituted volume/weight. Both item-info helpers return one row even when item/UOM lookup fails; zeros can be missing-data substitutions rather than measured product values.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "INVfn_RtrvItemInfo looks up unit-of-measure measurements only when override is NULL. Any other value skips that lookup and leaves volume and weight at their zero substitutions. Both item-info helpers return one row even when item or unit lookup fails; zero can therefore mean missing data rather than a measured product value.",
+      "trigger": "",
       "input_context": [
         "Item nvarchar(25), company/warehouse nvarchar(25); no defaults. warehouse unused.",
         "item nvarchar(50), company/quantityUM/location/warehouse nvarchar(25), override nchar(1); no defaults. location/warehouse unused."
@@ -1874,7 +1821,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Check the item/company and unit-of-measure rows: the base helper uses sequence 1, while the general helper uses the requested unit.",
           "objects": [
             "INVfn_RtrvItemInfoForBaseUM",
             "INVfn_RtrvItemInfo"
@@ -1885,18 +1832,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Item/company/class UOM rows; sequence1 for base helper and requested UM for general helper."
-      ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Item/company/class UOM rows; sequence1 for base helper and requested UM for general helper."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Location/warehouse inputs in these bodies are unused.",
-        "Static function semantics only; no operational rows, archive content or function execution."
+        "Location/warehouse inputs in these bodies are unused."
       ],
       "evidence_refs": [
         "fn-batch-397244470",
@@ -1939,8 +1879,8 @@
       "topic_id": "fn-catch-weight",
       "title": "Catch-weight unit sources",
       "business_question": "Are catch-weight options always measured for the requested location?",
-      "plain_answer": "No. The function first requires item catch-weight Y. It tries a supplied/resolved inventory ID, item/class base UOMs, other inventory for the item/company across warehouses, then active generic units. Source codes distinguish these stages; configured fallback weight1 is not a measurement.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "Catch-weight unit lookup first requires the item's catch-weight flag to be Y. It tries a supplied or resolved inventory ID, item/class base units, other inventory for that item/company across warehouses, then active generic units. Source codes identify the selected stage; a fallback weight of 1 is not a measurement.",
+      "trigger": "",
       "input_context": [
         "item nvarchar(50), company/warehouse/location/lot nvarchar(25), logisticsUnit nvarchar(50), internalLocationInv/invAttributeId numeric(9); no defaults."
       ],
@@ -1948,7 +1888,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Resolve the unit source in the function's stated fallback order and return its source code.",
           "objects": [
             "INVfn_RtrvWeightUM"
           ],
@@ -1960,15 +1900,10 @@
       "configuration_dependencies": [
         "Item catch-weight flag, optional inventory ID, UOM/catch-weight records and generic units."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Item catch-weight flag, optional inventory ID, UOM/catch-weight records and generic units."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Attribute lookup uses inventory internal ID=attribute object ID in source; no operational effect reproduced.",
-        "Static function semantics only; no operational rows, archive content or function execution."
+        "The attribute lookup compares the inventory internal ID with the attribute object ID."
       ],
       "evidence_refs": [
         "fn-batch-1736705585"
@@ -2010,8 +1945,8 @@
       "topic_id": "fn-report-text",
       "title": "Bounded report text",
       "business_question": "Can these report strings be used as exhaustive serial or BOL lists?",
-      "plain_answer": "They are bounded varchar2000 projections that stop before appending more text, without an omitted-count indicator. Serial helpers use UNION ALL across current/archive-named tables and sequence0 template rules. Invoice/PO/BOL helpers instead use specific DISTINCT keys. Unicode values can lose characters in varchar output.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "Report-text helpers return up to 2,000 characters of varchar text and stop before appending more, without reporting how many values were omitted. Serial helpers combine current and retained tables with UNION ALL and sequence-0 template rules. Invoice, purchase-order and bill-of-lading helpers use their own DISTINCT keys. Conversion to varchar can lose Unicode characters.",
+      "trigger": "",
       "input_context": [
         "fieldtype numeric(9), internalId numeric(9); no defaults.",
         "internalNum/internalLineNum numeric(9), recordType nvarchar(10), documentType nvarchar(25); no defaults.",
@@ -2026,7 +1961,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Identify the report helper's ordering and distinct key before treating its returned text as a complete list.",
           "objects": [
             "RPTfn_GetCommentText",
             "RPTfn_GetInvoiceNumberText",
@@ -2052,15 +1987,10 @@
       "configuration_dependencies": [
         "Document/comment assignments, serial templates and routine-specific ordering/deduplication."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Document/comment assignments, serial templates and routine-specific ordering/deduplication."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No report values or archive data read; audit helper separately caps30000.",
-        "Static function semantics only; no operational rows, archive content or function execution."
+        "The separate audit-text helper has a 30,000-character limit."
       ],
       "evidence_refs": [
         "fn-batch-961750829",
@@ -2110,7 +2040,7 @@
       "title": "BOL ordinals and lot expiration selection",
       "business_question": "Do these helpers always choose an authoritative latest record?",
       "plain_answer": "BOL stop helper returns a shipment-row ordinal when found, but can return the last stored stop sequence when not found. Multi-stop formatting counts distinct stop/BOL pairs. Lot expiration chooses the greatest object ID across current/archive, not the greatest date or an explicit live-table preference.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "trigger": "",
       "input_context": [
         "internalShipmentNum/internalLoadNum numeric(9), masterBOLType nvarchar(10); no defaults.",
         "internalLoadNum numeric(9); no default.",
@@ -2120,7 +2050,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Use the load/shipment identity for BOL selection or item/company/warehouse/lot identity for expiry selection.",
           "objects": [
             "RPTfn_GetBOLStopNum",
             "RPTfn_GetMultiStopBOLNums",
@@ -2136,15 +2066,10 @@
       "configuration_dependencies": [
         "Supplied load/shipment/type or lot identity; catalog source references only."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Supplied load/shipment/type or lot identity; catalog source references only."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Tie order and current/archive authority remain unestablished.",
-        "Static function semantics only; no operational rows, archive content or function execution."
+        "Tie order and current/archive authority remain unestablished."
       ],
       "evidence_refs": [
         "fn-batch-945750772",
@@ -2188,8 +2113,8 @@
       "topic_id": "fn-suggestions",
       "title": "Identifier and sequence suggestions",
       "business_question": "Do next-value helpers reserve a unique identifier?",
-      "plain_answer": "No. Screen sequence returns MAX+25 and can beNULL for an empty group. Project instance suggests maximum+1 across collected tables. Work-unit helper uses lexical maximum plus a padded suffix. None reserves the result or performs an INSERT; concurrent callers can receive the same suggestion.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "Identifier helpers suggest values without reserving them. Screen sequence uses MAX + 25 and can return NULL for an empty group. Project instance uses maximum + 1 across the collected tables. Work-unit naming uses a lexical maximum and padded suffix. Concurrent callers can receive the same suggestion.",
+      "trigger": "",
       "input_context": [
         "groupName nvarchar(50), formId numeric(5); no defaults.",
         "controlName nvarchar(100), groupName nvarchar(50), formId numeric(5); no defaults.",
@@ -2202,7 +2127,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Treat the suggested identifier as a candidate; allocation and uniqueness enforcement belong to the caller that stores it.",
           "objects": [
             "METAfn_GetNextScreenControlSequence",
             "METAfn_GetScreenControl",
@@ -2224,16 +2149,9 @@
       "configuration_dependencies": [
         "Screen metadata, collected project/mapping tables, configured delimiter and existing work-unit names."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Screen metadata, collected project/mapping tables, configured delimiter and existing work-unit names."
-      ],
-      "boundaries": [
-        "No uniqueness or atomic allocation claim.",
-        "Static function semantics only; no operational rows, archive content or function execution."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "fn-batch-341224616",
         "fn-batch-357224673",
@@ -2280,7 +2198,7 @@
       "title": "String and XML transforms",
       "business_question": "Do string split and list helpers preserve token order and arbitrary content?",
       "plain_answer": "Split IDs use ROW_NUMBER over no meaningful ordering, so original order is not guaranteed. List modifiers parse unescaped constructed XML, deduplicate additions, remove matching tokens and extract nvarchar100 values; they do not preserve original order or arbitrary XML-sensitive content. Endpoint/key-value XML helpers format data without calling an endpoint.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "trigger": "",
       "input_context": [
         "pattern nvarchar(2000), expression nvarchar(2000); no defaults.",
         "stDOName nvarchar(100); no default.",
@@ -2295,7 +2213,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Apply the selected split, list-modification or XML-formatting operation to the supplied values.",
           "objects": [
             "GENfn_SplitString",
             "ModifyCharacterSeparatedStringList",
@@ -2321,15 +2239,10 @@
       "configuration_dependencies": [
         "Separators, fixed XML namespace/path/wrapper and database collation."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Separators, fixed XML namespace/path/wrapper and database collation."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Not general CSV, XML schema validation, URI encoding or remote execution.",
-        "Static function semantics only; no operational rows, archive content or function execution."
+        "Not general CSV, XML schema validation, URI encoding or remote execution."
       ],
       "evidence_refs": [
         "fn-batch-760702108",
@@ -2378,8 +2291,8 @@
       "topic_id": "fn-checkdigit-extrema",
       "title": "Small numeric transforms",
       "business_question": "Does checkdigit always return a digit from0 to9?",
-      "plain_answer": "Its formula is10 minus weighted sum modulo10, so remainder0 returns10. Missing/empty concatenated input also reaches10. The decimal least/greatest helpers have another boundary: NULL first argument leavesNULL even when later values exist, and default decimal scale does not retain arbitrary fractions.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "The check-digit formula is 10 minus the weighted sum modulo 10. A zero remainder, or missing or empty concatenated input, returns 10. The decimal least/greatest helpers retain NULL when the first argument is NULL even if later values exist. Their default decimal scale does not preserve arbitrary fractions.",
+      "trigger": "",
       "input_context": [
         "uniquePrefix/destinationSAN nvarchar(50); no defaults.",
         "Ten int grouping arguments in order warehouse,status,receipt_date,receipt_type,company,carrier,carrier_service,source_id,source_name,source_state; no defaults.",
@@ -2390,7 +2303,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "For decimal comparisons, check the first argument and declared precision/scale; for the check digit, interpret 10 as a possible formula result.",
           "objects": [
             "LBLfn_Checkdigit_86_BarnesAndNobles",
             "fn_least",
@@ -2408,16 +2321,9 @@
       "configuration_dependencies": [
         "Fixed source arithmetic/patterns; no external labeling-standard certification."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Fixed source arithmetic/patterns; no external labeling-standard certification."
-      ],
-      "boundaries": [
-        "No synthetic or operational SQL execution performed.",
-        "Static function semantics only; no operational rows, archive content or function execution."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "fn-batch-101223761",
         "fn-batch-1277247605",
@@ -2461,8 +2367,8 @@
       "topic_id": "fn-dashboard-kpis",
       "title": "Dashboard KPI semantics",
       "business_question": "Are all dashboard values live measured totals and durations?",
-      "plain_answer": "No. Several IDs return fixed numbers. Other branches count joined rows, calculate stored dashboard formulas or use selected timestamp intervals. Shortest/longest/average dock intervals have different no-data behavior. Work day ends are UTC start+24h and can differ from a local DST day. Unknown type/ID returns0; missing scalar data can yieldNULL or a percentage fallback0.",
-      "trigger": "Caller evaluates the named SQL function; actual application binding and permission enforcement unverified.",
+      "plain_answer": "Dashboard KPI IDs use different definitions. Some return fixed numbers; others count joined rows, apply saved dashboard formulas or use selected time intervals. Dock shortest, longest and average intervals have different no-data behavior. Work days span UTC start plus 24 hours, which may differ from a local daylight-saving day. Unknown type/ID returns 0; missing scalar data may return NULL or a percentage fallback of 0.",
+      "trigger": "",
       "input_context": [
         "date datetime=NULL, warehouse nvarchar(25)=NULL.",
         "date datetime=NULL, warehouse nvarchar(25)=NULL.",
@@ -2472,7 +2378,7 @@
         {
           "order": 1,
           "action": "Evaluate the named function",
-          "explanation": "Use the exact branch/default/output contract for this helper; similarly named helpers can differ.",
+          "explanation": "Select the KPI type and identifier, then use that branch's formula and time interval.",
           "objects": [
             "DASHFn_GetKPIValue",
             "DATEFn_GetWeekEndDate",
@@ -2488,15 +2394,10 @@
       "configuration_dependencies": [
         "Supplied date pair, warehouse timezone, stored dashboard values, hard-coded IDs and status/type predicates."
       ],
-      "expected_results": [
-        "The scalar or returned table described by the cited contracts. No persistent state change."
-      ],
-      "explanation_paths": [
-        "Supplied date pair, warehouse timezone, stored dashboard values, hard-coded IDs and status/type predicates."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No complete-process timing, actual current metrics, operational execution or reproduced defect claim.",
-        "Static function semantics only; no operational rows, archive content or function execution."
+        "These indicators do not measure a complete end-to-end warehouse process."
       ],
       "evidence_refs": [
         "fn-batch-1612181139",

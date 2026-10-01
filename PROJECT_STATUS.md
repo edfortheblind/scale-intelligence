@@ -1,5 +1,9 @@
 # SCALE Intelligence project status
 
+## C22 article and configuration review
+
+All 340 articles have an editorial pass; seven documented configuration procedures are directly accessible. See [C22 results and limitations](_project/ARTICLE_REVIEW_C22.md) for verification, the 12 new search misses/three recoveries and current 48-miss total. Earlier C21 search-only next-task instructions are historical; the current work is the requested article/configuration pass.
+
 ## C21 current search continuation
 
 Four additional questions lacking a named subject now request the operation or setting instead of presenting unrelated matches. Named Work/Returns queries and identifiers remain searchable. Fresh HTTP verification preserves all **723 questions and expected IDs: 684 top-eight, 417 first, 39 misses; 723 selected-topic contracts passed**. Exactly **719 result lists are unchanged**, with zero recovered misses and zero new losses. Clarification is not retrieval recovery.

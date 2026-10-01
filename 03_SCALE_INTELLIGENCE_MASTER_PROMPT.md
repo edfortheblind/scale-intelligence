@@ -1,5 +1,9 @@
 # SCALE Intelligence master continuation prompt
 
+## C22 current priority
+
+The latest task prioritizes coherent articles and practical configuration instructions. Read [C22 results](_project/ARTICLE_REVIEW_C22.md) before the older search continuation below. The article pass covers 340 topics and seven configuration procedures; retrieval concerns remain separate and explicitly recorded.
+
 ## C21 current search continuation
 
 Four additional questions lacking a named subject now request the operation or setting instead of presenting unrelated matches. Named Work/Returns queries and identifiers remain searchable. Fresh HTTP verification preserves all **723 questions and expected IDs: 684 top-eight, 417 first, 39 misses; 723 selected-topic contracts passed**. Exactly **719 result lists are unchanged**, with zero recovered misses and zero new losses. Clarification is not retrieval recovery.

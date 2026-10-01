@@ -270,7 +270,7 @@
       "title": "Understanding inventory quantity categories",
       "business_question": "Why can on-hand and available inventory differ?",
       "plain_answer": "On-hand means product physically at a location. Allocated means quantity reserved to leave; in-transit means quantity expected to arrive. The vendor describes available as on-hand minus allocated minus suspense. Movement code changes these categories separately, and selected availability checks can include in-transit quantity when the location rule permits it.",
-      "trigger": "Application/caller invokes the reviewed inventory routines; deployed screen binding is not registered.",
+      "trigger": "",
       "input_context": [
         "Item/company, quantity and transaction effects",
         "Source/destination location, warehouse and optional lot/container/serial/attributes/weight context"
@@ -315,17 +315,14 @@
       ],
       "configuration_dependencies": [
         "Caller effects and LOCATION.ALLOCATE_IN_TRANSIT change reviewed branches.",
-        "AIM describes adjustment types that create work, reserving transfer quantity at source and marking destination quantity in transit; the active application-to-routine mapping remains unverified."
+        "Adjustment types that create work can reserve transfer quantity at the source and mark destination quantity as in transit."
       ],
       "expected_results": [
         "A reservation can change allocated quantity separately from on-hand."
       ],
-      "explanation_paths": [
-        "Check the transaction and context, then distinguish validation rejection, conditional behavior and an unverified live result."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "Vendor formula and conditional code checks have different scopes; no universal screen-calculation equivalence claimed.",
-        "No operational rows/procedures accessed. Current permissions/settings, Insight navigation and screen-reader acceptance remain unverified."
+        "The general available-quantity formula and conditional in-transit checks have different scopes; use the rule for the selected operation."
       ],
       "evidence_refs": [
         "inventory-1128703419-sql",
@@ -372,7 +369,7 @@
       "title": "Understanding empty source inventory",
       "business_question": "Why can inventory and unit details disappear after a movement?",
       "plain_answer": "When resulting on-hand, allocated, in-transit and suspense quantities are all zero, the source routine can remove nonpermanent inventory. It handles serial, unit-of-measure and catch-weight links first. Permanent inventory follows a different retention path.",
-      "trigger": "Application/caller invokes the reviewed inventory routines; deployed screen binding is not registered.",
+      "trigger": "",
       "input_context": [
         "Item/company, quantity and transaction effects",
         "Source/destination location, warehouse and optional lot/container/serial/attributes/weight context"
@@ -416,17 +413,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Permanent flag, destination effects, container tracking and catch-weight rules change the path."
+        "Destination effects, container tracking and catch-weight rules determine how linked records are handled."
       ],
-      "expected_results": [
-        "All four quantities and row-retention rules govern deletion."
-      ],
-      "explanation_paths": [
-        "Check the transaction and context, then distinguish validation rejection, conditional behavior and an unverified live result."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Errors do not prove rollback; caller transaction remains unreviewed.",
-        "No operational rows/procedures accessed. Current permissions/settings, Insight navigation and screen-reader acceptance remain unverified."
+        "A failure does not establish rollback; that depends on the calling transaction."
       ],
       "evidence_refs": [
         "inventory-1400704388-sql",
@@ -470,7 +462,7 @@
       "title": "Understanding destination units and attributes",
       "business_question": "Why can destination unit details or attribute IDs change?",
       "plain_answer": "Placement can create or update destination inventory, reuse equal attributes or copy an attribute set. It also transfers, copies or removes unit-of-measure details to fit the destination. Location rules and transaction context determine the path, so internal IDs need not remain the same.",
-      "trigger": "Application/caller invokes the reviewed inventory routines; deployed screen binding is not registered.",
+      "trigger": "",
       "input_context": [
         "Item/company, quantity and transaction effects",
         "Source/destination location, warehouse and optional lot/container/serial/attributes/weight context"
@@ -530,12 +522,9 @@
       "expected_results": [
         "An attribute ID returned to the caller can differ."
       ],
-      "explanation_paths": [
-        "Check the transaction and context, then distinguish validation rejection, conditional behavior and an unverified live result."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "Fixed dynamic targets reviewed; runtime values, nested helpers and complete atomicity remain unknown.",
-        "No operational rows/procedures accessed. Current permissions/settings, Insight navigation and screen-reader acceptance remain unverified."
+        "Nested helper behavior and a transaction covering every placement step are not established."
       ],
       "evidence_refs": [
         "inventory-1464704616-sql"
@@ -577,8 +566,8 @@
       "topic_id": "inventory-serial-linkage",
       "title": "Understanding serial checks during movement",
       "business_question": "Why can a serial-controlled movement be rejected?",
-      "plain_answer": "For selected transaction and tracking conditions, SCALE compares requested quantity with selected serial groups at the source. It then unlinks selected serial records before linking them to destination inventory. A serial-row count and a count of serial groups are different measures.",
-      "trigger": "Application/caller invokes the reviewed inventory routines; deployed screen binding is not registered.",
+      "plain_answer": "Serial-controlled movement checks the selected serial groups at the source, then transfers their inventory links. Serial-row count and serial-group quantity are different measures.",
+      "trigger": "",
       "input_context": [
         "Item/company, quantity and transaction effects",
         "Source/destination location, warehouse and optional lot/container/serial/attributes/weight context"
@@ -624,13 +613,9 @@
       "expected_results": [
         "Passing one check does not prove destination linkage or complete movement."
       ],
-      "explanation_paths": [
-        "Check the transaction and context, then distinguish validation rejection, conditional behavior and an unverified live result."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "No explicit destination no-match rejection: absent inventory can leave/set NULL linkage.",
-        "AIM master/minor terminology does not make UPDATE row count equal master-group quantity.",
-        "No operational rows/procedures accessed. Current permissions/settings, Insight navigation and screen-reader acceptance remain unverified."
+        "The destination lookup has no explicit no-match rejection; absent inventory can leave or set a NULL link."
       ],
       "evidence_refs": [
         "inventory-1608705129-sql",
@@ -676,7 +661,7 @@
       "title": "Understanding lot creation and cleanup",
       "business_question": "Why can a lot appear or leave active inventory?",
       "plain_answer": "A lot identifies a group of product. Movement helpers can create a missing lot and attach supplied attributes. When the remaining-inventory test permits cleanup, another helper copies the lot and attributes to history and deletes active rows. This does not by itself prove the warehouse has no stock.",
-      "trigger": "Application/caller invokes the reviewed inventory routines; deployed screen binding is not registered.",
+      "trigger": "",
       "input_context": [
         "Item/company, quantity and transaction effects",
         "Source/destination location, warehouse and optional lot/container/serial/attributes/weight context"
@@ -722,13 +707,10 @@
       "expected_results": [
         "Create-if-missing leaves existing lot/attributes unchanged."
       ],
-      "explanation_paths": [
-        "Check the transaction and context, then distinguish validation rejection, conditional behavior and an unverified live result."
-      ],
+      "explanation_paths": [],
       "boundaries": [
         "Cleanup uses row existence with exclusions, not a warehouse quantity SUM.",
-        "Retention, immutability and atomic copy/delete are not established.",
-        "No operational rows/procedures accessed. Current permissions/settings, Insight navigation and screen-reader acceptance remain unverified."
+        "Retention, immutability and atomic copy/delete are not established."
       ],
       "evidence_refs": [
         "inventory-1432704502-sql",
@@ -773,8 +755,8 @@
       "topic_id": "inventory-activity-count",
       "title": "Understanding a count after picking",
       "business_question": "Why can picking lead to a request to count inventory?",
-      "plain_answer": "A cycle count checks physical stock against the system quantity. The vendor describes activity-driven counts after work such as picking. In the reviewed source movement, an on-hand reduction can call a threshold checker that considers location rules, time since the last count and quantity before requesting count creation or update.",
-      "trigger": "Application/caller invokes the reviewed inventory routines; deployed screen binding is not registered.",
+      "plain_answer": "Activity-driven cycle counts check physical stock after work such as picking. An on-hand reduction can trigger a threshold check before a count request is created or updated.",
+      "trigger": "",
       "input_context": [
         "Item/company, quantity and transaction effects",
         "Source/destination location, warehouse and optional lot/container/serial/attributes/weight context"
@@ -819,18 +801,13 @@
         }
       ],
       "configuration_dependencies": [
-        "Threshold dimensions, activation, quantity/unit and days-between matter. AIM separately describes immediate/pending preference."
+        "The active threshold must match the location dimensions, quantity/unit and required days since the last count.",
+        "AIM also describes an immediate/pending RF preference; its effective setting and the request-helper behavior require separate confirmation."
       ],
-      "expected_results": [
-        "Not every pick creates a count."
-      ],
-      "explanation_paths": [
-        "Check the transaction and context, then distinguish validation rejection, conditional behavior and an unverified live result."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Request helpers and effective RF preference remain unreviewed.",
-        "The checker can delete matching requests/work; it is not read-only.",
-        "No operational rows/procedures accessed. Current permissions/settings, Insight navigation and screen-reader acceptance remain unverified."
+        "The checker can delete matching requests and work; it is not a read-only diagnostic."
       ],
       "evidence_refs": [
         "inventory-1400704388-sql",

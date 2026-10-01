@@ -39,7 +39,8 @@ def evaluate(knowledge, base_url=None):
         ids = [t['topic_id'] for t in response['results']]
         ranks = [ids.index(t)+1 for t in case['expected_topics'] if t in ids]
         topic_answers = [request('/api/topics/'+quote(t,safe='')) if base_url else knowledge.topic(t) for t in case['expected_topics']]
-        integrity = all(a['what_it_does'] and a['sources'] and a['evidence_limits']
+        integrity = all(a['what_it_does'] and a['sources'] and a['scope']
+                        and isinstance(a['evidence_limits'], list)
                         and all(s['source_id'] in knowledge.citations for s in a['sources']) for a in topic_answers)
         results.append({**case, 'returned_topics': ids, 'best_expected_rank': min(ranks) if ranks else None,
                         'expected_topic_in_first_eight': bool(ranks), 'selected_topic_contract_passed': bool(integrity),

@@ -231,8 +231,9 @@ class HelpKnowledgeTests(unittest.TestCase):
                 for forbidden in ['MAWM', 'LAND', 'Covetrus', 'Grupo', 'HADDAD', 'Knipper']:
                     self.assertNotIn(forbidden, visible)
         putaway = self.knowledge.topic('putaway-groups-version-limit')
-        self.assertIn('24.1.2278', putaway['what_it_does'])
-        self.assertIn('does not establish later availability', putaway['what_it_does'])
+        explanation = ' '.join([putaway['what_it_does'], *putaway['evidence_limits']])
+        self.assertIn('24.1.2278', explanation)
+        self.assertIn('does not establish support or continued absence in later releases', explanation)
 
     def test_question_migration_excludes_other_product_and_retains_unmodified_cases(self):
         topics = self.knowledge.topics
@@ -373,7 +374,7 @@ class HelpHTTPTests(unittest.TestCase):
         self.assertTrue(json.loads(body)['sources'])
         status, _, body = self.request('/topic/shipment-detail')
         self.assertEqual(status, 200)
-        self.assertIn(b'What you can check', body)
+        self.assertIn(b'Troubleshooting', body)
         self.assertIn(b'Source SHA-256', body)
 
     def test_arbitrary_files_and_traversal_are_not_served(self):

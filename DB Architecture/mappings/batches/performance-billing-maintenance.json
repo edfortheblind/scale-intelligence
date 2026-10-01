@@ -988,7 +988,7 @@
       "title": "Cached dashboard reads and refreshes",
       "business_question": "Does reading a dashboard always refresh its numbers?",
       "plain_answer": "The receiving, shipping and work getters read stored cache values. The general KPI getter calls an area refresher first and also updates expiration metadata across warehouses. Reading a saved value does not prove that it is current.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -997,7 +997,7 @@
         {
           "order": 1,
           "action": "Choose the called entry point",
-          "explanation": "The three area-specific getters do not refresh or test expiration.",
+          "explanation": "The receiving, shipping and work getters read stored KPI values without testing expiry.",
           "objects": [
             "DASH_GetReceivingKPIData",
             "DASH_GetShippingKPIData",
@@ -1014,7 +1014,7 @@
         {
           "order": 2,
           "action": "Follow the general getter",
-          "explanation": "It updates expiration metadata globally, invokes the selected refresher, then pivots cached text.",
+          "explanation": "The general KPI getter updates expiry metadata across warehouses, calls its selected area refresher, then pivots cached text.",
           "objects": [
             "DASH_GetReceivingKPIData",
             "DASH_GetShippingKPIData",
@@ -1029,20 +1029,13 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "Named KPI fields from cached VALUE text; missing identifiers can be NULL."
       ],
-      "explanation_paths": [
-        "Different getters have different write effects.",
-        "General expiration update is not warehouse-filtered.",
-        "Cached text maximum can select a duplicate independently of its timestamp."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "No current values or refresh schedule were observed.",
-        "PIVOT MAX over text is not a latest-row or numeric-maximum selection."
+        "PIVOT MAX over text can select a duplicate value independently of its timestamp; it does not select the latest row or the largest numeric value."
       ],
       "evidence_refs": [
         "pbm-batch-1484180683",
@@ -1094,8 +1087,8 @@
       "topic_id": "performance-cache-rebuild",
       "title": "Dashboard cache completeness and expiration",
       "business_question": "What happens if a dashboard KPI row is missing?",
-      "plain_answer": "The area refresher tests whether every required identifier exists. An incomplete set is deleted and rebuilt through separate inserts. A complete set is refreshed in groups when any member is stale. The body does not make the whole rebuild atomic.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "Dashboard refresh checks whether every required identifier is present. It rebuilds incomplete sets and refreshes complete sets in groups when any group member is stale.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -1104,7 +1097,7 @@
         {
           "order": 1,
           "action": "Check identifier coverage",
-          "explanation": "Receiving requires13 distinct IDs, shipping15, work28; duplicates do not invalidate coverage.",
+          "explanation": "Check for 13 distinct receiving IDs, 15 shipping IDs or 28 work IDs. Duplicates do not invalidate coverage.",
           "objects": [
             "DASH_RefreshInboundData",
             "DASH_RefreshOutboundData",
@@ -1132,21 +1125,14 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
-      "expected_results": [
-        "Dashboard rows change; operational receipt/shipment/work statuses do not."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
       "explanation_paths": [
-        "Required distinct-ID counts13/15/28.",
-        "Delete and individual inserts are separate statements.",
-        "Missing config can fail NOT NULL expiration insertion.",
-        "Refresh compares strictly less than expiration, not equality."
+        "A missing expiration setting can fail a NOT NULL insert; the column default of 5 does not replace an explicitly supplied NULL.",
+        "Refresh uses a strict less-than expiration comparison; equality does not count as expired."
       ],
       "boundaries": [
-        "Explicit NULL expiration from missing configuration does not use the column default5.",
-        "No caller transaction, live configuration or successful rebuild was observed."
+        "A rebuild uses separate deletion and insert statements; whole-rebuild atomicity depends on the calling transaction."
       ],
       "evidence_refs": [
         "pbm-batch-1532180854",
@@ -1198,8 +1184,8 @@
       "topic_id": "performance-capture-history",
       "title": "Dashboard snapshot history",
       "business_question": "Are the timeline points actual events in each two-hour bucket?",
-      "plain_answer": "The points are the latest stored planned/actual snapshots selected within time windows. A capture routine inserts snapshot pairs and removes rows older than14 hours. The current point can come from an older retained row, and a missing window becomes zero.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "Dashboard history selects the latest stored planned/actual snapshot in each time window. Capture inserts snapshot pairs and removes rows older than 14 hours. The current point may come from an older retained row; a window without a snapshot is displayed as zero.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -1208,7 +1194,7 @@
         {
           "order": 1,
           "action": "Capture a pair",
-          "explanation": "The source counts planned and actual headers, then inserts two cache rows if the freshness count is not greater than1.",
+          "explanation": "Count planned and actual headers, then insert two cache rows when the freshness count is at most 1.",
           "objects": [
             "DASH_CaptureDashboardData",
             "DASH_GetReceivingKPIData",
@@ -1223,7 +1209,7 @@
         {
           "order": 2,
           "action": "Read the timeline",
-          "explanation": "TOP1 snapshots are selected by timestamp in inclusive windows and concatenated oldest-to-current.",
+          "explanation": "Select TOP 1 by timestamp inside each inclusive window and concatenate the points from oldest to current.",
           "objects": [
             "DASH_CaptureDashboardData",
             "DASH_GetReceivingKPIData",
@@ -1236,21 +1222,17 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "Seven text-encoded numeric points and a fixed timeline label."
       ],
       "explanation_paths": [
-        "Snapshots rather than event buckets.",
-        "Two duplicate rows of one identifier can satisfy the freshness count gate.",
-        "Missing points become0."
+        "Two fresh rows for the same identifier can satisfy the freshness count even if the other identifier is absent."
       ],
       "boundaries": [
-        "Snapshot values are not interval event counts or measured process duration.",
-        "Receipt appointment joins can multiply header counts; no DISTINCT.",
-        "Receiving oldest window is[-13,-12] hours; shipping is[-14,-12]."
+        "Snapshot values are not interval event counts or process duration.",
+        "Receipt appointment joins can multiply header counts because there is no DISTINCT.",
+        "The oldest receiving window spans 13 to 12 hours before now; shipping spans 14 to 12 hours before now."
       ],
       "evidence_refs": [
         "pbm-batch-1436180512",
@@ -1302,8 +1284,8 @@
       "topic_id": "performance-dashboard-lock",
       "title": "Dashboard update locking",
       "business_question": "Does the dashboard updater guarantee every successful lock grant refreshes the cache?",
-      "plain_answer": "It requests an Exclusive application lock and refreshes only when the return code is0. A granted-after-wait code1 skips that branch. The body starts no transaction and relies on the caller for the default transaction-owned lock.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "Dashboard refresh requires an Exclusive application lock. Only return code 0 enters the refresh branch; code 1, meaning the lock was granted after waiting, skips it.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -1312,7 +1294,7 @@
         {
           "order": 1,
           "action": "Request the area lock",
-          "explanation": "The timeout is10 milliseconds and the resource is fixed per area, without a warehouse suffix.",
+          "explanation": "Request the fixed area lock with a 10-millisecond timeout. Its name has no warehouse suffix.",
           "objects": [
             "DASH_UpdateKPIData"
           ],
@@ -1323,7 +1305,7 @@
         {
           "order": 2,
           "action": "Check the return branch",
-          "explanation": "Only0 executes refresh and explicit release; exception cleanup is not coded.",
+          "explanation": "On return code 0, refresh the dashboard and explicitly release the lock.",
           "objects": [
             "DASH_UpdateKPIData"
           ],
@@ -1332,20 +1314,16 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "A conditional refresh call; no forwarded success or lock result."
       ],
       "explanation_paths": [
-        "Return0 versus granted-after-wait1.",
-        "Default transaction-owned lock needs caller transaction.",
-        "Expiration update occurs before locking."
+        "Expiration is updated before the lock is requested."
       ],
       "boundaries": [
-        "This is a static control-flow concern, not a reproduced locking incident.",
-        "Caller transaction and operational lock lifecycle remain unknown."
+        "The lock uses the default transaction ownership, but the body starts no transaction. The caller must provide its transaction lifecycle.",
+        "Exception cleanup is not coded."
       ],
       "evidence_refs": [
         "pbm-batch-1596181082"
@@ -1395,7 +1373,7 @@
       "title": "Performance monitor warehouse filtering",
       "business_question": "How do the performance counters limit results to a user's warehouses?",
       "plain_answer": "Most selected counters use the supplied username to filter profile and warehouse-access tables. Their membership query is a cross join, so even the All branch depends on at least one access-table row existing. It is a report filter and does not authenticate the supplied name.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -1440,21 +1418,12 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "COUNT counters return0 for no matches; the shipped-lines SUM can return NULL."
       ],
-      "explanation_paths": [
-        "Exact cross join can affect even All membership.",
-        "Empty warehouse is normalized to NULL.",
-        "COUNT0 and SUM NULL are different outcomes."
-      ],
-      "boundaries": [
-        "The supplied username is not evidence of authenticated identity.",
-        "No current permission/profile rows were read."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "pbm-batch-1477228663",
         "pbm-batch-1525228834",
@@ -1506,8 +1475,8 @@
       "topic_id": "performance-pm-day-boundary",
       "title": "Performance monitor daily boundaries",
       "business_question": "Are the daily receipt and shipped-line counters warehouse-local days?",
-      "plain_answer": "These monitor bodies use UTC midnight through the following UTC midnight with inclusive BETWEEN. They do not convert to the warehouse timezone. The receipt counter uses the container timestamp; the shipped-line sum uses the shipment view's actual ship time.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "Daily performance monitors use UTC calendar boundaries. Receipt counts use container timestamps; shipped-line sums use the shipment view's actual ship time.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -1516,7 +1485,7 @@
         {
           "order": 1,
           "action": "Build UTC boundaries",
-          "explanation": "GETUTCDATE is converted to date text and back to midnight.",
+          "explanation": "Convert GETUTCDATE to midnight to establish the start.",
           "objects": [
             "PM_ReceiptContainer01",
             "PM_ShipmentHeader03"
@@ -1529,7 +1498,7 @@
         {
           "order": 2,
           "action": "Filter the relevant timestamp",
-          "explanation": "Both endpoints are inclusive, including next midnight.",
+          "explanation": "Select with BETWEEN from that midnight through the following midnight, including both endpoints.",
           "objects": [
             "PM_ReceiptContainer01",
             "PM_ShipmentHeader03"
@@ -1540,20 +1509,15 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "One receipt-container count or shipped-line SUM with the supplied report membership filter."
       ],
       "explanation_paths": [
-        "UTC calendar boundaries.",
-        "Different timestamp fields.",
-        "COUNT gives0 while empty SUM gives NULL."
+        "An empty COUNT returns 0, while an empty SUM returns NULL."
       ],
       "boundaries": [
-        "These are not warehouse-local-day totals.",
-        "Inclusive next midnight can overlap adjacent daily reports."
+        "The inclusive end boundary can count next midnight in adjacent reports."
       ],
       "evidence_refs": [
         "pbm-batch-1477228663",
@@ -1601,8 +1565,8 @@
       "topic_id": "performance-alert-summary",
       "title": "Open processed alert summary",
       "business_question": "What does the warehouse-alert counter include?",
-      "plain_answer": "It groups processed-Y alert requests that still have no closed timestamp and whose alert action matches one of two coded categories. It joins alert/type records, groups by description and priority, and reports count and latest activity time.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "The alert summary groups requests marked processed Y that have no closed timestamp and match one of two coded action categories. It joins alert and type records, groups by description and priority, and returns a count and latest activity time for each group.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -1631,17 +1595,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "Zero or more priority groups; no alert is closed or modified."
       ],
-      "explanation_paths": [
-        "Processed is Y, not unprocessed.",
-        "Closed timestamp must be NULL.",
-        "This is a grouping query, not alert resolution."
-      ],
+      "explanation_paths": [],
       "boundaries": [
         "No username or warehouse-access check is in this body.",
         "Different types with the same description/priority can merge; duplicate joins can multiply counts."
@@ -1693,8 +1651,8 @@
       "topic_id": "performance-activity-six-results",
       "title": "Activity summary result sets",
       "business_question": "Why does the activity summary return several totals that do not reconcile one-for-one?",
-      "plain_answer": "It returns six result sets using different events and counting keys. Wave totals require a launch fully inside the interval; received lines use a concatenated key; work groups use end times; shipping and creation totals use their own timestamp fields.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "Activity summary returns six result sets with different event and counting rules. Wave totals require launches fully inside the interval; received lines use a concatenated key; work groups use end times. Shipping and creation totals use their own timestamps.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -1723,16 +1681,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
-        "Six ordered result sets; the work grouping can be empty while scalar aggregate sets still return zeros."
+        "The work-group result can be empty while scalar aggregate result sets still return zero."
       ],
-      "explanation_paths": [
-        "Six output sets with different timestamps and keys.",
-        "Fully-contained launches differ from overlapping launches."
-      ],
+      "explanation_paths": [],
       "boundaries": [
         "No single end-to-end process duration or universal warehouse filter is supplied.",
         "Concatenated receipt-line keys can collide; view duplicate rows can affect sums."
@@ -1783,8 +1736,8 @@
       "topic_id": "performance-activity-buckets",
       "title": "Thirty-second activity series",
       "business_question": "Does the activity series cover exactly my start-to-end interval?",
-      "plain_answer": "The first sample always equals the supplied start, but its activity bucket covers the preceding30 seconds. Later samples are generated only while they remain before end. A final partial bucket to end is not added.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "Each activity sample summarizes the preceding 30 seconds. The first sample is placed at the requested start, so its bucket begins before that start. Subsequent sample times must be earlier than the requested end; no final partial bucket is added.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -1793,7 +1746,7 @@
         {
           "order": 1,
           "action": "Generate sample endpoints",
-          "explanation": "Anchor at start, then add30 seconds with no recursion-count cap.",
+          "explanation": "Create the first sample at start, then advance by 30 seconds.",
           "objects": [
             "PMN_LoadConfirmActivity",
             "PMN_ReceiptsCreatedActivity",
@@ -1808,7 +1761,7 @@
         {
           "order": 2,
           "action": "Count preceding windows",
-          "explanation": "Join timestamps greater than or equal to sample minus30 seconds and strictly less than sample.",
+          "explanation": "For each sample, include activity timestamps at or after sample minus 30 seconds and strictly before the sample.",
           "objects": [
             "PMN_LoadConfirmActivity",
             "PMN_ReceiptsCreatedActivity",
@@ -1821,20 +1774,14 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "Ordered endpoint rows with counts/sums; empty buckets show zero."
       ],
-      "explanation_paths": [
-        "First bucket precedes start.",
-        "End is excluded from recursive sample generation.",
-        "No final partial bucket."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "NULL, reversed or equal bounds still leave the anchor row.",
-        "Large ranges are not bounded by a recursion cap; no execution or measured cost is established."
+        "NULL, reversed or equal bounds still produce the anchor row.",
+        "The recursive sample generator has no duration or recursion-count cap."
       ],
       "evidence_refs": [
         "pbm-batch-1701229461",
@@ -1885,8 +1832,8 @@
       "topic_id": "performance-wave-sampling",
       "title": "Active wave samples",
       "business_question": "Are wave-activity totals counts of new waves every30 seconds?",
-      "plain_answer": "They are totals from launches whose start and end bracket each sample timestamp. The same wave can contribute repeatedly. A launch with a NULL end time does not satisfy this overlap predicate.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "Wave sampling measures workload active at each sample time. A wave can contribute to several samples, so the series does not count newly started waves or measure elapsed duration.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -1895,7 +1842,7 @@
         {
           "order": 1,
           "action": "Generate timestamps",
-          "explanation": "Start plus30-second increments before end.",
+          "explanation": "Generate samples from the start in 30-second increments before the end.",
           "objects": [
             "PMN_WaveActivity"
           ],
@@ -1915,20 +1862,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
-      "expected_results": [
-        "An active-wave workload series, with zero for an empty sample."
-      ],
-      "explanation_paths": [
-        "Inclusive overlap at each sample.",
-        "Same launch may contribute repeatedly.",
-        "NULL end behavior."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is not newly started waves per bucket or elapsed wave duration.",
-        "NULL launch end is excluded."
+        "A launch with a NULL end time does not satisfy the overlap condition."
       ],
       "evidence_refs": [
         "pbm-batch-1797229803"
@@ -1977,8 +1915,8 @@
       "topic_id": "performance-inventory-diagnostics",
       "title": "Inventory diagnostic predicates",
       "business_question": "Does an inventory diagnostic finding prove inventory is corrupt?",
-      "plain_answer": "It identifies rows that satisfy that query's comparison. The queries use different keys, warehouse sides and exclusions. Some compare aggregates, some omit logistics units, and several use NOLOCK. A finding needs context before it becomes a confirmed defect.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "Inventory diagnostics return rows that meet each query's comparison rules. Those rules use different keys, warehouse sides and exclusions; some compare aggregates, some omit logistics-unit matching, and several use NOLOCK. A returned discrepancy requires context before it identifies a confirmed inventory defect.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -2023,21 +1961,14 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "Diagnostic rows/counts, with no repair or status mutation."
       ],
-      "explanation_paths": [
-        "Different predicates produce different diagnostic populations.",
-        "Cross-side warehouse joins are preserved exactly.",
-        "Read-only result is not an automated repair."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "No bad operational row, root cause or remediation was verified.",
-        "NOLOCK findings can reflect inconsistent reads.",
-        "Unit-of-measure comparison joins item without company."
+        "NOLOCK can return inconsistent reads.",
+        "The unit-of-measure comparison joins item without company."
       ],
       "evidence_refs": [
         "pbm-batch-1463676262",
@@ -2092,7 +2023,7 @@
       "title": "Inventory status exception scope",
       "business_question": "Does the empty-or-null status report list every missing inventory status?",
       "plain_answer": "NULL status qualifies only under the written permanent/location-class/quantity conditions. The separate missing-identifier check uses NOT IN the configured status identifiers. An empty value is selected only if it is absent from that configuration set.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -2125,20 +2056,13 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
-      "expected_results": [
-        "Detail rows or a qualifying-item count; no default status assignment."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
       "explanation_paths": [
-        "NULL branch has additional predicates.",
-        "Empty string and NULL are different.",
-        "No status repair is performed."
+        "An empty string and NULL follow different predicates."
       ],
       "boundaries": [
-        "The name does not imply every NULL/empty row is selected.",
-        "NULL in the configured NOT IN set can suppress unmatched-value findings."
+        "A NULL in the configured NOT IN set can suppress findings for unmatched status values."
       ],
       "evidence_refs": [
         "pbm-batch-1655676946",
@@ -2188,8 +2112,8 @@
       "topic_id": "performance-audit-denominators",
       "title": "Audit and deadlock diagnostic counts",
       "business_question": "Why are the audit detail and count reports different?",
-      "plain_answer": "The seven-day count counts headers. Its detail report joins values, excludes a coded method and groups class/method/text. The deadlock reports separately count joined rows or distinct value texts. These denominators are intentionally documented separately.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "The seven-day audit total counts headers. The detail report instead joins value rows, excludes one coded method and groups by class, method and text. Deadlock reports count either joined rows or distinct value texts. These are different counting units and need not produce equal totals.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -2198,7 +2122,7 @@
         {
           "order": 1,
           "action": "Choose the denominator",
-          "explanation": "Header count, joined value row count, distinct text count and grouped details are different.",
+          "explanation": "Choose the report by the required counting unit: headers, joined value rows, distinct texts or detail groups.",
           "objects": [
             "RPT_CSO_UniqueDeadlockRecordsLast14Days",
             "RPT_CSO_TotalDeadlockRecordsLast14Days",
@@ -2217,7 +2141,7 @@
         {
           "order": 2,
           "action": "Apply each time/filter rule",
-          "explanation": "GETDATE rolling7/14-day windows use header logged time; detail ordering can use value timestamps.",
+          "explanation": "The rolling 7- and 14-day windows use GETDATE and header logged time; detail ordering can use value timestamps.",
           "objects": [
             "RPT_CSO_UniqueDeadlockRecordsLast14Days",
             "RPT_CSO_TotalDeadlockRecordsLast14Days",
@@ -2234,16 +2158,9 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
-      "expected_results": [
-        "Reports over retained data; no actual audit payload is exposed here."
-      ],
-      "explanation_paths": [
-        "Exact counting unit for each report.",
-        "Audit detail excluded-method filter is absent from header count."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
         "Distinct text is not proven unique deadlock incident identity.",
         "Detail groups need not equal header or joined-row counts."
@@ -2298,8 +2215,8 @@
       "topic_id": "performance-concurrency-peak",
       "title": "Sampled concurrent-user peak",
       "business_question": "Is the reported highest concurrent user count the exact peak ever?",
-      "plain_answer": "The routine checks distinct users once per hour, starting at the earliest retained logon timestamp. Short sessions between samples can be missed. It reports a maximum over those samples and retained records.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "Concurrent-user peak is an hourly sample of distinct users in retained logon history. Short sessions between samples may be missed.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -2328,20 +2245,13 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "One display string with peak count and sampled timestamp."
       ],
-      "explanation_paths": [
-        "Hourly sampling origin.",
-        "Distinct user names, not sessions.",
-        "Retained-history and NULL endpoint limits."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "This is neither continuous peak detection nor proof covering all historical activity.",
-        "NULL session ends can exclude sessions; empty history returns initialized0/current time."
+        "NULL session ends can exclude sessions. With no history, the routine returns its initialized count of 0 and current time."
       ],
       "evidence_refs": [
         "pbm-batch-1687677060"
@@ -2390,8 +2300,8 @@
       "topic_id": "performance-rate-weight-config",
       "title": "Weight-break configuration inserts",
       "business_question": "Do the weight-break helpers update an existing rate or calculate a shipment charge?",
-      "plain_answer": "They only insert missing configuration rows. The header helper skips an existing name. The detail helper inserts an exact minimum/maximum range under an existing header and skips an identical range. Neither helper calculates charges or updates existing configuration.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "Weight-break helpers insert missing configuration. The header helper preserves an existing name; the detail helper requires that header and skips an identical minimum/maximum range. Neither updates existing rows or calculates a freight charge.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -2424,16 +2334,12 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
+      "configuration_dependencies": [],
       "expected_results": [
         "Zero or one intended configuration insert; no generated-key or price result."
       ],
       "explanation_paths": [
-        "Insert-only, not upsert.",
-        "Missing header makes detail insert no-op.",
-        "Explicit NULL differs from declared0 defaults and required columns."
+        "Explicit NULL inputs differ from omitted inputs whose declared default is zero; required-column constraints still apply."
       ],
       "boundaries": [
         "No overlap, minimum<=maximum, active eligibility or invoice calculation validation.",
@@ -2487,8 +2393,8 @@
       "topic_id": "performance-maintenance-ddl",
       "title": "Maintenance helper side effects",
       "business_question": "Are the dba helpers safe read-only diagnostics?",
-      "plain_answer": "These helpers can rename objects, drop columns or constraints, and drop/recreate indexes. Several build executable DDL from caller-supplied identifiers or syntax. The review read their definitions and did not execute them.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "Maintenance helpers can rename objects, drop columns or constraints, and drop or recreate indexes. Their executable DDL uses caller-supplied identifiers and syntax.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -2541,20 +2447,13 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
-      "expected_results": [
-        "Conditional schema mutations when called, not a business report."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
       "explanation_paths": [
-        "Caller syntax is concatenated without QUOTENAME/value binding.",
-        "Drop/create is not locally atomic.",
-        "Related-table recursion guards differ by helper."
+        "Caller-supplied identifiers and syntax are concatenated without QUOTENAME or bound values. Drop/create operations have no local transaction."
       ],
       "boundaries": [
-        "Runtime targets, permissions, DDL triggers and caller transactions remain unresolved.",
-        "No operational DDL or repair was run."
+        "Actual targets, permissions, DDL triggers and caller transactions determine the effects."
       ],
       "evidence_refs": [
         "pbm-batch-1584724698",
@@ -2612,7 +2511,7 @@
       "title": "Index diagnostic context",
       "business_question": "Do the index reports prove which indexes need rebuilding or removal?",
       "plain_answer": "One routine reads physical statistics for a supplied database ID; the other joins usage counters to current-database metadata. Name resolution and database filtering have important limits. Neither routine rebuilds an index or establishes a maintenance decision.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -2649,20 +2548,13 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
-      "expected_results": [
-        "Metadata/statistics result shapes only; no live values were queried in this review."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
       "explanation_paths": [
-        "Database context can affect index/name interpretation.",
-        "No maintenance is performed.",
-        "Counter absence is not a zero-usage guarantee."
+        "An index absent from usage results is not necessarily unused."
       ],
       "boundaries": [
-        "No measured fragmentation, duration or safe-drop recommendation.",
-        "Counters are not procedure-call totals and catalog row counts are not COUNT(*) of data."
+        "Usage counters are not procedure-call totals, and catalog row counts are not a COUNT(*) of table data."
       ],
       "evidence_refs": [
         "pbm-batch-1669229347",
@@ -2713,8 +2605,8 @@
       "topic_id": "performance-space-used",
       "title": "Database and table size result sets",
       "business_question": "What does the table-size routine return?",
-      "plain_answer": "It first delegates to sp_spaceused for database output, then collects a table-specific sp_spaceused command through sp_msForEachTable into a local table and returns it by name. It does not establish that every table was enumerated successfully.",
-      "trigger": "A user asks about the captured behavior described in this topic; no procedure is executed by this documentation.",
+      "plain_answer": "The size helper obtains database output from sp_spaceused, then gathers table-specific output through sp_msForEachTable. It returns the collected table rows by name.",
+      "trigger": "",
       "input_context": [
         "Snapshot20260929T214106Z; exact source modules are cited below.",
         "Current deployed values, caller identity and operational results were not observed."
@@ -2743,20 +2635,14 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Applicable status/configuration and catalog constraints are detailed in the cited module contracts; no effective configuration rows were read."
-      ],
-      "expected_results": [
-        "Multiple result sets with size text; no numeric conversion or live size measurement from this review."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
       "explanation_paths": [
-        "Database output precedes per-table output.",
-        "Size columns remain text.",
-        "No execution was performed."
+        "Size columns are returned as text, without numeric conversion."
       ],
       "boundaries": [
-        "System-helper support, permissions and enumeration completeness are deployment-dependent.",
-        "INSERT EXEC shape or nesting restrictions can fail; no failure handler exists."
+        "System-helper support, permissions and enumeration completeness depend on the deployment.",
+        "INSERT EXEC result shape or nesting restrictions can fail; the body has no failure handler."
       ],
       "evidence_refs": [
         "pbm-batch-1749229632"

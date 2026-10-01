@@ -1,5 +1,9 @@
 # Resume SCALE Intelligence
 
+## Current continuation: articles and configuration
+
+Read [C22 article review](ARTICLE_REVIEW_C22.md) and its [receipt](article-review-c22.json). The 340-article pass and seven configuration guides are implemented. Search now has 48 misses; do not repeat the older 39-miss number as current or automatically resume search tuning. Preserve the unchanged collection, source, central-reference and deployment boundaries below.
+
 ## C21 current search continuation
 
 Four additional questions lacking a named subject now request the operation or setting instead of presenting unrelated matches. Named Work/Returns queries and identifiers remain searchable. Fresh HTTP verification preserves all **723 questions and expected IDs: 684 top-eight, 417 first, 39 misses; 723 selected-topic contracts passed**. Exactly **719 result lists are unchanged**, with zero recovered misses and zero new losses. Clarification is not retrieval recovery.

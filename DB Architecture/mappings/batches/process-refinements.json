@@ -1078,20 +1078,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Allocation rules combine location selection and strategy. Item and location characteristics can affect selection and ordering.",
-        "Pick-confirmation behavior changes when inventory is removed."
+        "Item and location characteristics affect candidate eligibility and order."
       ],
-      "expected_results": [
-        "Reserve selected inventory when pick confirmation is used. The documented alternative removes inventory when the load is confirmed."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which allocation rule and pick-confirmation mode does the application select for this deployment? Obtain sanitized rule-assignment and wave-step bindings, without inventory or shipment records."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "When rules cannot fill a request, later sequences and the status-action policy determine partial allocation, rejection or return to the pool."
       ],
       "evidence_refs": [
         "family-allocation-aim",
@@ -1165,6 +1157,10 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "process-work",
+        "packing-classes-and-criteria"
       ]
     },
     {
@@ -1197,19 +1193,12 @@
         }
       ],
       "configuration_dependencies": [
-        "The integration and the separate billing product must be configured; this summary does not establish field mappings or retry settings."
+        "Integration trigger headers/details, the target XML schema and output directory define the exchange."
       ],
-      "expected_results": [
-        "The billing application calculates, tracks and charges for warehouse work."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Is this deployment integrated with Billing Management, and what upload contract applies? Obtain a sanitized integration/version mapping and acknowledgment contract."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "An inline billing trigger needs a corresponding coded event check; adding a trigger record alone does not create a new event."
       ],
       "evidence_refs": [
         "family-billing-management-integration-aim",
@@ -1306,20 +1295,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Routing guides can vary by weight and container count. Calendars identify excluded dates or weekend days.",
-        "Carrier records can inherit shared setup; additional shipping services have their own configuration."
+        "Carrier records may inherit shared setup; additional shipping services have separate settings."
       ],
-      "expected_results": [
-        "Apply carrier no-ship calendars; wave container estimates can be used for rating."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which carrier/rating service version and routing guide apply here? Obtain sanitized carrier-service bindings and routing precedence, without addresses or shipment data."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "With Use Rating in Selection disabled, selection can favor delivery days rather than the cheapest rate. Closed manifests prevent further container changes."
       ],
       "evidence_refs": [
         "family-carrier-management-aim",
@@ -1425,19 +1406,12 @@
         }
       ],
       "configuration_dependencies": [
-        "The documented strategies are Consolidate And Do Not Split, Split And Do Not Consolidate, Consolidate And Split Only Once, and 3D Cubing."
+        "Choose Consolidate And Do Not Split, Split And Do Not Consolidate, Consolidate And Split Only Once, or 3D Cubing. Packing classes and criteria determine eligible types and compatible contents."
       ],
-      "expected_results": [
-        "Apply the configured strategy to determine the containers and distribute quantities."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which container strategy and packing constraints are assigned to the wave? Obtain sanitized wave-step and strategy contracts; do not infer a strategy from existing containers."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Wave containers created from allocation requests cannot later be linked to RF pick/putaway work through the existing-container path described in AIM."
       ],
       "evidence_refs": [
         "family-container-creation-in-the-wave-aim",
@@ -1511,13 +1485,16 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "packing-classes-and-criteria"
       ]
     },
     {
       "topic_id": "process-cycle-counting",
       "title": "Cycle Counting: purpose and processing",
       "business_question": "What does cycle counting do in SCALE?",
-      "plain_answer": "Cycle counting compares a physical count at a location with the quantity recorded by SCALE. It can start from a count plan or from activity that makes a location due for counting.",
+      "plain_answer": "Cycle counting compares a physical location count with SCALE inventory and resolves any discrepancy.",
       "trigger": "A user creates a count plan, or the system creates activity-driven count instructions.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -1543,19 +1520,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Plan-based and activity-driven counting have different triggers; reconciliation tolerances and approval rules need further source review."
+        "Create Work determines RF/work execution versus paperwork. Immediate Reconcile of Bad Count and Min/Max tolerances control automatic adjustment or Pending Review."
       ],
-      "expected_results": [
-        "Physically verify whether the location inventory matches the recorded inventory."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which count tolerances, recount and approval rules are enabled? Obtain sanitized cycle-count configuration and application handling; no physical counts are available here."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "A plan remains incomplete while count requests or pending reconciliations remain open."
       ],
       "evidence_refs": [
         "family-cycle-counting-aim",
@@ -1638,13 +1608,16 @@
           "claim_class": "DOCUMENTARY_SOURCE_QUALIFICATION",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "work-profile-configuration"
       ]
     },
     {
       "topic_id": "process-device-integration-framework",
       "title": "Device Integration Framework: purpose and processing",
       "business_question": "What does device integration framework do in SCALE?",
-      "plain_answer": "The Device Integration Framework connects SCALE with automation equipment, such as conveyors or pick-to-light systems. It exchanges messages; a received file alone does not prove the requested warehouse action finished.",
+      "plain_answer": "The Device Integration Framework exchanges messages between SCALE and warehouse automation such as conveyors and pick-to-light systems.",
       "trigger": "Equipment exchanges messages, or files arrive for a configured transfer process.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -1670,19 +1643,12 @@
         }
       ],
       "configuration_dependencies": [
-        "File formats, extension rules, destination handling and whether to insert a message are configuration choices."
+        "From directory, file extension, polling interval and Insert Message control incoming file handling; outgoing messages have separate retry settings."
       ],
-      "expected_results": [
-        "Configured post-processing can change an extension, move the file and insert an incoming-message record for subsequent processing."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which device service, message handler and acknowledgment/retry rules are installed? Obtain sanitized service/version and message-schema evidence, without endpoints or live payloads."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "A file receipt or message acknowledgment confirms a communication stage, not completion of the warehouse action."
       ],
       "evidence_refs": [
         "family-device-integration-framework-aim",
@@ -1779,19 +1745,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Each dock-management process can be independently enabled or disabled."
+        "Consolidation, staging and loading are enabled independently. Create Next Move controls subsequent work creation."
       ],
-      "expected_results": [
-        "Use staging locations and dock-door locations for enabled staging and loading stages."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which consolidation, staging and loading stages and status flows apply here? Obtain sanitized stage configuration and location-class mapping."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Immediate RF dock transfer requires no open or in-process container work and the relevant next-move option disabled."
       ],
       "evidence_refs": [
         "family-dock-management-aim",
@@ -1871,7 +1830,7 @@
       "topic_id": "process-gs1-barcode",
       "title": "GS1 Barcode: purpose and processing",
       "business_question": "What does gs1 barcode do in SCALE?",
-      "plain_answer": "A GS1 barcode can carry several data elements, such as an item, quantity or lot. SCALE uses application-identifier templates to interpret those elements; the template may be associated with a receiving preference.",
+      "plain_answer": "A GS1 barcode carries several data elements, such as item, quantity and lot, in one label.",
       "trigger": "A barcode is interpreted during a supported process; label creation can occur in a wave or when closing a container.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -1897,19 +1856,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Application-identifier templates determine parsing. Receiving preferences can select a template; generic supplied labels can be customized."
+        "The receiving preference selects an application-identifier template with scan count, segment order and manual-verification options."
       ],
-      "expected_results": [
-        "The documented wave and close-container processes can generate GS1 labels from configured templates."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which barcode/template version and receiving-preference binding apply? Obtain a sanitized template definition and synthetic barcode example; current GS1 standard compliance is not established by this captured summary."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "The inbound parsing template does not define the physical layout of an outbound label."
       ],
       "evidence_refs": [
         "family-gs1-barcode-aim",
@@ -1965,13 +1917,16 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "receiving-overage-configuration"
       ]
     },
     {
       "topic_id": "process-general-system-concepts",
       "title": "General System Concepts: purpose and processing",
       "business_question": "What does general system concepts do in SCALE?",
-      "plain_answer": "Warehouse, company and user setup provide the context for SCALE activity. A warehouse identifies where transactions occur, while user profiles and security records influence access.",
+      "plain_answer": "Warehouse, company and user setup establish the context and access rules for SCALE activity.",
       "trigger": "An authorized user opens a function in a configured warehouse.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -1997,20 +1952,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Company setup supports multi-company processing. User profiles carry preferences and company authorizations.",
-        "The historical documented security default must not be treated as the permissions of this deployment."
+        "Company setup supports multi-company processing. User profiles contain preferences and company authorizations."
       ],
-      "expected_results": [
-        "The captured window-security description checks user-level records when present and otherwise references system-level records."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which deployed version and authorization layer govern access? Obtain a sanitized security model and application-version contract, never another user profile or password."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Access depends on the applicable user and system security records; the documented default does not identify an employee's current permissions."
       ],
       "evidence_refs": [
         "family-general-system-concepts-aim",
@@ -2116,19 +2063,12 @@
         }
       ],
       "configuration_dependencies": [
-        "The trigger defines a default priority, which can be changed for a request. Priority comparison is documented for requests of the same item."
+        "Shortage triggers must be active and the item eligible. Each trigger supplies a request priority that can be changed for an individual request."
       ],
-      "expected_results": [
-        "The documented viewer removes the request after fulfillment closes it."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which immediate-needs triggers and priority rules apply to the process? Obtain sanitized trigger definitions and fulfillment bindings, without shortage records."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Locate By Parent does not fulfill immediate needs, and work-order build locations are not eligible allocation destinations for these requests."
       ],
       "evidence_refs": [
         "family-immediate-needs-aim",
@@ -2208,7 +2148,7 @@
       "topic_id": "process-interface",
       "title": "Interface: purpose and processing",
       "business_question": "What does interface do in SCALE?",
-      "plain_answer": "Interfaces exchange records between SCALE and an order system. A job can be started manually or by a schedule, and one failed file does not necessarily stop other files from being processed.",
+      "plain_answer": "Interfaces exchange records between SCALE and an order system.",
       "trigger": "A manual or scheduled upload/download starts.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -2234,19 +2174,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Transport mode, touchpoint and schedule determine the interface path; those active settings are not supplied by this summary."
+        "Process definitions set data type, transaction cap and file extension. Upload criteria select records; the process-detail output directory takes precedence over the interface system value."
       ],
-      "expected_results": [
-        "Record detailed errors for failures; when processing several files, continue with other files after a file-data error."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "What installed interface mode, schema, idempotency and acknowledgment rules apply? Obtain sanitized interface contracts and version evidence; do not inspect live payload/error files under this task."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "File-level continuation after an error does not define record-level rollback, retry or duplicate-handling behavior."
       ],
       "evidence_refs": [
         "family-interface-aim",
@@ -2326,7 +2259,7 @@
       "topic_id": "process-inventory-management",
       "title": "Inventory Management: purpose and processing",
       "business_question": "What does inventory management do in SCALE?",
-      "plain_answer": "Inventory management corrects recorded stock outside ordinary picking or putaway. The adjustment class determines how an adjustment type is processed; license-plate transactions can handle mixed product together.",
+      "plain_answer": "Inventory management corrects stock through adjustments, transfers and status changes outside ordinary picking or putaway. License-plate transactions can handle mixed product together.",
       "trigger": "An authorized user completes an inventory adjustment or transfer.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -2352,20 +2285,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Adjustment types/classes and license-plate tracking affect processing.",
-        "The captured summary restricts Lot Insight adjustment/status-change/transfer when inventory attributes are linked."
+        "Adjustment type controls quantity limits and frozen-location permissions; its class determines the available transaction fields."
       ],
-      "expected_results": [
-        "Apply the documented inventory change when the transaction completes; license-plate tracking can extend the context."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which adjustment class, permissions and attribute restrictions apply? Obtain sanitized adjustment definitions and caller transaction behavior; individual balances remain outside scope."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Lot Insight restricts adjustments, transfers and status changes when inventory attributes are linked. Work creation for adjustments is not supported by the RF adjustment flow."
       ],
       "evidence_refs": [
         "family-inventory-management-aim",
@@ -2439,13 +2364,16 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "returns-damage-status"
       ]
     },
     {
       "topic_id": "process-inventory-tracking",
       "title": "Inventory Tracking: purpose and processing",
       "business_question": "What does inventory tracking do in SCALE?",
-      "plain_answer": "Inventory tracking records where stock is and what state it is in. Quantity categories distinguish inventory states, and lots, serial numbers, catch weights and attributes provide additional identification.",
+      "plain_answer": "Inventory tracking records a product's location, quantity state and identifiers throughout its warehouse journey.",
       "trigger": "Product enters, moves through or leaves the warehouse.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -2471,20 +2399,12 @@
         }
       ],
       "configuration_dependencies": [
-        "The summary names the tracking dimensions; item-specific activation and quantity equations require the detailed contracts."
+        "Quantity categories distinguish On Hand, In Transit, Allocated and Suspense. Lot, serial, catch-weight and attribute controls provide additional identification.",
+        "Lot and serial templates define identifier structures. Inventory attributes add named fields for receiving, allocation and interfaces."
       ],
-      "expected_results": [
-        "Use quantity categories and applicable lot, serial, weight and attribute identification."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which item tracking controls and quantity-category rules apply to this workflow? Obtain sanitized rule definitions and application bindings; no current quantities are known."
-      ],
-      "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "family-inventory-tracking-aim",
         "process-claim-process-documentary-inventory-tracking-r01",
@@ -2554,7 +2474,7 @@
       "topic_id": "process-item",
       "title": "Item: purpose and processing",
       "business_question": "What does item do in SCALE?",
-      "plain_answer": "Item setup defines product characteristics and handling controls, including locating, allocation, lot and serial behavior. The captured summary also describes using shipment-line item values when separate item records are not maintained.",
+      "plain_answer": "Item setup defines product characteristics and the rules used to handle that product.",
       "trigger": "An item is configured or supplied through interface/shipment-line data.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -2580,19 +2500,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Item controls can include allocation/locating rules and tracking requirements. Company context matters in multi-company use."
+        "Allocation and locating rules, unit-of-measure breakdown, dimensions and tracking options govern product handling. Company context matters when several companies use SCALE."
       ],
-      "expected_results": [
-        "In the documented optional-item-master path, reference values supplied on shipment lines."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Does this deployment require item masters, and which field defaults/overrides apply? Obtain the installed item/interface contract; optional behavior in the summary is not a deployment guarantee."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "The optional item-master path depends on process-specific validation requirements."
       ],
       "evidence_refs": [
         "family-item-aim",
@@ -2654,7 +2567,7 @@
       "topic_id": "process-ltl-rating",
       "title": "LTL Rating: purpose and processing",
       "business_question": "What does ltl rating do in SCALE?",
-      "plain_answer": "Less-than-truckload rating calculates freight for a shipment using route, weight and freight class. SCALE’s documented internal rating also considers minimum charges and whether the next weight break would be cheaper.",
+      "plain_answer": "Less-than-truckload rating calculates freight charges from the shipment route, weight and freight class.",
       "trigger": "An LTL shipment is rated.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -2689,19 +2602,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Rate bases contain class/weight breaks; carrier minimums and route criteria influence the calculation."
+        "Rate bases contain class/weight breaks. FAK can rate different actual freight classes at one agreed class."
       ],
-      "expected_results": [
-        "Apply the documented deficit-weight comparison against the next weight break."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Is internal LTL rating or an external rating service used, and what contract/version applies? Obtain sanitized rating configuration; no current price, tariff or shipment quote is established."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "The AIM worked example has a conflicting rate-table value; use the configured rate base to calculate charges."
       ],
       "evidence_refs": [
         "family-ltl-rating-aim",
@@ -2772,7 +2678,7 @@
       "topic_id": "process-labor-management",
       "title": "Labor Management: purpose and processing",
       "business_question": "What does labor management do in SCALE?",
-      "plain_answer": "Labor management collects productivity information from warehouse actions such as picking, packing and receiving. It supports comparing work and plans with expected performance.",
+      "plain_answer": "Labor management records warehouse activity and supports comparing staffing plans with measured productivity.",
       "trigger": "Workers perform supported warehouse actions.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -2798,19 +2704,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Activity definitions, standards and plan configuration are not established by the reviewed summary."
+        "Labor groups define staffing, hours, unit of measure and estimated time per transaction. Wave-step placement determines work-line versus shipment-line planning."
       ],
-      "expected_results": [
-        "Use the recorded data to assess productivity and compare labor plans with expectations."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "What time boundaries, standards and exclusions define each labor measure here? Obtain sanitized measurement definitions and correlation design; no employee performance data is authorized."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Planned labor time is an estimate; it is separate from elapsed time and measured employee performance."
       ],
       "evidence_refs": [
         "family-labor-management-aim",
@@ -2890,7 +2789,7 @@
       "topic_id": "process-locating",
       "title": "Locating: purpose and processing",
       "business_question": "What does locating do in SCALE?",
-      "plain_answer": "Locating chooses a storage destination for checked-in product. Rules select candidate locations and a strategy; creating putaway work is a separate choice. Delayed locating can first send the container to a receiving pre-locate area.",
+      "plain_answer": "Locating chooses a storage destination for checked-in product. Creating putaway work is a separate decision.",
       "trigger": "Checked-in containers are submitted for locating.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -2925,20 +2824,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Rules can be assigned on the item or through rule-set assignment. Strategies and eligible locations govern placement.",
-        "Delayed locating requires both flags; one active flag is insufficient."
+        "Rules can be assigned on the item or through rule-set assignment. Location selections, capacity and Split Quantity constrain the chosen destination."
       ],
-      "expected_results": [
-        "If both Delayed Locating and Create Putaway Work are active, locate with work to the receiving pre-locate location; otherwise use rule details."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which rule assignment and receiving preference are effective for the container? Obtain sanitized assignment and preference contracts. Aggregate delayed-locating flags cannot establish per-container behavior."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "If no sequence can place the quantity, locating can fail. A destination assignment alone does not establish physical putaway."
       ],
       "evidence_refs": [
         "family-locating-aim",
@@ -3003,13 +2894,17 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "locating-destination-triage",
+        "receiving-overage-configuration"
       ]
     },
     {
       "topic_id": "process-location",
       "title": "Location: purpose and processing",
       "business_question": "What does location do in SCALE?",
-      "plain_answer": "A location is a defined place where stock can be picked, put away or replenished. Location types share dimensions and capacity settings, while movement classes describe what kinds of product can be stored there.",
+      "plain_answer": "A location is a defined place for inventory or an intermediate handoff between warehouse activities.",
       "trigger": "Warehouse locations are defined and referenced by warehouse work.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -3035,20 +2930,11 @@
         }
       ],
       "configuration_dependencies": [
-        "Location type, capacity and movement class influence use; actual availability remains operational data."
+        "Location templates define identifiers and separators; location classes define operational purpose."
       ],
-      "expected_results": [
-        "Use movement-class rules to identify the types of product allowed in that location."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "What inheritance/override rules apply between a location and its type? Obtain sanitized definitions and the installed resolution contract."
-      ],
-      "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "family-location-aim",
         "process-claim-process-documentary-location-r01",
@@ -3103,6 +2989,9 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "locating-destination-triage"
       ]
     },
     {
@@ -3144,20 +3033,11 @@
         }
       ],
       "configuration_dependencies": [
-        "Resource files and translated help must exist; a language preference alone does not supply a translation."
+        "Translated resource files and help must exist; choosing a language does not create its translations. The System Text Editor Translation Wizard supports resource export and import."
       ],
-      "expected_results": [
-        "For online help, use a matching language folder when available, otherwise fall back to the base help."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which client types and localization version are installed? Obtain sanitized client/resource-language inventory and fallback rules; the historical desktop model may differ from current clients."
-      ],
-      "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "family-multi-language-support-aim",
         "process-claim-process-documentary-multi-language-support-r01",
@@ -3227,7 +3107,7 @@
       "topic_id": "process-packing-shipping",
       "title": "Packing/Shipping: purpose and processing",
       "business_question": "What does packing/shipping do in SCALE?",
-      "plain_answer": "Packing associates shipment lines with containers, validates items and generates packing labels. Shipping then manages packed shipments through dock processing and confirmation.",
+      "plain_answer": "Packing places shipment contents into containers. Shipping takes those containers through outbound dock processing and confirmation.",
       "trigger": "Allocated/picked shipment quantities enter the applicable packing and shipping flow.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -3253,19 +3133,12 @@
         }
       ],
       "configuration_dependencies": [
-        "The reviewed summary separates packing and shipping; exact status-flow, validation and confirmation settings need deployed evidence."
+        "Packing Preferences govern entry and close behavior; work profiles govern mobile picking into containers."
       ],
-      "expected_results": [
-        "Manage packed shipments at the dock through load confirmation and departure processing."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which packing validation and shipping confirmation steps are active? Obtain sanitized status-flow/application bindings, carrier handoffs and print acknowledgments."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Pending QC blocks container closure; pending VAS follows its override setting. Container grouping requires the same shipment and does not itself change rating or routing."
       ],
       "evidence_refs": [
         "family-packing-shipping-aim",
@@ -3339,13 +3212,18 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "packing-preference-configuration",
+        "packing-screen-guide",
+        "container-close-checks"
       ]
     },
     {
       "topic_id": "process-paperwork",
       "title": "Paperwork: purpose and processing",
       "business_question": "What does paperwork do in SCALE?",
-      "plain_answer": "Paperwork produces documents and labels at warehouse processing points such as waves, container closure and shipment or load confirmation. A configured rendering or printing service produces the output.",
+      "plain_answer": "Paperwork produces documents and labels for warehouse activity.",
       "trigger": "A configured inbound or outbound processing point requests documents or labels.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -3371,19 +3249,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Renderer selection and customized templates change the output. A listed document does not prove successful dispatch or physical printing."
+        "Document types and routing select the template and destination. Customized templates belong in the application Printing directory; Progistics uses its own templates."
       ],
-      "expected_results": [
-        "Use the configured renderer/printer, such as the vendor-described reporting or label application."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which renderer, template version and delivery acknowledgment apply? Obtain sanitized document-service bindings and a synthetic output sample; do not print labels for diagnosis."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Document generation, print-service dispatch and physical printer output are separate stages."
       ],
       "evidence_refs": [
         "family-paperwork-aim",
@@ -3448,13 +3319,16 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "packing-label-printing"
       ]
     },
     {
       "topic_id": "process-performance-management",
       "title": "Performance Management: purpose and processing",
       "business_question": "What does performance management do in SCALE?",
-      "plain_answer": "Performance management combines history, alerts and reporting to help explain warehouse activity. Transaction history describes inventory changes; process history describes system decisions. An alert request still needs later processing.",
+      "plain_answer": "History, alerts and reports help explain warehouse activity. Transaction history records inventory changes; process history records system decisions.",
       "trigger": "A warehouse event, decision, discrepancy or configured alert condition occurs.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -3480,20 +3354,11 @@
         }
       ],
       "configuration_dependencies": [
-        "Alerts can produce history, email or both; configured jobs run reporting and other scheduled processes."
+        "Alert output can be history, email or both. Alert priority and the scheduled processing job are separate controls."
       ],
-      "expected_results": [
-        "Create an alert request for a configured condition. A scheduled alert job subsequently processes it into alert output."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which history retention and alert-delivery jobs are configured, and what proves delivery? Obtain sanitized job/retention contracts and correlation semantics; no event completeness is assumed."
-      ],
-      "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "family-performance-management-aim",
         "process-claim-process-documentary-performance-management-r01",
@@ -3563,7 +3428,7 @@
       "topic_id": "process-quality-control",
       "title": "Quality Control: purpose and processing",
       "business_question": "What does quality control do in SCALE?",
-      "plain_answer": "Quality control checks inbound product or outbound container contents before normal processing continues. The inbound process holds the relevant receipt quantity for inspection; outbound failures need resolution before the next status step.",
+      "plain_answer": "Quality control holds eligible inbound product or outbound containers for inspection before normal processing continues.",
       "trigger": "Eligible inbound items are received, or outbound containers are selected for QC.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -3598,20 +3463,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Inbound eligibility is configured on the item. The captured documentation supports check-in-created license plates, not downloaded receipt containers.",
-        "Work-start assignment applies to existing wave-created containers, not new containers introduced during RF picking."
+        "Inbound eligibility is configured on the item. Work-start outbound assignment applies to existing wave-created containers, not containers newly introduced during RF picking."
       ],
-      "expected_results": [
-        "Evaluate active QC assignment rules in ascending priority and mark a matching container QC Pending; resolve failures before continuation."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which QC assignment, item eligibility and disposition rules apply? Obtain sanitized rule definitions and status transitions; actual inspection results are not available."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Inbound QC supports license plates created during check-in, not downloaded receipt containers."
       ],
       "evidence_refs": [
         "family-quality-control-aim",
@@ -3676,13 +3533,17 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "returns-damage-status",
+        "container-close-checks"
       ]
     },
     {
       "topic_id": "process-receiving",
       "title": "Receiving: purpose and processing",
       "business_question": "What does receiving do in SCALE?",
-      "plain_answer": "Receiving first checks product into the warehouse and then locates it for storage. Check-in creates receipt containers for all or part of a line; locating chooses their destination.",
+      "plain_answer": "Receiving checks arriving product into SCALE and prepares it for storage.",
       "trigger": "Product arrives against an interfaced or application-created receipt.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -3717,19 +3578,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Receipt quantities and units of measure affect container creation; locating and putaway preferences govern subsequent steps."
+        "Receiving Preferences choose the initiation and execution method, tracking prompts and whether locating creates putaway work. Storage templates govern grouping during check-in."
       ],
-      "expected_results": [
-        "Locate the checked-in containers using the separate locating process."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "What receiving preferences, over/under-receipt controls and locating handoffs apply? Obtain sanitized configuration and application contracts; no receipt quantities are inspected."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Without putaway work, locating can put quantity On Hand at its destination before the physical movement occurs."
       ],
       "evidence_refs": [
         "family-receiving-aim",
@@ -3812,13 +3666,17 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "receiving-overage-configuration",
+        "receiving-lot-serial-prompts"
       ]
     },
     {
       "topic_id": "process-replenishment",
       "title": "Replenishment: purpose and processing",
       "business_question": "What does replenishment do in SCALE?",
-      "plain_answer": "Replenishment moves stock from bulk storage toward forward picking locations. Creating a replenishment request and creating the work to move it are separate stages controlled by the replenishment master and wave flow.",
+      "plain_answer": "Replenishment moves stock from bulk storage toward forward picking locations. A request identifies the need; movement work directs its execution.",
       "trigger": "A manual request, configured wave step or real-time minimum-threshold condition starts replenishment.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -3853,20 +3711,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Minimum thresholds may be defined at location/location-type or item/item-class scope. The reviewed summary does not resolve all override precedence.",
-        "Fill Destination disregards Maximum Replenishment Percentage; rounding down and rounding up have different quantity results."
+        "Thresholds can be defined at location/location-type or item/item-class scope. Fill Destination ignores Maximum Replenishment Percentage; rounding strategies use replenishment increments."
       ],
-      "expected_results": [
-        "For wave-generated requests, automatic work needs both a work-creation wave step and an Automatic Create Work Method; manual and real-time requests follow the master method."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which threshold inheritance, master and work-creation method apply? Obtain sanitized scope/precedence and wave-step bindings; do not infer that every replenishment creates work immediately."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Real-time replenishment marks a location for scheduled processing; it does not promise immediate physical movement."
       ],
       "evidence_refs": [
         "family-replenishment-aim",
@@ -3981,19 +3831,12 @@
         }
       ],
       "configuration_dependencies": [
-        "The reviewed summary identifies capabilities; distribution, allocation and cross-dock eligibility rules require further review."
+        "Put-to-store requires a PTS location class, eligible items, locating rules, receiving preferences, work profiles and store-location assignment criteria."
       ],
-      "expected_results": [
-        "Where configured, transfer received product to the shipping dock for customer delivery."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which distro/cross-dock strategy and order-matching rules apply? Obtain sanitized retail configuration and application bindings, without store order data."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "The documented split put-to-store flow excludes serial tracking; cross-docking supports it."
       ],
       "evidence_refs": [
         "family-retail-aim",
@@ -4073,7 +3916,7 @@
       "topic_id": "process-returns",
       "title": "Returns: purpose and processing",
       "business_question": "What does returns do in SCALE?",
-      "plain_answer": "Returns processing handles unwanted or damaged product from arrival through preparation for putaway. Putaway groups can combine related returned items for one trip.",
+      "plain_answer": "Returns processing records returned goods, their condition and the work needed to prepare them for storage.",
       "trigger": "Returned merchandise arrives at the receiving dock.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -4099,19 +3942,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Putaway location grouping influences the trip; disposition rules for usable and damaged goods are not established by this summary."
+        "Disposition and reason collection are optional controls. When used, they affect inventory condition and locating; putaway-group capacity can trigger group closure."
       ],
-      "expected_results": [
-        "Arrange items into putaway location groups so related items or items in the same locating zone can move together."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which return disposition, inventory status and grouping rules apply? Obtain sanitized returns definitions and resolution paths."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Closing a returns putaway group creates work; physical putaway still follows."
       ],
       "evidence_refs": [
         "family-returns-aim",
@@ -4185,13 +4021,16 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "returns-damage-status"
       ]
     },
     {
       "topic_id": "process-status",
       "title": "Status: purpose and processing",
       "business_question": "What does status do in SCALE?",
-      "plain_answer": "Statuses show progress through receiving or shipping. Lines follow their assigned flow, and header leading/trailing values summarize the most and least advanced progress. A Closed receipt does not always prove physical putaway when work creation is not required.",
+      "plain_answer": "Statuses describe progress through receiving or shipping. Leading and trailing header values summarize the most and least advanced line progress.",
       "trigger": "A receipt or shipment line enters a status flow and processing advances.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -4226,20 +4065,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Custom flows can use fewer statuses and must be defined and associated before interface processing.",
-        "The documented meaning of outbound 995 is Finished Item Is Allocated on a component line; this is vendor meaning, not verified effective deployment configuration."
+        "Define and assign custom flows before interface processing. They can omit stages present in the default flow."
       ],
-      "expected_results": [
-        "Interpret leading and trailing status together. For the documented no-work receiving path, locating can lead to Closed without a work-confirmation step."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which active default/custom flow, labels and application transitions apply? Obtain sanitized flow definitions and bindings; aggregate flags cannot prove a valid transition for an individual transaction."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "A header summarizes its lines; a single status does not show that every line has reached the same stage."
       ],
       "evidence_refs": [
         "family-status-aim",
@@ -4319,7 +4150,7 @@
       "topic_id": "process-technical",
       "title": "Technical: purpose and processing",
       "business_question": "What does technical do in SCALE?",
-      "plain_answer": "The documented process queue accepts batch requests and processes them in the background according to priority. The queue names in the captured documentation are not yet reconciled to this replica.",
+      "plain_answer": "Background processing lets SCALE accept batch work and perform it through a queue service.",
       "trigger": "An application batch process submits background work.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -4345,19 +4176,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Active service topology, polling and concurrency need separate deployment evidence. Existing scheduling tables are not proven queue aliases."
+        "Priority, polling, concurrency and service configuration determine how background processing is dispatched."
       ],
-      "expected_results": [
-        "Process requests in the background according to the configured thread priority."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "What installed component implements the documented process queue? Obtain a sanitized service-to-database architecture mapping; do not guess another database or rename scheduling objects."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "The documented queue identifiers have not been matched to the available database snapshot; the active queue implementation may differ."
       ],
       "evidence_refs": [
         "family-technical-aim",
@@ -4428,7 +4252,7 @@
       "topic_id": "process-trading-partner-management",
       "title": "Trading Partner Management: purpose and processing",
       "business_question": "What does trading partner management do in SCALE?",
-      "plain_answer": "Trading Partner Management is a documented website for order entry, status and supply-chain collaboration. It can expose inbound, outbound and inventory information in a multi-company context.",
+      "plain_answer": "Trading Partner Management provides a website for order entry, status research and inventory collaboration.",
       "trigger": "An authorized trading partner uses a configured TPM website.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -4454,19 +4278,12 @@
         }
       ],
       "configuration_dependencies": [
-        "TPM is a separate web surface in the documentation; existence, version and access controls are not established for this deployment."
+        "External users require a Customer ID and authorized companies. Branding, language and event-based email templates are separately configurable."
       ],
-      "expected_results": [
-        "Apply the website’s company context and presentation setup."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Is TPM installed, and how is company/user authorization enforced? Obtain a sanitized component and authorization contract; no public availability or user access is assumed."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "TPM is a separate website whose availability and access depend on the installation."
       ],
       "evidence_refs": [
         "family-trading-partner-management-aim",
@@ -4537,7 +4354,7 @@
       "topic_id": "process-wave",
       "title": "Wave: purpose and processing",
       "business_question": "What does wave do in SCALE?",
-      "plain_answer": "A wave groups the steps that bring orders from the pool into outbound processing. Its master defines the steps to run and the resulting entities, such as allocation requests or containers.",
+      "plain_answer": "A wave groups selected shipments and runs the outbound steps defined by its master.",
       "trigger": "A configured wave is run against selected orders.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -4563,19 +4380,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Wave-master configuration determines step selection and execution; the reviewed summary does not establish every step or failure/restart behavior."
+        "The wave master defines shipment criteria, capacity limits, ordered steps and Auto Release. Paperwork must follow the steps that generate its data."
       ],
-      "expected_results": [
-        "Execute those configured steps to move orders into outbound processing and create the required entities."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which wave-master step order, failure policy and retry rules are installed? Obtain sanitized master/application contracts and correlation design, without wave/order records."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "A shipment is not split across waves. One shipment exceeding a master maximum remains in the pool. Run and Release are separate stages."
       ],
       "evidence_refs": [
         "family-wave-aim",
@@ -4676,13 +4486,17 @@
           "claim_class": "DOCUMENTARY_SOURCE_QUALIFICATION",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "packing-classes-and-criteria",
+        "packing-label-printing"
       ]
     },
     {
       "topic_id": "process-work",
       "title": "Work: purpose and processing",
       "business_question": "What does work do in SCALE?",
-      "plain_answer": "Work creation turns product-handling needs into warehouse instructions. Work execution is the employee carrying out an instruction, such as picking or counting. A work unit groups the relevant product work.",
+      "plain_answer": "Work creation turns warehouse needs into instructions. Employees execute those instructions through picking, putaway, counting and other activities.",
       "trigger": "An allocation, inventory adjustment, replenishment or other supported need requests work.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -4708,19 +4522,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Creation criteria and execution profiles influence work; this overview does not prove current tasks or assignments."
+        "Work-creation masters select and group requests; work profiles and special handling govern execution."
       ],
-      "expected_results": [
-        "An employee performs the action specified by the instruction, such as a pick or cycle count."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which creation criteria, execution profile and application caller govern this work? Obtain sanitized bindings; use the separate reviewed SQL contracts for bounded selection behavior."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Printing a pick list does not confirm the physical work."
       ],
       "evidence_refs": [
         "family-work-aim",
@@ -4830,13 +4637,17 @@
           "claim_class": "VENDOR_BEHAVIOR_WITH_LIMITS",
           "deployment_alignment": "NOT_ESTABLISHED"
         }
+      ],
+      "related_topics": [
+        "work-profile-configuration",
+        "work-completion-checks"
       ]
     },
     {
       "topic_id": "process-work-order",
       "title": "Work Order: purpose and processing",
       "business_question": "What does work order do in SCALE?",
-      "plain_answer": "A work order manages making a finished item from component parts. Components and instructions can come from a bill of material or be entered for the order; movement can use created work or paperwork.",
+      "plain_answer": "A work order manages assembly of a finished item from components and the movement associated with that assembly.",
       "trigger": "A work order is created or released, or components are manually allocated.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -4871,19 +4682,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Bill-of-material revisions support versions of a finished item. Allocation timing and use of work creation are separate decisions."
+        "BOM revisions distinguish versions of the finished item. Create Work requires matching component and finished-item work criteria."
       ],
-      "expected_results": [
-        "Use work creation to move components and finished items, or use the documented paperwork-based path."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which bill-of-material revision, allocation timing and completion/consumption rules apply? Obtain sanitized work-order configuration and application contracts."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "Without Create Work, SCALE can transfer On Hand quantities automatically while physical delivery of the components and finished items is still required."
       ],
       "evidence_refs": [
         "family-work-order-aim",
@@ -4981,7 +4785,7 @@
       "topic_id": "process-yard-management",
       "title": "Yard Management: purpose and processing",
       "business_question": "What does yard management do in SCALE?",
-      "plain_answer": "Yard management tracks trailers outside the warehouse and their moves to receiving. Trailer check-in, yard moves and final checkout are distinct events; receipts need an associated trailer ID.",
+      "plain_answer": "Yard management tracks arriving trailers, their yard and dock locations, and final checkout.",
       "trigger": "A trailer arrives and is checked into a yard location.",
       "input_context": [
         "The applicable product/version, warehouse and authorized process context."
@@ -5016,19 +4820,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Receipt/trailer association is required for the described yard process. Arrival appointments are optional."
+        "A receipt/trailer association is required; appointments are optional. Yard spaces are defined as dock locations."
       ],
-      "expected_results": [
-        "After its inbound processing finishes, move it back to the yard or check it out."
-      ],
-      "explanation_paths": [
-        "Check which configured variant of this process applies before diagnosing a particular transaction.",
-        "Which yard status values, appointment rules and receipt associations apply? Obtain sanitized status/configuration definitions; numeric trigger conditions alone do not name business statuses."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is a review of the cited vendor passages, not full application/SQL deployment reconciliation. Source diagrams and uncited scenario/flow passages are not certified by this record.",
-        "No current transaction, permission, effective setting, service success or process duration is established.",
-        "Source screen names are documentary references; verified Insight navigation/SOPs remain a separate task."
+        "A yard-location assignment identifies an intended destination; it does not confirm the trailer has moved."
       ],
       "evidence_refs": [
         "family-yard-management-aim",

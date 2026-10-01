@@ -1,51 +1,30 @@
 # SCALE Intelligence
 
-## C21 current search continuation
+A knowledge base for understanding SCALE warehouse processes, configuring common workflows and explaining unexpected results.
 
-Four additional questions lacking a named subject now request the operation or setting instead of presenting unrelated matches. Named Work/Returns queries and identifiers remain searchable. Fresh HTTP verification preserves all **723 questions and expected IDs: 684 top-eight, 417 first, 39 misses; 723 selected-topic contracts passed**. Exactly **719 result lists are unchanged**, with zero recovered misses and zero new losses. Clarification is not retrieval recovery.
+## Read the knowledge base
 
-Read [C21 repair and remaining concerns](_project/RETRIEVAL_REPAIR_C21.md), [exact comparison](_project/retrieval-change-continuation21.json), and [validation checkpoint](_project/continuation21-20261001.json) before continuing. Four general ranking experiments and two prose candidates supplied no acceptable improvement and were not integrated. Independently authored source probes preserved 11/12 top-eight and 7 first; this selected sample is not a random holdout. All 23 in-scope known scenarios were preserved without new semantic acceptance credit.
+Start the local application from this folder:
 
-**Next active work:** the 39 remaining raw misses need source/intent evidence or a distinct justified retrieval design. Reuse the recorded case dispositions and rejected experiments; do not repeat the same tuning or rewrite questions to claim success. The single neutral SCALE reference, C20 archive boundary, closed collection/display/JAWS acceptance, and frozen **0/34** deployment/timing remain in force. C21 supersedes older current/next-task wording only for search continuation; earlier receipts remain historical. Normal authorized private publication and exact Git parity are verified separately after commit.
+```powershell
+python tools/serve_help.py --port 8765
+```
 
-## C20 archive and root prompt roles
+Open [SCALE Knowledge](http://127.0.0.1:8765). Search by process, screen or setting, or browse the warehouse processes. Each article presents its explanation first, with supporting documentation and technical detail available on demand.
 
-C20 archived **52 unused SDD files (91,572,429 bytes)** with exact byte preservation and restoration mappings. Seven SCALE originals and extracted bodies remain active; the central functionality reference, its equivalent PDF, mixed historical review registers and help/evaluation are unchanged. Read the [archive disposition and prompt audit](_project/ARCHIVE_DISPOSITION_C20.md) before following older source paths. Ordinary work must not read archive payload; retired-source counts are metadata attestations, not fresh source verification.
+The **Configure SCALE** section covers work profiles, packing preferences, printers and closing documents, receiving preferences, returns status, packing classes and criteria, and container eligibility. Procedures use documented screen and field names. Available controls and effective settings depend on the installation.
 
-Root prompts were checked against current consumers. **01/02 remain exact-byte acquisition authority and integrity evidence**, with collection closed; do not execute their old collection instructions. **03 is the active project master; 04 Astra is the active restart prompt.** The old 04 Sol file is only a compatibility redirect; its original is already archived. Start with [the active restart prompt](04_SCALE_ASTRA_RESTART_PROMPT.md) and the latest owner message.
+## Reference library
 
-C20 supersedes earlier statements that all nine originals, eight extraction bodies or four older PDF exports remain at their original active paths. Historical receipts retain their original bytes and checkpoint meaning. Archive verification does not constitute a new PDF visual review or full retrieval evaluation. The next product task remains source-grounded resolution of the 39 search gaps; current owner acceptance stays closed and deployment/timing stays frozen at 0/34. Normal authorized private publication requires recorded commit and remote parity.
+- [All functionality articles](DB%20Architecture/HELP_TOPICS.md): a reading copy of the application articles.
+- [SCALE Functionality Reference](SDD/SCALE_FUNCTIONAL_REFERENCE.md): processes, configuration choices and dependencies across 14 chapters.
+- [Printable functionality reference](output/pdf/SCALE%20Functionality%20Reference%20SDD.pdf).
+- [AIM documentation](AIM/README.md): application documentation and preserved sources.
+- [SDK documentation](SDK/README.md): development reference and preserved sources.
+- [Database architecture](DB%20Architecture/README.md): captured structure and technical analysis.
 
-SCALE Intelligence is building an accessible knowledge foundation that explains SCALE functionality, configuration and execution behavior to novice users. Its preserved reference library includes [AIM](AIM/README.md) and [SDK](SDK/README.md).
+The application reads the retained library and has no connection to warehouse operations. Documentation and captured source code explain behavior; they do not establish a particular warehouse's active settings.
 
-**Current C19 reference:** [SCALE Functionality Reference](SDD/SCALE_FUNCTIONAL_REFERENCE.md), also available as [one printable SDD](<output/pdf/SCALE Functionality Reference SDD.pdf>). It brings together 86 entries in 14 chapters, supported by 181 selected records from seven SCALE sources. Implementation documents are functional reference guides, not core-product defaults or proof of TAB configuration. The central reference has no client names or other-product material; original sources and historical receipts remain preserved as provenance.
+## Maintaining this project
 
-**Next-session entry:** [04_SCALE_ASTRA_RESTART_PROMPT.md](04_SCALE_ASTRA_RESTART_PROMPT.md), with the [project master](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md). Read [C19 concerns](_project/CONCERNS_C19.md), [reference scope and verification](_project/REFERENCE_SDD_C19.md), [current owner scope](_project/owner-scope-continuation19.json), [project status](PROJECT_STATUS.md), and the [completion report](_project/COMPLETION_REPORT.md). The [technical source register](SDD/derived/scale-functional-reference.json) binds the central entries to evidence; it is not a second SDD. Earlier receipts retain their historical scope.
-
-The [database architecture assessment](DB%20Architecture/README.md) adds the structural replica inventory, reviewed routine contracts, dependency maps and retained runtime evidence. The [local help app](help_app/README.md) serves direct explanations, search and source citations. Start it with `python tools/serve_help.py --port 8765`, then open `http://127.0.0.1:8765`. [SDD navigation and provenance](SDD/README.md) lead to the single active functionality reference. The earlier four document exports and their page reviews are completed historical evidence; they do not replace the central SDD. JAWS and current broader display acceptance are owner closed, without a complete local accessibility-test claim. Deployment behavior/timing stays frozen at 0/34; Insight-screen/SOP registration is a separately initiated future task.
-
-C19 replaced five legacy SDD help bindings with four neutral reference bindings. Fresh served HTTP checks passed all **723 selected-topic contracts**, with **684/723 top-eight (94.61%), 417/723 first (57.68%) and 39 misses**. The 721 unchanged cases retained 682 top-eight and 416 first, with zero recoveries or new misses; 662 result lists were identical and 59 changed rank. Two new neutral cases returned two top-eight and one first result; two other-product cases were excluded. All four scope-changed cases were baseline passes. See the [exact comparison](_project/retrieval-change-continuation19.json).
-
-The central PDF has **41/41 pages reviewed**, source/code audits passed, and **70 relevant tests passed with zero failures or skips**. All [23 in-scope known scenarios](_project/help-question-continuation19.json) were preserved; QS-18 remains separately excluded. Final database verification passed. Private publication and exact remote parity are recorded separately after commit. The historical C18 baseline remains 686/725 top-eight, 420/725 first and 39 misses; the [document-to-search assessment](_project/RETRIEVAL_SOURCE_ASSESSMENT_C18.md) found no new document-driven resolutions. The next active work is source-grounded resolution of the 39 search gaps. The knowledge foundation and search repair remain incomplete.
-
-AIM is owner-accepted complete with documented exceptions: 99.71% known article capture (2,446/2,453). Deprecation remains an unverified owner hypothesis. SDK is also owner-accepted complete with documented exceptions at 95.53%. The documentation collection phase is closed; source-fidelity measurements remain unchanged.
-
-363/380 known SDK article originals are saved (95.53%). 691/734 required original resources are saved; 43 failed and 0 pending. All currently eligible acquisition work is exhausted. Counts describe known inventory; the SDK denominator is **KNOWN_LOWER_BOUND**. Capture percentage does not establish complete fidelity.
-
-362/362 distinct published search-index destinations have saved original bodies. Body-only references may add required resources outside that index. All 691 saved originals pass byte-hash and length integrity checks. 3 saved attachments fail strict source text decoding. 50 published attachment examples have source parse diagnostics; these groups may overlap. The 50 distinct affected originals remain byte-preserved. Source-format defects remain recorded and are not repaired by transcoding or editing examples.
-
-Original HTML, images, styles, scripts and attachments remain byte-preserved fidelity authorities. Structured JSON retains source text, technical code, hierarchy and relationships. Inert reading copies and the rebuildable search database support the future interactive SCALE consultation app. Source qualifications and notices remain verbatim. Stage is the acquisition environment; the library is not divided by tenant, deployment or version.
-
-## Evidence and continuation
-
-- [AIM owner acceptance](_project/owner-acceptance-AIM.json) and [documented exceptions](AIM/reports/source-gaps.md).
-- [SDK reading index](SDK/docs/INDEX.md), [coverage](SDK/reports/coverage.md), [source gaps](SDK/reports/source-gaps.md), and [final local audit](SDK/reports/module-audit.json).
-- [Collection state](_project/STATE.json), [current project status](PROJECT_STATUS.md), [resume instructions](_project/RESUME.md), and [data architecture](_project/DATA_ARCHITECTURE.md).
-
-Both modules are closed by explicit owner acceptance. See the [global closure report](_project/COLLECTION_CLOSURE.md), [SDK acceptance](_project/owner-acceptance-SDK.json), and [verified private delivery receipt](_project/delivery-checkpoint.json). Historical technical reports retain all failures. No collection work remains pending. Current work extends reviewed functional knowledge, supporting-document interpretation and the local help prototype.
-
-## Authority and operation
-
-The owner reports Manhattan Associates approval for TAB's internal documentation initiative and TAB CTO authorization. This records the owner's statement, not an independently verified legal instrument. Only published documentation under the authorized Stage AIM/SDK roots is collected. Normal SSO remains in the authorized Edge session outside Git and OneDrive; no operational examples are executed.
-
-The current continuation entry is [03_SCALE_INTELLIGENCE_MASTER_PROMPT.md](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md). The original `01_AIM_MASTER_PROMPT.md` and `02_SDK_MASTER_PROMPT.md`, revision STAGE-CHATGPT-EN-2.0, remain unchanged as active acquisition/authority/integrity inputs; they do not reopen owner-closed collection. Their active consumers make them ineligible for the owner's conditional archive request. Newly authored material is English. Bounded agents use nonoverlapping writes, with one coordinator for integration/publication. No AEKR private assets or runtime are included. Publication is restricted to the verified private repository owned by edfortheblind.
+[Application maintenance](help_app/README.md) covers article authoring, source bindings and validation. [Project status](PROJECT_STATUS.md) records current results and limitations; [resume instructions](_project/RESUME.md) and the [master continuation prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) govern engineering work. [Authorization](_project/AUTHORIZATION.md) records the internal documentation scope.

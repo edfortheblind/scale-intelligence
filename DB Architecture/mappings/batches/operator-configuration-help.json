@@ -827,8 +827,8 @@
       "topic_id": "work-completion-checks",
       "title": "Work unit remains open: confirmation and holds",
       "business_question": "What should I check when work is still open after picking?",
-      "plain_answer": "A pick is one step of work execution. Remaining picks, putaway, a partial quantity or a release hold can leave work unfinished. Check the header and its detail instructions before confirming anything; Work Insight confirmation has different rules for a header and a single detail.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "A completed pick does not necessarily finish its work unit. Other picks, putaway, an unpicked remainder or a release hold may still be outstanding.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -836,7 +836,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "In Work Insight, find the work unit and inspect the condition, hold code, assigned user/team and individual open or in-process details. Opening a header alone does not show that all work has completed.",
+          "explanation": "In Work Insight, inspect the header condition, hold, assigned user/team and each open or in-process detail.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -846,7 +846,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Confirming a header executes every open and in-process detail under it. Header or multiple-row confirmation permits full picks; partial, short, over picks and serial prompts require a single detail.",
+          "explanation": "Header confirmation executes every open and in-process detail beneath it. Header or multiple-row confirmation supports full picks; partial, short or over picks and serial entry require a single detail.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -856,7 +856,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Mobile partial picks normally leave the remainder open. Close After Partial Pick can remove the remainder and close the instruction only for supported replenishment/work-order picks. It is not a general close-work switch.",
+          "explanation": "A mobile partial pick normally leaves the remaining quantity open. Close After Partial Pick can close the remainder only for supported replenishment or work-order picks.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -866,7 +866,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Mobile Skip moves past an instruction; Pass stops processing the work unit. Neither description says that the outstanding quantity is completed. Putaway confirmation is a separate step.",
+          "explanation": "Skip moves past an instruction; Pass stops processing the work unit. Neither completes outstanding quantity. Putaway may still need confirmation.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -876,7 +876,7 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Work Insight Remove Hold cannot clear wave-not-released, cycle-count-plan-not-released or work-order-not-released holds. Check the associated release process instead of treating Remove Hold as a universal remedy.",
+          "explanation": "Remove Hold cannot clear a wave-not-released, cycle-count-plan-not-released or work-order-not-released hold. Resolve the corresponding release condition.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -884,21 +884,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Work Special Handling: partial/short permissions, Close After Partial Pick and verification.",
-        "Work profile and underlying wave, count-plan or work-order release."
-      ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "Record the failing action, exact message, instruction level, condition and remaining pick/putaway step. A support reviewer can then distinguish a release issue from quantity/verification handling."
-      ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "operator-work-insight",
         "operator-work-mobile"
@@ -933,14 +922,18 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "work-insight-and-mobile",
+        "work-profile-configuration"
+      ]
     },
     {
       "topic_id": "work-insight-and-mobile",
       "title": "Work Insight and Warehouse Mobile: choosing the screen",
       "business_question": "How do Work Insight and mobile work execution differ?",
-      "plain_answer": "Use Work Insight to find and manage instructions across a work unit; use Warehouse Mobile to follow the operator pick/putaway flow and scan the required values. Both can confirm work, but they expose different controls. The documentation is not a complete permission-by-permission feature matrix.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "Work Insight manages instructions across a work unit. Warehouse Mobile guides an operator through picking and putaway, including scans and confirmations.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -948,7 +941,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Work Insight offers filters, a results list and a detail pane. Its documented management actions include header user/team assignment, priority changes, holds, eligible unassignment, pick/putaway overrides and paperwork.",
+          "explanation": "In Work Insight, use filters and the detail pane to find work. Management actions include user/team assignment, priorities, holds, unassignment, overrides and paperwork.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -958,7 +951,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Its Edit action requires Change access. User/team assignment applies to headers; changing a header priority affects its details. Unassign requires inactive header work and clears both user and team.",
+          "explanation": "Edit requires Change access. User/team assignments apply to headers, and header priority changes affect details. Unassign requires inactive header work and clears both user and team.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -968,7 +961,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Warehouse Mobile starts with an authorized work profile and work unit, then walks through pick and putaway. Work Special Handling controls location, item, quantity, license-plate and lot verification.",
+          "explanation": "Warehouse Mobile starts from an authorized profile and work unit. Work Special Handling determines location, item, quantity, license-plate and lot verification.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -978,7 +971,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Mobile supports operator actions such as Skip, Pass, short/partial pick and configured overrides. Work Insight header or bulk confirmation handles full picks; use a single detail for exceptional quantities or serial prompts.",
+          "explanation": "Mobile offers Skip, Pass, short or partial picks and permitted overrides. Work Insight supports full-pick confirmation at header or multiple-row level; exceptional quantities and serial prompts use one detail.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -987,20 +980,11 @@
         }
       ],
       "configuration_dependencies": [
-        "Security checkpoints determine which actions are visible.",
-        "Work profiles and Work Special Handling determine mobile flow."
+        "Security checkpoints determine which actions are available. A control documented for one screen may not exist on the other."
       ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "For a missing action, name the screen and action first. Compare the applicable permission and profile rather than assuming a desktop action exists identically on mobile."
-      ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "operator-work-insight",
         "operator-work-mobile"
@@ -1035,14 +1019,18 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "work-profile-configuration",
+        "pick-verification-and-errors"
+      ]
     },
     {
       "topic_id": "work-profile-configuration",
       "title": "Configuring a work profile and its sequence rules",
       "business_question": "How are users, work types and assignment order configured?",
-      "plain_answer": "A work profile groups sequence rules for the users and teams that execute work. Configure who can use it, which warehouses/zones it covers, then the numbered rules that choose work and control picking and putaway. A user can be associated with one work profile at a time.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "A work profile defines who can execute work and the sequence rules used to select and complete it. Each user can be associated with one work profile at a time.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -1050,7 +1038,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "On the header, define Authorized Users, Warehouse Access, Work Team/Equipment Type and Work Zone. Apply the header, then create its detail sequences.",
+          "explanation": "On the work-profile header, set Authorized Users, Warehouse Access, Work Team/Equipment Type and Work Zone. Select Apply, then New to open a detail record.",
           "objects": [],
           "evidence_refs": [
             "operator-work-profile",
@@ -1060,7 +1048,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Sequences run in numeric order. Choose work types for each sequence; selecting none means all work types. The next sequence is used when available work for the current types is completed.",
+          "explanation": "Enter a unique Sequence Number and select Work Types. Details run in numeric order; selecting no types means all types. SCALE moves to the next sequence after available work for the current types is complete.",
           "objects": [],
           "evidence_refs": [
             "operator-work-profile",
@@ -1070,7 +1058,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Choose User Initiated, Cart Picking or System Initiated. From Assign Method orders system-directed work by the documented priority/location/FIFO combinations. To Assign Method selects LIFO or location order for putaway.",
+          "explanation": "On Work Processing, set Work Initiation Method to User Initiated, Cart Picking or System Initiated. For system-directed work, choose From Assign Method: Priority/Location/FIFO, Location/Priority/FIFO or FIFO. Set To Assign Method to LIFO or Location for putaway.",
           "objects": [],
           "evidence_refs": [
             "operator-work-profile",
@@ -1080,7 +1068,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Set the container picking method and putaway options for the intended operation. Automatic Putaway and Consolidation After Putaway are not simultaneously selectable; automatic putaway is unsupported for dock-management work.",
+          "explanation": "Set Container Picking Method to Pick Into Shipping Container, Pick Into Tote or None. Choose the required putaway options. Automatic Putaway excludes Consolidation After Putaway and is unsupported for dock-management work.",
           "objects": [],
           "evidence_refs": [
             "operator-work-profile",
@@ -1090,7 +1078,7 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "On mobile, an authorized default profile in User Profile can bypass profile selection. Different prompts may come from Work Special Handling even when the work profile is the same.",
+          "explanation": "In User Profile, select the authorized default work profile if mobile should bypass profile selection. Configure field verification separately in Work Special Handling.",
           "objects": [],
           "evidence_refs": [
             "operator-work-profile",
@@ -1099,20 +1087,11 @@
         }
       ],
       "configuration_dependencies": [
-        "Assign Multiple Work Units is restricted to system-directed work and the documented receiving-dock location option.",
-        "Print at WM Work Start also needs the document type flag and work created from shipping containers."
+        "Assign Multiple Work Units requires system-directed work and the receiving-dock location option Allow work unit selection on system-directed work."
       ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "Check the actual authorized/default profile and its first applicable sequence before changing sequence order. Compare work type, zone, warehouse and equipment eligibility."
-      ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "operator-work-profile",
         "operator-work-mobile"
@@ -1147,14 +1126,19 @@
             ]
           }
         ]
-      }
+      },
+      "article_type": "configuration",
+      "related_topics": [
+        "packing-label-printing",
+        "work-selection"
+      ]
     },
     {
       "topic_id": "pick-verification-and-errors",
       "title": "Pick fails or requests a reason: verification and short picks",
       "business_question": "Which checks explain a failed pick or a reason-code prompt?",
-      "plain_answer": "First distinguish a field-validation failure from a short pick. Mobile validates the fields selected in Work Special Handling; a short pick follows its own quantity and reason-code flow. Capture the precise message and failing field before retrying, because the available action depends on work type, permissions and grouping.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "A failed verification field and a short pick follow different paths. Identify the failing field and whether the pick was already accepted before retrying.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -1162,7 +1146,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Check the highlighted field: location/check digit, item, quantity, shipping container, license plate or lot. Work Special Handling overrides location-level verification when both define it.",
+          "explanation": "Check the highlighted location/check digit, item, quantity, shipping container, license plate or lot field. Work Special Handling takes precedence over location-level verification.",
           "objects": [],
           "evidence_refs": [
             "operator-work-mobile",
@@ -1172,7 +1156,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "In verification mode each field must pass; submitting the last valid field sends the pick for processing. Check whether that submission already produced a success message or moved to putaway before retrying.",
+          "explanation": "Each enabled verification must pass. Submitting the last valid field processes the pick; a success message or move to putaway can indicate that submission has already succeeded.",
           "objects": [],
           "evidence_refs": [
             "operator-work-mobile",
@@ -1182,7 +1166,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "A short pick requires its reason-code flow; Work Insight explicitly requires a reason code. Partial pick is a different action and normally keeps the remainder open.",
+          "explanation": "Follow the short-pick reason-code flow; Work Insight requires a reason. A partial pick instead keeps the unpicked remainder open unless a supported close-after-partial option applies.",
           "objects": [],
           "evidence_refs": [
             "operator-work-mobile",
@@ -1192,7 +1176,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For mobile batched work, different attributes require ungrouping before a short or partial pick. The separate Partial Pick action is unavailable when the user lacks the permission or quantity verification is turned on.",
+          "explanation": "Ungroup batched work with different attributes before a short or partial pick. The separate Partial Pick action is unavailable without permission or when quantity verification is enabled.",
           "objects": [],
           "evidence_refs": [
             "operator-work-mobile",
@@ -1202,7 +1186,7 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Short-pick inventory actions can have material inventory consequences. The source warns that certain no-count options remove serial numbers automatically; a reason code alone does not determine that policy.",
+          "explanation": "Check the short-pick inventory policy before proceeding. Some no-count options automatically remove serial numbers; a reason code alone does not select this policy.",
           "objects": [],
           "evidence_refs": [
             "operator-work-mobile",
@@ -1211,20 +1195,11 @@
         }
       ],
       "configuration_dependencies": [
-        "Work Special Handling verification and short-pick behavior.",
-        "Short/partial permissions, grouped attributes, serial tracking and inventory-control short-pick policy."
+        "Work Special Handling controls verification and short-pick behavior. User permissions and inventory-control policy also apply."
       ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "Capture the exact message, failing field, intended quantity and unit, work type, grouped/single instruction state, and whether the screen advanced after submission. Do not repeatedly submit an uncertain action."
-      ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "operator-work-mobile",
         "operator-work-insight"
@@ -1259,14 +1234,18 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "work-completion-checks",
+        "replacement-license-plate"
+      ]
     },
     {
       "topic_id": "packing-screen-guide",
       "title": "Using the Packing screen",
       "business_question": "How do I pack items and understand an empty packing grid?",
-      "plain_answer": "Initiate the shipment or other configured identifier, choose the container, identify the item and quantity, then Pack. The screen shows open lines for that entity. No lines left to pack, a different initiation field, an unreleased wave or line eligibility can explain why the expected work is absent.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "Packing records which shipment items and quantities are placed in each shipping container.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -1274,7 +1253,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Check Packing Preferences Initiation Field: it may expect shipment number, ERP order or invoice. After initiation the screen lists open lines; if nothing remains to pack it reports no available lines.",
+          "explanation": "Enter the identifier selected by Packing Preferences Initiation Field, such as shipment number, ERP order or invoice. SCALE displays open lines; it reports no available lines when nothing remains. Shipments on unreleased waves are ineligible.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-screen",
@@ -1284,7 +1263,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Choose Existing for an associated packed container or New for a new one. Manual container assignment allows an entered ID; System creates the ID. An existing container keeps its established container type.",
+          "explanation": "Choose Existing for a container already associated with the shipment or New for another container. Manual assignment accepts an entered ID; System generates it. An existing container retains its type.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-screen",
@@ -1294,7 +1273,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "With Validate Item enabled, scan/enter the item or cross-reference and quantity. Otherwise select the grid row and use quantity controls. Read header instructions and any line instruction popup.",
+          "explanation": "With Validate Item enabled, scan or enter the item/cross-reference and quantity. Otherwise select a grid row and use its quantity controls. Read header and line instructions.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-screen",
@@ -1304,7 +1283,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Pack applies the selected quantity. Pack All applies all remaining item quantities. Completed lines leave the grid; totals update. Serial-tracked and catch-weight items can require additional entry.",
+          "explanation": "Select Pack for the entered quantity or Pack All for all remaining item quantities. Fully packed lines leave the grid and totals update. Serial and catch-weight tracking may require additional entry.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-screen",
@@ -1314,7 +1293,7 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Use the Error-column checkbox to read a packing error. The Close button opens Close Container after the container is completely packed; it does not itself establish successful closure.",
+          "explanation": "Open the Error-column checkbox for a failed row and review Status Info. After complete packing, Close opens Close Container; closure still has its own checks.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-screen",
@@ -1322,21 +1301,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Packing Preferences: initiation, status range, validation, quantity entry and container assignment.",
-        "Wave release, available lines, container-type authorization and item tracking."
-      ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "Confirm the input identifier and remaining lines, read Status Info and the exact row error. Check the effective Status Range before assuming every In Picking line is excluded."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.",
-        "The basic Packing article says unpicked lines cannot be packed, while the preference article explicitly permits a configured range starting at In Picking. Preserve this qualification; do not universalize either statement without the effective range."
+        "AIM's basic Packing procedure excludes unpicked lines, while Packing Preferences permits a range starting at In Picking. The effective Status Range determines eligibility."
       ],
       "evidence_refs": [
         "operator-packing-screen",
@@ -1372,14 +1341,19 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "packing-preference-configuration",
+        "packing-container-type-eligibility",
+        "container-close-checks"
+      ]
     },
     {
       "topic_id": "packing-preference-configuration",
       "title": "Configuring packing preferences for users",
       "business_question": "Which packing preference options change the packing screen?",
-      "plain_answer": "Packing Preferences controls how an assigned user identifies a shipment, enters items and quantities, creates container IDs and closes containers. Start with the user assignment, then configure each tab for the intended process; a setting on an unassigned preference does not explain that user’s screen.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "Packing Preferences defines shipment entry, item and quantity validation, container IDs and closing behavior for its assigned users.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -1387,7 +1361,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Create a preference record with a description. Use Assigned Users to associate it with users. *Default automatically takes users without a specific packing preference and newly created users unless specifically assigned.",
+          "explanation": "Open Packing Preferences, create a named record with a description and select its Assigned Users. *Default receives users without a specific packing preference, including newly created users.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-preferences"
@@ -1396,7 +1370,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Set Initiation Field, Status Range and Validate Item. Validation enables item/quantity inputs; without it, operators select items in the grid. Allow Over Packing permits quantities above those available on a shipment line.",
+          "explanation": "Set Initiation Field and Status Range for the expected identifiers and eligible lines. Select Validate Item for item/quantity entry fields; clear it for grid selection. Select Allow Over Packing only when packing more than the available shipment-line quantity is intended.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-preferences"
@@ -1405,7 +1379,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Verify Container ID selected resets the displayed container to New after packing; unchecked retains the previous container and type. Container Assignment Method selects System or Manual IDs.",
+          "explanation": "Set Container Assignment Method to System or Manual. Select Verify Container ID to reset the field to New after packing; clear it to retain the previous container and its type.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-preferences"
@@ -1414,7 +1388,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Read quantity behavior carefully: the retained article says Require Entry Of Quantity unchecked sets Packed Quantity to zero and requires manual entry. Do not infer the opposite from the checkbox name.",
+          "explanation": "Set quantity entry using the documented behavior: Require Entry Of Quantity unchecked leaves Packed Quantity at zero for manual entry. Packing Work Type records labor; packing does not create work instructions.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-preferences"
@@ -1423,7 +1397,7 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Configure close options separately: auto manifest, load assignment, pending-VAS handling and Auto Print at Close. Packing Work Type is for labor tracking; the documented packing action does not create work instructions.",
+          "explanation": "On Close Container, choose Auto Manifest at Close, Assign Shipment To Load and the pending-VAS policy. With Allow VAS Override cleared, pending VAS blocks closing; selected, it offers an override and records its use. Set Auto Print at Close to Yes, Prompt or No.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-preferences"
@@ -1431,19 +1405,14 @@
         }
       ],
       "configuration_dependencies": [
-        "User assignment, *Default fallback and the relevant Packing/Close Container tab.",
-        "Workbench Modify changes lot/quantity; Verify confirms actual contents."
+        "Shipping Container Workbench Mode is independent: Modify edits lot/quantity, while Verify confirms the actual contents.",
+        "The Quality Control tab applies to the full-screen QC Workbench, not RF Shipping Container QC."
       ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "Compare the user’s assigned preference and exact checkbox value with the documented screen behavior before changing it."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
+        "Allow Container Creation During Close applies only to the remote-desktop system-menu Close Container screen.",
+        "VAS override differs at load confirmation: selected, it allows confirmation while leaving VAS Pending and writes no override history."
       ],
       "evidence_refs": [
         "operator-packing-preferences"
@@ -1478,14 +1447,20 @@
             ]
           }
         ]
-      }
+      },
+      "article_type": "configuration",
+      "related_topics": [
+        "packing-label-printing",
+        "packing-container-type-eligibility",
+        "container-close-checks"
+      ]
     },
     {
       "topic_id": "container-close-checks",
       "title": "Container will not close: packing, QC, VAS and weight",
       "business_question": "What should I inspect when Close Container fails?",
-      "plain_answer": "Read the close error first. Documented causes include pending or failed QC, pending VAS under the applicable preference, and scale or weight handling. Closing advances the container beyond packing, so it is separate from picking, packing and printing. This library cannot identify the current blocker on a particular container.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "A container can remain open because packing is incomplete, quality control has not passed, value-added services are pending, or its weight cannot be accepted.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -1493,7 +1468,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Confirm the intended container and completed packing. From Packing, Close becomes active after complete packing. In Close Container, verify the ID, container information, weight and applicable carrier/service.",
+          "explanation": "Identify the container and confirm that packing is complete. In Close Container, check its type, weight and applicable carrier/service.",
           "objects": [],
           "evidence_refs": [
             "operator-close-container",
@@ -1505,7 +1480,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Pending or failed QC prevents closure until the inspection is performed or resolved. Treat the QC result as a distinct check from whether the container is physically full.",
+          "explanation": "Resolve pending or failed QC before closing. Being physically full does not satisfy a required inspection.",
           "objects": [],
           "evidence_refs": [
             "operator-close-container",
@@ -1517,7 +1492,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "When pending VAS exists, Allow VAS Override unchecked blocks closing. If checked, closing offers an override choice and records history when used. This explanation does not authorize bypassing VAS.",
+          "explanation": "For pending VAS, Allow VAS Override determines whether closing is blocked or offers an override choice. Using that close override writes transaction history.",
           "objects": [],
           "evidence_refs": [
             "operator-close-container",
@@ -1529,7 +1504,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Weight tolerance can prompt confirmation. For desktop Use Scale Weight, an unavailable service or client configuration error produces a close error; the source points respectively to audit or client event logs. RemoteApp/RDP uses the documented wedge input behavior instead.",
+          "explanation": "Weight outside tolerance can require confirmation. With desktop Use Scale Weight, a service failure appears in audit information and a client configuration failure in client event logs. RemoteApp/RDP uses wedge input instead.",
           "objects": [],
           "evidence_refs": [
             "operator-close-container",
@@ -1541,7 +1516,7 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "After successful close, additional product cannot be packed into that container. Auto manifest, auto print and load assignment depend on separate preference and integration settings.",
+          "explanation": "After a successful close, the container cannot accept additional items. Manifesting, printing and load assignment follow their separate preference and integration settings.",
           "objects": [],
           "evidence_refs": [
             "operator-close-container",
@@ -1551,21 +1526,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Packing Preferences: VAS override, auto manifest/print and load assignment.",
-        "QC result, weight/tolerance and the configured scale path."
-      ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "Record screen/action, exact error, QC/VAS indication and whether weight entry is manual or scale-based. Resolve the named prerequisite through the warehouse procedure before retrying."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.",
-        "VAS behavior at load confirmation differs: with override allowed, the source describes ignoring pending VAS while retaining VAS Pending and writing no history. Do not substitute close-container history behavior for load confirmation."
+        "At load confirmation, the VAS override can leave VAS Pending without writing history; that behavior differs from the close-container override."
       ],
       "evidence_refs": [
         "operator-close-container",
@@ -1603,14 +1568,18 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "packing-preference-configuration",
+        "packing-label-printing"
+      ]
     },
     {
       "topic_id": "packing-label-printing",
       "title": "Printing packing and closing documents",
       "business_question": "Why might a label not print when a container closes?",
-      "plain_answer": "Check the trigger and document type before the printer. Auto Print at Close can print automatically, ask which documents to print, or print none. Close Last Container documents also require that print procedure on the document type and the qualifying last-container condition.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "Set the print event, eligible document types and printer assignment together. A printer assignment alone does not enable automatic printing.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -1618,7 +1587,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Auto Print at Close Yes prints packing documents; Prompt opens document selection; No suppresses automatic close printing while manual printing remains available.",
+          "explanation": "In Packing Preferences, set Auto Print at Close to Yes for all packing documents, Prompt for document selection, or No to suppress automatic printing. Manual printing remains available with No.",
           "objects": [],
           "evidence_refs": [
             "operator-close-container",
@@ -1630,7 +1599,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Close Last Container must be selected on the document type. The desktop source says that closing while quantities remain unpacked does not print those documents, except for its stated create-container-at-close case.",
+          "explanation": "For final-container documents, select Close Last Container on the document type. Ordinary closing with unpacked quantities does not qualify; the desktop article describes a separate create-container-at-close exception.",
           "objects": [],
           "evidence_refs": [
             "operator-close-container",
@@ -1642,7 +1611,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For mobile label routing, Assign Printer accepts the label-printer name and stores it in User Profile Preference > Default Label. An invalid name produces an error; Clear removes the assignment.",
+          "explanation": "For mobile labels, open Assign Printer from the Warehouse Mobile main menu, enter or scan the label-printer name and tap Go. An invalid name produces an error. Confirm the assignment in User Profile, Preference > Default Label; Actions > Clear removes it.",
           "objects": [],
           "evidence_refs": [
             "operator-close-container",
@@ -1654,7 +1623,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Print at WM Work Start is a different trigger. It requires that work-profile option, a Start WM Work document-type flag, and work created from shipping containers.",
+          "explanation": "For work-start labels, select Print at WM Work Start on the work profile and Start WM Work on the document type. This event applies to work created from shipping containers.",
           "objects": [],
           "evidence_refs": [
             "operator-close-container",
@@ -1664,20 +1633,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Packing preference, document-type print procedure and user label-printer assignment.",
-        "The selected trigger may be work start, each close or the qualifying last close."
-      ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "Identify which trigger was expected, check its document-type selection and assigned printer, then retain the precise print error. These sources do not prove printer connectivity or physical output."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
+        "A successful container close does not confirm printer connectivity or physical output."
       ],
       "evidence_refs": [
         "operator-close-container",
@@ -1715,14 +1675,19 @@
             ]
           }
         ]
-      }
+      },
+      "article_type": "configuration",
+      "related_topics": [
+        "print-documents",
+        "packing-preference-configuration"
+      ]
     },
     {
       "topic_id": "receiving-overage-configuration",
       "title": "Configuring over-receiving and receipt execution",
       "business_question": "Which setting controls receiving more than the receipt quantity?",
-      "plain_answer": "Receiving Preferences Allow Over Receiving determines whether an employee can receive above the receipt line’s Original Total Quantity. Leave it unselected when the intended policy disallows that capability; confirm the preference actually selected for the user and receiving flow. Do not substitute an unrelated purchase-order tolerance for this setting.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "Receiving Preferences controls over-receiving, check-in execution and putaway-work creation for the employees authorized to select it.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -1730,7 +1695,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Create or select the relevant receiving preference and set Allow Over Receiving on its General tab. With it selected, the cited source says RF over-receiving raises no warning and requires no override.",
+          "explanation": "Create or open the receiving preference. On General, select Allow Over Receiving to permit quantities above the receipt line's Original Total Quantity; leave it cleared to disallow that capability. RF over-receiving with this setting enabled produces no warning or override.",
           "objects": [],
           "evidence_refs": [
             "operator-receiving-preferences"
@@ -1739,7 +1704,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Use Authorized Users to restrict which preferences the user can choose. A user can be authorized for multiple receiving preferences; newly created preferences initially authorize all users.",
+          "explanation": "On Authorized Users, choose List to restrict access if needed. A new preference initially authorizes all users, and one user may be authorized for several preferences. Confirm which preference the receiving flow selects.",
           "objects": [],
           "evidence_refs": [
             "operator-receiving-preferences"
@@ -1748,7 +1713,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Execution Method controls check-in versus locate, batch versus immediate processing and Quick Receive. In the documented check-in/locate flow, Create Putaway Work determines whether locating creates released work or directly places quantity on hand at the destination. Quick Receive-User and Quick Receive-System do not create putaway work.",
+          "explanation": "Set Execution Method to Check In, batch or immediate Check In and Locate, or a Quick Receive method. For check-in/locate, select Create Putaway Work to create and release putaway instructions. Cleared, locating places quantity On Hand at the destination before physical delivery. Quick Receive-User and Quick Receive-System create no putaway work.",
           "objects": [],
           "evidence_refs": [
             "operator-receiving-preferences"
@@ -1757,28 +1722,17 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Single Unit Scan is disabled by several incompatible choices, including Allow Over Receiving, manual LP assignment, disposition, QC and dimension/unit verification. Review these interactions when the entry screen differs.",
+          "explanation": "Use Single Unit Scan only with compatible settings. It is disabled by Allow Over Receiving, manual license-plate assignment, required disposition, QC inspection, or item-dimension/unit-of-measure verification.",
           "objects": [],
           "evidence_refs": [
             "operator-receiving-preferences"
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Selected receiving preference and its authorized users.",
-        "Allow Over Receiving, Execution Method, Create Putaway Work and Single Unit Scan."
-      ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "For an unexpected over-receipt, compare the selected preference, original receipt-line quantity and requested unit/quantity through authorized support evidence. No operational rows are read by this library."
-      ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "operator-receiving-preferences"
       ],
@@ -1812,14 +1766,19 @@
             ]
           }
         ]
-      }
+      },
+      "article_type": "configuration",
+      "related_topics": [
+        "returns-damage-status",
+        "receiving-lot-serial-prompts"
+      ]
     },
     {
       "topic_id": "returns-damage-status",
       "title": "Receiving returns or damaged stock",
       "business_question": "How do receiving status, disposition and allocation rules interact?",
-      "plain_answer": "Receiving Preferences can set an initial inventory status such as hold or damaged and require disposition/reason details. A status name alone does not stop allocation: the inventory-status documentation explicitly says allocation rules must exclude held inventory. Configure the receiving and allocation policies together.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "Returned or damaged goods need a receiving policy for condition capture and an allocation policy that prevents unsuitable stock from shipping.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -1827,7 +1786,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Default Inventory Status supplies the status during check-in. A dedicated receiving preference can support a returns process with hold or damaged status.",
+          "explanation": "In the receiving preference, set Default Inventory Status to the intended initial condition, such as hold or damaged, for items checked in through this flow.",
           "objects": [],
           "evidence_refs": [
             "operator-receiving-preferences",
@@ -1837,7 +1796,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Disposition Code Required records condition during check-in. Reason Code Required is available only when disposition is required; the cited configuration uses Quality History Reason Codes for Receiving.",
+          "explanation": "Select Disposition Code Required to collect item condition. If a reason is also required, enable Reason Code Required and define receiving reasons in Quality History Reason Codes with process Receiving.",
           "objects": [],
           "evidence_refs": [
             "operator-receiving-preferences",
@@ -1847,7 +1806,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "QC Inspection Active checks received items for QC eligibility. That setting and a disposition code are distinct from the allocation rules that determine whether inventory can be shipped.",
+          "explanation": "Select QC Inspection Active when check-in should evaluate each item for QC eligibility. This does not replace disposition collection or allocation controls.",
           "objects": [],
           "evidence_refs": [
             "operator-receiving-preferences",
@@ -1857,7 +1816,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Review allocation rules before relying on a held/damaged status to exclude stock. The retained documentation does not automatically prohibit allocation merely because an inventory status sounds unavailable.",
+          "explanation": "Configure allocation rules to exclude held or damaged inventory as required. SCALE does not automatically prevent allocation because an inventory status is named unavailable or hold.",
           "objects": [],
           "evidence_refs": [
             "operator-receiving-preferences",
@@ -1865,20 +1824,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Receiving preference, disposition and receiving reason codes, QC eligibility and allocation-rule exclusions."
-      ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "Keep the stock within the warehouse’s approved damaged/return handling process while the responsible owner verifies the receiving and allocation rules. This topic does not authorize releasing it."
-      ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "operator-receiving-preferences",
         "operator-inventory-status"
@@ -1913,14 +1862,19 @@
             ]
           }
         ]
-      }
+      },
+      "article_type": "configuration",
+      "related_topics": [
+        "receiving-overage-configuration",
+        "process-returns"
+      ]
     },
     {
       "topic_id": "packing-classes-and-criteria",
       "title": "Keeping container contents together or separate",
       "business_question": "How do packing classes and criteria control mixed contents?",
-      "plain_answer": "Packing classes choose eligible container types during wave container creation and link packing criteria. Criteria compare shipment-line field values to decide which items may share a container. Full-screen packing can warn or block on a mismatch; container creation and RF pick/pack require matching values regardless of the Required checkbox.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "Packing classes define eligible container groups; packing criteria define which shipment-line values must agree for items to share a container.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -1928,7 +1882,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Select the packing class on the shipment line when required. Item packing class defaults onto the line when interfaced but does not override an existing line value. If neither supplies it, the documented fallback is *Default.",
+          "explanation": "Create a packing class with a name and description. Assign it to the shipment line or item as needed. An existing shipment-line value takes precedence; item setup supplies the line default when interfaced, and *Default applies when neither supplies a class.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-classes",
@@ -1938,7 +1892,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "On the packing class choose Container Group for candidate container types, and Packing Criteria for content compatibility.",
+          "explanation": "On the class, select Container Group for wave container choices and Packing Criteria for the content-compatibility rules.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-classes",
@@ -1948,7 +1902,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Create criteria details with sequence and Field Name. The compared shipment-line fields must match; choose fields that represent the actual separation requirement, such as destination.",
+          "explanation": "In Packing Criteria, create the named header and its details. Set each detail's Sequence and Field Name; items must match every configured shipment-line field. Select OK to save each detail.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-classes",
@@ -1958,7 +1912,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Required selected blocks differing values during full-screen packing. Unselected prompts for confirmation there. Wave container creation and RF pick/pack ignore that warning option and require all fields to match.",
+          "explanation": "Set Required for the intended full-screen Packing response: selected blocks mismatches; cleared offers a warning and confirmation. Wave container creation and RF pick/pack always require matching fields, regardless of Required.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-classes",
@@ -1966,21 +1920,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Shipment-line/item/default packing class precedence.",
-        "Container Group, criteria detail fields and screen-specific Required behavior."
-      ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "Compare the actual class and mismatching criterion before changing container contents. Clearing Required is not a universal way to allow mixing."
-      ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "operator-packing-classes",
         "operator-packing-criteria"
@@ -2015,14 +1958,19 @@
             ]
           }
         ]
-      }
+      },
+      "article_type": "configuration",
+      "related_topics": [
+        "process-container-creation-in-the-wave",
+        "packing-container-type-eligibility"
+      ]
     },
     {
       "topic_id": "replacement-license-plate",
       "title": "Choosing a replacement license plate during picking",
       "business_question": "What controls changing the license plate or lot used for a pick?",
-      "plain_answer": "Use the documented Override Pick flow only when the work type, security and Work Special Handling allow it. Matching the item name alone is insufficient: location, lot, available quantity, grouping and container verification can affect the permitted replacement. The library cannot certify a particular replacement license plate.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "Override Pick can replace the selected license plate when the work type, permissions and verification rules allow it. Item identity alone does not establish eligibility.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -2030,7 +1978,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Override Pick is documented for outbound allocation/container, replenishment and inventory-transfer work. License-plate override requires Override Pick security and the relevant override/LP verification settings.",
+          "explanation": "Confirm that the work is an eligible outbound allocation/container, replenishment or inventory-transfer task. License-plate replacement requires Override Pick security and the override and LP-verification options in Work Special Handling.",
           "objects": [],
           "evidence_refs": [
             "operator-override-pick",
@@ -2040,7 +1988,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "The mobile override article explicitly describes different-quantity replacements under Allow Override To Different Quantity and related container/grouping settings. The work-execution article separately lists same-quantity cases; its short list is not a universal equal-quantity restriction.",
+          "explanation": "Check Allow Override To Different Quantity, Container Verify and Group Picks By Loc/LP where applicable. The mobile override flow permits defined different-quantity cases; the work-execution examples are not a universal equal-quantity rule.",
           "objects": [],
           "evidence_refs": [
             "operator-override-pick",
@@ -2050,7 +1998,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Location and lot overrides have their own settings. The source gives specific same-location lot cases for replenishment or full-unit shipping containers; do not generalize those examples to every work type.",
+          "explanation": "Check location and lot override settings separately. The same-location lot examples apply to specific replenishment or full-unit shipping-container cases.",
           "objects": [],
           "evidence_refs": [
             "operator-override-pick",
@@ -2060,7 +2008,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Container verification can require pallet and nested-container scans. After an accepted override, the source says location inventory, work instructions and relevant records are updated; this is an operational change.",
+          "explanation": "Complete the required pallet and nested-container scans. An accepted override updates location inventory, work instructions and related records.",
           "objects": [],
           "evidence_refs": [
             "operator-override-pick",
@@ -2068,21 +2016,12 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Override Pick security; Work Special Handling LP/location/lot override and verification.",
-        "Allow Override To Different Quantity, Container Verify and Group Picks By Loc/LP where applicable."
-      ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
       "explanation_paths": [
-        "Compare intended replacement item, location, lot, quantity/unit and tracking with the failed validation. Escalate the exact message if the documented eligibility does not explain it; do not bypass validation or infer attribute equivalence."
+        "For a rejected replacement, compare item, location, lot, quantity/unit and tracking with the exact validation error."
       ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
-      ],
+      "boundaries": [],
       "evidence_refs": [
         "operator-override-pick",
         "operator-work-mobile"
@@ -2117,14 +2056,18 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "pick-verification-and-errors",
+        "work-profile-configuration"
+      ]
     },
     {
       "topic_id": "desktop-mobile-packing",
       "title": "Desktop packing and mobile picking/closing settings",
       "business_question": "Do packing preferences make desktop and mobile workflows identical?",
-      "plain_answer": "No. Desktop Packing enters shipment lines into containers, while mobile can pick directly into shipping containers through work-profile settings and close them through a separate screen. Some preferences apply across flows; other controls are explicitly restricted to a screen.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "Desktop Packing enters shipment lines into containers. Mobile work execution can pick directly into containers, while Mobile Close Container is a separate action.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -2132,7 +2075,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For desktop Packing, check the assigned packing preference: initiation, status range, item/quantity entry and container assignment.",
+          "explanation": "Desktop Packing uses the assigned packing preference for initiation, eligible statuses, item/quantity entry and container assignment.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-preferences",
@@ -2144,7 +2087,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For mobile pick/pack, check Work Profile Container Picking Method and Work Special Handling verification/override. Pick Into Shipping Container, Pick Into Tote and no RF pick/pack describe different behaviors.",
+          "explanation": "Mobile pick/pack uses Work Profile Container Picking Method and Work Special Handling. Picking into a shipping container, picking into a tote and no RF pick/pack are distinct modes.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-preferences",
@@ -2156,7 +2099,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Mobile Close Container takes a container ID and displays system/actual weight. The operator can use calculated weight or enter actual weight; tolerance can require confirmation.",
+          "explanation": "Mobile Close Container identifies a container and displays system and actual weights. The operator can accept calculated weight or enter a measured value; tolerance can require confirmation.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-preferences",
@@ -2168,7 +2111,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "The retained Packing Preferences article limits its described QC tab settings to the full-screen QC Workbench and excludes RF Shipping Container QC. It limits create-container-during-close to the specified remote-desktop menu path. Do not transfer these options to every mobile screen.",
+          "explanation": "Apply screen-specific options only to their documented flow. Packing Preferences QC settings govern the full-screen QC Workbench, and create-container-during-close applies to the remote-desktop system-menu screen.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-preferences",
@@ -2178,20 +2121,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Packing preference, work profile, Work Special Handling, security and the exact screen being used."
-      ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "Name the screen and intended action first: Packing, mobile work execution, Close Container or QC. Check the settings documented for that flow."
-      ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "operator-packing-preferences",
         "operator-work-profile",
@@ -2228,14 +2161,18 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "packing-preference-configuration",
+        "work-profile-configuration"
+      ]
     },
     {
       "topic_id": "lot-and-tracking-prompts",
       "title": "Understanding lot, license-plate and serial prompts",
       "business_question": "Why does one picking or packing flow request tracking details?",
-      "plain_answer": "Tracking prompts depend on both the item and the operation’s configuration. Mobile lot and license-plate verification comes from Work Special Handling; desktop packing can prompt for serials based on outbound or inventory tracking. Grouped work and full-unit containers have documented exceptions.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "Tracking prompts depend on the item, location and operation. Grouped work and full-unit containers can follow different verification rules.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -2243,7 +2180,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Mobile verifies the lot for lot-controlled quantities and the LP for LP-tracked locations when the relevant verification is configured. Each enabled field is validated before the instruction is submitted.",
+          "explanation": "In mobile work, configured Work Special Handling verifies lots for lot-controlled quantities and license plates for LP-tracked locations before submitting the instruction.",
           "objects": [],
           "evidence_refs": [
             "operator-work-mobile",
@@ -2254,7 +2191,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For receipt putaway, parent locating can group nested containers going to the same destination without honoring item/lot verification; child locating honors those verifications. Entire Quantity also has a quantity-verification exception.",
+          "explanation": "For receipt putaway, parent locating can group nested containers sharing a destination without item/lot verification; child locating honors those checks. Entire Quantity has a separate quantity-verification exception.",
           "objects": [],
           "evidence_refs": [
             "operator-work-mobile",
@@ -2265,7 +2202,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Packing prompts for serials when configured for outbound or inventory tracking. Mobile full-unit containers created in the wave have a documented no-serial-prompt exception; do not treat every missing prompt as a fault.",
+          "explanation": "Desktop Packing can request serials for outbound or inventory tracking. Mobile full-unit containers created in the wave have a documented no-serial-prompt exception.",
           "objects": [],
           "evidence_refs": [
             "operator-work-mobile",
@@ -2276,7 +2213,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "In full-screen QC, Lot Verification Required changes the entry fields and item/lot grouping. The documentation advises against switching it off during an active inspection because failed quantities can lose their correct lot association.",
+          "explanation": "In full-screen QC, Lot Verification Required changes entry fields and item/lot grouping. Keep it stable during an active inspection: disabling it can lose the association between failed quantities and their lots.",
           "objects": [],
           "evidence_refs": [
             "operator-work-mobile",
@@ -2285,20 +2222,10 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Item/location tracking, Work Special Handling, grouping/locating method and the specific packing or QC flow."
-      ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
-      "explanation_paths": [
-        "Compare the exact tracking mode, work type and grouped/full-unit state before changing a verification flag."
-      ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "operator-work-mobile",
         "operator-packing-screen",
@@ -2334,14 +2261,18 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "receiving-lot-serial-prompts",
+        "work-profile-configuration"
+      ]
     },
     {
       "topic_id": "support-evidence-for-runtime",
       "title": "Describing a runtime problem for support",
       "business_question": "What details help explain a warehouse action that failed?",
-      "plain_answer": "Describe the exact screen, action, message and point where progress stopped. Work confirmation, packing, QC/VAS checks, close-container weight and print triggers are separate stages. A small, sanitized description lets support select the relevant configuration instead of guessing from a generic symptom.",
-      "trigger": "A user needs to understand the named configuration or warehouse action.",
+      "plain_answer": "A useful support report identifies the exact action, the last successful step and the message that stopped progress.",
+      "trigger": "",
       "input_context": [
         "The screen/action name, relevant preference or work profile, and exact message without credentials or transactional exports."
       ],
@@ -2349,7 +2280,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For work execution, note header versus detail, work type, remaining pick/putaway step, hold indication and the field being verified. Say whether a success message appeared or the screen advanced after submission.",
+          "explanation": "For work execution, report header versus detail, work type, remaining pick/putaway, any hold and the field being verified. State whether submission showed success or advanced the screen.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -2362,7 +2293,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For packing, record the initiation field used, whether lines remain, Status Info and the specific Error-column message. For close, identify QC/VAS and manual/scale weight conditions.",
+          "explanation": "For Packing, provide the initiation field, remaining lines, Status Info and row error. For Close Container, identify QC/VAS indications and manual versus scale weight entry.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -2375,7 +2306,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For configuration, give the setting label, screen/tab, intended result and the applicable preference/profile scope. A total count of profiles does not identify which one applied.",
+          "explanation": "For configuration, provide the setting label, screen/tab and applicable preference or profile. A count of profiles does not identify the one in use.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -2388,7 +2319,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For printing, distinguish work start, close and last-container print triggers. Record document type, assigned printer and the observed error without assuming that a successful close means printing succeeded.",
+          "explanation": "For printing, identify the expected event: work start, close or last-container close. Include the document type, assigned printer and exact error.",
           "objects": [],
           "evidence_refs": [
             "operator-work-insight",
@@ -2399,21 +2330,12 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "The relevant preference/profile and permission depend on the action."
-      ],
-      "expected_results": [
-        "A source-bound explanation of the applicable options and the next check."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
       "explanation_paths": [
-        "Suggested support summary: screen/action; expected result; exact message; last successful step; applicable preference/profile; whether it affects one flow or several. Omit credentials, personal data and transaction exports."
+        "Include the expected result and whether one flow or several are affected. Omit credentials, personal data and transaction exports."
       ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.",
-        "The support-summary format is an authored troubleshooting aid derived from documented decision points, not a vendor-mandated ticket format or proof of an actual incident."
-      ],
+      "boundaries": [],
       "evidence_refs": [
         "operator-work-insight",
         "operator-work-mobile",
@@ -2457,8 +2379,8 @@
       "topic_id": "work-cancellation-paths",
       "title": "Stuck work: deletion, wave cancellation and receipt reversal",
       "business_question": "Which cancellation route fits a work instruction and its inventory movement?",
-      "plain_answer": "Cancellation depends on what created the work and what has already happened. Work Insight Delete, Cancel Wave, receipt Unlocate and Cancel Check In are separate actions with different restrictions. First compare the instruction and transaction history with the physical product location; deleting a record does not establish that product has physically moved back.",
-      "trigger": "A user needs a source-bound explanation of the named warehouse action or configuration.",
+      "plain_answer": "Work deletion, wave cancellation, Unlocate and Cancel Check In reverse different stages. Choose the route from the work origin, completed confirmations and actual product location.",
+      "trigger": "",
       "input_context": [
         "Exact screen and action, relevant work or container stage, item tracking and applicable preference; provide sanitized context without transaction exports."
       ],
@@ -2466,7 +2388,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Identify the work type, originating wave or receipt, From/To location, license plate, lot, remaining detail and current condition. Compare the last confirmed pick/putaway and transaction history with the product location reported by the operator. This comparison is an authored triage step, not an automatic reconciliation function.",
+          "explanation": "Compare the work type, originating wave or receipt, From/To locations, license plate, lot and remaining details with the last confirmed movement and transaction history.",
           "objects": [],
           "evidence_refs": [
             "operator-work-processing",
@@ -2476,7 +2398,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Work Insight Delete removes the instruction and supporting inventory allocations; for shipment work it also updates shipment header, details and containers using Default Status When Shipment Is Rejected. The Processing Work article explicitly lists work that is not closed, active work, unreleased-wave work, allocated replenishment/inventory-transfer work at the To location, and specified shipment-allocation/container links as deletion restrictions. Do not reverse its not-closed wording into permission to delete open work.",
+          "explanation": "Work Insight Delete removes instructions and supporting allocations and can update shipment records. Its restrictions include not-closed work, active work, unreleased-wave work and specified replenishment, transfer and shipment links.",
           "objects": [],
           "evidence_refs": [
             "operator-work-processing"
@@ -2485,7 +2407,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Cancel Wave is documented for a wave that has run but has not been released. It validates eligibility, reports a rejection and writes history when ineligible. Allocation rollback and replenishment retention depend on the wave and its configuration; replenishments supporting another wave may be retained/extracted or prevent cancellation. It is not a general rollback for released work.",
+          "explanation": "Cancel Wave applies after Run and before Release. Eligibility checks may reject cancellation. Replenishment serving another wave may be retained, extracted or prevent cancellation according to the wave configuration.",
           "objects": [],
           "evidence_refs": [
             "operator-wave-cancel"
@@ -2494,7 +2416,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For receipt work, Cancel Check In applies only to product that has not been located. Unlocate is a separate preceding possibility for located product, but the source disallows it when created work has already executed. Cancel Check In returns the quantity to open receipt quantity; an interface-upload warning needs separate ERP reconciliation under the authorized procedure.",
+          "explanation": "Cancel Check In applies only before locating. For located receipt product, Unlocate is separate and is disallowed after created work has executed. Cancel Check In restores open receipt quantity; an interface-upload warning also requires ERP reconciliation.",
           "objects": [],
           "evidence_refs": [
             "operator-receipt-workbench"
@@ -2503,7 +2425,7 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "If physical movement and recorded confirmation disagree, retain the precise discrepancy and escalate to the authorized warehouse owner before selecting a reversal. The retained documentation does not establish a universal repair for partially moved or already executed work. An operator must verify the permitted action and actual result; this help cannot authorize cancellation.",
+          "explanation": "If recorded confirmations disagree with physical location, resolve that discrepancy before selecting a reversal. Retain the exact rejection and last successful confirmation for support.",
           "objects": [],
           "evidence_refs": [
             "operator-work-processing",
@@ -2512,20 +2434,13 @@
         }
       ],
       "configuration_dependencies": [
-        "Work type and condition; wave release and Wave Master replenishment-retention policy; receipt locating/executed-work state.",
-        "Default Status When Shipment Is Rejected controls shipment statuses for the documented deletion route."
+        "Default Status When Shipment Is Rejected supplies shipment statuses for the documented deletion route."
       ],
-      "expected_results": [
-        "Identify the documented route, the checks it requires and any fact the available sources cannot establish."
-      ],
-      "explanation_paths": [
-        "Record the screen/action, exact rejection, last successful confirmation and whether the product is at From, To or another observed location. Review the corresponding process/transaction history before deciding whether a reversal fits."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.",
-        "The literal not-closed deletion restriction is a documentary statement; no installed action or polarity correction was verified."
+        "The Work Insight source literally lists work that is not closed as a deletion restriction; this article does not reverse that wording into permission to delete open work.",
+        "The documentation provides no universal reversal for partially moved or already executed work."
       ],
       "evidence_refs": [
         "operator-work-processing",
@@ -2563,14 +2478,17 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "work-completion-checks"
+      ]
     },
     {
       "topic_id": "locating-destination-triage",
       "title": "Unexpected putaway destination: ordered rules and decision history",
       "business_question": "How can I explain an unexpected locating destination when another slot appears empty?",
-      "plain_answer": "An empty-looking slot is not enough to make it an eligible putaway destination. SCALE evaluates the applicable locating rule in sequence, with each strategy restricted by its location selection and capacity rules. Use Process History for locating decisions and Transaction History for actual locating events; the word exception alone does not identify a documented fallback rule.",
-      "trigger": "A user needs a source-bound explanation of the named warehouse action or configuration.",
+      "plain_answer": "A location can look empty and still fail putaway eligibility. Locating rules evaluate ordered strategies, selected locations, units and capacity.",
+      "trigger": "",
       "input_context": [
         "Exact screen and action, relevant work or container stage, item tracking and applicable preference; provide sanitized context without transaction exports."
       ],
@@ -2578,7 +2496,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Identify the receipt container and its locating rule. Receipt Workbench first shows the assigned rule in Destination after check-in, then the chosen location after successful locating. Parent locating uses the parent rule; child locating uses the nested container rule.",
+          "explanation": "Identify the receipt container's locating rule. Receipt Workbench Destination shows the rule after check-in and the destination after locating. Parent locating uses the parent rule; child locating uses the nested container's rule.",
           "objects": [],
           "evidence_refs": [
             "operator-receipt-workbench",
@@ -2588,7 +2506,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Read the rule details in ascending sequence. For each detail, inspect the locating strategy and optional Location Selection, including its sort. A location outside that selection is not a candidate just because it looks empty.",
+          "explanation": "Read details in ascending sequence. Each strategy applies only to its Location Selection and sort; locations outside that selection are not candidates.",
           "objects": [],
           "evidence_refs": [
             "operator-locating-rules",
@@ -2598,7 +2516,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Compare rejected or unsuitable candidates with the actual strategy: Empty Location excludes an empty permanent location assigned to another item; same-lot consolidation has a lot requirement; Fill One And Only One Location stops looking within that selection after the selected location is full. These examples are distinct algorithms, not universal rules applied together.",
+          "explanation": "Check the strategy's restrictions. Empty Location excludes another item's permanent assignment; same-lot consolidation requires a matching lot; Fill One And Only One Location stops at the selected location.",
           "objects": [],
           "evidence_refs": [
             "operator-locating-process"
@@ -2607,7 +2525,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Check quantity/unit compatibility and capacity. Item/location capacity records take precedence over the documented multi-item volume calculation. Split Quantity permits remaining quantity to continue to another rule detail; a serial-number-linked receipt container cannot be split. Without a satisfiable detail, locating can fail.",
+          "explanation": "Check quantity, unit and capacity. Item/location capacity takes precedence over multi-item volume calculation. Split Quantity permits a remainder to continue to another detail, but a serial-linked receipt container cannot be split.",
           "objects": [],
           "evidence_refs": [
             "operator-receipt-workbench",
@@ -2617,7 +2535,7 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Check whether Delayed Locating and Create Putaway Work both apply: that combination uses a receiving pre-locate location. Otherwise rule details govern. Quick Receive can ask the user for a location if none is found; that is not proof of an automatic exception destination.",
+          "explanation": "Delayed Locating plus Create Putaway Work uses a receiving pre-locate location. Otherwise normal details apply. Quick Receive can ask for a location when none is found.",
           "objects": [],
           "evidence_refs": [
             "operator-locating-process",
@@ -2627,28 +2545,18 @@
         {
           "order": 6,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Research Process History for the locating decision and any recorded failure or rejected choice, and Transaction History for the actual event. Compare the recorded rule/sequence and reason with the candidate checks above. The source identifies these history purposes, but does not promise a complete list of every rejected location.",
+          "explanation": "Use Process History for decisions and failures and Transaction History for actual locating events. Compare the recorded rule, sequence and reason with the intended destination.",
           "objects": [],
           "evidence_refs": [
             "operator-locating-process"
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Receipt container locating rule, parent/child locating mode, ordered detail strategy and location selection.",
-        "Item/location capacity, unit of measure, lot restrictions, Split Quantity and delayed-locating/putaway-work flags."
-      ],
-      "expected_results": [
-        "Identify the documented route, the checks it requires and any fact the available sources cannot establish."
-      ],
-      "explanation_paths": [
-        "Provide the exact destination description, effective rule/sequence, selected strategy and the recorded decision or error. If history does not expose a rejected candidate, its rejection reason remains unestablished."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.",
-        "No retained source in this review establishes a universal exception-location fallback or the effective rule for a specific pallet."
+        "There is no documented universal exception-location fallback. Process History may not list every rejected candidate."
       ],
       "evidence_refs": [
         "operator-locating-process",
@@ -2686,14 +2594,17 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "process-locating"
+      ]
     },
     {
       "topic_id": "receiving-lot-serial-prompts",
       "title": "Receiving prompts for lot and serial numbers",
       "business_question": "Which item controls explain lot or serial entry during receipt check-in?",
-      "plain_answer": "Receiving prompts start with the item tracking requirements and the exact receiving flow. A lot-controlled item may need a lot ID when the receipt line does not already supply it. Serial-number tracking has separate inbound, inventory and outbound options; inspect those options and any template before treating a prompt as an error.",
-      "trigger": "A user needs a source-bound explanation of the named warehouse action or configuration.",
+      "plain_answer": "Receiving collects the tracking information required for the item and receiving flow. Existing receipt-line values and grouping can change which prompts appear.",
+      "trigger": "",
       "input_context": [
         "Exact screen and action, relevant work or container stage, item tracking and applicable preference; provide sanitized context without transaction exports."
       ],
@@ -2701,7 +2612,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "On the item definition, inspect Lot Controlled and Lot Template, then Serial Number options and its Template field. The lot template controls the lot-ID structure; serial options specify the warehouse flow being tracked. A serial template constrains the serial format; without one the article allows free-format characters. These are item controls, not a Packing preference.",
+          "explanation": "On the item, check Lot Controlled and Lot Template, then Serial Number flow options and Template. Lot templates define ID structure; serial tracking can apply to inbound, inventory or outbound. Without a serial template, free-format characters are permitted.",
           "objects": [],
           "evidence_refs": [
             "operator-item-tracking"
@@ -2710,7 +2621,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "In Warehouse Mobile Receiving, a lot-controlled item with an assigned lot template uses the Enter Lot screen for header-item, license-plate and blind receiving. Template autofill can populate the lot and expiration date. Without a template the documented flow still asks for lot, expiration/frozen state and inventory status; no template does not mean no lot control.",
+          "explanation": "Mobile lot-controlled receiving can request a lot with or without a template. A template may populate lot and expiration values; without one, the flow can still request lot, expiration/frozen state and inventory status.",
           "objects": [],
           "evidence_refs": [
             "operator-mobile-receiving"
@@ -2719,7 +2630,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Compare the receipt line with the prompt. Mobile documents a lot prompt when no lot is configured on the receipt line. Existing lot data can supply expiration/status, and changing expiration or frozen inventory status can lead to Confirm Lot Update. Do not change tracking solely to suppress that confirmation.",
+          "explanation": "Check whether the receipt line already supplies the lot. Existing lot data can supply expiration/status; a change may require Confirm Lot Update.",
           "objects": [],
           "evidence_refs": [
             "operator-mobile-receiving"
@@ -2728,7 +2639,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For serial entry in mobile receiving, the documented prompt count follows check-in quantity: one serial for one unit and serials for multiple units. Duplicate serial entries are rejected and linked serial-number templates are validated. Inspect the applicable inbound/inventory tracking and whether serials already arrived through the interface. The nested-parent flow specifically supports inbound/inventory serials already supplied in the interface, and outbound-only tracking.",
+          "explanation": "Serial prompts follow checked-in quantity. Duplicate entries are rejected and configured formats validated. The nested-parent flow has separate support for inbound/inventory serials supplied through the interface and for outbound-only tracking.",
           "objects": [],
           "evidence_refs": [
             "operator-mobile-receiving",
@@ -2738,7 +2649,7 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For Receipt Workbench, the documented Lot Entry and Serial Number Entry screens collect tracking values during check-in. Review the selected user-authorized receiving preference and the exact displayed screen; mobile and Workbench have different prompt sequences. A receipt line with an existing lot can follow a different path from a line without one.",
+          "explanation": "Receipt Workbench collects values through Lot Entry and Serial Number Entry during check-in. Its sequence differs from mobile, so identify the actual screen and selected receiving preference.",
           "objects": [],
           "evidence_refs": [
             "operator-receipt-workbench"
@@ -2747,28 +2658,17 @@
         {
           "order": 6,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "If check-in splits quantity into multiple receipt containers, mobile can request tracking information for each container. Check the storage-template Group During Check In setting and unit of measure before interpreting repeated prompts as duplicate work.",
+          "explanation": "When check-in splits quantity among containers, tracking may be requested for each. Check the storage template's Group During Check In and unit-of-measure breakdown.",
           "objects": [],
           "evidence_refs": [
             "operator-mobile-receiving"
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Item Lot Controlled, Lot Template, Serial Number flow options and serial Template.",
-        "Receiving initiation/execution method, receipt-line supplied lot/serial data, storage-template grouping and check-in quantity/unit."
-      ],
-      "expected_results": [
-        "Identify the documented route, the checks it requires and any fact the available sources cannot establish."
-      ],
-      "explanation_paths": [
-        "Record the exact screen label and tracking prompt, receipt entry method, item tracking flow, template presence and whether values were already supplied. These checks distinguish a required collection prompt from duplicate or format validation; current item values are not available to this library."
-      ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "operator-item-tracking",
         "operator-mobile-receiving",
@@ -2804,14 +2704,17 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "receiving-overage-configuration"
+      ]
     },
     {
       "topic_id": "packing-container-type-eligibility",
       "title": "Packing station container choices: company and warehouse access",
       "business_question": "How are eligible container types selected for manual Packing?",
-      "plain_answer": "Define the container types used for packing, then authorize them for the shipment company and warehouse. The user packing preference controls how packing starts and how container IDs are assigned; it is not the same as the type authorization. An existing container keeps its established type.",
-      "trigger": "A user needs a source-bound explanation of the named warehouse action or configuration.",
+      "plain_answer": "Container types define package dimensions and limits. Company and warehouse access determine which types are available for manual packing and related container actions.",
+      "trigger": "",
       "input_context": [
         "Exact screen and action, relevant work or container stage, item tracking and applicable preference; provide sanitized context without transaction exports."
       ],
@@ -2819,7 +2722,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "In Defining Container Types, the Company Access and Warehouse Access tabs govern eligibility during Packing, Close Container, nesting and picking/putaway into shipping containers. If the shipment header has a company, both company and warehouse authorization are required; warehouse authorization also applies when company is blank.",
+          "explanation": "In Container Types, set Company Access and Warehouse Access for the shipment context. Company authorization applies when the shipment has a company; warehouse authorization applies whether that field is blank or filled.",
           "objects": [],
           "evidence_refs": [
             "operator-container-types"
@@ -2828,7 +2731,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Check the employee User Profile Packing Preferences field. A blank field selects the preference named *Default. In Packing, compare New versus Existing and manual versus system container assignment; an existing container type cannot be changed through the Packing type field.",
+          "explanation": "In User Profile, assign Packing Preferences; a blank value uses *Default. That preference controls initiation and manual/system container IDs. It does not replace type authorization, and an existing packed container retains its type.",
           "objects": [],
           "evidence_refs": [
             "operator-user-preferences",
@@ -2838,7 +2741,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For a new package, choose a type eligible for the shipment context and appropriate for its dimensions/weight. Defining a physical workstation supports document routing and printing; this retained Workstation article does not establish a separate workstation-specific list of container types.",
+          "explanation": "Define a type for each package used. Set its dimensions, Maximum Weight including the empty container, and Weight Tolerance for the difference between estimated and actual weight at close.",
           "objects": [],
           "evidence_refs": [
             "operator-container-types",
@@ -2848,7 +2751,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Keep wave Container Group choices separate from manual Packing authorization. The Container Types article explicitly says company/warehouse authorization is not used by wave container creation or pallet building; those paths use packing classes/groups/types or pallet-building criteria/masters.",
+          "explanation": "Configure wave container eligibility through packing classes, groups and types, and pallet eligibility through pallet-building criteria and masters. These paths do not use the manual Company Access/Warehouse Access checks.",
           "objects": [],
           "evidence_refs": [
             "operator-container-types"
@@ -2857,27 +2760,18 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Do not use Use As Default as a universal Packing default. The documented checkbox supplies a default type for scan-and-weigh container creation when no type is interfaced, and sets company authorization to All. It has no stated effect outside that scan-and-weigh use.",
+          "explanation": "Use Use As Default only for scan-and-weigh creation when no type is interfaced. Selecting it sets Company Access to All; it has no stated effect outside that scan-and-weigh default.",
           "objects": [],
           "evidence_refs": [
             "operator-container-types"
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Container Type Company Access and Warehouse Access; shipment header company/warehouse.",
-        "User Profile Packing Preferences (*Default when blank), Packing initiation and container-assignment method."
-      ],
-      "expected_results": [
-        "Identify the documented route, the checks it requires and any fact the available sources cannot establish."
-      ],
-      "explanation_paths": [
-        "For a missing type, compare the shipment company and warehouse with the type access lists, then check whether the selected container already has a type. Capture the exact field/action and error; this does not establish the current user permission or installed configuration."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work."
+        "Workstation setup supports document routing and printing; it does not define a separate packing-station container-type list in the cited instructions."
       ],
       "evidence_refs": [
         "operator-container-types",
@@ -2915,14 +2809,19 @@
             ]
           }
         ]
-      }
+      },
+      "article_type": "configuration",
+      "related_topics": [
+        "packing-classes-and-criteria",
+        "packing-preference-configuration"
+      ]
     },
     {
       "topic_id": "packing-replacement-lp-context",
       "title": "Packing and mobile Close Container: AIM base behavior and replacement-LPN limits",
       "business_question": "What can the retained SCALE sources establish about replacing a license plate while packing?",
-      "plain_answer": "AIM distinguishes packing items into a shipping container from handling its weight and closing it in Warehouse Mobile. If close fails, read the exact error and check the applicable weight, quality checks (QC) and value-added services (VAS) conditions. Neither flow documents replacing an inventory license plate. The documented desktop scale extension hook does not establish an installed DB extension or a replacement rule.",
-      "trigger": "A user needs a source-bound explanation of the named warehouse action or configuration.",
+      "plain_answer": "Packing and Warehouse Mobile Close Container accept different inputs. Packing identifies shipment items and quantities; Mobile Close Container identifies the shipping container and its weight.",
+      "trigger": "",
       "input_context": [
         "Exact screen and action, relevant work or container stage, item tracking and applicable preference; provide sanitized context without transaction exports."
       ],
@@ -2930,7 +2829,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Warehouse Mobile Close Container: open Close Container and enter or scan the shipping Container ID. For a valid container, AIM says the screen retrieves Container ID, System Weight and Actual Weight. The documented input identifies the container being closed; this passage does not define an inventory-license-plate replacement action.",
+          "explanation": "In Warehouse Mobile Close Container, enter or scan Container ID. A valid container retrieves its ID, System Weight and Actual Weight.",
           "objects": [],
           "evidence_refs": [
             "operator-mobile-close"
@@ -2939,7 +2838,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "For the mobile system-weight route, tap Go without entering another actual weight; for a measured-weight route, enter Actual Weight and tap Go. AIM describes the resulting Container is Closed confirmation. Shipping weight is container-type weight plus item weight. Closing checks the defined weight tolerance; a weight exceeding the tolerance prompts for confirmation. The article does not provide a full invalid-ID or replacement-ID error contract.",
+          "explanation": "Tap Go to use system weight, or enter Actual Weight and tap Go. Weight includes the container type and item contents; a value outside tolerance prompts confirmation. Success displays Container is Closed.",
           "objects": [],
           "evidence_refs": [
             "operator-mobile-close"
@@ -2948,7 +2847,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "On the Packing screen, including the full-screen/Insight flow, initiate with the identifier selected in the assigned Packing Preferences, such as shipment number, ERP order or invoice. Open lines are displayed; if no quantity remains to pack, AIM describes a no-lines-available error. The Packing procedure excludes shipments on unreleased waves, and the preference Status Range controls line eligibility. Read Status Info and the exact Error-column message before inferring an item mismatch.",
+          "explanation": "In Packing, initiate with the preference's shipment, ERP order or invoice identifier. The screen lists eligible open lines; unreleased waves and the configured Status Range affect availability.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-screen",
@@ -2958,7 +2857,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Packing has separate container and item inputs. Existing selects an associated shipping container; New uses a manually entered ID or a system-created ID according to Container Assignment Method. An existing container keeps its established type. With Validate Item active, scan/enter the item or item cross-reference; otherwise select the grid row. Set the packing quantity. These choices document where shipment-line items are packed, not a permission to exchange an inventory license plate.",
+          "explanation": "Choose an existing shipping container or create a new ID according to Container Assignment Method. Existing containers retain their type. Scan an item/cross-reference when Validate Item is enabled; otherwise select its row and quantity.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-screen",
@@ -2968,7 +2867,7 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Pack applies the selected shipment-line quantity, and Pack All applies remaining item quantities. A fully packed line disappears from the grid, and total quantity and weight update. The documented item-tracking conditions can require serial-number or catch-weight entry. An Error-column checkbox opens the specific packing error. When packing is complete, the Packing Close action opens Close Container; that navigation alone does not prove successful closure.",
+          "explanation": "Select Pack or Pack All. Completed lines disappear and totals update; serial or catch-weight items may need additional entry. Read a failed row through its Error checkbox.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-screen"
@@ -2977,7 +2876,7 @@
         {
           "order": 6,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Successful close advances container status and means packing is complete; additional items cannot be packed into the closed container. Auto manifesting, auto printing and load assignment depend on Packing Preferences. The mobile article also conditions last-container printing on the document type Close Last Container print procedure. Keep the close confirmation separate from optional downstream delivery or printing outcomes.",
+          "explanation": "After packing is complete, Close opens the closing workflow. Successful closure advances status and prevents further packing; optional manifesting, printing and load assignment follow separate settings.",
           "objects": [],
           "evidence_refs": [
             "operator-mobile-close",
@@ -2988,54 +2887,18 @@
         {
           "order": 7,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "The separate Closing a Container article documents pending/failed QC blocking close until resolved, and Packing Preferences documents how pending VAS can block or offer an override. Its configured new-container-at-close branch checks uniqueness among shipping containers and multiple order pallets. The preference explicitly limits creating containers during close to the remote-desktop system-menu screen; do not transfer that creation branch to Warehouse Mobile or treat it as replacing an existing inventory LP.",
+          "explanation": "QC must be resolved and pending VAS follows its preference. Creating a new container during close is a separate remote-desktop system-menu option; it is not part of the described Warehouse Mobile route.",
           "objects": [],
           "evidence_refs": [
             "operator-close-container",
             "operator-packing-preferences"
           ]
-        },
-        {
-          "order": 8,
-          "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "AIM explicitly documents a Close Container Action exit point: when enabled, it executes instead of the base package scale interface. That is a documented extension hook for the scale action. It does not prove that this site enables the hook, implements it in the DB, changes mobile or Packing validation, or caused the reported rejection. No installed extension or customized replacement-LPN behavior is established here.",
-          "objects": [],
-          "evidence_refs": [
-            "operator-close-container"
-          ]
-        },
-        {
-          "order": 9,
-          "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Only if the actual action is Warehouse Mobile Pick Confirmation or Override Pick should the separate picking rules be used: security and Work Special Handling must allow the override, quantity/grouping/container verification has its own conditions, and the new pick location must have the same inventory-attribute values. Lot/location/LP changes still require applicable validation. These constraints explain why an item name alone is insufficient for an eligible pick override; they do not supply the missing Packing or Close Container replacement-LPN contract.",
-          "objects": [],
-          "evidence_refs": [
-            "operator-override-pick-continuation3",
-            "operator-inventory-attributes",
-            "operator-work-processing"
-          ]
         }
       ],
-      "configuration_dependencies": [
-        "Warehouse Mobile Close Container: the documented container weight and defined tolerance; optional closing effects depend on Packing Preferences and document type.",
-        "Packing screen: assigned preference, initiation field, Status Range, Validate Item, Container Assignment Method, eligible container type, quantity and item tracking.",
-        "Keep remote-desktop create-at-close, documented scale exit point and mobile Pick/Override Pick controls within their stated source scope; their availability at this site is not established."
-      ],
-      "expected_results": [
-        "Identify the documented route, the checks it requires and any fact the available sources cannot establish."
-      ],
-      "explanation_paths": [
-        "Identify whether the visible action is Packing, Warehouse Mobile Close Container, the separate desktop Close Container screen, or Pick/Override Pick. Identify the scanned field: shipment initiation value, shipping Container ID, item/cross-reference, serial number or inventory LP. Use the corresponding AIM base workflow.",
-        "For an unexplained rejection, retain the exact screen/action label and sanitized error text. The source-backed base behavior is documented here; proving a replacement-specific or locally extended rule requires separate evidence and must not be inferred from a captured DB routine name."
-      ],
-      "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.",
-        "The retained AIM passages establish the documented base workflows and one scale-interface exit point. They do not establish a Packing or Warehouse Mobile Close Container replacement-LPN acceptance/rejection contract.",
-        "A possible local DB extension remains a hypothesis, not an observed installation fact or a diagnosed cause. No DB source comparison, effective extension configuration, live screen or warehouse action was examined in this continuation.",
-        "Documenting the clarified base workflows does not make the exact frozen replacement-LPN scenario fully answered; that narrower validation contract and the actual screen/error remain unknown."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "operator-mobile-close",
         "operator-packing-screen",
@@ -3075,14 +2938,19 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "packing-screen-guide",
+        "packing-preference-configuration",
+        "container-close-checks"
+      ]
     },
     {
       "topic_id": "unpack-repack-container",
       "title": "Moving packed items: unpack, repack or nest",
       "business_question": "What documented actions can change the container holding packed product?",
-      "plain_answer": "For an individual item in a loose packed container, Shipping Container Insight provides Update Packed Quantity to unpack some quantity. Enter the quantity that should remain, then use the documented Packing flow for an eligible open destination. Moving a whole child container through nesting is a different action. A closed destination cannot accept more items.",
-      "trigger": "A user needs a source-bound explanation of the named warehouse action or configuration.",
+      "plain_answer": "Use Update Packed Quantity to remove an item quantity from a loose packed container. Use nesting to move an intact child container. These actions change different parts of the container structure.",
+      "trigger": "",
       "input_context": [
         "Exact screen and action, relevant work or container stage, item tracking and applicable preference; provide sanitized context without transaction exports."
       ],
@@ -3090,7 +2958,7 @@
         {
           "order": 1,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Identify whether the selected record is an individual item in a loose packed container, a full container, or a parent/child container. Update Packed Quantity is documented only for individual items in a loose packed container; it is unavailable on parent records and full-container records.",
+          "explanation": "In Shipping Container Insight, select an individual item in a loose packed container. Update Packed Quantity is unavailable for parent and full-container records.",
           "objects": [],
           "evidence_refs": [
             "operator-container-insight"
@@ -3099,7 +2967,7 @@
         {
           "order": 2,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Update Packed Quantity takes the quantity remaining in the source container, not the quantity to remove. SCALE unpacks the difference and writes transaction history. Serial-number or catch-weight tracking prompts for the serials or weights removed. For example, to remove 2 from 8, the remaining quantity is 6.",
+          "explanation": "Enter the quantity that should remain. To remove 2 from 8, enter 6. SCALE unpacks the difference and records history; serial or catch-weight items require the identifiers or weights being removed.",
           "objects": [],
           "evidence_refs": [
             "operator-container-insight",
@@ -3109,7 +2977,7 @@
         {
           "order": 3,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Before repacking, verify that the intended shipment line has quantity available to pack and that the destination is an eligible existing or new shipping container for that entity. Packing works with picked lines and reports errors for ineligible input. The documented close process means packing is complete and no additional items can be packed into that closed container.",
+          "explanation": "Repack through Packing only when the shipment line has available quantity and the destination is an eligible open container. A closed destination cannot accept additional items.",
           "objects": [],
           "evidence_refs": [
             "operator-packing-screen",
@@ -3119,7 +2987,7 @@
         {
           "order": 4,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "If moving an entire child container, evaluate Nest/Combine or the documented re-nest flow instead of treating it as an item-quantity move. Nesting requires the same shipment and dock, and active work can block it. Combining two loose containers nests the source under the destination; it does not merge their item quantities into one loose container.",
+          "explanation": "For a whole child container, use the eligible Nest/Combine or re-nest flow. Same-shipment and dock requirements apply; active work can block the action. Combining loose containers nests one under the other rather than merging their quantities.",
           "objects": [],
           "evidence_refs": [
             "operator-container-nesting"
@@ -3128,7 +2996,7 @@
         {
           "order": 5,
           "action": "EXPLAIN_DOCUMENTED_BEHAVIOR",
-          "explanation": "Check both container statuses, outstanding work, shipment/dock relationship and the exact allowed action before physical movement. Re-nesting has additional release/pending-work/security constraints. The Update Packed Quantity paragraph does not define every closed-source status or a general reopen action, so those permissions remain unestablished. Verify the resulting source quantity, destination quantity and transaction history after any separately authorized operation.",
+          "explanation": "Check source/destination status, work, release and security restrictions. After the permitted operation, confirm remaining source quantity, destination contents and transaction history against the physical contents.",
           "objects": [],
           "evidence_refs": [
             "operator-container-insight",
@@ -3137,21 +3005,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Container structure (loose item/full/parent/child), source and destination status, available picked quantity and tracking.",
-        "Shipment/company/warehouse eligibility, dock location, work/release state, and permission for the selected item or nesting action."
-      ],
-      "expected_results": [
-        "Identify the documented route, the checks it requires and any fact the available sources cannot establish."
-      ],
-      "explanation_paths": [
-        "Record source/destination structure and status, quantity remaining versus quantity moved, exact error, and whether the move concerns an item or an intact child container. Do not physically shift contents on the assumption that a container-ID change updates inventory."
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This is an explanation of the cited SCALE documentation. The owner accepts the current replica as the documentation baseline; no version/build prerequisite applies.",
-        "The library cannot inspect the current work unit, container, user permissions or effective settings. These checks identify possible causes, not a diagnosis of a specific record.",
-        "No warehouse action was executed and no live screen navigation was tested. Follow the authorized warehouse procedure before changing configuration or confirming work.",
-        "The sources do not establish blanket permission to unpack a closed source, reopen containers, or repack between arbitrary shipments. The described unpack/repack sequence is an authored composition of separately documented actions, subject to their eligibility checks."
+        "The sources do not establish a general reopen action or blanket permission to unpack closed containers or repack between unrelated shipments."
       ],
       "evidence_refs": [
         "operator-container-insight",
@@ -3190,7 +3048,11 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "packing-screen-guide",
+        "packing-container-type-eligibility"
+      ]
     }
   ],
   "family_associations": [],

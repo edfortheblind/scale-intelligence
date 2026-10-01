@@ -751,7 +751,7 @@
       "title": "Add, remove and transfer shipment wave membership",
       "business_question": "Does moving a shipment between waves run allocation or work?",
       "plain_answer": "These helpers update wave membership, selected statuses and stamps. Add assigns pending status to the header but raises detail status only when lower. Transfer leaves statuses unchanged. Remove resets wave number to zero and changes only matching pending detail statuses. None performs inventory allocation or work execution.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "trigger": "",
       "input_context": [
         "shipNum numeric(9), toWaveNum numeric(9), pendingSts numeric(3), processStamp nvarchar(100), userStamp nvarchar(30); required, no defaults.",
         "shipNum numeric(9), inPoolSts numeric(3), wavePendingSts numeric(3), processStamp nvarchar(100), userStamp nvarchar(30); required, no defaults.",
@@ -795,15 +795,10 @@
       "configuration_dependencies": [
         "Caller supplies wave/status values; timezone helper controls status dates."
       ],
-      "expected_results": [
-        "Membership/status/stamp writes under stated predicates."
-      ],
-      "explanation_paths": [
-        "Caller supplies wave/status values; timezone helper controls status dates."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "PREVIOUS_WAVE_NUM is assigned destination by add/transfer; it is not a reliable prior-wave history here.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "PREVIOUS_WAVE_NUM is assigned destination by add/transfer; it is not a reliable prior-wave history here."
       ],
       "evidence_refs": [
         "awr-batch-254272311",
@@ -849,8 +844,8 @@
       "topic_id": "awr-wave-statistics-gate",
       "title": "Wave progress and statistics refresh",
       "business_question": "Does a zero return from UpdateStatistics01 prove the wave was blocked?",
-      "plain_answer": "No. Guard rejection returns zero, and its normal COMMIT followed by RETURN @@ROWCOUNT also yields zero. The routine can refresh totals and progress while returning that same value. It guards selected step tokens with a table-exclusive lock; it is not the complete wave engine.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "plain_answer": "A zero return value does not distinguish a rejected wave step from a completed statistics refresh. Guard rejection returns zero; the normal path also returns zero because COMMIT resets the row count. The routine updates totals and progress for selected steps, rather than running the complete wave.",
+      "trigger": "",
       "input_context": [
         "waveNum numeric(9), processStamp nvarchar(100), userStamp nvarchar(30); required, no defaults.",
         "waveNum numeric(9), processStamp nvarchar(100), userStamp nvarchar(30), nextStep nvarchar(25); required, no defaults."
@@ -886,15 +881,10 @@
       "configuration_dependencies": [
         "Coded step guards and existing unit labels; effective wave master and token meanings remain external."
       ],
-      "expected_results": [
-        "Summary/progress fields may update; return zero is ambiguous."
-      ],
-      "explanation_paths": [
-        "Coded step guards and existing unit labels; effective wave master and token meanings remain external."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No elapsed-time or complete-run claim; snapshot source aggregates use NOLOCK.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "The source aggregates use NOLOCK and may not represent one consistent database state."
       ],
       "evidence_refs": [
         "awr-batch-334272596",
@@ -939,7 +929,7 @@
       "title": "Wave dialog seeds and active-wave list",
       "business_question": "Do NewWave or BuildWave stored procedures create a wave?",
       "plain_answer": "The reviewed bodies only return dialog context. NewWave variants project one row; BuildWave projects constants once per master row. The active-wave list checks last-step NULL/empty and warehouse, not whether a process is currently running.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "trigger": "",
       "input_context": [
         "Warehouse nvarchar(25); required, no default.",
         "culture nvarchar(10); required, unused.",
@@ -983,15 +973,10 @@
       "configuration_dependencies": [
         "Transfer defaults to N only when omitted in GetNewWave; explicit NULL is preserved."
       ],
-      "expected_results": [
-        "UI seed rows or selected wave list."
-      ],
-      "explanation_paths": [
-        "Transfer defaults to N only when omitted in GetNewWave; explicit NULL is preserved."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Dialog save/run and permissions remain external.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "Dialog save/run and permissions remain external."
       ],
       "evidence_refs": [
         "awr-batch-421224901",
@@ -1038,7 +1023,7 @@
       "title": "Completion status helpers",
       "business_question": "Does calling a CompleteWave status helper complete all related entities?",
       "plain_answer": "Each helper changes only its specified entity. Container/detail setters accept the supplied status directly. Header setters preserve each NULL/zero/negative status input but accept any positive input, including a lower status. Load progression uses separate asymmetric comparisons.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "trigger": "",
       "input_context": [
         "Internal INTERNAL_CONTAINER_NUM numeric(9), status numeric(3), userStamp nvarchar(30), processStamp nvarchar(100); required, no defaults.",
         "Internal INTERNAL_SHIPMENT_LINE_NUM numeric(9), status numeric(3), userStamp nvarchar(30), processStamp nvarchar(100); required, no defaults.",
@@ -1085,12 +1070,9 @@
       "expected_results": [
         "Entity status/stamp writes only."
       ],
-      "explanation_paths": [
-        "Caller status values; warehouse timezone for header status dates."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "No validation of a full allowed transition, quantity-history shift or whole-wave completion.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "No validation of a full allowed transition, quantity-history shift or whole-wave completion."
       ],
       "evidence_refs": [
         "awr-batch-1276179942",
@@ -1136,8 +1118,8 @@
       "topic_id": "awr-order-open-quantity",
       "title": "Order condition and open quantity",
       "business_question": "Is order open quantity recomputed from every wave?",
-      "plain_answer": "The reviewed detail helper replaces OPEN_QTY using eligible status slots from only the supplied wave and matching order/ERP line. The order-header helper separately writes a supplied condition. Other waves and current header/line consistency are not automatically reconciled. NULL historical quantities are not automatically replaced with zero. A NULL quantity in an included status slot makes that shipment row contribution NULL; SUM ignores that row contribution, and an all-NULL group can leave OPEN_QTY NULL.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "plain_answer": "The detail helper replaces OPEN_QTY using eligible status slots from the supplied wave and matching order/ERP line. The order-header helper separately writes a supplied condition.",
+      "trigger": "",
       "input_context": [
         "condition nvarchar(25), userStamp nvarchar(30), processStamp nvarchar(100), statusReleased numeric(3), statusShipped numeric(3), launchNum numeric(9); required, no defaults.",
         "orderNum numeric(9), condition nvarchar(25), userStamp nvarchar(30), processStamp nvarchar(100); required, no defaults."
@@ -1172,15 +1154,11 @@
       "configuration_dependencies": [
         "Caller supplies status bounds, wave and condition."
       ],
-      "expected_results": [
-        "Selected-wave sum replaces open quantity."
-      ],
-      "explanation_paths": [
-        "Caller supplies status bounds, wave and condition."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Included NULL quantities can nullify a row expression; no cross-wave quantity or whole-order completion proof.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "Other waves and header/line consistency are not automatically reconciled.",
+        "A NULL quantity in an included slot makes that shipment row contribution NULL. SUM ignores that contribution; if all contributions are NULL, OPEN_QTY can remain NULL."
       ],
       "evidence_refs": [
         "awr-batch-1324180113",
@@ -1223,8 +1201,8 @@
       "topic_id": "awr-cancel-replenishment",
       "title": "Replenishment cancellation quantities",
       "business_question": "Can a zero cancellation return prove quantities were deallocated?",
-      "plain_answer": "No. The routine owns a transaction, removes matching instructions, subtracts source allocated and destination in-transit quantities, and calls history helpers. After the first history succeeds, a later rollback can return its previous zero code. The destination lookup also uses the request source warehouse.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "plain_answer": "Replenishment cancellation removes matching instructions, subtracts source allocated and destination in-transit quantities, and calls history helpers within a transaction. A later rollback can retain a zero return code from the first successful history call, so zero alone does not confirm cancellation. The destination lookup uses the request source warehouse.",
+      "trigger": "",
       "input_context": [
         "requestNum numeric(9), userStamp nvarchar(30); required, no defaults.",
         "internalLocInvNum numeric(9), userStamp nvarchar(30), replenishedQuantity numeric(19,5), beforeOnHandQty/beforeAllocatedQty/beforeInTransitQty/beforeSuspenseQty numeric(19,5), direction nvarchar(25); required, no defaults."
@@ -1261,16 +1239,9 @@
       "configuration_dependencies": [
         "Typed request/work-created exclusion and null-safe identity predicates."
       ],
-      "expected_results": [
-        "Conditional transaction mutations/history requests or rollback."
-      ],
-      "explanation_paths": [
-        "Typed request/work-created exclusion and null-safe identity predicates."
-      ],
-      "boundaries": [
-        "No operational defect reproduction; return code and caller transaction behavior require careful interpretation.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "awr-batch-988178916",
         "awr-batch-142271912",
@@ -1314,7 +1285,7 @@
       "title": "Wave cancellation load and history helpers",
       "business_question": "What happens to a load when all its shipments belong to a cancelled wave?",
       "plain_answer": "The load-status helper aggregates only shipments outside the wave and updates load statuses only when both aggregates are positive. With none remaining, it keeps old load statuses, then detaches matching wave headers. The history-named snapshot helper only returns data; separate helpers perform persistence.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "trigger": "",
       "input_context": [
         "launchNum numeric(9); required, no default.",
         "launchNum numeric(9); required, no default.",
@@ -1355,15 +1326,10 @@
       "configuration_dependencies": [
         "Caller wave and snapshot direction; current other-wave statuses."
       ],
-      "expected_results": [
-        "Load associations/status changes and separately returned snapshot data."
-      ],
-      "explanation_paths": [
-        "Caller wave and snapshot direction; current other-wave statuses."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No complete atomic cancellation or history persistence proven.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "No complete atomic cancellation or history persistence proven."
       ],
       "evidence_refs": [
         "awr-batch-1004178973",
@@ -1409,7 +1375,7 @@
       "title": "Allocation unit conversion selection",
       "business_question": "Does conversion update guarantee the largest pack for each allocation?",
       "plain_answer": "The body chooses integer conversion candidates and maximum unit sequence, with item-class fallback only when no item-specific units exist. Its outer join does not carry the grouped allocation ID back to the target, so deterministic per-request largest-pack selection is not established from this body.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "trigger": "",
       "input_context": [
         "launchNum numeric(9), userStamp nvarchar(30); required, no defaults."
       ],
@@ -1445,12 +1411,9 @@
       "expected_results": [
         "Converted quantity/UM and dimensions, not new inventory reservations."
       ],
-      "explanation_paths": [
-        "UOM factor, sequence, item/company/class records and coded NULL sentinel."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "No divide-by-zero guard or demonstrated uniqueness of multiple matching candidates.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "No divide-by-zero guard or demonstrated uniqueness of multiple matching candidates."
       ],
       "evidence_refs": [
         "awr-batch-1834801944",
@@ -1494,7 +1457,7 @@
       "title": "Allocation split and destination association",
       "business_question": "Is an allocation split all-or-nothing?",
       "plain_answer": "The split first reduces the source, then copies a new request through a destination-location join. It has no local transaction or input-bound checks. A missing destination can leave the source reduced with no new row. Equal/full split can expose division by zero in the second statement; output uses session-wide @@IDENTITY.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "trigger": "",
       "input_context": [
         "allocationNum numeric(9), splitQty numeric(19,5), newToLocation nvarchar(25), newAllocationNum numeric(9) OUTPUT; no defaults.",
         "allocationNum numeric(9), toLocation nvarchar(25); required, no defaults.",
@@ -1534,15 +1497,10 @@
       "configuration_dependencies": [
         "Destination LOCATION in allocation TO_WHS supplies templates/zone."
       ],
-      "expected_results": [
-        "Conditional request split; separate association writes."
-      ],
-      "explanation_paths": [
-        "Destination LOCATION in allocation TO_WHS supplies templates/zone."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No stock movement or atomic caller sequence proved.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "No stock movement or atomic caller sequence proved."
       ],
       "evidence_refs": [
         "awr-batch-1388180341",
@@ -1587,8 +1545,8 @@
       "topic_id": "awr-capacity-precedence",
       "title": "Replenishment capacity fallback",
       "business_question": "Does missing capacity always mean maximum zero and minimum 100 percent?",
-      "plain_answer": "No. Those substitutions apply only inside a matching configuration row. Output variables are not initialized; an incoming maximum can suppress fallback and no-match can retain incoming values. Item/location, item/type and class fallback queries have distinct warehouse scope and unordered company matches.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "plain_answer": "Replenishment capacity is returned through maximum quantity, minimum percentage and unit-of-measure output parameters. Their incoming values affect fallback because the routine does not initialize them. Default substitutions apply only to a matching configuration row; no match can leave the incoming values unchanged.",
+      "trigger": "",
       "input_context": [
         "warehouse/location/locationType nvarchar(25), item nvarchar(50), company nvarchar(25), itemClass nvarchar(50); no defaults.",
         "maxQty numeric(19,5), minPct numeric(3), UM nvarchar(25) OUTPUT; incoming output-variable values are not initialized by the body."
@@ -1620,17 +1578,15 @@
         }
       ],
       "configuration_dependencies": [
-        "Incoming output values, item/class, location/type and company candidates."
+        "Incoming output values, item/class, location/type and company candidates determine which fallback is reached.",
+        "Item/location, item/type and class queries use different warehouse scopes; matching company rows have no defined order."
       ],
       "expected_results": [
         "Capacity settings through output parameters."
       ],
-      "explanation_paths": [
-        "Incoming output values, item/class, location/type and company candidates."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "No available-stock quantity, active values or replenishment amount measured.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "Capacity settings do not measure available stock or determine the final replenishment quantity."
       ],
       "evidence_refs": [
         "awr-batch-23319493",
@@ -1674,7 +1630,7 @@
       "title": "Marking a location for replenishment evaluation",
       "business_question": "Does marking a location immediately refill it?",
       "plain_answer": "The procedure sets RPLN_EVALUATION=Y only through the real-time-enabled branch and requests process history. It does not allocate product, create a replenishment request, create work or move stock. Vendor documentation makes subsequent work creation depend on wave steps and replenishment-master method.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "trigger": "",
       "input_context": [
         "location nvarchar(25), warehouse nvarchar(25), user nvarchar(30), success/error nvarchar(2000) OUTPUT; no defaults.",
         "SourceKey numeric(9); required, no default.",
@@ -1731,15 +1687,10 @@
       "configuration_dependencies": [
         "REAL_TIME_RPLN, RPLN_EVALUATION, culture, replenishment master and configured work-creation wave step."
       ],
-      "expected_results": [
-        "Evaluation or work-created flag mutation according to selected helper."
-      ],
-      "explanation_paths": [
-        "REAL_TIME_RPLN, RPLN_EVALUATION, culture, replenishment master and configured work-creation wave step."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No rowcount proof in mark output and no return capture from history.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "No rowcount proof in mark output and no return capture from history."
       ],
       "evidence_refs": [
         "awr-batch-197224103",
@@ -1786,7 +1737,7 @@
       "title": "Replenishment split orientation",
       "business_question": "Which request retains the supplied split quantity?",
       "plain_answer": "The original request retains the supplied quantity. The inserted request gets old minus supplied, and the separately supplied instruction is linked to the new request. No upper bound, instruction association check or local transaction guarantees a valid atomic split.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "trigger": "",
       "input_context": [
         "quantity numeric(19,5), requestNum numeric(9), newInstructionNum numeric(9), newRequestNum numeric(9) OUTPUT; no defaults."
       ],
@@ -1794,7 +1745,7 @@
         {
           "order": 1,
           "action": "Insert remainder and obtain scoped identity",
-          "explanation": "Explicit copy retains original value/timestamp fields.",
+          "explanation": "Copy the original request into a new row, retaining its original value and timestamp fields.",
           "objects": [
             "REPLENISHMENT_REQUEST"
           ],
@@ -1806,7 +1757,7 @@
         {
           "order": 2,
           "action": "Relink instruction then update original",
-          "explanation": "These are subsequent independent statements.",
+          "explanation": "Update the two request quantities and link the supplied instruction in subsequent statements; the helper has no local transaction spanning them.",
           "objects": [
             "WORK_INSTRUCTION",
             "WRK_SplitReplenishmentRequest"
@@ -1820,15 +1771,10 @@
       "configuration_dependencies": [
         "Caller quantity, original request, instruction ID and current request conversion quantities."
       ],
-      "expected_results": [
-        "Remainder request, original retained quantity and instruction reference update."
-      ],
-      "explanation_paths": [
-        "Caller quantity, original request, instruction ID and current request conversion quantities."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No automatic instruction quantity adjustment or physical stock transfer.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "No automatic instruction quantity adjustment or physical stock transfer."
       ],
       "evidence_refs": [
         "awr-batch-1130799436",
@@ -1871,8 +1817,8 @@
       "topic_id": "awr-replenishment-counts",
       "title": "Replenishment counts and projections",
       "business_question": "Is DoOpenRplnExist a reliable count of distinct requests?",
-      "plain_answer": "It sums two count rows using UNION, so equal counts collapse. Its joined branch can also count several instructions for one request. The detail pane counts instruction/history rows under different predicates; the request view can duplicate rows through inventory joins without attribute identity.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "plain_answer": "The replenishment count combines two count rows with UNION, so equal counts collapse. Its joined branch may count several instructions for one request. The detail pane and request view use different row scopes.",
+      "trigger": "",
       "input_context": [
         "item nvarchar(50), company/location/warehouse nvarchar(25), IncludeRequestsMarkedForWorkCreation nchar(1)=Y.",
         "View has no parameters or defaults.",
@@ -1912,15 +1858,10 @@
       "configuration_dependencies": [
         "Include-marked flag defaults Y; item/company/destination and instruction conditions."
       ],
-      "expected_results": [
-        "Predicate-based numbers and projections, not guaranteed distinct request totals."
-      ],
-      "explanation_paths": [
-        "Include-marked flag defaults Y; item/company/destination and instruction conditions."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No current counts or deployment frequency of duplicate identities were observed.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "The request view joins inventory without attribute identity, which can repeat a request. These outputs are not guaranteed distinct-request totals."
       ],
       "evidence_refs": [
         "awr-batch-1656705300",
@@ -1965,8 +1906,8 @@
       "topic_id": "awr-wave-metrics",
       "title": "Stored wave metric meaning",
       "business_question": "Does AllocatedQuantity measure current allocated inventory?",
-      "plain_answer": "This wrapper copies LAUNCH_STATISTICS.TOTAL_QTY, the same stored field used by TotalQuantity, into statistics storage. Rejected metrics use specific status-slot formulas, including baseline adjustment and nullable quantity arithmetic. These are stored reporting calculations, not measured physical execution.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "plain_answer": "The wave metric wrapper copies LAUNCH_STATISTICS.TOTAL_QTY, also used by TotalQuantity, into statistics storage. Rejected metrics use status-slot formulas with baseline adjustments and nullable quantity arithmetic. These values describe stored reporting calculations rather than physical completion.",
+      "trigger": "",
       "input_context": [
         "waveNum numeric(9), culture nvarchar(10); required, no defaults. culture is unused.",
         "waveNum numeric(9); required, no default.",
@@ -1982,7 +1923,7 @@
         {
           "order": 1,
           "action": "Read stored totals or evaluate fixed slot predicates",
-          "explanation": "Metric names do not replace the actual formula.",
+          "explanation": "Interpret each metric using its stored field or status-slot formula.",
           "objects": [
             "LAUNCH_STATISTICS",
             "SHIPMENT_DETAIL"
@@ -2003,7 +1944,7 @@
         {
           "order": 2,
           "action": "Persist through saver or return presentation rows",
-          "explanation": "Independent reads do not form a guaranteed snapshot.",
+          "explanation": "Treat independently read metrics as separate observations; the reads do not guarantee one consistent snapshot.",
           "objects": [
             "STAT_SaveStatisticsValue",
             "WVST_WaveStatisticsHeaderFields"
@@ -2028,12 +1969,9 @@
       "expected_results": [
         "Stored scalar metrics or display/count result sets."
       ],
-      "explanation_paths": [
-        "Statistics field metadata, original-line baseline, numeric998/999 slot predicates and resource language."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "Whole-process duration, distinct work units and actual warehouse completion remain unproven.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "Whole-process duration, distinct work units and actual warehouse completion remain unproven."
       ],
       "evidence_refs": [
         "awr-batch-1610801146",
@@ -2094,7 +2032,7 @@
       "title": "Statistics read and save contracts",
       "business_question": "Does missing statistics data always read as zero and save atomically?",
       "plain_answer": "The getter preserves a non-NULL incoming output when no value row matches, then replaces only NULL with zero. Missing field metadata raises severity18. The saver first reads a row ID then updates or inserts; no local transaction or uniqueness guarantee on field/source key makes it an atomic upsert.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "trigger": "",
       "input_context": [
         "sourceName nvarchar(50), fieldName nvarchar(100), sourceKey nvarchar(100), value numeric(28,5) OUTPUT; no defaults.",
         "sourceName nvarchar(50), fieldName nvarchar(100), sourceKey nvarchar(100), value numeric(28,5); required, no defaults."
@@ -2132,12 +2070,9 @@
       "expected_results": [
         "Scalar output or stored value/timestamp."
       ],
-      "explanation_paths": [
-        "Named source/field records; nullable VALUE and nonnullable SOURCE_KEY/FIELD_ID in captured catalog."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "Captured unique index is on OBJECT_ID, not field/source-key pair; concurrent duplicate inserts are not prevented by this helper.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "Captured unique index is on OBJECT_ID, not field/source-key pair; concurrent duplicate inserts are not prevented by this helper."
       ],
       "evidence_refs": [
         "awr-batch-2033754648",
@@ -2180,8 +2115,8 @@
       "topic_id": "awr-zero-inventory-cleanup",
       "title": "Zero inventory cleanup after wave replenishment",
       "business_question": "Can cancellation cleanup affect a different inventory identity at the same location?",
-      "plain_answer": "Its initial candidate join includes company/lot/attributes, but the inner cleanup deliberately narrows identity only to location, item and warehouse. It chooses the minimum ID across that broader set, deletes other rows with all four quantities zero and clears lot/attribute identity on a retained all-zero row.",
-      "trigger": "Authorized application/caller selects the named helper; actual UI binding and permission enforcement remain unverified.",
+      "plain_answer": "Wave replenishment cleanup first finds candidates using company, lot and attributes. Within each candidate location, it then uses the broader location/item/warehouse identity: it retains the minimum inventory ID, deletes other rows whose four quantities are zero, and clears lot and attribute identity on a retained all-zero row.",
+      "trigger": "",
       "input_context": [
         "launchNum numeric(9); required, no default."
       ],
@@ -2215,15 +2150,10 @@
       "configuration_dependencies": [
         "Wave-linked replenishment destinations and stored inventory identity/quantities."
       ],
-      "expected_results": [
-        "Conditional zero-row deletion/identity cleanup."
-      ],
-      "explanation_paths": [
-        "Wave-linked replenishment destinations and stored inventory identity/quantities."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No actual company/lot data examined; READ_ONLY cursor does not mean a read-only procedure.",
-        "Snapshot body review only; no operational records, routines, active configuration, permission checks or physical work were executed."
+        "READ_ONLY applies to the cursor; the procedure still deletes and updates inventory rows."
       ],
       "evidence_refs": [
         "awr-batch-1288703989",

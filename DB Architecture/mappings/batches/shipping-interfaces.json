@@ -849,8 +849,8 @@
       "topic_id": "shipping-print-selection-contract",
       "title": "Understanding print selection and wave reprint context",
       "business_question": "Does a returned document selection prove that a document printed?",
-      "plain_answer": "Print-selection procedures return entity context, eligible document definitions and user printer defaults. Wave reprint procedures also return context. Rendering, dispatch and successful physical output need separate evidence.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "Print selection returns entity context, eligible document definitions and user printer defaults. Wave reprint procedures also return context.",
+      "trigger": "",
       "input_context": [
         "internalNum int, printProcess int, culture nvarchar(10), username nvarchar(30), all required. No defaults; culture unused.",
         "internalLaunchNum numeric(9), culture nvarchar(10), required; culture unused. No defaults.",
@@ -921,21 +921,14 @@
         }
       ],
       "configuration_dependencies": [
-        "Compare process code, entity ID, user profile and document process/default pairs.",
+        "Match the print-process code and entity ID with the user profile and document process/default pairs.",
         "Printer selection requires CLOSED N; the two reprint context getters do not.",
         "Manifest-close context returns flags only."
       ],
-      "expected_results": [
-        "A bounded selection/result shape, not a dispatched job."
-      ],
-      "explanation_paths": [
-        "Compare process code, entity ID, user profile and document process/default pairs.",
-        "Printer selection requires CLOSED N; the two reprint context getters do not.",
-        "Manifest-close context returns flags only."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "An unsupported process can change result-set count. Feature/document selector labels remain opaque in the public copy.",
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
+        "An unsupported process can change result-set count. Feature/document selector labels remain opaque in the public copy."
       ],
       "evidence_refs": [
         "si-sql-901226611",
@@ -991,8 +984,8 @@
       "topic_id": "shipping-label-image-contract",
       "title": "Finding stored labels and label-print parameters",
       "business_question": "Why can label lookup return NULL or an unexpected container?",
-      "plain_answer": "The image getter returns ordinary and returns images for an internal container number and ignores its document-type parameter. The separate label-parameter helper looks up text container ID without using its warehouse argument.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "The label-image helper retrieves both ordinary and return-label images for an internal container number; DOCUMENT_TYPE does not filter them. The separate print-parameter helper looks up a text container ID without applying its Warehouse argument.",
+      "trigger": "",
       "input_context": [
         "INTERNAL_CONTAINER_NUM numeric(9), DOCUMENT_TYPE nvarchar(25), required; DOCUMENT_TYPE unused. No defaults.",
         "ContainerID nvarchar(25), Warehouse nvarchar(25), required; Warehouse unused. No defaults."
@@ -1042,19 +1035,13 @@
         }
       ],
       "configuration_dependencies": [
-        "The Warehouse argument does not constrain the parameter helper.",
-        "Repeated matching images/IDs use unordered variable assignment."
+        "Multiple matching images or container IDs are assigned without a defined order."
       ],
       "expected_results": [
         "One result row can contain NULL values; no label is printed."
       ],
-      "explanation_paths": [
-        "The Warehouse argument does not constrain the parameter helper.",
-        "Repeated matching images/IDs use unordered variable assignment."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-968702849",
         "si-sql-1458208345",
@@ -1106,8 +1093,8 @@
       "topic_id": "shipping-reprint-dif-request",
       "title": "Understanding queued reprint requests",
       "business_question": "What does the custom reprint procedure actually complete?",
-      "plain_answer": "It selects non-NULL container IDs in the specified wave at numeric status 300 and inserts Ready DIF messages. A message is a request; downstream DIF processing and printing are separate.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "The reprint routine selects non-NULL container IDs in the specified wave at status 300 and queues Ready DIF messages.",
+      "trigger": "",
       "input_context": [
         "INTERNAL nvarchar(max), username nvarchar(200), error nvarchar(2000) OUTPUT, success nvarchar(2000) OUTPUT; all required, no defaults. username/error/success are not used or assigned."
       ],
@@ -1150,21 +1137,15 @@
         }
       ],
       "configuration_dependencies": [
-        "No deduplication check is performed.",
-        "Supplied username and error/success output parameters are unused.",
-        "Routing constants and status meaning need separate deployment evidence."
+        "Routing constants and the business meaning of status 300 depend on deployment configuration."
       ],
       "expected_results": [
-        "Zero or more incoming-message rows; output success/error variables remain unchanged."
+        "The success and error output parameters are not assigned."
       ],
-      "explanation_paths": [
-        "No deduplication check is performed.",
-        "Supplied username and error/success output parameters are unused.",
-        "Routing constants and status meaning need separate deployment evidence."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "A rerun can enqueue duplicates. A partial failure can leave earlier messages. No escaping function wraps the interpolated ID.",
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
+        "There is no deduplication check; rerunning can enqueue the same request again. Earlier messages can remain after a partial failure.",
+        "The interpolated container ID is not wrapped in an escaping function."
       ],
       "evidence_refs": [
         "si-sql-1877178033",
@@ -1217,7 +1198,7 @@
       "title": "Understanding QC settings versus QC execution",
       "business_question": "Does loading QC context grant or execute a QC action?",
       "plain_answer": "The context routine combines user packing-preference flags, system configuration and security checkpoint values into three result sets. It does not inspect containers, assign QC, force a pass or enforce an action itself.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "username nvarchar(30), culture nvarchar(200), warehouse nvarchar(25), all required. No defaults."
       ],
@@ -1264,17 +1245,9 @@
         "No ACTIVE packing-preference filter is applied.",
         "Warehouse is passed through rather than filtering configuration."
       ],
-      "expected_results": [
-        "QC context and lookup data only."
-      ],
-      "explanation_paths": [
-        "Missing user is different from existing user with a NULL preference.",
-        "No ACTIVE packing-preference filter is applied.",
-        "Warehouse is passed through rather than filtering configuration."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-1205227694",
         "si-aim-quality-control"
@@ -1325,8 +1298,8 @@
       "topic_id": "shipping-carrier-active-lookups",
       "title": "Understanding active carrier and group lookup",
       "business_question": "Why might a carrier or carrier group be absent from these lookups?",
-      "plain_answer": "The carrier getter requires an exact active carrier/service combination, with explicit NULL-service matching. The group getter requires an exact active group. Neither routine performs rating or applies the full routing policy.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "Carrier and group lookups return an exact active carrier/service combination or an exact active group.",
+      "trigger": "",
       "input_context": [
         "Carrier nvarchar(25), CarrierService nvarchar(50), required. No defaults.",
         "CarrierGroup nvarchar(25), required. No default."
@@ -1363,7 +1336,7 @@
         {
           "order": 3,
           "action": "REVIEWED_STATIC_STEP",
-          "explanation": "Apply routing, calendars, inheritance and authorization through separately evidenced components.",
+          "explanation": "Rating, calendars, inheritance and authorization are handled outside these lookups.",
           "objects": [
             "wm_RCarrier02",
             "wm_RCarrierGroupHeader02"
@@ -1376,19 +1349,11 @@
         }
       ],
       "configuration_dependencies": [
-        "NULL service matches NULL service only.",
-        "Carrier and group names are exact selectors, not wildcard selection."
+        "A NULL carrier service matches only a NULL service; names are exact selectors."
       ],
-      "expected_results": [
-        "Matching configuration rows or an empty result."
-      ],
-      "explanation_paths": [
-        "NULL service matches NULL service only.",
-        "Carrier and group names are exact selectors, not wildcard selection."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-1038275104",
         "si-sql-487321146",
@@ -1441,7 +1406,7 @@
       "title": "Understanding shipment selection, consolidation, split and manifest context",
       "business_question": "Do these screen-data procedures perform the named shipping operation?",
       "plain_answer": "The reviewed presentation procedures retrieve selected shipment data. ShipmentSelection can return multiple same-ID, same-warehouse shipments without a company predicate. Consolidate, Split and Manifesting context procedures do not perform those operations.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "internalShipmentNum numeric(9), culture nvarchar(10), required; culture unused. No defaults.",
         "internalNum numeric(9), culture nvarchar(10), required; culture unused. No defaults.",
@@ -1505,19 +1470,11 @@
         }
       ],
       "configuration_dependencies": [
-        "ShipmentSelection joins by SHIPMENT_ID and WAREHOUSE, not company.",
-        "Split context exposes QUANTITY_AT_STS1 rather than summing all status slots."
+        "Split context returns QUANTITY_AT_STS1 rather than the sum of all status slots."
       ],
-      "expected_results": [
-        "Presentation result sets only."
-      ],
-      "explanation_paths": [
-        "ShipmentSelection joins by SHIPMENT_ID and WAREHOUSE, not company.",
-        "Split context exposes QUANTITY_AT_STS1 rather than summing all status slots."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-549225357",
         "si-sql-1173227580",
@@ -1572,7 +1529,7 @@
       "title": "Understanding X-of-Y container numbering",
       "business_question": "Which containers receive X-of-Y numbers, and is wave numbering atomic?",
       "plain_answer": "Shipment numbering assigns ordinals to identified top-level tree roots and resets identified immediate children to zero. Wave numbering invokes that helper inside one transaction per shipment; the body does not provide one whole-wave transaction.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "internalShipmentNumber numeric(9), required. No default.",
         "waveNumber numeric(9), required. No default."
@@ -1629,14 +1586,8 @@
       "expected_results": [
         "Stored count fields change; they do not count shipped item quantity."
       ],
-      "explanation_paths": [
-        "Unidentified or deeper descendant rows are outside the explicit child-reset set.",
-        "Ambient caller transactions alter persistence of nested COMMITs.",
-        "Both helper membership reads and wave selection use NOLOCK."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-1825753907",
         "si-sql-1841753964",
@@ -1689,7 +1640,7 @@
       "title": "Understanding container counts, location and status flow",
       "business_question": "Can these helper results prove a uniform container hierarchy?",
       "plain_answer": "The helpers answer different questions: a row count over selected immediate contents, one distinct location under a branch-specific scope, and one unordered non-NULL status flow from a recursive subtree. None alone proves every descendant is consistent.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "internalcontainernum numeric(9), required. No default.",
         "internalcontainernum numeric(9), required. No default.",
@@ -1753,14 +1704,8 @@
       "expected_results": [
         "Count, location-or-NULL and zero/one flow result are separate contracts."
       ],
-      "explanation_paths": [
-        "Location fallback applies ITEM IS NOT NULL only to its self-row arm.",
-        "A NULL location group can contribute to the multiple-location result.",
-        "Status-flow TOP 1 has no precedence or explicit recursion override."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-183320063",
         "si-sql-1585753052",
@@ -1814,7 +1759,7 @@
       "title": "Understanding shipping group and transfer mutations",
       "business_question": "What related records do the group and transfer helpers actually update?",
       "plain_answer": "These helpers have narrow and different scopes: one moves below-threshold container IDs, one transfers a detail and comments, one updates group/spot and optional names, and one clears work-linked groups. Caller orchestration must coordinate broader shipment consistency.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "fromShipmentInternalNum numeric(9), status numeric(9), toShipmentInternalNum numeric(9), userName nvarchar(30), required. No defaults.",
         "intLineNum numeric(9), destIntShipNum numeric(9), destShipId nvarchar(25), shipTo nvarchar(25), required. No defaults.",
@@ -1882,17 +1827,9 @@
         "Group spot MAX+1 lacks a serialization protocol.",
         "Remove-group work joins do not repeat a warehouse restriction on every group member."
       ],
-      "expected_results": [
-        "Explicit storage fields are changed; no complete business transfer is proved."
-      ],
-      "explanation_paths": [
-        "Container move captures status eligibility once.",
-        "Group spot MAX+1 lacks a serialization protocol.",
-        "Remove-group work joins do not repeat a warehouse restriction on every group member."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-1761753679",
         "si-sql-1889754135",
@@ -1947,7 +1884,7 @@
       "title": "Understanding split quantity boundaries and output IDs",
       "business_question": "Do shipping split helpers reject quantities larger than the source?",
       "plain_answer": "Both split helpers reject NULL or nonpositive inputs, but neither completely enforces an upper quantity bound. The allocation helper leaves requested quantity on the original and remainder on the clone; the container helper leaves remainder on the original and requested quantity on the clone.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "qty numeric(19,5), allocReqNum numeric(9), userName nvarchar(30), newAllocReqNum numeric(9) OUTPUT, required. No defaults.",
         "qty numeric(19,5), internalContNum numeric(9), userName nvarchar(30), newInternalContNum numeric(9) OUTPUT, newParentContNum numeric(9) OUTPUT, all required; no defaults."
@@ -2004,15 +1941,8 @@
       "expected_results": [
         "A bounded split storage operation whose safe composition depends on caller validation."
       ],
-      "explanation_paths": [
-        "Missing source is not rejected by a row-count check.",
-        "Zero source quantities can cause division by zero.",
-        "Container parent output is assigned only in the optional parent branch."
-      ],
-      "boundaries": [
-        "No routine was executed; these are source-observed boundaries, not an operational incident or a proposed production change.",
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-1857754021",
         "si-sql-1873754078",
@@ -2064,8 +1994,8 @@
       "topic_id": "shipping-deallocation-history",
       "title": "Understanding deallocation output mode and history",
       "business_question": "Is deallocation outputMode=1 a read-only preview?",
-      "plain_answer": "No. Both direction branches update inventory first. outputMode=1 returns captured before-state and allocation information and skips history; other modes write calculated history. The procedure sets XACT_ABORT and rethrows errors but begins no transaction.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "Deallocation changes inventory in both direction branches. outputMode selects whether the procedure returns captured before-state and allocation data or writes history; it does not select a preview mode.",
+      "trigger": "",
       "input_context": [
         "waveNum numeric(9), internalShipmentNum numeric(9), direction char(4), invTrack nchar(1), userName nvarchar(30), processStamp nvarchar(100), required; outputMode tinyint defaults to 0."
       ],
@@ -2112,16 +2042,10 @@
         "Source matching includes logistics unit/attribute identity; destination matching does not.",
         "History expiry/status calculations do not update those fields in inventory."
       ],
-      "expected_results": [
-        "Inventory mutation plus either output rows or history insertion."
-      ],
-      "explanation_paths": [
-        "Both zero selectors select nothing; two supplied nonzero selectors broaden selection by OR.",
-        "Source matching includes logistics unit/attribute identity; destination matching does not.",
-        "History expiry/status calculations do not update those fields in inventory."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
+        "The procedure sets XACT_ABORT and rethrows errors but begins no transaction."
       ],
       "evidence_refs": [
         "si-sql-1777753736",
@@ -2173,8 +2097,8 @@
       "topic_id": "shipping-freight-rollup",
       "title": "Understanding header freight rollups",
       "business_question": "Why can recalculated shipment freight be NULL?",
-      "plain_answer": "The routine sums four stored charge fields from selected manifest-state containers with a text parent-container test, then replaces header values. SQL SUM can return NULL when no eligible amounts exist; the body does not turn that into zero.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "The routine sums four stored charge fields from selected manifest-state containers with a text parent-container test, then replaces header values. It makes no carrier-rating request. SQL SUM can return NULL when no eligible amounts exist; the body does not turn that into zero.",
+      "trigger": "",
       "input_context": [
         "internalShipNum numeric(9), required. No default."
       ],
@@ -2217,19 +2141,11 @@
         }
       ],
       "configuration_dependencies": [
-        "Parent selection uses PARENT_CONTAINER_ID text, not tree root metadata.",
-        "Manifest state constants are source predicates; active state distribution was not queried."
+        "Container eligibility uses the manifest-state constants in the routine and PARENT_CONTAINER_ID text rather than tree-root metadata."
       ],
-      "expected_results": [
-        "Header amounts reflect selected stored container sums, not a new carrier rating."
-      ],
-      "explanation_paths": [
-        "Parent selection uses PARENT_CONTAINER_ID text, not tree root metadata.",
-        "Manifest state constants are source predicates; active state distribution was not queried."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-1905754192",
         "si-aim-carrier-management"
@@ -2281,7 +2197,7 @@
       "title": "Understanding interface configuration retrieval",
       "business_question": "Do interface configuration getters execute configured steps in order?",
       "plain_answer": "The getters retrieve map headers/details, interface headers/details and flow-step rows. Only the detail-by-header getter explicitly orders by SEQUENCE. Flow-step retrieval does not execute a step and does not specify step order.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "MapName nvarchar(25); all required, no defaults.",
         "MapName nvarchar(25); all required, no defaults.",
@@ -2391,17 +2307,9 @@
         "No ACTIVE predicate appears in the reviewed interface-detail getters.",
         "Map-header Mode uses numeric(9) in one variant and numeric(1) in another."
       ],
-      "expected_results": [
-        "Configuration rows only; effective settings and execution are separate."
-      ],
-      "explanation_paths": [
-        "Map prefix is not escaped as literal text.",
-        "No ACTIVE predicate appears in the reviewed interface-detail getters.",
-        "Map-header Mode uses numeric(9) in one variant and numeric(1) in another."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-871322514",
         "si-sql-887322571",
@@ -2462,7 +2370,7 @@
       "title": "Understanding upload claims and serial staging",
       "business_question": "Does claiming an upload batch prove exclusive processing or successful delivery?",
       "plain_answer": "The batch routine updates header and linked child staging conditions and process stamps. Its claim branch can restamp rows already In Process, and downstream child scope follows the batch stamp. The serial helper inserts selected payload rows without an explicit rerun deduplication check.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "BatchId nvarchar(100), InterfaceDtlKey numeric(9), InterfaceConst nvarchar(25), required. No defaults.",
         "PROCESSSTAMP nvarchar(100), INTERFACEACTIONCODE nvarchar(25), INTERFACECONDITION nvarchar(25), required. No defaults."
@@ -2519,14 +2427,8 @@
       "expected_results": [
         "Staging-state and payload changes only."
       ],
-      "explanation_paths": [
-        "BatchId reuse can broaden child selection.",
-        "NULL interface conditions fail equality/inequality filters.",
-        "Claim result uses unordered TOP 1; later result returns all batch-stamped headers."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-410796871",
         "si-sql-654273736",
@@ -2578,8 +2480,8 @@
       "topic_id": "interface-cleanup-variants",
       "title": "Understanding interface cleanup differences",
       "business_question": "Are similarly named cleanup procedures interchangeable?",
-      "plain_answer": "No. Order cleanup 01 restricts Processed rows and includes VAS activity; cleanup 02 ignores condition and omits VAS. Receipt cleanup deletes seven table sets by stamp with one appointment link-type filter. Upload cleanup deletes linked details and headers only.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "plain_answer": "Interface cleanup differs by routine: order cleanup 01 selects Processed rows and includes VAS activity; cleanup 02 ignores condition and omits VAS. Receipt cleanup deletes seven table sets by process stamp, with one appointment link-type filter. Upload cleanup removes linked details and headers.",
+      "trigger": "",
       "input_context": [
         "RowsAffected int OUTPUT and ProcessStamp nvarchar(100), required. No defaults.",
         "RowsAffected int OUTPUT and ProcessStamp nvarchar(100), required. No defaults.",
@@ -2654,17 +2556,9 @@
         "Receipt cleanup deletes purchase-order header before detail.",
         "Upload child selection follows header link IDs, not child stamp."
       ],
-      "expected_results": [
-        "Only named staging rows are removed; this documentation executes no cleanup."
-      ],
-      "explanation_paths": [
-        "No reviewed cleanup checks transport acknowledgment.",
-        "Receipt cleanup deletes purchase-order header before detail.",
-        "Upload child selection follows header link IDs, not child stamp."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-231320234",
         "si-sql-247320291",
@@ -2720,7 +2614,7 @@
       "title": "Understanding interface error and retained-data views",
       "business_question": "Does an interface view prove delivery success or current error state?",
       "plain_answer": "The error view projects stored error fields; the detail pane selects one stored error. Three upload views combine current and retained tables with UNION distinct over selected columns. None performs delivery, retry, archive movement or freshness checks.",
-      "trigger": "Authorized caller enters the documented workflow; active UI/service binding is unverified.",
+      "trigger": "",
       "input_context": [
         "No parameters or defaults; callers may filter the view.",
         "internalerrornumber numeric(9), culture nvarchar(10), required; culture unused. No defaults.",
@@ -2797,13 +2691,8 @@
       "expected_results": [
         "Read-model rows, not a processing outcome."
       ],
-      "explanation_paths": [
-        "Views have no built-in warehouse/company/process-stamp or age filter.",
-        "Omitted processing columns may distinguish source rows that collapse in the projection."
-      ],
-      "boundaries": [
-        "Static source review only; live process execution, current configuration, application navigation and whole-process duration are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "si-sql-1008058677",
         "si-sql-1112703362",

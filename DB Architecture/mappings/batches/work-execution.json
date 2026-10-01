@@ -253,8 +253,8 @@
       "topic_id": "work-selection",
       "title": "Understanding which work is offered",
       "business_question": "Why can two users receive different work?",
-      "plain_answer": "SCALE offers work using the supplied user, warehouse, work profile, locations, containers and feature settings. A work profile is a set of execution rules. Some branches prefer assigned work, apply location/priority order or limit the candidate list. Cart selection can also rewrite instruction sequence, so this procedure must not be run as a read-only diagnostic. A profile can contain several detail rows. Some options are read without the sequence number or a defined selection order, so the settings used together need not all come from the requested sequence.",
-      "trigger": "An authorized application request to the named routines; active screen bindings/caller order are not established.",
+      "plain_answer": "SCALE selects work using the employee, warehouse, work profile, location and container context. Different eligibility and ordering rules can therefore offer different work to two users.",
+      "trigger": "The application requests candidate work for an operator.",
       "input_context": [
         "Thirteen declared inputs: workUnit nvarchar(50), containerId nvarchar(25), user nvarchar(30), workprofile nvarchar(25), workprofileSequence numeric(5), warehouse nvarchar(25), fromto int, fromLoc nvarchar(25), isSystemDirectedWork bit=0, isCartPickingWork bit=0, groupNumber int, transportContId nvarchar(25), isCcWorkUnit bit=0. Only the three bit flags have declared defaults.",
         "feature nvarchar(100), user nvarchar(30); no defaults."
@@ -304,23 +304,16 @@
         }
       ],
       "configuration_dependencies": [
-        "Some options are read by profile alone while others also use the supplied sequence; multiple sequence rows can therefore matter.",
-        "Missing or invalid top-row cap falls back to 2000 in the relevant performance branch; this does not identify its configured value.",
-        "An approved aggregate flag check cannot identify an individual operator's active profile."
+        "Some profile options are read by profile alone without a defined selection order; others also use the requested sequence. Multiple detail rows can affect which settings are combined.",
+        "The relevant performance branch falls back to a 2000-row cap when its configured cap is missing or invalid."
       ],
-      "expected_results": [
-        "Branch-dependent work candidates and ordering; cart branch may first update stored sequence."
-      ],
+      "expected_results": [],
       "explanation_paths": [
-        "Identify the applicable branch, input/filter scope and configuration before attributing a result to a particular user.",
-        "Some options are read by profile alone while others also use the supplied sequence; multiple sequence rows can therefore matter.",
-        "Missing or invalid top-row cap falls back to 2000 in the relevant performance branch; this does not identify its configured value.",
-        "An approved aggregate flag check cannot identify an individual operator's active profile."
+        "Compare the active profile and requested sequence with warehouse, work type, zone, equipment and location eligibility."
       ],
       "boundaries": [
-        "AIM describes profiles and ordered sequences generally. This procedure does not itself advance through all profile sequences.",
-        "Configured sort expressions and private business-code enumerations remain bounded review gaps; performance/legacy path equivalence is unproven.",
-        "No operational rows or procedures were executed. Current configuration, runtime timing and screen navigation remain unverified."
+        "The cart branch can update stored instruction sequence, so this routine is not a read-only diagnostic.",
+        "This routine does not itself advance through every profile sequence. Configured sort expressions and equivalence between performance and legacy paths remain unresolved."
       ],
       "evidence_refs": [
         "work-batch-51843597",
@@ -367,14 +360,17 @@
             ]
           }
         ]
-      }
+      },
+      "related_topics": [
+        "work-profile-configuration"
+      ]
     },
     {
       "topic_id": "work-monitor",
       "title": "Understanding work monitor totals",
       "business_question": "Why are work units, instructions and recently closed work different numbers?",
-      "plain_answer": "A work unit can contain several instructions. The group monitor counts distinct work units for chart groups, sums distinct-unit counts within conditions for its total, and counts instruction rows separately. Recently closed instructions come from active and inactive storage within a rolling one-hour timestamp window. Estimated time is stored planning data, not measured elapsed duration.",
-      "trigger": "An authorized application request to the named routines; active screen bindings/caller order are not established.",
+      "plain_answer": "A work unit can contain several instructions, so work-unit and instruction totals need not match. Estimated time is a planning value, not measured elapsed time.",
+      "trigger": "A work monitor requests chart and summary data.",
       "input_context": [
         "filterCriteria nvarchar(MAX), culture nvarchar(10); no defaults.",
         "No parameters."
@@ -383,7 +379,7 @@
         {
           "order": 1,
           "action": "CALL_AND_READ",
-          "explanation": "Parse warehouse filter and build the nonclosed detail-instruction chart.",
+          "explanation": "Parse the warehouse filter and select nonclosed detail instructions for the chart.",
           "objects": [
             "fn_GetMonitorFilterParameters",
             "WORK_INSTRUCTION"
@@ -398,7 +394,7 @@
         {
           "order": 2,
           "action": "READ_AND_AGGREGATE",
-          "explanation": "Compute condition-grouped units, instructions and estimated time.",
+          "explanation": "Count distinct work units within each chart condition, sum those counts for the total, count instruction rows separately and aggregate estimated time.",
           "objects": [
             "WORK_INSTRUCTION"
           ],
@@ -412,7 +408,7 @@
         {
           "order": 3,
           "action": "READ_AND_AGGREGATE",
-          "explanation": "Count recently stamped closed details in active plus inactive storage, then return six summary values after the chart.",
+          "explanation": "Count closed detail instructions in active and inactive storage whose timestamps fall within the rolling one-hour window. Return six summary result sets after the chart.",
           "objects": [
             "WORK_INSTRUCTION_VIEW"
           ],
@@ -425,22 +421,16 @@
         }
       ],
       "configuration_dependencies": [
-        "Identify warehouse, grouping, condition, counting unit and rolling time window.",
-        "Check missing or duplicate filters before interpreting an empty result; no user-specific diagnostic was executed."
+        "The warehouse filter, grouping and condition define which work contributes to each total."
       ],
       "expected_results": [
-        "Seven result sets. Empty data can yield NULL for some SUM totals, zero estimated time and zero recent-closed count."
+        "The routine returns seven result sets. Empty input can produce NULL for some sums, zero estimated time and zero recently closed instructions."
       ],
       "explanation_paths": [
-        "Identify the applicable branch, input/filter scope and configuration before attributing a result to a particular user.",
-        "Identify warehouse, grouping, condition, counting unit and rolling time window.",
-        "Check missing or duplicate filters before interpreting an empty result; no user-specific diagnostic was executed."
+        "Check missing or duplicate filters before interpreting an empty result as an empty warehouse."
       ],
       "boundaries": [
-        "A missing filter is not evidence of an empty warehouse.",
-        "The timestamp predicate does not establish exact completion-event time or throughput.",
-        "The SDK example and deployment have different result-set counts.",
-        "No operational rows or procedures were executed. Current configuration, runtime timing and screen navigation remain unverified."
+        "The rolling timestamp window does not establish exact completion-event time or throughput. The SDK example has a different result-set count."
       ],
       "evidence_refs": [
         "work-batch-1082799265",
@@ -485,8 +475,8 @@
       "topic_id": "work-monitor-drilldown",
       "title": "Understanding a work-type drilldown",
       "business_question": "Why does a work-type chart show only part of the warehouse?",
-      "plain_answer": "The work-type chart is scoped to one warehouse and one work group. It shows distinct work units by type and gives instruction and estimate totals for that same group. An unassigned or missing group value selects work with no group; it does not mean every group.",
-      "trigger": "An authorized application request to the named routines; active screen bindings/caller order are not established.",
+      "plain_answer": "The work-type chart shows distinct work units by type for one warehouse and work group, alongside instruction and estimate totals. An unassigned or missing group value selects work with no group; it does not select every group.",
+      "trigger": "",
       "input_context": [
         "filterCriteria nvarchar(MAX), culture nvarchar(10); no defaults.",
         "filterCriteria nvarchar(MAX); no default."
@@ -526,16 +516,10 @@
       "configuration_dependencies": [
         "The documented criteria format ends with a semicolon; duplicate/malformed filter values can change parsing or assignment."
       ],
-      "expected_results": [
-        "The type chart and totals are scoped to the chosen group."
-      ],
-      "explanation_paths": [
-        "Identify the applicable branch, input/filter scope and configuration before attributing a result to a particular user.",
-        "The documented criteria format ends with a semicolon; duplicate/malformed filter values can change parsing or assignment."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "AIM describes group-to-type-to-user drilldown; actual Insight navigation and deployed binding are not verified.",
-        "No operational rows or procedures were executed. Current configuration, runtime timing and screen navigation remain unverified."
+        "AIM describes a group-to-type-to-user drilldown; the active application binding determines the available navigation."
       ],
       "evidence_refs": [
         "work-batch-1114799379",
@@ -581,7 +565,7 @@
       "title": "Understanding work indicator tiles",
       "business_question": "Why can a work tile disagree with the chart?",
       "plain_answer": "Each tile asks a different question: aging work, urgent priority, held work, open/in-process work, or assigned in-process work. It counts distinct work units and evaluates the supplied caution and warning rules separately. The reviewed tiles do not include the chart's detail-instruction restriction, so their counts need not match. A recognized tile returns one row even when its count is zero. An unknown or NULL tile selector returns no result set from these branches; absence of a result is different from an empty work count.",
-      "trigger": "An authorized application request to the named routines; active screen bindings/caller order are not established.",
+      "trigger": "",
       "input_context": [
         "filterCriteria nvarchar(MAX), indicatorTileName nvarchar(100), cautionCriteria nvarchar(MAX), warningCriteria nvarchar(MAX), culture nvarchar(10); no defaults. Culture and two declared numeric variables are unused in the body.",
         "criticalCriteria nvarchar(MAX), compareValue numeric(9); no defaults."
@@ -628,18 +612,10 @@
         "Aging uses a timestamp earlier than UTC now minus one day; urgent priority is at most 10.",
         "Threshold expressions are caller input; missing/invalid expressions are not proven safe defaults."
       ],
-      "expected_results": [
-        "Recognized tile returns one row; an unknown selector returns no tile result set."
-      ],
-      "explanation_paths": [
-        "Identify the applicable branch, input/filter scope and configuration before attributing a result to a particular user.",
-        "Aging uses a timestamp earlier than UTC now minus one day; urgent priority is at most 10.",
-        "Threshold expressions are caller input; missing/invalid expressions are not proven safe defaults."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No actual count, threshold or tile activation was observed.",
-        "No universal combined severity or color is established.",
-        "No operational rows or procedures were executed. Current configuration, runtime timing and screen navigation remain unverified."
+        "Caution and warning are evaluated separately; the routine does not define a combined severity or display color."
       ],
       "evidence_refs": [
         "work-batch-1098799322",
@@ -682,8 +658,8 @@
       "topic_id": "work-inactive-history",
       "title": "Understanding inactive work storage",
       "business_question": "Why can closed work still appear after deactivation?",
-      "plain_answer": "The reviewed deactivation routines copy qualifying closed instructions to inactive storage and remove matching active rows. A combined view reads both locations, so moving a row out of the active table does not necessarily remove it from a monitor. Deactivation here moves work records; it does not perform an inventory movement.",
-      "trigger": "An authorized application request to the named routines; active screen bindings/caller order are not established.",
+      "plain_answer": "Closed work can remain visible after deactivation because monitors can read active and inactive storage together. This transfers work records; it does not move inventory.",
+      "trigger": "",
       "input_context": [
         "No parameters.",
         "internalInstructionNum numeric(9); required, no default.",
@@ -720,7 +696,7 @@
         {
           "order": 3,
           "action": "READ",
-          "explanation": "Monitors can continue reading both sources through UNION ALL.",
+          "explanation": "Read the combined work view after the transfer.",
           "objects": [
             "WORK_INSTRUCTION_VIEW"
           ],
@@ -736,17 +712,12 @@
         "Copy/delete atomicity depends on caller transaction behavior, which has not been supplied."
       ],
       "expected_results": [
-        "Inactive rows remain available to the combined view; duplicate IDs are not removed by that view."
+        "The combined view uses UNION ALL, so it preserves duplicate IDs across active and inactive storage."
       ],
-      "explanation_paths": [
-        "Identify the applicable branch, input/filter scope and configuration before attributing a result to a particular user.",
-        "The batch procedure's first TOP 10000 applies only to its header insert; later operations have wider scope.",
-        "Copy/delete atomicity depends on caller transaction behavior, which has not been supplied."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "No retention duration, scheduled frequency or immutable audit guarantee is established.",
-        "Do not execute cleanup as a help diagnostic.",
-        "No operational rows or procedures were executed. Current configuration, runtime timing and screen navigation remain unverified."
+        "Retention duration, scheduling and audit immutability depend on the surrounding system.",
+        "Cleanup changes stored records and is not a read-only diagnostic."
       ],
       "evidence_refs": [
         "work-batch-874798524",
@@ -790,8 +761,8 @@
       "topic_id": "work-group-assignment",
       "title": "Understanding grouping and assignment changes",
       "business_question": "Does adding a work unit to a group also assign a worker?",
-      "plain_answer": "The reviewed group-selection update writes the group number and sequence. It does not assign a worker. A separate unassign routine clears group, user and team fields for its selected process subset. Those database effects do not prove which application action calls them or whether the caller has permission.",
-      "trigger": "An authorized application request to the named routines; active screen bindings/caller order are not established.",
+      "plain_answer": "Changing a work group writes the group number and sequence without assigning a worker. Unassigning is a separate operation that clears group, user and team fields for the selected process subset.",
+      "trigger": "",
       "input_context": [
         "groupNumber nvarchar(50), processStamp nvarchar(100), userStamp nvarchar(30), dateTimeStamp datetime; no defaults.",
         "workunit nvarchar(50), groupNumber nvarchar(50); no defaults."
@@ -823,20 +794,13 @@
         }
       ],
       "configuration_dependencies": [
-        "Neither body validates warehouse or user authorization.",
-        "NULL group can reset sequences without a second-step match; no live calls were made."
+        "These routines do not validate warehouse or user authorization.",
+        "A NULL group can reset sequences without matching the subsequent sequencing step."
       ],
-      "expected_results": [
-        "Group/sequence updates and user/team assignment are distinct effects."
-      ],
-      "explanation_paths": [
-        "Identify the applicable branch, input/filter scope and configuration before attributing a result to a particular user.",
-        "Neither body validates warehouse or user authorization.",
-        "NULL group can reset sequences without a second-step match; no live calls were made."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Caller order, reservation, authorization and concurrency controls are not established.",
-        "No operational rows or procedures were executed. Current configuration, runtime timing and screen navigation remain unverified."
+        "Caller order, reservation, authorization and concurrency controls are not established."
       ],
       "evidence_refs": [
         "work-batch-1354800234",
@@ -879,8 +843,8 @@
       "topic_id": "work-feature-scope",
       "title": "Understanding feature scope in work selection",
       "business_question": "Can a feature work for one user when its global flag is N?",
-      "plain_answer": "In the reviewed feature resolver, global Y enables the named feature. Global N can still return Y for a matching user override; without one it returns N. Missing or unexpected configuration can return NULL, and duplicate matches can fail. These rules explain possible differences; they do not reveal anyone's current configuration.",
-      "trigger": "An authorized application request to the named routines; active screen bindings/caller order are not established.",
+      "plain_answer": "The feature resolver uses the global flag and, when the global flag is N, a matching user override.",
+      "trigger": "",
       "input_context": [
         "feature nvarchar(100), user nvarchar(30); no defaults."
       ],
@@ -900,7 +864,7 @@
         {
           "order": 2,
           "action": "RETURN",
-          "explanation": "Apply the global flag CASE and return one character or NULL.",
+          "explanation": "Return the resolved flag.",
           "objects": [
             "fn_GetFeatureEnabled"
           ],
@@ -910,20 +874,14 @@
         }
       ],
       "configuration_dependencies": [
-        "Use a separately approved exact feature/user check before stating a current result.",
-        "Removed/product-release fields are not evaluated by this function body."
+        "Global Y returns Y. Global N returns the matching user override, or N without one.",
+        "Missing or unexpected configuration can return NULL; duplicate matches can fail.",
+        "Removed and product-release fields are not evaluated by this function."
       ],
-      "expected_results": [
-        "Y, N, NULL or a propagated error are distinct outcomes."
-      ],
-      "explanation_paths": [
-        "Identify the applicable branch, input/filter scope and configuration before attributing a result to a particular user.",
-        "Use a separately approved exact feature/user check before stating a current result.",
-        "Removed/product-release fields are not evaluated by this function body."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Feature ownership, installed behavior and effective access rights cannot be inferred from prefixes or from this return alone.",
-        "No operational rows or procedures were executed. Current configuration, runtime timing and screen navigation remain unverified."
+        "This feature flag alone does not establish effective access rights or application use."
       ],
       "evidence_refs": [
         "work-batch-680701823"

@@ -1,5 +1,9 @@
 # SCALE Intelligence - next session on Astra
 
+## C22 restart entry
+
+Start with [C22 article/configuration results](_project/ARTICLE_REVIEW_C22.md), current Git state and the latest task instruction. The article pass is implemented; earlier C21 search-only next steps and its 39-miss count are historical. The current search total is 48 misses, with exact comparison in the C22 receipt.
+
 ## C21 current search continuation
 
 Four additional questions lacking a named subject now request the operation or setting instead of presenting unrelated matches. Named Work/Returns queries and identifiers remain searchable. Fresh HTTP verification preserves all **723 questions and expected IDs: 684 top-eight, 417 first, 39 misses; 723 selected-topic contracts passed**. Exactly **719 result lists are unchanged**, with zero recovered misses and zero new losses. Clarification is not retrieval recovery.

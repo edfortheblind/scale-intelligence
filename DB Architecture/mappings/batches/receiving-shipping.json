@@ -230,7 +230,7 @@
       "title": "Understanding receipt and yard links",
       "business_question": "Why can a receipt trailer link change automatically?",
       "plain_answer": "Three triggers maintain receipt-to-yard links. Receipt insertion links matching yard rows with coded status 0. An update targeting the trailer ID refreshes that link and can clear it when no matching yard row exists. A newly inserted yard record can attach existing unlinked receipts, but uses a different status rule.",
-      "trigger": "The named database event or authorized application caller; active UI bindings are unverified.",
+      "trigger": "A receipt is inserted, an UPDATE targets its TRAILER_ID column, or a yard record is inserted.",
       "input_context": [
         "AFTER INSERT on RECEIPT_HEADER; inserted can contain multiple rows.",
         "AFTER UPDATE on RECEIPT_HEADER; inserted set and UPDATE(TRAILER_ID) statement-level test.",
@@ -289,14 +289,10 @@
       "expected_results": [
         "Yard link/stamps may change; no physical trailer movement or receiving quantity changes are performed by these bodies."
       ],
-      "explanation_paths": [
-        "Check the triggering event, matching warehouse/trailer, existing link and coded status predicates before attributing a changed association.",
-        "Changing only warehouse does not satisfy UPDATE(TRAILER_ID)."
-      ],
+      "explanation_paths": [],
       "boundaries": [
         "Numeric predicates are not verified business-status labels.",
-        "AIM requires receipt/trailer association for yard processing; these triggers provide only one implementation component.",
-        "No operational records or routines were read/executed; actual settings, screen navigation, authorization and runtime are not established."
+        "AIM requires receipt/trailer association for yard processing; these triggers provide only one implementation component."
       ],
       "evidence_refs": [
         "rs-batch-720057651",
@@ -342,7 +338,7 @@
       "title": "Understanding parent container identifiers",
       "business_question": "Why did a new top-level container receive its own tree number?",
       "plain_answer": "On insertion, a parentless shipping container with a missing or negative tree-unit number receives its own internal container number as the tree unit. Existing zero/positive tree values and child containers are not changed by this trigger.",
-      "trigger": "The named database event or authorized application caller; active UI bindings are unverified.",
+      "trigger": "",
       "input_context": [
         "AFTER INSERT on SHIPPING_CONTAINER."
       ],
@@ -360,17 +356,12 @@
         }
       ],
       "configuration_dependencies": [
-        "Check parent, tree-unit value and INSERT event; later parent changes are outside this trigger."
+        "Later parent changes are outside this INSERT trigger."
       ],
-      "expected_results": [
-        "TREE_UNIT changes only for qualifying newly inserted roots."
-      ],
-      "explanation_paths": [
-        "Check parent, tree-unit value and INSERT event; later parent changes are outside this trigger."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "This does not create child containers, pack items or calculate physical capacity.",
-        "No operational records or routines were read/executed; actual settings, screen navigation, authorization and runtime are not established."
+        "This does not create child containers, pack items or calculate physical capacity."
       ],
       "evidence_refs": [
         "rs-batch-768057822"
@@ -412,8 +403,8 @@
       "topic_id": "shipment-accessorial-identifiers",
       "title": "Understanding accessorial identifier normalization",
       "business_question": "Can inserting one accessorial change an existing accessorial row?",
-      "plain_answer": "Yes. When an inserted or updated accessorial has a negative internal number, the trigger normalizes negative rows sharing its computed shipment-or-container association. The target scope can include existing rows with that association, not just the newly inserted IDs.",
-      "trigger": "The named database event or authorized application caller; active UI bindings are unverified.",
+      "plain_answer": "An insert or update with a negative accessorial internal number triggers normalization. SCALE updates negative rows sharing the computed shipment-or-container association, including existing rows outside the inserted set.",
+      "trigger": "An INSERT or UPDATE of SHIPMENT_ACCESSORIALS includes a negative internal number.",
       "input_context": [
         "AFTER INSERT and UPDATE on SHIPMENT_ACCESSORIALS; despite its suffix it handles both events."
       ],
@@ -448,13 +439,8 @@
       "expected_results": [
         "INTERNAL_NUM is normalized; no charge calculation or carrier call is in this trigger."
       ],
-      "explanation_paths": [
-        "Inspect association-key rules and trigger event before assuming a one-row effect.",
-        "Recursion behavior depends on captured body plus uncaptured engine settings and replacement values."
-      ],
-      "boundaries": [
-        "No operational records or routines were read/executed; actual settings, screen navigation, authorization and runtime are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "rs-batch-752057765"
       ],
@@ -495,8 +481,8 @@
       "topic_id": "ship-confirm-status-propagation",
       "title": "Understanding ship-confirm database changes",
       "business_question": "Does a changed shipment status prove everything was shipped?",
-      "plain_answer": "The reviewed routine writes supplied shipment, detail, container and load statuses, adjusts quantities-at-status, timestamps the records and queues matching alerts. It does not prove carrier acceptance, printing, physical departure or alert delivery. Those require evidence from the calling process.",
-      "trigger": "The named database event or authorized application caller; active UI bindings are unverified.",
+      "plain_answer": "Ship confirmation writes supplied statuses, adjusts quantities-at-status, timestamps records and queues matching alerts.",
+      "trigger": "",
       "input_context": [
         "shipNum numeric(9), loadNum numeric(9), newSts numeric(3), stsLimit numeric(3); all required, no defaults.",
         "warehouse nvarchar(25), date datetime=NULL; declared default is NULL and a NULL date is replaced with GETUTCDATE(). In a scalar-function expression use the DEFAULT argument explicitly rather than assuming procedure-style omission."
@@ -557,15 +543,10 @@
       "expected_results": [
         "No result set; persistent status/quantity-at-status writes and alert requests."
       ],
-      "explanation_paths": [
-        "The caller supplies status and limit; this body does not validate the permitted transition or shipment/load relationship.",
-        "Timezone configuration changes local calendar dates; it is not the same as UTC timestamps.",
-        "Separate statements and NOLOCK duplicate checks need caller transaction/concurrency evidence."
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "No end-to-end completion or idempotency guarantee.",
-        "Detail history ordering and nullable quantities require caller/invariant review.",
-        "No operational records or routines were read/executed; actual settings, screen navigation, authorization and runtime are not established."
+        "These writes do not establish carrier acceptance, physical departure, print output or alert delivery.",
+        "Detail-history ordering, nullable quantities and repeated-call behavior depend on caller rules."
       ],
       "evidence_refs": [
         "rs-batch-1809753850",
@@ -620,7 +601,7 @@
       "title": "Understanding receipt container identifier generation",
       "business_question": "Can the unique-container helper be used as a harmless lookup?",
       "plain_answer": "This helper generates a numeric receipt-container identifier, even though its input parameter is text. Nonnumeric input can fail conversion, and leading zeros can disappear during numeric conversion. It checks the supplied input as an external identifier and also uses it as the internal numeric receipt-container key for the UPDATE. The name does not guarantee global uniqueness or safe concurrent allocation.",
-      "trigger": "The named database event or authorized application caller; active UI bindings are unverified.",
+      "trigger": "",
       "input_context": [
         "containerId nvarchar(25); required, no default. It is used both as a proposed external identifier and in comparison with numeric INTERNAL_REC_CONT_NUM."
       ],
@@ -670,14 +651,10 @@
       "expected_results": [
         "One or two scalar result sets depending on collision branch, plus possible persistent identifier update."
       ],
-      "explanation_paths": [
-        "Clarify the caller's parameter meaning and numeric format before operational use.",
-        "No reservation, sequence allocator or collision-proof transaction is present."
-      ],
+      "explanation_paths": [],
       "boundaries": [
         "A result emitted before UPDATE is not evidence that the change succeeded.",
-        "Exact literal exclusion pattern and external caller contract remain open.",
-        "No operational records or routines were read/executed; actual settings, screen navigation, authorization and runtime are not established."
+        "Exact literal exclusion pattern and external caller contract remain open."
       ],
       "evidence_refs": [
         "rs-batch-2103678542",
@@ -720,8 +697,8 @@
       "topic_id": "locating-rule-lookup",
       "title": "Understanding locating rule retrieval",
       "business_question": "Does retrieving an active locating rule put stock away?",
-      "plain_answer": "No. This helper only returns the header matching a rule name, including inactive headers. AIM describes locating as selecting storage destinations using rule sequences and strategies; physical putaway and work creation require additional processing. Delayed locating also depends on the receiving preference.",
-      "trigger": "The named database event or authorized application caller; active UI bindings are unverified.",
+      "plain_answer": "The locating-rule helper returns a matching rule header, including inactive headers. Locating itself selects storage destinations through rule sequences and strategies; additional processing creates and performs putaway work.",
+      "trigger": "",
       "input_context": [
         "LocatingName nvarchar(25); no default."
       ],
@@ -740,19 +717,12 @@
         }
       ],
       "configuration_dependencies": [
-        "The helper has no ACTIVE filter.",
-        "AIM requires both Delayed Locating and Create Putaway Work for its documented pre-locate path. Aggregate flags do not establish a container's effective rule/preference."
+        "For the documented pre-locate path, both Delayed Locating and Create Putaway Work must be enabled in the applicable receiving preference."
       ],
-      "expected_results": [
-        "Matching header or empty result; no operational mutation."
-      ],
-      "explanation_paths": [
-        "The helper has no ACTIVE filter.",
-        "AIM requires both Delayed Locating and Create Putaway Work for its documented pre-locate path. Aggregate flags do not establish a container's effective rule/preference."
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Rule assignment, strategy execution and receiving preference are outside this body.",
-        "No operational records or routines were read/executed; actual settings, screen navigation, authorization and runtime are not established."
+        "Rule assignment and strategy execution are outside this header lookup."
       ],
       "evidence_refs": [
         "rs-batch-1175323597",
@@ -795,8 +765,8 @@
       "topic_id": "status-action-resolution",
       "title": "Understanding action-to-status mapping",
       "business_question": "Why can a status lookup return no status?",
-      "plain_answer": "The helper maps an action through generic configuration to a system-status identity, then to a numeric status in the requested functional area. Missing mappings yield NULL. Multiple qualifying status rows are assigned without ordering. It does not validate an individual transaction's permitted next step.",
-      "trigger": "The named database event or authorized application caller; active UI bindings are unverified.",
+      "plain_answer": "The status helper maps an action to a configured system-status identity, then finds its numeric status within the requested functional area. It returns NULL when a mapping is missing. It does not decide whether a particular transaction may take that action.",
+      "trigger": "",
       "input_context": [
         "stFunctionalArea nvarchar(25), stAction nvarchar(50); no defaults."
       ],
@@ -833,14 +803,8 @@
       "expected_results": [
         "Scalar numeric status or NULL; duplicate matches lack deterministic selection."
       ],
-      "explanation_paths": [
-        "Check both mapping layers and functional area through an approved configuration review.",
-        "No custom-flow, active, user or warehouse scope is applied here."
-      ],
-      "boundaries": [
-        "No current configured mapping or transaction state was read.",
-        "No operational records or routines were read/executed; actual settings, screen navigation, authorization and runtime are not established."
-      ],
+      "explanation_paths": [],
+      "boundaries": [],
       "evidence_refs": [
         "rs-batch-2113754933",
         "rs-status-aim"

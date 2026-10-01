@@ -29,7 +29,7 @@ def source_text(key, source):
                 'Local documentary guidance only; deployed application behavior and production indexing remain unestablished.')
     if source['kind'] == 'RETAINED_OBSERVATION':
         return (f"`{key}`: {link(source['path'])}; SHA-256 `{source['sha256']}`. "
-                'Timestamped aggregate evidence; the owner accepts the current replica as the documentation baseline. Individual effective settings remain unestablished.')
+                'Timestamped aggregate evidence; individual effective settings remain unestablished.')
     if source['kind'] == 'REVIEWED_SDD_CLAIM':
         if source['register_path'] == 'SDD/derived/scale-functional-reference.json':
             entry = source['claim_id'].replace('_', '-')
@@ -57,40 +57,42 @@ def source_text(key, source):
 
 def render_help(data):
     topics = data['topics']
-    cases = sum(len(t['evaluation']['cases']) for t in topics)
-    lines = ['# SCALE functionality help topics', '',
-             f'{len(topics)} bounded help topics; {cases} authored evaluation cases. '
-             'These reviewed explanations are also served by the local help prototype. Deployment reconciliation remains incomplete.', '',
-             'Answers follow what it does, what happens, what can affect it, what you can check, and sources. '
-             'Screen names in sources are documentary references; verified Insight navigation and SOPs remain separate. '
-             'No process, label, job or transaction was executed. Browser and keyboard observations were bounded; JAWS was owner accepted without a captured local run. Zoom/reflow, contrast and an intended-user session remain unobserved.', '',
-             'The [JSON library](mappings/help-topics.json) is the curated source for this reading copy. '
-             'Configuration observations retain their [scope and capture time](CONFIGURATION_VALIDATION.md).', '']
-    for index, topic in enumerate(topics, 1):
-        lines += [f"## {index}. {topic['title']}", '', f"**Question:** {topic['business_question']}", '',
-                  '**What it does.** ' + topic['plain_answer'], '', '**What happens**', '',
-                  'Trigger: ' + topic['trigger'], '']
-        lines += [f"{step['order']}. {step['explanation']} Evidence: " + ', '.join(f'`{r}`' for r in step['evidence_refs']) + '.'
-                  for step in topic['execution_steps']]
-        lines += ['', '**What can affect it**', '', bullets(topic['configuration_dependencies']),
-                  '**What you can check**', '', bullets(topic['explanation_paths']),
-                  '**Expected results and limits**', '', bullets(topic['expected_results'] + topic['boundaries']),
-                  '**More detail and sources**', '']
-        if topic.get('documentary_refinements'):
-            lines += ['Further documented behavior (these refinements are not a new execution sequence):', '']
-            lines += ['- '+r['statement']+' Evidence: `'+r['evidence_ref']+'`.' for r in topic['documentary_refinements']]
-            lines += ['']
-        for ref in topic['evidence_refs']:
-            lines += [source_text(ref, data['sources'][ref]), '']
-        lines += ['Review: `' + topic['review']['semantic_state'] + '`. '
-                  'Independent verification: `' + topic['review'].get('independent_verification', 'NOT_RECORDED') + '`.', '',
-                  '**Answer evaluation expectations**', '',
-                  'Actual local HTTP retrieval and selected-topic citation checks are reported separately in '
-                  '[the evaluation receipt](../help_app/evaluation.json). Semantic expectations below are not automatically scored.', '']
-        for case in topic['evaluation']['cases']:
-            lines += ['- ' + case['question'] + ' Expected: ' + ' '.join(case['must_explain']) +
-                      ' Must not claim: ' + ' '.join(case['must_not_claim'])]
+    titles = {t['topic_id']: t['title'] for t in topics}
+    lines = ['# SCALE functionality help', '',
+             'Understand warehouse processes, configure SCALE and diagnose common results. '
+             'Available screens and effective settings depend on your installation.', '']
+    setup = [t for t in topics if t.get('article_type') == 'configuration']
+    if setup:
+        lines += ['## Configure SCALE', '']
+        lines += ['- ['+t['title']+'](#'+t['topic_id']+')' for t in setup]
         lines += ['']
+    for topic in topics:
+        lines += ['<a id="'+topic['topic_id']+'"></a>', '', '## '+topic['title'], '', topic['plain_answer'], '']
+        if topic['trigger']:
+            lines += [topic['trigger'], '']
+        if topic['execution_steps']:
+            lines += ['### '+('How to configure' if topic.get('article_type') == 'configuration' else 'How it works'), '']
+            lines += [f"{step['order']}. {step['explanation']}" for step in topic['execution_steps']]
+            lines += ['']
+        for heading, values in [('Settings and prerequisites', topic['configuration_dependencies']),
+                                ('Results', topic['expected_results']),
+                                ('Troubleshooting', topic['explanation_paths']),
+                                ('Limits', topic['boundaries'])]:
+            if values:
+                lines += ['### '+heading, '', bullets(values), '']
+        if topic.get('related_topics'):
+            lines += ['### Related articles', '']
+            lines += ['- ['+titles[key]+'](#'+key+')' for key in topic['related_topics']]
+            lines += ['']
+        lines += ['<details>', '<summary>Technical reference and sources</summary>', '']
+        if topic.get('documentary_refinements'):
+            lines += ['Additional process details:', '']
+            lines += ['- '+r['statement']+' Source: `'+r['evidence_ref']+'`.' for r in topic['documentary_refinements']]
+            lines += ['']
+        refs = list(dict.fromkeys(topic['evidence_refs'] + [r for s in topic['execution_steps'] for r in s['evidence_refs']]))
+        for ref in refs:
+            lines += [source_text(ref, data['sources'][ref]), '']
+        lines += ['</details>', '']
     return '\n'.join(lines)
 
 

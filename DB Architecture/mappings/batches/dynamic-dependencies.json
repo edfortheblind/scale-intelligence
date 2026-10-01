@@ -2201,8 +2201,8 @@
       "topic_id": "dynamic-fixed-exec",
       "title": "Fixed procedure calls and lexical dynamic flags",
       "business_question": "Does EXEC @iError = Procedure mean the variable chooses a procedure?",
-      "plain_answer": "No. In the reviewed fixed-call forms, @iError receives the procedure return status and the procedure name is fixed. Called procedures can still change data or invoke further commands.",
-      "trigger": "Explain a cited SQL execution or unresolved dependency boundary from the captured snapshot.",
+      "plain_answer": "In a fixed procedure call, @iError receives the procedure return status; it is not executable SQL text. The called procedure can still change data or invoke further commands, so a fixed target does not make the call read-only.",
+      "trigger": "",
       "input_context": [
         "Captured module identity and source hash; no current configuration values or operational rows."
       ],
@@ -2245,14 +2245,12 @@
       "configuration_dependencies": [
         "Effective caller/default schema and system/callee behavior remain separate."
       ],
-      "expected_results": [
-        "24 of this batch’s 52 flagged modules have only fixed EXEC targets."
-      ],
+      "expected_results": [],
       "explanation_paths": [
         "DB Architecture/DYNAMIC_DEPENDENCIES.md"
       ],
       "boundaries": [
-        "No safe-to-run, read-only, successful lock or full-flow claim follows from this classification."
+        "Fixed calls do not establish successful locking or completion of the surrounding workflow."
       ],
       "evidence_refs": [
         "dynamic-dependency-1434800519",
@@ -2300,8 +2298,8 @@
       "topic_id": "dynamic-download-claims",
       "title": "Download selection changes queue state",
       "business_question": "Do the wm_RUDownload wrappers only read interface data?",
-      "plain_answer": "They update ready interface rows and process stamps before returning selected data. A returned batch is not proof of downstream processing or one atomic claim across every stage.",
-      "trigger": "Explain a cited SQL execution or unresolved dependency boundary from the captured snapshot.",
+      "plain_answer": "Download-selection routines update ready interface rows and process stamps before returning data. Selection therefore changes queue state.",
+      "trigger": "",
       "input_context": [
         "Captured module identity and source hash; no current configuration values or operational rows."
       ],
@@ -2353,16 +2351,14 @@
         }
       ],
       "configuration_dependencies": [
-        "Current interface conditions and process-stamp coordination are unobserved."
+        "Process stamps coordinate the selected records; the calling workflow determines downstream processing."
       ],
       "expected_results": [
-        "UPDATE targets are exact DOWNLOAD_* relations; stage order/budgets are source-defined."
+        "UPDATE targets are the specified DOWNLOAD_* tables, with separate source-defined stage limits."
       ],
-      "explanation_paths": [
-        "DB Architecture/DYNAMIC_DEPENDENCIES.md"
-      ],
+      "explanation_paths": [],
       "boundaries": [
-        "No acknowledgment, concurrency guarantee or whole-process success is inferred."
+        "A returned batch does not establish downstream acknowledgment or one atomic claim across every stage."
       ],
       "evidence_refs": [
         "dynamic-dependency-218796187",
@@ -2410,7 +2406,7 @@
       "title": "Configured predicates are executable SQL text",
       "business_question": "Are receipt/inventory filter expressions fully parameterized?",
       "plain_answer": "Values such as batch ID and warehouse date are bound, but stored FILTER_CONFIG_DETAIL predicate text is appended as SQL syntax. Receipt variants also mark upload/batch state. A receipt batch mark identifies rows selected for subsequent processing. It does not establish that an external system received the receipt; that outcome requires separate delivery evidence.",
-      "trigger": "Explain a cited SQL execution or unresolved dependency boundary from the captured snapshot.",
+      "trigger": "",
       "input_context": [
         "Captured module identity and source hash; no current configuration values or operational rows."
       ],
@@ -2532,7 +2528,7 @@
       "title": "Monitoring names and parameters",
       "business_question": "Does binding dates protect the monitoring table and column arguments?",
       "plain_answer": "The PM header/work monitoring wrappers concatenate table and column expressions into SQL. Passing identifier-named arguments in a parameter list does not undo that earlier syntax construction.",
-      "trigger": "Explain a cited SQL execution or unresolved dependency boundary from the captured snapshot.",
+      "trigger": "",
       "input_context": [
         "Captured module identity and source hash; no current configuration values or operational rows."
       ],
@@ -2586,14 +2582,10 @@
       "configuration_dependencies": [
         "Caller validation and schema selection are not captured."
       ],
-      "expected_results": [
-        "Result source and aggregate shape depend on constructed identifier syntax."
-      ],
-      "explanation_paths": [
-        "DB Architecture/DYNAMIC_DEPENDENCIES.md"
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "No exploit or runtime target was reproduced; metadata lookup is not a complete allowlist."
+        "A metadata lookup is not a complete allowlist for the constructed identifiers."
       ],
       "evidence_refs": [
         "dynamic-dependency-1493228720",
@@ -2639,7 +2631,7 @@
       "title": "Fixed reports and an external query",
       "business_question": "Do all PM report parameters control their dynamic query?",
       "plain_answer": "Several wrappers execute one fixed SELECT string without binding their declared report arguments. PM_SHIPPED_TODAY_BY_MINUTE uses a four-part external target whose definition is outside the local snapshot.",
-      "trigger": "Explain a cited SQL execution or unresolved dependency boundary from the captured snapshot.",
+      "trigger": "",
       "input_context": [
         "Captured module identity and source hash; no current configuration values or operational rows."
       ],
@@ -2690,14 +2682,12 @@
       "configuration_dependencies": [
         "Fixed private constants are not effective configuration evidence."
       ],
-      "expected_results": [
-        "Local fixed SELECT templates and one explicitly qualified external target are separately classified."
-      ],
+      "expected_results": [],
       "explanation_paths": [
         "DB Architecture/DYNAMIC_DEPENDENCIES.md"
       ],
       "boundaries": [
-        "No external connection or freshness observation; TRAV_EXEC_PROC output parameters are not assigned in the reviewed outer body."
+        "TRAV_EXEC_PROC does not assign its output parameters in the outer routine."
       ],
       "evidence_refs": [
         "dynamic-dependency-436196604",
@@ -2746,8 +2736,8 @@
       "topic_id": "dynamic-configuration-summary",
       "title": "Configuration summary JSON limits",
       "business_question": "Can LoadAdditionalConfigsSummary treat arbitrarily long JSON values as ordinary bound parameters?",
-      "plain_answer": "It quotes values with QUOTENAME and assembles query text, with no bound parameters at execution. QUOTENAME’s input-size limit and STRING_AGG’s non-MAX result type impose static boundaries before the query runs.",
-      "trigger": "Explain a cited SQL execution or unresolved dependency boundary from the captured snapshot.",
+      "plain_answer": "The configuration summary builds a query from JSON using QUOTENAME and STRING_AGG, then executes the text without bound parameters.",
+      "trigger": "",
       "input_context": [
         "Captured module identity and source hash; no current configuration values or operational rows."
       ],
@@ -2787,16 +2777,13 @@
         }
       ],
       "configuration_dependencies": [
-        "Recognized keys select coded branches; full family/configuration reconciliation is not credited."
+        "Recognized keys select fixed query templates."
       ],
-      "expected_results": [
-        "SELECT-template inventory supports a summary-query role within the cited construction scope."
-      ],
-      "explanation_paths": [
-        "DB Architecture/DYNAMIC_DEPENDENCIES.md"
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "Oversized values and aggregation are static concerns, not reproduced incidents; intermediate branch semantics remain partial."
+        "QUOTENAME limits input length, and the non-MAX STRING_AGG result has a size limit. Oversized input can fail before execution.",
+        "Intermediate branch semantics remain only partially documented."
       ],
       "evidence_refs": [
         "dynamic-dependency-181224046"
@@ -2841,8 +2828,8 @@
       "topic_id": "dynamic-maintenance-effects",
       "title": "Maintenance commands and partial outcomes",
       "business_question": "Does reviewing a purge or index maintenance wrapper mean it is safe to run?",
-      "plain_answer": "The reviewed maintenance paths include TRUNCATE, DELETE, ALTER INDEX and UPDATE STATISTICS. This documentation establishes construction and effect categories; it neither executes them nor confirms current targets, permissions or retention settings.",
-      "trigger": "Explain a cited SQL execution or unresolved dependency boundary from the captured snapshot.",
+      "plain_answer": "Maintenance routines can truncate tables, delete rows, rebuild indexes and update statistics. Their target selection depends on environment checks, preferences and catalog metadata. Each command has its own execution and error behavior; a partly completed run can leave earlier changes in place.",
+      "trigger": "",
       "input_context": [
         "Captured module identity and source hash; no current configuration values or operational rows."
       ],
@@ -2908,9 +2895,7 @@
       "explanation_paths": [
         "DB Architecture/DYNAMIC_DEPENDENCIES.md"
       ],
-      "boundaries": [
-        "No archive rows accessed; no maintenance/trace command run."
-      ],
+      "boundaries": [],
       "evidence_refs": [
         "dynamic-dependency-777873938",
         "dynamic-dependency-337540386",
@@ -2957,8 +2942,8 @@
       "topic_id": "dynamic-xml-and-units",
       "title": "Partial binding in XML and unit searches",
       "business_question": "Can binding XML content or a count output make the whole dynamic command parameterized?",
-      "plain_answer": "Binding one parameter protects only that value from being treated as command text. The XML helper binds XML content, but concatenates XPath and namespace syntax. The unit-reference helper binds only its count output, UMCount; the sought unit value UMToDelete is concatenated into the command. OUTPUT binding therefore does not make that input parameterized.",
-      "trigger": "Explain a cited SQL execution or unresolved dependency boundary from the captured snapshot.",
+      "plain_answer": "The XML and unit-reference helpers bind some values while constructing other parts of the SQL command as text.",
+      "trigger": "",
       "input_context": [
         "Captured module identity and source hash; no current configuration values or operational rows."
       ],
@@ -2966,7 +2951,7 @@
         {
           "order": 1,
           "action": "Separate supplied data from generated query syntax.",
-          "explanation": "GetXMLAttributeValueByAttributeName passes XML as the bound @content value. It builds the query using nodeXpath and optional xmlnsDeclarations. Those syntax inputs remain separate from the protected XML value.",
+          "explanation": "GetXMLAttributeValueByAttributeName binds XML as @content but concatenates nodeXpath and optional xmlnsDeclarations into query syntax.",
           "objects": [
             "GetXMLAttributeValueByAttributeName",
             "ITM_DoesUmReferenceExist"
@@ -2979,7 +2964,7 @@
         {
           "order": 2,
           "action": "Check which unit-search value is actually bound.",
-          "explanation": "ITM_DoesUmReferenceExist builds a query using metadata table/column names and UMToDelete. Its sp_executesql call binds UMCount as OUTPUT so the count can be returned; it does not bind the unit being searched. Neither identifier quoting nor caller input validation is established here.",
+          "explanation": "ITM_DoesUmReferenceExist concatenates metadata table/column names and UMToDelete. Its bound UMCount OUTPUT only returns the count; it does not parameterize the sought unit.",
           "objects": [
             "GetXMLAttributeValueByAttributeName",
             "ITM_DoesUmReferenceExist"
@@ -2992,7 +2977,7 @@
         {
           "order": 3,
           "action": "Retain source-level error and progress limits.",
-          "explanation": "Malformed generated syntax can fail without a local TRY/CATCH. The fallback unit-list loop has no outer current-row increment, so an unmatched first list can prevent progress. This is a static source observation; no routine was executed and no production incident was reproduced.",
+          "explanation": "Malformed generated syntax can fail without a local TRY/CATCH. The fallback unit-list loop has no outer current-row increment, so an unmatched first list can prevent progress.",
           "objects": [
             "GetXMLAttributeValueByAttributeName",
             "ITM_DoesUmReferenceExist"
@@ -3003,17 +2988,11 @@
           ]
         }
       ],
-      "configuration_dependencies": [
-        "Caller input validation and actual metadata/value lists are unobserved."
-      ],
-      "expected_results": [
-        "No current XML extraction or unit reference answer is produced by static review."
-      ],
-      "explanation_paths": [
-        "DB Architecture/DYNAMIC_DEPENDENCIES.md"
-      ],
+      "configuration_dependencies": [],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
-        "The unit fallback nonprogress edge is source-level, not reproduced; no arbitrary-input read-only guarantee."
+        "Identifier quoting and caller validation are not established by these bodies. The behavior for arbitrary inputs is not guaranteed to be read-only."
       ],
       "evidence_refs": [
         "dynamic-dependency-1016703020",
@@ -3058,8 +3037,8 @@
       "topic_id": "dynamic-script-generator",
       "title": "Generated INSERT text versus executed DML",
       "business_question": "Does sp_generate_insert_script insert the exported rows?",
-      "plain_answer": "Its constructed command reads rows with SELECT and returns INSERT statements as text. The body does not execute those emitted INSERT statements; invoking it would still read operational rows.",
-      "trigger": "Explain a cited SQL execution or unresolved dependency boundary from the captured snapshot.",
+      "plain_answer": "The script generator builds a SELECT that returns INSERT statements as text. It does not execute those emitted statements, but running the generator still reads the selected table rows.",
+      "trigger": "",
       "input_context": [
         "Captured module identity and source hash; no current configuration values or operational rows."
       ],
@@ -3108,7 +3087,7 @@
         "DB Architecture/DYNAMIC_DEPENDENCIES.md"
       ],
       "boundaries": [
-        "No extraction ran; completeness and restoration fidelity are unverified."
+        "Generated scripts are not guaranteed to provide a complete or faithful restore."
       ],
       "evidence_refs": [
         "dynamic-dependency-1953754363"
@@ -3153,8 +3132,8 @@
       "topic_id": "dynamic-catalog-null",
       "title": "Unresolved catalog references and candidate targets",
       "business_question": "Can a same-name object fill in a NULL catalog referenced_id?",
-      "plain_answer": "A same-name local object is a static candidate for an unqualified call, not an observed runtime binding. Other NULL entries describe system routines, an alias, a table created by a body, a missing staging relation or a cross-database function.",
-      "trigger": "Explain a cited SQL execution or unresolved dependency boundary from the captured snapshot.",
+      "plain_answer": "A NULL referenced_id means the catalog did not resolve an object identity. Depending on the source expression, it can represent an unqualified call, system routine, alias, runtime-created table, missing staging relation or cross-database function.",
+      "trigger": "",
       "input_context": [
         "Captured module identity and source hash; no current configuration values or operational rows."
       ],
@@ -3162,7 +3141,7 @@
         {
           "order": 1,
           "action": "Preserve the exact original catalog row and its NULL referenced_id.",
-          "explanation": "Preserve the exact original catalog row and its NULL referenced_id.",
+          "explanation": "Locate the source expression associated with the unresolved catalog reference.",
           "objects": [
             "CheckSecurityPermission",
             "POPULATE_Generic_Config_Dtl",
@@ -3181,7 +3160,7 @@
         {
           "order": 2,
           "action": "Explain source syntax and candidate identity independently.",
-          "explanation": "Explain source syntax and candidate identity independently.",
+          "explanation": "Compare the expression with available local object identities without assuming a match.",
           "objects": [
             "CheckSecurityPermission",
             "POPULATE_Generic_Config_Dtl",
@@ -3218,14 +3197,10 @@
         }
       ],
       "configuration_dependencies": [
-        "Caller/default schema, external database functions and runtime DDL remain unobserved."
+        "An unqualified name depends on caller/default-schema resolution. A same-name local object is a candidate, not proof of the runtime binding."
       ],
-      "expected_results": [
-        "120 remaining selected dependency entries receive source-backed dispositions; original 169-entry denominator is preserved."
-      ],
-      "explanation_paths": [
-        "DB Architecture/DYNAMIC_DEPENDENCIES.md"
-      ],
+      "expected_results": [],
+      "explanation_paths": [],
       "boundaries": [
         "tempSecurityCheck lacks a # prefix and is an ordinary table; no session-private lifecycle guarantee."
       ],
