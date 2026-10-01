@@ -78,7 +78,12 @@ def render_references(knowledge, topic):
     return ''.join(parts)
 
 
-def render_page(knowledge, question='', topic_id=None):
+def render_shell(title, content):
+    template = (ROOT/'help_app/index.html').read_text(encoding='utf-8')
+    return template.replace('{{TITLE}}', escape(title)).replace('{{CONTENT}}', content).encode('utf-8')
+
+
+def render_page(knowledge, question='', topic_id=None, guides=None):
     if len(question) > 500:
         raise ValueError('Use a question of 500 characters or fewer.')
     topic = knowledge.topic(topic_id) if topic_id is not None else None
@@ -108,6 +113,9 @@ def render_page(knowledge, question='', topic_id=None):
         else:
             parts.append(element('p', 'No article matched. Try the process or setting name, or browse the topics below.', ' role="status"'))
         parts.append('</section>')
+        if guides is not None:
+            from render_help_guides import guide_search
+            parts.append(guide_search(guides, question))
     if topic:
         parts += ['<article id="answer" aria-labelledby="answer-title" tabindex="-1">',
                   element('h2', topic['title'], ' id="answer-title"'), element('p', topic['what_it_does'], ' class="lead"')]
@@ -127,10 +135,12 @@ def render_page(knowledge, question='', topic_id=None):
         processes = [t for t in knowledge.topics.values() if t['topic_id'].startswith('process-') and t not in setup]
         other = [t for t in knowledge.topics.values() if t not in setup and t not in processes]
         parts += ['<nav aria-label="Browse topics" class="browse">']
+        if guides is not None:
+            from render_help_guides import guide_navigation
+            parts.append(guide_navigation(guides))
         if setup:
             parts += ['<section aria-labelledby="configure-heading"><h2 id="configure-heading">Configure SCALE</h2>', topic_list(setup), '</section>']
         parts += ['<details'+('' if question.strip() else ' open')+'><summary>Warehouse processes</summary>', topic_list(processes), '</details>',
                   '<details><summary>All other articles ('+str(len(other))+')</summary>', topic_list(other), '</details></nav>']
-    template = (ROOT/'help_app/index.html').read_text(encoding='utf-8')
     title = topic['title']+' | SCALE Knowledge' if topic else 'SCALE Knowledge'
-    return template.replace('{{TITLE}}', escape(title)).replace('{{CONTENT}}', ''.join(parts)).encode('utf-8')
+    return render_shell(title, ''.join(parts))

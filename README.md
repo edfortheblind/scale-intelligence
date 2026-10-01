@@ -14,6 +14,8 @@ Open [SCALE Knowledge](http://127.0.0.1:8765). Search by process, screen or sett
 
 The **Configure SCALE** section covers work profiles, packing preferences, printers and closing documents, receiving preferences, returns status, packing classes and criteria, and container eligibility. Procedures use documented screen and field names. Available controls and effective settings depend on the installation.
 
+**Detailed procedure guides** opens the Warehouse Mobile/RF and Cross Application manuals inside the application. Search results include matching guide sections alongside the existing articles. Each manual has a contents list, task steps, source citations and explicit limits; recorded screen observations remain distinct from documented procedures.
+
 ## Reference library
 
 - [Warehouse Mobile / RF operator guide](SDD/RF/README.md): task-by-task receiving, inventory, work, shipping and support procedures, with all 45 retained base flows mapped.

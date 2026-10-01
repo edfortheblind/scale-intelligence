@@ -16,9 +16,17 @@ The **Technical reference and sources** section contains supporting routine beha
 
 The interface uses native HTML forms, links, headings and disclosure controls. JavaScript is unnecessary. A skip link, keyboard focus styling and narrow-window layout support accessible reading.
 
+## Detailed procedure guides
+
+Open **Detailed procedure guides** from the home page or visit `/guides`. The Warehouse Mobile/RF and Cross Application manuals have section navigation and in-app source views. Search on the home page also returns **Procedure guide matches**, linking directly to the matching sections. Existing article results and guide-section results remain separate.
+
+Source views display retained text with node identities. Original scripts, live application links and figures are inactive in those views. The manuals retain operational qualifications, source disagreements and the distinction between source procedures and dated navigation observations. They do not connect to SCALE or execute an operation.
+
 ## Maintaining the library
 
-The [Warehouse Mobile / RF operator guide](../SDD/RF/README.md) supplies detailed, source-bound procedures and a separate live-navigation record. It is a linked documentation supplement; its new text is not part of the application's curated search index or the existing 723-case retrieval evaluation.
+The [Warehouse Mobile / RF operator guide](../SDD/RF/README.md) supplies detailed, source-bound procedures and a separate live-navigation record. Its in-app guide search is measured separately from the existing 723-case article-retrieval evaluation. Adding guide results does not change that evaluation's questions, expected topic identities or article rankings.
+
+`tools/help_guides.py` declares the exact guide and evidence paths. `help_app/guide-manifest.json` binds guide text, cited structured articles, source originals and evidence records to reviewed bytes. Startup refuses changed inputs. After reviewing a deliberate guide or source-binding change, rebuild with `python tools/build_help_guides.py`; verify without rewriting with `python tools/build_help_guides.py --check`. The builder checks retained original hashes and adds no network or warehouse access. Restart the server after changes.
 
 The curated article store is `DB Architecture/mappings/help-topics.json`. Topic records supplied by `mappings/batches/` must also be edited there so integration preserves the change. Keep topic IDs, source bindings and authored evaluation questions stable. `article_type: configuration` marks a setup procedure and uses the existing ordered `execution_steps`; optional `related_topics` contains topic IDs.
 
@@ -29,7 +37,8 @@ Write each explanation once. Omit empty or redundant sections. Keep project hist
 ## Verification
 
 ```powershell
-python -m unittest tests.test_help_app tests.test_help_articles tests.test_retrieval
+python -m unittest tests.test_help_guides tests.test_help_app tests.test_help_articles tests.test_retrieval
+python tools/build_help_guides.py --check
 python tools/evaluate_help.py --serve
 python tools/verify_db_docs.py
 ```

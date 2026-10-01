@@ -6,9 +6,11 @@ This catalog connects the retained SCALE documentation to the operator guides. B
 
 The Cross Application > Warehouse Mobile source branch contains **26 unique article topics** and two navigation containers. A separate retained Screen Flow reference lists **45 SRC base flows**. The inspected session menu has **16 choices**. These counts describe different things: a menu can open several flows, and a single article can contain many verification, exception and initiation branches.
 
-The inventory also includes **2 additional mobile procedure articles**, **8 mobile configuration references**, **39 related legacy RF topics**, and **5 SDK technical references**. The [structured catalog](warehouse-mobile-source-catalog.json) retains every selected article identity, source hash, source path, TOC occurrence, heading/node and missing-source flag.
+The inventory also includes **2 additional mobile procedure articles**, **9 mobile configuration references**, **39 related legacy RF topics**, **5 SDK technical references**, and **1 supporting field definition**. The [structured catalog](warehouse-mobile-source-catalog.json) retains every selected article identity, source hash, source path, TOC occurrence, heading/node and missing-source flag.
 
 The 45-flow denominator comes from [Warehouse Mobile Screen Flow](../../AIM/reading/716ff5168b6f055fc5123a31137c7c9773f29a0ef92749e52b5a9abbe9f8e64b.md), table rows n99–n323. It is an exact retained reference list, not proof that all flows are configured or executable here.
+
+A second retained [Screen Flow reference](../../AIM/reading/677fec1691b81a5d9409dc53f0e0cd33adc09616251472e05d09804a60b0a286.md), rows n97–n316, lists **44 identities through SRC440**. Its shared labels match the 45-row reference; SRC450 is absent. The union remains **45**, with no inferred release order or claim that either list exactly matches the installed application.
 
 ## Find a task from the menu
 
@@ -86,6 +88,11 @@ The 45 identities comprise 30 dedicated primary procedures, two positive-adjustm
 | 430 | Receive by header and license plate | Receiving Header-License Plate | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-initiation) |
 | 440 | Receive by trailer and license plate | Receiving Trailer ID-License Plate | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-initiation) |
 | 450 | Receive by item | Receiving Item | Dedicated primary procedure | [Read](WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md#receiving-initiation) |
+
+<a id="identify-configured-flow"></a>
+## Identify the configured flow behind a menu
+
+For a generic label such as **Nest** or **Remove**, an administrator can inspect the documented menu association: open **System Management → Activity Architect → Configure Menu**, enter Basic or Advanced search criteria, choose **Search**, and select a result to view its Detail Pane. Compare **Menu option name**, **Parent** and **SRC identifier**; **Form Id** can identify a parent record without its own SRC. These are viewing steps from [Warehouse Mobile Menu Insight](../../AIM/reading/e7b8c0dac59d9e7ba6729183550dbb140adbb73accd313c5b32a0ea8a9252235.md), n69–76 and n95–110. The lookup was not performed for this documentation; SRC340 and SRC360 remain contextual gaps.
 
 ## Additional operator tasks and branches
 
@@ -522,6 +529,8 @@ The checklist preserves section titles so detailed procedures, exceptions and co
 | Related Legacy Rf Topic | Reconciling Cycle Counts (Insight Screen & RF) | [Source](../../AIM/reading/f2525d356a78d56ce268321ce6192fd66106ddd02604c28d27e8a9a9bd3ef739.md) |
 | Related Legacy Rf Topic | Creating a Group Picking Work Sequence Record | [Source](../../AIM/reading/f8538a3157d666e9a2432468160951622c81399699a3eb7c589dffc095830d42.md) |
 | Related Legacy Rf Topic | Nesting Containers Onto Multiple Order Pallets (RF) | [Source](../../AIM/reading/faaf582c2dbb85a154c58692ad7e097c9caee4d17f470d397de863ce2ccf4d5f.md) |
+| Mobile Configuration Reference | Warehouse Mobile Screen Flow — alternate 44-row registry | [Source](../../AIM/reading/677fec1691b81a5d9409dc53f0e0cd33adc09616251472e05d09804a60b0a286.md) |
+| Supporting Field Reference | Allow Over Picking Checkbox — RF definition | [Source](../../AIM/reading/043bf62c2e4d0ce15c49729589d677288f0e768a9bd0b8b2a06d9be8a89a2b5f.md) |
 | Sdk Technical Reference | How to: Customize Style Sheet files for the RF Pages | [Source](../../SDK/reading/07b986c40f38216939aceb4ae1d4d98118699661c45f30a07146d9513d5021c3.md) |
 | Sdk Technical Reference | Warehouse Mobile Extensibility | [Source](../../SDK/reading/2065ee0a19ff55f051512667fc76b3717cdbbdf40197692ad98c06327b042956.md) |
 | Sdk Technical Reference | RF View Picks SQL - Modify Exit Point | [Source](../../SDK/reading/6b49d17ef5fcdaca299955bb8ab714a23dc77a73c17f8329814e6c852bdf563d.md) |
@@ -536,7 +545,18 @@ The checklist preserves section titles so detailed procedures, exceptions and co
 - SRC340 Nest and360 Remove do not unambiguously identify a unique UI path in the registry table.
 - SRC400 Warehouse Transfer by LP has a source registry name; the reviewed mobile inventory article supplies no distinct step sequence.
 - The SDK overview mentions a Warehouse Mobile Guide without supplying its body in that article.
-- All 80 selected article bodies are retained. Their direct references still include 12 unavailable targets: two articles and ten images. This direct-reference count is not a complete transitive dependency audit.
+- All 82 selected article bodies are retained. Their direct references still include 12 unavailable targets: two articles and ten images. This direct-reference count is not a complete transitive dependency audit.
 - Recorded source-resource completeness is preserved; article body presence does not prove all support dependencies or anchors are available.
+
+The targeted follow-up found related legacy RF instructions, but they do not complete the Warehouse Mobile sequences:
+
+| Remaining detail | Retained follow-up evidence and limit |
+| --- | --- |
+| SRC230/280 negative adjustments | [Adjusting Inventory (Desktop and RF)](../../AIM/reading/a7cf2d727b34fd54d1a4d2ebae0a553f1774916e43c15825e3292ee08de7ea9d.md), n152–161 and n233–276, supplies a negative-quantity rule and a legacy RF sequence. It does not establish the mobile prompts or sign convention. |
+| SRC350 blind receiving | [Activating Blind Receipt RF Header Fields](../../AIM/reading/99c1f9accc646473904fd9f3602405265fe01ffb38d9c770da88c0f163abbd6e.md), n57–59 and n87–89, describes RF field visibility and defaults. It does not enumerate a complete mobile header/detail sequence or required-field set. |
+| SRC340/360 Nest/Remove context | Both retained registries keep the generic labels. The documented [menu lookup](#identify-configured-flow) can identify configured context, but no installed association was inspected. |
+| SRC400 warehouse transfer by LP | [Transferring Inventory (Desktop and RF)](../../AIM/reading/63281df7d4bc9db3bb55e5c0d127645d862916c21c7e9d8d18d0ebb2e3d95878.md), n178–192 and n259–309, gives warehouse eligibility and legacy RF transfer steps. It does not establish a distinct mobile SRC400 sequence. |
+
+These are bounded source-review findings, not a claim that no further documentation exists. Procedure-detail counts remain unchanged.
 
 Source inventory and documentation are separate from performed work. No inventory was moved, received, counted, adjusted or assigned to establish this catalog.

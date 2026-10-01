@@ -112,6 +112,8 @@ With outbound short-pick handling and active replenishment, an in-transit-quanti
 
 **Allow Over Picking** describes picking more than the instruction quantity while remaining within location available quantity; it increases transaction quantity and processes a complete pick. Its prose names replenishment and work-order picking. **Allow Pick In Transit** separately permits in-transit inventory and can make on-hand quantity negative until later movement corrects it. [Work Execution, n264–265][WE].
 
+The separate **Allow Over Picking Checkbox** definition corroborates the instruction/available-quantity rule and explicitly limits its description to RF replenishment and work-order picking. Its example increases a 980-each instruction to 1,000 eaches when two 500-each cases are picked. This supports the configuration meaning; it does not settle the mobile action discrepancy below. [Allow Over Picking, n58–63][OVERPICKFIELD].
+
 The explicit **Over Pick** sequence is **Actions → Over Pick → quantity → Go → Pick Confirmation → Go**. Source descriptions conflict: the action table requires greater than **on hand** and names replenishment/component work; the detailed procedure requires greater than **pick quantity** and says replenishment only. Preserve this distinction: deployed work type, special handling and the actual prompt must resolve applicability. Do not derive a universal threshold from the conflicting passages. [Work Execution, n253–255, n737–753][WE].
 
 ### Converted UM and catch weight
@@ -361,6 +363,7 @@ Node ranges refer to retained AIM content-tree IDs and include qualification con
 | LOGIN | [Warehouse Mobile Sign in][LOGIN], n59–74. |
 | OV | [Using Warehouse Mobile][OV], n58–141. |
 | WE | [Warehouse Mobile Work Execution][WE], substantive prose n58–781 including h5 branches. |
+| OVERPICKFIELD | [Allow Over Picking Checkbox][OVERPICKFIELD], n58–63; RF configuration definition only. |
 | OVERRIDE | [Warehouse Mobile Override Pick][OVERRIDE], n57–215. |
 | CART | [Warehouse Mobile Cart Picking][CART], n57–230. |
 | BUILD | [System Built Cart Picking][BUILD], n57–134. |
@@ -385,3 +388,5 @@ Node ranges refer to retained AIM content-tree IDs and include qualification con
 [RFLOGIN]: ../../AIM/reading/e0aa50d0a6cf382f9a4619b83a12a5e773dc1f63677af6ec298b791c6fa1ef7c.md
 [RFGENERAL]: ../../AIM/reading/5ea80956b207057fdc2d841bb836a676ef62f554f56c6da1c57f1997b9f84e20.md
 [FLOW]: ../../AIM/reading/716ff5168b6f055fc5123a31137c7c9773f29a0ef92749e52b5a9abbe9f8e64b.md
+
+[OVERPICKFIELD]: ../../AIM/reading/043bf62c2e4d0ce15c49729589d677288f0e768a9bd0b8b2a06d9be8a89a2b5f.md

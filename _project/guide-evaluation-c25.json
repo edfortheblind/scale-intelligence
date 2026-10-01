@@ -1,0 +1,1620 @@
+{
+  "scope": "Frozen source-informed operator probes; actual separate guide-search HTTP results",
+  "probe_sha256": "c8cffbf5103b2932c63d874d4a177ebb8773a11ab405d5bf974cae0608e0b019",
+  "guide_manifest_sha256": "f9aea075506ff45214fe9cac367a2a1b35b32b9fe8d2da4653844ef195c753d2",
+  "exposure_limits": [
+    "Authored after reviewing C24 guides and exact retained sources; selected source-informed challenge set, not random or fully blind.",
+    "No C25 integration code, implementation tests, result rankings or current guide-search outputs were inspected before this freeze.",
+    "No old723 question dataset or expected IDs were consulted for this probe authoring. Prior aggregate675/723 ranking result was known from C24 authority.",
+    "Questions and expected guide/section anchors must remain frozen after implementation/results become visible. Any source correction is a separately recorded version, never silent expectation tuning."
+  ],
+  "grading_contract": {
+    "retrieval": "Report expected guide presence/rank in the actual separate guide-search result list; show denominator and all misses. If results offer section destinations, additionally report expected section-anchor presence/rank.",
+    "navigation": "Expected guide route must resolve; expected section anchor must exist and be reachable after rendering.",
+    "meaning": "Inspect the reached guide for required meaning and forbidden claims; ranking alone is not semantic acceptance.",
+    "scope": "No warehouse execution or installed settings acceptance; blank/unmatched/escaping checks are separate implementation checks."
+  },
+  "case_count": 24,
+  "guide_in_first_six": 24,
+  "guide_first": 23,
+  "exact_anchor_in_first_six": 15,
+  "exact_anchor_first": 14,
+  "navigation_passed": 24,
+  "guide_misses": [],
+  "exact_anchor_misses": [
+    "C25-RF-01",
+    "C25-RF-02",
+    "C25-RF-03",
+    "C25-RF-05",
+    "C25-RF-06",
+    "C25-RF-10",
+    "C25-RF-11",
+    "C25-RF-15",
+    "C25-RF-17"
+  ],
+  "results": [
+    {
+      "id": "C25-RF-01",
+      "domain": "receiving",
+      "question": "How do I receive an item against a trailer when there is more than one receipt line?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md",
+      "expected_anchor": "receiving-initiation",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99",
+        "nodes": "n223-n245",
+        "justification": "Trailer ID-Item branch selects the matching receipt line when multiple lines exist, then quantity and LP.",
+        "structured_path": "AIM/data/articles/21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99.json",
+        "original_source_sha256": "c778b2f4c14458602e67139dffde7a0b7bf1315cbe7b33f3df785ab0bf26bd13"
+      },
+      "required_meaning": "Trailer ID-Item branch selects the matching receipt line when multiple lines exist, then quantity and LP.",
+      "forbidden_claim": "Do not force a line chooser for a single relevant line.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "trailer-id-item-src-420",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: choose the initiation method — Trailer ID-Item, SRC 420"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-receiving",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Receiving"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "receipt-putaway",
+          "section_title": "Warehouse Mobile and RF work flows — 7. Receipt-putaway branches"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "multiple-receipt-lines",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: conditional check-in branches — Multiple receipt lines"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "item-src-450",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: choose the initiation method — Item, SRC 450"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "over-pick-and-in-transit-quantities",
+          "section_title": "Warehouse Mobile and RF work flows — 4. Quantity exceptions — Over-pick and in-transit quantities"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": null,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-01",
+        "frozen_expected_anchor": "receiving-initiation",
+        "exact_anchor_rank": null,
+        "reviewed_meaning_destination": "mobile-inventory#trailer-id-item-src-420",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Conditional line choice, quantity and LP remain explicit."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-02",
+      "domain": "inventory",
+      "question": "If I change a lot expiration date while transferring inventory, does it affect other locations?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md",
+      "expected_anchor": "inventory-adjustments",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "a565889030eee150ec84ace9cab22bf3668bab7fb4030ad068c3021a5ab3d20c",
+        "nodes": "n279-n281",
+        "justification": "Lot expiration update applies across all inventory locations tied to the lot; affected inventory/history is described.",
+        "structured_path": "AIM/data/articles/a565889030eee150ec84ace9cab22bf3668bab7fb4030ad068c3021a5ab3d20c.json",
+        "original_source_sha256": "774f76a97418d9a332fac5a58b0f6aee3d20f5080c5cd32fc9ebda77d9cad337"
+      },
+      "required_meaning": "Lot expiration update applies across all inventory locations tied to the lot; affected inventory/history is described.",
+      "forbidden_claim": "Do not claim only the initiating location changes.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "lot-expiration-frozen-state-and-status",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: conditional check-in branches — Lot, expiration, frozen state and status"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "negative-adjustment-and-shared-validations",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Inventory adjustments without assigned work — Negative adjustment and shared validations"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "count-add-items",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Add items or LPs during counting, SRC 210"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "gs1-scanning",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: inventory attributes and GS1 inputs — Multi-segment GS1 scanning"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "positive-adjustment-by-itemlocation-src-230",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Inventory adjustments without assigned work — Positive adjustment by item/location, SRC 230"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "immediate-dock-transfer",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Move a container directly to a shipping-dock location"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": null,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-02",
+        "frozen_expected_anchor": "inventory-adjustments",
+        "exact_anchor_rank": null,
+        "reviewed_meaning_destination": "mobile-inventory#negative-adjustment-and-shared-validations",
+        "meaning_destination_rank": 2,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Lot date changes cover all linked inventory locations; first hit discusses receiving lot prompts without this exact scope."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-03",
+      "domain": "receiving",
+      "question": "Does Skip during Nest During Check In undo the receipt I just checked in?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md",
+      "expected_anchor": "receiving-checkin-variants",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99",
+        "nodes": "n439-n447",
+        "justification": "Skip changes nesting-session availability; Cancel retains containers for nesting.",
+        "structured_path": "AIM/data/articles/21b18b42c82e530935c24cb0848bb4d666bef09aa74cbd6ce61dd8b24e457e99.json",
+        "original_source_sha256": "c778b2f4c14458602e67139dffde7a0b7bf1315cbe7b33f3df785ab0bf26bd13"
+      },
+      "required_meaning": "Skip changes nesting-session availability; Cancel retains containers for nesting.",
+      "forbidden_claim": "Do not promise receipt rollback or inventory deletion.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "nest-during-check-in-and-receive-a-nested-parent",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: conditional check-in branches — Nest during check-in and receive a nested parent"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "receiving-container-nesting",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Nest receipt containers under a parent license plate"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "quick-receive-sequence",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: execution, locating and Quick Receive — Quick Receive sequence"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-receiving",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Receiving"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "multiple-lps-and-quantities",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: conditional check-in branches — Multiple LPs and quantities"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "inbound-quality-inspection",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: conditional check-in branches — Inbound quality inspection"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": null,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-03",
+        "frozen_expected_anchor": "receiving-checkin-variants",
+        "exact_anchor_rank": null,
+        "reviewed_meaning_destination": "mobile-inventory#nest-during-check-in-and-receive-a-nested-parent",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Skip changes nesting availability and explicitly does not reverse check-in."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-04",
+      "domain": "counting",
+      "question": "I have not counted every item in a blind cycle count. What happens if I press Done?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md",
+      "expected_anchor": "blind-cycle-count",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "b35f0114248df2731e2400834bb21b5491a272ef2c5fcc94d214230a1791b787",
+        "nodes": "n112-n118",
+        "justification": "Done treats remaining quantities/count requests at the location as zero/empty.",
+        "structured_path": "AIM/data/articles/b35f0114248df2731e2400834bb21b5491a272ef2c5fcc94d214230a1791b787.json",
+        "original_source_sha256": "734862b0037c3ed17acd16632bdb7d7e03098e1a54eeea0bc445112d6a23e5ef"
+      },
+      "required_meaning": "Done treats remaining quantities/count requests at the location as zero/empty.",
+      "forbidden_claim": "Do not describe Done as a neutral exit.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "receiving-appointments-blind",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: appointments and blind receipts"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "blind-cycle-count",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Blind cycle count"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "shared-work-types",
+          "section_title": "Warehouse Mobile and RF work flows — 15. Counts, pickup/dropoff, transfers and related work"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-blind-cycle-count",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Blind Cycle Count"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "cycle-count",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Cycle count work, SRC 80"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "immediate-dock-transfer",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Move a container directly to a shipping-dock location"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 2,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-04",
+        "frozen_expected_anchor": "blind-cycle-count",
+        "exact_anchor_rank": 2,
+        "reviewed_meaning_destination": "mobile-inventory#blind-cycle-count",
+        "meaning_destination_rank": 2,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Done zero/empty consequence explicit; first hit is blind receiving, a different process."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-05",
+      "domain": "inventory",
+      "question": "How can I transfer inventory from a location that has inventory attributes?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md",
+      "expected_anchor": "location-inquiry",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "2911d55cf9d9a1c1273285ae061dfab08218101065ff163248aab18e2d76f015",
+        "nodes": "n147-n197",
+        "justification": "Use the inquiry-context transfer; the separate Inventory Management route is restricted for attribute-bearing locations.",
+        "structured_path": "AIM/data/articles/2911d55cf9d9a1c1273285ae061dfab08218101065ff163248aab18e2d76f015.json",
+        "original_source_sha256": "8305360f4cb0bb29ee7d038ae7cb972121cc155e77c716e96675381831e22611"
+      },
+      "required_meaning": "Use the inquiry-context transfer; the separate Inventory Management route is restricted for attribute-bearing locations.",
+      "forbidden_claim": "Do not present Inventory Management as an interchangeable route.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "immediate-dock-transfer",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Move a container directly to a shipping-dock location"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "edit-attributes",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Location Inquiry, SRC 270 — Edit attributes"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "transfer-by-itemlocation-src-220",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Inventory transfers without assigned work — Transfer by item/location, SRC 220"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "transfer-from-the-current-record",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Location Inquiry, SRC 270 — Transfer from the current record"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "inventory-transfers",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Inventory transfers without assigned work"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "inventory-attributes",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: inventory attributes and GS1 inputs — Inventory attributes"
+        }
+      ],
+      "expected_guide_rank": 2,
+      "expected_anchor_rank": null,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-05",
+        "frozen_expected_anchor": "location-inquiry",
+        "exact_anchor_rank": null,
+        "reviewed_meaning_destination": "mobile-inventory#edit-attributes",
+        "meaning_destination_rank": 2,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Inquiry context and separate Inventory Management restriction explicit; first hit is Immediate Dock Transfer."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-06",
+      "domain": "inventory",
+      "question": "Where are the complete Warehouse Transfer by LP steps for SRC 400?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md",
+      "expected_anchor": "warehouse-transfers",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "a565889030eee150ec84ace9cab22bf3668bab7fb4030ad068c3021a5ab3d20c",
+        "nodes": "n238-n268",
+        "justification": "Distinct LP-specific sequence remains unavailable; ordinary LP transfer and item/location warehouse transfer are not proven substitutes.",
+        "structured_path": "AIM/data/articles/a565889030eee150ec84ace9cab22bf3668bab7fb4030ad068c3021a5ab3d20c.json",
+        "original_source_sha256": "774f76a97418d9a332fac5a58b0f6aee3d20f5080c5cd32fc9ebda77d9cad337"
+      },
+      "required_meaning": "Distinct LP-specific sequence remains unavailable; ordinary LP transfer and item/location warehouse transfer are not proven substitutes.",
+      "forbidden_claim": "Do not invent LP-specific prompts or mark the sequence complete.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "license-plate-src-400-documented-identity-incomplete-sequence",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Warehouse transfers — License plate, SRC 400: documented identity, incomplete sequence"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "flow-coverage",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Flow coverage"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "transfer-by-license-plate-src-200",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Inventory transfers without assigned work — Transfer by license plate, SRC 200"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "source-coverage-and-remaining-limits",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Source coverage and remaining limits"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "every-published-src-base-flow",
+          "section_title": "Warehouse Mobile and RF source catalog — Every published SRC base flow"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "change-status-from-the-current-record",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Location Inquiry, SRC 270 — Change status from the current record"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": null,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-06",
+        "frozen_expected_anchor": "warehouse-transfers",
+        "exact_anchor_rank": null,
+        "reviewed_meaning_destination": "mobile-inventory#license-plate-src-400-documented-identity-incomplete-sequence",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "LP-specific sequence remains unestablished, no substitution from SRC390/ordinary transfer."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-07",
+      "domain": "receiving",
+      "question": "When does closing a putaway group create putaway work?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md",
+      "expected_anchor": "close-putaway-group",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "4bf6394a506302ab51f0d295d2c6159739380cb3fe96ba50f65972a616dbcf87",
+        "nodes": "n57,n70-n89",
+        "justification": "Independent Close Putaway Group can create work at closure when receiving preferences enable it.",
+        "structured_path": "AIM/data/articles/4bf6394a506302ab51f0d295d2c6159739380cb3fe96ba50f65972a616dbcf87.json",
+        "original_source_sha256": "ec4e6b1a58e7382b59f92f2d62597798c511a380728481a48c8ca88cbecbf5a0"
+      },
+      "required_meaning": "Independent Close Putaway Group can create work at closure when receiving preferences enable it.",
+      "forbidden_claim": "Do not treat closing as display-only or always creating work.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "close-putaway-group",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Close Putaway Group, SRC 40"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-close-putaway-group",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Close Putaway Group"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "receiving-putaway",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: assign and close putaway groups"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "receipt-putaway",
+          "section_title": "Warehouse Mobile and RF work flows — 7. Receipt-putaway branches"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "warehouse-mobile-receiving-inventory-and-counting",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "partial-pick",
+          "section_title": "Warehouse Mobile and RF work flows — 4. Quantity exceptions — Partial pick"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-07",
+        "frozen_expected_anchor": "close-putaway-group",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "mobile-inventory#close-putaway-group",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Close creates work only with the receiving preference enabled."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-08",
+      "domain": "receiving",
+      "question": "Can scanning a GS1 barcode in receiving submit a step automatically?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_INVENTORY_RECEIVING_FLOWS.md",
+      "expected_anchor": "gs1-scanning",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "2e8171877539bdbffdfa160ee3f30d460493fc74f832968713781c998bca6df4",
+        "nodes": "n57-n106",
+        "justification": "Auto Fill and Auto Execute are configurable; mapped SRC field names govern behavior and execution may be triggered.",
+        "structured_path": "AIM/data/articles/2e8171877539bdbffdfa160ee3f30d460493fc74f832968713781c998bca6df4.json",
+        "original_source_sha256": "3fed2b1492f6a689ebfd6c9a07ed18892b7edb6308e55c4869e31a85fca18b60"
+      },
+      "required_meaning": "Auto Fill and Auto Execute are configurable; mapped SRC field names govern behavior and execution may be triggered.",
+      "forbidden_claim": "Do not treat every scan as a harmless preview or universally auto-executing.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "gs1-scanning",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: inventory attributes and GS1 inputs — Multi-segment GS1 scanning"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-multi-segment-gs1-scanning",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Multi-segment GS1 Scanning"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "receiving-attributes",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: inventory attributes and GS1 inputs"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "observed-mobile-navigation-limits",
+          "section_title": "Cross Application: navigation and investigation — Observed mobile navigation limits"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "inventory-attributes",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: inventory attributes and GS1 inputs — Inventory attributes"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "receiving-configuration",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving prerequisites and source differences"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-08",
+        "frozen_expected_anchor": "gs1-scanning",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "mobile-inventory#gs1-scanning",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Auto Fill and Auto Execute distinct; scan is not assumed passive."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-09",
+      "domain": "work",
+      "question": "If I press Back after a system-built cart appears, are its container assignments canceled?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_WORK_FLOWS.md",
+      "expected_anchor": "system-built-carts",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "4240aa17a86f87a6eefabbd0124f06f8bcb88c4429fb0c391f98fcafd00603b9",
+        "nodes": "n93-n114",
+        "justification": "Cart assignments happen on profile selection; Back keeps the built cart.",
+        "structured_path": "AIM/data/articles/4240aa17a86f87a6eefabbd0124f06f8bcb88c4429fb0c391f98fcafd00603b9.json",
+        "original_source_sha256": "205d3cadad15515e422feb035e51ecd388174a5ccf6af1c00851f100a64cc0e5"
+      },
+      "required_meaning": "Cart assignments happen on profile selection; Back keeps the built cart.",
+      "forbidden_claim": "Do not imply Back rolls back assignment.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-work",
+          "anchor": "system-built-carts",
+          "section_title": "Warehouse Mobile and RF work flows — 11. System-built carts"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "warehouse-mobile-and-rf-work-flows",
+          "section_title": "Warehouse Mobile and RF work flows"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "observed-mobile-navigation-limits",
+          "section_title": "Cross Application: navigation and investigation — Observed mobile navigation limits"
+        },
+        {
+          "guide_id": "mobile",
+          "anchor": "start-from-the-menu",
+          "section_title": "Warehouse Mobile / RF operator guide — Start from the menu"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "user-directed-work-and-container-initiation",
+          "section_title": "Warehouse Mobile and RF work flows — 1. Sign in and choose how work starts — User-directed work and container initiation"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "cart-picking-to-tote",
+          "section_title": "Warehouse Mobile and RF work flows — 10. Operator-built carts and cart putaway — Cart picking to tote"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-09",
+        "frozen_expected_anchor": "system-built-carts",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "mobile-work#system-built-carts",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Profile selection assigns containers; Back keeps built cart."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-10",
+      "domain": "work",
+      "question": "Why is Partial Pick missing when quantity verification is enabled?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_WORK_FLOWS.md",
+      "expected_anchor": "quantity-exceptions",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0",
+        "nodes": "n211-n216,n353-n371,n656-n670",
+        "justification": "Separate Partial Pick is unavailable with quantity verification; inline partial is a separate configured branch.",
+        "structured_path": "AIM/data/articles/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.json",
+        "original_source_sha256": "30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c"
+      },
+      "required_meaning": "Separate Partial Pick is unavailable with quantity verification; inline partial is a separate configured branch.",
+      "forbidden_claim": "Do not claim permission is the only cause or conflate inline and action-based partial picks.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-work",
+          "anchor": "configuration-and-source-limits",
+          "section_title": "Warehouse Mobile and RF work flows — 16. Configuration checks and source limits"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "partial-pick",
+          "section_title": "Warehouse Mobile and RF work flows — 4. Quantity exceptions — Partial pick"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "field-validation",
+          "section_title": "Warehouse Mobile and RF work flows — 2. Read and validate the screen"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-work-execution",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Work Execution"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "grouped-instructions-and-parentchild-lps",
+          "section_title": "Warehouse Mobile and RF work flows — 3. Confirm a normal pick — Grouped instructions and parent/child LPs"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "converted-um-and-catch-weight",
+          "section_title": "Warehouse Mobile and RF work flows — 4. Quantity exceptions — Converted UM and catch weight"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": null,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-10",
+        "frozen_expected_anchor": "quantity-exceptions",
+        "exact_anchor_rank": null,
+        "reviewed_meaning_destination": "mobile-work#partial-pick",
+        "meaning_destination_rank": 2,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Separate action unavailable with quantity verification; inline branch distinct. First hit is summary configuration checklist; full answer is second."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-11",
+      "domain": "work",
+      "question": "During a short pick of serial-tracked stock, will I choose which serial numbers are removed?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_WORK_FLOWS.md",
+      "expected_anchor": "quantity-exceptions",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0",
+        "nodes": "n280-n281",
+        "justification": "Named no-count inventory actions remove serial records without asking which; Count options have different handling.",
+        "structured_path": "AIM/data/articles/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.json",
+        "original_source_sha256": "30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c"
+      },
+      "required_meaning": "Named no-count inventory actions remove serial records without asking which; Count options have different handling.",
+      "forbidden_claim": "Do not promise per-serial selection in all configurations.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-work",
+          "anchor": "short-pick",
+          "section_title": "Warehouse Mobile and RF work flows — 4. Quantity exceptions — Short pick"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "count-add-items",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Add items or LPs during counting, SRC 210"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "quantity-and-exit-actions",
+          "section_title": "Warehouse Mobile and RF work flows — 10. Operator-built carts and cart putaway — Quantity and exit actions"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "pick-confirmation",
+          "section_title": "Warehouse Mobile and RF work flows — 3. Confirm a normal pick"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "put-to-store-and-short-putaway",
+          "section_title": "Warehouse Mobile and RF work flows — 6. Putaway and destination exceptions — Put-to-store and short putaway"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "nest-during-check-in-and-receive-a-nested-parent",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: conditional check-in branches — Nest during check-in and receive a nested parent"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": null,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-11",
+        "frozen_expected_anchor": "quantity-exceptions",
+        "exact_anchor_rank": null,
+        "reviewed_meaning_destination": "mobile-work#short-pick",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "No-count serial removal versus Count/Suspense alternatives explicit."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-12",
+      "domain": "work",
+      "question": "Can I pick a nested shipping container into a tote?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_WORK_FLOWS.md",
+      "expected_anchor": "pick-to-tote",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "476839b74a6ece49ae587364b3328aa2997c3520b31a36292daffeb3854f324b",
+        "nodes": "n150-n156",
+        "justification": "Nested shipping containers are rejected; user/system-directed and cart/tote container-work support differ.",
+        "structured_path": "AIM/data/articles/476839b74a6ece49ae587364b3328aa2997c3520b31a36292daffeb3854f324b.json",
+        "original_source_sha256": "39152cfd546975884ac8d00e044d92f137bdb895d76eeeb17f2b2c1dad607d87"
+      },
+      "required_meaning": "Nested shipping containers are rejected; user/system-directed and cart/tote container-work support differ.",
+      "forbidden_claim": "Do not generalize container support to nested containers or cart/tote container work.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-work",
+          "anchor": "pick-to-tote",
+          "section_title": "Warehouse Mobile and RF work flows — 12. User/system-directed pick to tote"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "putwall-sort",
+          "section_title": "Warehouse Mobile and RF work flows — 13. Sort a tote into putwall locations"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "user-directed-work-and-container-initiation",
+          "section_title": "Warehouse Mobile and RF work flows — 1. Sign in and choose how work starts — User-directed work and container initiation"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-pick-to-tote",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Pick to Tote"
+        },
+        {
+          "guide_id": "mobile",
+          "anchor": "warehouse-mobile--rf-operator-guide",
+          "section_title": "Warehouse Mobile / RF operator guide"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "cart-picking-to-tote",
+          "section_title": "Warehouse Mobile and RF work flows — 10. Operator-built carts and cart putaway — Cart picking to tote"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-12",
+        "frozen_expected_anchor": "pick-to-tote",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "mobile-work#pick-to-tote",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Nested containers rejected; container-work support differs for cart/tote."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-13",
+      "domain": "work",
+      "question": "How does clearing a container putwall differ from clearing a shipment putwall?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_WORK_FLOWS.md",
+      "expected_anchor": "clear-putwall",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "085f6fc30899c1dd4def9d88eafb27b2e253b9df0e5171080463628f642d2c2e",
+        "nodes": "n59-n117",
+        "justification": "Shipment clearing uses packing; mobile container clearing closes a container and clears the location; eligibility applies.",
+        "structured_path": "AIM/data/articles/085f6fc30899c1dd4def9d88eafb27b2e253b9df0e5171080463628f642d2c2e.json",
+        "original_source_sha256": "e7d924b65b7b43225df5b7dc3483afc37b1c46ebfe6b4bba9e62a42ebe19285c"
+      },
+      "required_meaning": "Shipment clearing uses packing; mobile container clearing closes a container and clears the location; eligibility applies.",
+      "forbidden_claim": "Do not substitute the two completion actions or call Go passive.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-work",
+          "anchor": "clear-putwall",
+          "section_title": "Warehouse Mobile and RF work flows — 14. Clear a completed putwall"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-clear-putwall-location",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Clear Putwall Location"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "putwall-sort",
+          "section_title": "Warehouse Mobile and RF work flows — 13. Sort a tote into putwall locations"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "configuration-and-source-limits",
+          "section_title": "Warehouse Mobile and RF work flows — 16. Configuration checks and source limits"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-putwall-sort",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Putwall Sort"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "find-a-task-from-the-menu",
+          "section_title": "Warehouse Mobile and RF source catalog — Find a task from the menu"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-13",
+        "frozen_expected_anchor": "clear-putwall",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "mobile-work#clear-putwall",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Web shipment packing versus mobile container close/clear distinct."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-14",
+      "domain": "work",
+      "question": "What happens to grouped system-directed work when I select Pass or Full?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_WORK_FLOWS.md",
+      "expected_anchor": "system-directed",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "0dfff7671dd910f375497911712c01cbb5ae234764532ed55f7642cc8255b637",
+        "nodes": "n179-n190",
+        "justification": "Pass/Full warns and unassigns all units in that group; Cancel ungroups.",
+        "structured_path": "AIM/data/articles/0dfff7671dd910f375497911712c01cbb5ae234764532ed55f7642cc8255b637.json",
+        "original_source_sha256": "09e69afc0af8342ed7897ef454e49b4d6ed801c9b0077182856dd725d6bf7e97"
+      },
+      "required_meaning": "Pass/Full warns and unassigns all units in that group; Cancel ungroups.",
+      "forbidden_claim": "Do not promise reversal of completed inventory movements.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-work",
+          "anchor": "system-directed",
+          "section_title": "Warehouse Mobile and RF work flows — 9. System-directed and continuous work"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "assign-multiple-units",
+          "section_title": "Warehouse Mobile and RF work flows — 9. System-directed and continuous work — Assign multiple units"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "configuration-and-source-limits",
+          "section_title": "Warehouse Mobile and RF work flows — 16. Configuration checks and source limits"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "grouped-instructions-and-parentchild-lps",
+          "section_title": "Warehouse Mobile and RF work flows — 3. Confirm a normal pick — Grouped instructions and parent/child LPs"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "quantity-and-exit-actions",
+          "section_title": "Warehouse Mobile and RF work flows — 10. Operator-built carts and cart putaway — Quantity and exit actions"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-system-directed",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: System Directed"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-14",
+        "frozen_expected_anchor": "system-directed",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "mobile-work#system-directed",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Group warning and unassignment/Cancel ungrouping in the same section descendants; no rollback promised."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-15",
+      "domain": "work",
+      "question": "For Over Pick, must my quantity exceed the pick quantity or the on-hand quantity?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_WORK_FLOWS.md",
+      "expected_anchor": "quantity-exceptions",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0",
+        "nodes": "n253-n265,n737-n753",
+        "justification": "Retained action table and detailed procedure conflict on threshold and supported work types; applicability remains qualified.",
+        "structured_path": "AIM/data/articles/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.json",
+        "original_source_sha256": "30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c"
+      },
+      "required_meaning": "Retained action table and detailed procedure conflict on threshold and supported work types; applicability remains qualified.",
+      "forbidden_claim": "Do not assert one universal threshold from the conflicting passages.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-work",
+          "anchor": "over-pick-and-in-transit-quantities",
+          "section_title": "Warehouse Mobile and RF work flows — 4. Quantity exceptions — Over-pick and in-transit quantities"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "replenishment-and-production-work",
+          "section_title": "Warehouse Mobile and RF work flows — 8. Replenishment and production work"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "blind-cycle-count",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Blind cycle count"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "enter-the-actual-weight",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Close a shipping container — Enter the actual weight"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "short-pick",
+          "section_title": "Warehouse Mobile and RF work flows — 4. Quantity exceptions — Short pick"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "configuration-and-source-limits",
+          "section_title": "Warehouse Mobile and RF work flows — 16. Configuration checks and source limits"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": null,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-15",
+        "frozen_expected_anchor": "quantity-exceptions",
+        "exact_anchor_rank": null,
+        "reviewed_meaning_destination": "mobile-work#over-pick-and-in-transit-quantities",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "On-hand versus pick-quantity/action-family conflict retained, RF field evidence qualified."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-16",
+      "domain": "support",
+      "question": "How do I clear my assigned label printer, and does that prove a label printed?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md",
+      "expected_anchor": "assign-printer",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "d3ded73e3c4cd4c058cf366dac2337cea31f922628ab7fb9f72351db3f110daa",
+        "nodes": "n71-n90",
+        "justification": "Actions Clear clears Default Label; assignment/clear success is not physical print evidence.",
+        "structured_path": "AIM/data/articles/d3ded73e3c4cd4c058cf366dac2337cea31f922628ab7fb9f72351db3f110daa.json",
+        "original_source_sha256": "6d4c5deaf1244fe9dd8ea64f69538f29f9fd831b459cf94b1eac89f326d24d68"
+      },
+      "required_meaning": "Actions Clear clears Default Label; assignment/clear success is not physical print evidence.",
+      "forbidden_claim": "Do not claim output/connectivity was tested.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "assign-printer",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Assign or clear a label printer"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-assign-printer",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Assign Printer"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "warehouse-mobile-shipping-and-supporting-tasks",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "find-a-task-from-the-menu",
+          "section_title": "Warehouse Mobile and RF source catalog — Find a task from the menu"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "enter-the-actual-weight",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Close a shipping container — Enter the actual weight"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "close-container",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Close a shipping container"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-16",
+        "frozen_expected_anchor": "assign-printer",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "mobile-shipping#assign-printer",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Clear empties Default Label; assignment/clear do not prove physical printing."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-17",
+      "domain": "shipping",
+      "question": "Shipping container QC failed. What happens if I decline the rescan?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md",
+      "expected_anchor": "shipping-container-qc",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "7850f745854156f9817432e534eb93bf1aa0c4fe36b8f7b7c0751962fd0c42ac",
+        "nodes": "n134-n141",
+        "justification": "No returns to Container ID entry; Yes rescans.",
+        "structured_path": "AIM/data/articles/7850f745854156f9817432e534eb93bf1aa0c4fe36b8f7b7c0751962fd0c42ac.json",
+        "original_source_sha256": "8f62a94fdb77f7faded845624611f63bdfb02fd631fea2f554702b2b1f40f474"
+      },
+      "required_meaning": "No returns to Container ID entry; Yes rescans.",
+      "forbidden_claim": "Do not imply declining passes QC or releases the container.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "handle-a-count-mismatch",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Mark and inspect a shipping container for quality control — Handle a count mismatch"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-shipping-container-qc",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Shipping Container QC"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "mark-a-container-for-qc",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Mark and inspect a shipping container for quality control — Mark a container for QC"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "shipping-container-nesting",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Nest shipping containers"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "immediate-dock-transfer",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Move a container directly to a shipping-dock location"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "inspect-in-total-quantity-mode",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Mark and inspect a shipping container for quality control — Inspect in Total Quantity mode"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": null,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-17",
+        "frozen_expected_anchor": "shipping-container-qc",
+        "exact_anchor_rank": null,
+        "reviewed_meaning_destination": "mobile-shipping#handle-a-count-mismatch",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "No returns to Container ID; no QC-pass or release claim."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-18",
+      "domain": "shipping",
+      "question": "Can Immediate Dock Transfer fail if work is created after I started the transfer?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md",
+      "expected_anchor": "immediate-dock-transfer",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "838a020258ef840157ff58cbf2976040e90b5843a8ef1d4a715641e354227816",
+        "nodes": "n130-n133",
+        "justification": "Final action can reject transfer when work was created meanwhile.",
+        "structured_path": "AIM/data/articles/838a020258ef840157ff58cbf2976040e90b5843a8ef1d4a715641e354227816.json",
+        "original_source_sha256": "21a44d24927254e1a5fddae2b6ee353f2e91ce4c1399475963f8ee9932a1ed08"
+      },
+      "required_meaning": "Final action can reject transfer when work was created meanwhile.",
+      "forbidden_claim": "Do not claim entering the screen prevents concurrent work.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "immediate-dock-transfer",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Move a container directly to a shipping-dock location"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-immediate-dock-transfer",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Immediate Dock Transfer"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "receiving-locating",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Receiving: execution, locating and Quick Receive"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "shared-work-types",
+          "section_title": "Warehouse Mobile and RF work flows — 15. Counts, pickup/dropoff, transfers and related work"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "find-a-task-from-the-menu",
+          "section_title": "Warehouse Mobile and RF source catalog — Find a task from the menu"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "every-published-src-base-flow",
+          "section_title": "Warehouse Mobile and RF source catalog — Every published SRC base flow"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-18",
+        "frozen_expected_anchor": "immediate-dock-transfer",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "mobile-shipping#immediate-dock-transfer",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Concurrent work can reject final action; no reservation inference."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-19",
+      "domain": "support",
+      "question": "Why is there no camera control when I receive product in the browser?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md",
+      "expected_anchor": "image-capture",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "364c76525462d80ff1452e5fe179cda70ded716e3c95e1bd34467a95c546d7f2",
+        "nodes": "n57-n158",
+        "justification": "Built-in capture is documented for receiving on a camera-equipped device; camera is absent in browser application.",
+        "structured_path": "AIM/data/articles/364c76525462d80ff1452e5fe179cda70ded716e3c95e1bd34467a95c546d7f2.json",
+        "original_source_sha256": "728f097fae3d9a108a383c8697260f1ebff493c0694d2f604e826902547d5d92"
+      },
+      "required_meaning": "Built-in capture is documented for receiving on a camera-equipped device; camera is absent in browser application.",
+      "forbidden_claim": "Do not imply browser capture or every flow supports it.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "image-capture",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Photograph returned or damaged product during receiving"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "replenishment-and-production-work",
+          "section_title": "Warehouse Mobile and RF work flows — 8. Replenishment and production work"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-system-directed",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: System Directed"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "open-warehouse-mobile-or-the-separate-rf-entry",
+          "section_title": "Cross Application: navigation and investigation — Open Warehouse Mobile or the separate RF entry"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "check-in-and-locating-product-warehouse-mobile",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Check In and Locating Product (Warehouse Mobile)"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "legacy-rf-is-a-separate-interface",
+          "section_title": "Warehouse Mobile and RF work flows — 15. Counts, pickup/dropoff, transfers and related work — Legacy RF is a separate interface"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-19",
+        "frozen_expected_anchor": "image-capture",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "mobile-shipping#image-capture",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Camera-equipped receiving supported; camera absent in browser; other flows require extension."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-20",
+      "domain": "shipping",
+      "question": "Can I nest a shipping container onto a multiple-order pallet while dock work is still active?",
+      "expected_guide": "SDD/RF/WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md",
+      "expected_anchor": "multiple-order-pallet-nesting",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "884e0d9b035fd9daaa96ab3b7c84f3301694caa1425e78a985cd0e56995d657e",
+        "nodes": "n103-n118",
+        "justification": "Pending shipment work or pending/active dock management work prevents nesting.",
+        "structured_path": "AIM/data/articles/884e0d9b035fd9daaa96ab3b7c84f3301694caa1425e78a985cd0e56995d657e.json",
+        "original_source_sha256": "62264952fbaff8abe30facff217d986fee8ae8862a081b79a208a90059b2d2f9"
+      },
+      "required_meaning": "Pending shipment work or pending/active dock management work prevents nesting.",
+      "forbidden_claim": "Do not permit the action merely because container/carrier match.",
+      "returned_sections": [
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "multiple-order-pallet-nesting",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Nest onto or remove from a multiple-order pallet"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-shipping-nest-container",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Shipping Nest Container"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "warehouse-mobile-shipping-nest-container-mop",
+          "section_title": "Warehouse Mobile and RF source catalog — Source topics and branch checklist — Warehouse Mobile: Shipping Nest Container MOP"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "find-a-task-from-the-menu",
+          "section_title": "Warehouse Mobile and RF source catalog — Find a task from the menu"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "additional-operator-tasks-and-branches",
+          "section_title": "Warehouse Mobile and RF source catalog — Additional operator tasks and branches"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "remove-shipping-containers",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Remove one or all shipping containers from a pallet"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-20",
+        "frozen_expected_anchor": "multiple-order-pallet-nesting",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "mobile-shipping#multiple-order-pallet-nesting",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Pending shipment and pending/active dock work block nesting."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-21",
+      "domain": "cross_application",
+      "question": "Where do I investigate why carrier routing rejected a carrier?",
+      "expected_guide": "SDD/RF/CROSS_APPLICATION.md",
+      "expected_anchor": "investigate-a-process-decision",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "3118a85b2ef40c4390e2f60248b32195b1f48510ef15637efb83f72f6a343b59",
+        "nodes": "n58,n136-n190",
+        "justification": "Process History describes automated decisions, including rejected carrier reasons, with filtered results/details.",
+        "structured_path": "AIM/data/articles/3118a85b2ef40c4390e2f60248b32195b1f48510ef15637efb83f72f6a343b59.json",
+        "original_source_sha256": "9988f9ea4240f2372bb8a7e5b8f6d32d335f5aa84d7611770a07a07b9b800251"
+      },
+      "required_meaning": "Process History describes automated decisions, including rejected carrier reasons, with filtered results/details.",
+      "forbidden_claim": "Do not claim an empty initial grid proves no process ran.",
+      "returned_sections": [
+        {
+          "guide_id": "cross-application",
+          "anchor": "investigate-a-process-decision",
+          "section_title": "Cross Application: navigation and investigation — Investigate a process decision"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "cross-application-navigation-and-investigation",
+          "section_title": "Cross Application: navigation and investigation"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "open-warehouse-mobile-or-the-separate-rf-entry",
+          "section_title": "Cross Application: navigation and investigation — Open Warehouse Mobile or the separate RF entry"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "investigate-an-inventory-transaction",
+          "section_title": "Cross Application: navigation and investigation — Investigate an inventory transaction"
+        },
+        {
+          "guide_id": "mobile-shipping",
+          "anchor": "immediate-dock-transfer",
+          "section_title": "Warehouse Mobile: shipping and supporting tasks — Move a container directly to a shipping-dock location"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "pick-to-tote",
+          "section_title": "Warehouse Mobile and RF work flows — 12. User/system-directed pick to tote"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-21",
+        "frozen_expected_anchor": "investigate-a-process-decision",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "cross-application#investigate-a-process-decision",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Process History automated decisions; empty grid not proof of no execution."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-22",
+      "domain": "cross_application",
+      "question": "Where do I investigate the inventory change caused by a short pick?",
+      "expected_guide": "SDD/RF/CROSS_APPLICATION.md",
+      "expected_anchor": "investigate-an-inventory-transaction",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "a307963948eb2a4fc30f644f6e1ed63eea892c4e29103ac93dda1c8a66ba1e1d",
+        "nodes": "n58,n187-n243",
+        "justification": "Transaction History records inventory-affecting activity, including short-pick adjustment.",
+        "structured_path": "AIM/data/articles/a307963948eb2a4fc30f644f6e1ed63eea892c4e29103ac93dda1c8a66ba1e1d.json",
+        "original_source_sha256": "823fbfa4f16c58ba78c68d41ba5c13f7a4cba9b482da52a4db183694a8c3406d"
+      },
+      "required_meaning": "Transaction History records inventory-affecting activity, including short-pick adjustment.",
+      "forbidden_claim": "Do not conflate process history or copied receipt-quality wording with inventory transaction history.",
+      "returned_sections": [
+        {
+          "guide_id": "cross-application",
+          "anchor": "investigate-an-inventory-transaction",
+          "section_title": "Cross Application: navigation and investigation — Investigate an inventory transaction"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "field-validation",
+          "section_title": "Warehouse Mobile and RF work flows — 2. Read and validate the screen"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "short-pick",
+          "section_title": "Warehouse Mobile and RF work flows — 4. Quantity exceptions — Short pick"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "location-lot-and-source-lp",
+          "section_title": "Warehouse Mobile and RF work flows — 5. Override source inventory or the pick container — Location, lot and source LP"
+        },
+        {
+          "guide_id": "mobile-work",
+          "anchor": "pick-to-tote",
+          "section_title": "Warehouse Mobile and RF work flows — 12. User/system-directed pick to tote"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "cross-application-navigation-and-investigation",
+          "section_title": "Cross Application: navigation and investigation"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-22",
+        "frozen_expected_anchor": "investigate-an-inventory-transaction",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "cross-application#investigate-an-inventory-transaction",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Inventory-affecting history and short-pick example kept separate from process/receipt-quality text."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-23",
+      "domain": "cross_application",
+      "question": "How do I investigate a download or upload error without retrying it?",
+      "expected_guide": "SDD/RF/CROSS_APPLICATION.md",
+      "expected_anchor": "investigate-an-interface-error",
+      "source_justification": {
+        "basis": "Retained C24 operator guide and cited AIM text",
+        "article_id": "457eeece9590b897398d6f0c472b8a6330575513b8ad5e7735e631ae9ef95c8d",
+        "nodes": "n58,n123-n143",
+        "justification": "Interface Error Insight filters and displays errors; viewing does not retry or resolve them.",
+        "structured_path": "AIM/data/articles/457eeece9590b897398d6f0c472b8a6330575513b8ad5e7735e631ae9ef95c8d.json",
+        "original_source_sha256": "c77a6c3b7b55236897feea79a127bb3dfbf13f2ca038ec258d54ff09533b2459"
+      },
+      "required_meaning": "Interface Error Insight filters and displays errors; viewing does not retry or resolve them.",
+      "forbidden_claim": "Do not claim search/retrieval or reprocessing was executed in the navigation inspection.",
+      "returned_sections": [
+        {
+          "guide_id": "cross-application",
+          "anchor": "investigate-an-interface-error",
+          "section_title": "Cross Application: navigation and investigation — Investigate an interface error"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "cross-application-navigation-and-investigation",
+          "section_title": "Cross Application: navigation and investigation"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "find-a-document",
+          "section_title": "Cross Application: navigation and investigation — Find a document"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "investigate-an-inventory-transaction",
+          "section_title": "Cross Application: navigation and investigation — Investigate an inventory transaction"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "investigate-a-process-decision",
+          "section_title": "Cross Application: navigation and investigation — Investigate a process decision"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "transfer-by-itemlocation-src-220",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Inventory transfers without assigned work — Transfer by item/location, SRC 220"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-23",
+        "frozen_expected_anchor": "investigate-an-interface-error",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "cross-application#investigate-an-interface-error",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Search/list investigation separate from retry/clear and observed-only fields."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    },
+    {
+      "id": "C25-RF-24",
+      "domain": "cross_application",
+      "question": "Can I use Manage SOPs as the procedure for uploading into Document Management Insight?",
+      "expected_guide": "SDD/RF/CROSS_APPLICATION.md",
+      "expected_anchor": "find-a-document",
+      "source_justification": {
+        "basis": "C24 sanitized navigation observation and explicitly documented evidence gap",
+        "article_id": null,
+        "nodes": null,
+        "justification": "Cross Application guide distinguishes observed Manage SOPs from Document Management Insight; no full create/edit/delete procedure established.",
+        "live_record": "SDD/RF/warehouse-mobile-live-navigation.json"
+      },
+      "required_meaning": "Cross Application guide distinguishes observed Manage SOPs from Document Management Insight; no full create/edit/delete procedure established.",
+      "forbidden_claim": "Do not invent an upload path from visible labels or equate the two screens.",
+      "returned_sections": [
+        {
+          "guide_id": "cross-application",
+          "anchor": "find-a-document",
+          "section_title": "Cross Application: navigation and investigation — Find a document"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "cross-application-navigation-and-investigation",
+          "section_title": "Cross Application: navigation and investigation"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "investigate-an-interface-error",
+          "section_title": "Cross Application: navigation and investigation — Investigate an interface error"
+        },
+        {
+          "guide_id": "cross-application",
+          "anchor": "investigate-an-inventory-transaction",
+          "section_title": "Cross Application: navigation and investigation — Investigate an inventory transaction"
+        },
+        {
+          "guide_id": "mobile-catalog",
+          "anchor": "identify-configured-flow",
+          "section_title": "Warehouse Mobile and RF source catalog — Identify the configured flow behind a menu"
+        },
+        {
+          "guide_id": "mobile-inventory",
+          "anchor": "license-plate-src-400-documented-identity-incomplete-sequence",
+          "section_title": "Warehouse Mobile: receiving, inventory and counting — Warehouse transfers — License plate, SRC 400: documented identity, incomplete sequence"
+        }
+      ],
+      "expected_guide_rank": 1,
+      "expected_anchor_rank": 1,
+      "expected_guide_http_status": 200,
+      "expected_anchor_exists": true,
+      "semantic_quality": "REQUIRED_MEANING_SUPPORTED_IN_REVIEWED_DESTINATION",
+      "meaning_review": {
+        "id": "C25-RF-24",
+        "frozen_expected_anchor": "find-a-document",
+        "exact_anchor_rank": 1,
+        "reviewed_meaning_destination": "cross-application#find-a-document",
+        "meaning_destination_rank": 1,
+        "required_meaning_supported": true,
+        "forbidden_claim_found": false,
+        "review_note": "Manage SOPs remains separate; found article supports only image search/view, not upload/edit/delete."
+      },
+      "http_stage_semantic_quality": "REQUIRES_INDEPENDENT_MEANING_REVIEW"
+    }
+  ],
+  "semantic_review": {
+    "scope": "Semantic inspection of reached source-informed probe destinations and adjacent/child content; not installed operations or a random holdout",
+    "probe_sha256": "c8cffbf5103b2932c63d874d4a177ebb8773a11ab405d5bf974cae0608e0b019",
+    "guide_manifest_sha256": "f9aea075506ff45214fe9cac367a2a1b35b32b9fe8d2da4653844ef195c753d2",
+    "questions_or_expectations_changed": false,
+    "direct_results_vs_root_http_differences": [],
+    "expected_guide_top6": 24,
+    "exact_expected_anchor_top6": 15,
+    "exact_expected_anchor_first": 14,
+    "exact_anchor_misses_preserved": [
+      "C25-RF-01",
+      "C25-RF-02",
+      "C25-RF-03",
+      "C25-RF-05",
+      "C25-RF-06",
+      "C25-RF-10",
+      "C25-RF-11",
+      "C25-RF-15",
+      "C25-RF-17"
+    ],
+    "meaning_available_from_top6": 24,
+    "complete_meaning_destination_first": 20
+  },
+  "publication_note": "Questions were authored before C25 code/results. Source-supported additions did not change questions or expected anchors. Later presentation-only changes did not change guide text, manifest or ranking."
+}

@@ -8,7 +8,9 @@ import socket
 from urllib.parse import parse_qs, unquote, urlsplit
 
 from help_knowledge import Knowledge, ROOT
-from render_help_page import render_page
+from help_guides import GuideLibrary
+from render_help_page import render_page, render_shell
+from render_help_guides import guide_navigation, render_guide, render_source, render_evidence
 
 ASSETS = {'/style.css': ('style.css', 'text/css; charset=utf-8')}
 
@@ -16,8 +18,9 @@ ASSETS = {'/style.css': ('style.css', 'text/css; charset=utf-8')}
 class HelpHandler(BaseHTTPRequestHandler):
     server_version = 'SCALEHelp/1'
 
-    def __init__(self, *args, knowledge, **kwargs):
+    def __init__(self, *args, knowledge, guides, **kwargs):
         self.knowledge = knowledge
+        self.guides = guides
         super().__init__(*args, **kwargs)
 
     def log_message(self, format, *args):
@@ -58,7 +61,13 @@ class HelpHandler(BaseHTTPRequestHandler):
                 values = parse_qs(target.query, keep_blank_values=True)
                 if set(values) - {'q'} or len(values.get('q', [''])) != 1:
                     raise ValueError('Provide one q parameter.')
-                return self.respond(200, render_page(self.knowledge, question=values.get('q', [''])[0]), 'text/html; charset=utf-8')
+                return self.respond(200, render_page(self.knowledge, question=values.get('q', [''])[0], guides=self.guides), 'text/html; charset=utf-8')
+            if path == '/guides':
+                return self.respond(200, render_shell('Procedure guides | SCALE Knowledge', guide_navigation(self.guides)), 'text/html; charset=utf-8')
+            for prefix, renderer in [('/guide/', render_guide), ('/guide-source/', render_source), ('/guide-evidence/', render_evidence)]:
+                if path.startswith(prefix):
+                    title, content = renderer(self.guides, path.removeprefix(prefix))
+                    return self.respond(200, render_shell(title+' | SCALE Knowledge', content), 'text/html; charset=utf-8')
             if path.startswith('/topic/'):
                 return self.respond(200, render_page(self.knowledge, topic_id=path.removeprefix('/topic/')), 'text/html; charset=utf-8')
             if path in ASSETS:
@@ -71,6 +80,15 @@ class HelpHandler(BaseHTTPRequestHandler):
                 if set(values) - {'q'} or len(values.get('q', [''])) != 1:
                     raise ValueError('Provide one q parameter.')
                 return self.respond(200, self.knowledge.search(values.get('q', [''])[0]))
+            if path == '/api/guides':
+                return self.respond(200, {'manifest_sha256': self.guides.manifest_sha256, 'guides': self.guides.listing()})
+            if path.startswith('/api/guides/'):
+                return self.respond(200, self.guides.guides[path.removeprefix('/api/guides/')])
+            if path == '/api/guide-search':
+                values = parse_qs(target.query, keep_blank_values=True)
+                if set(values) - {'q'} or len(values.get('q', [''])) != 1:
+                    raise ValueError('Provide one q parameter.')
+                return self.respond(200, self.guides.search(values.get('q', [''])[0]))
             if path == '/api/topics':
                 return self.respond(200, [{'topic_id': t['topic_id'], 'title': t['title']} for t in self.knowledge.topics.values()])
             if path.startswith('/api/topics/'):
@@ -98,9 +116,10 @@ class LocalHelpServer(ThreadingHTTPServer):
         super().server_bind()
 
 
-def create_server(port=8765, knowledge=None):
+def create_server(port=8765, knowledge=None, guides=None):
     knowledge = knowledge or Knowledge()
-    return LocalHelpServer(('127.0.0.1', port), partial(HelpHandler, knowledge=knowledge))
+    guides = guides or GuideLibrary()
+    return LocalHelpServer(('127.0.0.1', port), partial(HelpHandler, knowledge=knowledge, guides=guides))
 
 
 if __name__ == '__main__':

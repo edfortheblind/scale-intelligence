@@ -5,7 +5,7 @@ The inspected SCALE menu groups seven entries under **Cross Application**. Start
 | Entry | Purpose or observed interface | Observed route |
 | --- | --- | --- |
 | Configuration | Configuration application; the inspected page included Manage SOPs. | `/config` |
-| Document Management Insight | Find documents by reference, type/category, file name and other criteria. | `/scale/insights/4105` |
+| Document Management Insight | Find and view image records captured through Warehouse Mobile receiving. | `/scale/insights/4105` |
 | Interface Error Insight | Investigate errors reported by download/upload processes. | `/scale/insights/3054` |
 | Process History Insight | Investigate recorded automated decisions and process actions. | `/scale/insights/3066` |
 | RF | Separate legacy RF sign-on route. | `/RF/logon.aspx` |
@@ -16,9 +16,18 @@ Screen labels, filter names and empty grids were observed directly. No search wa
 
 ## Find a document
 
+**Document Management Insight** searches and displays image records captured with Warehouse Mobile's image-capture feature. For receipt photographs, use the reference recorded during receiving and the applicable reference type; the same reference text in another workflow need not identify the same record. The [image-capture procedure](WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md#image-capture) explains the receiving-device workflow that creates these records.
+
+1. Open **Document Management Insight**.
+2. Enter the relevant **Basic Criteria** in the Filter Pane, such as **Reference ID**, **Reference Type**, **Reference Category**, **Notes**, **File Name** and **Company**.
+3. Select **Apply Filter**. Matching image records appear in the **List Pane**.
+4. Select a result to display its field values in the **Detail Pane**. The list identifies search results; the detail pane describes the selected record.
+
+Source: [Using the Document Management Insight Screen](../../AIM/reading/0e58d45db8542fda040e5a9f94aa2535fa63575435190bec2e1e65bf78adbc76.md), nodes n56–n89 and n101–n136. This retained article was found through content/search references rather than the current TOC. It documents search and viewing; it does not supply upload, download, edit or delete steps for this screen.
+
 The observed **Document Management Insight** has these Basic Criteria fields: **Reference ID**, **Reference Type**, **Reference Category**, **Notes**, **File Name**, **Company**, **Warehouse**, **From Date Time** and **To Date Time**. Its grid exposes **Reference ID**, **Reference Type**, **Reference Category**, **Notes**, **File Name** and **Date Time Stamp**.
 
-Use the reference and document context supplied by your workflow to choose criteria. Do not assume that documents for one receiving reference are documents for another reference type. The screen also exposes **Advanced Criteria**, a filter toolbar, column selection and an **Actions** menu. This review established their presence; it did not establish available record actions, upload/delete permissions, file contents or a successful document retrieval. No dedicated retained AIM article with this installed screen's title was found in the current TOC, so a full create/edit/delete procedure is not invented from its labels.
+The screen also exposes **Advanced Criteria**, a filter toolbar, column selection and an **Actions** menu. The live review established their presence; it did not establish available record actions, upload/delete permissions, file contents or a successful document retrieval. Observed fields and the retained article's field list differ in places; use the controls available in the installed screen without assuming that unobserved fields or actions are enabled.
 
 Configuration's inspected **Manage SOPs** page is a different interface. It showed **Document Id**, **Document Upload Status**, **User** and **Date**, with **Upload Document**, **Back** and a disabled **Delete** control on an empty grid. It does not establish the behavior of Document Management Insight. No upload or deletion was performed.
 
