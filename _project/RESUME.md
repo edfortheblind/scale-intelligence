@@ -1,5 +1,7 @@
 # Resume SCALE Intelligence
 
+C15 owner direction: freeze deployed process behavior/timing as the last workstream. Continue the other source, help, SDD and document-fidelity work first. The deployment measure remains 0/34 and required; see [deployment freeze](DEPLOYMENT_FREEZE_C15.md), [active completion audit](ACTIVE_COMPLETION_AUDIT_C15.md) and [C15 receipt](continuation15-20260930.json). C14 receipts below remain historical.
+
 Start with [the master prompt](../03_SCALE_INTELLIGENCE_MASTER_PROMPT.md), [status](../PROJECT_STATUS.md), [section report](COMPLETION_REPORT.md), [current C14 receipt](continuation14-20260930.json) and [owner scope](owner-scope-continuation14.json). The C13/C12 receipts, [detailed Sol restart prompt](../04_SCALE_SOL_RESTART_PROMPT.md), and C11 receipts are historical evidence; preserve their bytes.
 
 - The owner confirms that the replica is current. Document the captured sources as-is; do not request a SCALE version/build as a prerequisite or infer unseen effective configuration.

@@ -2,6 +2,8 @@
 
 The knowledge foundation is incomplete. Percentages below measure named tasks against explicit captured denominators; there is no defensible overall completion percentage. Local files and the existing private GitHub repository; external deployment and OneDrive upload are outside scope.
 
+The owner has frozen deployed process behavior and correlated timing as the final workstream. Its 0/34 measure remains open and required; see [the deployment freeze](DEPLOYMENT_FREEZE_C15.md). Other captured percentages retain their original denominators. The [active completion audit](ACTIVE_COMPLETION_AUDIT_C15.md) identifies measures whose ceiling is a documented disposition rather than missing work.
+
 | Section | Task | Complete / total | Progress | Meaning |
 | --- | --- | ---: | ---: | --- |
 | A | Functional object roles | 1,655 / 1,656 | 99.94% | Bounded role evidence; not full routine or deployment acceptance. |

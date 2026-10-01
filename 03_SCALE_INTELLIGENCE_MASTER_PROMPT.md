@@ -1,5 +1,7 @@
 # SCALE Intelligence master continuation prompt
 
+Latest owner sequencing: deployed process behavior and correlated timing are frozen as the final workstream until the remaining locally supportable work is complete. Preserve the 0/34 deployment measure and its required evidence; see [deployment freeze](_project/DEPLOYMENT_FREEZE_C15.md), [active completion audit](_project/ACTIVE_COMPLETION_AUDIT_C15.md) and [C15 receipt](_project/continuation15-20260930.json). The C14 receipt below remains historical, not evidence that deployment was completed.
+
 Revision: SCALE-BRAIN-CONTINUATION-1.17, 2026-09-30.
 
 The [C14 receipt](_project/continuation14-20260930.json) and [owner scope decision](_project/owner-scope-continuation14.json) are the current checkpoint. The C13/C12 receipts, [detailed Sol restart prompt](04_SCALE_SOL_RESTART_PROMPT.md) and [C11 concern dispositions](_project/C11_CONCERN_DISPOSITIONS.md) remain historical instructions and evidence. This master retains the project-wide scope.

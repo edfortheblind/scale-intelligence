@@ -1,5 +1,13 @@
 # SCALE Intelligence project status
 
+## C15 owner sequencing
+
+The owner froze deployed process behavior/timing as the final workstream while the remaining SCALE base architecture, help, SDD and document-fidelity work continues. Deployment reconciliation stays **0/34**, and correlated whole-process timing remains unestablished. The [deployment freeze](_project/DEPLOYMENT_FREEZE_C15.md) preserves the requirement for a later owner-planned strategy; it is not a completion claim. The [active completion audit](_project/ACTIVE_COMPLETION_AUDIT_C15.md) distinguishes source work from ratios that cannot truthfully reach 100% by reclassification. The [C15 receipt](_project/continuation15-20260930.json) binds this packet; C14 below remains historical.
+
+The two-page Insight Architect PDF now has an exact [20/20 retained-node disposition](SDD/derived/insight-architect-node-disposition.json): 12 nodes cited in existing reviewed records and eight classified without new claim/citation credit. Read-only Word export and PDF-save attempts opened a byte-identical private copy of the smallest DOCX but produced no PDF; full DOCX layout review remains open.
+
+Seven subject-bearing reformulations of the known specific retrieval misses returned the reviewed topic in the first eight in **7/7** fresh loopback HTTP checks, first in **2/7**. They were written after inspecting the misses; the original **39** misses and authored-case results remain unchanged. [Diagnostic result lists](_project/retrieval-context-probe-continuation15.json).
+
 Continuation 14, 2026-09-30. The owner accepted and closed JAWS without a captured local JAWS run, directed SCALE base-only help, and identified `dbo.Interface_Item_Failure_1024` as Shawn's custom table outside SCALE DB architecture. Deployment mapping with correlated timings remains required.
 
 [Owner scope decision](_project/owner-scope-continuation14.json) · [Current C14 receipt](_project/continuation14-20260930.json) · [Master continuation prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) · [Historical C13 receipt](_project/continuation13-20260930.json) · [Historical C11 concern dispositions](_project/C11_CONCERN_DISPOSITIONS.md).
