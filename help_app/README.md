@@ -1,5 +1,9 @@
 # SCALE Knowledge local help
 
+## C21 current search behavior
+
+Generic error/result questions and unnamed current-warehouse setting questions now request the missing subject. Named processes and identifiers remain searchable. Fresh HTTP checks preserve **684/723 top-eight, 417 first, 39 misses and 723/723 selected-topic contracts**. Four prior misses now clarify; 719 result lists are identical, with no retrieval loss or recovery. Ranking, indexed content and answers are unchanged. See [C21 evidence and limits](../_project/RETRIEVAL_REPAIR_C21.md), [exact case comparison](../_project/retrieval-change-continuation21.json) and [23 preserved known scenarios](../_project/help-question-continuation21.json). Earlier evaluation sections below are historical checkpoints.
+
 Search reviewed explanations, read their ordered steps and open the exact cited passages. The application uses the existing curated knowledge library. The owner accepts the current replica as the documentation baseline; version/build is not a prerequisite for using these explanations.
 
 The current SDD entry is the [SCALE Functionality Reference](../SDD/SCALE_FUNCTIONAL_REFERENCE.md), with an equivalent [printable PDF](<../output/pdf/SCALE Functionality Reference SDD.pdf>) and a [technical source-binding register](../SDD/derived/scale-functional-reference.json). Its 86 entries across 14 chapters synthesize 181 selected records from seven SCALE sources. Implementation examples remain conditional reference guidance; they do not establish core defaults or TAB configuration. Client names and other-product material are excluded from the central reference. Earlier named reading copies remain historical provenance, not competing active SDDs.

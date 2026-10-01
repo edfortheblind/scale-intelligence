@@ -1,5 +1,13 @@
 # SCALE Intelligence master continuation prompt
 
+## C21 current search continuation
+
+Four additional questions lacking a named subject now request the operation or setting instead of presenting unrelated matches. Named Work/Returns queries and identifiers remain searchable. Fresh HTTP verification preserves all **723 questions and expected IDs: 684 top-eight, 417 first, 39 misses; 723 selected-topic contracts passed**. Exactly **719 result lists are unchanged**, with zero recovered misses and zero new losses. Clarification is not retrieval recovery.
+
+Read [C21 repair and remaining concerns](_project/RETRIEVAL_REPAIR_C21.md), [exact comparison](_project/retrieval-change-continuation21.json), and [validation checkpoint](_project/continuation21-20261001.json) before continuing. Four general ranking experiments and two prose candidates supplied no acceptable improvement and were not integrated. Independently authored source probes preserved 11/12 top-eight and 7 first; this selected sample is not a random holdout. All 23 in-scope known scenarios were preserved without new semantic acceptance credit.
+
+**Next active work:** the 39 remaining raw misses need source/intent evidence or a distinct justified retrieval design. Reuse the recorded case dispositions and rejected experiments; do not repeat the same tuning or rewrite questions to claim success. The single neutral SCALE reference, C20 archive boundary, closed collection/display/JAWS acceptance, and frozen **0/34** deployment/timing remain in force. C21 supersedes older current/next-task wording only for search continuation; earlier receipts remain historical. Normal authorized private publication and exact Git parity are verified separately after commit.
+
 ## C20 current lifecycle instructions
 
 C20 archived **52 unused SDD files (91,572,429 bytes)** with exact byte preservation and restoration mappings. Seven SCALE originals and extracted bodies remain active; the central functionality reference, its equivalent PDF, mixed historical review registers and help/evaluation are unchanged. Read the [archive disposition and prompt audit](_project/ARCHIVE_DISPOSITION_C20.md) before following older source paths. Ordinary work must not read archive payload; retired-source counts are metadata attestations, not fresh source verification.
@@ -8,7 +16,7 @@ Root prompts were checked against current consumers. **01/02 remain exact-byte a
 
 C20 supersedes earlier statements that all nine originals, eight extraction bodies or four older PDF exports remain at their original active paths. Historical receipts retain their original bytes and checkpoint meaning. Archive verification does not constitute a new PDF visual review or full retrieval evaluation. The next product task remains source-grounded resolution of the 39 search gaps; current owner acceptance stays closed and deployment/timing stays frozen at 0/34. Normal authorized private publication requires recorded commit and remote parity.
 
-Revision: SCALE-BRAIN-CONTINUATION-1.20, 2026-10-01.
+Revision: SCALE-BRAIN-CONTINUATION-1.21, 2026-10-01.
 
 ## C19 current scope
 

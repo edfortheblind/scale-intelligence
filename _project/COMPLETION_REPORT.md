@@ -62,9 +62,9 @@ C20 lifecycle: **7 active originals** were hash verified; **2 retired originals*
 
 ## Retrieval comparison
 
-On the unchanged 721-question subset, expected-topic top-eight retrieval changed from 682 to 682. The 2 new cases retrieve 2 expected topics in the first eight. The frozen historical baseline has 725 cases. Two other-product questions are excluded and two named implementation questions have neutral replacements. These scope changes are separately counted, never treated as recovered misses. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.
+On the unchanged 723-question subset, expected-topic top-eight retrieval changed from 684 to 684. No cases were added or rewritten. 4 questions lacking a named subject now request context; 719 result lists are unchanged. No original miss was recovered and no new miss was introduced. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.
 
-[Exact comparison and remaining case IDs](retrieval-change-continuation19.json).
+[Exact comparison and remaining case IDs](retrieval-change-continuation21.json).
 
 ## Owner acceptance and remaining technical evidence
 

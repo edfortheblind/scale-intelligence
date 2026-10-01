@@ -8,8 +8,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def report(scenario_review='_project/help-question-continuation19.json',
-           retrieval_review='_project/retrieval-change-continuation19.json'):
+def report(scenario_review='_project/help-question-continuation21.json',
+           retrieval_review='_project/retrieval-change-continuation21.json'):
     inputs = {}
     def read(relative):
         raw = (ROOT/relative).read_bytes()
@@ -242,7 +242,7 @@ def markdown(data):
             comparison += ('The frozen historical baseline has 725 cases. Two other-product questions are excluded and two named implementation questions have neutral replacements. '
                            'These scope changes are separately counted, never treated as recovered misses. ')
         if r.get('changed_to_clarification_case_ids'):
-            comparison += (f"{len(r['changed_to_clarification_case_ids'])} unnamed-operation questions now request context; "
+            comparison += (f"{len(r['changed_to_clarification_case_ids'])} questions lacking a named subject now request context; "
                            f"{r['same_case_result_lists_identical']} result lists are unchanged. No original miss was recovered and no new miss was introduced. ")
         text += ['', '## Retrieval comparison', '',
                  comparison + "Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.", '',
@@ -269,9 +269,9 @@ def markdown(data):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--scenario-review', default='_project/help-question-continuation19.json',
+    parser.add_argument('--scenario-review', default='_project/help-question-continuation21.json',
                         help='Current scenario receipt; historical receipts are never overwritten.')
-    parser.add_argument('--retrieval-review', default='_project/retrieval-change-continuation19.json',
+    parser.add_argument('--retrieval-review', default='_project/retrieval-change-continuation21.json',
                         help='Current retrieval comparison bound to evaluation.json.')
     args=parser.parse_args()
     data=report(args.scenario_review, args.retrieval_review)

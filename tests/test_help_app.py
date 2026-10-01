@@ -115,6 +115,37 @@ class HelpKnowledgeTests(unittest.TestCase):
             with self.subTest(question=question):
                 self.assertEqual(self.knowledge.search(question)['state'], 'REVIEWED_MATCHES')
 
+    def test_generic_error_and_result_nouns_need_a_subject(self):
+        for question in ['Will an error roll back every transaction?',
+                         'Do zero outputs mean zero results?',
+                         'Does no row return 17 and250?',
+                         'Are all no-match outputs23?', 'This routine returns no rows']:
+            with self.subTest(question=question):
+                result = self.knowledge.search(question)
+                self.assertEqual(result['state'], 'NEEDS_CONTEXT')
+                self.assertEqual(result['results'], [])
+                self.assertIn('operation or routine name', result['clarification'])
+
+    def test_current_warehouse_does_not_identify_a_setting(self):
+        result = self.knowledge.search('Explain these current warehouse settings')
+        self.assertEqual(result['state'], 'NEEDS_CONTEXT')
+        self.assertIn('setting or field name', result['clarification'])
+        self.assertEqual(self.knowledge.search('Explain current warehouse Packing settings')['state'], 'REVIEWED_MATCHES')
+        self.assertEqual(self.knowledge.search('Explain the WAREHOUSE field')['state'], 'REVIEWED_MATCHES')
+
+    def test_business_names_and_alphanumeric_subjects_stay_searchable(self):
+        for question in ['What is returns for?', 'Does Returns return an error?',
+                         'Does Returns return no rows?', 'Can the Returns routine return an error?',
+                         'Does this Returns error roll back changes?', 'Are these Returns errors always rolled back?']:
+            with self.subTest(question=question):
+                result = self.knowledge.search(question)
+                self.assertEqual(result['results'][0]['topic_id'], 'process-returns')
+        for question in ['Can rollback return zero?', 'Can SKU12 return no rows?',
+                         'Does SCI23 return zero outputs?', 'Can this receipt upload return no results?',
+                         'Are these Work errors always rolled back?']:
+            with self.subTest(question=question):
+                self.assertNotEqual(self.knowledge.search(question)['state'], 'NEEDS_CONTEXT')
+
     def test_fts_operators_are_literal_input(self):
         result = self.knowledge.search('" OR title:* - ( SELECT 1; DROP TABLE topics; --')
         self.assertIn(result['state'], {'NO_REVIEWED_MATCH', 'REVIEWED_MATCHES'})

@@ -317,7 +317,10 @@ class Knowledge:
                        'explanation explanations explains explained explaining comes source sources documentation documented evidence simple terms').split())
         configuration_words = {'configure', 'configuration', 'configurations', 'setting', 'settings', 'option', 'options', 'field', 'fields'}
         named_work = 'work' in terms and not set(terms) & {'this', 'that', 'these', 'those', 'it'}
-        if set(terms) & configuration_words and not set(terms) - generic and not named_work:
+        configuration_subject = set(terms)
+        if re.search(r'\b(?:current|effective)\s+warehouse\b', question, re.IGNORECASE):
+            configuration_subject -= {'current', 'currently', 'effective', 'warehouse', 'confirmed'}
+        if set(terms) & configuration_words and not configuration_subject - generic and not named_work:
             return {'question': question, 'state': 'NEEDS_CONTEXT', 'scope': GENERAL_SCOPE,
                     'clarification': 'Enter the setting or field name, the screen where you see it, and what you want it to do. For example: Packing Preferences — Validate Item. Do not include credentials or transaction data.',
                     'results': []}
@@ -331,8 +334,25 @@ class Knowledge:
                                'zero one two three four five six seven eight nine ten').split())
         has_referent = bool(set(terms) & {'this', 'that', 'these', 'those', 'it', 'its'}) or bool(
             re.search(r'\bthe\s+(?:routine|function|procedure|helper|operation|gate)\b', question, re.IGNORECASE))
+        # Preserve the existing explicit-reference rule and its vocabulary.
+        # Broader result words must not make a named Returns error anonymous.
         subject_terms = {term for term in terms if not term.isdecimal()}
-        if has_referent and set(terms) & operation_words and not subject_terms - generic - operation_words - {'its'}:
+        unnamed_reference = (has_referent and set(terms) & operation_words
+                             and not subject_terms - generic - operation_words - {'its'})
+        # A generic error/result noun can also omit its subject without saying
+        # "this". Keep named processes and verbs alone on the search path.
+        context_nouns = set(('routine routines function functions procedure procedures helper helpers operation operations '
+                             'gate gates row rows output outputs result results error errors count counts branch branches').split())
+        context_words = operation_words | set('earlier error errors output outputs match count counts branch branches equal equals'.split())
+        query_words = ' '+' '.join(tokens(question))+' '
+        named_subject = any(' '+key.removeprefix('process-').replace('-', ' ')+' ' in query_words
+                            for key in self.topics if key.startswith('process-'))
+        # Joined numbers such as outputs0 are not a business subject. Preserve
+        # the alphabetic part of real identifiers such as SKU12 or SCI23.
+        normalized_subject = {part for term in terms for part in re.findall(r'[^\W\d_]+|\d+', term) if not part.isdecimal()}
+        unnamed_result = (set(terms) & context_nouns and not named_subject
+                          and not normalized_subject - generic - context_words - {'its'})
+        if unnamed_reference or unnamed_result:
             return {'question': question, 'state': 'NEEDS_CONTEXT', 'scope': GENERAL_SCOPE,
                     'clarification': 'Enter the operation or routine name, or the screen and action you mean. For example: inventory adjustment — rollback. Do not include credentials or transaction data.',
                     'results': []}
@@ -354,7 +374,6 @@ class Knowledge:
         rows=[(key,value[0]) for key,value in best.items()]
         # An explicitly named reviewed process outranks incidental words such as
         # "confirm" in a question. This uses stable topic names, never answer keys.
-        query_words = ' '+' '.join(tokens(question))+' '
         def named_process(key):
             phrase = key.removeprefix('process-').replace('-', ' ')
             return len(phrase.split()) if ' '+phrase+' ' in query_words else 0
