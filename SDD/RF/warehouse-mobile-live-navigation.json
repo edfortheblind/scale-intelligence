@@ -1,0 +1,446 @@
+{
+  "date": "2026-10-01",
+  "source": "Native visible UI observation in existing authenticated browser session; sanitized field/menu labels only",
+  "scope": "Cross Application menu and empty Warehouse Mobile entry screens; no operational values retained",
+  "cross_application": [
+    {
+      "label": "Configuration",
+      "path": "/config"
+    },
+    {
+      "label": "Document Management Insight",
+      "path": "/scale/insights/4105"
+    },
+    {
+      "label": "Interface Error Insight",
+      "path": "/scale/insights/3054"
+    },
+    {
+      "label": "Process History Insight",
+      "path": "/scale/insights/3066"
+    },
+    {
+      "label": "RF",
+      "path": "/RF/logon.aspx"
+    },
+    {
+      "label": "Transaction History Insight",
+      "path": "/scale/insights/2783"
+    },
+    {
+      "label": "Warehouse Mobile",
+      "path": "/WarehouseMobile"
+    }
+  ],
+  "warehouse_mobile_menu": [
+    "Assign Printer",
+    "Close Container",
+    "Close Putaway Group",
+    "Cycle Count Reconciliation",
+    "Immediate Dock Transfer",
+    "Inventory Management",
+    "Clear Putwall Location",
+    "Location Inquiry",
+    "Multiple Order Pallet Nesting",
+    "Putwall Sort",
+    "Receipt Container Nesting",
+    "Receiving",
+    "Remove Cart Container",
+    "Work Execution",
+    "Shipping Container Nesting",
+    "Shipping Container QC"
+  ],
+  "observations": [
+    {
+      "menu": "Assign Printer",
+      "title": "Assign Printer",
+      "fields": [
+        "Assigned Label Printer (display)",
+        "Label Printer (entry)"
+      ],
+      "controls": [
+        "Back",
+        "GO disabled when blank",
+        "up-chevron"
+      ],
+      "stop": "No printer entered or assigned; displayed printer value omitted."
+    },
+    {
+      "menu": "Close Container",
+      "title": "Close Container",
+      "fields": [
+        "Container ID"
+      ],
+      "controls": [
+        "Back",
+        "GO disabled when blank"
+      ],
+      "stop": "No container entered or closed."
+    },
+    {
+      "menu": "Close Putaway Group",
+      "title": "Close Putaway Group",
+      "fields": [
+        "Putaway Group ID"
+      ],
+      "controls": [
+        "Back",
+        "GO disabled when blank"
+      ],
+      "stop": "No group entered or closed."
+    },
+    {
+      "menu": "Work Execution",
+      "status": "MENU_OBSERVED_ENTRY_NOT_OPENED",
+      "stop": "Retained sources document default-profile bypass and automatic assignment/cart construction. Opening is not established as free of warehouse effects."
+    },
+    {
+      "menu": "Cycle Count Reconciliation",
+      "title": "Cycle Count Reconciliation",
+      "fields": [
+        "Location"
+      ],
+      "controls": [
+        "Back",
+        "GO enabled with blank location"
+      ],
+      "stop": "No location or GO submitted."
+    },
+    {
+      "menu": "Immediate Dock Transfer",
+      "title": "Immediate Dock Transfer",
+      "fields": [
+        "Container ID"
+      ],
+      "controls": [
+        "Back",
+        "GO disabled when blank"
+      ],
+      "stop": "No container entered or transferred."
+    },
+    {
+      "menu": "Inventory Management",
+      "title": "Select Adjustment Class",
+      "options": [
+        "Adjustment",
+        "Status Change",
+        "Transfer",
+        "Warehouse Transfer"
+      ],
+      "subscreen": {
+        "title": "Select Adjustment Type",
+        "trigger": "Adjustment class",
+        "option_count": 5,
+        "option_values": "Omitted; session-specific configured values"
+      },
+      "stop": "No adjustment type selected, no inventory entered or changed."
+    },
+    {
+      "menu": "Clear Putwall Location",
+      "title": "Clear Putwall Location",
+      "fields": [
+        "Putwall Location"
+      ],
+      "controls": [
+        "Back",
+        "GO enabled with blank input"
+      ],
+      "stop": "No location or GO submitted."
+    },
+    {
+      "menu": "Location Inquiry",
+      "title": "Location Inquiry",
+      "fields": [
+        "Filter On Location, Item, or LP"
+      ],
+      "controls": [
+        "Back",
+        "GO enabled when blank"
+      ],
+      "stop": "No search submitted or records retrieved."
+    },
+    {
+      "menu": "Multiple Order Pallet Nesting",
+      "title": "Select Nesting Type",
+      "options": [
+        "Nest",
+        "Remove"
+      ],
+      "subscreen": {
+        "branch": "Nest",
+        "title": "Nest",
+        "fields": [
+          "Container ID"
+        ],
+        "initial_go": "disabled"
+      },
+      "stop": "No container entered and GO never pressed. Back removed the input while retaining Nest/Container ID and enabled GO; a second Back did not exit. Page reload used to recover navigation. No rollback or nesting effect inferred."
+    },
+    {
+      "menu": "Putwall Sort",
+      "title": "Putwall Sort",
+      "fields": [
+        "Tote"
+      ],
+      "controls": [
+        "Back",
+        "GO disabled when blank"
+      ],
+      "stop": "No tote entered or sorting performed."
+    },
+    {
+      "menu": "Receipt Container Nesting",
+      "title": "Receipt Container Nesting",
+      "fields": [
+        "License Plate"
+      ],
+      "controls": [
+        "Back",
+        "GO disabled when blank"
+      ],
+      "stop": "No license plate or GO submitted. Back removed input but retained title/display label and enabled GO; page reload restored menu."
+    },
+    {
+      "menu": "Receiving",
+      "title": "Select Receiving Preference",
+      "options_count": 1,
+      "option_values": "Omitted; session-specific configured preference",
+      "controls": [
+        "Back"
+      ],
+      "stop": "No receiving preference selected; no receipt/quantity entered."
+    },
+    {
+      "menu": "Remove Cart Container",
+      "title": "Remove Cart Container",
+      "fields": [
+        "Container ID"
+      ],
+      "controls": [
+        "Back",
+        "GO disabled when blank",
+        "up-chevron"
+      ],
+      "stop": "No container entered or removed."
+    },
+    {
+      "menu": "Shipping Container Nesting",
+      "title": "Select Nesting Type",
+      "options": [
+        "Nest",
+        "Remove"
+      ],
+      "subscreen": {
+        "branch": "Remove",
+        "title": "Shipping Container Remove Nesting",
+        "fields": [
+          "Container ID"
+        ],
+        "initial_go": "disabled"
+      },
+      "stop": "No container or GO submitted. Back returned to Select Nesting Type."
+    },
+    {
+      "menu": "Shipping Container QC",
+      "title": "Shipping Container QC",
+      "fields": [
+        "Container ID"
+      ],
+      "controls": [
+        "Back",
+        "GO disabled when blank"
+      ],
+      "stop": "No container entered or QC transaction submitted."
+    }
+  ],
+  "limits": [
+    "Configured menu is current session-specific, not a universal menu.",
+    "No record IDs, quantities, users, printer values, inventory or transaction rows stored.",
+    "No GO, work-profile or receiving-preference selection, scan, adjustment, assignment or completion action executed. Inventory Adjustment class and Nest/Remove branches were opened as empty navigation; no configured adjustment type was selected.",
+    "Live observation does not prove conditional workflow behavior or timing.",
+    "Legacy RF Cancel displayed sign-out; existing legacy-session effect remains unverified. No replacement session was started. This is distinct from warehouse transaction activity."
+  ],
+  "cross_application_observations": [
+    {
+      "menu": "Document Management Insight",
+      "path": "/scale/insights/4105",
+      "basic_fields": [
+        "Reference ID",
+        "Reference Type",
+        "Reference Category",
+        "Notes",
+        "File Name",
+        "Company",
+        "Warehouse",
+        "From Date Time",
+        "To Date Time"
+      ],
+      "grid_columns": [
+        "Reference ID",
+        "Reference Type",
+        "Reference Category",
+        "Notes",
+        "File Name",
+        "Date Time Stamp"
+      ],
+      "record_count_display": 0,
+      "actions": "Menu expanded but no item action established without a selected record",
+      "stop": "No filter, document, upload, download, delete, print or record action executed."
+    },
+    {
+      "menu": "Interface Error Insight",
+      "path": "/scale/insights/3054",
+      "basic_fields": [
+        "Interface Process",
+        "Interface Mode",
+        "Error File Path",
+        "Original File Path",
+        "Error Message",
+        "Today Only: Date Time Stamp",
+        "From Date Stamp",
+        "To Date Stamp",
+        "Reference Field 1",
+        "Reference Field 2",
+        "Reference Field 3",
+        "Company",
+        "Warehouse"
+      ],
+      "grid_columns": [
+        "Color",
+        "Date Time Stamp",
+        "Interface Process",
+        "Interface Mode",
+        "Error Message",
+        "Error File Path",
+        "Reference Field 1"
+      ],
+      "record_count_display": 0,
+      "today_only_observed": "On; date range disabled",
+      "stop": "No search or record action executed."
+    },
+    {
+      "menu": "Process History Insight",
+      "path": "/scale/insights/3066",
+      "basic_fields": [
+        "Today Only: Activity Date Time",
+        "From Activity Date Time",
+        "To Activity Date Time",
+        "Process",
+        "Action",
+        "Username",
+        "Message",
+        "Identifier 1",
+        "Identifier 2",
+        "Identifier 3",
+        "Identifier 4",
+        "Warehouse"
+      ],
+      "grid_columns": [
+        "Color",
+        "Internal ID",
+        "Activity Date Time",
+        "Process",
+        "Action",
+        "Message",
+        "Identifer 1",
+        "Identifer 2",
+        "Identifer 3",
+        "Identifer 4",
+        "Username"
+      ],
+      "record_count_display": 0,
+      "today_only_observed": "On; date range disabled",
+      "stop": "No search or record action executed."
+    },
+    {
+      "menu": "Transaction History Insight",
+      "path": "/scale/insights/2783",
+      "basic_fields": [
+        "Today Only: Activity Date Time",
+        "From Activity Date Time",
+        "To Activity Date Time",
+        "Transaction Type",
+        "Location",
+        "Item",
+        "Lot",
+        "Username",
+        "Work Type",
+        "Work Team",
+        "Work Unit",
+        "Warehouse",
+        "Company",
+        "Internal Key ID",
+        "LP / Container ID",
+        "Serial Number"
+      ],
+      "grid_columns": [
+        "Internal ID",
+        "Reference ID",
+        "Activity Date Time",
+        "Transaction Type",
+        "Location",
+        "Item",
+        "Company",
+        "Lot",
+        "Quantity",
+        "Quantity UM",
+        "Catch Weight",
+        "Catch Weight UM",
+        "Direction",
+        "Work Type",
+        "LP / Container ID",
+        "Color"
+      ],
+      "record_count_display": 0,
+      "today_only_observed": "On; date range disabled",
+      "stop": "No filter, record, export or action executed."
+    },
+    {
+      "menu": "RF",
+      "path": "/RF/logon.aspx",
+      "result": "Redirected to existing-RF-session notice; Continue would start a new session. Continue was not pressed. Cancel was selected, resulting in a signed-out message. Warehouse Mobile subsequently continued to display its authenticated receiving-preference selector. Existing legacy RF session effect is not independently verified.",
+      "stop": "No replacement RF session started; no credential entered."
+    },
+    {
+      "menu": "Configuration",
+      "path": "/config/selfservice/customerknowledgehub",
+      "title": "Manage SOPs",
+      "grid_columns": [
+        "Document Id",
+        "Document Upload Status",
+        "User",
+        "Date"
+      ],
+      "controls": [
+        "Upload Document",
+        "Back",
+        "Delete disabled on empty grid"
+      ],
+      "record_count_display": 0,
+      "stop": "No document or configuration action executed."
+    },
+    {
+      "menu": "Warehouse Mobile",
+      "path": "/WarehouseMobile",
+      "visible_main_menu_choices": 16,
+      "entry_choices_observed": 15,
+      "menu_only_choices": [
+        "Work Execution"
+      ],
+      "stop": "No work execution entry or profile selection; see source-documented automatic-assignment effects."
+    }
+  ],
+  "schema_version": 1,
+  "coverage": {
+    "cross_application_menu_links": 7,
+    "cross_application_entries_with_record": 7,
+    "warehouse_mobile_visible_choices": 16,
+    "warehouse_mobile_choices_with_disposition": 16,
+    "warehouse_mobile_entry_screens_observed": 15,
+    "warehouse_mobile_entry_not_opened": 1,
+    "operational_identifiers_entered": 0,
+    "go_submissions": 0,
+    "work_profile_selections": 0,
+    "receiving_preference_selections": 0
+  }
+}

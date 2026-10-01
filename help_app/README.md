@@ -18,6 +18,8 @@ The interface uses native HTML forms, links, headings and disclosure controls. J
 
 ## Maintaining the library
 
+The [Warehouse Mobile / RF operator guide](../SDD/RF/README.md) supplies detailed, source-bound procedures and a separate live-navigation record. It is a linked documentation supplement; its new text is not part of the application's curated search index or the existing 723-case retrieval evaluation.
+
 The curated article store is `DB Architecture/mappings/help-topics.json`. Topic records supplied by `mappings/batches/` must also be edited there so integration preserves the change. Keep topic IDs, source bindings and authored evaluation questions stable. `article_type: configuration` marks a setup procedure and uses the existing ordered `execution_steps`; optional `related_topics` contains topic IDs.
 
 Write each explanation once. Omit empty or redundant sections. Keep project history, acceptance decisions and evaluation instructions in project records. Preserve original documentation and unique functional caveats; do not infer effective warehouse settings or invent navigation.

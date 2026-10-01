@@ -16,6 +16,8 @@ The **Configure SCALE** section covers work profiles, packing preferences, print
 
 ## Reference library
 
+- [Warehouse Mobile / RF operator guide](SDD/RF/README.md): task-by-task receiving, inventory, work, shipping and support procedures, with all 45 retained base flows mapped.
+- [Cross Application screens](SDD/RF/CROSS_APPLICATION.md): document, interface-error and history investigation, plus live navigation observations.
 - [All functionality articles](DB%20Architecture/HELP_TOPICS.md): a reading copy of the application articles.
 - [SCALE Functionality Reference](SDD/SCALE_FUNCTIONAL_REFERENCE.md): processes, configuration choices and dependencies across 14 chapters.
 - [Printable functionality reference](output/pdf/SCALE%20Functionality%20Reference%20SDD.pdf).

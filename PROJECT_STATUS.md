@@ -1,10 +1,12 @@
 # SCALE Intelligence project status
 
-## C23 current continuation and queued RF documentation
+## C24 current Warehouse Mobile / RF documentation
 
-The owner accepted all previously presented work. [C23 results](_project/CONTINUATION_C23.md) record the narrow-article wrapping correction, 49 passing tests, fresh browser checks and unchanged search: **675/723 top-eight, 419 first, 48 misses**. Both retrieval experiments were rejected for new losses. C22 article wording and source bindings remain unchanged.
+The owner-authorized Cross Application/Warehouse Mobile documentation is implemented. Start with [the operator guide](SDD/RF/README.md) and [C24 verification and limits](_project/CONTINUATION_C24.md). All **45 retained SRC identities** and **16 visible menu choices** are mapped; **15 entry screens** were inspected, with Work Execution kept at menu level because entry can assign work. Three procedure manuals retain partial/shared paths and source conflicts; all 45 identities are not claimed as complete executed walkthroughs.
 
-**Next active work:** the owner explicitly authorized Cross Application and thorough documentation of every Warehouse Mobile/RF flow. Inventory visible navigation and retained sources, document user steps and conditional/error paths, and record exact coverage limits. This is a new documentation workstream; operational execution and correlated timing remain frozen at 0/34. Earlier search-only next-action wording below is historical. See the current owner message before continuing.
+The source catalog contains 80 selected articles. Blind-receiving details, negative adjustments, SRC340/360 context, SRC400's distinct sequence and 12 missing referenced targets remain explicit. New guide text is not in the existing search index; retrieval stays **675/723 top-eight, 419 first, 48 misses**. Normal private publication is authorized and verified separately. C24 supersedes earlier queued/current wording below; prior receipts retain their checkpoint meaning.
+
+**Next work:** resolve a named source gap or integrate the reviewed guide into curated help with fresh case-level retrieval comparison. Live warehouse actions require their own bounded scope. Preserve accepted acquisition/display/JAWS gates, untracked Video Rec work and the **0/34 deployment/timing freeze**.
 
 ## C22 article and configuration review
 
