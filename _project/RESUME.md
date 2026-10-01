@@ -1,5 +1,11 @@
 # Resume SCALE Intelligence
 
+## C23 current continuation and queued RF documentation
+
+The owner accepted all previously presented work. [C23 results](CONTINUATION_C23.md) record the narrow-article wrapping correction, 49 passing tests, fresh browser checks and unchanged search: **675/723 top-eight, 419 first, 48 misses**. Both retrieval experiments were rejected for new losses. C22 article wording and source bindings remain unchanged.
+
+**Next active work:** the owner explicitly authorized Cross Application and thorough documentation of every Warehouse Mobile/RF flow. Inventory visible navigation and retained sources, document user steps and conditional/error paths, and record exact coverage limits. This is a new documentation workstream; operational execution and correlated timing remain frozen at 0/34. Earlier search-only next-action wording below is historical. See the current owner message before continuing.
+
 ## Current continuation: articles and configuration
 
 Read [C22 article review](ARTICLE_REVIEW_C22.md) and its [receipt](article-review-c22.json). The 340-article pass and seven configuration guides are implemented. Search now has 48 misses; do not repeat the older 39-miss number as current or automatically resume search tuning. Preserve the unchanged collection, source, central-reference and deployment boundaries below.

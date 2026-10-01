@@ -1,5 +1,11 @@
 # SCALE Intelligence - next session on Astra
 
+## C23 current continuation and queued RF documentation
+
+The owner accepted all previously presented work. [C23 results](_project/CONTINUATION_C23.md) record the narrow-article wrapping correction, 49 passing tests, fresh browser checks and unchanged search: **675/723 top-eight, 419 first, 48 misses**. Both retrieval experiments were rejected for new losses. C22 article wording and source bindings remain unchanged.
+
+**Next active work:** the owner explicitly authorized Cross Application and thorough documentation of every Warehouse Mobile/RF flow. Inventory visible navigation and retained sources, document user steps and conditional/error paths, and record exact coverage limits. This is a new documentation workstream; operational execution and correlated timing remain frozen at 0/34. Earlier search-only next-action wording below is historical. See the current owner message before continuing.
+
 ## C22 restart entry
 
 Start with [C22 article/configuration results](_project/ARTICLE_REVIEW_C22.md), current Git state and the latest task instruction. The article pass is implemented; earlier C21 search-only next steps and its 39-miss count are historical. The current search total is 48 misses, with exact comparison in the C22 receipt.
