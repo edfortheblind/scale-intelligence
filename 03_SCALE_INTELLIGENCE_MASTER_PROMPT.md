@@ -1,12 +1,14 @@
 # SCALE Intelligence master continuation prompt
 
+Current C17 entry: [Astra restart prompt](04_SCALE_ASTRA_RESTART_PROMPT.md), [all 39 search misses and next steps](_project/SEARCH_MISSES_AND_NEXT_STEPS.md), and [owner decisions](_project/owner-scope-continuation17.json). Broader display acceptance joins JAWS as owner accepted and closed; technical observations retain their limits. Continue search relevance, DOCX layout and reusable SCALE base source review next session. SDDs are reference deployments and do not establish TAB's implementation. Deployment behavior/timing remains frozen at 0/34 until the owner plans a later strategy.
+
 Current C16 source packet: [Labels node disposition](SDD/derived/labels-node-disposition.json) covers all 209 retained slide nodes without new claim/citation credit; see the [C16 receipt](_project/continuation16-20260930.json). Continue SCALE source/help work while preserving the C15 deployment freeze below.
 
 Latest owner sequencing: deployed process behavior and correlated timing are frozen as the final workstream until the remaining locally supportable work is complete. Preserve the 0/34 deployment measure and its required evidence; see [deployment freeze](_project/DEPLOYMENT_FREEZE_C15.md), [active completion audit](_project/ACTIVE_COMPLETION_AUDIT_C15.md) and [C15 receipt](_project/continuation15-20260930.json). The C14 receipt below remains historical, not evidence that deployment was completed.
 
-Revision: SCALE-BRAIN-CONTINUATION-1.17, 2026-09-30.
+Revision: SCALE-BRAIN-CONTINUATION-1.18, 2026-09-30.
 
-The [C14 receipt](_project/continuation14-20260930.json) and [owner scope decision](_project/owner-scope-continuation14.json) are the current checkpoint. The C13/C12 receipts, [detailed Sol restart prompt](04_SCALE_SOL_RESTART_PROMPT.md) and [C11 concern dispositions](_project/C11_CONCERN_DISPOSITIONS.md) remain historical instructions and evidence. This master retains the project-wide scope.
+The [C17 owner decisions](_project/owner-scope-continuation17.json) and [C17 handoff receipt](_project/continuation17-20260930.json) govern the current handoff. C16 is the latest source packet. C14's base-help scope and earlier receipts remain scoped historical evidence. The obsolete Sol prompt was retired with a byte-preserving [archive mapping](_project/ARCHIVE_DISPOSITION_C17.md); its old root path is a redirect. This master retains the project-wide scope.
 
 Use this file as the next-session work instruction for this existing repository. Start by verifying the current checkout and reading the sources below, then carry out the next work. Do not stop at a new plan, a structural inventory or another small pilot when supported functional work remains. Keep truthful checkpoints so work survives a session boundary without repeating completed collection.
 
@@ -25,7 +27,7 @@ Combine AIM, SDK, observed database structure/code, reviewed configuration obser
 3. Read [the functional report](DB%20Architecture/SCALE_FUNCTIONAL_REPORT.md), [plan](DB%20Architecture/PLAN.md), [intelligence contract](DB%20Architecture/INTELLIGENCE_CONTRACT.md), [help topics](DB%20Architecture/HELP_TOPICS.md), [functional roles](DB%20Architecture/FUNCTIONAL_ROLES.md), [configuration validation](DB%20Architecture/CONFIGURATION_VALIDATION.md) and [review](DB%20Architecture/evidence/FUNCTIONAL_REVIEW.md).
 4. Inspect the current JSON ledgers in `DB Architecture/mappings/` and the verification/manifest in `DB Architecture/evidence/`. Read the current batch contracts, `object-review-ledger.json`, `review-backlog.json`, `configuration-guide.json`, `source-reconciliation.json` and `help-acceptance.json`; their explicit unreviewed states remain governing. Read the [structural assessment](DB%20Architecture/ASSESSMENT.md), [process guide](DB%20Architecture/PROCESS_GUIDE.md), [runtime limits](DB%20Architecture/RUNTIME.md) and [refresh rules](DB%20Architecture/OPERATIONS.md) as needed for the assigned batch.
 5. Read [SDD/README.md](SDD/README.md), [_project/DATA_ARCHITECTURE.md](_project/DATA_ARCHITECTURE.md) and the AIM/SDK owner-closure records. Inspect source bodies only when relevant to the current reviewed claim; exclude archive payload from ordinary context and search.
-6. Read [_project/continuation14-20260930.json](_project/continuation14-20260930.json) and [_project/owner-scope-continuation14.json](_project/owner-scope-continuation14.json), then the C13/C12/C11 receipts as historical functional and delivery evidence. Publication-20260930, concern-resolution-20260930, progress-20260930, max-progress and functional-continuation receipts are historical. Verify the historical [_project/continuation-delivery.json](_project/continuation-delivery.json) only within its older publication scope and the actual Git refs if delivery parity matters. Never infer OneDrive upload from Git parity.
+6. Read the current [Astra restart prompt](04_SCALE_ASTRA_RESTART_PROMPT.md), [owner decisions](_project/owner-scope-continuation17.json) and [search-miss report](_project/SEARCH_MISSES_AND_NEXT_STEPS.md). Read historical C14 base-scope and C15/C16 source receipts only as needed for the selected task. Do not recursively load past continuation instructions. Verify current Git refs for delivery; never infer OneDrive upload from Git parity.
 
 If external AEKR or the private SQL snapshot is unavailable, report that exact limitation and continue independent work from public-in-repository evidence. Do not fabricate governance loading or silently reconstruct sensitive literals from redacted SQL.
 
@@ -51,7 +53,7 @@ Do not reopen accepted AIM/SDK acquisition, repeat failed resource retries, modi
 
 All 1,138 eligible captured module contracts now have bounded full-body static review. The table-reference report records source-use evidence without inferring that unreferenced tables are unused. Do not assign them again as unreviewed. Preserve the captured custom-table role as unreviewed and owner-excluded from SCALE base architecture; continue uncited SDD semantics/assets, source reconciliation and help-quality gaps using the current ledgers. Historical question sets stay frozen and outside search. The owner accepts local/private GitHub delivery and has closed the build/version request.
 
-C12/C13 source packets remain closed as documented. C14 records owner JAWS approval without a test claim and narrows the Packing/mobile Close Container help to SCALE base behavior. Do not pursue the installed replacement-LPN extension as a base-help completion item or relabel QS-18 as passed. The owner identified Shawn's custom table as outside SCALE DB architecture. Deployed application/service/configuration mappings with correlated process timings remain required. Continue independent source and retrieval work while preserving all 39 misses, the 0/34 deployment reconciliation boundary and accepted AIM/SDK collection closures. C11's 13 classified source issues and rejected general retrieval candidate remain historical evidence.
+C12/C13 source packets remain closed as documented. C14 records owner JAWS approval and limits Packing/mobile Close Container help to SCALE base behavior. C17 closes the current broader display owner gate, authorizes continued DOCX review next session, and confirms the SDD reference-deployment boundary. Preserve QS-18 as an excluded partial extension question and Shawn's custom table as owner-excluded from SCALE architecture. Follow the new restart sequence: review the 39 misses and owner feedback, progress DOCX fidelity and substantive SCALE source meaning, and disposition nine runtime identities from retained evidence. Deployment application/service/configuration mapping with correlated timings remains required and frozen; do not seek it in the active workstream.
 
 ### A. Extend the functional object and execution model
 
@@ -75,7 +77,11 @@ Use the relevant installed document/PDF/presentation skills when handling those 
 
 Classify source claims as vendor behavior, implementation-specific choice, configuration example, observed deployment or inference. Record product/version conflicts, especially MAWM versus SCALE. Build a configuration guide explaining each reviewed setting's purpose, scope, accepted values, defaults, precedence, related process and validation method. An SDD sample from another deployment must never be stated as this deployment's active setting.
 
+The owner explicitly supplied the SDDs as references from other deployments. Review and incorporate supported SCALE base concepts; retain site-specific choices and proposed/custom behavior as attributed examples. Generalize only when the source and corroborating retained SCALE evidence support that scope. Source disposition does not require TAB deployment confirmation for every reference example. Full DOCX page review remains authorized to resolve meaning lost by structural extraction, with originals preserved and renderer limits recorded.
+
 ### D. Expand runtime understanding without operational execution
+
+Current sequencing: only the nine unnamed historical runtime IDs may receive bounded disposition from retained evidence. Application/service/configuration reconciliation and whole-process timing remain owner-frozen until a later strategy. The requirements below describe that later workstream, not permission to resume it now.
 
 Document execution behavior and measured runtime separately. Use the existing retained Query Store aggregates only within their observation/version/replica limits. Identify missing application/service/correlation evidence required for full process timing. Do not execute workload, procedures, jobs, reports, labels, DML, benchmarks or monitoring changes to manufacture runtime evidence.
 
@@ -86,6 +92,8 @@ When a required fact cannot be established without an external source, record th
 Maintain evaluation questions with expected explanations, forbidden unsupported claims and citations. Cover positive, error, absent/duplicate/stale configuration, denied access, conflicting versions and missing-deployment cases. Run meaningful offline checks now; distinguish them from tests of a future working app.
 
 Answers should follow: **What it does -> What happens -> What can affect it -> What you can check -> More detail and sources**. Define jargon, use short paragraphs and numbered text steps, and avoid relying on charts, color, hover, icons or visual screen position. The eventual interface needs keyboard navigation, visible focus, semantic headings, screen-reader labels/order/status announcements, text resizing and contrast. Actual accessibility acceptance needs intended users and assistive technology; documentation alone cannot prove it.
+
+Current owner acceptance is closed for JAWS and the broader display experience. This acceptance is sufficient for those gates. The local technical test record remains limited, and no complete accessibility certification is claimed. Check changes proportionately; do not reopen accepted gates because older receipts describe pending work.
 
 ## Database and credential boundary
 

@@ -134,7 +134,7 @@ def report(scenario_review='_project/help-question-continuation14.json',
                 'process_documentary_refinements':process_summary['coverage']['authored_refinements'] if process_summary else 0},
             'delivery_scope':'Local files and the existing private GitHub repository; external deployment and OneDrive upload are outside scope.',
             'unperformed_or_unestablished':['Complete functional/deployment reconciliation','Full DOCX page fidelity',
-                'Whole-process elapsed timing','Complete browser/keyboard/reflow/contrast observation and intended-user session; JAWS accepted by owner without a captured local run',
+                'Whole-process elapsed timing','Complete browser/keyboard/reflow/contrast observations and a local JAWS session were not captured; current JAWS and broader display owner acceptance are closed (C14/C17)',
                 'Insight navigation/SOP registration (separately initiated future task)'],
             'outside_current_delivery_scope':['External production deployment and multiuser authentication','OneDrive cloud-upload verification'],
             'question_scenario_review':question_path if question_review else None,
@@ -162,7 +162,11 @@ def markdown(data):
         text += ['', '## Retrieval comparison', '',
                  f"On the unchanged {before['cases']}-question subset, expected-topic top-eight retrieval changed from {before['top8']} to {after['top8']}. The {new['cases']} new cases retrieve {new['top8']} expected topics in the first eight. Remaining misses and any individual regressions stay explicit. These authored checks do not measure semantic answer acceptance.", '',
                  f"[Exact comparison and remaining case IDs]({Path(data['retrieval_change_review_path']).name})."]
-    text += ['', '## Remaining evidence and acceptance', '']
+    text += ['', '## Owner acceptance and remaining technical evidence', '',
+             'JAWS and the current broader display experience are owner accepted and closed. '
+             'Additional owner tests are not required to close those gates. This does not turn unobserved technical checks into performed tests. '
+             'DOCX page review is approved to continue next session. SDDs are references from other deployments; supported SCALE base concepts may be incorporated, while site-specific choices do not establish TAB behavior. '
+             'See [current owner decisions](owner-scope-continuation17.json) and [all 39 search misses with next steps](SEARCH_MISSES_AND_NEXT_STEPS.md).', '']
     text += ['- '+item+'.' for item in data['unperformed_or_unestablished']]
     text += ['', 'Word preference: the prior diagnostic recorded `Options.UpdateLinksAtOpen=false`. '
              'The earlier value was not retained, so historical restoration cannot be verified. '

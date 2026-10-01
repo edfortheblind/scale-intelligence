@@ -1,5 +1,13 @@
 # SCALE Intelligence project status
 
+## C17 current handoff and owner acceptance
+
+The [Astra restart prompt](04_SCALE_ASTRA_RESTART_PROMPT.md) is ready for the next session. The [39-miss report](_project/SEARCH_MISSES_AND_NEXT_STEPS.md) exposes every exact question, expected topic, returned results and recorded diagnosis, with readable context for the frozen final workstream. Search behavior is unchanged: **686/725 top-eight (94.62%), 420/725 first (57.93%), 39 misses**. There are still 31 unlike measures, 22 at 100%; no overall completion percentage is inferred.
+
+The owner accepts the current broader display experience; that gate is closed alongside JAWS. No captured local JAWS session or complete zoom/reflow/contrast matrix is claimed. DOCX layout review is approved to continue next session: four unique bodies remain unverified at full-page level. Its purpose is to check table/figure/caption meaning that text extraction may miss. The SDDs are references from other deployments: incorporate supported SCALE base knowledge, with site-specific settings and custom behavior retained as attributed examples rather than TAB facts. [Current owner decisions](_project/owner-scope-continuation17.json).
+
+The old C11/Sol restart prompt was archived byte-for-byte, with its old path retained as a redirect. The [archive mapping](_project/ARCHIVE_DISPOSITION_C17.md) records hashes, dependencies and restoration. The 01/02 prompts still have active integrity consumers and remain unchanged. The [C17 receipt](_project/continuation17-20260930.json) records validation for this handoff. All earlier checkpoint sections below describe their historical scope; current owner decisions take precedence.
+
 ## C16 active source review
 
 The 45-slide SCALE Labels deck now has an exact [209/209 retained-node disposition](SDD/derived/labels-node-disposition.json): 84 nodes already cited in reviewed records and 125 classified as empty text, headings/example titles, agenda text, presenter notes, author credit or corroboration. This adds no claim or citation credit and does not prove printer behavior, animation or exact font fidelity. The [C16 receipt](_project/continuation16-20260930.json) binds the packet. Other source and help work remains active; the C15 deployment freeze still applies.
@@ -64,14 +72,14 @@ SDD currently has 317 claims, 283 settings, 398 visual descriptions, 79 logical 
 
 ## Next bounded packet
 
-Obtain a bounded deployed application/service/configuration map with correlated process timings. Continue independent source review and the seven specific-subject retrieval misses while preserving all 39 raw misses. Do not overwrite historical receipts or reopen accepted acquisition.
+Start the next session with the 39-miss report and owner feedback, focusing first on the seven specific-subject misses. Continue supported DOCX rendering/fidelity work and substantive reference-SDD review for reusable SCALE base concepts. Disposition the nine unmatched runtime IDs using retained evidence only. Deployed behavior and timing stays frozen at 0/34 until the owner plans its later strategy.
 
-JAWS is owner accepted without a captured local run. The extension is outside SCALE base help, and Shawn's custom table is outside SCALE DB architecture by owner direction. Deployment mapping/timings remain required. The broader knowledge foundation still has documented technical and source limits, so a literal zero-concern foundation handoff is not supported by the evidence. [Owner scope](_project/owner-scope-continuation14.json).
+JAWS and current broader display acceptance are owner closed, with technical observations preserved. The extension is outside SCALE base help, and Shawn's custom table is outside SCALE DB architecture. Remaining source, retrieval, DOCX and runtime-identity work stays explicit; deployment mapping/timings remain frozen and required. [Current owner scope](_project/owner-scope-continuation17.json).
 
 Outcome: DONE_WITH_CONCERNS
 
-Delivery state: C14 base-help scope and current handoff verified; private publication status is in the C14 receipt.
+Delivery state: C17 report, archive and restart handoff; validation and publication evidence are recorded in the C17 receipt and Git history.
 
-Product state: SCALE base Packing/Close Container help revised; JAWS owner accepted. Retrieval, source, DOCX and deployment limits remain explicit.
+Product state: Help ranking and source metrics unchanged; owner display acceptance closed; next-session active work and frozen deployment limits explicit.
 
-Gate/authority state: Continued work and normal private publication authorized. JAWS owner acceptance and the custom-table scope decision are recorded; deployment mapping/timings remain required. No new runtime behavior is inferred.
+Gate/authority state: Continued work and normal private publication authorized. JAWS/display owner acceptance and SCALE base/reference scope recorded; deployment mapping/timings remain frozen and required.

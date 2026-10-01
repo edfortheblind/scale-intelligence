@@ -55,12 +55,14 @@ On the unchanged 723-question subset, expected-topic top-eight retrieval changed
 
 [Exact comparison and remaining case IDs](retrieval-change-continuation14.json).
 
-## Remaining evidence and acceptance
+## Owner acceptance and remaining technical evidence
+
+JAWS and the current broader display experience are owner accepted and closed. Additional owner tests are not required to close those gates. This does not turn unobserved technical checks into performed tests. DOCX page review is approved to continue next session. SDDs are references from other deployments; supported SCALE base concepts may be incorporated, while site-specific choices do not establish TAB behavior. See [current owner decisions](owner-scope-continuation17.json) and [all 39 search misses with next steps](SEARCH_MISSES_AND_NEXT_STEPS.md).
 
 - Complete functional/deployment reconciliation.
 - Full DOCX page fidelity.
 - Whole-process elapsed timing.
-- Complete browser/keyboard/reflow/contrast observation and intended-user session; JAWS accepted by owner without a captured local run.
+- Complete browser/keyboard/reflow/contrast observations and a local JAWS session were not captured; current JAWS and broader display owner acceptance are closed (C14/C17).
 - Insight navigation/SOP registration (separately initiated future task).
 
 Word preference: the prior diagnostic recorded `Options.UpdateLinksAtOpen=false`. The earlier value was not retained, so historical restoration cannot be verified. This continuation made no Word preference writes or document opens.

@@ -1,10 +1,12 @@
 # Resume SCALE Intelligence
 
+C17 next-session entry: [Astra restart prompt](../04_SCALE_ASTRA_RESTART_PROMPT.md). Read [all 39 search misses and frozen-workstream context](SEARCH_MISSES_AND_NEXT_STEPS.md) and [current owner decisions](owner-scope-continuation17.json). Broader display acceptance and JAWS are owner closed. Continue retrieval, DOCX layout and reusable SCALE base SDD meaning; the supplied SDDs describe other deployments, not TAB's exact implementation. Deployment stays frozen at 0/34.
+
 C16 source packet: the [Labels node ledger](../SDD/derived/labels-node-disposition.json) classifies all 209 retained slide nodes without new claim/citation credit. See the [C16 receipt](continuation16-20260930.json). Other source meaning and help work remains active. Preserve the C15 deployment freeze.
 
 C15 owner direction: freeze deployed process behavior/timing as the last workstream. Continue the other source, help, SDD and document-fidelity work first. The deployment measure remains 0/34 and required; see [deployment freeze](DEPLOYMENT_FREEZE_C15.md), [active completion audit](ACTIVE_COMPLETION_AUDIT_C15.md) and [C15 receipt](continuation15-20260930.json). C14 receipts below remain historical.
 
-Start with [the master prompt](../03_SCALE_INTELLIGENCE_MASTER_PROMPT.md), [status](../PROJECT_STATUS.md), [section report](COMPLETION_REPORT.md), [current C14 receipt](continuation14-20260930.json) and [owner scope](owner-scope-continuation14.json). The C13/C12 receipts, [detailed Sol restart prompt](../04_SCALE_SOL_RESTART_PROMPT.md), and C11 receipts are historical evidence; preserve their bytes.
+Start with [the master prompt](../03_SCALE_INTELLIGENCE_MASTER_PROMPT.md), [status](../PROJECT_STATUS.md), [section report](COMPLETION_REPORT.md), and [C17 receipt](continuation17-20260930.json). C14's base-help/JAWS decisions and C15/C16 source receipts remain historical evidence. The old Sol prompt has been retired using the [archive mapping](ARCHIVE_DISPOSITION_C17.md); its old root path is a redirect. Preserve historical receipt bytes.
 
 - The owner confirms that the replica is current. Document the captured sources as-is; do not request a SCALE version/build as a prerequisite or infer unseen effective configuration.
 - AIM acquisition remains owner-closed: 2,446/2,453 (99.71%); SDK 363/380 (95.53%, known lower-bound denominator). Existing 2,809-article search and source originals remain unchanged.
@@ -23,7 +25,7 @@ Start with [the master prompt](../03_SCALE_INTELLIGENCE_MASTER_PROMPT.md), [stat
 
 ## Next executable work
 
-The C13 Knipper request/reply remains a documentary disposition, and C14 has closed the JAWS gate by owner acceptance. Obtain deployed application/service/configuration mappings with correlated process timings. Current captured definitions do not supply them. Continue independent source review and the seven specific-subject retrieval misses with new relevance evidence. Preserve C11 through C14 receipts and accepted AIM/SDK collection closures.
+Read the 39-miss report and owner feedback, then review the seven specific-subject misses and returned answers before choosing a retrieval change. Progress DOCX page-fidelity review with a supported rendering route and substantive reference-SDD meaning for SCALE base knowledge. Current broader display acceptance and JAWS are owner closed. Use retained evidence to disposition the nine unmatched historical runtime IDs. Keep deployed application/service/configuration mapping and correlated timings frozen until a later owner-planned strategy.
 
 
 1. Keep completed module contracts intact. Preserve the owner-excluded custom table in captured counts with its role unreviewed; revisit it only if extension/custom-object ownership becomes an assigned task. No application rows are needed.
@@ -31,17 +33,7 @@ The C13 Knipper request/reply remains a documentary disposition, and C14 has clo
 3. Continue source-supported help gaps and the seven specific-subject retrieval misses, preserving all 39 frozen misses. The C9 diagnosis rejected four regressing general ranking alternatives; do not repeat them or the completed C7 prose review without new evidence. The search hint helps users name their subject but has no measured retrieval/accessibility gain. The Packing topic is SCALE base only; the extension question remains historical out-of-scope evidence. Keep frozen expectations outside search.
 4. Freeze author outputs, collect bounded independent peers, integrate, update report/handoff and verify. Repeat HTTP evaluation when help behavior or inputs change; otherwise require complete input, payload and index identity before carrying earlier evidence forward. Do not overwrite historical receipts.
 
-```powershell
-python tools/integrate_functional_batches.py
-python tools/render_functional_docs.py
-python tools/report_table_usage.py --private-modules (Join-Path $env:LOCALAPPDATA 'TAB/SCALE-Intelligence/private/db-assessment/20260929T214106Z/modules.json') --require-complete-contracts
-python tools/evaluate_help.py --serve
-python tools/report_completion.py
-python -m unittest discover -s tests
-python tools/verify_db_docs.py
-python tools/verify_delivery.py
-git diff --check
-```
+Use the scoped verification commands in the Astra prompt. Run generators only for their affected inputs; the old blanket sequence could rewrite unrelated curated mappings. Run fresh HTTP evaluation only when help inputs or behavior change, SDD tests when its curated records change, and `git diff --check` for every delivery.
 
 The scenario follow-up report binds exact content and implementation hashes. If either changes, re-evaluate the frozen questions before using its metric; do not silently reuse stale judgments.
 

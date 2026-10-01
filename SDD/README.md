@@ -4,6 +4,8 @@ This folder preserves the solution design documents, configuration guides, and f
 
 These documents add implementation context to [AIM](../AIM/README.md), extension and integration context to [SDK](../SDK/README.md), and business meaning to the [database architecture assessment](../DB%20Architecture/). Together, these sources can connect a user's question to documented functionality, configuration concepts, and relevant database objects.
 
+The owner confirmed that the SDDs are **references from other deployments**, not a description of TAB's exact implementation. Continue incorporating supported SCALE base concepts with citations and product/version limits. Keep site-specific settings, extensions, integrations and proposed rules as attributed examples; their appearance in an SDD does not establish a universal default or TAB behavior. LAND describes MAWM and remains separate. [Current scope decision](../_project/owner-scope-continuation17.json).
+
 ## Current state
 
 The nine supplied originals are preserved and hash-inventoried. All **eight unique bodies** now have provisional JSON and Markdown extraction in [derived](derived/inventory.json), with DOCX structural nodes, PDF page/block references and PPTX slide/shape references. The duplicate LAND copy is indexed once. Extraction includes 11,618 nodes, 231 PDF pages and the retained media assets; extraction is broader than semantic review.
