@@ -1,0 +1,619 @@
+{
+  "schema_version": 1,
+  "task": "Independent document-consistency audit of Stage Warehouse Mobile observations",
+  "reviewed_at_utc": "2026-10-02T18:50:56Z",
+  "reviewer_role": "Independent source-mapping agent; not author of either Mobile observation pass or coordinator receipt",
+  "audit_base_commit": "ffbb5d7b230702315c0670449031ad12d23feaad",
+  "status": "PASS_WITH_LIMITS",
+  "scope": "Read-only review of the two original Mobile files, two follow-up Mobile files and coordinator receipt; recomputed counts/dispositions/fingerprints/links, inspected privacy retention and selected source boundaries. No second live Mobile traversal, API call, database query or operational validation was performed.",
+  "input_hashes": [
+    {
+      "path": "Snapdragon/evidence/stage-mobile-runtime.json",
+      "sha256": "4956a554dae314ac28de0fef8ffc199977aaa2d18b13dbcc33a34419ceb4c745"
+    },
+    {
+      "path": "Snapdragon/screens/STAGE_MOBILE.md",
+      "sha256": "19fad1429836b08fea8e92e4bab979842e0c6d4bed9fa7b89c1dc3cf7b8fd577"
+    },
+    {
+      "path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "sha256": "b5191f50f571b0ecaeff62a67973718d8022e2a7b81a70cc7e008e97beb90356"
+    },
+    {
+      "path": "Snapdragon/screens/STAGE_MOBILE_REMAINING.md",
+      "sha256": "d190af12a8b036690e44bcbc5b459723c3dd9973a5e588bcbc094915385bb4ac"
+    },
+    {
+      "path": "Snapdragon/evidence/stage-mobile-coordinator-review.json",
+      "sha256": "0d7fdc1f850984723570e59e83c97a7109f5a73e672e36d201a13e6ea78de60d"
+    }
+  ],
+  "explicitly_excluded_mutable_inputs": [
+    "Snapdragon/STATUS.md",
+    "Snapdragon/receiving/STAGE_SESSION_REPORT.md",
+    "Snapdragon/receiving/stage-progress.json",
+    "Snapdragon/inventory/coverage.json",
+    "Snapdragon/evidence/verification.json"
+  ],
+  "checks": [
+    {
+      "name": "frozen_input_hashes",
+      "status": "PASS",
+      "evidence": "All five designated evidence/guide/coordinator artifacts match the supplied or independently computed frozen fingerprints."
+    },
+    {
+      "name": "coordinator_original_hash_bindings",
+      "status": "PASS",
+      "evidence": "Both original Mobile files still match the coordinator receipt."
+    },
+    {
+      "name": "coordinator_check_total",
+      "status": "PASS",
+      "evidence": "Seven named coordinator checks, seven passes, zero failures; its scope explicitly excludes a second live traversal."
+    },
+    {
+      "name": "original_menu_uniqueness",
+      "status": "PASS",
+      "evidence": "Sixteen unique observed menu task titles."
+    },
+    {
+      "name": "original_entries_and_dispositions",
+      "status": "PASS",
+      "evidence": "Original pass: three initial entries, thirteen not opened, sixteen dispositions."
+    },
+    {
+      "name": "original_counts_and_returns",
+      "status": "PASS",
+      "evidence": "Menu plus three entry states; three reported direct returns; 3/16=18.75%."
+    },
+    {
+      "name": "followup_menu_identity",
+      "status": "PASS",
+      "evidence": "Follow-up task sequence matches the original sixteen-title menu exactly."
+    },
+    {
+      "name": "followup_entry_uniqueness",
+      "status": "PASS",
+      "evidence": "Twelve distinct task contexts and state IDs; identical screen titles are not collapsed into one task."
+    },
+    {
+      "name": "followup_disposition_completeness",
+      "status": "PASS",
+      "evidence": "Follow-up dispositions cover exactly the thirteen original not-opened tasks."
+    },
+    {
+      "name": "combined_no_double_count",
+      "status": "PASS",
+      "evidence": "Original three and follow-up twelve are disjoint; historical C24 observations are not added."
+    },
+    {
+      "name": "work_execution_boundary",
+      "status": "PASS",
+      "evidence": "Work Execution remains unentered; this is neither a loaded entry nor an application failure."
+    },
+    {
+      "name": "combined_menu_dispositions",
+      "status": "PASS",
+      "evidence": "All sixteen fresh menu titles have one combined current disposition."
+    },
+    {
+      "name": "percentages_keep_denominators",
+      "status": "PASS",
+      "evidence": "13/13 dispositions, 12/13 newly opened, 15/16 combined initial entries; full-review acceptance stays separate."
+    },
+    {
+      "name": "followup_initial_state_types",
+      "status": "PASS",
+      "evidence": "Ten blank-input states and two Nest/Remove choice states; twelve task contexts but eleven unique titles."
+    },
+    {
+      "name": "followup_go_state_counts",
+      "status": "PASS",
+      "evidence": "Eight initially disabled Go controls, two enabled, two absent; none invoked according to per-entry notes."
+    },
+    {
+      "name": "return_counts_preserve_exception",
+      "status": "PASS",
+      "evidence": "Eleven direct Back returns plus one Receipt Container Nesting reload recovery; total fresh direct returns are fourteen of fifteen."
+    },
+    {
+      "name": "no_submitted_inputs_or_operations",
+      "status": "PASS",
+      "evidence": "Recorded action counts show no values, choices, Go submissions or business actions; this is not independent server-effect validation."
+    },
+    {
+      "name": "retention_and_cleanup_consistency",
+      "status": "PASS",
+      "evidence": "Both authors report metadata-only retention, closed temporary tabs and untouched owner tabs. Tab IDs are automation provenance, not business identifiers."
+    },
+    {
+      "name": "followup_reference_fingerprints",
+      "status": "PASS",
+      "evidence": "Six recorded reference fingerprints match: original Mobile pair, C24, C25, source catalogue and work-flow guide."
+    },
+    {
+      "name": "startup_primary_file_hashes",
+      "status": "PASS",
+      "evidence": "Three primary originals and three reading copies match their recorded fingerprints and structured-source metadata."
+    },
+    {
+      "name": "startup_node_bindings",
+      "status": "PASS",
+      "evidence": "Ten cited nodes exist in structured sources and normalized selected text is found in the corresponding exact-hash original HTML."
+    },
+    {
+      "name": "startup_semantic_boundary",
+      "status": "PASS",
+      "evidence": "Manual review: Work Execution n113 permits default-profile bypass; System Built Cart Picking n98 assigns containers before Go and n114 retains the cart after Back; System Directed context is qualified by profile. No installed default profile or certain effect is inferred."
+    },
+    {
+      "name": "source_catalogue_and_deferred_contracts",
+      "status": "PASS",
+      "evidence": "Retained catalogue stays 45 SRC identities; six C28 contracts remain unresolved/deferred. No tracked _project/help/SDD-RF changes relative to the audit base."
+    },
+    {
+      "name": "full_review_and_environment_limits",
+      "status": "PASS",
+      "evidence": "Both passes remain Stage entry observations; full reviews 0/16, no Prod parity, no device/scanner/accessibility acceptance, no deployment/timing credit."
+    },
+    {
+      "name": "guide_links_and_anchors",
+      "status": "PASS",
+      "evidence": "Thirteen local links resolve: four original-guide links plus nine follow-up-guide links, including explicit custom anchors."
+    },
+    {
+      "name": "guide_receipt_alignment",
+      "status": "PASS",
+      "evidence": "Manual review plus key-label/count checks: guide rows match each retained initial state, preserve the return exception and leave the original pass historical."
+    },
+    {
+      "name": "targeted_privacy_scan",
+      "status": "PASS",
+      "evidence": "Targeted credential-assignment and raw record-route patterns found no matches. Full-file manual review found only labels, source/control identities, counts and tab provenance; no business row payload or printer/preference values. This is not an exhaustive security scan or proof about unsaved tool output."
+    }
+  ],
+  "passed": 27,
+  "failed": 0,
+  "skipped": 0,
+  "counts": {
+    "original_menu_titles": 16,
+    "original_initial_entries": 3,
+    "followup_dispositions": 13,
+    "followup_initial_entries": 12,
+    "followup_unique_initial_titles": 11,
+    "combined_unique_initial_titles": 14,
+    "combined_menu_dispositions": 16,
+    "combined_initial_entries": 15,
+    "combined_initial_entry_denominator": 16,
+    "combined_initial_entry_percent": 93.75,
+    "unentered_source_supported_boundary": 1,
+    "original_direct_returns": 3,
+    "followup_direct_returns": 11,
+    "followup_reload_recoveries": 1,
+    "combined_direct_returns": 14,
+    "combined_menu_recoveries": 15,
+    "full_task_reviews_accepted": 0,
+    "full_task_review_denominator": 16,
+    "deferred_contracts_closed": 0,
+    "guide_local_links_checked": 13,
+    "primary_boundary_articles": 3,
+    "primary_original_and_reading_hashes_checked": 6,
+    "source_nodes_checked": 10
+  },
+  "combined_dispositions": [
+    {
+      "menu_title": "Assign Printer",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "assign_printer_initial",
+      "initial_title": "Assign Printer",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Close Container",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "close_container_initial",
+      "initial_title": "Close Container",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Close Putaway Group",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "close_putaway_group_initial",
+      "initial_title": "Close Putaway Group",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Cycle Count Reconciliation",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "cycle_count_reconciliation_initial",
+      "initial_title": "Cycle Count Reconciliation",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Immediate Dock Transfer",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "immediate_dock_transfer_initial",
+      "initial_title": "Immediate Dock Transfer",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Inventory Management",
+      "original_disposition": "initial_entry_observed",
+      "followup_disposition": "not in follow-up scope",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-runtime.json",
+      "state_id": "inventory_adjustment_class_selection",
+      "initial_title": "Select Adjustment Class",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Clear Putwall Location",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "clear_putwall_location_initial",
+      "initial_title": "Clear Putwall Location",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Location Inquiry",
+      "original_disposition": "initial_entry_observed",
+      "followup_disposition": "not in follow-up scope",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-runtime.json",
+      "state_id": "location_inquiry_initial",
+      "initial_title": "Location Inquiry",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Multiple Order Pallet Nesting",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "multiple_order_pallet_nesting_initial",
+      "initial_title": "Select Nesting Type",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Putwall Sort",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "putwall_sort_initial",
+      "initial_title": "Putwall Sort",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Receipt Container Nesting",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "receipt_container_nesting_initial",
+      "initial_title": "Receipt Container Nesting",
+      "return_disposition": "reload recovery after incomplete Back return",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Receiving",
+      "original_disposition": "initial_entry_observed",
+      "followup_disposition": "not in follow-up scope",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-runtime.json",
+      "state_id": "receiving_preference_selection",
+      "initial_title": "Select Receiving Preference",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Remove Cart Container",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "remove_cart_container_initial",
+      "initial_title": "Remove Cart Container",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Work Execution",
+      "original_disposition": "not_opened",
+      "followup_disposition": "not_entered_source_supported_startup_boundary",
+      "combined_disposition": "not_entered_source_supported_startup_boundary",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": null,
+      "initial_title": null,
+      "return_disposition": "not entered",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Shipping Container Nesting",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "shipping_container_nesting_initial",
+      "initial_title": "Select Nesting Type",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    },
+    {
+      "menu_title": "Shipping Container QC",
+      "original_disposition": "not_opened",
+      "followup_disposition": "initial_entry_observed",
+      "combined_disposition": "initial_entry_observed",
+      "evidence_path": "Snapdragon/evidence/stage-mobile-remaining-runtime.json",
+      "state_id": "shipping_container_qc_initial",
+      "initial_title": "Shipping Container QC",
+      "return_disposition": "direct Back return reported",
+      "full_workflow_accepted": false
+    }
+  ],
+  "source_boundary_review": {
+    "claim_limit": "Selected source passages establish possible Work Execution startup effects, not the current installed profile or certain behavior. The existing 45-SRC catalogue/manuals remain the functionality reference; entry UI notes do not supersede their qualifications.",
+    "node_hash_rule": "SHA256 over recursively concatenated structured child strings without whitespace normalization. Original comparison additionally collapses whitespace only for matching selected visible text within original HTML.",
+    "primary_sources": [
+      {
+        "article_id": "c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0",
+        "source_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/WMmobile_workexec.htm",
+        "original_path": "AIM/source/html/30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c.htm",
+        "original_sha256": "30c399f928385a34bb09dda88b73256c5516efb08501b8060ebf15dbd1b72c9c",
+        "reading_path": "AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md",
+        "reading_sha256": "6d0e6e7fcaf14e8adacded55993ce6afd9d04f5338fade99a8fffdc4fddeef17",
+        "structured_path": "AIM/data/articles/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.json",
+        "structured_sha256": "8e9b0e8683bd8974929c43ff12bb1f5851db2005097a993257794de46d58c482",
+        "nodes": [
+          {
+            "node_id": "n110",
+            "node_text_sha256": "cc3e6c05105a0688a954f2752f3e38826d9764abb713236b9509b22c65d2fd2d",
+            "present_in_structured_source": true,
+            "normalized_text_found_in_original": true
+          },
+          {
+            "node_id": "n113",
+            "node_text_sha256": "dba6850076bcd42579800750d86b1e95df2e52084c2f006c6bbef0d42bf55eab",
+            "present_in_structured_source": true,
+            "normalized_text_found_in_original": true
+          },
+          {
+            "node_id": "n119",
+            "node_text_sha256": "dae34e4df21baa46b5f3031891d3593ac27a36dc98c68600c48bf14652391505",
+            "present_in_structured_source": true,
+            "normalized_text_found_in_original": true
+          }
+        ]
+      },
+      {
+        "article_id": "4240aa17a86f87a6eefabbd0124f06f8bcb88c4429fb0c391f98fcafd00603b9",
+        "source_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/Cart_picking_Process.htm",
+        "original_path": "AIM/source/html/205d3cadad15515e422feb035e51ecd388174a5ccf6af1c00851f100a64cc0e5.htm",
+        "original_sha256": "205d3cadad15515e422feb035e51ecd388174a5ccf6af1c00851f100a64cc0e5",
+        "reading_path": "AIM/reading/4240aa17a86f87a6eefabbd0124f06f8bcb88c4429fb0c391f98fcafd00603b9.md",
+        "reading_sha256": "d74b30dfb1eed34972d3b7b3daa9bf3cbebdfb9064403218f6b6d8a21e54f376",
+        "structured_path": "AIM/data/articles/4240aa17a86f87a6eefabbd0124f06f8bcb88c4429fb0c391f98fcafd00603b9.json",
+        "structured_sha256": "0ebf1cce6bd5fe24de480864ecaafaf3faeddc434b9db0b342e562f1b758fba3",
+        "nodes": [
+          {
+            "node_id": "n93",
+            "node_text_sha256": "ad513340206736e5ddebb26ae418ad53f1703357755549cd51cb991ca06aa17a",
+            "present_in_structured_source": true,
+            "normalized_text_found_in_original": true
+          },
+          {
+            "node_id": "n98",
+            "node_text_sha256": "5ed0f60375f438720a51470c5b8cb5e1e653389510a4fb1f65e855eab822a774",
+            "present_in_structured_source": true,
+            "normalized_text_found_in_original": true
+          },
+          {
+            "node_id": "n114",
+            "node_text_sha256": "f7cf3c505a4480148b3165af5482737c166e109cf0af3c6b48957118baae34e9",
+            "present_in_structured_source": true,
+            "normalized_text_found_in_original": true
+          }
+        ]
+      },
+      {
+        "article_id": "0dfff7671dd910f375497911712c01cbb5ae234764532ed55f7642cc8255b637",
+        "source_url": "https://travstg.manhscale.com/SCALEHelp/Help/WebHelp/Content/WM_System_directed.htm",
+        "original_path": "AIM/source/html/09e69afc0af8342ed7897ef454e49b4d6ed801c9b0077182856dd725d6bf7e97.htm",
+        "original_sha256": "09e69afc0af8342ed7897ef454e49b4d6ed801c9b0077182856dd725d6bf7e97",
+        "reading_path": "AIM/reading/0dfff7671dd910f375497911712c01cbb5ae234764532ed55f7642cc8255b637.md",
+        "reading_sha256": "f6e19ae2b0fd051877bbaf8eaf3ed2c564404e71231fd5d3a1130ca25258efb5",
+        "structured_path": "AIM/data/articles/0dfff7671dd910f375497911712c01cbb5ae234764532ed55f7642cc8255b637.json",
+        "structured_sha256": "deb929f6c63bda1de27c8d035365eed3a832d8bb24ba739ed8f8a05df5b552fe",
+        "nodes": [
+          {
+            "node_id": "n101",
+            "node_text_sha256": "0fab50929f9a0487db6bc96869d01e1a5bd2c76809980db6d5de74e7b9a2e315",
+            "present_in_structured_source": true,
+            "normalized_text_found_in_original": true
+          },
+          {
+            "node_id": "n106",
+            "node_text_sha256": "bd09ad74bea7812f2c14b9f3f565f865ba83733ccc9ba542c4b8282d8125ebd0",
+            "present_in_structured_source": true,
+            "normalized_text_found_in_original": true
+          },
+          {
+            "node_id": "n120",
+            "node_text_sha256": "47f036ecd64eccb63ba672ead7a17c5d964ef34936c733a85ad4d503b00a5cd0",
+            "present_in_structured_source": true,
+            "normalized_text_found_in_original": true
+          },
+          {
+            "node_id": "n135",
+            "node_text_sha256": "aede0b412e162511bdb2d058e0fae6354c6f109b0e63b935ba2a13ac2958357d",
+            "present_in_structured_source": true,
+            "normalized_text_found_in_original": true
+          }
+        ]
+      }
+    ],
+    "context_fingerprints": [
+      {
+        "path": "_project/CONTINUATION_C24.md",
+        "sha256": "566753163c0f18ee29f8fc2ee0438f4083c9609361892a7952a5a2ee77acedf5"
+      },
+      {
+        "path": "_project/CONTINUATION_C25.md",
+        "sha256": "da5c9e138421a513b1b644968221304b9c285165995ea152522f7cbfba6756e2"
+      },
+      {
+        "path": "SDD/RF/WAREHOUSE_MOBILE_SOURCE_CATALOG.md",
+        "sha256": "34bab20458faf417b2c79b6d8ddadffee9aeb1ee37107d1ef305d9df6c2c2aff"
+      },
+      {
+        "path": "SDD/RF/WAREHOUSE_MOBILE_WORK_FLOWS.md",
+        "sha256": "d7f66b9d9312dc303bb9df7d9014a4cb5eb1c574ecf09f21778feecd185e17f3"
+      }
+    ]
+  },
+  "preserved_authority": {
+    "path": "_project/continuation28-20261002.json",
+    "sha256": "31fe31b8a9d1357e7f1e4b52a6630e29e1f577710a192923d1a0db07d47cb03f",
+    "deferred_src_ids": [
+      230,
+      280,
+      340,
+      350,
+      360,
+      400
+    ],
+    "resolved": false,
+    "deployment_and_correlated_timing": "0/34 unchanged",
+    "historical_C24": "Prior Oct 1 15/16 entry observations are a separate evidence set, never added to Oct 2 counts.",
+    "catalogue": "45 retained SRC identities; not 45 fresh operationally verified workflows."
+  },
+  "privacy_review": {
+    "basis": "Full retained-file text review plus targeted signature checks; author retention assertions inspected for internal consistency.",
+    "no_retained_business_payload_detected": true,
+    "allowed_identity_types": [
+      "task/screen labels",
+      "source article hashes and node IDs",
+      "route host/path",
+      "automation tab IDs"
+    ],
+    "limitation": "Does not independently verify all live side effects, browser history, unsaved tool outputs, physical device behavior or server/database state."
+  },
+  "findings": [],
+  "known_limits_preserved": [
+    "Work Execution not entered because sources do not establish universally inert startup.",
+    "Receipt Container Nesting Back failed to restore menu; reload recovered the disposable tab. No mutation, rollback or root cause inferred.",
+    "No Go or transactional choice was submitted; two initially enabled Go controls are not proof of harmless behavior.",
+    "No title-to-Form/SRC mapping, installed configuration equality, complete source procedure or full workflow acceptance inferred.",
+    "All six deferred contracts and the 0/34 freeze remain unchanged."
+  ],
+  "validation_commands": [
+    {
+      "command": "Read-only Python reconciliation, SHA256, selected-node/original matching, local-link/anchor checks and targeted privacy signatures",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --name-only HEAD -- _project help SDD/RF",
+      "exit_code": 0,
+      "output": "empty"
+    },
+    {
+      "command": "git diff --check -- five Mobile input files",
+      "exit_code": 0
+    }
+  ],
+  "links_checked": [
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE.md",
+      "target": "../evidence/stage-mobile-runtime.json",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE.md",
+      "target": "../reference/COVERAGE_CRITERIA.md",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE.md",
+      "target": "../STATUS.md",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE.md",
+      "target": "../receiving/SESSION_REPORT.md",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE_REMAINING.md",
+      "target": "../evidence/stage-mobile-remaining-runtime.json",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE_REMAINING.md",
+      "target": "STAGE_MOBILE.md",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE_REMAINING.md",
+      "target": "../../SDD/RF/WAREHOUSE_MOBILE_SOURCE_CATALOG.md#find-a-task-from-the-menu",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE_REMAINING.md",
+      "target": "../../_project/CONTINUATION_C24.md",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE_REMAINING.md",
+      "target": "../../_project/CONTINUATION_C25.md",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE_REMAINING.md",
+      "target": "../../SDD/RF/WAREHOUSE_MOBILE_WORK_FLOWS.md#entry-and-profiles",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE_REMAINING.md",
+      "target": "../../AIM/reading/c0b8a4482e4b858f753b52028b7a8e806ba5240c1d5303379719af3082ece1a0.md",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE_REMAINING.md",
+      "target": "../../AIM/reading/0dfff7671dd910f375497911712c01cbb5ae234764532ed55f7642cc8255b637.md",
+      "resolved": true
+    },
+    {
+      "from": "Snapdragon/screens/STAGE_MOBILE_REMAINING.md",
+      "target": "../../AIM/reading/4240aa17a86f87a6eefabbd0124f06f8bcb88c4429fb0c391f98fcafd00603b9.md",
+      "resolved": true
+    }
+  ],
+  "completed_at_utc": "2026-10-02T18:55:15.343637+00:00"
+}

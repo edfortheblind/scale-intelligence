@@ -89,6 +89,11 @@ def main():
         receiving = read("receiving/progress.json")
         result["receiving_continuation"] = receiving
         inputs.append("receiving/progress.json")
+    stage = None
+    if (BASE / "receiving/stage-progress.json").exists():
+        stage = read("receiving/stage-progress.json")
+        result["stage_continuation"] = stage
+        inputs.append("receiving/stage-progress.json")
     result["input_sha256"] = {name: hashlib.sha256((BASE / name).read_bytes()).hexdigest() for name in inputs}
     (BASE / "inventory/coverage.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     lines = ["# Snapdragon progress", "", "Observation date: 2026-10-02. Recomputed from [coverage.json](inventory/coverage.json).", "",
@@ -117,6 +122,13 @@ def main():
             lines.append(f"| {task['id']} - {task['measure']} | {task['completed']}/{task['denominator']} | {progress} | {task['status']} |")
         lines += ["", receiving["qualification"], "",
                   "Read [the Receiving session report](receiving/SESSION_REPORT.md), [functional guide](receiving/FUNCTIONAL_GUIDE.md), [configuration map](receiving/CONFIGURATION.md) and [backend reconciliation](receiving/BACKEND_BINDINGS.md).", ""]
+    if stage:
+        lines += ["", "## Renewed Stage Receiving and Mobile review", "",
+                  "Observed at travstg.manhscale.com. These new UI observations do not replace the earlier Production snapshot or prove environment parity.", "",
+                  "| Task / measure | Completed / denominator | Progress |", "|---|---:|---:|"]
+        for task in stage["work_packages"]:
+            lines.append(f"| {task['id']} - {task['measure']} | {task['completed']}/{task['denominator']} | {percent(task['completed'], task['denominator'])}% |")
+        lines += ["", stage["qualification"], "", "Read [the Stage session report](receiving/STAGE_SESSION_REPORT.md) for screen-level findings, remaining work and evidence.", ""]
     lines += ["", "Each section has an initial functional note and mapped labels; full per-screen review remains open in every section.", "",
               "## Completed", "", "- Reviewed Sam's transcript, supplied notes and selected visual frames at a pinned private repository commit.",
              "- Captured 917 FORM rows and classified all 254 screen implementations; preserved inactive and context-dependent entries.",

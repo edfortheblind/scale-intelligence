@@ -1,0 +1,715 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-02T17:54:07.243Z",
+  "host": "travstg.manhscale.com",
+  "task": "SD-11 Stage read-only Receiving continuation",
+  "source_environment": "Stage UI; prior replica configuration remains Production-snapshot evidence",
+  "business_rows_retained": false,
+  "operational_actions_executed": false,
+  "configuration_saved": false,
+  "screens": [
+    {
+      "form_id": 2796,
+      "title": "Purchase Order Insight",
+      "route": "/scale/insights/2796",
+      "basic_criteria": [
+        "Purchase Order",
+        "Receipt ID",
+        "Source Name",
+        "Ship From",
+        "Item",
+        "Company",
+        "Warehouse",
+        "Created Date Time range",
+        "Include Closed Purchase Orders"
+      ],
+      "advanced_condition_choices": [
+        "All are met (AND)",
+        "Any are met (OR)"
+      ],
+      "observations": [
+        {
+          "state": "advanced_string_editor",
+          "selected_field": "Item",
+          "operands": [
+            "!=\n20",
+            "=\n10",
+            "contains\n70",
+            "does not contain\n80",
+            "is not null\n90",
+            "is null\n100"
+          ],
+          "value_required_observation": "With blank value the Save button was disabled; no criterion saved."
+        },
+        {
+          "state": "open_orders_inquiry",
+          "search": "Default existing warehouse context; Include Closed unchanged",
+          "result": "No result rows",
+          "pager": "0 - 0 of 0 records"
+        },
+        {
+          "state": "include_closed_inquiry",
+          "include_closed": true,
+          "result": "No result rows",
+          "pager": "0 - 0 of 0 records",
+          "visible_errors": []
+        },
+        {
+          "state": "unrestricted_local_warehouse_inquiry",
+          "include_closed": true,
+          "warehouse_filter_cleared": true,
+          "result": "No result rows",
+          "detail_state": "No selected-record context available"
+        }
+      ],
+      "advanced_fields": [
+        "Closed Date Time\nCLOSED_DATE_TIME",
+        "Closed Orders\nCLOSED_ORDERS",
+        "Company\nCOMPANY",
+        "Company (Purchase Order Detail)\nPODETAILCOMPANY",
+        "Company (Purchase Order Header)\nPOHEADERCOMPANY",
+        "Created Date Time\nCREATED_DATE_TIME",
+        "Date Time Stamp (Purchase Order Detail)\nPODETAILDATETIMESTAMP",
+        "Date Time Stamp (Purchase Order Header)\nPOHEADERDATETIMESTAMP",
+        "ISM ACCOUNTABLE\nITEM_CATEGORY2",
+        "ISM EOL\nITEM_CATEGORY1",
+        "ISM UI\nITEM_CATEGORY3",
+        "Item\nITEM",
+        "Item Category 10\nITEM_CATEGORY10",
+        "Item Category 4\nITEM_CATEGORY4",
+        "Item Category 5\nITEM_CATEGORY5",
+        "Item Category 6\nITEM_CATEGORY6",
+        "Item Category 7\nITEM_CATEGORY7",
+        "Item Category 8\nITEM_CATEGORY8",
+        "Item Category 9\nITEM_CATEGORY9",
+        "Item Class\nITEM_CLASS",
+        "Item Color\nITEM_COLOR",
+        "Item Department\nITEM_DEPARTMENT",
+        "Item Description\nITEM_DESC",
+        "Item Dimension UM\nITEM_DIMENSION_UM",
+        "Item Division\nITEM_DIVISION",
+        "Item Height\nITEM_HEIGHT",
+        "Item Length\nITEM_LENGTH",
+        "Item List Price\nITEM_LIST_PRICE",
+        "Item Net Price\nITEM_NET_PRICE",
+        "Item Size\nITEM_SIZE",
+        "Item Style\nITEM_STYLE",
+        "Item Weight\nITEM_WEIGHT",
+        "Item Width\nITEM_WIDTH",
+        "Line Number\nPODETAILLINENUMBER",
+        "Lines\nLINES",
+        "Object ID (Purchase Order Detail)\nPODETAILOBJECTID",
+        "Object ID (Purchase Order Header)\nPOHEADEROBJECTID",
+        "Open Orders\nOPEN_ORDERS",
+        "Open Quantity\nOPEN_QUANTITY",
+        "Purchase Order ID (Purchase Order Detail)\nPODETAILPURCHASEORDERID",
+        "Purchase Order ID (Purchase Order Header)\nPOHEADERPURCHASEORDERID",
+        "Quantity UM\nQUANTITY_UM",
+        "Receipt ID\nRECEIPT_ID",
+        "Receipt Type\nRECEIPT_TYPE",
+        "Ship From\nSHIP_FROM",
+        "Ship From Address 1\nSHIP_FROM_ADDRESS1",
+        "Ship From Address 2\nSHIP_FROM_ADDRESS2",
+        "Ship From Address 3\nSHIP_FROM_ADDRESS3",
+        "Ship From Attention To\nSHIP_FROM_ATTENTION_TO",
+        "Ship From City\nSHIP_FROM_CITY",
+        "Ship From Country\nSHIP_FROM_COUNTRY",
+        "Ship From Email Address\nSHIP_FROM_EMAIL_ADDRESS",
+        "Ship From Fax Number\nSHIP_FROM_FAX_NUM",
+        "Ship From Name\nSHIP_FROM_NAME",
+        "Ship From Phone Number\nSHIP_FROM_PHONE_NUM",
+        "Ship From Postal Code\nSHIP_FROM_POSTAL_CODE",
+        "Ship From State\nSHIP_FROM_STATE",
+        "Source Address 1\nSOURCE_ADDRESS1",
+        "Source Address 2\nSOURCE_ADDRESS2",
+        "Source Address 3\nSOURCE_ADDRESS3",
+        "Source Attention To\nSOURCE_ATTENTION_TO",
+        "Source City\nPOHEADERSOURCECITY",
+        "Source Country\nSOURCE_COUNTRY",
+        "Source Email Address\nSOURCE_EMAIL_ADDRESS",
+        "Source Fax Number\nSOURCE_FAX_NUM",
+        "Source ID\nSOURCE_ID",
+        "Source Name\nSOURCE_NAME",
+        "Source Phone Number\nSOURCE_PHONE_NUM",
+        "Source Postal Code\nSOURCE_POSTAL_CODE",
+        "Source State\nSOURCE_STATE",
+        "Status\nPOHEADERSTATUS",
+        "Total Quantity\nTOTAL_QUANTITY",
+        "User Defined Field 1 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF1",
+        "User Defined Field 1 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF1",
+        "User Defined Field 2 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF2",
+        "User Defined Field 2 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF2",
+        "User Defined Field 3 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF3",
+        "User Defined Field 3 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF3",
+        "User Defined Field 4 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF4",
+        "User Defined Field 4 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF4",
+        "User Defined Field 5 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF5",
+        "User Defined Field 5 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF5",
+        "User Defined Field 6 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF6",
+        "User Defined Field 6 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF6",
+        "User Defined Field 7 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF7",
+        "User Defined Field 7 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF7",
+        "User Defined Field 8 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF8",
+        "User Defined Field 8 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF8",
+        "User Stamp (Purchase Order Detail)\nPODETAILUSERSTAMP",
+        "User Stamp (Purchase Order Header)\nPOHEADERUSERSTAMP",
+        "Warehouse\nWAREHOUSE",
+        "Weight UM\nWEIGHT_UM"
+      ],
+      "string_operands": [
+        "!=\n20",
+        "=\n10",
+        "contains\n70",
+        "does not contain\n80",
+        "is not null\n90",
+        "is null\n100"
+      ],
+      "date_operands": [
+        "!=\n20",
+        "<\n30",
+        "<=\n40",
+        "=\n10",
+        ">\n50",
+        ">=\n60",
+        "is not null\n90",
+        "is null\n100"
+      ],
+      "empty_action_menu": [
+        {
+          "aria_disabled": null,
+          "class": "",
+          "id": "ListPaneMenuActionNew",
+          "label": "New",
+          "parent_class": "dropdownaction"
+        },
+        {
+          "aria_disabled": null,
+          "class": "",
+          "id": "ListPaneMenuActionCopy",
+          "label": "Copy",
+          "parent_class": "dropdownaction disabled"
+        },
+        {
+          "aria_disabled": null,
+          "class": "",
+          "id": "ListPaneMenuActionEdit",
+          "label": "Edit",
+          "parent_class": "dropdownaction disabled"
+        },
+        {
+          "aria_disabled": null,
+          "class": "",
+          "id": "ListPaneMenuActionDelete",
+          "label": "Delete",
+          "parent_class": "dropdownaction disabled"
+        },
+        {
+          "aria_disabled": null,
+          "class": "",
+          "id": "ListPaneMenuActionNewLine",
+          "label": "New Line",
+          "parent_class": "dropdownaction disabled"
+        },
+        {
+          "aria_disabled": null,
+          "class": "",
+          "id": "ListPaneMenuActionClose",
+          "label": "Close",
+          "parent_class": "dropdownaction disabled"
+        },
+        {
+          "aria_disabled": null,
+          "class": "",
+          "id": "ListPaneMenuActionCancelClose",
+          "label": "Cancel Close",
+          "parent_class": "dropdownaction disabled"
+        },
+        {
+          "aria_disabled": null,
+          "class": "",
+          "id": "ListPaneMenuActionPrintPreviewDocs",
+          "label": "Print Preview",
+          "parent_class": "dropdownaction disabled"
+        },
+        {
+          "aria_disabled": null,
+          "class": "",
+          "id": "ListPaneMenuActionPrintDefaultDocs",
+          "label": "Print Default Docs",
+          "parent_class": "dropdownaction disabled"
+        },
+        {
+          "aria_disabled": null,
+          "class": "",
+          "id": "ListPaneMenuActionPrintSelectedDocs",
+          "label": "Print Selected Docs",
+          "parent_class": "dropdownaction disabled"
+        },
+        {
+          "aria_disabled": null,
+          "class": "",
+          "id": "ListPaneMenuActionReceiptFromPO",
+          "label": "Receipt From PO",
+          "parent_class": "dropdownaction disabled"
+        }
+      ],
+      "grouping_choices": [
+        "Purchase Order",
+        "Company",
+        "Status",
+        "Ship From",
+        "Source Name",
+        "Color",
+        "Source Address",
+        "Source City",
+        "Source State",
+        "Source Postal Code",
+        "Warehouse",
+        "Object ID",
+        "Closed Date Time",
+        "Lines",
+        "Total Open Quantity",
+        "Icon"
+      ],
+      "grid_columns": [
+        "Purchase Order",
+        "Company",
+        "Status",
+        "Ship From",
+        "Source Name",
+        "Color"
+      ],
+      "summary_tiles": [
+        "Pos",
+        "Lines",
+        "Open",
+        "Closed"
+      ],
+      "detail_tiles": [
+        "Receipts",
+        "Lines"
+      ],
+      "searches_executed": 3,
+      "selected_record_inspected": false,
+      "limitations": [
+        "No rows returned by three read-only searches; record details and selected/multiple-selection behavior unvisited.",
+        "Advanced field catalog inspected; string/date operator samples do not cover every field validation rule.",
+        "Stage UI observations do not establish Production configuration or operational outcomes."
+      ]
+    },
+    {
+      "form_id": 2797,
+      "title": "Purchase Order Line Insight",
+      "route": "/scale/insights/2797",
+      "observations": [
+        {
+          "state": "default_inquiry",
+          "result": "No result rows"
+        },
+        {
+          "state": "include_closed_warehouse_criterion_cleared",
+          "result": "No result rows",
+          "pager": "0 - 0 of 0 records\nPrev\n1\nNext"
+        },
+        {
+          "state": "settled_empty_result_recheck",
+          "observed_at": "2026-10-02T18:12:17.709Z",
+          "include_closed": true,
+          "warehouse_criterion_cleared": true,
+          "result": "0 - 0 of 0 records after allowing the fresh query to settle",
+          "visible_error": false
+        }
+      ],
+      "basic_criteria": [
+        {
+          "id": "BasicCriteriaPurchaseOrderId",
+          "label": "Purchase Order",
+          "type": "text"
+        },
+        {
+          "id": "BasicCriteriaReceiptId",
+          "label": "Receipt ID",
+          "type": "text"
+        },
+        {
+          "id": "BasicCriteriaItem",
+          "label": "Item",
+          "type": "text"
+        },
+        {
+          "id": "BasicCriteriaPurchaseOrderLineNumber",
+          "label": "Purchase Order Line Number",
+          "type": "tel"
+        },
+        {
+          "id": "BasicCriteriaInternalOrderLineNumber",
+          "label": "Internal Order Line Number",
+          "type": "tel"
+        },
+        {
+          "id": "",
+          "label": "Company",
+          "type": "text"
+        },
+        {
+          "id": "",
+          "label": "Warehouse",
+          "type": "text"
+        },
+        {
+          "id": "BasicCriteriaIncludeClosedPurchaseOrders",
+          "label": "BasicCriteriaIncludeClosedPurchaseOrders",
+          "type": "checkbox"
+        }
+      ],
+      "grid_columns": [
+        "Purchase Order",
+        "Purchase Order Line Number",
+        "Item",
+        "Description",
+        "Company",
+        "Total Qty",
+        "Open Qty",
+        "UM",
+        "Color"
+      ],
+      "advanced_fields": [
+        "Closed Date Time\nCLOSED_DATE_TIME",
+        "Company\nCOMPANY",
+        "Created Date Time\nCREATED_DATE_TIME",
+        "Date Time Stamp (Purchase Order Detail)\nPODETAILDATETIMESTAMP",
+        "Date Time Stamp (Purchase Order Header)\nPOHEADERDATETIMESTAMP",
+        "Is Purchase Order Closed\nIS_PURCHASE_ORDER_CLOSED",
+        "ISM ACCOUNTABLE\nITEM_CATEGORY2",
+        "ISM EOL\nITEM_CATEGORY1",
+        "ISM UI\nITEM_CATEGORY3",
+        "Item\nITEM",
+        "Item Category 10\nITEM_CATEGORY10",
+        "Item Category 4\nITEM_CATEGORY4",
+        "Item Category 5\nITEM_CATEGORY5",
+        "Item Category 6\nITEM_CATEGORY6",
+        "Item Category 7\nITEM_CATEGORY7",
+        "Item Category 8\nITEM_CATEGORY8",
+        "Item Category 9\nITEM_CATEGORY9",
+        "Item Class\nITEM_CLASS",
+        "Item Color\nITEM_COLOR",
+        "Item Department\nITEM_DEPARTMENT",
+        "Item Description\nITEM_DESC",
+        "Item Dimension UM\nITEM_DIMENSION_UM",
+        "Item Division\nITEM_DIVISION",
+        "Item Height\nITEM_HEIGHT",
+        "Item Length\nITEM_LENGTH",
+        "Item List Price\nITEM_LIST_PRICE",
+        "Item Net Price\nITEM_NET_PRICE",
+        "Item Size\nITEM_SIZE",
+        "Item Style\nITEM_STYLE",
+        "Item Weight\nITEM_WEIGHT",
+        "Item Width\nITEM_WIDTH",
+        "Line Number\nPODETAILLINENUMBER",
+        "Lines\nLINES",
+        "Object ID (Purchase Order Detail)\nPODETAILOBJECTID",
+        "Object ID (Purchase Order Header)\nPOHEADEROBJECTID",
+        "Open Quantity\nOPEN_QUANTITY",
+        "Process Stamp (Purchase Order Detail)\nPODETAILPROCESSTAMP",
+        "Process Stamp (Purchase Order Header)\nPOHEADERPROCESSTAMP",
+        "Purchase Order ID (Purchase Order Detail)\nPODETAILPURCHASEORDERID",
+        "Purchase Order ID (Purchase Order Header)\nPOHEADERPURCHASEORDERID",
+        "Purchase Order Object ID\nPURCHASE_ORDER_OBJECT_ID",
+        "Quantity UM\nQUANTITY_UM",
+        "Receipt ID\nRECEIPT_ID",
+        "Receipt Type\nRECEIPT_TYPE",
+        "Ship From\nSHIP_FROM",
+        "Ship From Address 1\nSHIP_FROM_ADDRESS1",
+        "Ship From Address 2\nSHIP_FROM_ADDRESS2",
+        "Ship From Address 3\nSHIP_FROM_ADDRESS3",
+        "Ship From Attention To\nSHIP_FROM_ATTENTION_TO",
+        "Ship From City\nSHIP_FROM_CITY",
+        "Ship From Country\nSHIP_FROM_COUNTRY",
+        "Ship From Email Address\nSHIP_FROM_EMAIL_ADDRESS",
+        "Ship From Fax Number\nSHIP_FROM_FAX_NUM",
+        "Ship From Name\nSHIP_FROM_NAME",
+        "Ship From Phone Number\nSHIP_FROM_PHONE_NUM",
+        "Ship From Postal Code\nSHIP_FROM_POSTAL_CODE",
+        "Ship From State\nSHIP_FROM_STATE",
+        "Source Address 1\nSOURCE_ADDRESS1",
+        "Source Address 2\nSOURCE_ADDRESS2",
+        "Source Address 3\nSOURCE_ADDRESS3",
+        "Source Attention To\nSOURCE_ATTENTION_TO",
+        "Source City\nPOHEADERSOURCECITY",
+        "Source Country\nSOURCE_COUNTRY",
+        "Source Email Address\nSOURCE_EMAIL_ADDRESS",
+        "Source Fax Number\nSOURCE_FAX_NUM",
+        "Source ID\nSOURCE_ID",
+        "Source Name\nSOURCE_NAME",
+        "Source Phone Number\nSOURCE_PHONE_NUM",
+        "Source Postal Code\nSOURCE_POSTAL_CODE",
+        "Source State\nSOURCE_STATE",
+        "Status\nPOHEADERSTATUS",
+        "Total Quantity\nTOTAL_QUANTITY",
+        "User Defined Field 1 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF1",
+        "User Defined Field 1 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF1",
+        "User Defined Field 2 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF2",
+        "User Defined Field 2 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF2",
+        "User Defined Field 3 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF3",
+        "User Defined Field 3 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF3",
+        "User Defined Field 4 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF4",
+        "User Defined Field 4 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF4",
+        "User Defined Field 5 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF5",
+        "User Defined Field 5 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF5",
+        "User Defined Field 6 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF6",
+        "User Defined Field 6 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF6",
+        "User Defined Field 7 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF7",
+        "User Defined Field 7 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF7",
+        "User Defined Field 8 (Purchase Order Detail)\nPURCHASE_ORDER_DETAIL_USERDEF8",
+        "User Defined Field 8 (Purchase Order Header)\nPURCHASE_ORDER_HEADER_USERDEF8",
+        "User Stamp (Purchase Order Detail)\nPODETAILUSERSTAMP",
+        "User Stamp (Purchase Order Header)\nPOHEADERUSERSTAMP",
+        "Warehouse\nWAREHOUSE",
+        "Weight UM\nWEIGHT_UM"
+      ],
+      "numeric_operands": [
+        "!=\n20",
+        "<\n30",
+        "<=\n40",
+        "=\n10",
+        ">\n50",
+        ">=\n60"
+      ],
+      "empty_action_menu": [
+        {
+          "disabled_class": true,
+          "id": "ListPaneMenuActionCopy",
+          "label": "Copy"
+        },
+        {
+          "disabled_class": true,
+          "id": "ListPaneMenuActionEdit",
+          "label": "Edit"
+        },
+        {
+          "disabled_class": true,
+          "id": "ListPaneMenuActionDelete",
+          "label": "Delete"
+        }
+      ],
+      "searches_executed": 3,
+      "summary_tiles": [
+        "Pos",
+        "Lines",
+        "Total Qty",
+        "Open Qty"
+      ],
+      "selected_record_inspected": false,
+      "limitations": [
+        "No rows in the two initial read-only searches or a fresh settled recheck; selected-record and multi-selection branches unavailable in the observed context.",
+        "Numeric operand sample does not establish all field validation behavior."
+      ]
+    },
+    {
+      "form_id": 2791,
+      "title": "Putaway Group Insight",
+      "route": "/scale/insights/2791",
+      "basic_criteria": [
+        "Putaway Group ID",
+        "Putaway Group Location",
+        "Receipt ID",
+        "Internal Group Number",
+        "Warehouse",
+        "Show Closed Putaway Groups"
+      ],
+      "observations": [
+        {
+          "state": "default_open_group_inquiry",
+          "result": "Records returned",
+          "record_values_retained": false,
+          "pager": "1 - 9 of 9 records"
+        },
+        {
+          "state": "closed_group_selection",
+          "result": "Read-only row selected; Open presented enabled, Close and Rename disabled",
+          "business_values_retained": false
+        },
+        {
+          "state": "containers_drilldown",
+          "destination": "/scale/insights/2779",
+          "query_keys": [
+            "filters"
+          ],
+          "query_values_omitted": true
+        },
+        {
+          "state": "open_group_selection",
+          "actions": [
+            {
+              "disabled_class": false,
+              "id": "ListPaneMenuActionClosePutawayGroup",
+              "label": "Close"
+            },
+            {
+              "disabled_class": true,
+              "id": "ListPaneMenuActionOpenPutawayGroup",
+              "label": "Open"
+            },
+            {
+              "disabled_class": false,
+              "id": "ListPaneMenuActionRenamePutawayGroup",
+              "label": "Rename"
+            }
+          ]
+        },
+        {
+          "state": "selection_modifier_attempts",
+          "control_click_selected_rows": 1,
+          "shift_click_selected_rows": 1,
+          "qualification": "Multiple simultaneous row selection was not established."
+        },
+        {
+          "state": "containers_return",
+          "path": "/scale/insights/2791",
+          "returned": true
+        },
+        {
+          "state": "closed_group_inquiry",
+          "result": "Paginated records returned; selected row inspected",
+          "row_values_retained": false
+        }
+      ],
+      "empty_action_menu": [
+        {
+          "disabled_class": true,
+          "id": "ListPaneMenuActionClosePutawayGroup",
+          "label": "Close"
+        },
+        {
+          "disabled_class": true,
+          "id": "ListPaneMenuActionOpenPutawayGroup",
+          "label": "Open"
+        },
+        {
+          "disabled_class": true,
+          "id": "ListPaneMenuActionRenamePutawayGroup",
+          "label": "Rename"
+        }
+      ],
+      "advanced_fields": [
+        "Closed\nCLOSED",
+        "Date Time Stamp\nDATE_TIME_STAMP",
+        "Group ID\nGROUP_ID",
+        "Internal Group Location Number\nINTERNAL_GROUP_LOC_NUM",
+        "Internal Group Number\nINTERNAL_GROUP_NUM",
+        "Internal Receipt Container Number\nINTERNAL_REC_CONT_NUM",
+        "Process Stamp\nPROCESS_STAMP",
+        "Putaway Location Group Name\nPUTAWAY_GROUP_LOCATION",
+        "Receipt ID\nRECEIPT_ID",
+        "User Defined Field 1\nPUT_GROUP_USERDEF1",
+        "User Defined Field 2\nPUT_GROUP_USERDEF2",
+        "User Defined Field 3\nPUT_GROUP_USERDEF3",
+        "User Defined Field 4\nPUT_GROUP_USERDEF4",
+        "User Defined Field 5\nPUT_GROUP_USERDEF5",
+        "User Defined Field 6\nPUT_GROUP_USERDEF6",
+        "User Defined Field 7\nPUT_GROUP_USERDEF7",
+        "User Defined Field 8\nPUT_GROUP_USERDEF8",
+        "User Stamp\nUSER_STAMP",
+        "Username\nUSER_NAME",
+        "Warehouse\nWAREHOUSE"
+      ],
+      "closed_field_operands": [
+        "!=\n20",
+        "=\n10",
+        "contains\n70",
+        "does not contain\n80",
+        "is not null\n90",
+        "is null\n100"
+      ],
+      "closed_value_choices": [
+        "No (N)",
+        "Yes (Y)"
+      ],
+      "closed_selection_actions": [
+        {
+          "disabled_class": true,
+          "id": "ListPaneMenuActionClosePutawayGroup",
+          "label": "Close"
+        },
+        {
+          "disabled_class": false,
+          "id": "ListPaneMenuActionOpenPutawayGroup",
+          "label": "Open"
+        },
+        {
+          "disabled_class": true,
+          "id": "ListPaneMenuActionRenamePutawayGroup",
+          "label": "Rename"
+        }
+      ],
+      "open_selection_actions": [
+        {
+          "disabled_class": false,
+          "id": "ListPaneMenuActionClosePutawayGroup",
+          "label": "Close"
+        },
+        {
+          "disabled_class": true,
+          "id": "ListPaneMenuActionOpenPutawayGroup",
+          "label": "Open"
+        },
+        {
+          "disabled_class": false,
+          "id": "ListPaneMenuActionRenamePutawayGroup",
+          "label": "Rename"
+        }
+      ],
+      "multiselect_action_attempt": [
+        {
+          "disabled_class": false,
+          "id": "ListPaneMenuActionClosePutawayGroup",
+          "label": "Close"
+        },
+        {
+          "disabled_class": true,
+          "id": "ListPaneMenuActionOpenPutawayGroup",
+          "label": "Open"
+        },
+        {
+          "disabled_class": false,
+          "id": "ListPaneMenuActionRenamePutawayGroup",
+          "label": "Rename"
+        }
+      ],
+      "saved_search_dialog": {
+        "title": "Save Search Criteria",
+        "fields": [
+          "Enter a Name for The Search"
+        ],
+        "buttons": [
+          "Save",
+          "Cancel"
+        ],
+        "saved": false
+      },
+      "grid_columns": [
+        "Putaway Group ID",
+        "Warehouse",
+        "Closed"
+      ],
+      "summary_tiles": [
+        "Receipts"
+      ],
+      "detail_tiles": [
+        "Containers"
+      ],
+      "selected_record_inspected": true,
+      "searches_executed": 3,
+      "limitations": [
+        "Open and closed single-row selection sampled; multi-selection was not established.",
+        "No Close, Open or Rename operation executed.",
+        "Production metadata remains reference evidence, not a Stage configuration parity claim."
+      ]
+    }
+  ],
+  "completed_at": "2026-10-02T18:12:17.709Z",
+  "cleanup": {
+    "temporary_tab_closed": true,
+    "user_tabs_modified": false
+  }
+}

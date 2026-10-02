@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "task": "SD-11 Stage Receiving continuation",
+  "scope": "Appointment Calendar, Receipt Monitoring and Receipt Workbench; read-only UI inspection",
+  "recorded_at_utc": "2026-10-02T18:00:32.714Z",
+  "environment": {
+    "host": "travstg.manhscale.com",
+    "kind": "STAGE",
+    "route_source": "Receiving menu hrefs observed in the renewed Stage session, then confirmed in this temporary tab",
+    "production_metadata_equivalence_verified": false,
+    "identity_limit": "Retained Prod form identities label the work package. Calendar/Workbench Stage form IDs and implementation IDs were not read from Stage configuration metadata. Monitor URL explicitly contains 4106."
+  },
+  "summary": {
+    "assigned_roots": 3,
+    "routes_attempted": 3,
+    "routes_loaded": 3,
+    "loaded_percent": 100.0,
+    "full_applicable_screen_reviews_completed": 0,
+    "full_review_denominator": 3,
+    "calendar_view_modes_exercised": 2,
+    "calendar_view_modes_exposed": 2,
+    "calendar_navigation_controls_exercised": 3,
+    "calendar_navigation_controls_exposed": 3,
+    "monitor_chart_levels_loaded": 1,
+    "monitor_documented_chart_levels": 4,
+    "monitor_failed_read_only_branches": 2,
+    "workbench_receipt_lookup_attempts": 2,
+    "workbench_receipt_lookup_dialogs_or_grids_observed": 0,
+    "selected_record_contexts_reviewed": 0,
+    "business_operations_executed": 0
+  },
+  "screens": [
+    {
+      "name": "Appointment Calendar",
+      "reference_form_id": 4069,
+      "stage_form_id_independently_verified": false,
+      "requested_path": "/scale/trans/apptschedule",
+      "final_path": "/scale/trans/apptschedule",
+      "availability": "loaded",
+      "observed_labels": ["Appointment Calendar", "Dock Doors", "Today", "Day", "7 Days", "Actions", "New"],
+      "state_checks": [
+        {"state": "landing", "status": "observed", "finding": "Calendar rendered dock-resource rows and hourly columns. Initial asynchronous shell was followed by loaded resource rows."},
+        {"state": "day_view", "status": "observed", "finding": "Day mode showed the current calendar day and hourly columns."},
+        {"state": "seven_day_view", "status": "observed", "finding": "7 Days showed a seven-day range, date headers and hourly columns."},
+        {"state": "previous_range", "status": "observed", "finding": "Previous moved the seven-day range backward by one week; Today became enabled."},
+        {"state": "next_range", "status": "observed", "finding": "Next returned to the current range, and a further Next moved forward one week."},
+        {"state": "today_and_return_to_day", "status": "observed", "finding": "Today restored the current seven-day range and became disabled; Day restored the single-day view."},
+        {"state": "actions_menu", "status": "observed", "finding": "Actions expanded to expose New. The menu was closed without invoking New."},
+        {"state": "appointment_availability", "status": "observed", "finding": "The loaded current-day and seven-day views had dock resources but zero rendered appointment event nodes. This is a visible-state observation, not a claim that no appointments exist in other ranges or contexts."},
+        {"state": "month_view", "status": "not_exposed", "finding": "Only Day and 7 Days view buttons were present; no Month control was exposed. No hidden view was invoked."},
+        {"state": "appointment_preview_and_record_context", "status": "blocked_no_visible_context", "finding": "No visible appointment was available for a read-only preview or record-specific detail inspection in the reviewed ranges."},
+        {"state": "new_or_dragged_appointment", "status": "boundary_not_executed", "finding": "Creation, dragging, resizing, Edit and saving were outside this read-only pass."}
+      ],
+      "unvisited_criteria": ["Appointment preview fields and selected-appointment action enablement", "Record-specific View/Edit distinction and return path", "Other warehouse/role contexts", "Stage configuration metadata and event/service bindings"],
+      "not_applicable_or_not_exposed": ["No Insight-style basic/advanced criteria or result-grid paging on the observed calendar surface", "No Month view button exposed in this configuration"]
+    },
+    {
+      "name": "Receipt Monitoring",
+      "reference_form_id": 4106,
+      "stage_form_id_independently_verified": "4106 is explicit in the runtime route; Stage configuration implementation not inspected",
+      "requested_path": "/scale/monitors/4106",
+      "final_path": "/scale/monitors/4106",
+      "availability": "loaded_with_read_only_branch_errors",
+      "observed_labels": ["Receipt Monitoring", "Receipt Dates", "Receipts By Receipt Date", "Total Receipts", "Total Receipt Lines", "Total Receipt Value", "Indicators", "Receipts Over 24 Hours Old", "Pending Putaways Over 4 Hours Old", "Receipts With QC", "Insight"],
+      "date_category_labels": ["Past due", "Today", "Tomorrow", "This week", "This month", "Future"],
+      "state_checks": [
+        {"state": "root_chart_and_indicators", "status": "observed", "finding": "The root Receipt Dates chart, three total panels and three indicator tiles populated after initial loading. Numeric totals and chart values are omitted."},
+        {"state": "hierarchy_control", "status": "observed", "finding": "Receipt Dates was a breadcrumb link; no native select dropdown was present. Deeper breadcrumb slots were initially empty."},
+        {"state": "date_bar_drilldown", "status": "blocked_application_error", "action": "Clicked the rendered Past due chart bar", "finding": "Breadcrumb gained Receipt Date Past due, but the root chart remained displayed and the application raised the recorded server-error toast. No Receipt Type chart load was established."},
+        {"state": "return_to_root_breadcrumb", "status": "observed", "finding": "Selecting Receipt Dates returned the breadcrumb to the root; the error toast was no longer visible on the subsequent state check."},
+        {"state": "insight_navigation", "status": "blocked_application_error", "action": "Clicked Insight after the root breadcrumb settled", "finding": "The same server-error category appeared. URL remained /scale/monitors/4106 and no Receipt Insight criteria/grid loaded. No new tab was created."},
+        {"state": "receipt_type_vendor_purchase_order_levels", "status": "unvisited_upstream_blocker", "finding": "The documented downstream hierarchy was not reached after the date drilldown error."},
+        {"state": "indicator_tile_destinations", "status": "unvisited_failure_boundary", "finding": "All three tile labels were observed; their destinations were not invoked after two equivalent server-error outcomes in monitor read-only branches."},
+        {"state": "refresh_and_alternative_warehouse", "status": "unvisited", "finding": "Refresh was visible but not invoked. No warehouse change was made."}
+      ],
+      "error": {
+        "category": "application_internal_server_error",
+        "message": "Internal server error. See the audit log for more information.",
+        "observed_branches": ["Past due date-chart drilldown", "Insight navigation"],
+        "cause": "unresolved; no audit log, network payload or server investigation performed",
+        "stop_rule": "Stopped further monitor branch attempts after two equivalent server-error outcomes"
+      },
+      "unvisited_criteria": ["Receipt Type, Vendor Name and Purchase Order charts", "Successful context propagation into Receipt Insight", "Three indicator-tile destinations", "Refresh behavior and empty chart states", "Stage procedure/service bindings and effective indicator configuration"],
+      "not_applicable_or_not_exposed": ["No Insight-style criteria pane or row grid on the observed monitor root", "No native chart dropdown was exposed; chart bars and breadcrumbs provided the observed navigation surface"]
+    },
+    {
+      "name": "Receipt Workbench",
+      "reference_form_id": 4038,
+      "stage_form_id_independently_verified": false,
+      "requested_path": "/scale/trans/receiptWorkBench",
+      "final_path": "/scale/trans/receiptWorkBench",
+      "availability": "loaded_entry_shell_only",
+      "observed_labels": ["Receipt Workbench", "Receipt ID", "Receiving Preference", "New", "Actions", "Cancel"],
+      "observed_icon_controls": ["Refresh", "Receipt lookup magnifier", "Right-arrow control", "Plus control"],
+      "state_checks": [
+        {"state": "entry_shell", "status": "observed", "finding": "Receipt ID editor, receipt-lookup magnifier and populated Receiving Preference selector were present. No receipt was selected; preference values are omitted."},
+        {"state": "actions_menu", "status": "observed", "finding": "Actions expanded to expose Cancel. The menu was collapsed without invoking Cancel. New was separately visible and not invoked."},
+        {"state": "preference_selector", "status": "observed", "finding": "The Receiving Preference dropdown opened with existing options. No preference was changed; option names and values are omitted."},
+        {"state": "receipt_lookup", "status": "blocked_no_visible_response", "attempts": 2, "finding": "The enabled magnifier was clicked twice with intervening state checks. Neither attempt produced a visible lookup dialog, result-grid headers, new tab or route change. No explanatory error message was observed."},
+        {"state": "selected_receipt_lines_and_containers", "status": "unvisited_missing_context", "finding": "No legitimate selected-receipt context was obtained; Lines and Containers accordions, grids, paging, read-only details and conditional prompts remain unvisited."},
+        {"state": "operational_controls", "status": "boundary_not_executed", "finding": "Check In, Locate, Cancel transaction, New Line, Quick Scan, print/export, save/OK and other business operations were not invoked. Right-arrow and Plus controls were not used because no selected receipt context was established."}
+      ],
+      "unvisited_criteria": ["Receipt lookup criteria, columns and selection return behavior", "Selected receipt summary and receipt-line/container tabs or accordions", "Action enablement under selected receipt/line/container context", "Nested containers and conditional receiving prompts", "Stage form/control/event bindings"],
+      "not_applicable_or_not_exposed": ["Generic Insight basic/advanced criteria were not exposed on the workbench entry shell; the receipt lookup remains an unreviewed search branch"]
+    }
+  ],
+  "evidence_method": {
+    "browser": "Existing Brave browser 1; agent-created temporary tab only",
+    "observation": "Rendered DOM snapshots, read-only DOM structural inspection and temporary monitor screenshots to verify the chart layout and visible server-error toast",
+    "screenshot_files_retained": false,
+    "raw_dom_snapshots_retained": false,
+    "business_row_values_retained": false,
+    "record_identifiers_retained": false,
+    "aggregate_values_retained": false,
+    "account_or_warehouse_values_retained": false,
+    "configuration_option_values_retained": false,
+    "db_connections": 0,
+    "direct_api_requests": 0,
+    "configuration_saves": 0,
+    "business_mutations": 0,
+    "prints_or_exports": 0
+  },
+  "cleanup": {
+    "agent_created_tab": "986568766",
+    "agent_created_tab_closed": true,
+    "user_dashboard_tab_986568705_preserved": true,
+    "user_mobile_tab_986568764_preserved": true,
+    "other_agent_tabs_untouched": true
+  },
+  "limits": [
+    "Stage is a distinct environment. Matching page labels/routes does not verify equivalence to retained Prod replica metadata, configuration, permissions or data.",
+    "Three loaded roots and reviewed exposed controls do not satisfy every applicable full-screen criterion. Full completion remains 0/3 for this bounded assignment.",
+    "Application error and no-visible-response categories are observed outcomes, not diagnoses of security, licensing or server causes.",
+    "Empty calendar event rendering applies only to the reviewed current context/ranges. It does not establish no appointments elsewhere.",
+    "No operation or permission checkpoint was validated by executing a business action. Existing six deferred mobile gaps and 0/34 deployment/timing freeze are unchanged."
+  ]
+}

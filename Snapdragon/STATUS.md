@@ -42,12 +42,35 @@ The table below measures separate Receiving work packages. The original landing 
 | R3 - Menu destinations explained from sources | 9/9 | 100.0% | complete_documentary_scope |
 | R4 - Named database dependencies matched | 24/30 | 80.0% | six_snapshot_matches_unresolved |
 | R5 - Enablement bindings structurally reviewed | 69/69 | 100.0% | complete_static_scope_runtime_unverified |
-| R6 - Detailed live screen reviews completed | 0/9 | 0.0% | expired_session_blocks_continuation |
+| R6 - Detailed live screen reviews completed | 0/9 | 0.0% | stage_roots_inspected_conditional_branches_remain |
 | R7 - Offline package checks passed | 11/11 | 100.0% | pass |
 
-These percentages measure individual work packages; they are not averaged. SD-11 full Receiving reviews remain 0/9 and installation-wide accepted reviews remain 0/211. The current browser token is expired; prior successful landing evidence remains intact. Configured predicates and source-described effects do not prove live permission, selected-record behavior or service execution.
+These percentages measure individual work packages and are not averaged. Source/configuration work retains its original Production-snapshot scope. The renewed Stage session loaded all nine Receiving roots and added selected-record UI evidence; see stage-progress.json for separate counts. Full Receiving acceptance remains 0/9 and installation-wide full acceptance remains 0/211 because applicable conditional/configuration branches remain open. Prior expired-token evidence is historical.
 
 Read [the Receiving session report](receiving/SESSION_REPORT.md), [functional guide](receiving/FUNCTIONAL_GUIDE.md), [configuration map](receiving/CONFIGURATION.md) and [backend reconciliation](receiving/BACKEND_BINDINGS.md).
+
+
+## Renewed Stage Receiving and Mobile review
+
+Observed at travstg.manhscale.com. These new UI observations do not replace the earlier Production snapshot or prove environment parity.
+
+| Task / measure | Completed / denominator | Progress |
+|---|---:|---:|
+| S1 - Receiving destinations inspected | 9/9 | 100.0% |
+| S2 - Insight advanced-field catalogs | 6/6 | 100.0% |
+| S3 - Insight selected-record contexts | 4/6 | 66.67% |
+| S4 - Related Receipt detail forms inspected | 3/3 | 100.0% |
+| S5 - Putaway open/closed action states | 2/2 | 100.0% |
+| S6 - Exposed calendar view modes | 2/2 | 100.0% |
+| S7 - Documented monitor chart levels loaded | 1/4 | 25.0% |
+| S8 - Workbench selected-receipt context | 1/1 | 100.0% |
+| S9 - Mobile menu titles documented | 16/16 | 100.0% |
+| S10 - Mobile initial task entries inspected | 15/16 | 93.75% |
+| S11 - Offline package checks passed | 11/11 | 100.0% |
+
+Stage roots and sampled live states are now documented. Counts are separate measures and are not averaged. Production source/configuration evidence retains its earlier scope; environment parity is unverified. PO/PO Line result context, calendar event context, monitor errors and unsampled conditional branches keep full Receiving acceptance at 0/9. Mobile initial-entry coverage is 15/16, with Work Execution kept at menu level because startup can assign work. The six deferred mobile contracts and deployment/timing freeze remain unchanged.
+
+Read [the Stage session report](receiving/STAGE_SESSION_REPORT.md) for screen-level findings, remaining work and evidence.
 
 
 Each section has an initial functional note and mapped labels; full per-screen review remains open in every section.

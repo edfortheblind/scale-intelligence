@@ -40,7 +40,7 @@ The discovery and structural-documentation pass is complete. Read [STATUS.md](ST
 
 The next work is detailed functional/configuration review: record-dependent detail pages, conditional transaction states, action enablement and dependency semantics. Five Labor routes report not licensed; the external SCI route returns an application error. A loaded screen, a generated dossier and a fully reviewed function retain separate status.
 
-SD-11 Receiving is now in progress. Its [session report](receiving/SESSION_REPORT.md) tracks nine menu destinations, nine directly referenced Form identities and 17 active implementations. Keep its source/configuration work separate from live child-state inspection; an expired browser token currently limits the latter.
+SD-11 Receiving is in progress. The [source/configuration session report](receiving/SESSION_REPORT.md) tracks nine menu destinations, nine directly referenced Form identities and 17 active implementations. The subsequent [Stage session report](receiving/STAGE_SESSION_REPORT.md) records renewed sign-in, all nine Receiving landings, sampled record details and supplemental Warehouse Mobile entry states. Keep Stage observations separate from the retained Production replica snapshot. Remaining branches include empty PO/PO Line inquiries, appointment context, Monitor server errors and unsampled conditional states; the old expired-token observation is historical.
 
 ## Recommended continuation order
 
