@@ -1,6 +1,16 @@
 # SCALE Intelligence master continuation prompt
 
-## C27 current mobile source concern and procedure context
+## C28 current owner direction - 2026-10-02
+
+The owner deferred the six mobile workflow gaps (SRC230, SRC280, SRC340, SRC350, SRC360 and SRC400). They remain unresolved, but are **not the current priority**. Do not request their exports or finish their procedures as a prerequisite for unrelated authorized work.
+
+The requested read-only PROD check succeeded at `https://trav.manhscale.com/config/selfservice`: Activity Architect opened, and the ordinary Receiving flow opened through its View control with Save disabled. **Cancel** returned to the flow list. The inspection tab was closed and the owner's original PROD configuration tab remains open. The earlier C27 access denial does not establish PROD unavailability. Read the [C28 observation and scope](_project/CONTINUATION_C28.md).
+
+**Configuration inspection rule: always use Cancel or X to leave a configuration; never click OK.** Do not change or save configuration while checking it. This access check supplies no completed mobile procedure, SRC mapping reconciliation, warehouse execution or new acceptance. Preserve the **0/34 deployment/timing freeze**, closed acquisition/display/JAWS gates, frozen evaluation inputs and untracked Video Rec.
+
+**Continuation:** preserve the six gaps for later owner-directed work; continue other authorized documentation/help work when supported by a concrete task and evidence. No new ranking experiment or operational walkthrough follows from this check. C28 supersedes older current-priority and access-blocker wording below; historical evidence remains unchanged. Normal private publication is verified separately.
+
+## Historical C27 mobile source concern and procedure context
 
 Child guide headings now link to their parent procedure, making shared prerequisites and conditions accessible after an exact SRC or search jump. Search payloads and order, sources, guide text and catalog classifications are unchanged. Read [C27 verification and evidence needs](_project/CONTINUATION_C27.md) and [the checkpoint](_project/continuation27-20261001.json).
 
