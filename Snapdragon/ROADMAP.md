@@ -44,6 +44,8 @@ SD-11 Receiving is in progress. The [source/configuration session report](receiv
 
 ## Recommended continuation order
 
+The owner accepted all work delivered through `f8c1e829` and selected **S3 selected-record contexts** and **S7 Monitor chart levels** for the current continuation. Read the [focused report](receiving/FOCUSED_SESSION_REPORT.md) and [acceptance record](receiving/owner-acceptance.json). The broader order below remains a backlog; the current request does not reopen accepted Mobile work or advance to another section.
+
 1. Receiving: complete PO/receipt/line/container record-detail and parameter semantics, using the verified PO chain as the pattern.
 2. Order Planning and Shipping: distinguish active Shipment customization from the inactive base, then map planning, packing, QC, container and manifest conditional states.
 3. Inventory and Work: map conditional adjustment/transfer entry states, work-order details, criteria groups and action prerequisites.

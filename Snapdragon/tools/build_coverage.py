@@ -94,6 +94,16 @@ def main():
         stage = read("receiving/stage-progress.json")
         result["stage_continuation"] = stage
         inputs.append("receiving/stage-progress.json")
+    acceptance = None
+    if (BASE / "receiving/owner-acceptance.json").exists():
+        acceptance = read("receiving/owner-acceptance.json")
+        result["owner_acceptance"] = acceptance
+        inputs.append("receiving/owner-acceptance.json")
+    focused = None
+    if (BASE / "receiving/focused-progress.json").exists():
+        focused = read("receiving/focused-progress.json")
+        result["focused_continuation"] = focused
+        inputs.append("receiving/focused-progress.json")
     result["input_sha256"] = {name: hashlib.sha256((BASE / name).read_bytes()).hexdigest() for name in inputs}
     (BASE / "inventory/coverage.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     lines = ["# Snapdragon progress", "", "Observation date: 2026-10-02. Recomputed from [coverage.json](inventory/coverage.json).", "",
@@ -107,7 +117,7 @@ def main():
              f"| Configured numeric Insight/Monitor routes attempted | {result['numeric_routes_attempted']} / {len(numeric_keys)} | {percent(result['numeric_routes_attempted'], len(numeric_keys))}% |",
              f"| Configured numeric Insight/Monitor routes loaded | {numeric_loaded} / {len(numeric_keys)} | {percent(numeric_loaded, len(numeric_keys))}% |",
              f"| Active-form configuration pages verified | {config_ok} / {len(active_forms)} | {percent(config_ok, len(active_forms))}% |",
-             f"| Full functional/configuration review accepted | 0 / {len(active_forms)} | 0% |", "",
+             f"| Every applicable review criterion verified | 0 / {len(active_forms)} | 0% |", "",
              "Full review includes conditional states, record detail branches, action/dependency semantics and the other applicable evidence criteria. No overall blended percentage is calculated. Warehouse execution is not required or authorized by this documentation pass.", "",
              "## Progress by visible menu section", "", "| Section | Attempted | Loaded | Loaded % | Remaining landing issue |", "|---|---:|---:|---:|---|"]
     for row in section_rows:
@@ -129,6 +139,14 @@ def main():
         for task in stage["work_packages"]:
             lines.append(f"| {task['id']} - {task['measure']} | {task['completed']}/{task['denominator']} | {percent(task['completed'], task['denominator'])}% |")
         lines += ["", stage["qualification"], "", "Read [the Stage session report](receiving/STAGE_SESSION_REPORT.md) for screen-level findings, remaining work and evidence.", ""]
+    if acceptance:
+        lines += ["", "## Owner acceptance and current focus", "",
+                  f"The owner accepted the delivered work through `{acceptance['accepted_delivery_commit'][:8]}` with its reported limits. [Acceptance record](receiving/owner-acceptance.json). Only selected-record contexts (S3) and Monitor chart levels (S7) are the current continuation. Prior measurements above remain their dated evidence; owner acceptance is distinct from verification of every technical criterion.", ""]
+    if focused:
+        lines += ["| Current task | Observed / denominator | Progress | Evidence environment |", "|---|---:|---:|---|"]
+        for task in focused["work_packages"]:
+            lines.append(f"| {task['id']} - {task['measure']} | {task['completed']}/{task['denominator']} | {percent(task['completed'], task['denominator'])}% | {task['evidence_environment']} |")
+        lines += ["", focused["qualification"], "", "Read [the focused continuation report](receiving/FOCUSED_SESSION_REPORT.md) for attempts, results and remaining requirements.", ""]
     lines += ["", "Each section has an initial functional note and mapped labels; full per-screen review remains open in every section.", "",
               "## Completed", "", "- Reviewed Sam's transcript, supplied notes and selected visual frames at a pinned private repository commit.",
              "- Captured 917 FORM rows and classified all 254 screen implementations; preserved inactive and context-dependent entries.",

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "task_id": "SD-11-FOCUSED-S3-S7",
+  "observation_date": "2026-10-02",
+  "base_commit": "f8c1e829fca7f33b4ecb1beeec6116076fffad16",
+  "status": "monitor_levels_complete_selected_contexts_require_accessible_records",
+  "owner_acceptance_record": "receiving/owner-acceptance.json",
+  "work_packages": [
+    {
+      "id": "S3",
+      "measure": "Selected-record contexts inspected",
+      "previous_completed": 4,
+      "completed": 4,
+      "denominator": 6,
+      "newly_completed": 0,
+      "status": "record_context_not_found_in_tested_inquiries",
+      "evidence_environment": "Stage: 4 prior types; Production: no selected context",
+      "qualification": "Putaway Group, Receipt, Receipt Line and Receipt Container remain demonstrated. PO2796 and PO Line2797 are still missing; original/alternate Stage inquiries did not supply usable rows and Production PO authentication expired."
+    },
+    {
+      "id": "S7",
+      "measure": "Monitor chart levels inspected",
+      "previous_completed": 1,
+      "completed": 4,
+      "denominator": 4,
+      "newly_completed": 3,
+      "status": "complete_for_sampled_chart_hierarchy",
+      "evidence_environment": "Stage alternate warehouse: 4/4; Production: 0/4",
+      "qualification": "One settled alternate Stage chain demonstrated four actual chart titles and a root breadcrumb return. Earlier original-context error is neither diagnosed nor repaired. Numerical correctness, every branch and configuration parity are unverified."
+    }
+  ],
+  "selected_contexts": {
+    "denominator_form_ids": [
+      2796,
+      2797,
+      2791,
+      2777,
+      2780,
+      2779
+    ],
+    "prior_observed_form_ids": [
+      2791,
+      2777,
+      2780,
+      2779
+    ],
+    "new_observed_form_ids": [],
+    "remaining_form_ids": [
+      2796,
+      2797
+    ],
+    "production_selected_contexts_observed": 0
+  },
+  "monitor_slices": [
+    {
+      "environment": "travstg.manhscale.com",
+      "context": "original warehouse, historical baseline",
+      "loaded_levels": 1,
+      "denominator": 4,
+      "source": "evidence/stage-monitor-workbench-runtime.json"
+    },
+    {
+      "environment": "travstg.manhscale.com",
+      "context": "alternate offered warehouse, current settled chain",
+      "loaded_levels": 4,
+      "denominator": 4,
+      "actual_chart_titles": [
+        "Receipts By Receipt Date",
+        "Receipts By Receipt ID Type",
+        "Receipts By Vendor Name",
+        "Receipts By Purchase Order"
+      ],
+      "source": "evidence/monitor-level-followup.json"
+    },
+    {
+      "environment": "trav.manhscale.com",
+      "context": "current fallback, expired authentication",
+      "loaded_levels": 0,
+      "denominator": 4,
+      "source": "evidence/monitor-level-followup.json"
+    }
+  ],
+  "evidence_files": [
+    "evidence/selected-context-followup.json",
+    "evidence/monitor-level-followup.json"
+  ],
+  "qualification": "Owner acceptance of the prior delivery is recorded separately. S7 improved from 1/4 to 4/4 in a verified alternate Stage context. S3 remains 4/6: no usable PO/PO Line context was found in the tested Stage inquiries, and Production fallback authentication expired. Empty UI results are not proof of database-wide absence. The remaining requirement is a legitimate accessible PO with a line. Accepted other tasks, six deferred mobile contracts and the 0/34 deployment/timing freeze are unchanged.",
+  "evidence_sha256": {
+    "evidence/selected-context-followup.json": "edabfce0eb61609c2affa9aa19dad53df4e84c38a68bd64831635e6d58096069",
+    "evidence/monitor-level-followup.json": "07baa571c79ab6e5e1fcb6fa039264781a5c6d1390a57f4f1fa7be930a6ea587"
+  },
+  "evidence_finalized_at_utc": "2026-10-02T21:35:11Z"
+}

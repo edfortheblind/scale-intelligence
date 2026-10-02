@@ -14,7 +14,7 @@ This is a completed discovery/structural-documentation pass with detailed follow
 | Configured numeric Insight/Monitor routes attempted | 53 / 53 | 100.0% |
 | Configured numeric Insight/Monitor routes loaded | 48 / 53 | 90.57% |
 | Active-form configuration pages verified | 211 / 211 | 100.0% |
-| Full functional/configuration review accepted | 0 / 211 | 0% |
+| Every applicable review criterion verified | 0 / 211 | 0% |
 
 Full review includes conditional states, record detail branches, action/dependency semantics and the other applicable evidence criteria. No overall blended percentage is calculated. Warehouse execution is not required or authorized by this documentation pass.
 
@@ -71,6 +71,20 @@ Observed at travstg.manhscale.com. These new UI observations do not replace the 
 Stage roots and sampled live states are now documented. Counts are separate measures and are not averaged. Production source/configuration evidence retains its earlier scope; environment parity is unverified. PO/PO Line result context, calendar event context, monitor errors and unsampled conditional branches keep full Receiving acceptance at 0/9. Mobile initial-entry coverage is 15/16, with Work Execution kept at menu level because startup can assign work. The six deferred mobile contracts and deployment/timing freeze remain unchanged.
 
 Read [the Stage session report](receiving/STAGE_SESSION_REPORT.md) for screen-level findings, remaining work and evidence.
+
+
+## Owner acceptance and current focus
+
+The owner accepted the delivered work through `f8c1e829` with its reported limits. [Acceptance record](receiving/owner-acceptance.json). Only selected-record contexts (S3) and Monitor chart levels (S7) are the current continuation. Prior measurements above remain their dated evidence; owner acceptance is distinct from verification of every technical criterion.
+
+| Current task | Observed / denominator | Progress | Evidence environment |
+|---|---:|---:|---|
+| S3 - Selected-record contexts inspected | 4/6 | 66.67% | Stage: 4 prior types; Production: no selected context |
+| S7 - Monitor chart levels inspected | 4/4 | 100.0% | Stage alternate warehouse: 4/4; Production: 0/4 |
+
+Owner acceptance of the prior delivery is recorded separately. S7 improved from 1/4 to 4/4 in a verified alternate Stage context. S3 remains 4/6: no usable PO/PO Line context was found in the tested Stage inquiries, and Production fallback authentication expired. Empty UI results are not proof of database-wide absence. The remaining requirement is a legitimate accessible PO with a line. Accepted other tasks, six deferred mobile contracts and the 0/34 deployment/timing freeze are unchanged.
+
+Read [the focused continuation report](receiving/FOCUSED_SESSION_REPORT.md) for attempts, results and remaining requirements.
 
 
 Each section has an initial functional note and mapped labels; full per-screen review remains open in every section.
