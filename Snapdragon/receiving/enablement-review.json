@@ -1,0 +1,3846 @@
+{
+  "schema_version": 1,
+  "task": "SD-11",
+  "method": "fixed configuration-ID SELECT, original fingerprint check, non-evaluating static grammar",
+  "capture_receipt": {
+    "started_at": "2026-10-02T17:05:50.677384+00:00",
+    "database": "travprodwbeyz",
+    "queries": {
+      "identity": {
+        "sql": "SELECT DB_NAME() AS database_name, DB_ID() AS context_database_id,\n CAST(SERVERPROPERTY('ProductVersion') AS nvarchar(128)) AS product_version,\n CAST(SERVERPROPERTY('Edition') AS nvarchar(128)) AS edition,CAST(SERVERPROPERTY('EngineEdition') AS int) AS engine_edition,\n CAST(DATABASEPROPERTYEX(DB_NAME(),'Updateability') AS nvarchar(128)) AS updateability,\n CAST(DATABASEPROPERTYEX(DB_NAME(),'Collation') AS nvarchar(128)) AS collation_name,\n CAST(DATABASEPROPERTYEX(DB_NAME(),'Status') AS nvarchar(128)) AS status",
+        "bound_object_ids": [],
+        "sql_sha256": "0dbc00c35deec4b708a0b03c5cff6a399e684fa3a3ea178d5df1688b6ca56af9",
+        "row_count": 1,
+        "elapsed_seconds": 0.078,
+        "verified_identity": {
+          "database_name": "travprodwbeyz",
+          "updateability": "READ_ONLY"
+        }
+      },
+      "attributes": {
+        "sql": "SELECT OBJECT_ID,SCREEN_CONTROL_ID,ATTRIBUTE_NAME,ATTRIBUTE_VALUE,ACTIVE,SYSTEM_CREATED FROM dbo.SCREEN_CONTROL_ATTRIBUTES WHERE OBJECT_ID IN (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY OBJECT_ID",
+        "bound_object_ids": [
+          40809,
+          40811,
+          40813,
+          40891,
+          40900,
+          40902,
+          40905,
+          40908,
+          40912,
+          40913,
+          40915,
+          40917,
+          40920,
+          40970,
+          40974,
+          40977,
+          40983,
+          41026
+        ],
+        "sql_sha256": "1404e683bf54b71203f3e7c147573f0c208736f50f030b3f47adba1768417614",
+        "row_count": 18,
+        "elapsed_seconds": 0.077
+      },
+      "parameters": {
+        "sql": "SELECT OBJECT_ID,SCREEN_CONTROL_EVENT_ID,PARAMETER_NAME,PARAMETER_VALUE,ACTIVE,SYSTEM_CREATED FROM dbo.SCREEN_CONTROL_EVENT_PARAMETERS WHERE OBJECT_ID IN (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ORDER BY OBJECT_ID",
+        "bound_object_ids": [
+          26538,
+          26539,
+          26540,
+          26541,
+          26542,
+          26543,
+          26544,
+          26545,
+          26546,
+          26547,
+          26548,
+          26582,
+          26583,
+          26584,
+          26585,
+          26621,
+          26622,
+          26623,
+          26759,
+          26760,
+          26761,
+          26762,
+          26763,
+          26764,
+          26765,
+          26766,
+          26767,
+          26768,
+          26769,
+          26770,
+          26771,
+          26772,
+          26773,
+          26774,
+          26775,
+          26776,
+          26777,
+          26838,
+          26839,
+          26840,
+          26841,
+          26842,
+          26843,
+          26844,
+          26845,
+          26846,
+          26847,
+          26879,
+          26880,
+          26881,
+          26882
+        ],
+        "sql_sha256": "246d09d227263bb8568293dd3040ee34652dc9bcf0f87cee2f715c496cc91371",
+        "row_count": 51,
+        "elapsed_seconds": 0.149
+      }
+    },
+    "status": "PASS",
+    "finished_at": "2026-10-02T17:05:51.850789+00:00"
+  },
+  "source_fingerprints": [
+    {
+      "path": "Snapdragon/receiving/configuration-map.json",
+      "sha256": "f5555ba0234bdf3a22bcea0fcdb9bfc09656c9eaa75c7b7a638ff5a38bc5a336"
+    },
+    {
+      "path": "Snapdragon/evidence/menu-routes.json",
+      "bytes": 8050,
+      "sha256": "5a9c8e1dbb9a977fcca1835ef3715ca6434742acd0140d1980ef913827025e9d"
+    },
+    {
+      "path": "Snapdragon/inventory/screen-registry.json",
+      "bytes": 272650,
+      "sha256": "45de599156f8c7f82848559c0bd78c4e8a2e5ef6b2a3491b40b3c79b16606920"
+    },
+    {
+      "path": "Snapdragon/database/forms.json",
+      "bytes": 283473,
+      "sha256": "98ecc88a6198877e7c176967b27d9b5fa6cc0c2508c6bd25bca494e67d54161d"
+    },
+    {
+      "path": "Snapdragon/database/screen-configuration-chains.json",
+      "bytes": 6753147,
+      "sha256": "313891ec45f0d6981eca28c43f2a3e4747e95b41aa343346eaa7bb8ff6c0608a"
+    },
+    {
+      "path": "Snapdragon/database/screen-interaction-map.json",
+      "bytes": 4731161,
+      "sha256": "1e3fa64d90ef549453786e163cc4718532b1006366de96fdaa480a2d3455f54d"
+    },
+    {
+      "path": "Snapdragon/database/safe-dependency-tokens.json",
+      "bytes": 1357449,
+      "sha256": "6579ca31e93442318564d8ee78fcc9b00af309d2cdead5bc323c7636f52b137e"
+    }
+  ],
+  "scope": {
+    "screen_implementations": 17,
+    "candidate_bindings": 69,
+    "enable_action_parameters": 51,
+    "multi_selection_attributes": 18,
+    "traversal": "existing one-hop Receiving scope; no expansion"
+  },
+  "summary": {
+    "status": "PASS",
+    "baseline_matches": 69,
+    "accepted_structural_extractions": 69,
+    "unresolved_or_withheld": 0,
+    "parsed_predicates": 51,
+    "predicates_with_unresolved_symbols": 36,
+    "predicates_with_only_typed_literals": 15,
+    "parsed_boolean_flags": 18,
+    "multi_selection_true": 10,
+    "multi_selection_false": 8,
+    "runtime_predicates_exercised": 0
+  },
+  "grammar": {
+    "field_identifiers": [
+      "APPOINTMENT_ID",
+      "CLOSED",
+      "CLOSE_DATE",
+      "CONTAINER_STATUS",
+      "ClosedDateTime",
+      "GROUP_CLOSED",
+      "IMMD_NEEDS_REQ_CREATED",
+      "INTERNAL_GROUP_NUM",
+      "INTERNAL_RECEIPT_LINE_NUM",
+      "IS_CONTAINERS_CREATED",
+      "IS_RECEIPT_CLOSED",
+      "IsPurchaseOrderClosed",
+      "LEADINGSTS",
+      "LICENSE_PLATE_ID",
+      "Lines",
+      "MAX_STATUS",
+      "ObjectId",
+      "PurchaseOrderId",
+      "PurchaseOrderObjectId",
+      "RECEIPT_ID",
+      "Status",
+      "TRAILER_ID",
+      "TRAILINGSTS",
+      "TotalOpenQty"
+    ],
+    "unresolved_symbol_identifiers": [
+      "Closed",
+      "False",
+      "NULL",
+      "TRUE",
+      "True"
+    ],
+    "integer_constants": [
+      0,
+      1,
+      100,
+      200
+    ],
+    "comparisons": {
+      "===": "strictly_equals",
+      "!==": "strictly_not_equals",
+      "==": "loosely_equals",
+      "!=": "loosely_not_equals",
+      "<=": "less_than_or_equal",
+      ">=": "greater_than_or_equal",
+      "<": "less_than",
+      ">": "greater_than"
+    },
+    "logical_operators": {
+      "&&": "all",
+      "||": "any"
+    },
+    "grouping": "parentheses; comparison precedes AND, AND precedes OR",
+    "literals": [
+      "true",
+      "false",
+      "null"
+    ],
+    "allow_on_multi_select": [
+      "true",
+      "false"
+    ],
+    "max_predicate_characters": 512,
+    "excludes": [
+      "calls",
+      "property access",
+      "indexing",
+      "strings",
+      "assignment",
+      "statements",
+      "comments",
+      "arithmetic",
+      "unknown fields or constants"
+    ]
+  },
+  "limits": [
+    "AST and descriptions describe configured expressions; they do not execute or validate the application's evaluator.",
+    "Closed, NULL, TRUE, True and False remain unresolved symbols. Case is preserved; no coercion or substitution is assumed.",
+    "A predicate with only typed literals still has unproved field types, selection handling and runtime eligibility.",
+    "Multi-selection flags are configured Boolean values, not proof of multi-row behavior, action visibility or permission.",
+    "Only six root Insights contain the 51 captured EnableAction parameters. Absence in the other 11 implementations does not prove absent validation.",
+    "No business rows, stored-routine invocation, API/HTTP requests, mutations, expression evaluation or selected-record runtime tests occurred.",
+    "Raw expressions remain solely in the private LocalAppData assessment area. Original captures and the Receiving configuration map are unchanged.",
+    "Form 166 remains a context association without an active screen implementation; this review does not resolve that limitation."
+  ],
+  "records": [
+    {
+      "form_id": 2791,
+      "main_ui_screen_id": 1778,
+      "screen_control_id": 51700,
+      "control_name": "ListPaneMenuActionClosePutawayGroup",
+      "control_label": "Close",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40809,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 10,
+      "value_sha256_utf16le": "9C105A750CD76609B4B27CBDC530B49603F7253A176F15289119178390AF0542",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": false
+    },
+    {
+      "form_id": 2791,
+      "main_ui_screen_id": 1778,
+      "screen_control_id": 51701,
+      "control_name": "ListPaneMenuActionOpenPutawayGroup",
+      "control_label": "Open",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40811,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 10,
+      "value_sha256_utf16le": "9C105A750CD76609B4B27CBDC530B49603F7253A176F15289119178390AF0542",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": false
+    },
+    {
+      "form_id": 2791,
+      "main_ui_screen_id": 1778,
+      "screen_control_id": 51702,
+      "control_name": "ListPaneMenuActionRenamePutawayGroup",
+      "control_label": "Rename",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40813,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 10,
+      "value_sha256_utf16le": "9C105A750CD76609B4B27CBDC530B49603F7253A176F15289119178390AF0542",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51799,
+      "control_name": "ListPaneMenuActionDeleteReceipt",
+      "control_label": "Delete",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40891,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 8,
+      "value_sha256_utf16le": "3989CB8A0A610E3F2903964EBFEE6F6DEA1EA35703A1CB1346053203EFE781FB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": true
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51802,
+      "control_name": "ListPaneMenuActionAssignTrailer",
+      "control_label": "Assign Trailer ID",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40900,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 8,
+      "value_sha256_utf16le": "3989CB8A0A610E3F2903964EBFEE6F6DEA1EA35703A1CB1346053203EFE781FB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": true
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51803,
+      "control_name": "ListPaneMenuActionNewAppointment",
+      "control_label": "New Appointment",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40902,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 10,
+      "value_sha256_utf16le": "9C105A750CD76609B4B27CBDC530B49603F7253A176F15289119178390AF0542",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51804,
+      "control_name": "ListPaneMenuActionEditAppointment",
+      "control_label": "Edit Appointment",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40905,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 10,
+      "value_sha256_utf16le": "9C105A750CD76609B4B27CBDC530B49603F7253A176F15289119178390AF0542",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51805,
+      "control_name": "ListPaneMenuActionViewAppointment",
+      "control_label": "View Appointment",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40908,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 10,
+      "value_sha256_utf16le": "9C105A750CD76609B4B27CBDC530B49603F7253A176F15289119178390AF0542",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51806,
+      "control_name": "ListPaneMenuActionDeleteAppointment",
+      "control_label": "Delete Appointment",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40912,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 8,
+      "value_sha256_utf16le": "3989CB8A0A610E3F2903964EBFEE6F6DEA1EA35703A1CB1346053203EFE781FB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": true
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51807,
+      "control_name": "ListPaneMenuActionCancelClose",
+      "control_label": "Cancel Close",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40913,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 8,
+      "value_sha256_utf16le": "3989CB8A0A610E3F2903964EBFEE6F6DEA1EA35703A1CB1346053203EFE781FB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": true
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51808,
+      "control_name": "ListPaneMenuActionCheckin",
+      "control_label": "Check in",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40915,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 10,
+      "value_sha256_utf16le": "9C105A750CD76609B4B27CBDC530B49603F7253A176F15289119178390AF0542",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51809,
+      "control_name": "ListPaneMenuActionCreatePreCheckInContainers",
+      "control_label": "Create Pre-Check in Containers",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40917,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 10,
+      "value_sha256_utf16le": "9C105A750CD76609B4B27CBDC530B49603F7253A176F15289119178390AF0542",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51810,
+      "control_name": "ListPaneMenuActionCloseReceipt",
+      "control_label": "Close",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40920,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 8,
+      "value_sha256_utf16le": "3989CB8A0A610E3F2903964EBFEE6F6DEA1EA35703A1CB1346053203EFE781FB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": true
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51859,
+      "control_name": "ListPaneMenuActionDeleteContainers",
+      "control_label": "Delete",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40970,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 8,
+      "value_sha256_utf16le": "3989CB8A0A610E3F2903964EBFEE6F6DEA1EA35703A1CB1346053203EFE781FB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": true
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51860,
+      "control_name": "ListPaneMenuActionCancelContainers",
+      "control_label": "Cancel",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40974,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 8,
+      "value_sha256_utf16le": "3989CB8A0A610E3F2903964EBFEE6F6DEA1EA35703A1CB1346053203EFE781FB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": true
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51862,
+      "control_name": "ListPaneMenuActionLocateContainers",
+      "control_label": "Locate",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40977,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 8,
+      "value_sha256_utf16le": "3989CB8A0A610E3F2903964EBFEE6F6DEA1EA35703A1CB1346053203EFE781FB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": true
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51867,
+      "control_name": "ListPaneMenuActionUnlocateContainers",
+      "control_label": "Unlocate",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 40983,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 8,
+      "value_sha256_utf16le": "3989CB8A0A610E3F2903964EBFEE6F6DEA1EA35703A1CB1346053203EFE781FB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": true
+    },
+    {
+      "form_id": 2780,
+      "main_ui_screen_id": 1783,
+      "screen_control_id": 51910,
+      "control_name": "ListPaneMenuActionDeleteReceiptDetails",
+      "control_label": "Delete",
+      "source_table": "SCREEN_CONTROL_ATTRIBUTES",
+      "object_id": 41026,
+      "configuration_name": "data-allowOnMultiSelect",
+      "screen_control_event_id": null,
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 8,
+      "value_sha256_utf16le": "3989CB8A0A610E3F2903964EBFEE6F6DEA1EA35703A1CB1346053203EFE781FB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "boolean_flag_parsed",
+      "multi_selection_flag": true
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776,
+      "screen_control_id": 51641,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26538,
+      "configuration_name": "EnableAction_ListPaneMenuActionCopy",
+      "screen_control_event_id": 18049,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51616,
+          "control_name": "ListPaneMenuActionCopy",
+          "label": "Copy"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 24,
+      "value_sha256_utf16le": "9ED92809A3688FC20D6D547CFF22D1572D9DE34C359E31F437832E227CB35ED3",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "ObjectId",
+        "operator": "greater_than",
+        "operand": {
+          "kind": "integer_constant",
+          "value": 0
+        }
+      },
+      "structural_description": "ObjectId is greater than numeric constant 0",
+      "field_identifiers": [
+        "ObjectId"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776,
+      "screen_control_id": 51641,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26539,
+      "configuration_name": "EnableAction_ListPaneMenuActionEdit",
+      "screen_control_event_id": 18049,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51617,
+          "control_name": "ListPaneMenuActionEdit",
+          "label": "Edit"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 24,
+      "value_sha256_utf16le": "9ED92809A3688FC20D6D547CFF22D1572D9DE34C359E31F437832E227CB35ED3",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "ObjectId",
+        "operator": "greater_than",
+        "operand": {
+          "kind": "integer_constant",
+          "value": 0
+        }
+      },
+      "structural_description": "ObjectId is greater than numeric constant 0",
+      "field_identifiers": [
+        "ObjectId"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776,
+      "screen_control_id": 51641,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26540,
+      "configuration_name": "EnableAction_ListPaneMenuActionView",
+      "screen_control_event_id": 18049,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51618,
+          "control_name": "ListPaneMenuActionView",
+          "label": "View"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 24,
+      "value_sha256_utf16le": "9ED92809A3688FC20D6D547CFF22D1572D9DE34C359E31F437832E227CB35ED3",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "ObjectId",
+        "operator": "greater_than",
+        "operand": {
+          "kind": "integer_constant",
+          "value": 0
+        }
+      },
+      "structural_description": "ObjectId is greater than numeric constant 0",
+      "field_identifiers": [
+        "ObjectId"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776,
+      "screen_control_id": 51641,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26541,
+      "configuration_name": "EnableAction_ListPaneMenuActionClose",
+      "screen_control_event_id": 18049,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51621,
+          "control_name": "ListPaneMenuActionClose",
+          "label": "Close"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 90,
+      "value_sha256_utf16le": "36B87166AEC697D244B922E48418BDCD84089851DC02A6260388D0A53F3842DF",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "Status",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "Closed"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "PurchaseOrderId",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          }
+        ]
+      },
+      "structural_description": "(Status is strictly unequal to unresolved symbol Closed AND PurchaseOrderId is strictly unequal to unresolved symbol NULL)",
+      "field_identifiers": [
+        "PurchaseOrderId",
+        "Status"
+      ],
+      "unresolved_symbols": [
+        "Closed",
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776,
+      "screen_control_id": 51641,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26542,
+      "configuration_name": "EnableAction_ListPaneMenuActionDelete",
+      "screen_control_event_id": 18049,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51619,
+          "control_name": "ListPaneMenuActionDelete",
+          "label": "Delete"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 48,
+      "value_sha256_utf16le": "6B1E94C9CEE8D4C3243B6026BDEF790ACE1CDBFA4D624178D1FC52ADF91A7D1A",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "PurchaseOrderId",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "PurchaseOrderId is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "PurchaseOrderId"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776,
+      "screen_control_id": 51641,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26543,
+      "configuration_name": "EnableAction_ListPaneMenuActionPrintDefaultDocs",
+      "screen_control_event_id": 18049,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51624,
+          "control_name": "ListPaneMenuActionPrintDefaultDocs",
+          "label": "Print Default Docs"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 48,
+      "value_sha256_utf16le": "6B1E94C9CEE8D4C3243B6026BDEF790ACE1CDBFA4D624178D1FC52ADF91A7D1A",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "PurchaseOrderId",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "PurchaseOrderId is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "PurchaseOrderId"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776,
+      "screen_control_id": 51641,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26544,
+      "configuration_name": "EnableAction_ListPaneMenuActionPrintPreviewDocs",
+      "screen_control_event_id": 18049,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51623,
+          "control_name": "ListPaneMenuActionPrintPreviewDocs",
+          "label": "Print Preview"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 48,
+      "value_sha256_utf16le": "6B1E94C9CEE8D4C3243B6026BDEF790ACE1CDBFA4D624178D1FC52ADF91A7D1A",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "PurchaseOrderId",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "PurchaseOrderId is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "PurchaseOrderId"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776,
+      "screen_control_id": 51641,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26545,
+      "configuration_name": "EnableAction_ListPaneMenuActionPrintSelectedDocs",
+      "screen_control_event_id": 18049,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51625,
+          "control_name": "ListPaneMenuActionPrintSelectedDocs",
+          "label": "Print Selected Docs"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 48,
+      "value_sha256_utf16le": "6B1E94C9CEE8D4C3243B6026BDEF790ACE1CDBFA4D624178D1FC52ADF91A7D1A",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "PurchaseOrderId",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "PurchaseOrderId is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "PurchaseOrderId"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776,
+      "screen_control_id": 51641,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26546,
+      "configuration_name": "EnableAction_ListPaneMenuActionNewLine",
+      "screen_control_event_id": 18049,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51620,
+          "control_name": "ListPaneMenuActionNewLine",
+          "label": "New Line"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 90,
+      "value_sha256_utf16le": "36B87166AEC697D244B922E48418BDCD84089851DC02A6260388D0A53F3842DF",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "Status",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "Closed"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "PurchaseOrderId",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          }
+        ]
+      },
+      "structural_description": "(Status is strictly unequal to unresolved symbol Closed AND PurchaseOrderId is strictly unequal to unresolved symbol NULL)",
+      "field_identifiers": [
+        "PurchaseOrderId",
+        "Status"
+      ],
+      "unresolved_symbols": [
+        "Closed",
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776,
+      "screen_control_id": 51641,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26547,
+      "configuration_name": "EnableAction_ListPaneMenuActionCancelClose",
+      "screen_control_event_id": 18049,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51622,
+          "control_name": "ListPaneMenuActionCancelClose",
+          "label": "Cancel Close"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 90,
+      "value_sha256_utf16le": "8566B1032B603DD30DBF7420B7C72D0B483F3A4C44E72C51AF4BBF2BC66A3BE9",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "Status",
+            "operator": "strictly_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "Closed"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "PurchaseOrderId",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          }
+        ]
+      },
+      "structural_description": "(Status strictly equals unresolved symbol Closed AND PurchaseOrderId is strictly unequal to unresolved symbol NULL)",
+      "field_identifiers": [
+        "PurchaseOrderId",
+        "Status"
+      ],
+      "unresolved_symbols": [
+        "Closed",
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776,
+      "screen_control_id": 51641,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26548,
+      "configuration_name": "EnableAction_ListPaneMenuActionReceiptFromPO",
+      "screen_control_event_id": 18049,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51626,
+          "control_name": "ListPaneMenuActionReceiptFromPO",
+          "label": "Receipt From PO"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 154,
+      "value_sha256_utf16le": "1806BAEE580DC1609D9367C8596E5CD1AD6D1155A450700CA0B9AE402D084AD7",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "ObjectId",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "ClosedDateTime",
+            "operator": "strictly_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "Lines",
+            "operator": "greater_than",
+            "operand": {
+              "kind": "integer_constant",
+              "value": 0
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "TotalOpenQty",
+            "operator": "greater_than",
+            "operand": {
+              "kind": "integer_constant",
+              "value": 0
+            }
+          }
+        ]
+      },
+      "structural_description": "(ObjectId is strictly unequal to unresolved symbol NULL AND ClosedDateTime strictly equals unresolved symbol NULL AND Lines is greater than numeric constant 0 AND TotalOpenQty is greater than numeric constant 0)",
+      "field_identifiers": [
+        "ClosedDateTime",
+        "Lines",
+        "ObjectId",
+        "TotalOpenQty"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2797,
+      "main_ui_screen_id": 1777,
+      "screen_control_id": 51679,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26582,
+      "configuration_name": "EnableAction_ListPaneMenuActionCopy",
+      "screen_control_event_id": 18070,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51662,
+          "control_name": "ListPaneMenuActionCopy",
+          "label": "Copy"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 112,
+      "value_sha256_utf16le": "4BB78B735CF775CC2B47F16FEA1CD9D0B50975830FA58D4FBA167AFAB8AD5038",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "PurchaseOrderObjectId",
+            "operator": "greater_than",
+            "operand": {
+              "kind": "integer_constant",
+              "value": 0
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "IsPurchaseOrderClosed",
+            "operator": "strictly_equals",
+            "operand": {
+              "kind": "integer_constant",
+              "value": 0
+            }
+          }
+        ]
+      },
+      "structural_description": "(PurchaseOrderObjectId is greater than numeric constant 0 AND IsPurchaseOrderClosed strictly equals numeric constant 0)",
+      "field_identifiers": [
+        "IsPurchaseOrderClosed",
+        "PurchaseOrderObjectId"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2797,
+      "main_ui_screen_id": 1777,
+      "screen_control_id": 51679,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26583,
+      "configuration_name": "EnableAction_ListPaneMenuActionEdit",
+      "screen_control_event_id": 18070,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51663,
+          "control_name": "ListPaneMenuActionEdit",
+          "label": "Edit"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 50,
+      "value_sha256_utf16le": "BA9F7D99F27B051E699F8DE352ACE8574CD092C8BF7D6846F78064AB6556F08C",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "PurchaseOrderObjectId",
+        "operator": "greater_than",
+        "operand": {
+          "kind": "integer_constant",
+          "value": 0
+        }
+      },
+      "structural_description": "PurchaseOrderObjectId is greater than numeric constant 0",
+      "field_identifiers": [
+        "PurchaseOrderObjectId"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2797,
+      "main_ui_screen_id": 1777,
+      "screen_control_id": 51679,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26584,
+      "configuration_name": "EnableAction_ListPaneMenuActionView",
+      "screen_control_event_id": 18070,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51664,
+          "control_name": "ListPaneMenuActionView",
+          "label": "View"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 50,
+      "value_sha256_utf16le": "BA9F7D99F27B051E699F8DE352ACE8574CD092C8BF7D6846F78064AB6556F08C",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "PurchaseOrderObjectId",
+        "operator": "greater_than",
+        "operand": {
+          "kind": "integer_constant",
+          "value": 0
+        }
+      },
+      "structural_description": "PurchaseOrderObjectId is greater than numeric constant 0",
+      "field_identifiers": [
+        "PurchaseOrderObjectId"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2797,
+      "main_ui_screen_id": 1777,
+      "screen_control_id": 51679,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26585,
+      "configuration_name": "EnableAction_ListPaneMenuActionDelete",
+      "screen_control_event_id": 18070,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51665,
+          "control_name": "ListPaneMenuActionDelete",
+          "label": "Delete"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 54,
+      "value_sha256_utf16le": "13EAE55C36BBBE29933A25FCAB44D86BCA26C0CF1E9BF39AFF15B9D7CA6CBF6E",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "IsPurchaseOrderClosed",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "integer_constant",
+          "value": 0
+        }
+      },
+      "structural_description": "IsPurchaseOrderClosed strictly equals numeric constant 0",
+      "field_identifiers": [
+        "IsPurchaseOrderClosed"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2791,
+      "main_ui_screen_id": 1778,
+      "screen_control_id": 51711,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26621,
+      "configuration_name": "EnableAction_ListPaneMenuActionClosePutawayGroup",
+      "screen_control_event_id": 18090,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51700,
+          "control_name": "ListPaneMenuActionClosePutawayGroup",
+          "label": "Close"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 32,
+      "value_sha256_utf16le": "F4CC2FB02269C3121378D22B3DC2005F12C48E0F97632D13B50D3ED4EF66C200",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "CLOSED",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "False"
+        }
+      },
+      "structural_description": "CLOSED strictly equals unresolved symbol False",
+      "field_identifiers": [
+        "CLOSED"
+      ],
+      "unresolved_symbols": [
+        "False"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2791,
+      "main_ui_screen_id": 1778,
+      "screen_control_id": 51711,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26622,
+      "configuration_name": "EnableAction_ListPaneMenuActionRenamePutawayGroup",
+      "screen_control_event_id": 18090,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51702,
+          "control_name": "ListPaneMenuActionRenamePutawayGroup",
+          "label": "Rename"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 32,
+      "value_sha256_utf16le": "F4CC2FB02269C3121378D22B3DC2005F12C48E0F97632D13B50D3ED4EF66C200",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "CLOSED",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "False"
+        }
+      },
+      "structural_description": "CLOSED strictly equals unresolved symbol False",
+      "field_identifiers": [
+        "CLOSED"
+      ],
+      "unresolved_symbols": [
+        "False"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2791,
+      "main_ui_screen_id": 1778,
+      "screen_control_id": 51711,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26623,
+      "configuration_name": "EnableAction_ListPaneMenuActionOpenPutawayGroup",
+      "screen_control_event_id": 18090,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51701,
+          "control_name": "ListPaneMenuActionOpenPutawayGroup",
+          "label": "Open"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 30,
+      "value_sha256_utf16le": "5BDE02BE3166A89F1E397544C54A491918B7117B955AA0942106E2F83B8D3B7B",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "CLOSED",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "True"
+        }
+      },
+      "structural_description": "CLOSED strictly equals unresolved symbol True",
+      "field_identifiers": [
+        "CLOSED"
+      ],
+      "unresolved_symbols": [
+        "True"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26759,
+      "configuration_name": "EnableAction_ListPaneMenuActionView",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51798,
+          "control_name": "ListPaneMenuActionView",
+          "label": "View"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 38,
+      "value_sha256_utf16le": "8B9534269911198B203C389F4F1DB55BF595CCF8F7DCE3F624BFEE75B627F41E",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "RECEIPT_ID",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "RECEIPT_ID is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "RECEIPT_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26760,
+      "configuration_name": "EnableAction_ListPaneMenuActionEdit",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51797,
+          "control_name": "ListPaneMenuActionEdit",
+          "label": "Edit"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 38,
+      "value_sha256_utf16le": "8B9534269911198B203C389F4F1DB55BF595CCF8F7DCE3F624BFEE75B627F41E",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "RECEIPT_ID",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "RECEIPT_ID is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "RECEIPT_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26761,
+      "configuration_name": "EnableAction_ListPaneMenuActionNewLine",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51801,
+          "control_name": "ListPaneMenuActionNewLine",
+          "label": "New Line"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 84,
+      "value_sha256_utf16le": "0C2DA75DE5C3D9216E50D648B24BF0232A2B5B5B05B92C895FD5B0E857BCB987",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "RECEIPT_ID",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "CLOSE_DATE",
+            "operator": "strictly_equals",
+            "operand": {
+              "kind": "null_literal"
+            }
+          }
+        ]
+      },
+      "structural_description": "(RECEIPT_ID is strictly unequal to unresolved symbol NULL AND CLOSE_DATE strictly equals literal null)",
+      "field_identifiers": [
+        "CLOSE_DATE",
+        "RECEIPT_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26762,
+      "configuration_name": "EnableAction_ListPaneMenuActionCloseReceipt",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51810,
+          "control_name": "ListPaneMenuActionCloseReceipt",
+          "label": "Close"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 38,
+      "value_sha256_utf16le": "FFC55A564CAE57DC2076614596F677855D4D772598710F19DD72CA7B3C8C4BA2",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "CLOSE_DATE",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "CLOSE_DATE strictly equals unresolved symbol NULL",
+      "field_identifiers": [
+        "CLOSE_DATE"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26763,
+      "configuration_name": "EnableAction_ListPaneMenuActionCancelClose",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51807,
+          "control_name": "ListPaneMenuActionCancelClose",
+          "label": "Cancel Close"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 38,
+      "value_sha256_utf16le": "119826D34999E0D8A43CE8A88AE0E0AA763295B7D64107BD6F1198AC86EB40EF",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "CLOSE_DATE",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "CLOSE_DATE is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "CLOSE_DATE"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26764,
+      "configuration_name": "EnableAction_ListPaneMenuActionDeleteReceipt",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51799,
+          "control_name": "ListPaneMenuActionDeleteReceipt",
+          "label": "Delete"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 78,
+      "value_sha256_utf16le": "38B4A8C7F912690293DB8849D54C9177E6BEED58A6746D1352CE4FC1FCC8E67D",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "LEADINGSTS",
+            "operator": "loosely_equals",
+            "operand": {
+              "kind": "integer_constant",
+              "value": 100
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "TRAILINGSTS",
+            "operator": "loosely_equals",
+            "operand": {
+              "kind": "integer_constant",
+              "value": 100
+            }
+          }
+        ]
+      },
+      "structural_description": "(LEADINGSTS loosely equals numeric constant 100 AND TRAILINGSTS loosely equals numeric constant 100)",
+      "field_identifiers": [
+        "LEADINGSTS",
+        "TRAILINGSTS"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26765,
+      "configuration_name": "EnableAction_ListPaneMenuActionPrintSelectedReceiptDocs",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51814,
+          "control_name": "ListPaneMenuActionPrintSelectedReceiptDocs",
+          "label": "Print Selected Docs"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 38,
+      "value_sha256_utf16le": "8B9534269911198B203C389F4F1DB55BF595CCF8F7DCE3F624BFEE75B627F41E",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "RECEIPT_ID",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "RECEIPT_ID is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "RECEIPT_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26766,
+      "configuration_name": "EnableAction_ListPaneMenuActionPrintReceiptDocs",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51813,
+          "control_name": "ListPaneMenuActionPrintReceiptDocs",
+          "label": "Print Default Docs"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 38,
+      "value_sha256_utf16le": "8B9534269911198B203C389F4F1DB55BF595CCF8F7DCE3F624BFEE75B627F41E",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "RECEIPT_ID",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "RECEIPT_ID is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "RECEIPT_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26767,
+      "configuration_name": "EnableAction_ListPaneMenuActionPrintPreviewDocs",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51811,
+          "control_name": "ListPaneMenuActionPrintPreviewDocs",
+          "label": "Print Preview"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 38,
+      "value_sha256_utf16le": "8B9534269911198B203C389F4F1DB55BF595CCF8F7DCE3F624BFEE75B627F41E",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "RECEIPT_ID",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "RECEIPT_ID is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "RECEIPT_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26768,
+      "configuration_name": "EnableAction_ListPaneMenuActionCreatePreCheckInContainers",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51809,
+          "control_name": "ListPaneMenuActionCreatePreCheckInContainers",
+          "label": "Create Pre-Check in Containers"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 38,
+      "value_sha256_utf16le": "8B9534269911198B203C389F4F1DB55BF595CCF8F7DCE3F624BFEE75B627F41E",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "RECEIPT_ID",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "RECEIPT_ID is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "RECEIPT_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26769,
+      "configuration_name": "EnableAction_ListPaneMenuActionAssignTrailer",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51802,
+          "control_name": "ListPaneMenuActionAssignTrailer",
+          "label": "Assign Trailer ID"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 38,
+      "value_sha256_utf16le": "FFC55A564CAE57DC2076614596F677855D4D772598710F19DD72CA7B3C8C4BA2",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "CLOSE_DATE",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "CLOSE_DATE strictly equals unresolved symbol NULL",
+      "field_identifiers": [
+        "CLOSE_DATE"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26770,
+      "configuration_name": "EnableAction_ListPaneMenuActionNewContainer",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51800,
+          "control_name": "ListPaneMenuActionNewContainer",
+          "label": "New Container"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 38,
+      "value_sha256_utf16le": "FFC55A564CAE57DC2076614596F677855D4D772598710F19DD72CA7B3C8C4BA2",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "CLOSE_DATE",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "CLOSE_DATE strictly equals unresolved symbol NULL",
+      "field_identifiers": [
+        "CLOSE_DATE"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26771,
+      "configuration_name": "EnableAction_ListPaneMenuActionImmediateNeeds",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51812,
+          "control_name": "ListPaneMenuActionImmediateNeeds",
+          "label": "Immediate Needs"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 62,
+      "value_sha256_utf16le": "FA6C54DBF7F1F9A3DB701B066CD13B33A65ECF44B62F616BD8E94CD806E25329",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "IMMD_NEEDS_REQ_CREATED",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "TRUE"
+        }
+      },
+      "structural_description": "IMMD_NEEDS_REQ_CREATED strictly equals unresolved symbol TRUE",
+      "field_identifiers": [
+        "IMMD_NEEDS_REQ_CREATED"
+      ],
+      "unresolved_symbols": [
+        "TRUE"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26772,
+      "configuration_name": "EnableAction_ListPaneMenuActionNewAppointment",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51803,
+          "control_name": "ListPaneMenuActionNewAppointment",
+          "label": "New Appointment"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 136,
+      "value_sha256_utf16le": "CBB4F42208B5C79F7407A5416A7DA47AAC01A468AEE86703C53E39BBC76CC1E5",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "RECEIPT_ID",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "APPOINTMENT_ID",
+            "operator": "strictly_equals",
+            "operand": {
+              "kind": "boolean_literal",
+              "value": false
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "LEADINGSTS",
+            "operator": "less_than_or_equal",
+            "operand": {
+              "kind": "integer_constant",
+              "value": 100
+            }
+          }
+        ]
+      },
+      "structural_description": "(RECEIPT_ID is strictly unequal to unresolved symbol NULL AND APPOINTMENT_ID strictly equals literal false AND LEADINGSTS is at most numeric constant 100)",
+      "field_identifiers": [
+        "APPOINTMENT_ID",
+        "LEADINGSTS",
+        "RECEIPT_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26773,
+      "configuration_name": "EnableAction_ListPaneMenuActionEditAppointment",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51804,
+          "control_name": "ListPaneMenuActionEditAppointment",
+          "label": "Edit Appointment"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 92,
+      "value_sha256_utf16le": "742A0C32CEFFA0FCC6D33FCBE2C011A84815DA5B5688F837AA9CD92006F1B5A1",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "RECEIPT_ID",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "APPOINTMENT_ID",
+            "operator": "strictly_equals",
+            "operand": {
+              "kind": "boolean_literal",
+              "value": true
+            }
+          }
+        ]
+      },
+      "structural_description": "(RECEIPT_ID is strictly unequal to unresolved symbol NULL AND APPOINTMENT_ID strictly equals literal true)",
+      "field_identifiers": [
+        "APPOINTMENT_ID",
+        "RECEIPT_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26774,
+      "configuration_name": "EnableAction_ListPaneMenuActionViewAppointment",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51805,
+          "control_name": "ListPaneMenuActionViewAppointment",
+          "label": "View Appointment"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 92,
+      "value_sha256_utf16le": "742A0C32CEFFA0FCC6D33FCBE2C011A84815DA5B5688F837AA9CD92006F1B5A1",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "RECEIPT_ID",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "APPOINTMENT_ID",
+            "operator": "strictly_equals",
+            "operand": {
+              "kind": "boolean_literal",
+              "value": true
+            }
+          }
+        ]
+      },
+      "structural_description": "(RECEIPT_ID is strictly unequal to unresolved symbol NULL AND APPOINTMENT_ID strictly equals literal true)",
+      "field_identifiers": [
+        "APPOINTMENT_ID",
+        "RECEIPT_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26775,
+      "configuration_name": "EnableAction_ListPaneMenuActionDeleteAppointment",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51806,
+          "control_name": "ListPaneMenuActionDeleteAppointment",
+          "label": "Delete Appointment"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 46,
+      "value_sha256_utf16le": "93EBA1E4BD51B425027B94E23EF8663FF45089F724E7CEB56CD2947A8D062213",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "APPOINTMENT_ID",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "boolean_literal",
+          "value": true
+        }
+      },
+      "structural_description": "APPOINTMENT_ID strictly equals literal true",
+      "field_identifiers": [
+        "APPOINTMENT_ID"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26776,
+      "configuration_name": "EnableAction_ListPaneMenuActionYardCheckInOut",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51815,
+          "control_name": "ListPaneMenuActionYardCheckInOut",
+          "label": "Yard Check in & Out"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 38,
+      "value_sha256_utf16le": "809EEEF13F4DCAFF3B0628D78AA7C354F8CCE9A7C6A9843D9367182E2EAE7630",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "TRAILER_ID",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "TRAILER_ID is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "TRAILER_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781,
+      "screen_control_id": 51833,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26777,
+      "configuration_name": "EnableAction_ListPaneMenuActionCheckin",
+      "screen_control_event_id": 18165,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51808,
+          "control_name": "ListPaneMenuActionCheckin",
+          "label": "Check in"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 84,
+      "value_sha256_utf16le": "07BB9680970AB16C1A1987B81710C4FA9C3AEFC8F8E2672DF3F6276659C1C671",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "RECEIPT_ID",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "CLOSE_DATE",
+            "operator": "strictly_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          }
+        ]
+      },
+      "structural_description": "(RECEIPT_ID is strictly unequal to unresolved symbol NULL AND CLOSE_DATE strictly equals unresolved symbol NULL)",
+      "field_identifiers": [
+        "CLOSE_DATE",
+        "RECEIPT_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51886,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26838,
+      "configuration_name": "EnableAction_ListPaneMenuActionPrintSelectedReceiptContainerDocs",
+      "screen_control_event_id": 18195,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51865,
+          "control_name": "ListPaneMenuActionPrintSelectedReceiptContainerDocs",
+          "label": "Print Selected Docs"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 50,
+      "value_sha256_utf16le": "9A43ED2135F1B9EB1E51D63610D4B8748078538545F18D0B372F17CBAD5321A7",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "LICENSE_PLATE_ID",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "LICENSE_PLATE_ID is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "LICENSE_PLATE_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51886,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26839,
+      "configuration_name": "EnableAction_ListPaneMenuActionPrintPreviewDocs",
+      "screen_control_event_id": 18195,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51863,
+          "control_name": "ListPaneMenuActionPrintPreviewDocs",
+          "label": "Print Preview"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 50,
+      "value_sha256_utf16le": "9A43ED2135F1B9EB1E51D63610D4B8748078538545F18D0B372F17CBAD5321A7",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "LICENSE_PLATE_ID",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "LICENSE_PLATE_ID is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "LICENSE_PLATE_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51886,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26840,
+      "configuration_name": "EnableAction_ListPaneMenuActionPrintReceiptContainerDocs",
+      "screen_control_event_id": 18195,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51864,
+          "control_name": "ListPaneMenuActionPrintReceiptContainerDocs",
+          "label": "Print Default Docs"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 50,
+      "value_sha256_utf16le": "9A43ED2135F1B9EB1E51D63610D4B8748078538545F18D0B372F17CBAD5321A7",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "LICENSE_PLATE_ID",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "LICENSE_PLATE_ID is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "LICENSE_PLATE_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51886,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26841,
+      "configuration_name": "EnableAction_ListPaneMenuActionImmediateNeeds",
+      "screen_control_event_id": 18195,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51861,
+          "control_name": "ListPaneMenuActionImmediateNeeds",
+          "label": "Immediate Needs"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 62,
+      "value_sha256_utf16le": "FA6C54DBF7F1F9A3DB701B066CD13B33A65ECF44B62F616BD8E94CD806E25329",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "IMMD_NEEDS_REQ_CREATED",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "TRUE"
+        }
+      },
+      "structural_description": "IMMD_NEEDS_REQ_CREATED strictly equals unresolved symbol TRUE",
+      "field_identifiers": [
+        "IMMD_NEEDS_REQ_CREATED"
+      ],
+      "unresolved_symbols": [
+        "TRUE"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51886,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26842,
+      "configuration_name": "EnableAction_ListPaneMenuActionCancelContainers",
+      "screen_control_event_id": 18195,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51860,
+          "control_name": "ListPaneMenuActionCancelContainers",
+          "label": "Cancel"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 46,
+      "value_sha256_utf16le": "0C0CFF76C66D94E9ABB0E55CD030A54E369FF663C3CC4996010959122A8B33B8",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "CONTAINER_STATUS",
+        "operator": "less_than_or_equal",
+        "operand": {
+          "kind": "integer_constant",
+          "value": 100
+        }
+      },
+      "structural_description": "CONTAINER_STATUS is at most numeric constant 100",
+      "field_identifiers": [
+        "CONTAINER_STATUS"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51886,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26843,
+      "configuration_name": "EnableAction_ListPaneMenuActionDeleteContainers",
+      "screen_control_event_id": 18195,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51859,
+          "control_name": "ListPaneMenuActionDeleteContainers",
+          "label": "Delete"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 142,
+      "value_sha256_utf16le": "FBCE1A9E5C32E55C5A0AB3CBB2CA0F6ADB900C1845AA4460EC993061844BE530",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "CONTAINER_STATUS",
+            "operator": "less_than_or_equal",
+            "operand": {
+              "kind": "integer_constant",
+              "value": 200
+            }
+          },
+          {
+            "kind": "any",
+            "clauses": [
+              {
+                "kind": "comparison",
+                "field_identifier": "MAX_STATUS",
+                "operator": "less_than_or_equal",
+                "operand": {
+                  "kind": "integer_constant",
+                  "value": 200
+                }
+              },
+              {
+                "kind": "comparison",
+                "field_identifier": "MAX_STATUS",
+                "operator": "strictly_equals",
+                "operand": {
+                  "kind": "unresolved_symbol",
+                  "identifier": "NULL"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "structural_description": "(CONTAINER_STATUS is at most numeric constant 200 AND (MAX_STATUS is at most numeric constant 200 OR MAX_STATUS strictly equals unresolved symbol NULL))",
+      "field_identifiers": [
+        "CONTAINER_STATUS",
+        "MAX_STATUS"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51886,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26844,
+      "configuration_name": "EnableAction_ListPaneMenuActionLocateContainers",
+      "screen_control_event_id": 18195,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51862,
+          "control_name": "ListPaneMenuActionLocateContainers",
+          "label": "Locate"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 48,
+      "value_sha256_utf16le": "C84F2B4BFFF5A41AB565184E9918F874512E1D32E38361D89BA1FE5606B9DE67",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "CONTAINER_STATUS",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "integer_constant",
+          "value": 200
+        }
+      },
+      "structural_description": "CONTAINER_STATUS strictly equals numeric constant 200",
+      "field_identifiers": [
+        "CONTAINER_STATUS"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51886,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26845,
+      "configuration_name": "EnableAction_ListPaneMenuActionRemoveContainerFromGroup",
+      "screen_control_event_id": 18195,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51866,
+          "control_name": "ListPaneMenuActionRemoveContainerFromGroup",
+          "label": "Remove From Group"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 104,
+      "value_sha256_utf16le": "67AE5FF4C05F1872CB8393C6CAB541667B7F517692A06F9050D4B2C04022F2F8",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "GROUP_CLOSED",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "TRUE"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "INTERNAL_GROUP_NUM",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "NULL"
+            }
+          }
+        ]
+      },
+      "structural_description": "(GROUP_CLOSED is strictly unequal to unresolved symbol TRUE AND INTERNAL_GROUP_NUM is strictly unequal to unresolved symbol NULL)",
+      "field_identifiers": [
+        "GROUP_CLOSED",
+        "INTERNAL_GROUP_NUM"
+      ],
+      "unresolved_symbols": [
+        "NULL",
+        "TRUE"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51886,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26846,
+      "configuration_name": "EnableAction_ListPaneMenuActionEdit",
+      "screen_control_event_id": 18195,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51858,
+          "control_name": "ListPaneMenuActionEdit",
+          "label": "Edit"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 50,
+      "value_sha256_utf16le": "9A43ED2135F1B9EB1E51D63610D4B8748078538545F18D0B372F17CBAD5321A7",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "LICENSE_PLATE_ID",
+        "operator": "strictly_not_equals",
+        "operand": {
+          "kind": "unresolved_symbol",
+          "identifier": "NULL"
+        }
+      },
+      "structural_description": "LICENSE_PLATE_ID is strictly unequal to unresolved symbol NULL",
+      "field_identifiers": [
+        "LICENSE_PLATE_ID"
+      ],
+      "unresolved_symbols": [
+        "NULL"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782,
+      "screen_control_id": 51886,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26847,
+      "configuration_name": "EnableAction_ListPaneMenuActionUnlocateContainers",
+      "screen_control_event_id": 18195,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51867,
+          "control_name": "ListPaneMenuActionUnlocateContainers",
+          "label": "Unlocate"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 164,
+      "value_sha256_utf16le": "99485A7140301F445DCCB1847EA5D1B56654EF76673729B2BE8044993625B369",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "CONTAINER_STATUS",
+            "operator": "greater_than",
+            "operand": {
+              "kind": "integer_constant",
+              "value": 200
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "IMMD_NEEDS_REQ_CREATED",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "TRUE"
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "GROUP_CLOSED",
+            "operator": "strictly_not_equals",
+            "operand": {
+              "kind": "unresolved_symbol",
+              "identifier": "TRUE"
+            }
+          }
+        ]
+      },
+      "structural_description": "(CONTAINER_STATUS is greater than numeric constant 200 AND IMMD_NEEDS_REQ_CREATED is strictly unequal to unresolved symbol TRUE AND GROUP_CLOSED is strictly unequal to unresolved symbol TRUE)",
+      "field_identifiers": [
+        "CONTAINER_STATUS",
+        "GROUP_CLOSED",
+        "IMMD_NEEDS_REQ_CREATED"
+      ],
+      "unresolved_symbols": [
+        "TRUE"
+      ],
+      "literal_operand_types_complete": false
+    },
+    {
+      "form_id": 2780,
+      "main_ui_screen_id": 1783,
+      "screen_control_id": 51927,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26879,
+      "configuration_name": "EnableAction_ListPaneMenuActionEdit",
+      "screen_control_event_id": 18216,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51909,
+          "control_name": "ListPaneMenuActionEdit",
+          "label": "Edit"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 58,
+      "value_sha256_utf16le": "0B71CE2A327FC6A923E89171D7EAD173A8A765073B401BF0C2D9609E5DF852AE",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "INTERNAL_RECEIPT_LINE_NUM",
+        "operator": "greater_than",
+        "operand": {
+          "kind": "integer_constant",
+          "value": 0
+        }
+      },
+      "structural_description": "INTERNAL_RECEIPT_LINE_NUM is greater than numeric constant 0",
+      "field_identifiers": [
+        "INTERNAL_RECEIPT_LINE_NUM"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2780,
+      "main_ui_screen_id": 1783,
+      "screen_control_id": 51927,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26880,
+      "configuration_name": "EnableAction_ListPaneMenuActionDeleteReceiptDetails",
+      "screen_control_event_id": 18216,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51910,
+          "control_name": "ListPaneMenuActionDeleteReceiptDetails",
+          "label": "Delete"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 108,
+      "value_sha256_utf16le": "C17E7623F8D89F74C09C2D62CFE28DD03E1BDD9295A72E3871FBD80D8A61A7AB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "all",
+        "clauses": [
+          {
+            "kind": "comparison",
+            "field_identifier": "IS_RECEIPT_CLOSED",
+            "operator": "strictly_equals",
+            "operand": {
+              "kind": "integer_constant",
+              "value": 0
+            }
+          },
+          {
+            "kind": "comparison",
+            "field_identifier": "IS_CONTAINERS_CREATED",
+            "operator": "strictly_equals",
+            "operand": {
+              "kind": "integer_constant",
+              "value": 0
+            }
+          }
+        ]
+      },
+      "structural_description": "(IS_RECEIPT_CLOSED strictly equals numeric constant 0 AND IS_CONTAINERS_CREATED strictly equals numeric constant 0)",
+      "field_identifiers": [
+        "IS_CONTAINERS_CREATED",
+        "IS_RECEIPT_CLOSED"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2780,
+      "main_ui_screen_id": 1783,
+      "screen_control_id": 51927,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26881,
+      "configuration_name": "EnableAction_ListPaneMenuActionImmediateNeeds",
+      "screen_control_event_id": 18216,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51911,
+          "control_name": "ListPaneMenuActionImmediateNeeds",
+          "label": "Immediate Needs"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 56,
+      "value_sha256_utf16le": "DF9D67C984CE99E2624D793FAD04B847949B2723EE1960C9829DD21D3D8F57AB",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "IMMD_NEEDS_REQ_CREATED",
+        "operator": "strictly_equals",
+        "operand": {
+          "kind": "integer_constant",
+          "value": 1
+        }
+      },
+      "structural_description": "IMMD_NEEDS_REQ_CREATED strictly equals numeric constant 1",
+      "field_identifiers": [
+        "IMMD_NEEDS_REQ_CREATED"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    },
+    {
+      "form_id": 2780,
+      "main_ui_screen_id": 1783,
+      "screen_control_id": 51927,
+      "control_name": "ListPaneDataGrid",
+      "control_label": null,
+      "source_table": "SCREEN_CONTROL_EVENT_PARAMETERS",
+      "object_id": 26882,
+      "configuration_name": "EnableAction_ListPaneMenuActionView",
+      "screen_control_event_id": 18216,
+      "event_id": "iggridselectionactiverowchanged",
+      "event_handler": "_webUi.Grid.gridActiveRowChanged",
+      "target_controls": [
+        {
+          "screen_control_id": 51912,
+          "control_name": "ListPaneMenuActionView",
+          "label": "View"
+        }
+      ],
+      "active": "Y",
+      "system_created": "Y",
+      "value_bytes_utf16le": 58,
+      "value_sha256_utf16le": "0B71CE2A327FC6A923E89171D7EAD173A8A765073B401BF0C2D9609E5DF852AE",
+      "baseline_checks": {
+        "value_hash": true,
+        "value_length": true,
+        "parent_id": true,
+        "configuration_name": true,
+        "active": true,
+        "system_created": true
+      },
+      "accepted_structural_extraction": true,
+      "status": "predicate_structure_parsed",
+      "predicate_ast": {
+        "kind": "comparison",
+        "field_identifier": "INTERNAL_RECEIPT_LINE_NUM",
+        "operator": "greater_than",
+        "operand": {
+          "kind": "integer_constant",
+          "value": 0
+        }
+      },
+      "structural_description": "INTERNAL_RECEIPT_LINE_NUM is greater than numeric constant 0",
+      "field_identifiers": [
+        "INTERNAL_RECEIPT_LINE_NUM"
+      ],
+      "unresolved_symbols": [],
+      "literal_operand_types_complete": true
+    }
+  ],
+  "private_capture_sha256": "b9635d09f8092973b2c19f444bdbdc26203ff424ed9f9ff430fbd2f4ff89bef7",
+  "collector_sha256": "36dd91c6e6869fa9487b2fbdbb60fd4bf154db34418e289c4addabd3d7fab31b",
+  "source_screen_index": [
+    {
+      "form_id": 4069,
+      "main_ui_screen_id": 1512
+    },
+    {
+      "form_id": 2796,
+      "main_ui_screen_id": 1776
+    },
+    {
+      "form_id": 2797,
+      "main_ui_screen_id": 1777
+    },
+    {
+      "form_id": 2791,
+      "main_ui_screen_id": 1778
+    },
+    {
+      "form_id": 2779,
+      "main_ui_screen_id": 1782
+    },
+    {
+      "form_id": 2777,
+      "main_ui_screen_id": 1781
+    },
+    {
+      "form_id": 2780,
+      "main_ui_screen_id": 1783
+    },
+    {
+      "form_id": 4106,
+      "main_ui_screen_id": 1737
+    },
+    {
+      "form_id": 4038,
+      "main_ui_screen_id": 1541
+    },
+    {
+      "form_id": 2765,
+      "main_ui_screen_id": 1539
+    },
+    {
+      "form_id": 3005,
+      "main_ui_screen_id": 1666
+    },
+    {
+      "form_id": 3034,
+      "main_ui_screen_id": 1428
+    },
+    {
+      "form_id": 3035,
+      "main_ui_screen_id": 1427
+    },
+    {
+      "form_id": 3052,
+      "main_ui_screen_id": 1562
+    },
+    {
+      "form_id": 4049,
+      "main_ui_screen_id": 1423
+    },
+    {
+      "form_id": 4051,
+      "main_ui_screen_id": 1665
+    },
+    {
+      "form_id": 4052,
+      "main_ui_screen_id": 1802
+    }
+  ],
+  "validation": {
+    "method": "offline positive/negative parser checks and synthetic drift against a private in-memory copy; no DB or expressions executed",
+    "passed": 48,
+    "failed": 0,
+    "checks": [
+      {
+        "name": "positive_grammar_case_1",
+        "status": "PASS"
+      },
+      {
+        "name": "positive_grammar_case_2",
+        "status": "PASS"
+      },
+      {
+        "name": "positive_grammar_case_3",
+        "status": "PASS"
+      },
+      {
+        "name": "positive_grammar_case_4",
+        "status": "PASS"
+      },
+      {
+        "name": "positive_grammar_case_5",
+        "status": "PASS"
+      },
+      {
+        "name": "positive_grammar_case_6",
+        "status": "PASS"
+      },
+      {
+        "name": "positive_grammar_case_7",
+        "status": "PASS"
+      },
+      {
+        "name": "symbol_case_not_coerced",
+        "status": "PASS"
+      },
+      {
+        "name": "AND_precedes_OR",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_1",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_2",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_3",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_4",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_5",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_6",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_7",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_8",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_9",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_10",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_11",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_12",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_13",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_14",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_15",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_16",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_17",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_18",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_19",
+        "status": "PASS"
+      },
+      {
+        "name": "rejected_grammar_class_20",
+        "status": "PASS"
+      },
+      {
+        "name": "collector_non_PASS_on_active_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_active_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "collector_non_PASS_on_configuration_name_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_configuration_name_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "collector_non_PASS_on_parent_id_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_parent_id_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "collector_non_PASS_on_system_created_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_system_created_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "collector_non_PASS_on_value_hash_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_value_hash_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "collector_non_PASS_on_value_length_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_value_length_drift",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_empty_checks",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_missing_check",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_non_boolean_check",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_private_value_tamper",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_missing_row",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_duplicate_row",
+        "status": "PASS"
+      },
+      {
+        "name": "offline_withholds_all_on_failed_receipt",
+        "status": "PASS"
+      }
+    ]
+  }
+}

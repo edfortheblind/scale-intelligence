@@ -84,6 +84,11 @@ def main():
     }
     inputs = ["evidence/menu-routes.json", "inventory/screen-registry.json", "evidence/runtime-root.json",
               "evidence/runtime-source-agent.json", "evidence/runtime-training-agent.json", "evidence/config-form-navigation.json"]
+    receiving = None
+    if (BASE / "receiving/progress.json").exists():
+        receiving = read("receiving/progress.json")
+        result["receiving_continuation"] = receiving
+        inputs.append("receiving/progress.json")
     result["input_sha256"] = {name: hashlib.sha256((BASE / name).read_bytes()).hexdigest() for name in inputs}
     (BASE / "inventory/coverage.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     lines = ["# Snapdragon progress", "", "Observation date: 2026-10-02. Recomputed from [coverage.json](inventory/coverage.json).", "",
@@ -102,6 +107,16 @@ def main():
              "## Progress by visible menu section", "", "| Section | Attempted | Loaded | Loaded % | Remaining landing issue |", "|---|---:|---:|---:|---|"]
     for row in section_rows:
         lines.append(f"| {row['section']} | {row['attempted']}/{row['denominator']} | {row['loaded']}/{row['denominator']} | {row['loaded_pct']}% | " + ("Supply Chain Intelligence application error" if row['loaded'] < row['denominator'] else "None in landing pass") + " |")
+    if receiving:
+        lines += ["", "## SD-11 Receiving continuation", "",
+                  "The table below measures separate Receiving work packages. The original landing sweep above retains its original observation scope.", "",
+                  "| Task / measure | Completed / denominator | Progress | State |", "|---|---:|---:|---|"]
+        for task in receiving["work_packages"]:
+            value = percent(task["completed"], task["denominator"])
+            progress = f"{value}%" if value is not None else "N/A"
+            lines.append(f"| {task['id']} - {task['measure']} | {task['completed']}/{task['denominator']} | {progress} | {task['status']} |")
+        lines += ["", receiving["qualification"], "",
+                  "Read [the Receiving session report](receiving/SESSION_REPORT.md), [functional guide](receiving/FUNCTIONAL_GUIDE.md), [configuration map](receiving/CONFIGURATION.md) and [backend reconciliation](receiving/BACKEND_BINDINGS.md).", ""]
     lines += ["", "Each section has an initial functional note and mapped labels; full per-screen review remains open in every section.", "",
               "## Completed", "", "- Reviewed Sam's transcript, supplied notes and selected visual frames at a pinned private repository commit.",
              "- Captured 917 FORM rows and classified all 254 screen implementations; preserved inactive and context-dependent entries.",

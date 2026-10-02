@@ -31,6 +31,25 @@ Full review includes conditional states, record detail branches, action/dependen
 | Shipping | 16/16 | 16/16 | 100.0% | None in landing pass |
 | Cross Application | 7/7 | 7/7 | 100.0% | None in landing pass |
 
+## SD-11 Receiving continuation
+
+The table below measures separate Receiving work packages. The original landing sweep above retains its original observation scope.
+
+| Task / measure | Completed / denominator | Progress | State |
+|---|---:|---:|---|
+| R1 - Scope identities reconciled | 18/18 | 100.0% | complete |
+| R2 - Active implementation configuration maps | 17/17 | 100.0% | complete |
+| R3 - Menu destinations explained from sources | 9/9 | 100.0% | complete_documentary_scope |
+| R4 - Named database dependencies matched | 24/30 | 80.0% | six_snapshot_matches_unresolved |
+| R5 - Enablement bindings structurally reviewed | 69/69 | 100.0% | complete_static_scope_runtime_unverified |
+| R6 - Detailed live screen reviews completed | 0/9 | 0.0% | expired_session_blocks_continuation |
+| R7 - Offline package checks passed | 11/11 | 100.0% | pass |
+
+These percentages measure individual work packages; they are not averaged. SD-11 full Receiving reviews remain 0/9 and installation-wide accepted reviews remain 0/211. The current browser token is expired; prior successful landing evidence remains intact. Configured predicates and source-described effects do not prove live permission, selected-record behavior or service execution.
+
+Read [the Receiving session report](receiving/SESSION_REPORT.md), [functional guide](receiving/FUNCTIONAL_GUIDE.md), [configuration map](receiving/CONFIGURATION.md) and [backend reconciliation](receiving/BACKEND_BINDINGS.md).
+
+
 Each section has an initial functional note and mapped labels; full per-screen review remains open in every section.
 
 ## Completed

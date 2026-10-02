@@ -128,8 +128,10 @@ def main():
     missing, link_count = [], 0
     for path in BASE.rglob("*.md"):
         body = path.read_text(encoding="utf-8")
-        for match in re.finditer(r"(?<!!)\[[^\]]*\]\((<[^>]+>|[^)]+)\)", body):
-            target = match.group(1).strip().strip("<>")
+        targets = re.findall(r"(?<!!)\[[^\]]*\]\((<[^>]+>|[^)]+)\)", body)
+        targets += re.findall(r"(?m)^\[[^\]]+\]:\s*(<[^>]+>|\S+)", body)
+        for raw_target in targets:
+            target = raw_target.strip().strip("<>")
             if target.startswith(("http:", "https:", "mailto:", "#")):
                 continue
             target = unquote(target.split("#", 1)[0])

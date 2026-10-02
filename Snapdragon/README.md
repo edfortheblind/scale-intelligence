@@ -7,6 +7,7 @@ Start with [progress and percentages](STATUS.md), then use the [254-screen index
 | Read this | Use it for |
 |---|---|
 | [Status](STATUS.md) | Exact denominators, percentage by section, completed work and pending limitations |
+| [Receiving continuation](receiving/SESSION_REPORT.md) | SD-11 task percentages, functional guide, configuration and backend reconciliation |
 | [Roadmap](ROADMAP.md) and [task register](inventory/tasks.json) | Work packages, evidence and next actions |
 | [Screen index](screens/INDEX.md) | Find each form/screen, configured route, live outcome and configuration children |
 | [Navigation map](NAVIGATION.md) | Open the 63 menu destinations and six additional numeric routes, with form links and observed outcomes |
