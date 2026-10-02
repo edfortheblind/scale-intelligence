@@ -16,6 +16,8 @@ The **Technical reference and sources** section contains supporting routine beha
 
 The interface uses native HTML forms, links, headings and disclosure controls. JavaScript is unnecessary. A skip link, keyboard focus styling and narrow-window layout support accessible reading.
 
+When a search result matches a reviewed source detail, expand **Matching detail and source** beneath its general explanation to read that passage, its source name and its limits. The article link opens the full explanation and technical references. A matching passage does not by itself confirm the intended operation or current warehouse behavior.
+
 ## Detailed procedure guides
 
 Open **Detailed procedure guides** from the home page or visit `/guides`. The Warehouse Mobile/RF and Cross Application manuals have section navigation and in-app source views. Search on the home page also returns **Procedure guide matches**, linking directly to the matching sections. Existing article results and guide-section results remain separate.

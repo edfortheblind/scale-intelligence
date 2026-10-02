@@ -2,7 +2,9 @@
 import copy
 from html.parser import HTMLParser
 from collections import Counter
+from html import escape
 import unittest
+from unittest.mock import patch
 
 from tests.test_help_app import Knowledge, render_page
 
@@ -88,6 +90,42 @@ class ArticleTests(unittest.TestCase):
         self.assertNotIn('<script>', page)
         self.assertIn('&lt;script&gt;title&lt;/script&gt; | SCALE Knowledge</title>', page)
         self.assertIn('/topic/work-profile-configuration#answer', page)
+
+    def test_search_exposes_matching_reviewed_detail_with_source_limits(self):
+        match = self.knowledge.search('ISNUMERIC')['results'][0]
+        self.assertEqual(match['topic_id'], 'labor-log-and-consolidation')
+        source = self.knowledge.source(match['matching_source_id'])
+        page = render_page(self.knowledge, question='ISNUMERIC').decode()
+        self.assertIn(escape(match['matching_detail']), page)
+        self.assertIn(escape(source['label']), page)
+        self.assertIn(escape(source['qualification']), page)
+        self.assertIn('<summary>'+escape('Matching detail and source: '+match['title'])+'</summary>', page)
+        self.assertLess(page.index(escape(match['answer'])), page.index(escape(match['matching_detail'])))
+        self.assertNotIn('<details class="source" open', page)
+
+    def test_matching_detail_and_source_text_are_inert(self):
+        attack = '<img src=x onerror="alert(1)">'
+        match = {'topic_id': 'shipment-detail', 'title': 'Shipment details', 'answer': 'General explanation',
+                 'matching_detail': attack, 'matching_source_id': 'shipment-detail-sql'}
+        source = {'kind_label': attack, 'label': attack, 'qualification': attack}
+        with patch.object(self.knowledge, 'search', return_value={'results': [match]}), \
+                patch.object(self.knowledge, 'source', return_value=source):
+            page = render_page(self.knowledge, question='shipment').decode()
+        self.assertIn(escape(attack), page)
+        self.assertNotIn(attack, page)
+        self.assertNotIn('<img', page)
+
+    def test_result_without_matched_detail_keeps_general_answer(self):
+        for detail, source_id in [(None, None), ('A reviewed detail', None), (None, 'shipment-detail-sql')]:
+            with self.subTest(detail=detail, source_id=source_id):
+                match = {'topic_id': 'shipment-detail', 'title': 'Shipment details', 'answer': 'General explanation',
+                         'matching_detail': detail, 'matching_source_id': source_id}
+                with patch.object(self.knowledge, 'search', return_value={'results': [match]}), \
+                        patch.object(self.knowledge, 'source') as source:
+                    page = render_page(self.knowledge, question='shipment').decode()
+                self.assertIn('General explanation', page)
+                self.assertNotIn('Matching detail and source', page)
+                source.assert_not_called()
 
 
 if __name__ == '__main__':

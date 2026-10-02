@@ -6,12 +6,12 @@
   "coverage": {
     "topic_count": 340,
     "deployed_sql_modules_cited": 1139,
-    "vendor_articles_cited": 68,
+    "vendor_articles_cited": 69,
     "live_processes_executed": 0,
     "configured_values_in_topics": 0,
     "semantic_claim": "Bounded static and documentary topics; full functional, deployment and application acceptance remains open.",
     "execution_step_count": 856,
-    "authored_evaluation_cases": 717
+    "authored_evaluation_cases": 716
   },
   "evidence_rules": [
     "SQL fingerprints bind original source definitions and exact redacted reading-copy bytes; spans are one-based reading-copy lines.",
@@ -23094,6 +23094,25 @@
           "extracted_sha256": "e8e8e714480369e776583bd337a15cd23a7e0c5d08b2fba50d0279721060e6fd"
         }
       ]
+    },
+    "inbound-qc-routing-aim": {
+      "kind": "VENDOR_DOCUMENTATION",
+      "module": "AIM",
+      "article_id": "c6089bfdf08efe3ac6a16c83b96391e741f356ccb5010f2fa89d32487f885eae",
+      "title": "Routing Items To Inbound Quality Control (RF & Non-RF)",
+      "source_path": "AIM/source/html/141a83b30b6fb06e845d9eedaeea65f0c8481c5faa669b7d2f9c41e32f56df65.htm",
+      "source_sha256": "141a83b30b6fb06e845d9eedaeea65f0c8481c5faa669b7d2f9c41e32f56df65",
+      "reading_path": "AIM/reading/c6089bfdf08efe3ac6a16c83b96391e741f356ccb5010f2fa89d32487f885eae.md",
+      "node_ids": [
+        "n62",
+        "n77",
+        "n79",
+        "n81",
+        "n82",
+        "n84",
+        "n97",
+        "n103"
+      ]
     }
   },
   "topics": [
@@ -26405,18 +26424,23 @@
         }
       ],
       "configuration_dependencies": [
-        "Inbound eligibility is configured on the item. Work-start outbound assignment applies to existing wave-created containers, not containers newly introduced during RF picking."
+        "Inbound eligibility is configured on the item. Work-start outbound assignment applies to existing wave-created containers, not containers newly introduced during RF picking.",
+        "The item's inbound QC sample can be a fixed quantity or a percentage. A percentage is applied to the total open quantity on the receipt for that item, then converted to the lowest unit of measure. A fixed quantity is also converted to the lowest unit; if no unit is selected, the entered quantity is treated as the lowest unit of measure.",
+        "The documented rounding uses the unit second from the top of the storage-template hierarchy and rounds down to a whole increment. A sample smaller than one such increment stays in the base unit without rounding.",
+        "In the source's illustrative each-case-pallet example with 20 eaches per case, a sample of 30 eaches becomes 20 eaches, while 10 eaches stays 10 eaches. These are example quantities, not configuration defaults."
       ],
       "expected_results": [],
       "explanation_paths": [],
       "boundaries": [
-        "Inbound QC supports license plates created during check-in, not downloaded receipt containers."
+        "Inbound QC supports license plates created during check-in, not downloaded receipt containers.",
+        "The inbound routing source says SCALE checks each receipt once for QC-eligible items. If a partial check-in does not meet the required inspection quantity, the system does not check further quantities checked in for that receipt. The next receipt containing the item is checked for the full inspection quantity again."
       ],
       "evidence_refs": [
         "family-quality-control-aim",
         "process-claim-process-documentary-quality-control-r01",
         "process-claim-process-documentary-quality-control-r02",
-        "process-claim-process-documentary-quality-control-r03"
+        "process-claim-process-documentary-quality-control-r03",
+        "inbound-qc-routing-aim"
       ],
       "review": {
         "semantic_state": "DOCUMENTARY_PASSAGES_REVIEWED_DEPLOYMENT_OPEN",
@@ -48667,7 +48691,8 @@
       "article_type": "configuration",
       "related_topics": [
         "receiving-overage-configuration",
-        "process-returns"
+        "process-returns",
+        "process-quality-control"
       ]
     },
     {

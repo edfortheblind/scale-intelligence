@@ -116,7 +116,15 @@ def render_page(knowledge, question='', topic_id=None, guides=None):
             parts.append(element('p', str(len(result['results']))+' related articles.', ' role="status"'))
             parts.append('<ul id="result-list">')
             for match in result['results']:
-                parts.append('<li>'+topic_link(match['topic_id'], match['title'])+element('p', match['answer'])+'</li>')
+                parts.append('<li>'+topic_link(match['topic_id'], match['title'])+element('p', match['answer']))
+                if match.get('matching_detail') and match.get('matching_source_id'):
+                    source = knowledge.source(match['matching_source_id'])
+                    parts += ['<details class="source">',
+                              element('summary', 'Matching detail and source: '+match['title']),
+                              element('p', match['matching_detail']),
+                              element('p', 'Source: '+source['kind_label']+' — '+source['label'], ' class="hash"'),
+                              element('p', source['qualification']), '</details>']
+                parts.append('</li>')
             parts.append('</ul>')
         else:
             parts.append(element('p', 'No article matched. Try the process or setting name, or browse the topics below.', ' role="status"'))

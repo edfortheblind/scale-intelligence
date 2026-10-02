@@ -1,5 +1,15 @@
 # SCALE Intelligence master continuation prompt
 
+## C29 current help continuation - 2026-10-02
+
+Search results now expose the existing matched source passage, source name and qualification in a collapsed **Matching detail and source** disclosure. Inbound QC guidance now explains the open-receipt quantity denominator, storage-template rounding and receipt-once limitation with eight verified original AIM nodes. Returns/damage links to that explanation. Read [C29 changes and verification](_project/CONTINUATION_C29.md) and [the checkpoint](_project/continuation29-20261002.json).
+
+**109 tests passed.** Fresh served evaluation retains **675/723 article top-eight matches, 419 first, 48 misses and 723 selected-topic contracts**. All topic IDs, 856 steps, questions and 130 documentary refinements are preserved. A stale Packing batch record was synchronized to the already-accepted canonical article; the authored-case counter was corrected from 717 to the actual 716 plus seven cross-topic cases. No question was removed. This work improves explanation and preservation; it does not resolve the 48 search misses.
+
+The six mobile gaps remain **owner-deferred**, and C28's successful PROD View/Cancel observation still governs access context. **Always Cancel or X when inspecting configurations; never OK.** C29 performed only local help/browser work. Preserve acquisition/display/JAWS closure, the deployment/correlated-timing freeze at **0/34**, source originals, guide content, the central reference/PDF and untracked Video Rec.
+
+**Continuation:** use the C29 receipt for current verification; older section-progress/scenario reports remain historical. Pursue another concrete source or usability concern only with evidence. Do not rerun completed broad reviews or ranking experiments, or require the six deferred mobile exports before unrelated authorized work. C29 supersedes older current-task wording below while preserving the C28 owner direction. Independent review and normal private publication are verified separately before delivery.
+
 ## C28 current owner direction - 2026-10-02
 
 The owner deferred the six mobile workflow gaps (SRC230, SRC280, SRC340, SRC350, SRC360 and SRC400). They remain unresolved, but are **not the current priority**. Do not request their exports or finish their procedures as a prerequisite for unrelated authorized work.

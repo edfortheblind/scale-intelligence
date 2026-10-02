@@ -1347,11 +1347,15 @@ Eligible inbound items are received, or outbound containers are selected for QC.
 ### Settings and prerequisites
 
 - Inbound eligibility is configured on the item. Work-start outbound assignment applies to existing wave-created containers, not containers newly introduced during RF picking.
+- The item's inbound QC sample can be a fixed quantity or a percentage. A percentage is applied to the total open quantity on the receipt for that item, then converted to the lowest unit of measure. A fixed quantity is also converted to the lowest unit; if no unit is selected, the entered quantity is treated as the lowest unit of measure.
+- The documented rounding uses the unit second from the top of the storage-template hierarchy and rounds down to a whole increment. A sample smaller than one such increment stays in the base unit without rounding.
+- In the source's illustrative each-case-pallet example with 20 eaches per case, a sample of 30 eaches becomes 20 eaches, while 10 eaches stays 10 eaches. These are example quantities, not configuration defaults.
 
 
 ### Limits
 
 - Inbound QC supports license plates created during check-in, not downloaded receipt containers.
+- The inbound routing source says SCALE checks each receipt once for QC-eligible items. If a partial check-in does not meet the required inspection quantity, the system does not check further quantities checked in for that receipt. The next receipt containing the item is checked for the full inspection quantity again.
 
 
 ### Related articles
@@ -1375,6 +1379,8 @@ Additional process details:
 `process-claim-process-documentary-quality-control-r02`: [process-documentary-quality-control-r02](mappings/process-documentary-review.json); reviewed-record SHA-256 `5ad1ee240c0af33175ddf6fd726896c8ef1b073baef4556f698f245ed0132590`. Exact source articles and node fingerprints are preserved in the register. Local documentary guidance only; deployed application behavior and production indexing remain unestablished.
 
 `process-claim-process-documentary-quality-control-r03`: [process-documentary-quality-control-r03](mappings/process-documentary-review.json); reviewed-record SHA-256 `08b716c86945b38afb05ecfd6d774c0273fd3eb00b54493e87c97a604b7b6b77`. Exact source articles and node fingerprints are preserved in the register. Local documentary guidance only; deployed application behavior and production indexing remain unestablished.
+
+`inbound-qc-routing-aim`: [Routing Items To Inbound Quality Control (RF & Non-RF)](../AIM/reading/c6089bfdf08efe3ac6a16c83b96391e741f356ccb5010f2fa89d32487f885eae.md); AIM article `c6089bfdf08efe3ac6a16c83b96391e741f356ccb5010f2fa89d32487f885eae`, original SHA-256 `141a83b30b6fb06e845d9eedaeea65f0c8481c5faa669b7d2f9c41e32f56df65`, nodes n62, n77, n79, n81, n82, n84, n97, n103.
 
 </details>
 
@@ -8451,6 +8457,7 @@ Returned or damaged goods need a receiving policy for condition capture and an a
 
 - [Configuring over-receiving and receipt execution](#receiving-overage-configuration)
 - [Returns: purpose and processing](#process-returns)
+- [Quality Control: purpose and processing](#process-quality-control)
 
 <details>
 <summary>Technical reference and sources</summary>

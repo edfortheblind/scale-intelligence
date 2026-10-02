@@ -1866,7 +1866,8 @@
       "article_type": "configuration",
       "related_topics": [
         "receiving-overage-configuration",
-        "process-returns"
+        "process-returns",
+        "process-quality-control"
       ]
     },
     {
@@ -2818,8 +2819,8 @@
     },
     {
       "topic_id": "packing-replacement-lp-context",
-      "title": "Packing and mobile Close Container: AIM base behavior and replacement-LPN limits",
-      "business_question": "What can the retained SCALE sources establish about replacing a license plate while packing?",
+      "title": "Packing and mobile Close Container: SCALE base workflow",
+      "business_question": "How do Packing and Warehouse Mobile Close Container work in SCALE?",
       "plain_answer": "Packing and Warehouse Mobile Close Container accept different inputs. Packing identifies shipment items and quantities; Mobile Close Container identifies the shipping container and its weight.",
       "trigger": "",
       "input_context": [
@@ -2903,14 +2904,11 @@
         "operator-mobile-close",
         "operator-packing-screen",
         "operator-packing-preferences",
-        "operator-close-container",
-        "operator-override-pick-continuation3",
-        "operator-inventory-attributes",
-        "operator-work-processing"
+        "operator-close-container"
       ],
       "review": {
         "semantic_state": "DOCUMENTARY_STATIC_REVIEWED_BOUNDED",
-        "method": "Continuation 5 AIM-only source review of mobile Close Container, full-screen Packing, documented close settings and scale exit point; exact original/article/node bindings reparsed and checked. No installed extension is inferred.",
+        "method": "C14 owner-directed SCALE base scope, preserving the C5 AIM source-bound Packing and Close Container steps. The extension and separate Pick/Override Pick discussion were removed from this base topic; historical question findings remain in their original receipts.",
         "independent_verification": "PENDING_FRESH_CONTINUATION5_LEAF_VERIFICATION",
         "live_process_execution": "NOT_PERFORMED",
         "whole_process_duration": "NOT_ESTABLISHED",
@@ -2920,18 +2918,18 @@
         "status": "EXPECTATIONS_AUTHORED_SEE_SEPARATE_HTTP_RESULTS",
         "cases": [
           {
-            "question": "Does matching the item name guarantee an alternate pick license plate is accepted?",
+            "question": "What does Warehouse Mobile Close Container scan before handling weight?",
             "must_explain": [
-              "No; the documented picking override has permission, quantity/grouping and inventory-attribute constraints."
+              "It scans the shipping Container ID, then shows the container and its system/actual weight fields."
             ],
             "must_not_claim": [
               "A confirmed cause, authorization or active setting for a specific warehouse record."
             ]
           },
           {
-            "question": "Can the Picking override rules prove a Packing replacement action is supported?",
+            "question": "Do Packing and Warehouse Mobile Close Container start with the same identifier?",
             "must_explain": [
-              "No; the retained sources do not establish that Packing-specific action or its validation contract."
+              "Packing uses its configured shipment initiation value; mobile Close Container scans the shipping Container ID."
             ],
             "must_not_claim": [
               "A confirmed cause, authorization or active setting for a specific warehouse record."

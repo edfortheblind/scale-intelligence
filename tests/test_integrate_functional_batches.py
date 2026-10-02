@@ -1,5 +1,6 @@
 """Regress stale table classifications and preserve independently cited roles."""
 import copy
+import json
 import sys
 import unittest
 from pathlib import Path
@@ -21,6 +22,17 @@ def record(object_id, role, source, evidence_id='E1'):
 
 
 class FunctionalBatchIntegrationTests(unittest.TestCase):
+    def test_batch_topics_preserve_current_reviewed_articles(self):
+        mappings = Path(__file__).resolve().parents[1] / 'DB Architecture/mappings'
+        current = {t['topic_id']: t for t in json.loads((mappings/'help-topics.json').read_text(encoding='utf-8'))['topics']}
+        rebuilt = {}
+        for path in sorted((mappings/'batches').glob('*.json')):
+            batch = json.loads(path.read_text(encoding='utf-8'))
+            rebuilt.update((t['topic_id'], t) for t in batch['help_topics'])
+        for topic_id, topic in rebuilt.items():
+            with self.subTest(topic=topic_id):
+                self.assertEqual(topic, current[topic_id], 'Reintegration would overwrite the reviewed article')
+
     def test_new_role_requires_explicit_additive_definition(self):
         rows = [record(1, 'payload_shape', 'schema.json')]
         with self.assertRaisesRegex(ValueError, 'Undefined functional role'):
