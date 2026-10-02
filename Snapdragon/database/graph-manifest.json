@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-02T15:35:35.258831+00:00",
+  "phase": "graph",
+  "expected_database": "travprodwbeyz",
+  "scope": "navigation_configuration_only",
+  "transactional_rows_read": false,
+  "configuration_rows_read": true,
+  "routines_executed": false,
+  "mutations_executed": false,
+  "queries": {
+    "group_columns": {
+      "sql": "SELECT OBJECT_ID,SCREEN_GROUP_ID,COLUMN_NAME,COLUMN_CSS_CLASS,SEQUENCE,ACTIVE,SYSTEM_CREATED\nFROM dbo.SCREEN_GROUP_COLUMN ORDER BY SCREEN_GROUP_ID,SEQUENCE,OBJECT_ID",
+      "sql_sha256": "9da4e6ada7aa574638eae28ec63a0b3eacaac83f75a0e7632b8cd7c815e4a9af",
+      "started_at": "2026-10-02T15:35:36.023117+00:00",
+      "non_token_values_omitted": 0,
+      "private_expression_storage": false,
+      "status": "PASS",
+      "row_count": 54,
+      "output_sha256": "5a38dd442ba6ca87a4856b119c02b52b46b483f113c7ecf27da57bb3f55057df",
+      "elapsed_seconds": 0.09,
+      "finished_at": "2026-10-02T15:35:36.113023+00:00"
+    },
+    "control_attributes": {
+      "sql": "SELECT OBJECT_ID,SCREEN_CONTROL_ID,ATTRIBUTE_NAME,ACTIVE,SYSTEM_CREATED,IS_CONTROL_PROPERTY,\nDATALENGTH(ATTRIBUTE_VALUE) AS attribute_value_bytes,\nCONVERT(varchar(64),HASHBYTES('SHA2_256',CONVERT(varbinary(max),ATTRIBUTE_VALUE)),2) AS attribute_value_sha256_utf16le,\n(CASE WHEN TOKEN1 IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN TOKEN2 IS NOT NULL THEN 1 ELSE 0 END +\nCASE WHEN TOKEN3 IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN TOKEN4 IS NOT NULL THEN 1 ELSE 0 END +\nCASE WHEN TOKEN5 IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN TOKEN6 IS NOT NULL THEN 1 ELSE 0 END +\nCASE WHEN TOKEN7 IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN TOKEN8 IS NOT NULL THEN 1 ELSE 0 END +\nCASE WHEN TOKEN9 IS NOT NULL THEN 1 ELSE 0 END + CASE WHEN TOKEN10 IS NOT NULL THEN 1 ELSE 0 END) AS token_slots_non_null\nFROM dbo.SCREEN_CONTROL_ATTRIBUTES ORDER BY SCREEN_CONTROL_ID,OBJECT_ID",
+      "sql_sha256": "6abe30c3e8d1d6d98b1fa52fa595e0af1074d3832ce5dafa14c210bf3ca0703b",
+      "started_at": "2026-10-02T15:35:36.113042+00:00",
+      "status": "PASS",
+      "row_count": 3793,
+      "output_sha256": "aa45356e7bac0d88f9e3ac4a3d948ac897db3bbaac121c06cc82ba397bda3ac6",
+      "elapsed_seconds": 0.416,
+      "finished_at": "2026-10-02T15:35:36.529483+00:00"
+    },
+    "control_events": {
+      "sql": "SELECT OBJECT_ID,SCREEN_CONTROL_ID,EVENT_ID,EVENT_NAME,ACTIVE,SYSTEM_CREATED,GRID_COLUMN\nFROM dbo.SCREEN_CONTROL_EVENT ORDER BY SCREEN_CONTROL_ID,OBJECT_ID",
+      "sql_sha256": "9f94e98900f0c74ee1e912811e521a8b6901b9e2d4fc10a3cb0e05c84f102d73",
+      "started_at": "2026-10-02T15:35:36.529498+00:00",
+      "non_token_values_omitted": 2,
+      "private_expression_storage": true,
+      "status": "PASS",
+      "row_count": 1767,
+      "output_sha256": "773f082a32ab18777492fe45b704e13423d2c01d5898a078e820a3a4ce352c9f",
+      "elapsed_seconds": 0.103,
+      "finished_at": "2026-10-02T15:35:36.632857+00:00"
+    },
+    "event_parameters": {
+      "sql": "SELECT OBJECT_ID,SCREEN_CONTROL_EVENT_ID,PARAMETER_NAME,ACTIVE,SYSTEM_CREATED,\nDATALENGTH(PARAMETER_VALUE) AS parameter_value_bytes,\nCONVERT(varchar(64),HASHBYTES('SHA2_256',CONVERT(varbinary(max),PARAMETER_VALUE)),2) AS parameter_value_sha256_utf16le\nFROM dbo.SCREEN_CONTROL_EVENT_PARAMETERS ORDER BY SCREEN_CONTROL_EVENT_ID,OBJECT_ID",
+      "sql_sha256": "085ded1820e05abd5c6a505414445f6c66c9af70a48bbe3ae6f47a0756100187",
+      "started_at": "2026-10-02T15:35:36.632873+00:00",
+      "status": "PASS",
+      "row_count": 2627,
+      "output_sha256": "db66d60a61ea622073df424d5d5c29efa042ff5779379c7d8ffeeb261d032633",
+      "elapsed_seconds": 0.115,
+      "finished_at": "2026-10-02T15:35:36.748177+00:00"
+    }
+  },
+  "excluded": [
+    "user identities",
+    "security assignments",
+    "saved searches",
+    "business records",
+    "credential values"
+  ],
+  "read_only_intent_is_not_access_control": true,
+  "status": "PASS",
+  "finished_at": "2026-10-02T15:35:36.748241+00:00"
+}

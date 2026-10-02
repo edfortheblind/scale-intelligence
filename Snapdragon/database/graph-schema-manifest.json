@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-02T15:34:56.861788+00:00",
+  "phase": "graph-schema",
+  "expected_database": "travprodwbeyz",
+  "scope": "navigation_configuration_only",
+  "transactional_rows_read": false,
+  "configuration_rows_read": false,
+  "routines_executed": false,
+  "mutations_executed": false,
+  "queries": {
+    "graph_schema": {
+      "sql": "SELECT o.object_id,SCHEMA_NAME(o.schema_id) AS schema_name,o.name AS table_name,\nc.column_id,c.name AS column_name,t.name AS type_name,c.max_length,c.is_nullable\nFROM sys.tables o JOIN sys.columns c ON c.object_id=o.object_id JOIN sys.types t ON t.user_type_id=c.user_type_id\nWHERE SCHEMA_NAME(o.schema_id)='dbo' AND o.name IN\n('SCREEN_GROUP_COLUMN','SCREEN_CONTROL_ATTRIBUTES','SCREEN_CONTROL_EVENT','SCREEN_CONTROL_EVENT_PARAMETERS')\nORDER BY o.name,c.column_id",
+      "sql_sha256": "8b3ba8ffe0238093bdd414071d7c1fed99c1e57f88d1d16b96838e2986acfd07",
+      "started_at": "2026-10-02T15:34:57.672185+00:00",
+      "status": "PASS",
+      "row_count": 81,
+      "output_sha256": "d289482a2da9387a5640be65209ddc947895668898fdb24142f26892c7c31470",
+      "elapsed_seconds": 0.134,
+      "finished_at": "2026-10-02T15:34:57.806333+00:00"
+    }
+  },
+  "excluded": [
+    "user identities",
+    "security assignments",
+    "saved searches",
+    "business records",
+    "credential values"
+  ],
+  "read_only_intent_is_not_access_control": true,
+  "status": "PASS",
+  "finished_at": "2026-10-02T15:34:57.806392+00:00"
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-02T15:04:55.920394+00:00",
+  "phase": "supplement",
+  "expected_database": "travprodwbeyz",
+  "scope": "navigation_configuration_only",
+  "transactional_rows_read": false,
+  "configuration_rows_read": true,
+  "routines_executed": false,
+  "mutations_executed": false,
+  "queries": {
+    "identity": {
+      "sql": "SELECT DB_NAME() AS database_name, SYSUTCDATETIME() AS observed_at, CAST(DATABASEPROPERTYEX(DB_NAME(),'Updateability') AS nvarchar(128)) AS updateability",
+      "sql_sha256": "1364339e0e009917dc977b126f8919ea99ae5eb44f706dcceb027815862f349d",
+      "started_at": "2026-10-02T15:04:56.794152+00:00",
+      "status": "PASS",
+      "row_count": 1,
+      "output_sha256": "8f1906d565cf4bf6f32515fd1d1ade697670692c9039c78d37f1149e78df46cf",
+      "elapsed_seconds": 0.081,
+      "finished_at": "2026-10-02T15:04:56.874761+00:00"
+    },
+    "functional_areas": {
+      "sql": "SELECT FUNCTIONAL_AREA,DESCRIPTION,SYSTEM_CREATED,ACTIVE FROM dbo.FUNCTIONAL_AREA ORDER BY FUNCTIONAL_AREA",
+      "sql_sha256": "abb90b68483888b80d1629217c142af6dd85ae4eb81a326c03a6147123d0b67a",
+      "started_at": "2026-10-02T15:04:56.874779+00:00",
+      "status": "PASS",
+      "row_count": 2,
+      "output_sha256": "f963decbd58506e2a98635757ee80d9bd54ea30ec799d13770a448118a6ad863",
+      "elapsed_seconds": 0.087,
+      "finished_at": "2026-10-02T15:04:56.962172+00:00"
+    },
+    "resource_languages": {
+      "sql": "SELECT RESOURCE_LANGUAGE,COUNT_BIG(*) AS resource_count FROM dbo.RESOURCE_FILE_BASE GROUP BY RESOURCE_LANGUAGE ORDER BY RESOURCE_LANGUAGE",
+      "sql_sha256": "d7c7b06ca6edc62be837e2f36507dbfa26be367be577fa225b96b46c09601c4d",
+      "started_at": "2026-10-02T15:04:56.962188+00:00",
+      "status": "PASS",
+      "row_count": 8,
+      "output_sha256": "7117925d9fce01023923c1ac240ab8bd55a591102cccb53d2e52e52d6a203807",
+      "elapsed_seconds": 0.146,
+      "finished_at": "2026-10-02T15:04:57.107857+00:00"
+    },
+    "dynamic_actions": {
+      "sql": "SELECT OBJECT_ID,ACTION_ENDPOINT_ID,ACTION_NAME,ACTION_RESOURCE_KEY,ACTIVE,\nALWAYS_AVAILABLE,DESCRIPTION,FORM_ID,SECURITY_CHECKPOINT,SYSTEM_CREATED FROM dbo.DYNAMIC_ACTION ORDER BY FORM_ID,OBJECT_ID",
+      "sql_sha256": "bea0037ab406d978a868b8978e22b6d6100a1259837cb70b1365ac0373b1a51a",
+      "started_at": "2026-10-02T15:04:57.107872+00:00",
+      "status": "PASS",
+      "row_count": 24,
+      "output_sha256": "bb0af0b1aafb998a04f6c1b4000611da82d844a5faf71913764d32cbe3138e43",
+      "elapsed_seconds": 0.092,
+      "finished_at": "2026-10-02T15:04:57.199766+00:00"
+    },
+    "action_menus": {
+      "sql": "SELECT OBJECT_ID,MENU_NAME,DESCRIPTION,ACTIVE,SYSTEM_CREATED FROM dbo.ACTION_MENU ORDER BY OBJECT_ID",
+      "sql_sha256": "13a01bb47153bc0875ad9a2b45c7df1efc3e161a10e2401ffb1b6dc01690cb7c",
+      "started_at": "2026-10-02T15:04:57.199782+00:00",
+      "status": "PASS",
+      "row_count": 11,
+      "output_sha256": "6d4420979d49c2f434deec1dc95ed11b82ab9496cee1eca8c10cee1c2bd77345",
+      "elapsed_seconds": 0.092,
+      "finished_at": "2026-10-02T15:04:57.291418+00:00"
+    },
+    "action_menu_options": {
+      "sql": "SELECT OBJECT_ID,ACTION_MENU_ID,ACTION_ID,SEQUENCE,DEFAULT_VALUE,SEPARATOR,SHORTCUT_KEY FROM dbo.ACTION_MENU_OPTION ORDER BY ACTION_MENU_ID,SEQUENCE,OBJECT_ID",
+      "sql_sha256": "079244792c9287e592551a2978641ad430264f84650f059de5acb200b342d396",
+      "started_at": "2026-10-02T15:04:57.291432+00:00",
+      "status": "PASS",
+      "row_count": 32,
+      "output_sha256": "9296448c21b06d526b422d0cd0299e857b805d8c75398334fe4679668a080083",
+      "elapsed_seconds": 0.092,
+      "finished_at": "2026-10-02T15:04:57.383028+00:00"
+    },
+    "drilldown_links": {
+      "sql": "SELECT STMT_DETAIL_KEY_NUM,STMT_HEADER_KEY_NUM,DETAIL_DESC,ACTIVE,SYSTEM_CREATED,DRILLDOWN_FORM_ID\nFROM dbo.DATA_RETRIEVAL_STMT_DETAIL WHERE DRILLDOWN_FORM_ID IS NOT NULL ORDER BY STMT_HEADER_KEY_NUM,STMT_DETAIL_KEY_NUM",
+      "sql_sha256": "f7b2ef6c260ed99a88926dfd3d71603f9df7f0fdff4d923df95fbe01c25892e5",
+      "started_at": "2026-10-02T15:04:57.383043+00:00",
+      "status": "PASS",
+      "row_count": 2,
+      "output_sha256": "332beb31a79737aa0efad9a2ab9fb701b79425f6146f255216cd431ba2ce7113",
+      "elapsed_seconds": 0.097,
+      "finished_at": "2026-10-02T15:04:57.480167+00:00"
+    }
+  },
+  "excluded": [
+    "user identities",
+    "security assignments",
+    "saved searches",
+    "business records",
+    "credential values"
+  ],
+  "read_only_intent_is_not_access_control": true,
+  "status": "PASS",
+  "finished_at": "2026-10-02T15:04:57.480229+00:00"
+}

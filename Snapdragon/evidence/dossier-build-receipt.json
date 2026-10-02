@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "built_at_utc": "2026-10-02T16:03:48.300793+00:00",
+  "dossiers": 254,
+  "runtime_input_files": [
+    {
+      "name": "runtime-root.json",
+      "sha256": "0dbedcb4a546bbc616f00aba6bda84fbb49d51536833ccb8b5dd8a68c7911202",
+      "observations": 28
+    },
+    {
+      "name": "runtime-source-agent.json",
+      "sha256": "48e8bf2ad44ef28b0e6e618278121d152fd44af5c8c49b69763aa4a805c8f6ea",
+      "observations": 23
+    },
+    {
+      "name": "runtime-training-agent.json",
+      "sha256": "b5daf2c629e5e1c74ab65e6592f87808bf32faa0f27a472f3581dd1ec6225a19",
+      "observations": 65
+    }
+  ],
+  "form_audit_input": {
+    "name": "config-form-navigation.json",
+    "sha256": "a42cb353aada5c894398eb8f7d61df185db5458c81c030cf9511d6a8bcdbb96d",
+    "observations": 211,
+    "denominator": 211,
+    "scope": "unique FORM_IDs linked to active MAIN_UI_SCREEN records in captured replica"
+  },
+  "interaction_input": {
+    "name": "screen-interaction-map.json",
+    "sha256": "1e3fa64d90ef549453786e163cc4718532b1006366de96fdaa480a2d3455f54d",
+    "observations": 4949
+  },
+  "dependency_input": {
+    "name": "safe-dependency-tokens.json",
+    "sha256": "6579ca31e93442318564d8ee78fcc9b00af309d2cdead5bc323c7636f52b137e",
+    "observations": 2351,
+    "accepted": 2306,
+    "omitted": 45
+  },
+  "metadata_inputs": [
+    {
+      "name": "screen-registry.json",
+      "sha256": "45de599156f8c7f82848559c0bd78c4e8a2e5ef6b2a3491b40b3c79b16606920"
+    },
+    {
+      "name": "screen-configuration-chains.json",
+      "sha256": "313891ec45f0d6981eca28c43f2a3e4747e95b41aa343346eaa7bb8ff6c0608a"
+    }
+  ],
+  "totals": {
+    "control_attributes": 3793,
+    "control_events": 1767,
+    "event_parameters": 2627,
+    "dependency_candidates": 2351,
+    "accepted_dependency_tokens": 2306,
+    "omitted_dependency_values": 45,
+    "Metadata only; runtime not observed": 167,
+    "parts": 463,
+    "groups": 1872,
+    "controls": 4949,
+    "grid_columns": 1635,
+    "Runtime route observed; Screen variant unconfirmed": 63,
+    "Runtime attempted; error or unresolved result": 6,
+    "Shared application entry observed; individual function unverified": 18
+  },
+  "checks": [
+    "Unique registry and chain Screen IDs match.",
+    "Form identity and part/group/control/grid-column counts match for every Screen.",
+    "Interaction-map Control IDs and Form identities match every Screen chain.",
+    "Form-configuration audit contains unique Form IDs.",
+    "Dependency source object, Form, Screen, Control, event, name, flags, and value fingerprints match the interaction map.",
+    "Accepted dependency values match their UTF-16LE fingerprints; omitted records retain no payload."
+  ],
+  "limits": [
+    "PASS means source-to-dossier build consistency, not semantic or runtime completion.",
+    "Runtime route matches do not establish selected Screen variant or operational effects.",
+    "Shared application entry observations do not establish individual function navigation.",
+    "Attribute and parameter values are omitted from the bulk interaction map.",
+    "The separate dependency supplement contains selected strict-grammar tokens only; omitted values and unresolved backend semantics remain open."
+  ]
+}

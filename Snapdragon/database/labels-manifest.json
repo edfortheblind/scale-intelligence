@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-02T15:05:33.335819+00:00",
+  "phase": "labels",
+  "expected_database": "travprodwbeyz",
+  "scope": "navigation_configuration_only",
+  "transactional_rows_read": false,
+  "configuration_rows_read": true,
+  "routines_executed": false,
+  "mutations_executed": false,
+  "queries": {
+    "identity": {
+      "sql": "SELECT DB_NAME() AS database_name, SYSUTCDATETIME() AS observed_at, CAST(DATABASEPROPERTYEX(DB_NAME(),'Updateability') AS nvarchar(128)) AS updateability",
+      "sql_sha256": "1364339e0e009917dc977b126f8919ea99ae5eb44f706dcceb027815862f349d",
+      "started_at": "2026-10-02T15:05:34.118280+00:00",
+      "status": "PASS",
+      "row_count": 1,
+      "output_sha256": "89ec4eb7156365058581ee04da98d3054bccd5cabe1d9653df7d6be380d8b531",
+      "elapsed_seconds": 0.078,
+      "finished_at": "2026-10-02T15:05:34.196351+00:00"
+    },
+    "resource_labels_base": {
+      "sql": "SELECT r.RESOURCE_LANGUAGE,r.RESOURCE_GROUP,r.RESOURCE_KEY,r.TEXT,r.FIELD_LENGTH,r.DECIMAL_POS FROM dbo.RESOURCE_FILE_BASE r JOIN (SELECT FORM_KEY_NAME AS RESOURCE_KEY FROM dbo.FORM\nUNION SELECT MENU_RESOURCE_KEY FROM dbo.MAIN_UI_SCREEN\nUNION SELECT RESOURCE_KEY FROM dbo.SCREEN_PART\nUNION SELECT RESOURCE_KEY FROM dbo.SCREEN_GROUP\nUNION SELECT RESOURCE_KEY FROM dbo.SCREEN_CONTROL\nUNION SELECT RESOURCE_KEY FROM dbo.SCREEN_CONTROL_GRID_COLUMNS\nUNION SELECT ACTION_RESOURCE_KEY FROM dbo.DYNAMIC_ACTION) k ON k.RESOURCE_KEY=r.RESOURCE_KEY WHERE r.RESOURCE_LANGUAGE='en-US' ORDER BY r.RESOURCE_GROUP,r.RESOURCE_KEY",
+      "sql_sha256": "7f36e29d94dd9aa273b93fa47247d6189e3706a58e4a8e061edaed7634a68c05",
+      "started_at": "2026-10-02T15:05:34.196371+00:00",
+      "status": "PASS",
+      "row_count": 3179,
+      "output_sha256": "2d73255c1725adac4f2adbd237d3447c459f443cf856251dc754536599295f49",
+      "elapsed_seconds": 0.57,
+      "finished_at": "2026-10-02T15:05:34.766681+00:00"
+    },
+    "resource_labels_custom": {
+      "sql": "SELECT r.RESOURCE_LANGUAGE,r.RESOURCE_GROUP,r.RESOURCE_KEY,r.TEXT,r.FIELD_LENGTH,r.DECIMAL_POS FROM dbo.RESOURCE_FILE_CUSTOM r JOIN (SELECT FORM_KEY_NAME AS RESOURCE_KEY FROM dbo.FORM\nUNION SELECT MENU_RESOURCE_KEY FROM dbo.MAIN_UI_SCREEN\nUNION SELECT RESOURCE_KEY FROM dbo.SCREEN_PART\nUNION SELECT RESOURCE_KEY FROM dbo.SCREEN_GROUP\nUNION SELECT RESOURCE_KEY FROM dbo.SCREEN_CONTROL\nUNION SELECT RESOURCE_KEY FROM dbo.SCREEN_CONTROL_GRID_COLUMNS\nUNION SELECT ACTION_RESOURCE_KEY FROM dbo.DYNAMIC_ACTION) k ON k.RESOURCE_KEY=r.RESOURCE_KEY WHERE r.RESOURCE_LANGUAGE='en-US' ORDER BY r.RESOURCE_GROUP,r.RESOURCE_KEY",
+      "sql_sha256": "ab3c2704303e274d22bd3afb087f8e59216b236fe990631dbe56de0490551fad",
+      "started_at": "2026-10-02T15:05:34.766697+00:00",
+      "status": "PASS",
+      "row_count": 63,
+      "output_sha256": "95957e3d97651e5c6d887f92cd086bb073b65ebcb034fa6b5c1955a57b9f1ecd",
+      "elapsed_seconds": 0.11,
+      "finished_at": "2026-10-02T15:05:34.876233+00:00"
+    }
+  },
+  "excluded": [
+    "user identities",
+    "security assignments",
+    "saved searches",
+    "business records",
+    "credential values"
+  ],
+  "read_only_intent_is_not_access_control": true,
+  "status": "PASS",
+  "finished_at": "2026-10-02T15:05:34.876302+00:00"
+}

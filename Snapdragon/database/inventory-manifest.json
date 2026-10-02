@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-02T15:02:43.743893+00:00",
+  "phase": "inventory",
+  "expected_database": "travprodwbeyz",
+  "scope": "navigation_configuration_only",
+  "transactional_rows_read": false,
+  "configuration_rows_read": true,
+  "routines_executed": false,
+  "mutations_executed": false,
+  "queries": {
+    "identity": {
+      "sql": "SELECT DB_NAME() AS database_name, SYSUTCDATETIME() AS observed_at, CAST(DATABASEPROPERTYEX(DB_NAME(),'Updateability') AS nvarchar(128)) AS updateability",
+      "sql_sha256": "1364339e0e009917dc977b126f8919ea99ae5eb44f706dcceb027815862f349d",
+      "started_at": "2026-10-02T15:02:44.504686+00:00",
+      "status": "PASS",
+      "row_count": 1,
+      "output_sha256": "598a54aadf6a01c321a90ecd0689834314986ab940d8ff434154c3211e02084f",
+      "elapsed_seconds": 0.085,
+      "finished_at": "2026-10-02T15:02:44.589674+00:00"
+    },
+    "navigation_schema": {
+      "sql": "SELECT o.object_id, SCHEMA_NAME(o.schema_id) AS schema_name, o.name AS table_name,\nc.column_id, c.name AS column_name, t.name AS type_name, c.max_length, c.is_nullable\nFROM sys.tables o JOIN sys.columns c ON c.object_id=o.object_id JOIN sys.types t ON t.user_type_id=c.user_type_id\nWHERE SCHEMA_NAME(o.schema_id)='dbo' AND o.name IN\n('FORM','MAIN_UI_SCREEN','SCREEN_PART','SCREEN_GROUP','SCREEN_CONTROL','SCREEN_CONTROL_GRID_COLUMNS',\n'DATA_RETRIEVAL_STMT_HEADER','DATA_RETRIEVAL_STMT_DETAIL','ACTION','ACTION_MENU','ACTION_MENU_OPTION')\nORDER BY o.name,c.column_id",
+      "sql_sha256": "26bd36b97e7e547958c6cec2f6a9ef59f88bcfd4c422cc7f873bf5a096d6a6fb",
+      "started_at": "2026-10-02T15:02:44.589694+00:00",
+      "status": "PASS",
+      "row_count": 229,
+      "output_sha256": "6596a60f12f05aaa45604bf149175dde21e09201d7a37b0c16b7b0bc767c42fd",
+      "elapsed_seconds": 0.085,
+      "finished_at": "2026-10-02T15:02:44.675022+00:00"
+    },
+    "forms": {
+      "sql": "SELECT FORM_ID,FORM_KEY_NAME,PARENT_KEY_NAME,TABLE_NAME,USED_BY_GENERATOR,\nSECURITY_ACTIVE,SYSTEM_DB_SCREEN,OBJECT_IDENTIFIER,ASSOCIATED_FORM_KEY\nFROM dbo.FORM ORDER BY FORM_ID",
+      "sql_sha256": "c3d57e6f4f725358dbeaa17ff635af275f35533b0bb893b52a7d45c8fe15e762",
+      "started_at": "2026-10-02T15:02:44.675034+00:00",
+      "status": "PASS",
+      "row_count": 917,
+      "output_sha256": "98ecc88a6198877e7c176967b27d9b5fa6cc0c2508c6bd25bca494e67d54161d",
+      "elapsed_seconds": 0.184,
+      "finished_at": "2026-10-02T15:02:44.858754+00:00"
+    },
+    "main_ui_screens": {
+      "sql": "SELECT OBJECT_ID,FORM_ID,FUNCTIONAL_AREA,CLASS_NAME,NAMESPACE,ASSEMBLY_NAME,\nMENU_RESOURCE_KEY,ACTIVE,SYSTEM_CREATED,PATH,PATH_TYPE,OBJECT_IDENTIFIER,SHOW_IN_APP_MENU\nFROM dbo.MAIN_UI_SCREEN ORDER BY FORM_ID,OBJECT_ID",
+      "sql_sha256": "85c10ab208d15ef01ff9996a7667db678c355ed1183ecc7fdd0e5d96d793db1f",
+      "started_at": "2026-10-02T15:02:44.858769+00:00",
+      "status": "PASS",
+      "row_count": 254,
+      "output_sha256": "e283edb85896a4fda26f1299b3f40b9d8a66f4aa25945a42b69bfc6ade3f80a2",
+      "elapsed_seconds": 0.104,
+      "finished_at": "2026-10-02T15:02:44.962620+00:00"
+    },
+    "screen_parts": {
+      "sql": "SELECT OBJECT_ID,SCREEN_ID,PART_NAME,RESOURCE_KEY,PART_TYPE,SYSTEM_CREATED,\nSEQUENCE,ACTIVE,DEFAULT_ACTION,PARTIAL_VIEW FROM dbo.SCREEN_PART ORDER BY SCREEN_ID,SEQUENCE,OBJECT_ID",
+      "sql_sha256": "5efff0837109e209a67e187daa082d7deb4bc3ba55d14d51e1609cdcefa3ed84",
+      "started_at": "2026-10-02T15:02:44.962636+00:00",
+      "status": "PASS",
+      "row_count": 463,
+      "output_sha256": "eb6acf78435c498f5b40a1f49d7032a882d471e0fe4f202e982fabef89a2fe32",
+      "elapsed_seconds": 0.101,
+      "finished_at": "2026-10-02T15:02:45.064103+00:00"
+    },
+    "screen_groups": {
+      "sql": "SELECT OBJECT_ID,SCREEN_PART_ID,GROUP_NAME,RESOURCE_KEY,PARENT_GROUP_ID,\nNESTED_GROUP_UNIT,GROUP_TYPE,SYSTEM_CREATED,SEQUENCE,ACTIVE,DEFAULT_ACTION,FIXED_TO_TOP,CONTENT_LOADING_TYPE\nFROM dbo.SCREEN_GROUP ORDER BY SCREEN_PART_ID,SEQUENCE,OBJECT_ID",
+      "sql_sha256": "ac987941c043201010a3bebe1c824f0eaf86163346bdd8adbe23a4c09c063282",
+      "started_at": "2026-10-02T15:02:45.064119+00:00",
+      "status": "PASS",
+      "row_count": 1872,
+      "output_sha256": "56348b1a8830975465cbe24c91c387e2fdacd64a4df2512e7a9a45f2c71c7b64",
+      "elapsed_seconds": 0.205,
+      "finished_at": "2026-10-02T15:02:45.269490+00:00"
+    },
+    "screen_controls": {
+      "sql": "SELECT OBJECT_ID,SCREEN_GROUP_ID,CONTROL_NAME,RESOURCE_KEY,CONTROL_TYPE,\nLABEL_ORIENTATION,SYSTEM_CREATED,DATA_SOURCE_TYPE,SEQUENCE,DEFAULT_STATE,ACTIVE,\nTOOL_TIP_RESOURCE_KEY,DEFAULT_ACTION,SCREEN_GROUP_COLUMN_ID,TEMPLATE_NAME\nFROM dbo.SCREEN_CONTROL ORDER BY SCREEN_GROUP_ID,SEQUENCE,OBJECT_ID",
+      "sql_sha256": "9f15ca6b66c3ceaff45dbaa7fe75cd0c6623a500a356f3a53c84c530d504672a",
+      "started_at": "2026-10-02T15:02:45.269504+00:00",
+      "status": "PASS",
+      "row_count": 4949,
+      "output_sha256": "186ae711a05e80282a0134ac67ec1ef342bf43e236f133f44a4216663b26181a",
+      "elapsed_seconds": 0.293,
+      "finished_at": "2026-10-02T15:02:45.562960+00:00"
+    },
+    "grid_columns": {
+      "sql": "SELECT OBJECT_ID,SCREEN_CONTROL_ID,FIELD,FIELD_NAME,FIELD_WIDTH,FIELD_TYPE,\nSQL_CLAUSE_TYPE,SEQUENCE,RESOURCE_KEY,ACTIVE,SYSTEM_CREATED,HIDDEN,DECIMAL_POSITIONS,\nIS_PRIMARY_KEY,IS_EDITABLE,REQUIRED_FOR_EDIT,DATA_SOURCE_TYPE,ALLOW_SORT\nFROM dbo.SCREEN_CONTROL_GRID_COLUMNS ORDER BY SCREEN_CONTROL_ID,SEQUENCE,OBJECT_ID",
+      "sql_sha256": "eb1f5070b95c8423cf3c951e7014a65fb4c2fef715156f69c34c9569bd5e94ae",
+      "started_at": "2026-10-02T15:02:45.562975+00:00",
+      "status": "PASS",
+      "row_count": 1635,
+      "output_sha256": "71da0b9e9b3937699dc3b013bcb07cc5396b627ee5e51c5fcb9a13c15d3b95ac",
+      "elapsed_seconds": 0.121,
+      "finished_at": "2026-10-02T15:02:45.683861+00:00",
+      "sql_field_expressions_omitted": 691,
+      "private_expression_storage": true
+    }
+  },
+  "excluded": [
+    "user identities",
+    "security assignments",
+    "saved searches",
+    "business records",
+    "credential values"
+  ],
+  "read_only_intent_is_not_access_control": true,
+  "status": "PASS",
+  "finished_at": "2026-10-02T15:02:45.683923+00:00"
+}

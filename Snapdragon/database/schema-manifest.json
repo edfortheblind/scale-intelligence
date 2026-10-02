@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-10-02T15:04:12.338400+00:00",
+  "phase": "schema",
+  "expected_database": "travprodwbeyz",
+  "scope": "navigation_configuration_only",
+  "transactional_rows_read": false,
+  "configuration_rows_read": false,
+  "routines_executed": false,
+  "mutations_executed": false,
+  "queries": {
+    "identity": {
+      "sql": "SELECT DB_NAME() AS database_name, SYSUTCDATETIME() AS observed_at, CAST(DATABASEPROPERTYEX(DB_NAME(),'Updateability') AS nvarchar(128)) AS updateability",
+      "sql_sha256": "1364339e0e009917dc977b126f8919ea99ae5eb44f706dcceb027815862f349d",
+      "started_at": "2026-10-02T15:04:13.093392+00:00",
+      "status": "PASS",
+      "row_count": 1,
+      "output_sha256": "94aa6573e334e3b4117db88b55253248f3720b18bde40d66b5b0ea642b63e14c",
+      "elapsed_seconds": 0.078,
+      "finished_at": "2026-10-02T15:04:13.171372+00:00"
+    },
+    "navigation_schema": {
+      "sql": "SELECT o.object_id, SCHEMA_NAME(o.schema_id) AS schema_name, o.name AS table_name,\nc.column_id, c.name AS column_name, t.name AS type_name, c.max_length, c.is_nullable\nFROM sys.tables o JOIN sys.columns c ON c.object_id=o.object_id JOIN sys.types t ON t.user_type_id=c.user_type_id\nWHERE SCHEMA_NAME(o.schema_id)='dbo' AND o.name IN\n('FORM','MAIN_UI_SCREEN','SCREEN_PART','SCREEN_GROUP','SCREEN_CONTROL','SCREEN_CONTROL_GRID_COLUMNS',\n'DATA_RETRIEVAL_STMT_HEADER','DATA_RETRIEVAL_STMT_DETAIL','DYNAMIC_ACTION','ACTION_MENU','ACTION_MENU_OPTION',\n'RESOURCE_FILE_BASE','RESOURCE_FILE_CUSTOM','FUNCTIONAL_AREA')\nORDER BY o.name,c.column_id",
+      "sql_sha256": "d3abb596db145e046cf27e35763e63159af63eea85d12197d45030b9880645d4",
+      "started_at": "2026-10-02T15:04:13.171391+00:00",
+      "status": "PASS",
+      "row_count": 302,
+      "output_sha256": "0c21212e84dd23b11d51f1f9b34d1ae4c1aa2e981416ab9b3fe8b6d107044277",
+      "elapsed_seconds": 0.212,
+      "finished_at": "2026-10-02T15:04:13.382942+00:00"
+    }
+  },
+  "excluded": [
+    "user identities",
+    "security assignments",
+    "saved searches",
+    "business records",
+    "credential values"
+  ],
+  "read_only_intent_is_not_access_control": true,
+  "status": "PASS",
+  "finished_at": "2026-10-02T15:04:13.382999+00:00"
+}
