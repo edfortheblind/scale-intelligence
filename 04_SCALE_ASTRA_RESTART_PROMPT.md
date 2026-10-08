@@ -1,5 +1,11 @@
 # SCALE Intelligence - next session on Astra
 
+## Current restart direction - 2026-10-08
+
+Start with the October 8 owner direction in [the active master](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md). The official [Travis and TRAV3PL SDDs](SDD/README.md) are TAB's core design sources; their [identity register](SDD/tab-core-sources.json) records the exact preserved files and unperformed body/reconciliation work. Earlier generic-SDD wording does not override this TAB-specific authority.
+
+The owner reports that Travis does not use PO. [Snapdragon's current disposition](Snapdragon/receiving/FOCUSED_SESSION_REPORT.md) preserves selected-context coverage at **4/6** and the historical sampled Monitor result at **4/4**. Do not resume automatic PO searches or create fake records. Older authentication blockers are dated evidence; October 8 Production inquiries worked but returned no records. Preserve all other accepted boundaries, including the six deferred mobile gaps and **0/34 deployment/timing freeze**.
+
 ## C29 current help continuation - 2026-10-02
 
 Search results now expose the existing matched source passage, source name and qualification in a collapsed **Matching detail and source** disclosure. Inbound QC guidance now explains the open-receipt quantity denominator, storage-template rounding and receipt-once limitation with eight verified original AIM nodes. Returns/damage links to that explanation. Read [C29 changes and verification](_project/CONTINUATION_C29.md) and [the checkpoint](_project/continuation29-20261002.json).

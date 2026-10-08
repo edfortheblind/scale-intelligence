@@ -1,5 +1,11 @@
 # SCALE Intelligence master continuation prompt
 
+## Current owner direction - 2026-10-08
+
+The official **Travis full SDD v1.0** and **TRAV3PL enablement SDD v1.0** are the core SDD sources for TAB. Read [SDD source authority](SDD/README.md) and [the exact core-source register](SDD/tab-core-sources.json) before interpreting TAB-specific design. This supersedes earlier treatment of all implementation SDDs as generic examples for TAB purposes; it does not turn historical design into verified deployment. Source identity/authority is registered; full body review and reconciliation are pending. Preserve original bytes and the general neutral reference's distinct scope.
+
+The owner also confirmed **"Travis doesn't use PO."** October 8 Production inquiry access recovered, but eight PO/PO Line searches returned zero rows. [The focused Snapdragon report](Snapdragon/receiving/FOCUSED_SESSION_REPORT.md) retains **4/6 selected contexts** and the October 2 sampled **4/4 Monitor levels**. The two PO contexts remain unobserved with an operational non-use disposition. No fake PO or further automatic PO discovery is pending. Accepted work, six deferred mobile contracts, untracked Video Rec and the **0/34 deployment/timing freeze** remain unchanged.
+
 ## C29 current help continuation - 2026-10-02
 
 Search results now expose the existing matched source passage, source name and qualification in a collapsed **Matching detail and source** disclosure. Inbound QC guidance now explains the open-receipt quantity denominator, storage-template rounding and receipt-once limitation with eight verified original AIM nodes. Returns/damage links to that explanation. Read [C29 changes and verification](_project/CONTINUATION_C29.md) and [the checkpoint](_project/continuation29-20261002.json).

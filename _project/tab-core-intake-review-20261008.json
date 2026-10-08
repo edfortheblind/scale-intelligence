@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "task_id": "TAB-CORE-20261008",
+  "reviewed_at_utc": "2026-10-08T16:50:35.041914+00:00",
+  "review_type": "Bounded owner-authority registration audit",
+  "status": "PASS_WITH_DELIVERY_LIMIT",
+  "base_commit": "f64a2d5b87d09e70364076bb8fd5c18107c8bf72",
+  "checks_passed": 10,
+  "checks_failed": 0,
+  "findings": [
+    {
+      "id": "TAB-A1",
+      "severity": "medium",
+      "classification": "delivery_authority",
+      "status": "open_delivery_limit_effect_withheld",
+      "finding": "Coordinator reports live repository visibility PUBLIC, while current project authority permits private publication only.",
+      "evidence_source": "Coordinator-observed gh repo view result in this session; auditor did not use network or independently verify visibility.",
+      "impact": "These reviewed local files must not be described as privately published or pushed under existing authority.",
+      "disposition": "Coordinator withheld push and visibility changes. No history/exposure assessment or remote modification was requested or performed by auditor."
+    }
+  ],
+  "artifact_findings": [],
+  "checks": [
+    {
+      "name": "owner_authority_exact",
+      "status": "PASS",
+      "details": "Register quotes the exact owner instruction designating these two official core SDDs for TAB."
+    },
+    {
+      "name": "two_original_identities",
+      "status": "PASS",
+      "details": "Both paths, sizes and SHA-256 match the supplied original identities and current bytes; combined size 5482115 bytes."
+    },
+    {
+      "name": "prior_root_content_preserved",
+      "status": "PASS",
+      "details": "Each of the four root continuity files adds one October 8 entry; previous heading and all content from C29 onward remain identical to HEAD."
+    },
+    {
+      "name": "local_registration_links",
+      "status": "PASS",
+      "details": "38 local links in new root entries and SDD README resolve after URI decoding."
+    },
+    {
+      "name": "design_runtime_limits",
+      "status": "PASS",
+      "details": "Authority is TAB-specific design priority. Full body extraction, reconciliation, visual review, help integration and runtime verification remain explicitly unperformed."
+    },
+    {
+      "name": "preserved_reference_and_inventory",
+      "status": "PASS",
+      "details": "No HEAD diff in neutral reference Markdown, neutral technical register or legacy inventory."
+    },
+    {
+      "name": "preserved_original_location",
+      "status": "PASS",
+      "details": "TRAV3PL keeps its existing derived path and is explicitly classified as owner-supplied original."
+    },
+    {
+      "name": "no_conflated_po_acceptance",
+      "status": "PASS",
+      "details": "New continuity sections retain S3 4/6 and historical S7 4/4; operational PO non-use remains distinct from SDD authority."
+    },
+    {
+      "name": "diff_whitespace",
+      "status": "PASS",
+      "details": "git diff --check passed for five changed Markdown authority/continuity files."
+    },
+    {
+      "name": "metadata_evidence_qualified",
+      "status": "PASS",
+      "details": "DOCX cover and PDF structural metadata observations are attributed and bounded; PDF version is filename-only and no PDF cover/body/visual reading is claimed. Auditor independently verifies bytes only, not document metadata or meaning."
+    }
+  ],
+  "check_corrections": [
+    {
+      "initial_result": "Raw filesystem link check reported DB%20Architecture missing.",
+      "classification": "checker_url_decoding",
+      "correction": "URI-decoded local targets before checking; all 38 links resolve. No document edit was required."
+    }
+  ],
+  "source_coverage": {
+    "governance": "Same completed native-manual mandatory source loading as S3-20261008/audit1; no AEKR runtime or copied private governance content.",
+    "new_authority": "Coordinator supplied exact owner instruction for core SDD registration and exact added audit scope.",
+    "registration": "Read complete SDD/tab-core-sources.json, SDD/README.md and complete diffs for four root continuity files.",
+    "originals": "Read file bytes only for size and SHA-256; no body extraction, rendering or semantic review.",
+    "historical_preservation": "Compared four root tails with HEAD and inspected Git diff status for three named unchanged reference/inventory files; no archive payload read.",
+    "missing_mandatory_reads": []
+  },
+  "execution_boundary": {
+    "role": "Auditor",
+    "client": "Native Codex delegated agent",
+    "model": "Inherited; exact model unobserved",
+    "client_version": "unobserved",
+    "authentication_route": "unobserved",
+    "cost": "unobserved",
+    "allowed_write": "_project/tab-core-intake-review-20261008.json only for this leaf",
+    "tools": "Local read-only shell/Python checks and this report write; no browser/network/database/generator/shared-history operations",
+    "containment": "Unrestricted tool environment; scope restrictions advisory."
+  },
+  "closed_output_manifest": {
+    "algorithm": "SHA-256",
+    "path_base": "repository root",
+    "artifact_count": 8,
+    "excludes": "This audit report and unrelated Snapdragon verification outputs.",
+    "files": [
+      {
+        "path": "SDD/tab-core-sources.json",
+        "size_bytes": 3895,
+        "sha256": "41db570fd6d05fbc93824bda33e1b53ce69a9c84229753f1dc76123872de2fd9"
+      },
+      {
+        "path": "SDD/README.md",
+        "size_bytes": 7538,
+        "sha256": "d6a71b37cfbd2720f7971bbcfded03c1ab6b359f9bc71337dedaf86fa633c41c"
+      },
+      {
+        "path": "03_SCALE_INTELLIGENCE_MASTER_PROMPT.md",
+        "size_bytes": 41803,
+        "sha256": "6c3e92bb61711327cd3df12d1df99028d55d32310f392d611997289388a3cca0"
+      },
+      {
+        "path": "04_SCALE_ASTRA_RESTART_PROMPT.md",
+        "size_bytes": 21215,
+        "sha256": "23f4096f7c639d64db190039408aac4a38f7fbf9dfc2d029735da41e5a9e9c10"
+      },
+      {
+        "path": "PROJECT_STATUS.md",
+        "size_bytes": 33448,
+        "sha256": "ab9a9b3db8f4392ff4d9b0073a07d56a55842e7f95ecda74b42ab386bbd1b839"
+      },
+      {
+        "path": "_project/RESUME.md",
+        "size_bytes": 20873,
+        "sha256": "8e4fdfbac4ee57426db6dc6f0c976f9fc3a7c800689a352cd148620ca154f7b4"
+      },
+      {
+        "path": "SDD/Travis Full Solution Design Document (SDD) v1.0.docx",
+        "size_bytes": 4621713,
+        "sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997"
+      },
+      {
+        "path": "SDD/derived/TRAV3PL - Travis Austin 3PL Enablement Design Document v1.0.pdf",
+        "size_bytes": 860402,
+        "sha256": "a3f0962080bdc590be1476d32c134cbaf37e93632fe3a4062608c1965d9d3696"
+      }
+    ]
+  },
+  "limitations": [
+    "Document title/date/page metadata are source-worker observations, not independently repeated by this auditor.",
+    "This audit registers owner authority and verifies original byte identities; it does not validate document body semantics, visual layout, current TAB configuration, operational behavior or signed acceptance.",
+    "No fresh body credential scan or security clearance of either binary source is supplied by this audit.",
+    "Existing neutral reference, archived-source claims and unrelated help metrics were not re-audited.",
+    "Remote visibility is coordinator-observed; publication is withheld and no remote parity or private publication is asserted.",
+    "Owner designation of core design sources neither changes technical S3 coverage nor reverses owner-reported PO operational non-use."
+  ],
+  "Outcome": "DONE_WITH_CONCERNS",
+  "Delivery state": "REGISTRATION_AUDIT_COMPLETE_LOCAL; PUBLICATION_WITHHELD",
+  "Product state": "TWO_CORE_SDD_ORIGINALS_REGISTERED; BODY_AND_RUNTIME_UNREVIEWED",
+  "Gate/authority state": "OWNER_SOURCE_DESIGNATION_RECORDED; NO_SELF_APPROVAL; PRIVATE_PUBLICATION_BOUNDARY_UNSATISFIED"
+}

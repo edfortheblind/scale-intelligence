@@ -3,7 +3,7 @@
   "task_id": "SD-11-FOCUSED-S3-S7",
   "observation_date": "2026-10-02",
   "base_commit": "f8c1e829fca7f33b4ecb1beeec6116076fffad16",
-  "status": "monitor_levels_complete_selected_contexts_require_accessible_records",
+  "status": "selected_contexts_unverified_owner_reports_operational_non_use_monitor_sample_complete",
   "owner_acceptance_record": "receiving/owner-acceptance.json",
   "work_packages": [
     {
@@ -13,9 +13,9 @@
       "completed": 4,
       "denominator": 6,
       "newly_completed": 0,
-      "status": "record_context_not_found_in_tested_inquiries",
-      "evidence_environment": "Stage: 4 prior types; Production: no selected context",
-      "qualification": "Putaway Group, Receipt, Receipt Line and Receipt Container remain demonstrated. PO2796 and PO Line2797 are still missing; original/alternate Stage inquiries did not supply usable rows and Production PO authentication expired."
+      "status": "selected_contexts_unverified_owner_reports_operational_non_use",
+      "evidence_environment": "Stage: 4 prior types; Production October 8: eight valid empty inquiries, no selected context",
+      "qualification": "PO2796 and PO Line2797 remain unobserved. After renewed Production sign-in, eight inquiries across both offered warehouses with closed records off/on returned zero rows. Owner reports Travis does not use PO. Further automatic retries stopped; no synthetic record requested and no technical acceptance added."
     },
     {
       "id": "S7",
@@ -82,12 +82,24 @@
   ],
   "evidence_files": [
     "evidence/selected-context-followup.json",
-    "evidence/monitor-level-followup.json"
+    "evidence/monitor-level-followup.json",
+    "evidence/selected-context-production-20261008.json"
   ],
-  "qualification": "Owner acceptance of the prior delivery is recorded separately. S7 improved from 1/4 to 4/4 in a verified alternate Stage context. S3 remains 4/6: no usable PO/PO Line context was found in the tested Stage inquiries, and Production fallback authentication expired. Empty UI results are not proof of database-wide absence. The remaining requirement is a legitimate accessible PO with a line. Accepted other tasks, six deferred mobile contracts and the 0/34 deployment/timing freeze are unchanged.",
+  "qualification": "S3 remains 4/6 (66.67%): October 8 Production access recovered for eight tested PO/PO Line inquiries, all returning zero rows. The owner reports that Travis does not use PO; the two unobserved types retain an operational non-use disposition, with no further automatic retries or fake-record creation pending. This is not database-wide absence or technical completion. S7 remains the October 2 sampled alternate Stage 4/4 (100%); Production Monitor was not revisited. Accepted other work, six deferred mobile contracts and the 0/34 deployment/timing freeze are unchanged.",
   "evidence_sha256": {
     "evidence/selected-context-followup.json": "edabfce0eb61609c2affa9aa19dad53df4e84c38a68bd64831635e6d58096069",
-    "evidence/monitor-level-followup.json": "07baa571c79ab6e5e1fcb6fa039264781a5c6d1390a57f4f1fa7be930a6ea587"
+    "evidence/monitor-level-followup.json": "07baa571c79ab6e5e1fcb6fa039264781a5c6d1390a57f4f1fa7be930a6ea587",
+    "evidence/selected-context-production-20261008.json": "9f976a5ff83c4cac47fc62657fa0daba05079c096c43d13a2371efa37b0a7bad"
   },
-  "evidence_finalized_at_utc": "2026-10-02T21:35:11Z"
+  "evidence_finalized_at_utc": "2026-10-08T16:39:58Z",
+  "latest_followup_date": "2026-10-08",
+  "latest_followup_base_commit": "f64a2d5b87d09e70364076bb8fd5c18107c8bf72",
+  "observation_date_scope": "October 2 baseline and S7 observations; latest_followup_date applies to the subsequent S3 Production inquiry and owner clarification.",
+  "continuation_disposition": {
+    "owner_statement": "Travis doesn't use PO",
+    "recorded_date": "2026-10-08",
+    "automatic_retry_status": "no_further_automatic_retries",
+    "technical_coverage_unchanged": true,
+    "new_owner_acceptance_inferred": false
+  }
 }

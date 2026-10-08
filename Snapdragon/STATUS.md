@@ -79,10 +79,10 @@ The owner accepted the delivered work through `f8c1e829` with its reported limit
 
 | Current task | Observed / denominator | Progress | Evidence environment |
 |---|---:|---:|---|
-| S3 - Selected-record contexts inspected | 4/6 | 66.67% | Stage: 4 prior types; Production: no selected context |
+| S3 - Selected-record contexts inspected | 4/6 | 66.67% | Stage: 4 prior types; Production October 8: eight valid empty inquiries, no selected context |
 | S7 - Monitor chart levels inspected | 4/4 | 100.0% | Stage alternate warehouse: 4/4; Production: 0/4 |
 
-Owner acceptance of the prior delivery is recorded separately. S7 improved from 1/4 to 4/4 in a verified alternate Stage context. S3 remains 4/6: no usable PO/PO Line context was found in the tested Stage inquiries, and Production fallback authentication expired. Empty UI results are not proof of database-wide absence. The remaining requirement is a legitimate accessible PO with a line. Accepted other tasks, six deferred mobile contracts and the 0/34 deployment/timing freeze are unchanged.
+S3 remains 4/6 (66.67%): October 8 Production access recovered for eight tested PO/PO Line inquiries, all returning zero rows. The owner reports that Travis does not use PO; the two unobserved types retain an operational non-use disposition, with no further automatic retries or fake-record creation pending. This is not database-wide absence or technical completion. S7 remains the October 2 sampled alternate Stage 4/4 (100%); Production Monitor was not revisited. Accepted other work, six deferred mobile contracts and the 0/34 deployment/timing freeze are unchanged.
 
 Read [the focused continuation report](receiving/FOCUSED_SESSION_REPORT.md) for attempts, results and remaining requirements.
 

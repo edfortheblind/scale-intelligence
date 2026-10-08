@@ -1,8 +1,25 @@
-# SCALE Functionality Reference
+# SDD sources and SCALE Functionality Reference
+
+## Official core SDDs for TAB - owner direction, 2026-10-08
+
+The owner identifies these two supplied documents as the **official core SDD sources for Travis Association for the Blind (TAB)**:
+
+| Core source | Preserved original |
+|---|---|
+| Travis full solution design, v1.0 | [Travis SDD](<Travis Full Solution Design Document (SDD) v1.0.docx>) |
+| Travis Austin 3PL enablement design, v1.0 | [TRAV3PL SDD](<derived/TRAV3PL - Travis Austin 3PL Enablement Design Document v1.0.pdf>) |
+
+For **TAB-specific design**, these sources take precedence over generic or other-client implementation examples. The [core-source register](tab-core-sources.json) binds their exact paths, sizes, SHA-256 hashes, observed metadata and review limits. The TRAV3PL PDF is an owner-supplied original despite its existing `derived/` location; neither source was moved or edited.
+
+This intake registers source identity and owner-designated authority. Full body extraction, semantic reconciliation, visual review and help/reference integration are **not yet performed**. The PDF's title metadata and 22-page structural count were checked, but its cover/body text was not read with a PDF extraction tool. Official design authority does not establish that every historical design statement is currently deployed. Read exact relevant passages and retain source/runtime differences before changing TAB guidance.
+
+The earlier neutral reference and its seven-source baseline below remain general SCALE reference material. Their original scope does not override the new TAB source designation. Historical intake/review counts do not include these two newly supplied core sources.
+
+## Existing general SCALE reference
 
 Read the [central SCALE Functionality Reference](SCALE_FUNCTIONAL_REFERENCE.md), or its equivalent [printable SDD](<../output/pdf/SCALE Functionality Reference SDD.pdf>). These are two formats of one maintained reference. The document contains **86 entries in 14 chapters**, supported by **181 selected records from seven SCALE sources**.
 
-The owner supplied implementation SDDs as functional reference guides. They do not define core-product defaults or describe the current warehouse's effective configuration. The central document merges repeated examples into functional mechanisms, retains conditional configuration and version limits, and excludes client names and all other-product material. Custom or proposed extension contracts are not promoted into base capabilities.
+The earlier implementation SDDs were supplied as functional reference guides. Those generic and other-client examples do not define core-product defaults or TAB's effective configuration. The central document merges repeated examples into functional mechanisms, retains conditional configuration and version limits, and excludes client names and all other-product material. Custom or proposed extension contracts are not promoted into base capabilities.
 
 ## Current reference and evidence
 
