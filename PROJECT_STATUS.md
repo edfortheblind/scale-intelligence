@@ -1,5 +1,13 @@
 # SCALE Intelligence project status
 
+## C31 current continuation - 2026-10-08
+
+Local TAB search now returns **12 reconciled answers** before its **69 individual source claims**. Full resolutions, readable states, supporting links and stable destinations preserve the relationship between the base design and addendum. The PO answer separately cites the exact dated owner statement. Read [C31 changes and limits](_project/CONTINUATION_C31.md) and [the C31 receipt](_project/continuation31-20261008.json).
+
+**147 tests passed.** Source review passed 17 checks; live HTTP checked 81 claim/reconciliation anchors and 555 links. All 12 selected reconciliation probes ranked first. Existing 81 claim result lists (except the guide identity hash), 24 procedure lists and all 723 article case records are preserved. Article retrieval remains 675 top-eight, 419 first and 48 misses. Keyboard, evidence navigation and 320 px browser checks passed; no JAWS or runtime acceptance follows.
+
+C31 corrects the source register's stale help status while preserving raw extraction inventory and original evidence. One missing manual-QC citation in R08 was added and source-checked. The 69 claim bodies remain unchanged. Continue from a concrete source/help concern; unresolved source details still require relevant evidence. Preserve six deferred mobile contracts, owner PO non-use, archive exclusion, untracked Video Rec and **0/34 deployment/timing**. Existing PUBLIC-target authority remains in force. Older sections retain their dated scope.
+
 ## C30 current continuation - 2026-10-08
 
 Local help now provides **TAB design reference** browsing, a separate **TAB design matches** search group over all **69 claims**, and exact source-node views. Full qualifications remain visible in results and at claim destinations. Read [C30 changes, verification and remaining limits](_project/CONTINUATION_C30.md) and [the C30 receipt](_project/continuation30-20261008.json).

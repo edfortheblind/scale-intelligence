@@ -29,6 +29,7 @@ EVIDENCE = {
     'tab-reconciliation': 'SDD/tab-core/reconciliation.json',
     'tab-coverage': 'SDD/tab-core/text-review-coverage.json',
     'tab-visual': 'SDD/tab-core/visual-review.json',
+    'tab-po-direction': 'Snapdragon/evidence/selected-context-production-20261008.json',
 }
 TAB_SOURCES = {
     'sdd-716ca4b42b3f00bd': ('TAB-CORE-TRAVIS', 'SDD/Travis Full Solution Design Document (SDD) v1.0.docx'),
@@ -37,6 +38,20 @@ TAB_SOURCES = {
 TAB_SCOPE = ('Dated TAB design: 2022 Travis base plus the explicitly scoped 2025 TRAV3PL addendum. '
              'Documentary design only; current configuration and warehouse execution are not verified. '
              'Read the cross-source reconciliation and each claim\'s qualifications before operational use.')
+TAB_HELP_SCOPE = ('TAB design and reconciled answers from the dated 2022 base and 2025 addendum. '
+                  'The purchase-order answer also includes a separately identified owner clarification dated October 8, 2026. '
+                  'Current configuration and warehouse execution are not verified.')
+TAB_OWNER_SCOPE = ('Dated owner operational direction plus documentary design context. '
+                   'The owner statement is separate from the SDD evidence; current configuration and warehouse execution are not verified.')
+TAB_RECONCILIATION_STATES = {
+    'DOCUMENTARY_INTERPRETATION': 'Documentary interpretation',
+    'OWNER_OPERATIONAL_DIRECTION_PLUS_DOCUMENTARY_CONTEXT': 'Owner operational direction with documentary context',
+    'UNRESOLVED_SOURCE_DETAIL': 'Unresolved source detail',
+    'UNVERIFIED_MAPPING': 'Unverified mapping',
+    'UNRESOLVED_DESIGN_ITEMS': 'Unresolved design items',
+    'QUALIFIED_SOURCE_AUTHORITY': 'Qualified source authority',
+    'SCOPE_BOUNDARY': 'Scope boundary',
+}
 GUIDE_SCOPE = ('Procedures describe retained documentation. Recorded menu observations are identified '
                'separately; they do not prove installed configuration or successful warehouse execution.')
 PROCEDURE_DETAIL_LABELS = {
@@ -224,7 +239,7 @@ class GuideLibrary:
             blocks, refs = guide_blocks(text)
             title = next(b['text'] for b in blocks if b['kind'] == 'heading')
             guide = {'guide_id': key, 'title': title, 'path': path, 'sha256': binding['sha256'],
-                     'blocks': blocks, 'references': refs, 'scope': TAB_SCOPE if key == 'tab-design' else GUIDE_SCOPE}
+                     'blocks': blocks, 'references': refs, 'scope': TAB_HELP_SCOPE if key == 'tab-design' else GUIDE_SCOPE}
             self.guides[key] = guide
             # Central reference remains readable through its existing guide links;
             # its different source corpus is not added to procedure-guide search.
@@ -270,6 +285,54 @@ class GuideLibrary:
             self.tab_sections.append({**claim, 'guide_id': 'tab-design', 'guide_title': self.guides['tab-design']['title'],
                                       'section_title': claim['id']+': '+claim['topic'], 'anchor': anchor,
                                       'text': claim['statement']+'\n'+' '.join(claim['conditions_and_limits'])})
+        self._tab_reconciliations(anchors)
+
+    def _tab_reconciliations(self, anchors):
+        rows = self.evidence['tab-reconciliation']['reconciliations']
+        expected = {'R'+str(number).zfill(2) for number in range(1, 13)}
+        if (not isinstance(rows, list) or len(rows) != len(expected)
+                or any(not isinstance(row, dict) or not isinstance(row.get('id'), str) for row in rows)
+                or {row['id'] for row in rows} != expected):
+            raise ValueError('TAB reconciliation identities differ from the reviewed twelve records.')
+        authority = self.evidence['tab-po-direction'].get('authority', {})
+        expected_authority = {
+            'owner_clarification': "Travis doesn't use PO",
+            'clarification_date': '2026-10-08',
+            'interpretation': 'Owner-reported operational non-use; not new technical acceptance, database-wide absence or proof of application behavior.',
+        }
+        if any(authority.get(key) != value for key, value in expected_authority.items()):
+            raise ValueError('TAB owner clarification binding changed.')
+        claims = {claim['id']: claim for claim in self.tab_sections}
+        self.tab_reconciliations = []
+        for row in rows:
+            anchor = row['id'].lower()
+            claim_ids = row.get('claim_ids', [])
+            state = row.get('state')
+            is_owner = row['id'] == 'R04'
+            if (anchor not in anchors or not isinstance(state, str) or state not in TAB_RECONCILIATION_STATES
+                    or row.get('current_runtime_verified') is not False
+                    or not isinstance(row.get('topic'), str) or not row['topic'].strip()
+                    or not isinstance(row.get('resolution'), str) or not row['resolution'].strip()
+                    or not isinstance(claim_ids, list) or not claim_ids
+                    or any(not isinstance(identity, str) or identity not in claims for identity in claim_ids)
+                    or len(set(claim_ids)) != len(claim_ids)):
+                raise ValueError('TAB reconciliation claim, state or guide binding is invalid.')
+            if (row.get('owner_evidence_id') != ('tab-po-direction' if is_owner else None)
+                    or (state == 'OWNER_OPERATIONAL_DIRECTION_PLUS_DOCUMENTARY_CONTEXT') != is_owner):
+                raise ValueError('TAB reconciliation owner evidence binding is invalid.')
+            section = {**row, 'guide_id': 'tab-design', 'guide_title': self.guides['tab-design']['title'],
+                       'section_title': row['id']+': '+row['topic'], 'anchor': anchor, 'text': row['resolution'],
+                       'state_label': TAB_RECONCILIATION_STATES[state],
+                       'scope': TAB_OWNER_SCOPE if is_owner else TAB_SCOPE,
+                       'evidence_scope': state if is_owner else 'DOCUMENTARY_DESIGN_ONLY',
+                       'supporting_claims': [{'id': identity, 'topic': claims[identity]['topic'],
+                                              'href': '/guide/tab-design#'+claims[identity]['anchor']}
+                                             for identity in claim_ids]}
+            if is_owner:
+                section['owner_evidence'] = {'id': 'tab-po-direction', 'statement': authority['owner_clarification'],
+                                             'date': authority['clarification_date'], 'interpretation': authority['interpretation'],
+                                             'href': '/guide-evidence/tab-po-direction#guide-content'}
+            self.tab_reconciliations.append(section)
 
     def _verified(self, relative, expected):
         raw = active_bytes(self.root, relative)
@@ -344,11 +407,13 @@ class GuideLibrary:
     def search_tab_design(self, question, limit=6):
         if not isinstance(question, str) or len(question) > 500:
             raise ValueError('Use a question of 500 characters or fewer.')
-        return {'scope': TAB_SCOPE, 'manifest_sha256': self.manifest_sha256,
+        return {'scope': TAB_HELP_SCOPE, 'manifest_sha256': self.manifest_sha256,
                 'results': [{**section, 'scope': TAB_SCOPE,
                              'guide_sha256': self.guides['tab-design']['sha256'],
                              'evidence_scope': 'DOCUMENTARY_DESIGN_ONLY'}
-                            for section in self._search_sections(question, self.tab_sections, limit)]}
+                            for section in self._search_sections(question, self.tab_sections, limit)],
+                'reconciliations': [{**section, 'guide_sha256': self.guides['tab-design']['sha256']}
+                                    for section in self._search_sections(question, self.tab_reconciliations, limit)]}
 
     @staticmethod
     def _search_sections(question, sections, limit):

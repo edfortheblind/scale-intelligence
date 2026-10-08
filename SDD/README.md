@@ -13,6 +13,8 @@ For **TAB-specific design**, these sources take precedence over generic or other
 
 Read the [TAB core design reference](TAB_DESIGN_REFERENCE.md) for **69 source-bound topic claims and 12 reconciliation dispositions**. The original Travis SDD is the base; the 2025 TRAV3PL document explicitly retains processes it does not change. All **1,667 extracted text nodes**, **22 PDF pages** and **46 DOCX embedded assets** were reviewed. DOCX physical page layout was not rendered. [Coverage and qualifications](tab-core/reconciliation.json) retain comments, placeholders, conditional plans and source anomalies. Local help now provides separate TAB design search, reference browsing and exact source-node views; the general neutral reference remains unchanged. See [C30 integration and corrected source qualifications](../_project/CONTINUATION_C30.md). Official design authority does not establish deployed behavior or signed acceptance.
 
+The 12 cross-source interpretations are now directly searchable with full qualifications, readable states and supporting-topic links. The purchase-order answer separately identifies the owner's October 8 clarification. See [C31 reconciled answers and verification](../_project/CONTINUATION_C31.md). This updates the current help-integration status; the raw extraction inventory's original index status remains a generation-time record.
+
 The earlier neutral reference and its seven-source baseline below remain general SCALE reference material. Their original scope does not override the new TAB source designation. Historical intake/review counts do not include these two newly supplied core sources.
 
 ## Existing general SCALE reference

@@ -3,7 +3,7 @@ from html import escape
 import json
 import re
 
-from help_guides import TAB_SCOPE, plain
+from help_guides import TAB_HELP_SCOPE, TAB_SCOPE, plain
 
 
 INLINE = re.compile(r'(`[^`\n]+`|\*\*[^*\n]+\*\*|(?<!\*)\*[^*\n]+\*(?!\*)|\[[^\]\n]+\]\([^)\n]+\)|\[[^\]\n]+\]\[[^\]\n]+\]|\[[A-Za-z][A-Za-z0-9_-]*\])')
@@ -81,13 +81,35 @@ def guide_navigation(library):
 
 def tab_navigation():
     return ('<section aria-labelledby="tab-design-heading"><h2 id="tab-design-heading">TAB design reference</h2>'
-            '<p>'+escape(TAB_SCOPE)+'</p><p><a href="/guide/tab-design#guide-content">Browse the TAB core design reference</a></p></section>')
+            '<p>'+escape(TAB_HELP_SCOPE)+'</p><p><a href="/guide/tab-design#guide-content">Browse the TAB core design reference</a></p></section>')
+
+
+def owner_clarification(row):
+    owner = row.get('owner_evidence')
+    if not owner:
+        return ''
+    return ('<p>Owner clarification ('+escape(owner['date'])+'): “'+escape(owner['statement'])+'”. '
+            '<a href="'+escape(owner['href'], quote=True)+'">Read the dated owner clarification</a></p>'
+            '<p>'+escape(owner['interpretation'])+'</p>')
 
 
 def tab_search(library, question):
-    matches = library.search_tab_design(question)['results']
+    response = library.search_tab_design(question)
+    matches, reconciliations = response['results'], response['reconciliations']
     parts = ['<section aria-labelledby="tab-results-heading"><h2 id="tab-results-heading" tabindex="-1">TAB design matches</h2>',
-             '<p>'+escape(TAB_SCOPE)+'</p>']
+             '<p>'+escape(TAB_HELP_SCOPE)+'</p>']
+    if reconciliations:
+        parts.append('<h3>Reconciled answers</h3><ul class="guide-results">')
+        for row in reconciliations:
+            parts.append('<li><a href="/guide/tab-design#'+escape(row['anchor'], quote=True)+'">'+escape(row['section_title'])+'</a>'
+                         '<p>'+escape(row['resolution'])+'</p><p>State: '+escape(row['state_label'])+'</p>'
+                         '<p class="scope">'+escape(row['scope'])+'</p>')
+            parts.append(owner_clarification(row))
+            parts.append('<p>Supporting design claims: '+', '.join(
+                '<a href="'+escape(claim['href'], quote=True)+'">'+escape(claim['id']+': '+claim['topic'])+'</a>'
+                for claim in row['supporting_claims'])+'</p></li>')
+        parts.append('</ul>')
+    parts.append('<h3>Individual source claims</h3><p>'+escape(TAB_SCOPE)+'</p>')
     if not matches:
         parts.append('<p>No TAB design claim matched.</p>')
     else:
@@ -129,6 +151,7 @@ def render_guide(library, key):
     parts.append('</ul></nav></details>')
     heading = guide['title']
     parents = {}
+    reconciliations = {row['anchor']: row for row in library.tab_reconciliations} if key == 'tab-design' else {}
     for index, block in enumerate(guide['blocks']):
         kind = block['kind']
         if kind == 'heading':
@@ -146,6 +169,10 @@ def render_guide(library, key):
                 parts.append('<p>'+context+': <a href="#'+escape(parent['anchor'], quote=True)+'">'+escape(plain(parent['text']))+'</a></p>')
             if key == 'tab-design' and re.fullmatch(r'(travis|trav3pl)-[a-z]+[0-9]+', block['anchor']):
                 parts.append('<p class="scope">'+escape(TAB_SCOPE)+' <a href="#how-the-two-designs-fit-together">Cross-source reconciliation</a>.</p>')
+            if block['anchor'] in reconciliations:
+                row = reconciliations[block['anchor']]
+                parts.append('<p>State: '+escape(row['state_label'])+'</p><p class="scope">'+escape(row['scope'])+'</p>')
+                parts.append(owner_clarification(row))
             heading = plain(block['text'])
         elif kind == 'paragraph':
             parts.append('<p>'+render(block['text'])+'</p>')
@@ -233,6 +260,17 @@ def render_tab_source(document):
 
 
 def render_evidence(library, key):
+    if key == 'tab-po-direction':
+        title = 'Dated owner clarification: purchase orders at TAB'
+        authority = library.evidence[key]['authority']
+        body = ('<nav aria-label="Library"><a href="/guide/tab-design#r04">Purchase orders at TAB</a></nav>'
+                '<article class="guide" id="guide-content" tabindex="-1"><h2>'+title+'</h2>'
+                '<p>Owner clarification recorded '+escape(authority['clarification_date'])+':</p>'
+                '<blockquote>'+escape(authority['owner_clarification'])+'</blockquote>'
+                '<p>'+escape(authority['interpretation'])+'</p>'
+                '<p class="scope">This is owner operational direction, separate from the documentary SDD sources. '
+                'It supplies no new runtime verification or technical acceptance.</p></article>')
+        return title, body
     title = {'mobile-navigation': 'Recorded navigation evidence',
              'mobile-catalog': 'Source and flow catalog evidence',
              'scale-reference': 'SCALE functionality source bindings',

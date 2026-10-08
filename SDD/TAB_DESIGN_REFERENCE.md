@@ -6,22 +6,93 @@ Read the [source register](tab-core-sources.json), [Travis reading copy](tab-cor
 
 ## How the two designs fit together
 
-The owner identifies both sources as core for TAB. The owner also confirms that Travis does not use PO; no fake PO is needed. Current operational statements and direct runtime evidence remain distinct from historical design. The general [SCALE Functionality Reference](SCALE_FUNCTIONAL_REFERENCE.md) continues to explain product mechanisms without superseding this TAB design.
+The owner identifies both sources as core for TAB. The owner also confirmed on October 8, 2026 that Travis does not use PO. Current operational statements and direct runtime evidence remain distinct from historical design. The general [SCALE Functionality Reference](SCALE_FUNCTIONAL_REFERENCE.md) continues to explain product mechanisms without superseding this TAB design.
 
-| Topic | Reconciled interpretation | Evidence |
-|---|---|---|
-| Base plus conditional addendum | Use the original Travis SDD as the base and the 2025 TRAV3PL SDD for its explicitly changed or added 3PL design. Assumption 18 preserves unmentioned original processes. Apply either as dated design evidence, not current configuration. | [TRAVIS-I01](#travis-i01), [TRAV3PL-P01](#trav3pl-p01) |
-| One-company baseline versus new customers | The 2022 one-company Austin baseline and 2025 Company-per-new-customer design address different scopes. New customer zones are recommended; customer-specific locating/allocation configurations and output folders are required by the addendum. These requirements do not prove multiple customers are currently enabled. | [TRAVIS-I02](#travis-i02), [TRAV3PL-P02](#trav3pl-p02), [TRAV3PL-P03](#trav3pl-p03), [TRAV3PL-P10](#trav3pl-p10) |
-| Receipt container downloads | The original excludes receipt container downloads. The addendum explicitly allows them when a customer supplies them. Preserve that conditional change; shipping containers remain excluded in both. | [TRAVIS-I04](#travis-i04), [TRAVIS-I05](#travis-i05), [TRAV3PL-P08](#trav3pl-p08), [TRAV3PL-P09](#trav3pl-p09) |
-| PO non-use | The owner stated on October 8, 2026 that Travis does not use PO. Receipt-based designs and glossary PO entries do not contradict that statement. Generic screenshot PO examples are not TAB operational evidence. Keep S3 technical coverage 4/6 with PO branches unobserved, stop automatic retries, and create no fake PO. | [TRAVIS-I04](#travis-i04), [TRAVIS-I09](#travis-i09), [TRAVIS-I10](#travis-i10), [TRAV3PL-P08](#trav3pl-p08) |
-| Mobile chronology | The original initial-go-live exclusions and the addendum plan to test three functions on 24.7.2575 are chronologically compatible. Neither supplies a completed present-day mobile procedure or runtime acceptance. The six deferred contracts remain deferred. | [TRAVIS-I12](#travis-i12), [TRAVIS-TO15](#travis-to15), [TRAV3PL-P05](#trav3pl-p05) |
-| Receipt confirmation wording | Repeated container-level In Putaway wording is the documentary operational intent. Receipt/header, manual-close, zero-received and appendix closure wording leaves exact trigger interaction unresolved. Preserve all source variants; verify effective configuration only in separately authorized runtime work. | [TRAVIS-I06](#travis-i06), [TRAVIS-TO28](#travis-to28), [TRAVIS-TO29](#travis-to29), [TRAV3PL-P11](#trav3pl-p11) |
-| Header Company and detail criteria | Company is required on receipt/shipment download headers, while locating/allocation criteria read receipt/shipment detail. Both requirements are retained. No mapping or automatic propagation claim is made. | [TRAV3PL-P08](#trav3pl-p08), [TRAV3PL-P09](#trav3pl-p09), [TRAV3PL-P13](#trav3pl-p13), [TRAV3PL-P15](#trav3pl-p15) |
-| Wave sequence dependencies | The addendum supplies Rule Assignment before Allocation and VAS Assignment after Container Creation. Those dependencies qualify reuse but do not fill the original Start/Complete-only wave tables or resolve pending sequence exports. | [TRAVIS-TO02](#travis-to02), [TRAVIS-TO03](#travis-to03), [TRAV3PL-P15](#trav3pl-p15), [TRAV3PL-P16](#trav3pl-p16), [TRAV3PL-P17](#trav3pl-p17) |
-| Short pick inventory versus demand | For TAB, preserve Count/suspend as the documented inventory action. Separately preserve Delete Rejected and upload for shipment demand. Generic statements about reducing on-hand must not overwrite that TAB distinction. | [TRAVIS-TO24](#travis-to24) |
-| Extensions and unresolved comments | EX01 identifies Custom Item Balance in the modification table; its Approved cell is documentary status. EX-XX for 1348 printing remains unidentified. Pack Size communication, Load Building, allocation sequences, LTL label/BOL migration and full ODWS inventory remain qualified by comments or missing content. | [TRAVIS-I07](#travis-i07), [TRAVIS-TO03](#travis-to03), [TRAVIS-TO05](#travis-to05), [TRAVIS-TO06](#travis-to06), [TRAVIS-TO17](#travis-to17), [TRAVIS-TO19](#travis-to19), [TRAVIS-TO20](#travis-to20), [TRAVIS-TO22](#travis-to22) |
-| Blank signoff and retained anomalies | Official core status is the owner instruction. It does not resolve blank signatures, placeholders, retained comments, the unexpected Aaron's VAS item-list name, or the Allocation figure caption error. Preserve those anomalies visibly. | [TRAVIS-TO14](#travis-to14), [TRAVIS-TO30](#travis-to30), [TRAV3PL-P01](#trav3pl-p01), [TRAV3PL-P15](#trav3pl-p15) |
-| Neutral reference and help boundary | TAB-specific interpretation uses these core sources first. The neutral SCALE Functionality Reference remains general product guidance. This packet supplies a separate TAB design lookup in local help. Article rankings, procedure-guide rankings, SRC mappings, runtime settings and deployment/timing acceptance remain separate and unchanged. | [TRAVIS-I01](#travis-i01), [TRAV3PL-P01](#trav3pl-p01) |
+<a id="r01"></a>
+### Which TAB design document applies?
+
+Use the original Travis SDD as the base and the 2025 TRAV3PL SDD for its explicitly changed or added 3PL design. Assumption 18 preserves unmentioned original processes. Apply either as dated design evidence, not current configuration.
+
+Supporting design topics: [Source scope and historical baseline (TRAVIS-I01)](#travis-i01), [Scope, date and relationship to the base SDD (TRAV3PL-P01)](#trav3pl-p01).
+
+<a id="r02"></a>
+### Companies and new 3PL customers
+
+The 2022 one-company Austin baseline and 2025 Company-per-new-customer design address different scopes. New customer zones are recommended; customer-specific locating/allocation configurations and output folders are required by the addendum. These requirements do not prove multiple customers are currently enabled.
+
+Supporting design topics: [Units dimensions and master data (TRAVIS-I02)](#travis-i02), [Customer segregation and historical context (TRAV3PL-P02)](#trav3pl-p02), [Company, item and zone design (TRAV3PL-P03)](#trav3pl-p03), [Customer-specific upload routing (TRAV3PL-P10)](#trav3pl-p10).
+
+<a id="r03"></a>
+### Receipt and shipping container downloads
+
+The original excludes receipt container downloads. The addendum permits customer-supplied receipt container data to be interfaced when available. This is a conditional change; shipping container downloads remain excluded in both sources.
+
+Supporting design topics: [Receipt download (TRAVIS-I04)](#travis-i04), [Shipment download (TRAVIS-I05)](#travis-i05), [Receipt downloads and blind returns (TRAV3PL-P08)](#trav3pl-p08), [Shipment downloads (TRAV3PL-P09)](#trav3pl-p09).
+
+<a id="r04"></a>
+### Purchase orders (PO) at TAB
+
+On October 8, 2026, the owner stated that Travis does not use purchase orders (PO). Receipt-based designs and generic PO examples do not contradict that operational statement. Owner-reported non-use does not establish database-wide absence or technical runtime acceptance.
+
+Supporting design topics: [Receipt download (TRAVIS-I04)](#travis-i04), [Receipt types and documents (TRAVIS-I09)](#travis-i09), [Appointment scheduling capability (TRAVIS-I10)](#travis-i10), [Receipt downloads and blind returns (TRAV3PL-P08)](#trav3pl-p08).
+
+Owner evidence: [October 8, 2026 PO clarification](../Snapdragon/evidence/selected-context-production-20261008.json). This statement is owner-reported operational context; the linked design topics provide separate documentary context.
+
+<a id="r05"></a>
+### Warehouse Mobile design chronology
+
+The original initial-go-live exclusions and the addendum plan to test Blind Receiving, Shipping Container QC and Status Change on 24.7.2575 are chronologically compatible. Planned tests establish neither completed present-day procedures nor current availability.
+
+Supporting design topics: [Unauthorized returns and blind receiving (TRAVIS-I12)](#travis-i12), [Outbound QC coverage and station (TRAVIS-TO15)](#travis-to15), [Warehouse Mobile testing plans (TRAV3PL-P05)](#trav3pl-p05).
+
+<a id="r06"></a>
+### When receipt confirmations upload
+
+Repeated container-level In Putaway wording is the documentary design intent. Receipt/header, manual-close, zero-received and appendix closure wording leaves the exact trigger interaction unresolved. The effective configuration remains unverified.
+
+Supporting design topics: [Receipt and shipment confirmations (TRAVIS-I06)](#travis-i06), [Interface policy and unresolved paths (TRAVIS-TO28)](#travis-to28), [Receipt upload settings and wording conflict (TRAVIS-TO29)](#travis-to29), [Receipt and shipment upload triggers (TRAV3PL-P11)](#trav3pl-p11).
+
+<a id="r07"></a>
+### Company on headers and detail rules
+
+Company is required on receipt/shipment download headers, while locating/allocation criteria read receipt/shipment detail. Both requirements are retained. The source evidence does not establish mapping or automatic propagation from header to detail.
+
+Supporting design topics: [Receipt downloads and blind returns (TRAV3PL-P08)](#trav3pl-p08), [Shipment downloads (TRAV3PL-P09)](#trav3pl-p09), [Company-based locating configuration (TRAV3PL-P13)](#trav3pl-p13), [Company-based allocation and wave order (TRAV3PL-P15)](#trav3pl-p15).
+
+<a id="r08"></a>
+### Wave step order and reuse
+
+The addendum requires Rule Assignment before Allocation and VAS Assignment after Container Creation. These relative dependencies do not supply a complete wave sequence or resolve pending sequence exports. Wave reuse remains conditional on steps not being company-specific. VAS assignment and automatic QC assignment require wave-created containers; the original manual supervisor QC path remains separately documented.
+
+Supporting design topics: [Wave masters and conversion sequence (TRAVIS-TO02)](#travis-to02), [Incomplete wave flow tables (TRAVIS-TO03)](#travis-to03), [Company-based allocation and wave order (TRAV3PL-P15)](#trav3pl-p15), [Wave reuse, priority and picking zones (TRAV3PL-P16)](#trav3pl-p16), [Customer VAS and outbound QC (TRAV3PL-P17)](#trav3pl-p17), [Outbound QC coverage and station (TRAVIS-TO15)](#travis-to15).
+
+<a id="r09"></a>
+### Short picks: inventory and shipment demand
+
+For TAB, the documented inventory action is Count/suspend. Shipment demand separately uses Delete Rejected and upload. Generic statements about reducing on-hand must not overwrite this distinction. Current execution and timing remain unverified.
+
+Supporting design topics: [Short pick: inventory versus shipment (TRAVIS-TO24)](#travis-to24).
+
+<a id="r10"></a>
+### Extensions and unresolved design choices
+
+EX01 identifies Custom Item Balance in the modification table; its Approved cell is documentary status, not proof of deployment. EX-XX for 1348 printing remains unidentified. Pack Size communication, Load Building, allocation sequences, LTL label/BOL migration and full ODWS inventory remain qualified by comments or missing content.
+
+Supporting design topics: [Inventory interfaces and condition-code preservation (TRAVIS-I07)](#travis-i07), [Incomplete wave flow tables (TRAVIS-TO03)](#travis-to03), [Packing Class and Pack Size (TRAVIS-TO05)](#travis-to05), [Allocation rule assignment and sequences (TRAVIS-TO06)](#travis-to06), [1348 printing extension (TRAVIS-TO17)](#travis-to17), [Load building and manual dock assignment (TRAVIS-TO19)](#travis-to19), [Load confirmation and Bill of Lading (TRAVIS-TO20)](#travis-to20), [Performance and modification inventory gaps (TRAVIS-TO22)](#travis-to22).
+
+<a id="r11"></a>
+### Source authority and unresolved document details
+
+The owner's core-source designation establishes priority for TAB-specific design interpretation. It does not resolve blank signatures, placeholders, retained comments, the unexpected Aaron's VAS item-list name, or the Allocation figure caption error. These source anomalies remain unresolved.
+
+Supporting design topics: [VAS and copied-name anomaly (TRAVIS-TO14)](#travis-to14), [Security and document authority (TRAVIS-TO30)](#travis-to30), [Scope, date and relationship to the base SDD (TRAV3PL-P01)](#trav3pl-p01), [Company-based allocation and wave order (TRAV3PL-P15)](#trav3pl-p15).
+
+<a id="r12"></a>
+### TAB design and general SCALE guidance
+
+Use the official TAB core sources first for TAB-specific design interpretation. The neutral SCALE Functionality Reference explains general product mechanisms. Neither establishes current configuration or warehouse execution.
+
+Supporting design topics: [Source scope and historical baseline (TRAVIS-I01)](#travis-i01), [Scope, date and relationship to the base SDD (TRAV3PL-P01)](#trav3pl-p01).
 
 ## Source and review limits
 

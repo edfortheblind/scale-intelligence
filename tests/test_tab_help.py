@@ -217,13 +217,24 @@ class TabHelpHTTPTests(unittest.TestCase):
             self.assertEqual(code, 200)
             self.assertIn("script-src 'none'", headers['Content-Security-Policy'])
             self.assertIn(b'Original SHA-256:', body)
-        for key in ['tab-sources', 'tab-reconciliation', 'tab-coverage', 'tab-visual']:
+        for key in ['tab-sources', 'tab-reconciliation', 'tab-coverage', 'tab-visual', 'tab-po-direction']:
             self.assertEqual(self.request('/guide-evidence/'+key)[0], 200)
         for path in ['/guide-source/tab/unknown', '/guide-source/tab/../../.aekr/private',
                      '/guide-source/tab/%2e%2e%2fprivate', '/SDD/tab-core-sources.json']:
             self.assertEqual(self.request(path)[0], 404)
         for query in ['q=a&q=b', 'q=a&other=b', 'q='+'x'*501]:
             self.assertEqual(self.request('/api/tab-design-search?'+query)[0], 400)
+
+    def test_reconciled_po_answer_and_dated_owner_proof_are_served_together(self):
+        status, _, body = self.request('/api/tab-design-search?q=PO')
+        self.assertEqual(status, 200)
+        row = next(row for row in json.loads(body)['reconciliations'] if row['id'] == 'R04')
+        status, headers, body = self.request(row['owner_evidence']['href'].split('#')[0])
+        self.assertEqual(status, 200)
+        self.assertIn("script-src 'none'", headers['Content-Security-Policy'])
+        self.assertIn(escape(row['owner_evidence']['statement']).encode(), body)
+        self.assertIn(row['owner_evidence']['date'].encode(), body)
+        self.assertNotIn(b'S3-PROD-01', body)
 
 
 if __name__ == '__main__':

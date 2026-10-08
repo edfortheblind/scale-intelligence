@@ -16,7 +16,7 @@ The **Configure SCALE** section covers work profiles, packing preferences, print
 
 **Detailed procedure guides** opens the Warehouse Mobile/RF and Cross Application manuals inside the application. Search results include matching guide sections alongside the existing articles. Each manual has a contents list, task steps, source citations and explicit limits; recorded screen observations remain distinct from documented procedures.
 
-**TAB design reference** provides a separate search and browsing path for 69 reviewed claims from the official Travis and TRAV3PL designs. Results retain dated design scope, unresolved decisions and exact source citations.
+**TAB design reference** provides a separate search and browsing path for 12 reconciled answers and 69 reviewed claims from the official Travis and TRAV3PL designs. Results retain dated design scope, unresolved decisions and exact source citations; the owner's dated purchase-order clarification is identified separately.
 
 ## Reference library
 
