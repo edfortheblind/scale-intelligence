@@ -102,6 +102,16 @@ def related_tab_answers(library, claim_id):
         '</a> — '+escape(row['state_label'])+'</li>' for row in rows)+'</ul>')
 
 
+def tab_claim_citations(library, claim):
+    parts = ['<details class="tab-citations"><summary>All '+str(len(claim['refs']))+' cited source passages</summary><ul>']
+    for ref in claim['refs']:
+        source = library.sources['tab/'+ref['document_id']]
+        href = '/guide-source/tab/'+ref['document_id']+'#'+ref['node_id']
+        label = ref['node_id']+': '+source['title']+' — '+ref['location']
+        parts.append('<li><a href="'+escape(href, quote=True)+'">'+escape(label)+'</a></li>')
+    return ''.join(parts)+'</ul></details>'
+
+
 def tab_search(library, question):
     response = library.search_tab_design(question)
     matches, reconciliations = response['results'], response['reconciliations']
@@ -162,9 +172,14 @@ def render_guide(library, key):
     heading = guide['title']
     parents = {}
     reconciliations = {row['anchor']: row for row in library.tab_reconciliations} if key == 'tab-design' else {}
+    claims = {row['anchor']: row for row in library.tab_sections} if key == 'tab-design' else {}
+    pending_claim = None
     for index, block in enumerate(guide['blocks']):
         kind = block['kind']
         if kind == 'heading':
+            if pending_claim is not None:
+                parts.append(tab_claim_citations(library, pending_claim))
+            pending_claim = claims.get(block['anchor'])
             if index == 0 and block['level'] == 1:
                 continue
             parents = {depth: parent for depth, parent in parents.items() if depth < block['level']}
@@ -193,6 +208,8 @@ def render_guide(library, key):
             parts.append('<'+tag+attribute+'>'+''.join('<li>'+render(item)+'</li>' for item in block['items'])+'</'+tag+'>')
         elif kind == 'table':
             parts.append(table(block['rows'], render, heading))
+    if pending_claim is not None:
+        parts.append(tab_claim_citations(library, pending_claim))
     parts += ['<details class="references"><summary>Guide identity and evidence scope</summary>',
               '<p>'+escape(guide['path'])+'</p><p class="hash">Guide SHA-256: '+guide['sha256']+'</p>',
               '<p class="hash">Collection manifest SHA-256: '+library.manifest_sha256+'</p></details></article>']

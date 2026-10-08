@@ -4,6 +4,7 @@ from html import escape
 from http.client import HTTPConnection
 import json
 from pathlib import Path
+import re
 import sys
 import threading
 import unittest
@@ -65,6 +66,55 @@ class TabHelpTests(unittest.TestCase):
         self.assertIn('FINAL LIMIT', html)
         self.assertIn('&lt;script&gt;unsafe&lt;/script&gt;', html)
         self.assertNotIn('<script>', html)
+
+    def test_every_claim_exposes_all_cited_passages_after_its_explanation(self):
+        _, html = render_guide(self.guides, 'tab-design')
+        citation_count = 0
+        for claim in self.guides.tab_sections:
+            with self.subTest(claim=claim['id']):
+                landing = html.split('id="'+claim['anchor']+'" tabindex="-1"', 1)[1]
+                landing = re.split(r'<h[2-6]\b', landing, maxsplit=1)[0]
+                disclosure = re.search(r'<details class="tab-citations">(.*?)</details>', landing)
+                self.assertIsNotNone(disclosure)
+                citations = disclosure.group(1)
+                self.assertIn('<summary>All '+str(len(claim['refs']))+' cited source passages</summary>', citations)
+                self.assertLess(landing.index(escape(claim['statement'])), disclosure.start())
+                for limit in claim['conditions_and_limits']:
+                    self.assertLess(landing.index(escape(limit)), disclosure.start())
+                actual = re.findall(r'<a href="([^"]+)">([^<]+)</a>', citations)
+                expected = []
+                for ref in claim['refs']:
+                    source = self.guides.sources['tab/'+ref['document_id']]
+                    node = next(node for node in source['nodes'] if node['id'] == ref['node_id'])
+                    self.assertEqual(ref['location'], node['location'])
+                    href = '/guide-source/tab/'+ref['document_id']+'#'+ref['node_id']
+                    label = ref['node_id']+': '+source['title']+' — '+ref['location']
+                    expected.append((escape(href, quote=True), escape(label)))
+                self.assertEqual(actual, expected)
+                citation_count += len(actual)
+        self.assertEqual(citation_count, 510)
+        self.assertEqual(html.count('<details class="tab-citations">'), 69)
+
+    def test_complete_citation_disclosure_escapes_source_text_and_link_attributes(self):
+        library = copy.copy(self.guides)
+        library.tab_sections = copy.deepcopy(self.guides.tab_sections)
+        library.sources = copy.deepcopy(self.guides.sources)
+        claim = library.tab_sections[0]
+        ref = claim['refs'][0]
+        source = library.sources['tab/'+ref['document_id']]
+        source['title'] = '<script>hostile title</script>'
+        ref['location'] = '<img src=x onerror=alert(1)>'
+        ref['node_id'] = 'node" onclick="alert(1)'
+        _, html = render_guide(library, 'tab-design')
+        disclosure = re.search(r'<details class="tab-citations">(.*?)</details>', html)
+        self.assertIsNotNone(disclosure)
+        citations = disclosure.group(1)
+        href = '/guide-source/tab/'+ref['document_id']+'#'+ref['node_id']
+        label = ref['node_id']+': '+source['title']+' — '+ref['location']
+        self.assertIn('href="'+escape(href, quote=True)+'"', citations)
+        self.assertIn(escape(label), citations)
+        for active in ['<script>', '<img', ' onclick="']:
+            self.assertNotIn(active, citations)
 
     def test_tab_node_citations_have_source_titles_and_keep_exact_visible_labels(self):
         guide = self.guides.guides['tab-design']

@@ -34,6 +34,8 @@ TAB results distinguish documentary interpretation, unresolved source details an
 
 Where a source claim supports a reconciled answer, **Related reconciled answers** links appear in its search result and reference section. Follow the named answer to read the combined interpretation and its qualifications, including any dated owner clarification. Claims without a reviewed relationship retain the general reconciliation link.
 
+At the end of each TAB claim, expand **All cited source passages** to reach every passage registered for that claim, including retained source comments. Each link identifies its source and location. These citations support the recorded interpretation; unresolved decisions remain unresolved.
+
 Source links open escaped, inert extracted text with node locations. Both original documents and their extracted packets are fingerprint-checked at startup. Source figures and page layout are not reproduced. The lookup is available through `/api/tab-design-search?q=...`: `results` retains individual claims and the additive `reconciliations` array supplies full cross-source answers, readable states and supporting links. The owner evidence view displays only the exact dated statement and its limits. Article and procedure endpoints retain their existing behavior.
 
 ## Maintaining the library

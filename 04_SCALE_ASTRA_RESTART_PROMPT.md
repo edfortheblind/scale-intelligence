@@ -1,5 +1,13 @@
 # SCALE Intelligence - next session on Astra
 
+## C33 current continuation - 2026-10-08
+
+The owner approved C32. C33 exposes **all 510 registered citations across 69 TAB claims** in collapsed source disclosures and corrects overlapping compound-topic search preference. Read [C33 changes and finite remainder](_project/CONTINUATION_C33.md) and [the C33 receipt](_project/continuation33-20261008.json).
+
+**108 tests passed.** Served evaluation now has **676/723 top-eight, 419 first, 47 misses and 723 contracts**: one recovery, zero new losses, eight changed result lists. All 93 TAB and 24 procedure responses remain exact; all 1,111 guide links resolve. Independent boundary/preservation review and keyboard/320 px browser checks passed. Source/guide/corpus bytes remain unchanged. C33 also corrects the earlier preview-cleanup assertion and verifies the listener is stopped.
+
+The remaining search/source questions require relevant evidence or a distinct justified design. Preserve six deferred mobile contracts, PO non-use, archive exclusion, untracked Video Rec and **0/34 deployment/timing**. Existing PUBLIC-target authority remains in force; no new JAWS/runtime acceptance is claimed. Prior sections retain their dated scope and historical counts.
+
 ## C32 current continuation - 2026-10-08
 
 Individual TAB claims now expose **Related reconciled answers** in search results and direct reference destinations: **35 claims, 46 reviewed relationships**. Links retain readable states and reach the full qualified answers, including the dated PO clarification. Read [C32 changes and limits](_project/CONTINUATION_C32.md) and [the C32 receipt](_project/continuation32-20261008.json).

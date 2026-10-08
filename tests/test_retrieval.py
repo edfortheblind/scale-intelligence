@@ -87,6 +87,43 @@ class RetrievalTests(unittest.TestCase):
                   'Calibration may be pending when an unrelated reader is offline.')])
         self.assertEqual(data.search('calibration pending')['results'][0]['topic_id'], 'large')
 
+    def named_topic_fixture(self, prefix='process-'):
+        return self.knowledge([
+            topic(prefix+'assembly', 'Assembly', 'General overview.'),
+            topic(prefix+'assembly-order', 'Assembly order', 'General process.'),
+            topic('detail', 'Completion status', 'Completion status is a quantity.')])
+
+    def test_compound_topic_does_not_also_boost_contained_topic(self):
+        data = self.named_topic_fixture()
+        result = data.search('assembly order completion status')['results']
+        self.assertEqual([r['topic_id'] for r in result],
+                         ['process-assembly-order', 'detail', 'process-assembly'])
+
+    def test_independent_shorter_topic_keeps_its_boost(self):
+        data = self.named_topic_fixture()
+        result = data.search('assembly order and assembly completion status')['results']
+        self.assertEqual([r['topic_id'] for r in result[:2]],
+                         ['process-assembly-order', 'process-assembly'])
+
+    def test_standalone_shorter_topic_keeps_its_boost(self):
+        data = self.named_topic_fixture()
+        result = data.search('assembly completion status')['results']
+        self.assertEqual(result[0]['topic_id'], 'process-assembly')
+
+    def test_partial_word_does_not_name_a_topic(self):
+        data = self.named_topic_fixture()
+        result = data.search('reassembly order completion status')['results']
+        self.assertEqual(result[0]['topic_id'], 'detail')
+
+    def test_nonprocess_topic_names_keep_the_same_preference(self):
+        data = self.named_topic_fixture(prefix='')
+        result = data.search('assembly order completion status')['results']
+        self.assertEqual([r['topic_id'] for r in result],
+                         ['assembly-order', 'detail', 'assembly'])
+        independent = data.search('assembly and assembly order completion status')['results']
+        self.assertEqual([r['topic_id'] for r in independent[:2]],
+                         ['assembly-order', 'assembly'])
+
 
 if __name__ == '__main__':
     unittest.main()

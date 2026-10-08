@@ -379,12 +379,25 @@ class Knowledge:
             _, _, _, passage, source_id = self.rows[row_id-1]
             best.setdefault(key, (rank,passage,source_id))
         rows=[(key,value[0]) for key,value in best.items()]
-        # An explicitly named reviewed process outranks incidental words such as
-        # "confirm" in a question. This uses stable topic names, never answer keys.
-        def named_process(key):
-            phrase = key.removeprefix('process-').replace('-', ' ')
-            return len(phrase.split()) if ' '+phrase+' ' in query_words else 0
-        rows.sort(key=lambda row: (-named_process(row[0]), row[1], row[0]))
+        # Prefer explicitly named reviewed topics, using stable topic names,
+        # never answer keys. A compound name does not also name its contained
+        # topic unless the shorter phrase occurs independently elsewhere.
+        named = {}
+        for key, _ in rows:
+            phrase = ' '+key.removeprefix('process-').replace('-', ' ')+' '
+            spans = [(match.start(), match.start()+len(phrase))
+                     for match in re.finditer('(?='+re.escape(phrase)+')', query_words)]
+            if spans:
+                named[key] = (len(phrase.split()), spans)
+        all_spans = [span for _, spans in named.values() for span in spans]
+        preference = {
+            key: length if any(not any(
+                other_start <= start and end <= other_end
+                and (other_start, other_end) != (start, end)
+                for other_start, other_end in all_spans)
+                for start, end in spans) else 0
+            for key, (length, spans) in named.items()}
+        rows.sort(key=lambda row: (-preference.get(row[0], 0), row[1], row[0]))
         rows = rows[:min(max(int(limit), 1), 20)]
         results = [{'topic_id': key, 'title': self.topics[key]['title'],
                     'question': self.topics[key]['business_question'],
