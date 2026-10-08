@@ -84,11 +84,12 @@ class HelpHandler(BaseHTTPRequestHandler):
                 return self.respond(200, {'manifest_sha256': self.guides.manifest_sha256, 'guides': self.guides.listing()})
             if path.startswith('/api/guides/'):
                 return self.respond(200, self.guides.guides[path.removeprefix('/api/guides/')])
-            if path == '/api/guide-search':
+            if path in {'/api/guide-search', '/api/tab-design-search'}:
                 values = parse_qs(target.query, keep_blank_values=True)
                 if set(values) - {'q'} or len(values.get('q', [''])) != 1:
                     raise ValueError('Provide one q parameter.')
-                return self.respond(200, self.guides.search(values.get('q', [''])[0]))
+                search = self.guides.search_tab_design if path == '/api/tab-design-search' else self.guides.search
+                return self.respond(200, search(values.get('q', [''])[0]))
             if path == '/api/topics':
                 return self.respond(200, [{'topic_id': t['topic_id'], 'title': t['title']} for t in self.knowledge.topics.values()])
             if path.startswith('/api/topics/'):

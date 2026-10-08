@@ -1,5 +1,15 @@
 # Resume SCALE Intelligence
 
+## C30 current continuation - 2026-10-08
+
+Local help now provides **TAB design reference** browsing, a separate **TAB design matches** search group over all **69 claims**, and exact source-node views. Full qualifications remain visible in results and at claim destinations. Read [C30 changes, verification and remaining limits](CONTINUATION_C30.md) and [the C30 receipt](continuation30-20261008.json).
+
+Independent review of the remaining **29 DOCX claims** found five source issues; seven related claim sections now preserve pending LPN choices, WCS access, Company-item Mobile Add limits, override-count disagreement and missing direct citations. Original and extracted source bytes are preserved. These corrections do not resolve the underlying warehouse choices.
+
+**134 tests passed.** All **723 article case records** and **24 procedure result lists** are unchanged: 675 article top-eight matches, 419 first, 48 misses and 723 selected-topic contracts. Local HTTP verified 69 anchors/540 guide links; 12 selected TAB probes passed after one explicitly recorded expected-ID author correction. Browser checks verified source navigation, descriptive citation names and the 320 px overflow repair. No new JAWS or runtime acceptance follows.
+
+Continue from C30 for concrete source/help concerns. Preserve six deferred mobile contracts, PO non-use, archived payload exclusion, untracked Video Rec and **0/34 deployment/timing**. Existing PUBLIC-repository publication authority remains in force. C30 supersedes earlier statements that the TAB packet has no help integration; dated prior receipts retain their original scope.
+
 ## Current continuation direction - 2026-10-08
 
 Read the October 8 direction in [the active master](../03_SCALE_INTELLIGENCE_MASTER_PROMPT.md), [TAB SDD authority](../SDD/README.md) and [the core-source register](../SDD/tab-core-sources.json). The owner-supplied official Travis and TRAV3PL documents are the core SDDs for TAB-specific design. Preserve their original bytes. The [TAB design reference](../SDD/TAB_DESIGN_REFERENCE.md) and [review receipt](TAB_CORE_RECONCILIATION_20261008.md) complete the documentary pass: 69 topic claims, 12 dispositions, 1,667 extracted nodes read, 22 PDF pages and 46 DOCX embedded assets visually reviewed. DOCX physical pages remain unrendered; help/search integration is not performed. Consult exact relevant passages before relying on other-client SDD examples for TAB claims.

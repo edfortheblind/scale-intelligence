@@ -3,7 +3,7 @@ from html import escape
 import json
 import re
 
-from help_guides import GUIDE_SCOPE, plain
+from help_guides import TAB_SCOPE, plain
 
 
 INLINE = re.compile(r'(`[^`\n]+`|\*\*[^*\n]+\*\*|(?<!\*)\*[^*\n]+\*(?!\*)|\[[^\]\n]+\]\([^)\n]+\)|\[[^\]\n]+\]\[[^\]\n]+\]|\[[A-Za-z][A-Za-z0-9_-]*\])')
@@ -12,6 +12,8 @@ INACTIVE_SOURCE_TAGS = {'script', 'style', 'iframe', 'object', 'form', 'input', 
 
 def source_title(article):
     """Use the retained article heading; extracted metadata may name a neighbor."""
+    if 'nodes' in article:
+        return article['title']
     def text(value):
         if isinstance(value, str):
             return value
@@ -49,7 +51,8 @@ def inline(text, guide, library):
             href = library.link(guide, destination) if destination else None
             rendered = escape(label)
             accessible_name = ''
-            if href and href.startswith('/guide-source/') and re.fullmatch(r'[A-Z][A-Z0-9_-]{0,11}', label):
+            if href and href.startswith('/guide-source/') and (href.startswith('/guide-source/tab/')
+                    or re.fullmatch(r'[A-Z][A-Z0-9_-]{0,11}', label)):
                 source_key = href.removeprefix('/guide-source/').split('#', 1)[0]
                 title = source_title(library.sources[source_key])
                 accessible_name = ' aria-label="'+escape(label+': '+title+', source', quote=True)+'"'
@@ -73,7 +76,28 @@ def guide_navigation(library):
     return ('<section aria-labelledby="guides-heading"><h2 id="guides-heading">Detailed procedure guides</h2>'
             '<p>Warehouse Mobile, RF and Cross Application steps, conditions and source limits.</p><ul class="topic-list">'+
             ''.join('<li><a href="/guide/'+row['guide_id']+'#guide-content">'+escape(row['title'])+'</a></li>' for row in library.listing())+
-            '</ul></section>')
+            '</ul></section>'+tab_navigation())
+
+
+def tab_navigation():
+    return ('<section aria-labelledby="tab-design-heading"><h2 id="tab-design-heading">TAB design reference</h2>'
+            '<p>'+escape(TAB_SCOPE)+'</p><p><a href="/guide/tab-design#guide-content">Browse the TAB core design reference</a></p></section>')
+
+
+def tab_search(library, question):
+    matches = library.search_tab_design(question)['results']
+    parts = ['<section aria-labelledby="tab-results-heading"><h2 id="tab-results-heading" tabindex="-1">TAB design matches</h2>',
+             '<p>'+escape(TAB_SCOPE)+'</p>']
+    if not matches:
+        parts.append('<p>No TAB design claim matched.</p>')
+    else:
+        parts.append('<ul class="guide-results">')
+        for row in matches:
+            parts.append('<li><a href="/guide/tab-design#'+escape(row['anchor'], quote=True)+'">'+escape(row['section_title'])+'</a>'
+                         '<p>'+escape(row['statement'])+'</p><p>Qualifications: '+escape(' '.join(row['conditions_and_limits']))+'</p></li>')
+        parts.append('</ul>')
+    parts.append('<p><a href="/guide/tab-design#how-the-two-designs-fit-together">Read the cross-source reconciliation</a></p>')
+    return ''.join(parts)+'</section>'
 
 
 def guide_search(library, question, *, matches=None, nested=False):
@@ -98,7 +122,7 @@ def render_guide(library, key):
     render = lambda value: inline(value, guide, library)
     parts = ['<nav aria-label="Library"><a href="/">Search SCALE Knowledge</a> · <a href="/guides">All procedure guides</a></nav>',
              '<article class="guide" id="guide-content" tabindex="-1" aria-labelledby="guide-title">',
-             '<h2 id="guide-title"><span id="'+escape(guide['blocks'][0]['anchor'], quote=True)+'" tabindex="-1">'+escape(guide['title'])+'</span></h2>', '<p class="scope">'+escape(GUIDE_SCOPE)+'</p>',
+             '<h2 id="guide-title"><span id="'+escape(guide['blocks'][0]['anchor'], quote=True)+'" tabindex="-1">'+escape(guide['title'])+'</span></h2>', '<p class="scope">'+escape(guide['scope'])+'</p>',
              '<details class="guide-contents" open><summary>On this page</summary><nav aria-label="Guide sections"><ul>']
     parts.extend('<li><a href="#'+escape(b['anchor'], quote=True)+'">'+escape(plain(b['text']))+'</a></li>'
                  for b in guide['blocks'] if b['kind'] == 'heading' and b['level'] == 2)
@@ -118,7 +142,10 @@ def render_guide(library, key):
                 parts.append('<span id="'+escape(block['alias'], quote=True)+'"></span>')
             parts.append(f'<h{level} id="'+escape(block['anchor'], quote=True)+'" tabindex="-1">'+render(block['text'])+f'</h{level}>')
             if parent and parent['level'] > 1:
-                parts.append('<p>Procedure context: <a href="#'+escape(parent['anchor'], quote=True)+'">'+escape(plain(parent['text']))+'</a></p>')
+                context = 'Design context' if key == 'tab-design' else 'Procedure context'
+                parts.append('<p>'+context+': <a href="#'+escape(parent['anchor'], quote=True)+'">'+escape(plain(parent['text']))+'</a></p>')
+            if key == 'tab-design' and re.fullmatch(r'(travis|trav3pl)-[a-z]+[0-9]+', block['anchor']):
+                parts.append('<p class="scope">'+escape(TAB_SCOPE)+' <a href="#how-the-two-designs-fit-together">Cross-source reconciliation</a>.</p>')
             heading = plain(block['text'])
         elif kind == 'paragraph':
             parts.append('<p>'+render(block['text'])+'</p>')
@@ -136,6 +163,8 @@ def render_guide(library, key):
 
 def render_source(library, key):
     article = library.sources[key]
+    if key.startswith('tab/'):
+        return render_tab_source(article)
     # Source text remains readable with node anchors and table/list structure.
     # No original URL, image, script, form, style or operational link is activated.
     allowed = {'p', 'div', 'span', 'b', 'strong', 'i', 'em', 'ul', 'ol', 'li', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'pre', 'code', 'blockquote', 'br'}
@@ -187,10 +216,30 @@ def render_source(library, key):
     return title, body
 
 
+def render_tab_source(document):
+    title = 'Source: '+document['title']
+    parts = ['<nav aria-label="Library"><a href="/">Search SCALE Knowledge</a> · '
+             '<a href="/guide/tab-design#how-the-two-designs-fit-together">TAB design and reconciliation</a></nav>',
+             '<article class="guide" id="guide-content" tabindex="-1"><h2>'+escape(title)+'</h2>',
+             '<p class="scope">'+escape(TAB_SCOPE)+'</p><p>'+escape(document['qualification'])+'</p>',
+             '<p>Retained extracted source text with exact node locations. Original and extracted-document fingerprints were checked before loading. '
+             'Figures and operational links are inactive; this text view does not reproduce page layout.</p>']
+    for node in document['nodes']:
+        parts.append('<section id="'+escape(node['id'], quote=True)+'" tabindex="-1"><h3>'+escape(node['id'])+'</h3>'
+                     '<p>'+escape(node['location'])+'</p><pre>'+escape(node['text'])+'</pre></section>')
+    parts.append('<details class="references"><summary>Source identity</summary><p>'+escape(document['source_path'])+'</p>'
+                 '<p class="hash">Original SHA-256: '+escape(document['source_sha256'])+'</p></details></article>')
+    return title, ''.join(parts)
+
+
 def render_evidence(library, key):
     title = {'mobile-navigation': 'Recorded navigation evidence',
              'mobile-catalog': 'Source and flow catalog evidence',
-             'scale-reference': 'SCALE functionality source bindings'}[key]
+             'scale-reference': 'SCALE functionality source bindings',
+             'tab-sources': 'TAB core source register',
+             'tab-reconciliation': 'TAB claim and reconciliation register',
+             'tab-coverage': 'TAB extracted-text review coverage',
+             'tab-visual': 'TAB visual review and limitations'}[key]
     body = ('<nav aria-label="Library"><a href="/guides">All procedure guides</a></nav><article id="guide-content" tabindex="-1">'
             '<h2>'+title+'</h2><p class="scope">Recorded evidence has its stated date and limits. It is not a live status check.</p><pre>'+
             escape(json.dumps(library.evidence[key], indent=2, ensure_ascii=False))+'</pre></article>')

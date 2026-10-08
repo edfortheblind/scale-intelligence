@@ -19,12 +19,24 @@ GUIDES = {
     'mobile-shipping': 'SDD/RF/WAREHOUSE_MOBILE_SHIPPING_SUPPORT_FLOWS.md',
     'mobile-catalog': 'SDD/RF/WAREHOUSE_MOBILE_SOURCE_CATALOG.md',
     'scale-reference': 'SDD/SCALE_FUNCTIONAL_REFERENCE.md',
+    'tab-design': 'SDD/TAB_DESIGN_REFERENCE.md',
 }
 EVIDENCE = {
     'mobile-navigation': 'SDD/RF/warehouse-mobile-live-navigation.json',
     'mobile-catalog': 'SDD/RF/warehouse-mobile-source-catalog.json',
     'scale-reference': 'SDD/derived/scale-functional-reference.json',
+    'tab-sources': 'SDD/tab-core-sources.json',
+    'tab-reconciliation': 'SDD/tab-core/reconciliation.json',
+    'tab-coverage': 'SDD/tab-core/text-review-coverage.json',
+    'tab-visual': 'SDD/tab-core/visual-review.json',
 }
+TAB_SOURCES = {
+    'sdd-716ca4b42b3f00bd': ('TAB-CORE-TRAVIS', 'SDD/Travis Full Solution Design Document (SDD) v1.0.docx'),
+    'sdd-a3f0962080bdc590': ('TAB-CORE-TRAV3PL', 'SDD/derived/TRAV3PL - Travis Austin 3PL Enablement Design Document v1.0.pdf'),
+}
+TAB_SCOPE = ('Dated TAB design: 2022 Travis base plus the explicitly scoped 2025 TRAV3PL addendum. '
+             'Documentary design only; current configuration and warehouse execution are not verified. '
+             'Read the cross-source reconciliation and each claim\'s qualifications before operational use.')
 GUIDE_SCOPE = ('Procedures describe retained documentation. Recorded menu observations are identified '
                'separately; they do not prove installed configuration or successful warehouse execution.')
 PROCEDURE_DETAIL_LABELS = {
@@ -40,6 +52,49 @@ PROCEDURE_DETAIL_LABELS = {
 
 def fingerprint(raw):
     return hashlib.sha256(raw).hexdigest()
+
+
+def active_bytes(root, relative):
+    root = Path(root).resolve()
+    path = (root/relative).resolve()
+    if not path.is_relative_to(root) or any(part.casefold() in {'archive', 'archiving', '_archive', '.aekr'} for part in path.relative_to(root).parts):
+        raise ValueError('Guide input is outside the active library.')
+    return path.read_bytes()
+
+
+def tab_sources(root, registry, bindings=None):
+    """Bind only the two reviewed TAB packets to their exact registered originals."""
+    rows = registry['sources']
+    registered = {row['id']: row for row in rows}
+    if len(rows) != len(TAB_SOURCES) or set(registered) != {value[0] for value in TAB_SOURCES.values()}:
+        raise ValueError('TAB source register differs from its allowlist.')
+    if bindings is not None and set(bindings) != set(TAB_SOURCES):
+        raise ValueError('TAB source manifest differs from its allowlist.')
+    result, documents = {}, {}
+    for identity, (source_id, original_path) in TAB_SOURCES.items():
+        row = registered[source_id]
+        if row['path'] != original_path:
+            raise ValueError('TAB source path differs from its allowlist.')
+        original = active_bytes(root, original_path)
+        if len(original) != row['bytes'] or fingerprint(original) != row['sha256']:
+            raise ValueError('TAB original fingerprint changed: '+original_path)
+        document_path = 'SDD/tab-core/documents/'+identity+'.json'
+        raw = active_bytes(root, document_path)
+        binding = {'document_path': document_path, 'document_sha256': fingerprint(raw),
+                   'source_path': original_path, 'source_sha256': row['sha256']}
+        if bindings is not None and bindings[identity] != binding:
+            raise ValueError('TAB document/source binding changed: '+identity)
+        document = json.loads(raw)
+        if (document['document_id'] != identity or document['core_source_id'] != source_id
+                or document['source_path'] != original_path or document['source_sha256'] != row['sha256']):
+            raise ValueError('TAB document identity differs from its registered source.')
+        nodes = document['nodes']
+        if (len({node['id'] for node in nodes}) != len(nodes)
+                or any(not re.fullmatch(r'[A-Za-z0-9_-]+', node['id']) for node in nodes)):
+            raise ValueError('TAB source node identities are invalid or duplicated.')
+        result[identity] = binding
+        documents['tab/'+identity] = {**document, 'title': row['title'], 'qualification': row['qualification']}
+    return result, documents
 
 
 def local_target(path, destination):
@@ -82,7 +137,9 @@ def make_manifest(root=ROOT):
             sources[source_key] = {'article_path': article_path, 'article_sha256': fingerprint(article_raw),
                                    'source_path': source_path, 'source_sha256': source['sha256']}
     evidence = {key: {'path': path, 'sha256': fingerprint((root/path).read_bytes())} for key, path in EVIDENCE.items()}
-    return {'schema_version': 1, 'scope': GUIDE_SCOPE, 'guides': documents, 'sources': sources, 'evidence': evidence}
+    bindings, _ = tab_sources(root, json.loads(active_bytes(root, EVIDENCE['tab-sources'])))
+    return {'schema_version': 1, 'scope': GUIDE_SCOPE, 'guides': documents, 'sources': sources,
+            'tab_sources': bindings, 'evidence': evidence}
 
 
 def guide_blocks(text):
@@ -167,11 +224,11 @@ class GuideLibrary:
             blocks, refs = guide_blocks(text)
             title = next(b['text'] for b in blocks if b['kind'] == 'heading')
             guide = {'guide_id': key, 'title': title, 'path': path, 'sha256': binding['sha256'],
-                     'blocks': blocks, 'references': refs, 'scope': GUIDE_SCOPE}
+                     'blocks': blocks, 'references': refs, 'scope': TAB_SCOPE if key == 'tab-design' else GUIDE_SCOPE}
             self.guides[key] = guide
             # Central reference remains readable through its existing guide links;
             # its different source corpus is not added to procedure-guide search.
-            if key != 'scale-reference':
+            if key not in {'scale-reference', 'tab-design'}:
                 self._sections(guide)
         for key, binding in self.manifest['sources'].items():
             match = re.fullmatch(r'(aim|sdk)/([a-zA-Z0-9_-]+)', key)
@@ -191,12 +248,31 @@ class GuideLibrary:
             if binding['path'] != path:
                 raise ValueError('Guide evidence path differs from its allowlist.')
             self.evidence[key] = json.loads(self._verified(path, binding['sha256']))
+        _, documents = tab_sources(self.root, self.evidence['tab-sources'], self.manifest.get('tab_sources', {}))
+        self.sources.update(documents)
+        self.tab_sections = []
+        anchors = {block['anchor'] for block in self.guides['tab-design']['blocks'] if block['kind'] == 'heading'}
+        nodes = {key: {node['id']: node for node in doc['nodes']} for key, doc in documents.items()}
+        seen = set()
+        for claim in self.evidence['tab-reconciliation']['claims']:
+            anchor = claim['id'].lower()
+            if (anchor not in anchors or anchor in seen or claim['evidence_class'] != 'DOCUMENTARY_DESIGN_ONLY'
+                    or claim['current_runtime_verified'] is not False or not claim['refs']):
+                raise ValueError('TAB claim identity or documentary qualification is invalid.')
+            seen.add(anchor)
+            for ref in claim['refs']:
+                document = documents.get('tab/'+ref['document_id'])
+                node = nodes.get('tab/'+ref['document_id'], {}).get(ref['node_id'])
+                if (node is None or ref['source_sha256'] != document['source_sha256']
+                        or ref['location'] != node['location'] or ref['text_sha256'] != fingerprint(node['text'].encode('utf-8'))
+                        or ref['node_canonical_sha256'] != fingerprint(json.dumps(node, sort_keys=True, ensure_ascii=False, separators=(',', ':')).encode('utf-8'))):
+                    raise ValueError('TAB claim source node binding changed.')
+            self.tab_sections.append({**claim, 'guide_id': 'tab-design', 'guide_title': self.guides['tab-design']['title'],
+                                      'section_title': claim['id']+': '+claim['topic'], 'anchor': anchor,
+                                      'text': claim['statement']+'\n'+' '.join(claim['conditions_and_limits'])})
 
     def _verified(self, relative, expected):
-        path = (self.root/relative).resolve()
-        if not path.is_relative_to(self.root) or any(part.casefold() in {'archive', 'archiving', '_archive', '.aekr'} for part in path.relative_to(self.root).parts):
-            raise ValueError('Guide input is outside the active library.')
-        raw = path.read_bytes()
+        raw = active_bytes(self.root, relative)
         if fingerprint(raw) != expected:
             raise ValueError('Guide fingerprint changed: '+relative+'. Rebuild the reviewed guide manifest.')
         return raw
@@ -226,13 +302,16 @@ class GuideLibrary:
         for key, relative in EVIDENCE.items():
             if path == relative:
                 return '/guide-evidence/'+key+'#guide-content'
+        for identity in TAB_SOURCES:
+            if path == 'SDD/tab-core/reading/'+identity+'.md':
+                return '/guide-source/tab/'+identity+('#'+fragment if fragment else '#guide-content')
         match = re.fullmatch(r'(AIM|SDK)/reading/([a-zA-Z0-9_-]+)\.(?:md|html)', path)
         if match and match[1].lower()+'/'+match[2] in self.sources:
             return '/guide-source/'+match[1].lower()+'/'+match[2]+('#'+fragment if fragment else '#guide-content')
         return None
 
     def listing(self):
-        return [{'guide_id': key, 'title': guide['title'], 'sha256': guide['sha256']} for key, guide in self.guides.items() if key != 'scale-reference']
+        return [{'guide_id': key, 'title': guide['title'], 'sha256': guide['sha256']} for key, guide in self.guides.items() if key not in {'scale-reference', 'tab-design'}]
 
     def search(self, question, limit=6):
         if not isinstance(question, str) or len(question) > 500:
@@ -256,18 +335,30 @@ class GuideLibrary:
                                   'guide_sha256': self.guides[section['guide_id']]['sha256'],
                                   'evidence_scope': 'DOCUMENTED_SRC_CATALOG_MATCH'}][:min(max(int(limit), 1), 20)]
             return result
-        stop = set('a an and are as at be by can do does for from how i in is it me my of on or the this to what when which why will with you your'.split())
-        terms = [word for word in dict.fromkeys(re.findall(r'[^\W_]+', question.casefold())) if word not in stop][:40]
-        if not terms:
-            return result
-        query = ' OR '.join('"'+term+'"' for term in terms)
-        with closing(sqlite3.connect(':memory:')) as db:
-            db.execute('CREATE VIRTUAL TABLE passages USING fts5(guide,title,body,tokenize="porter unicode61")')
-            db.executemany('INSERT INTO passages VALUES(?,?,?)', [(s['guide_title'], s['section_title'], s['text']) for s in self.sections])
-            hits = db.execute('SELECT rowid FROM passages WHERE passages MATCH ? ORDER BY bm25(passages,1,4,1),rowid LIMIT ?', (query, min(max(int(limit), 1), 20))).fetchall()
-        for row, in hits:
-            section = self.sections[row-1]
+        for section in self._search_sections(question, self.sections, limit):
             result['results'].append({**section, 'text': section['text'].strip()[:360],
                                       'guide_sha256': self.guides[section['guide_id']]['sha256'],
                                       'evidence_scope': 'DOCUMENTED_GUIDE_WITH_LABELLED_NAVIGATION_OBSERVATIONS'})
         return result
+
+    def search_tab_design(self, question, limit=6):
+        if not isinstance(question, str) or len(question) > 500:
+            raise ValueError('Use a question of 500 characters or fewer.')
+        return {'scope': TAB_SCOPE, 'manifest_sha256': self.manifest_sha256,
+                'results': [{**section, 'scope': TAB_SCOPE,
+                             'guide_sha256': self.guides['tab-design']['sha256'],
+                             'evidence_scope': 'DOCUMENTARY_DESIGN_ONLY'}
+                            for section in self._search_sections(question, self.tab_sections, limit)]}
+
+    @staticmethod
+    def _search_sections(question, sections, limit):
+        stop = set('a an and are as at be by can do does for from how i in is it me my of on or the this to what when which why will with you your'.split())
+        terms = [word for word in dict.fromkeys(re.findall(r'[^\W_]+', question.casefold())) if word not in stop][:40]
+        if not terms:
+            return []
+        query = ' OR '.join('"'+term+'"' for term in terms)
+        with closing(sqlite3.connect(':memory:')) as db:
+            db.execute('CREATE VIRTUAL TABLE passages USING fts5(guide,title,body,tokenize="porter unicode61")')
+            db.executemany('INSERT INTO passages VALUES(?,?,?)', [(s['guide_title'], s['section_title'], s['text']) for s in sections])
+            hits = db.execute('SELECT rowid FROM passages WHERE passages MATCH ? ORDER BY bm25(passages,1,4,1),rowid LIMIT ?', (query, min(max(int(limit), 1), 20))).fetchall()
+        return [sections[row-1] for row, in hits]

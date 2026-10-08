@@ -848,7 +848,8 @@
       "statement": "The recommended path supports Receipt Workbench or Warehouse Mobile Item Level Receiving, single-SKU pallets, locating/work generation during check-in, system-generated LPNs and LBL01 labels. Missing dimensions/UOM information is described as a soft stop that permits receiving to continue. Received inventory starts Putaway Pending before LPN Putaway work.",
       "conditions_and_limits": [
         "Receiving preference: Header - Item no Disposition Code; Check-in and Locate Immediate; Execute Group Putaway and Process Immediate Needs unchecked.",
-        "Documented mobile behavior is not current UI/runtime or accessibility acceptance."
+        "Documented mobile behavior is not current UI/runtime or accessibility acceptance.",
+        "Retained April 29 comments leave the final LPN/label decision pending: the then-current process assigned LPNs manually and produced no SCALE receipt-container labels; operations still had to choose system-generated LPNs or next-up labels. The recommended flow is not a confirmed adopted choice."
       ],
       "evidence_class": "DOCUMENTARY_DESIGN_ONLY",
       "current_runtime_verified": false,
@@ -908,6 +909,22 @@
           "location": "word/document.xml/body/*[397]",
           "text_sha256": "4485f93069401974cb58940e3de8d93a51f5b4c5ee43a5fb9314a7c4a043f988",
           "node_canonical_sha256": "5e355c396cd85e921f4b0e7b0964a51a53aff2af4ba70cb627730e29a286875c"
+        },
+        {
+          "document_id": "sdd-716ca4b42b3f00bd",
+          "source_sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997",
+          "node_id": "part-comments",
+          "location": "word/comments.xml",
+          "text_sha256": "1c13349407856d3edd29ef0cc5600680fba0f1794d643558ed736697e932fa82",
+          "node_canonical_sha256": "1542155f5dc654cee2af593c10edd3b524579a89ed9a2da7cf301fecd02e8ca2"
+        },
+        {
+          "document_id": "sdd-716ca4b42b3f00bd",
+          "source_sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997",
+          "node_id": "b00477",
+          "location": "word/document.xml/body/*[477]",
+          "text_sha256": "d030adf50b5a2106c534d0c590335c565cea9d1c68f80b2dfbd479bf5ef1ee60",
+          "node_canonical_sha256": "7501e1c6006175239cc1de4268ae63b8b20477ae46b3d98e6c0d9f39de6c0425"
         }
       ]
     },
@@ -1102,7 +1119,8 @@
       "topic": "Locating rules and putaway work",
       "statement": "Initial locating rules/zones are copied from SCALE 2016, assigned by Locating Rule Assignment to receipt detail and manually selectable. Build-phase candidates include single-location F-area strategy, split quantity, system LPNs/LBL01 and rule consolidation. Each located full/partial-pallet LPN becomes a putaway work unit.",
       "conditions_and_limits": [
-        "Candidate enhancements must not be promoted to configured rules without later evidence."
+        "Candidate enhancements must not be promoted to configured rules without later evidence.",
+        "Retained April 29 comments leave system-generated LPNs versus next-up labels awaiting a final decision; label and LPN enhancements remain proposals."
       ],
       "evidence_class": "DOCUMENTARY_DESIGN_ONLY",
       "current_runtime_verified": false,
@@ -1178,6 +1196,14 @@
           "location": "word/document.xml/body/*[477]",
           "text_sha256": "d030adf50b5a2106c534d0c590335c565cea9d1c68f80b2dfbd479bf5ef1ee60",
           "node_canonical_sha256": "7501e1c6006175239cc1de4268ae63b8b20477ae46b3d98e6c0d9f39de6c0425"
+        },
+        {
+          "document_id": "sdd-716ca4b42b3f00bd",
+          "source_sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997",
+          "node_id": "part-comments",
+          "location": "word/comments.xml",
+          "text_sha256": "1c13349407856d3edd29ef0cc5600680fba0f1794d643558ed736697e932fa82",
+          "node_canonical_sha256": "1542155f5dc654cee2af593c10edd3b524579a89ed9a2da7cf301fecd02e8ca2"
         }
       ]
     },
@@ -1187,7 +1213,8 @@
       "statement": "Putaway selects the LPN work unit, verifies dock/item quantity, transitions LPNs to In Putaway, and confirms the destination. Full pallets first go to Conveyor then spur P&D via TRAV_PALLET/EX08, with forklift completion to reserve; partial pallets locate directly to inventory, ILA if available. Final putaway closes the LPN and updates location on-hand.",
       "conditions_and_limits": [
         "TRAV_PALLET/EX08 are design references, not database/routine inspection or runtime verification.",
-        "Skip/LIFO guidance is conditional on multiple work instructions or putaway groups."
+        "Skip/LIFO guidance is conditional on multiple work instructions or putaway groups.",
+        "A retained May 2 comment leaves WCS access to SCALE table information open for rework under Active SCALE database restrictions. The described TRAV_PALLET/conveyor integration is not proof that this access dependency was resolved."
       ],
       "evidence_class": "DOCUMENTARY_DESIGN_ONLY",
       "current_runtime_verified": false,
@@ -1239,15 +1266,24 @@
           "location": "word/document.xml/body/*[493]",
           "text_sha256": "3c88b0feab6ef60155d70b75680800145b12681dbdcddce74c28657146c73704",
           "node_canonical_sha256": "e47c9030d03f340ecf63b3e2b2eb48ba1b9794f3cb712c2a7f3b3afadacf193b"
+        },
+        {
+          "document_id": "sdd-716ca4b42b3f00bd",
+          "source_sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997",
+          "node_id": "part-comments",
+          "location": "word/comments.xml",
+          "text_sha256": "1c13349407856d3edd29ef0cc5600680fba0f1794d643558ed736697e932fa82",
+          "node_canonical_sha256": "1542155f5dc654cee2af593c10edd3b524579a89ed9a2da7cf301fecd02e8ca2"
         }
       ]
     },
     {
       "id": "TRAVIS-I16",
       "topic": "Putaway override",
-      "statement": "Authorized users can override a suggested location; the described checks validate location and conflicting directed inventory, update work/LPN records and transaction history, then require putaway confirmation. The Locate action permits manually choosing a locating rule. An activity count at the original location is a capability that TAB did not use.",
+      "statement": "Authorized users can override a suggested location; the described checks validate location and conflicting directed inventory, update work/LPN records and transaction history, then require putaway confirmation. The Locate action permits manually choosing a locating rule. An activity count at the original location is a capability whose TAB usage is inconsistent across this source.",
       "conditions_and_limits": [
-        "Actual permissions, validation rules and active counts were not inspected."
+        "Actual permissions, validation rules and active counts were not inspected.",
+        "Source conflict remains unresolved: b00506 says TAB did not currently use override activity counts, while b01186 sets putaway-override cycle-count creation to Yes. Retained May 3 comments ask whether override/short-pick activity counting is used. These may describe different intended/current states; neither establishes an effective setting."
       ],
       "evidence_class": "DOCUMENTARY_DESIGN_ONLY",
       "current_runtime_verified": false,
@@ -1291,6 +1327,22 @@
           "location": "word/document.xml/body/*[506]",
           "text_sha256": "a9702b065cbe5fb30c0a7be7deecfc420a97c3bab16aa82f22ca4611d2351c13",
           "node_canonical_sha256": "788cff18470997ca5c67a77e9e2be8ab96c0fa146f0b5efa37fb986521dd1c7d"
+        },
+        {
+          "document_id": "sdd-716ca4b42b3f00bd",
+          "source_sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997",
+          "node_id": "b01186",
+          "location": "word/document.xml/body/*[1186]",
+          "text_sha256": "5f4fb39824bf8b9a725cdb9291bec97998e6723deed010210ebd15b3ca6d55a3",
+          "node_canonical_sha256": "2340ac110c712e4c08aac0a7d3fe2712af21a88b5365e01515d4316d3071dc58"
+        },
+        {
+          "document_id": "sdd-716ca4b42b3f00bd",
+          "source_sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997",
+          "node_id": "part-comments",
+          "location": "word/comments.xml",
+          "text_sha256": "1c13349407856d3edd29ef0cc5600680fba0f1794d643558ed736697e932fa82",
+          "node_canonical_sha256": "1542155f5dc654cee2af593c10edd3b524579a89ed9a2da7cf301fecd02e8ca2"
         }
       ]
     },
@@ -1368,6 +1420,22 @@
           "location": "word/document.xml/body/*[554]",
           "text_sha256": "042e2bf96a4e9fe008c3b344bdcc3d7e02c6deb8389c598fe6a15aa6483f2344",
           "node_canonical_sha256": "c32a1e9eabb3da2699a2932e5567ef5333d1f17773344473691696f24c321d05"
+        },
+        {
+          "document_id": "sdd-716ca4b42b3f00bd",
+          "source_sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997",
+          "node_id": "b00556",
+          "location": "word/document.xml/body/*[556]",
+          "text_sha256": "06ed89b9e3ec87c4ae82bf1fd314b852fc2fa40ad7a40d5c8e76fbc53498a2ec",
+          "node_canonical_sha256": "7c0e6b259a9bc8a651dea630ea52dbf1a5cfc20c5857db4b4f6f77fd17e66ae8"
+        },
+        {
+          "document_id": "sdd-716ca4b42b3f00bd",
+          "source_sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997",
+          "node_id": "b00558",
+          "location": "word/document.xml/body/*[558]",
+          "text_sha256": "1a5c1659577d60958693add286261ca9e4ab9556f5585baa1babb09c1567a276",
+          "node_canonical_sha256": "95ed49c89578ba98e12d09f0228294a66a1ff93b658ab55523a942946c8be28a"
         }
       ]
     },
@@ -1619,9 +1687,10 @@
     {
       "id": "TRAVIS-I21",
       "topic": "Cycle count generation and execution",
-      "statement": "Cycle Count Plans select item/location ranges and create separate location work units; the 2016 configurations are copied forward. Verify Empty activity counts are interleaved with existing work profiles. Mobile execution may add unexpected items. The documented preference verifies bad counts, uses Standard execution and hides system quantity.",
+      "statement": "Cycle Count Plans select item/location ranges and create separate location work units; the 2016 configurations are copied forward. Verify Empty activity counts are interleaved with existing work profiles. The described mobile Add path for unexpected items has a retained Company-item limitation. The documented preference verifies bad counts, uses Standard execution and hides system quantity.",
       "conditions_and_limits": [
-        "Generic activity-count trigger examples are not evidence that TAB enables every such trigger."
+        "Generic activity-count trigger examples are not evidence that TAB enables every such trigger.",
+        "Retained May 3 comments say Warehouse Mobile Add does not support an item with Company assigned in Item Master; the May 18 note promises a SCALE 2022 addition, not verified availability. The later TRAV3PL Company requirement does not demonstrate that this restriction was resolved."
       ],
       "evidence_class": "DOCUMENTARY_DESIGN_ONLY",
       "current_runtime_verified": false,
@@ -1689,6 +1758,22 @@
           "location": "word/document.xml/body/*[652]",
           "text_sha256": "ffc3c1f7051d79221a0b9a8e5bd71b94526b6fa2ca8af04406024030a3684b9b",
           "node_canonical_sha256": "196889a20e4cf5d297a1a86e67a9d4a457899eb7d82d955ca988bd50cf2fc262"
+        },
+        {
+          "document_id": "sdd-716ca4b42b3f00bd",
+          "source_sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997",
+          "node_id": "part-comments",
+          "location": "word/comments.xml",
+          "text_sha256": "1c13349407856d3edd29ef0cc5600680fba0f1794d643558ed736697e932fa82",
+          "node_canonical_sha256": "1542155f5dc654cee2af593c10edd3b524579a89ed9a2da7cf301fecd02e8ca2"
+        },
+        {
+          "document_id": "sdd-a3f0962080bdc590",
+          "source_sha256": "a3f0962080bdc590be1476d32c134cbaf37e93632fe3a4062608c1965d9d3696",
+          "node_id": "p005-b004",
+          "location": "PDF page 5, block 4",
+          "text_sha256": "b41c705c58bf9c2be8ba8778cbb91ec59ee5938d025a32be85123c8abdb1f84c",
+          "node_canonical_sha256": "4716ebe72dc727ff6021dc3b34cc1329bc0f45c6bd8dec0a8164c683b40a6162"
         }
       ]
     },
@@ -3566,7 +3651,8 @@
       "topic": "Receiving and cycle-count settings",
       "statement": "Locating-rule assignment is Receipt Check In; RF receiving-preference prompting is Yes. Override pick/putaway cycle-count creation is Yes. Activity and planned count adjustments use CC, activity count creates work, count-plan auto-release is No for review, and activity work unit uses Internal Instruction Number.",
       "conditions_and_limits": [
-        "Comments question whether activity counts are used and ask to confirm current count settings/tolerances; retain that unsettled status."
+        "Comments question whether activity counts are used and ask to confirm current count settings/tolerances; retain that unsettled status.",
+        "The Yes value for putaway-override count creation in b01186 conflicts with b00506 stating that TAB did not currently use the option. Preserve this unresolved design/current-state distinction; no effective value is established."
       ],
       "evidence_class": "DOCUMENTARY_DESIGN_ONLY",
       "current_runtime_verified": false,
@@ -3666,6 +3752,14 @@
           "location": "word/comments.xml",
           "text_sha256": "1c13349407856d3edd29ef0cc5600680fba0f1794d643558ed736697e932fa82",
           "node_canonical_sha256": "1542155f5dc654cee2af593c10edd3b524579a89ed9a2da7cf301fecd02e8ca2"
+        },
+        {
+          "document_id": "sdd-716ca4b42b3f00bd",
+          "source_sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997",
+          "node_id": "b00506",
+          "location": "word/document.xml/body/*[506]",
+          "text_sha256": "a9702b065cbe5fb30c0a7be7deecfc420a97c3bab16aa82f22ca4611d2351c13",
+          "node_canonical_sha256": "788cff18470997ca5c67a77e9e2be8ab96c0fa146f0b5efa37fb986521dd1c7d"
         }
       ]
     },
@@ -4984,7 +5078,7 @@
     {
       "id": "R12",
       "topic": "Neutral reference and help boundary",
-      "resolution": "TAB-specific interpretation uses these core sources first. The neutral SCALE Functionality Reference remains general product guidance. This packet adds documentary interpretation without changing help rankings, app content, SRC mappings, runtime settings or deployment/timing acceptance.",
+      "resolution": "TAB-specific interpretation uses these core sources first. The neutral SCALE Functionality Reference remains general product guidance. This packet supplies a separate TAB design lookup in local help. Article rankings, procedure-guide rankings, SRC mappings, runtime settings and deployment/timing acceptance remain separate and unchanged.",
       "claim_ids": [
         "TRAVIS-I01",
         "TRAV3PL-P01"
@@ -5002,6 +5096,6 @@
     "No new operational, deployed configuration, accessibility or performance acceptance.",
     "Six mobile contracts remain owner-deferred; deployment/correlated timing stays 0/34."
   ],
-  "help_search_integration": "NOT_PERFORMED_DOCUMENTARY_PACKET_ONLY",
+  "help_search_integration": "SEPARATE_TAB_DESIGN_SEARCH_AND_SOURCE_VIEWS",
   "production_index_eligible": false
 }

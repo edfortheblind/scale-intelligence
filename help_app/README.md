@@ -26,6 +26,14 @@ For a known screen-flow number, enter the complete code, such as **SRC400** or *
 
 Source views display retained text with node identities. Original scripts, live application links and figures are inactive in those views. The manuals retain operational qualifications, source disagreements and the distinction between source procedures and dated navigation observations. They do not connect to SCALE or execute an operation.
 
+## TAB design reference
+
+Open **TAB design reference** from the home page or `/guides`. Home-page searches also show a separate **TAB design matches** group. It searches 69 reviewed claims from the official Travis 2022 base and the explicitly scoped TRAV3PL 2025 addendum. Each result retains its full qualifications and opens the corresponding reference section. The reference explains the 12 cross-source dispositions and links to exact source nodes.
+
+TAB results describe dated design. They do not establish current warehouse configuration or completed operations. Pending decisions and source disagreements remain visible, including the receiving LPN choice, conveyor integration access, Company-item Mobile Add limitation and override-count settings. Search these terms to find the qualified guidance. Article results and procedure-guide results retain their own source scope and ranking.
+
+Source links open escaped, inert extracted text with node locations. Both original documents and their extracted packets are fingerprint-checked at startup. Source figures and page layout are not reproduced. The documentary lookup is available through `/api/tab-design-search?q=...`; article and procedure endpoints retain their existing behavior.
+
 ## Maintaining the library
 
 The [Warehouse Mobile / RF operator guide](../SDD/RF/README.md) supplies detailed, source-bound procedures and a separate live-navigation record. Its in-app guide search is measured separately from the existing 723-case article-retrieval evaluation. Adding guide results does not change that evaluation's questions, expected topic identities or article rankings.

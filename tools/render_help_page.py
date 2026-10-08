@@ -131,6 +131,9 @@ def render_page(knowledge, question='', topic_id=None, guides=None):
         parts.append('</section>')
         if guides is not None and not exact_guide:
             parts.append(guide_search(guides, question, matches=guide_matches))
+        if guides is not None:
+            from render_help_guides import tab_search
+            parts.append(tab_search(guides, question))
     if topic:
         parts += ['<article id="answer" aria-labelledby="answer-title" tabindex="-1">',
                   element('h2', topic['title'], ' id="answer-title"'), element('p', topic['what_it_does'], ' class="lead"')]

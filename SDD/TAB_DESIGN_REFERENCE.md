@@ -21,7 +21,7 @@ The owner identifies both sources as core for TAB. The owner also confirms that 
 | Short pick inventory versus demand | For TAB, preserve Count/suspend as the documented inventory action. Separately preserve Delete Rejected and upload for shipment demand. Generic statements about reducing on-hand must not overwrite that TAB distinction. | [TRAVIS-TO24](#travis-to24) |
 | Extensions and unresolved comments | EX01 identifies Custom Item Balance in the modification table; its Approved cell is documentary status. EX-XX for 1348 printing remains unidentified. Pack Size communication, Load Building, allocation sequences, LTL label/BOL migration and full ODWS inventory remain qualified by comments or missing content. | [TRAVIS-I07](#travis-i07), [TRAVIS-TO03](#travis-to03), [TRAVIS-TO05](#travis-to05), [TRAVIS-TO06](#travis-to06), [TRAVIS-TO17](#travis-to17), [TRAVIS-TO19](#travis-to19), [TRAVIS-TO20](#travis-to20), [TRAVIS-TO22](#travis-to22) |
 | Blank signoff and retained anomalies | Official core status is the owner instruction. It does not resolve blank signatures, placeholders, retained comments, the unexpected Aaron's VAS item-list name, or the Allocation figure caption error. Preserve those anomalies visibly. | [TRAVIS-TO14](#travis-to14), [TRAVIS-TO30](#travis-to30), [TRAV3PL-P01](#trav3pl-p01), [TRAV3PL-P15](#trav3pl-p15) |
-| Neutral reference and help boundary | TAB-specific interpretation uses these core sources first. The neutral SCALE Functionality Reference remains general product guidance. This packet adds documentary interpretation without changing help rankings, app content, SRC mappings, runtime settings or deployment/timing acceptance. | [TRAVIS-I01](#travis-i01), [TRAV3PL-P01](#trav3pl-p01) |
+| Neutral reference and help boundary | TAB-specific interpretation uses these core sources first. The neutral SCALE Functionality Reference remains general product guidance. This packet supplies a separate TAB design lookup in local help. Article rankings, procedure-guide rankings, SRC mappings, runtime settings and deployment/timing acceptance remain separate and unchanged. | [TRAVIS-I01](#travis-i01), [TRAV3PL-P01](#trav3pl-p01) |
 
 ## Source and review limits
 
@@ -33,7 +33,7 @@ The [visual review](tab-core/visual-review.json) records 22/22 PDF page renders 
 
 Embedded receipt screenshots include generic Purchase Order samples; these do not contradict the owner's PO non-use. The receiving montage shows manual LPN entry while TAB prose specifies system assignment. The putaway illustration omits TAB's Conveyor/TRAV_PALLET/P&D stages. Returns imagery depicts legacy RF. Generic figures containing lots, crossdock, work orders, Pallet Building, FedEx or sample thresholds do not establish TAB adoption. See the asset-specific visual qualifications.
 
-Unresolved placeholders and comments remain in the original/reading copies and in the claim limits below. This documentary packet is not indexed by the functional-help application. Six mobile contracts remain deferred; deployment/correlated timing remains 0/34.
+Unresolved placeholders and comments remain in the original/reading copies and in the claim limits below. The local help application provides a separate TAB design search and source views. Its results describe dated design and retained limits, not current warehouse configuration; generic article and procedure searches remain separate. Six mobile contracts remain deferred; deployment/correlated timing remains 0/34.
 
 ## Original Travis design: inbound and inventory
 
@@ -134,7 +134,13 @@ The recommended path supports Receipt Workbench or Warehouse Mobile Item Level R
 
 Qualification: Receiving preference: Header - Item no Disposition Code; Check-in and Locate Immediate; Execute Group Putaway and Process Immediate Needs unchecked. Documented mobile behavior is not current UI/runtime or accessibility acceptance.
 
-Source: [b00383](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00383), [b00387](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00387), [b00388](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00388), [b00391](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00391), [b00393](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00393), [b00395](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00395); all 7 anchors in the register.
+Qualification: Retained April 29 comments leave the final LPN/label decision pending: the then-current process assigned LPNs manually and produced no SCALE receipt-container labels; operations still had to choose system-generated LPNs or next-up labels. The recommended flow is not a confirmed adopted choice.
+
+Additional source: [part-comments](tab-core/reading/sdd-716ca4b42b3f00bd.md#part-comments).
+
+Additional source: [b00477](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00477).
+
+Source: [b00383](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00383), [b00387](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00387), [b00388](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00388), [b00391](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00391), [b00393](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00393), [b00395](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00395); all 9 anchors in the register.
 
 <a id="travis-i12"></a>
 ### Unauthorized returns and blind receiving
@@ -161,7 +167,11 @@ Initial locating rules/zones are copied from SCALE 2016, assigned by Locating Ru
 
 Qualification: Candidate enhancements must not be promoted to configured rules without later evidence.
 
-Source: [b00455](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00455), [b00457](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00457), [b00459](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00459), [b00460](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00460), [b00461](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00461), [b00462](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00462); all 9 anchors in the register.
+Qualification: Retained April 29 comments leave system-generated LPNs versus next-up labels awaiting a final decision; label and LPN enhancements remain proposals.
+
+Additional source: [part-comments](tab-core/reading/sdd-716ca4b42b3f00bd.md#part-comments).
+
+Source: [b00455](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00455), [b00457](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00457), [b00459](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00459), [b00460](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00460), [b00461](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00461), [b00462](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00462); all 10 anchors in the register.
 
 <a id="travis-i15"></a>
 ### Putaway execution and conveyor extension
@@ -170,14 +180,22 @@ Putaway selects the LPN work unit, verifies dock/item quantity, transitions LPNs
 
 Qualification: TRAV_PALLET/EX08 are design references, not database/routine inspection or runtime verification. Skip/LIFO guidance is conditional on multiple work instructions or putaway groups.
 
+Qualification: A retained May 2 comment leaves WCS access to SCALE table information open for rework under Active SCALE database restrictions. The described TRAV_PALLET/conveyor integration is not proof that this access dependency was resolved.
+
+Additional source: [part-comments](tab-core/reading/sdd-716ca4b42b3f00bd.md#part-comments).
+
 Source: [b00483](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00483), [b00485](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00485), [b00487](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00487), [b00489](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00489), [b00491](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00491), [b00493](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00493).
 
 <a id="travis-i16"></a>
 ### Putaway override
 
-Authorized users can override a suggested location; the described checks validate location and conflicting directed inventory, update work/LPN records and transaction history, then require putaway confirmation. The Locate action permits manually choosing a locating rule. An activity count at the original location is a capability that TAB did not use.
+Authorized users can override a suggested location; the described checks validate location and conflicting directed inventory, update work/LPN records and transaction history, then require putaway confirmation. The Locate action permits manually choosing a locating rule. An activity count at the original location is a capability whose TAB usage is inconsistent across this source.
 
 Qualification: Actual permissions, validation rules and active counts were not inspected.
+
+Qualification: Source conflict remains unresolved: b00506 says TAB did not currently use override activity counts, while b01186 sets putaway-override cycle-count creation to Yes. Retained May 3 comments ask whether override/short-pick activity counting is used. These may describe different intended/current states; neither establishes an effective setting.
+
+Additional source: [b01186](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01186), [part-comments](tab-core/reading/sdd-716ca4b42b3f00bd.md#part-comments).
 
 Source: [b00499](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00499), [b00500](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00500), [b00502](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00502), [b00504](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00504), [b00506](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00506).
 
@@ -188,7 +206,9 @@ Adjustment/transfer reason types have configurable limits and user permissions. 
 
 Qualification: The proposed user-directed transfer profile uses From Check Digit to avoid overlap with cycle counts using From Loc; EXP01 is proposed to remove P&D for R1 destinations. No executed adjustment/transfer or permission check occurred.
 
-Source: [b00528](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00528), [b00530](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00530), [b00536](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00536), [b00540](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00540), [b00544](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00544), [b00546](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00546); all 8 anchors in the register.
+Additional source: [b00556](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00556), [b00558](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00558).
+
+Source: [b00528](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00528), [b00530](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00530), [b00536](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00536), [b00540](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00540), [b00544](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00544), [b00546](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00546); all 10 anchors in the register.
 
 <a id="travis-i18"></a>
 ### Transfer work extensions
@@ -220,11 +240,17 @@ Source: [b00139](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00139), [b00140](tab-
 <a id="travis-i21"></a>
 ### Cycle count generation and execution
 
-Cycle Count Plans select item/location ranges and create separate location work units; the 2016 configurations are copied forward. Verify Empty activity counts are interleaved with existing work profiles. Mobile execution may add unexpected items. The documented preference verifies bad counts, uses Standard execution and hides system quantity.
+Cycle Count Plans select item/location ranges and create separate location work units; the 2016 configurations are copied forward. Verify Empty activity counts are interleaved with existing work profiles. The described mobile Add path for unexpected items has a retained Company-item limitation. The documented preference verifies bad counts, uses Standard execution and hides system quantity.
 
 Qualification: Generic activity-count trigger examples are not evidence that TAB enables every such trigger.
 
-Source: [b00629](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00629), [b00631](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00631), [b00637](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00637), [b00639](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00639), [b00641](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00641), [b00642](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00642); all 8 anchors in the register.
+Qualification: Retained May 3 comments say Warehouse Mobile Add does not support an item with Company assigned in Item Master; the May 18 note promises a SCALE 2022 addition, not verified availability. The later TRAV3PL Company requirement does not demonstrate that this restriction was resolved.
+
+Additional source: [part-comments](tab-core/reading/sdd-716ca4b42b3f00bd.md#part-comments).
+
+Additional addendum source: [p005-b004](tab-core/reading/sdd-a3f0962080bdc590.md#p005-b004).
+
+Source: [b00629](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00629), [b00631](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00631), [b00637](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00637), [b00639](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00639), [b00641](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00641), [b00642](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00642); all 10 anchors in the register.
 
 <a id="travis-i22"></a>
 ### Cycle count review and reconciliation
@@ -460,7 +486,11 @@ Locating-rule assignment is Receipt Check In; RF receiving-preference prompting 
 
 Qualification: Comments question whether activity counts are used and ask to confirm current count settings/tolerances; retain that unsettled status.
 
-Source: [b01186](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01186), [b01188](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01188), [b01214](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01214), [b01216](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01216), [b01237](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01237), [b01239](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01239); all 12 anchors in the register.
+Qualification: The Yes value for putaway-override count creation in b01186 conflicts with b00506 stating that TAB did not currently use the option. Preserve this unresolved design/current-state distinction; no effective value is established.
+
+Additional source: [b00506](tab-core/reading/sdd-716ca4b42b3f00bd.md#b00506).
+
+Source: [b01186](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01186), [b01188](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01188), [b01214](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01214), [b01216](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01216), [b01237](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01237), [b01239](tab-core/reading/sdd-716ca4b42b3f00bd.md#b01239); all 13 anchors in the register.
 
 <a id="travis-to26"></a>
 ### Work defaults and unresolved replenishment override

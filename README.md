@@ -16,11 +16,14 @@ The **Configure SCALE** section covers work profiles, packing preferences, print
 
 **Detailed procedure guides** opens the Warehouse Mobile/RF and Cross Application manuals inside the application. Search results include matching guide sections alongside the existing articles. Each manual has a contents list, task steps, source citations and explicit limits; recorded screen observations remain distinct from documented procedures.
 
+**TAB design reference** provides a separate search and browsing path for 69 reviewed claims from the official Travis and TRAV3PL designs. Results retain dated design scope, unresolved decisions and exact source citations.
+
 ## Reference library
 
 - [Warehouse Mobile / RF operator guide](SDD/RF/README.md): task-by-task receiving, inventory, work, shipping and support procedures, with all 45 retained base flows mapped.
 - [Cross Application screens](SDD/RF/CROSS_APPLICATION.md): document, interface-error and history investigation, plus live navigation observations.
 - [All functionality articles](DB%20Architecture/HELP_TOPICS.md): a reading copy of the application articles.
+- [TAB core design reference](SDD/TAB_DESIGN_REFERENCE.md): official TAB source interpretation, qualifications and cross-source reconciliation.
 - [SCALE Functionality Reference](SDD/SCALE_FUNCTIONAL_REFERENCE.md): processes, configuration choices and dependencies across 14 chapters.
 - [Printable functionality reference](output/pdf/SCALE%20Functionality%20Reference%20SDD.pdf).
 - [AIM documentation](AIM/README.md): application documentation and preserved sources.

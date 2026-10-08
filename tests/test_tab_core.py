@@ -277,7 +277,7 @@ class TabCoreEvidenceTests(unittest.TestCase):
                 self.assertIs(reconciliation["current_runtime_verified"], False)
         self.assertIs(self.review["production_index_eligible"], False)
         self.assertEqual(self.review["help_search_integration"],
-                         "NOT_PERFORMED_DOCUMENTARY_PACKET_ONLY")
+                         "SEPARATE_TAB_DESIGN_SEARCH_AND_SOURCE_VIEWS")
 
     def test_coverage_contains_every_exact_node_including_identified_blanks(self):
         rows = self.coverage["documents"]
