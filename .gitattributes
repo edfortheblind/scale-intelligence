@@ -30,6 +30,11 @@ output/pdf/*.pdf -text -filter -diff -merge
 SDD/derived/** -text -filter whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # Reading copies retain extracted source spacing verbatim.
 SDD/derived/reading/** -whitespace
+# TAB core packets bind exact bytes; reading copies preserve source spacing.
+SDD/tab-core/** -text -filter whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+SDD/tab-core/reading/** -whitespace
+# The independent TAB review receipt binds the exact reviewed files.
+_project/tab-core-reconciliation-review-20261008.json -text -filter
 # Frozen independent review receipt hashes bind exact authored bytes.
 _project/help-question-continuation3.json -text -filter whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 # C18 independent evidence retains the exact reviewed author bytes.

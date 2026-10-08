@@ -2,9 +2,11 @@
 
 ## Current source authority and Receiving disposition - 2026-10-08
 
-The owner designated the official **Travis** and **TRAV3PL** SDDs as TAB's core design sources. Both original files are identified and preserved in [the core-source register](SDD/tab-core-sources.json); [SDD/README](SDD/README.md) records their precedence over generic/other-client examples for TAB-specific work. This is identity/authority intake, with full body extraction, semantic reconciliation and visual review still unperformed. No help or neutral-reference integration is claimed.
+The owner designated the official **Travis** and **TRAV3PL** SDDs as TAB's core design sources. Both original files are identified and preserved in [the core-source register](SDD/tab-core-sources.json); [SDD/README](SDD/README.md) records their precedence over generic/other-client examples for TAB-specific work. The [TAB design reference](SDD/TAB_DESIGN_REFERENCE.md) now records 69 source-bound topic claims and 12 reconciliation dispositions. Text review covers 1,667/1,667 extracted nodes; visual review covers 22/22 PDF pages and 46/46 DOCX embedded assets. DOCX physical page layout remains unrendered. The original is the base and TRAV3PL the conditional addendum. [Verification and limits](_project/TAB_CORE_RECONCILIATION_20261008.md) remain distinct from runtime acceptance. Functional help and the general neutral reference are unchanged.
 
 Production PO/PO Line inquiry access recovered after sign-in renewal. Eight valid searches across both offered warehouses, with closed records excluded/included, returned zero rows. The original warehouse was restored. The owner states **"Travis doesn't use PO"**; automatic retries stop without creating fake records. [Selected-context coverage remains **4/6 (66.67%)**](Snapdragon/receiving/FOCUSED_SESSION_REPORT.md); the two PO branches remain unobserved. Monitor coverage remains the October 2 sampled Stage **4/4 (100%)**. No new full-screen acceptance, mobile completion or deployment/timing credit is added.
+
+Publication uses the existing **PUBLIC** repository under [explicit October 8 owner authority](_project/publication-authority-20261008.json); this supersedes older private-only delivery wording below. The prior PO/core-source registration is on main at `0b9cc129`. Preserve dated receipts. The current source task is a documentary reconciliation; consult [its remaining limits](_project/TAB_CORE_RECONCILIATION_20261008.md) before selecting further work.
 
 ## C29 current help continuation - 2026-10-02
 

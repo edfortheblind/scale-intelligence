@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-08",
+  "base_commit": "0b9cc129a0fb2586fe8ac6f797c098c1c58e7691",
+  "scope": "TAB core source documentary extraction and reconciliation; no runtime or help integration",
+  "authority": "_project/publication-authority-20261008.json",
+  "Outcome": "DONE_WITH_CONCERNS",
+  "Delivery state": "LOCAL_VERIFICATION_COMPLETE; REMOTE_PARITY_RECORDED_AT_DELIVERY",
+  "Product state": "DOCUMENTARY_REFERENCE_AVAILABLE; CURRENT_RUNTIME_UNVERIFIED",
+  "Gate/authority state": "OWNER_SOURCE_AND_PUBLICATION_AUTHORITY; SIX_MOBILE_DEFERRED; TIMING_0_OF_34",
+  "tests": [
+    {
+      "command": "python -m unittest tests.test_sdd_extraction",
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0
+    },
+    {
+      "command": "python -m unittest tests.test_tab_core -v",
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0
+    }
+  ],
+  "test_environment": {
+    "python": "3.12.13",
+    "PyMuPDF": "1.28.2",
+    "installation": "isolated work venv; no global dependencies changed"
+  },
+  "extraction_audit": {
+    "checks_passed": 11,
+    "checks_failed": 0,
+    "checks": [
+      {
+        "name": "whole_source_preflight",
+        "status": "PASS",
+        "detail": "ValueError: Core source identity changed: BAD; no output directory"
+      },
+      {
+        "name": "input_path_containment",
+        "status": "PASS",
+        "detail": "ValueError: Core source must be an original under SDD, outside extraction output"
+      },
+      {
+        "name": "source_output_separation",
+        "status": "PASS",
+        "detail": "ValueError: Core source must be an original under SDD, outside extraction output"
+      },
+      {
+        "name": "registered_only_preservation_revisions_tables",
+        "status": "PASS",
+        "detail": "Unregistered invalid DOCX ignored; original/historical sentinel unchanged; text tabs/breaks/deleted+inserted runs and merged cell metadata retained."
+      },
+      {
+        "name": "output_junction_containment",
+        "status": "PASS",
+        "detail": "Core extraction output contains a redirected path"
+      },
+      {
+        "name": "output_descendant_containment",
+        "status": "PASS",
+        "detail": "Core extraction output contains a redirected path"
+      },
+      {
+        "name": "registered_originals_and_identity_root",
+        "status": "PASS"
+      },
+      {
+        "name": "docx_body_ancillary_table_revision_and_asset_fidelity",
+        "status": "PASS"
+      },
+      {
+        "name": "pdf_text_blocks_candidate_grids_and_image_streams",
+        "status": "PASS"
+      },
+      {
+        "name": "all_asset_hashes_and_reading_text",
+        "status": "PASS"
+      },
+      {
+        "name": "originals_legacy_inventory_reused_extractor_unchanged",
+        "status": "PASS"
+      }
+    ],
+    "corrected_findings": [
+      {
+        "id": "EXTRACT-A1",
+        "severity": "medium",
+        "status": "corrected_and_regression_verified",
+        "path": "tools/extract_tab_core.py",
+        "finding": "Initial extractor resolved source paths but did not validate output redirection. A private SDD/tab-core directory junction caused writes outside the supplied fixture root.",
+        "reproduction": "Initial private output_junction fixture wrote extracted documents, reading copy and inventory into escape-sink. No shared original or output was affected.",
+        "correction": "Coordinator added validate_output_tree before extraction; it validates root and every existing descendant against the intended lexical/resolved output path.",
+        "verification": "Fresh timestamped root-junction and documents-descendant-junction cases now reject before helper writes; registered-only golden case remains successful."
+      }
+    ],
+    "limits": [
+      "PDF comparison shares underlying PyMuPDF extraction semantics; it establishes reproducibility of extracted blocks/candidate tables, not verified visual reading order or correct table interpretation.",
+      "DOCX XML preservation is not page-layout fidelity, numbering/field reconstruction, image interpretation or semantic acceptance.",
+      "Original DOCX has no tracked edits; revision behavior was verified with a synthetic source.",
+      "Existing output path checks do not provide operating-system isolation against adversarial concurrent filesystem replacement. No such concurrency test or claim is made."
+    ]
+  },
+  "independent_semantic_review": "_project/tab-core-reconciliation-review-20261008.json",
+  "semantic_scope": "All17 TRAV3PL claims and all12 cross-source dispositions, with23/52 selected DOCX claims; remaining DOCX topic summaries have source-worker plus coordinator review, not independent full re-review.",
+  "preserved_files": [
+    {
+      "path": "SDD/Travis Full Solution Design Document (SDD) v1.0.docx",
+      "sha256": "716ca4b42b3f00bd64410b71f3bfa3829daf04e36593247150812f3cc02c5997",
+      "git_content_unchanged_from_base": true
+    },
+    {
+      "path": "SDD/derived/TRAV3PL - Travis Austin 3PL Enablement Design Document v1.0.pdf",
+      "sha256": "a3f0962080bdc590be1476d32c134cbaf37e93632fe3a4062608c1965d9d3696",
+      "git_content_unchanged_from_base": true
+    },
+    {
+      "path": "SDD/derived/inventory.json",
+      "sha256": "d66f932f62222f103431ad9d729c6d38d2d33daa3f99e8faa855a9339152084a",
+      "git_content_unchanged_from_base": true
+    },
+    {
+      "path": "SDD/SCALE_FUNCTIONAL_REFERENCE.md",
+      "sha256": "eacf8fb97d4e28127549744720600b9f8dcaa00a2092e67e97e5bd335d91784c",
+      "git_content_unchanged_from_base": true
+    },
+    {
+      "path": "SDD/derived/scale-functional-reference.json",
+      "sha256": "e82ff30cda046f6184c2bde5fb20df54052f39815f506067b2facb6d5e3b548e",
+      "git_content_unchanged_from_base": true
+    },
+    {
+      "path": "output/pdf/SCALE Functionality Reference SDD.pdf",
+      "sha256": "e01ce364d629a1f80ec8375020e3ca77f08b169a5ee5cbdbfbb0f63998f02331",
+      "git_content_unchanged_from_base": true
+    },
+    {
+      "path": "tools/extract_sdd.py",
+      "sha256": "8345930170ece8ca3f28cf502d9f049e5858489de53d7d1948049d268da3b735",
+      "git_content_unchanged_from_base": true
+    }
+  ],
+  "preserved_boundaries": [
+    "Functional help/search/evaluation unchanged",
+    "Snapdragon October8 evidence unchanged by this source task",
+    "No fake PO or automatic retries",
+    "No archived payload read",
+    "Video Rec untouched",
+    "DOCX physical pages not rendered",
+    "No new runtime,accessibility,deployment or timing credit"
+  ],
+  "source_counts": {
+    "originals": 2,
+    "text_nodes": 1667,
+    "claims": 69,
+    "claim_refs": 499,
+    "cross_source_dispositions": 12,
+    "pdf_pages_visually_reviewed": 22,
+    "docx_assets_visually_reviewed": 46
+  },
+  "whitespace_policy": "New TAB core packets use the existing derived-packet Git attributes: exact bytes; source reading copies retain verbatim whitespace. Authored prose/code remain whitespace-checked."
+}

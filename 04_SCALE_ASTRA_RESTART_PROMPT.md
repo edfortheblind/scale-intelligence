@@ -2,9 +2,11 @@
 
 ## Current restart direction - 2026-10-08
 
-Start with the October 8 owner direction in [the active master](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md). The official [Travis and TRAV3PL SDDs](SDD/README.md) are TAB's core design sources; their [identity register](SDD/tab-core-sources.json) records the exact preserved files and unperformed body/reconciliation work. Earlier generic-SDD wording does not override this TAB-specific authority.
+Start with the October 8 owner direction in [the active master](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md). The official [Travis and TRAV3PL SDDs](SDD/README.md) are TAB's core design sources; their [identity register](SDD/tab-core-sources.json) records the exact preserved files and the completed documentary review. Read the [TAB design reference](SDD/TAB_DESIGN_REFERENCE.md) and [review receipt](_project/TAB_CORE_RECONCILIATION_20261008.md): 69 claims, 12 dispositions, 1,667 nodes read; 22 PDF pages and 46 DOCX assets visually reviewed. DOCX physical pages remain unrendered. Earlier generic-SDD wording does not override this TAB-specific authority.
 
 The owner reports that Travis does not use PO. [Snapdragon's current disposition](Snapdragon/receiving/FOCUSED_SESSION_REPORT.md) preserves selected-context coverage at **4/6** and the historical sampled Monitor result at **4/4**. Do not resume automatic PO searches or create fake records. Older authentication blockers are dated evidence; October 8 Production inquiries worked but returned no records. Preserve all other accepted boundaries, including the six deferred mobile gaps and **0/34 deployment/timing freeze**.
+
+Publication uses the existing **PUBLIC** repository under [explicit October 8 owner authority](_project/publication-authority-20261008.json); this supersedes older private-only delivery wording below. The prior PO/core-source registration is on main at `0b9cc129`. Preserve dated receipts. The current source task is a documentary reconciliation; consult [its remaining limits](_project/TAB_CORE_RECONCILIATION_20261008.md) before selecting further work.
 
 ## C29 current help continuation - 2026-10-02
 
