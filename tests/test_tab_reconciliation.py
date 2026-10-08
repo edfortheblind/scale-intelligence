@@ -112,6 +112,33 @@ class TabReconciliationTests(unittest.TestCase):
         self.assertEqual([library.search_tab_design(question)['results'] for question in questions], claims)
         self.assertEqual([library.search(question) for question in questions], procedures)
 
+    def test_claim_destinations_link_exactly_their_related_reconciled_answers(self):
+        _, html = render_guide(self.library, 'tab-design')
+        for claim in self.library.tab_sections:
+            with self.subTest(identity=claim['id']):
+                landing = html.split('id="'+claim['anchor']+'" tabindex="-1"', 1)[1].split('<h', 1)[0]
+                related = [row for row in self.library.tab_reconciliations if claim['id'] in row['claim_ids']]
+                self.assertEqual('Related reconciled answers:' in landing, bool(related))
+                for row in self.library.tab_reconciliations:
+                    self.assertEqual('href="/guide/tab-design#'+row['anchor']+'"' in landing, row in related)
+                    if row in related:
+                        self.assertIn(escape(row['section_title']), landing)
+                        self.assertIn(escape(row['state_label']), landing)
+
+    def test_individual_claim_result_retains_related_answers_without_reconciliation_search_match(self):
+        library = copy.copy(self.library)
+        for identity in ['TRAVIS-I04', 'TRAVIS-I09', 'TRAV3PL-P08', 'TRAVIS-TO24']:
+            claim = next(row for row in library.tab_sections if row['id'] == identity)
+            # A claim-only result must still offer its full cross-source context.
+            with self.subTest(identity=identity), patch.object(library, 'search_tab_design',
+                    return_value={'results': [claim], 'reconciliations': []}):
+                html = tab_search(library, identity)
+                self.assertIn(escape(claim['statement']), html)
+                self.assertIn(escape(' '.join(claim['conditions_and_limits'])), html)
+                for row in library.tab_reconciliations:
+                    self.assertEqual('href="/guide/tab-design#'+row['anchor']+'"' in html,
+                                     identity in row['claim_ids'])
+
     def test_reconciliation_bounds_and_empty_queries(self):
         for question in ['', 'the and a', 'unrecognizablezxqv']:
             self.assertEqual(self.library.search_tab_design(question)['reconciliations'], [])

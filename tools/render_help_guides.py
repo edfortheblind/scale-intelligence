@@ -93,6 +93,15 @@ def owner_clarification(row):
             '<p>'+escape(owner['interpretation'])+'</p>')
 
 
+def related_tab_answers(library, claim_id):
+    rows = [row for row in library.tab_reconciliations if claim_id in row['claim_ids']]
+    if not rows:
+        return ''
+    return ('<p>Related reconciled answers:</p><ul>'+''.join(
+        '<li><a href="/guide/tab-design#'+escape(row['anchor'], quote=True)+'">'+escape(row['section_title'])+
+        '</a> — '+escape(row['state_label'])+'</li>' for row in rows)+'</ul>')
+
+
 def tab_search(library, question):
     response = library.search_tab_design(question)
     matches, reconciliations = response['results'], response['reconciliations']
@@ -116,7 +125,8 @@ def tab_search(library, question):
         parts.append('<ul class="guide-results">')
         for row in matches:
             parts.append('<li><a href="/guide/tab-design#'+escape(row['anchor'], quote=True)+'">'+escape(row['section_title'])+'</a>'
-                         '<p>'+escape(row['statement'])+'</p><p>Qualifications: '+escape(' '.join(row['conditions_and_limits']))+'</p></li>')
+                         '<p>'+escape(row['statement'])+'</p><p>Qualifications: '+escape(' '.join(row['conditions_and_limits']))+'</p>'+
+                         related_tab_answers(library, row['id'])+'</li>')
         parts.append('</ul>')
     parts.append('<p><a href="/guide/tab-design#how-the-two-designs-fit-together">Read the cross-source reconciliation</a></p>')
     return ''.join(parts)+'</section>'
@@ -169,6 +179,7 @@ def render_guide(library, key):
                 parts.append('<p>'+context+': <a href="#'+escape(parent['anchor'], quote=True)+'">'+escape(plain(parent['text']))+'</a></p>')
             if key == 'tab-design' and re.fullmatch(r'(travis|trav3pl)-[a-z]+[0-9]+', block['anchor']):
                 parts.append('<p class="scope">'+escape(TAB_SCOPE)+' <a href="#how-the-two-designs-fit-together">Cross-source reconciliation</a>.</p>')
+                parts.append(related_tab_answers(library, block['anchor'].upper()))
             if block['anchor'] in reconciliations:
                 row = reconciliations[block['anchor']]
                 parts.append('<p>State: '+escape(row['state_label'])+'</p><p class="scope">'+escape(row['scope'])+'</p>')

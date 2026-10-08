@@ -1,5 +1,13 @@
 # Resume SCALE Intelligence
 
+## C32 current continuation - 2026-10-08
+
+Individual TAB claims now expose **Related reconciled answers** in search results and direct reference destinations: **35 claims, 46 reviewed relationships**. Links retain readable states and reach the full qualified answers, including the dated PO clarification. Read [C32 changes and limits](CONTINUATION_C32.md) and [the C32 receipt](continuation32-20261008.json).
+
+**101 tests passed.** Live HTTP preserved 93 complete TAB and 24 procedure responses and resolved all 601 guide links. Fresh article evaluation is unchanged: 723 contracts, 675 top-eight, 419 first and 48 misses. Keyboard/owner-evidence navigation and 320 px checks passed. Source and guide bytes are unchanged; no new JAWS/runtime acceptance follows.
+
+Continue from a concrete source/help concern. Preserve source uncertainties, six deferred mobile contracts, owner PO non-use, archive exclusion, untracked Video Rec and **0/34 deployment/timing**. Existing PUBLIC-target authority remains in force; prior sections retain their dated scope.
+
 ## C31 current continuation - 2026-10-08
 
 Local TAB search now returns **12 reconciled answers** before its **69 individual source claims**. Full resolutions, readable states, supporting links and stable destinations preserve the relationship between the base design and addendum. The PO answer separately cites the exact dated owner statement. Read [C31 changes and limits](CONTINUATION_C31.md) and [the C31 receipt](continuation31-20261008.json).

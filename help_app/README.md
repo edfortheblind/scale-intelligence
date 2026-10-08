@@ -32,6 +32,8 @@ Open **TAB design reference** from the home page or `/guides`. Home-page searche
 
 TAB results distinguish documentary interpretation, unresolved source details and the owner's dated purchase-order clarification. For example, **Does Travis use purchase orders?** links to the October 8, 2026 owner statement separately from supporting SDD context. **Are receipt container downloads required?** explains the conditional change between the two designs. Neither answer establishes current warehouse configuration or completed operations. Pending decisions remain visible, including the receiving LPN choice, conveyor integration access, Company-item Mobile Add limitation and override-count settings. Article results and procedure-guide results retain their own source scope and ranking.
 
+Where a source claim supports a reconciled answer, **Related reconciled answers** links appear in its search result and reference section. Follow the named answer to read the combined interpretation and its qualifications, including any dated owner clarification. Claims without a reviewed relationship retain the general reconciliation link.
+
 Source links open escaped, inert extracted text with node locations. Both original documents and their extracted packets are fingerprint-checked at startup. Source figures and page layout are not reproduced. The lookup is available through `/api/tab-design-search?q=...`: `results` retains individual claims and the additive `reconciliations` array supplies full cross-source answers, readable states and supporting links. The owner evidence view displays only the exact dated statement and its limits. Article and procedure endpoints retain their existing behavior.
 
 ## Maintaining the library

@@ -1,0 +1,212 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-08",
+  "checkpoint": "C32",
+  "base_commit": "80a8f4f69f76d8ccd3c905abb987ca76f4e80223",
+  "scope": "Related reconciled-answer links at TAB claim results and direct destinations; renderer only",
+  "Outcome": "DONE_WITH_CONCERNS",
+  "Delivery state": "VERIFIED_LOCAL; publication and remote parity recorded separately",
+  "Product state": "DIRECT_CLAIM_CONTEXT_LINKS_AVAILABLE; 48_EXISTING_ARTICLE_MISSES; CURRENT_RUNTIME_UNVERIFIED",
+  "Gate/authority state": "OWNER_CONTINUATION; EXISTING_PUBLIC_TARGET_AUTHORITY; NO_NEW_ACCEPTANCE",
+  "authority": "_project/publication-authority-20261008.json",
+  "change": {
+    "related_claims": 35,
+    "total_claims": 69,
+    "relationships": 46,
+    "shared_renderer_helper": true,
+    "new_dependencies": 0,
+    "new_api_fields": 0,
+    "ranking_changes": false,
+    "source_text_changes": false,
+    "configuration_changes": false
+  },
+  "tests": {
+    "command": "python -m unittest tests.test_tab_reconciliation tests.test_tab_help tests.test_help_guides tests.test_help_app tests.test_help_articles tests.test_retrieval",
+    "passed": 101,
+    "failed": 0,
+    "skipped": 0,
+    "duration_seconds": 45.472,
+    "red_before_fix": {
+      "tests": 2,
+      "failing_subcases": 39,
+      "direct_claim_subcases": 35,
+      "search_result_subcases": 4
+    }
+  },
+  "integration": {
+    "mode": "LIVE_LOOPBACK_HTTP",
+    "tab_complete_responses_unchanged": 93,
+    "procedure_complete_responses_unchanged": 24,
+    "claim_destinations_checked": 69,
+    "claims_with_related_answers": 35,
+    "related_answer_links": 46,
+    "guide_links_resolved": 601,
+    "reconciliations_preserved": 12
+  },
+  "article_evaluation": {
+    "mode": "LOCAL_HTTP_HELP_APP",
+    "case_count": 723,
+    "retrieval": {
+      "expected_topic_first": 419,
+      "expected_topic_in_first_eight": 675,
+      "misses": 48
+    },
+    "selected_topic_contract": {
+      "passed": 723,
+      "failed": 0
+    },
+    "complete_evaluation_unchanged": true,
+    "complete_case_records_unchanged": 723,
+    "retrieval_recoveries": 0,
+    "new_misses": 0,
+    "scope": "Existing article evaluator does not score TAB group; renderer identity bound in output_manifest"
+  },
+  "independent_review": {
+    "context": "Fresh separate native agent; read-only scoped review",
+    "result": "PASS",
+    "findings": [],
+    "tests_passed": 29,
+    "tests_duration_seconds": 8.858,
+    "checks": [
+      "Exact relation checks including PO, multi-answer, short-pick and unrelated claims",
+      "Hostile anchor/title/state remains inert",
+      "Entire rendered guide unchanged after removing only additive link fragments",
+      "All 69 claim-ID search renderings unchanged after removing additive fragments",
+      "Both regressions fail on base renderer without errors",
+      "Minimum sufficient change and contracts reviewed"
+    ],
+    "oracle_correction": "Scratch check initially assumed TO24 had no relation; canonical R09 relation retained and unrelated I03 used instead. No product change was needed.",
+    "reviewed_outputs": [
+      {
+        "path": "tools/render_help_guides.py",
+        "size_bytes": 17429,
+        "sha256": "eec7ec55f82bc1f3cd5efe5e076f6b455ec69de13b0e45f69f33d682a03d635f"
+      },
+      {
+        "path": "tests/test_tab_reconciliation.py",
+        "size_bytes": 13267,
+        "sha256": "3344783f28c240b05e6051986116944fcb70513917cea12315b501f393464eac"
+      }
+    ],
+    "documentation_delta": "PASS; all six documentation files reviewed. Coordinator HTTP/article/browser metrics checked for consistency, not independently rerun. Final receipt is coordinator-owned."
+  },
+  "browser": {
+    "engine": "Existing Brave browser; temporary loopback preview tab",
+    "checks": [
+      "TRAV3PL-P08 lists R03, R04 and R07 with readable states",
+      "Enter on related R04 link focuses r04 heading",
+      "R04 preserves exact 2026-10-08 owner statement and opens dated evidence",
+      "320px direct claim and search views each have 305px client and scroll widths"
+    ],
+    "jaws_session": false,
+    "viewport_reset": true,
+    "temporary_tab_closed": true,
+    "preview_stopped": true
+  },
+  "other_checks": [
+    {
+      "command": "python tools/build_help_guides.py --check",
+      "exit": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit": 0
+    }
+  ],
+  "preserved_exact_files": [
+    {
+      "path": "SDD/tab-core/reconciliation.json",
+      "size_bytes": 285847,
+      "sha256": "c960c67d48e2c7d4328a22cee9bc5e58cc45a3bae5b8bc8be1ab026fbaa4459f"
+    },
+    {
+      "path": "SDD/TAB_DESIGN_REFERENCE.md",
+      "size_bytes": 69822,
+      "sha256": "9ee1b423bb8833314033f4cb435f863e66e99a221085ca80176fdccd14d5e540"
+    },
+    {
+      "path": "SDD/tab-core-sources.json",
+      "size_bytes": 6062,
+      "sha256": "a85ac47a4273c10e4ce6a00348e2de777e211261cd9a4ad09f20241d13b418b8"
+    },
+    {
+      "path": "help_app/guide-manifest.json",
+      "size_bytes": 46318,
+      "sha256": "29f42d4a1b4bdd85be2fd53b4792ba86288608237a220d1d155d7f0df103c34a"
+    },
+    {
+      "path": "help_app/evaluation.json",
+      "size_bytes": 632138,
+      "sha256": "b4674a2554a62a8aeb68b52d62e30d3fe6398933375cac41a8665c1cc951bc39"
+    },
+    {
+      "path": "Snapdragon/evidence/selected-context-production-20261008.json",
+      "size_bytes": 8566,
+      "sha256": "9f976a5ff83c4cac47fc62657fa0daba05079c096c43d13a2371efa37b0a7bad"
+    }
+  ],
+  "minimum_sufficient_change": {
+    "reuse": "Existing validated claim_ids, anchors, labels, HTML escape and native links",
+    "implementation_line_delta": {
+      "added": 12,
+      "removed": 1
+    },
+    "test_line_delta": {
+      "added": 27,
+      "removed": 0
+    },
+    "complexity": "One helper scans the existing twelve reconciliations per claim, emits a list only for mapped claims, and is reused at two render sites. No stored reverse index or parallel relation source.",
+    "operational_change": "None; loopback help only",
+    "unresolved_minimality_findings": []
+  },
+  "limits": [
+    "48 prior article misses remain",
+    "Source uncertainties and unrendered DOCX physical pagination remain",
+    "Six mobile contracts remain owner-deferred",
+    "Deployment/correlated timing remains frozen at 0/34",
+    "No warehouse/database access, archive payload access, automatic PO discovery or new JAWS/runtime acceptance",
+    "Untracked Video Rec preserved"
+  ],
+  "output_manifest": [
+    {
+      "path": "tools/render_help_guides.py",
+      "size_bytes": 17429,
+      "sha256": "eec7ec55f82bc1f3cd5efe5e076f6b455ec69de13b0e45f69f33d682a03d635f"
+    },
+    {
+      "path": "tests/test_tab_reconciliation.py",
+      "size_bytes": 13267,
+      "sha256": "3344783f28c240b05e6051986116944fcb70513917cea12315b501f393464eac"
+    },
+    {
+      "path": "help_app/README.md",
+      "size_bytes": 7875,
+      "sha256": "ca6691c023d36f8896b59c0f1ac880751dc083ea46e2657d363c79428dff0965"
+    },
+    {
+      "path": "03_SCALE_INTELLIGENCE_MASTER_PROMPT.md",
+      "size_bytes": 46705,
+      "sha256": "91554b1ac50a7473f4d59af76178f856c43c83315e0d5114e8cac4c99139a25b"
+    },
+    {
+      "path": "04_SCALE_ASTRA_RESTART_PROMPT.md",
+      "size_bytes": 26139,
+      "sha256": "bef616aaf8bc072ef8a8e3e08e19a1f1415348c670fd9351b808b9d5cdee02de"
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "size_bytes": 38472,
+      "sha256": "d6c9e2187d0ac2bb2129cb747df8917bfd3cfde486bcdeaff3d03fbd363a51a4"
+    },
+    {
+      "path": "_project/RESUME.md",
+      "size_bytes": 25669,
+      "sha256": "73024e2399bcadb5c25201bfd7345b8879b60e4420c0d2342557dcb98dcc62b0"
+    },
+    {
+      "path": "_project/CONTINUATION_C32.md",
+      "size_bytes": 3662,
+      "sha256": "822b72b718899d45fc4b815f041c61ae04abd683bc437d7dce7de1e5b37a745a"
+    }
+  ]
+}
