@@ -48,6 +48,8 @@ Choose **Find programming objects** on the home page, or open `/programming`. Se
 
 Select a matching column name to jump to its highlighted, focusable row in the table layout. Open an object for parameters or columns, qualified relationship groups and expandable captured details. Table pages group related routines by direct/reviewed references, possible delegation and mentions, with the captured evidence beside each link. Inspect that evidence before treating a relationship as access.
 
+**Return to programming results** restores your original lookup text, object type and result page after reading an object, a related object or its captured SQL. Changing the lookup text or object type with **Find objects** starts at page one.
+
 On a routine page, **Articles citing this routine** links to reviewed explanations tied to that captured source. An article may cover a wider process; use **Find in this article** to locate its relevant details. Routine pages also link to inert SQL text and byte-exact downloads. Markdown and JSON downloads preserve the complete exported documentation. All content describes the September 29 capture.
 
 The programming lookup uses the existing export manifest and needs no private database snapshot or database connection. It loads on first use, verifies the complete artifact inventory, and rechecks every requested source file. Changed exports produce an unavailable response; use the [read-only programming verifier](../DB%20Architecture/PROGRAMMING_LAYOUT.md#rebuild-and-verify) before restarting. Article, procedure-guide and TAB search retain their separate behavior.
@@ -70,6 +72,7 @@ Write each explanation once. Omit empty or redundant sections. Keep project hist
 
 ```powershell
 python -m unittest tests.test_help_guides tests.test_help_app tests.test_help_articles tests.test_retrieval tests.test_article_find tests.test_article_sources tests.test_article_search_context
+python -m unittest tests.test_programming_library tests.test_programming_context
 python tools/build_help_guides.py --check
 python tools/evaluate_help.py --serve
 python tools/verify_db_docs.py

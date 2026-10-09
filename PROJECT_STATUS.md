@@ -1,5 +1,13 @@
 # SCALE Intelligence project status
 
+## C43 return to the programming lookup - 2026-10-09
+
+Programming object, column, relationship and SQL links now preserve the original lookup text, object type and page. **Return to programming results** restores that lookup with result-heading focus. A new lookup/filter starts at page one. Read [C43 changes and limits](_project/CONTINUATION_C43.md) and [the checkpoint](_project/continuation43-20261009.json).
+
+**175 tests passed**. All 1,515 ordinary object pages and 997 SQL views remain byte-identical; 2,512 context-bearing views and 79 catalog pages preserve content and navigation. API/download contracts and all 4,033 sealed exports verified. Independent review and keyboard/320 px checks passed. All **723 article evaluation records remain identical: 677 top-eight, 433 first and 46 misses**.
+
+This is programming navigation, with no article-retrieval recovery or semantic-answer acceptance credit. Preserve unresolved source questions, six mobile deferrals, untracked Video Rec and **0/34 deployment/timing**. Publication parity is verified separately; no new runtime or JAWS acceptance is claimed.
+
 ## C42 retain the originating article search - 2026-10-09
 
 Global result article/source links now retain the original library query. **Return to search results** restores it after reading an article, searching within it or opening its source. The global form is prefilled; scoped article queries remain distinct. Read [C42 changes and limits](_project/CONTINUATION_C42.md) and [the checkpoint](_project/continuation42-20261009.json).

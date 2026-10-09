@@ -119,7 +119,7 @@ class ProgrammingLibraryTests(unittest.TestCase):
             oid = str(row['object_id'])
             self.assertEqual(row['href'], '/programming/object/' + oid + '#programming-object')
             self.assertNotIn('column_ids', row)
-            self.assertIn('href="/programming/object/' + oid + '#column-1"', html)
+            self.assertIn('href="/programming/object/' + oid + '?q=sku&amp;kind=all&amp;page=1#column-1"', html)
             self.assertIn('aria-label="SKU in ' + row['qualified_name'] + '"', html)
             detail = render_object(self.library, oid)[1]
             self.assertIn('<tr id="column-1" tabindex="-1"><td>1</td><td>SKU</td>', detail)
@@ -136,8 +136,8 @@ class ProgrammingLibraryTests(unittest.TestCase):
         seal(self.root)
         library = ProgrammingLibrary(self.root)
         html = render_catalog(library, 'sku')
-        self.assertIn('href="/programming/object/3#column-19" aria-label="SKU_EXTRA in dbo.ITEM"', html)
-        self.assertIn('href="/programming/object/3#column-7" aria-label="SKU &lt;&amp;&quot;雪&gt; in dbo.ITEM"', html)
+        self.assertIn('href="/programming/object/3?q=sku&amp;kind=all&amp;page=1#column-19" aria-label="SKU_EXTRA in dbo.ITEM"', html)
+        self.assertIn('href="/programming/object/3?q=sku&amp;kind=all&amp;page=1#column-7" aria-label="SKU &lt;&amp;&quot;雪&gt; in dbo.ITEM"', html)
         self.assertIn('>SKU &lt;&amp;&quot;雪&gt;</a>', html)
         detail = render_object(library, '3')[1]
         self.assertIn('<tr id="column-7" tabindex="-1"><td>7</td><td>SKU &lt;&amp;&quot;雪&gt;</td>', detail)

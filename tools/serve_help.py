@@ -19,6 +19,17 @@ from render_programming import render_catalog, render_object, render_sql
 ASSETS = {'/style.css': ('style.css', 'text/css; charset=utf-8')}
 
 
+def programming_query_context(query):
+    """Parse the same bounded lookup parameters for catalog and detail HTML."""
+    values = parse_qs(query, keep_blank_values=True)
+    if set(values) - {'q', 'kind', 'page'} or any(len(v) != 1 for v in values.values()):
+        raise ValueError('Provide one q, kind and page parameter at most.')
+    page = values.get('page', ['1'])[0]
+    if not re.fullmatch(r'[1-9][0-9]{0,5}', page):
+        raise ValueError('Use a positive page number.')
+    return values.get('q', [''])[0], values.get('kind', ['all'])[0], int(page)
+
+
 class HelpHandler(BaseHTTPRequestHandler):
     server_version = 'SCALEHelp/1'
 
@@ -62,13 +73,7 @@ class HelpHandler(BaseHTTPRequestHandler):
             target = urlsplit(self.path)
             path = unquote(target.path)
             if path in {'/programming', '/api/programming/search'}:
-                values = parse_qs(target.query, keep_blank_values=True)
-                if set(values) - {'q', 'kind', 'page'} or any(len(v) != 1 for v in values.values()):
-                    raise ValueError('Provide one q, kind and page parameter at most.')
-                page = values.get('page', ['1'])[0]
-                if not re.fullmatch(r'[1-9][0-9]{0,5}', page):
-                    raise ValueError('Use a positive page number.')
-                query, kind = values.get('q', [''])[0], values.get('kind', ['all'])[0]
+                query, kind, page = programming_query_context(target.query)
                 library = self.server.get_programming()
                 if path.startswith('/api/'):
                     return self.respond(200, library.search(query, kind, int(page)))
@@ -77,14 +82,15 @@ class HelpHandler(BaseHTTPRequestHandler):
             programming = re.fullmatch(r'/programming/(object|sql|file)/([0-9]+)(\.(?:sql|md|json))?', path)
             if programming:
                 view, oid, extension = programming.groups()
-                if target.query or (view == 'file') != bool(extension):
+                if (view == 'file' and target.query) or (view == 'file') != bool(extension):
                     raise ValueError('Use the programming resource address without extra parameters.')
                 library = self.server.get_programming()
                 if view == 'file':
                     # IDs select only manifest-bound artifacts; URLs never become file paths.
                     return self.respond(200, library.artifact(oid, extension[1:]), 'text/plain; charset=utf-8')
-                title, body = (render_object(library, oid, self.knowledge) if view == 'object'
-                               else render_sql(library, oid))
+                context = programming_query_context(target.query) if target.query else None
+                title, body = (render_object(library, oid, self.knowledge, context) if view == 'object'
+                               else render_sql(library, oid, context))
                 return self.respond(200, render_shell(title + ' | SCALE Knowledge', body), 'text/html; charset=utf-8')
             if path == '/':
                 values = parse_qs(target.query, keep_blank_values=True)
