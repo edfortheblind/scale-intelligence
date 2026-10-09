@@ -97,6 +97,38 @@ class ProgrammingLibraryTests(unittest.TestCase):
         self.assertTrue(all(r['match_reason'] == 'Captured table column' for r in result['results']))
         self.assertEqual(self.library.search('sku', 'procedure')['total'], 0)
 
+    def test_column_links_reach_focusable_rows_without_changing_search_payloads(self):
+        result = self.library.search('sku')
+        html = render_catalog(self.library, 'sku')
+        for row in result['results']:
+            oid = str(row['object_id'])
+            self.assertEqual(row['href'], '/programming/object/' + oid + '#programming-object')
+            self.assertNotIn('column_ids', row)
+            self.assertIn('href="/programming/object/' + oid + '#column-1"', html)
+            self.assertIn('aria-label="SKU in ' + row['qualified_name'] + '"', html)
+            detail = render_object(self.library, oid)[1]
+            self.assertIn('<tr id="column-1" tabindex="-1"><td>1</td><td>SKU</td>', detail)
+            self.assertEqual(detail.count('id="column-1"'), 1)
+
+    def test_partial_column_links_use_sparse_captured_ids_and_escape_names(self):
+        path = self.root / 'DB Architecture/table layout/3.json'
+        record = json.loads(path.read_text(encoding='utf-8'))
+        original = record['raw_catalog_records']['columns'][0]
+        record['raw_catalog_records']['columns'] = [
+            {**original, 'column_id': 19, 'name': 'SKU_EXTRA'},
+            {**original, 'column_id': 7, 'name': 'SKU <&"雪>'}]
+        path.write_text(json.dumps(record), encoding='utf-8')
+        seal(self.root)
+        library = ProgrammingLibrary(self.root)
+        html = render_catalog(library, 'sku')
+        self.assertIn('href="/programming/object/3#column-19" aria-label="SKU_EXTRA in dbo.ITEM"', html)
+        self.assertIn('href="/programming/object/3#column-7" aria-label="SKU &lt;&amp;&quot;雪&gt; in dbo.ITEM"', html)
+        self.assertIn('>SKU &lt;&amp;&quot;雪&gt;</a>', html)
+        detail = render_object(library, '3')[1]
+        self.assertIn('<tr id="column-7" tabindex="-1"><td>7</td><td>SKU &lt;&amp;&quot;雪&gt;</td>', detail)
+        self.assertLess(detail.index('id="column-7"'), detail.index('id="column-19"'))
+        self.assertNotIn('id="column-1"', detail)
+
     def test_pagination_has_no_duplicates_or_hidden_tail_and_preserves_filter(self):
         first, second = self.library.search('', 'table', 1), self.library.search('', 'table', 2)
         self.assertEqual((first['total'], first['pages']), (62, 2))

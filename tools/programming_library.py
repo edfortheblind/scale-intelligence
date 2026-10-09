@@ -51,6 +51,7 @@ class ProgrammingLibrary:
                 'object_id': identity['object_id'], 'name': identity['name'],
                 'qualified_name': identity['schema_name'] + '.' + identity['name'],
                 'kind': kind, 'folder': folder, 'columns': [c['name'] for c in columns],
+                'column_ids': {c['name']: c['column_id'] for c in columns},
             }
         self.counts = dict(Counter(row['kind'] for row in self.objects.values()))
 

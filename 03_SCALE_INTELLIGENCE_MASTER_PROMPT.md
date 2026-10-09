@@ -1,5 +1,11 @@
 # SCALE Intelligence master continuation prompt
 
+## C37 direct column navigation - 2026-10-08
+
+The owner approved C36. Programming lookup now links matching column names directly to **focusable, highlighted captured rows**. IDs come from the captured metadata; existing object links, API responses, ranking and relationship evidence remain intact. Read [C37 changes and limits](_project/CONTINUATION_C37.md) and [the checkpoint](_project/continuation37-20261008.json).
+
+**127 tests passed**; all **16,968 column destinations**, 518 table pages, 997 unchanged routine pages and eight unchanged guides verified. Fresh HTTP preserves all 723 article cases (**676 top-eight, 419 first, 47 misses**). Fresh-context patch review and keyboard/320 px checks passed. Preserve source exports, six mobile deferrals, untracked Video Rec and **0/34 deployment/timing**. No new runtime or JAWS acceptance is claimed; publication parity is verified separately.
+
 ## C36 table-to-routine evidence - 2026-10-08
 
 Programming table pages now group related routines by **direct/reviewed references, possible delegation and mentions**, with exact evidence beside each link. Overlapping classifications and comment-only qualifications remain intact. Read [C36 changes and limits](_project/CONTINUATION_C36.md) and [the checkpoint](_project/continuation36-20261008.json).

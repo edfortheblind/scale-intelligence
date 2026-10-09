@@ -37,7 +37,7 @@ def render_catalog(library, query='', kind='all', page=1):
              '<form action="/programming#programming-results" method="get">',
              '<label for="programming-query">Object name, object ID or table column</label>',
              '<p id="programming-help">Use a full identifier or part of a name, such as RECEIPT_HEADER. '
-             'Column matches identify tables containing that column.</p>',
+             'Select a matching column to jump to its captured row.</p>',
              '<input id="programming-query" name="q" type="search" maxlength="200" '
              'aria-describedby="programming-help" value="' + escape(query, quote=True) + '">',
              '<label for="programming-kind">Object type</label><select id="programming-kind" name="kind">']
@@ -55,7 +55,14 @@ def render_catalog(library, query='', kind='all', page=1):
         parts += ['<li>' + object_link(library, row['object_id']),
                   paragraph(row['kind'].capitalize() + '; object ID ' + str(row['object_id']) + '. ' + row['match_reason'] + '.')]
         if row['matched_columns']:
-            parts.append(paragraph('Matching columns: ' + ', '.join(row['matched_columns'])))
+            column_ids = library.objects[str(row['object_id'])]['column_ids']
+            links = []
+            for name in row['matched_columns']:
+                href = '/programming/object/' + str(row['object_id']) + '#column-' + str(column_ids[name])
+                links.append('<a href="' + escape(href, quote=True) + '" aria-label="'
+                             + escape(name + ' in ' + row['qualified_name'], quote=True) + '">'
+                             + escape(name) + '</a>')
+            parts.append('<p>Matching columns: ' + ', '.join(links) + '</p>')
         parts.append('</li>')
     parts.append('</ul><nav aria-label="Programming results pages">')
     for number, label in [(page - 1, 'Previous page'), (page + 1, 'Next page')]:
@@ -137,7 +144,8 @@ def render_object(library, oid):
                   str(c['is_identity']), str(c['is_computed'])] for c in columns]
         parts += ['<h3 id="columns" tabindex="-1">Captured columns</h3>',
                   paragraph('Defaults, computed expressions, indexes, keys and all additional captured fields are in Complete captured details below and the downloads.'),
-                  table(rows, escape, 'Captured table columns')]
+                  table(rows, escape, 'Captured table columns',
+                        row_ids=['column-' + str(c['column_id']) for c in columns])]
         parts.append(render_related_routines(library, record))
     else:
         parts.append('<h3>Parameters</h3>')

@@ -62,13 +62,17 @@ def inline(text, guide, library):
     return ''.join(parts)
 
 
-def table(rows, render, label):
+def table(rows, render, label, *, row_ids=None):
+    if row_ids is not None and len(row_ids) != len(rows) - 1:
+        raise ValueError('Each table body row must have one anchor ID.')
     parts = ['<div class="guide-table" role="region" tabindex="0" aria-label="'+escape(label, quote=True)+'">',
              '<table><caption>'+escape(label)+'</caption><thead><tr>']
     parts.extend('<th scope="col">'+render(cell)+'</th>' for cell in rows[0])
     parts.append('</tr></thead><tbody>')
-    for row in rows[1:]:
-        parts += ['<tr>', *('<td>'+render(cell)+'</td>' for cell in row), '</tr>']
+    for index, row in enumerate(rows[1:]):
+        attrs = (' id="' + escape(row_ids[index], quote=True) + '" tabindex="-1"'
+                 if row_ids is not None else '')
+        parts += ['<tr'+attrs+'>', *('<td>'+render(cell)+'</td>' for cell in row), '</tr>']
     return ''.join(parts)+'</tbody></table></div>'
 
 

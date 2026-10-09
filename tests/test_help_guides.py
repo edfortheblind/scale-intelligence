@@ -14,7 +14,8 @@ from urllib.parse import quote, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'tools'))
 from help_guides import GuideLibrary, ROOT, MANIFEST, GUIDES, guide_blocks, fingerprint
 from help_knowledge import Knowledge
-from render_help_guides import render_guide, render_source, source_title, guide_search, inline
+from render_help_guides import render_guide, render_source, source_title, guide_search, inline, table
+from html import escape
 from serve_help import create_server
 
 
@@ -36,6 +37,18 @@ class GuideTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.guides = GuideLibrary()
+
+    def test_table_row_anchors_are_optional_escaped_and_bound_to_body_rows(self):
+        rows = [['Name', 'Meaning'], ['SKU', '<script>literal</script>']]
+        plain = table(rows, escape, 'Fields')
+        anchored = table(rows, escape, 'Fields', row_ids=['column-7'])
+        self.assertEqual(anchored.replace('<tr id="column-7" tabindex="-1">', '<tr>'), plain)
+        self.assertIn('<th scope="col">Name</th>', anchored)
+        self.assertIn('&lt;script&gt;literal&lt;/script&gt;', anchored)
+        self.assertNotIn('<script>', anchored)
+        self.assertIn('id="x&quot; onfocus=&quot;literal"', table(rows, escape, 'Fields', row_ids=['x" onfocus="literal']))
+        with self.assertRaises(ValueError):
+            table(rows, escape, 'Fields', row_ids=[])
 
     def test_all_searchable_sections_resolve_to_unique_focusable_fragments(self):
         for key in self.guides.guides:
