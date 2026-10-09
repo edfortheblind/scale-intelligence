@@ -1,5 +1,11 @@
 # SCALE Intelligence - next session on Astra
 
+## C36 table-to-routine evidence - 2026-10-08
+
+Programming table pages now group related routines by **direct/reviewed references, possible delegation and mentions**, with exact evidence beside each link. Overlapping classifications and comment-only qualifications remain intact. Read [C36 changes and limits](_project/CONTINUATION_C36.md) and [the checkpoint](_project/continuation36-20261008.json).
+
+**124 tests passed**; all **518 table pages**, **997 unchanged routine pages** and **7,629 exact relationship records** verified. Fresh HTTP preserves all 723 article cases (**676 top-eight, 419 first, 47 misses**). Independent patch review and bounded keyboard/320 px checks passed. Source exports and historical receipts remain unchanged. Preserve six mobile deferrals, source uncertainty, untracked Video Rec and **0/34 deployment/timing**; no new runtime or JAWS acceptance is claimed. Publication parity is verified separately.
+
 ## C35 programming-reference lookup - 2026-10-08
 
 The local help home page now links to **Find programming objects** (`/programming`): **921 procedures, 76 functions, 518 tables and 16,968 table columns**. Identifier/column lookup, object-type filters and complete pagination lead to qualified object details and exact SQL/Markdown/JSON downloads. Original exports and their C34 integrity baseline remain unchanged.

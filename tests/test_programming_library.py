@@ -11,7 +11,7 @@ from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from programming_library import ProgrammingLibrary, ProgrammingUnavailable, SNAPSHOT_ID, SCOPE
-from render_programming import render_catalog, render_object, render_sql
+from render_programming import render_catalog, render_object, render_sql, table_routine_references
 from serve_help import create_server
 
 
@@ -22,7 +22,8 @@ def fixture(root):
         (out / folder / 'README.md').write_bytes(b'# Fixture\n')
         (out / folder / 'manifest.json').write_bytes(b'{}')
     for oid, schema, name, kind in ([(1, 'dbo', 'FindItem', 'P'), (2, 'dbo', 'ItemCount', 'FN'),
-                                    (3, 'dbo', 'ITEM', 'U'), (4, 'other', 'ITEM', 'U')]
+                                    (3, 'dbo', 'ITEM', 'U'), (4, 'other', 'ITEM', 'U'),
+                                    (5, 'dbo', 'CommentOnly', 'P'), (6, 'dbo', 'OutsidePriority', 'P')]
                                    + [(100+i, 'dbo', 'Extra'+str(i), 'U') for i in range(60)]):
         identity = {'object_id': oid, 'schema_name': schema, 'name': name, 'type': kind}
         if kind == 'U':
@@ -32,7 +33,20 @@ def fixture(root):
                       'is_nullable': False, 'is_identity': False, 'is_computed': False}
             row = {'snapshot_id': SNAPSHOT_ID, 'object': identity,
                    'raw_catalog_records': {'columns': [column]}, 'reviewed_roles': [],
-                   'prioritized_primary_routine_ids': [1], 'limitations': ['No runtime proof.']}
+                   'prioritized_primary_routine_ids': [1, 2, 5], 'limitations': ['No runtime proof.'],
+                   'table_usage_evidence': {
+                       'object_id': oid, 'qualified_name': schema + '.' + name,
+                       'primary_routine_direct_ids': [1],
+                       'reference_evidence': [{'module_id': 1, 'module_type': 'P',
+                                               'channels': ['catalog'], 'qualification': '<script>static only</script>'}],
+                       'module_path_context': {'primary_indirect_module_ids': [2],
+                                               'shortest_path_examples': [],
+                                               'limits': 'Examples are bounded; execution unverified.'},
+                       'non_credit_observations': {'identifier_token_mentions': [
+                           {'module_id': 1, 'reading_lines': [8]},
+                           {'module_id': 6, 'reading_lines': [9]}]}},
+                   'original_comment_mentions': [{'module_id': 5, 'source_line': 17,
+                                                   'counts_as_routine_reference': False}]}
         else:
             folder = 'SP layout' if kind == 'P' else 'function layout'
             row = {'snapshot_id': SNAPSHOT_ID, 'identity': identity, 'parameters': [],
@@ -128,6 +142,45 @@ class ProgrammingLibraryTests(unittest.TestCase):
         with self.assertRaises(ProgrammingUnavailable):
             ProgrammingLibrary(self.root)
         self.assertEqual(manifest.read_bytes(), before)
+
+    def test_table_relationships_preserve_overlapping_classes_and_comment_only_evidence(self):
+        html = render_object(self.library, '3')[1]
+        related = html.split('<h3>Related routines</h3>')[1].split('<h3>Complete captured details</h3>')[0]
+        self.assertIn('Direct static references or reviewed effects (1 routine)', related)
+        self.assertIn('Possible delegated access (1 routine)', related)
+        self.assertIn('Mentions and unresolved candidates only (2 routines)', related)
+        self.assertEqual(related.count('/programming/object/1#programming-object'), 2)
+        self.assertIn('/programming/object/2#programming-object', related)
+        self.assertIn('/programming/object/5#programming-object', related)
+        self.assertNotIn('/programming/object/6#programming-object', related)
+        self.assertIn('COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT', related)
+        self.assertIn('&quot;counts_as_routine_reference&quot;: false', related)
+        self.assertIn('Examples are bounded; execution unverified.', related)
+        self.assertIn('&lt;script&gt;static only&lt;/script&gt;', related)
+        self.assertNotIn('<script>', related)
+
+    def test_table_relationships_preserve_reviewed_scope_and_all_source_evidence(self):
+        record = self.library.record('3')
+        record['table_usage_evidence']['primary_routine_direct_ids'] = []
+        refs = table_routine_references(record)
+        evidence = refs[1]['direct_or_reviewed'][0]
+        self.assertEqual(evidence['classification'], 'REVIEWED_EFFECT_SCOPE_AS_RECORDED')
+        self.assertEqual(evidence['evidence'], record['table_usage_evidence']['reference_evidence'][0])
+        self.assertEqual(refs[5]['mentions_only'][0]['observation'], record['original_comment_mentions'][0])
+        self.assertEqual(refs[2]['possible_indirect'][0]['path_examples'], [])
+
+    def test_table_relationships_keep_unclassified_and_empty_priority_lists_qualified(self):
+        record = self.library.record('3')
+        record['prioritized_primary_routine_ids'].append(999)
+        with patch.object(self.library, 'record', return_value=record):
+            html = render_object(self.library, '3')[1]
+        self.assertIn('Relationship classification unavailable', html)
+        self.assertIn('999 (outside this programming export)', html)
+        self.assertIn('No access classification is inferred.', html)
+        record['prioritized_primary_routine_ids'] = []
+        with patch.object(self.library, 'record', return_value=record):
+            html = render_object(self.library, '3')[1]
+        self.assertIn('No primary routine relationship was captured. This does not establish non-use.', html)
 
     def test_postload_drift_is_rejected_for_every_served_artifact_type(self):
         for extension in ('sql', 'md', 'json'):

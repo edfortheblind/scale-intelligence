@@ -4,8 +4,15 @@ import json
 from urllib.parse import urlencode
 
 from build_table_layouts import type_text
+from build_routine_layouts import collect_refs
 from programming_library import SCOPE
 from render_help_guides import table
+
+RELATIONSHIP_LABELS = {
+    'direct_or_reviewed': 'Direct static references or reviewed effects',
+    'possible_indirect': 'Possible delegated access',
+    'mentions_only': 'Mentions and unresolved candidates only',
+}
 
 
 def paragraph(text):
@@ -63,6 +70,47 @@ def json_detail(title, value):
             + escape(json.dumps(value, indent=2, ensure_ascii=False)) + '</pre></details>')
 
 
+def table_routine_references(record):
+    """Reuse the exporter's correlation; retain overlapping evidence channels."""
+    refs = collect_refs({'tables': [record['table_usage_evidence']]})
+    for observation in record['original_comment_mentions']:
+        refs[observation['module_id']]['mentions_only'].append({
+            'table_id': record['object']['object_id'],
+            'qualified_name': record['table_usage_evidence']['qualified_name'],
+            'layout_path': '../table layout/' + str(record['object']['object_id']) + '.md',
+            'classification': 'COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT',
+            'category': 'original_comment_mentions', 'observation': observation})
+    return {oid: refs[oid] for oid in record['prioritized_primary_routine_ids']}
+
+
+def render_related_routines(library, record):
+    refs = table_routine_references(record)
+    parts = ['<h3>Related routines</h3>', paragraph(
+        'Groups retain the captured evidence: a routine can appear in more than one group. '
+        'Mentions and possible paths do not establish direct or executed access. '
+        'Expand Relationship evidence for source bindings and limits.')]
+    for key, label in RELATIONSHIP_LABELS.items():
+        matches = [(oid, groups[key]) for oid, groups in refs.items() if groups[key]]
+        parts.append('<details><summary>' + escape(label) + ' (' + str(len(matches))
+                     + (' routine' if len(matches) == 1 else ' routines') + ')</summary><ul>')
+        for oid, evidence in matches:
+            classifications = list(dict.fromkeys(row['classification'] for row in evidence))
+            parts.append('<li>' + object_link(library, oid)
+                         + paragraph('; '.join(classifications))
+                         + json_detail('Relationship evidence', evidence) + '</li>')
+        parts.append('</ul>' + ('' if matches else paragraph('None captured.')) + '</details>')
+    unclassified = [oid for oid, groups in refs.items() if not any(groups.values())]
+    if unclassified:
+        parts += ['<h4>Relationship classification unavailable</h4>', paragraph(
+            'These routines remain in the captured priority list, but no matching relationship '
+            'evidence was found. No access classification is inferred.'), '<ul>']
+        parts += ['<li>' + object_link(library, oid) + '</li>' for oid in unclassified]
+        parts.append('</ul>')
+    if not refs:
+        parts.append(paragraph('No primary routine relationship was captured. This does not establish non-use.'))
+    return ''.join(parts)
+
+
 def render_object(library, oid):
     row, record = library.objects[oid], library.record(oid)
     parts = ['<nav aria-label="Library"><a href="/programming">Find programming objects</a></nav>',
@@ -90,12 +138,7 @@ def render_object(library, oid):
         parts += ['<h3 id="columns" tabindex="-1">Captured columns</h3>',
                   paragraph('Defaults, computed expressions, indexes, keys and all additional captured fields are in Complete captured details below and the downloads.'),
                   table(rows, escape, 'Captured table columns')]
-        parts += ['<h3>Related routines</h3>',
-                  paragraph('These routines have reference, mention or possible-path evidence. This list does not establish direct or executed access; inspect each evidence record before interpreting it.'), '<ul>']
-        parts += ['<li>' + object_link(library, item) + '</li>' for item in record['prioritized_primary_routine_ids']]
-        parts.append('</ul>')
-        if not record['prioritized_primary_routine_ids']:
-            parts.append(paragraph('No primary routine relationship was captured. This does not establish non-use.'))
+        parts.append(render_related_routines(library, record))
     else:
         parts.append('<h3>Parameters</h3>')
         rows = [['Position', 'Name', 'Declared type', 'Output', 'Read-only']]
@@ -106,10 +149,8 @@ def render_object(library, oid):
         parts.append(json_detail('Return metadata and limits', record['return_metadata']))
         parts.append(json_detail('Retained reviewed contract and source bindings', record['reviewed_contract']))
         parts.append('<h3>Related tables</h3>')
-        labels = {'direct_or_reviewed': 'Direct static references or reviewed effects',
-                  'possible_indirect': 'Possible delegated access', 'mentions_only': 'Mentions and unresolved candidates only'}
         for key, rows in record['table_references'].items():
-            parts += ['<h4>' + escape(labels.get(key, key.replace('_', ' '))) + '</h4><ul>']
+            parts += ['<h4>' + escape(RELATIONSHIP_LABELS.get(key, key.replace('_', ' '))) + '</h4><ul>']
             for ref in rows:
                 parts.append('<li>' + object_link(library, ref['table_id']) + paragraph(ref['classification'])
                              + json_detail('Relationship evidence', ref) + '</li>')
