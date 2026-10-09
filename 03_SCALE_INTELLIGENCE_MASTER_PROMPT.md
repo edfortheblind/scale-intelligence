@@ -1,5 +1,13 @@
 # SCALE Intelligence master continuation prompt
 
+## C45 owner closures and open-issue register - 2026-10-09
+
+**Current disposition authority:** [OPEN_ISSUES.md](OPEN_ISSUES.md) records all remaining review/decision items. It supersedes conflicting older next-step wording. Mobile initial task entries are **closed**; Performance Management is **closed because SCI will no longer be used**; historical runtime documentation is **complete** with [163/163 IDs documented](DB%20Architecture/HISTORICAL_RUNTIME_IDENTITIES.md). The 154 catalog matches and nine explicit unknown-identity dispositions retain their evidence limits; the unknown names are no longer an open recovery task.
+
+The register provides context, source links and editable owner-decision fields for Receiving dependencies, full-screen criteria, Receiving detailed reviews/selected contexts, six mobile workflow source gaps, retrieval, TAB design questions and other pending/future scope. **No new follow-up is authorized merely by listing it.** Retain accepted work, the six mobile deferrals and frozen **0/34 deployment/timing**. Historical 15/16 Mobile, 3/4 Performance, 154/163 catalog-match and other measurement denominators are unchanged.
+
+This is a documentation/disposition change. No live inspection, source recapture, application implementation, warehouse action or new runtime/accessibility acceptance is claimed. Read the [C45 checkpoint](_project/continuation45-20261009.json).
+
 ## C44 return from guides and cited sources - 2026-10-09
 
 Procedure and TAB design search links now retain the original library query through guides, cited sources, related answers, evidence and the guide listing. **Return to search results** restores that query with result-heading focus. Read [C44 changes and limits](_project/CONTINUATION_C44.md) and [the checkpoint](_project/continuation44-20261009.json).

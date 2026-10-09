@@ -1,5 +1,13 @@
 # Snapdragon progress
 
+## Current owner decisions - 2026-10-09
+
+Use the root [OPEN_ISSUES.md](../OPEN_ISSUES.md) for remaining decisions; it supersedes conflicting next-step wording below. **Mobile initial task entries are closed at the accepted historical 15/16 sampling limit. Performance Management is closed because SCI will not be used.** Do not retry SCI, enter Work Execution or reopen those sections through the full-review backlog.
+
+Receiving dependencies, full applicable criteria, Receiving detailed reviews/selected contexts and six mobile procedure-source gaps are now decision entries OI-01 through OI-05. Five unlicensed Labor routes have a separate applicability entry OI-09. Requested Stage Monitor depth remains complete at 4/4; optional environment parity is OI-10. No new UI/database work is authorized by this register. Existing observation counts and JSON receipts retain their dated meaning. Preserve this current decision section if generated status is refreshed.
+
+The [historical runtime register](../DB%20Architecture/HISTORICAL_RUNTIME_IDENTITIES.md) closes that separate documentation task at 163/163 documented IDs. Deployment/timing remains frozen at 0/34. Existing-target publication authority is recorded in the [October 8 owner instruction](../_project/publication-authority-20261008.json); older private-only wording below is historical.
+
 Observation date: 2026-10-02. Recomputed from [coverage.json](inventory/coverage.json).
 
 This is a completed discovery/structural-documentation pass with detailed follow-up still open. Percentages below measure the stated phase, not whole-SCALE completion.

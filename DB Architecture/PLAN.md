@@ -1,5 +1,11 @@
 # Documentation plan and acceptance boundary
 
+## Current disposition - 2026-10-09
+
+Historical runtime identification/documentation is **COMPLETE / OWNER-CLOSED** in [HISTORICAL_RUNTIME_IDENTITIES.md](HISTORICAL_RUNTIME_IDENTITIES.md): 163/163 IDs documented, including 154 captured catalog matches and nine bounded unknown-identity records. Older references below to nine unresolved identities describe the retained name-match limit, not an open recovery assignment. Previously accepted table and source-package dispositions also remain closed.
+
+The root [OPEN_ISSUES.md](../OPEN_ISSUES.md) is the current remaining-work register and overrides older queue language here. Deployment and correlated whole-process timing remain frozen at 0/34; historical telemetry does not complete that separate workstream.
+
 Owner scope: build the evidence for an accessible SCALE knowledge base that quickly explains functionality and execution behavior to novice users without requiring AIM/SDK/DB research. Do not import transactional data. The owner separately authorized a reviewed configuration allowlist. Existing AIM/SDK collection remains closed with its accepted exceptions; SDD samples supply design context after source reconciliation. Insight screen registration/navigation and functionality SOPs are a future task.
 
 The primary deliverable is now the [SCALE functional report](SCALE_FUNCTIONAL_REPORT.md), supported by [help topics](HELP_TOPICS.md), [reviewed object roles](FUNCTIONAL_ROLES.md), [configuration validation](CONFIGURATION_VALIDATION.md) and the [process-family coverage ledger](mappings/functional-coverage.json). Structural completeness remains a separate measure.

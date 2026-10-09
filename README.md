@@ -34,4 +34,6 @@ The application reads the retained library and has no connection to warehouse op
 
 ## Maintaining this project
 
+[Open issues and owner decisions](OPEN_ISSUES.md) is the current section-by-section review register, with detailed context, evidence and decision fields. [Historical runtime identities](DB%20Architecture/HISTORICAL_RUNTIME_IDENTITIES.md) documents all 163 retained IDs and closes that documentation task.
+
 [Application maintenance](help_app/README.md) covers article authoring, source bindings and validation. [Project status](PROJECT_STATUS.md) records current results and limitations; [resume instructions](_project/RESUME.md) and the [master continuation prompt](03_SCALE_INTELLIGENCE_MASTER_PROMPT.md) govern engineering work. [Authorization](_project/AUTHORIZATION.md) records the internal documentation scope.
