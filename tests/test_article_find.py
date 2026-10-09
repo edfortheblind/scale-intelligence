@@ -7,11 +7,11 @@ import sys
 import threading
 import unittest
 from unittest.mock import patch
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'tools'))
 from help_knowledge import Knowledge
-from render_help_page import render_page
+from render_help_page import render_article_find, render_page
 from serve_help import create_server
 
 
@@ -51,7 +51,7 @@ class ArticleFindTests(unittest.TestCase):
         self.assertEqual(result['total'], 2)
         self.assertEqual(knowledge.find_in_topic('fixture', 'unrelatedneedle')['total'], 0)
 
-    def test_deduplication_total_and_eight_result_bound(self):
+    def test_deduplication_complete_pages_and_stable_order(self):
         knowledge, topic = self.fixture()
         topic['plain_answer'] = 'Quartz repeated.'
         topic['expected_results'] = ['Quartz repeated.']*3 + ['Quartz note '+str(i) for i in range(10)]
@@ -59,16 +59,47 @@ class ArticleFindTests(unittest.TestCase):
         self.assertEqual(result['total'], 11)
         self.assertEqual(len(result['results']), 8)
         self.assertEqual(len({r['text'] for r in result['results']}), 8)
+        self.assertEqual((result['page'], result['pages'], result['page_size']), (1, 2, 8))
+        second = knowledge.find_in_topic('fixture', 'quartz', 2)
+        self.assertEqual((second['page'], second['pages'], second['total']), (2, 2, 11))
+        combined = result['results'] + second['results']
+        self.assertEqual([r['text'] for r in combined],
+                         ['Quartz repeated.'] + ['Quartz note '+str(i) for i in range(10)])
+        self.assertEqual(len({(r['text'], r['source_id']) for r in combined}), 11)
+        self.assertEqual(knowledge.find_in_topic('fixture', 'quartz', 1), result)
+        self.assertEqual(knowledge.find_in_topic('fixture', 'quartz', 2), second)
+        with self.assertRaises(ValueError):
+            knowledge.find_in_topic('fixture', 'quartz', 3)
+
+    def test_later_page_reaches_retained_shipment_passage_with_exact_source(self):
+        first = self.knowledge.find_in_topic('shipment-detail', 'shipment door')
+        second = self.knowledge.find_in_topic('shipment-detail', 'shipment door', 2)
+        self.assertEqual(first['total'], 13)
+        self.assertEqual(len(first['results']), 8)
+        self.assertEqual(len(second['results']), 5)
+        ninth = second['results'][0]
+        self.assertEqual(ninth['source_id'], 'shipment-detail-sql')
+        self.assertEqual(ninth['label'], 'dbo.SHP_InsightDetailPaneData — Ordered behavior')
+        self.assertIn('NO WHERE filter at all', ninth['text'])
+        self.assertNotIn(ninth, first['results'])
+        source = self.knowledge.source(ninth['source_id'])
+        body = render_page(self.knowledge, topic_id='shipment-detail', article_find='shipment door',
+                           article_find_page=2).decode()
+        match_section = body.split('Matching passages in this article', 1)[1].split('</section>', 1)[0]
+        self.assertIn(escape(ninth['text']), match_section)
+        self.assertIn(escape(source['qualification']), match_section)
+        self.assertIn(escape(source['label']), match_section)
 
     def test_common_notes_remain_searchable_and_distinct_sources_are_preserved(self):
         knowledge, topic = self.fixture()
         text = 'Shared transaction caution quartz.'
         details = [{'label': 'Routine '+str(i), 'source_id': 'source-'+str(i),
-                    'sections': [{'label': 'Limits', 'items': [text, text]}]} for i in range(6)]
+                    'sections': [{'label': 'Limits', 'items': [text, text]}]} for i in range(10)]
         knowledge._details = lambda selected: details
         result = knowledge.find_in_topic('fixture', 'quartz')
-        self.assertEqual(result['total'], 6)
-        self.assertEqual({r['source_id'] for r in result['results']}, {'source-'+str(i) for i in range(6)})
+        self.assertEqual(result['total'], 10)
+        combined = result['results'] + knowledge.find_in_topic('fixture', 'quartz', 2)['results']
+        self.assertEqual([r['source_id'] for r in combined], ['source-'+str(i) for i in range(10)])
 
     def test_refinements_keep_exact_attribution(self):
         knowledge, topic = self.fixture()
@@ -91,6 +122,42 @@ class ArticleFindTests(unittest.TestCase):
                 self.knowledge.find_in_topic('shipment-detail', query)
         self.assertEqual(self.knowledge.find_in_topic('shipment-detail', 'x'*500)['total'], 0)
 
+    def test_page_types_and_empty_result_bounds(self):
+        for page in (0, -1, True, False, None, '1', 1.0):
+            with self.subTest(page=page), self.assertRaises(ValueError):
+                self.knowledge.find_in_topic('shipment-detail', 'shipment', page)
+        for query in ('', '   ', 'the and does', 'zzqvunknownsubjectz'):
+            with self.subTest(query=query):
+                result = self.knowledge.find_in_topic('shipment-detail', query)
+                self.assertEqual((result['page'], result['pages'], result['page_size'], result['total']),
+                                 (1, 1, 8, 0))
+                with self.assertRaises(ValueError):
+                    self.knowledge.find_in_topic('shipment-detail', query, 2)
+        with self.assertRaises(ValueError):
+            render_page(self.knowledge, topic_id='shipment-detail', article_find='', article_find_page=2)
+
+    def test_pagination_preserves_encoded_context_focus_numbering_and_new_query_reset(self):
+        query = '  shipment + door & "detail" # /?  '
+        topic = {'topic_id': 'selected/id +?', 'title': 'Selected article'}
+        result = {'page': 2, 'pages': 3, 'page_size': 8, 'total': 17,
+                  'results': [{'text': 'Text '+str(i), 'label': 'Article text', 'source_id': None}
+                              for i in range(8)]}
+        with patch.object(self.knowledge, 'find_in_topic', return_value=result) as find:
+            body = render_article_find(self.knowledge, topic, query, 2)
+        find.assert_called_once_with(topic['topic_id'], query, 2)
+        self.assertIn('Showing 9–16 of 17 matching passages. Page 2 of 3.', body)
+        self.assertIn('<ol class="guide-results" start="9">', body)
+        self.assertIn('id="article-matches" tabindex="-1"', body)
+        for page, label in ((1, 'Previous page'), (3, 'Next page')):
+            href = '/topic/'+quote(topic['topic_id'], safe='')+'?'+urlencode(
+                {'find': query, 'page': page})+'#article-matches'
+            self.assertIn('href="'+escape(href, quote=True)+'">'+label+'</a>', body)
+        form = body.split('<form ', 1)[1].split('</form>', 1)[0]
+        self.assertIn('action="/topic/selected%2Fid%20%2B%3F#article-matches"', form)
+        self.assertIn('name="find"', form)
+        self.assertIn('value="'+escape(query, quote=True)+'"', form)
+        self.assertNotIn('name="page"', form)
+
     def test_scoped_renderer_keeps_global_form_and_source_qualification(self):
         query = 'ISNUMERIC'
         page = render_page(self.knowledge, topic_id='labor-log-and-consolidation', article_find=query).decode()
@@ -109,7 +176,8 @@ class ArticleFindTests(unittest.TestCase):
 
     def test_scoped_query_passage_labels_and_sources_are_inert(self):
         attack = '<img src=x onerror="alert(1)">'
-        result = {'total': 1, 'results': [{'text': attack, 'label': attack, 'source_id': 'shipment-detail-sql'}]}
+        result = {'total': 1, 'page': 1, 'pages': 1, 'page_size': 8,
+                  'results': [{'text': attack, 'label': attack, 'source_id': 'shipment-detail-sql'}]}
         with patch.object(self.knowledge, 'find_in_topic', return_value=result), \
              patch.object(self.knowledge, 'source', wraps=self.knowledge.source) as source:
             original = self.knowledge.source('shipment-detail-sql')
@@ -174,6 +242,32 @@ class ArticleFindHTTPTests(unittest.TestCase):
         self.assertEqual(self.request('/topic/shipment-detail?find='+'x'*500)[0], 200)
         self.assertEqual(self.request('/topic/unknown-article?find=shipment')[0], 404)
         self.assertEqual(self.request('/api/search?find=shipment')[0], 400)
+
+    def test_native_pagination_route_and_boundaries(self):
+        first_status, first = self.request('/topic/shipment-detail?find=shipment+door')
+        self.assertEqual(first_status, 200)
+        self.assertIn('Showing 1–8 of 13 matching passages. Page 1 of 2.', first)
+        self.assertIn('href="/topic/shipment-detail?find=shipment+door&amp;page=2#article-matches">Next page</a>', first)
+        self.assertNotIn('Previous page', first)
+        status, body = self.request('/topic/shipment-detail?find=shipment+door&page=2')
+        self.assertEqual(status, 200)
+        self.assertIn('Showing 9–13 of 13 matching passages. Page 2 of 2.', body)
+        self.assertIn('<ol class="guide-results" start="9">', body)
+        self.assertIn('id="article-matches" tabindex="-1"', body)
+        self.assertIn('id="answer"', body)
+        self.assertIn('Previous page', body)
+        self.assertNotIn('Next page', body)
+        self.assertEqual(self.request('/topic/shipment-detail?find=&page=1')[0], 200)
+        self.assertEqual(self.request('/topic/unknown-article?find=shipment&page=2')[0], 404)
+        for page in ('', '0', '-1', '+1', '01', '1.0', 'true', '1000000', '999999', '3'):
+            with self.subTest(page=page):
+                self.assertEqual(self.request('/topic/shipment-detail?find=shipment+door&page='+quote(page))[0], 400)
+        for suffix in ('page=1', 'page=2', 'find=&page=2', 'find=the+and&page=2',
+                       'find=zzqvunknownsubjectz&page=2', 'find=shipment&page=1&page=2',
+                       'find=shipment&find=door&page=2', 'find=shipment&page=2&path=secret'):
+            with self.subTest(suffix=suffix):
+                self.assertEqual(self.request('/topic/shipment-detail?'+suffix)[0], 400)
+        self.assertEqual(self.request('/api/search?q=shipment&page=2')[0], 400)
 
 
 if __name__ == '__main__':

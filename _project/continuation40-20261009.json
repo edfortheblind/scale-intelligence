@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C40",
+  "recorded_date": "2026-10-09",
+  "timezone": "America/Chicago",
+  "base_commit": "772108b167d732566fdabd3086f082d54f23a6e5",
+  "owner_instruction": "continue",
+  "outcome": "DONE_WITH_CONCERNS",
+  "bounded_task_status": "COMPLETE",
+  "task": "Reach all scoped article matches through native pagination preserving context and source qualifications",
+  "tests": {
+    "passed": 153,
+    "failed": 0,
+    "skipped": 0,
+    "new_tests": 4,
+    "strengthened_tests": 2,
+    "elapsed_seconds": 38.498,
+    "command": "python -m unittest tests.test_programming_library tests.test_help_app tests.test_help_articles tests.test_help_guides tests.test_tab_help tests.test_tab_reconciliation tests.test_retrieval tests.test_article_find",
+    "baseline_gap": "C39 shipment-detail / shipment door reports13matches but shows8;page2 rejected"
+  },
+  "article_evaluation": {
+    "command": "python tools/evaluate_help.py --serve",
+    "case_count": 723,
+    "question_only_retrieval": {
+      "expected_topic_first": 433,
+      "expected_topic_in_first_eight": 677,
+      "misses": 46
+    },
+    "selected_topic_contract": {
+      "passed": 723,
+      "failed": 0
+    },
+    "unchanged_complete_case_records": 723,
+    "recoveries": 0,
+    "new_losses": 0,
+    "ranking_changes": 0,
+    "changed_evaluation_fields": [
+      "implementation_sha256"
+    ],
+    "implementation_sha256": "1abdd669e986b43af214243de25fde66c53488bb962a61b03ecc0f681a22e77e"
+  },
+  "corpus_verification": {
+    "receipt": "_project/article-pagination-verification-c40-20261009.json",
+    "counts": {
+      "articles": 340,
+      "ordinary_article_pages_unchanged": 340,
+      "query_pages": 398,
+      "queries_requiring_pagination": 45,
+      "complete_matches": 1566,
+      "matches_beyond_first_page": 266,
+      "pagination_links": 116
+    },
+    "all_pages_equal_unbounded_c39_diagnostic": true,
+    "first_page_results_unchanged": true,
+    "global_indexed_rows_unchanged": 10262,
+    "topic_api_records_unchanged": 340,
+    "home_and_sample_global_query_html_unchanged": true,
+    "global_retrieval_recovery_credit": 0
+  },
+  "review": {
+    "kind": "SEPARATE_FRESH_CONTEXT_INDEPENDENT_PATCH_REVIEW",
+    "result": "PASS",
+    "findings": 0,
+    "corrections_requested": 0,
+    "reviewer_authored_or_designed_patch": false,
+    "focused_tests_passed": 76,
+    "routing_probes_passed": 18,
+    "baseline_first_page_records_compared": 7,
+    "tied_distinct_source_passages": 17,
+    "tied_passage_pages": 3,
+    "other_knowledge_methods_ast_identical": 10,
+    "reviewed_hashes": {
+      "tools/help_knowledge.py": "224ecafdf685b04772010e1cb6bf537b733335c6525e90fbbfd8f494e9435513",
+      "tools/render_help_page.py": "28a3551f4a20066e569ce4ebbdcbd3e6d3fc34b7a0ed28ee3f8112a72a4fe274",
+      "tools/serve_help.py": "7dce9b6e77f3d3264a83fd72cd4ac35fca61b3fa4f97c01930730ee4ceaeb20e",
+      "tests/test_article_find.py": "aae8c14f2eba73a008a2d6d70ecfa8d695aec115f21378c0ce902908ff8af286",
+      "help_app/README.md": "f5e373446cd0ec060a3a6c2e4c807e1e9246156b5d4d60419c77b1a84e873241"
+    },
+    "full_corpus_http_and_browser_repeated_by_reviewer": false
+  },
+  "browser": {
+    "surface": "Local Brave loopback preview",
+    "keyboard_next_previous_navigation": true,
+    "selected_article": "shipment-detail",
+    "query": "shipment door",
+    "page2_range": [
+      9,
+      13
+    ],
+    "page2_first_passage_source": "shipment-detail-sql",
+    "result_focus_id": "article-matches",
+    "list_start_page2": 9,
+    "new_query_resets_page1": true,
+    "new_query": "shipment",
+    "new_query_total": 12,
+    "viewport_pixels": [
+      320,
+      720
+    ],
+    "equal_client_and_scroll_width": 305,
+    "narrow_pagination_focus_and_qualifications_verified": true,
+    "task_tab_closed": true,
+    "viewport_reset": true,
+    "preview_port": 59124,
+    "identified_preview_pid": 12268,
+    "listener_verified_absent": true,
+    "jaws_or_intended_user_acceptance": false
+  },
+  "other_checks": {
+    "guide_manifest_command": "python tools/build_help_guides.py --check",
+    "guides": 8,
+    "cited_sources": 87,
+    "evidence_files": 8,
+    "source_guide_export_manifest_bytes_match_base": true,
+    "export_manifest_resealed": false,
+    "full_export_integrity_verifier_rerun": false,
+    "whitespace_passed": true
+  },
+  "preserved": [
+    "Authored evaluation questions and expected IDs",
+    "Source text and citation bindings",
+    "All global retrieval result records",
+    "Scoped passage construction, deduplication and order",
+    "Ordinary article rendering and API records",
+    "Programming API/export contracts",
+    "Historical receipts",
+    "Six deferred mobile contracts",
+    "Deployment/correlated timing frozen at 0/34",
+    "Archive payload and Video Rec excluded"
+  ],
+  "limits": [
+    "46 global retrieval misses remain",
+    "340 retained-word probes do not represent all possible questions",
+    "Pagination reveals existing text; no new semantic answer or source meaning",
+    "No new database connection, runtime, deployment or intended-user acceptance",
+    "Git parity does not prove OneDrive upload"
+  ],
+  "publication": "Final commit, remote refs and changed-file byte parity verified separately",
+  "output_manifest": [
+    {
+      "path": "tools/help_knowledge.py",
+      "bytes": 32412,
+      "sha256": "224ecafdf685b04772010e1cb6bf537b733335c6525e90fbbfd8f494e9435513"
+    },
+    {
+      "path": "tools/render_help_page.py",
+      "bytes": 13998,
+      "sha256": "28a3551f4a20066e569ce4ebbdcbd3e6d3fc34b7a0ed28ee3f8112a72a4fe274"
+    },
+    {
+      "path": "tools/serve_help.py",
+      "bytes": 10563,
+      "sha256": "7dce9b6e77f3d3264a83fd72cd4ac35fca61b3fa4f97c01930730ee4ceaeb20e"
+    },
+    {
+      "path": "tests/test_article_find.py",
+      "bytes": 16252,
+      "sha256": "aae8c14f2eba73a008a2d6d70ecfa8d695aec115f21378c0ce902908ff8af286"
+    },
+    {
+      "path": "help_app/README.md",
+      "bytes": 10943,
+      "sha256": "f5e373446cd0ec060a3a6c2e4c807e1e9246156b5d4d60419c77b1a84e873241"
+    },
+    {
+      "path": "help_app/evaluation.json",
+      "bytes": 632526,
+      "sha256": "a8b6583913c2fabcf52b52179b00f02519811cad832f01a4b456ef59f098202b"
+    },
+    {
+      "path": "_project/article-pagination-verification-c40-20261009.json",
+      "bytes": 1859,
+      "sha256": "08a5f77f8c460dbedabd936b25758b5cb694ad09bf990794f869d45460eb5944"
+    },
+    {
+      "path": "_project/CONTINUATION_C40.md",
+      "bytes": 5725,
+      "sha256": "ff0c1326bd67de8e8fd6583aa20824a4e13a7ee177bbf10124507810f8e05678"
+    },
+    {
+      "path": "03_SCALE_INTELLIGENCE_MASTER_PROMPT.md",
+      "bytes": 56470,
+      "sha256": "c38c3c03e78f7ba4b7a2c13029a7e6778d26494f16cbf39ad43835628fb2d563"
+    },
+    {
+      "path": "04_SCALE_ASTRA_RESTART_PROMPT.md",
+      "bytes": 34686,
+      "sha256": "724c31e3bb31a7bf4236418a365d790df30f3c327a603735dba1fd1910072ed2"
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "bytes": 48435,
+      "sha256": "10838dc94e707d113d0cb139a26f3ba90eb126efbe3e5d50b40aec615bd50f25"
+    },
+    {
+      "path": "_project/RESUME.md",
+      "bytes": 35158,
+      "sha256": "5d962bd626b99780de7ce6c884e299e9a4eb2161ab9c6afcc0f8043f1d58ae6f"
+    }
+  ],
+  "manifest_scope": "Changed deliverables excluding this self-referential receipt; final Git commit binds the checkpoint."
+}

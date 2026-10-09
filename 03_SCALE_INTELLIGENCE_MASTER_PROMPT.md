@@ -1,5 +1,13 @@
 # SCALE Intelligence master continuation prompt
 
+## C40 complete article-match navigation - 2026-10-09
+
+**Find in this article** now provides Previous/Next page links, preserving the selected article, exact query and source qualifications. Ranges and continued numbering identify each page; a new search resets to page one. Read [C40 changes and limits](_project/CONTINUATION_C40.md) and [the checkpoint](_project/continuation40-20261009.json).
+
+**153 tests passed**. The 340-article corpus check traversed **398 pages and 1,566 matches**, reaching **266 passages beyond the former eight-result limit** with unchanged order and attribution. Ordinary article pages, global index rows and article API records remain unchanged. Independent code review and keyboard/320 px checks passed. All **723 global evaluation records remain identical: 677 top-eight, 433 first and 46 misses**.
+
+This is scoped navigation completeness, with no global retrieval recovery or semantic-answer acceptance credit. Preserve unresolved source questions, six mobile deferrals, untracked Video Rec and **0/34 deployment/timing**. Publication parity is verified separately; no new runtime or JAWS acceptance is claimed.
+
 ## C39 explicit article context - 2026-10-08
 
 Articles now offer a separate **Find in this article** control. It retains the selected article, returns up to eight source-qualified text matches, and keeps the full explanation and Limits available. Global search remains separate. The practical help instructions also cover column, routine and article navigation. Read [C39 changes and limits](_project/CONTINUATION_C39.md) and [the checkpoint](_project/continuation39-20261008.json).

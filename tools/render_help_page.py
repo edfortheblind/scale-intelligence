@@ -1,7 +1,7 @@
 """Accessible SCALE articles with optional technical references."""
 from collections import Counter
 from html import escape
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 from help_knowledge import ROOT
 
@@ -78,7 +78,8 @@ def render_references(knowledge, topic):
     return '<div id="article-sources" tabindex="-1">'+''.join(parts)+'</div>'
 
 
-def render_article_find(knowledge, topic, question):
+def render_article_find(knowledge, topic, question, page=1):
+    result = knowledge.find_in_topic(topic['topic_id'], question, page)
     action = '/topic/'+quote(topic['topic_id'], safe='')+'#article-matches'
     parts = ['<section id="article-matches" tabindex="-1" aria-labelledby="article-find-heading">',
              '<details class="article-search"'+(' open' if question.strip() else '')+'>',
@@ -91,12 +92,13 @@ def render_article_find(knowledge, topic, question):
              'aria-describedby="article-find-help" maxlength="500" value="'+escape(question, quote=True)+'">',
              '<button type="submit">Find</button></div></form>']
     if question.strip():
-        result = knowledge.find_in_topic(topic['topic_id'], question)
         parts.append('<h3>Matching passages in this article</h3>')
         if result['results']:
-            parts.append(element('p', 'Showing '+str(len(result['results']))+' of '+str(result['total'])+
-                                 ' matching passages.', ' role="status"'))
-            parts.append('<ol class="guide-results">')
+            start = (result['page'] - 1) * result['page_size']
+            parts.append(element('p', 'Showing '+str(start + 1)+'–'+str(start + len(result['results']))+
+                                 ' of '+str(result['total'])+' matching passages. Page '+str(result['page'])+
+                                 ' of '+str(result['pages'])+'.', ' role="status"'))
+            parts.append('<ol class="guide-results" start="'+str(start + 1)+'">')
             for match in result['results']:
                 parts += ['<li>', element('p', match['label']), element('p', match['text'])]
                 if match['source_id']:
@@ -105,6 +107,14 @@ def render_article_find(knowledge, topic, question):
                               element('p', source['qualification'])]
                 parts.append('</li>')
             parts.append('</ol>')
+            if result['pages'] > 1:
+                parts.append('<nav aria-label="Article match pages">')
+                for number, label in [(page - 1, 'Previous page'), (page + 1, 'Next page')]:
+                    if 1 <= number <= result['pages']:
+                        href = '/topic/'+quote(topic['topic_id'], safe='')+'?'+urlencode(
+                            {'find': question, 'page': number})+'#article-matches'
+                        parts.append('<a href="'+escape(href, quote=True)+'">'+label+'</a> ')
+                parts.append('</nav>')
             parts.append('<p><a href="#article-sources">Article sources and qualifications</a>. '
                          'Article text uses the article’s source references; it has no separate passage citation.</p>')
         else:
@@ -120,7 +130,7 @@ def render_shell(title, content):
     return template.replace('{{TITLE}}', escape(title)).replace('{{CONTENT}}', content).encode('utf-8')
 
 
-def render_page(knowledge, question='', topic_id=None, guides=None, article_find=''):
+def render_page(knowledge, question='', topic_id=None, guides=None, article_find='', article_find_page=1):
     if len(question) > 500:
         raise ValueError('Use a question of 500 characters or fewer.')
     if not isinstance(article_find, str) or len(article_find) > 500:
@@ -176,7 +186,7 @@ def render_page(knowledge, question='', topic_id=None, guides=None, article_find
     if topic:
         parts += ['<article id="answer" aria-labelledby="answer-title" tabindex="-1">',
                   element('h2', topic['title'], ' id="answer-title"'), element('p', topic['what_it_does'], ' class="lead"'),
-                  render_article_find(knowledge, topic, article_find)]
+                  render_article_find(knowledge, topic, article_find, article_find_page)]
         if topic['trigger']:
             parts.append(element('p', topic['trigger']))
         parts += [section('How to configure' if topic['article_type'] == 'configuration' else 'How it works',

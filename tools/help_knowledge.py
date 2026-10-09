@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 GENERAL_SCOPE = ('These are reviewed general explanations. Current warehouse records, individual '
                  'permissions, effective settings and end-to-end process times are not established by this library.')
 SEARCH_STOP_WORDS = frozenset('a an and are as at be by can do does for from how i in is it me my of on or our the their there these this to was we what when which who why will with you your'.split())
+ARTICLE_FIND_PAGE_SIZE = 8
 KINDS = {'VENDOR_DOCUMENTATION': 'Vendor documentation', 'DEPLOYED_SQL_STATIC': 'Captured SQL source',
          'CATALOG_METADATA': 'Captured database metadata', 'REVIEWED_SDD_CLAIM': 'Reviewed SCALE functionality reference',
          'REVIEWED_PROCESS_CLAIM': 'Reviewed process documentation',
@@ -326,19 +327,26 @@ class Knowledge:
     def source(self, source_id):
         return self.citations[source_id]
 
-    def find_in_topic(self, topic_id, question):
+    def find_in_topic(self, topic_id, question, page=1):
         """Find literal reviewed passages inside an explicitly selected article."""
         if not isinstance(question, str) or len(question) > 500:
             raise ValueError('Use a question of 500 characters or fewer.')
+        if type(page) is not int or page < 1:
+            raise ValueError('Use a positive page number.')
         topic = self.topics[topic_id]
         result = {'topic_id': topic_id, 'question': question, 'state': 'EMPTY_QUERY',
+                  'page': page, 'pages': 1, 'page_size': ARTICLE_FIND_PAGE_SIZE,
                   'total': 0, 'results': []}
         if not question.strip():
+            if page > 1:
+                raise ValueError('Page is outside the matching results.')
             return result
         terms = [term for term in list(dict.fromkeys(tokens(question)))[:40]
                  if term not in SEARCH_STOP_WORDS]
         result['state'] = 'NO_REVIEWED_MATCH'
         if not terms:
+            if page > 1:
+                raise ValueError('Page is outside the matching results.')
             return result
         passages, seen = [], set()
 
@@ -371,7 +379,11 @@ class Knowledge:
             matches = db.execute('SELECT rowid FROM passages WHERE passages MATCH ? '
                                  'ORDER BY bm25(passages),rowid', (query,)).fetchall()
         result['total'] = len(matches)
-        result['results'] = [passages[row_id-1] for (row_id,) in matches[:8]]
+        result['pages'] = max(1, (len(matches) + ARTICLE_FIND_PAGE_SIZE - 1) // ARTICLE_FIND_PAGE_SIZE)
+        if page > result['pages']:
+            raise ValueError('Page is outside the matching results.')
+        start = (page - 1) * ARTICLE_FIND_PAGE_SIZE
+        result['results'] = [passages[row_id-1] for (row_id,) in matches[start:start + ARTICLE_FIND_PAGE_SIZE]]
         if matches:
             result['state'] = 'ARTICLE_MATCHES'
         return result

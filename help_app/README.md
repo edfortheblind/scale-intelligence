@@ -18,7 +18,7 @@ The interface uses native HTML forms, links, headings and disclosure controls. J
 
 When a search result matches a reviewed source detail, expand **Matching detail and source** beneath its general explanation to read that passage, its source name and its limits. The article link opens the full explanation and technical references. A matching passage does not by itself confirm the intended operation or current warehouse behavior.
 
-When reading an article, expand **Find in this article** to look for words or a question within its text and reviewed routine details. The selected article stays in view. Up to eight matching passages appear with their source qualifications; article prose retains its article-level sources. An article can cover several routines, so read the passage labels and limits. These are text matches, not generated answers. **Search SCALE Knowledge** remains available for searching the whole library.
+When reading an article, expand **Find in this article** to look for words or a question within its text and reviewed routine details. The selected article stays in view. Eight matching passages appear per page with their source qualifications; article prose retains its article-level sources. Use **Previous page** and **Next page** to read the remaining matches. The range and page count show your position; submitting a new search returns to page one. An article can cover several routines, so read the passage labels and limits. These are text matches, not generated answers. **Search SCALE Knowledge** remains available for searching the whole library.
 
 ## Detailed procedure guides
 
