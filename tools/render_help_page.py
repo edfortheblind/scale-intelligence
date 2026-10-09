@@ -153,6 +153,9 @@ def render_page(knowledge, question='', topic_id=None, guides=None):
         processes = [t for t in knowledge.topics.values() if t['topic_id'].startswith('process-') and t not in setup]
         other = [t for t in knowledge.topics.values() if t not in setup and t not in processes]
         parts += ['<nav aria-label="Browse topics" class="browse">']
+        parts.append('<section aria-labelledby="programming-heading"><h2 id="programming-heading">Database programming reference</h2>'
+                     '<p>Find captured stored procedures, functions, tables and columns.</p>'
+                     '<p><a href="/programming">Find programming objects</a></p></section>')
         if guides is not None:
             from render_help_guides import guide_navigation
             parts.append(guide_navigation(guides))

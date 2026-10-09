@@ -4,13 +4,17 @@ from functools import partial
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import ipaddress
 import json
+import re
 import socket
+import threading
 from urllib.parse import parse_qs, unquote, urlsplit
 
 from help_knowledge import Knowledge, ROOT
 from help_guides import GuideLibrary
 from render_help_page import render_page, render_shell
 from render_help_guides import guide_navigation, render_guide, render_source, render_evidence
+from programming_library import ProgrammingLibrary, ProgrammingUnavailable
+from render_programming import render_catalog, render_object, render_sql
 
 ASSETS = {'/style.css': ('style.css', 'text/css; charset=utf-8')}
 
@@ -57,6 +61,30 @@ class HelpHandler(BaseHTTPRequestHandler):
         try:
             target = urlsplit(self.path)
             path = unquote(target.path)
+            if path in {'/programming', '/api/programming/search'}:
+                values = parse_qs(target.query, keep_blank_values=True)
+                if set(values) - {'q', 'kind', 'page'} or any(len(v) != 1 for v in values.values()):
+                    raise ValueError('Provide one q, kind and page parameter at most.')
+                page = values.get('page', ['1'])[0]
+                if not re.fullmatch(r'[1-9][0-9]{0,5}', page):
+                    raise ValueError('Use a positive page number.')
+                query, kind = values.get('q', [''])[0], values.get('kind', ['all'])[0]
+                library = self.server.get_programming()
+                if path.startswith('/api/'):
+                    return self.respond(200, library.search(query, kind, int(page)))
+                body = render_catalog(library, query, kind, int(page))
+                return self.respond(200, render_shell('Programming reference | SCALE Knowledge', body), 'text/html; charset=utf-8')
+            programming = re.fullmatch(r'/programming/(object|sql|file)/([0-9]+)(\.(?:sql|md|json))?', path)
+            if programming:
+                view, oid, extension = programming.groups()
+                if target.query or (view == 'file') != bool(extension):
+                    raise ValueError('Use the programming resource address without extra parameters.')
+                library = self.server.get_programming()
+                if view == 'file':
+                    # IDs select only manifest-bound artifacts; URLs never become file paths.
+                    return self.respond(200, library.artifact(oid, extension[1:]), 'text/plain; charset=utf-8')
+                title, body = (render_object if view == 'object' else render_sql)(library, oid)
+                return self.respond(200, render_shell(title + ' | SCALE Knowledge', body), 'text/html; charset=utf-8')
             if path == '/':
                 values = parse_qs(target.query, keep_blank_values=True)
                 if set(values) - {'q'} or len(values.get('q', [''])) != 1:
@@ -97,6 +125,8 @@ class HelpHandler(BaseHTTPRequestHandler):
             if path.startswith('/api/sources/'):
                 return self.respond(200, self.knowledge.source(path.removeprefix('/api/sources/')))
             return self.respond(404, {'error': 'No reviewed resource exists at this address.'})
+        except ProgrammingUnavailable:
+            return self.respond(503, {'error': 'Programming reference unavailable. Verify the exports and restart the preview.'})
         except KeyError:
             return self.respond(404, {'error': 'The requested topic or source is unavailable.'})
         except ValueError as error:
@@ -111,16 +141,28 @@ class HelpHandler(BaseHTTPRequestHandler):
 class LocalHelpServer(ThreadingHTTPServer):
     allow_reuse_address = not hasattr(socket, 'SO_EXCLUSIVEADDRUSE')
 
+    def get_programming(self):
+        with self.programming_lock:
+            if self.programming is None:
+                try:
+                    self.programming = ProgrammingLibrary()
+                except (OSError, ValueError, KeyError, TypeError) as exc:
+                    raise ProgrammingUnavailable('Programming reference cannot be loaded.') from exc
+            return self.programming
+
     def server_bind(self):
         if hasattr(socket, 'SO_EXCLUSIVEADDRUSE'):
             self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
         super().server_bind()
 
 
-def create_server(port=8765, knowledge=None, guides=None):
+def create_server(port=8765, knowledge=None, guides=None, programming=None):
     knowledge = knowledge or Knowledge()
     guides = guides or GuideLibrary()
-    return LocalHelpServer(('127.0.0.1', port), partial(HelpHandler, knowledge=knowledge, guides=guides))
+    server = LocalHelpServer(('127.0.0.1', port), partial(HelpHandler, knowledge=knowledge, guides=guides))
+    server.programming = programming
+    server.programming_lock = threading.Lock()
+    return server
 
 
 if __name__ == '__main__':

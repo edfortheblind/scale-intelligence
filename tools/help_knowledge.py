@@ -19,6 +19,7 @@ KINDS = {'VENDOR_DOCUMENTATION': 'Vendor documentation', 'DEPLOYED_SQL_STATIC': 
          'REVIEWED_PROCESS_CLAIM': 'Reviewed process documentation',
          'RETAINED_OBSERVATION': 'Retained observation with time and scope limits'}
 IMPLEMENTATION_FILES = ['tools/help_knowledge.py', 'tools/serve_help.py', 'tools/render_help_page.py', 'tools/reviewed_sdd_source.py', 'tools/reviewed_process_source.py', 'tools/article_data.py']
+IMPLEMENTATION_FILES += ['tools/programming_library.py', 'tools/render_programming.py', 'tools/build_programming_layout.py', 'tools/build_table_layouts.py']
 IMPLEMENTATION_SHA256 = hashlib.sha256(json.dumps(
     {p: hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in IMPLEMENTATION_FILES},
     sort_keys=True).encode()).hexdigest()

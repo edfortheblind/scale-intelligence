@@ -38,6 +38,16 @@ At the end of each TAB claim, expand **All cited source passages** to reach ever
 
 Source links open escaped, inert extracted text with node locations. Both original documents and their extracted packets are fingerprint-checked at startup. Source figures and page layout are not reproduced. The lookup is available through `/api/tab-design-search?q=...`: `results` retains individual claims and the additive `reconciliations` array supplies full cross-source answers, readable states and supporting links. The owner evidence view displays only the exact dated statement and its limits. Article and procedure endpoints retain their existing behavior.
 
+## Database programming reference
+
+Choose **Find programming objects** on the home page, or open `/programming`. Search by object name, schema-qualified name, object ID or table-column name. Full identifiers rank before partial name matches. Use the object-type filter and page links to browse all **921 procedures, 76 functions and 518 tables**. The column lookup covers **16,968 captured table columns**; results name the matching columns and their tables.
+
+Open an object for parameters or columns, qualified relationship groups and expandable captured details. Routine pages link to inert SQL text and byte-exact downloads. Markdown and JSON downloads preserve the complete exported documentation. Table relationships include direct references, reviewed effects, possible paths and mentions; inspect the evidence before treating a relationship as access. All content describes the September 29 capture.
+
+The programming lookup uses the existing export manifest and needs no private database snapshot or database connection. It loads on first use, verifies the complete artifact inventory, and rechecks every requested source file. Changed exports produce an unavailable response; use the [read-only programming verifier](../DB%20Architecture/PROGRAMMING_LAYOUT.md#rebuild-and-verify) before restarting. Article, procedure-guide and TAB search retain their separate behavior.
+
+`/api/programming/search` accepts one optional `q`, `kind` (`all`, `procedure`, `function`, `table`) and positive `page`. Responses include the capture identity, scope, total count, pagination and match reasons. The object/file routes accept only known numeric object IDs and declared export types. The preview remains loopback-only and read-only.
+
 ## Maintaining the library
 
 The [Warehouse Mobile / RF operator guide](../SDD/RF/README.md) supplies detailed, source-bound procedures and a separate live-navigation record. Its in-app guide search is measured separately from the existing 723-case article-retrieval evaluation. Adding guide results does not change that evaluation's questions, expected topic identities or article rankings.

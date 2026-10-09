@@ -8,6 +8,8 @@ The source and schema had already been captured, and a routine-to-table scan alr
 
 Start with a routine's documentation, open its SQL to inspect all its code, and follow its table links to the column and constraint layout. A table's documentation links back to its routines. Each object also has a structured JSON record. Filenames use captured object IDs; each folder index supplies the readable schema-qualified names.
 
+For identifier lookup across all three folders, run `python tools/serve_help.py --port 8765` and open `http://127.0.0.1:8765/programming`. Search by routine/table name, object ID or table-column name; filter by object type and follow the results to captured details and exact downloads. The [programming browser guide](../help_app/README.md#database-programming-reference) explains matching and evidence limits. The browser reads these existing exports without regenerating them.
+
 ## Exact source and evidence
 
 The baseline is snapshot `20260929T214106Z`, captured on **2026-09-29**. Every exported routine SQL file is the exact UTF-8 encoding of the captured module definition, including comments, literals, line endings and dynamic SQL text. Its SHA-256 must match the original recorded definition hash. No `GO` separators, deployment wrappers, explanatory headers or reformatted SQL are added. This establishes equality to the captured driver-returned text, not database-backup or original-author file identity.

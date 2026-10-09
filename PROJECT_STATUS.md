@@ -1,5 +1,11 @@
 # SCALE Intelligence project status
 
+## C35 programming-reference lookup - 2026-10-08
+
+The local help home page now links to **Find programming objects** (`/programming`): **921 procedures, 76 functions, 518 tables and 16,968 table columns**. Identifier/column lookup, object-type filters and complete pagination lead to qualified object details and exact SQL/Markdown/JSON downloads. Original exports and their C34 integrity baseline remain unchanged.
+
+Read [C35 implementation and limits](_project/CONTINUATION_C35.md) and [the checkpoint](_project/continuation35-20261008.json). **121 tests passed**; all 1,515 object pages, 997 SQL views and 6,300 unique links verified. Fresh HTTP evaluation preserves all 723 case records (**676 top-eight, 419 first, 47 misses**). Keyboard/320 px checks passed; no new JAWS, runtime or independent-agent acceptance is claimed. Preserve six deferred mobile contracts, source uncertainty, untracked Video Rec and **0/34 deployment/timing**. Publication parity is verified separately.
+
 ## C34 programming verification - 2026-10-08
 
 The owner approved the delivered work and requested the next task. The programming-export verifier now checks all **4,033 retained artifact files** against the existing manifest; `--verify-only` writes nothing. Changed routine prose/contracts can no longer pass and silently replace the baseline. Exact SQL, layouts, source inputs and historical receipts remain unchanged.
