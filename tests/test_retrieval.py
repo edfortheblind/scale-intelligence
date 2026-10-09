@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'tools'))
-from help_knowledge import Knowledge, tokens
+from help_knowledge import Knowledge, tokens, topic_name_context
 
 
 def topic(identity, title, answer='', boundaries=(), evaluation=None):
@@ -123,6 +123,56 @@ class RetrievalTests(unittest.TestCase):
         independent = data.search('assembly and assembly order completion status')['results']
         self.assertEqual([r['topic_id'] for r in independent[:2]],
                          ['assembly-order', 'assembly'])
+
+    def compound_modifier_fixture(self):
+        return self.knowledge([
+            topic('process-widget', 'Widget', 'General overview.'),
+            topic('package-constraints', 'Package constraints',
+                  'Widget-bearing cartons have identifiers.')])
+
+    def test_attached_modifier_or_identifier_does_not_name_its_fragment(self):
+        data = self.compound_modifier_fixture()
+        for question in ('widget-bearing cartons', 'non-widget-bearing cartons',
+                         'widget_bearing cartons', 'WIDGET_BEARING cartons'):
+            with self.subTest(question=question):
+                ids = [r['topic_id'] for r in data.search(question)['results']]
+                self.assertEqual(ids[0], 'package-constraints')
+                self.assertIn('process-widget', ids)  # Ordinary FTS is preserved.
+
+    def test_separate_topic_mentions_and_spaced_punctuation_keep_preference(self):
+        data = self.compound_modifier_fixture()
+        for question in ('widget and widget-bearing cartons', 'widget-bearing cartons and widget',
+                         'widget - configuration'):
+            with self.subTest(question=question):
+                self.assertEqual(data.search(question)['results'][0]['topic_id'], 'process-widget')
+
+    def test_complete_compound_and_camelcase_topic_names_keep_preference(self):
+        data = self.named_topic_fixture()
+        for question in ('assembly-order completion status', 'assembly_order completion status',
+                         'AssemblyOrder completion status'):
+            with self.subTest(question=question):
+                self.assertEqual(data.search(question)['results'][0]['topic_id'], 'process-assembly-order')
+
+    def test_name_context_preserves_search_token_normalization(self):
+        for question in ('', 'Widget-bearing, X1Y2!', 'non_widget-bearing',
+                         'XMLReaderOrder + café', 'Item - configuration', 'one--two___three'):
+            with self.subTest(question=question):
+                self.assertEqual(topic_name_context(question)[0], ' ' + ' '.join(tokens(question)) + ' ')
+
+    def test_mixed_identifier_compound_keeps_complete_expanded_name_only(self):
+        data = self.knowledge([
+            topic('process-assembly-order-bearing', 'Assembly order bearing', 'General overview.'),
+            topic('process-order-bearing', 'Order bearing', 'General overview.'),
+            topic('process-assemblyorder', 'AssemblyOrder', 'General overview.'),
+            topic('detail', 'Completion status', 'Completion status is a quantity.')])
+        for question in ('AssemblyOrder-bearing completion status',
+                         'assemblyOrder_bearing completion status'):
+            with self.subTest(question=question):
+                ids = [r['topic_id'] for r in data.search(question)['results']]
+                self.assertEqual(ids[:2], ['process-assembly-order-bearing', 'detail'])
+        independent = data.search('AssemblyOrder-bearing and order-bearing completion status')['results']
+        self.assertEqual([r['topic_id'] for r in independent[:2]],
+                         ['process-assembly-order-bearing', 'process-order-bearing'])
 
 
 if __name__ == '__main__':

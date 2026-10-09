@@ -6,13 +6,27 @@ from pathlib import Path
 import sys
 import tempfile
 import threading
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'tools'))
 from programming_library import ProgrammingLibrary, ProgrammingUnavailable, SNAPSHOT_ID, SCOPE
+from help_knowledge import Knowledge
 from render_programming import render_catalog, render_object, render_sql, table_routine_references
 from serve_help import create_server
+
+FIXTURE_SQL = b"-- <script>literal</script>\r\nSELECT N'caf\xc3\xa9';\r\n"
+
+
+def article_knowledge(oid=1):
+    source = {'kind': 'DEPLOYED_SQL_STATIC', 'object_id': oid,
+              'qualified_name': 'dbo.FindItem',
+              'source_definition_sha256': hashlib.sha256(FIXTURE_SQL).hexdigest()}
+    topic = {'topic_id': 'fixture-article', 'title': 'Reviewed explanation',
+             'evidence_refs': ['routine'], 'execution_steps': []}
+    return SimpleNamespace(snapshot=SNAPSHOT_ID, sources={'routine': source},
+                           topics={topic['topic_id']: topic}, _refs=Knowledge._refs)
 
 
 def fixture(root):
@@ -50,13 +64,14 @@ def fixture(root):
         else:
             folder = 'SP layout' if kind == 'P' else 'function layout'
             row = {'snapshot_id': SNAPSHOT_ID, 'identity': identity, 'parameters': [],
+                   'source_definition_sha256': hashlib.sha256(FIXTURE_SQL).hexdigest(),
                    'return_metadata': {'kind': 'CAPTURED'}, 'reviewed_contract': {'purpose': '<script>literal</script>'},
                    'table_references': {
                        'direct_or_reviewed': [{'table_id': 3, 'classification': 'DIRECT_STATIC'}],
                        'possible_indirect': [],
                        'mentions_only': [{'table_id': 4, 'classification': 'MENTION_NOT_ACCESS'}]},
                    'limitations': ['No runtime proof.']}
-            (out / folder / (str(oid)+'.sql')).write_bytes(b"-- <script>literal</script>\r\nSELECT N'caf\xc3\xa9';\r\n")
+            (out / folder / (str(oid)+'.sql')).write_bytes(FIXTURE_SQL)
         (out / folder / (str(oid)+'.json')).write_text(json.dumps(row), encoding='utf-8')
         (out / folder / (str(oid)+'.md')).write_bytes(b'# Original fixture\r\n')
     seal(root)
@@ -167,6 +182,60 @@ class ProgrammingLibraryTests(unittest.TestCase):
         self.assertIn('No reviewed role is recorded', render_object(self.library, '3')[1])
         self.assertIn('&lt;img', render_catalog(self.library, '<img src=x>'))
 
+    def test_routine_articles_include_step_only_references_once(self):
+        knowledge = article_knowledge()
+        topic = knowledge.topics['fixture-article']
+        topic['evidence_refs'] = []
+        topic['execution_steps'] = [{'evidence_refs': ['routine', 'routine']}]
+        knowledge.sources['same-routine'] = dict(knowledge.sources['routine'])
+        topic['execution_steps'].append({'evidence_refs': ['same-routine']})
+        html = render_object(self.library, '1', knowledge)[1]
+        self.assertIn('<h3>Articles citing this routine</h3>', html)
+        self.assertEqual(html.count('href="/topic/fixture-article#answer"'), 1)
+        self.assertIn('may cover a wider process', html)
+        self.assertIn('Their source qualifications still apply.', html)
+
+    def test_function_articles_reuse_sorted_escaped_links(self):
+        knowledge = article_knowledge(2)
+        topic = knowledge.topics['fixture-article']
+        topic.update(topic_id='x/y?雪', title='Z <script> & explanation')
+        knowledge.topics['earlier'] = {**topic, 'topic_id': 'earlier', 'title': 'A explanation'}
+        html = render_object(self.library, '2', knowledge)[1]
+        self.assertIn('href="/topic/x%2Fy%3F%E9%9B%AA#answer"', html)
+        self.assertIn('Z &lt;script&gt; &amp; explanation', html)
+        self.assertNotIn('<script>', html)
+        self.assertLess(html.index('/topic/earlier#answer'), html.index('/topic/x%2F'))
+
+    def test_article_links_require_exact_snapshot_id_source_kind_and_definition_hash(self):
+        for change in ({'kind': 'CATALOG_METADATA'}, {'object_id': 999},
+                       {'object_id': '1'}, {'source_definition_sha256': 'different'},
+                       {'source_definition_sha256': ''}, {'source_definition_sha256': None}):
+            with self.subTest(change=change):
+                knowledge = article_knowledge()
+                knowledge.sources['routine'].update(change)
+                self.assertNotIn('/topic/', render_object(self.library, '1', knowledge)[1])
+        knowledge = article_knowledge()
+        knowledge.snapshot = 'another-capture'
+        self.assertNotIn('/topic/', render_object(self.library, '1', knowledge)[1])
+
+    def test_missing_definition_hash_cannot_link_even_when_source_hash_is_missing(self):
+        for value in (None, ''):
+            with self.subTest(value=value):
+                knowledge = article_knowledge()
+                knowledge.sources['routine']['source_definition_sha256'] = value
+                record = self.library.record('1')
+                if value is None:
+                    record.pop('source_definition_sha256')
+                else:
+                    record['source_definition_sha256'] = value
+                with patch.object(self.library, 'record', return_value=record):
+                    self.assertNotIn('/topic/', render_object(self.library, '1', knowledge)[1])
+
+    def test_optional_knowledge_and_unmatched_or_table_pages_preserve_previous_html(self):
+        self.assertEqual(render_object(self.library, '1'), render_object(self.library, '1', None))
+        self.assertEqual(render_object(self.library, '1'), render_object(self.library, '1', article_knowledge(2)))
+        self.assertEqual(render_object(self.library, '3'), render_object(self.library, '3', article_knowledge(3)))
+
     def test_preload_drift_fails_without_resealing(self):
         manifest = self.root / 'DB Architecture/evidence/programming-layout-manifest.json'
         before = manifest.read_bytes()
@@ -238,7 +307,8 @@ class ProgrammingHTTPTests(unittest.TestCase):
         cls.root = Path(cls.temp.name)
         fixture(cls.root)
         cls.library = ProgrammingLibrary(cls.root)
-        cls.server = create_server(0, programming=cls.library)
+        cls.knowledge = Knowledge()
+        cls.server = create_server(0, knowledge=cls.knowledge, programming=cls.library)
         cls.thread = threading.Thread(target=cls.server.serve_forever, daemon=True)
         cls.thread.start()
 
@@ -280,6 +350,17 @@ class ProgrammingHTTPTests(unittest.TestCase):
                      '/programming/file/1.json/other', '/programming/file/1.html'):
             self.assertEqual(self.request(path)[0], 404)
         self.assertEqual(self.request('/programming/file/1.sql?path=other')[0], 400)
+
+    def test_http_routine_links_use_loaded_knowledge_and_reach_existing_article(self):
+        source = {**self.knowledge.sources['shipment-detail-sql'], 'object_id': 1,
+                  'source_definition_sha256': hashlib.sha256(FIXTURE_SQL).hexdigest()}
+        with patch.dict(self.knowledge.sources, {'shipment-detail-sql': source}):
+            status, _, body = self.request('/programming/object/1')
+        self.assertEqual(status, 200)
+        self.assertIn(b'href="/topic/shipment-detail#answer"', body)
+        status, _, body = self.request('/topic/shipment-detail')
+        self.assertEqual(status, 200)
+        self.assertIn(b'<article id="answer" aria-labelledby="answer-title" tabindex="-1">', body)
 
     def test_same_origin_and_read_only_boundaries_apply_to_new_routes(self):
         for path in ('/programming', '/programming/file/1.sql', '/api/programming/search'):

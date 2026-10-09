@@ -83,7 +83,8 @@ class HelpHandler(BaseHTTPRequestHandler):
                 if view == 'file':
                     # IDs select only manifest-bound artifacts; URLs never become file paths.
                     return self.respond(200, library.artifact(oid, extension[1:]), 'text/plain; charset=utf-8')
-                title, body = (render_object if view == 'object' else render_sql)(library, oid)
+                title, body = (render_object(library, oid, self.knowledge) if view == 'object'
+                               else render_sql(library, oid))
                 return self.respond(200, render_shell(title + ' | SCALE Knowledge', body), 'text/html; charset=utf-8')
             if path == '/':
                 values = parse_qs(target.query, keep_blank_values=True)

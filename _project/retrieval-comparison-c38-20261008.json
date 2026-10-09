@@ -1,0 +1,730 @@
+{
+  "before": {
+    "expected_topic_first": 419,
+    "expected_topic_in_first_eight": 676,
+    "misses": 47
+  },
+  "after": {
+    "expected_topic_first": 433,
+    "expected_topic_in_first_eight": 677,
+    "misses": 46
+  },
+  "case_count": 723,
+  "frozen_case_fields_equal": true,
+  "query_normalization_equal": true,
+  "recoveries": [
+    "view-shipment-total-precedence:2"
+  ],
+  "new_losses": [],
+  "new_firsts": [
+    "awr-mark-replenishment:1",
+    "awr-wave-metrics:3",
+    "performance-wave-sampling:1",
+    "cycle-count-work-reconciliation:1",
+    "inventory-insight-count-scopes:1",
+    "operations-work-creation:2",
+    "operations-wave-statistics:1",
+    "report-label-1348-current:1",
+    "warehouse-unit-fallback-sequence:1",
+    "warehouse-shipment-batch-claim:1",
+    "work-unit-selection-scope:1",
+    "work-unit-selection-scope:2",
+    "work-created-and-work-written:2",
+    "work-status-dispatch:1"
+  ],
+  "lost_firsts": [],
+  "changed_records": [
+    {
+      "case_id": "locating-rule-lookup:2",
+      "question": "Does DELAYED_LOCATING alone prove pre-locate work?",
+      "before_rank": 3,
+      "after_rank": 3,
+      "before_topics": [
+        "process-locating",
+        "process-work",
+        "locating-rule-lookup",
+        "locating-destination-triage",
+        "missing-configuration",
+        "process-returns",
+        "shipping-container-location-flow",
+        "process-receiving"
+      ],
+      "after_topics": [
+        "process-work",
+        "process-locating",
+        "locating-rule-lookup",
+        "locating-destination-triage",
+        "missing-configuration",
+        "process-returns",
+        "shipping-container-location-flow",
+        "process-receiving"
+      ]
+    },
+    {
+      "case_id": "awr-allocation-conversion:1",
+      "question": "Does unusable item-specific configuration fall back to class?",
+      "before_rank": 7,
+      "after_rank": 6,
+      "before_topics": [
+        "process-item",
+        "fn-status-flow",
+        "fn-item-measurements",
+        "warehouse-unit-fallback-sequence",
+        "fn-uom-precedence",
+        "work-selection",
+        "awr-allocation-conversion",
+        "warehouse-item-company-matching"
+      ],
+      "after_topics": [
+        "fn-status-flow",
+        "fn-item-measurements",
+        "warehouse-unit-fallback-sequence",
+        "fn-uom-precedence",
+        "work-selection",
+        "awr-allocation-conversion",
+        "warehouse-item-company-matching",
+        "process-multi-language-support"
+      ]
+    },
+    {
+      "case_id": "awr-mark-replenishment:1",
+      "question": "Does a work-created Y update insert instructions?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-work",
+        "awr-mark-replenishment",
+        "cycle-count-work-creation",
+        "work-group-assignment",
+        "cycle-count-plan-counters",
+        "work-created-and-work-written",
+        "awr-replenishment-counts",
+        "duplicate-configuration"
+      ],
+      "after_topics": [
+        "awr-mark-replenishment",
+        "cycle-count-work-creation",
+        "work-group-assignment",
+        "cycle-count-plan-counters",
+        "work-created-and-work-written",
+        "awr-replenishment-counts",
+        "duplicate-configuration",
+        "evidence-permissions"
+      ]
+    },
+    {
+      "case_id": "awr-wave-metrics:1",
+      "question": "Does allocated quantity recalculate LOCATION_INVENTORY?",
+      "before_rank": 4,
+      "after_rank": 3,
+      "before_topics": [
+        "process-location",
+        "inventory-quantity-buckets",
+        "performance-inventory-diagnostics",
+        "awr-wave-metrics",
+        "lot-change-presentation",
+        "awr-cancel-loads",
+        "awr-allocation-split",
+        "awr-allocation-conversion"
+      ],
+      "after_topics": [
+        "inventory-quantity-buckets",
+        "performance-inventory-diagnostics",
+        "awr-wave-metrics",
+        "lot-change-presentation",
+        "awr-cancel-loads",
+        "awr-allocation-split",
+        "awr-allocation-conversion",
+        "process-allocation"
+      ]
+    },
+    {
+      "case_id": "awr-wave-metrics:3",
+      "question": "Are work-unit pane counts DISTINCT?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-work",
+        "awr-wave-metrics",
+        "activity-session-time",
+        "work-monitor-indicators",
+        "work-monitor",
+        "operations-receipt-panels",
+        "operations-other-panels",
+        "operations-container-pane"
+      ],
+      "after_topics": [
+        "awr-wave-metrics",
+        "activity-session-time",
+        "work-monitor-indicators",
+        "work-monitor",
+        "operations-receipt-panels",
+        "operations-other-panels",
+        "operations-container-pane",
+        "operations-shipment-pane"
+      ]
+    },
+    {
+      "case_id": "view-shipment-total-precedence:2",
+      "question": "Are root containers restricted to item-bearing identified cartons?",
+      "before_rank": null,
+      "after_rank": 8,
+      "before_topics": [
+        "process-item",
+        "operations-packsize-export",
+        "shipping-container-location-flow",
+        "shipping-container-tree",
+        "warehouse-container-tree-scope",
+        "shipping-container-numbering",
+        "report-label-packing-scope",
+        "inventory-location-create-defaults"
+      ],
+      "after_topics": [
+        "operations-packsize-export",
+        "shipping-container-location-flow",
+        "shipping-container-tree",
+        "warehouse-container-tree-scope",
+        "shipping-container-numbering",
+        "report-label-packing-scope",
+        "inventory-location-create-defaults",
+        "view-shipment-total-precedence"
+      ]
+    },
+    {
+      "case_id": "view-warehouse-text-joins:2",
+      "question": "Does shipment transit work use the first branch trailing-status threshold?",
+      "before_rank": 3,
+      "after_rank": 2,
+      "before_topics": [
+        "process-status",
+        "process-work",
+        "view-warehouse-text-joins",
+        "warehouse-shipment-batch-claim",
+        "warehouse-shipment-upload-context",
+        "performance-pm-membership",
+        "operations-shipment-monitors",
+        "fn-status-slots"
+      ],
+      "after_topics": [
+        "process-work",
+        "view-warehouse-text-joins",
+        "warehouse-shipment-batch-claim",
+        "warehouse-shipment-upload-context",
+        "performance-pm-membership",
+        "operations-shipment-monitors",
+        "fn-status-slots",
+        "performance-inventory-diagnostics"
+      ]
+    },
+    {
+      "case_id": "labor-monitor-window:1",
+      "question": "Does a NULL work-group monitor filter mean every group?",
+      "before_rank": 5,
+      "after_rank": 4,
+      "before_topics": [
+        "process-work",
+        "work-monitor-indicators",
+        "work-monitor",
+        "work-monitor-drilldown",
+        "labor-monitor-window",
+        "operations-receipt-monitors",
+        "performance-pm-membership",
+        "operations-shipment-monitors"
+      ],
+      "after_topics": [
+        "work-monitor-indicators",
+        "work-monitor",
+        "work-monitor-drilldown",
+        "labor-monitor-window",
+        "operations-receipt-monitors",
+        "performance-pm-membership",
+        "operations-shipment-monitors",
+        "inventory-monitor-scope"
+      ]
+    },
+    {
+      "case_id": "performance-wave-sampling:1",
+      "question": "Are wave-activity totals counts of new waves every30 seconds?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-wave",
+        "performance-wave-sampling",
+        "awr-wave-dialog-selection",
+        "awr-order-open-quantity",
+        "performance-activity-buckets",
+        "awr-wave-statistics-gate",
+        "performance-activity-six-results",
+        "activity-session-time"
+      ],
+      "after_topics": [
+        "performance-wave-sampling",
+        "awr-wave-dialog-selection",
+        "awr-order-open-quantity",
+        "performance-activity-buckets",
+        "awr-wave-statistics-gate",
+        "performance-activity-six-results",
+        "activity-session-time",
+        "awr-cancel-replenishment"
+      ]
+    },
+    {
+      "case_id": "cycle-count-work-reconciliation:1",
+      "question": "Does empty-location count cleanup delete the count request itself?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-location",
+        "cycle-count-work-reconciliation",
+        "awr-zero-inventory-cleanup",
+        "interface-cleanup-variants",
+        "cycle-count-request-not-created",
+        "inventory-lot-lifecycle",
+        "shipping-deallocation-history",
+        "inventory-activity-count"
+      ],
+      "after_topics": [
+        "cycle-count-work-reconciliation",
+        "awr-zero-inventory-cleanup",
+        "interface-cleanup-variants",
+        "cycle-count-request-not-created",
+        "inventory-lot-lifecycle",
+        "shipping-deallocation-history",
+        "inventory-activity-count",
+        "inventory-empty-source"
+      ]
+    },
+    {
+      "case_id": "inventory-insight-count-scopes:1",
+      "question": "Does inventory identity determine every related-work count in the pane?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-work",
+        "inventory-insight-count-scopes",
+        "cycle-count-request-not-created",
+        "awr-replenishment-counts",
+        "work-status-dispatch",
+        "cycle-count-work-reconciliation",
+        "performance-inventory-status",
+        "inventory-diagnostic-counts"
+      ],
+      "after_topics": [
+        "inventory-insight-count-scopes",
+        "cycle-count-request-not-created",
+        "awr-replenishment-counts",
+        "work-status-dispatch",
+        "cycle-count-work-reconciliation",
+        "performance-inventory-status",
+        "inventory-diagnostic-counts",
+        "operations-work-order-pane"
+      ]
+    },
+    {
+      "case_id": "inventory-monitor-scope:2",
+      "question": "Does a NULL locating-zone filter select every zone?",
+      "before_rank": 3,
+      "after_rank": 2,
+      "before_topics": [
+        "process-locating",
+        "presentation-selection-boundaries",
+        "inventory-monitor-scope",
+        "missing-configuration",
+        "fn-zone-authorization",
+        "analytics-window-boundaries",
+        "view-dock-display-states",
+        "cycle-count-request-not-created"
+      ],
+      "after_topics": [
+        "presentation-selection-boundaries",
+        "inventory-monitor-scope",
+        "missing-configuration",
+        "fn-zone-authorization",
+        "analytics-window-boundaries",
+        "view-dock-display-states",
+        "cycle-count-request-not-created",
+        "shipping-container-location-flow"
+      ]
+    },
+    {
+      "case_id": "operations-work-creation:2",
+      "question": "Can the outgoing-location callback clear an existing destination?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-location",
+        "operations-work-creation",
+        "locating-destination-triage",
+        "view-dif-message-grain",
+        "inventory-destination-units",
+        "inventory-location-create-defaults",
+        "operations-dif-queues",
+        "awr-allocation-split"
+      ],
+      "after_topics": [
+        "operations-work-creation",
+        "locating-destination-triage",
+        "view-dif-message-grain",
+        "inventory-destination-units",
+        "inventory-location-create-defaults",
+        "operations-dif-queues",
+        "awr-allocation-split",
+        "receiving-overage-configuration"
+      ]
+    },
+    {
+      "case_id": "operations-lane-priority:2",
+      "question": "Can NULL work-unit data suppress the EX08 pallet cleanup?",
+      "before_rank": 3,
+      "after_rank": 2,
+      "before_topics": [
+        "process-work",
+        "operations-work-creation",
+        "operations-lane-priority",
+        "operations-dif-queues",
+        "operations-packsize-export",
+        "shipping-label-image-contract",
+        "warehouse-unit-fallback-sequence",
+        "operations-wave-statistics"
+      ],
+      "after_topics": [
+        "operations-work-creation",
+        "operations-lane-priority",
+        "operations-dif-queues",
+        "operations-packsize-export",
+        "shipping-label-image-contract",
+        "warehouse-unit-fallback-sequence",
+        "operations-wave-statistics",
+        "performance-capture-history"
+      ]
+    },
+    {
+      "case_id": "operations-wave-statistics:1",
+      "question": "Is rejected-shipment statistic a direct rejected-status count?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-status",
+        "operations-wave-statistics",
+        "awr-wave-metrics",
+        "awr-wave-statistics-gate",
+        "shipping-container-location-flow",
+        "operations-rejected-detail",
+        "process-allocation",
+        "work-cancellation-paths"
+      ],
+      "after_topics": [
+        "operations-wave-statistics",
+        "awr-wave-metrics",
+        "awr-wave-statistics-gate",
+        "shipping-container-location-flow",
+        "operations-rejected-detail",
+        "process-allocation",
+        "work-cancellation-paths",
+        "awr-wave-membership"
+      ]
+    },
+    {
+      "case_id": "report-label-replenishment:2",
+      "question": "Can an item-description mismatch remove a replenishment work row?",
+      "before_rank": 4,
+      "after_rank": 3,
+      "before_topics": [
+        "process-replenishment",
+        "process-work",
+        "process-item",
+        "report-label-replenishment",
+        "awr-capacity-precedence",
+        "awr-replenishment-counts",
+        "work-cancellation-paths",
+        "awr-wave-membership"
+      ],
+      "after_topics": [
+        "process-replenishment",
+        "process-work",
+        "report-label-replenishment",
+        "awr-capacity-precedence",
+        "awr-replenishment-counts",
+        "work-cancellation-paths",
+        "awr-wave-membership",
+        "shipping-group-and-transfer"
+      ]
+    },
+    {
+      "case_id": "report-label-1348-current:1",
+      "question": "Does unsuffixed RPT_1348 look up its extra reference field in ITEM_CROSS_REFERENCE?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-item",
+        "report-label-1348-current",
+        "report-label-1348-variants",
+        "warehouse-item-company-matching",
+        "warehouse-master-insert-validation",
+        "configuration-seed-preservation",
+        "inventory-serial-linkage",
+        "report-label-gs1-data"
+      ],
+      "after_topics": [
+        "report-label-1348-current",
+        "report-label-1348-variants",
+        "warehouse-item-company-matching",
+        "warehouse-master-insert-validation",
+        "configuration-seed-preservation",
+        "inventory-serial-linkage",
+        "report-label-gs1-data",
+        "dynamic-monitoring-identifiers"
+      ]
+    },
+    {
+      "case_id": "warehouse-unit-fallback-sequence:1",
+      "question": "Is item-unit fallback applied separately to each missing unit?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-item",
+        "warehouse-unit-fallback-sequence",
+        "view-catch-weight-and-history",
+        "fn-uom-precedence",
+        "packing-presentation-configuration",
+        "awr-allocation-conversion",
+        "fn-security-precedence",
+        "awr-capacity-precedence"
+      ],
+      "after_topics": [
+        "warehouse-unit-fallback-sequence",
+        "view-catch-weight-and-history",
+        "fn-uom-precedence",
+        "packing-presentation-configuration",
+        "awr-allocation-conversion",
+        "fn-security-precedence",
+        "awr-capacity-precedence",
+        "view-vas-and-qc-displays"
+      ]
+    },
+    {
+      "case_id": "warehouse-shipment-batch-claim:1",
+      "question": "Can the wave-based shipment RU routine overwrite an existing batch?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-wave",
+        "warehouse-shipment-batch-claim",
+        "warehouse-receipt-batch-marking",
+        "warehouse-read-write-behavior",
+        "dynamic-configured-filters",
+        "warehouse-container-tree-scope",
+        "awr-wave-membership",
+        "warehouse-history-catch-weight"
+      ],
+      "after_topics": [
+        "warehouse-shipment-batch-claim",
+        "warehouse-receipt-batch-marking",
+        "warehouse-read-write-behavior",
+        "dynamic-configured-filters",
+        "warehouse-container-tree-scope",
+        "awr-wave-membership",
+        "warehouse-history-catch-weight",
+        "interface-upload-batch-contract"
+      ]
+    },
+    {
+      "case_id": "inventory-screen-aggregate-defaults:1",
+      "question": "Does a license plate with several same-item inventory rows always aggregate all of them?",
+      "before_rank": 3,
+      "after_rank": 2,
+      "before_topics": [
+        "process-item",
+        "replacement-license-plate",
+        "inventory-screen-aggregate-defaults",
+        "view-work-order-aggregation",
+        "operations-putaway-group",
+        "lot-and-tracking-prompts",
+        "admin-main-ui-mapping",
+        "process-inventory-management"
+      ],
+      "after_topics": [
+        "replacement-license-plate",
+        "inventory-screen-aggregate-defaults",
+        "view-work-order-aggregation",
+        "operations-putaway-group",
+        "lot-and-tracking-prompts",
+        "admin-main-ui-mapping",
+        "process-inventory-management",
+        "warehouse-shipment-upload-context"
+      ]
+    },
+    {
+      "case_id": "work-unit-selection-scope:1",
+      "question": "Does the exactly-one work-unit path apply the profile work-type filter?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-work",
+        "work-unit-selection-scope",
+        "work-profile-configuration",
+        "duplicate-configuration",
+        "operations-deactivate-work",
+        "packing-label-printing",
+        "inventory-diagnostic-counts",
+        "work-configurator-controls"
+      ],
+      "after_topics": [
+        "work-unit-selection-scope",
+        "work-profile-configuration",
+        "duplicate-configuration",
+        "operations-deactivate-work",
+        "packing-label-printing",
+        "process-work",
+        "inventory-diagnostic-counts",
+        "work-configurator-controls"
+      ]
+    },
+    {
+      "case_id": "work-unit-selection-scope:2",
+      "question": "Are LIKE metacharacters escaped in the entered work-unit prefix?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-work",
+        "work-unit-selection-scope",
+        "fn-suggestions",
+        "interface-configuration-selection",
+        "operations-work-creation",
+        "process-work-order",
+        "operations-deactivate-work",
+        "work-monitor"
+      ],
+      "after_topics": [
+        "work-unit-selection-scope",
+        "fn-suggestions",
+        "interface-configuration-selection",
+        "operations-work-creation",
+        "process-work-order",
+        "operations-deactivate-work",
+        "work-monitor",
+        "work-completion-checks"
+      ]
+    },
+    {
+      "case_id": "work-created-and-work-written:2",
+      "question": "Does WRK_UpdateWorkInstruction use caller InstructionType to choose rows?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-work",
+        "work-created-and-work-written",
+        "work-group-assignment",
+        "cart-building-and-spots",
+        "duplicate-configuration",
+        "evidence-permissions",
+        "work-selection",
+        "awr-mark-replenishment"
+      ],
+      "after_topics": [
+        "work-created-and-work-written",
+        "work-group-assignment",
+        "cart-building-and-spots",
+        "duplicate-configuration",
+        "evidence-permissions",
+        "work-selection",
+        "awr-mark-replenishment",
+        "work-monitor-indicators"
+      ]
+    },
+    {
+      "case_id": "work-deactivation-scope:1",
+      "question": "Does work-unit deactivation require a closed condition?",
+      "before_rank": 4,
+      "after_rank": 3,
+      "before_topics": [
+        "process-work",
+        "work-inactive-history",
+        "operations-deactivate-work",
+        "work-deactivation-scope",
+        "work-monitor",
+        "work-completion-checks",
+        "work-unit-selection-scope",
+        "work-group-assignment"
+      ],
+      "after_topics": [
+        "work-inactive-history",
+        "operations-deactivate-work",
+        "work-deactivation-scope",
+        "work-monitor",
+        "work-completion-checks",
+        "work-unit-selection-scope",
+        "work-group-assignment",
+        "work-monitor-indicators"
+      ]
+    },
+    {
+      "case_id": "work-status-dispatch:1",
+      "question": "Does the captured batch-status procedure contain an executable batch loop?",
+      "before_rank": 2,
+      "after_rank": 1,
+      "before_topics": [
+        "process-status",
+        "work-status-dispatch",
+        "report-label-batch-order-pick",
+        "report-label-header-address",
+        "shipping-group-and-transfer",
+        "warehouse-container-tree-scope",
+        "operations-receipt-status-rollup",
+        "report-label-receipt-status"
+      ],
+      "after_topics": [
+        "work-status-dispatch",
+        "report-label-batch-order-pick",
+        "report-label-header-address",
+        "shipping-group-and-transfer",
+        "warehouse-container-tree-scope",
+        "operations-receipt-status-rollup",
+        "report-label-receipt-status",
+        "report-label-po-receipts"
+      ]
+    }
+  ],
+  "checkpoint": "C38",
+  "recorded_date": "2026-10-08",
+  "timezone": "America/Chicago",
+  "base_commit": "4f31068f71a79536568c5d8027f19e30fb0fc1a8",
+  "status": "PASS",
+  "unchanged_complete_case_records": 698,
+  "baseline_synthetic_regression": {
+    "tests_run": 1,
+    "expected_subtest_failures": 4,
+    "errors": 0
+  },
+  "unchanged_source_hashes": {
+    "DB Architecture/mappings/help-topics.json": "8efe815680dfec8bab3f39ccf85e4c5242e24bca43a521f3a03da3427666174f",
+    "DB Architecture/mappings/help-acceptance.json": "53c1ce14b16f4d75e2b5567a68710485a3dab84522bf7729e9f37eda2d349844",
+    "DB Architecture/mappings/batches/view-read-models.json": "36c6457ed81243cbd0a4a7b120f7190232cb449782fa0fcea7a4e4b05c33958d",
+    "DB Architecture/sql/2032062325.sql": "f7fa46262701aacff5832542d3c3132abdd77e2968c8eceb83a90d01f9c1b2c6"
+  },
+  "limits": [
+    "Authored evaluation, not independent holdout or semantic answer-quality acceptance.",
+    "Only an extra named-topic bonus changes; ordinary FTS still matches compound fragments.",
+    "Attached ambiguous shorthand can lose the bonus; this does not infer general user intent.",
+    "No source text, authored questions, expected IDs, FTS weights or index fields changed."
+  ],
+  "expected_rank_worsened": [],
+  "recovered_case_source": {
+    "case_id": "view-shipment-total-precedence:2",
+    "before_rank_with_limit20": 9,
+    "after_rank_with_limit20": 8,
+    "sql": "DB Architecture/sql/2032062325.sql",
+    "lines": [
+      215,
+      225
+    ],
+    "predicate": "PARENT IS NULL",
+    "retained_contract": "DB Architecture/mappings/batches/view-read-models.json",
+    "source_omission_found": false
+  },
+  "final_http_results_equal_candidate": true,
+  "final_implementation_sha256": "e621aad6e43ce0ac7d24e436d386f091203beb74964e1bfbe7352dbce8103e65",
+  "final_evaluation_sha256": "caa34d27a227fbf67e9994abe5c1a7b678995d6fbbaec715b6e327cb9919369a",
+  "independent_review_correction": "Preserve complete expanded leading CamelCase names inside attached compounds while retaining fragment suppression. Final corpus results unchanged.",
+  "final_retrieval_regression_tests": 18
+}

@@ -7,6 +7,7 @@ from build_table_layouts import type_text
 from build_routine_layouts import collect_refs
 from programming_library import SCOPE
 from render_help_guides import table
+from render_help_page import topic_list
 
 RELATIONSHIP_LABELS = {
     'direct_or_reviewed': 'Direct static references or reviewed effects',
@@ -118,7 +119,27 @@ def render_related_routines(library, record):
     return ''.join(parts)
 
 
-def render_object(library, oid):
+def render_routine_articles(knowledge, record):
+    definition_hash = record.get('source_definition_sha256')
+    if knowledge is None or knowledge.snapshot != record['snapshot_id'] or not definition_hash:
+        return ''
+    topics = []
+    for topic in knowledge.topics.values():
+        for ref in knowledge._refs(topic):
+            source = knowledge.sources[ref]
+            if (source['kind'] == 'DEPLOYED_SQL_STATIC'
+                    and source['object_id'] == record['identity']['object_id']
+                    and source['source_definition_sha256'] == definition_hash):
+                topics.append(topic)
+                break
+    if not topics:
+        return ''
+    return ('<h3>Articles citing this routine</h3>' + paragraph(
+        'These reviewed articles cite this captured routine and may cover a wider process. '
+        'Their source qualifications still apply.') + topic_list(topics))
+
+
+def render_object(library, oid, knowledge=None):
     row, record = library.objects[oid], library.record(oid)
     parts = ['<nav aria-label="Library"><a href="/programming">Find programming objects</a></nav>',
              '<article class="guide" id="programming-object" tabindex="-1"><h2>' + escape(row['qualified_name']) + '</h2>',
@@ -148,6 +169,7 @@ def render_object(library, oid):
                         row_ids=['column-' + str(c['column_id']) for c in columns])]
         parts.append(render_related_routines(library, record))
     else:
+        parts.append(render_routine_articles(knowledge, record))
         parts.append('<h3>Parameters</h3>')
         rows = [['Position', 'Name', 'Declared type', 'Output', 'Read-only']]
         rows += [[str(p['parameter_id']), p['name'], p['declared_type'], str(p['is_output']), str(p['is_readonly'])]

@@ -1,5 +1,13 @@
 # Resume SCALE Intelligence
 
+## C38 retrieval correction and routine article navigation - 2026-10-08
+
+The owner requested resolution of the concern and the next task. Attached compound fragments no longer receive an independent topic-name bonus. Fresh HTTP evaluation now reaches **677/723 top-eight, 433 first and 46 misses**: one recovery, zero new losses, 14 first-place gains and no expected-rank worsening. Questions, expected IDs and source inputs remain unchanged.
+
+The next task is complete: **844 captured routine pages link to 253 existing articles through 926 exact snapshot/ID/hash bindings**. **138 tests passed**; all routine links/destinations, 518 unchanged table pages and 4,033 export files verified. Independent final code review and bounded keyboard/320 px checks passed. Read [C38 changes and limits](CONTINUATION_C38.md) and [the checkpoint](continuation38-20261008.json).
+
+Preserve the 46 retrieval misses, unresolved source questions, six mobile deferrals, untracked Video Rec and **0/34 deployment/timing**. No new runtime, semantic-answer or JAWS acceptance is claimed. Publication parity is verified separately.
+
 ## C37 direct column navigation - 2026-10-08
 
 The owner approved C36. Programming lookup now links matching column names directly to **focusable, highlighted captured rows**. IDs come from the captured metadata; existing object links, API responses, ranking and relationship evidence remain intact. Read [C37 changes and limits](CONTINUATION_C37.md) and [the checkpoint](continuation37-20261008.json).

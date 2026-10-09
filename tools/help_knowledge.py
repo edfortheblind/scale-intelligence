@@ -84,6 +84,23 @@ def tokens(value):
     return result
 
 
+def topic_name_context(question):
+    """Retain attached compound boundaries for the name bonus, not FTS."""
+    parts, compounds = [], []
+    offset = 0
+    for unit in re.findall(r'[^\W_]+(?:[-_]+[^\W_]+)*', question, flags=re.UNICODE):
+        normalized = ' '.join(tokens(unit))
+        if '-' in unit or '_' in unit:
+            leading = tokens(re.split(r'[-_]+', unit)[0])
+            # tokens() retains a joined identifier before its expanded words.
+            # A complete expanded name may omit that leading duplicate alias.
+            expanded_start = offset + (len(leading[0]) + 1 if len(leading) > 1 else 0)
+            compounds.append((offset, offset + len(normalized) + 2, expanded_start))
+        parts.append(normalized)
+        offset += len(normalized) + 1
+    return ' ' + ' '.join(parts) + ' ', compounds
+
+
 class Knowledge:
     def __init__(self, root=ROOT):
         self.root = Path(root).resolve()
@@ -352,7 +369,7 @@ class Knowledge:
         context_nouns = set(('routine routines function functions procedure procedures helper helpers operation operations '
                              'gate gates row rows output outputs result results error errors count counts branch branches').split())
         context_words = operation_words | set('earlier error errors output outputs match count counts branch branches equal equals'.split())
-        query_words = ' '+' '.join(tokens(question))+' '
+        query_words, compound_spans = topic_name_context(question)
         named_subject = any(' '+key.removeprefix('process-').replace('-', ' ')+' ' in query_words
                             for key in self.topics if key.startswith('process-'))
         # Joined numbers such as outputs0 are not a business subject. Preserve
@@ -388,6 +405,12 @@ class Knowledge:
             phrase = ' '+key.removeprefix('process-').replace('-', ' ')+' '
             spans = [(match.start(), match.start()+len(phrase))
                      for match in re.finditer('(?='+re.escape(phrase)+')', query_words)]
+            # A fragment of an attached modifier or identifier does not name
+            # an independent topic. Full compounds and separate mentions do.
+            spans = [(start, end) for start, end in spans if not any(
+                start < right - 1 and end > left + 1
+                and not (start <= expanded_start and end >= right)
+                for left, right, expanded_start in compound_spans)]
             if spans:
                 named[key] = (len(phrase.split()), spans)
         all_spans = [span for _, spans in named.values() for span in spans]
