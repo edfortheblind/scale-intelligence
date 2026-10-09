@@ -75,6 +75,43 @@ def render_references(knowledge, topic):
             parts.append(element('p', 'Reading-copy SHA-256: '+source['reading_hash'], ' class="hash"'))
         parts.append('</details></details>')
     parts.append('</details>')
+    return '<div id="article-sources" tabindex="-1">'+''.join(parts)+'</div>'
+
+
+def render_article_find(knowledge, topic, question):
+    action = '/topic/'+quote(topic['topic_id'], safe='')+'#article-matches'
+    parts = ['<section id="article-matches" tabindex="-1" aria-labelledby="article-find-heading">',
+             '<details class="article-search"'+(' open' if question.strip() else '')+'>',
+             '<summary id="article-find-heading">Find in this article</summary>',
+             element('p', 'Search article explanations and reviewed routine notes in '+topic['title']+
+                     '. This article may cover several routines.', ' id="article-find-help"'),
+             '<form action="'+escape(action, quote=True)+'" method="get">',
+             '<label for="article-find">Words or question</label>',
+             '<div class="search-row"><input id="article-find" name="find" type="search" '
+             'aria-describedby="article-find-help" maxlength="500" value="'+escape(question, quote=True)+'">',
+             '<button type="submit">Find</button></div></form>']
+    if question.strip():
+        result = knowledge.find_in_topic(topic['topic_id'], question)
+        parts.append('<h3>Matching passages in this article</h3>')
+        if result['results']:
+            parts.append(element('p', 'Showing '+str(len(result['results']))+' of '+str(result['total'])+
+                                 ' matching passages.', ' role="status"'))
+            parts.append('<ol class="guide-results">')
+            for match in result['results']:
+                parts += ['<li>', element('p', match['label']), element('p', match['text'])]
+                if match['source_id']:
+                    source = knowledge.source(match['source_id'])
+                    parts += [element('p', 'Source: '+source['kind_label']+' — '+source['label'], ' class="hash"'),
+                              element('p', source['qualification'])]
+                parts.append('</li>')
+            parts.append('</ol>')
+            parts.append('<p><a href="#article-sources">Article sources and qualifications</a>. '
+                         'Article text uses the article’s source references; it has no separate passage citation.</p>')
+        else:
+            parts.append(element('p', 'No matching text in this article. Try different words or search SCALE Knowledge.',
+                                 ' role="status"'))
+        parts.append('<p><a href="/?q='+quote(question, safe='')+'#results-heading">Search SCALE Knowledge for these words</a></p>')
+    parts.append('</details></section>')
     return ''.join(parts)
 
 
@@ -83,8 +120,10 @@ def render_shell(title, content):
     return template.replace('{{TITLE}}', escape(title)).replace('{{CONTENT}}', content).encode('utf-8')
 
 
-def render_page(knowledge, question='', topic_id=None, guides=None):
+def render_page(knowledge, question='', topic_id=None, guides=None, article_find=''):
     if len(question) > 500:
+        raise ValueError('Use a question of 500 characters or fewer.')
+    if not isinstance(article_find, str) or len(article_find) > 500:
         raise ValueError('Use a question of 500 characters or fewer.')
     topic = knowledge.topic(topic_id) if topic_id is not None else None
     parts = []
@@ -136,7 +175,8 @@ def render_page(knowledge, question='', topic_id=None, guides=None):
             parts.append(tab_search(guides, question))
     if topic:
         parts += ['<article id="answer" aria-labelledby="answer-title" tabindex="-1">',
-                  element('h2', topic['title'], ' id="answer-title"'), element('p', topic['what_it_does'], ' class="lead"')]
+                  element('h2', topic['title'], ' id="answer-title"'), element('p', topic['what_it_does'], ' class="lead"'),
+                  render_article_find(knowledge, topic, article_find)]
         if topic['trigger']:
             parts.append(element('p', topic['trigger']))
         parts += [section('How to configure' if topic['article_type'] == 'configuration' else 'How it works',

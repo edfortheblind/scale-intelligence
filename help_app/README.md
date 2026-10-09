@@ -18,6 +18,8 @@ The interface uses native HTML forms, links, headings and disclosure controls. J
 
 When a search result matches a reviewed source detail, expand **Matching detail and source** beneath its general explanation to read that passage, its source name and its limits. The article link opens the full explanation and technical references. A matching passage does not by itself confirm the intended operation or current warehouse behavior.
 
+When reading an article, expand **Find in this article** to look for words or a question within its text and reviewed routine details. The selected article stays in view. Up to eight matching passages appear with their source qualifications; article prose retains its article-level sources. An article can cover several routines, so read the passage labels and limits. These are text matches, not generated answers. **Search SCALE Knowledge** remains available for searching the whole library.
+
 ## Detailed procedure guides
 
 Open **Detailed procedure guides** from the home page or visit `/guides`. The Warehouse Mobile/RF and Cross Application manuals have section navigation and in-app source views. Search on the home page also returns **Procedure guide matches**, linking directly to the matching sections. Existing article results and guide-section results remain separate.
@@ -42,7 +44,9 @@ Source links open escaped, inert extracted text with node locations. Both origin
 
 Choose **Find programming objects** on the home page, or open `/programming`. Search by object name, schema-qualified name, object ID or table-column name. Full identifiers rank before partial name matches. Use the object-type filter and page links to browse all **921 procedures, 76 functions and 518 tables**. The column lookup covers **16,968 captured table columns**; results name the matching columns and their tables.
 
-Open an object for parameters or columns, qualified relationship groups and expandable captured details. Routine pages link to inert SQL text and byte-exact downloads. Markdown and JSON downloads preserve the complete exported documentation. Table relationships include direct references, reviewed effects, possible paths and mentions; inspect the evidence before treating a relationship as access. All content describes the September 29 capture.
+Select a matching column name to jump to its highlighted, focusable row in the table layout. Open an object for parameters or columns, qualified relationship groups and expandable captured details. Table pages group related routines by direct/reviewed references, possible delegation and mentions, with the captured evidence beside each link. Inspect that evidence before treating a relationship as access.
+
+On a routine page, **Articles citing this routine** links to reviewed explanations tied to that captured source. An article may cover a wider process; use **Find in this article** to locate its relevant details. Routine pages also link to inert SQL text and byte-exact downloads. Markdown and JSON downloads preserve the complete exported documentation. All content describes the September 29 capture.
 
 The programming lookup uses the existing export manifest and needs no private database snapshot or database connection. It loads on first use, verifies the complete artifact inventory, and rechecks every requested source file. Changed exports produce an unavailable response; use the [read-only programming verifier](../DB%20Architecture/PROGRAMMING_LAYOUT.md#rebuild-and-verify) before restarting. Article, procedure-guide and TAB search retain their separate behavior.
 
@@ -63,7 +67,7 @@ Write each explanation once. Omit empty or redundant sections. Keep project hist
 ## Verification
 
 ```powershell
-python -m unittest tests.test_help_guides tests.test_help_app tests.test_help_articles tests.test_retrieval
+python -m unittest tests.test_help_guides tests.test_help_app tests.test_help_articles tests.test_retrieval tests.test_article_find
 python tools/build_help_guides.py --check
 python tools/evaluate_help.py --serve
 python tools/verify_db_docs.py

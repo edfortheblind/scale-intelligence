@@ -14,6 +14,7 @@ from reviewed_process_source import load_refinement
 ROOT = Path(__file__).resolve().parents[1]
 GENERAL_SCOPE = ('These are reviewed general explanations. Current warehouse records, individual '
                  'permissions, effective settings and end-to-end process times are not established by this library.')
+SEARCH_STOP_WORDS = frozenset('a an and are as at be by can do does for from how i in is it me my of on or our the their there these this to was we what when which who why will with you your'.split())
 KINDS = {'VENDOR_DOCUMENTATION': 'Vendor documentation', 'DEPLOYED_SQL_STATIC': 'Captured SQL source',
          'CATALOG_METADATA': 'Captured database metadata', 'REVIEWED_SDD_CLAIM': 'Reviewed SCALE functionality reference',
          'REVIEWED_PROCESS_CLAIM': 'Reviewed process documentation',
@@ -325,6 +326,56 @@ class Knowledge:
     def source(self, source_id):
         return self.citations[source_id]
 
+    def find_in_topic(self, topic_id, question):
+        """Find literal reviewed passages inside an explicitly selected article."""
+        if not isinstance(question, str) or len(question) > 500:
+            raise ValueError('Use a question of 500 characters or fewer.')
+        topic = self.topics[topic_id]
+        result = {'topic_id': topic_id, 'question': question, 'state': 'EMPTY_QUERY',
+                  'total': 0, 'results': []}
+        if not question.strip():
+            return result
+        terms = [term for term in list(dict.fromkeys(tokens(question)))[:40]
+                 if term not in SEARCH_STOP_WORDS]
+        result['state'] = 'NO_REVIEWED_MATCH'
+        if not terms:
+            return result
+        passages, seen = [], set()
+
+        def add(text, label, source_id=None):
+            # Preserve distinct source attributions while removing repeated
+            # notes within one source. Never index the aggregate article row.
+            identity = (text, source_id)
+            if text.strip() and identity not in seen:
+                seen.add(identity)
+                passages.append({'text': text, 'label': label, 'source_id': source_id})
+
+        for field in ('plain_answer', 'input_context', 'configuration_dependencies',
+                      'expected_results', 'explanation_paths', 'trigger', 'boundaries'):
+            for passage in text_values(topic[field]):
+                add(passage, 'Article text')
+        for step in topic['execution_steps']:
+            add(step['explanation'], 'Article text')
+        for refinement in topic.get('documentary_refinements', []):
+            add(refinement['statement'], 'Additional process details', refinement['evidence_ref'])
+        for detail in self._details(topic):
+            for section in detail['sections']:
+                for passage in section['items']:
+                    # Common notes are still meaningful inside this article.
+                    add(passage, detail['label']+' — '+section['label'], detail['source_id'])
+        query = ' OR '.join('"'+term+'"' for term in terms)
+        with closing(sqlite3.connect(':memory:')) as db:
+            db.execute('CREATE VIRTUAL TABLE passages USING fts5(text,tokenize="porter unicode61")')
+            db.executemany('INSERT INTO passages VALUES(?)',
+                           [(' '.join(tokens(passage['text'])),) for passage in passages])
+            matches = db.execute('SELECT rowid FROM passages WHERE passages MATCH ? '
+                                 'ORDER BY bm25(passages),rowid', (query,)).fetchall()
+        result['total'] = len(matches)
+        result['results'] = [passages[row_id-1] for (row_id,) in matches[:8]]
+        if matches:
+            result['state'] = 'ARTICLE_MATCHES'
+        return result
+
     def search(self, question, limit=8):
         if not isinstance(question, str) or len(question) > 500:
             raise ValueError('Use a question of 500 characters or fewer.')
@@ -383,8 +434,7 @@ class Knowledge:
                     'results': []}
         # Common words do not distinguish processes. Never index evaluation
         # questions/expectations: held-out retrieval remains an actual check.
-        stop = set('a an and are as at be by can do does for from how i in is it me my of on or our the their there these this to was we what when which who why will with you your'.split())
-        terms = [t for t in terms if t not in stop]
+        terms = [t for t in terms if t not in SEARCH_STOP_WORDS]
         if not terms:
             return {'question': question, 'state': 'NO_REVIEWED_MATCH', 'scope': GENERAL_SCOPE, 'results': []}
         query = ' OR '.join('"'+t+'"' for t in terms)

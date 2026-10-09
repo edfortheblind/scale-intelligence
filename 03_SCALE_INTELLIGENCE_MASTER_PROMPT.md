@@ -1,5 +1,13 @@
 # SCALE Intelligence master continuation prompt
 
+## C39 explicit article context - 2026-10-08
+
+Articles now offer a separate **Find in this article** control. It retains the selected article, returns up to eight source-qualified text matches, and keeps the full explanation and Limits available. Global search remains separate. The practical help instructions also cover column, routine and article navigation. Read [C39 changes and limits](_project/CONTINUATION_C39.md) and [the checkpoint](_project/continuation39-20261008.json).
+
+**149 tests passed**; all 340 article forms, 1,300 scoped passage memberships, 10,262 unchanged global index rows and 340 unchanged article API records verified. Independent code review and keyboard/320 px checks passed. All **723 complete global evaluation records remain unchanged: 677 top-eight, 433 first and 46 misses**. Explicit article context earns no global-recovery or semantic-answer acceptance credit.
+
+No safe new global-ranking correction was established; the isolated underscore-alias probe was rejected. Preserve the unresolved source questions, six mobile deferrals, untracked Video Rec and **0/34 deployment/timing**. Publication parity is verified separately; no new runtime or JAWS acceptance is claimed.
+
 ## C38 retrieval correction and routine article navigation - 2026-10-08
 
 The owner requested resolution of the concern and the next task. Attached compound fragments no longer receive an independent topic-name bonus. Fresh HTTP evaluation now reaches **677/723 top-eight, 433 first and 46 misses**: one recovery, zero new losses, 14 first-place gains and no expected-rank worsening. Questions, expected IDs and source inputs remain unchanged.

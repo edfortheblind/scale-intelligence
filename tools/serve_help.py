@@ -98,7 +98,11 @@ class HelpHandler(BaseHTTPRequestHandler):
                     title, content = renderer(self.guides, path.removeprefix(prefix))
                     return self.respond(200, render_shell(title+' | SCALE Knowledge', content), 'text/html; charset=utf-8')
             if path.startswith('/topic/'):
-                return self.respond(200, render_page(self.knowledge, topic_id=path.removeprefix('/topic/')), 'text/html; charset=utf-8')
+                values = parse_qs(target.query, keep_blank_values=True)
+                if set(values) - {'find'} or any(len(v) != 1 for v in values.values()):
+                    raise ValueError('Provide one find parameter at most.')
+                return self.respond(200, render_page(self.knowledge, topic_id=path.removeprefix('/topic/'),
+                                                    article_find=values.get('find', [''])[0]), 'text/html; charset=utf-8')
             if path in ASSETS:
                 filename, mime = ASSETS[path]
                 return self.respond(200, (ROOT/'help_app'/filename).read_bytes(), mime)
