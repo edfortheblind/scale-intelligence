@@ -6,6 +6,7 @@ from pathlib import Path
 import sys
 import unittest
 from unittest.mock import patch
+from urllib.parse import urlencode
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]/'tools'))
 from help_guides import EVIDENCE, GuideLibrary, MANIFEST, ROOT, TAB_OWNER_SCOPE, TAB_SCOPE, fingerprint
@@ -85,7 +86,9 @@ class TabReconciliationTests(unittest.TestCase):
             self.assertIn(escape(row['state_label']), html)
             self.assertIn(escape(row['scope']), html)
             for claim in row['supporting_claims']:
-                self.assertIn('href="'+claim['href']+'"', html)
+                path, anchor = claim['href'].split('#')
+                href = path+'?'+urlencode({'search': 'receipt confirmation'})+'#'+anchor
+                self.assertIn('href="'+escape(href, quote=True)+'"', html)
 
     def test_owner_proof_is_separate_and_displays_only_the_dated_statement_and_limits(self):
         _, html = render_evidence(self.library, 'tab-po-direction')
@@ -95,7 +98,7 @@ class TabReconciliationTests(unittest.TestCase):
         for technical_field in ['S3-PROD-01', 'synthetic_record_offer', 'Token is not valid', 'form_id', 'S3 stays 4/6']:
             self.assertNotIn(technical_field, html)
         search = tab_search(self.library, 'purchase orders PO')
-        self.assertIn('href="/guide-evidence/tab-po-direction#guide-content"', search)
+        self.assertIn('href="/guide-evidence/tab-po-direction?search=purchase+orders+PO#guide-content"', search)
         self.assertIn(escape(owner['owner_clarification']), search)
         _, guide = render_guide(self.library, 'tab-design')
         landing = guide.split('id="r04" tabindex="-1"', 1)[1].split('<h4', 1)[0]
@@ -136,7 +139,8 @@ class TabReconciliationTests(unittest.TestCase):
                 self.assertIn(escape(claim['statement']), html)
                 self.assertIn(escape(' '.join(claim['conditions_and_limits'])), html)
                 for row in library.tab_reconciliations:
-                    self.assertEqual('href="/guide/tab-design#'+row['anchor']+'"' in html,
+                    href = '/guide/tab-design?'+urlencode({'search': identity})+'#'+row['anchor']
+                    self.assertEqual('href="'+href+'"' in html,
                                      identity in row['claim_ids'])
 
     def test_reconciliation_bounds_and_empty_queries(self):

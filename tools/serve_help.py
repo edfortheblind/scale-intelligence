@@ -12,11 +12,21 @@ from urllib.parse import parse_qs, unquote, urlsplit
 from help_knowledge import Knowledge, ROOT
 from help_guides import GuideLibrary
 from render_help_page import render_page, render_shell
-from render_help_guides import guide_navigation, render_guide, render_source, render_evidence
+from render_help_guides import guide_navigation, guide_search_context, render_guide, render_source, render_evidence
 from programming_library import ProgrammingLibrary, ProgrammingUnavailable
 from render_programming import render_catalog, render_object, render_sql
 
 ASSETS = {'/style.css': ('style.css', 'text/css; charset=utf-8')}
+
+
+def guide_query_context(query):
+    """Guide HTML accepts only one bounded originating search, never a return URL."""
+    if re.search(r'%(?![0-9a-fA-F]{2})', query):
+        raise ValueError('Use valid query encoding.')
+    values = parse_qs(query, keep_blank_values=True, strict_parsing=True, errors='strict')
+    if set(values) - {'search'} or any(len(v) != 1 for v in values.values()):
+        raise ValueError('Provide one search parameter at most.')
+    return guide_search_context(values.get('search', [''])[0])
 
 
 def programming_query_context(query):
@@ -98,10 +108,12 @@ class HelpHandler(BaseHTTPRequestHandler):
                     raise ValueError('Provide one q parameter.')
                 return self.respond(200, render_page(self.knowledge, question=values.get('q', [''])[0], guides=self.guides), 'text/html; charset=utf-8')
             if path == '/guides':
-                return self.respond(200, render_shell('Procedure guides | SCALE Knowledge', guide_navigation(self.guides)), 'text/html; charset=utf-8')
+                context = guide_query_context(target.query)
+                return self.respond(200, render_shell('Procedure guides | SCALE Knowledge', guide_navigation(self.guides, context)), 'text/html; charset=utf-8')
             for prefix, renderer in [('/guide/', render_guide), ('/guide-source/', render_source), ('/guide-evidence/', render_evidence)]:
                 if path.startswith(prefix):
-                    title, content = renderer(self.guides, path.removeprefix(prefix))
+                    context = guide_query_context(target.query)
+                    title, content = renderer(self.guides, path.removeprefix(prefix), context)
                     return self.respond(200, render_shell(title+' | SCALE Knowledge', content), 'text/html; charset=utf-8')
             if path.startswith('/topic/'):
                 values = parse_qs(target.query, keep_blank_values=True)

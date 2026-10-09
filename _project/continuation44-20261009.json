@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C44",
+  "recorded_date": "2026-10-09",
+  "timezone": "America/Chicago",
+  "base_commit": "41589c40c8da3379dac33df06a7f5debac677d77",
+  "owner_instruction": "continue",
+  "outcome": "DONE_WITH_CONCERNS",
+  "bounded_task_status": "COMPLETE",
+  "task": "Retain library search context through procedure and TAB design guides, sources, evidence and listing navigation",
+  "tests": {
+    "command": "python -m unittest tests.test_programming_library tests.test_programming_context tests.test_help_app tests.test_help_articles tests.test_help_guides tests.test_tab_help tests.test_tab_reconciliation tests.test_retrieval tests.test_article_find tests.test_article_sources tests.test_article_search_context tests.test_guide_search_context",
+    "passed": 180,
+    "failed": 0,
+    "skipped": 0,
+    "elapsed_seconds": 78.832,
+    "new_tests": 5,
+    "updated_tab_link_expectations": 3,
+    "baseline_regression": "SRC400 result omitted search context; regression failed before implementation",
+    "intermediate_failures": "Two distinct fixture omissions corrected: inventory lacks evidence links; catalog lacks source aria labels. Final test uses each actual fixture. No production fix required.",
+    "focused_corrected_rerun": {
+      "passed": 5,
+      "elapsed_seconds": 2.821
+    }
+  },
+  "article_evaluation": {
+    "command": "python tools/evaluate_help.py --serve",
+    "case_count": 723,
+    "question_only_retrieval": {
+      "expected_topic_first": 433,
+      "expected_topic_in_first_eight": 677,
+      "misses": 46
+    },
+    "selected_topic_contract": {
+      "passed": 723,
+      "failed": 0
+    },
+    "unchanged_complete_case_records": 723,
+    "recoveries": 0,
+    "new_losses": 0,
+    "ranking_changes": 0,
+    "changed_evaluation_fields": [
+      "implementation_sha256"
+    ],
+    "implementation_sha256": "6278a1f2fee3e3af475eb0d9053f5068af354672dfbd234d73e913e3c51778dd"
+  },
+  "corpus_verification": {
+    "receipt": "_project/guide-search-context-verification-c44-20261009.json",
+    "counts": {
+      "no_context_views_byte_equal": 106,
+      "no_context_link_occurrences": 1922,
+      "context_views_content_equal": 106,
+      "exact_return_links": 106,
+      "preserved_id_occurrences": 15571,
+      "blank_context_views_byte_equal": 212,
+      "resolved_fragment_occurrences": 3864,
+      "resolved_local_link_occurrences": 3976,
+      "context_retaining_local_link_occurrences": 3447,
+      "same_page_links_inheriting_context": 413,
+      "guide_probe_cases": 24,
+      "search_section_link_occurrences": 1948,
+      "search_payloads_unchanged_across_render": 117,
+      "claim_id_cases": 69,
+      "reconciliation_id_cases": 12,
+      "c31_probe_cases": 12
+    },
+    "view_composition": {
+      "guides": 8,
+      "sources": 89,
+      "evidence": 8,
+      "listing": 1
+    },
+    "tab_case_composition": {
+      "claim_ids": 69,
+      "reconciliation_ids": 12,
+      "c31_probes": 12,
+      "historical_93_case_identity_claimed": false
+    },
+    "method": "Compare original rendering to captured baseline body after reversing the single Windows text-output newline translation; context normalization removes only return navigation and search href values. Compare search rendering to immutable C43 module loaded in memory.",
+    "initial_verifier_correction": "Universal-newline input erased embedded source CRLF; read bytes and reverse only the one baseline serialization step instead. One corrected rerun passed.",
+    "global_retrieval_recovery_credit": 0
+  },
+  "review": {
+    "kind": "SEPARATE_FRESH_CONTEXT_INDEPENDENT_PATCH_REVIEW",
+    "result": "PASS",
+    "unresolved_findings": 0,
+    "production_findings": 0,
+    "resolved_test_fixture_findings": 1,
+    "reviewer_authored_or_designed_patch": false,
+    "initial_focused_run": {
+      "run": 63,
+      "passed": 62,
+      "errors": 1
+    },
+    "corrected_focused_rerun": {
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0
+    },
+    "invalid_context_rejections": 52,
+    "exact_inert_context_views": 32,
+    "onward_context_link_occurrences": 7696,
+    "external_or_non_guide_urls_preserved": 8,
+    "minimality": "no_finding",
+    "reviewed_hashes": {
+      "tools/render_help_guides.py": "d16a9f754b4e4c7493f58530b1965989fd7d62f98ea80f8ec86cf0878abba746",
+      "tools/serve_help.py": "d1fcf89cb3afe9236188413db7d7de39954c1a5141844e46fabc64b4686cb24d",
+      "tests/test_guide_search_context.py": "214d08252a2708561c50f2941426eb6005043871dc214a8bb3c85ea1bbe56f17",
+      "tests/test_tab_reconciliation.py": "5750a99e7ef000149cb94d5712c941c2e7d95e5dea69cb7d3612648b37fc6804",
+      "help_app/README.md": "0de088c163784c2558250c8233ab3ad4751e8141e6cf63c9e5e6a20e84186821"
+    },
+    "corpus_full_evaluation_browser_or_final_handoff_repeated_by_reviewer": false
+  },
+  "browser": {
+    "surface": "Local Brave browser",
+    "port": 52805,
+    "pid": 38248,
+    "keyboard_flows": [
+      {
+        "query": "SRC400",
+        "flow": "result -> guide section -> captured screenflow source -> return",
+        "guide_focus": "license-plate-src-400-documented-identity-incomplete-sequence",
+        "source_focus": "guide-content",
+        "return_focus": "results-heading",
+        "query_restored": true
+      },
+      {
+        "query": "purchase orders",
+        "flow": "new search -> dated owner evidence -> return",
+        "evidence_focus": "guide-content",
+        "return_focus": "results-heading",
+        "query_restored": true
+      }
+    ],
+    "narrow_viewport": [
+      320,
+      720
+    ],
+    "narrow_views": [
+      "dated owner evidence",
+      "returned search results"
+    ],
+    "client_and_scroll_width": 305,
+    "viewport_reset": true,
+    "tab_closed": true,
+    "listener_verified_absent": true,
+    "jaws_or_intended_user_acceptance": false
+  },
+  "minimum_sufficient_change": {
+    "root_cause": "Existing guide links omitted originating library query",
+    "reuse": "Existing renderers and routes, standard-library URL serialization, existing focus targets",
+    "production_line_delta": {
+      "inserted": 84,
+      "removed": 40
+    },
+    "renderer_helpers": 3,
+    "handler_helpers": 1,
+    "html_contract_addition": "Optional search on four existing guide HTML route families",
+    "new_routes_dependencies_state_configuration_or_runtime": false,
+    "lookup_source_api_and_ranking_changes": false,
+    "complexity_justification": "Explicit context threading and localized construction/validation at current boundaries; no generic rewrite or persistent state"
+  },
+  "other_checks": {
+    "guide_manifest_command": "python tools/build_help_guides.py --check",
+    "guides": 8,
+    "cited_sources": 87,
+    "evidence_files": 8,
+    "whitespace_passed": true,
+    "preserved_baseline_paths": [
+      "tools/help_guides.py",
+      "tools/help_knowledge.py",
+      "tools/render_help_page.py",
+      "tools/programming_library.py",
+      "tools/render_programming.py",
+      "help_app/vendor-source-manifest.json",
+      "help_app/guide-manifest.json",
+      "DB Architecture/evidence/programming-layout-manifest.json",
+      "_project/CONTINUATION_C43.md",
+      "_project/continuation43-20261009.json"
+    ],
+    "export_rebuild_or_reseal": false
+  },
+  "preserved": [
+    "Article evaluation questions and expected IDs",
+    "Source/guide text, qualifications and citation identities",
+    "Article, guide, TAB and programming ranking and API payloads",
+    "Programming exports and exact downloads",
+    "Historical receipts",
+    "Six deferred mobile contracts",
+    "Deployment/correlated timing frozen at 0/34",
+    "Archive payload and unrelated Video Rec excluded"
+  ],
+  "limits": [
+    "46 article retrieval misses remain",
+    "Navigation is not semantic answer acceptance",
+    "Bounded 117-case guide/TAB set does not represent every query",
+    "Link counts are occurrences, not distinct sources",
+    "No database connection, warehouse runtime, deployment or intended-user acceptance",
+    "Git parity does not establish OneDrive upload"
+  ],
+  "publication": "Normal publication to existing authorized target; final commit, refs and changed-file parity verified separately",
+  "output_manifest": [
+    {
+      "path": "tools/render_help_guides.py",
+      "bytes": 21392,
+      "sha256": "d16a9f754b4e4c7493f58530b1965989fd7d62f98ea80f8ec86cf0878abba746"
+    },
+    {
+      "path": "tools/serve_help.py",
+      "bytes": 11722,
+      "sha256": "d1fcf89cb3afe9236188413db7d7de39954c1a5141844e46fabc64b4686cb24d"
+    },
+    {
+      "path": "tests/test_guide_search_context.py",
+      "bytes": 6791,
+      "sha256": "214d08252a2708561c50f2941426eb6005043871dc214a8bb3c85ea1bbe56f17"
+    },
+    {
+      "path": "tests/test_tab_reconciliation.py",
+      "bytes": 13555,
+      "sha256": "5750a99e7ef000149cb94d5712c941c2e7d95e5dea69cb7d3612648b37fc6804"
+    },
+    {
+      "path": "help_app/README.md",
+      "bytes": 12428,
+      "sha256": "0de088c163784c2558250c8233ab3ad4751e8141e6cf63c9e5e6a20e84186821"
+    },
+    {
+      "path": "help_app/evaluation.json",
+      "bytes": 632526,
+      "sha256": "052db17b7fb2ebddede3692d57db09e149fadc0d3a10c45d96ebfe0bbd34ec7f"
+    },
+    {
+      "path": "_project/guide-search-context-verification-c44-20261009.json",
+      "bytes": 24807,
+      "sha256": "554d6a9eb88a29849ad1a37f924ea32e55f0ffc474a535ba36f9badf81d4ef80"
+    },
+    {
+      "path": "_project/CONTINUATION_C44.md",
+      "bytes": 6981,
+      "sha256": "6bda3a146d45aa21844afe6bb1f9bae84051de9336effcef0cd56c99d9c4a4b9"
+    },
+    {
+      "path": "03_SCALE_INTELLIGENCE_MASTER_PROMPT.md",
+      "bytes": 61048,
+      "sha256": "d6c5eaafdca2e9d1014232c5c867a7d0d77f9d4cd9d2bfba59fe0984a3ed7fa5"
+    },
+    {
+      "path": "04_SCALE_ASTRA_RESTART_PROMPT.md",
+      "bytes": 39264,
+      "sha256": "73ed8335433e094bcb7db2433de07ccd842ca032aaca4037dbcf05662084758d"
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "bytes": 53013,
+      "sha256": "6baad353244bee877ef70f7454877837d52fefb11128b164183969e1fa2e0db4"
+    },
+    {
+      "path": "_project/RESUME.md",
+      "bytes": 39664,
+      "sha256": "58510f580827f9802e153c387802139c67ea9bf26589bf160a23dbe88a2d1d6f"
+    }
+  ],
+  "manifest_scope": "Changed deliverables excluding this self-referential checkpoint; final Git commit binds the receipt."
+}

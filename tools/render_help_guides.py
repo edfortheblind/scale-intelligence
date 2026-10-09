@@ -2,12 +2,37 @@
 from html import escape
 import json
 import re
+from urllib.parse import urlencode, urlsplit, urlunsplit
 
 from help_guides import TAB_HELP_SCOPE, TAB_SCOPE, plain
 
 
 INLINE = re.compile(r'(`[^`\n]+`|\*\*[^*\n]+\*\*|(?<!\*)\*[^*\n]+\*(?!\*)|\[[^\]\n]+\]\([^)\n]+\)|\[[^\]\n]+\]\[[^\]\n]+\]|\[[A-Za-z][A-Za-z0-9_-]*\])')
 INACTIVE_SOURCE_TAGS = {'script', 'style', 'iframe', 'object', 'form', 'input', 'button'}
+
+
+def guide_search_context(value):
+    if not isinstance(value, str) or len(value) > 500:
+        raise ValueError('Use a question of 500 characters or fewer.')
+    return value if value.strip() else ''
+
+
+def guide_context_url(href, search_context=''):
+    """Carry the original search only through local guide routes."""
+    if not search_context or not href:
+        return href
+    target = urlsplit(href)
+    if target.scheme or target.netloc or not (target.path == '/guides' or
+            target.path.startswith(('/guide/', '/guide-source/', '/guide-evidence/'))):
+        return href
+    return urlunsplit(('', '', target.path, urlencode({'search': search_context}), target.fragment))
+
+
+def guide_return_link(search_context):
+    if not search_context:
+        return ''
+    href = '/?' + urlencode({'q': search_context}) + '#results-heading'
+    return '<nav aria-label="Search results"><a href="'+escape(href, quote=True)+'">Return to search results</a></nav>'
 
 
 def source_title(article):
@@ -33,7 +58,7 @@ def source_title(article):
     return first_h1(article['content_tree']) or article['title']
 
 
-def inline(text, guide, library):
+def inline(text, guide, library, search_context=''):
     parts, previous = [], 0
     for token in INLINE.finditer(text):
         parts.append(escape(text[previous:token.start()]))
@@ -43,7 +68,7 @@ def inline(text, guide, library):
         elif value.startswith('**'):
             parts.append('<strong>'+escape(value[2:-2])+'</strong>')
         elif value.startswith('*'):
-            parts.append('<em>'+inline(value[1:-1], guide, library)+'</em>')
+            parts.append('<em>'+inline(value[1:-1], guide, library, search_context)+'</em>')
         else:
             match = re.fullmatch(r'\[([^\]]+)\](?:\(([^)]+)\)|\[([^\]]+)\])?', value)
             label, direct, reference = match.groups()
@@ -56,6 +81,7 @@ def inline(text, guide, library):
                 source_key = href.removeprefix('/guide-source/').split('#', 1)[0]
                 title = source_title(library.sources[source_key])
                 accessible_name = ' aria-label="'+escape(label+': '+title+', source', quote=True)+'"'
+            href = guide_context_url(href, search_context)
             parts.append('<a href="'+escape(href, quote=True)+'"'+accessible_name+'>'+rendered+'</a>' if href else rendered)
         previous = token.end()
     parts.append(escape(text[previous:]))
@@ -76,47 +102,49 @@ def table(rows, render, label, *, row_ids=None):
     return ''.join(parts)+'</tbody></table></div>'
 
 
-def guide_navigation(library):
-    return ('<section aria-labelledby="guides-heading"><h2 id="guides-heading">Detailed procedure guides</h2>'
+def guide_navigation(library, search_context=''):
+    search_context = guide_search_context(search_context)
+    return (guide_return_link(search_context)+'<section aria-labelledby="guides-heading"><h2 id="guides-heading">Detailed procedure guides</h2>'
             '<p>Warehouse Mobile, RF and Cross Application steps, conditions and source limits.</p><ul class="topic-list">'+
-            ''.join('<li><a href="/guide/'+row['guide_id']+'#guide-content">'+escape(row['title'])+'</a></li>' for row in library.listing())+
-            '</ul></section>'+tab_navigation())
+            ''.join('<li><a href="'+escape(guide_context_url('/guide/'+row['guide_id']+'#guide-content', search_context), quote=True)+'">'+escape(row['title'])+'</a></li>' for row in library.listing())+
+            '</ul></section>'+tab_navigation(search_context))
 
 
-def tab_navigation():
+def tab_navigation(search_context=''):
     return ('<section aria-labelledby="tab-design-heading"><h2 id="tab-design-heading">TAB design reference</h2>'
-            '<p>'+escape(TAB_HELP_SCOPE)+'</p><p><a href="/guide/tab-design#guide-content">Browse the TAB core design reference</a></p></section>')
+            '<p>'+escape(TAB_HELP_SCOPE)+'</p><p><a href="'+escape(guide_context_url('/guide/tab-design#guide-content', search_context), quote=True)+'">Browse the TAB core design reference</a></p></section>')
 
 
-def owner_clarification(row):
+def owner_clarification(row, search_context=''):
     owner = row.get('owner_evidence')
     if not owner:
         return ''
     return ('<p>Owner clarification ('+escape(owner['date'])+'): “'+escape(owner['statement'])+'”. '
-            '<a href="'+escape(owner['href'], quote=True)+'">Read the dated owner clarification</a></p>'
+            '<a href="'+escape(guide_context_url(owner['href'], search_context), quote=True)+'">Read the dated owner clarification</a></p>'
             '<p>'+escape(owner['interpretation'])+'</p>')
 
 
-def related_tab_answers(library, claim_id):
+def related_tab_answers(library, claim_id, search_context=''):
     rows = [row for row in library.tab_reconciliations if claim_id in row['claim_ids']]
     if not rows:
         return ''
     return ('<p>Related reconciled answers:</p><ul>'+''.join(
-        '<li><a href="/guide/tab-design#'+escape(row['anchor'], quote=True)+'">'+escape(row['section_title'])+
+        '<li><a href="'+escape(guide_context_url('/guide/tab-design#'+row['anchor'], search_context), quote=True)+'">'+escape(row['section_title'])+
         '</a> — '+escape(row['state_label'])+'</li>' for row in rows)+'</ul>')
 
 
-def tab_claim_citations(library, claim):
+def tab_claim_citations(library, claim, search_context=''):
     parts = ['<details class="tab-citations"><summary>All '+str(len(claim['refs']))+' cited source passages</summary><ul>']
     for ref in claim['refs']:
         source = library.sources['tab/'+ref['document_id']]
         href = '/guide-source/tab/'+ref['document_id']+'#'+ref['node_id']
         label = ref['node_id']+': '+source['title']+' — '+ref['location']
-        parts.append('<li><a href="'+escape(href, quote=True)+'">'+escape(label)+'</a></li>')
+        parts.append('<li><a href="'+escape(guide_context_url(href, search_context), quote=True)+'">'+escape(label)+'</a></li>')
     return ''.join(parts)+'</ul></details>'
 
 
 def tab_search(library, question):
+    search_context = guide_search_context(question)
     response = library.search_tab_design(question)
     matches, reconciliations = response['results'], response['reconciliations']
     parts = ['<section aria-labelledby="tab-results-heading"><h2 id="tab-results-heading" tabindex="-1">TAB design matches</h2>',
@@ -124,12 +152,12 @@ def tab_search(library, question):
     if reconciliations:
         parts.append('<h3>Reconciled answers</h3><ul class="guide-results">')
         for row in reconciliations:
-            parts.append('<li><a href="/guide/tab-design#'+escape(row['anchor'], quote=True)+'">'+escape(row['section_title'])+'</a>'
+            parts.append('<li><a href="'+escape(guide_context_url('/guide/tab-design#'+row['anchor'], search_context), quote=True)+'">'+escape(row['section_title'])+'</a>'
                          '<p>'+escape(row['resolution'])+'</p><p>State: '+escape(row['state_label'])+'</p>'
                          '<p class="scope">'+escape(row['scope'])+'</p>')
-            parts.append(owner_clarification(row))
+            parts.append(owner_clarification(row, search_context))
             parts.append('<p>Supporting design claims: '+', '.join(
-                '<a href="'+escape(claim['href'], quote=True)+'">'+escape(claim['id']+': '+claim['topic'])+'</a>'
+                '<a href="'+escape(guide_context_url(claim['href'], search_context), quote=True)+'">'+escape(claim['id']+': '+claim['topic'])+'</a>'
                 for claim in row['supporting_claims'])+'</p></li>')
         parts.append('</ul>')
     parts.append('<h3>Individual source claims</h3><p>'+escape(TAB_SCOPE)+'</p>')
@@ -138,15 +166,16 @@ def tab_search(library, question):
     else:
         parts.append('<ul class="guide-results">')
         for row in matches:
-            parts.append('<li><a href="/guide/tab-design#'+escape(row['anchor'], quote=True)+'">'+escape(row['section_title'])+'</a>'
+            parts.append('<li><a href="'+escape(guide_context_url('/guide/tab-design#'+row['anchor'], search_context), quote=True)+'">'+escape(row['section_title'])+'</a>'
                          '<p>'+escape(row['statement'])+'</p><p>Qualifications: '+escape(' '.join(row['conditions_and_limits']))+'</p>'+
-                         related_tab_answers(library, row['id'])+'</li>')
+                         related_tab_answers(library, row['id'], search_context)+'</li>')
         parts.append('</ul>')
-    parts.append('<p><a href="/guide/tab-design#how-the-two-designs-fit-together">Read the cross-source reconciliation</a></p>')
+    parts.append('<p><a href="'+escape(guide_context_url('/guide/tab-design#how-the-two-designs-fit-together', search_context), quote=True)+'">Read the cross-source reconciliation</a></p>')
     return ''.join(parts)+'</section>'
 
 
 def guide_search(library, question, *, matches=None, nested=False):
+    search_context = guide_search_context(question)
     if matches is None:
         matches = library.search(question)['results']
     heading = 'h3' if nested else 'h2'
@@ -158,15 +187,16 @@ def guide_search(library, question, *, matches=None, nested=False):
         parts.append('<ul class="guide-results">')
         for row in matches:
             href = '/guide/'+row['guide_id']+'#'+row['anchor']
-            parts.append('<li><a href="'+escape(href, quote=True)+'">'+escape(row['section_title'])+'</a><p>'+escape(row['text'])+'</p></li>')
+            parts.append('<li><a href="'+escape(guide_context_url(href, search_context), quote=True)+'">'+escape(row['section_title'])+'</a><p>'+escape(row['text'])+'</p></li>')
         parts.append('</ul>')
     return ''.join(parts)+'</section>'
 
 
-def render_guide(library, key):
+def render_guide(library, key, search_context=''):
+    search_context = guide_search_context(search_context)
     guide = library.guides[key]
-    render = lambda value: inline(value, guide, library)
-    parts = ['<nav aria-label="Library"><a href="/">Search SCALE Knowledge</a> · <a href="/guides">All procedure guides</a></nav>',
+    render = lambda value: inline(value, guide, library, search_context)
+    parts = [guide_return_link(search_context)+'<nav aria-label="Library"><a href="/">Search SCALE Knowledge</a> · <a href="'+escape(guide_context_url('/guides', search_context), quote=True)+'">All procedure guides</a></nav>',
              '<article class="guide" id="guide-content" tabindex="-1" aria-labelledby="guide-title">',
              '<h2 id="guide-title"><span id="'+escape(guide['blocks'][0]['anchor'], quote=True)+'" tabindex="-1">'+escape(guide['title'])+'</span></h2>', '<p class="scope">'+escape(guide['scope'])+'</p>',
              '<details class="guide-contents" open><summary>On this page</summary><nav aria-label="Guide sections"><ul>']
@@ -182,7 +212,7 @@ def render_guide(library, key):
         kind = block['kind']
         if kind == 'heading':
             if pending_claim is not None:
-                parts.append(tab_claim_citations(library, pending_claim))
+                parts.append(tab_claim_citations(library, pending_claim, search_context))
             pending_claim = claims.get(block['anchor'])
             if index == 0 and block['level'] == 1:
                 continue
@@ -198,11 +228,11 @@ def render_guide(library, key):
                 parts.append('<p>'+context+': <a href="#'+escape(parent['anchor'], quote=True)+'">'+escape(plain(parent['text']))+'</a></p>')
             if key == 'tab-design' and re.fullmatch(r'(travis|trav3pl)-[a-z]+[0-9]+', block['anchor']):
                 parts.append('<p class="scope">'+escape(TAB_SCOPE)+' <a href="#how-the-two-designs-fit-together">Cross-source reconciliation</a>.</p>')
-                parts.append(related_tab_answers(library, block['anchor'].upper()))
+                parts.append(related_tab_answers(library, block['anchor'].upper(), search_context))
             if block['anchor'] in reconciliations:
                 row = reconciliations[block['anchor']]
                 parts.append('<p>State: '+escape(row['state_label'])+'</p><p class="scope">'+escape(row['scope'])+'</p>')
-                parts.append(owner_clarification(row))
+                parts.append(owner_clarification(row, search_context))
             heading = plain(block['text'])
         elif kind == 'paragraph':
             parts.append('<p>'+render(block['text'])+'</p>')
@@ -213,17 +243,18 @@ def render_guide(library, key):
         elif kind == 'table':
             parts.append(table(block['rows'], render, heading))
     if pending_claim is not None:
-        parts.append(tab_claim_citations(library, pending_claim))
+        parts.append(tab_claim_citations(library, pending_claim, search_context))
     parts += ['<details class="references"><summary>Guide identity and evidence scope</summary>',
               '<p>'+escape(guide['path'])+'</p><p class="hash">Guide SHA-256: '+guide['sha256']+'</p>',
               '<p class="hash">Collection manifest SHA-256: '+library.manifest_sha256+'</p></details></article>']
     return guide['title'], ''.join(parts)
 
 
-def render_source(library, key):
+def render_source(library, key, search_context=''):
+    search_context = guide_search_context(search_context)
     article = library.sources[key]
     if key.startswith('tab/'):
-        return render_tab_source(article)
+        return render_tab_source(article, search_context)
     # Source text remains readable with node anchors and table/list structure.
     # No original URL, image, script, form, style or operational link is activated.
     allowed = {'p', 'div', 'span', 'b', 'strong', 'i', 'em', 'ul', 'ol', 'li', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'pre', 'code', 'blockquote', 'br'}
@@ -266,7 +297,7 @@ def render_source(library, key):
         result = '<'+tag+attrs+'>'+children+('' if tag == 'br' else '</'+tag+'>')
         return '<div class="guide-table" role="region" tabindex="0" aria-label="Source table">'+result+'</div>' if tag == 'table' else result
     title = 'Source: '+source_title(article)
-    body = ('<nav aria-label="Library"><a href="/guides">All procedure guides</a></nav>'
+    body = (guide_return_link(search_context)+'<nav aria-label="Library"><a href="'+escape(guide_context_url('/guides', search_context), quote=True)+'">All procedure guides</a></nav>'
             '<article class="guide" id="guide-content" tabindex="-1"><h2>'+escape(title)+'</h2>'
             '<p class="scope">Retained source text, not the live application. Figures and operational links are inactive in this view. '
             'Article and original-source fingerprints were checked before loading.</p>'+node(article['content_tree'])+
@@ -275,10 +306,10 @@ def render_source(library, key):
     return title, body
 
 
-def render_tab_source(document):
+def render_tab_source(document, search_context=''):
     title = 'Source: '+document['title']
-    parts = ['<nav aria-label="Library"><a href="/">Search SCALE Knowledge</a> · '
-             '<a href="/guide/tab-design#how-the-two-designs-fit-together">TAB design and reconciliation</a></nav>',
+    parts = [guide_return_link(search_context)+'<nav aria-label="Library"><a href="/">Search SCALE Knowledge</a> · '
+             '<a href="'+escape(guide_context_url('/guide/tab-design#how-the-two-designs-fit-together', search_context), quote=True)+'">TAB design and reconciliation</a></nav>',
              '<article class="guide" id="guide-content" tabindex="-1"><h2>'+escape(title)+'</h2>',
              '<p class="scope">'+escape(TAB_SCOPE)+'</p><p>'+escape(document['qualification'])+'</p>',
              '<p>Retained extracted source text with exact node locations. Original and extracted-document fingerprints were checked before loading. '
@@ -291,11 +322,12 @@ def render_tab_source(document):
     return title, ''.join(parts)
 
 
-def render_evidence(library, key):
+def render_evidence(library, key, search_context=''):
+    search_context = guide_search_context(search_context)
     if key == 'tab-po-direction':
         title = 'Dated owner clarification: purchase orders at TAB'
         authority = library.evidence[key]['authority']
-        body = ('<nav aria-label="Library"><a href="/guide/tab-design#r04">Purchase orders at TAB</a></nav>'
+        body = (guide_return_link(search_context)+'<nav aria-label="Library"><a href="'+escape(guide_context_url('/guide/tab-design#r04', search_context), quote=True)+'">Purchase orders at TAB</a></nav>'
                 '<article class="guide" id="guide-content" tabindex="-1"><h2>'+title+'</h2>'
                 '<p>Owner clarification recorded '+escape(authority['clarification_date'])+':</p>'
                 '<blockquote>'+escape(authority['owner_clarification'])+'</blockquote>'
@@ -310,7 +342,7 @@ def render_evidence(library, key):
              'tab-reconciliation': 'TAB claim and reconciliation register',
              'tab-coverage': 'TAB extracted-text review coverage',
              'tab-visual': 'TAB visual review and limitations'}[key]
-    body = ('<nav aria-label="Library"><a href="/guides">All procedure guides</a></nav><article id="guide-content" tabindex="-1">'
+    body = (guide_return_link(search_context)+'<nav aria-label="Library"><a href="'+escape(guide_context_url('/guides', search_context), quote=True)+'">All procedure guides</a></nav><article id="guide-content" tabindex="-1">'
             '<h2>'+title+'</h2><p class="scope">Recorded evidence has its stated date and limits. It is not a live status check.</p><pre>'+
             escape(json.dumps(library.evidence[key], indent=2, ensure_ascii=False))+'</pre></article>')
     return title, body

@@ -1,5 +1,13 @@
 # Resume SCALE Intelligence
 
+## C44 return from guides and cited sources - 2026-10-09
+
+Procedure and TAB design search links now retain the original library query through guides, cited sources, related answers, evidence and the guide listing. **Return to search results** restores that query with result-heading focus. Read [C44 changes and limits](CONTINUATION_C44.md) and [the checkpoint](continuation44-20261009.json).
+
+**180 tests passed**. All 106 ordinary guide/source/evidence/listing views remain byte-identical; 106 context-bearing views preserve content and destinations. Across 117 bounded search cases, 1,948 result links retain context. Independent review and keyboard/320 px checks passed. All **723 article evaluation records remain identical: 677 top-eight, 433 first and 46 misses**.
+
+This is guide navigation, with no retrieval recovery or semantic-answer acceptance credit. Preserve unresolved source questions, six mobile deferrals, untracked Video Rec and **0/34 deployment/timing**. Publication parity is verified separately; no new runtime or JAWS acceptance is claimed.
+
 ## C43 return to the programming lookup - 2026-10-09
 
 Programming object, column, relationship and SQL links now preserve the original lookup text, object type and page. **Return to programming results** restores that lookup with result-heading focus. A new lookup/filter starts at page one. Read [C43 changes and limits](CONTINUATION_C43.md) and [the checkpoint](continuation43-20261009.json).
