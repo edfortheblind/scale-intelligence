@@ -1,5 +1,11 @@
 # SCALE Intelligence project status
 
+## C34 programming verification - 2026-10-08
+
+The owner approved the delivered work and requested the next task. The programming-export verifier now checks all **4,033 retained artifact files** against the existing manifest; `--verify-only` writes nothing. Changed routine prose/contracts can no longer pass and silently replace the baseline. Exact SQL, layouts, source inputs and historical receipts remain unchanged.
+
+Read [the correction and continuation limits](_project/PROGRAMMING_VERIFICATION_C34.md) and [the fresh offline verification](_project/programming-layout-verification-c34-20261008.json). **71 tests passed**, and independent review found no blocking issues. The retained manifest, 997 routines, 518 tables, 16,968 columns and 24,286 links verified. This is integrity verification of the September 29 capture; C33 retrieval evidence remains historical and unchanged. Preserve six mobile deferrals, source uncertainties, untracked Video Rec and **0/34 deployment/timing**. Publication parity is recorded separately.
+
 ## Database programming reference - 2026-10-08
 
 The owner requested exact stored procedure/function code and integrated layouts for tables referenced or mentioned by those routines, then explicitly authorized all of it in this repository, Git and GitHub. The [programming reference](DB%20Architecture/PROGRAMMING_LAYOUT.md) provides **921 exact stored procedures, 76 exact functions and 518 captured table layouts / 16,968 columns** in the requested three folders. Existing source capture and semantic reviews were reused; a fresh source-bound table correlation and separate comment-mention scan were generated. There are **318 reference/mention/path-priority tables**, 200 completeness-fallback tables, and 517 retained reviewed table roles.

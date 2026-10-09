@@ -37,4 +37,8 @@ python tools/build_programming_layout.py
 python tools/build_programming_layout.py --verify-only
 ```
 
+`--verify-only` checks every exported file against the retained manifest and writes nothing. Changed, missing, added or renamed files fail verification; verification does not accept those changes as a new baseline. To save a new dated receipt, add `--verification-output` followed by a new `.json` path outside the source snapshot and export folders. Existing files cannot be overwritten through this option.
+
+Run the build command only when deliberately regenerating the exports. A successful build establishes a new manifest after its source and structural checks pass. Preserve older verification receipts as dated evidence. [C34 verification correction](../_project/PROGRAMMING_VERIFICATION_C34.md) records the earlier check-only gap and its regression tests.
+
 Rebuilding requires the retained private snapshot. The exported documentation and source are readable independently of that private snapshot. The builder first creates a [fresh table correlation](evidence/programming-layout-table-usage.json) against the current reviewed batches; the earlier table-usage report remains historical. Verification checks original source bytes/hashes, object identity sets, captured-input hashes, parameter/return metadata, table columns/constraints and local documentation links. See the [build summary](evidence/programming-layout-build-summary.json), [verification receipt](evidence/programming-layout-verification.json) and [export manifest](evidence/programming-layout-manifest.json).

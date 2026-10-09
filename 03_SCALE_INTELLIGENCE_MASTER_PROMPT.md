@@ -1,5 +1,11 @@
 # SCALE Intelligence master continuation prompt
 
+## C34 programming verification - 2026-10-08
+
+The owner approved the delivered work and requested the next task. The programming-export verifier now checks all **4,033 retained artifact files** against the existing manifest; `--verify-only` writes nothing. Changed routine prose/contracts can no longer pass and silently replace the baseline. Exact SQL, layouts, source inputs and historical receipts remain unchanged.
+
+Read [the correction and continuation limits](_project/PROGRAMMING_VERIFICATION_C34.md) and [the fresh offline verification](_project/programming-layout-verification-c34-20261008.json). **71 tests passed**, and independent review found no blocking issues. The retained manifest, 997 routines, 518 tables, 16,968 columns and 24,286 links verified. This is integrity verification of the September 29 capture; C33 retrieval evidence remains historical and unchanged. Preserve six mobile deferrals, source uncertainties, untracked Video Rec and **0/34 deployment/timing**. Publication parity is recorded separately.
+
 ## Database programming reference - 2026-10-08
 
 The owner's new task adds `DB Architecture/SP layout`, `function layout` and `table layout`: **921 complete procedures, 76 complete functions, 518 table layouts and 16,968 columns**. Start with [the programming reference](DB%20Architecture/PROGRAMMING_LAYOUT.md), [verification](DB%20Architecture/evidence/programming-layout-verification.json) and [independent review](_project/programming-layout-independent-review-20261008.json). The [exact owner instruction](_project/programming-layout-authority-20261008.json) authorizes these unredacted exports in the repository, Git and GitHub and supersedes earlier private-only export wording for this task.

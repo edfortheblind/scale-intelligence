@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C34",
+  "recorded_date": "2026-10-08",
+  "timezone": "America/Chicago",
+  "base_commit": "ab157fe2220314b71627459d15cad780fe2fe48a",
+  "owner_instruction": "all approved until now, continue with the next task",
+  "outcome": "DONE_WITH_CONCERNS",
+  "bounded_task_status": "COMPLETE",
+  "task": "Reject changed programming exports without resealing them in verify-only mode",
+  "regression_before_change": {
+    "test_methods": 3,
+    "failures": 4,
+    "cases": [
+      "changed routine prose accepted",
+      "changed retained contract accepted",
+      "changed table references accepted",
+      "verification rewrote existing evidence"
+    ]
+  },
+  "tests": {
+    "command": "python -m unittest tests.test_programming_layout_verification tests.test_routine_layouts tests.test_table_layouts tests.test_programming_layout_mentions tests.test_table_usage",
+    "passed": 71,
+    "failed": 0,
+    "skipped": 0,
+    "new_tests": 13,
+    "existing_tests": 58
+  },
+  "offline_verification": {
+    "status": "PASS",
+    "errors": [],
+    "snapshot_id": "20260929T214106Z",
+    "source_files_hash_checked": 58,
+    "routine_definitions_byte_equal": 997,
+    "procedures": 921,
+    "functions": 76,
+    "tables": 518,
+    "table_columns_verified": 16968,
+    "captured_table_metadata_rows_verified": 34742,
+    "local_links_checked": 24286,
+    "application_rows_read": false,
+    "database_connected": false,
+    "routines_executed": false,
+    "output_files": 4033,
+    "output_manifest_sha256": "0af82d1ea9113d10148aea03b4262d85d50de4514d53d7ed4ccb1cc4f4943ac9",
+    "verified_at": "2026-10-09T02:42:22.833099+00:00"
+  },
+  "independent_review": {
+    "reviewer": "integrity_review native sub-agent",
+    "status": "PASS",
+    "blocking_findings": 0,
+    "separate_manifest_checks": 22,
+    "separate_cli_checks": 3,
+    "checked": [
+      "changed SP/function Markdown and JSON",
+      "duplicate and missing manifest rows",
+      "unsafe paths and invalid hash/size fields",
+      "required indexes and extra/nested artifacts",
+      "malformed JSON rejected before exported records are parsed",
+      "PASS/FAIL preserve all output bytes and mtimes; missing baseline is not recreated",
+      "all 4033 retained export files match the unchanged manifest",
+      "focused tests and explicit-build promotion boundaries"
+    ]
+  },
+  "preserved_artifacts": {
+    "DB Architecture/evidence/programming-layout-manifest.json": "0af82d1ea9113d10148aea03b4262d85d50de4514d53d7ed4ccb1cc4f4943ac9",
+    "DB Architecture/evidence/programming-layout-verification.json": "9882f30ad923093ac91ca814cfdbaabc3398b654707987ffea5e531a27c9d5d6",
+    "DB Architecture/evidence/programming-layout-build-summary.json": "952797db9eae2cf8a3460021b9e1a34adb478ea82a1f15d2fbb7b5bbb01b7b31",
+    "DB Architecture/evidence/programming-layout-table-usage.json": "28ae81b20c85fd6fcb182c3b809667e925e6265d99edf66ab7dbd3fe57dce440",
+    "_project/programming-layout-independent-review-20261008.json": "47e57f53f70682752c2ddc544be45bcd5189c076b9320dbe7abd06440e5391e8",
+    "help_app/evaluation.json": "9c3f5884629db4b05ad0fa39285225a1f9036625a51fc5057ff56ebdec599ec1"
+  },
+  "export_artifacts_preserved": 4033,
+  "implementation_sha256": "d9df4e94d7619c1f81adb4548a58e57dfdf865b3a22b19af5b48dd18cfd79e93",
+  "test_sha256": "3543125ad3dfca11c31446304a686ae7188631bea05f5571d93b75517beb0d22",
+  "checks_not_run": [
+    "full corpus rebuild",
+    "article retrieval evaluation",
+    "browser or screen reader inspection",
+    "database queries or routine execution",
+    "deployment or OneDrive upload"
+  ],
+  "preserved_limits": [
+    "September 29 capture, not current runtime",
+    "47 article misses from unchanged C33 evidence",
+    "six owner-deferred mobile contracts",
+    "deployment and correlated timing frozen at 0/34",
+    "no archive payload or unrelated Video Rec access"
+  ],
+  "publication": "Commit, live remote parity and changed-file byte parity verified separately after final commit"
+}

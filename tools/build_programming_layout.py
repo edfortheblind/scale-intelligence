@@ -12,7 +12,7 @@ import datetime as dt
 import hashlib
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 import re
 import subprocess
 from urllib.parse import unquote
@@ -38,9 +38,98 @@ def write(path, text):
         path.write_bytes(content)
 
 
-def verify(root, snapshot, output_root):
+def verify_artifact_manifest(output_root, *, manifest=None):
+    """Check a closed, byte-exact inventory without changing the retained seal.
+
+    Supplying a candidate manifest lets a successful rebuild validate its new
+    inventory before replacing the retained manifest. Ordinary verification
+    always reads the existing manifest.
+    """
+    output_root = output_root.resolve()
+    folders = set(FOLDERS.values())
+    errors, metrics = [], {}
+    manifest_path = output_root / 'evidence/programming-layout-manifest.json'
+    if manifest is None:
+        try:
+            if manifest_path.is_symlink() or not manifest_path.resolve().is_relative_to(output_root):
+                raise ValueError('Manifest resolves outside its output root or is a symlink')
+            manifest = read(manifest_path)
+            metrics['output_manifest_sha256'] = sha(manifest_path)
+        except (OSError, ValueError) as exc:
+            return {'status': 'FAIL', 'errors': [f'Cannot read retained artifact manifest: {exc}'], 'output_files': 0}
+    if not isinstance(manifest, list):
+        return {'status': 'FAIL', 'errors': ['Artifact manifest must be a list'], 'output_files': 0}
+
+    actual = set()
+    for folder in sorted(folders):
+        directory = output_root / folder
+        if directory.is_symlink() or not directory.resolve().is_relative_to(output_root):
+            errors.append('Unsafe artifact folder: ' + folder)
+            continue
+        if not directory.is_dir():
+            errors.append('Missing artifact folder: ' + folder)
+            continue
+        for path in sorted(directory.iterdir()):
+            relative = path.relative_to(output_root).as_posix()
+            if path.is_symlink() or not path.is_file() or not path.resolve().is_relative_to(output_root):
+                errors.append('Unsafe or unexpected artifact entry: ' + relative)
+                continue
+            actual.add(relative)
+        for filename in ('README.md', 'manifest.json'):
+            if folder + '/' + filename not in actual:
+                errors.append('Missing required artifact: ' + folder + '/' + filename)
+
+    declared = set()
+    for number, entry in enumerate(manifest):
+        if not isinstance(entry, dict) or set(entry) != {'path', 'bytes', 'sha256'}:
+            errors.append(f'Invalid artifact manifest entry: {number}')
+            continue
+        relative = entry['path']
+        if not isinstance(relative, str):
+            errors.append(f'Invalid artifact path: entry {number}')
+            continue
+        parts = PurePosixPath(relative).parts
+        valid_path = ('\\' not in relative and len(parts) == 2 and
+                      parts[0] in folders and '/'.join(parts) == relative and
+                      (parts[1] in {'README.md', 'manifest.json'} or
+                       re.fullmatch(r'[0-9]+\.(md|json|sql)', parts[1])) and
+                      not (parts[0] == 'table layout' and parts[1].endswith('.sql')))
+        if not valid_path:
+            errors.append('Unsafe or unexpected artifact path: ' + relative)
+            continue
+        if relative in declared:
+            errors.append('Duplicate artifact manifest path: ' + relative)
+            continue
+        declared.add(relative)
+        if (type(entry['bytes']) is not int or entry['bytes'] < 0 or
+                not isinstance(entry['sha256'], str) or
+                re.fullmatch(r'[0-9a-f]{64}', entry['sha256']) is None):
+            errors.append('Invalid artifact hash or byte count: ' + relative)
+            continue
+        if relative not in actual:
+            continue
+        path = output_root / relative
+        try:
+            if path.stat().st_size != entry['bytes'] or sha(path) != entry['sha256']:
+                errors.append('Retained artifact hash or byte count mismatch: ' + relative)
+        except OSError as exc:
+            errors.append(f'Cannot read artifact {relative}: {exc}')
+    for relative in sorted(declared - actual):
+        errors.append('Missing retained artifact: ' + relative)
+    for relative in sorted(actual - declared):
+        errors.append('Unmanifested artifact: ' + relative)
+    return {'status': 'PASS' if not errors else 'FAIL', 'errors': errors,
+            'output_files': len(actual), **metrics}
+
+
+def verify(root, snapshot, output_root, *, check_manifest=True):
     """Independent completeness, exact-byte, local-link and source-binding checks."""
     errors = []
+    artifact_result = verify_artifact_manifest(output_root) if check_manifest else {}
+    if artifact_result.get('status') == 'FAIL':
+        return {**artifact_result, 'snapshot_id': snapshot.name,
+                'application_rows_read': False, 'database_connected': False,
+                'routines_executed': False}
     db = root / "DB Architecture"
     objects = read(db / "catalog/objects.json")
     modules = {r["object_id"]: r for r in read(snapshot / "modules.json")}
@@ -137,6 +226,8 @@ def verify(root, snapshot, output_root):
                         errors.append(f'Table structural metadata mismatch: {oid}/{name}')
                     metadata_rows_checked += len(wanted)
     for folder, ids in expected.items():
+        if not (output_root / folder / 'README.md').is_file():
+            errors.append('Missing index: ' + folder + '/README.md')
         for extension in ("md", "json", "sql"):
             found = {p.stem for p in (output_root / folder).glob(f"*.{extension}")
                      if p.stem.isdigit()}
@@ -162,9 +253,6 @@ def verify(root, snapshot, output_root):
     # Generated prose only; fenced SQL/JSON is source evidence, not Markdown links.
     documents = [p for folder in expected for p in (output_root / folder).glob("*.md")]
     for path in documents:
-        if not path.exists():
-            errors.append("Missing index: " + path.name)
-            continue
         body = re.sub(r"^(`{3,}|~{3,})[^\n]*\n.*?^\1\s*$", "",
                       path.read_text(encoding="utf-8"), flags=re.M | re.S)
         for target in re.findall(r"\]\(([^)]+)\)", body):
@@ -187,7 +275,9 @@ def verify(root, snapshot, output_root):
             "captured_table_metadata_rows_verified": metadata_rows_checked,
             "local_links_checked": links,
             "application_rows_read": False, "database_connected": False,
-            "routines_executed": False}
+            "routines_executed": False,
+            **{key: value for key, value in artifact_result.items()
+               if key in {'output_files', 'output_manifest_sha256'}}}
 
 
 def main():
@@ -197,12 +287,29 @@ def main():
     parser.add_argument("--snapshot", type=Path, default=private / "db-assessment" / SNAPSHOT_ID)
     parser.add_argument("--output-root", type=Path)
     parser.add_argument("--verify-only", action="store_true")
+    parser.add_argument("--verification-output", type=Path,
+                        help="Write a new JSON receipt; verify-only otherwise writes nothing")
     args = parser.parse_args()
     root, snapshot = args.root.resolve(), args.snapshot.resolve()
     out = (args.output_root or root / 'DB Architecture').resolve()
     if out == snapshot or out.is_relative_to(snapshot):
         raise SystemExit("Exact-source output must not modify the original snapshot.")
     receipt_dir = out / 'evidence'
+    receipt_path = None
+    if args.verification_output:
+        receipt_path = args.verification_output.resolve()
+        protected_outputs = {
+            receipt_dir / 'programming-layout-manifest.json',
+            receipt_dir / 'programming-layout-build-summary.json',
+            root / 'DB Architecture/evidence/programming-layout-table-usage.json',
+        }
+        if (receipt_path.exists() or receipt_path.suffix.lower() != '.json' or
+                receipt_path == snapshot or receipt_path.is_relative_to(snapshot) or
+                any(receipt_path.is_relative_to(out / folder) for folder in set(FOLDERS.values())) or
+                receipt_path in protected_outputs):
+            raise SystemExit('Verification output must be a new .json file outside the snapshot and export folders.')
+    elif not args.verify_only:
+        receipt_path = receipt_dir / 'programming-layout-verification.json'
     if not args.verify_only:
         from build_routine_layouts import build as build_routines
         from build_table_layouts import build as build_tables
@@ -212,15 +319,18 @@ def main():
         routine_summary = build_routines(root, snapshot, out, allow_workspace_local=True)
         table_summary = build_tables(root, snapshot, out, allow_workspace_local=True)
         write(receipt_dir / "programming-layout-build-summary.json", json.dumps({"routines": routine_summary, "tables": table_summary}, indent=2) + "\n")
-    result = verify(root, snapshot, out)
-    if result["status"] == "PASS":
+    result = verify(root, snapshot, out, check_manifest=args.verify_only)
+    if not args.verify_only and result["status"] == "PASS":
         files = [{"path": p.relative_to(out).as_posix(), "bytes": p.stat().st_size, "sha256": sha(p)}
                  for p in sorted(p for folder in set(FOLDERS.values()) for p in (out / folder).rglob('*')) if p.is_file()]
-        write(receipt_dir / "programming-layout-manifest.json", json.dumps(files, indent=2) + "\n")
-        result["output_files"] = len(files)
-        result["output_manifest_sha256"] = sha(receipt_dir / "programming-layout-manifest.json")
+        inventory = verify_artifact_manifest(out, manifest=files)
+        result.update(inventory)
+        if inventory['status'] == 'PASS':
+            write(receipt_dir / "programming-layout-manifest.json", json.dumps(files, indent=2) + "\n")
+            result['output_manifest_sha256'] = sha(receipt_dir / "programming-layout-manifest.json")
     result["verified_at"] = dt.datetime.now(dt.timezone.utc).isoformat()
-    write(receipt_dir / "programming-layout-verification.json", json.dumps(result, indent=2) + "\n")
+    if receipt_path is not None:
+        write(receipt_path, json.dumps(result, indent=2) + "\n")
     print(json.dumps(result, indent=2))
     return 0 if result["status"] == "PASS" else 1
 
