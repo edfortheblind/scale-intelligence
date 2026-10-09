@@ -1,0 +1,952 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1834801944,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "ALC_UpdateShipAllocReqFP",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 07:00:14.810000",
+    "modify_date": "2026-08-16 07:00:14.810000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.ALC_UpdateShipAllocReqFP",
+    "domain_candidate": "shipping"
+  },
+  "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+  "exact_sql_path": "1834801944.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 7116,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1834801944,
+      "parameter_id": 1,
+      "name": "@iLaunchNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1834801944,
+      "parameter_id": 2,
+      "name": "@stUserName",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 60,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(30)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2352,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+              "batch_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+              "contract_index": 22,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/22/effects/2",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 49,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 72,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 100,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 123,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 594817181,
+        "qualified_name": "dbo.ITEM_UNIT_OF_MEASURE",
+        "layout_path": "../table layout/594817181.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2354,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+              "batch_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+              "contract_index": 22,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/22/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "RELATION_READ",
+              "line": 40,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 43,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 54,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 77,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 91,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 94,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 105,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 128,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 555865047,
+        "qualified_name": "dbo.SHIPMENT_ALLOC_REQUEST",
+        "layout_path": "../table layout/555865047.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2353,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+              "batch_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+              "contract_index": 22,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/22/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+              "batch_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+              "contract_index": 22,
+              "source_field": "effects",
+              "source_index": 3,
+              "json_pointer": "/semantic_contracts/22/effects/3",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "UPDATE",
+              "line": 27,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 43,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 94,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "reading_lines": [
+            41,
+            46,
+            51,
+            56,
+            63,
+            67,
+            68,
+            74,
+            79,
+            92,
+            97,
+            102,
+            107,
+            114,
+            118,
+            119,
+            125,
+            130
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "reading_lines": [
+            41,
+            45,
+            49,
+            50,
+            51,
+            53,
+            55,
+            63,
+            65,
+            66,
+            72,
+            73,
+            74,
+            76,
+            78,
+            92,
+            96,
+            100,
+            101,
+            102,
+            104,
+            106,
+            114,
+            116,
+            117,
+            123,
+            124,
+            125,
+            127,
+            129
+          ]
+        }
+      },
+      {
+        "table_id": 594817181,
+        "qualified_name": "dbo.ITEM_UNIT_OF_MEASURE",
+        "layout_path": "../table layout/594817181.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "reading_lines": [
+            40,
+            43,
+            54,
+            77,
+            91,
+            94,
+            105,
+            128
+          ]
+        }
+      },
+      {
+        "table_id": 555865047,
+        "qualified_name": "dbo.SHIPMENT_ALLOC_REQUEST",
+        "layout_path": "../table layout/555865047.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "reading_lines": [
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            43,
+            65,
+            68,
+            73,
+            74,
+            78,
+            79,
+            85,
+            86,
+            87,
+            88,
+            94,
+            116,
+            119,
+            124,
+            125,
+            129,
+            130,
+            136,
+            137,
+            138,
+            139
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 51,
+          "source_start_offset": 2154,
+          "source_end_offset": 2158,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 56,
+          "source_start_offset": 2444,
+          "source_end_offset": 2448,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 68,
+          "source_start_offset": 3060,
+          "source_end_offset": 3064,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 74,
+          "source_start_offset": 3385,
+          "source_end_offset": 3389,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 79,
+          "source_start_offset": 3825,
+          "source_end_offset": 3829,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 102,
+          "source_start_offset": 4901,
+          "source_end_offset": 4905,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 107,
+          "source_start_offset": 5191,
+          "source_end_offset": 5195,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 119,
+          "source_start_offset": 5811,
+          "source_end_offset": 5815,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 125,
+          "source_start_offset": 6136,
+          "source_end_offset": 6140,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 130,
+          "source_start_offset": 6576,
+          "source_end_offset": 6580,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 555865047,
+        "qualified_name": "dbo.SHIPMENT_ALLOC_REQUEST",
+        "layout_path": "../table layout/555865047.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 68,
+          "source_start_offset": 3067,
+          "source_end_offset": 3089,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 555865047,
+          "table_qualified_name": "dbo.SHIPMENT_ALLOC_REQUEST",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 555865047,
+        "qualified_name": "dbo.SHIPMENT_ALLOC_REQUEST",
+        "layout_path": "../table layout/555865047.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1834801944,
+          "module_type": "P",
+          "source_line": 119,
+          "source_start_offset": 5818,
+          "source_end_offset": 5840,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 555865047,
+          "table_qualified_name": "dbo.SHIPMENT_ALLOC_REQUEST",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1834801944,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "ITEM",
+      "referenced_id": 386816440,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.ITEM"
+    },
+    {
+      "referencing_id": 1834801944,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SHIPMENT_ALLOC_REQUEST",
+      "referenced_id": 555865047,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_ALLOC_REQUEST"
+    },
+    {
+      "referencing_id": 1834801944,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "ITEM_UNIT_OF_MEASURE",
+      "referenced_id": 594817181,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.ITEM_UNIT_OF_MEASURE"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+    "source_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+    "json_pointer": "/semantic_contracts/22",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_INDEPENDENT_REVIEW_PENDING",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1834801944,
+      "qualified_name": "dbo.ALC_UpdateShipAllocReqFP",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Body-level static contract; transitive application and called-module completeness are separate.",
+      "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+      "purpose": "Choose item-unit conversion metadata for allocated shipment requests in a wave.",
+      "inputs_defaults": [
+        "launchNum numeric(9), userStamp nvarchar(30); required, no defaults."
+      ],
+      "null_and_invalid_input_behavior": [
+        "No nonzero conversion-factor guard; division by zero is possible from a qualifying denominator. NULL quotient/comparisons can eliminate candidates.",
+        "The outer join does not join the grouped INTERNAL_SHIP_ALLOC_NUM back to the target allocation ID. Multiple candidate factors/units across similar requests can match; deterministic per-request largest-pack choice is not established.",
+        "Company matching substitutes a coded sentinel for NULL; whether a real company can equal that sentinel was not investigated. This is not described as an empty-string equivalence."
+      ],
+      "output_shape": [
+        "No intentional result set. No affected-row count is promised as an application result."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "SHIPMENT_ALLOC_REQUEST",
+          "object_id": 555865047,
+          "evidence_refs": [
+            "awr-batch-1834801944"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "ITEM_UNIT_OF_MEASURE",
+          "object_id": 594817181,
+          "evidence_refs": [
+            "awr-batch-1834801944"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "ITEM",
+          "object_id": 386816440,
+          "evidence_refs": [
+            "awr-batch-1834801944"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "SHIPMENT_ALLOC_REQUEST",
+          "object_id": 555865047,
+          "evidence_refs": [
+            "awr-batch-1834801944"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Reject NULL/nonpositive wave with return -1.",
+          "evidence_refs": [
+            "awr-batch-1834801944"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Find integer allocated-quantity/conversion-factor candidates from item/company units, or item-class units only when no item/company unit record exists at all. Aggregate minimum quotient by item/company/class/allocation ID.",
+          "evidence_refs": [
+            "awr-batch-1834801944"
+          ]
+        },
+        {
+          "order": 3,
+          "explanation": "Join candidate factor back by item/company/class and factor, apply a maximum SEQUENCE selection subquery, then write converted UM/quantity, dimensions/weight, loose handling and stamps for the wave.",
+          "evidence_refs": [
+            "awr-batch-1834801944"
+          ]
+        },
+        {
+          "order": 4,
+          "explanation": "Return -1 on the final @@ERROR check.",
+          "evidence_refs": [
+            "awr-batch-1834801944"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Changes allocation conversion/measurement metadata and converted quantity; does not reserve inventory or change source allocated quantity.",
+      "configuration_scope_and_precedence": [
+        "Item-specific UOM existence suppresses item-class fallback even when that item-specific set yields no eligible integer conversion. Highest sequence participates after quotient/factor grouping."
+      ],
+      "error_and_return_handling": [
+        "NULL/nonpositive wave and final error checks return -1; no transaction, divide-by-zero protection, affected-row assertion or deterministic multi-match tie-break."
+      ],
+      "transaction_ownership": "No explicit transaction, commit, rollback, savepoint, TRY/CATCH or XACT_ABORT is introduced by this body; caller/session semantics remain authoritative.",
+      "concurrency": [
+        "A single joined UPDATE uses subqueries, but data uniqueness and source-unit stability are not established; multiple matches can make assignment nondeterministic."
+      ],
+      "trigger_behavior": "No INSERT/UPDATE/DELETE trigger on these target tables is present in the captured six-trigger inventory, except SHIPPING_CONTAINER has an INSERT-only trigger and WORK_INSTRUCTION has an INSERT-only trigger; updates/deletes here do not directly activate those INSERT events. Constraints and caller actions still apply.",
+      "external_handoffs_and_gaps": [
+        "Application binding, effective permissions, permitted transitions and operational outcomes are not established."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1834801944.sql",
+          "sha256": "04f74553073971af9cd383ea7375c6cbe1ab33c0582ef70ae70f6a0e98e60838",
+          "line_start": 1,
+          "line_end": 142,
+          "kind": "REDACTED_SQL",
+          "description": "Complete module body reviewed with original-definition fingerprint.",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956"
+        },
+        {
+          "evidence_id": "E2",
+          "path": "DB Architecture/sql/1834801944.sql",
+          "sha256": "04f74553073971af9cd383ea7375c6cbe1ab33c0582ef70ae70f6a0e98e60838",
+          "line_start": 23,
+          "line_end": 83,
+          "kind": "REDACTED_SQL",
+          "description": "UOM grouping and target joins.",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956"
+        },
+        {
+          "evidence_id": "E3",
+          "path": "DB Architecture/sql/1834801944.sql",
+          "sha256": "04f74553073971af9cd383ea7375c6cbe1ab33c0582ef70ae70f6a0e98e60838",
+          "line_start": 84,
+          "line_end": 142,
+          "kind": "REDACTED_SQL",
+          "description": "Sequence subquery and error handling.",
+          "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956"
+        }
+      ],
+      "evidence_refs": [
+        "awr-batch-1834801944"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "awr-batch-1834801944": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1834801944,
+        "qualified_name": "dbo.ALC_UpdateShipAllocReqFP",
+        "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+        "reading_path": "DB Architecture/sql/1834801944.sql",
+        "reading_sha256": "04f74553073971af9cd383ea7375c6cbe1ab33c0582ef70ae70f6a0e98e60838",
+        "line_spans": [
+          [
+            1,
+            142
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "All conclusions are bounded to captured source/catalog and explicitly reviewed vendor nodes. No operational data or live SQL calls.",
+      "Code-review edges are static possible paths, not reproduced defects. Caller transactions, isolation, permitted values and actual configuration remain external.",
+      "Private source is used only in guarded fingerprint/literal-category checks. No full private definition, arbitrary message/comment or credentials are persisted in this fragment.",
+      "Unqualified procedure candidates and dynamic lexical false positives do not prove effective runtime binding. Object prefixes do not establish vendor/custom ownership."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.ALC_UpdateShipAllocReqFP",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1834801944.sql",
+      "reading_sha256": "04f74553073971af9cd383ea7375c6cbe1ab33c0582ef70ae70f6a0e98e60838",
+      "source_definition_sha256": "685ea5d76caaa726566fb586f62e549fc12b192be11a3fcf3e9f5d51a9401956",
+      "reading_lines": 142,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "All conclusions are bounded to captured source/catalog and explicitly reviewed vendor nodes. No operational data or live SQL calls.",
+    "Code-review edges are static possible paths, not reproduced defects. Caller transactions, isolation, permitted values and actual configuration remain external.",
+    "Private source is used only in guarded fingerprint/literal-category checks. No full private definition, arbitrary message/comment or credentials are persisted in this fragment.",
+    "Unqualified procedure candidates and dynamic lexical false positives do not prove effective runtime binding. Object prefixes do not establish vendor/custom ownership."
+  ]
+}

@@ -1,0 +1,851 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 2053230715,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "RCPT_MonitorReceiptsTypesChartData",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:53.710000",
+    "modify_date": "2026-08-16 06:59:53.710000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.RCPT_MonitorReceiptsTypesChartData",
+    "domain_candidate": "receiving"
+  },
+  "source_definition_sha256": "59f2720d70f4c6340da4d680016f9d6d6e48a5dc9dfe1eca7adf67b87fc8480f",
+  "exact_sql_path": "2053230715.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 5956,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 2053230715,
+      "parameter_id": 1,
+      "name": "@filterCriteria",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": -1,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(max)"
+    },
+    {
+      "object_id": 2053230715,
+      "parameter_id": 2,
+      "name": "@culture",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 20,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(10)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1599344762,
+        "qualified_name": "dbo.RECEIPT_HEADER",
+        "layout_path": "../table layout/1599344762.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 2053230715,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2600,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 155,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/155/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 91,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [
+      {
+        "table_id": 1853249657,
+        "qualified_name": "dbo.APPOINTMENT_SCHEDULE",
+        "layout_path": "../table layout/1853249657.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              2053230715,
+              66359551
+            ],
+            "table_id": 1853249657
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 2038298321,
+        "qualified_name": "dbo.GENERIC_CONFIG_DETAIL",
+        "layout_path": "../table layout/2038298321.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 2134298663,
+        "qualified_name": "dbo.IMMEDIATE_NEEDS_REQUEST",
+        "layout_path": "../table layout/2134298663.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              2053230715,
+              66359551
+            ],
+            "table_id": 2134298663
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 943342425,
+        "qualified_name": "dbo.PURCHASE_ORDER_DETAIL",
+        "layout_path": "../table layout/943342425.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              2053230715,
+              66359551
+            ],
+            "table_id": 943342425
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1487344363,
+        "qualified_name": "dbo.RECEIPT_CONTAINER",
+        "layout_path": "../table layout/1487344363.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1551344591,
+        "qualified_name": "dbo.RECEIPT_DETAIL",
+        "layout_path": "../table layout/1551344591.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              2053230715,
+              66359551
+            ],
+            "table_id": 1551344591
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1915869892,
+        "qualified_name": "dbo.TRAILER_YARD_STATUS",
+        "layout_path": "../table layout/1915869892.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              2053230715,
+              66359551
+            ],
+            "table_id": 1915869892
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": [
+      {
+        "table_id": 1599344762,
+        "qualified_name": "dbo.RECEIPT_HEADER",
+        "layout_path": "../table layout/1599344762.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2053230715,
+          "reading_lines": [
+            91
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2053230715,
+          "reading_lines": [
+            45,
+            72,
+            91
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 2053230715,
+          "mentions": [
+            {
+              "original_line": 29,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 2053230715,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "METADATA_INSIGHT_RECEIPT_VIEW",
+      "referenced_id": 66359551,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.METADATA_INSIGHT_RECEIPT_VIEW"
+    },
+    {
+      "referencing_id": 2053230715,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "fn_GetMonitorFilterParameters",
+      "referenced_id": 696701880,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.fn_GetMonitorFilterParameters"
+    },
+    {
+      "referencing_id": 2053230715,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "GetWarehouseTimezoneValue",
+      "referenced_id": 1000702963,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.GetWarehouseTimezoneValue"
+    },
+    {
+      "referencing_id": 2053230715,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "RECEIPT_HEADER",
+      "referenced_id": 1599344762,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.RECEIPT_HEADER"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/155",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 2053230715,
+      "qualified_name": "dbo.RCPT_MonitorReceiptsTypesChartData",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "59f2720d70f4c6340da4d680016f9d6d6e48a5dc9dfe1eca7adf67b87fc8480f",
+      "purpose": "Drill open receipt date selection into receipt types and summary totals.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE RCPT_MonitorReceiptsTypesChartData @filterCriteria NVARCHAR(MAX), @culture NVARCHAR(10) AS",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 2053230715,
+          "parameter_id": 1,
+          "name": "@filterCriteria",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": -1,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 2053230715,
+          "parameter_id": 2,
+          "name": "@culture",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 20,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "Missing filter values remain NULL; equality does not match unless an explicit NULL-group branch is present. Duplicate filter keys assign a value without order. No explicit validation or TRY/CATCH."
+      ],
+      "output_shape": [
+        "Chart CATEGORY=RECEIPT_ID_TYPE, DATA distinct receipts, labels, drill2; then TOTAL_RECEIPTS, TOTAL_REC_LINES, TOTAL_REC_VALUE."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.METADATA_INSIGHT_RECEIPT_VIEW",
+          "object_id": 66359551,
+          "evidence_refs": [
+            "ops-sql-2053230715"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.RECEIPT_HEADER",
+          "object_id": 1599344762,
+          "evidence_refs": [
+            "ops-sql-2053230715"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.fn_GetMonitorFilterParameters",
+          "object_id": 696701880,
+          "evidence_refs": [
+            "ops-sql-2053230715"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.GetWarehouseTimezoneValue",
+          "object_id": 1000702963,
+          "evidence_refs": [
+            "ops-sql-2053230715"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Uses parsed warehouse/date category and warehouse-local current date. Date branches include today,tomorrow,past, explicit DATEADD(wk,DATEDIFF(wk,0,...),0..6) week range, same month/year and future. Counts distinct receipt/line IDs from metadata view; sums TOTAL_VALUE separately from header using same date category and open-receipt scope. Chart groups type without ordering. Unknown date category follows nonmatching CASE else. Header values need not equal a sum over view rows.",
+          "evidence_refs": [
+            "ops-sql-2053230715"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Uses parsed warehouse/date category and warehouse-local current date. Date branches include today,tomorrow,past, explicit DATEADD(wk,DATEDIFF(wk,0,...),0..6) week range, same month/year and future. Counts distinct receipt/line IDs from metadata view; sums TOTAL_VALUE separately from header using same date category and open-receipt scope. Chart groups type without ordering. Unknown date category follows nonmatching CASE else. Header values need not equal a sum over view rows.",
+      "configuration_scope_and_precedence": [
+        "Uses parsed warehouse/date category and warehouse-local current date. Date branches include today,tomorrow,past, explicit DATEADD(wk,DATEDIFF(wk,0,...),0..6) week range, same month/year and future. Counts distinct receipt/line IDs from metadata view; sums TOTAL_VALUE separately from header using same date category and open-receipt scope. Chart groups type without ordering. Unknown date category follows nonmatching CASE else. Header values need not equal a sum over view rows."
+      ],
+      "error_and_return_handling": [
+        "Chart CATEGORY=RECEIPT_ID_TYPE, DATA distinct receipts, labels, drill2; then TOTAL_RECEIPTS, TOTAL_REC_LINES, TOTAL_REC_VALUE.",
+        "Missing filter values remain NULL; equality does not match unless an explicit NULL-group branch is present. Duplicate filter keys assign a value without order. No explicit validation or TRY/CATCH.",
+        "No explicit transaction or persistent mutation in this body; separate SELECT results need not reflect one consistent snapshot."
+      ],
+      "transaction_ownership": "No explicit transaction or persistent mutation in this body; separate SELECT results need not reflect one consistent snapshot.",
+      "concurrency": [
+        "Caller/session isolation and any explicit source locks govern reads. No explicit transaction or persistent mutation in this body; separate SELECT results need not reflect one consistent snapshot."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [],
+      "external_handoffs_and_gaps": [
+        "Static presentation-query behavior only; active dashboard wiring and rendered output are not verified.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE RCPT_MonitorReceiptsTypesChartData @filterCriteria NVARCHAR(MAX), @culture NVARCHAR(10) AS",
+        "program": [
+          {
+            "line": 13,
+            "text": "CREATE PROCEDURE RCPT_MonitorReceiptsTypesChartData"
+          },
+          {
+            "line": 14,
+            "text": "@filterCriteria NVARCHAR(MAX),"
+          },
+          {
+            "line": 15,
+            "text": "@culture NVARCHAR(10) "
+          },
+          {
+            "line": 16,
+            "text": "AS"
+          },
+          {
+            "line": 17,
+            "text": "Set NoCount ON"
+          },
+          {
+            "line": 18,
+            "text": "\tDECLARE @warehouse as nVarchar(50);"
+          },
+          {
+            "line": 19,
+            "text": "\tDECLARE @Date_Category nvarchar(50);"
+          },
+          {
+            "line": 20,
+            "text": "\tDECLARE @RECT_VALUE numeric(20,10);"
+          },
+          {
+            "line": 21,
+            "text": "\tDECLARE @TOTAL_RECEIPTS numeric(9,0);"
+          },
+          {
+            "line": 22,
+            "text": "\tDECLARE @TOTAL_REC_LINES numeric(9,0);"
+          },
+          {
+            "line": 24,
+            "text": "\tDECLARE @criteriaTempTable TABLE ("
+          },
+          {
+            "line": 25,
+            "text": "    filterName nVarchar(300),"
+          },
+          {
+            "line": 26,
+            "text": "    filterValue nVarchar(300))"
+          },
+          {
+            "line": 28,
+            "text": "   INSERT INTO @criteriaTempTable SELECT * FROM fn_GetMonitorFilterParameters(@filterCriteria)"
+          },
+          {
+            "line": 30,
+            "text": "   SELECT @warehouse = filterValue from @criteriaTempTable WHERE filterName = N'<literal:1>'"
+          },
+          {
+            "line": 31,
+            "text": "   SELECT @Date_Category = filterValue from @criteriaTempTable WHERE filterName = N'<literal:2>'"
+          },
+          {
+            "line": 33,
+            "text": "    DECLARE @wareHouseDate DATETIME;"
+          },
+          {
+            "line": 34,
+            "text": "   SELECT @wareHouseDate= dbo.GetWarehouseTimezoneValue(@warehouse,GETUTCDATE());"
+          },
+          {
+            "line": 37,
+            "text": "SELECT N'<literal:3>' AS CHARTDATA_DATASOURCE_TYPE, "
+          },
+          {
+            "line": 38,
+            "text": "       CATEGORY = RECEIPT_ID_TYPE,"
+          },
+          {
+            "line": 39,
+            "text": "\t   COUNT(Distinct INTERNAL_RECEIPT_NUM) AS DATA,"
+          },
+          {
+            "line": 40,
+            "text": "       DESCRIPTION = N'<literal:4>',"
+          },
+          {
+            "line": 41,
+            "text": "       N'<literal:5>' AS XAXISTITLE, "
+          },
+          {
+            "line": 42,
+            "text": "       N'<literal:6>' AS YAXISTITLE, "
+          },
+          {
+            "line": 43,
+            "text": "       2 AS NextDrillDownLevel, "
+          },
+          {
+            "line": 44,
+            "text": "       N'<literal:7>' AS CHARTTITLE"
+          },
+          {
+            "line": 45,
+            "text": "       FROM METADATA_INSIGHT_RECEIPT_VIEW  where warehouse=@warehouse AND CLOSE_DATE IS NULL  "
+          },
+          {
+            "line": 47,
+            "text": "\t   AND  CASE "
+          },
+          {
+            "line": 48,
+            "text": "       WHEN @Date_Category = N'<literal:8>' AND CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE) =CONVERT(DATE,@wareHouseDate)THEN N'<literal:9>'  "
+          },
+          {
+            "line": 50,
+            "text": "       WHEN @Date_Category =N'<literal:10>' AND CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE)=CONVERT(DATE,@wareHouseDate+1)THEN N'<literal:11>'"
+          },
+          {
+            "line": 52,
+            "text": "       WHEN @Date_Category = N'<literal:12>' AND CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE) < CONVERT(DATE,@wareHouseDate)THEN N'<literal:13>' "
+          },
+          {
+            "line": 54,
+            "text": "       WHEN @Date_Category =N'<literal:14>' AND ( CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE) >= DATEADD(wk, DATEDIFF(wk,0,@wareHouseDate), 0)"
+          },
+          {
+            "line": 55,
+            "text": "                                       AND CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE) <= DATEADD(wk, DATEDIFF(wk,0,@wareHouseDate), 6)) THEN N'<literal:15>'"
+          },
+          {
+            "line": 57,
+            "text": "       WHEN @Date_Category = N'<literal:16>' AND (DATEPART(MM,RECEIPT_HEADER_RECEIPT_DATE)=(DATEPART(MM,@wareHouseDate))"
+          },
+          {
+            "line": 58,
+            "text": "                                         AND DATEPART(yy, RECEIPT_HEADER_RECEIPT_DATE) = DATEPART(yy, @wareHouseDate))THEN N'<literal:17>' "
+          },
+          {
+            "line": 60,
+            "text": "       WHEN @Date_Category =N'<literal:18>' AND CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE) > (SELECT CONVERT(DATE,@wareHouseDate)) THEN N'<literal:19>'"
+          },
+          {
+            "line": 62,
+            "text": "\t   ELSE N'<literal:20>'"
+          },
+          {
+            "line": 63,
+            "text": "       END =N'<literal:21>'"
+          },
+          {
+            "line": 64,
+            "text": "       GROUP BY RECEIPT_ID_TYPE"
+          },
+          {
+            "line": 69,
+            "text": "SELECT "
+          },
+          {
+            "line": 70,
+            "text": "@TOTAL_RECEIPTS=COUNT(Distinct INTERNAL_RECEIPT_NUM),"
+          },
+          {
+            "line": 71,
+            "text": "@TOTAL_REC_LINES=count(DISTINCT  INTERNAL_RECEIPT_LINE_NUM)"
+          },
+          {
+            "line": 72,
+            "text": "FROM METADATA_INSIGHT_RECEIPT_VIEW where warehouse=@warehouse  AND CLOSE_DATE IS NULL "
+          },
+          {
+            "line": 73,
+            "text": "AND    CASE "
+          },
+          {
+            "line": 74,
+            "text": "       WHEN @Date_Category = N'<literal:22>' AND CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE) =CONVERT(DATE,@wareHouseDate)THEN N'<literal:23>'  "
+          },
+          {
+            "line": 76,
+            "text": "       WHEN @Date_Category =N'<literal:24>' AND CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE)=CONVERT(DATE,@wareHouseDate+1)THEN N'<literal:25>'"
+          },
+          {
+            "line": 78,
+            "text": "       WHEN @Date_Category = N'<literal:26>' AND CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE) < CONVERT(DATE,@wareHouseDate)THEN N'<literal:27>' "
+          },
+          {
+            "line": 80,
+            "text": "         WHEN @Date_Category =N'<literal:28>' AND ( CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE) >= DATEADD(wk, DATEDIFF(wk,0,@wareHouseDate), 0)"
+          },
+          {
+            "line": 81,
+            "text": "                                       AND CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE) <= DATEADD(wk, DATEDIFF(wk,0,@wareHouseDate), 6)) THEN N'<literal:29>'"
+          },
+          {
+            "line": 83,
+            "text": "       WHEN @Date_Category = N'<literal:30>' AND (DATEPART(MM,RECEIPT_HEADER_RECEIPT_DATE)=(DATEPART(MM,@wareHouseDate))"
+          },
+          {
+            "line": 84,
+            "text": "                                         AND DATEPART(yy, RECEIPT_HEADER_RECEIPT_DATE) = DATEPART(yy, @wareHouseDate))THEN N'<literal:31>' "
+          },
+          {
+            "line": 86,
+            "text": "       WHEN @Date_Category =N'<literal:32>' AND CONVERT(DATE,RECEIPT_HEADER_RECEIPT_DATE) > (SELECT CONVERT(DATE,@wareHouseDate)) THEN N'<literal:33>'"
+          },
+          {
+            "line": 88,
+            "text": "\t   ELSE N'<literal:34>'"
+          },
+          {
+            "line": 89,
+            "text": "       END =N'<literal:35>'"
+          },
+          {
+            "line": 91,
+            "text": "SET @RECT_VALUE=(SELECT SUM(TOTAL_VALUE)from RECEIPT_HEADER where warehouse=@warehouse  AND CLOSE_DATE IS NULL "
+          },
+          {
+            "line": 92,
+            "text": " AND (CASE "
+          },
+          {
+            "line": 93,
+            "text": "       WHEN @Date_Category = N'<literal:36>' AND CONVERT(DATE,RECEIPT_DATE) =CONVERT(DATE,@wareHouseDate)THEN N'<literal:37>'  "
+          },
+          {
+            "line": 95,
+            "text": "       WHEN @Date_Category =N'<literal:38>' AND CONVERT(DATE,RECEIPT_DATE)=CONVERT(DATE,@wareHouseDate+1)THEN N'<literal:39>'"
+          },
+          {
+            "line": 97,
+            "text": "       WHEN @Date_Category = N'<literal:40>' AND CONVERT(DATE,RECEIPT_DATE) < CONVERT(DATE,@wareHouseDate)THEN N'<literal:41>' "
+          },
+          {
+            "line": 99,
+            "text": "       WHEN @Date_Category =N'<literal:42>' AND ( CONVERT(DATE,RECEIPT_DATE) >= DATEADD(wk, DATEDIFF(wk,0,@wareHouseDate), 0)"
+          },
+          {
+            "line": 100,
+            "text": "                                       AND CONVERT(DATE,RECEIPT_DATE) <= DATEADD(wk, DATEDIFF(wk,0,@wareHouseDate), 6)) THEN N'<literal:43>'"
+          },
+          {
+            "line": 102,
+            "text": "       WHEN @Date_Category = N'<literal:44>' AND (DATEPART(MM,RECEIPT_DATE)=(DATEPART(MM,@wareHouseDate))"
+          },
+          {
+            "line": 103,
+            "text": "                                         AND DATEPART(yy, RECEIPT_DATE) = DATEPART(yy, @wareHouseDate))THEN N'<literal:45>' "
+          },
+          {
+            "line": 105,
+            "text": "       WHEN @Date_Category =N'<literal:46>' AND CONVERT(DATE,RECEIPT_DATE) > (SELECT CONVERT(DATE,@wareHouseDate)) THEN N'<literal:47>'"
+          },
+          {
+            "line": 107,
+            "text": "\t   ELSE N'<literal:48>'"
+          },
+          {
+            "line": 108,
+            "text": "       END =N'<literal:49>'))"
+          },
+          {
+            "line": 110,
+            "text": "SELECT "
+          },
+          {
+            "line": 111,
+            "text": "TOP 1 N'<literal:50>' AS SUMMARYTILE_TOTAL_RECEIPTS,"
+          },
+          {
+            "line": 112,
+            "text": "@TOTAL_RECEIPTS AS TOTAL_RECEIPTS; "
+          },
+          {
+            "line": 115,
+            "text": "SELECT "
+          },
+          {
+            "line": 116,
+            "text": "TOP 1 N'<literal:51>' AS SUMMARYTILE_TOTAL_REC_LINES, "
+          },
+          {
+            "line": 117,
+            "text": "@TOTAL_REC_LINES AS TOTAL_REC_LINES; "
+          },
+          {
+            "line": 120,
+            "text": "SELECT "
+          },
+          {
+            "line": 121,
+            "text": "TOP 1 N'<literal:52>' AS SUMMARYTILE_TOTAL_REC_VALUE, "
+          },
+          {
+            "line": 122,
+            "text": "@RECT_VALUE AS TOTAL_REC_VALUE; "
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/2053230715.sql",
+          "sha256": "93c690c38992a76946361b1ccd7e14a84e155095f49cafd5b4aaf8190bf00261",
+          "line_start": 1,
+          "line_end": 124,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "59f2720d70f4c6340da4d680016f9d6d6e48a5dc9dfe1eca7adf67b87fc8480f",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-2053230715"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-2053230715": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 2053230715,
+        "qualified_name": "dbo.RCPT_MonitorReceiptsTypesChartData",
+        "source_definition_sha256": "59f2720d70f4c6340da4d680016f9d6d6e48a5dc9dfe1eca7adf67b87fc8480f",
+        "reading_path": "DB Architecture/sql/2053230715.sql",
+        "reading_sha256": "93c690c38992a76946361b1ccd7e14a84e155095f49cafd5b4aaf8190bf00261",
+        "line_spans": [
+          [
+            1,
+            124
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.RCPT_MonitorReceiptsTypesChartData",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/2053230715.sql",
+      "reading_sha256": "93c690c38992a76946361b1ccd7e14a84e155095f49cafd5b4aaf8190bf00261",
+      "source_definition_sha256": "59f2720d70f4c6340da4d680016f9d6d6e48a5dc9dfe1eca7adf67b87fc8480f",
+      "reading_lines": 124,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

@@ -1,0 +1,1608 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 417540671,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "LOAD_ILA",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2023-10-02 00:54:01.283000",
+    "modify_date": "2023-10-02 00:54:01.283000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.LOAD_ILA",
+    "domain_candidate": "shipping"
+  },
+  "source_definition_sha256": "e4db894036775462d983e8c175f4bee5ea6d5f3142dabcd9759b5fbc21945860",
+  "exact_sql_path": "417540671.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 6897,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": true,
+    "try_catch": false,
+    "raises_error": true,
+    "cursor": true,
+    "loop": true,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 417540671,
+      "parameter_id": 1,
+      "name": "@stWarehouse",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 417540671,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 497,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 29,
+              "source_field": "effects",
+              "source_index": 3,
+              "json_pointer": "/semantic_contracts/29/effects/3",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 112,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 146,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 466816725,
+        "qualified_name": "dbo.ITEM_LOCATION_ASSIGNMENT",
+        "layout_path": "../table layout/466816725.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 417540671,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 498,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 29,
+              "source_field": "effects",
+              "source_index": 5,
+              "json_pointer": "/semantic_contracts/29/effects/5",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "INSERT",
+              "line": 75,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 417540671,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 499,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 29,
+              "source_field": "effects",
+              "source_index": 4,
+              "json_pointer": "/semantic_contracts/29/effects/4",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 127,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1362819917,
+        "qualified_name": "dbo.LOCATION_INVENTORY",
+        "layout_path": "../table layout/1362819917.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 417540671,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 500,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 29,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/29/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 29,
+              "source_field": "effects",
+              "source_index": 6,
+              "json_pointer": "/semantic_contracts/29/effects/6",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 93,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "INSERT",
+              "line": 99,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 119,
+              "context": "RESOLVED_DML_ALIAS",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "RELATION_READ",
+              "line": 126,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 139,
+              "context": "RESOLVED_DML_ALIAS",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "RELATION_READ",
+              "line": 145,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 158,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 166,
+              "context": "RESOLVED_DML_ALIAS",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "RELATION_READ",
+              "line": 168,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 353540443,
+        "qualified_name": "dbo.STAGING_ILA",
+        "layout_path": "../table layout/353540443.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 417540671,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 496,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 29,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/29/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 29,
+              "source_field": "effects",
+              "source_index": 7,
+              "json_pointer": "/semantic_contracts/29/effects/7",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 57,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "RELATION_READ",
+              "line": 130,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "RELATION_READ",
+              "line": 149,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 177,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 191,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1515868467,
+        "qualified_name": "dbo.STORAGE_TEMPLATE_DETAIL",
+        "layout_path": "../table layout/1515868467.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 417540671,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 501,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 29,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/29/effects/2",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 107,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 109,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "reading_lines": [
+            55,
+            76,
+            96,
+            100,
+            114,
+            132,
+            146,
+            148,
+            151,
+            161,
+            172
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "reading_lines": [
+            55,
+            76,
+            95,
+            100,
+            112,
+            113,
+            131,
+            146,
+            147,
+            150,
+            160,
+            171
+          ]
+        }
+      },
+      {
+        "table_id": 466816725,
+        "qualified_name": "dbo.ITEM_LOCATION_ASSIGNMENT",
+        "layout_path": "../table layout/466816725.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "reading_lines": [
+            75
+          ]
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "reading_lines": [
+            94,
+            102,
+            127,
+            128,
+            133,
+            152,
+            159,
+            169
+          ]
+        }
+      },
+      {
+        "table_id": 1362819917,
+        "qualified_name": "dbo.LOCATION_INVENTORY",
+        "layout_path": "../table layout/1362819917.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "reading_lines": [
+            93,
+            99,
+            126,
+            145,
+            158,
+            168
+          ]
+        }
+      },
+      {
+        "table_id": 1426820145,
+        "qualified_name": "dbo.LOCATION_TEMPLATE",
+        "layout_path": "../table layout/1426820145.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "reading_lines": [
+            125,
+            127
+          ]
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "reading_lines": [
+            100
+          ]
+        }
+      },
+      {
+        "table_id": 353540443,
+        "qualified_name": "dbo.STAGING_ILA",
+        "layout_path": "../table layout/353540443.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "reading_lines": [
+            57,
+            130,
+            149,
+            177,
+            191
+          ]
+        }
+      },
+      {
+        "table_id": 1515868467,
+        "qualified_name": "dbo.STORAGE_TEMPLATE_DETAIL",
+        "layout_path": "../table layout/1515868467.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "reading_lines": [
+            107,
+            109
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "reading_lines": [
+            55,
+            76,
+            97,
+            102,
+            127,
+            129,
+            134,
+            153,
+            162,
+            170
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "mentions": [
+            {
+              "original_line": 21,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "module_type": "P",
+          "source_line": 137,
+          "source_start_offset": 4673,
+          "source_end_offset": 4677,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "e4db894036775462d983e8c175f4bee5ea6d5f3142dabcd9759b5fbc21945860",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 417540671,
+          "module_type": "P",
+          "source_line": 117,
+          "source_start_offset": 3823,
+          "source_end_offset": 3831,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1298819689,
+          "table_qualified_name": "dbo.LOCATION",
+          "source_definition_sha256": "e4db894036775462d983e8c175f4bee5ea6d5f3142dabcd9759b5fbc21945860",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 417540671,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "Staging_ILA",
+      "referenced_id": 353540443,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.STAGING_ILA"
+    },
+    {
+      "referencing_id": 417540671,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "ITEM",
+      "referenced_id": 386816440,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.ITEM"
+    },
+    {
+      "referencing_id": 417540671,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "ITEM_LOCATION_Assignment",
+      "referenced_id": 466816725,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.ITEM_LOCATION_ASSIGNMENT"
+    },
+    {
+      "referencing_id": 417540671,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "LOCATION",
+      "referenced_id": 1298819689,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.LOCATION"
+    },
+    {
+      "referencing_id": 417540671,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "LOCATION_INVENTORY",
+      "referenced_id": 1362819917,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.LOCATION_INVENTORY"
+    },
+    {
+      "referencing_id": 417540671,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "STORAGE_TEMPLATE_DETAIL",
+      "referenced_id": 1515868467,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.STORAGE_TEMPLATE_DETAIL"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/29",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 417540671,
+      "qualified_name": "dbo.LOAD_ILA",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "e4db894036775462d983e8c175f4bee5ea6d5f3142dabcd9759b5fbc21945860",
+      "purpose": "Load staged item-location assignments and establish permanent location inventory.",
+      "inputs_defaults": [
+        "CREATE procedure [dbo].[LOAD_ILA] (@stWarehouse nvarchar(25)) as",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 417540671,
+          "parameter_id": 1,
+          "name": "@stWarehouse",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 50,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "NULL selection flags excluded. Missing/multiple scalar item/template rows can leave UMNULL or fail; null-safe company uses fixed sentinels."
+      ],
+      "output_shape": [
+        "PRINT successful count and severity10 error-count message; no result set."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.STAGING_ILA",
+          "object_id": 353540443,
+          "evidence_refs": [
+            "ops-sql-417540671"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.LOCATION_INVENTORY",
+          "object_id": 1362819917,
+          "evidence_refs": [
+            "ops-sql-417540671"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.STORAGE_TEMPLATE_DETAIL",
+          "object_id": 1515868467,
+          "evidence_refs": [
+            "ops-sql-417540671"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.ITEM",
+          "object_id": 386816440,
+          "evidence_refs": [
+            "ops-sql-417540671"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.LOCATION",
+          "object_id": 1298819689,
+          "evidence_refs": [
+            "ops-sql-417540671"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.ITEM_LOCATION_ASSIGNMENT",
+          "object_id": 466816725,
+          "evidence_refs": [
+            "ops-sql-417540671"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.LOCATION_INVENTORY",
+          "object_id": 1362819917,
+          "evidence_refs": [
+            "ops-sql-417540671"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.STAGING_ILA",
+          "object_id": 353540443,
+          "evidence_refs": [
+            "ops-sql-417540671"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Cursor reads all staging warehouses with nonerror/nonprocessed flags, ordered allocation location descending; fetch overwrites warehouse input. Per row inserts ITEM_LOCATION_ASSIGNMENT inside a transaction and captures immediate error. Success commits first, then if no inventory for location/item/null-safe company/warehouse inserts zero-balance permanent inventory using minimum-sequence storage-template UM from item. Populates template fields from location and descriptive fields from item through staging identity. Marks every matching inventory row permanent, including existing lots/logistics units because existence/update keys omit them. Marks staging processed and increments loaded counter without checking downstream inventory/stamp errors. Failed assignment insert rolls back then marks staging user stamp error. No upsert or concurrency guard.",
+          "evidence_refs": [
+            "ops-sql-417540671"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Cursor reads all staging warehouses with nonerror/nonprocessed flags, ordered allocation location descending; fetch overwrites warehouse input. Per row inserts ITEM_LOCATION_ASSIGNMENT inside a transaction and captures immediate error. Success commits first, then if no inventory for location/item/null-safe company/warehouse inserts zero-balance permanent inventory using minimum-sequence storage-template UM from item. Populates template fields from location and descriptive fields from item through staging identity. Marks every matching inventory row permanent, including existing lots/logistics units because existence/update keys omit them. Marks staging processed and increments loaded counter without checking downstream inventory/stamp errors. Failed assignment insert rolls back then marks staging user stamp error. No upsert or concurrency guard.",
+      "configuration_scope_and_precedence": [
+        "Cursor reads all staging warehouses with nonerror/nonprocessed flags, ordered allocation location descending; fetch overwrites warehouse input. Per row inserts ITEM_LOCATION_ASSIGNMENT inside a transaction and captures immediate error. Success commits first, then if no inventory for location/item/null-safe company/warehouse inserts zero-balance permanent inventory using minimum-sequence storage-template UM from item. Populates template fields from location and descriptive fields from item through staging identity. Marks every matching inventory row permanent, including existing lots/logistics units because existence/update keys omit them. Marks staging processed and increments loaded counter without checking downstream inventory/stamp errors. Failed assignment insert rolls back then marks staging user stamp error. No upsert or concurrency guard."
+      ],
+      "error_and_return_handling": [
+        "PRINT successful count and severity10 error-count message; no result set.",
+        "NULL selection flags excluded. Missing/multiple scalar item/template rows can leave UMNULL or fail; null-safe company uses fixed sentinels.",
+        "Per-row assignment insert transaction commits before inventory creation/updates and staging mark, allowing partial success. No TRY/CATCH; rollback can include existing caller work."
+      ],
+      "transaction_ownership": "Per-row assignment insert transaction commits before inventory creation/updates and staging mark, allowing partial success. No TRY/CATCH; rollback can include existing caller work.",
+      "concurrency": [
+        "Caller/session isolation and any explicit source locks govern reads. Per-row assignment insert transaction commits before inventory creation/updates and staging mark, allowing partial success. No TRY/CATCH; rollback can include existing caller work."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [],
+      "external_handoffs_and_gaps": [
+        "No assignment/inventory mutation executed; source does not verify safe rerun.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE procedure [dbo].[LOAD_ILA] (@stWarehouse nvarchar(25)) as",
+        "program": [
+          {
+            "line": 16,
+            "text": "CREATE procedure [dbo].[LOAD_ILA] (@stWarehouse nvarchar(25))"
+          },
+          {
+            "line": 17,
+            "text": "as"
+          },
+          {
+            "line": 18,
+            "text": "begin"
+          },
+          {
+            "line": 20,
+            "text": "\tSET NOCOUNT ON "
+          },
+          {
+            "line": 22,
+            "text": "\tprint N'<literal:1>' + @stWarehouse;"
+          },
+          {
+            "line": 24,
+            "text": "\tdeclare @iCurrentRecord int;"
+          },
+          {
+            "line": 25,
+            "text": "\tdeclare @iInventoryRecordsLoaded int;"
+          },
+          {
+            "line": 26,
+            "text": "\tdeclare @iInventoryRecordsError int;"
+          },
+          {
+            "line": 27,
+            "text": "\tdeclare @iError int;"
+          },
+          {
+            "line": 31,
+            "text": "\tDeclare @stITEM nvarchar(50)  ;"
+          },
+          {
+            "line": 32,
+            "text": "\tDeclare @stCOMPANY nvarchar(25) ;"
+          },
+          {
+            "line": 33,
+            "text": "\tDeclare @stQUANTITY_UM nvarchar(25) ;"
+          },
+          {
+            "line": 34,
+            "text": "\tDeclare @stALLOCATION_LOC  nvarchar(25)  ;"
+          },
+          {
+            "line": 35,
+            "text": "\tDeclare @stUSER_DEF1  nvarchar(25) ;"
+          },
+          {
+            "line": 36,
+            "text": "\tDeclare @stUSER_DEF2  nvarchar(25) ;"
+          },
+          {
+            "line": 37,
+            "text": "\tDeclare @stUSER_DEF3  nvarchar(25) ;"
+          },
+          {
+            "line": 38,
+            "text": "\tDeclare @stUSER_DEF4  nvarchar(25) ;"
+          },
+          {
+            "line": 39,
+            "text": "\tDeclare @stUSER_DEF5  nvarchar(25) ;"
+          },
+          {
+            "line": 40,
+            "text": "\tDeclare @stUSER_DEF6  nvarchar(25) ;"
+          },
+          {
+            "line": 41,
+            "text": "\tDeclare @stUSER_DEF7  numeric(19, 5) ;"
+          },
+          {
+            "line": 42,
+            "text": "\tDeclare @stUSER_DEF8  numeric(19, 5) ;"
+          },
+          {
+            "line": 43,
+            "text": "\tDeclare @stUSER_STAMP  nvarchar(30) ;"
+          },
+          {
+            "line": 44,
+            "text": "\tDeclare @stPROCESS_STAMP  nvarchar(100) ;"
+          },
+          {
+            "line": 45,
+            "text": "\tDeclare @stDATE_TIME_STAMP  datetime  ;"
+          },
+          {
+            "line": 46,
+            "text": "\tdeclare @stobject_id numeric (9,0);"
+          },
+          {
+            "line": 49,
+            "text": "\tset @iInventoryRecordsLoaded = 0;"
+          },
+          {
+            "line": 50,
+            "text": "\tset @iInventoryRecordsError = 0;"
+          },
+          {
+            "line": 51,
+            "text": "\tset @iCurrentRecord = 0;\t\t"
+          },
+          {
+            "line": 54,
+            "text": "\tdeclare loadILA  cursor for"
+          },
+          {
+            "line": 55,
+            "text": "\tselect [warehouse],[ITEM],[COMPANY],[QUANTITY_UM],[ALLOCATION_LOC],[USER_DEF1],[USER_DEF2],[USER_DEF3],[USER_DEF4],[USER_DEF5],[USER_DEF6],[USER_DEF7],[USER_DEF8],"
+          },
+          {
+            "line": 56,
+            "text": "           '<literal:2>','<literal:3>'+cast(convert(date,getdate()) as nvarchar),getdate(),[INTERNAL_ITEM_LOC_NUM]"
+          },
+          {
+            "line": 57,
+            "text": "\tfrom Staging_ILA "
+          },
+          {
+            "line": 58,
+            "text": "\tWhere user_stamp != N'<literal:4>'"
+          },
+          {
+            "line": 59,
+            "text": "\tand PROCESSED != N'<literal:5>'"
+          },
+          {
+            "line": 60,
+            "text": "\torder by Allocation_loc desc"
+          },
+          {
+            "line": 61,
+            "text": "\t;"
+          },
+          {
+            "line": 64,
+            "text": "\topen loadILA;"
+          },
+          {
+            "line": 66,
+            "text": "\tfetch next from loadILA"
+          },
+          {
+            "line": 67,
+            "text": "\tinto @stwarehouse,@stITEM,@stCOMPANY,@stQUANTITY_UM,@stALLOCATION_LOC,@stUSER_DEF1,@stUSER_DEF2,@stUSER_DEF3,@stUSER_DEF4,@stUSER_DEF5,@stUSER_DEF6,@stUSER_DEF7,@stUSER_DEF8,"
+          },
+          {
+            "line": 68,
+            "text": "\t\t\t@stUSER_STAMP,@stPROCESS_STAMP,@stDATE_TIME_STAMP, @stobject_id"
+          },
+          {
+            "line": 71,
+            "text": "\twhile @@FETCH_STATUS = 0"
+          },
+          {
+            "line": 72,
+            "text": "\tbegin "
+          },
+          {
+            "line": 73,
+            "text": "\t\tbegin transaction;"
+          },
+          {
+            "line": 75,
+            "text": "\tINSERT  INTO ITEM_LOCATION_Assignment"
+          },
+          {
+            "line": 76,
+            "text": "\t           ([warehouse],[ITEM],[COMPANY],[QUANTITY_UM],[ALLOCATION_LOC],[USER_DEF1],[USER_DEF2],[USER_DEF3],[USER_DEF4],[USER_DEF5],[USER_DEF6],[USER_DEF7],[USER_DEF8],"
+          },
+          {
+            "line": 77,
+            "text": "           USER_STAMP,PROCESS_STAMP,DATE_TIME_STAMP)"
+          },
+          {
+            "line": 79,
+            "text": "\tvalues"
+          },
+          {
+            "line": 80,
+            "text": "\t(@stwarehouse,@stITEM,@stCOMPANY,@stQUANTITY_UM,@stALLOCATION_LOC,@stUSER_DEF1,@stUSER_DEF2,@stUSER_DEF3,@stUSER_DEF4,@stUSER_DEF5,@stUSER_DEF6,@stUSER_DEF7,@stUSER_DEF8,"
+          },
+          {
+            "line": 81,
+            "text": "\t\t\t@stUSER_STAMP,@stPROCESS_STAMP,@stDATE_TIME_STAMP"
+          },
+          {
+            "line": 82,
+            "text": "\t)"
+          },
+          {
+            "line": 84,
+            "text": "\tset @iError = @@ERROR;"
+          },
+          {
+            "line": 86,
+            "text": "\tif(@ierror = 0)"
+          },
+          {
+            "line": 87,
+            "text": "\tbegin "
+          },
+          {
+            "line": 88,
+            "text": "\t\tcommit;"
+          },
+          {
+            "line": 92,
+            "text": "\t\tif not exists( select '<literal:6>' "
+          },
+          {
+            "line": 93,
+            "text": "\t\t\t\t\t\tfrom LOCATION_INVENTORY "
+          },
+          {
+            "line": 94,
+            "text": "\t\t\t\t\t\twhere location = @stALLOCATION_LOC "
+          },
+          {
+            "line": 95,
+            "text": "\t\t\t\t\t\tand item = @stITEM "
+          },
+          {
+            "line": 96,
+            "text": "\t\t\t\t\t\tand isnull(company,'<literal:7>') = isnull(@stcompany,'<literal:8>')"
+          },
+          {
+            "line": 97,
+            "text": "\t\t\t\t\t\tand warehouse = @stWarehouse)"
+          },
+          {
+            "line": 98,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 99,
+            "text": "\t\t\t\tinsert into LOCATION_INVENTORY"
+          },
+          {
+            "line": 100,
+            "text": "\t\t\t\t(ITEM, COMPANY, PERMANENT,LOT, ON_HAND_QTY, IN_TRANSIT_QTY, ALLOCATED_QTY, SUSPENSE_QTY, "
+          },
+          {
+            "line": 101,
+            "text": "\t\t\t\tQUANTITY_UM"
+          },
+          {
+            "line": 102,
+            "text": "\t\t\t\t, INVENTORY_STS, USER_STAMP, PROCESS_STAMP, DATE_TIME_STAMP, warehouse, LOCATION )"
+          },
+          {
+            "line": 103,
+            "text": "\t\t\t\tvalues"
+          },
+          {
+            "line": 104,
+            "text": "\t\t\t\t(@stITEM,\t@stCOMPANY, '<literal:9>' ,null ,\t0.00 ,\t0.00 , \t0.00 ,\t0.00 ,\t"
+          },
+          {
+            "line": 106,
+            "text": "\t\t\t\t(SELECT UNIT_OF_MEASURE "
+          },
+          {
+            "line": 107,
+            "text": "\t\t\t\tFROM STORAGE_TEMPLATE_DETAIL std1 "
+          },
+          {
+            "line": 108,
+            "text": "\t\t\t\tWHERE SEQUENCE = (SELECT MIN(SEQUENCE) "
+          },
+          {
+            "line": 109,
+            "text": "\t\t\t\t\t\t\t\t  FROM STORAGE_TEMPLATE_DETAIL std2 "
+          },
+          {
+            "line": 110,
+            "text": "\t\t\t\t\t\t\t\t  WHERE std1.STORAGE_TEMPLATE = std2.STORAGE_TEMPLATE) "
+          },
+          {
+            "line": 111,
+            "text": "\t\t\t\tAND STORAGE_TEMPLATE = (SELECT STORAGE_TEMPLATE "
+          },
+          {
+            "line": 112,
+            "text": "\t\t\t\t\t\t\t\t\t\tFROM ITEM "
+          },
+          {
+            "line": 113,
+            "text": "\t\t\t\t\t\t\t\t\t\tWHERE ITEM =  @stITEM "
+          },
+          {
+            "line": 114,
+            "text": "\t\t\t\t\t\t\t\t\t\tAND isnull(company,'<literal:10>') = isnull(@stcompany,'<literal:11>')))"
+          },
+          {
+            "line": 116,
+            "text": "\t\t\t\t, '<literal:12>' ,@stUSER_STAMP,\t@stPROCESS_STAMP,\t@stDATE_TIME_STAMP, @stWarehouse,@stALLOCATION_LOC)"
+          },
+          {
+            "line": 119,
+            "text": "\t\t\t\tupdate  li"
+          },
+          {
+            "line": 120,
+            "text": "\t\t\t\tset li.TEMPLATE_FIELD1 = a.template_field1,"
+          },
+          {
+            "line": 121,
+            "text": "\t\t\t\tli.TEMPLATE_FIELD2 = a.template_field2, "
+          },
+          {
+            "line": 122,
+            "text": "\t\t\t\tli.TEMPLATE_FIELD3 = a.template_field3,"
+          },
+          {
+            "line": 123,
+            "text": "\t\t\t\tli.TEMPLATE_FIELD4 = a.template_field4,"
+          },
+          {
+            "line": 124,
+            "text": "\t\t\t\tli.TEMPLATE_FIELD5 = a.template_field5,"
+          },
+          {
+            "line": 125,
+            "text": "\t\t\t\tli.LOCATION_TEMPLATE = a.location_template"
+          },
+          {
+            "line": 126,
+            "text": "\t\t\t\tfrom LOCATION_INVENTORY li"
+          },
+          {
+            "line": 127,
+            "text": "\t\t\t\tinner join\t(select\tLOCATION,\tWAREHOUSE,\tLOCATION_TEMPLATE,\ttemplate_field1,\ttemplate_field2,\ttemplate_field3,\ttemplate_field4,\ttemplate_field5\tfrom LOCATION) a"
+          },
+          {
+            "line": 128,
+            "text": "\t\t\t\ton li.LOCATION = a.LOCATION "
+          },
+          {
+            "line": 129,
+            "text": "\t\t\t\tand li.warehouse = a.warehouse"
+          },
+          {
+            "line": 130,
+            "text": "\t\t\t\tinner join STAGING_ILA ila"
+          },
+          {
+            "line": 131,
+            "text": "\t\t\t\ton li.ITEM = ila.ITEM"
+          },
+          {
+            "line": 132,
+            "text": "\t\t\t\tand isnull(li.COMPANY,'<literal:13>') = isnull(ila.COMPANY,'<literal:14>')"
+          },
+          {
+            "line": 133,
+            "text": "\t\t\t\tand li.LOCATION = ila.ALLOCATION_LOC"
+          },
+          {
+            "line": 134,
+            "text": "\t\t\t\tand li.Warehouse = ila.Warehouse"
+          },
+          {
+            "line": 135,
+            "text": "\t\t\t\twhere ila.INTERNAL_ITEM_LOC_NUM = @stobject_id;"
+          },
+          {
+            "line": 139,
+            "text": "\t\t\t\tupdate li"
+          },
+          {
+            "line": 140,
+            "text": "\t\t\t\tset "
+          },
+          {
+            "line": 141,
+            "text": "\t\t\t\t\tli.ITEM_DESC = a.description,"
+          },
+          {
+            "line": 142,
+            "text": "\t\t\t\t\tli.ITEM_COLOR = a.item_color,"
+          },
+          {
+            "line": 143,
+            "text": "\t\t\t\t\tli.ITEM_SIZE = a.item_size,"
+          },
+          {
+            "line": 144,
+            "text": "\t\t\t\t\tli.ITEM_STYLE = a.item_style"
+          },
+          {
+            "line": 145,
+            "text": "\t\t\t\tfrom location_inventory li"
+          },
+          {
+            "line": 146,
+            "text": "\t\t\t\tinner join (select\titem,COMPANY,ITEM_COLOR,ITEM_SIZE,ITEM_STYLE,DESCRIPTION from item) a"
+          },
+          {
+            "line": 147,
+            "text": "\t\t\t\ton li.item = a.ITEM"
+          },
+          {
+            "line": 148,
+            "text": "\t\t\t\tand isnull(li.COMPANY,'<literal:15>') = isnull(a.COMPANY,'<literal:16>')"
+          },
+          {
+            "line": 149,
+            "text": "\t\t\t\tinner join STAGING_ILA ila"
+          },
+          {
+            "line": 150,
+            "text": "\t\t\t\ton li.ITEM = ila.ITEM"
+          },
+          {
+            "line": 151,
+            "text": "\t\t\t\tand isnull(li.COMPANY,'<literal:17>') = isnull(ila.COMPANY,'<literal:18>')"
+          },
+          {
+            "line": 152,
+            "text": "\t\t\t\tand li.LOCATION = ila.ALLOCATION_LOC"
+          },
+          {
+            "line": 153,
+            "text": "\t\t\t\tand li.Warehouse = ila.Warehouse"
+          },
+          {
+            "line": 154,
+            "text": "\t\t\t\twhere ila.INTERNAL_ITEM_LOC_NUM = @stobject_id;"
+          },
+          {
+            "line": 155,
+            "text": "\t\t\tend"
+          },
+          {
+            "line": 157,
+            "text": "\t\tif exists (select '<literal:19>' "
+          },
+          {
+            "line": 158,
+            "text": "\t\t\t\t\tfrom LOCATION_INVENTORY "
+          },
+          {
+            "line": 159,
+            "text": "\t\t\t\t\twhere location = @stALLOCATION_LOC "
+          },
+          {
+            "line": 160,
+            "text": "\t\t\t\t\tand item = @stITEM "
+          },
+          {
+            "line": 161,
+            "text": "\t\t\t\t\tand isnull(company,'<literal:20>') = isnull(@stcompany,'<literal:21>')"
+          },
+          {
+            "line": 162,
+            "text": "\t\t\t\t\tand warehouse = @stWarehouse)"
+          },
+          {
+            "line": 164,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 166,
+            "text": "\t\t\t\tupdate li"
+          },
+          {
+            "line": 167,
+            "text": "\t\t\t\tset PERMANENT = '<literal:22>'"
+          },
+          {
+            "line": 168,
+            "text": "\t\t\t\tfrom LOCATION_INVENTORY li"
+          },
+          {
+            "line": 169,
+            "text": "\t\t\t\twhere location = @stALLOCATION_LOC"
+          },
+          {
+            "line": 170,
+            "text": "\t\t\t\tand warehouse = @stWarehouse"
+          },
+          {
+            "line": 171,
+            "text": "\t\t\t\tand item = @stITEM"
+          },
+          {
+            "line": 172,
+            "text": "\t\t\t\tand isnull(company,'<literal:23>') = isnull(@stcompany,'<literal:24>')\t"
+          },
+          {
+            "line": 173,
+            "text": "\t\t\tend"
+          },
+          {
+            "line": 177,
+            "text": "\t\tupdate Staging_ILA"
+          },
+          {
+            "line": 178,
+            "text": "\t\tset Processed = N'<literal:25>'"
+          },
+          {
+            "line": 179,
+            "text": "\t\twhere INTERNAL_ITEM_LOC_NUM = @stobject_id;"
+          },
+          {
+            "line": 180,
+            "text": "\tset @iInventoryRecordsLoaded = @iInventoryRecordsLoaded + 1;"
+          },
+          {
+            "line": 183,
+            "text": "\tend"
+          },
+          {
+            "line": 187,
+            "text": "\telse"
+          },
+          {
+            "line": 188,
+            "text": "\tbegin"
+          },
+          {
+            "line": 189,
+            "text": "\t\trollback;"
+          },
+          {
+            "line": 191,
+            "text": "\t\tupdate Staging_ILA"
+          },
+          {
+            "line": 192,
+            "text": "\t\tset USER_STAMP = N'<literal:26>'"
+          },
+          {
+            "line": 193,
+            "text": "\t\twhere INTERNAL_ITEM_LOC_NUM = @STOBJECT_ID;"
+          },
+          {
+            "line": 195,
+            "text": "\tset @iInventoryRecordsError = @iInventoryRecordsError + 1;"
+          },
+          {
+            "line": 197,
+            "text": "\tend"
+          },
+          {
+            "line": 199,
+            "text": "\tset @iCurrentRecord = @iCurrentRecord + 1;"
+          },
+          {
+            "line": 203,
+            "text": "\tfetch next from loadILA into @stwarehouse,@stITEM,@stCOMPANY,@stQUANTITY_UM,@stALLOCATION_LOC,@stUSER_DEF1,@stUSER_DEF2,@stUSER_DEF3,@stUSER_DEF4,@stUSER_DEF5,@stUSER_DEF6,@stUSER_DEF7,@stUSER_DEF8,"
+          },
+          {
+            "line": 204,
+            "text": "\t\t\t@stUSER_STAMP,@stPROCESS_STAMP,@stDATE_TIME_STAMP, @stobject_id"
+          },
+          {
+            "line": 206,
+            "text": "\tend"
+          },
+          {
+            "line": 208,
+            "text": "\tprint cast(@iInventoryRecordsLoaded as nvarchar(25)) + N'<literal:27>';"
+          },
+          {
+            "line": 211,
+            "text": "\traiserror(N'<literal:28>', 10, 1, @iInventoryRecordsError);"
+          },
+          {
+            "line": 213,
+            "text": "\tclose loadILA;"
+          },
+          {
+            "line": 214,
+            "text": "\tdeallocate loadILA;"
+          },
+          {
+            "line": 217,
+            "text": "end"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/417540671.sql",
+          "sha256": "84d05735cbbcdd61bc86be285bad6bbed669d526bdafa588e46bc8888cae8877",
+          "line_start": 1,
+          "line_end": 219,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "e4db894036775462d983e8c175f4bee5ea6d5f3142dabcd9759b5fbc21945860",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-417540671"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-417540671": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 417540671,
+        "qualified_name": "dbo.LOAD_ILA",
+        "source_definition_sha256": "e4db894036775462d983e8c175f4bee5ea6d5f3142dabcd9759b5fbc21945860",
+        "reading_path": "DB Architecture/sql/417540671.sql",
+        "reading_sha256": "84d05735cbbcdd61bc86be285bad6bbed669d526bdafa588e46bc8888cae8877",
+        "line_spans": [
+          [
+            1,
+            219
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.LOAD_ILA",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/417540671.sql",
+      "reading_sha256": "84d05735cbbcdd61bc86be285bad6bbed669d526bdafa588e46bc8888cae8877",
+      "source_definition_sha256": "e4db894036775462d983e8c175f4bee5ea6d5f3142dabcd9759b5fbc21945860",
+      "reading_lines": 219,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

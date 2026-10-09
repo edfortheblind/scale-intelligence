@@ -1,0 +1,572 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1490208459,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "TRAV_EX01_ResendPSData",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2023-04-03 19:53:00.063000",
+    "modify_date": "2023-04-03 19:53:00.063000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.TRAV_EX01_ResendPSData",
+    "domain_candidate": "unclassified"
+  },
+  "source_definition_sha256": "b8793d03b4738af086ab02adc67263ee7e3e3e6f67cc8f9181300bd47cd55d1b",
+  "exact_sql_path": "1490208459.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 911,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": true
+  },
+  "parameters": [
+    {
+      "object_id": 1490208459,
+      "parameter_id": 1,
+      "name": "@INTERNAL",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": -1,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(max)"
+    },
+    {
+      "object_id": 1490208459,
+      "parameter_id": 2,
+      "name": "@username",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 400,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(200)"
+    },
+    {
+      "object_id": 1490208459,
+      "parameter_id": 3,
+      "name": "@error",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 4000,
+      "precision": 0,
+      "scale": 0,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(2000)"
+    },
+    {
+      "object_id": 1490208459,
+      "parameter_id": 4,
+      "name": "@success",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 4000,
+      "precision": 0,
+      "scale": 0,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(2000)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1074818891,
+        "qualified_name": "dbo.LAUNCH_STATISTICS",
+        "layout_path": "../table layout/1074818891.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1490208459,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1827,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 95,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/95/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 20,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 25,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [
+      {
+        "table_id": 438292621,
+        "qualified_name": "dbo.DIF_ENDPOINT",
+        "layout_path": "../table layout/438292621.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              1490208459,
+              1474208402
+            ],
+            "table_id": 438292621
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 470292735,
+        "qualified_name": "dbo.DIF_EVENT",
+        "layout_path": "../table layout/470292735.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              1490208459,
+              1474208402
+            ],
+            "table_id": 470292735
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 502292849,
+        "qualified_name": "dbo.DIF_INCOMING_MESSAGE",
+        "layout_path": "../table layout/502292849.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              1490208459,
+              1474208402
+            ],
+            "table_id": 502292849
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": [
+      {
+        "table_id": 1074818891,
+        "qualified_name": "dbo.LAUNCH_STATISTICS",
+        "layout_path": "../table layout/1074818891.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1490208459,
+          "reading_lines": [
+            20,
+            25
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1490208459,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "TRAV_EX01_InsertDataForPS",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": true,
+      "is_ambiguous": false,
+      "target_qualified_name": null
+    },
+    {
+      "referencing_id": 1490208459,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "LAUNCH_STATISTICS",
+      "referenced_id": 1074818891,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.LAUNCH_STATISTICS"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/95",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1490208459,
+      "qualified_name": "dbo.TRAV_EX01_ResendPSData",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "b8793d03b4738af086ab02adc67263ee7e3e3e6f67cc8f9181300bd47cd55d1b",
+      "purpose": "Request resend of a selected wave through the incoming DIF queue after two existence checks.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE TRAV_EX01_ResendPSData ( @INTERNAL nvarchar(max), @username NVARCHAR(200), @error NVARCHAR(2000) OUTPUT, @success NVARCHAR(2000) OUTPUT ) AS",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 1490208459,
+          "parameter_id": 1,
+          "name": "@INTERNAL",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": -1,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1490208459,
+          "parameter_id": 2,
+          "name": "@username",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 400,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1490208459,
+          "parameter_id": 3,
+          "name": "@error",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 4000,
+          "precision": 0,
+          "scale": 0,
+          "is_output": true,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1490208459,
+          "parameter_id": 4,
+          "name": "@success",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 4000,
+          "precision": 0,
+          "scale": 0,
+          "is_output": true,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "No explicit input validation; SQL equality and conversion rules apply. NULL equality does not match."
+      ],
+      "output_shape": [
+        "Sets either @error or @success OUTPUT; no explicit result set of its own."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.LAUNCH_STATISTICS",
+          "object_id": 1074818891,
+          "evidence_refs": [
+            "ops-sql-1490208459"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.TRAV_EX01_InsertDataForPS",
+          "object_id": 1474208402,
+          "evidence_refs": [
+            "ops-sql-1490208459"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "First requires a launch row with a fixed release value; then separately requires a launch row with the fixed USER_DEF1 flag. Different duplicate rows can satisfy the checks. Calls TRAV_EX01_InsertDataForPS and assigns success without checking inserted rows or downstream completion. @username is unused; output parameters are not initialized or mutually cleared.",
+          "evidence_refs": [
+            "ops-sql-1490208459"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "First requires a launch row with a fixed release value; then separately requires a launch row with the fixed USER_DEF1 flag. Different duplicate rows can satisfy the checks. Calls TRAV_EX01_InsertDataForPS and assigns success without checking inserted rows or downstream completion. @username is unused; output parameters are not initialized or mutually cleared.",
+      "configuration_scope_and_precedence": [
+        "First requires a launch row with a fixed release value; then separately requires a launch row with the fixed USER_DEF1 flag. Different duplicate rows can satisfy the checks. Calls TRAV_EX01_InsertDataForPS and assigns success without checking inserted rows or downstream completion. @username is unused; output parameters are not initialized or mutually cleared."
+      ],
+      "error_and_return_handling": [
+        "Sets either @error or @success OUTPUT; no explicit result set of its own.",
+        "No explicit input validation; SQL equality and conversion rules apply. NULL equality does not match.",
+        "No explicit transaction or TRY/CATCH in this body; called routines and enabled triggers may have their own effects."
+      ],
+      "transaction_ownership": "No explicit transaction or TRY/CATCH in this body; called routines and enabled triggers may have their own effects.",
+      "concurrency": [
+        "NOLOCK/read-uncommitted hints occur in the captured body; dirty, missing or inconsistent reads are possible. No explicit transaction or TRY/CATCH in this body; called routines and enabled triggers may have their own effects."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [],
+      "external_handoffs_and_gaps": [
+        "Static source review only; no routine, report, job, or external handoff was executed.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE TRAV_EX01_ResendPSData ( @INTERNAL nvarchar(max), @username NVARCHAR(200), @error NVARCHAR(2000) OUTPUT, @success NVARCHAR(2000) OUTPUT ) AS",
+        "program": [
+          {
+            "line": 10,
+            "text": "CREATE PROCEDURE TRAV_EX01_ResendPSData"
+          },
+          {
+            "line": 11,
+            "text": "("
+          },
+          {
+            "line": 12,
+            "text": "@INTERNAL nvarchar(max),"
+          },
+          {
+            "line": 13,
+            "text": "@username NVARCHAR(200),   "
+          },
+          {
+            "line": 14,
+            "text": "@error NVARCHAR(2000) OUTPUT,  "
+          },
+          {
+            "line": 15,
+            "text": "@success NVARCHAR(2000) OUTPUT"
+          },
+          {
+            "line": 16,
+            "text": ")"
+          },
+          {
+            "line": 17,
+            "text": "AS"
+          },
+          {
+            "line": 18,
+            "text": "SET NOCOUNT ON"
+          },
+          {
+            "line": 20,
+            "text": "IF NOT EXISTS ( SELECT 1 FROM LAUNCH_STATISTICS WITH(NOLOCK) WHERE INTERNAL_LAUNCH_NUM =  @INTERNAL AND RELEASED = N'<literal:1>')"
+          },
+          {
+            "line": 21,
+            "text": "BEGIN"
+          },
+          {
+            "line": 22,
+            "text": "\tSET @error=N'<literal:2>';"
+          },
+          {
+            "line": 23,
+            "text": "END"
+          },
+          {
+            "line": 25,
+            "text": "ELSE IF NOT EXISTS ( SELECT 1 FROM LAUNCH_STATISTICS WITH(NOLOCK) WHERE INTERNAL_LAUNCH_NUM =  @INTERNAL AND USER_DEF1 = N'<literal:3>')"
+          },
+          {
+            "line": 26,
+            "text": "BEGIN"
+          },
+          {
+            "line": 27,
+            "text": "\tSET @error=N'<literal:4>';"
+          },
+          {
+            "line": 28,
+            "text": "END"
+          },
+          {
+            "line": 30,
+            "text": "ELSE "
+          },
+          {
+            "line": 31,
+            "text": "BEGIN"
+          },
+          {
+            "line": 32,
+            "text": "\tEXEC TRAV_EX01_InsertDataForPS  @INTERNAL"
+          },
+          {
+            "line": 33,
+            "text": "\tSET @success = N'<literal:5>';"
+          },
+          {
+            "line": 34,
+            "text": "END"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1490208459.sql",
+          "sha256": "bfc4b76d431263dbc3489886885293c218592fcbb897e4d5ffc24d40ad6d9b7a",
+          "line_start": 1,
+          "line_end": 34,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "b8793d03b4738af086ab02adc67263ee7e3e3e6f67cc8f9181300bd47cd55d1b",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-1490208459"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-1490208459": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1490208459,
+        "qualified_name": "dbo.TRAV_EX01_ResendPSData",
+        "source_definition_sha256": "b8793d03b4738af086ab02adc67263ee7e3e3e6f67cc8f9181300bd47cd55d1b",
+        "reading_path": "DB Architecture/sql/1490208459.sql",
+        "reading_sha256": "bfc4b76d431263dbc3489886885293c218592fcbb897e4d5ffc24d40ad6d9b7a",
+        "line_spans": [
+          [
+            1,
+            34
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.TRAV_EX01_ResendPSData",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1490208459.sql",
+      "reading_sha256": "bfc4b76d431263dbc3489886885293c218592fcbb897e4d5ffc24d40ad6d9b7a",
+      "source_definition_sha256": "b8793d03b4738af086ab02adc67263ee7e3e3e6f67cc8f9181300bd47cd55d1b",
+      "reading_lines": 34,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [
+      {
+        "module_id": 1490208459,
+        "row_index": 1826,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      }
+    ],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

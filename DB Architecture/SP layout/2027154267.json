@@ -1,0 +1,621 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 2027154267,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "ShipRec_FinishedToday_Grid2",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2022-06-01 23:51:33.127000",
+    "modify_date": "2022-06-01 23:51:33.127000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.ShipRec_FinishedToday_Grid2",
+    "domain_candidate": "shipping"
+  },
+  "source_definition_sha256": "02ca2fac20324c046be6fbed5d8cbc8ba721debf6b15285655b52539e82722ea",
+  "exact_sql_path": "2027154267.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 2325,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 2027154267,
+      "parameter_id": 1,
+      "name": "@TheDate",
+      "type_schema": "sys",
+      "type_name": "datetime",
+      "max_length": 8,
+      "precision": 23,
+      "scale": 3,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "datetime"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 619865275,
+        "qualified_name": "dbo.SHIPMENT_DETAIL",
+        "layout_path": "../table layout/619865275.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 2027154267,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2569,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 152,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/152/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 52,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 2027154267,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2570,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 152,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/152/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 55,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2027154267,
+          "reading_lines": [
+            50
+          ]
+        }
+      },
+      {
+        "table_id": 619865275,
+        "qualified_name": "dbo.SHIPMENT_DETAIL",
+        "layout_path": "../table layout/619865275.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2027154267,
+          "reading_lines": [
+            52
+          ]
+        }
+      },
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2027154267,
+          "reading_lines": [
+            55
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 2027154267,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SHIPMENT_DETAIL",
+      "referenced_id": 619865275,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_DETAIL"
+    },
+    {
+      "referencing_id": 2027154267,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SHIPMENT_HEADER",
+      "referenced_id": 683865503,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_HEADER"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/152",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 2027154267,
+      "qualified_name": "dbo.ShipRec_FinishedToday_Grid2",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "02ca2fac20324c046be6fbed5d8cbc8ba721debf6b15285655b52539e82722ea",
+      "purpose": "Group planned-day ERP orders by trailing status and carrier type.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE [dbo].[ShipRec_FinishedToday_Grid2] @TheDate datetime = 0 AS",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 2027154267,
+          "parameter_id": 1,
+          "name": "@TheDate",
+          "type_schema": "sys",
+          "type_name": "datetime",
+          "max_length": 8,
+          "precision": 23,
+          "scale": 3,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "COUNT ERP_ORDER omits NULL identifiers. Independent MAX expressions can select representatives from different detail rows. A NULL date argument does not match the day predicate; datetime zero is not today."
+      ],
+      "output_shape": [
+        "TrailingStatus, TRAILING_STS, CARRIER_TYPE and one fixed-name building total."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.SHIPMENT_DETAIL",
+          "object_id": 619865275,
+          "evidence_refs": [
+            "ops-sql-2027154267"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.SHIPMENT_HEADER",
+          "object_id": 683865503,
+          "evidence_refs": [
+            "ops-sql-2027154267"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "First groups all shipment details by ERP_ORDER and independently takes MAX internal shipment, item and category plus SUM quantity. Joins only the selected maximum shipment header, so a shared ERP order is attributed to one header. Filters planned date to the supplied calendar day, permits NULL launch but excludes49906/49910, and applies fixed customer category. Counts non-NULL ERP_ORDER; no positive-quantity filter. Fixed status/carrier label maps, then outer sum by selected building constants; orders carrier/status. Default date0 is SQL datetime origin, not today.",
+          "evidence_refs": [
+            "ops-sql-2027154267"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "First groups all shipment details by ERP_ORDER and independently takes MAX internal shipment, item and category plus SUM quantity. Joins only the selected maximum shipment header, so a shared ERP order is attributed to one header. Filters planned date to the supplied calendar day, permits NULL launch but excludes49906/49910, and applies fixed customer category. Counts non-NULL ERP_ORDER; no positive-quantity filter. Fixed status/carrier label maps, then outer sum by selected building constants; orders carrier/status. Default date0 is SQL datetime origin, not today.",
+      "configuration_scope_and_precedence": [
+        "First groups all shipment details by ERP_ORDER and independently takes MAX internal shipment, item and category plus SUM quantity. Joins only the selected maximum shipment header, so a shared ERP order is attributed to one header. Filters planned date to the supplied calendar day, permits NULL launch but excludes49906/49910, and applies fixed customer category. Counts non-NULL ERP_ORDER; no positive-quantity filter. Fixed status/carrier label maps, then outer sum by selected building constants; orders carrier/status. Default date0 is SQL datetime origin, not today."
+      ],
+      "error_and_return_handling": [
+        "TrailingStatus, TRAILING_STS, CARRIER_TYPE and one fixed-name building total.",
+        "COUNT ERP_ORDER omits NULL identifiers. Independent MAX expressions can select representatives from different detail rows. A NULL date argument does not match the day predicate; datetime zero is not today.",
+        "No explicit transaction or persistent mutation in this body. Caller/session isolation governs the selected data."
+      ],
+      "transaction_ownership": "No explicit transaction or persistent mutation in this body. Caller/session isolation governs the selected data.",
+      "concurrency": [
+        "Caller/session isolation and any explicit source locks govern reads. No explicit transaction or persistent mutation in this body. Caller/session isolation governs the selected data."
+      ],
+      "trigger_behavior": "This direct read-only body does not itself issue persistent DML; referenced functions/views and caller behavior remain separate.",
+      "attached_trigger_metadata": [],
+      "external_handoffs_and_gaps": [
+        "Static source review only; no dashboard, statistic refresh, remote read or job was executed.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE [dbo].[ShipRec_FinishedToday_Grid2] @TheDate datetime = 0 AS",
+        "program": [
+          {
+            "line": 8,
+            "text": "CREATE PROCEDURE [dbo].[ShipRec_FinishedToday_Grid2] "
+          },
+          {
+            "line": 10,
+            "text": "       @TheDate datetime = 0 "
+          },
+          {
+            "line": 11,
+            "text": "AS"
+          },
+          {
+            "line": 12,
+            "text": "BEGIN"
+          },
+          {
+            "line": 15,
+            "text": "\tSET NOCOUNT ON;"
+          },
+          {
+            "line": 20,
+            "text": "\tSELECT TrailingStatus, TRAILING_STS, CARRIER_TYPE, "
+          },
+          {
+            "line": 21,
+            "text": "\t\tSUM(CASE WHEN BLDG IN ('<literal:1>','<literal:2>','<literal:3>') THEN CCOUNT ELSE 0 END) AS '<literal:4>'"
+          },
+          {
+            "line": 22,
+            "text": "\tFROM ("
+          },
+          {
+            "line": 23,
+            "text": "\t\t\tSELECT COUNT(SD.ERP_ORDER) AS CCOUNT,"
+          },
+          {
+            "line": 24,
+            "text": "\t\t\tCASE SH.TRAILING_STS "
+          },
+          {
+            "line": 25,
+            "text": "\t\t\t\tWHEN 100 THEN '<literal:5>'"
+          },
+          {
+            "line": 26,
+            "text": "\t\t\t\tWHEN 200 THEN '<literal:6>'"
+          },
+          {
+            "line": 27,
+            "text": "\t\t\t\tWHEN 201 THEN '<literal:7>'"
+          },
+          {
+            "line": 28,
+            "text": "\t\t\t\tWHEN 300 THEN '<literal:8>'"
+          },
+          {
+            "line": 29,
+            "text": "\t\t\t\tWHEN 301 THEN '<literal:9>'"
+          },
+          {
+            "line": 30,
+            "text": "\t\t\t\tWHEN 400 THEN '<literal:10>'"
+          },
+          {
+            "line": 31,
+            "text": "\t\t\t\tWHEN 401 THEN '<literal:11>'"
+          },
+          {
+            "line": 32,
+            "text": "\t\t\t\tWHEN 600 THEN '<literal:12>'"
+          },
+          {
+            "line": 33,
+            "text": "\t\t\t\tWHEN 650 THEN '<literal:13>'"
+          },
+          {
+            "line": 34,
+            "text": "\t\t\t\tWHEN 700 THEN '<literal:14>'"
+          },
+          {
+            "line": 35,
+            "text": "\t\t\t\tWHEN 800 THEN '<literal:15>'"
+          },
+          {
+            "line": 36,
+            "text": "\t\t\t\tWHEN 900 THEN '<literal:16>'"
+          },
+          {
+            "line": 37,
+            "text": "\t\t\t\tELSE CAST(SH.TRAILING_STS AS VARCHAR) "
+          },
+          {
+            "line": 38,
+            "text": "\t\t\tEND As TrailingStatus,"
+          },
+          {
+            "line": 39,
+            "text": "\t\t\tSH.TRAILING_STS AS TRAILING_STS,"
+          },
+          {
+            "line": 40,
+            "text": "\t\t\t'<literal:17>' as BLDG,"
+          },
+          {
+            "line": 41,
+            "text": "\t\t\tCASE SH.CARRIER_TYPE"
+          },
+          {
+            "line": 42,
+            "text": "\t\t\t\tWHEN '<literal:18>' THEN '<literal:19>'"
+          },
+          {
+            "line": 43,
+            "text": "\t\t\t\tWHEN '<literal:20>' THEN '<literal:21>'"
+          },
+          {
+            "line": 44,
+            "text": "\t\t\t\tWHEN '<literal:22>' THEN '<literal:23>'"
+          },
+          {
+            "line": 45,
+            "text": "\t\t\t\tELSE SH.CARRIER_TYPE END As CARRIER_TYPE"
+          },
+          {
+            "line": 46,
+            "text": "\t\t\tFROM ("
+          },
+          {
+            "line": 47,
+            "text": "\t\t\t\t\tSELECT DISTINCT ERP_ORDER,"
+          },
+          {
+            "line": 48,
+            "text": "\t\t\t\t\t\tSUM(TOTAL_QTY) AS TOTAL_QTY, "
+          },
+          {
+            "line": 49,
+            "text": "\t\t\t\t\t\tMAX(INTERNAL_SHIPMENT_NUM) AS INTERNAL_SHIPMENT_NUM, "
+          },
+          {
+            "line": 50,
+            "text": "\t\t\t\t\t\tMAX(ITEM) AS ITEM, "
+          },
+          {
+            "line": 51,
+            "text": "\t\t\t\t\t\tMAX(ITEM_CATEGORY1) AS ITEM_CATEGORY1 "
+          },
+          {
+            "line": 52,
+            "text": "\t\t\t\t\tFROM SHIPMENT_DETAIL "
+          },
+          {
+            "line": 53,
+            "text": "\t\t\t\t\tGROUP BY ERP_ORDER"
+          },
+          {
+            "line": 54,
+            "text": "\t\t\t\t)  AS SD "
+          },
+          {
+            "line": 55,
+            "text": "\t\t\tINNER JOIN SHIPMENT_HEADER AS SH "
+          },
+          {
+            "line": 56,
+            "text": "\t\t\t\tON SD.INTERNAL_SHIPMENT_NUM = SH.INTERNAL_SHIPMENT_NUM "
+          },
+          {
+            "line": 57,
+            "text": "\t\t\tWHERE SH.PLANNED_SHIP_DATE >= DATEADD(dd,DATEDIFF(dd,0, @TheDate ),0)  "
+          },
+          {
+            "line": 58,
+            "text": "\t\t\tAND SH.PLANNED_SHIP_DATE < DATEADD(dd,DATEDIFF(dd,0, @TheDate + 1),0)  "
+          },
+          {
+            "line": 59,
+            "text": "\t\t\tAND (SH.LAUNCH_NUM NOT IN (49906, 49910) OR SH.LAUNCH_NUM IS NULL)"
+          },
+          {
+            "line": 60,
+            "text": "\t\t\tAND SH.CUSTOMER_CATEGORY2 = '<literal:24>'  "
+          },
+          {
+            "line": 61,
+            "text": "\t\t\tGROUP BY SH.TRAILING_STS, SH.CARRIER_TYPE"
+          },
+          {
+            "line": 62,
+            "text": "\t\t) AS DER "
+          },
+          {
+            "line": 63,
+            "text": "\tGROUP BY TrailingStatus, TRAILING_STS, CARRIER_TYPE"
+          },
+          {
+            "line": 64,
+            "text": "\tORDER BY CARRIER_TYPE, TRAILING_STS "
+          },
+          {
+            "line": 66,
+            "text": "\tSET NOCOUNT OFF"
+          },
+          {
+            "line": 67,
+            "text": "END"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/2027154267.sql",
+          "sha256": "f61108aed45aae5f8251af086293ef148073c42d66e06d3441fc9dab5d421a46",
+          "line_start": 1,
+          "line_end": 67,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "02ca2fac20324c046be6fbed5d8cbc8ba721debf6b15285655b52539e82722ea",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-2027154267"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-2027154267": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 2027154267,
+        "qualified_name": "dbo.ShipRec_FinishedToday_Grid2",
+        "source_definition_sha256": "02ca2fac20324c046be6fbed5d8cbc8ba721debf6b15285655b52539e82722ea",
+        "reading_path": "DB Architecture/sql/2027154267.sql",
+        "reading_sha256": "f61108aed45aae5f8251af086293ef148073c42d66e06d3441fc9dab5d421a46",
+        "line_spans": [
+          [
+            1,
+            67
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.ShipRec_FinishedToday_Grid2",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/2027154267.sql",
+      "reading_sha256": "f61108aed45aae5f8251af086293ef148073c42d66e06d3441fc9dab5d421a46",
+      "source_definition_sha256": "02ca2fac20324c046be6fbed5d8cbc8ba721debf6b15285655b52539e82722ea",
+      "reading_lines": 67,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

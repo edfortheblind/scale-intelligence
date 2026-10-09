@@ -1,0 +1,98 @@
+/*
+	Task 	| Programmer	| Date   	| Description
+	--------|---------------|---------------------------------------
+	14660	| LJM		| 2004.05.20	| created
+	13543	| KMD		| 2004.11.05	| Also upload manually closed receipts; break subselect into UNION of three selects
+	16514	| KMD		| 2005.04.05	| Change criteria; upload all eligible logical containers, and any related physical containers
+	9898	| SMS			| 09/05/07	| Fixed to upload receipts which are closed and without containers
+*/
+
+CREATE PROCEDURE wm_RReceiptHeader04
+	@Sts numeric(9)
+AS
+	DECLARE @uploadReceiptsWithoutCntrs nvarchar(1)
+	
+	SELECT @uploadReceiptsWithoutCntrs = SYSTEM_VALUE FROM SYSTEM_CONFIG_DETAIL 
+	WHERE SYS_KEY = N'200'
+	AND RECORD_TYPE = N'Interface';
+
+	-- If config value is Yes include closed receipts without containers
+	IF (@uploadReceiptsWithoutCntrs = N'Y')
+		BEGIN
+			SELECT *
+			FROM RECEIPT_HEADER
+			WHERE INTERNAL_RECEIPT_NUM IN (
+				-- logical containers, ready for upload
+				SELECT INTERNAL_RECEIPT_NUM
+				FROM RECEIPT_CONTAINER
+				WHERE    UPLOAD_INTERFACE_BATCH is null
+				   AND STATUS >= @Sts
+				   AND ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) > 0 
+				UNION ALL
+				-- logical containers on closed headers
+				SELECT INTERNAL_RECEIPT_NUM
+				FROM RECEIPT_CONTAINER
+				WHERE    UPLOAD_INTERFACE_BATCH is null
+				   AND ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) > 0
+				   AND INTERNAL_RECEIPT_NUM IN (SELECT INTERNAL_RECEIPT_NUM FROM RECEIPT_HEADER WHERE CLOSE_DATE IS						NOT NULL)
+				UNION ALL
+				-- physical containers related to the logical containers selected above (2 statements)
+				SELECT INTERNAL_RECEIPT_NUM
+				FROM RECEIPT_CONTAINER
+				WHERE    ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) = 0 
+				   AND INTERNAL_REC_CONT_NUM IN (SELECT PARENT FROM RECEIPT_CONTAINER WHERE 
+					UPLOAD_INTERFACE_BATCH is null
+					   AND STATUS >= @Sts
+					   AND ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) > 0)
+				UNION ALL
+				SELECT INTERNAL_RECEIPT_NUM
+				FROM RECEIPT_CONTAINER
+				WHERE    ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) = 0 
+				   AND INTERNAL_REC_CONT_NUM IN (SELECT PARENT FROM RECEIPT_CONTAINER WHERE 
+					UPLOAD_INTERFACE_BATCH is null
+				   AND ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) > 0
+				   AND INTERNAL_RECEIPT_NUM IN (SELECT INTERNAL_RECEIPT_NUM FROM RECEIPT_HEADER WHERE CLOSE_DATE IS					   NOT NULL))
+				UNION
+				SELECT INTERNAL_RECEIPT_NUM 
+				FROM RECEIPT_HEADER
+				WHERE UPLOAD_INTERFACE_BATCH IS NULL
+				AND CLOSE_DATE IS NOT NULL
+			);
+		END
+	ELSE
+		BEGIN
+			SELECT *
+			FROM RECEIPT_HEADER
+			WHERE INTERNAL_RECEIPT_NUM IN (
+				-- logical containers, ready for upload
+				SELECT INTERNAL_RECEIPT_NUM
+				FROM RECEIPT_CONTAINER
+				WHERE    UPLOAD_INTERFACE_BATCH is null
+				   AND STATUS >= @Sts
+				   AND ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) > 0 
+				UNION ALL
+				-- logical containers on closed headers
+				SELECT INTERNAL_RECEIPT_NUM
+				FROM RECEIPT_CONTAINER
+				WHERE    UPLOAD_INTERFACE_BATCH is null
+				   AND ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) > 0
+				   AND INTERNAL_RECEIPT_NUM IN (SELECT INTERNAL_RECEIPT_NUM FROM RECEIPT_HEADER WHERE CLOSE_DATE IS NOT NULL)
+				UNION ALL
+				-- physical containers related to the logical containers selected above (2 statements)
+				SELECT INTERNAL_RECEIPT_NUM
+				FROM RECEIPT_CONTAINER
+				WHERE    ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) = 0 
+				   AND INTERNAL_REC_CONT_NUM IN (SELECT PARENT FROM RECEIPT_CONTAINER WHERE 
+					UPLOAD_INTERFACE_BATCH is null
+					   AND STATUS >= @Sts
+					   AND ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) > 0)
+				UNION ALL
+				SELECT INTERNAL_RECEIPT_NUM
+				FROM RECEIPT_CONTAINER
+				WHERE    ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) = 0 
+				   AND INTERNAL_REC_CONT_NUM IN (SELECT PARENT FROM RECEIPT_CONTAINER WHERE 
+					UPLOAD_INTERFACE_BATCH is null
+				   AND ISNULL(INTERNAL_RECEIPT_LINE_NUM, 0) > 0
+				   AND INTERNAL_RECEIPT_NUM IN (SELECT INTERNAL_RECEIPT_NUM FROM RECEIPT_HEADER WHERE CLOSE_DATE IS NOT NULL))
+			);
+		END

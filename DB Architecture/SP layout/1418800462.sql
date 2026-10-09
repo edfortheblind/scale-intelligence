@@ -1,0 +1,216 @@
+/*  
+ Mod Number | Programmer  | Date     | Modification Description  
+ -----------------------------------------------------------------------------------------------------------------------------------------  
+ 27602   | MD   | 07/03/08 | Created. 
+ 251349  | ALS  | 05/07/20 | Added SRC Identifier
+*/  
+
+
+CREATE PROCEDURE WTH_DeactivateWork(  
+ @workUnit nvarchar(50))  
+AS  
+Begin  
+ SET NOCOUNT ON;  
+  
+INSERT INTO IA_WORK_INSTRUCTION(INTERNAL_INSTRUCTION_NUM  
+      ,INSTRUCTION_TYPE  
+      ,PARENT_INSTR  
+      ,WORK_UNIT  
+      ,SEQUENCE  
+      ,LAUNCH_NUM  
+      ,PRIORITY  
+      ,CONDITION  
+      ,HOLD_CODE  
+      ,REFERENCE_ID  
+      ,REFERENCE_TYPE  
+      ,ERP_ORDER  
+      ,ERP_ORDER_LINE_NUM  
+      ,INTERNAL_NUM  
+      ,INTERNAL_LINE_NUM  
+      ,PICK_LIST_ID  
+      ,ACCOUNT  
+      ,WORK_TYPE  
+      ,WORK_GROUP  
+      ,COMPANY  
+      ,ITEM  
+      ,ITEM_DESC  
+      ,FROM_QTY  
+      ,QUANTITY  
+      ,TO_QTY  
+      ,QUANTITY_UM  
+      ,TOTAL_WEIGHT  
+      ,WEIGHT_UM  
+      ,TOTAL_VOLUME  
+      ,FROM_WHS  
+      ,TO_WHS  
+      ,VOLUME_UM  
+      ,TOTAL_VALUE  
+      ,FROM_LOC  
+      ,TO_LOC  
+      ,FROM_CHECK_DIG  
+      ,TO_CHECK_DIG  
+      ,FROM_WORK_ZONE  
+      ,TO_WORK_ZONE  
+      ,COMPLETED_BY_USER  
+      ,TEAM_ASSIGNED  
+      ,USER_ASSIGNED  
+      ,ESTIMATED_TIME  
+      ,AGING_DATE_TIME  
+      ,START_DATE_TIME  
+      ,END_DATE_TIME  
+      ,NUMBER_OF_CHILDREN  
+      ,MESSAGE_ID  
+      ,LOT  
+      ,USER_DEF1  
+      ,USER_DEF2  
+      ,USER_DEF3  
+      ,USER_DEF4  
+      ,USER_DEF5  
+      ,USER_DEF6  
+      ,USER_DEF7  
+      ,USER_DEF8  
+      ,USER_STAMP  
+      ,PROCESS_STAMP  
+      ,DATE_TIME_STAMP  
+      ,EQUIPMENT_LOC  
+      ,CONVERTED_QTY  
+      ,CONVERTED_QTY_UM  
+      ,INTERNAL_NUM_TYPE  
+      ,INTERNAL_REQ_NUM  
+      ,INVENTORY_TRACKING  
+      ,LOCATING_ZONE  
+      ,FROM_TEMPL_FIELD1  
+      ,FROM_TEMPL_FIELD2  
+      ,FROM_TEMPL_FIELD3  
+      ,FROM_TEMPL_FIELD4  
+      ,FROM_TEMPL_FIELD5  
+      ,TO_TEMPL_FIELD1  
+      ,TO_TEMPL_FIELD2  
+      ,TO_TEMPL_FIELD3  
+      ,TO_TEMPL_FIELD4  
+      ,TO_TEMPL_FIELD5  
+      ,ALLOCATION_ZONE  
+      ,INTERNAL_CONTAINER_NUM  
+      ,CONTAINER_ID  
+      ,PARENT_CONTAINER_NUM  
+      ,PARENT_CONTAINER_ID  
+      ,INTERNAL_COUNT_NUM  
+      ,CYCLE_COUNT  
+      ,RELATED_WORK_UNIT  
+      ,TRANSPORT_CONT_ID  
+      ,GROUP_NUM  
+      ,OUTGOING_PD_LOC  
+      ,INCOMING_PD_LOC  
+      ,INVENTORY_AT_PD  
+      ,CYCLE_COUNT_GROUP_NUM  
+      ,ASSIGNMENT_ID  
+      ,LOGISTICS_UNIT  
+      ,PARENT_LOGISTICS_UNIT  
+      ,TREE_UNIT  
+      ,TREE_UNIT_ID  
+      ,LOCKED
+      ,SRC_IDENTIFIER)  
+(SELECT INTERNAL_INSTRUCTION_NUM  
+      ,INSTRUCTION_TYPE  
+      ,PARENT_INSTR  
+      ,WORK_UNIT  
+      ,SEQUENCE  
+      ,LAUNCH_NUM  
+      ,PRIORITY  
+      ,CONDITION  
+      ,HOLD_CODE  
+      ,REFERENCE_ID  
+      ,REFERENCE_TYPE  
+      ,ERP_ORDER  
+      ,ERP_ORDER_LINE_NUM  
+      ,INTERNAL_NUM  
+      ,INTERNAL_LINE_NUM  
+      ,PICK_LIST_ID  
+      ,ACCOUNT  
+      ,WORK_TYPE  
+      ,WORK_GROUP  
+      ,COMPANY  
+      ,ITEM  
+      ,ITEM_DESC  
+      ,FROM_QTY  
+      ,QUANTITY  
+      ,TO_QTY  
+      ,QUANTITY_UM  
+      ,TOTAL_WEIGHT  
+      ,WEIGHT_UM  
+      ,TOTAL_VOLUME  
+      ,FROM_WHS  
+      ,TO_WHS  
+      ,VOLUME_UM  
+      ,TOTAL_VALUE  
+      ,FROM_LOC  
+      ,TO_LOC  
+      ,FROM_CHECK_DIG  
+      ,TO_CHECK_DIG  
+      ,FROM_WORK_ZONE  
+      ,TO_WORK_ZONE  
+      ,COMPLETED_BY_USER  
+      ,TEAM_ASSIGNED  
+      ,NULL  
+      ,ESTIMATED_TIME  
+      ,AGING_DATE_TIME  
+      ,START_DATE_TIME  
+      ,END_DATE_TIME  
+      ,NUMBER_OF_CHILDREN  
+      ,MESSAGE_ID  
+      ,LOT  
+      ,USER_DEF1  
+      ,USER_DEF2  
+      ,USER_DEF3  
+      ,USER_DEF4  
+      ,USER_DEF5  
+      ,USER_DEF6  
+      ,USER_DEF7  
+      ,USER_DEF8  
+      ,USER_STAMP  
+      ,PROCESS_STAMP  
+      ,GETUTCDATE()  
+      ,EQUIPMENT_LOC  
+      ,CONVERTED_QTY  
+      ,CONVERTED_QTY_UM  
+      ,INTERNAL_NUM_TYPE  
+      ,INTERNAL_REQ_NUM  
+      ,INVENTORY_TRACKING  
+      ,LOCATING_ZONE  
+      ,FROM_TEMPL_FIELD1  
+      ,FROM_TEMPL_FIELD2  
+      ,FROM_TEMPL_FIELD3  
+      ,FROM_TEMPL_FIELD4  
+      ,FROM_TEMPL_FIELD5  
+      ,TO_TEMPL_FIELD1  
+      ,TO_TEMPL_FIELD2  
+      ,TO_TEMPL_FIELD3  
+      ,TO_TEMPL_FIELD4  
+      ,TO_TEMPL_FIELD5  
+      ,ALLOCATION_ZONE  
+      ,INTERNAL_CONTAINER_NUM  
+      ,CONTAINER_ID  
+      ,PARENT_CONTAINER_NUM  
+      ,PARENT_CONTAINER_ID  
+      ,INTERNAL_COUNT_NUM  
+      ,CYCLE_COUNT  
+      ,RELATED_WORK_UNIT  
+      ,TRANSPORT_CONT_ID  
+      ,GROUP_NUM  
+      ,OUTGOING_PD_LOC  
+      ,INCOMING_PD_LOC  
+      ,INVENTORY_AT_PD  
+      ,CYCLE_COUNT_GROUP_NUM  
+      ,ASSIGNMENT_ID  
+      ,LOGISTICS_UNIT  
+      ,PARENT_LOGISTICS_UNIT  
+      ,TREE_UNIT  
+      ,TREE_UNIT_ID  
+      ,N'N'  
+      ,SRC_IDENTIFIER
+  FROM WORK_INSTRUCTION WITH (NOLOCK) WHERE WORK_UNIT = @workUnit);  
+  
+DELETE FROM  WORK_INSTRUCTION WHERE WORK_UNIT = @workUnit;  
+end;  
+ 
+

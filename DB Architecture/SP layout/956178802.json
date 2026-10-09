@@ -1,0 +1,1328 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 956178802,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "AzureSQLMaintenance",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:34.330000",
+    "modify_date": "2026-08-16 06:59:34.330000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.AzureSQLMaintenance",
+    "domain_candidate": "unclassified"
+  },
+  "source_definition_sha256": "6ca30420775ab5d138dbdcbc31e33c7fb25823c657af7d8bab3f7867e06957c2",
+  "exact_sql_path": "956178802.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 9771,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": true,
+    "transaction_control": false,
+    "try_catch": true,
+    "raises_error": true,
+    "cursor": false,
+    "loop": true,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 956178802,
+      "parameter_id": 1,
+      "name": "@operation",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 20,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(10)"
+    },
+    {
+      "object_id": 956178802,
+      "parameter_id": 2,
+      "name": "@mode",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 20,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(10)"
+    },
+    {
+      "object_id": 956178802,
+      "parameter_id": 3,
+      "name": "@LogToTable",
+      "type_schema": "sys",
+      "type_name": "bit",
+      "max_length": 1,
+      "precision": 1,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "bit"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 908582325,
+        "qualified_name": "dbo.AzureSQLMaintenanceLog",
+        "layout_path": "../table layout/908582325.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 956178802,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 999,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 56,
+              "source_field": "effects",
+              "source_index": 4,
+              "json_pointer": "/semantic_contracts/56/effects/4",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 56,
+              "source_field": "effects",
+              "source_index": 5,
+              "json_pointer": "/semantic_contracts/56/effects/5",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "INSERT",
+              "line": 77,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "INSERT",
+              "line": 218,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 221,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 225,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "DELETE",
+              "line": 234,
+              "context": "RESOLVED_DML_ALIAS",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "RELATION_READ",
+              "line": 234,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "RELATION_READ",
+              "line": 236,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 237,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "INSERT",
+              "line": 239,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "INSERT",
+              "line": 243,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 908582325,
+        "qualified_name": "dbo.AzureSQLMaintenanceLog",
+        "layout_path": "../table layout/908582325.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 956178802,
+          "reading_lines": [
+            74,
+            77,
+            218,
+            221,
+            225,
+            234,
+            236,
+            237,
+            239,
+            243
+          ]
+        }
+      },
+      {
+        "table_id": 908582325,
+        "qualified_name": "dbo.AzureSQLMaintenanceLog",
+        "layout_path": "../table layout/908582325.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 956178802,
+          "mentions": [
+            {
+              "original_line": 71,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 504388866,
+        "qualified_name": "dbo.VERSION",
+        "layout_path": "../table layout/504388866.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 956178802,
+          "module_type": "P",
+          "source_line": 8,
+          "source_start_offset": 317,
+          "source_end_offset": 324,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 504388866,
+          "table_qualified_name": "dbo.VERSION",
+          "source_definition_sha256": "6ca30420775ab5d138dbdcbc31e33c7fb25823c657af7d8bab3f7867e06957c2",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 956178802,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "AzureSQLMaintenanceLog",
+      "referenced_id": 908582325,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.AzureSQLMaintenanceLog"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/56",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 956178802,
+      "qualified_name": "dbo.AzureSQLMaintenance",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "6ca30420775ab5d138dbdcbc31e33c7fb25823c657af7d8bab3f7867e06957c2",
+      "purpose": "Queue and execute index/statistics maintenance with optional persistent logging.",
+      "inputs_defaults": [
+        "CREATE Procedure AzureSQLMaintenance ( @operation nvarchar(10) = null, @mode nvarchar(10) = N'<literal:1>', @LogToTable bit = 0 ) as",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 956178802,
+          "parameter_id": 1,
+          "name": "@operation",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 20,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 956178802,
+          "parameter_id": 2,
+          "name": "@mode",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 20,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 956178802,
+          "parameter_id": 3,
+          "name": "@LogToTable",
+          "type_schema": "sys",
+          "type_name": "bit",
+          "max_length": 1,
+          "precision": 1,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "NULL mode is not normalized by NOT IN; NULL operation still reaches log-table creation. Empty aggregate messages can beNULL; statistics rows=0 risks division by zero outside per-command catch."
+      ],
+      "output_shape": [
+        "Severity0 progress/command/error messages; no explicit metric result set. Individual command errors are caught and not rethrown."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "sys.dm_db_index_physical_stats",
+          "object_id": null,
+          "evidence_refs": [
+            "ops-sql-956178802"
+          ],
+          "binding_limit": "No captured local application object identity is asserted. This is a system/cross-database reference, a dynamic-operation marker, or an unresolved local name; the exact kind is specified separately.",
+          "binding_kind": "SYSTEM_REFERENCE"
+        },
+        {
+          "relationship": "READS",
+          "object": "sys.indexes",
+          "object_id": null,
+          "evidence_refs": [
+            "ops-sql-956178802"
+          ],
+          "binding_limit": "No captured local application object identity is asserted. This is a system/cross-database reference, a dynamic-operation marker, or an unresolved local name; the exact kind is specified separately.",
+          "binding_kind": "SYSTEM_REFERENCE"
+        },
+        {
+          "relationship": "READS",
+          "object": "sys.stats",
+          "object_id": null,
+          "evidence_refs": [
+            "ops-sql-956178802"
+          ],
+          "binding_limit": "No captured local application object identity is asserted. This is a system/cross-database reference, a dynamic-operation marker, or an unresolved local name; the exact kind is specified separately.",
+          "binding_kind": "SYSTEM_REFERENCE"
+        },
+        {
+          "relationship": "READS",
+          "object": "sys.dm_db_stats_properties",
+          "object_id": null,
+          "evidence_refs": [
+            "ops-sql-956178802"
+          ],
+          "binding_limit": "No captured local application object identity is asserted. This is a system/cross-database reference, a dynamic-operation marker, or an unresolved local name; the exact kind is specified separately.",
+          "binding_kind": "SYSTEM_REFERENCE"
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.AzureSQLMaintenanceLog",
+          "object_id": 908582325,
+          "evidence_refs": [
+            "ops-sql-956178802"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.AzureSQLMaintenanceLog",
+          "object_id": 908582325,
+          "evidence_refs": [
+            "ops-sql-956178802"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "DYNAMIC_INDEX_AND_STATISTICS_MAINTENANCE",
+          "object_id": null,
+          "evidence_refs": [
+            "ops-sql-956178802"
+          ],
+          "binding_limit": "No captured local application object identity is asserted. This is a system/cross-database reference, a dynamic-operation marker, or an unresolved local name; the exact kind is specified separately.",
+          "binding_kind": "DYNAMIC_OPERATION_MARKER"
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Privately verified operations index/statistics/all and modes smart/dummy; invalid non-NULL mode resets smart, NULL mode remainsNULL. Invalid/NULL operation prints help but does not return: it can still create AzureSQLMaintenanceLog even LogToTable=0, and optional logging/retention still runs. Index discovery uses LIMITED physical stats and index types1/2; smart queues page_count>40 and fragmentation>=5, reorganizing strictly>5 and<30, so exactly5 rebuilds. Dummy means broad real maintenance, not dry-run; OR dummy bypasses preceding queue predicates. Partition rows can produce repeated whole-index commands because partition_number is not inserted into command. Online-support heuristic checks index_id>=1000 only within prefiltered temp data. Statistics selects non-sys rows with modifications or dummy and forms rows/modification info, which can divide by zero. Unordered DELETE TOP1 queue executes each command inside TRY/CATCH, optionally logs command/status using SCOPE_IDENTITY, then continues after errors. Keeps three most recent distinct operation times when logging. Unsuffixed payload uses plain REORGANIZE, REBUILD MAXDOP=1 with ONLINE ON/OFF choice, and UPDATE STATISTICS WITH FULLSCAN.",
+          "evidence_refs": [
+            "ops-sql-956178802"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Privately verified operations index/statistics/all and modes smart/dummy; invalid non-NULL mode resets smart, NULL mode remainsNULL. Invalid/NULL operation prints help but does not return: it can still create AzureSQLMaintenanceLog even LogToTable=0, and optional logging/retention still runs. Index discovery uses LIMITED physical stats and index types1/2; smart queues page_count>40 and fragmentation>=5, reorganizing strictly>5 and<30, so exactly5 rebuilds. Dummy means broad real maintenance, not dry-run; OR dummy bypasses preceding queue predicates. Partition rows can produce repeated whole-index commands because partition_number is not inserted into command. Online-support heuristic checks index_id>=1000 only within prefiltered temp data. Statistics selects non-sys rows with modifications or dummy and forms rows/modification info, which can divide by zero. Unordered DELETE TOP1 queue executes each command inside TRY/CATCH, optionally logs command/status using SCOPE_IDENTITY, then continues after errors. Keeps three most recent distinct operation times when logging. Unsuffixed payload uses plain REORGANIZE, REBUILD MAXDOP=1 with ONLINE ON/OFF choice, and UPDATE STATISTICS WITH FULLSCAN.",
+      "configuration_scope_and_precedence": [
+        "Privately verified operations index/statistics/all and modes smart/dummy; invalid non-NULL mode resets smart, NULL mode remainsNULL. Invalid/NULL operation prints help but does not return: it can still create AzureSQLMaintenanceLog even LogToTable=0, and optional logging/retention still runs. Index discovery uses LIMITED physical stats and index types1/2; smart queues page_count>40 and fragmentation>=5, reorganizing strictly>5 and<30, so exactly5 rebuilds. Dummy means broad real maintenance, not dry-run; OR dummy bypasses preceding queue predicates. Partition rows can produce repeated whole-index commands because partition_number is not inserted into command. Online-support heuristic checks index_id>=1000 only within prefiltered temp data. Statistics selects non-sys rows with modifications or dummy and forms rows/modification info, which can divide by zero. Unordered DELETE TOP1 queue executes each command inside TRY/CATCH, optionally logs command/status using SCOPE_IDENTITY, then continues after errors. Keeps three most recent distinct operation times when logging. Unsuffixed payload uses plain REORGANIZE, REBUILD MAXDOP=1 with ONLINE ON/OFF choice, and UPDATE STATISTICS WITH FULLSCAN."
+      ],
+      "error_and_return_handling": [
+        "Severity0 progress/command/error messages; no explicit metric result set. Individual command errors are caught and not rethrown.",
+        "NULL mode is not normalized by NOT IN; NULL operation still reaches log-table creation. Empty aggregate messages can beNULL; statistics rows=0 risks division by zero outside per-command catch.",
+        "No encompassing transaction. Each command may commit independently; queue generation/logging errors are outside the per-command TRY/CATCH. Log table creation is persistent DDL even with logging disabled."
+      ],
+      "transaction_ownership": "No encompassing transaction. Each command may commit independently; queue generation/logging errors are outside the per-command TRY/CATCH. Log table creation is persistent DDL even with logging disabled.",
+      "concurrency": [
+        "Caller/session isolation and any explicit source locks govern reads. No encompassing transaction. Each command may commit independently; queue generation/logging errors are outside the per-command TRY/CATCH. Log table creation is persistent DDL even with logging disabled."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [],
+      "external_handoffs_and_gaps": [
+        "Only retained and necessary private literal source inspected; no maintenance, DMV scan, command execution or log creation performed. Names do not establish active variant.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE Procedure AzureSQLMaintenance ( @operation nvarchar(10) = null, @mode nvarchar(10) = N'<literal:1>', @LogToTable bit = 0 ) as",
+        "program": [
+          {
+            "line": 17,
+            "text": "CREATE Procedure AzureSQLMaintenance"
+          },
+          {
+            "line": 18,
+            "text": "\t("
+          },
+          {
+            "line": 19,
+            "text": "\t\t@operation nvarchar(10) = null,"
+          },
+          {
+            "line": 20,
+            "text": "\t\t@mode nvarchar(10) = N'<literal:1>',"
+          },
+          {
+            "line": 21,
+            "text": "\t\t@LogToTable bit = 0"
+          },
+          {
+            "line": 22,
+            "text": "\t)"
+          },
+          {
+            "line": 23,
+            "text": "as"
+          },
+          {
+            "line": 24,
+            "text": "begin"
+          },
+          {
+            "line": 25,
+            "text": "\tset nocount on"
+          },
+          {
+            "line": 26,
+            "text": "\tdeclare @msg nvarchar(max);"
+          },
+          {
+            "line": 27,
+            "text": "\tdeclare @minPageCountForIndex int = 40;"
+          },
+          {
+            "line": 28,
+            "text": "\tdeclare @OperationTime datetime2 = sysdatetime();"
+          },
+          {
+            "line": 29,
+            "text": "\tdeclare @KeepXOperationInLog int =3;"
+          },
+          {
+            "line": 32,
+            "text": "\tset @operation = lower(@operation)"
+          },
+          {
+            "line": 33,
+            "text": "\tset @mode = lower(@mode)"
+          },
+          {
+            "line": 35,
+            "text": "\tif @mode not in (N'<literal:2>',N'<literal:3>')"
+          },
+          {
+            "line": 36,
+            "text": "\t\tset @mode = N'<literal:4>'"
+          },
+          {
+            "line": 38,
+            "text": "\tif @operation not in (N'<literal:5>',N'<literal:6>',N'<literal:7>') or @operation is null"
+          },
+          {
+            "line": 39,
+            "text": "\tbegin"
+          },
+          {
+            "line": 40,
+            "text": "\t\traiserror(N'<literal:8>',0,0)"
+          },
+          {
+            "line": 41,
+            "text": "\t\traiserror(N'<literal:9>',0,0)"
+          },
+          {
+            "line": 42,
+            "text": "\t\traiserror(N'<literal:10>',0,0)"
+          },
+          {
+            "line": 43,
+            "text": "\t\traiserror(N'<literal:11>',0,0)"
+          },
+          {
+            "line": 44,
+            "text": "\t\traiserror(N'<literal:12>',0,0)"
+          },
+          {
+            "line": 45,
+            "text": "\t\traiserror(N'<literal:13>',0,0)"
+          },
+          {
+            "line": 46,
+            "text": "\t\traiserror(N'<literal:14>',0,0)"
+          },
+          {
+            "line": 47,
+            "text": "\t\traiserror(N'<literal:15>',0,0)"
+          },
+          {
+            "line": 48,
+            "text": "\t\traiserror(N'<literal:16>',0,0)"
+          },
+          {
+            "line": 49,
+            "text": "\t\traiserror(N'<literal:17>',0,0)"
+          },
+          {
+            "line": 50,
+            "text": "\t\traiserror(N'<literal:18>',0,0)"
+          },
+          {
+            "line": 51,
+            "text": "\t\traiserror(N'<literal:19>',0,0)"
+          },
+          {
+            "line": 52,
+            "text": "\t\traiserror(N'<literal:20>',0,0)"
+          },
+          {
+            "line": 53,
+            "text": "\t\traiserror(N'<literal:21>',0,0)"
+          },
+          {
+            "line": 54,
+            "text": "\t\traiserror(N'<literal:22>',0,0)"
+          },
+          {
+            "line": 55,
+            "text": "\t\traiserror(N'<literal:23>',0,0)"
+          },
+          {
+            "line": 56,
+            "text": "\t\traiserror(N'<literal:24>',0,0)"
+          },
+          {
+            "line": 57,
+            "text": "\tend"
+          },
+          {
+            "line": 58,
+            "text": "\telse "
+          },
+          {
+            "line": 59,
+            "text": "\tbegin"
+          },
+          {
+            "line": 61,
+            "text": "\t\traiserror(N'<literal:25>',0,0)"
+          },
+          {
+            "line": 62,
+            "text": "\t\tset @msg = N'<literal:26>' + @operation;"
+          },
+          {
+            "line": 63,
+            "text": "\t\traiserror(@msg,0,0)"
+          },
+          {
+            "line": 64,
+            "text": "\t\tset @msg = N'<literal:27>' + @mode;"
+          },
+          {
+            "line": 65,
+            "text": "\t\traiserror(@msg,0,0)"
+          },
+          {
+            "line": 66,
+            "text": "\t\tset @msg = N'<literal:28>' + cast(@LogToTable as varchar(1));"
+          },
+          {
+            "line": 67,
+            "text": "\t\traiserror(@msg,0,0)"
+          },
+          {
+            "line": 68,
+            "text": "\t\traiserror(N'<literal:29>',0,0)"
+          },
+          {
+            "line": 69,
+            "text": "\tend"
+          },
+          {
+            "line": 72,
+            "text": "\t\tif object_id(N'<literal:30>') is null "
+          },
+          {
+            "line": 73,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 74,
+            "text": "\t\t\tcreate table AzureSQLMaintenanceLog (id bigint primary key identity(1,1), OperationTime datetime2, command varchar(4000),ExtraInfo varchar(4000), StartTime datetime2, EndTime datetime2, StatusMessage varchar(1000));"
+          },
+          {
+            "line": 75,
+            "text": "\t\tend"
+          },
+          {
+            "line": 77,
+            "text": "\tif @LogToTable=1 insert into AzureSQLMaintenanceLog values(@OperationTime,null,null,sysdatetime(),sysdatetime(),N'<literal:31>' +@operation + N'<literal:32>' + @mode + N'<literal:33>' + cast(@KeepXOperationInLog as varchar(10)) + N'<literal:34>' )\t"
+          },
+          {
+            "line": 79,
+            "text": "\tcreate table #cmdQueue (txtCMD nvarchar(max),ExtraInfo varchar(max))"
+          },
+          {
+            "line": 82,
+            "text": "\tif @operation in(N'<literal:35>',N'<literal:36>')"
+          },
+          {
+            "line": 83,
+            "text": "\tbegin"
+          },
+          {
+            "line": 84,
+            "text": "\t\traiserror(N'<literal:37>',0,0) with nowait;"
+          },
+          {
+            "line": 86,
+            "text": "\t\tselect "
+          },
+          {
+            "line": 87,
+            "text": "\t\t\ti.[object_id]"
+          },
+          {
+            "line": 88,
+            "text": "\t\t\t,ObjectSchema = OBJECT_SCHEMA_NAME(i.object_id)"
+          },
+          {
+            "line": 89,
+            "text": "\t\t\t,ObjectName = object_name(i.object_id) "
+          },
+          {
+            "line": 90,
+            "text": "\t\t\t,IndexName = idxs.name"
+          },
+          {
+            "line": 91,
+            "text": "\t\t\t,i.avg_fragmentation_in_percent"
+          },
+          {
+            "line": 92,
+            "text": "\t\t\t,i.page_count"
+          },
+          {
+            "line": 93,
+            "text": "\t\t\t,i.index_id"
+          },
+          {
+            "line": 94,
+            "text": "\t\t\t,i.partition_number"
+          },
+          {
+            "line": 95,
+            "text": "\t\t\t,i.index_type_desc"
+          },
+          {
+            "line": 96,
+            "text": "\t\t\t,i.avg_page_space_used_in_percent"
+          },
+          {
+            "line": 97,
+            "text": "\t\t\t,i.record_count"
+          },
+          {
+            "line": 98,
+            "text": "\t\t\t,i.ghost_record_count"
+          },
+          {
+            "line": 99,
+            "text": "\t\t\t,i.forwarded_record_count"
+          },
+          {
+            "line": 100,
+            "text": "\t\t\t,null as OnlineOpIsNotSupported"
+          },
+          {
+            "line": 101,
+            "text": "\t\tinto #idxBefore"
+          },
+          {
+            "line": 102,
+            "text": "\t\tfrom sys.dm_db_index_physical_stats(DB_ID(),NULL, NULL, NULL ,N'<literal:38>') i"
+          },
+          {
+            "line": 103,
+            "text": "\t\tleft join sys.indexes idxs on i.object_id = idxs.object_id and i.index_id = idxs.index_id"
+          },
+          {
+            "line": 104,
+            "text": "\t\twhere idxs.type in (1/* [comment omitted] */,2/* [comment omitted] */) /* [comment omitted] */"
+          },
+          {
+            "line": 105,
+            "text": "\t\torder by i.avg_fragmentation_in_percent desc, page_count desc"
+          },
+          {
+            "line": 109,
+            "text": "\t\tupdate #idxBefore set OnlineOpIsNotSupported=1 where [object_id] in (select [object_id] from #idxBefore where index_id >=1000)"
+          },
+          {
+            "line": 112,
+            "text": "\t\traiserror(N'<literal:39>',0,0) with nowait"
+          },
+          {
+            "line": 113,
+            "text": "\t\traiserror(N'<literal:40>',0,0) with nowait"
+          },
+          {
+            "line": 114,
+            "text": "\t\traiserror(N'<literal:41>',0,0) with nowait"
+          },
+          {
+            "line": 116,
+            "text": "\t\tselect @msg = count(*) from #idxBefore "
+          },
+          {
+            "line": 117,
+            "text": "\t\tset @msg = N'<literal:42>' + @msg"
+          },
+          {
+            "line": 118,
+            "text": "\t\traiserror(@msg,0,0) with nowait"
+          },
+          {
+            "line": 120,
+            "text": "\t\tselect @msg = avg(avg_fragmentation_in_percent) from #idxBefore where page_count>@minPageCountForIndex"
+          },
+          {
+            "line": 121,
+            "text": "\t\tset @msg = N'<literal:43>' + @msg"
+          },
+          {
+            "line": 122,
+            "text": "\t\traiserror(@msg,0,0) with nowait"
+          },
+          {
+            "line": 124,
+            "text": "\t\tselect @msg = sum(iif(avg_fragmentation_in_percent>=5 and page_count>@minPageCountForIndex,1,0)) from #idxBefore "
+          },
+          {
+            "line": 125,
+            "text": "\t\tset @msg = N'<literal:44>' + @msg"
+          },
+          {
+            "line": 126,
+            "text": "\t\traiserror(@msg,0,0) with nowait"
+          },
+          {
+            "line": 129,
+            "text": "\t\traiserror(N'<literal:45>',0,0) with nowait"
+          },
+          {
+            "line": 135,
+            "text": "\t\tinsert into #cmdQueue"
+          },
+          {
+            "line": 136,
+            "text": "\t\tselect "
+          },
+          {
+            "line": 137,
+            "text": "\t\ttxtCMD = "
+          },
+          {
+            "line": 138,
+            "text": "\t\tcase when avg_fragmentation_in_percent>5 and avg_fragmentation_in_percent<30 and @mode = N'<literal:46>' then"
+          },
+          {
+            "line": 139,
+            "text": "\t\t\tN'<literal:47>' + IndexName + N'<literal:48>' + ObjectSchema + N'<literal:49>' + ObjectName + N'<literal:50>'"
+          },
+          {
+            "line": 140,
+            "text": "\t\t\twhen OnlineOpIsNotSupported=1 then"
+          },
+          {
+            "line": 141,
+            "text": "\t\t\tN'<literal:51>' + IndexName + N'<literal:52>' + ObjectSchema + N'<literal:53>' + ObjectName + N'<literal:54>'"
+          },
+          {
+            "line": 142,
+            "text": "\t\t\telse"
+          },
+          {
+            "line": 143,
+            "text": "\t\t\tN'<literal:55>' + IndexName + N'<literal:56>' + ObjectSchema + N'<literal:57>' + ObjectName + N'<literal:58>'"
+          },
+          {
+            "line": 144,
+            "text": "\t\tend"
+          },
+          {
+            "line": 145,
+            "text": "\t\t, ExtraInfo = N'<literal:59>' + format(avg_fragmentation_in_percent/100,N'<literal:60>')"
+          },
+          {
+            "line": 146,
+            "text": "\t\tfrom #idxBefore"
+          },
+          {
+            "line": 147,
+            "text": "\t\twhere "
+          },
+          {
+            "line": 148,
+            "text": "\t\t\tindex_id>0 /* [comment omitted] */ "
+          },
+          {
+            "line": 149,
+            "text": "\t\t\tand index_id < 1000 /* [comment omitted] */"
+          },
+          {
+            "line": 151,
+            "text": "\t\t\tand "
+          },
+          {
+            "line": 152,
+            "text": "\t\t\t\t("
+          },
+          {
+            "line": 153,
+            "text": "\t\t\t\t\tpage_count> @minPageCountForIndex and /* [comment omitted] */"
+          },
+          {
+            "line": 154,
+            "text": "\t\t\t\t\tavg_fragmentation_in_percent>=5"
+          },
+          {
+            "line": 155,
+            "text": "\t\t\t\t)"
+          },
+          {
+            "line": 156,
+            "text": "\t\t\tor"
+          },
+          {
+            "line": 157,
+            "text": "\t\t\t\t("
+          },
+          {
+            "line": 158,
+            "text": "\t\t\t\t\t@mode =N'<literal:61>'"
+          },
+          {
+            "line": 159,
+            "text": "\t\t\t\t)"
+          },
+          {
+            "line": 160,
+            "text": "\tend"
+          },
+          {
+            "line": 162,
+            "text": "\tif @operation in(N'<literal:62>',N'<literal:63>')"
+          },
+          {
+            "line": 163,
+            "text": "\tbegin "
+          },
+          {
+            "line": 165,
+            "text": "\t\traiserror(N'<literal:64>',0,0) with nowait;"
+          },
+          {
+            "line": 166,
+            "text": "\t\tselect "
+          },
+          {
+            "line": 167,
+            "text": "\t\t\tObjectSchema = OBJECT_SCHEMA_NAME(s.object_id)"
+          },
+          {
+            "line": 168,
+            "text": "\t\t\t,ObjectName = object_name(s.object_id) "
+          },
+          {
+            "line": 169,
+            "text": "\t\t\t,StatsName = s.name"
+          },
+          {
+            "line": 170,
+            "text": "\t\t\t,sp.last_updated"
+          },
+          {
+            "line": 171,
+            "text": "\t\t\t,sp.rows"
+          },
+          {
+            "line": 172,
+            "text": "\t\t\t,sp.rows_sampled"
+          },
+          {
+            "line": 173,
+            "text": "\t\t\t,sp.modification_counter"
+          },
+          {
+            "line": 174,
+            "text": "\t\tinto #statsBefore"
+          },
+          {
+            "line": 175,
+            "text": "\t\tfrom sys.stats s cross apply sys.dm_db_stats_properties(s.object_id,s.stats_id) sp "
+          },
+          {
+            "line": 176,
+            "text": "\t\twhere OBJECT_SCHEMA_NAME(s.object_id) != N'<literal:65>' and (sp.modification_counter>0 or @mode=N'<literal:66>')"
+          },
+          {
+            "line": 177,
+            "text": "\t\torder by sp.last_updated asc"
+          },
+          {
+            "line": 180,
+            "text": "\t\traiserror(N'<literal:67>',0,0) with nowait"
+          },
+          {
+            "line": 181,
+            "text": "\t\traiserror(N'<literal:68>',0,0) with nowait"
+          },
+          {
+            "line": 182,
+            "text": "\t\traiserror(N'<literal:69>',0,0) with nowait"
+          },
+          {
+            "line": 184,
+            "text": "\t\tselect @msg = sum(modification_counter) from #statsBefore"
+          },
+          {
+            "line": 185,
+            "text": "\t\tset @msg = N'<literal:70>' + @msg"
+          },
+          {
+            "line": 186,
+            "text": "\t\traiserror(@msg,0,0) with nowait"
+          },
+          {
+            "line": 188,
+            "text": "\t\tselect @msg = sum(iif(modification_counter>0,1,0)) from #statsBefore"
+          },
+          {
+            "line": 189,
+            "text": "\t\tset @msg = N'<literal:71>' + @msg"
+          },
+          {
+            "line": 190,
+            "text": "\t\traiserror(@msg,0,0) with nowait"
+          },
+          {
+            "line": 192,
+            "text": "\t\traiserror(N'<literal:72>',0,0) with nowait"
+          },
+          {
+            "line": 198,
+            "text": "\t\tinsert into #cmdQueue"
+          },
+          {
+            "line": 199,
+            "text": "\t\tselect "
+          },
+          {
+            "line": 200,
+            "text": "\t\ttxtCMD = N'<literal:73>' + ObjectSchema + N'<literal:74>' + ObjectName + N'<literal:75>'+ StatsName +N'<literal:76>'"
+          },
+          {
+            "line": 201,
+            "text": "\t\t, ExtraInfo = N'<literal:77>' + cast([rows] as varchar(100)) + N'<literal:78>' + cast(modification_counter as varchar(100)) + N'<literal:79>' + format((1.0 * modification_counter/ rows ),N'<literal:80>')"
+          },
+          {
+            "line": 202,
+            "text": "\t\tfrom #statsBefore"
+          },
+          {
+            "line": 203,
+            "text": "\tend"
+          },
+          {
+            "line": 206,
+            "text": "if @operation in(N'<literal:81>',N'<literal:82>',N'<literal:83>')"
+          },
+          {
+            "line": 207,
+            "text": "\tbegin "
+          },
+          {
+            "line": 209,
+            "text": "\t\traiserror(N'<literal:84>',0,0) with nowait"
+          },
+          {
+            "line": 210,
+            "text": "\t\tdeclare @SQLCMD nvarchar(max);"
+          },
+          {
+            "line": 211,
+            "text": "\t\tdeclare @ExtraInfo nvarchar(max);"
+          },
+          {
+            "line": 212,
+            "text": "\t\tdeclare @T table(txtCMD nvarchar(max),ExtraInfo nvarchar(max));"
+          },
+          {
+            "line": 213,
+            "text": "\t\twhile exists(select * from #cmdQueue)"
+          },
+          {
+            "line": 214,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 215,
+            "text": "\t\t\tdelete top (1) from #cmdQueue output deleted.* into @T;"
+          },
+          {
+            "line": 216,
+            "text": "\t\t\tselect top (1) @SQLCMD = txtCMD, @ExtraInfo=ExtraInfo from @T"
+          },
+          {
+            "line": 217,
+            "text": "\t\t\traiserror(@SQLCMD,0,0) with nowait"
+          },
+          {
+            "line": 218,
+            "text": "\t\t\tif @LogToTable=1 insert into AzureSQLMaintenanceLog values(@OperationTime,@SQLCMD,@ExtraInfo,sysdatetime(),null,N'<literal:85>')"
+          },
+          {
+            "line": 219,
+            "text": "\t\t\tbegin try"
+          },
+          {
+            "line": 220,
+            "text": "\t\t\t\texec(@SQLCMD)\t"
+          },
+          {
+            "line": 221,
+            "text": "\t\t\t\tif @LogToTable=1 update AzureSQLMaintenanceLog set EndTime = sysdatetime(), StatusMessage = N'<literal:86>' where id=SCOPE_IDENTITY()"
+          },
+          {
+            "line": 222,
+            "text": "\t\t\tend try"
+          },
+          {
+            "line": 223,
+            "text": "\t\t\tbegin catch"
+          },
+          {
+            "line": 224,
+            "text": "\t\t\t\traiserror(N'<literal:87>',0,0) with nowait"
+          },
+          {
+            "line": 225,
+            "text": "\t\t\t\tif @LogToTable=1 update AzureSQLMaintenanceLog set EndTime = sysdatetime(), StatusMessage = N'<literal:88>' + CAST(ERROR_NUMBER() AS VARCHAR(50)) + ERROR_MESSAGE() where id=SCOPE_IDENTITY()"
+          },
+          {
+            "line": 226,
+            "text": "\t\t\tend catch"
+          },
+          {
+            "line": 227,
+            "text": "\t\t\tdelete from @T"
+          },
+          {
+            "line": 228,
+            "text": "\t\tend"
+          },
+          {
+            "line": 229,
+            "text": "\tend"
+          },
+          {
+            "line": 232,
+            "text": "\tif @LogToTable=1"
+          },
+          {
+            "line": 233,
+            "text": "\tbegin"
+          },
+          {
+            "line": 234,
+            "text": "\t\tdelete from AzureSQLMaintenanceLog "
+          },
+          {
+            "line": 235,
+            "text": "\t\tfrom "
+          },
+          {
+            "line": 236,
+            "text": "\t\t\tAzureSQLMaintenanceLog L join "
+          },
+          {
+            "line": 237,
+            "text": "\t\t\t(select distinct OperationTime from AzureSQLMaintenanceLog order by OperationTime desc offset @KeepXOperationInLog rows) F"
+          },
+          {
+            "line": 238,
+            "text": "\t\t\t\tON L.OperationTime = F.OperationTime"
+          },
+          {
+            "line": 239,
+            "text": "\t\tinsert into AzureSQLMaintenanceLog values(@OperationTime,null,cast(@@rowcount as varchar(100))+ N'<literal:89>' + cast( @KeepXOperationInLog as varchar(100)),sysdatetime(),sysdatetime(),N'<literal:90>')"
+          },
+          {
+            "line": 240,
+            "text": "\tend"
+          },
+          {
+            "line": 242,
+            "text": "\traiserror(N'<literal:91>',0,0)"
+          },
+          {
+            "line": 243,
+            "text": "\tif @LogToTable=1 insert into AzureSQLMaintenanceLog values(@OperationTime,null,null,sysdatetime(),sysdatetime(),N'<literal:92>')"
+          },
+          {
+            "line": 244,
+            "text": "end"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/956178802.sql",
+          "sha256": "3193f62b3a13faa55eaf64f004a88d4cbb81cf1e93048af35a1780bcd75c9055",
+          "line_start": 1,
+          "line_end": 246,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "6ca30420775ab5d138dbdcbc31e33c7fb25823c657af7d8bab3f7867e06957c2",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-956178802"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-956178802": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 956178802,
+        "qualified_name": "dbo.AzureSQLMaintenance",
+        "source_definition_sha256": "6ca30420775ab5d138dbdcbc31e33c7fb25823c657af7d8bab3f7867e06957c2",
+        "reading_path": "DB Architecture/sql/956178802.sql",
+        "reading_sha256": "3193f62b3a13faa55eaf64f004a88d4cbb81cf1e93048af35a1780bcd75c9055",
+        "line_spans": [
+          [
+            1,
+            246
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.AzureSQLMaintenance",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/956178802.sql",
+      "reading_sha256": "3193f62b3a13faa55eaf64f004a88d4cbb81cf1e93048af35a1780bcd75c9055",
+      "source_definition_sha256": "6ca30420775ab5d138dbdcbc31e33c7fb25823c657af7d8bab3f7867e06957c2",
+      "reading_lines": 246,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [
+        {
+          "line": 220,
+          "state": "RUNTIME_SQL_OR_PROCEDURE_TARGET_NOT_FULLY_RESOLVED"
+        }
+      ],
+      "unresolved_relation_positions": [
+        {
+          "line": 103,
+          "operation": "SELECT",
+          "reason": "UNRESOLVED_RELATION"
+        },
+        {
+          "line": 175,
+          "operation": "SELECT",
+          "reason": "UNRESOLVED_RELATION"
+        }
+      ],
+      "catalog_dynamic_candidate": true
+    },
+    "dynamic_review_bindings": [
+      {
+        "module_id": 956178802,
+        "batch_path": "DB Architecture/mappings/batches/dynamic-dependencies.json",
+        "batch_sha256": "b3647d0c9510b3038e2fd81c1ad659bb1d82b82bbf0a55b32bbd7c434899c323",
+        "review_state": "BOUNDED_DYNAMIC_CONSTRUCTION_REVIEW",
+        "source_definition_sha256": "6ca30420775ab5d138dbdcbc31e33c7fb25823c657af7d8bab3f7867e06957c2"
+      }
+    ],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [
+      {
+        "module_id": 956178802,
+        "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+        "contract_index": 56,
+        "source_field": "effects",
+        "source_index": 0,
+        "relationship": "READS",
+        "reason": "NO_CAPTURED_TABLE_OBJECT_ID"
+      },
+      {
+        "module_id": 956178802,
+        "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+        "contract_index": 56,
+        "source_field": "effects",
+        "source_index": 1,
+        "relationship": "READS",
+        "reason": "NO_CAPTURED_TABLE_OBJECT_ID"
+      },
+      {
+        "module_id": 956178802,
+        "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+        "contract_index": 56,
+        "source_field": "effects",
+        "source_index": 2,
+        "relationship": "READS",
+        "reason": "NO_CAPTURED_TABLE_OBJECT_ID"
+      },
+      {
+        "module_id": 956178802,
+        "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+        "contract_index": 56,
+        "source_field": "effects",
+        "source_index": 3,
+        "relationship": "READS",
+        "reason": "NO_CAPTURED_TABLE_OBJECT_ID"
+      }
+    ],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

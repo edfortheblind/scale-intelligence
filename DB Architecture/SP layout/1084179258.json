@@ -1,0 +1,724 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1084179258,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "CCP_CreateWorkForLogisticsUnit",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:37.033000",
+    "modify_date": "2026-08-16 06:59:37.033000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.CCP_CreateWorkForLogisticsUnit",
+    "domain_candidate": "work"
+  },
+  "source_definition_sha256": "fd8425ab52e7eab527dc2e07f9d5bad611bc01b91529a32a0e3b592b2a7847d7",
+  "exact_sql_path": "1084179258.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 5708,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1084179258,
+      "parameter_id": 1,
+      "name": "@cycleCountInternalNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1084179258,
+      "parameter_id": 2,
+      "name": "@iLaunchNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1084179258,
+      "parameter_id": 3,
+      "name": "@stRelatedWorkUnit",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 1084179258,
+      "parameter_id": 4,
+      "name": "@stUserName",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 60,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(30)"
+    },
+    {
+      "object_id": 1084179258,
+      "parameter_id": 5,
+      "name": "@stLoc",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1084179258,
+      "parameter_id": 6,
+      "name": "@stWhs",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 182291709,
+        "qualified_name": "dbo.CYCLE_COUNT_REQUEST",
+        "layout_path": "../table layout/182291709.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1084179258,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1152,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/inventory-cycle-count-continuation.json",
+              "batch_sha256": "662aa90536cd4a47d4203e616a303e3c0c3676e5d58dd799f296ad6157c020db",
+              "contract_index": 2,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/2/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 124,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1643868923,
+        "qualified_name": "dbo.SYSTEM_CONFIG_DETAIL",
+        "layout_path": "../table layout/1643868923.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1084179258,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1154,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/inventory-cycle-count-continuation.json",
+              "batch_sha256": "662aa90536cd4a47d4203e616a303e3c0c3676e5d58dd799f296ad6157c020db",
+              "contract_index": 2,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/2/effects/2",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 45,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1084179258,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1153,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/inventory-cycle-count-continuation.json",
+              "batch_sha256": "662aa90536cd4a47d4203e616a303e3c0c3676e5d58dd799f296ad6157c020db",
+              "contract_index": 2,
+              "source_field": "effects",
+              "source_index": 3,
+              "json_pointer": "/semantic_contracts/2/effects/3",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "INSERT",
+              "line": 52,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 206,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [
+      {
+        "table_id": 2102298549,
+        "qualified_name": "dbo.IA_WORK_INSTRUCTION",
+        "layout_path": "../table layout/2102298549.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": [
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "reading_lines": [
+            55,
+            91,
+            140
+          ]
+        }
+      },
+      {
+        "table_id": 182291709,
+        "qualified_name": "dbo.CYCLE_COUNT_REQUEST",
+        "layout_path": "../table layout/182291709.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "reading_lines": [
+            124
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "reading_lines": [
+            53,
+            89,
+            139
+          ]
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "reading_lines": [
+            93
+          ]
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "reading_lines": [
+            56,
+            92,
+            167
+          ]
+        }
+      },
+      {
+        "table_id": 1643868923,
+        "qualified_name": "dbo.SYSTEM_CONFIG_DETAIL",
+        "layout_path": "../table layout/1643868923.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "reading_lines": [
+            45
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "reading_lines": [
+            94
+          ]
+        }
+      },
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "reading_lines": [
+            52,
+            206
+          ]
+        }
+      },
+      {
+        "table_id": 1768393369,
+        "qualified_name": "dbo.WORK_TYPE",
+        "layout_path": "../table layout/1768393369.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "reading_lines": [
+            68,
+            104,
+            170
+          ]
+        }
+      },
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "module_type": "P",
+          "source_line": 5,
+          "source_start_offset": 311,
+          "source_end_offset": 327,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1352391887,
+          "table_qualified_name": "dbo.WORK_INSTRUCTION",
+          "source_definition_sha256": "fd8425ab52e7eab527dc2e07f9d5bad611bc01b91529a32a0e3b592b2a7847d7",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "module_type": "P",
+          "source_line": 8,
+          "source_start_offset": 688,
+          "source_end_offset": 704,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1352391887,
+          "table_qualified_name": "dbo.WORK_INSTRUCTION",
+          "source_definition_sha256": "fd8425ab52e7eab527dc2e07f9d5bad611bc01b91529a32a0e3b592b2a7847d7",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1084179258,
+          "module_type": "P",
+          "source_line": 9,
+          "source_start_offset": 788,
+          "source_end_offset": 804,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1352391887,
+          "table_qualified_name": "dbo.WORK_INSTRUCTION",
+          "source_definition_sha256": "fd8425ab52e7eab527dc2e07f9d5bad611bc01b91529a32a0e3b592b2a7847d7",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1084179258,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "WORK_INSTRUCTION_VIEW",
+      "referenced_id": 172579703,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.WORK_INSTRUCTION_VIEW"
+    },
+    {
+      "referencing_id": 1084179258,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "CYCLE_COUNT_REQUEST",
+      "referenced_id": 182291709,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.CYCLE_COUNT_REQUEST"
+    },
+    {
+      "referencing_id": 1084179258,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "WORK_INSTRUCTION",
+      "referenced_id": 1352391887,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.WORK_INSTRUCTION"
+    },
+    {
+      "referencing_id": 1084179258,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SYSTEM_CONFIG_DETAIL",
+      "referenced_id": 1643868923,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SYSTEM_CONFIG_DETAIL"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/inventory-cycle-count-continuation.json",
+    "source_sha256": "662aa90536cd4a47d4203e616a303e3c0c3676e5d58dd799f296ad6157c020db",
+    "json_pointer": "/semantic_contracts/2",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1084179258,
+      "qualified_name": "dbo.CCP_CreateWorkForLogisticsUnit",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body read, authored input/output/effect/branch/configuration/error/transaction/concurrency explanations; source current per owner.",
+      "source_definition_sha256": "fd8425ab52e7eab527dc2e07f9d5bad611bc01b91529a32a0e3b592b2a7847d7",
+      "purpose": "Create one cycle-count detail work instruction for a request and return its mobile-style work projection.",
+      "inputs_defaults": [
+        "Captured declaration; placeholders are not executable argument values: CREATE PROCEDURE CCP_CreateWorkForLogisticsUnit( @cycleCountInternalNum numeric(9), @iLaunchNum numeric(9), @stRelatedWorkUnit nvarchar(50), @stUserName nvarchar(30), @stLoc nvarchar(25), @stWhs nvarchar(25)) AS"
+      ],
+      "null_and_invalid_input_behavior": [
+        "No matching join inserts nothing and returns -1. NULL equality selectors do not match; unmatched parent/configuration can remain NULL. The parent lookup and insertion have different location/warehouse scope."
+      ],
+      "output_shape": [
+        "One wide result row after a successful insert; includes FROM_CHECK_DIG as CHECK_DIG, FROM_WORK_ZONE as WORK_ZONE, FROM_LOC as PICKLOC, FROM_WHS as FROM_WHS1 and NULL placeholders. Complete projection is retained in cited source."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.WORK_INSTRUCTION_VIEW",
+          "object_id": 172579703,
+          "evidence_refs": [
+            "icc-sql-1084179258"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.CYCLE_COUNT_REQUEST",
+          "object_id": 182291709,
+          "evidence_refs": [
+            "icc-sql-1084179258"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.SYSTEM_CONFIG_DETAIL",
+          "object_id": 1643868923,
+          "evidence_refs": [
+            "icc-sql-1084179258"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.WORK_INSTRUCTION",
+          "object_id": 1352391887,
+          "evidence_refs": [
+            "icc-sql-1084179258"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Read a candidate parent from WORK_INSTRUCTION_VIEW by launch/work unit and coded types, without warehouse/location or ordering; read the source identifier configuration.",
+          "evidence_refs": [
+            "icc-sql-1084179258"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Insert TOP 1 work detail by joining the work view and cycle-count request through launch, filtering the request ID plus work location/warehouse/types. Copy work defaults and request inventory identity. TOP 1 has no ordering.",
+          "evidence_refs": [
+            "icc-sql-1084179258"
+          ]
+        },
+        {
+          "order": 3,
+          "explanation": "Return the inserted row selected by scope_identity, including check-digit/work-zone aliases, item/lot/unit/attribute/request fields, quantities, parent and numerous explicitly NULL mobile routing fields.",
+          "evidence_refs": [
+            "icc-sql-1084179258"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Inserts work only; does not directly mark the request WORK_CREATED or increment the existing parent child count.",
+      "configuration_scope_and_precedence": [
+        "Source identifier comes from a coded SYSTEM_CONFIG_DETAIL key/type. Existing work supplies type/team/priority/group; the request supplies inventory dimensions."
+      ],
+      "error_and_return_handling": [
+        "Immediately returns -1 on insert error or no inserted row; no TRY/CATCH or compensating cleanup."
+      ],
+      "transaction_ownership": "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT in this body. Caller/session transaction behavior governs partial completion; this contract does not assume atomic child calls.",
+      "concurrency": [
+        "Parent and source work are read separately from insertion. No duplicate guard or transaction makes repeating the call idempotent."
+      ],
+      "trigger_behavior": "Captured attached triggers: work_instruction_outgoing_pd (AFTER INSERT; enabled). Their INSERT event does not fire merely because this routine updates or deletes the table. The WORK_INSTRUCTION insertion can invoke work_instruction_outgoing_pd: if any inserted row meets its coded condition, it updates outgoing_pd_loc for every row in that inserted set, not only the qualifying subset. Actual execution was not observed.",
+      "external_handoffs_and_gaps": [
+        "Application callers, current record state and active permissions were not observed. No extension, assembly or Azure-function changes are required by this documentation task.",
+        "Explicit child/function calls are listed; their exact source contracts bound transitive effects. Opaque selectors are retained as technical evidence, without fabricated labels."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1084179258.sql",
+          "sha256": "f1ccc7f8d41e3944ae698da8614ebcf6a1c263db693001bed6934c1eebcea77f",
+          "line_start": 1,
+          "line_end": 210,
+          "kind": "REDACTED_SQL",
+          "description": "Complete retained definition reviewed with individual behavioral notes; private original hash/redaction parity verified.",
+          "source_definition_sha256": "fd8425ab52e7eab527dc2e07f9d5bad611bc01b91529a32a0e3b592b2a7847d7"
+        }
+      ],
+      "evidence_refs": [
+        "icc-sql-1084179258"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_NAMES"
+    },
+    "evidence_sources": {
+      "icc-sql-1084179258": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1084179258,
+        "qualified_name": "dbo.CCP_CreateWorkForLogisticsUnit",
+        "source_definition_sha256": "fd8425ab52e7eab527dc2e07f9d5bad611bc01b91529a32a0e3b592b2a7847d7",
+        "reading_path": "DB Architecture/sql/1084179258.sql",
+        "reading_sha256": "f1ccc7f8d41e3944ae698da8614ebcf6a1c263db693001bed6934c1eebcea77f",
+        "line_spans": [
+          [
+            1,
+            210
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
+      "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
+      "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.CCP_CreateWorkForLogisticsUnit",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1084179258.sql",
+      "reading_sha256": "f1ccc7f8d41e3944ae698da8614ebcf6a1c263db693001bed6934c1eebcea77f",
+      "source_definition_sha256": "fd8425ab52e7eab527dc2e07f9d5bad611bc01b91529a32a0e3b592b2a7847d7",
+      "reading_lines": 210,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
+    "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
+    "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
+  ]
+}

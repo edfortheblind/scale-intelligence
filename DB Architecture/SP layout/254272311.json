@@ -1,0 +1,526 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 254272311,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "WAVE_AddShipment",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:59.667000",
+    "modify_date": "2026-08-16 06:59:59.667000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.WAVE_AddShipment",
+    "domain_candidate": "shipping"
+  },
+  "source_definition_sha256": "5085fbe586aaa6405f4da485d05e9b932062cf6c01d8af88331711e0e63340a3",
+  "exact_sql_path": "254272311.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 1452,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 254272311,
+      "parameter_id": 1,
+      "name": "@intShipNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 254272311,
+      "parameter_id": 2,
+      "name": "@toWaveNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 254272311,
+      "parameter_id": 3,
+      "name": "@wavePendingSts",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 3,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(3,0)"
+    },
+    {
+      "object_id": 254272311,
+      "parameter_id": 4,
+      "name": "@processStamp",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 200,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(100)"
+    },
+    {
+      "object_id": 254272311,
+      "parameter_id": 5,
+      "name": "@userStamp",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 60,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(30)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 619865275,
+        "qualified_name": "dbo.SHIPMENT_DETAIL",
+        "layout_path": "../table layout/619865275.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 254272311,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 275,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+              "batch_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+              "contract_index": 0,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/0/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+              "batch_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+              "contract_index": 0,
+              "source_field": "effects",
+              "source_index": 3,
+              "json_pointer": "/semantic_contracts/0/effects/3",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "UPDATE",
+              "line": 36,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 254272311,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 276,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+              "batch_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+              "contract_index": 0,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/0/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+              "batch_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+              "contract_index": 0,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/0/effects/2",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "UPDATE",
+              "line": 22,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              254272311,
+              1000702963
+            ],
+            "table_id": 664389436
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": [
+      {
+        "table_id": 619865275,
+        "qualified_name": "dbo.SHIPMENT_DETAIL",
+        "layout_path": "../table layout/619865275.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 254272311,
+          "reading_lines": [
+            36
+          ]
+        }
+      },
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 254272311,
+          "reading_lines": [
+            22,
+            26,
+            27
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 254272311,
+          "reading_lines": [
+            26,
+            27
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 254272311,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "shipment_detail",
+      "referenced_id": 619865275,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_DETAIL"
+    },
+    {
+      "referencing_id": 254272311,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "shipment_header",
+      "referenced_id": 683865503,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_HEADER"
+    },
+    {
+      "referencing_id": 254272311,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "GetWarehouseTimezoneValue",
+      "referenced_id": 1000702963,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": true,
+      "target_qualified_name": "dbo.GetWarehouseTimezoneValue"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+    "source_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+    "json_pointer": "/semantic_contracts/0",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_INDEPENDENT_REVIEW_PENDING",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 254272311,
+      "qualified_name": "dbo.WAVE_AddShipment",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Body-level static contract; transitive application and called-module completeness are separate.",
+      "source_definition_sha256": "5085fbe586aaa6405f4da485d05e9b932062cf6c01d8af88331711e0e63340a3",
+      "purpose": "Attach one shipment to a wave and assign caller-supplied pending statuses.",
+      "inputs_defaults": [
+        "shipNum numeric(9), toWaveNum numeric(9), pendingSts numeric(3), processStamp nvarchar(100), userStamp nvarchar(30); required, no defaults."
+      ],
+      "null_and_invalid_input_behavior": [
+        "NULL/missing shipment ID matches no rows. No positive/existing destination-wave validation. NULL pending status can violate nonnullable header status columns; unknown detail comparisons preserve the existing detail status."
+      ],
+      "output_shape": [
+        "No intentional result set. No affected-row count is promised as an application result."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "SHIPMENT_HEADER",
+          "object_id": 683865503,
+          "evidence_refs": [
+            "awr-batch-254272311"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "SHIPMENT_DETAIL",
+          "object_id": 619865275,
+          "evidence_refs": [
+            "awr-batch-254272311"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "SHIPMENT_HEADER",
+          "object_id": 683865503,
+          "evidence_refs": [
+            "awr-batch-254272311"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "SHIPMENT_DETAIL",
+          "object_id": 619865275,
+          "evidence_refs": [
+            "awr-batch-254272311"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "GetWarehouseTimezoneValue",
+          "object_id": 1000702963,
+          "evidence_refs": [
+            "awr-batch-254272311"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Update the shipment header wave ID, both statuses to pendingSts, warehouse-local status dates and supplied/UTC stamps; return -1 on the immediately tested error.",
+          "evidence_refs": [
+            "awr-batch-254272311"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Update its detail rows to the destination wave and set PREVIOUS_WAVE_NUM to that same destination. Raise STATUS1 to pendingSts only where its existing value is lower; otherwise retain STATUS1. Stamp and test the second statement error.",
+          "evidence_refs": [
+            "awr-batch-254272311"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Header statuses are assigned unconditionally and can move downward; detail first status is only raised by its comparison. Quantities-at-status are not redistributed.",
+      "configuration_scope_and_precedence": [
+        "No configuration lookup in this body; identifiers and status values are supplied by the caller."
+      ],
+      "error_and_return_handling": [
+        "Each UPDATE is followed by @@ERROR check returning -1; there is no body-owned atomic transaction, rollback or rowcount validation. Header success can precede detail failure."
+      ],
+      "transaction_ownership": "No explicit transaction, commit, rollback, savepoint, TRY/CATCH or XACT_ABORT is introduced by this body; caller/session semantics remain authoritative.",
+      "concurrency": [
+        "No body-owned snapshot or lock-based read/modify/write protocol; caller/session isolation governs concurrent observations."
+      ],
+      "trigger_behavior": "No INSERT/UPDATE/DELETE trigger on these target tables is present in the captured six-trigger inventory, except SHIPPING_CONTAINER has an INSERT-only trigger and WORK_INSTRUCTION has an INSERT-only trigger; updates/deletes here do not directly activate those INSERT events. Constraints and caller actions still apply.",
+      "external_handoffs_and_gaps": [
+        "Application binding, effective permissions, permitted transitions and operational outcomes are not established."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/254272311.sql",
+          "sha256": "98713bd8ec243afa861446d6a031047579ae3961a77b67c00e76862fc578a8c4",
+          "line_start": 1,
+          "line_end": 49,
+          "kind": "REDACTED_SQL",
+          "description": "Complete module body reviewed with original-definition fingerprint.",
+          "source_definition_sha256": "5085fbe586aaa6405f4da485d05e9b932062cf6c01d8af88331711e0e63340a3"
+        }
+      ],
+      "evidence_refs": [
+        "awr-batch-254272311"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "awr-batch-254272311": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 254272311,
+        "qualified_name": "dbo.WAVE_AddShipment",
+        "source_definition_sha256": "5085fbe586aaa6405f4da485d05e9b932062cf6c01d8af88331711e0e63340a3",
+        "reading_path": "DB Architecture/sql/254272311.sql",
+        "reading_sha256": "98713bd8ec243afa861446d6a031047579ae3961a77b67c00e76862fc578a8c4",
+        "line_spans": [
+          [
+            1,
+            49
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "All conclusions are bounded to captured source/catalog and explicitly reviewed vendor nodes. No operational data or live SQL calls.",
+      "Code-review edges are static possible paths, not reproduced defects. Caller transactions, isolation, permitted values and actual configuration remain external.",
+      "Private source is used only in guarded fingerprint/literal-category checks. No full private definition, arbitrary message/comment or credentials are persisted in this fragment.",
+      "Unqualified procedure candidates and dynamic lexical false positives do not prove effective runtime binding. Object prefixes do not establish vendor/custom ownership."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.WAVE_AddShipment",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/254272311.sql",
+      "reading_sha256": "98713bd8ec243afa861446d6a031047579ae3961a77b67c00e76862fc578a8c4",
+      "source_definition_sha256": "5085fbe586aaa6405f4da485d05e9b932062cf6c01d8af88331711e0e63340a3",
+      "reading_lines": 49,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "All conclusions are bounded to captured source/catalog and explicitly reviewed vendor nodes. No operational data or live SQL calls.",
+    "Code-review edges are static possible paths, not reproduced defects. Caller transactions, isolation, permitted values and actual configuration remain external.",
+    "Private source is used only in guarded fingerprint/literal-category checks. No full private definition, arbitrary message/comment or credentials are persisted in this fragment.",
+    "Unqualified procedure candidates and dynamic lexical false positives do not prove effective runtime binding. Object prefixes do not establish vendor/custom ownership."
+  ]
+}

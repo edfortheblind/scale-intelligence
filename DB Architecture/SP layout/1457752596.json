@@ -1,0 +1,2141 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1457752596,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "SDB_MoveQtyToSts",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:56.940000",
+    "modify_date": "2026-08-16 06:59:56.940000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.SDB_MoveQtyToSts",
+    "domain_candidate": "configuration"
+  },
+  "source_definition_sha256": "fa104e94e393842afe3be154df8f564aa49c281569187ab1b23288ebf7f12c64",
+  "exact_sql_path": "1457752596.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 12397,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": true,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": true,
+    "cursor": false,
+    "loop": true,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1457752596,
+      "parameter_id": 1,
+      "name": "@iIntShipLineNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1457752596,
+      "parameter_id": 2,
+      "name": "@dMoveQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1457752596,
+      "parameter_id": 3,
+      "name": "@iFromSts",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 3,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(3,0)"
+    },
+    {
+      "object_id": 1457752596,
+      "parameter_id": 4,
+      "name": "@iToSts",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 3,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(3,0)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 619865275,
+        "qualified_name": "dbo.SHIPMENT_DETAIL",
+        "layout_path": "../table layout/619865275.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1457752596,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1756,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 91,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/91/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 91,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/91/effects/1",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 71,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 375,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [
+      {
+        "table_id": 1942297979,
+        "qualified_name": "dbo.FUNCTIONAL_AREA_STATUS_FLOW",
+        "layout_path": "../table layout/1942297979.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              1457752596,
+              2065754762,
+              2113754933
+            ],
+            "table_id": 1942297979
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 2038298321,
+        "qualified_name": "dbo.GENERIC_CONFIG_DETAIL",
+        "layout_path": "../table layout/2038298321.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1903345845,
+        "qualified_name": "dbo.RESOURCE_FILE_BASE",
+        "layout_path": "../table layout/1903345845.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1935345959,
+        "qualified_name": "dbo.RESOURCE_FILE_CUSTOM",
+        "layout_path": "../table layout/1935345959.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1067866871,
+        "qualified_name": "dbo.SHIPPING_CONTAINER",
+        "layout_path": "../table layout/1067866871.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1131867099,
+        "qualified_name": "dbo.SHIPPING_LOAD",
+        "layout_path": "../table layout/1131867099.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              1457752596,
+              2065754762,
+              2081754819
+            ],
+            "table_id": 1131867099
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1643868923,
+        "qualified_name": "dbo.SYSTEM_CONFIG_DETAIL",
+        "layout_path": "../table layout/1643868923.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 728389664,
+        "qualified_name": "dbo.WAREHOUSE_ALERT",
+        "layout_path": "../table layout/728389664.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              1457752596,
+              2065754762
+            ],
+            "table_id": 728389664
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 824390006,
+        "qualified_name": "dbo.WAREHOUSE_ALERT_REQUEST",
+        "layout_path": "../table layout/824390006.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              1457752596,
+              2065754762
+            ],
+            "table_id": 824390006
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": [
+      {
+        "table_id": 619865275,
+        "qualified_name": "dbo.SHIPMENT_DETAIL",
+        "layout_path": "../table layout/619865275.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1457752596,
+          "reading_lines": [
+            71,
+            375
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1457752596,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "STH_UpdateHeader",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": true,
+      "is_ambiguous": false,
+      "target_qualified_name": null
+    },
+    {
+      "referencing_id": 1457752596,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "SDBfn_GetLeadingStsPos",
+      "referenced_id": 87319721,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SDBfn_GetLeadingStsPos"
+    },
+    {
+      "referencing_id": 1457752596,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "SDBfn_GetPosOfSts",
+      "referenced_id": 103319778,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SDBfn_GetPosOfSts"
+    },
+    {
+      "referencing_id": 1457752596,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "SDBfn_GetQtyAtSts",
+      "referenced_id": 119319835,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SDBfn_GetQtyAtSts"
+    },
+    {
+      "referencing_id": 1457752596,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SHIPMENT_DETAIL",
+      "referenced_id": 619865275,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_DETAIL"
+    },
+    {
+      "referencing_id": 1457752596,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "RSCMfn_RtrvMsg",
+      "referenced_id": 1089751285,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.RSCMfn_RtrvMsg"
+    },
+    {
+      "referencing_id": 1457752596,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "SDBfn_GetLeadingStsInRange",
+      "referenced_id": 1489752710,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SDBfn_GetLeadingStsInRange"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/91",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1457752596,
+      "qualified_name": "dbo.SDB_MoveQtyToSts",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "fa104e94e393842afe3be154df8f564aa49c281569187ab1b23288ebf7f12c64",
+      "purpose": "Move a quantity between the ten status buckets of a shipment detail.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE SDB_MoveQtyToSts( @iIntShipLineNum numeric(9), @dMoveQty numeric(19,5), @iFromSts numeric(3), @iToSts numeric(3)) AS",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 1457752596,
+          "parameter_id": 1,
+          "name": "@iIntShipLineNum",
+          "type_schema": "sys",
+          "type_name": "numeric",
+          "max_length": 5,
+          "precision": 9,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1457752596,
+          "parameter_id": 2,
+          "name": "@dMoveQty",
+          "type_schema": "sys",
+          "type_name": "numeric",
+          "max_length": 9,
+          "precision": 19,
+          "scale": 5,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1457752596,
+          "parameter_id": 3,
+          "name": "@iFromSts",
+          "type_schema": "sys",
+          "type_name": "numeric",
+          "max_length": 5,
+          "precision": 3,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1457752596,
+          "parameter_id": 4,
+          "name": "@iToSts",
+          "type_schema": "sys",
+          "type_name": "numeric",
+          "max_length": 5,
+          "precision": 3,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "No explicit validation for NULL/negative move amount, zero destination, sorted/unique source statuses or missing detail. Helper return behavior governs absent/NULL inputs."
+      ],
+      "output_shape": [
+        "No result set; severity18 resource-based errors and return-1 for absent source status or insufficient source quantity, plus checked UPDATE errors."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.SHIPMENT_DETAIL",
+          "object_id": 619865275,
+          "evidence_refs": [
+            "ops-sql-1457752596"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.SHIPMENT_DETAIL",
+          "object_id": 619865275,
+          "evidence_refs": [
+            "ops-sql-1457752596"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.SDBfn_GetLeadingStsInRange",
+          "object_id": 1489752710,
+          "evidence_refs": [
+            "ops-sql-1457752596"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.SDBfn_GetPosOfSts",
+          "object_id": 103319778,
+          "evidence_refs": [
+            "ops-sql-1457752596"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.SDBfn_GetQtyAtSts",
+          "object_id": 119319835,
+          "evidence_refs": [
+            "ops-sql-1457752596"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.SDBfn_GetLeadingStsPos",
+          "object_id": 87319721,
+          "evidence_refs": [
+            "ops-sql-1457752596"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.RSCMfn_RtrvMsg",
+          "object_id": 1089751285,
+          "evidence_refs": [
+            "ops-sql-1457752596"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.STH_UpdateHeader",
+          "object_id": 2065754762,
+          "evidence_refs": [
+            "ops-sql-1457752596"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Reads all10 status/quantity pairs and shipment number with UPDLOCK. Helpers locate source status and quantity; subtracts requested move quantity. Missing source position<=0 or negative remainder errors. Positive remainder updates source bucket; otherwise shifts later pairs left and clears final slot. Locates destination after this removal, adds move amount to existing quantity or finds sorted insertion position and shifts pairs right before inserting. No guard for an eleventh occupied status: inserting while10 remain can overwrite/discard a final pair. Negative move quantity is not rejected and can reverse quantities; NULL arithmetic can bypass guards and follow removal branch. Writes all10 pairs plus process/UTC stamp by line ID, leaving TOTAL_QTY unchanged. After writing, recomputes leading/trailing status and calls STH_UpdateHeader only if either compares different, propagating checked child errors.",
+          "evidence_refs": [
+            "ops-sql-1457752596"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Reads all10 status/quantity pairs and shipment number with UPDLOCK. Helpers locate source status and quantity; subtracts requested move quantity. Missing source position<=0 or negative remainder errors. Positive remainder updates source bucket; otherwise shifts later pairs left and clears final slot. Locates destination after this removal, adds move amount to existing quantity or finds sorted insertion position and shifts pairs right before inserting. No guard for an eleventh occupied status: inserting while10 remain can overwrite/discard a final pair. Negative move quantity is not rejected and can reverse quantities; NULL arithmetic can bypass guards and follow removal branch. Writes all10 pairs plus process/UTC stamp by line ID, leaving TOTAL_QTY unchanged. After writing, recomputes leading/trailing status and calls STH_UpdateHeader only if either compares different, propagating checked child errors.",
+      "configuration_scope_and_precedence": [
+        "Reads all10 status/quantity pairs and shipment number with UPDLOCK. Helpers locate source status and quantity; subtracts requested move quantity. Missing source position<=0 or negative remainder errors. Positive remainder updates source bucket; otherwise shifts later pairs left and clears final slot. Locates destination after this removal, adds move amount to existing quantity or finds sorted insertion position and shifts pairs right before inserting. No guard for an eleventh occupied status: inserting while10 remain can overwrite/discard a final pair. Negative move quantity is not rejected and can reverse quantities; NULL arithmetic can bypass guards and follow removal branch. Writes all10 pairs plus process/UTC stamp by line ID, leaving TOTAL_QTY unchanged. After writing, recomputes leading/trailing status and calls STH_UpdateHeader only if either compares different, propagating checked child errors."
+      ],
+      "error_and_return_handling": [
+        "No result set; severity18 resource-based errors and return-1 for absent source status or insufficient source quantity, plus checked UPDATE errors.",
+        "No explicit validation for NULL/negative move amount, zero destination, sorted/unique source statuses or missing detail. Helper return behavior governs absent/NULL inputs.",
+        "No explicit transaction or TRY/CATCH. UPDLOCK protects within transaction scope supplied by the caller; this body does not hold a local transaction across read and write."
+      ],
+      "transaction_ownership": "No explicit transaction or TRY/CATCH. UPDLOCK protects within transaction scope supplied by the caller; this body does not hold a local transaction across read and write.",
+      "concurrency": [
+        "Caller/session isolation and any explicit source locks govern reads. No explicit transaction or TRY/CATCH. UPDLOCK protects within transaction scope supplied by the caller; this body does not hold a local transaction across read and write."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [],
+      "external_handoffs_and_gaps": [
+        "Full body read for both variants; names do not prove which one callers use. No quantity movement executed.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE SDB_MoveQtyToSts( @iIntShipLineNum numeric(9), @dMoveQty numeric(19,5), @iFromSts numeric(3), @iToSts numeric(3)) AS",
+        "program": [
+          {
+            "line": 4,
+            "text": "CREATE PROCEDURE SDB_MoveQtyToSts("
+          },
+          {
+            "line": 5,
+            "text": "\t@iIntShipLineNum numeric(9),"
+          },
+          {
+            "line": 6,
+            "text": "\t@dMoveQty numeric(19,5),"
+          },
+          {
+            "line": 7,
+            "text": "\t@iFromSts numeric(3),"
+          },
+          {
+            "line": 8,
+            "text": "\t@iToSts\tnumeric(3))"
+          },
+          {
+            "line": 9,
+            "text": "AS"
+          },
+          {
+            "line": 10,
+            "text": "\tSET NOCOUNT ON;"
+          },
+          {
+            "line": 13,
+            "text": "\tdeclare @iStatus1 numeric(3);"
+          },
+          {
+            "line": 14,
+            "text": "\tdeclare @iStatus2 numeric(3);"
+          },
+          {
+            "line": 15,
+            "text": "\tdeclare @iStatus3 numeric(3);"
+          },
+          {
+            "line": 16,
+            "text": "\tdeclare @iStatus4 numeric(3);"
+          },
+          {
+            "line": 17,
+            "text": "\tdeclare @iStatus5 numeric(3);"
+          },
+          {
+            "line": 18,
+            "text": "\tdeclare @iStatus6 numeric(3);"
+          },
+          {
+            "line": 19,
+            "text": "\tdeclare @iStatus7 numeric(3);"
+          },
+          {
+            "line": 20,
+            "text": "\tdeclare @iStatus8 numeric(3);"
+          },
+          {
+            "line": 21,
+            "text": "\tdeclare @iStatus9 numeric(3);"
+          },
+          {
+            "line": 22,
+            "text": "\tdeclare @iStatus10 numeric(3);"
+          },
+          {
+            "line": 23,
+            "text": "\tdeclare @dQtyAtSts1 numeric(19,5);"
+          },
+          {
+            "line": 24,
+            "text": "\tdeclare @dQtyAtSts2 numeric(19,5);"
+          },
+          {
+            "line": 25,
+            "text": "\tdeclare @dQtyAtSts3 numeric(19,5);"
+          },
+          {
+            "line": 26,
+            "text": "\tdeclare @dQtyAtSts4 numeric(19,5);"
+          },
+          {
+            "line": 27,
+            "text": "\tdeclare @dQtyAtSts5 numeric(19,5);"
+          },
+          {
+            "line": 28,
+            "text": "\tdeclare @dQtyAtSts6 numeric(19,5);"
+          },
+          {
+            "line": 29,
+            "text": "\tdeclare @dQtyAtSts7 numeric(19,5);"
+          },
+          {
+            "line": 30,
+            "text": "\tdeclare @dQtyAtSts8 numeric(19,5);"
+          },
+          {
+            "line": 31,
+            "text": "\tdeclare @dQtyAtSts9 numeric(19,5);"
+          },
+          {
+            "line": 32,
+            "text": "\tdeclare @dQtyAtSts10 numeric(19,5);"
+          },
+          {
+            "line": 35,
+            "text": "\tdeclare @dFromStsQty numeric(19,5);"
+          },
+          {
+            "line": 36,
+            "text": "\tdeclare @dToStsQty numeric(19,5);"
+          },
+          {
+            "line": 37,
+            "text": "\tdeclare @i int;"
+          },
+          {
+            "line": 38,
+            "text": "\tdeclare @iError int;"
+          },
+          {
+            "line": 39,
+            "text": "\tdeclare @iFromStsPos int;"
+          },
+          {
+            "line": 40,
+            "text": "\tdeclare @iIntShipNum numeric(9);"
+          },
+          {
+            "line": 41,
+            "text": "\tdeclare @iLeadingStsPos int;"
+          },
+          {
+            "line": 42,
+            "text": "\tdeclare @iNewLeadingSts numeric(3);"
+          },
+          {
+            "line": 43,
+            "text": "\tdeclare @iNewTrailingSts numeric(3);"
+          },
+          {
+            "line": 44,
+            "text": "\tdeclare @iOldLeadingSts numeric(3);"
+          },
+          {
+            "line": 45,
+            "text": "\tdeclare @iOldTrailingSts numeric(3);"
+          },
+          {
+            "line": 46,
+            "text": "\tdeclare @iToStsPos int;"
+          },
+          {
+            "line": 47,
+            "text": "\tdeclare @stErrorMsg nvarchar(2000);"
+          },
+          {
+            "line": 50,
+            "text": "\tSELECT @iStatus1 = STATUS1,"
+          },
+          {
+            "line": 51,
+            "text": "\t\t   @iStatus2 = STATUS2,"
+          },
+          {
+            "line": 52,
+            "text": "\t\t   @iStatus3 = STATUS3,"
+          },
+          {
+            "line": 53,
+            "text": "\t\t   @iStatus4 = STATUS4,"
+          },
+          {
+            "line": 54,
+            "text": "\t\t   @iStatus5 = STATUS5,"
+          },
+          {
+            "line": 55,
+            "text": "\t\t   @iStatus6 = STATUS6,"
+          },
+          {
+            "line": 56,
+            "text": "\t\t   @iStatus7 = STATUS7,"
+          },
+          {
+            "line": 57,
+            "text": "\t\t   @iStatus8 = STATUS8,"
+          },
+          {
+            "line": 58,
+            "text": "\t\t   @iStatus9 = STATUS9,"
+          },
+          {
+            "line": 59,
+            "text": "\t\t   @iStatus10 = STATUS10,"
+          },
+          {
+            "line": 60,
+            "text": "\t\t   @dQtyAtSts1 = QUANTITY_AT_STS1,"
+          },
+          {
+            "line": 61,
+            "text": "\t\t   @dQtyAtSts2 = QUANTITY_AT_STS2,"
+          },
+          {
+            "line": 62,
+            "text": "\t\t   @dQtyAtSts3 = QUANTITY_AT_STS3,"
+          },
+          {
+            "line": 63,
+            "text": "\t\t   @dQtyAtSts4 = QUANTITY_AT_STS4,"
+          },
+          {
+            "line": 64,
+            "text": "\t\t   @dQtyAtSts5 = QUANTITY_AT_STS5,"
+          },
+          {
+            "line": 65,
+            "text": "\t\t   @dQtyAtSts6 = QUANTITY_AT_STS6,"
+          },
+          {
+            "line": 66,
+            "text": "\t\t   @dQtyAtSts7 = QUANTITY_AT_STS7,"
+          },
+          {
+            "line": 67,
+            "text": "\t\t   @dQtyAtSts8 = QUANTITY_AT_STS8,"
+          },
+          {
+            "line": 68,
+            "text": "\t\t   @dQtyAtSts9 = QUANTITY_AT_STS9,"
+          },
+          {
+            "line": 69,
+            "text": "\t\t   @dQtyAtSts10 = QUANTITY_AT_STS10,"
+          },
+          {
+            "line": 70,
+            "text": "\t\t   @iIntShipNum = INTERNAL_SHIPMENT_NUM"
+          },
+          {
+            "line": 71,
+            "text": "\t  FROM SHIPMENT_DETAIL WITH (UPDLOCK)"
+          },
+          {
+            "line": 72,
+            "text": "\t WHERE INTERNAL_SHIPMENT_LINE_NUM = @iIntShipLineNum;"
+          },
+          {
+            "line": 77,
+            "text": "\tset @iOldTrailingSts = @iStatus1;"
+          },
+          {
+            "line": 78,
+            "text": "\tset @iOldLeadingSts = dbo.SDBfn_GetLeadingStsInRange(@iStatus1, @iStatus2, @iStatus3, @iStatus4, @iStatus5, @iStatus6, @iStatus7, @iStatus8, @iStatus9, @iStatus10);"
+          },
+          {
+            "line": 81,
+            "text": "\tset @iFromStsPos = dbo.SDBfn_GetPosOfSts(@iFromSts, "
+          },
+          {
+            "line": 82,
+            "text": "\t\t\t\t\t\t\t\t\t\t \t @iStatus1, @iStatus2, @iStatus3, @iStatus4, @iStatus5, @iStatus6, @iStatus7, @iStatus8, @iStatus9, @iStatus10);"
+          },
+          {
+            "line": 83,
+            "text": "\tset @dFromStsQty = dbo.SDBfn_GetQtyAtSts(@iFromSts, "
+          },
+          {
+            "line": 84,
+            "text": "\t\t\t\t\t\t\t\t\t\t \t @iStatus1, @iStatus2, @iStatus3, @iStatus4, @iStatus5, @iStatus6, @iStatus7, @iStatus8, @iStatus9, @iStatus10,"
+          },
+          {
+            "line": 85,
+            "text": "\t\t\t\t\t\t\t\t\t\t \t @dQtyAtSts1, @dQtyAtSts2, @dQtyAtSts3, @dQtyAtSts4, @dQtyAtSts5, @dQtyAtSts6, @dQtyAtSts7, @dQtyAtSts8, @dQtyAtSts9, @dQtyAtSts10);"
+          },
+          {
+            "line": 86,
+            "text": "\tset @dFromStsQty = @dFromStsQty - @dMoveQty;"
+          },
+          {
+            "line": 89,
+            "text": "\tif (@iFromStsPos <= 0)"
+          },
+          {
+            "line": 90,
+            "text": "\tbegin"
+          },
+          {
+            "line": 91,
+            "text": "\t\tset @stErrorMsg = "
+          },
+          {
+            "line": 92,
+            "text": "\t\t\tN'<literal:1>' + dbo.RSCMfn_RtrvMsg(N'<literal:2>'); \t\t\t\t"
+          },
+          {
+            "line": 93,
+            "text": "\t\tRAISERROR(@stErrorMsg , 18, 1);"
+          },
+          {
+            "line": 94,
+            "text": "\t\treturn -1;"
+          },
+          {
+            "line": 95,
+            "text": "\tend; -- [comment omitted]"
+          },
+          {
+            "line": 99,
+            "text": "\tif (@dFromStsQty < 0.0)"
+          },
+          {
+            "line": 100,
+            "text": "\tbegin"
+          },
+          {
+            "line": 101,
+            "text": "\t\tset @stErrorMsg = "
+          },
+          {
+            "line": 102,
+            "text": "\t\t\tN'<literal:3>' + dbo.RSCMfn_RtrvMsg(N'<literal:4>'); \t\t\t\t"
+          },
+          {
+            "line": 103,
+            "text": "\t\tRAISERROR(@stErrorMsg , 18, 1);"
+          },
+          {
+            "line": 104,
+            "text": "\t\treturn -1;"
+          },
+          {
+            "line": 105,
+            "text": "\tend; -- [comment omitted]"
+          },
+          {
+            "line": 109,
+            "text": "\tif (@dFromStsQty > 0.0)"
+          },
+          {
+            "line": 110,
+            "text": "\tbegin"
+          },
+          {
+            "line": 111,
+            "text": "\t\tif (@iFromStsPos = 1)"
+          },
+          {
+            "line": 112,
+            "text": "\t\t\tset @dQtyAtSts1 = @dFromStsQty;"
+          },
+          {
+            "line": 113,
+            "text": "\t\telse if (@iFromStsPos = 2)"
+          },
+          {
+            "line": 114,
+            "text": "\t\t\tset @dQtyAtSts2 = @dFromStsQty;"
+          },
+          {
+            "line": 115,
+            "text": "\t\telse if (@iFromStsPos = 3)"
+          },
+          {
+            "line": 116,
+            "text": "\t\t\tset @dQtyAtSts3 = @dFromStsQty;"
+          },
+          {
+            "line": 117,
+            "text": "\t\telse if (@iFromStsPos = 4)"
+          },
+          {
+            "line": 118,
+            "text": "\t\t\tset @dQtyAtSts4 = @dFromStsQty;"
+          },
+          {
+            "line": 119,
+            "text": "\t\telse if (@iFromStsPos = 5)"
+          },
+          {
+            "line": 120,
+            "text": "\t\t\tset @dQtyAtSts5 = @dFromStsQty;"
+          },
+          {
+            "line": 121,
+            "text": "\t\telse if (@iFromStsPos = 6)"
+          },
+          {
+            "line": 122,
+            "text": "\t\t\tset @dQtyAtSts6 = @dFromStsQty;"
+          },
+          {
+            "line": 123,
+            "text": "\t\telse if (@iFromStsPos = 7)"
+          },
+          {
+            "line": 124,
+            "text": "\t\t\tset @dQtyAtSts7 = @dFromStsQty;"
+          },
+          {
+            "line": 125,
+            "text": "\t\telse if (@iFromStsPos = 8)"
+          },
+          {
+            "line": 126,
+            "text": "\t\t\tset @dQtyAtSts8 = @dFromStsQty;"
+          },
+          {
+            "line": 127,
+            "text": "\t\telse if (@iFromStsPos = 9)"
+          },
+          {
+            "line": 128,
+            "text": "\t\t\tset @dQtyAtSts9 = @dFromStsQty;"
+          },
+          {
+            "line": 129,
+            "text": "\t\telse if (@iFromStsPos = 10)"
+          },
+          {
+            "line": 130,
+            "text": "\t\t\tset @dQtyAtSts10 = @dFromStsQty;"
+          },
+          {
+            "line": 131,
+            "text": "\tend;"
+          },
+          {
+            "line": 134,
+            "text": "\telse"
+          },
+          {
+            "line": 135,
+            "text": "\tbegin"
+          },
+          {
+            "line": 136,
+            "text": "\t\tset @i = @iFromStsPos;"
+          },
+          {
+            "line": 137,
+            "text": "\t\tset @iLeadingStsPos = dbo.SDBfn_GetLeadingStsPos(@iStatus1, @iStatus2, @iStatus3, @iStatus4, @iStatus5, @iStatus6, @iStatus7, @iStatus8, @iStatus9, @iStatus10);"
+          },
+          {
+            "line": 141,
+            "text": "\t\twhile (@i <= @iLeadingStsPos)"
+          },
+          {
+            "line": 142,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 143,
+            "text": "\t\t\tif (@i = 1)"
+          },
+          {
+            "line": 144,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 145,
+            "text": "\t\t\t\tset @iStatus1 = @iStatus2;"
+          },
+          {
+            "line": 146,
+            "text": "\t\t\t\tset @dQtyAtSts1 = @dQtyAtSts2;"
+          },
+          {
+            "line": 147,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 148,
+            "text": "\t\t\tif (@i = 2)"
+          },
+          {
+            "line": 149,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 150,
+            "text": "\t\t\t\tset @iStatus2 = @iStatus3;"
+          },
+          {
+            "line": 151,
+            "text": "\t\t\t\tset @dQtyAtSts2 = @dQtyAtSts3;"
+          },
+          {
+            "line": 152,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 153,
+            "text": "\t\t\tif (@i = 3)"
+          },
+          {
+            "line": 154,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 155,
+            "text": "\t\t\t\tset @iStatus3 = @iStatus4;"
+          },
+          {
+            "line": 156,
+            "text": "\t\t\t\tset @dQtyAtSts3 = @dQtyAtSts4;"
+          },
+          {
+            "line": 157,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 158,
+            "text": "\t\t\tif (@i = 4)"
+          },
+          {
+            "line": 159,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 160,
+            "text": "\t\t\t\tset @iStatus4 = @iStatus5;"
+          },
+          {
+            "line": 161,
+            "text": "\t\t\t\tset @dQtyAtSts4 = @dQtyAtSts5;"
+          },
+          {
+            "line": 162,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 163,
+            "text": "\t\t\tif (@i = 5)"
+          },
+          {
+            "line": 164,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 165,
+            "text": "\t\t\t\tset @iStatus5 = @iStatus6;"
+          },
+          {
+            "line": 166,
+            "text": "\t\t\t\tset @dQtyAtSts5 = @dQtyAtSts6;"
+          },
+          {
+            "line": 167,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 168,
+            "text": "\t\t\tif (@i = 6)"
+          },
+          {
+            "line": 169,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 170,
+            "text": "\t\t\t\tset @iStatus6 = @iStatus7;"
+          },
+          {
+            "line": 171,
+            "text": "\t\t\t\tset @dQtyAtSts6 = @dQtyAtSts7;"
+          },
+          {
+            "line": 172,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 173,
+            "text": "\t\t\tif (@i = 7)"
+          },
+          {
+            "line": 174,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 175,
+            "text": "\t\t\t\tset @iStatus7 = @iStatus8;"
+          },
+          {
+            "line": 176,
+            "text": "\t\t\t\tset @dQtyAtSts7 = @dQtyAtSts8;"
+          },
+          {
+            "line": 177,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 178,
+            "text": "\t\t\tif (@i = 8)"
+          },
+          {
+            "line": 179,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 180,
+            "text": "\t\t\t\tset @iStatus8 = @iStatus9;"
+          },
+          {
+            "line": 181,
+            "text": "\t\t\t\tset @dQtyAtSts8 = @dQtyAtSts9;"
+          },
+          {
+            "line": 182,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 183,
+            "text": "\t\t\tif (@i = 9)"
+          },
+          {
+            "line": 184,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 185,
+            "text": "\t\t\t\tset @iStatus9 = @iStatus10;"
+          },
+          {
+            "line": 186,
+            "text": "\t\t\t\tset @dQtyAtSts9 = @dQtyAtSts10;"
+          },
+          {
+            "line": 187,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 188,
+            "text": "\t\t\telse if (@i = 10)"
+          },
+          {
+            "line": 189,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 190,
+            "text": "\t\t\t\tset @iStatus10 = 0;\t"
+          },
+          {
+            "line": 191,
+            "text": "\t\t\t\tset @dQtyAtSts10 = 0.0;"
+          },
+          {
+            "line": 192,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 194,
+            "text": "\t\t\tset @i = (@i + 1);"
+          },
+          {
+            "line": 195,
+            "text": "\t\tend; -- [comment omitted]"
+          },
+          {
+            "line": 197,
+            "text": "\t\tset @iLeadingStsPos = @iLeadingStsPos - 1;"
+          },
+          {
+            "line": 198,
+            "text": "\tend; -- [comment omitted]"
+          },
+          {
+            "line": 201,
+            "text": "\tset @iToStsPos = dbo.SDBfn_GetPosOfSts(@iToSts, "
+          },
+          {
+            "line": 202,
+            "text": "\t\t\t\t\t\t\t\t\t   \t   @iStatus1, @iStatus2, @iStatus3, @iStatus4, @iStatus5, @iStatus6, @iStatus7, @iStatus8, @iStatus9, @iStatus10);"
+          },
+          {
+            "line": 203,
+            "text": "\tset @dToStsQty = dbo.SDBfn_GetQtyAtSts(@iToSts, "
+          },
+          {
+            "line": 204,
+            "text": "\t\t\t\t\t\t\t\t\t   \t   @iStatus1, @iStatus2, @iStatus3, @iStatus4, @iStatus5, @iStatus6, @iStatus7, @iStatus8, @iStatus9, @iStatus10,"
+          },
+          {
+            "line": 205,
+            "text": "\t\t\t\t\t\t\t\t\t   \t   @dQtyAtSts1, @dQtyAtSts2, @dQtyAtSts3, @dQtyAtSts4, @dQtyAtSts5, @dQtyAtSts6, @dQtyAtSts7, @dQtyAtSts8, @dQtyAtSts9, @dQtyAtSts10);"
+          },
+          {
+            "line": 206,
+            "text": "\tset @dToStsQty = @dToStsQty + @dMoveQty;"
+          },
+          {
+            "line": 209,
+            "text": "\tif (@iToStsPos > 0)"
+          },
+          {
+            "line": 210,
+            "text": "\tbegin"
+          },
+          {
+            "line": 212,
+            "text": "\t\tif (@iToStsPos = 1)"
+          },
+          {
+            "line": 213,
+            "text": "\t\t\tset @dQtyAtSts1 = @dToStsQty;"
+          },
+          {
+            "line": 214,
+            "text": "\t\telse if (@iToStsPos = 2)"
+          },
+          {
+            "line": 215,
+            "text": "\t\t\tset @dQtyAtSts2 = @dToStsQty;"
+          },
+          {
+            "line": 216,
+            "text": "\t\telse if (@iToStsPos = 3)"
+          },
+          {
+            "line": 217,
+            "text": "\t\t\tset @dQtyAtSts3 = @dToStsQty;"
+          },
+          {
+            "line": 218,
+            "text": "\t\telse if (@iToStsPos = 4)"
+          },
+          {
+            "line": 219,
+            "text": "\t\t\tset @dQtyAtSts4 = @dToStsQty;"
+          },
+          {
+            "line": 220,
+            "text": "\t\telse if (@iToStsPos = 5)"
+          },
+          {
+            "line": 221,
+            "text": "\t\t\tset @dQtyAtSts5 = @dToStsQty;"
+          },
+          {
+            "line": 222,
+            "text": "\t\telse if (@iToStsPos = 6)"
+          },
+          {
+            "line": 223,
+            "text": "\t\t\tset @dQtyAtSts6 = @dToStsQty;"
+          },
+          {
+            "line": 224,
+            "text": "\t\telse if (@iToStsPos = 7)"
+          },
+          {
+            "line": 225,
+            "text": "\t\t\tset @dQtyAtSts7 = @dToStsQty;"
+          },
+          {
+            "line": 226,
+            "text": "\t\telse if (@iToStsPos = 8)"
+          },
+          {
+            "line": 227,
+            "text": "\t\t\tset @dQtyAtSts8 = @dToStsQty;"
+          },
+          {
+            "line": 228,
+            "text": "\t\telse if (@iToStsPos = 9)"
+          },
+          {
+            "line": 229,
+            "text": "\t\t\tset @dQtyAtSts9 = @dToStsQty;"
+          },
+          {
+            "line": 230,
+            "text": "\t\telse if (@iToStsPos = 10)"
+          },
+          {
+            "line": 231,
+            "text": "\t\t\tset @dQtyAtSts10 = @dToStsQty;"
+          },
+          {
+            "line": 232,
+            "text": "\tend;"
+          },
+          {
+            "line": 236,
+            "text": "\telse"
+          },
+          {
+            "line": 237,
+            "text": "\tbegin"
+          },
+          {
+            "line": 239,
+            "text": "\t\tif (@iToSts < @iStatus1 or @iStatus1 = 0)"
+          },
+          {
+            "line": 240,
+            "text": "\t\t\tset @iToStsPos = 1;"
+          },
+          {
+            "line": 241,
+            "text": "\t\telse if (@iToSts < @iStatus2 or @iStatus2 = 0)"
+          },
+          {
+            "line": 242,
+            "text": "\t\t\tset @iToStsPos = 2;"
+          },
+          {
+            "line": 243,
+            "text": "\t\telse if (@iToSts < @iStatus3 or @iStatus3 = 0)"
+          },
+          {
+            "line": 244,
+            "text": "\t\t\tset @iToStsPos = 3;"
+          },
+          {
+            "line": 245,
+            "text": "\t\telse if (@iToSts < @iStatus4 or @iStatus4 = 0)"
+          },
+          {
+            "line": 246,
+            "text": "\t\t\tset @iToStsPos = 4;"
+          },
+          {
+            "line": 247,
+            "text": "\t\telse if (@iToSts < @iStatus5 or @iStatus5 = 0)"
+          },
+          {
+            "line": 248,
+            "text": "\t\t\tset @iToStsPos = 5;"
+          },
+          {
+            "line": 249,
+            "text": "\t\telse if (@iToSts < @iStatus6 or @iStatus6 = 0)"
+          },
+          {
+            "line": 250,
+            "text": "\t\t\tset @iToStsPos = 6;"
+          },
+          {
+            "line": 251,
+            "text": "\t\telse if (@iToSts < @iStatus7 or @iStatus7 = 0)"
+          },
+          {
+            "line": 252,
+            "text": "\t\t\tset @iToStsPos = 7;"
+          },
+          {
+            "line": 253,
+            "text": "\t\telse if (@iToSts < @iStatus8 or @iStatus8 = 0)"
+          },
+          {
+            "line": 254,
+            "text": "\t\t\tset @iToStsPos = 8;"
+          },
+          {
+            "line": 255,
+            "text": "\t\telse if (@iToSts < @iStatus9 or @iStatus9 = 0)"
+          },
+          {
+            "line": 256,
+            "text": "\t\t\tset @iToStsPos = 9;"
+          },
+          {
+            "line": 257,
+            "text": "\t\telse"
+          },
+          {
+            "line": 258,
+            "text": "\t\t\tset @iToStsPos = 10;"
+          },
+          {
+            "line": 262,
+            "text": "\t\tif (@iLeadingStsPos > 0)"
+          },
+          {
+            "line": 263,
+            "text": "\t\t\tset @i = @iLeadingStsPos + 1"
+          },
+          {
+            "line": 264,
+            "text": "\t\telse"
+          },
+          {
+            "line": 265,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 266,
+            "text": "\t\t\tset @i = dbo.SDBfn_GetLeadingStsPos(@iStatus1, @iStatus2, @iStatus3, @iStatus4, @iStatus5, @iStatus6, @iStatus7, @iStatus8, @iStatus9, @iStatus10);"
+          },
+          {
+            "line": 267,
+            "text": "\t\t\tset @i = @i + 1;"
+          },
+          {
+            "line": 268,
+            "text": "\t\tend;"
+          },
+          {
+            "line": 270,
+            "text": "\t\twhile (@i > @iToStsPos)"
+          },
+          {
+            "line": 271,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 272,
+            "text": "\t\t\tif (@i = 2)"
+          },
+          {
+            "line": 273,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 274,
+            "text": "\t\t\t\tset @iStatus2 = @iStatus1;"
+          },
+          {
+            "line": 275,
+            "text": "\t\t\t\tset @dQtyAtSts2 = @dQtyAtSts1;"
+          },
+          {
+            "line": 276,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 277,
+            "text": "\t\t\telse if (@i = 3)"
+          },
+          {
+            "line": 278,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 279,
+            "text": "\t\t\t\tset @iStatus3 = @iStatus2;"
+          },
+          {
+            "line": 280,
+            "text": "\t\t\t\tset @dQtyAtSts3 = @dQtyAtSts2;"
+          },
+          {
+            "line": 281,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 282,
+            "text": "\t\t\telse if (@i = 4)"
+          },
+          {
+            "line": 283,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 284,
+            "text": "\t\t\t\tset @iStatus4 = @iStatus3;"
+          },
+          {
+            "line": 285,
+            "text": "\t\t\t\tset @dQtyAtSts4 = @dQtyAtSts3;"
+          },
+          {
+            "line": 286,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 287,
+            "text": "\t\t\telse if (@i = 5)"
+          },
+          {
+            "line": 288,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 289,
+            "text": "\t\t\t\tset @iStatus5 = @iStatus4;"
+          },
+          {
+            "line": 290,
+            "text": "\t\t\t\tset @dQtyAtSts5 = @dQtyAtSts4;"
+          },
+          {
+            "line": 291,
+            "text": "\t\t\tend;\t"
+          },
+          {
+            "line": 292,
+            "text": "\t\t\telse if (@i = 6)"
+          },
+          {
+            "line": 293,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 294,
+            "text": "\t\t\t\tset @iStatus6 = @iStatus5;"
+          },
+          {
+            "line": 295,
+            "text": "\t\t\t\tset @dQtyAtSts6 = @dQtyAtSts5;"
+          },
+          {
+            "line": 296,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 297,
+            "text": "\t\t\telse if (@i = 7)"
+          },
+          {
+            "line": 298,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 299,
+            "text": "\t\t\t\tset @iStatus7 = @iStatus6;"
+          },
+          {
+            "line": 300,
+            "text": "\t\t\t\tset @dQtyAtSts7 = @dQtyAtSts6;"
+          },
+          {
+            "line": 301,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 302,
+            "text": "\t\t\telse if (@i = 8)"
+          },
+          {
+            "line": 303,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 304,
+            "text": "\t\t\t\tset @iStatus8 = @iStatus7;"
+          },
+          {
+            "line": 305,
+            "text": "\t\t\t\tset @dQtyAtSts8 = @dQtyAtSts7;"
+          },
+          {
+            "line": 306,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 307,
+            "text": "\t\t\telse if (@i = 9)"
+          },
+          {
+            "line": 308,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 309,
+            "text": "\t\t\t\tset @iStatus9 = @iStatus8;"
+          },
+          {
+            "line": 310,
+            "text": "\t\t\t\tset @dQtyAtSts9 = @dQtyAtSts8;"
+          },
+          {
+            "line": 311,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 312,
+            "text": "\t\t\telse if (@i = 10)"
+          },
+          {
+            "line": 313,
+            "text": "\t\t\tbegin"
+          },
+          {
+            "line": 314,
+            "text": "\t\t\t\tset @iStatus10 = @iStatus9;"
+          },
+          {
+            "line": 315,
+            "text": "\t\t\t\tset @dQtyAtSts10 = @dQtyAtSts9;"
+          },
+          {
+            "line": 316,
+            "text": "\t\t\tend;"
+          },
+          {
+            "line": 318,
+            "text": "\t\t\tset @i = (@i - 1);"
+          },
+          {
+            "line": 319,
+            "text": "\t\tend; -- [comment omitted]"
+          },
+          {
+            "line": 322,
+            "text": "\t\tif (@iToStsPos = 1)"
+          },
+          {
+            "line": 323,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 324,
+            "text": "\t\t\tset @iStatus1 = @iToSts;"
+          },
+          {
+            "line": 325,
+            "text": "\t\t\tset @dQtyAtSts1 = @dToStsQty;"
+          },
+          {
+            "line": 326,
+            "text": "\t\tend;"
+          },
+          {
+            "line": 327,
+            "text": "\t\telse if (@iToStsPos = 2)"
+          },
+          {
+            "line": 328,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 329,
+            "text": "\t\t\tset @iStatus2 = @iToSts;"
+          },
+          {
+            "line": 330,
+            "text": "\t\t\tset @dQtyAtSts2 = @dToStsQty;"
+          },
+          {
+            "line": 331,
+            "text": "\t\tend;"
+          },
+          {
+            "line": 332,
+            "text": "\t\telse if (@iToStsPos = 3)"
+          },
+          {
+            "line": 333,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 334,
+            "text": "\t\t\tset @iStatus3 = @iToSts;"
+          },
+          {
+            "line": 335,
+            "text": "\t\t\tset @dQtyAtSts3 = @dToStsQty;"
+          },
+          {
+            "line": 336,
+            "text": "\t\tend;"
+          },
+          {
+            "line": 337,
+            "text": "\t\telse if (@iToStsPos = 4)"
+          },
+          {
+            "line": 338,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 339,
+            "text": "\t\t\tset @iStatus4 = @iToSts;"
+          },
+          {
+            "line": 340,
+            "text": "\t\t\tset @dQtyAtSts4 = @dToStsQty;"
+          },
+          {
+            "line": 341,
+            "text": "\t\tend;\t\t\t\t"
+          },
+          {
+            "line": 342,
+            "text": "\t\telse if (@iToStsPos = 5)"
+          },
+          {
+            "line": 343,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 344,
+            "text": "\t\t\tset @iStatus5 = @iToSts;"
+          },
+          {
+            "line": 345,
+            "text": "\t\t\tset @dQtyAtSts5 = @dToStsQty;"
+          },
+          {
+            "line": 346,
+            "text": "\t\tend;\t\t\t"
+          },
+          {
+            "line": 347,
+            "text": "\t\telse if (@iToStsPos = 6)"
+          },
+          {
+            "line": 348,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 349,
+            "text": "\t\t\tset @iStatus6 = @iToSts;"
+          },
+          {
+            "line": 350,
+            "text": "\t\t\tset @dQtyAtSts6 = @dToStsQty;"
+          },
+          {
+            "line": 351,
+            "text": "\t\tend;\t\t\t\t"
+          },
+          {
+            "line": 352,
+            "text": "\t\telse if (@iToStsPos = 7)"
+          },
+          {
+            "line": 353,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 354,
+            "text": "\t\t\tset @iStatus7 = @iToSts;"
+          },
+          {
+            "line": 355,
+            "text": "\t\t\tset @dQtyAtSts7 = @dToStsQty;"
+          },
+          {
+            "line": 356,
+            "text": "\t\tend;\t\t\t\t"
+          },
+          {
+            "line": 357,
+            "text": "\t\telse if (@iToStsPos = 8)"
+          },
+          {
+            "line": 358,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 359,
+            "text": "\t\t\tset @iStatus8 = @iToSts;"
+          },
+          {
+            "line": 360,
+            "text": "\t\t\tset @dQtyAtSts8 = @dToStsQty;"
+          },
+          {
+            "line": 361,
+            "text": "\t\tend;\t\t\t\t"
+          },
+          {
+            "line": 362,
+            "text": "\t\telse if (@iToStsPos = 9)"
+          },
+          {
+            "line": 363,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 364,
+            "text": "\t\t\tset @iStatus9 = @iToSts;"
+          },
+          {
+            "line": 365,
+            "text": "\t\t\tset @dQtyAtSts9 = @dToStsQty;"
+          },
+          {
+            "line": 366,
+            "text": "\t\tend;\t\t\t\t"
+          },
+          {
+            "line": 367,
+            "text": "\t\telse"
+          },
+          {
+            "line": 368,
+            "text": "\t\tbegin"
+          },
+          {
+            "line": 369,
+            "text": "\t\t\tset @iStatus10 = @iToSts;"
+          },
+          {
+            "line": 370,
+            "text": "\t\t\tset @dQtyAtSts10 = @dToStsQty;"
+          },
+          {
+            "line": 371,
+            "text": "\t\tend;"
+          },
+          {
+            "line": 372,
+            "text": "\tend; -- [comment omitted]"
+          },
+          {
+            "line": 375,
+            "text": "\tUPDATE SHIPMENT_DETAIL "
+          },
+          {
+            "line": 376,
+            "text": "\t   SET STATUS1 = @iStatus1,"
+          },
+          {
+            "line": 377,
+            "text": "\t\t   STATUS2 = @iStatus2,"
+          },
+          {
+            "line": 378,
+            "text": "\t\t   STATUS3 = @iStatus3,"
+          },
+          {
+            "line": 379,
+            "text": "\t\t   STATUS4 = @iStatus4,"
+          },
+          {
+            "line": 380,
+            "text": "\t\t   STATUS5 = @iStatus5,"
+          },
+          {
+            "line": 381,
+            "text": "\t\t   STATUS6 = @iStatus6,"
+          },
+          {
+            "line": 382,
+            "text": "\t\t   STATUS7 = @iStatus7,"
+          },
+          {
+            "line": 383,
+            "text": "\t\t   STATUS8 = @iStatus8,"
+          },
+          {
+            "line": 384,
+            "text": "\t\t   STATUS9 = @iStatus9,"
+          },
+          {
+            "line": 385,
+            "text": "\t\t   STATUS10 = @iStatus10,"
+          },
+          {
+            "line": 386,
+            "text": "\t\t   QUANTITY_AT_STS1 = @dQtyAtSts1,"
+          },
+          {
+            "line": 387,
+            "text": "\t\t   QUANTITY_AT_STS2 = @dQtyAtSts2,"
+          },
+          {
+            "line": 388,
+            "text": "\t\t   QUANTITY_AT_STS3 = @dQtyAtSts3,"
+          },
+          {
+            "line": 389,
+            "text": "\t\t   QUANTITY_AT_STS4 = @dQtyAtSts4,"
+          },
+          {
+            "line": 390,
+            "text": "\t\t   QUANTITY_AT_STS5 = @dQtyAtSts5,"
+          },
+          {
+            "line": 391,
+            "text": "\t\t   QUANTITY_AT_STS6 = @dQtyAtSts6,"
+          },
+          {
+            "line": 392,
+            "text": "\t\t   QUANTITY_AT_STS7 = @dQtyAtSts7,"
+          },
+          {
+            "line": 393,
+            "text": "\t\t   QUANTITY_AT_STS8 = @dQtyAtSts8,"
+          },
+          {
+            "line": 394,
+            "text": "\t\t   QUANTITY_AT_STS9 = @dQtyAtSts9,"
+          },
+          {
+            "line": 395,
+            "text": "\t\t   QUANTITY_AT_STS10 = @dQtyAtSts10,"
+          },
+          {
+            "line": 396,
+            "text": "\t\t   PROCESS_STAMP = N'<literal:5>',"
+          },
+          {
+            "line": 397,
+            "text": "\t\t   DATE_TIME_STAMP = GETUTCDATE()"
+          },
+          {
+            "line": 398,
+            "text": "\t WHERE INTERNAL_SHIPMENT_LINE_NUM = @iIntShipLineNum;"
+          },
+          {
+            "line": 399,
+            "text": "\tif (@@ERROR <> 0) return -1; "
+          },
+          {
+            "line": 403,
+            "text": " \tset @iNewTrailingSts = @iStatus1;"
+          },
+          {
+            "line": 404,
+            "text": " \tset @iNewLeadingSts = dbo.SDBfn_GetLeadingStsInRange(@iStatus1, @iStatus2, @iStatus3, @iStatus4, @iStatus5, @iStatus6, @iStatus7, @iStatus8, @iStatus9, @iStatus10);"
+          },
+          {
+            "line": 405,
+            "text": "\tif (@iOldTrailingSts <> @iNewTrailingSts"
+          },
+          {
+            "line": 406,
+            "text": "\t\tor @iOldLeadingSts <> @iNewLeadingSts)"
+          },
+          {
+            "line": 407,
+            "text": "\tbegin"
+          },
+          {
+            "line": 408,
+            "text": "\t\texec @iError = STH_UpdateHeader @iIntShipNum;"
+          },
+          {
+            "line": 409,
+            "text": "\t\tif (@@ERROR <> 0) return -1; else if (@iError <> 0) return @iError;"
+          },
+          {
+            "line": 410,
+            "text": "\tend -- [comment omitted]"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1457752596.sql",
+          "sha256": "a254de63173809d545ffdff76add2f835b6b50276f91da5dd2a38ec86a9b260c",
+          "line_start": 1,
+          "line_end": 414,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "fa104e94e393842afe3be154df8f564aa49c281569187ab1b23288ebf7f12c64",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-1457752596"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-1457752596": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1457752596,
+        "qualified_name": "dbo.SDB_MoveQtyToSts",
+        "source_definition_sha256": "fa104e94e393842afe3be154df8f564aa49c281569187ab1b23288ebf7f12c64",
+        "reading_path": "DB Architecture/sql/1457752596.sql",
+        "reading_sha256": "a254de63173809d545ffdff76add2f835b6b50276f91da5dd2a38ec86a9b260c",
+        "line_spans": [
+          [
+            1,
+            414
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.SDB_MoveQtyToSts",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1457752596.sql",
+      "reading_sha256": "a254de63173809d545ffdff76add2f835b6b50276f91da5dd2a38ec86a9b260c",
+      "source_definition_sha256": "fa104e94e393842afe3be154df8f564aa49c281569187ab1b23288ebf7f12c64",
+      "reading_lines": 414,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": true
+    },
+    "dynamic_review_bindings": [
+      {
+        "module_id": 1457752596,
+        "batch_path": "DB Architecture/mappings/batches/dynamic-dependencies.json",
+        "batch_sha256": "b3647d0c9510b3038e2fd81c1ad659bb1d82b82bbf0a55b32bbd7c434899c323",
+        "review_state": "BOUNDED_FIXED_CALL_FALSE_POSITIVE_REVIEW",
+        "source_definition_sha256": "fa104e94e393842afe3be154df8f564aa49c281569187ab1b23288ebf7f12c64"
+      }
+    ],
+    "unresolved_catalog_dependencies": [
+      {
+        "module_id": 1457752596,
+        "row_index": 1752,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      }
+    ],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

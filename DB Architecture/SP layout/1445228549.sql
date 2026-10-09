@@ -1,0 +1,52 @@
+/*
+	Mod Number	| Programmer		| Date   	| Modification Description
+	--------------------------------------------------------------------
+	******		| MMM				| 09/09/21	| Created
+
+*/
+
+CREATE PROCEDURE PG_UpdateParentLogisticsUnit(
+	@internalGroupNum numeric(9),
+	@locationClass nvarchar(25))	
+AS
+BEGIN
+	
+	declare @locationCount numeric = 0;
+
+	DECLARE @LocInvRecords TABLE
+	( 
+		INTERNAL_LOCATION_INV NUMERIC, LOCATION NVARCHAR(100), LOCATION_CLASS NVARCHAR(100)
+	);
+
+	INSERT INTO @LocInvRecords 
+	SELECT INTERNAL_LOCATION_INV, location_inventory.location, LOCATION.LOCATION_CLASS
+	FROM LOCATION_INVENTORY
+		INNER JOIN RECEIPT_CONTAINER RC ON RC.INTERNAL_GROUP_NUM = @internalGroupNum  
+			AND LOCATION_INVENTORY.LOGISTICS_UNIT = RC.CONTAINER_ID  
+		INNER JOIN LOCATION ON  LOCATION_INVENTORY.LOCATION= LOCATION.LOCATION  
+    WHERE 
+		LOCATION_INVENTORY.LOGISTICS_UNIT = RC.CONTAINER_ID 
+		AND LOCATION_INVENTORY.ITEM = RC.ITEM 
+		AND LOCATION_INVENTORY.WAREHOUSE = RC.FROM_WAREHOUSE 
+		AND (LOCATION.LOCATION_CLASS=@locationClass)
+	
+	-- Update only when all LP are present at one location
+	DELETE @LocInvRecords
+	WHERE LOCATION_CLASS in 
+	(select case when count(distinct location) > 1 then LOCATION_CLASS else N'' end from @LocInvRecords
+	GROUP BY LOCATION_CLASS)
+
+	IF (SELECT COUNT(INTERNAL_LOCATION_INV) from @LocInvRecords) > 0 
+	BEGIN
+		UPDATE LOCATION_INVENTORY 
+        SET 
+            PARENT_LOGISTICS_UNIT = PG.GROUP_ID 
+        FROM 
+            PUTAWAY_GROUP PG 
+		WHERE
+            PG.INTERNAL_GROUP_NUM = @internalGroupNum 
+			AND LOCATION_INVENTORY.INTERNAL_LOCATION_INV IN (SELECT INTERNAL_LOCATION_INV FROM @LocInvRecords)
+	END
+END
+
+

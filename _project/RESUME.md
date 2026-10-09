@@ -1,5 +1,11 @@
 # Resume SCALE Intelligence
 
+## Database programming reference - 2026-10-08
+
+The requested three folders now organize **921 exact procedures, 76 exact functions and all 518 captured table layouts / 16,968 columns**. Use [the programming reference](../DB%20Architecture/PROGRAMMING_LAYOUT.md), [verification](../DB%20Architecture/evidence/programming-layout-verification.json) and [independent review](programming-layout-independent-review-20261008.json). The [owner explicitly authorized full source in this repository, Git and GitHub](programming-layout-authority-20261008.json). Exact exported SQL retains comments, literals and original line endings; the older redacted SQL corpus and private source snapshot are preserved.
+
+The baseline remains September 29. A fresh correlation uses current reviewed batches; comments are non-credit mentions. All 318 routine-reference/mention/path candidates have layouts; 200 other captured tables are also documented. Do not equate source documentation with live schema, universal vendor ownership or runtime/deployment acceptance. Existing help-app C33 work is unchanged.
+
 ## C33 current continuation - 2026-10-08
 
 The owner approved C32. C33 exposes **all 510 registered citations across 69 TAB claims** in collapsed source disclosures and corrects overlapping compound-topic search preference. Read [C33 changes and finite remainder](CONTINUATION_C33.md) and [the C33 receipt](continuation33-20261008.json).

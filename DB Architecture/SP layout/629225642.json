@@ -1,0 +1,1441 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 629225642,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "MetaTrans_GetInventoryCompanyTransfer",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:51",
+    "modify_date": "2026-08-16 06:59:51",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.MetaTrans_GetInventoryCompanyTransfer",
+    "domain_candidate": "inventory"
+  },
+  "source_definition_sha256": "980d10778eb7f2706482e3436a56a464b875b18f7dc74896ba5223ebef1d2284",
+  "exact_sql_path": "629225642.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 5374,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 629225642,
+      "parameter_id": 1,
+      "name": "@InternalLocationInv",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 629225642,
+      "parameter_id": 2,
+      "name": "@LicensePlate",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 629225642,
+      "parameter_id": 3,
+      "name": "@Warehouse",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 629225642,
+      "parameter_id": 4,
+      "name": "@culture",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 20,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(10)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 629225642,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 706,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 43,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/43/effects/2",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 80,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 629225642,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 707,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 43,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/43/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 56,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1362819917,
+        "qualified_name": "dbo.LOCATION_INVENTORY",
+        "layout_path": "../table layout/1362819917.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 629225642,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 708,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 43,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/43/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 53,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 77,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "reading_lines": [
+            61,
+            80
+          ]
+        }
+      },
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "mentions": [
+            {
+              "original_line": 84,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "reading_lines": [
+            52,
+            59,
+            80
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "mentions": [
+            {
+              "original_line": 86,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "reading_lines": [
+            56,
+            62
+          ]
+        }
+      },
+      {
+        "table_id": 1362819917,
+        "qualified_name": "dbo.LOCATION_INVENTORY",
+        "layout_path": "../table layout/1362819917.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "reading_lines": [
+            53,
+            77
+          ]
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "reading_lines": [
+            65
+          ]
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "mentions": [
+            {
+              "original_line": 92,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "reading_lines": [
+            55,
+            56
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "module_type": "P",
+          "source_line": 48,
+          "source_start_offset": 1795,
+          "source_end_offset": 1799,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "980d10778eb7f2706482e3436a56a464b875b18f7dc74896ba5223ebef1d2284",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "module_type": "P",
+          "source_line": 7,
+          "source_start_offset": 458,
+          "source_end_offset": 466,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1298819689,
+          "table_qualified_name": "dbo.LOCATION",
+          "source_definition_sha256": "980d10778eb7f2706482e3436a56a464b875b18f7dc74896ba5223ebef1d2284",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 629225642,
+          "module_type": "P",
+          "source_line": 48,
+          "source_start_offset": 1768,
+          "source_end_offset": 1776,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1298819689,
+          "table_qualified_name": "dbo.LOCATION",
+          "source_definition_sha256": "980d10778eb7f2706482e3436a56a464b875b18f7dc74896ba5223ebef1d2284",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 629225642,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "ITEM",
+      "referenced_id": 386816440,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.ITEM"
+    },
+    {
+      "referencing_id": 629225642,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "LOCATION",
+      "referenced_id": 1298819689,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.LOCATION"
+    },
+    {
+      "referencing_id": 629225642,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "LOCATION_INVENTORY",
+      "referenced_id": 1362819917,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.LOCATION_INVENTORY"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+    "source_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+    "json_pointer": "/semantic_contracts/43",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 629225642,
+      "qualified_name": "dbo.MetaTrans_GetInventoryCompanyTransfer",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Complete retained body manually read; parameter/default/output/effect/branch/configuration/error/transaction/concurrency dimensions reviewed as source-backed static behavior.",
+      "source_definition_sha256": "980d10778eb7f2706482e3436a56a464b875b18f7dc74896ba5223ebef1d2284",
+      "purpose": "Prepare inventory-company-transfer screen defaults.",
+      "inputs_defaults": [
+        "Exact inert declaration: CREATE PROCEDURE MetaTrans_GetInventoryCompanyTransfer ( @InternalLocationInv numeric(9) = null, @LicensePlate nvarchar(50) = null, @Warehouse nvarchar(25) = null, @culture nvarchar(10)) AS",
+        "Structured parameters record declaration defaults/directions and unused inputs; no default does not mean NOT NULL."
+      ],
+      "parameters": [
+        {
+          "name": "@InternalLocationInv",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": true
+        },
+        {
+          "name": "@LicensePlate",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": true
+        },
+        {
+          "name": "@Warehouse",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": true
+        },
+        {
+          "name": "@culture",
+          "type": "nvarchar(10)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "defaultInventorySts,tempWarehouse,tempToLocation are never assigned and return NULL; culture unused. Multiple-item LP selects -1 and returns blank/NULL aggregates rather than summarizing the entire LP. No eligible ID yields no source data but still a model row. No company transfer, eligibility quantity check or status write occurs."
+      ],
+      "output_shape": [
+        "One scalar model row; company/item/location/lot/status/license-plate/user fields and attribute ID, plus blank new-company/default placeholders and allLocations=0.",
+        "Exact SELECT expression, alias, order, TOP/DISTINCT and filter text is retained line-by-line in source_structure; variable assignments/subqueries do not count as caller result sets."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.LOCATION_INVENTORY",
+          "object_id": 1362819917,
+          "evidence_refs": [
+            "work-config-629225642"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.LOCATION",
+          "object_id": 1298819689,
+          "evidence_refs": [
+            "work-config-629225642"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.ITEM",
+          "object_id": 386816440,
+          "evidence_refs": [
+            "work-config-629225642"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "If license plate is present and internal ID NULL, select minimum eligible LP/parent inventory ID when at most one distinct item, else -1, excluding three location classes in warehouse. Aggregate only the resulting exact internal ID. Distinct mixed dimensions become empty; attributes clear for multiple rows; user-field tests use COUNT(non-NULL values), not COUNT DISTINCT. Fetch item thumbnail with optional company.",
+          "evidence_refs": [
+            "work-config-629225642"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Scope, NULL/error and concurrency boundaries: defaultInventorySts,tempWarehouse,tempToLocation are never assigned and return NULL; culture unused. Multiple-item LP selects -1 and returns blank/NULL aggregates rather than summarizing the entire LP. No eligible ID yields no source data but still a model row. No company transfer, eligibility quantity check or status write occurs.",
+          "evidence_refs": [
+            "work-config-629225642"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "If license plate is present and internal ID NULL, select minimum eligible LP/parent inventory ID when at most one distinct item, else -1, excluding three location classes in warehouse. Aggregate only the resulting exact internal ID. Distinct mixed dimensions become empty; attributes clear for multiple rows; user-field tests use COUNT(non-NULL values), not COUNT DISTINCT. Fetch item thumbnail with optional company.",
+      "configuration_scope_and_precedence": [
+        "If license plate is present and internal ID NULL, select minimum eligible LP/parent inventory ID when at most one distinct item, else -1, excluding three location classes in warehouse. Aggregate only the resulting exact internal ID. Distinct mixed dimensions become empty; attributes clear for multiple rows; user-field tests use COUNT(non-NULL values), not COUNT DISTINCT. Fetch item thumbnail with optional company.",
+        "defaultInventorySts,tempWarehouse,tempToLocation are never assigned and return NULL; culture unused. Multiple-item LP selects -1 and returns blank/NULL aggregates rather than summarizing the entire LP. No eligible ID yields no source data but still a model row. No company transfer, eligibility quantity check or status write occurs."
+      ],
+      "error_and_return_handling": [
+        "defaultInventorySts,tempWarehouse,tempToLocation are never assigned and return NULL; culture unused. Multiple-item LP selects -1 and returns blank/NULL aggregates rather than summarizing the entire LP. No eligible ID yields no source data but still a model row. No company transfer, eligibility quantity check or status write occurs.",
+        "One scalar model row; company/item/location/lot/status/license-plate/user fields and attribute ID, plus blank new-company/default placeholders and allLocations=0."
+      ],
+      "transaction_ownership": "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic.",
+      "concurrency": [
+        "defaultInventorySts,tempWarehouse,tempToLocation are never assigned and return NULL; culture unused. Multiple-item LP selects -1 and returns blank/NULL aggregates rather than summarizing the entire LP. No eligible ID yields no source data but still a model row. No company transfer, eligibility quantity check or status write occurs.",
+        "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic."
+      ],
+      "trigger_behavior": "No direct persistent target; called procedures retain their own mutation/trigger contracts.",
+      "trigger_contract_refs": [],
+      "external_handoffs_and_gaps": [
+        "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+        "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+        "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+        "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/629225642.sql",
+          "sha256": "f11d20839d2a1e74f664683e8265fbecc43fcc282c77fba347a371df7a33c43f",
+          "line_start": 1,
+          "line_end": 112,
+          "kind": "REDACTED_SQL",
+          "description": "Complete retained body manually read; independent per-procedure notes and essential scalar equality/flag interpretations. Original hash and redaction parity checked.",
+          "source_definition_sha256": "980d10778eb7f2706482e3436a56a464b875b18f7dc74896ba5223ebef1d2284"
+        }
+      ],
+      "evidence_refs": [
+        "work-config-629225642"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_NAMES",
+      "source_structure": {
+        "program": [
+          {
+            "line": 12,
+            "text": "CREATE PROCEDURE MetaTrans_GetInventoryCompanyTransfer ("
+          },
+          {
+            "line": 13,
+            "text": "@InternalLocationInv numeric(9) = null,"
+          },
+          {
+            "line": 14,
+            "text": "@LicensePlate nvarchar(50) = null,"
+          },
+          {
+            "line": 15,
+            "text": "@Warehouse nvarchar(25) = null,"
+          },
+          {
+            "line": 16,
+            "text": "@culture nvarchar(10))"
+          },
+          {
+            "line": 18,
+            "text": "AS"
+          },
+          {
+            "line": 19,
+            "text": "SET NOCOUNT ON;"
+          },
+          {
+            "line": 20,
+            "text": "DECLARE @defaultInventorySts nvarchar(50);"
+          },
+          {
+            "line": 21,
+            "text": "DECLARE @tempLicensePlate nvarchar(50);"
+          },
+          {
+            "line": 22,
+            "text": "DECLARE @tempParentLicensePlate nvarchar(50);"
+          },
+          {
+            "line": 23,
+            "text": "DECLARE @tempCompany nvarchar(25);"
+          },
+          {
+            "line": 24,
+            "text": "DECLARE @tempWarehouse nvarchar(25);"
+          },
+          {
+            "line": 25,
+            "text": "DECLARE @tempItem nvarchar(50);"
+          },
+          {
+            "line": 26,
+            "text": "DECLARE @tempItemDesc nvarchar(100);"
+          },
+          {
+            "line": 27,
+            "text": "DECLARE @tempFromLocation nvarchar(25);"
+          },
+          {
+            "line": 28,
+            "text": "DECLARE @tempInventoryStatus nvarchar(50);"
+          },
+          {
+            "line": 29,
+            "text": "DECLARE @tempLot nvarchar(25);"
+          },
+          {
+            "line": 30,
+            "text": "DECLARE @tempToLocation nvarchar(25);"
+          },
+          {
+            "line": 31,
+            "text": "DECLARE @tempInventoryAttributesId numeric(9);"
+          },
+          {
+            "line": 32,
+            "text": "DECLARE @webThumbnailImage nvarchar(200);"
+          },
+          {
+            "line": 33,
+            "text": "DECLARE @allLocations bit = 0;"
+          },
+          {
+            "line": 34,
+            "text": "DECLARE @LPFlow bit = 0;"
+          },
+          {
+            "line": 35,
+            "text": "DECLARE @tempUserDef1 nvarchar(25);"
+          },
+          {
+            "line": 36,
+            "text": "DECLARE @tempUserDef2 nvarchar(25);"
+          },
+          {
+            "line": 37,
+            "text": "DECLARE @tempUserDef3 nvarchar(25);"
+          },
+          {
+            "line": 38,
+            "text": "DECLARE @tempUserDef4 nvarchar(25);"
+          },
+          {
+            "line": 39,
+            "text": "DECLARE @tempUserDef5 nvarchar(25);"
+          },
+          {
+            "line": 40,
+            "text": "DECLARE @tempUserDef6 nvarchar(25);"
+          },
+          {
+            "line": 41,
+            "text": "DECLARE @tempUserDef7 numeric(19,5);"
+          },
+          {
+            "line": 42,
+            "text": "DECLARE @tempUserDef8 numeric(19,5);"
+          },
+          {
+            "line": 45,
+            "text": "if(@LicensePlate is not null and @InternalLocationInv is null)"
+          },
+          {
+            "line": 46,
+            "text": "BEGIN"
+          },
+          {
+            "line": 47,
+            "text": "set @LPFlow = 1;"
+          },
+          {
+            "line": 48,
+            "text": "END"
+          },
+          {
+            "line": 50,
+            "text": "if (@LPFlow = 1)"
+          },
+          {
+            "line": 51,
+            "text": "BEGIN"
+          },
+          {
+            "line": 52,
+            "text": "select @InternalLocationInv  = case when count(distinct(Item)) > 1 then -1 else min(INTERNAL_LOCATION_INV) end"
+          },
+          {
+            "line": 53,
+            "text": "from LOCATION_INVENTORY"
+          },
+          {
+            "line": 54,
+            "text": "where (LOGISTICS_UNIT= @LicensePlate or PARENT_LOGISTICS_UNIT = @LicensePlate)"
+          },
+          {
+            "line": 55,
+            "text": "and WAREHOUSE = @Warehouse"
+          },
+          {
+            "line": 56,
+            "text": "and Location NOT IN ( SELECT LOCATION FROM LOCATION WHERE LOCATION_CLASS IN (N'<literal:1>',N'<literal:2>',N'<literal:3>') AND WAREHOUSE = @Warehouse)"
+          },
+          {
+            "line": 57,
+            "text": "END"
+          },
+          {
+            "line": 59,
+            "text": "SELECT @tempItem = (SELECT CASE WHEN (COUNT(DISTINCT(LI.ITEM)) > 1) THEN N'<literal:4>' ELSE min(LI.ITEM) END),"
+          },
+          {
+            "line": 60,
+            "text": "@tempItemDesc =(SELECT CASE WHEN (COUNT(DISTINCT(LI.ITEM_DESC)) >1) THEN N'<literal:5>' ELSE min(LI.ITEM_DESC )END),"
+          },
+          {
+            "line": 61,
+            "text": "@tempCompany= (SELECT CASE WHEN (COUNT(DISTINCT(LI.COMPANY)) >1) THEN N'<literal:6>' ELSE min(LI.COMPANY) END),"
+          },
+          {
+            "line": 62,
+            "text": "@tempFromLocation =(SELECT CASE WHEN( COUNT(DISTINCT(LI.LOCATION)) > 1) THEN N'<literal:7>' ELSE min(LI.LOCATION) END),"
+          },
+          {
+            "line": 63,
+            "text": "@tempLicensePlate =  (SELECT CASE WHEN COUNT(DISTINCT(LI.LOGISTICS_UNIT)) > 1 THEN N'<literal:8>' ELSE min(LI.LOGISTICS_UNIT) END),"
+          },
+          {
+            "line": 64,
+            "text": "@tempParentLicensePlate = (SELECT CASE WHEN COUNT(DISTINCT(LI.PARENT_LOGISTICS_UNIT)) > 1 THEN N'<literal:9>' ELSE min(LI.PARENT_LOGISTICS_UNIT) END),"
+          },
+          {
+            "line": 65,
+            "text": "@tempLot = (SELECT CASE WHEN COUNT(DISTINCT(LI.LOT)) > 1 THEN N'<literal:10>' ELSE min(LI.LOT) END),"
+          },
+          {
+            "line": 66,
+            "text": "@tempInventoryStatus = (SELECT CASE WHEN COUNT(DISTINCT(LI.INVENTORY_STS)) > 1 THEN N'<literal:11>' ELSE min(LI.INVENTORY_STS) END),"
+          },
+          {
+            "line": 67,
+            "text": "@tempInventoryAttributesId = (SELECT CASE WHEN (COUNT(INTERNAL_LOCATION_INV) >1) THEN NULL ELSE min(LI.LOC_INV_ATTRIBUTES_ID) END),"
+          },
+          {
+            "line": 68,
+            "text": "@tempUserDef1 = (SELECT CASE WHEN (COUNT(USER_DEF1) >1) THEN N'<literal:12>' ELSE min(LI.USER_DEF1) END),"
+          },
+          {
+            "line": 69,
+            "text": "@tempUserDef2 = (SELECT CASE WHEN (COUNT(USER_DEF2) >1) THEN N'<literal:13>' ELSE min(LI.USER_DEF2) END),"
+          },
+          {
+            "line": 70,
+            "text": "@tempUserDef3 = (SELECT CASE WHEN (COUNT(USER_DEF3) >1) THEN N'<literal:14>' ELSE min(LI.USER_DEF3) END),"
+          },
+          {
+            "line": 71,
+            "text": "@tempUserDef4 = (SELECT CASE WHEN (COUNT(USER_DEF4) >1) THEN N'<literal:15>' ELSE min(LI.USER_DEF4) END),"
+          },
+          {
+            "line": 72,
+            "text": "@tempUserDef5 = (SELECT CASE WHEN (COUNT(USER_DEF5) >1) THEN N'<literal:16>' ELSE min(LI.USER_DEF5) END),"
+          },
+          {
+            "line": 73,
+            "text": "@tempUserDef6 = (SELECT CASE WHEN (COUNT(USER_DEF6) >1) THEN N'<literal:17>' ELSE min(LI.USER_DEF6) END),"
+          },
+          {
+            "line": 74,
+            "text": "@tempUserDef7 = (SELECT CASE WHEN (COUNT(USER_DEF7) >1) THEN N'<literal:18>' ELSE min(LI.USER_DEF7) END),"
+          },
+          {
+            "line": 75,
+            "text": "@tempUserDef8 = (SELECT CASE WHEN (COUNT(USER_DEF8) >1) THEN N'<literal:19>' ELSE min(LI.USER_DEF8) END)"
+          },
+          {
+            "line": 77,
+            "text": "FROM LOCATION_INVENTORY LI"
+          },
+          {
+            "line": 78,
+            "text": "WHERE\t(INTERNAL_LOCATION_INV = @InternalLocationInv)"
+          },
+          {
+            "line": 80,
+            "text": "select @webThumbnailImage = WEB_THUMBNAIL_IMG from ITEM where ITEM=@tempItem and (@tempCompany is null or COMPANY = @tempCompany);"
+          },
+          {
+            "line": 82,
+            "text": "SELECT TOP 1"
+          },
+          {
+            "line": 83,
+            "text": "N'<literal:20>' AS N'<literal:21>',"
+          },
+          {
+            "line": 84,
+            "text": "N'<literal:22>' AS N'<literal:23>',"
+          },
+          {
+            "line": 85,
+            "text": "@tempCompany  AS N'<literal:24>',"
+          },
+          {
+            "line": 86,
+            "text": "@tempWarehouse AS N'<literal:25>',"
+          },
+          {
+            "line": 87,
+            "text": "@tempItem AS N'<literal:26>',"
+          },
+          {
+            "line": 88,
+            "text": "@tempItemDesc AS N'<literal:27>',"
+          },
+          {
+            "line": 89,
+            "text": "@tempFromLocation AS N'<literal:28>',"
+          },
+          {
+            "line": 90,
+            "text": "@tempToLocation AS N'<literal:29>',"
+          },
+          {
+            "line": 91,
+            "text": "@tempLicensePlate AS N'<literal:30>',"
+          },
+          {
+            "line": 92,
+            "text": "@tempParentLicensePlate  AS N'<literal:31>',"
+          },
+          {
+            "line": 93,
+            "text": "@tempLot AS N'<literal:32>',"
+          },
+          {
+            "line": 94,
+            "text": "@tempInventoryStatus AS N'<literal:33>',"
+          },
+          {
+            "line": 95,
+            "text": "N'<literal:34>' AS N'<literal:35>',"
+          },
+          {
+            "line": 96,
+            "text": "@defaultInventorySts as N'<literal:36>',"
+          },
+          {
+            "line": 97,
+            "text": "@webThumbnailImage As N'<literal:37>',"
+          },
+          {
+            "line": 98,
+            "text": "@allLocations AS N'<literal:38>',"
+          },
+          {
+            "line": 99,
+            "text": "@tempInventoryAttributesId as N'<literal:39>',"
+          },
+          {
+            "line": 100,
+            "text": "@tempUserDef1 as N'<literal:40>',"
+          },
+          {
+            "line": 101,
+            "text": "@tempUserDef2 as N'<literal:41>',"
+          },
+          {
+            "line": 102,
+            "text": "@tempUserDef3 as N'<literal:42>',"
+          },
+          {
+            "line": 103,
+            "text": "@tempUserDef4 as N'<literal:43>',"
+          },
+          {
+            "line": 104,
+            "text": "@tempUserDef5 as N'<literal:44>',"
+          },
+          {
+            "line": 105,
+            "text": "@tempUserDef6 as N'<literal:45>',"
+          },
+          {
+            "line": 106,
+            "text": "@tempUserDef7 as N'<literal:46>',"
+          },
+          {
+            "line": 107,
+            "text": "@tempUserDef8 as N'<literal:47>'"
+          }
+        ],
+        "interpretation": "Inert exact retained SQL, not executable recovery instructions.",
+        "wildcard_column_catalog": []
+      },
+      "reviewed_literal_equality_groups": [
+        {
+          "ordinal": 1,
+          "original_line_start": 55,
+          "original_line_end": 55,
+          "sha256": "10e47618545196e31c0222fbf79bebd64393e0e2dc4a70ba2121544810f5dfb3",
+          "equality_group": 1,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 2,
+          "original_line_start": 55,
+          "original_line_end": 55,
+          "sha256": "3354f4a8fa7e4bb285ba4f89ece075b21993997d29be0e24cc2bac655530d5ef",
+          "equality_group": 2,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 3,
+          "original_line_start": 55,
+          "original_line_end": 55,
+          "sha256": "e089414534e219c28761ba1a03978cf75b97069665c508fcdb7561bd4808842e",
+          "equality_group": 3,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 4,
+          "original_line_start": 58,
+          "original_line_end": 58,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 5,
+          "original_line_start": 59,
+          "original_line_end": 59,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 6,
+          "original_line_start": 60,
+          "original_line_end": 60,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 7,
+          "original_line_start": 61,
+          "original_line_end": 61,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 8,
+          "original_line_start": 62,
+          "original_line_end": 62,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 9,
+          "original_line_start": 63,
+          "original_line_end": 63,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 10,
+          "original_line_start": 64,
+          "original_line_end": 64,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 11,
+          "original_line_start": 65,
+          "original_line_end": 65,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 12,
+          "original_line_start": 67,
+          "original_line_end": 67,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 13,
+          "original_line_start": 68,
+          "original_line_end": 68,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 14,
+          "original_line_start": 69,
+          "original_line_end": 69,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 15,
+          "original_line_start": 70,
+          "original_line_end": 70,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 16,
+          "original_line_start": 71,
+          "original_line_end": 71,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 17,
+          "original_line_start": 72,
+          "original_line_end": 72,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 18,
+          "original_line_start": 73,
+          "original_line_end": 73,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 19,
+          "original_line_start": 74,
+          "original_line_end": 74,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 20,
+          "original_line_start": 82,
+          "original_line_end": 82,
+          "sha256": "d7dfbaf6df0a816fd85178599a48c11ff875288715c08377c6beb5d67e5fa8d5",
+          "equality_group": 20,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 21,
+          "original_line_start": 82,
+          "original_line_end": 82,
+          "sha256": "a3d8fba94e7e2209a9e3d39b3f7353abf229960c407329aff46572338f20bfa9",
+          "equality_group": 21,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 22,
+          "original_line_start": 83,
+          "original_line_end": 83,
+          "sha256": "2b90d040ee096fd64db9c0bf3967c43ee91c392caf29e748fa68c2d7cdabfdd3",
+          "equality_group": 22,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 23,
+          "original_line_start": 83,
+          "original_line_end": 83,
+          "sha256": "522bad6d83fff732cf3340b46e7e3a46f564f20a6fe42dc02377f9bc2d0e3d1d",
+          "equality_group": 23,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 24,
+          "original_line_start": 84,
+          "original_line_end": 84,
+          "sha256": "de4743c879734dc38cb3e270ecefcae077c3c2e626f9298115d5a03c8613f89b",
+          "equality_group": 24,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 25,
+          "original_line_start": 85,
+          "original_line_end": 85,
+          "sha256": "896aa47a322c34cad43926d6b8dafba76b0a553da08a7238e75951e120871b1d",
+          "equality_group": 25,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 26,
+          "original_line_start": 86,
+          "original_line_end": 86,
+          "sha256": "652bcc3a478428893cc505ae19f847b49be52f861bedc64bb192ceed409fa733",
+          "equality_group": 26,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 27,
+          "original_line_start": 87,
+          "original_line_end": 87,
+          "sha256": "0781e4d62586e91be24111d2c17e5e1fa6561a2d2ab399055e76e75cac0c41b7",
+          "equality_group": 27,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 28,
+          "original_line_start": 88,
+          "original_line_end": 88,
+          "sha256": "3fd0974bd9d6c0ff5c39b96b695198a91c158793d1653355cf385550c43fe63f",
+          "equality_group": 28,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 29,
+          "original_line_start": 89,
+          "original_line_end": 89,
+          "sha256": "8c1601162679785cb37f1af470dcd1135cf606cba8f1dd253cf51d42f60d37bd",
+          "equality_group": 29,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 30,
+          "original_line_start": 90,
+          "original_line_end": 90,
+          "sha256": "6b74bf3ed0a1405e7e63c2560059c5683c501dd671fcaef97a4ddb1a5dfe06c1",
+          "equality_group": 30,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 31,
+          "original_line_start": 91,
+          "original_line_end": 91,
+          "sha256": "bdc5fc9f8a121cfb09f6b8fb4b69cff9925abd6a89472b4a195e381e540883a8",
+          "equality_group": 31,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 32,
+          "original_line_start": 92,
+          "original_line_end": 92,
+          "sha256": "b7b30d6e4f8c864714bf46cb6df3e5cc89c91af4ac4f31edac07cdf1f9090d4d",
+          "equality_group": 32,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 33,
+          "original_line_start": 93,
+          "original_line_end": 93,
+          "sha256": "c116b0d946bf7373b1b6600abe252068ef10f4fa40d39ba923462668bf84fff5",
+          "equality_group": 33,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 34,
+          "original_line_start": 94,
+          "original_line_end": 94,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 4,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 35,
+          "original_line_start": 94,
+          "original_line_end": 94,
+          "sha256": "d1ced9150a26758e6096fce8a41ceaacbd47657c0ad76257700d91a039f331dc",
+          "equality_group": 35,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 36,
+          "original_line_start": 95,
+          "original_line_end": 95,
+          "sha256": "7fb424916a876a11fd89e2be88512b1a80cd77c6de92121e6129adaa0286521a",
+          "equality_group": 36,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 37,
+          "original_line_start": 96,
+          "original_line_end": 96,
+          "sha256": "a77905620c0f81f464a880bc97699de5a2ba7d427a0af9f49d915cc7ac476492",
+          "equality_group": 37,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 38,
+          "original_line_start": 97,
+          "original_line_end": 97,
+          "sha256": "1c24c7ae73f61eb74abfdb27544f199e0821efbd4fee45f8e6a2df77ac2dbf5d",
+          "equality_group": 38,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 39,
+          "original_line_start": 98,
+          "original_line_end": 98,
+          "sha256": "76d065faf1401af3ac0b7199bdd3961a47f7acda5204f92214cde62d8dc2d083",
+          "equality_group": 39,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 40,
+          "original_line_start": 99,
+          "original_line_end": 99,
+          "sha256": "65712aa921352362c44947df7ab418f2439a2b13ea3c92c125157ee0f54fe9db",
+          "equality_group": 40,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 41,
+          "original_line_start": 100,
+          "original_line_end": 100,
+          "sha256": "1c33693bd2118aa69781513bd6ba27333bfeaf8432b2e6821f228b81556a31fc",
+          "equality_group": 41,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 42,
+          "original_line_start": 101,
+          "original_line_end": 101,
+          "sha256": "d652cd0100f441c9d9d3fd4541c0144f8fe73b22c37403bcd6ed2f3ec530d35f",
+          "equality_group": 42,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 43,
+          "original_line_start": 102,
+          "original_line_end": 102,
+          "sha256": "ed33e38aa90e5557179386a1bd1e4a7dc0d16c203657b0f1bb0063ca98063f28",
+          "equality_group": 43,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 44,
+          "original_line_start": 103,
+          "original_line_end": 103,
+          "sha256": "4771aefd611d119427fbc7bf9023ef1ac3b73a4304c530afbd0539f2dfa27de2",
+          "equality_group": 44,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 45,
+          "original_line_start": 104,
+          "original_line_end": 104,
+          "sha256": "1837c3531c1294e08f842f00105b166f9a2322c2e78b8c49a7bdaa5d30650a9d",
+          "equality_group": 45,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 46,
+          "original_line_start": 105,
+          "original_line_end": 105,
+          "sha256": "78c9ab7da9d57a7857b51507e6056e33966d5da2703e165b4a0ff94da516f95c",
+          "equality_group": 46,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 47,
+          "original_line_start": 106,
+          "original_line_end": 106,
+          "sha256": "be54bb21df260453975235282e1ffac6bede02767ece79f7726b89ad57695089",
+          "equality_group": 47,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        }
+      ]
+    },
+    "evidence_sources": {
+      "work-config-629225642": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 629225642,
+        "qualified_name": "dbo.MetaTrans_GetInventoryCompanyTransfer",
+        "source_definition_sha256": "980d10778eb7f2706482e3436a56a464b875b18f7dc74896ba5223ebef1d2284",
+        "reading_path": "DB Architecture/sql/629225642.sql",
+        "reading_sha256": "f11d20839d2a1e74f664683e8265fbecc43fcc282c77fba347a371df7a33c43f",
+        "line_spans": [
+          [
+            1,
+            112
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+      "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+      "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+      "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.MetaTrans_GetInventoryCompanyTransfer",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/629225642.sql",
+      "reading_sha256": "f11d20839d2a1e74f664683e8265fbecc43fcc282c77fba347a371df7a33c43f",
+      "source_definition_sha256": "980d10778eb7f2706482e3436a56a464b875b18f7dc74896ba5223ebef1d2284",
+      "reading_lines": 112,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+    "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+    "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+    "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+  ]
+}

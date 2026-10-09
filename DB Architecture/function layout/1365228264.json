@@ -1,0 +1,278 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1365228264,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "ModifyCommaSeparatedStringList",
+    "type": "FN",
+    "type_desc": "SQL_SCALAR_FUNCTION",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:52.360000",
+    "modify_date": "2026-08-16 06:59:52.360000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.ModifyCommaSeparatedStringList",
+    "domain_candidate": "utilities"
+  },
+  "source_definition_sha256": "bf5550bdde12e2114cb02e2cdfda8bf46e31b7cfd3401a1c5615bbb2f0e40375",
+  "exact_sql_path": "1365228264.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 2524,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1365228264,
+      "parameter_id": 1,
+      "name": "@originalList",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": -1,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(max)"
+    },
+    {
+      "object_id": 1365228264,
+      "parameter_id": 2,
+      "name": "@valuesToAdd",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": -1,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(max)"
+    },
+    {
+      "object_id": 1365228264,
+      "parameter_id": 3,
+      "name": "@valuesToRemove",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": -1,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(max)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "SCALAR",
+    "scalar_parameters": [
+      {
+        "object_id": 1365228264,
+        "parameter_id": 0,
+        "name": "",
+        "type_schema": "sys",
+        "type_name": "nvarchar",
+        "max_length": -1,
+        "precision": 0,
+        "scale": 0,
+        "is_output": true,
+        "is_readonly": false,
+        "has_default_value": false,
+        "declared_type": "nvarchar(max)"
+      }
+    ],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [],
+    "possible_indirect": [],
+    "mentions_only": []
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1365228264,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": "T",
+      "referenced_schema_name": "c",
+      "referenced_entity_name": "value",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": true,
+      "target_qualified_name": null
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/function-semantics.json",
+    "source_sha256": "ff744aa20dbd12ac2949170f59df29201e5e4f72f520388aed0403f9fef6ce91",
+    "json_pointer": "/semantic_contracts/64",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_INDEPENDENT_REVIEW_PENDING",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1365228264,
+      "qualified_name": "dbo.ModifyCommaSeparatedStringList",
+      "object_type": "FN",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Body-level static contract; transitive application and called-module completeness are separate.",
+      "source_definition_sha256": "bf5550bdde12e2114cb02e2cdfda8bf46e31b7cfd3401a1c5615bbb2f0e40375",
+      "purpose": "Merge unique string-list entries then remove selected values using XML parsing.",
+      "inputs_defaults": [
+        "originalList/valuesToAdd/valuesToRemove nvarchar(max); fixed comma separator; no defaults."
+      ],
+      "null_and_invalid_input_behavior": [
+        "XML special characters are not escaped before CONVERT(xml), so malformed fragments/entities can error or change interpreted text. Token conversion to100 characters can truncate distinctions. NULL inputs produce no XML nodes; empty result returns empty initialization.",
+        "No whitespace trim or stable original ordering. Separator NULL/empty has no guard in parameterized helper; LEN ignores trailing spaces and can affect final trimming."
+      ],
+      "output_shape": [
+        "nvarchar(max), initialized empty."
+      ],
+      "effects": [],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Build XML by surrounding inputs with fixed tags and replacing separators with tag boundaries; extract tokens as nvarchar(100).",
+          "evidence_refs": [
+            "fn-batch-1365228264"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "UNION non-NULL/nonempty original/addition tokens; exclude nonempty removal tokens via NOT IN. Concatenate remaining values and separator without ORDER BY.",
+          "evidence_refs": [
+            "fn-batch-1365228264"
+          ]
+        },
+        {
+          "order": 3,
+          "explanation": "Remove trailing separator using SUBSTRING starting0 for LEN(updatedList).",
+          "evidence_refs": [
+            "fn-batch-1365228264"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "No persistent status, inventory quantity or permissions mutation; output is the stated scalar or returned table.",
+      "configuration_scope_and_precedence": [
+        "Removal wins when the same token is added and removed; comparison/deduplication follows collation. No robust CSV/quoted-list grammar."
+      ],
+      "error_and_return_handling": [
+        "No explicit exception handler or application error code; conversion, arithmetic and called-function errors propagate."
+      ],
+      "transaction_ownership": "No explicit transaction, commit, rollback, savepoint, TRY/CATCH or XACT_ABORT is introduced by this body; caller/session semantics remain authoritative.",
+      "concurrency": [
+        "No persistent mutation or lock protocol; reads, if any, follow caller/session isolation. Function result is not evidence of caller authorization or process execution."
+      ],
+      "trigger_behavior": "No persistent DML or DML trigger activation in this body.",
+      "external_handoffs_and_gaps": [
+        "Application caller, effective values and operational use remain unobserved."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1365228264.sql",
+          "sha256": "4af9be2299d23a2c7e0492778b21b37b5c4b0443502b4dd5d541bcd1f0ba7210",
+          "line_start": 1,
+          "line_end": 77,
+          "kind": "REDACTED_SQL",
+          "description": "Complete module body reviewed with original-definition fingerprint.",
+          "source_definition_sha256": "bf5550bdde12e2114cb02e2cdfda8bf46e31b7cfd3401a1c5615bbb2f0e40375"
+        }
+      ],
+      "evidence_refs": [
+        "fn-batch-1365228264"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "fn-batch-1365228264": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1365228264,
+        "qualified_name": "dbo.ModifyCommaSeparatedStringList",
+        "source_definition_sha256": "bf5550bdde12e2114cb02e2cdfda8bf46e31b7cfd3401a1c5615bbb2f0e40375",
+        "reading_path": "DB Architecture/sql/1365228264.sql",
+        "reading_sha256": "4af9be2299d23a2c7e0492778b21b37b5c4b0443502b4dd5d541bcd1f0ba7210",
+        "line_spans": [
+          [
+            1,
+            77
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "Full structural body review and guarded original literal categories/fingerprints; arbitrary private message/URI/namespace/code-label strings remain withheld.",
+      "No persistent DML in these function bodies; returned-table writes are local output construction. This does not prove caller authorization, workflow correctness or current data.",
+      "Function declared defaults are distinct from explicit NULL; SQL function DEFAULT invocation requirements remain applicable.",
+      "Static possible paths are not reproduced defects. No DB connections, function calls, operational rows or archive records were accessed. Prefixes do not establish ownership."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.ModifyCommaSeparatedStringList",
+      "object_type": "FN",
+      "reading_path": "DB Architecture/sql/1365228264.sql",
+      "reading_sha256": "4af9be2299d23a2c7e0492778b21b37b5c4b0443502b4dd5d541bcd1f0ba7210",
+      "source_definition_sha256": "bf5550bdde12e2114cb02e2cdfda8bf46e31b7cfd3401a1c5615bbb2f0e40375",
+      "reading_lines": 77,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [
+      {
+        "module_id": 1365228264,
+        "row_index": 1588,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      }
+    ],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "Full structural body review and guarded original literal categories/fingerprints; arbitrary private message/URI/namespace/code-label strings remain withheld.",
+    "No persistent DML in these function bodies; returned-table writes are local output construction. This does not prove caller authorization, workflow correctness or current data.",
+    "Function declared defaults are distinct from explicit NULL; SQL function DEFAULT invocation requirements remain applicable.",
+    "Static possible paths are not reproduced defects. No DB connections, function calls, operational rows or archive records were accessed. Prefixes do not establish ownership."
+  ]
+}

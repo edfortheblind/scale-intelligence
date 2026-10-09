@@ -1,0 +1,732 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1941581955,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "EXP_WorkCreationAfterExitPoint",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2022-06-01 23:51:12.270000",
+    "modify_date": "2022-06-01 23:51:12.270000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.EXP_WorkCreationAfterExitPoint",
+    "domain_candidate": "work"
+  },
+  "source_definition_sha256": "56ac88720b6f8f12f58a2be021f322163151c574895268334178973215220855",
+  "exact_sql_path": "1941581955.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 2738,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": true
+  },
+  "parameters": [
+    {
+      "object_id": 1941581955,
+      "parameter_id": 1,
+      "name": "@SESSIONVALUE",
+      "type_schema": "sys",
+      "type_name": "xml",
+      "max_length": -1,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "xml"
+    },
+    {
+      "object_id": 1941581955,
+      "parameter_id": 2,
+      "name": "@PROCESS",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": -1,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(max)"
+    },
+    {
+      "object_id": 1941581955,
+      "parameter_id": 3,
+      "name": "@LAUNCHNUM",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": -1,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(max)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1941581955,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2471,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 142,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/142/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 142,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/142/effects/2",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "UPDATE",
+              "line": 23,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 45,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [
+      {
+        "table_id": 2027870291,
+        "qualified_name": "dbo.TRAV_PALLET",
+        "layout_path": "../table layout/2027870291.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              1941581955,
+              1323151759
+            ],
+            "table_id": 2027870291
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": [
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1941581955,
+          "reading_lines": [
+            23,
+            45
+          ]
+        }
+      },
+      {
+        "table_id": 1768393369,
+        "qualified_name": "dbo.WORK_TYPE",
+        "layout_path": "../table layout/1768393369.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1941581955,
+          "reading_lines": [
+            51
+          ]
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1941581955,
+          "module_type": "P",
+          "source_line": 9,
+          "source_start_offset": 223,
+          "source_end_offset": 231,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1298819689,
+          "table_qualified_name": "dbo.LOCATION",
+          "source_definition_sha256": "56ac88720b6f8f12f58a2be021f322163151c574895268334178973215220855",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1941581955,
+          "module_type": "P",
+          "source_line": 20,
+          "source_start_offset": 428,
+          "source_end_offset": 436,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1298819689,
+          "table_qualified_name": "dbo.LOCATION",
+          "source_definition_sha256": "56ac88720b6f8f12f58a2be021f322163151c574895268334178973215220855",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1941581955,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "TRAV_EX08_WorkCreationAfterExitPoint",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": true,
+      "is_ambiguous": false,
+      "target_qualified_name": null
+    },
+    {
+      "referencing_id": 1941581955,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "WORK_INSTRUCTION",
+      "referenced_id": 1352391887,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.WORK_INSTRUCTION"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/142",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1941581955,
+      "qualified_name": "dbo.EXP_WorkCreationAfterExitPoint",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "56ac88720b6f8f12f58a2be021f322163151c574895268334178973215220855",
+      "purpose": "Assign outgoing pick/drop locations for selected launch work and invoke an optional EX08 hook.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE [dbo].[EXP_WorkCreationAfterExitPoint] @SESSIONVALUE xml, @PROCESS nvarchar(max), @LAUNCHNUM nvarchar(max) AS",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 1941581955,
+          "parameter_id": 1,
+          "name": "@SESSIONVALUE",
+          "type_schema": "sys",
+          "type_name": "xml",
+          "max_length": -1,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1941581955,
+          "parameter_id": 2,
+          "name": "@PROCESS",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": -1,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1941581955,
+          "parameter_id": 3,
+          "name": "@LAUNCHNUM",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": -1,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "No explicit input validation; NULL equality does not match and implicit conversions can fail."
+      ],
+      "output_shape": [
+        "No explicit local result set."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.WORK_INSTRUCTION",
+          "object_id": 1352391887,
+          "evidence_refs": [
+            "ops-sql-1941581955"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "sys.objects",
+          "object_id": null,
+          "evidence_refs": [
+            "ops-sql-1941581955"
+          ],
+          "binding_limit": "No captured local application object identity is asserted. This is a system/cross-database reference, a dynamic-operation marker, or an unresolved local name; the exact kind is specified separately.",
+          "binding_kind": "SYSTEM_REFERENCE"
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.WORK_INSTRUCTION",
+          "object_id": 1352391887,
+          "evidence_refs": [
+            "ops-sql-1941581955"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.TRAV_EX08_WorkCreationAfterExitPoint",
+          "object_id": 1323151759,
+          "evidence_refs": [
+            "ops-sql-1941581955"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Updates matching WORK_INSTRUCTION rows for the supplied launch, fixed condition/work group/instruction type/work types and template values, using a fixed CASE map without ELSE. It does not require existing OUTGOING_PD_LOC to be NULL, so can replace a value with NULL for unmatched map cases. Then checks sys.objects by unqualified fixed name only and invokes TRAV_EX08_WorkCreationAfterExitPoint with the original inputs. Existence check does not establish schema/type or successful execution.",
+          "evidence_refs": [
+            "ops-sql-1941581955"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Updates matching WORK_INSTRUCTION rows for the supplied launch, fixed condition/work group/instruction type/work types and template values, using a fixed CASE map without ELSE. It does not require existing OUTGOING_PD_LOC to be NULL, so can replace a value with NULL for unmatched map cases. Then checks sys.objects by unqualified fixed name only and invokes TRAV_EX08_WorkCreationAfterExitPoint with the original inputs. Existence check does not establish schema/type or successful execution.",
+      "configuration_scope_and_precedence": [
+        "Updates matching WORK_INSTRUCTION rows for the supplied launch, fixed condition/work group/instruction type/work types and template values, using a fixed CASE map without ELSE. It does not require existing OUTGOING_PD_LOC to be NULL, so can replace a value with NULL for unmatched map cases. Then checks sys.objects by unqualified fixed name only and invokes TRAV_EX08_WorkCreationAfterExitPoint with the original inputs. Existence check does not establish schema/type or successful execution."
+      ],
+      "error_and_return_handling": [
+        "No explicit local result set.",
+        "No explicit input validation; NULL equality does not match and implicit conversions can fail.",
+        "No explicit transaction or TRY/CATCH in this body; child routines and enabled triggers may have additional effects."
+      ],
+      "transaction_ownership": "No explicit transaction or TRY/CATCH in this body; child routines and enabled triggers may have additional effects.",
+      "concurrency": [
+        "NOLOCK/read-uncommitted hints occur in the captured body; dirty, missing or inconsistent reads are possible. No explicit transaction or TRY/CATCH in this body; child routines and enabled triggers may have additional effects."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [
+        {
+          "object_id": 800057936,
+          "name": "work_instruction_outgoing_pd",
+          "parent_class_desc": "OBJECT_OR_COLUMN",
+          "parent_id": 1352391887,
+          "type_desc": "SQL_TRIGGER",
+          "is_disabled": false,
+          "is_instead_of_trigger": false,
+          "is_not_for_replication": false
+        }
+      ],
+      "external_handoffs_and_gaps": [
+        "Static source review only; callback installation, scheduler use, external delivery and live execution are not established.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE [dbo].[EXP_WorkCreationAfterExitPoint] @SESSIONVALUE xml, @PROCESS nvarchar(max), @LAUNCHNUM nvarchar(max) AS",
+        "program": [
+          {
+            "line": 13,
+            "text": "CREATE PROCEDURE [dbo].[EXP_WorkCreationAfterExitPoint]"
+          },
+          {
+            "line": 14,
+            "text": "    @SESSIONVALUE xml,"
+          },
+          {
+            "line": 15,
+            "text": "    @PROCESS nvarchar(max),"
+          },
+          {
+            "line": 16,
+            "text": "\t@LAUNCHNUM nvarchar(max)"
+          },
+          {
+            "line": 17,
+            "text": "AS"
+          },
+          {
+            "line": 19,
+            "text": "BEGIN"
+          },
+          {
+            "line": 23,
+            "text": "\tUPDATE WORK_INSTRUCTION"
+          },
+          {
+            "line": 24,
+            "text": "\tSET OUTGOING_PD_LOC = "
+          },
+          {
+            "line": 25,
+            "text": "\t\tCASE "
+          },
+          {
+            "line": 26,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:1>' and FROM_TEMPL_FIELD3 in ('<literal:2>','<literal:3>') THEN '<literal:4>' "
+          },
+          {
+            "line": 27,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:5>' and FROM_TEMPL_FIELD3 in ('<literal:6>','<literal:7>') THEN '<literal:8>' "
+          },
+          {
+            "line": 28,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:9>' and FROM_TEMPL_FIELD3 in ('<literal:10>','<literal:11>') THEN '<literal:12>' "
+          },
+          {
+            "line": 29,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:13>' and FROM_TEMPL_FIELD3 in ('<literal:14>','<literal:15>') THEN '<literal:16>' "
+          },
+          {
+            "line": 30,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:17>' and FROM_TEMPL_FIELD3 in ('<literal:18>','<literal:19>') THEN '<literal:20>' "
+          },
+          {
+            "line": 31,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:21>' and FROM_TEMPL_FIELD3 in ('<literal:22>','<literal:23>') THEN '<literal:24>' "
+          },
+          {
+            "line": 32,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:25>' and FROM_TEMPL_FIELD3 in ('<literal:26>','<literal:27>') THEN '<literal:28>' "
+          },
+          {
+            "line": 33,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:29>' and FROM_TEMPL_FIELD3 in ('<literal:30>','<literal:31>') THEN '<literal:32>' "
+          },
+          {
+            "line": 34,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:33>' and FROM_TEMPL_FIELD3 in ('<literal:34>','<literal:35>') THEN '<literal:36>' "
+          },
+          {
+            "line": 35,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:37>' and FROM_TEMPL_FIELD3 in ('<literal:38>','<literal:39>') THEN '<literal:40>' "
+          },
+          {
+            "line": 36,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:41>' and FROM_TEMPL_FIELD3 in ('<literal:42>','<literal:43>') THEN '<literal:44>' "
+          },
+          {
+            "line": 37,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:45>' and FROM_TEMPL_FIELD3 in ('<literal:46>','<literal:47>') THEN '<literal:48>' "
+          },
+          {
+            "line": 38,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:49>' and FROM_TEMPL_FIELD3 in ('<literal:50>','<literal:51>') THEN '<literal:52>' "
+          },
+          {
+            "line": 39,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:53>' and FROM_TEMPL_FIELD3 in ('<literal:54>','<literal:55>') THEN '<literal:56>' "
+          },
+          {
+            "line": 40,
+            "text": "\t\t\tWHEN FROM_TEMPL_FIELD2 = '<literal:57>' and FROM_TEMPL_FIELD3 in ('<literal:58>','<literal:59>') THEN '<literal:60>' "
+          },
+          {
+            "line": 41,
+            "text": "\t\tend"
+          },
+          {
+            "line": 42,
+            "text": "\tWHERE INTERNAL_INSTRUCTION_NUM in ("
+          },
+          {
+            "line": 43,
+            "text": "\t\tSELECT "
+          },
+          {
+            "line": 44,
+            "text": "\t\t\tINTERNAL_INSTRUCTION_NUM"
+          },
+          {
+            "line": 45,
+            "text": "\t\tFROM WORK_INSTRUCTION WITH(NOLOCK)"
+          },
+          {
+            "line": 46,
+            "text": "\t\tWHERE LAUNCH_NUM = @LAUNCHNUM"
+          },
+          {
+            "line": 48,
+            "text": "\t\t\tAND CONDITION = '<literal:61>'"
+          },
+          {
+            "line": 49,
+            "text": "\t\t\tAND WORK_GROUP IN (N'<literal:62>')"
+          },
+          {
+            "line": 50,
+            "text": "\t\t\tAND INSTRUCTION_TYPE = N'<literal:63>'"
+          },
+          {
+            "line": 51,
+            "text": "\t\t\tAND WORK_TYPE IN ("
+          },
+          {
+            "line": 52,
+            "text": "\t\t\t\t'<literal:64>', "
+          },
+          {
+            "line": 53,
+            "text": "\t\t\t\t'<literal:65>',"
+          },
+          {
+            "line": 54,
+            "text": "\t\t\t\t'<literal:66>',"
+          },
+          {
+            "line": 55,
+            "text": "\t\t\t\t'<literal:67>'"
+          },
+          {
+            "line": 56,
+            "text": "\t\t\t\t\t)"
+          },
+          {
+            "line": 57,
+            "text": "\t\t\tAND FROM_TEMPL_FIELD1 = '<literal:68>'"
+          },
+          {
+            "line": 58,
+            "text": "\t\t\tAND FROM_TEMPL_FIELD2 = '<literal:69>'"
+          },
+          {
+            "line": 59,
+            "text": "\t\t\tAND TO_TEMPL_FIELD1 = '<literal:70>'"
+          },
+          {
+            "line": 60,
+            "text": "\t\t\tAND TO_TEMPL_FIELD2 IN ('<literal:71>','<literal:72>','<literal:73>')"
+          },
+          {
+            "line": 61,
+            "text": "\t\t\t)"
+          },
+          {
+            "line": 65,
+            "text": "\tIF EXISTS (SELECT 1 FROM sys.objects WHERE [name] = N'<literal:74>')"
+          },
+          {
+            "line": 66,
+            "text": "\tBEGIN "
+          },
+          {
+            "line": 67,
+            "text": "\t\tEXEC TRAV_EX08_WorkCreationAfterExitPoint @SESSIONVALUE, @PROCESS, @LAUNCHNUM"
+          },
+          {
+            "line": 68,
+            "text": "\tEND"
+          },
+          {
+            "line": 70,
+            "text": " END"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1941581955.sql",
+          "sha256": "3a1899d38fb991b627af7f1fda166caa2e04fc1e079e75affa0068c950545120",
+          "line_start": 1,
+          "line_end": 70,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "56ac88720b6f8f12f58a2be021f322163151c574895268334178973215220855",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-1941581955"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-1941581955": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1941581955,
+        "qualified_name": "dbo.EXP_WorkCreationAfterExitPoint",
+        "source_definition_sha256": "56ac88720b6f8f12f58a2be021f322163151c574895268334178973215220855",
+        "reading_path": "DB Architecture/sql/1941581955.sql",
+        "reading_sha256": "3a1899d38fb991b627af7f1fda166caa2e04fc1e079e75affa0068c950545120",
+        "line_spans": [
+          [
+            1,
+            70
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.EXP_WorkCreationAfterExitPoint",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1941581955.sql",
+      "reading_sha256": "3a1899d38fb991b627af7f1fda166caa2e04fc1e079e75affa0068c950545120",
+      "source_definition_sha256": "56ac88720b6f8f12f58a2be021f322163151c574895268334178973215220855",
+      "reading_lines": 70,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [
+        {
+          "line": 65,
+          "operation": "SELECT",
+          "reason": "UNRESOLVED_RELATION"
+        }
+      ],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [
+      {
+        "module_id": 1941581955,
+        "row_index": 2470,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      }
+    ],
+    "unresolved_semantic_effects": [
+      {
+        "module_id": 1941581955,
+        "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+        "contract_index": 142,
+        "source_field": "effects",
+        "source_index": 1,
+        "relationship": "READS",
+        "reason": "NO_CAPTURED_TABLE_OBJECT_ID"
+      }
+    ],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

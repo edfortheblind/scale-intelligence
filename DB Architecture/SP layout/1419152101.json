@@ -1,0 +1,2046 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1419152101,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "trace_ILS",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2022-06-01 23:51:31.193000",
+    "modify_date": "2022-06-01 23:51:31.193000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.trace_ILS",
+    "domain_candidate": "unclassified"
+  },
+  "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08",
+  "exact_sql_path": "1419152101.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 16093,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": true,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": true,
+    "loop": true,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1419152101,
+      "parameter_id": 1,
+      "name": "@condition",
+      "type_schema": "sys",
+      "type_name": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "int"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1883869778,
+        "qualified_name": "dbo.TRACE_FILTER",
+        "layout_path": "../table layout/1883869778.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1419152101,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1690,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 88,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/88/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 277,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1899869835,
+        "qualified_name": "dbo.TRACE_INFO",
+        "layout_path": "../table layout/1899869835.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1419152101,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1691,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 88,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/88/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 88,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/88/effects/2",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 44,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 50,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 56,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 69,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 85,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 101,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 302,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 328,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 351,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1883869778,
+        "qualified_name": "dbo.TRACE_FILTER",
+        "layout_path": "../table layout/1883869778.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1419152101,
+          "reading_lines": [
+            277
+          ]
+        }
+      },
+      {
+        "table_id": 1899869835,
+        "qualified_name": "dbo.TRACE_INFO",
+        "layout_path": "../table layout/1899869835.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1419152101,
+          "reading_lines": [
+            44,
+            50,
+            56,
+            69,
+            85,
+            101,
+            302,
+            328,
+            351
+          ]
+        }
+      },
+      {
+        "table_id": 1899869835,
+        "qualified_name": "dbo.TRACE_INFO",
+        "layout_path": "../table layout/1899869835.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1419152101,
+          "module_type": "P",
+          "source_line": 67,
+          "source_start_offset": 2054,
+          "source_end_offset": 2064,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1899869835,
+          "table_qualified_name": "dbo.TRACE_INFO",
+          "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1899869835,
+        "qualified_name": "dbo.TRACE_INFO",
+        "layout_path": "../table layout/1899869835.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1419152101,
+          "module_type": "P",
+          "source_line": 83,
+          "source_start_offset": 2578,
+          "source_end_offset": 2588,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1899869835,
+          "table_qualified_name": "dbo.TRACE_INFO",
+          "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1899869835,
+        "qualified_name": "dbo.TRACE_INFO",
+        "layout_path": "../table layout/1899869835.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1419152101,
+          "module_type": "P",
+          "source_line": 99,
+          "source_start_offset": 3112,
+          "source_end_offset": 3122,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1899869835,
+          "table_qualified_name": "dbo.TRACE_INFO",
+          "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1899869835,
+        "qualified_name": "dbo.TRACE_INFO",
+        "layout_path": "../table layout/1899869835.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1419152101,
+          "module_type": "P",
+          "source_line": 300,
+          "source_start_offset": 12146,
+          "source_end_offset": 12156,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1899869835,
+          "table_qualified_name": "dbo.TRACE_INFO",
+          "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1899869835,
+        "qualified_name": "dbo.TRACE_INFO",
+        "layout_path": "../table layout/1899869835.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1419152101,
+          "module_type": "P",
+          "source_line": 326,
+          "source_start_offset": 13334,
+          "source_end_offset": 13344,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1899869835,
+          "table_qualified_name": "dbo.TRACE_INFO",
+          "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1899869835,
+        "qualified_name": "dbo.TRACE_INFO",
+        "layout_path": "../table layout/1899869835.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1419152101,
+          "module_type": "P",
+          "source_line": 349,
+          "source_start_offset": 14376,
+          "source_end_offset": 14386,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1899869835,
+          "table_qualified_name": "dbo.TRACE_INFO",
+          "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1419152101,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "fn_trace_getinfo",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": null
+    },
+    {
+      "referencing_id": 1419152101,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "sp_trace_create",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": true,
+      "is_ambiguous": false,
+      "target_qualified_name": null
+    },
+    {
+      "referencing_id": 1419152101,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "sp_trace_setevent",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": true,
+      "is_ambiguous": false,
+      "target_qualified_name": null
+    },
+    {
+      "referencing_id": 1419152101,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "sp_trace_setfilter",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": true,
+      "is_ambiguous": false,
+      "target_qualified_name": null
+    },
+    {
+      "referencing_id": 1419152101,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "sp_trace_setstatus",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": true,
+      "is_ambiguous": false,
+      "target_qualified_name": null
+    },
+    {
+      "referencing_id": 1419152101,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "trace_filter",
+      "referenced_id": 1883869778,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.TRACE_FILTER"
+    },
+    {
+      "referencing_id": 1419152101,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "trace_info",
+      "referenced_id": 1899869835,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.TRACE_INFO"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/88",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1419152101,
+      "qualified_name": "dbo.trace_ILS",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08",
+      "purpose": "Control three SQL trace streams and report their status, with variant-specific dispatch.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE trace_ILS @condition int = 2 AS",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 1419152101,
+          "parameter_id": 1,
+          "name": "@condition",
+          "type_schema": "sys",
+          "type_name": "int",
+          "max_length": 4,
+          "precision": 10,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "Missing/duplicate config causes NULL or unordered variable assignments; NULL condition skips control. String suffix and output paths can truncate; no validation/error propagation contract."
+      ],
+      "output_shape": [
+        "SQL-trace branch emits three unnamed status/path text SELECTs; condition0/1 also prints status messages. Child event-session branch has child output."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.TRACE_INFO",
+          "object_id": 1899869835,
+          "evidence_refs": [
+            "ops-sql-1419152101"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.TRACE_FILTER",
+          "object_id": 1883869778,
+          "evidence_refs": [
+            "ops-sql-1419152101"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.TRACE_INFO",
+          "object_id": 1899869835,
+          "evidence_refs": [
+            "ops-sql-1419152101"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "fn_trace_getinfo",
+          "object_id": null,
+          "evidence_refs": [
+            "ops-sql-1419152101"
+          ],
+          "binding_limit": "No captured local application object identity is asserted. This is a system/cross-database reference, a dynamic-operation marker, or an unresolved local name; the exact kind is specified separately.",
+          "binding_kind": "SYSTEM_REFERENCE"
+        },
+        {
+          "relationship": "CALLS",
+          "object": "sp_trace_create",
+          "object_id": null,
+          "evidence_refs": [
+            "ops-sql-1419152101"
+          ],
+          "binding_limit": "No captured local application object identity is asserted. This is a system/cross-database reference, a dynamic-operation marker, or an unresolved local name; the exact kind is specified separately.",
+          "binding_kind": "SYSTEM_REFERENCE"
+        },
+        {
+          "relationship": "CALLS",
+          "object": "sp_trace_setevent",
+          "object_id": null,
+          "evidence_refs": [
+            "ops-sql-1419152101"
+          ],
+          "binding_limit": "No captured local application object identity is asserted. This is a system/cross-database reference, a dynamic-operation marker, or an unresolved local name; the exact kind is specified separately.",
+          "binding_kind": "SYSTEM_REFERENCE"
+        },
+        {
+          "relationship": "CALLS",
+          "object": "sp_trace_setfilter",
+          "object_id": null,
+          "evidence_refs": [
+            "ops-sql-1419152101"
+          ],
+          "binding_limit": "No captured local application object identity is asserted. This is a system/cross-database reference, a dynamic-operation marker, or an unresolved local name; the exact kind is specified separately.",
+          "binding_kind": "SYSTEM_REFERENCE"
+        },
+        {
+          "relationship": "CALLS",
+          "object": "sp_trace_setstatus",
+          "object_id": null,
+          "evidence_refs": [
+            "ops-sql-1419152101"
+          ],
+          "binding_limit": "No captured local application object identity is asserted. This is a system/cross-database reference, a dynamic-operation marker, or an unresolved local name; the exact kind is specified separately.",
+          "binding_kind": "SYSTEM_REFERENCE"
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Reads configured IDs/file names/max sizes for long-running, blocked and deadlock traces. Condition0 stops active positive IDs, closes them and sets configured IDs0. Condition1 creates IDs<1, configures the explicit event/column matrix (long IDs10,43,45,12,41; blocked137; deadlock148), applies active TRACE_FILTER rows to long trace, starts streams and stores IDs. Creation return code is assigned but not checked. @filterValue declared nvarchar without length is one character, truncating string filter values; default bigint2000000 is overwritten by cursor values and no filter is applied if cursor empty. @LongTraceID initialized twice while deadlock ID remainsNULL until lookup, so missing config can skip creation then passNULL to calls. Default condition2 skips control but still reads status/path; output path truncated to80 characters. Legacy trace_ILS reads traceid/columnid/minValue/filterValue/logicalOp/comparisonOp identifiers, whereas captured TRACE_INFO/TRACE_FILTER schema has TRACE_ID/COLUMN_ID/MIN_VALUE/FILTER_VALUE/LOGICAL_OP/COMPARISON_OP; underscore differences are a static binding concern. File suffix derives from locally formatted GETDATE.",
+          "evidence_refs": [
+            "ops-sql-1419152101"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Reads configured IDs/file names/max sizes for long-running, blocked and deadlock traces. Condition0 stops active positive IDs, closes them and sets configured IDs0. Condition1 creates IDs<1, configures the explicit event/column matrix (long IDs10,43,45,12,41; blocked137; deadlock148), applies active TRACE_FILTER rows to long trace, starts streams and stores IDs. Creation return code is assigned but not checked. @filterValue declared nvarchar without length is one character, truncating string filter values; default bigint2000000 is overwritten by cursor values and no filter is applied if cursor empty. @LongTraceID initialized twice while deadlock ID remainsNULL until lookup, so missing config can skip creation then passNULL to calls. Default condition2 skips control but still reads status/path; output path truncated to80 characters. Legacy trace_ILS reads traceid/columnid/minValue/filterValue/logicalOp/comparisonOp identifiers, whereas captured TRACE_INFO/TRACE_FILTER schema has TRACE_ID/COLUMN_ID/MIN_VALUE/FILTER_VALUE/LOGICAL_OP/COMPARISON_OP; underscore differences are a static binding concern. File suffix derives from locally formatted GETDATE.",
+      "configuration_scope_and_precedence": [
+        "Reads configured IDs/file names/max sizes for long-running, blocked and deadlock traces. Condition0 stops active positive IDs, closes them and sets configured IDs0. Condition1 creates IDs<1, configures the explicit event/column matrix (long IDs10,43,45,12,41; blocked137; deadlock148), applies active TRACE_FILTER rows to long trace, starts streams and stores IDs. Creation return code is assigned but not checked. @filterValue declared nvarchar without length is one character, truncating string filter values; default bigint2000000 is overwritten by cursor values and no filter is applied if cursor empty. @LongTraceID initialized twice while deadlock ID remainsNULL until lookup, so missing config can skip creation then passNULL to calls. Default condition2 skips control but still reads status/path; output path truncated to80 characters. Legacy trace_ILS reads traceid/columnid/minValue/filterValue/logicalOp/comparisonOp identifiers, whereas captured TRACE_INFO/TRACE_FILTER schema has TRACE_ID/COLUMN_ID/MIN_VALUE/FILTER_VALUE/LOGICAL_OP/COMPARISON_OP; underscore differences are a static binding concern. File suffix derives from locally formatted GETDATE."
+      ],
+      "error_and_return_handling": [
+        "SQL-trace branch emits three unnamed status/path text SELECTs; condition0/1 also prints status messages. Child event-session branch has child output.",
+        "Missing/duplicate config causes NULL or unordered variable assignments; NULL condition skips control. String suffix and output paths can truncate; no validation/error propagation contract.",
+        "No explicit transaction or TRY/CATCH; trace control, file creation and config ID updates are separate side effects."
+      ],
+      "transaction_ownership": "No explicit transaction or TRY/CATCH; trace control, file creation and config ID updates are separate side effects.",
+      "concurrency": [
+        "Caller/session isolation and any explicit source locks govern reads. No explicit transaction or TRY/CATCH; trace control, file creation and config ID updates are separate side effects."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [],
+      "external_handoffs_and_gaps": [
+        "Full source read without trace execution or path collection. Platform dispatch is optional technical provenance, not a request for owner build/version details.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE trace_ILS @condition int = 2 AS",
+        "program": [
+          {
+            "line": 3,
+            "text": "CREATE PROCEDURE trace_ILS @condition int = 2 AS"
+          },
+          {
+            "line": 8,
+            "text": "SET NOCOUNT ON"
+          },
+          {
+            "line": 10,
+            "text": "declare @LongTraceID int"
+          },
+          {
+            "line": 11,
+            "text": "declare @BlockedTraceID int"
+          },
+          {
+            "line": 12,
+            "text": "declare @DeadlockTraceID int"
+          },
+          {
+            "line": 14,
+            "text": "declare @LongStatus int"
+          },
+          {
+            "line": 15,
+            "text": "declare @BlockedStatus int"
+          },
+          {
+            "line": 16,
+            "text": "declare @DeadlockStatus int"
+          },
+          {
+            "line": 18,
+            "text": "declare @LongFileName nvarchar(256)"
+          },
+          {
+            "line": 19,
+            "text": "declare @BlockedFileName nvarchar(256)"
+          },
+          {
+            "line": 20,
+            "text": "declare @DeadlockFileName nvarchar(256)"
+          },
+          {
+            "line": 22,
+            "text": "declare @dir nvarchar(80)"
+          },
+          {
+            "line": 25,
+            "text": "declare @rc int"
+          },
+          {
+            "line": 27,
+            "text": "declare @LongMaxfilesize bigint"
+          },
+          {
+            "line": 28,
+            "text": "declare @BlockedMaxfilesize bigint"
+          },
+          {
+            "line": 29,
+            "text": "declare @DeadlockMaxfilesize bigint"
+          },
+          {
+            "line": 31,
+            "text": "set @LongTraceID = 0"
+          },
+          {
+            "line": 32,
+            "text": "set @BlockedTraceID = 0"
+          },
+          {
+            "line": 33,
+            "text": "set @LongTraceID = 0"
+          },
+          {
+            "line": 35,
+            "text": "set @LongStatus = 0"
+          },
+          {
+            "line": 36,
+            "text": "set @BlockedStatus = 0"
+          },
+          {
+            "line": 37,
+            "text": "set @DeadlockStatus = 0"
+          },
+          {
+            "line": 39,
+            "text": "set nocount on"
+          },
+          {
+            "line": 41,
+            "text": "SELECT @LongTraceID = ti.traceid,"
+          },
+          {
+            "line": 42,
+            "text": "       @LongFileName = file_name+N'<literal:1>'+REPLACE(REPLACE(REPLACE(convert(varchar,getdate(),20),'<literal:2>','<literal:3>'),'<literal:4>','<literal:5>'),'<literal:6>','<literal:7>'),"
+          },
+          {
+            "line": 43,
+            "text": "       @LongMaxfilesize = max_file_size"
+          },
+          {
+            "line": 44,
+            "text": "  FROM trace_info ti"
+          },
+          {
+            "line": 45,
+            "text": " where name = N'<literal:8>'"
+          },
+          {
+            "line": 47,
+            "text": " SELECT @BlockedTraceID = ti.traceid,"
+          },
+          {
+            "line": 48,
+            "text": "       @BlockedFileName = file_name+N'<literal:9>'+REPLACE(REPLACE(REPLACE(convert(varchar,getdate(),20),'<literal:10>','<literal:11>'),'<literal:12>','<literal:13>'),'<literal:14>','<literal:15>'),"
+          },
+          {
+            "line": 49,
+            "text": "       @BlockedMaxfilesize = max_file_size"
+          },
+          {
+            "line": 50,
+            "text": "  FROM trace_info ti"
+          },
+          {
+            "line": 51,
+            "text": " where name = N'<literal:16>'"
+          },
+          {
+            "line": 53,
+            "text": " SELECT @DeadlockTraceID = ti.traceid,"
+          },
+          {
+            "line": 54,
+            "text": "       @DeadlockFileName = file_name+N'<literal:17>'+REPLACE(REPLACE(REPLACE(convert(varchar,getdate(),20),'<literal:18>','<literal:19>'),'<literal:20>','<literal:21>'),'<literal:22>','<literal:23>'),"
+          },
+          {
+            "line": 55,
+            "text": "       @DeadlockMaxfilesize = max_file_size"
+          },
+          {
+            "line": 56,
+            "text": "  FROM trace_info ti"
+          },
+          {
+            "line": 57,
+            "text": " where name = N'<literal:24>'"
+          },
+          {
+            "line": 59,
+            "text": "IF @condition = 0 and @LongTraceID > 0"
+          },
+          {
+            "line": 60,
+            "text": " begin"
+          },
+          {
+            "line": 61,
+            "text": "  select @LongStatus = cast(value as int)"
+          },
+          {
+            "line": 62,
+            "text": "    from :: fn_trace_getinfo(0)"
+          },
+          {
+            "line": 63,
+            "text": "   where traceid = @LongTraceID and property = 5"
+          },
+          {
+            "line": 65,
+            "text": "  IF @LongStatus > 0 exec sp_trace_setstatus @LongTraceID, 0 -- [comment omitted]"
+          },
+          {
+            "line": 66,
+            "text": "  exec sp_trace_setstatus @LongTraceID, 2 -- [comment omitted]"
+          },
+          {
+            "line": 69,
+            "text": "   UPDATE trace_info"
+          },
+          {
+            "line": 70,
+            "text": "      SET traceid = 0"
+          },
+          {
+            "line": 71,
+            "text": "    WHERE name = N'<literal:25>'"
+          },
+          {
+            "line": 72,
+            "text": "    PRINT N'<literal:26>'"
+          },
+          {
+            "line": 73,
+            "text": " end"
+          },
+          {
+            "line": 75,
+            "text": " IF @condition = 0 and @BlockedTraceID > 0"
+          },
+          {
+            "line": 76,
+            "text": " begin"
+          },
+          {
+            "line": 77,
+            "text": "  select @BlockedStatus = cast(value as int)"
+          },
+          {
+            "line": 78,
+            "text": "    from :: fn_trace_getinfo(0)"
+          },
+          {
+            "line": 79,
+            "text": "   where traceid = @BlockedTraceID and property = 5"
+          },
+          {
+            "line": 81,
+            "text": "  IF @BlockedStatus > 0 exec sp_trace_setstatus @BlockedTraceID, 0 -- [comment omitted]"
+          },
+          {
+            "line": 82,
+            "text": "  exec sp_trace_setstatus @BlockedTraceID, 2 -- [comment omitted]"
+          },
+          {
+            "line": 85,
+            "text": "   UPDATE trace_info"
+          },
+          {
+            "line": 86,
+            "text": "      SET traceid = 0"
+          },
+          {
+            "line": 87,
+            "text": "    WHERE name = N'<literal:27>'"
+          },
+          {
+            "line": 88,
+            "text": "    PRINT N'<literal:28>'"
+          },
+          {
+            "line": 89,
+            "text": " end"
+          },
+          {
+            "line": 91,
+            "text": " IF @condition = 0 and @DeadlockTraceID > 0"
+          },
+          {
+            "line": 92,
+            "text": " begin"
+          },
+          {
+            "line": 93,
+            "text": "  select @DeadlockStatus = cast(value as int)"
+          },
+          {
+            "line": 94,
+            "text": "    from :: fn_trace_getinfo(0)"
+          },
+          {
+            "line": 95,
+            "text": "   where traceid = @DeadlockTraceID and property = 5"
+          },
+          {
+            "line": 97,
+            "text": "  IF @DeadlockStatus > 0 exec sp_trace_setstatus @DeadlockTraceID, 0 -- [comment omitted]"
+          },
+          {
+            "line": 98,
+            "text": "  exec sp_trace_setstatus @DeadlockTraceID, 2 -- [comment omitted]"
+          },
+          {
+            "line": 101,
+            "text": "   UPDATE trace_info"
+          },
+          {
+            "line": 102,
+            "text": "      SET traceid = 0"
+          },
+          {
+            "line": 103,
+            "text": "    WHERE name = N'<literal:29>'"
+          },
+          {
+            "line": 104,
+            "text": "    PRINT N'<literal:30>'"
+          },
+          {
+            "line": 105,
+            "text": " end"
+          },
+          {
+            "line": 107,
+            "text": "IF @condition = 1"
+          },
+          {
+            "line": 108,
+            "text": "   begin"
+          },
+          {
+            "line": 114,
+            "text": "    IF @LongTraceID < 1 exec @rc = sp_trace_create @LongTraceID output, 0, @LongFileName, @LongMaxfilesize, NULL -- [comment omitted]"
+          },
+          {
+            "line": 117,
+            "text": "    declare @on bit"
+          },
+          {
+            "line": 118,
+            "text": "    set @on = 1"
+          },
+          {
+            "line": 120,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 7, @on"
+          },
+          {
+            "line": 121,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 15, @on"
+          },
+          {
+            "line": 122,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 31, @on"
+          },
+          {
+            "line": 123,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 8, @on"
+          },
+          {
+            "line": 124,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 16, @on"
+          },
+          {
+            "line": 125,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 48, @on"
+          },
+          {
+            "line": 126,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 64, @on"
+          },
+          {
+            "line": 127,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 1, @on"
+          },
+          {
+            "line": 128,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 9, @on"
+          },
+          {
+            "line": 129,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 17, @on"
+          },
+          {
+            "line": 130,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 41, @on"
+          },
+          {
+            "line": 131,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 49, @on"
+          },
+          {
+            "line": 132,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 2, @on"
+          },
+          {
+            "line": 133,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 10, @on"
+          },
+          {
+            "line": 134,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 18, @on"
+          },
+          {
+            "line": 135,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 26, @on"
+          },
+          {
+            "line": 136,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 34, @on"
+          },
+          {
+            "line": 137,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 50, @on"
+          },
+          {
+            "line": 138,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 3, @on"
+          },
+          {
+            "line": 139,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 11, @on"
+          },
+          {
+            "line": 140,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 35, @on"
+          },
+          {
+            "line": 141,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 51, @on"
+          },
+          {
+            "line": 142,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 4, @on"
+          },
+          {
+            "line": 143,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 12, @on"
+          },
+          {
+            "line": 144,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 60, @on"
+          },
+          {
+            "line": 145,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 13, @on"
+          },
+          {
+            "line": 146,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 6, @on"
+          },
+          {
+            "line": 147,
+            "text": "\texec sp_trace_setevent @LongTraceID, 10, 14, @on"
+          },
+          {
+            "line": 148,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 7, @on"
+          },
+          {
+            "line": 149,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 15, @on"
+          },
+          {
+            "line": 150,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 8, @on"
+          },
+          {
+            "line": 151,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 48, @on"
+          },
+          {
+            "line": 152,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 64, @on"
+          },
+          {
+            "line": 153,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 1, @on"
+          },
+          {
+            "line": 154,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 9, @on"
+          },
+          {
+            "line": 155,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 41, @on"
+          },
+          {
+            "line": 156,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 49, @on"
+          },
+          {
+            "line": 157,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 2, @on"
+          },
+          {
+            "line": 158,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 10, @on"
+          },
+          {
+            "line": 159,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 26, @on"
+          },
+          {
+            "line": 160,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 34, @on"
+          },
+          {
+            "line": 161,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 50, @on"
+          },
+          {
+            "line": 162,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 3, @on"
+          },
+          {
+            "line": 163,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 11, @on"
+          },
+          {
+            "line": 164,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 35, @on"
+          },
+          {
+            "line": 165,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 51, @on"
+          },
+          {
+            "line": 166,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 4, @on"
+          },
+          {
+            "line": 167,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 12, @on"
+          },
+          {
+            "line": 168,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 28, @on"
+          },
+          {
+            "line": 169,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 60, @on"
+          },
+          {
+            "line": 170,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 5, @on"
+          },
+          {
+            "line": 171,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 13, @on"
+          },
+          {
+            "line": 172,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 29, @on"
+          },
+          {
+            "line": 173,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 6, @on"
+          },
+          {
+            "line": 174,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 14, @on"
+          },
+          {
+            "line": 175,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 22, @on"
+          },
+          {
+            "line": 176,
+            "text": "\texec sp_trace_setevent @LongTraceID, 43, 62, @on"
+          },
+          {
+            "line": 177,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 7, @on"
+          },
+          {
+            "line": 178,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 55, @on"
+          },
+          {
+            "line": 179,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 8, @on"
+          },
+          {
+            "line": 180,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 16, @on"
+          },
+          {
+            "line": 181,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 48, @on"
+          },
+          {
+            "line": 182,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 64, @on"
+          },
+          {
+            "line": 183,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 1, @on"
+          },
+          {
+            "line": 184,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 9, @on"
+          },
+          {
+            "line": 185,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 17, @on"
+          },
+          {
+            "line": 186,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 25, @on"
+          },
+          {
+            "line": 187,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 41, @on"
+          },
+          {
+            "line": 188,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 49, @on"
+          },
+          {
+            "line": 189,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 10, @on"
+          },
+          {
+            "line": 190,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 18, @on"
+          },
+          {
+            "line": 191,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 26, @on"
+          },
+          {
+            "line": 192,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 34, @on"
+          },
+          {
+            "line": 193,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 50, @on"
+          },
+          {
+            "line": 194,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 3, @on"
+          },
+          {
+            "line": 195,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 11, @on"
+          },
+          {
+            "line": 196,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 35, @on"
+          },
+          {
+            "line": 197,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 51, @on"
+          },
+          {
+            "line": 198,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 4, @on"
+          },
+          {
+            "line": 199,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 12, @on"
+          },
+          {
+            "line": 200,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 28, @on"
+          },
+          {
+            "line": 201,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 60, @on"
+          },
+          {
+            "line": 202,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 5, @on"
+          },
+          {
+            "line": 203,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 13, @on"
+          },
+          {
+            "line": 204,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 29, @on"
+          },
+          {
+            "line": 205,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 61, @on"
+          },
+          {
+            "line": 206,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 6, @on"
+          },
+          {
+            "line": 207,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 14, @on"
+          },
+          {
+            "line": 208,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 22, @on"
+          },
+          {
+            "line": 209,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 62, @on"
+          },
+          {
+            "line": 210,
+            "text": "\texec sp_trace_setevent @LongTraceID, 45, 15, @on"
+          },
+          {
+            "line": 211,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 7, @on"
+          },
+          {
+            "line": 212,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 15, @on"
+          },
+          {
+            "line": 213,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 31, @on"
+          },
+          {
+            "line": 214,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 8, @on"
+          },
+          {
+            "line": 215,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 16, @on"
+          },
+          {
+            "line": 216,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 48, @on"
+          },
+          {
+            "line": 217,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 64, @on"
+          },
+          {
+            "line": 218,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 1, @on"
+          },
+          {
+            "line": 219,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 9, @on"
+          },
+          {
+            "line": 220,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 17, @on"
+          },
+          {
+            "line": 221,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 41, @on"
+          },
+          {
+            "line": 222,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 49, @on"
+          },
+          {
+            "line": 223,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 6, @on"
+          },
+          {
+            "line": 224,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 10, @on"
+          },
+          {
+            "line": 225,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 14, @on"
+          },
+          {
+            "line": 226,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 18, @on"
+          },
+          {
+            "line": 227,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 26, @on"
+          },
+          {
+            "line": 228,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 50, @on"
+          },
+          {
+            "line": 229,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 3, @on"
+          },
+          {
+            "line": 230,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 11, @on"
+          },
+          {
+            "line": 231,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 35, @on"
+          },
+          {
+            "line": 232,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 51, @on"
+          },
+          {
+            "line": 233,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 4, @on"
+          },
+          {
+            "line": 234,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 12, @on"
+          },
+          {
+            "line": 235,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 60, @on"
+          },
+          {
+            "line": 236,
+            "text": "\texec sp_trace_setevent @LongTraceID, 12, 13, @on"
+          },
+          {
+            "line": 237,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 7, @on"
+          },
+          {
+            "line": 238,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 15, @on"
+          },
+          {
+            "line": 239,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 55, @on"
+          },
+          {
+            "line": 240,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 8, @on"
+          },
+          {
+            "line": 241,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 16, @on"
+          },
+          {
+            "line": 242,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 48, @on"
+          },
+          {
+            "line": 243,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 64, @on"
+          },
+          {
+            "line": 244,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 1, @on"
+          },
+          {
+            "line": 245,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 9, @on"
+          },
+          {
+            "line": 246,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 17, @on"
+          },
+          {
+            "line": 247,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 25, @on"
+          },
+          {
+            "line": 248,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 41, @on"
+          },
+          {
+            "line": 249,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 49, @on"
+          },
+          {
+            "line": 250,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 10, @on"
+          },
+          {
+            "line": 251,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 18, @on"
+          },
+          {
+            "line": 252,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 26, @on"
+          },
+          {
+            "line": 253,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 50, @on"
+          },
+          {
+            "line": 254,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 3, @on"
+          },
+          {
+            "line": 255,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 11, @on"
+          },
+          {
+            "line": 256,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 35, @on"
+          },
+          {
+            "line": 257,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 51, @on"
+          },
+          {
+            "line": 258,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 4, @on"
+          },
+          {
+            "line": 259,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 12, @on"
+          },
+          {
+            "line": 260,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 60, @on"
+          },
+          {
+            "line": 261,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 5, @on"
+          },
+          {
+            "line": 262,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 13, @on"
+          },
+          {
+            "line": 263,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 29, @on"
+          },
+          {
+            "line": 264,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 61, @on"
+          },
+          {
+            "line": 265,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 6, @on"
+          },
+          {
+            "line": 266,
+            "text": "\texec sp_trace_setevent @LongTraceID, 41, 14, @on"
+          },
+          {
+            "line": 269,
+            "text": "    declare @bigintfilter bigint"
+          },
+          {
+            "line": 270,
+            "text": "    declare @filterValue nvarchar"
+          },
+          {
+            "line": 271,
+            "text": "    declare @logicalOp int"
+          },
+          {
+            "line": 272,
+            "text": "    declare @comparisonOp int"
+          },
+          {
+            "line": 274,
+            "text": "    set @bigintfilter = 2000000"
+          },
+          {
+            "line": 275,
+            "text": "    declare curFilters cursor for"
+          },
+          {
+            "line": 276,
+            "text": "    select columnid, minValue, filterValue, logicalOp, comparisonOp"
+          },
+          {
+            "line": 277,
+            "text": "      from trace_filter"
+          },
+          {
+            "line": 278,
+            "text": "     where active = '<literal:31>'"
+          },
+          {
+            "line": 280,
+            "text": "    declare @columnid int"
+          },
+          {
+            "line": 282,
+            "text": "    open curFilters"
+          },
+          {
+            "line": 283,
+            "text": "    fetch curFilters "
+          },
+          {
+            "line": 284,
+            "text": "     into @columnid, @bigintfilter, @filterValue, @logicalOp, @comparisonOp"
+          },
+          {
+            "line": 285,
+            "text": "    while @@fetch_status = 0 "
+          },
+          {
+            "line": 286,
+            "text": "    begin"
+          },
+          {
+            "line": 287,
+            "text": "        if (@filterValue is null)"
+          },
+          {
+            "line": 288,
+            "text": "           exec sp_trace_setfilter @LongTraceID, @columnid, @logicalOp, @comparisonOp, @bigintfilter    "
+          },
+          {
+            "line": 289,
+            "text": "        else"
+          },
+          {
+            "line": 290,
+            "text": "           exec sp_trace_setfilter @LongTraceID, @columnid, @logicalOp, @comparisonOp, @filterValue    "
+          },
+          {
+            "line": 292,
+            "text": "        fetch curFilters "
+          },
+          {
+            "line": 293,
+            "text": "         into @columnid, @bigintfilter, @filterValue, @logicalOp, @comparisonOp"
+          },
+          {
+            "line": 294,
+            "text": "    end"
+          },
+          {
+            "line": 296,
+            "text": "    close curFilters"
+          },
+          {
+            "line": 297,
+            "text": "    deallocate curFilters"
+          },
+          {
+            "line": 299,
+            "text": "    exec sp_trace_setstatus @LongTraceID, 1 -- [comment omitted]"
+          },
+          {
+            "line": 302,
+            "text": "    UPDATE trace_info"
+          },
+          {
+            "line": 303,
+            "text": "       SET traceid = @LongTraceID"
+          },
+          {
+            "line": 304,
+            "text": "     WHERE name = '<literal:32>';"
+          },
+          {
+            "line": 309,
+            "text": "    IF @BlockedTraceID < 1 exec @rc = sp_trace_create @BlockedTraceID output, 0, @BlockedFileName, @BlockedMaxfilesize, NULL -- [comment omitted]"
+          },
+          {
+            "line": 311,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 3, @on"
+          },
+          {
+            "line": 312,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 15, @on"
+          },
+          {
+            "line": 313,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 51, @on"
+          },
+          {
+            "line": 314,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 4, @on"
+          },
+          {
+            "line": 315,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 24, @on"
+          },
+          {
+            "line": 316,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 32, @on"
+          },
+          {
+            "line": 317,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 60, @on"
+          },
+          {
+            "line": 318,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 64, @on"
+          },
+          {
+            "line": 319,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 1, @on"
+          },
+          {
+            "line": 320,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 13, @on"
+          },
+          {
+            "line": 321,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 41, @on"
+          },
+          {
+            "line": 322,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 22, @on"
+          },
+          {
+            "line": 323,
+            "text": "\t\texec sp_trace_setevent @BlockedTraceID, 137, 26, @on"
+          },
+          {
+            "line": 325,
+            "text": "\t\texec sp_trace_setstatus @BlockedTraceID, 1 -- [comment omitted]"
+          },
+          {
+            "line": 328,
+            "text": "    UPDATE trace_info"
+          },
+          {
+            "line": 329,
+            "text": "       SET traceid = @BlockedTraceID"
+          },
+          {
+            "line": 330,
+            "text": "     WHERE name = '<literal:33>';"
+          },
+          {
+            "line": 335,
+            "text": "    IF @DeadlockTraceID < 1 exec @rc = sp_trace_create @DeadlockTraceID output, 0, @DeadlockFileName, @DeadlockMaxfilesize, NULL -- [comment omitted]"
+          },
+          {
+            "line": 337,
+            "text": "\t\texec sp_trace_setevent @DeadlockTraceID, 148, 11, @on"
+          },
+          {
+            "line": 338,
+            "text": "\t\texec sp_trace_setevent @DeadlockTraceID, 148, 51, @on"
+          },
+          {
+            "line": 339,
+            "text": "\t\texec sp_trace_setevent @DeadlockTraceID, 148, 4, @on"
+          },
+          {
+            "line": 340,
+            "text": "\t\texec sp_trace_setevent @DeadlockTraceID, 148, 12, @on"
+          },
+          {
+            "line": 341,
+            "text": "\t\texec sp_trace_setevent @DeadlockTraceID, 148, 14, @on"
+          },
+          {
+            "line": 342,
+            "text": "\t\texec sp_trace_setevent @DeadlockTraceID, 148, 26, @on"
+          },
+          {
+            "line": 343,
+            "text": "\t\texec sp_trace_setevent @DeadlockTraceID, 148, 60, @on"
+          },
+          {
+            "line": 344,
+            "text": "\t\texec sp_trace_setevent @DeadlockTraceID, 148, 64, @on"
+          },
+          {
+            "line": 345,
+            "text": "\t\texec sp_trace_setevent @DeadlockTraceID, 148, 1, @on"
+          },
+          {
+            "line": 346,
+            "text": "\t\texec sp_trace_setevent @DeadlockTraceID, 148, 41, @on"
+          },
+          {
+            "line": 348,
+            "text": "\t\texec sp_trace_setstatus @DeadlockTraceID, 1 -- [comment omitted]"
+          },
+          {
+            "line": 351,
+            "text": "    UPDATE trace_info"
+          },
+          {
+            "line": 352,
+            "text": "       SET traceid = @DeadlockTraceID"
+          },
+          {
+            "line": 353,
+            "text": "     WHERE name = '<literal:34>';"
+          },
+          {
+            "line": 355,
+            "text": "   end"
+          },
+          {
+            "line": 357,
+            "text": "set @LongStatus = 0"
+          },
+          {
+            "line": 358,
+            "text": "select @LongStatus = cast(value as int) FROM :: fn_trace_getinfo(0)"
+          },
+          {
+            "line": 359,
+            "text": " where traceid = @LongTraceID and property = 5"
+          },
+          {
+            "line": 360,
+            "text": "IF @LongTraceID > 0 and @LongStatus > 0"
+          },
+          {
+            "line": 361,
+            "text": "   begin"
+          },
+          {
+            "line": 362,
+            "text": "    select @dir = cast(value as nvarchar(80)) FROM :: fn_trace_getinfo(0)"
+          },
+          {
+            "line": 363,
+            "text": "     where traceid = @LongTraceID and property = 2"
+          },
+          {
+            "line": 364,
+            "text": "    select '<literal:35>' + @dir"
+          },
+          {
+            "line": 365,
+            "text": "   end"
+          },
+          {
+            "line": 366,
+            "text": "ELSE select '<literal:36>'"
+          },
+          {
+            "line": 368,
+            "text": "set @BlockedStatus = 0"
+          },
+          {
+            "line": 369,
+            "text": "select @BlockedStatus = cast(value as int) FROM :: fn_trace_getinfo(0)"
+          },
+          {
+            "line": 370,
+            "text": " where traceid = @BlockedTraceID and property = 5"
+          },
+          {
+            "line": 371,
+            "text": "IF @BlockedTraceID > 0 and @BlockedStatus > 0"
+          },
+          {
+            "line": 372,
+            "text": "   begin"
+          },
+          {
+            "line": 373,
+            "text": "    select @dir = cast(value as nvarchar(80)) FROM :: fn_trace_getinfo(0)"
+          },
+          {
+            "line": 374,
+            "text": "     where traceid = @BlockedTraceID and property = 2"
+          },
+          {
+            "line": 375,
+            "text": "    select '<literal:37>' + @dir"
+          },
+          {
+            "line": 376,
+            "text": "   end"
+          },
+          {
+            "line": 377,
+            "text": "ELSE select '<literal:38>'"
+          },
+          {
+            "line": 379,
+            "text": "set @DeadlockStatus = 0"
+          },
+          {
+            "line": 380,
+            "text": "select @DeadlockStatus = cast(value as int) FROM :: fn_trace_getinfo(0)"
+          },
+          {
+            "line": 381,
+            "text": " where traceid = @DeadlockTraceID and property = 5"
+          },
+          {
+            "line": 382,
+            "text": "IF @DeadlockTraceID > 0 and @DeadlockStatus > 0"
+          },
+          {
+            "line": 383,
+            "text": "   begin"
+          },
+          {
+            "line": 384,
+            "text": "    select @dir = cast(value as nvarchar(80)) FROM :: fn_trace_getinfo(0)"
+          },
+          {
+            "line": 385,
+            "text": "     where traceid = @DeadlockTraceID and property = 2"
+          },
+          {
+            "line": 386,
+            "text": "    select '<literal:39>' + @dir"
+          },
+          {
+            "line": 387,
+            "text": "   end"
+          },
+          {
+            "line": 388,
+            "text": "ELSE select '<literal:40>'"
+          },
+          {
+            "line": 391,
+            "text": "set nocount off"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1419152101.sql",
+          "sha256": "73f669f19381eb62be1535b59d26e623b807a303e0aa75d53a6af653ee0dcaa9",
+          "line_start": 1,
+          "line_end": 391,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-1419152101"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-1419152101": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1419152101,
+        "qualified_name": "dbo.trace_ILS",
+        "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08",
+        "reading_path": "DB Architecture/sql/1419152101.sql",
+        "reading_sha256": "73f669f19381eb62be1535b59d26e623b807a303e0aa75d53a6af653ee0dcaa9",
+        "line_spans": [
+          [
+            1,
+            391
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.trace_ILS",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1419152101.sql",
+      "reading_sha256": "73f669f19381eb62be1535b59d26e623b807a303e0aa75d53a6af653ee0dcaa9",
+      "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08",
+      "reading_lines": 391,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": true
+    },
+    "dynamic_review_bindings": [
+      {
+        "module_id": 1419152101,
+        "batch_path": "DB Architecture/mappings/batches/dynamic-dependencies.json",
+        "batch_sha256": "b3647d0c9510b3038e2fd81c1ad659bb1d82b82bbf0a55b32bbd7c434899c323",
+        "review_state": "BOUNDED_FIXED_CALL_FALSE_POSITIVE_REVIEW",
+        "source_definition_sha256": "dd15af1a313caaed18245235b39f42eb00ac91ad3766ee2709f455ef1dea7c08"
+      }
+    ],
+    "unresolved_catalog_dependencies": [
+      {
+        "module_id": 1419152101,
+        "row_index": 1685,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      },
+      {
+        "module_id": 1419152101,
+        "row_index": 1686,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      },
+      {
+        "module_id": 1419152101,
+        "row_index": 1687,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      },
+      {
+        "module_id": 1419152101,
+        "row_index": 1688,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      },
+      {
+        "module_id": 1419152101,
+        "row_index": 1689,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      }
+    ],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

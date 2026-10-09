@@ -1,0 +1,1521 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1048703134,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "HIST_LogShipDeAlloc",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:45.323000",
+    "modify_date": "2026-08-16 06:59:45.323000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.HIST_LogShipDeAlloc",
+    "domain_candidate": "shipping"
+  },
+  "source_definition_sha256": "9b40e0f2fc36538cd52d2481e8bd24ea3704b9efddae4d4d7be307f14d42e99f",
+  "exact_sql_path": "1048703134.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 9603,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": true,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1048703134,
+      "parameter_id": 1,
+      "name": "@waveNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1048703134,
+      "parameter_id": 2,
+      "name": "@internalShipmentNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1048703134,
+      "parameter_id": 3,
+      "name": "@direction",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1048703134,
+      "parameter_id": 4,
+      "name": "@invTrack",
+      "type_schema": "sys",
+      "type_name": "nchar",
+      "max_length": 2,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nchar(1)"
+    },
+    {
+      "object_id": 1048703134,
+      "parameter_id": 5,
+      "name": "@userName",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 60,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(30)"
+    },
+    {
+      "object_id": 1048703134,
+      "parameter_id": 6,
+      "name": "@processStamp",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 200,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(100)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1362819917,
+        "qualified_name": "dbo.LOCATION_INVENTORY",
+        "layout_path": "../table layout/1362819917.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1048703134,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1085,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 60,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/60/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 49,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 70,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 555865047,
+        "qualified_name": "dbo.SHIPMENT_ALLOC_REQUEST",
+        "layout_path": "../table layout/555865047.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1048703134,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1084,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 60,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/60/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 49,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 70,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1979870120,
+        "qualified_name": "dbo.TRANSACTION_HISTORY",
+        "layout_path": "../table layout/1979870120.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1048703134,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1086,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 60,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/60/effects/2",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "INSERT",
+              "line": 182,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "INSERT",
+              "line": 196,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1048703134,
+          "reading_lines": [
+            20,
+            43,
+            45,
+            56,
+            58,
+            64,
+            66,
+            75,
+            80,
+            182,
+            186,
+            196,
+            200
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1048703134,
+          "reading_lines": [
+            21,
+            43,
+            45,
+            53,
+            58,
+            64,
+            66,
+            74,
+            80,
+            109,
+            182,
+            186,
+            196,
+            200
+          ]
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1048703134,
+          "reading_lines": [
+            22,
+            43,
+            45,
+            53,
+            58,
+            64,
+            66,
+            74,
+            80,
+            110,
+            182,
+            186,
+            196,
+            200
+          ]
+        }
+      },
+      {
+        "table_id": 1362819917,
+        "qualified_name": "dbo.LOCATION_INVENTORY",
+        "layout_path": "../table layout/1362819917.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1048703134,
+          "reading_lines": [
+            49,
+            70
+          ]
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1048703134,
+          "reading_lines": [
+            23,
+            43,
+            45,
+            54,
+            58,
+            64,
+            66,
+            75,
+            80,
+            110,
+            183,
+            187,
+            197,
+            201
+          ]
+        }
+      },
+      {
+        "table_id": 555865047,
+        "qualified_name": "dbo.SHIPMENT_ALLOC_REQUEST",
+        "layout_path": "../table layout/555865047.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1048703134,
+          "reading_lines": [
+            49,
+            70
+          ]
+        }
+      },
+      {
+        "table_id": 1979870120,
+        "qualified_name": "dbo.TRANSACTION_HISTORY",
+        "layout_path": "../table layout/1979870120.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1048703134,
+          "reading_lines": [
+            182,
+            196
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1048703134,
+          "reading_lines": [
+            19,
+            43,
+            45,
+            53,
+            58,
+            64,
+            66,
+            74,
+            80,
+            110,
+            182,
+            186,
+            196,
+            200
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1048703134,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "Shipment_Alloc_Request",
+      "referenced_id": 555865047,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_ALLOC_REQUEST"
+    },
+    {
+      "referencing_id": 1048703134,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "Location_Inventory",
+      "referenced_id": 1362819917,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.LOCATION_INVENTORY"
+    },
+    {
+      "referencing_id": 1048703134,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "TRANSACTION_HISTORY",
+      "referenced_id": 1979870120,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.TRANSACTION_HISTORY"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/60",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1048703134,
+      "qualified_name": "dbo.HIST_LogShipDeAlloc",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "9b40e0f2fc36538cd52d2481e8bd24ea3704b9efddae4d4d7be307f14d42e99f",
+      "purpose": "Append inferred before/after transaction history for shipment deallocation.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE HIST_LogShipDeAlloc( @waveNum numeric(9), @internalShipmentNum numeric(9), @direction nvarchar(25), @invTrack nchar(1), @userName nvarchar(30), @processStamp nvarchar(100) ) AS",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 1048703134,
+          "parameter_id": 1,
+          "name": "@waveNum",
+          "type_schema": "sys",
+          "type_name": "numeric",
+          "max_length": 5,
+          "precision": 9,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1048703134,
+          "parameter_id": 2,
+          "name": "@internalShipmentNum",
+          "type_schema": "sys",
+          "type_name": "numeric",
+          "max_length": 5,
+          "precision": 9,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1048703134,
+          "parameter_id": 3,
+          "name": "@direction",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 50,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1048703134,
+          "parameter_id": 4,
+          "name": "@invTrack",
+          "type_schema": "sys",
+          "type_name": "nchar",
+          "max_length": 2,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1048703134,
+          "parameter_id": 5,
+          "name": "@userName",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 60,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1048703134,
+          "parameter_id": 6,
+          "name": "@processStamp",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 200,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "NULL wave/shipment comparisons select no scope unless the other nonzero branch matches. NULL arithmetic may propagate through inferred balances; no negative clamp or validation."
+      ],
+      "output_shape": [
+        "No explicit result set or return-status contract."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.LOCATION_INVENTORY",
+          "object_id": 1362819917,
+          "evidence_refs": [
+            "ops-sql-1048703134"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.SHIPMENT_ALLOC_REQUEST",
+          "object_id": 555865047,
+          "evidence_refs": [
+            "ops-sql-1048703134"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.TRANSACTION_HISTORY",
+          "object_id": 1979870120,
+          "evidence_refs": [
+            "ops-sql-1048703134"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Builds grouped inventory/allocation-request rows selected by nonzero wave OR nonzero shipment ID, so supplying both widens scope. Fixed direction branch matches destination warehouse/location/attribute ID; other direction matches source scope plus null-safe logistics unit and positive allocated quantity. Both match item, null-safe company/lot. Groups allocation quantities with shipment ID and inventory balances. Identity-order loop accumulates deductions only across consecutive equal warehouse/location/item/lot/logistics-unit/attribute tuples; INSERT has no ORDER BY and tuple omits company, so inferred running balances depend on insertion order and may cross company boundaries. One direction adjusts in-transit, otherwise allocated balances in the table variable. Inserts transaction type200 with ALLOCSUM quantity, before/after inferred balances and second-precision UTC timestamps; after expiration/status retained only if summed balances>0. It does not change LOCATION_INVENTORY or allocation requests.",
+          "evidence_refs": [
+            "ops-sql-1048703134"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Builds grouped inventory/allocation-request rows selected by nonzero wave OR nonzero shipment ID, so supplying both widens scope. Fixed direction branch matches destination warehouse/location/attribute ID; other direction matches source scope plus null-safe logistics unit and positive allocated quantity. Both match item, null-safe company/lot. Groups allocation quantities with shipment ID and inventory balances. Identity-order loop accumulates deductions only across consecutive equal warehouse/location/item/lot/logistics-unit/attribute tuples; INSERT has no ORDER BY and tuple omits company, so inferred running balances depend on insertion order and may cross company boundaries. One direction adjusts in-transit, otherwise allocated balances in the table variable. Inserts transaction type200 with ALLOCSUM quantity, before/after inferred balances and second-precision UTC timestamps; after expiration/status retained only if summed balances>0. It does not change LOCATION_INVENTORY or allocation requests.",
+      "configuration_scope_and_precedence": [
+        "Builds grouped inventory/allocation-request rows selected by nonzero wave OR nonzero shipment ID, so supplying both widens scope. Fixed direction branch matches destination warehouse/location/attribute ID; other direction matches source scope plus null-safe logistics unit and positive allocated quantity. Both match item, null-safe company/lot. Groups allocation quantities with shipment ID and inventory balances. Identity-order loop accumulates deductions only across consecutive equal warehouse/location/item/lot/logistics-unit/attribute tuples; INSERT has no ORDER BY and tuple omits company, so inferred running balances depend on insertion order and may cross company boundaries. One direction adjusts in-transit, otherwise allocated balances in the table variable. Inserts transaction type200 with ALLOCSUM quantity, before/after inferred balances and second-precision UTC timestamps; after expiration/status retained only if summed balances>0. It does not change LOCATION_INVENTORY or allocation requests."
+      ],
+      "error_and_return_handling": [
+        "No explicit result set or return-status contract.",
+        "NULL wave/shipment comparisons select no scope unless the other nonzero branch matches. NULL arithmetic may propagate through inferred balances; no negative clamp or validation.",
+        "No explicit transaction, TRY/CATCH or immediately checked INSERT errors; history and caller inventory mutation are not shown atomically."
+      ],
+      "transaction_ownership": "No explicit transaction, TRY/CATCH or immediately checked INSERT errors; history and caller inventory mutation are not shown atomically.",
+      "concurrency": [
+        "Caller/session isolation and any explicit source locks govern reads. No explicit transaction, TRY/CATCH or immediately checked INSERT errors; history and caller inventory mutation are not shown atomically."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [],
+      "external_handoffs_and_gaps": [
+        "Static interpretation only; actual deallocation, ordering and balances were not executed or observed.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE HIST_LogShipDeAlloc( @waveNum numeric(9), @internalShipmentNum numeric(9), @direction nvarchar(25), @invTrack nchar(1), @userName nvarchar(30), @processStamp nvarchar(100) ) AS",
+        "program": [
+          {
+            "line": 5,
+            "text": "CREATE PROCEDURE HIST_LogShipDeAlloc("
+          },
+          {
+            "line": 6,
+            "text": "@waveNum numeric(9),"
+          },
+          {
+            "line": 7,
+            "text": "@internalShipmentNum numeric(9),"
+          },
+          {
+            "line": 8,
+            "text": "@direction nvarchar(25),"
+          },
+          {
+            "line": 9,
+            "text": "@invTrack nchar(1),"
+          },
+          {
+            "line": 10,
+            "text": "@userName nvarchar(30),"
+          },
+          {
+            "line": 11,
+            "text": "@processStamp nvarchar(100)"
+          },
+          {
+            "line": 12,
+            "text": ")"
+          },
+          {
+            "line": 13,
+            "text": "AS "
+          },
+          {
+            "line": 14,
+            "text": "BEGIN"
+          },
+          {
+            "line": 16,
+            "text": "DECLARE @tempTable Table"
+          },
+          {
+            "line": 17,
+            "text": "("
+          },
+          {
+            "line": 18,
+            "text": "ID INT IDENTITY(1,1),"
+          },
+          {
+            "line": 19,
+            "text": "WAREHOUSE nvarchar(25),"
+          },
+          {
+            "line": 20,
+            "text": "COMPANY nvarchar(25),"
+          },
+          {
+            "line": 21,
+            "text": "ITEM nvarchar(50),"
+          },
+          {
+            "line": 22,
+            "text": "LOCATION nvarchar(25),"
+          },
+          {
+            "line": 23,
+            "text": "LOT nvarchar(25),"
+          },
+          {
+            "line": 24,
+            "text": "ALLOCSUM numeric(19,5),"
+          },
+          {
+            "line": 25,
+            "text": "QUANTITY numeric(19,5),"
+          },
+          {
+            "line": 26,
+            "text": "QUANTITY_UM nvarchar(25),"
+          },
+          {
+            "line": 27,
+            "text": "SHIPMENT_ID nvarchar(25),"
+          },
+          {
+            "line": 28,
+            "text": "ON_HAND_QTY numeric(19,5),"
+          },
+          {
+            "line": 29,
+            "text": "BEFORE_ALLOCATED_QTY numeric(19,5),"
+          },
+          {
+            "line": 30,
+            "text": "ALLOCATED_QTY numeric(19,5),"
+          },
+          {
+            "line": 31,
+            "text": "BEFORE_IN_TRANSIT_QTY numeric(19,5),"
+          },
+          {
+            "line": 32,
+            "text": "IN_TRANSIT_QTY numeric(19,5),"
+          },
+          {
+            "line": 33,
+            "text": "SUSPENSE_QTY numeric(19,5),"
+          },
+          {
+            "line": 34,
+            "text": "EXPIRATION_DATE datetime,"
+          },
+          {
+            "line": 35,
+            "text": "INVENTORY_STS nvarchar(50),"
+          },
+          {
+            "line": 36,
+            "text": "LOGISTICS_UNIT nvarchar(50),"
+          },
+          {
+            "line": 37,
+            "text": "LOC_INV_ATTRIBUTES_ID numeric(9)"
+          },
+          {
+            "line": 38,
+            "text": ");"
+          },
+          {
+            "line": 40,
+            "text": "if @direction = N'<literal:1>' "
+          },
+          {
+            "line": 41,
+            "text": "Begin"
+          },
+          {
+            "line": 42,
+            "text": "\tINSERT INTO"
+          },
+          {
+            "line": 43,
+            "text": "\t   @tempTable(WAREHOUSE,COMPANY,ITEM,LOCATION,LOT,ALLOCSUM,QUANTITY,QUANTITY_UM,SHIPMENT_ID,ON_HAND_QTY,BEFORE_ALLOCATED_QTY,"
+          },
+          {
+            "line": 44,
+            "text": "\t   ALLOCATED_QTY,BEFORE_IN_TRANSIT_QTY,IN_TRANSIT_QTY,SUSPENSE_QTY,EXPIRATION_DATE,INVENTORY_STS,LOGISTICS_UNIT,LOC_INV_ATTRIBUTES_ID) "
+          },
+          {
+            "line": 45,
+            "text": "\tSelect LI.Warehouse, LI.Company,LI.Item,LI.Location ,LI.Lot,Sum(AR.Allocated_Qty), LI.Allocated_Qty, AR.Quantity_Um,AR.Shipment_Id"
+          },
+          {
+            "line": 46,
+            "text": "\t ,LI.On_Hand_Qty,LI.Allocated_Qty,LI.Allocated_Qty,LI.In_Transit_Qty,LI.In_Transit_Qty,LI.Suspense_Qty,"
+          },
+          {
+            "line": 47,
+            "text": "\t\tLI.EXPIRATION_DATE,LI.Inventory_Sts,LI.LOGISTICS_UNIT,LI.LOC_INV_ATTRIBUTES_ID"
+          },
+          {
+            "line": 48,
+            "text": "\tFROM"
+          },
+          {
+            "line": 49,
+            "text": "\t   Location_Inventory LI, Shipment_Alloc_Request AR"
+          },
+          {
+            "line": 50,
+            "text": "\tWhere"
+          },
+          {
+            "line": 51,
+            "text": "\t   ((@WAVENUM <> 0 AND AR.LAUNCH_NUM = @WAVENUM ) "
+          },
+          {
+            "line": 52,
+            "text": "\t   OR (@internalShipmentNum <> 0 AND AR.INTERNAL_SHIPMENT_NUM = @internalShipmentNum))"
+          },
+          {
+            "line": 53,
+            "text": "\t   AND AR.Inventory_Tracking = @invTrack AND AR.To_Whs = LI.Warehouse AND AR.To_Loc = LI.Location AND AR.Item = LI.Item"
+          },
+          {
+            "line": 54,
+            "text": "\t   AND (( AR.Lot is null AND LI.Lot is null )  OR ( AR.Lot = LI.Lot ) ) "
+          },
+          {
+            "line": 55,
+            "text": "\t   AND (( AR.TO_LOC_INV_ATTRIBUTES_ID is null  AND  LI.LOC_INV_ATTRIBUTES_ID is null  ) OR ( AR.TO_LOC_INV_ATTRIBUTES_ID = LI.LOC_INV_ATTRIBUTES_ID  ))"
+          },
+          {
+            "line": 56,
+            "text": "\t   AND (( AR.Company is null AND LI.Company is null )  OR ( AR.Company = LI.Company ) ) "
+          },
+          {
+            "line": 57,
+            "text": "\tGroup By"
+          },
+          {
+            "line": 58,
+            "text": "\t   LI.Warehouse,LI.Location,LI.Item,AR.Quantity_Um,AR.Shipment_Id,LI.Lot,LI.LOC_INV_ATTRIBUTES_ID, LI.Company,LI.On_Hand_Qty, LI.Allocated_Qty ,"
+          },
+          {
+            "line": 59,
+            "text": "\t\tLI.In_Transit_Qty, LI.Suspense_Qty,LI.LOGISTICS_UNIT,LI.EXPIRATION_DATE,LI.Inventory_Sts ;"
+          },
+          {
+            "line": 60,
+            "text": "END "
+          },
+          {
+            "line": 61,
+            "text": "\tELSE "
+          },
+          {
+            "line": 62,
+            "text": "Begin"
+          },
+          {
+            "line": 63,
+            "text": "\tINSERT INTO"
+          },
+          {
+            "line": 64,
+            "text": "\t   @tempTable(WAREHOUSE,COMPANY,ITEM,LOCATION,LOT,ALLOCSUM,Quantity,QUANTITY_UM,SHIPMENT_ID,ON_HAND_QTY,BEFORE_ALLOCATED_QTY,"
+          },
+          {
+            "line": 65,
+            "text": "\t   ALLOCATED_QTY,BEFORE_IN_TRANSIT_QTY,IN_TRANSIT_QTY,SUSPENSE_QTY,EXPIRATION_DATE,INVENTORY_STS,LOGISTICS_UNIT,LOC_INV_ATTRIBUTES_ID) "
+          },
+          {
+            "line": 66,
+            "text": "\tSelect LI.Warehouse, LI.Company,LI.Item,LI.Location ,LI.Lot,Sum(AR.Allocated_Qty),LI.Allocated_Qty, AR.Quantity_Um,AR.Shipment_Id"
+          },
+          {
+            "line": 67,
+            "text": "\t ,LI.On_Hand_Qty,LI.Allocated_Qty,LI.Allocated_Qty,LI.In_Transit_Qty,LI.In_Transit_Qty,LI.Suspense_Qty,"
+          },
+          {
+            "line": 68,
+            "text": "\t\tLI.EXPIRATION_DATE,LI.Inventory_Sts,LI.LOGISTICS_UNIT,LI.LOC_INV_ATTRIBUTES_ID"
+          },
+          {
+            "line": 69,
+            "text": "\tFROM"
+          },
+          {
+            "line": 70,
+            "text": "\t   Location_Inventory LI, Shipment_Alloc_Request AR"
+          },
+          {
+            "line": 71,
+            "text": "\tWhere"
+          },
+          {
+            "line": 72,
+            "text": "\t   ((@WAVENUM <> 0 AND AR.LAUNCH_NUM = @WAVENUM ) "
+          },
+          {
+            "line": 73,
+            "text": "\t   OR (@internalShipmentNum <> 0 AND AR.INTERNAL_SHIPMENT_NUM = @internalShipmentNum))"
+          },
+          {
+            "line": 74,
+            "text": "\t   AND AR.Inventory_Tracking = @invTrack AND AR.From_Whs = LI.Warehouse AND AR.From_Loc = LI.Location AND AR.Item = LI.Item"
+          },
+          {
+            "line": 75,
+            "text": "\t   AND (( AR.Lot is null AND LI.Lot is null )  OR ( AR.Lot = LI.Lot ) ) AND (( AR.Company is null AND LI.Company is null )  OR ( AR.Company = LI.Company ) ) "
+          },
+          {
+            "line": 76,
+            "text": "\t   AND (( AR.FROM_LOC_INV_ATTRIBUTES_ID is null  AND  LI.LOC_INV_ATTRIBUTES_ID is null  ) OR ( AR.FROM_LOC_INV_ATTRIBUTES_ID = LI.LOC_INV_ATTRIBUTES_ID  ))"
+          },
+          {
+            "line": 77,
+            "text": "\t   AND (( AR.logistics_unit is null AND LI.logistics_unit is null )  OR ( AR.logistics_unit = LI.logistics_unit ) )"
+          },
+          {
+            "line": 78,
+            "text": "\t   AND LI.Allocated_Qty > 0"
+          },
+          {
+            "line": 79,
+            "text": "\tGroup By"
+          },
+          {
+            "line": 80,
+            "text": "\t   LI.Warehouse,LI.Location,LI.Item,AR.Quantity_Um,AR.Shipment_Id,LI.Lot,LI.Company,LI.LOC_INV_ATTRIBUTES_ID, LI.On_Hand_Qty, LI.Allocated_Qty ,"
+          },
+          {
+            "line": 81,
+            "text": "\t\tLI.In_Transit_Qty, LI.Suspense_Qty,LI.LOGISTICS_UNIT,LI.EXPIRATION_DATE,LI.Inventory_Sts ;"
+          },
+          {
+            "line": 82,
+            "text": "END"
+          },
+          {
+            "line": 84,
+            "text": "DECLARE @prevLocation nvarchar(25);"
+          },
+          {
+            "line": 85,
+            "text": "DECLARE @prevItem nvarchar(50);"
+          },
+          {
+            "line": 86,
+            "text": "DECLARE @prevWarehouse nvarchar(25);"
+          },
+          {
+            "line": 87,
+            "text": "DECLARE @prevLot nvarchar(25);"
+          },
+          {
+            "line": 88,
+            "text": "DECLARE @prevLogisticsUnit nvarchar(50);"
+          },
+          {
+            "line": 89,
+            "text": "DECLARE @prevLocInvAttributesId numeric(9);"
+          },
+          {
+            "line": 91,
+            "text": "DECLARE @currentAllocSum numeric(19,5);"
+          },
+          {
+            "line": 92,
+            "text": "DECLARE @quantityToBeDeducted numeric(19,5);"
+          },
+          {
+            "line": 93,
+            "text": "DECLARE @currentLocation nvarchar(25);"
+          },
+          {
+            "line": 94,
+            "text": "DECLARE @currentItem nvarchar(50);"
+          },
+          {
+            "line": 95,
+            "text": "DECLARE @currentWarehouse nvarchar(25);"
+          },
+          {
+            "line": 96,
+            "text": "DECLARE @currentLot nvarchar(25);"
+          },
+          {
+            "line": 97,
+            "text": "DECLARE @currentLogisticsUnit nvarchar(50);"
+          },
+          {
+            "line": 98,
+            "text": "DECLARE @currentLocInvAttributesId numeric(9);"
+          },
+          {
+            "line": 100,
+            "text": "DECLARE @MAXVALUE INT;"
+          },
+          {
+            "line": 101,
+            "text": "DECLARE @CURRENTINDEX INT;"
+          },
+          {
+            "line": 102,
+            "text": "SET @CURRENTINDEX=1;"
+          },
+          {
+            "line": 103,
+            "text": "SET @quantityToBeDeducted = 0;-- [comment omitted]"
+          },
+          {
+            "line": 104,
+            "text": "SELECT @MAXVALUE = MAX(ID) FROM @tempTable;"
+          },
+          {
+            "line": 106,
+            "text": "WHILE (@CURRENTINDEX <= @MAXVALUE)"
+          },
+          {
+            "line": 107,
+            "text": "BEGIN"
+          },
+          {
+            "line": 109,
+            "text": "SELECT @currentItem=ITEM, @currentAllocSum = ALLOCSUM , "
+          },
+          {
+            "line": 110,
+            "text": "@currentWarehouse = WAREHOUSE, @currentLocation = LOCATION, @currentLot = LOT, @currentLogisticsUnit = LOGISTICS_UNIT,"
+          },
+          {
+            "line": 111,
+            "text": "@currentLocInvAttributesId= LOC_INV_ATTRIBUTES_ID"
+          },
+          {
+            "line": 112,
+            "text": "FROM @tempTable WHERE ID = @CURRENTINDEX;"
+          },
+          {
+            "line": 114,
+            "text": "\t\tif @currentWarehouse = @prevWarehouse"
+          },
+          {
+            "line": 115,
+            "text": "\t\t   AND @currentLocation = @prevLocation"
+          },
+          {
+            "line": 116,
+            "text": "\t\t   AND @currentItem = @prevItem"
+          },
+          {
+            "line": 117,
+            "text": "\t\t   AND (@currentLot = @prevLot OR (@currentLot IS NULL"
+          },
+          {
+            "line": 118,
+            "text": "\t\t   AND @prevLot IS NULL)  ) "
+          },
+          {
+            "line": 119,
+            "text": "\t\t   AND (@currentLogisticsUnit = @prevLogisticsUnit OR (@currentLogisticsUnit IS NULL"
+          },
+          {
+            "line": 120,
+            "text": "\t\t   AND @prevLogisticsUnit IS NULL)) "
+          },
+          {
+            "line": 121,
+            "text": "\t\t   AND (@currentLocInvAttributesId=@prevLocInvAttributesId OR (@currentLocInvAttributesId IS NULL "
+          },
+          {
+            "line": 122,
+            "text": "\t\t   AND @prevLocInvAttributesId IS NULL)) "
+          },
+          {
+            "line": 123,
+            "text": "\t\t\tBEGIN"
+          },
+          {
+            "line": 124,
+            "text": "\t\t\t\tif @direction = N'<literal:2>' "
+          },
+          {
+            "line": 125,
+            "text": "\t\t\t\t\tBegin"
+          },
+          {
+            "line": 126,
+            "text": "\t\t\t\t\t\tSET   @quantityToBeDeducted = @quantityToBeDeducted + @currentAllocSum; "
+          },
+          {
+            "line": 127,
+            "text": "\t\t\t\t\tend"
+          },
+          {
+            "line": 128,
+            "text": "\t\t\t\telse"
+          },
+          {
+            "line": 129,
+            "text": "\t\t\t\t\tbegin"
+          },
+          {
+            "line": 130,
+            "text": "\t\t\t\t\t\tSET   @quantityToBeDeducted = @quantityToBeDeducted + @currentAllocSum; "
+          },
+          {
+            "line": 131,
+            "text": "\t\t\t\t\tend"
+          },
+          {
+            "line": 133,
+            "text": "\t\t\tEND "
+          },
+          {
+            "line": 134,
+            "text": "\t\tELSE"
+          },
+          {
+            "line": 135,
+            "text": "\t\t\tBEGIN"
+          },
+          {
+            "line": 136,
+            "text": "\t\t\t\tSET   @prevItem = @currentItem;"
+          },
+          {
+            "line": 137,
+            "text": "\t\t\t\tSET   @prevLocation = @currentLocation;"
+          },
+          {
+            "line": 138,
+            "text": "\t\t\t\tSET   @prevWarehouse = @currentWarehouse;"
+          },
+          {
+            "line": 139,
+            "text": "\t\t\t\tSET   @prevLogisticsUnit = @currentLogisticsUnit;"
+          },
+          {
+            "line": 140,
+            "text": "\t\t\t\tSET   @prevLot = @currentLot;"
+          },
+          {
+            "line": 141,
+            "text": "\t\t\t\tSET   @prevLocInvAttributesId = @currentLocInvAttributesId"
+          },
+          {
+            "line": 143,
+            "text": "\t\t\t\tif @direction = N'<literal:3>' "
+          },
+          {
+            "line": 144,
+            "text": "\t\t\t\t\tBegin"
+          },
+          {
+            "line": 145,
+            "text": "\t\t\t\t\t\tSET   @quantityToBeDeducted =  @currentAllocSum; "
+          },
+          {
+            "line": 146,
+            "text": "\t\t\t\t\tend"
+          },
+          {
+            "line": 147,
+            "text": "\t\t\t\telse"
+          },
+          {
+            "line": 148,
+            "text": "\t\t\t\t\tbegin"
+          },
+          {
+            "line": 149,
+            "text": "\t\t\t\t\t\tSET   @quantityToBeDeducted = @currentAllocSum;"
+          },
+          {
+            "line": 150,
+            "text": "\t\t\t\t\tend"
+          },
+          {
+            "line": 152,
+            "text": "\t\t\tEND"
+          },
+          {
+            "line": 155,
+            "text": "\tif @direction = N'<literal:4>' "
+          },
+          {
+            "line": 156,
+            "text": "\t\tBegin"
+          },
+          {
+            "line": 157,
+            "text": "\t\t\tUPDATE"
+          },
+          {
+            "line": 158,
+            "text": "\t\t\t   @tempTable"
+          },
+          {
+            "line": 159,
+            "text": "\t\t\tSET"
+          },
+          {
+            "line": 160,
+            "text": "\t\t\t   BEFORE_IN_TRANSIT_QTY = BEFORE_IN_TRANSIT_QTY - @quantityToBeDeducted + @currentAllocSum,"
+          },
+          {
+            "line": 161,
+            "text": "\t\t\t\tIN_TRANSIT_QTY = IN_TRANSIT_QTY - @quantityToBeDeducted"
+          },
+          {
+            "line": 162,
+            "text": "\t\t\tWHERE"
+          },
+          {
+            "line": 163,
+            "text": "\t\t\t   ID = @CURRENTINDEX; "
+          },
+          {
+            "line": 164,
+            "text": "\t\tEND "
+          },
+          {
+            "line": 165,
+            "text": "\tELSE "
+          },
+          {
+            "line": 166,
+            "text": "\t   Begin"
+          },
+          {
+            "line": 167,
+            "text": "\t\tUPDATE"
+          },
+          {
+            "line": 168,
+            "text": "\t\t   @tempTable"
+          },
+          {
+            "line": 169,
+            "text": "\t\tSET"
+          },
+          {
+            "line": 171,
+            "text": "\t\t   BEFORE_ALLOCATED_QTY = BEFORE_ALLOCATED_QTY - @quantityToBeDeducted + @currentAllocSum,"
+          },
+          {
+            "line": 173,
+            "text": "\t\t\tALLOCATED_QTY = ALLOCATED_QTY - @quantityToBeDeducted"
+          },
+          {
+            "line": 174,
+            "text": "\t\tWHERE"
+          },
+          {
+            "line": 175,
+            "text": "\t\t   ID = @CURRENTINDEX; "
+          },
+          {
+            "line": 176,
+            "text": "\t\tEND"
+          },
+          {
+            "line": 177,
+            "text": "\tSET @CURRENTINDEX = @CURRENTINDEX + 1;"
+          },
+          {
+            "line": 178,
+            "text": "END-- [comment omitted]"
+          },
+          {
+            "line": 180,
+            "text": "if @direction = N'<literal:5>' "
+          },
+          {
+            "line": 181,
+            "text": "Begin"
+          },
+          {
+            "line": 182,
+            "text": "\tINSERT INTO TRANSACTION_HISTORY (User_Name, Transaction_Type,  Direction,  Process_Stamp,  Warehouse,  Company,  Internal_Key_Id,Item,Location"
+          },
+          {
+            "line": 183,
+            "text": "\t,Lot,Quantity,Quantity_Um,Reference_Id,Reference_Line_Num,Before_On_Hand_Qty,Before_Alloc_Qty,Before_In_Transit_Qty,Before_Suspense_Qty"
+          },
+          {
+            "line": 184,
+            "text": "\t,BEFORE_EXPIRATION_DATE, BEFORE_STS,After_On_Hand_Qty,After_Alloc_Qty,After_In_Transit_Qty,After_Suspense_Qty,AFTER_EXPIRATION_DATE,AFTER_STS"
+          },
+          {
+            "line": 185,
+            "text": "\t ,User_Stamp,Date_Time_Stamp,Activity_Date_Time,CONTAINER_ID)"
+          },
+          {
+            "line": 186,
+            "text": "\tSelect @userName, 200, @direction, @processStamp, WAREHOUSE,COMPANY, NULL, ITEM, LOCATION"
+          },
+          {
+            "line": 187,
+            "text": "\t, LOT, ALLOCSUM, QUANTITY_UM, SHIPMENT_ID, 0, ON_HAND_QTY, ALLOCATED_QTY, BEFORE_IN_TRANSIT_QTY"
+          },
+          {
+            "line": 188,
+            "text": "\t, SUSPENSE_QTY, EXPIRATION_DATE, INVENTORY_STS,ON_HAND_QTY, ALLOCATED_QTY, IN_TRANSIT_QTY, SUSPENSE_QTY, "
+          },
+          {
+            "line": 189,
+            "text": "\t\t(CASE WHEN((ON_HAND_QTY + ALLOCATED_QTY + IN_TRANSIT_QTY  + SUSPENSE_QTY)>0) THEN EXPIRATION_DATE ELSE NULL END), "
+          },
+          {
+            "line": 190,
+            "text": "\t\t(CASE WHEN((ON_HAND_QTY + ALLOCATED_QTY + IN_TRANSIT_QTY  + SUSPENSE_QTY)>0) THEN INVENTORY_STS ELSE NULL END), "
+          },
+          {
+            "line": 191,
+            "text": "\t\t@USERNAME, convert(datetime,convert(nvarchar,GETUTCDATE(),20)),convert(datetime,convert(nvarchar,GETUTCDATE(),20)), LOGISTICS_UNIT "
+          },
+          {
+            "line": 192,
+            "text": "\t\tFROM  @tempTable;"
+          },
+          {
+            "line": 193,
+            "text": "END "
+          },
+          {
+            "line": 194,
+            "text": "\tELSE "
+          },
+          {
+            "line": 195,
+            "text": "Begin"
+          },
+          {
+            "line": 196,
+            "text": "\tINSERT INTO TRANSACTION_HISTORY (User_Name, Transaction_Type,  Direction,  Process_Stamp,  Warehouse,  Company,  Internal_Key_Id,Item,Location"
+          },
+          {
+            "line": 197,
+            "text": "\t,Lot,Quantity,Quantity_Um,Reference_Id,Reference_Line_Num,Before_On_Hand_Qty,Before_Alloc_Qty,Before_In_Transit_Qty,Before_Suspense_Qty"
+          },
+          {
+            "line": 198,
+            "text": "\t,BEFORE_EXPIRATION_DATE, BEFORE_STS,After_On_Hand_Qty,After_Alloc_Qty,After_In_Transit_Qty,After_Suspense_Qty,AFTER_EXPIRATION_DATE,AFTER_STS"
+          },
+          {
+            "line": 199,
+            "text": "\t ,User_Stamp,Date_Time_Stamp,Activity_Date_Time,CONTAINER_ID)"
+          },
+          {
+            "line": 200,
+            "text": "\tSelect @userName, 200, @direction, @processStamp, WAREHOUSE, COMPANY, NULL, ITEM, LOCATION"
+          },
+          {
+            "line": 201,
+            "text": "\t, LOT, ALLOCSUM, QUANTITY_UM, SHIPMENT_ID, 0, ON_HAND_QTY, BEFORE_ALLOCATED_QTY, IN_TRANSIT_QTY"
+          },
+          {
+            "line": 202,
+            "text": "\t, SUSPENSE_QTY, EXPIRATION_DATE, INVENTORY_STS, ON_HAND_QTY, ALLOCATED_QTY, IN_TRANSIT_QTY , SUSPENSE_QTY, "
+          },
+          {
+            "line": 203,
+            "text": "\t\t(CASE WHEN((ON_HAND_QTY + ALLOCATED_QTY + IN_TRANSIT_QTY + SUSPENSE_QTY)>0) THEN EXPIRATION_DATE ELSE NULL END), "
+          },
+          {
+            "line": 204,
+            "text": "\t\t(CASE WHEN((ON_HAND_QTY + ALLOCATED_QTY + IN_TRANSIT_QTY + SUSPENSE_QTY)>0) THEN INVENTORY_STS ELSE NULL END), "
+          },
+          {
+            "line": 205,
+            "text": "\t\t@USERNAME, convert(datetime,convert(nvarchar,GETUTCDATE(),20)),convert(datetime,convert(nvarchar,GETUTCDATE(),20)), LOGISTICS_UNIT "
+          },
+          {
+            "line": 206,
+            "text": "\t\tFROM  @tempTable;"
+          },
+          {
+            "line": 207,
+            "text": "END"
+          },
+          {
+            "line": 208,
+            "text": "END"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1048703134.sql",
+          "sha256": "eb4dc9afbff124a01323072bf27af77b956da8613a9da0d0b9e5eebcc328d045",
+          "line_start": 1,
+          "line_end": 208,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "9b40e0f2fc36538cd52d2481e8bd24ea3704b9efddae4d4d7be307f14d42e99f",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-1048703134"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-1048703134": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1048703134,
+        "qualified_name": "dbo.HIST_LogShipDeAlloc",
+        "source_definition_sha256": "9b40e0f2fc36538cd52d2481e8bd24ea3704b9efddae4d4d7be307f14d42e99f",
+        "reading_path": "DB Architecture/sql/1048703134.sql",
+        "reading_sha256": "eb4dc9afbff124a01323072bf27af77b956da8613a9da0d0b9e5eebcc328d045",
+        "line_spans": [
+          [
+            1,
+            208
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.HIST_LogShipDeAlloc",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1048703134.sql",
+      "reading_sha256": "eb4dc9afbff124a01323072bf27af77b956da8613a9da0d0b9e5eebcc328d045",
+      "source_definition_sha256": "9b40e0f2fc36538cd52d2481e8bd24ea3704b9efddae4d4d7be307f14d42e99f",
+      "reading_lines": 208,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

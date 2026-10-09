@@ -1,0 +1,381 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1450800576,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "WTH_SplitWorkInPutaway",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 07:00:13.780000",
+    "modify_date": "2026-08-16 07:00:13.780000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.WTH_SplitWorkInPutaway",
+    "domain_candidate": "receiving"
+  },
+  "source_definition_sha256": "4f90faaccc630e62656f6b0c05d36d41241f5b50cfa201c6761e4f29bb861d21",
+  "exact_sql_path": "1450800576.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 685,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": true,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1450800576,
+      "parameter_id": 1,
+      "name": "@dQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1450800576,
+      "parameter_id": 2,
+      "name": "@iDtl",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [],
+    "possible_indirect": [
+      {
+        "table_id": 1903345845,
+        "qualified_name": "dbo.RESOURCE_FILE_BASE",
+        "layout_path": "../table layout/1903345845.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1935345959,
+        "qualified_name": "dbo.RESOURCE_FILE_CUSTOM",
+        "layout_path": "../table layout/1935345959.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1643868923,
+        "qualified_name": "dbo.SYSTEM_CONFIG_DETAIL",
+        "layout_path": "../table layout/1643868923.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": []
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1450800576,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "WTH_SplitWorkInPutawayRetInstr",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": true,
+      "is_ambiguous": false,
+      "target_qualified_name": null
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+    "source_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+    "json_pointer": "/semantic_contracts/93",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1450800576,
+      "qualified_name": "dbo.WTH_SplitWorkInPutaway",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Complete retained body manually read; parameter/default/output/effect/branch/configuration/error/transaction/concurrency dimensions reviewed as source-backed static behavior.",
+      "source_definition_sha256": "4f90faaccc630e62656f6b0c05d36d41241f5b50cfa201c6761e4f29bb861d21",
+      "purpose": "Split putaway work through a checked wrapper.",
+      "inputs_defaults": [
+        "Exact inert declaration: CREATE PROCEDURE WTH_SplitWorkInPutaway( @dQty numeric(19,5), @iDtl numeric(9)) AS",
+        "Structured parameters record declaration defaults/directions and unused inputs; no default does not mean NOT NULL."
+      ],
+      "parameters": [
+        {
+          "name": "@dQty",
+          "type": "numeric(19,5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@iDtl",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "The wrapper does not expose the newly created identity or start a transaction. Child mutation/trigger/error behavior remains its own contract; no inventory balance change is performed directly."
+      ],
+      "output_shape": [
+        "No direct result set or caller OUTPUT; child result sets may propagate.",
+        "Exact SELECT expression, alias, order, TOP/DISTINCT and filter text is retained line-by-line in source_structure; variable assignments/subqueries do not count as caller result sets."
+      ],
+      "effects": [
+        {
+          "relationship": "CALLS",
+          "object": "dbo.WTH_SplitWorkInPutawayRetInstr",
+          "object_id": 1466800633,
+          "evidence_refs": [
+            "work-config-1450800576"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Reject NULL/nonpositive quantity or detail ID. Invoke WTH_SplitWorkInPutawayRetInstr with fixed system user and local new-ID OUTPUT; return -1 for immediate SQL failure or propagate child return.",
+          "evidence_refs": [
+            "work-config-1450800576"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Scope, NULL/error and concurrency boundaries: The wrapper does not expose the newly created identity or start a transaction. Child mutation/trigger/error behavior remains its own contract; no inventory balance change is performed directly.",
+          "evidence_refs": [
+            "work-config-1450800576"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Reject NULL/nonpositive quantity or detail ID. Invoke WTH_SplitWorkInPutawayRetInstr with fixed system user and local new-ID OUTPUT; return -1 for immediate SQL failure or propagate child return.",
+      "configuration_scope_and_precedence": [
+        "Reject NULL/nonpositive quantity or detail ID. Invoke WTH_SplitWorkInPutawayRetInstr with fixed system user and local new-ID OUTPUT; return -1 for immediate SQL failure or propagate child return.",
+        "The wrapper does not expose the newly created identity or start a transaction. Child mutation/trigger/error behavior remains its own contract; no inventory balance change is performed directly."
+      ],
+      "error_and_return_handling": [
+        "The wrapper does not expose the newly created identity or start a transaction. Child mutation/trigger/error behavior remains its own contract; no inventory balance change is performed directly.",
+        "No direct result set or caller OUTPUT; child result sets may propagate."
+      ],
+      "transaction_ownership": "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic.",
+      "concurrency": [
+        "The wrapper does not expose the newly created identity or start a transaction. Child mutation/trigger/error behavior remains its own contract; no inventory balance change is performed directly.",
+        "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic."
+      ],
+      "trigger_behavior": "No direct persistent target; called procedures retain their own mutation/trigger contracts.",
+      "trigger_contract_refs": [],
+      "external_handoffs_and_gaps": [
+        "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+        "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+        "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+        "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1450800576.sql",
+          "sha256": "088ac610a7461fcd89aaa47f21d9e13dd3adf4c14a8cf296b8d5bdb043cb68b9",
+          "line_start": 1,
+          "line_end": 33,
+          "kind": "REDACTED_SQL",
+          "description": "Complete retained body manually read; independent per-procedure notes and essential scalar equality/flag interpretations. Original hash and redaction parity checked.",
+          "source_definition_sha256": "4f90faaccc630e62656f6b0c05d36d41241f5b50cfa201c6761e4f29bb861d21"
+        }
+      ],
+      "evidence_refs": [
+        "work-config-1450800576"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_NAMES",
+      "source_structure": {
+        "program": [
+          {
+            "line": 10,
+            "text": "CREATE PROCEDURE WTH_SplitWorkInPutaway("
+          },
+          {
+            "line": 11,
+            "text": "@dQty\tnumeric(19,5),"
+          },
+          {
+            "line": 12,
+            "text": "@iDtl numeric(9))"
+          },
+          {
+            "line": 13,
+            "text": "AS"
+          },
+          {
+            "line": 14,
+            "text": "SET NOCOUNT ON;"
+          },
+          {
+            "line": 16,
+            "text": "declare @iError int;"
+          },
+          {
+            "line": 17,
+            "text": "declare @newWorkInstr numeric(9);"
+          },
+          {
+            "line": 20,
+            "text": "if (@iDtl is null OR @iDtl <= 0 OR @dQty is null OR @dQty <= 0)"
+          },
+          {
+            "line": 21,
+            "text": "return -1;"
+          },
+          {
+            "line": 23,
+            "text": "exec @iError = WTH_SplitWorkInPutawayRetInstr"
+          },
+          {
+            "line": 24,
+            "text": "@dQty, @iDtl, N'<literal:1>', @newWorkInstr output;"
+          },
+          {
+            "line": 25,
+            "text": "if (@@ERROR <> 0) return -1; else if (@iError <> 0) return @iError;"
+          }
+        ],
+        "interpretation": "Inert exact retained SQL, not executable recovery instructions.",
+        "wildcard_column_catalog": []
+      },
+      "reviewed_literal_equality_groups": [
+        {
+          "ordinal": 1,
+          "original_line_start": 23,
+          "original_line_end": 23,
+          "sha256": "6725e7bbcd28f3a8a586fa34bf191fd72dde8b61756932cd3237c17a6f196f1a",
+          "equality_group": 1,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        }
+      ]
+    },
+    "evidence_sources": {
+      "work-config-1450800576": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1450800576,
+        "qualified_name": "dbo.WTH_SplitWorkInPutaway",
+        "source_definition_sha256": "4f90faaccc630e62656f6b0c05d36d41241f5b50cfa201c6761e4f29bb861d21",
+        "reading_path": "DB Architecture/sql/1450800576.sql",
+        "reading_sha256": "088ac610a7461fcd89aaa47f21d9e13dd3adf4c14a8cf296b8d5bdb043cb68b9",
+        "line_spans": [
+          [
+            1,
+            33
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+      "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+      "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+      "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.WTH_SplitWorkInPutaway",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1450800576.sql",
+      "reading_sha256": "088ac610a7461fcd89aaa47f21d9e13dd3adf4c14a8cf296b8d5bdb043cb68b9",
+      "source_definition_sha256": "4f90faaccc630e62656f6b0c05d36d41241f5b50cfa201c6761e4f29bb861d21",
+      "reading_lines": 33,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": true
+    },
+    "dynamic_review_bindings": [
+      {
+        "module_id": 1450800576,
+        "batch_path": "DB Architecture/mappings/batches/dynamic-dependencies.json",
+        "batch_sha256": "b3647d0c9510b3038e2fd81c1ad659bb1d82b82bbf0a55b32bbd7c434899c323",
+        "review_state": "BOUNDED_FIXED_CALL_FALSE_POSITIVE_REVIEW",
+        "source_definition_sha256": "4f90faaccc630e62656f6b0c05d36d41241f5b50cfa201c6761e4f29bb861d21"
+      }
+    ],
+    "unresolved_catalog_dependencies": [
+      {
+        "module_id": 1450800576,
+        "row_index": 1739,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      }
+    ],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+    "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+    "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+    "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+  ]
+}

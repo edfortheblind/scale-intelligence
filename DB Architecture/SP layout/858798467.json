@@ -1,0 +1,961 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 858798467,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "WRK_BuildCart",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 07:00:11.887000",
+    "modify_date": "2026-08-16 07:00:11.887000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.WRK_BuildCart",
+    "domain_candidate": "unclassified"
+  },
+  "source_definition_sha256": "e75e2b4c80d02eff37066b9a59771671e2d5f1757b18768c0367b11df64709bc",
+  "exact_sql_path": "858798467.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 3554,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": true,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": true,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 858798467,
+      "parameter_id": 1,
+      "name": "@workProfile",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 858798467,
+      "parameter_id": 2,
+      "name": "@warehouse",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 858798467,
+      "parameter_id": 3,
+      "name": "@groupNumber",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 858798467,
+      "parameter_id": 4,
+      "name": "@cartSpots",
+      "type_schema": "sys",
+      "type_name": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "int"
+    },
+    {
+      "object_id": 858798467,
+      "parameter_id": 5,
+      "name": "@workprofileSequence",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 5,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(5,0)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1067866871,
+        "qualified_name": "dbo.SHIPPING_CONTAINER",
+        "layout_path": "../table layout/1067866871.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 858798467,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 890,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 70,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/70/effects/2",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 44,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 82,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 858798467,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 891,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 70,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/70/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 42,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 43,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 82,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1544392571,
+        "qualified_name": "dbo.WORK_PROFILE_DETAIL",
+        "layout_path": "../table layout/1544392571.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 858798467,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 892,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 70,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/70/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 15,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 2009774217,
+        "qualified_name": "dbo.CONTAINER_TYPE",
+        "layout_path": "../table layout/2009774217.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 858798467,
+          "reading_lines": [
+            25,
+            37,
+            40,
+            66,
+            81
+          ]
+        }
+      },
+      {
+        "table_id": 1067866871,
+        "qualified_name": "dbo.SHIPPING_CONTAINER",
+        "layout_path": "../table layout/1067866871.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 858798467,
+          "reading_lines": [
+            44,
+            82
+          ]
+        }
+      },
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 858798467,
+          "reading_lines": [
+            42,
+            43,
+            82
+          ]
+        }
+      },
+      {
+        "table_id": 1544392571,
+        "qualified_name": "dbo.WORK_PROFILE_DETAIL",
+        "layout_path": "../table layout/1544392571.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 858798467,
+          "reading_lines": [
+            15
+          ]
+        }
+      },
+      {
+        "table_id": 1768393369,
+        "qualified_name": "dbo.WORK_TYPE",
+        "layout_path": "../table layout/1768393369.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 858798467,
+          "reading_lines": [
+            13,
+            50
+          ]
+        }
+      },
+      {
+        "table_id": 1800393483,
+        "qualified_name": "dbo.ZONE",
+        "layout_path": "../table layout/1800393483.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 858798467,
+          "module_type": "P",
+          "source_line": 33,
+          "source_start_offset": 928,
+          "source_end_offset": 932,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1800393483,
+          "table_qualified_name": "dbo.ZONE",
+          "source_definition_sha256": "e75e2b4c80d02eff37066b9a59771671e2d5f1757b18768c0367b11df64709bc",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 858798467,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "WRK_UpdateWorkInstructionForCartPicking",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": true,
+      "is_ambiguous": false,
+      "target_qualified_name": null
+    },
+    {
+      "referencing_id": 858798467,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SHIPPING_CONTAINER",
+      "referenced_id": 1067866871,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPPING_CONTAINER"
+    },
+    {
+      "referencing_id": 858798467,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "WORK_INSTRUCTION",
+      "referenced_id": 1352391887,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.WORK_INSTRUCTION"
+    },
+    {
+      "referencing_id": 858798467,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "WORK_PROFILE_DETAIL",
+      "referenced_id": 1544392571,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.WORK_PROFILE_DETAIL"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+    "source_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+    "json_pointer": "/semantic_contracts/70",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 858798467,
+      "qualified_name": "dbo.WRK_BuildCart",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Complete retained body manually read; parameter/default/output/effect/branch/configuration/error/transaction/concurrency dimensions reviewed as source-backed static behavior.",
+      "source_definition_sha256": "e75e2b4c80d02eff37066b9a59771671e2d5f1757b18768c0367b11df64709bc",
+      "purpose": "Select candidate shipping containers and assign them to a cart group.",
+      "inputs_defaults": [
+        "Exact inert declaration: CREATE PROCEDURE WRK_BuildCart( @workProfile nvarchar(25), @warehouse nvarchar(25), @groupNumber nvarchar(50), @cartSpots integer, @workprofileSequence numeric(5)) AS",
+        "Structured parameters record declaration defaults/directions and unused inputs; no default does not mean NOT NULL."
+      ],
+      "parameters": [
+        {
+          "name": "@workProfile",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@warehouse",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@groupNumber",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@cartSpots",
+          "type": "integer",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@workprofileSequence",
+          "type": "numeric(5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "Distinct is over the whole tuple, not container identity, so one container can consume multiple candidate spots when work attributes differ. TOP ties lack final identity order. Final read uses group and coded instruction type without warehouse. Explicit transaction/UPDLOCK exists, but no TRY/CATCH, XACT_ABORT, rollback or child-return check; an error can leave an open transaction or partial state. NULL/negative limits and splitter behavior remain SQL/helper-dependent."
+      ],
+      "output_shape": [
+        "Final result: CONTAINER_ID,CONTAINER_TYPE,GROUP_POSITION ordered position; child spot rows are captured into a table, not directly exposed.",
+        "Exact SELECT expression, alias, order, TOP/DISTINCT and filter text is retained line-by-line in source_structure; variable assignments/subqueries do not count as caller result sets."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.WORK_PROFILE_DETAIL",
+          "object_id": 1544392571,
+          "evidence_refs": [
+            "work-config-858798467"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.WORK_INSTRUCTION",
+          "object_id": 1352391887,
+          "evidence_refs": [
+            "work-config-858798467"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.SHIPPING_CONTAINER",
+          "object_id": 1067866871,
+          "evidence_refs": [
+            "work-config-858798467"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.WRK_UpdateWorkInstructionForCartPicking",
+          "object_id": 1338800177,
+          "evidence_refs": [
+            "work-config-858798467"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Read WORK_TYPES for exact profile/sequence and split the coded delimiter into a table. Begin a transaction; choose DISTINCT TOP(cartSpots) joined detail/header/container tuples ordered priority,min/max zone sequence,aging. Require coded shipment internal type, source warehouse, header zone bounds, NULL detail group/hold, empty container position and allowed work type. Container join uses business CONTAINER_ID only with UPDLOCK. Iterate ordered selected tuples, capture child WRK_UpdateWorkInstructionForCartPicking results, commit, then return distinct grouped containers.",
+          "evidence_refs": [
+            "work-config-858798467"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Scope, NULL/error and concurrency boundaries: Distinct is over the whole tuple, not container identity, so one container can consume multiple candidate spots when work attributes differ. TOP ties lack final identity order. Final read uses group and coded instruction type without warehouse. Explicit transaction/UPDLOCK exists, but no TRY/CATCH, XACT_ABORT, rollback or child-return check; an error can leave an open transaction or partial state. NULL/negative limits and splitter behavior remain SQL/helper-dependent.",
+          "evidence_refs": [
+            "work-config-858798467"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Read WORK_TYPES for exact profile/sequence and split the coded delimiter into a table. Begin a transaction; choose DISTINCT TOP(cartSpots) joined detail/header/container tuples ordered priority,min/max zone sequence,aging. Require coded shipment internal type, source warehouse, header zone bounds, NULL detail group/hold, empty container position and allowed work type. Container join uses business CONTAINER_ID only with UPDLOCK. Iterate ordered selected tuples, capture child WRK_UpdateWorkInstructionForCartPicking results, commit, then return distinct grouped containers.",
+      "configuration_scope_and_precedence": [
+        "Read WORK_TYPES for exact profile/sequence and split the coded delimiter into a table. Begin a transaction; choose DISTINCT TOP(cartSpots) joined detail/header/container tuples ordered priority,min/max zone sequence,aging. Require coded shipment internal type, source warehouse, header zone bounds, NULL detail group/hold, empty container position and allowed work type. Container join uses business CONTAINER_ID only with UPDLOCK. Iterate ordered selected tuples, capture child WRK_UpdateWorkInstructionForCartPicking results, commit, then return distinct grouped containers.",
+        "Distinct is over the whole tuple, not container identity, so one container can consume multiple candidate spots when work attributes differ. TOP ties lack final identity order. Final read uses group and coded instruction type without warehouse. Explicit transaction/UPDLOCK exists, but no TRY/CATCH, XACT_ABORT, rollback or child-return check; an error can leave an open transaction or partial state. NULL/negative limits and splitter behavior remain SQL/helper-dependent."
+      ],
+      "error_and_return_handling": [
+        "Distinct is over the whole tuple, not container identity, so one container can consume multiple candidate spots when work attributes differ. TOP ties lack final identity order. Final read uses group and coded instruction type without warehouse. Explicit transaction/UPDLOCK exists, but no TRY/CATCH, XACT_ABORT, rollback or child-return check; an error can leave an open transaction or partial state. NULL/negative limits and splitter behavior remain SQL/helper-dependent.",
+        "Final result: CONTAINER_ID,CONTAINER_TYPE,GROUP_POSITION ordered position; child spot rows are captured into a table, not directly exposed."
+      ],
+      "transaction_ownership": "Explicit BEGIN TRANSACTION and COMMIT around cart candidate selection and child assignments; no local TRY/CATCH, rollback or XACT_ABORT. Initial profile parsing and final result query are outside that local pair; ambient transactions remain possible.",
+      "concurrency": [
+        "Distinct is over the whole tuple, not container identity, so one container can consume multiple candidate spots when work attributes differ. TOP ties lack final identity order. Final read uses group and coded instruction type without warehouse. Explicit transaction/UPDLOCK exists, but no TRY/CATCH, XACT_ABORT, rollback or child-return check; an error can leave an open transaction or partial state. NULL/negative limits and splitter behavior remain SQL/helper-dependent.",
+        "Explicit BEGIN TRANSACTION and COMMIT around cart candidate selection and child assignments; no local TRY/CATCH, rollback or XACT_ABORT. Initial profile parsing and final result query are outside that local pair; ambient transactions remain possible."
+      ],
+      "trigger_behavior": "No direct persistent target; called procedures retain their own mutation/trigger contracts.",
+      "trigger_contract_refs": [],
+      "external_handoffs_and_gaps": [
+        "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+        "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+        "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+        "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/858798467.sql",
+          "sha256": "070e127faa07876c9f4535026a16cad1839790900a955839cab449ce9cc95027",
+          "line_start": 1,
+          "line_end": 87,
+          "kind": "REDACTED_SQL",
+          "description": "Complete retained body manually read; independent per-procedure notes and essential scalar equality/flag interpretations. Original hash and redaction parity checked.",
+          "source_definition_sha256": "e75e2b4c80d02eff37066b9a59771671e2d5f1757b18768c0367b11df64709bc"
+        }
+      ],
+      "evidence_refs": [
+        "work-config-858798467"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_NAMES",
+      "source_structure": {
+        "program": [
+          {
+            "line": 2,
+            "text": "CREATE PROCEDURE WRK_BuildCart("
+          },
+          {
+            "line": 3,
+            "text": "@workProfile nvarchar(25),"
+          },
+          {
+            "line": 4,
+            "text": "@warehouse nvarchar(25),"
+          },
+          {
+            "line": 5,
+            "text": "@groupNumber nvarchar(50),"
+          },
+          {
+            "line": 6,
+            "text": "@cartSpots integer,"
+          },
+          {
+            "line": 7,
+            "text": "@workprofileSequence numeric(5))"
+          },
+          {
+            "line": 8,
+            "text": "AS"
+          },
+          {
+            "line": 10,
+            "text": "BEGIN"
+          },
+          {
+            "line": 12,
+            "text": "Declare @workTypes nvarchar(2000)"
+          },
+          {
+            "line": 13,
+            "text": "Declare @temp_work_types TABLE (work_type nvarchar(100))"
+          },
+          {
+            "line": 15,
+            "text": "Select @workTypes = WORK_TYPES from WORK_PROFILE_DETAIL where WORK_PROFILE = @workProfile and SEQUENCE = @workprofileSequence"
+          },
+          {
+            "line": 17,
+            "text": "Insert into @temp_work_types"
+          },
+          {
+            "line": 18,
+            "text": "Select value from STRING_SPLIT(@workTypes, N'<literal:1>') ;"
+          },
+          {
+            "line": 20,
+            "text": "BEGIN TRANSACTION"
+          },
+          {
+            "line": 22,
+            "text": "Declare @temp_sc_table TABLE"
+          },
+          {
+            "line": 23,
+            "text": "(CONTAINER_ID nvarchar(25),"
+          },
+          {
+            "line": 24,
+            "text": "INTERNAL_CONTAINER_NUM numeric(9),"
+          },
+          {
+            "line": 25,
+            "text": "CONTAINER_TYPE nvarchar(25),"
+          },
+          {
+            "line": 26,
+            "text": "GROUP_POSITION numeric(9),"
+          },
+          {
+            "line": 27,
+            "text": "PRIORITY numeric(3),"
+          },
+          {
+            "line": 28,
+            "text": "MIN_WORK_ZONE_SEQ numeric(4),"
+          },
+          {
+            "line": 29,
+            "text": "MAX_WORK_ZONE_SEQ numeric(4),"
+          },
+          {
+            "line": 30,
+            "text": "AGING_DATE_TIME datetime"
+          },
+          {
+            "line": 31,
+            "text": ");"
+          },
+          {
+            "line": 36,
+            "text": "Insert into @temp_sc_table"
+          },
+          {
+            "line": 37,
+            "text": "(CONTAINER_ID, INTERNAL_CONTAINER_NUM, CONTAINER_TYPE, GROUP_POSITION, PRIORITY,"
+          },
+          {
+            "line": 38,
+            "text": "MIN_WORK_ZONE_SEQ, MAX_WORK_ZONE_SEQ, AGING_DATE_TIME)"
+          },
+          {
+            "line": 39,
+            "text": "select"
+          },
+          {
+            "line": 40,
+            "text": "DISTINCT TOP (@cartSpots) sc.CONTAINER_ID, sc.INTERNAL_CONTAINER_NUM, sc.CONTAINER_TYPE, sc.GROUP_POSITION,"
+          },
+          {
+            "line": 41,
+            "text": "detail.PRIORITY, header.MIN_WORK_ZONE_SEQ, header.MAX_WORK_ZONE_SEQ, detail.AGING_DATE_TIME"
+          },
+          {
+            "line": 42,
+            "text": "from WORK_INSTRUCTION detail"
+          },
+          {
+            "line": 43,
+            "text": "INNER JOIN WORK_INSTRUCTION header on detail.PARENT_INSTR = header.INTERNAL_INSTRUCTION_NUM"
+          },
+          {
+            "line": 44,
+            "text": "INNER JOIN SHIPPING_CONTAINER sc with (updlock) on sc.CONTAINER_ID = detail.TRANSPORT_CONT_ID"
+          },
+          {
+            "line": 45,
+            "text": "where"
+          },
+          {
+            "line": 46,
+            "text": "detail.INTERNAL_NUM_TYPE = N'<literal:2>' and detail.FROM_WHS = @warehouse"
+          },
+          {
+            "line": 47,
+            "text": "and header.MIN_WORK_ZONE_SEQ is not null and header.MAX_WORK_ZONE_SEQ is not null"
+          },
+          {
+            "line": 48,
+            "text": "and detail.GROUP_NUM is null and detail.HOLD_CODE is null"
+          },
+          {
+            "line": 49,
+            "text": "and (sc.GROUP_POSITION = 0 or sc.GROUP_POSITION is null)"
+          },
+          {
+            "line": 50,
+            "text": "and detail.WORK_TYPE in (select work_type from @temp_work_types)"
+          },
+          {
+            "line": 51,
+            "text": "ORDER BY detail.PRIORITY asc, header.MIN_WORK_ZONE_SEQ asc, header.MAX_WORK_ZONE_SEQ asc, detail.AGING_DATE_TIME asc"
+          },
+          {
+            "line": 53,
+            "text": "Declare @counter integer"
+          },
+          {
+            "line": 54,
+            "text": "Declare @counter_limit integer"
+          },
+          {
+            "line": 55,
+            "text": "Declare @container_id_temp nvarchar(25)"
+          },
+          {
+            "line": 56,
+            "text": "Declare @container_type_temp nvarchar(25)"
+          },
+          {
+            "line": 57,
+            "text": "Declare @internal_container_num_temp numeric(9)"
+          },
+          {
+            "line": 58,
+            "text": "Declare @spot_table_temp table (SPOT_ASSIGNED numeric(9,0))"
+          },
+          {
+            "line": 60,
+            "text": "Set @counter = 0"
+          },
+          {
+            "line": 61,
+            "text": "Select @counter_limit = Count(*) from @temp_sc_table"
+          },
+          {
+            "line": 63,
+            "text": "WHILE @counter < @counter_limit"
+          },
+          {
+            "line": 64,
+            "text": "BEGIN"
+          },
+          {
+            "line": 65,
+            "text": "select @container_id_temp = CONTAINER_ID, @internal_container_num_temp = INTERNAL_CONTAINER_NUM,"
+          },
+          {
+            "line": 66,
+            "text": "@container_type_temp = CONTAINER_TYPE"
+          },
+          {
+            "line": 67,
+            "text": "from @temp_sc_table"
+          },
+          {
+            "line": 68,
+            "text": "ORDER BY PRIORITY asc, MIN_WORK_ZONE_SEQ asc, MAX_WORK_ZONE_SEQ asc, AGING_DATE_TIME asc"
+          },
+          {
+            "line": 69,
+            "text": "OFFSET @counter ROWS FETCH FIRST 1 ROWS ONLY;"
+          },
+          {
+            "line": 71,
+            "text": "Set @counter = @counter + 1;"
+          },
+          {
+            "line": 76,
+            "text": "insert into @spot_table_temp exec WRK_UpdateWorkInstructionForCartPicking null, @container_id_temp, @workProfile, @groupNumber, @internal_container_num_temp, 0, 1, 0"
+          },
+          {
+            "line": 77,
+            "text": "END"
+          },
+          {
+            "line": 79,
+            "text": "COMMIT TRANSACTION"
+          },
+          {
+            "line": 81,
+            "text": "select DISTINCT sc.CONTAINER_ID, sc.CONTAINER_TYPE, sc.GROUP_POSITION"
+          },
+          {
+            "line": 82,
+            "text": "from SHIPPING_CONTAINER sc  inner join WORK_INSTRUCTION wi"
+          },
+          {
+            "line": 83,
+            "text": "on sc.CONTAINER_ID = wi.TRANSPORT_CONT_ID"
+          },
+          {
+            "line": 84,
+            "text": "where wi.GROUP_NUM = @groupNumber and wi.INSTRUCTION_TYPE = N'<literal:3>'"
+          },
+          {
+            "line": 85,
+            "text": "order by sc.GROUP_POSITION"
+          },
+          {
+            "line": 87,
+            "text": "END"
+          }
+        ],
+        "interpretation": "Inert exact retained SQL, not executable recovery instructions.",
+        "wildcard_column_catalog": []
+      },
+      "reviewed_literal_equality_groups": [
+        {
+          "ordinal": 1,
+          "original_line_start": 17,
+          "original_line_end": 17,
+          "sha256": "d03502c43d74a30b936740a9517dc4ea2b2ad7168caa0a774cefe793ce0b33e7",
+          "equality_group": 1,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 2,
+          "original_line_start": 45,
+          "original_line_end": 45,
+          "sha256": "dfee01bfef7242b7ff64d9ee9d4cca34c802e57f36a422a8a1ff01df78f9ba7a",
+          "equality_group": 2,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 3,
+          "original_line_start": 83,
+          "original_line_end": 83,
+          "sha256": "fb5f27d5457c464102286366ef3827b11923e7f3aa1faa7eea95249e36a39abf",
+          "equality_group": 3,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        }
+      ]
+    },
+    "evidence_sources": {
+      "work-config-858798467": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 858798467,
+        "qualified_name": "dbo.WRK_BuildCart",
+        "source_definition_sha256": "e75e2b4c80d02eff37066b9a59771671e2d5f1757b18768c0367b11df64709bc",
+        "reading_path": "DB Architecture/sql/858798467.sql",
+        "reading_sha256": "070e127faa07876c9f4535026a16cad1839790900a955839cab449ce9cc95027",
+        "line_spans": [
+          [
+            1,
+            87
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+      "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+      "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+      "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.WRK_BuildCart",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/858798467.sql",
+      "reading_sha256": "070e127faa07876c9f4535026a16cad1839790900a955839cab449ce9cc95027",
+      "source_definition_sha256": "e75e2b4c80d02eff37066b9a59771671e2d5f1757b18768c0367b11df64709bc",
+      "reading_lines": 87,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [
+      {
+        "module_id": 858798467,
+        "row_index": 889,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      }
+    ],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+    "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+    "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+    "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+  ]
+}

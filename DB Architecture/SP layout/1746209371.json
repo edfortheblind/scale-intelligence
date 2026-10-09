@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1746209371,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "TRAV_EX01_UpdateContainerDetails",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2023-05-02 18:45:58.607000",
+    "modify_date": "2023-05-02 18:45:58.607000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.TRAV_EX01_UpdateContainerDetails",
+    "domain_candidate": "shipping"
+  },
+  "source_definition_sha256": "cd9c76eb0f115e333dd88e997701969d07349b48af4a2067e58ba3ef8d11ed97",
+  "exact_sql_path": "1746209371.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 914,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1746209371,
+      "parameter_id": 1,
+      "name": "@Container_ID",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1746209371,
+      "parameter_id": 2,
+      "name": "@Container_Length",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1746209371,
+      "parameter_id": 3,
+      "name": "@Container_Width",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1746209371,
+      "parameter_id": 4,
+      "name": "@Container_Height",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1067866871,
+        "qualified_name": "dbo.SHIPPING_CONTAINER",
+        "layout_path": "../table layout/1067866871.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1746209371,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2238,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 123,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/123/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 123,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/123/effects/1",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "UPDATE",
+              "line": 24,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1067866871,
+        "qualified_name": "dbo.SHIPPING_CONTAINER",
+        "layout_path": "../table layout/1067866871.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1746209371,
+          "reading_lines": [
+            24
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1746209371,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SHIPPING_CONTAINER",
+      "referenced_id": 1067866871,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPPING_CONTAINER"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/123",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1746209371,
+      "qualified_name": "dbo.TRAV_EX01_UpdateContainerDetails",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "cd9c76eb0f115e333dd88e997701969d07349b48af4a2067e58ba3ef8d11ed97",
+      "purpose": "Replace dimensions and volume on all shipping containers with a supplied container ID.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE TRAV_EX01_UpdateContainerDetails ( @Container_ID NVARCHAR(25), @Container_Length NVARCHAR(25), @Container_Width NVARCHAR(25), @Container_Height NVARCHAR(25) ) AS",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 1746209371,
+          "parameter_id": 1,
+          "name": "@Container_ID",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 50,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1746209371,
+          "parameter_id": 2,
+          "name": "@Container_Length",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 50,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1746209371,
+          "parameter_id": 3,
+          "name": "@Container_Width",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 50,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 1746209371,
+          "parameter_id": 4,
+          "name": "@Container_Height",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 50,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "No explicit input validation; SQL equality and conversion rules apply. NULL equality does not match."
+      ],
+      "output_shape": [
+        "No explicit result set."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.SHIPPING_CONTAINER",
+          "object_id": 1067866871,
+          "evidence_refs": [
+            "ops-sql-1746209371"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.SHIPPING_CONTAINER",
+          "object_id": 1067866871,
+          "evidence_refs": [
+            "ops-sql-1746209371"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Converts each dimension string to numeric(19,5), multiplies into numeric(19,5) volume, then updates length, width, height, volume by CONTAINER_ID only. No warehouse, status, nonnegative, unit, or uniqueness guard. Invalid conversion or overflow can fail before/update assignment.",
+          "evidence_refs": [
+            "ops-sql-1746209371"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Converts each dimension string to numeric(19,5), multiplies into numeric(19,5) volume, then updates length, width, height, volume by CONTAINER_ID only. No warehouse, status, nonnegative, unit, or uniqueness guard. Invalid conversion or overflow can fail before/update assignment.",
+      "configuration_scope_and_precedence": [
+        "Converts each dimension string to numeric(19,5), multiplies into numeric(19,5) volume, then updates length, width, height, volume by CONTAINER_ID only. No warehouse, status, nonnegative, unit, or uniqueness guard. Invalid conversion or overflow can fail before/update assignment."
+      ],
+      "error_and_return_handling": [
+        "No explicit result set.",
+        "No explicit input validation; SQL equality and conversion rules apply. NULL equality does not match.",
+        "No explicit transaction or TRY/CATCH in this body; called routines and enabled triggers may have their own effects."
+      ],
+      "transaction_ownership": "No explicit transaction or TRY/CATCH in this body; called routines and enabled triggers may have their own effects.",
+      "concurrency": [
+        "Caller/session isolation and any explicit source locks govern reads. No explicit transaction or TRY/CATCH in this body; called routines and enabled triggers may have their own effects."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [
+        {
+          "object_id": 768057822,
+          "name": "ship_container_tree_unit_a_i",
+          "parent_class_desc": "OBJECT_OR_COLUMN",
+          "parent_id": 1067866871,
+          "type_desc": "SQL_TRIGGER",
+          "is_disabled": false,
+          "is_instead_of_trigger": false,
+          "is_not_for_replication": false
+        }
+      ],
+      "external_handoffs_and_gaps": [
+        "Static source review only; no routine, report, job, or external handoff was executed.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE TRAV_EX01_UpdateContainerDetails ( @Container_ID NVARCHAR(25), @Container_Length NVARCHAR(25), @Container_Width NVARCHAR(25), @Container_Height NVARCHAR(25) ) AS",
+        "program": [
+          {
+            "line": 8,
+            "text": "CREATE PROCEDURE TRAV_EX01_UpdateContainerDetails"
+          },
+          {
+            "line": 9,
+            "text": "("
+          },
+          {
+            "line": 10,
+            "text": "\t@Container_ID NVARCHAR(25),"
+          },
+          {
+            "line": 11,
+            "text": "\t@Container_Length NVARCHAR(25),"
+          },
+          {
+            "line": 12,
+            "text": "\t@Container_Width NVARCHAR(25),"
+          },
+          {
+            "line": 13,
+            "text": "\t@Container_Height NVARCHAR(25)"
+          },
+          {
+            "line": 14,
+            "text": ")"
+          },
+          {
+            "line": 16,
+            "text": "AS "
+          },
+          {
+            "line": 17,
+            "text": "BEGIN"
+          },
+          {
+            "line": 18,
+            "text": "\tSET NOCOUNT ON"
+          },
+          {
+            "line": 20,
+            "text": "\tDECLARE @Container_Volume NUMERIC(19,5);"
+          },
+          {
+            "line": 22,
+            "text": "\tSET @Container_Volume = CONVERT(NUMERIC(19,5),@Container_Length) * CONVERT(NUMERIC(19,5),@Container_Width) * CONVERT(NUMERIC(19,5),@Container_Height);"
+          },
+          {
+            "line": 24,
+            "text": "\tUPDATE SHIPPING_CONTAINER SET LENGTH = CONVERT(NUMERIC(19,5),@Container_Length), WIDTH = CONVERT(NUMERIC(19,5),@Container_Width), HEIGHT = CONVERT(NUMERIC(19,5),@Container_Height), VOLUME = @Container_Volume WHERE CONTAINER_ID = @Container_ID;"
+          },
+          {
+            "line": 27,
+            "text": "END"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1746209371.sql",
+          "sha256": "58fd0c2d01e5f2592b5a7dbaa3655a57721ba1b18ccf6b7460b153e14d555378",
+          "line_start": 1,
+          "line_end": 27,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "cd9c76eb0f115e333dd88e997701969d07349b48af4a2067e58ba3ef8d11ed97",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-1746209371"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-1746209371": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1746209371,
+        "qualified_name": "dbo.TRAV_EX01_UpdateContainerDetails",
+        "source_definition_sha256": "cd9c76eb0f115e333dd88e997701969d07349b48af4a2067e58ba3ef8d11ed97",
+        "reading_path": "DB Architecture/sql/1746209371.sql",
+        "reading_sha256": "58fd0c2d01e5f2592b5a7dbaa3655a57721ba1b18ccf6b7460b153e14d555378",
+        "line_spans": [
+          [
+            1,
+            27
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.TRAV_EX01_UpdateContainerDetails",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1746209371.sql",
+      "reading_sha256": "58fd0c2d01e5f2592b5a7dbaa3655a57721ba1b18ccf6b7460b153e14d555378",
+      "source_definition_sha256": "cd9c76eb0f115e333dd88e997701969d07349b48af4a2067e58ba3ef8d11ed97",
+      "reading_lines": 27,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

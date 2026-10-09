@@ -1,0 +1,406 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 965226839,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "MetaTrans_GetShipmentForCreateReceipt",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:51.710000",
+    "modify_date": "2026-08-16 06:59:51.710000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.MetaTrans_GetShipmentForCreateReceipt",
+    "domain_candidate": "receiving"
+  },
+  "source_definition_sha256": "a4a14c9730dbadcfe47a0eb56665e1f312bce2a302b88342605930075523e95e",
+  "exact_sql_path": "965226839.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 1709,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 965226839,
+      "parameter_id": 1,
+      "name": "@internalShipmentNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 965226839,
+      "parameter_id": 2,
+      "name": "@culture",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 20,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(10)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 965226839,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1005,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/presentation-selection.json",
+              "batch_sha256": "babda534889f1448f0176400406b0f7ee924f2abdd96c2cfe263d38d1b70ac72",
+              "contract_index": 20,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/20/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 40,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1401772051,
+        "qualified_name": "dbo.CARRIER",
+        "layout_path": "../table layout/1401772051.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 965226839,
+          "reading_lines": [
+            19
+          ]
+        }
+      },
+      {
+        "table_id": 1401772051,
+        "qualified_name": "dbo.CARRIER",
+        "layout_path": "../table layout/1401772051.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 965226839,
+          "mentions": [
+            {
+              "original_line": 18,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 965226839,
+          "reading_lines": [
+            21
+          ]
+        }
+      },
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 965226839,
+          "mentions": [
+            {
+              "original_line": 20,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 965226839,
+          "reading_lines": [
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            40,
+            41
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 965226839,
+          "reading_lines": [
+            22
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 965226839,
+          "mentions": [
+            {
+              "original_line": 21,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 965226839,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SHIPMENT_HEADER",
+      "referenced_id": 683865503,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_HEADER"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/presentation-selection.json",
+    "source_sha256": "babda534889f1448f0176400406b0f7ee924f2abdd96c2cfe263d38d1b70ac72",
+    "json_pointer": "/semantic_contracts/20",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PEER_SCOPE_RECORDED_SEPARATELY",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 965226839,
+      "qualified_name": "dbo.MetaTrans_GetShipmentForCreateReceipt",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Complete captured body structure and visible numeric controls; opaque selector labels, callers and operational acceptance remain bounded gaps.",
+      "source_definition_sha256": "a4a14c9730dbadcfe47a0eb56665e1f312bce2a302b88342605930075523e95e",
+      "purpose": "Select shipment header context for create-receipt presentation.",
+      "inputs_defaults": [
+        "Captured declaration (string defaults remain opaque): CREATE PROCEDURE MetaTrans_GetShipmentForCreateReceipt( @internalShipmentNum numeric(9), @culture nvarchar(10)) AS"
+      ],
+      "null_and_invalid_input_behavior": [
+        "NULL or missing identifier yields no row. No user/company-authorization or shipment-status predicate is present."
+      ],
+      "output_shape": [
+        "Shipment identity, carrier/service, company/warehouse, dates and ship-to contact/address fields."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "SHIPMENT_HEADER",
+          "object_id": 683865503,
+          "evidence_refs": [
+            "ps-sql-965226839"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Select SHIPMENT_HEADER by INTERNAL_SHIPMENT_NUM. Culture is unused; no receipt is created.",
+          "evidence_refs": [
+            "ps-sql-965226839"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "No persistent status or quantity mutation occurs in this body.",
+      "configuration_scope_and_precedence": [
+        "The supplied selectors govern this body. No separate effective setting or cross-layer precedence is established; configuration values were not queried."
+      ],
+      "error_and_return_handling": [
+        "No custom TRY/CATCH, THROW or failure return is implemented. SQL conversion, constraint and dependency failures propagate to the caller."
+      ],
+      "transaction_ownership": "No explicit BEGIN/COMMIT/ROLLBACK transaction, savepoint, TRY/CATCH or XACT_ABORT is introduced. Caller/session transaction semantics govern effects.",
+      "concurrency": [
+        "Caller/session isolation governs read consistency. No explicit locking protocol or snapshot is established by this body."
+      ],
+      "trigger_behavior": "Read-only body; no DML trigger is directly activated.",
+      "external_handoffs_and_gaps": [
+        "Application call binding, permissions, active deployment, complete process duration and downstream behavior are not established by this static contract."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/965226839.sql",
+          "sha256": "d24436e1be732a34a25c9899c20c246735790da208d21058a708445113b1a5e0",
+          "line_start": 1,
+          "line_end": 41,
+          "kind": "REDACTED_SQL",
+          "description": "Complete retained body structure reviewed; original fingerprint verified; redacted string selectors remain opaque.",
+          "source_definition_sha256": "a4a14c9730dbadcfe47a0eb56665e1f312bce2a302b88342605930075523e95e"
+        }
+      ],
+      "evidence_refs": [
+        "ps-sql-965226839"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ps-sql-965226839": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 965226839,
+        "qualified_name": "dbo.MetaTrans_GetShipmentForCreateReceipt",
+        "source_definition_sha256": "a4a14c9730dbadcfe47a0eb56665e1f312bce2a302b88342605930075523e95e",
+        "reading_path": "DB Architecture/sql/965226839.sql",
+        "reading_sha256": "d24436e1be732a34a25c9899c20c246735790da208d21058a708445113b1a5e0",
+        "line_spans": [
+          [
+            1,
+            41
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "No SQL execution, connection, operational row acquisition or original-source publication.",
+      "Culture use is described per body; literal aliases and selector labels remain opaque.",
+      "Body review does not establish current UI binding, authentication, business-action completion or production acceptance."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.MetaTrans_GetShipmentForCreateReceipt",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/965226839.sql",
+      "reading_sha256": "d24436e1be732a34a25c9899c20c246735790da208d21058a708445113b1a5e0",
+      "source_definition_sha256": "a4a14c9730dbadcfe47a0eb56665e1f312bce2a302b88342605930075523e95e",
+      "reading_lines": 41,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "No SQL execution, connection, operational row acquisition or original-source publication.",
+    "Culture use is described per body; literal aliases and selector labels remain opaque.",
+    "Body review does not establish current UI binding, authentication, business-action completion or production acceptance."
+  ]
+}

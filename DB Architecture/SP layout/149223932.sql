@@ -1,0 +1,104 @@
+/*
+	Task	| By	| Date		| Modification Description
+	--------------------------------------------------------------------
+	204237	| MMM	| 07/04/17	| Created
+	224179	| SO	| 05/11/2018| Modified to pass current utc date for datetimestamp.
+    
+*/
+
+CREATE PROCEDURE LBR_MonitorLaborUsersChartData
+	@filterCriteria NVARCHAR(MAX),
+	@culture NVARCHAR(10) 
+AS
+
+	SET NOCOUNT ON
+
+	DECLARE @warehouse as nVarchar(50);
+	DECLARE @laborGroup as nVarchar(25);
+	DECLARE @workType as nVarchar(25);
+
+	DECLARE @criteriaTempTable TABLE (filterName nVarchar(300), filterValue nVarchar(300));
+    
+	INSERT INTO @criteriaTempTable SELECT * FROM fn_GetMonitorFilterParameters(@filterCriteria)
+   
+	SELECT @warehouse = filterValue from @criteriaTempTable WHERE filterName = N'warehouse'
+	SELECT @laborGroup = filterValue from @criteriaTempTable WHERE filterName = N'labor_group'
+	SELECT @workType = filterValue from @criteriaTempTable WHERE filterName = N'work_type'
+	DECLARE @Unassign NVARCHAR(2000);
+	SET @Unassign=  dbo.RSCMfn_RtrvResource(N'UNASSIGNED',N'text',@culture)
+
+	/* CHART START  COLUMN1 - Estimated time VS Users(Assigned/Unassigned to Open or In Process work instructions) */ 
+	SELECT 
+		N'CHARTDATA_DATASOURCE' AS CHARTDATA_DATASOURCE, 
+		CATEGORY = CASE WHEN  WI.USER_ASSIGNED IS NULL THEN @Unassign ELSE  WI.USER_ASSIGNED END,
+		SUM(COALESCE(WI.ESTIMATED_TIME, 0)) as DATA,
+		DESCRIPTION = CASE WHEN  WI.USER_ASSIGNED IS NULL THEN @Unassign ELSE WI.USER_ASSIGNED END,
+		N'USERNAME' AS XAXISTITLE, 
+		N'ESTIMATEDTIME' AS YAXISTITLE, 
+		-1 AS NextDrillDownLevel, 
+		N'ESTIMATEDTIMEBYUSER' AS CHARTTITLE
+	FROM LABOR_GROUP LG 
+		LEFT OUTER JOIN WORK_TYPE WT ON LG.OBJECT_ID = WT.LABOR_GROUP_ID
+		LEFT OUTER JOIN WORK_INSTRUCTION WI ON WI.WORK_TYPE = WT.WORK_TYPE AND WI.INSTRUCTION_TYPE = N'Header'
+	WHERE 
+		LG.LABOR_GROUP = @laborGroup
+		AND WT.WORK_TYPE = @workType
+		AND WI.INTERNAL_INSTRUCTION_NUM IS NOT NULL 
+		AND (WI.FROM_WHS = @warehouse OR WI.TO_WHS = @warehouse)
+		AND WI.CONDITION <> N'Closed'
+	GROUP BY WI.USER_ASSIGNED
+	ORDER BY DATA DESC;
+	/* CHART END  COLUMN1*/ 
+
+
+	/* SUMMARY TILES START */
+
+	/* TILE 1 - Sum of estimated time for Open or In process work */
+	SELECT 
+		TOP 1 N'SUMMARYTILE_TOTAL_ESTIMATEDTIME' AS SUMMARYTILE_TOTAL_ESTIMATEDTIME,
+		SUM(COALESCE(WI.ESTIMATED_TIME, 0)) AS TOTAL_ESTIMATEDTIME 
+	FROM LABOR_GROUP LG 
+		LEFT OUTER JOIN WORK_TYPE WT ON LG.OBJECT_ID = WT.LABOR_GROUP_ID
+		LEFT OUTER JOIN WORK_INSTRUCTION WI ON WI.WORK_TYPE = WT.WORK_TYPE AND WI.INSTRUCTION_TYPE = N'Header'
+	WHERE 
+		LG.LABOR_GROUP = @laborGroup
+		AND WT.WORK_TYPE = @workType
+		AND WI.INTERNAL_INSTRUCTION_NUM IS NOT NULL 
+		AND (WI.FROM_WHS = @warehouse OR WI.TO_WHS = @warehouse)
+		AND WI.CONDITION <> N'Closed';
+
+	/* TILE 2 - Count of work units closed in last 1 hour */
+	SELECT 
+		TOP 1 N'SUMMARYTILE_WORK_LASTHOUR' AS SUMMARYTILE_WORK_LASTHOUR,
+		COUNT(WIV.INTERNAL_INSTRUCTION_NUM) AS WORK_LASTHOUR
+	FROM LABOR_GROUP LG 
+		LEFT OUTER JOIN WORK_TYPE WT ON LG.OBJECT_ID = WT.LABOR_GROUP_ID
+		LEFT OUTER JOIN WORK_INSTRUCTION_VIEW WIV ON WIV.WORK_TYPE = WT.WORK_TYPE
+	WHERE 
+		LG.LABOR_GROUP = @laborGroup
+		AND WIV.WORK_TYPE = @workType
+		AND WIV.INTERNAL_INSTRUCTION_NUM IS NOT NULL
+		AND WIV.END_DATE_TIME > DATEADD(HOUR, -1, GETUTCDATE())
+		AND WIV.INSTRUCTION_TYPE = N'Header'
+		AND (WIV.FROM_WHS = @warehouse OR WIV.TO_WHS = @warehouse)
+		AND WIV.CONDITION = N'Closed';
+
+
+	/* TILE 3 - Count of distinct users who closed work in last 1 hour */
+
+	SELECT 
+		TOP 1 N'SUMMARYTILE_USERS_LASTHOUR' AS SUMMARYTILE_USERS_LASTHOUR,
+		COUNT(DISTINCT WIV.COMPLETED_BY_USER) AS USERS_LASTHOUR
+	FROM LABOR_GROUP LG 
+		LEFT OUTER JOIN WORK_TYPE WT ON LG.OBJECT_ID = WT.LABOR_GROUP_ID
+		LEFT OUTER JOIN WORK_INSTRUCTION_VIEW WIV ON WIV.WORK_TYPE = WT.WORK_TYPE
+	WHERE  
+		LG.LABOR_GROUP = @laborGroup
+		AND WIV.WORK_TYPE = @workType
+		AND WIV.INTERNAL_INSTRUCTION_NUM IS NOT NULL
+		AND WIV.END_DATE_TIME > DATEADD(HOUR, -1, GETUTCDATE())
+		AND WIV.INSTRUCTION_TYPE = N'Header'
+		AND (WIV.FROM_WHS = @warehouse OR WIV.TO_WHS = @warehouse)
+		AND WIV.CONDITION = N'Closed';
+
+	/* SUMMARY TILES END */

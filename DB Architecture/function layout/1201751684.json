@@ -1,0 +1,260 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1201751684,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "SCI_DST_CONVERT_WHSE",
+    "type": "FN",
+    "type_desc": "SQL_SCALAR_FUNCTION",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:56.313000",
+    "modify_date": "2026-08-16 06:59:56.313000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.SCI_DST_CONVERT_WHSE",
+    "domain_candidate": "utilities"
+  },
+  "source_definition_sha256": "c8a2f1cad1e03c35b06cbc848a42f1c1cbc3b269bf6e4cf2e4fd4deeb1454d11",
+  "exact_sql_path": "1201751684.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 514,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1201751684,
+      "parameter_id": 1,
+      "name": "@from_date",
+      "type_schema": "sys",
+      "type_name": "datetime",
+      "max_length": 8,
+      "precision": 23,
+      "scale": 3,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "datetime"
+    },
+    {
+      "object_id": 1201751684,
+      "parameter_id": 2,
+      "name": "@whse",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 200,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(100)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "SCALAR",
+    "scalar_parameters": [
+      {
+        "object_id": 1201751684,
+        "parameter_id": 0,
+        "name": "",
+        "type_schema": "sys",
+        "type_name": "datetime",
+        "max_length": 8,
+        "precision": 23,
+        "scale": 3,
+        "is_output": true,
+        "is_readonly": false,
+        "has_default_value": false,
+        "declared_type": "datetime"
+      }
+    ],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1800393483,
+        "qualified_name": "dbo.ZONE",
+        "layout_path": "../table layout/1800393483.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1201751684,
+          "reading_lines": [
+            20
+          ]
+        }
+      },
+      {
+        "table_id": 1800393483,
+        "qualified_name": "dbo.ZONE",
+        "layout_path": "../table layout/1800393483.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1201751684,
+          "module_type": "FN",
+          "source_line": 15,
+          "source_start_offset": 200,
+          "source_end_offset": 204,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1800393483,
+          "table_qualified_name": "dbo.ZONE",
+          "source_definition_sha256": "c8a2f1cad1e03c35b06cbc848a42f1c1cbc3b269bf6e4cf2e4fd4deeb1454d11",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/function-semantics.json",
+    "source_sha256": "ff744aa20dbd12ac2949170f59df29201e5e4f72f520388aed0403f9fef6ce91",
+    "json_pointer": "/semantic_contracts/15",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_INDEPENDENT_REVIEW_PENDING",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1201751684,
+      "qualified_name": "dbo.SCI_DST_CONVERT_WHSE",
+      "object_type": "FN",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Body-level static contract; transitive application and called-module completeness are separate.",
+      "source_definition_sha256": "c8a2f1cad1e03c35b06cbc848a42f1c1cbc3b269bf6e4cf2e4fd4deeb1454d11",
+      "purpose": "Convert assumed UTC time using an argument that is itself a timezone name.",
+      "inputs_defaults": [
+        "from_date datetime, whse nvarchar(100); no defaults."
+      ],
+      "null_and_invalid_input_behavior": [
+        "NULL/invalid timezone argument has no fallback and can error. A warehouse identifier is accepted only if it is also a valid timezone name; no mapping is performed."
+      ],
+      "output_shape": [
+        "datetime local wall-clock value."
+      ],
+      "effects": [],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Apply AT TIME ZONE coded UTC, then AT TIME ZONE the whse argument directly; no WAREHOUSE lookup.",
+          "evidence_refs": [
+            "fn-batch-1201751684"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "No persistent status, inventory quantity or permissions mutation; output is the stated scalar or returned table.",
+      "configuration_scope_and_precedence": [
+        "Argument naming does not establish warehouse resolution; source UTC token verified by guarded original review."
+      ],
+      "error_and_return_handling": [
+        "No explicit exception handler or application error code; conversion, arithmetic and called-function errors propagate."
+      ],
+      "transaction_ownership": "No explicit transaction, commit, rollback, savepoint, TRY/CATCH or XACT_ABORT is introduced by this body; caller/session semantics remain authoritative.",
+      "concurrency": [
+        "No persistent mutation or lock protocol; reads, if any, follow caller/session isolation. Function result is not evidence of caller authorization or process execution."
+      ],
+      "trigger_behavior": "No persistent DML or DML trigger activation in this body.",
+      "external_handoffs_and_gaps": [
+        "Application caller, effective values and operational use remain unobserved."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1201751684.sql",
+          "sha256": "4a9d907fcc88d07d9957fe9b24c53a23ac34f75e4fc63b9c5dd2d029f0f28d06",
+          "line_start": 1,
+          "line_end": 29,
+          "kind": "REDACTED_SQL",
+          "description": "Complete module body reviewed with original-definition fingerprint.",
+          "source_definition_sha256": "c8a2f1cad1e03c35b06cbc848a42f1c1cbc3b269bf6e4cf2e4fd4deeb1454d11"
+        }
+      ],
+      "evidence_refs": [
+        "fn-batch-1201751684"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "fn-batch-1201751684": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1201751684,
+        "qualified_name": "dbo.SCI_DST_CONVERT_WHSE",
+        "source_definition_sha256": "c8a2f1cad1e03c35b06cbc848a42f1c1cbc3b269bf6e4cf2e4fd4deeb1454d11",
+        "reading_path": "DB Architecture/sql/1201751684.sql",
+        "reading_sha256": "4a9d907fcc88d07d9957fe9b24c53a23ac34f75e4fc63b9c5dd2d029f0f28d06",
+        "line_spans": [
+          [
+            1,
+            29
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "Full structural body review and guarded original literal categories/fingerprints; arbitrary private message/URI/namespace/code-label strings remain withheld.",
+      "No persistent DML in these function bodies; returned-table writes are local output construction. This does not prove caller authorization, workflow correctness or current data.",
+      "Function declared defaults are distinct from explicit NULL; SQL function DEFAULT invocation requirements remain applicable.",
+      "Static possible paths are not reproduced defects. No DB connections, function calls, operational rows or archive records were accessed. Prefixes do not establish ownership."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.SCI_DST_CONVERT_WHSE",
+      "object_type": "FN",
+      "reading_path": "DB Architecture/sql/1201751684.sql",
+      "reading_sha256": "4a9d907fcc88d07d9957fe9b24c53a23ac34f75e4fc63b9c5dd2d029f0f28d06",
+      "source_definition_sha256": "c8a2f1cad1e03c35b06cbc848a42f1c1cbc3b269bf6e4cf2e4fd4deeb1454d11",
+      "reading_lines": 29,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "Full structural body review and guarded original literal categories/fingerprints; arbitrary private message/URI/namespace/code-label strings remain withheld.",
+    "No persistent DML in these function bodies; returned-table writes are local output construction. This does not prove caller authorization, workflow correctness or current data.",
+    "Function declared defaults are distinct from explicit NULL; SQL function DEFAULT invocation requirements remain applicable.",
+    "Static possible paths are not reproduced defects. No DB connections, function calls, operational rows or archive records were accessed. Prefixes do not establish ownership."
+  ]
+}

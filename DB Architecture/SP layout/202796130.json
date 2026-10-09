@@ -1,0 +1,2092 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 202796130,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "wm_RUDownloadItem01",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 07:00:07.253000",
+    "modify_date": "2026-08-16 07:00:07.253000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.wm_RUDownloadItem01",
+    "domain_candidate": "shipping"
+  },
+  "source_definition_sha256": "0481d364c1d5dfa9f69c2f5210e91dd7be58f4dbd87e9a84c31080762a5dd2ba",
+  "exact_sql_path": "202796130.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 857,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 202796130,
+      "parameter_id": 1,
+      "name": "@ProcessStamp",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 200,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(100)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 886294217,
+        "qualified_name": "dbo.DOWNLOAD_ITEM",
+        "layout_path": "../table layout/886294217.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 202796130,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 211,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/warehouse-access-contracts.json",
+              "batch_sha256": "f490f39f3145200b8dc939198a9fb024bbfe08fad3e8e748deab57ed570b415c",
+              "contract_index": 202,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/202/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_OR_REVIEWED_DYNAMIC_BODY; NOT_TRANSITIVE"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/warehouse-access-contracts.json",
+              "batch_sha256": "f490f39f3145200b8dc939198a9fb024bbfe08fad3e8e748deab57ed570b415c",
+              "contract_index": 202,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/202/effects/1",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_OR_REVIEWED_DYNAMIC_BODY; NOT_TRANSITIVE"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "UPDATE",
+              "line": 18,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 22,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 26,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 886294217,
+        "qualified_name": "dbo.DOWNLOAD_ITEM",
+        "layout_path": "../table layout/886294217.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 202796130,
+          "reading_lines": [
+            18,
+            22,
+            26
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 202796130,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "DOWNLOAD_ITEM",
+      "referenced_id": 886294217,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.DOWNLOAD_ITEM"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/warehouse-access-contracts.json",
+    "source_sha256": "f490f39f3145200b8dc939198a9fb024bbfe08fad3e8e748deab57ed570b415c",
+    "json_pointer": "/semantic_contracts/202",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 202796130,
+      "qualified_name": "dbo.wm_RUDownloadItem01",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Complete captured body and essential private literal/dynamic meanings; caller and live execution are separate.",
+      "source_definition_sha256": "0481d364c1d5dfa9f69c2f5210e91dd7be58f4dbd87e9a84c31080762a5dd2ba",
+      "purpose": "Claim every ready-or-NULL DOWNLOAD_ITEM row by setting in-process condition and caller process stamp, then return a marker column plus rows for that stamp excluding a fixed condition.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE wm_RUDownloadItem01 @ProcessStamp nvarchar(100) AS",
+        "Only explicit = defaults in this declaration may be omitted. Catalog has_default_value alone is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "name": "@ProcessStamp",
+          "type": "nvarchar(100)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "Parameters without a declaration default must be supplied; this is distinct from accepting explicit NULL. Ordinary =, <>, <, > and LIKE comparisons with NULL are UNKNOWN. Explicit IS NULL, ISNULL, CASE and branch differences are preserved in the authored behavior and exact source.",
+        "Unmodified caller values, including NULLs, pass into the listed assignments. Type conversion and target constraints can reject them; only explicitly reviewed fallback/validation branches change that rule.",
+        "Claim every ready-or-NULL DOWNLOAD_ITEM row by setting in-process condition and caller process stamp, then return a marker column plus rows for that stamp excluding a fixed condition. There is no batch limit or separate transaction; reused stamps can return previously claimed rows, and NULL stamp can claim rows that its subsequent equality cannot return."
+      ],
+      "output_shape": [
+        "The body intentionally returns 1 row result set(s) on its normal branch. Branch-specific SELECT projections and exact predicates/order are retained in source_structure; variable-assignment SELECTs and subqueries are not additional rowsets.",
+        "Wildcard projections expand the selected table or alias in captured column_id order. wildcard_column_catalog records that schema order; joined SELECT * follows the table order in source_structure. Branch tables can have different shapes."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "DOWNLOAD_ITEM",
+          "object_id": 886294217,
+          "evidence_refs": [
+            "wh-access-202796130"
+          ],
+          "scope": "DIRECT_BODY_OR_REVIEWED_DYNAMIC_BODY; NOT_TRANSITIVE",
+          "read_scope": "SELECT or explicit FROM predicate scan; direct write targets may also be scanned without a separate READS entry"
+        },
+        {
+          "relationship": "WRITES",
+          "object": "DOWNLOAD_ITEM",
+          "object_id": 886294217,
+          "evidence_refs": [
+            "wh-access-202796130"
+          ],
+          "scope": "DIRECT_BODY_OR_REVIEWED_DYNAMIC_BODY; NOT_TRANSITIVE",
+          "read_scope": null
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Claim every ready-or-NULL DOWNLOAD_ITEM row by setting in-process condition and caller process stamp, then return a marker column plus rows for that stamp excluding a fixed condition. There is no batch limit or separate transaction; reused stamps can return previously claimed rows, and NULL stamp can claim rows that its subsequent equality cannot return.",
+          "evidence_refs": [
+            "wh-access-202796130"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Private conditions: claim ready or NULL rows as in process; output excludes processed rows. The leading unnamed literal is an item-download record marker. Its raw spelling is not part of this explanation.",
+          "evidence_refs": [
+            "wh-access-202796130"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Direct mutation targets and exact assigned quantity/status fields are retained in source_structure; this is not a claim that a complete warehouse operation ran.",
+      "configuration_scope_and_precedence": [
+        "Claim every ready-or-NULL DOWNLOAD_ITEM row by setting in-process condition and caller process stamp, then return a marker column plus rows for that stamp excluding a fixed condition. There is no batch limit or separate transaction; reused stamps can return previously claimed rows, and NULL stamp can claim rows that its subsequent equality cannot return.",
+        "Private conditions: claim ready or NULL rows as in process; output excludes processed rows. The leading unnamed literal is an item-download record marker. Its raw spelling is not part of this explanation."
+      ],
+      "error_and_return_handling": [
+        "No explicit TRY/CATCH, THROW, RAISERROR, compensating rollback or custom failure code appears. SQL conversion, constraint, permission, missing dependency and dynamic syntax errors can propagate. A zero-row mutation is not explicitly raised as an error."
+      ],
+      "transaction_ownership": "No explicit BEGIN/COMMIT/ROLLBACK transaction, savepoint or XACT_ABORT appears. Each statement and its triggers participates in caller/session transaction rules; multiple statements are not made atomic by this procedure.",
+      "concurrency": [
+        "No explicit lock-based claim protocol, serialization, optimistic version predicate or overall transaction appears in this body. Result rows and separate lookups can change between statements; uniqueness and other database constraints remain independent."
+      ],
+      "trigger_behavior": "No relevant captured DML trigger event is established for this body's direct operation. Read-only statements do not themselves fire DML triggers; foreign-key actions and transitive function/caller behavior are separate.",
+      "trigger_contract_bindings": [],
+      "external_handoffs_and_gaps": [
+        "No service handoff or child procedure call is present in the reviewed body. Installed caller behavior, permissions and effective settings are separate."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE wm_RUDownloadItem01 @ProcessStamp nvarchar(100) AS",
+        "program": [
+          {
+            "line": 14,
+            "text": "CREATE PROCEDURE wm_RUDownloadItem01"
+          },
+          {
+            "line": 15,
+            "text": "@ProcessStamp nvarchar(100)"
+          },
+          {
+            "line": 16,
+            "text": "AS"
+          },
+          {
+            "line": 18,
+            "text": "UPDATE DOWNLOAD_ITEM"
+          },
+          {
+            "line": 19,
+            "text": "SET INTERFACE_CONDITION = N'<literal:1>', PROCESS_STAMP = @ProcessStamp"
+          },
+          {
+            "line": 20,
+            "text": "WHERE INTERFACE_RECORD_ID IN ("
+          },
+          {
+            "line": 21,
+            "text": "SELECT INTERFACE_RECORD_ID"
+          },
+          {
+            "line": 22,
+            "text": "FROM DOWNLOAD_ITEM"
+          },
+          {
+            "line": 23,
+            "text": "WHERE INTERFACE_CONDITION = N'<literal:2>' OR INTERFACE_CONDITION IS NULL);"
+          },
+          {
+            "line": 25,
+            "text": "SELECT N'<literal:3>', *"
+          },
+          {
+            "line": 26,
+            "text": "FROM DOWNLOAD_ITEM"
+          },
+          {
+            "line": 27,
+            "text": "WHERE PROCESS_STAMP = @ProcessStamp"
+          },
+          {
+            "line": 28,
+            "text": "AND INTERFACE_CONDITION <> N'<literal:4>';"
+          }
+        ],
+        "note": "Exact inert retained syntax, preserving projection order, aliases, predicates, UNION/ALL, TOP/ROWCOUNT, DML column/value mappings and OUTPUT assignments. Literal placeholders refer to authored private-review meanings, never executable values."
+      },
+      "source_select_projections": [
+        "INTERFACE_RECORD_ID",
+        "N'<literal:3>', *"
+      ],
+      "dynamic_result_projections": [],
+      "wildcard_column_catalog": {
+        "DOWNLOAD_ITEM": [
+          {
+            "column_id": 1,
+            "name": "INTERFACE_RECORD_ID",
+            "type_name": "nvarchar",
+            "is_nullable": false
+          },
+          {
+            "column_id": 2,
+            "name": "INTERFACE_ACTION_CODE",
+            "type_name": "nvarchar",
+            "is_nullable": false
+          },
+          {
+            "column_id": 3,
+            "name": "INTERFACE_CONDITION",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 4,
+            "name": "INTERFACE_ERROR",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 5,
+            "name": "ALLOCATION_RULE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 6,
+            "name": "CATCH_WEIGHT_REQD",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 7,
+            "name": "COMPANY",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 8,
+            "name": "COST",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 9,
+            "name": "COUNTRY_OF_ORIGIN",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 10,
+            "name": "DEPARTMENT",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 11,
+            "name": "DESCRIPTION",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 12,
+            "name": "DIVISION",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 13,
+            "name": "HARMONIZED_CODE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 14,
+            "name": "INVENTORY_TRACKING",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 15,
+            "name": "ITEM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 16,
+            "name": "ITEM_CLASS",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 17,
+            "name": "ITEM_COLOR",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 18,
+            "name": "ITEM_SIZE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 19,
+            "name": "ITEM_STYLE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 20,
+            "name": "ITEM_TEMPLATE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 21,
+            "name": "LIST_PRICE",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 22,
+            "name": "LOCATING_RULE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 23,
+            "name": "LOT_CONTROLLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 24,
+            "name": "NET_COST",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 25,
+            "name": "NET_PRICE",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 26,
+            "name": "NMFC_CODE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 27,
+            "name": "PREFERENCE_CRIT",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 28,
+            "name": "PRODUCER",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 29,
+            "name": "STORAGE_TEMPLATE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 30,
+            "name": "CONVERSION_QTY_1",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 31,
+            "name": "CONVERSION_QTY_2",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 32,
+            "name": "CONVERSION_QTY_3",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 33,
+            "name": "CONVERSION_QTY_4",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 34,
+            "name": "CONVERSION_QTY_5",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 35,
+            "name": "CONVERSION_QTY_6",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 36,
+            "name": "CONVERSION_QTY_7",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 37,
+            "name": "CONVERSION_QTY_8",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 38,
+            "name": "CONVERSION_QTY_9",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 39,
+            "name": "CONVERSION_QTY_10",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 40,
+            "name": "DIMENSION_UM_1",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 41,
+            "name": "DIMENSION_UM_2",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 42,
+            "name": "DIMENSION_UM_3",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 43,
+            "name": "DIMENSION_UM_4",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 44,
+            "name": "DIMENSION_UM_5",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 45,
+            "name": "DIMENSION_UM_6",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 46,
+            "name": "DIMENSION_UM_7",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 47,
+            "name": "DIMENSION_UM_8",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 48,
+            "name": "DIMENSION_UM_9",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 49,
+            "name": "DIMENSION_UM_10",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 50,
+            "name": "HEIGHT_1",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 51,
+            "name": "HEIGHT_2",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 52,
+            "name": "HEIGHT_3",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 53,
+            "name": "HEIGHT_4",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 54,
+            "name": "HEIGHT_5",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 55,
+            "name": "HEIGHT_6",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 56,
+            "name": "HEIGHT_7",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 57,
+            "name": "HEIGHT_8",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 58,
+            "name": "HEIGHT_9",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 59,
+            "name": "HEIGHT_10",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 60,
+            "name": "LENGTH_1",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 61,
+            "name": "LENGTH_2",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 62,
+            "name": "LENGTH_3",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 63,
+            "name": "LENGTH_4",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 64,
+            "name": "LENGTH_5",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 65,
+            "name": "LENGTH_6",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 66,
+            "name": "LENGTH_7",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 67,
+            "name": "LENGTH_8",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 68,
+            "name": "LENGTH_9",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 69,
+            "name": "LENGTH_10",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 70,
+            "name": "MOVEMENT_CLS_1",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 71,
+            "name": "MOVEMENT_CLS_2",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 72,
+            "name": "MOVEMENT_CLS_3",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 73,
+            "name": "MOVEMENT_CLS_4",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 74,
+            "name": "MOVEMENT_CLS_5",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 75,
+            "name": "MOVEMENT_CLS_6",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 76,
+            "name": "MOVEMENT_CLS_7",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 77,
+            "name": "MOVEMENT_CLS_8",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 78,
+            "name": "MOVEMENT_CLS_9",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 79,
+            "name": "MOVEMENT_CLS_10",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 80,
+            "name": "QUANTITY_UM_1",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 81,
+            "name": "QUANTITY_UM_2",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 82,
+            "name": "QUANTITY_UM_3",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 83,
+            "name": "QUANTITY_UM_4",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 84,
+            "name": "QUANTITY_UM_5",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 85,
+            "name": "QUANTITY_UM_6",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 86,
+            "name": "QUANTITY_UM_7",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 87,
+            "name": "QUANTITY_UM_8",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 88,
+            "name": "QUANTITY_UM_9",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 89,
+            "name": "QUANTITY_UM_10",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 90,
+            "name": "SEQUENCE_1",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 91,
+            "name": "SEQUENCE_2",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 92,
+            "name": "SEQUENCE_3",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 93,
+            "name": "SEQUENCE_4",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 94,
+            "name": "SEQUENCE_5",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 95,
+            "name": "SEQUENCE_6",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 96,
+            "name": "SEQUENCE_7",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 97,
+            "name": "SEQUENCE_8",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 98,
+            "name": "SEQUENCE_9",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 99,
+            "name": "SEQUENCE_10",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 100,
+            "name": "TREAT_FULL_PCT_1",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 101,
+            "name": "TREAT_FULL_PCT_2",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 102,
+            "name": "TREAT_FULL_PCT_3",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 103,
+            "name": "TREAT_FULL_PCT_4",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 104,
+            "name": "TREAT_FULL_PCT_5",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 105,
+            "name": "TREAT_FULL_PCT_6",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 106,
+            "name": "TREAT_FULL_PCT_7",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 107,
+            "name": "TREAT_FULL_PCT_8",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 108,
+            "name": "TREAT_FULL_PCT_9",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 109,
+            "name": "TREAT_FULL_PCT_10",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 110,
+            "name": "WEIGHT_1",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 111,
+            "name": "WEIGHT_2",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 112,
+            "name": "WEIGHT_3",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 113,
+            "name": "WEIGHT_4",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 114,
+            "name": "WEIGHT_5",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 115,
+            "name": "WEIGHT_6",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 116,
+            "name": "WEIGHT_7",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 117,
+            "name": "WEIGHT_8",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 118,
+            "name": "WEIGHT_9",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 119,
+            "name": "WEIGHT_10",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 120,
+            "name": "WEIGHT_UM_1",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 121,
+            "name": "WEIGHT_UM_2",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 122,
+            "name": "WEIGHT_UM_3",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 123,
+            "name": "WEIGHT_UM_4",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 124,
+            "name": "WEIGHT_UM_5",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 125,
+            "name": "WEIGHT_UM_6",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 126,
+            "name": "WEIGHT_UM_7",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 127,
+            "name": "WEIGHT_UM_8",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 128,
+            "name": "WEIGHT_UM_9",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 129,
+            "name": "WEIGHT_UM_10",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 130,
+            "name": "WIDTH_1",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 131,
+            "name": "WIDTH_2",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 132,
+            "name": "WIDTH_3",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 133,
+            "name": "WIDTH_4",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 134,
+            "name": "WIDTH_5",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 135,
+            "name": "WIDTH_6",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 136,
+            "name": "WIDTH_7",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 137,
+            "name": "WIDTH_8",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 138,
+            "name": "WIDTH_9",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 139,
+            "name": "WIDTH_10",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 140,
+            "name": "X_REF_ITEM_1",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 141,
+            "name": "X_REF_ITEM_2",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 142,
+            "name": "X_REF_ITEM_3",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 143,
+            "name": "X_REF_ITEM_4",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 144,
+            "name": "X_REF_ITEM_5",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 145,
+            "name": "X_REF_ITEM_6",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 146,
+            "name": "X_REF_ITEM_7",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 147,
+            "name": "X_REF_ITEM_8",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 148,
+            "name": "X_REF_ITEM_9",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 149,
+            "name": "X_REF_ITEM_10",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 150,
+            "name": "USER_DEF1",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 151,
+            "name": "USER_DEF2",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 152,
+            "name": "USER_DEF3",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 153,
+            "name": "USER_DEF4",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 154,
+            "name": "USER_DEF5",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 155,
+            "name": "USER_DEF6",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 156,
+            "name": "USER_DEF7",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 157,
+            "name": "USER_DEF8",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 158,
+            "name": "USER_STAMP",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 159,
+            "name": "PROCESS_STAMP",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 160,
+            "name": "DATE_TIME_STAMP",
+            "type_name": "datetime",
+            "is_nullable": false
+          },
+          {
+            "column_id": 161,
+            "name": "TEMPLATE_FIELD_1",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 162,
+            "name": "TEMPLATE_FIELD_2",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 163,
+            "name": "TEMPLATE_FIELD_3",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 164,
+            "name": "TEMPLATE_FIELD_4",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 165,
+            "name": "TEMPLATE_FIELD_5",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 166,
+            "name": "ITEM_CATEGORY1",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 167,
+            "name": "ITEM_CATEGORY2",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 168,
+            "name": "ITEM_CATEGORY3",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 169,
+            "name": "ITEM_CATEGORY4",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 170,
+            "name": "ITEM_CATEGORY5",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 171,
+            "name": "ITEM_CATEGORY6",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 172,
+            "name": "ITEM_CATEGORY7",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 173,
+            "name": "ITEM_CATEGORY8",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 174,
+            "name": "ITEM_CATEGORY9",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 175,
+            "name": "ITEM_CATEGORY10",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 176,
+            "name": "PACKING_CLASS",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 177,
+            "name": "IMMEDIATE_NEEDS_LOC_RULE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 178,
+            "name": "IMMEDIATE_NEEDS_ELIGIBLE",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 179,
+            "name": "TREAT_AS_LOOSE_1",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 180,
+            "name": "TREAT_AS_LOOSE_2",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 181,
+            "name": "TREAT_AS_LOOSE_3",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 182,
+            "name": "TREAT_AS_LOOSE_4",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 183,
+            "name": "TREAT_AS_LOOSE_5",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 184,
+            "name": "TREAT_AS_LOOSE_6",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 185,
+            "name": "TREAT_AS_LOOSE_7",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 186,
+            "name": "TREAT_AS_LOOSE_8",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 187,
+            "name": "TREAT_AS_LOOSE_9",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 188,
+            "name": "TREAT_AS_LOOSE_10",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 189,
+            "name": "INBOUND_QC_ELIGIBLE",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 190,
+            "name": "INBOUND_QC_LOC_RULE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 191,
+            "name": "INBOUND_QC_AMOUNT",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 192,
+            "name": "INBOUND_QC_AMOUNT_TYPE",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 193,
+            "name": "INBOUND_QC_UM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 194,
+            "name": "BOM_ACTION",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 195,
+            "name": "ACTIVE",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 196,
+            "name": "LONG_DESCRIPTION",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 197,
+            "name": "EPC_COMPANY_PREFIX",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 198,
+            "name": "EPC_ITEM_REFERENCE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 199,
+            "name": "EPC_PACKAGE_ID1",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 200,
+            "name": "EPC_PACKAGE_ID2",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 201,
+            "name": "EPC_PACKAGE_ID3",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 202,
+            "name": "EPC_PACKAGE_ID4",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 203,
+            "name": "EPC_PACKAGE_ID5",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 204,
+            "name": "EPC_PACKAGE_ID6",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 205,
+            "name": "EPC_PACKAGE_ID7",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 206,
+            "name": "EPC_PACKAGE_ID8",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 207,
+            "name": "EPC_PACKAGE_ID9",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 208,
+            "name": "EPC_PACKAGE_ID10",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 209,
+            "name": "SERIAL_NUM_TEMPLATE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 210,
+            "name": "SERIAL_NUM_TRACK_INBOUND",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 211,
+            "name": "SERIAL_NUM_TRACK_INVENTORY",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 212,
+            "name": "SERIAL_NUM_TRACK_OUTBOUND",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 213,
+            "name": "AVAILABLE_ON_WEB",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 214,
+            "name": "FEDEX_XTN",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 215,
+            "name": "FEDEX_ITN",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 216,
+            "name": "EPC_CAGE_CODE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 217,
+            "name": "LOT_TEMPLATE",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 218,
+            "name": "ITEM_GTIN_ENABLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 219,
+            "name": "XREF_ITEM1_GTIN_ENABLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 220,
+            "name": "XREF_ITEM2_GTIN_ENABLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 221,
+            "name": "XREF_ITEM3_GTIN_ENABLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 222,
+            "name": "XREF_ITEM4_GTIN_ENABLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 223,
+            "name": "XREF_ITEM5_GTIN_ENABLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 224,
+            "name": "XREF_ITEM6_GTIN_ENABLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 225,
+            "name": "XREF_ITEM7_GTIN_ENABLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 226,
+            "name": "XREF_ITEM8_GTIN_ENABLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 227,
+            "name": "XREF_ITEM9_GTIN_ENABLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 228,
+            "name": "XREF_ITEM10_GTIN_ENABLED",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 229,
+            "name": "XREF_ITEM1_UM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 230,
+            "name": "XREF_ITEM2_UM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 231,
+            "name": "XREF_ITEM3_UM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 232,
+            "name": "XREF_ITEM4_UM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 233,
+            "name": "XREF_ITEM5_UM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 234,
+            "name": "XREF_ITEM6_UM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 235,
+            "name": "XREF_ITEM7_UM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 236,
+            "name": "XREF_ITEM8_UM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 237,
+            "name": "XREF_ITEM9_UM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 238,
+            "name": "XREF_ITEM10_UM",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 239,
+            "name": "ITEM_APP_IDENTIFIER",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 240,
+            "name": "XREF_ITEM1_APP_IDENTIFIER",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 241,
+            "name": "XREF_ITEM2_APP_IDENTIFIER",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 242,
+            "name": "XREF_ITEM3_APP_IDENTIFIER",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 243,
+            "name": "XREF_ITEM4_APP_IDENTIFIER",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 244,
+            "name": "XREF_ITEM5_APP_IDENTIFIER",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 245,
+            "name": "XREF_ITEM6_APP_IDENTIFIER",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 246,
+            "name": "XREF_ITEM7_APP_IDENTIFIER",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 247,
+            "name": "XREF_ITEM8_APP_IDENTIFIER",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 248,
+            "name": "XREF_ITEM9_APP_IDENTIFIER",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 249,
+            "name": "XREF_ITEM10_APP_IDENTIFIER",
+            "type_name": "nvarchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 250,
+            "name": "DAYS_TO_EXPIRE",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 251,
+            "name": "SLOTTING_ID_1",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 252,
+            "name": "SLOTTING_ID_2",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 253,
+            "name": "SLOTTING_ID_3",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 254,
+            "name": "SLOTTING_ID_4",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 255,
+            "name": "SLOTTING_ID_5",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 256,
+            "name": "SLOTTING_ID_6",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 257,
+            "name": "SLOTTING_ID_7",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 258,
+            "name": "SLOTTING_ID_8",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 259,
+            "name": "SLOTTING_ID_9",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 260,
+            "name": "SLOTTING_ID_10",
+            "type_name": "nchar",
+            "is_nullable": true
+          },
+          {
+            "column_id": 261,
+            "name": "SLOTTING_PALLET_HI_1",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 262,
+            "name": "SLOTTING_PALLET_HI_2",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 263,
+            "name": "SLOTTING_PALLET_HI_3",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 264,
+            "name": "SLOTTING_PALLET_HI_4",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 265,
+            "name": "SLOTTING_PALLET_HI_5",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 266,
+            "name": "SLOTTING_PALLET_HI_6",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 267,
+            "name": "SLOTTING_PALLET_HI_7",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 268,
+            "name": "SLOTTING_PALLET_HI_8",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 269,
+            "name": "SLOTTING_PALLET_HI_9",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 270,
+            "name": "SLOTTING_PALLET_HI_10",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 271,
+            "name": "SLOTTING_PALLET_TI_1",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 272,
+            "name": "SLOTTING_PALLET_TI_2",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 273,
+            "name": "SLOTTING_PALLET_TI_3",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 274,
+            "name": "SLOTTING_PALLET_TI_4",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 275,
+            "name": "SLOTTING_PALLET_TI_5",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 276,
+            "name": "SLOTTING_PALLET_TI_6",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 277,
+            "name": "SLOTTING_PALLET_TI_7",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 278,
+            "name": "SLOTTING_PALLET_TI_8",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 279,
+            "name": "SLOTTING_PALLET_TI_9",
+            "type_name": "numeric",
+            "is_nullable": true
+          },
+          {
+            "column_id": 280,
+            "name": "SLOTTING_PALLET_TI_10",
+            "type_name": "numeric",
+            "is_nullable": true
+          }
+        ]
+      },
+      "private_literal_interpretation": "Private conditions: claim ready or NULL rows as in process; output excludes processed rows. The leading unnamed literal is an item-download record marker. Its raw spelling is not part of this explanation.",
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/202796130.sql",
+          "sha256": "bb729f29a111e3b1151718bbb0c10a5c5a2fed2e22c06ab26f2766f0d0db9c11",
+          "line_start": 1,
+          "line_end": 32,
+          "kind": "REDACTED_SQL",
+          "description": "Complete retained procedure body manually read; essential private literal/dynamic meanings reviewed and separately bounded.",
+          "source_definition_sha256": "0481d364c1d5dfa9f69c2f5210e91dd7be58f4dbd87e9a84c31080762a5dd2ba"
+        }
+      ],
+      "evidence_refs": [
+        "wh-access-202796130"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "wh-access-202796130": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 202796130,
+        "qualified_name": "dbo.wm_RUDownloadItem01",
+        "source_definition_sha256": "0481d364c1d5dfa9f69c2f5210e91dd7be58f4dbd87e9a84c31080762a5dd2ba",
+        "reading_path": "DB Architecture/sql/202796130.sql",
+        "reading_sha256": "bb729f29a111e3b1151718bbb0c10a5c5a2fed2e22c06ab26f2766f0d0db9c11",
+        "line_spans": [
+          [
+            1,
+            32
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY",
+        "private_semantic_review": "SCALAR_LITERAL_REVIEW"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
+      "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
+      "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
+      "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.wm_RUDownloadItem01",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/202796130.sql",
+      "reading_sha256": "bb729f29a111e3b1151718bbb0c10a5c5a2fed2e22c06ab26f2766f0d0db9c11",
+      "source_definition_sha256": "0481d364c1d5dfa9f69c2f5210e91dd7be58f4dbd87e9a84c31080762a5dd2ba",
+      "reading_lines": 32,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica represents the current baseline; this work documents the retained captured source as-is. No new database connection or execution was performed.",
+    "Static source explains the stated routine behavior. Caller bindings, effective data/configuration, transaction isolation, permissions and end-user outcomes remain separately bounded.",
+    "Private strings and dynamic SQL were reviewed where necessary; public material contains only non-sensitive interpretations, identifiers and source fingerprints. It is not executable recovery SQL.",
+    "No table-role credit, new dynamic-backlog credit or unresolved-dependency resolution is claimed by this batch. Existing reviewed contracts are preserved."
+  ]
+}

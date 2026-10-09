@@ -1,0 +1,543 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 888702564,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "GetGenericImageData",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:44.837000",
+    "modify_date": "2026-08-16 06:59:44.837000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.GetGenericImageData",
+    "domain_candidate": "unclassified"
+  },
+  "source_definition_sha256": "8cdc91ff62e19b2c29117f43960a73af7084e9022b47c41dd3885a2e76a4bcc1",
+  "exact_sql_path": "888702564.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 1377,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 888702564,
+      "parameter_id": 1,
+      "name": "@INTERNAL_NUM",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 888702564,
+      "parameter_id": 2,
+      "name": "@WAREHOUSE",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1890313994,
+        "qualified_name": "dbo.GENERIC_IMAGE_DATA",
+        "layout_path": "../table layout/1890313994.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 888702564,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 915,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 49,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/49/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 24,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 27,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              888702564,
+              984702906
+            ],
+            "table_id": 664389436
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": [
+      {
+        "table_id": 1890313994,
+        "qualified_name": "dbo.GENERIC_IMAGE_DATA",
+        "layout_path": "../table layout/1890313994.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 888702564,
+          "reading_lines": [
+            24,
+            27
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 888702564,
+          "module_type": "P",
+          "source_line": 5,
+          "source_start_offset": 185,
+          "source_end_offset": 194,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 664389436,
+          "table_qualified_name": "dbo.WAREHOUSE",
+          "source_definition_sha256": "8cdc91ff62e19b2c29117f43960a73af7084e9022b47c41dd3885a2e76a4bcc1",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 888702564,
+          "module_type": "P",
+          "source_line": 7,
+          "source_start_offset": 294,
+          "source_end_offset": 303,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 664389436,
+          "table_qualified_name": "dbo.WAREHOUSE",
+          "source_definition_sha256": "8cdc91ff62e19b2c29117f43960a73af7084e9022b47c41dd3885a2e76a4bcc1",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 888702564,
+          "module_type": "P",
+          "source_line": 30,
+          "source_start_offset": 1168,
+          "source_end_offset": 1177,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 664389436,
+          "table_qualified_name": "dbo.WAREHOUSE",
+          "source_definition_sha256": "8cdc91ff62e19b2c29117f43960a73af7084e9022b47c41dd3885a2e76a4bcc1",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 888702564,
+          "module_type": "P",
+          "source_line": 32,
+          "source_start_offset": 1342,
+          "source_end_offset": 1351,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 664389436,
+          "table_qualified_name": "dbo.WAREHOUSE",
+          "source_definition_sha256": "8cdc91ff62e19b2c29117f43960a73af7084e9022b47c41dd3885a2e76a4bcc1",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 888702564,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "GetWarehouseDate",
+      "referenced_id": 984702906,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.GetWarehouseDate"
+    },
+    {
+      "referencing_id": 888702564,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "GENERIC_IMAGE_DATA",
+      "referenced_id": 1890313994,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.GENERIC_IMAGE_DATA"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/49",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 888702564,
+      "qualified_name": "dbo.GetGenericImageData",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "8cdc91ff62e19b2c29117f43960a73af7084e9022b47c41dd3885a2e76a4bcc1",
+      "purpose": "Return two signature images and warehouse-formatted dates.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE GetGenericImageData(@INTERNAL_NUM numeric(9), @WAREHOUSE NVARCHAR(50)= NULL) AS",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 888702564,
+          "parameter_id": 1,
+          "name": "@INTERNAL_NUM",
+          "type_schema": "sys",
+          "type_name": "numeric",
+          "max_length": 5,
+          "precision": 9,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        },
+        {
+          "object_id": 888702564,
+          "parameter_id": 2,
+          "name": "@WAREHOUSE",
+          "type_schema": "sys",
+          "type_name": "nvarchar",
+          "max_length": 100,
+          "precision": 0,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "No match leaves image/datevariablesNULL; multiple type matches assign withoutorder. Warehouse is used fordateconversion, not image scope. This does not capture or validate a signature."
+      ],
+      "output_shape": [
+        "Always one SELECT row: SHIPPER_SIGNATURE,SHIPPER_SIGN_DATE,CARRIER_SIGNATURE,CARRIER_SIGN_DATE."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.GENERIC_IMAGE_DATA",
+          "object_id": 1890313994,
+          "evidence_refs": [
+            "ops-sql-888702564"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.GetWarehouseDate",
+          "object_id": 984702906,
+          "evidence_refs": [
+            "ops-sql-888702564"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Two variable-assignment SELECTs from GENERIC_IMAGE_DATA by internal number and separate opaque image types; date values passed to GetWarehouseDate with optionalwarehouse then CONVERT(varchar, ...,101). No warehouse predicate in image lookup.",
+          "evidence_refs": [
+            "ops-sql-888702564"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Two variable-assignment SELECTs from GENERIC_IMAGE_DATA by internal number and separate opaque image types; date values passed to GetWarehouseDate with optionalwarehouse then CONVERT(varchar, ...,101). No warehouse predicate in image lookup.",
+      "configuration_scope_and_precedence": [
+        "Two variable-assignment SELECTs from GENERIC_IMAGE_DATA by internal number and separate opaque image types; date values passed to GetWarehouseDate with optionalwarehouse then CONVERT(varchar, ...,101). No warehouse predicate in image lookup."
+      ],
+      "error_and_return_handling": [
+        "Always one SELECT row: SHIPPER_SIGNATURE,SHIPPER_SIGN_DATE,CARRIER_SIGNATURE,CARRIER_SIGN_DATE.",
+        "No match leaves image/datevariablesNULL; multiple type matches assign withoutorder. Warehouse is used fordateconversion, not image scope. This does not capture or validate a signature.",
+        "No explicit TRY/CATCH, transaction, savepoint or compensation. Ordinary SQL errors can propagate."
+      ],
+      "transaction_ownership": "No explicit TRY/CATCH, transaction, savepoint or compensation. Ordinary SQL errors can propagate.",
+      "concurrency": [
+        "Caller/session isolation and any explicit source locks govern reads. No explicit TRY/CATCH, transaction, savepoint or compensation. Ordinary SQL errors can propagate."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [],
+      "external_handoffs_and_gaps": [
+        "Static source only; this procedure was not executed. Direct effects/calls are distinguished from transitive caller behavior and operational acceptance.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE GetGenericImageData(@INTERNAL_NUM numeric(9), @WAREHOUSE NVARCHAR(50)= NULL) AS",
+        "program": [
+          {
+            "line": 13,
+            "text": "CREATE PROCEDURE GetGenericImageData(@INTERNAL_NUM numeric(9), @WAREHOUSE NVARCHAR(50)= NULL)"
+          },
+          {
+            "line": 15,
+            "text": "AS"
+          },
+          {
+            "line": 16,
+            "text": "BEGIN"
+          },
+          {
+            "line": 18,
+            "text": "\tset nocount on;"
+          },
+          {
+            "line": 19,
+            "text": "\tdeclare @shipperImageData varbinary(max);"
+          },
+          {
+            "line": 20,
+            "text": "\tdeclare @carrierImageData varbinary(max);"
+          },
+          {
+            "line": 21,
+            "text": "\tdeclare @shipperSignDate datetime;"
+          },
+          {
+            "line": 22,
+            "text": "\tdeclare @carrierSignDate datetime;"
+          },
+          {
+            "line": 24,
+            "text": "\tSELECT @shipperImageData=IMAGE_DATA,@shipperSignDate=IMAGE_DATE_TIME_STAMP FROM GENERIC_IMAGE_DATA WHERE INTERNAL_NUM=@INTERNAL_NUM"
+          },
+          {
+            "line": 25,
+            "text": "\t\tAND IMAGE_TYPE=N'<literal:1>';"
+          },
+          {
+            "line": 27,
+            "text": "\tSELECT @carrierImageData=IMAGE_DATA,@carrierSignDate=IMAGE_DATE_TIME_STAMP FROM GENERIC_IMAGE_DATA WHERE INTERNAL_NUM=@INTERNAL_NUM"
+          },
+          {
+            "line": 28,
+            "text": "\t\tAND IMAGE_TYPE=N'<literal:2>';"
+          },
+          {
+            "line": 30,
+            "text": "\tSELECT @shipperImageData AS SHIPPER_SIGNATURE,"
+          },
+          {
+            "line": 31,
+            "text": "\tconvert(varchar, dbo.GetWarehouseDate(@WAREHOUSE,@shipperSignDate), 101) AS SHIPPER_SIGN_DATE, -- [comment omitted]"
+          },
+          {
+            "line": 32,
+            "text": "\t@carrierImageData AS CARRIER_SIGNATURE,"
+          },
+          {
+            "line": 33,
+            "text": "\tconvert(varchar, dbo.GetWarehouseDate(@WAREHOUSE,@carrierSignDate), 101) AS CARRIER_SIGN_DATE; -- [comment omitted]"
+          },
+          {
+            "line": 35,
+            "text": "END"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/888702564.sql",
+          "sha256": "217c8a38bf36c6031b1fe80c2a4c1b4d0ac601be1f8cc7818b7f46957f48a4b8",
+          "line_start": 1,
+          "line_end": 35,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "8cdc91ff62e19b2c29117f43960a73af7084e9022b47c41dd3885a2e76a4bcc1",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-888702564"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-888702564": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 888702564,
+        "qualified_name": "dbo.GetGenericImageData",
+        "source_definition_sha256": "8cdc91ff62e19b2c29117f43960a73af7084e9022b47c41dd3885a2e76a4bcc1",
+        "reading_path": "DB Architecture/sql/888702564.sql",
+        "reading_sha256": "217c8a38bf36c6031b1fe80c2a4c1b4d0ac601be1f8cc7818b7f46957f48a4b8",
+        "line_spans": [
+          [
+            1,
+            35
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.GetGenericImageData",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/888702564.sql",
+      "reading_sha256": "217c8a38bf36c6031b1fe80c2a4c1b4d0ac601be1f8cc7818b7f46957f48a4b8",
+      "source_definition_sha256": "8cdc91ff62e19b2c29117f43960a73af7084e9022b47c41dd3885a2e76a4bcc1",
+      "reading_lines": 35,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

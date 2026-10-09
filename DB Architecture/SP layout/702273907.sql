@@ -1,0 +1,71 @@
+
+CREATE PROCEDURE wm_IProcessHistory01
+	@InternalId numeric(9) OUTPUT,
+	@Warehouse nvarchar(25),
+	@Process nvarchar(50),
+	@Action nvarchar(50),
+	@ActivityDateTime datetime,
+	@Identifier1 nvarchar(200),
+	@Identifier2 nvarchar(200),
+	@Identifier3 nvarchar(200),
+	@Identifier4 nvarchar(200),
+	@Message nvarchar(500),
+	@UserDef1 nvarchar(25),
+	@UserDef2 nvarchar(25),
+	@UserDef3 nvarchar(25),
+	@UserDef4 nvarchar(25),
+	@UserDef5 nvarchar(25),
+	@UserDef6 nvarchar(25),
+	@UserDef7 numeric(19,5),
+	@UserDef8 numeric(19,5),
+	@UserStamp nvarchar(30),
+	@ProcessStamp nvarchar(100),
+	@DateTimeStamp datetime
+AS
+	INSERT INTO PROCESS_HISTORY(
+		ACTION,
+		ACTIVITY_DATE_TIME,
+		DATE_TIME_STAMP,
+		IDENTIFIER1,
+		IDENTIFIER2,
+		IDENTIFIER3,
+		IDENTIFIER4,
+		MESSAGE,
+		PROCESS,
+		PROCESS_STAMP,
+		USER_DEF1,
+		USER_DEF2,
+		USER_DEF3,
+		USER_DEF4,
+		USER_DEF5,
+		USER_DEF6,
+		USER_DEF7,
+		USER_DEF8,
+		USER_STAMP,
+		warehouse
+	) VALUES (
+		@Action,
+		@ActivityDateTime,
+		@DateTimeStamp,
+		@Identifier1,
+		@Identifier2,
+		@Identifier3,
+		@Identifier4,
+		@Message,
+		@Process,
+		@ProcessStamp,
+		@UserDef1,
+		@UserDef2,
+		@UserDef3,
+		@UserDef4,
+		@UserDef5,
+		@UserDef6,
+		@UserDef7,
+		@UserDef8,
+		@UserStamp,
+		@Warehouse
+	)
+SELECT @InternalId = SCOPE_IDENTITY()
+
+
+

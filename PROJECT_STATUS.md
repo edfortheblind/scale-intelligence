@@ -1,5 +1,11 @@
 # SCALE Intelligence project status
 
+## Database programming reference - 2026-10-08
+
+The owner requested exact stored procedure/function code and integrated layouts for tables referenced or mentioned by those routines, then explicitly authorized all of it in this repository, Git and GitHub. The [programming reference](DB%20Architecture/PROGRAMMING_LAYOUT.md) provides **921 exact stored procedures, 76 exact functions and 518 captured table layouts / 16,968 columns** in the requested three folders. Existing source capture and semantic reviews were reused; a fresh source-bound table correlation and separate comment-mention scan were generated. There are **318 reference/mention/path-priority tables**, 200 completeness-fallback tables, and 517 retained reviewed table roles.
+
+Source identity remains the **2026-09-29** replica capture; this is not a new database connection or proof of current deployment, vendor-base ownership, physical scans or complete replayable DDL. The original catalog, historical reports, private snapshot, help app and unrelated Video Rec remain unchanged. See [owner authority](_project/programming-layout-authority-20261008.json), [verification](DB%20Architecture/evidence/programming-layout-verification.json), and [independent review](_project/programming-layout-independent-review-20261008.json). Git publication/parity is verified separately after the final commit. C33 remains the prior help-app checkpoint below.
+
 ## C33 current continuation - 2026-10-08
 
 The owner approved C32. C33 exposes **all 510 registered citations across 69 TAB claims** in collapsed source disclosures and corrects overlapping compound-topic search preference. Read [C33 changes and finite remainder](_project/CONTINUATION_C33.md) and [the C33 receipt](_project/continuation33-20261008.json).

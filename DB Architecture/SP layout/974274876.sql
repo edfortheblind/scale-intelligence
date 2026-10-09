@@ -1,0 +1,15 @@
+/*
+Task    | Programmer | Date     | Description  
+ -------|------------|---------------------------------------  
+ 37493  | AB         | 06/13/24 | Created
+*/
+
+CREATE PROCEDURE wm_OutboundQCScanMode  
+@userProfile nvarchar(50)
+
+AS
+
+IF EXISTS (SELECT PACKING_PREFERENCE FROM USER_PROFILE WHERE USER_NAME = @userProfile AND PACKING_PREFERENCE IS NOT NULL)
+    SELECT WM_QC_SETTING FROM PACKING_PREFERENCES AS p INNER JOIN USER_PROFILE AS u ON p.PREFERENCE_NAME = u.PACKING_PREFERENCE WHERE u.USER_NAME = @userProfile
+ELSE
+    SELECT WM_QC_SETTING FROM PACKING_PREFERENCES WHERE PREFERENCE_NAME = N'*Default'

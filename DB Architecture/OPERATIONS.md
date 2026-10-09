@@ -1,5 +1,7 @@
 # Collection, rebuilding and verification
 
+For the October 8 exact-source programming reference, use `python tools/build_programming_layout.py` and `python tools/build_programming_layout.py --verify-only`. The [owner's explicit source-publication instruction](../_project/programming-layout-authority-20261008.json) supersedes the older private-only export restriction below **for the requested procedure/function code and table layouts**. The original private snapshot and credential handling stay unchanged. These new offline commands do not recollect the database or replace the existing catalog/curated evidence. See [programming scope and capture limits](PROGRAMMING_LAYOUT.md).
+
 The tools use installed Python 3.14, pyodbc 5.3.0 and Microsoft ODBC Driver 18 for SQL Server. The collector has a fixed SELECT catalog, TLS certificate verification, 20-second connect timeout, 45-second command timeout and a five-second lock wait. It never executes supplied SQL or a documented procedure. Two SET statements change only its own session lock timeout/deadlock priority.
 
 ```powershell

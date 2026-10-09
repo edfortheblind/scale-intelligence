@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 2117582582,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "cycle_trace",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2022-06-01 23:51:12.837000",
+    "modify_date": "2022-06-01 23:51:12.837000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.cycle_trace",
+    "domain_candidate": "inventory"
+  },
+  "source_definition_sha256": "dc9b1fc18eb070a4cc6e72c433d8e51cd0c7e53654bbe4db3c2d050c32bb0fa7",
+  "exact_sql_path": "2117582582.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 91,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [],
+    "possible_indirect": [
+      {
+        "table_id": 1883869778,
+        "qualified_name": "dbo.TRACE_FILTER",
+        "layout_path": "../table layout/1883869778.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              2117582582,
+              1419152101
+            ],
+            "table_id": 1883869778
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1899869835,
+        "qualified_name": "dbo.TRACE_INFO",
+        "layout_path": "../table layout/1899869835.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              2117582582,
+              1419152101
+            ],
+            "table_id": 1899869835
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": []
+  },
+  "dependencies": [
+    {
+      "referencing_id": 2117582582,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "trace_ILS",
+      "referenced_id": 1419152101,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.trace_ILS"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/162",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 2117582582,
+      "qualified_name": "dbo.cycle_trace",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "dc9b1fc18eb070a4cc6e72c433d8e51cd0c7e53654bbe4db3c2d050c32bb0fa7",
+      "purpose": "Cycle the trace_ILS helper using stop/start selector values.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE dbo.cycle_trace AS",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [],
+      "null_and_invalid_input_behavior": [
+        "First child errors can prevent second call; trace lifecycleeffects are in childcontract. The wrapper wasnotrun."
+      ],
+      "output_shape": [
+        "No direct result shape; child procedure messages/results may propagate."
+      ],
+      "effects": [
+        {
+          "relationship": "CALLS",
+          "object": "dbo.trace_ILS",
+          "object_id": 1419152101,
+          "evidence_refs": [
+            "ops-sql-2117582582"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "EXEC dbo.trace_ILS0 then dbo.trace_ILS1 sequentially. No verification, conditional check or transaction inwrapper.",
+          "evidence_refs": [
+            "ops-sql-2117582582"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "EXEC dbo.trace_ILS0 then dbo.trace_ILS1 sequentially. No verification, conditional check or transaction inwrapper.",
+      "configuration_scope_and_precedence": [
+        "EXEC dbo.trace_ILS0 then dbo.trace_ILS1 sequentially. No verification, conditional check or transaction inwrapper."
+      ],
+      "error_and_return_handling": [
+        "No direct result shape; child procedure messages/results may propagate.",
+        "First child errors can prevent second call; trace lifecycleeffects are in childcontract. The wrapper wasnotrun.",
+        "No explicit TRY/CATCH, transaction, savepoint or compensation. Ordinary SQL errors can propagate."
+      ],
+      "transaction_ownership": "No explicit TRY/CATCH, transaction, savepoint or compensation. Ordinary SQL errors can propagate.",
+      "concurrency": [
+        "Caller/session isolation and any explicit source locks govern reads. No explicit TRY/CATCH, transaction, savepoint or compensation. Ordinary SQL errors can propagate."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [],
+      "external_handoffs_and_gaps": [
+        "Static source only; this procedure was not executed. Direct effects/calls are distinguished from transitive caller behavior and operational acceptance.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE dbo.cycle_trace AS",
+        "program": [
+          {
+            "line": 3,
+            "text": "CREATE PROCEDURE dbo.cycle_trace "
+          },
+          {
+            "line": 4,
+            "text": "AS"
+          },
+          {
+            "line": 5,
+            "text": "    EXEC dbo.trace_ILS 0"
+          },
+          {
+            "line": 6,
+            "text": "    exec dbo.trace_ILS 1"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/2117582582.sql",
+          "sha256": "b79aafca2f3ec2cf47fd17c1f2caf92fa2dc783e80fe3d62e0134a75560c7374",
+          "line_start": 1,
+          "line_end": 6,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "dc9b1fc18eb070a4cc6e72c433d8e51cd0c7e53654bbe4db3c2d050c32bb0fa7",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-2117582582"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-2117582582": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 2117582582,
+        "qualified_name": "dbo.cycle_trace",
+        "source_definition_sha256": "dc9b1fc18eb070a4cc6e72c433d8e51cd0c7e53654bbe4db3c2d050c32bb0fa7",
+        "reading_path": "DB Architecture/sql/2117582582.sql",
+        "reading_sha256": "b79aafca2f3ec2cf47fd17c1f2caf92fa2dc783e80fe3d62e0134a75560c7374",
+        "line_spans": [
+          [
+            1,
+            6
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.cycle_trace",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/2117582582.sql",
+      "reading_sha256": "b79aafca2f3ec2cf47fd17c1f2caf92fa2dc783e80fe3d62e0134a75560c7374",
+      "source_definition_sha256": "dc9b1fc18eb070a4cc6e72c433d8e51cd0c7e53654bbe4db3c2d050c32bb0fa7",
+      "reading_lines": 6,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

@@ -1,0 +1,2163 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 613225585,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "MetaTrans_GetInventoryAdjustment",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:50.913000",
+    "modify_date": "2026-08-16 06:59:50.913000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.MetaTrans_GetInventoryAdjustment",
+    "domain_candidate": "inventory"
+  },
+  "source_definition_sha256": "f5820bb2d67d61bf6e3cc320128893515daacdb98acd6afe0f95a46b41754811",
+  "exact_sql_path": "613225585.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 8443,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 613225585,
+      "parameter_id": 1,
+      "name": "@Item",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 613225585,
+      "parameter_id": 2,
+      "name": "@Company",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 613225585,
+      "parameter_id": 3,
+      "name": "@Warehouse",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 613225585,
+      "parameter_id": 4,
+      "name": "@Location",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 613225585,
+      "parameter_id": 5,
+      "name": "@ItemDesc",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 200,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(100)"
+    },
+    {
+      "object_id": 613225585,
+      "parameter_id": 6,
+      "name": "@LicensePlate",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 613225585,
+      "parameter_id": 7,
+      "name": "@Lot",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 613225585,
+      "parameter_id": 8,
+      "name": "@InventoryStatus",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 613225585,
+      "parameter_id": 9,
+      "name": "@InventoryAttributesId",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 613225585,
+      "parameter_id": 10,
+      "name": "@culture",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 20,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(10)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 613225585,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 689,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 42,
+              "source_field": "effects",
+              "source_index": 4,
+              "json_pointer": "/semantic_contracts/42/effects/4",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 123,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 613225585,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 690,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 42,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/42/effects/2",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 90,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 118,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1362819917,
+        "qualified_name": "dbo.LOCATION_INVENTORY",
+        "layout_path": "../table layout/1362819917.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 613225585,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 691,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 42,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/42/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 87,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 106,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 613225585,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 692,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 42,
+              "source_field": "effects",
+              "source_index": 3,
+              "json_pointer": "/semantic_contracts/42/effects/3",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 122,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1643868923,
+        "qualified_name": "dbo.SYSTEM_CONFIG_DETAIL",
+        "layout_path": "../table layout/1643868923.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 613225585,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 693,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 42,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/42/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 59,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "reading_lines": [
+            95,
+            111,
+            123
+          ]
+        }
+      },
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "mentions": [
+            {
+              "original_line": 127,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "reading_lines": [
+            86,
+            93,
+            101,
+            110,
+            123
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "mentions": [
+            {
+              "original_line": 129,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "reading_lines": [
+            90,
+            96,
+            100,
+            113,
+            118
+          ]
+        }
+      },
+      {
+        "table_id": 1362819917,
+        "qualified_name": "dbo.LOCATION_INVENTORY",
+        "layout_path": "../table layout/1362819917.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "reading_lines": [
+            87,
+            106
+          ]
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "reading_lines": [
+            99,
+            115,
+            122
+          ]
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "mentions": [
+            {
+              "original_line": 138,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1643868923,
+        "qualified_name": "dbo.SYSTEM_CONFIG_DETAIL",
+        "layout_path": "../table layout/1643868923.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "reading_lines": [
+            58,
+            59
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "reading_lines": [
+            89,
+            90,
+            112,
+            118
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "module_type": "P",
+          "source_line": 82,
+          "source_start_offset": 3909,
+          "source_end_offset": 3913,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 386816440,
+          "table_qualified_name": "dbo.ITEM",
+          "source_definition_sha256": "f5820bb2d67d61bf6e3cc320128893515daacdb98acd6afe0f95a46b41754811",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "module_type": "P",
+          "source_line": 13,
+          "source_start_offset": 837,
+          "source_end_offset": 846,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 664389436,
+          "table_qualified_name": "dbo.WAREHOUSE",
+          "source_definition_sha256": "f5820bb2d67d61bf6e3cc320128893515daacdb98acd6afe0f95a46b41754811",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "module_type": "P",
+          "source_line": 82,
+          "source_start_offset": 3882,
+          "source_end_offset": 3890,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1298819689,
+          "table_qualified_name": "dbo.LOCATION",
+          "source_definition_sha256": "f5820bb2d67d61bf6e3cc320128893515daacdb98acd6afe0f95a46b41754811",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "module_type": "P",
+          "source_line": 5,
+          "source_start_offset": 332,
+          "source_end_offset": 335,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1554820601,
+          "table_qualified_name": "dbo.LOT",
+          "source_definition_sha256": "f5820bb2d67d61bf6e3cc320128893515daacdb98acd6afe0f95a46b41754811",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 613225585,
+          "module_type": "P",
+          "source_line": 19,
+          "source_start_offset": 1303,
+          "source_end_offset": 1306,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1554820601,
+          "table_qualified_name": "dbo.LOT",
+          "source_definition_sha256": "f5820bb2d67d61bf6e3cc320128893515daacdb98acd6afe0f95a46b41754811",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 613225585,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "ITEM",
+      "referenced_id": 386816440,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.ITEM"
+    },
+    {
+      "referencing_id": 613225585,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "LOCATION",
+      "referenced_id": 1298819689,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.LOCATION"
+    },
+    {
+      "referencing_id": 613225585,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "LOCATION_INVENTORY",
+      "referenced_id": 1362819917,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.LOCATION_INVENTORY"
+    },
+    {
+      "referencing_id": 613225585,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "lot",
+      "referenced_id": 1554820601,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.LOT"
+    },
+    {
+      "referencing_id": 613225585,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SYSTEM_CONFIG_DETAIL",
+      "referenced_id": 1643868923,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SYSTEM_CONFIG_DETAIL"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+    "source_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+    "json_pointer": "/semantic_contracts/42",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 613225585,
+      "qualified_name": "dbo.MetaTrans_GetInventoryAdjustment",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Complete retained body manually read; parameter/default/output/effect/branch/configuration/error/transaction/concurrency dimensions reviewed as source-backed static behavior.",
+      "source_definition_sha256": "f5820bb2d67d61bf6e3cc320128893515daacdb98acd6afe0f95a46b41754811",
+      "purpose": "Prepare aggregate inventory defaults for an adjustment screen.",
+      "inputs_defaults": [
+        "Exact inert declaration: CREATE PROCEDURE MetaTrans_GetInventoryAdjustment ( @Item nvarchar(50) = null, @Company nvarchar(25) = null, @Warehouse nvarchar(25) = null, @Location nvarchar(25) = null, @ItemDesc nvarchar(100) = null, @LicensePlate nvarchar(50) = null, @Lot nvarchar(25) = null, @InventoryStatus nvarchar(50) = null, @InventoryAttributesId numeric(9) = null, @culture nvarchar(10) ) AS",
+        "Structured parameters record declaration defaults/directions and unused inputs; no default does not mean NOT NULL."
+      ],
+      "parameters": [
+        {
+          "name": "@Item",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": true
+        },
+        {
+          "name": "@Company",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": true
+        },
+        {
+          "name": "@Warehouse",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": true
+        },
+        {
+          "name": "@Location",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": true
+        },
+        {
+          "name": "@ItemDesc",
+          "type": "nvarchar(100)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": false
+        },
+        {
+          "name": "@LicensePlate",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": true
+        },
+        {
+          "name": "@Lot",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": true
+        },
+        {
+          "name": "@InventoryStatus",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": true
+        },
+        {
+          "name": "@InventoryAttributesId",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "null",
+          "used_in_body": true
+        },
+        {
+          "name": "@culture",
+          "type": "nvarchar(10)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "tempWarehouse is never assigned; fallback warehouse stays NULL. ItemDesc and culture inputs are unused. LP minimum-ID choice summarizes only that one row even when same-item LP spans rows; no-row LP yields NULL ID and no aggregate match. Other NULL optional selectors can broaden across companies/warehouses; exclusion subquery uses caller warehouse. COUNT DISTINCT ignores NULL. Lot lookup omits item/company/warehouse; no current stock adjustment or snapshot."
+      ],
+      "output_shape": [
+        "One scalar model row even with no matches; supplied nonempty selectors take precedence for several fields. New quantities are zero and coded blank defaults; exact output sequence retained.",
+        "Exact SELECT expression, alias, order, TOP/DISTINCT and filter text is retained line-by-line in source_structure; variable assignments/subqueries do not count as caller result sets."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.SYSTEM_CONFIG_DETAIL",
+          "object_id": 1643868923,
+          "evidence_refs": [
+            "work-config-613225585"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.LOCATION_INVENTORY",
+          "object_id": 1362819917,
+          "evidence_refs": [
+            "work-config-613225585"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.LOCATION",
+          "object_id": 1298819689,
+          "evidence_refs": [
+            "work-config-613225585"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.LOT",
+          "object_id": 1554820601,
+          "evidence_refs": [
+            "work-config-613225585"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.ITEM",
+          "object_id": 386816440,
+          "evidence_refs": [
+            "work-config-613225585"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Load default status; normalize two coded sentinel strings and empty input strings to NULL and attribute0 to NULL. All-NULL identity selectors set local ID0; license-plate-only flow chooses minimum inventory ID for at most one distinct item, otherwise -1, excluding three location classes. Aggregate exact selected ID or, for ID<=0, optional selectors with NULL/zero attribute equality and two-class exclusion. String dimensions with multiple distinct values become empty; available quantity becomes zero for multiple locations or nonpositive sum/nonunique item, otherwise SUM(on-hand-allocated-suspense). Attributes clear when more than one row. Fetch expiration by lot name only and thumbnail by item with optional company.",
+          "evidence_refs": [
+            "work-config-613225585"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Scope, NULL/error and concurrency boundaries: tempWarehouse is never assigned; fallback warehouse stays NULL. ItemDesc and culture inputs are unused. LP minimum-ID choice summarizes only that one row even when same-item LP spans rows; no-row LP yields NULL ID and no aggregate match. Other NULL optional selectors can broaden across companies/warehouses; exclusion subquery uses caller warehouse. COUNT DISTINCT ignores NULL. Lot lookup omits item/company/warehouse; no current stock adjustment or snapshot.",
+          "evidence_refs": [
+            "work-config-613225585"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Load default status; normalize two coded sentinel strings and empty input strings to NULL and attribute0 to NULL. All-NULL identity selectors set local ID0; license-plate-only flow chooses minimum inventory ID for at most one distinct item, otherwise -1, excluding three location classes. Aggregate exact selected ID or, for ID<=0, optional selectors with NULL/zero attribute equality and two-class exclusion. String dimensions with multiple distinct values become empty; available quantity becomes zero for multiple locations or nonpositive sum/nonunique item, otherwise SUM(on-hand-allocated-suspense). Attributes clear when more than one row. Fetch expiration by lot name only and thumbnail by item with optional company.",
+      "configuration_scope_and_precedence": [
+        "Load default status; normalize two coded sentinel strings and empty input strings to NULL and attribute0 to NULL. All-NULL identity selectors set local ID0; license-plate-only flow chooses minimum inventory ID for at most one distinct item, otherwise -1, excluding three location classes. Aggregate exact selected ID or, for ID<=0, optional selectors with NULL/zero attribute equality and two-class exclusion. String dimensions with multiple distinct values become empty; available quantity becomes zero for multiple locations or nonpositive sum/nonunique item, otherwise SUM(on-hand-allocated-suspense). Attributes clear when more than one row. Fetch expiration by lot name only and thumbnail by item with optional company.",
+        "tempWarehouse is never assigned; fallback warehouse stays NULL. ItemDesc and culture inputs are unused. LP minimum-ID choice summarizes only that one row even when same-item LP spans rows; no-row LP yields NULL ID and no aggregate match. Other NULL optional selectors can broaden across companies/warehouses; exclusion subquery uses caller warehouse. COUNT DISTINCT ignores NULL. Lot lookup omits item/company/warehouse; no current stock adjustment or snapshot."
+      ],
+      "error_and_return_handling": [
+        "tempWarehouse is never assigned; fallback warehouse stays NULL. ItemDesc and culture inputs are unused. LP minimum-ID choice summarizes only that one row even when same-item LP spans rows; no-row LP yields NULL ID and no aggregate match. Other NULL optional selectors can broaden across companies/warehouses; exclusion subquery uses caller warehouse. COUNT DISTINCT ignores NULL. Lot lookup omits item/company/warehouse; no current stock adjustment or snapshot.",
+        "One scalar model row even with no matches; supplied nonempty selectors take precedence for several fields. New quantities are zero and coded blank defaults; exact output sequence retained."
+      ],
+      "transaction_ownership": "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic.",
+      "concurrency": [
+        "tempWarehouse is never assigned; fallback warehouse stays NULL. ItemDesc and culture inputs are unused. LP minimum-ID choice summarizes only that one row even when same-item LP spans rows; no-row LP yields NULL ID and no aggregate match. Other NULL optional selectors can broaden across companies/warehouses; exclusion subquery uses caller warehouse. COUNT DISTINCT ignores NULL. Lot lookup omits item/company/warehouse; no current stock adjustment or snapshot.",
+        "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic."
+      ],
+      "trigger_behavior": "No direct persistent target; called procedures retain their own mutation/trigger contracts.",
+      "trigger_contract_refs": [],
+      "external_handoffs_and_gaps": [
+        "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+        "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+        "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+        "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/613225585.sql",
+          "sha256": "9eb3331ea000785c41c702ca633240564af88a24f4b54c8359b6d4e0c2c1c77f",
+          "line_start": 1,
+          "line_end": 156,
+          "kind": "REDACTED_SQL",
+          "description": "Complete retained body manually read; independent per-procedure notes and essential scalar equality/flag interpretations. Original hash and redaction parity checked.",
+          "source_definition_sha256": "f5820bb2d67d61bf6e3cc320128893515daacdb98acd6afe0f95a46b41754811"
+        }
+      ],
+      "evidence_refs": [
+        "work-config-613225585"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_NAMES",
+      "source_structure": {
+        "program": [
+          {
+            "line": 23,
+            "text": "CREATE PROCEDURE MetaTrans_GetInventoryAdjustment"
+          },
+          {
+            "line": 24,
+            "text": "("
+          },
+          {
+            "line": 25,
+            "text": "@Item nvarchar(50) = null,"
+          },
+          {
+            "line": 26,
+            "text": "@Company nvarchar(25) = null,"
+          },
+          {
+            "line": 27,
+            "text": "@Warehouse nvarchar(25) = null,"
+          },
+          {
+            "line": 28,
+            "text": "@Location nvarchar(25) = null,"
+          },
+          {
+            "line": 29,
+            "text": "@ItemDesc nvarchar(100) = null,"
+          },
+          {
+            "line": 30,
+            "text": "@LicensePlate nvarchar(50) = null,"
+          },
+          {
+            "line": 31,
+            "text": "@Lot nvarchar(25) = null,"
+          },
+          {
+            "line": 32,
+            "text": "@InventoryStatus nvarchar(50) = null,"
+          },
+          {
+            "line": 33,
+            "text": "@InventoryAttributesId numeric(9) = null,"
+          },
+          {
+            "line": 34,
+            "text": "@culture nvarchar(10)"
+          },
+          {
+            "line": 35,
+            "text": ")"
+          },
+          {
+            "line": 36,
+            "text": "AS"
+          },
+          {
+            "line": 37,
+            "text": "SET NOCOUNT ON;"
+          },
+          {
+            "line": 38,
+            "text": "Declare @InternalLocationInv numeric(9) = -1;"
+          },
+          {
+            "line": 39,
+            "text": "DECLARE @defaultInventorySts nvarchar(50);"
+          },
+          {
+            "line": 40,
+            "text": "DECLARE @tempLicensePlate nvarchar(50);"
+          },
+          {
+            "line": 41,
+            "text": "DECLARE @tempParentLicensePlate nvarchar(50);"
+          },
+          {
+            "line": 42,
+            "text": "DECLARE @tempCompany nvarchar(25);"
+          },
+          {
+            "line": 43,
+            "text": "DECLARE @tempWarehouse nvarchar(25);"
+          },
+          {
+            "line": 44,
+            "text": "DECLARE @tempItem nvarchar(50);"
+          },
+          {
+            "line": 45,
+            "text": "DECLARE @tempItemDesc nvarchar(100);"
+          },
+          {
+            "line": 46,
+            "text": "DECLARE @tempQty numeric(19,5);"
+          },
+          {
+            "line": 47,
+            "text": "DECLARE @tempQtyUM nvarchar(25);"
+          },
+          {
+            "line": 48,
+            "text": "DECLARE @tempLocation nvarchar(25);"
+          },
+          {
+            "line": 49,
+            "text": "DECLARE @tempInventoryStatus nvarchar(50);"
+          },
+          {
+            "line": 50,
+            "text": "DECLARE @tempLot nvarchar(25);"
+          },
+          {
+            "line": 51,
+            "text": "DECLARE @tempInventoryAttributesId numeric(9);"
+          },
+          {
+            "line": 52,
+            "text": "DECLARE @LPFlow bit = 0;"
+          },
+          {
+            "line": 53,
+            "text": "DECLARE @expirationDate datetime;"
+          },
+          {
+            "line": 54,
+            "text": "DECLARE @webThumbnailImage nvarchar(200);"
+          },
+          {
+            "line": 58,
+            "text": "SELECT @defaultInventorySts = SYSTEM_CONFIG_DETAIL.SYSTEM_VALUE"
+          },
+          {
+            "line": 59,
+            "text": "FROM SYSTEM_CONFIG_DETAIL"
+          },
+          {
+            "line": 60,
+            "text": "WHERE SYS_KEY = N'<literal:1>'"
+          },
+          {
+            "line": 61,
+            "text": "AND RECORD_TYPE = N'<literal:2>';"
+          },
+          {
+            "line": 65,
+            "text": "IF(@Item = N'<literal:3>' or @item = N'<literal:4>' or @item = N'<literal:5>') SET @Item =  null;"
+          },
+          {
+            "line": 66,
+            "text": "IF(@Company = N'<literal:6>' or @Company = N'<literal:7>' or @Company = N'<literal:8>') SET @Company =  null;"
+          },
+          {
+            "line": 67,
+            "text": "IF(@Warehouse = N'<literal:9>' or @Warehouse = N'<literal:10>' or @Warehouse = N'<literal:11>') SET @Warehouse =  null;"
+          },
+          {
+            "line": 68,
+            "text": "IF(@Location = N'<literal:12>' or @Location = N'<literal:13>' or @Location = N'<literal:14>') SET @Location =  null;"
+          },
+          {
+            "line": 69,
+            "text": "IF(@LicensePlate = N'<literal:15>' or @LicensePlate = N'<literal:16>' or @LicensePlate = N'<literal:17>') SET @LicensePlate =  null;"
+          },
+          {
+            "line": 70,
+            "text": "IF(@Lot = N'<literal:18>' or @Lot = N'<literal:19>' or @lot = N'<literal:20>') SET @Lot =  null;"
+          },
+          {
+            "line": 71,
+            "text": "IF(@InventoryStatus = N'<literal:21>' or @InventoryStatus = N'<literal:22>' or @InventoryStatus = N'<literal:23>') SET @InventoryStatus =  null;"
+          },
+          {
+            "line": 72,
+            "text": "IF(@InventoryAttributesId = 0 ) SET @InventoryAttributesId =  null;"
+          },
+          {
+            "line": 75,
+            "text": "if(@Item is null and @Company is null and @Location is null and @LicensePlate is null and @Lot is null and @InventoryStatus is null)"
+          },
+          {
+            "line": 76,
+            "text": "set @InternalLocationInv = 0;"
+          },
+          {
+            "line": 79,
+            "text": "if(@Item is null and @Company is null and @Location is null and @LicensePlate is not null and @Lot is null and @InventoryStatus is null)"
+          },
+          {
+            "line": 80,
+            "text": "BEGIN"
+          },
+          {
+            "line": 81,
+            "text": "set @LPFlow = 1;"
+          },
+          {
+            "line": 82,
+            "text": "END"
+          },
+          {
+            "line": 84,
+            "text": "if (@LPFlow = 1)"
+          },
+          {
+            "line": 85,
+            "text": "BEGIN"
+          },
+          {
+            "line": 86,
+            "text": "select @InternalLocationInv  = case when count(distinct(Item)) > 1 then -1 else min(INTERNAL_LOCATION_INV) end"
+          },
+          {
+            "line": 87,
+            "text": "from LOCATION_INVENTORY"
+          },
+          {
+            "line": 88,
+            "text": "where (LOGISTICS_UNIT= @LicensePlate or PARENT_LOGISTICS_UNIT = @LicensePlate)"
+          },
+          {
+            "line": 89,
+            "text": "and WAREHOUSE = @Warehouse"
+          },
+          {
+            "line": 90,
+            "text": "and Location NOT IN ( SELECT LOCATION FROM LOCATION WHERE LOCATION_CLASS IN (N'<literal:24>',N'<literal:25>',N'<literal:26>') AND WAREHOUSE = @Warehouse)"
+          },
+          {
+            "line": 91,
+            "text": "END"
+          },
+          {
+            "line": 93,
+            "text": "SELECT @tempItem = (SELECT CASE WHEN (COUNT(DISTINCT(LI.ITEM)) > 1) THEN N'<literal:27>' ELSE min(LI.ITEM) END),"
+          },
+          {
+            "line": 94,
+            "text": "@tempItemDesc =(SELECT CASE WHEN (COUNT(DISTINCT(LI.ITEM_DESC)) >1) THEN N'<literal:28>' ELSE min(LI.ITEM_DESC )END),"
+          },
+          {
+            "line": 95,
+            "text": "@tempCompany= (SELECT CASE WHEN (COUNT(DISTINCT(LI.COMPANY)) >1) THEN N'<literal:29>' ELSE min(LI.COMPANY) END),"
+          },
+          {
+            "line": 96,
+            "text": "@tempLocation =(SELECT CASE WHEN( COUNT(DISTINCT(LI.LOCATION)) > 1) THEN N'<literal:30>' ELSE min(LI.LOCATION) END),"
+          },
+          {
+            "line": 97,
+            "text": "@tempLicensePlate =  (SELECT CASE WHEN COUNT(DISTINCT(LI.LOGISTICS_UNIT)) > 1 THEN N'<literal:31>' ELSE min(LI.LOGISTICS_UNIT) END),"
+          },
+          {
+            "line": 98,
+            "text": "@tempParentLicensePlate = (SELECT CASE WHEN COUNT(DISTINCT(LI.PARENT_LOGISTICS_UNIT)) > 1 THEN N'<literal:32>' ELSE min(LI.PARENT_LOGISTICS_UNIT) END),"
+          },
+          {
+            "line": 99,
+            "text": "@tempLot = (SELECT CASE WHEN COUNT(DISTINCT(LI.LOT)) > 1 THEN N'<literal:33>' ELSE min(LI.LOT) END),"
+          },
+          {
+            "line": 100,
+            "text": "@tempQty= (SELECT CASE WHEN( COUNT(DISTINCT(LI.LOCATION)) > 1) THEN 0.0"
+          },
+          {
+            "line": 101,
+            "text": "ELSE (CASE WHEN (SUM(LI.ON_HAND_QTY-LI.ALLOCATED_QTY-LI.SUSPENSE_QTY) > 0 and COUNT(DISTINCT(LI.ITEM)) = 1)"
+          },
+          {
+            "line": 102,
+            "text": "THEN SUM(LI.ON_HAND_QTY-LI.ALLOCATED_QTY-LI.SUSPENSE_QTY) ELSE 0 END) END),"
+          },
+          {
+            "line": 103,
+            "text": "@tempQtyUM = (SELECT CASE WHEN COUNT(DISTINCT(LI.QUANTITY_UM)) > 1 THEN N'<literal:34>' ELSE min(LI.QUANTITY_UM) END),"
+          },
+          {
+            "line": 104,
+            "text": "@tempInventoryStatus = (SELECT CASE WHEN COUNT(DISTINCT(LI.INVENTORY_STS)) > 1 THEN N'<literal:35>' ELSE min(LI.INVENTORY_STS) END) ,"
+          },
+          {
+            "line": 105,
+            "text": "@tempInventoryAttributesId = (SELECT CASE WHEN (COUNT(INTERNAL_LOCATION_INV) >1) THEN NULL ELSE min(LI.LOC_INV_ATTRIBUTES_ID) END)"
+          },
+          {
+            "line": 106,
+            "text": "FROM LOCATION_INVENTORY LI"
+          },
+          {
+            "line": 107,
+            "text": "WHERE\t(INTERNAL_LOCATION_INV = @InternalLocationInv)"
+          },
+          {
+            "line": 108,
+            "text": "OR"
+          },
+          {
+            "line": 109,
+            "text": "(\t@InternalLocationInv <= 0 and"
+          },
+          {
+            "line": 110,
+            "text": "(\t(@item is null or  LI.ITEM = @Item) and"
+          },
+          {
+            "line": 111,
+            "text": "(@Company IS NULL or LI.COMPANY = @Company) and"
+          },
+          {
+            "line": 112,
+            "text": "(@Warehouse is null or  LI.WAREHOUSE = @Warehouse) and"
+          },
+          {
+            "line": 113,
+            "text": "(@Location is null or  LI.LOCATION = @Location) and"
+          },
+          {
+            "line": 114,
+            "text": "(@LicensePlate is null or ((LI.LOGISTICS_UNIT = @LicensePlate or LI.PARENT_LOGISTICS_UNIT = @LicensePlate) and LI.ON_HAND_QTY > 0)) and"
+          },
+          {
+            "line": 115,
+            "text": "(@lot is null or LI.LOT = @Lot) and"
+          },
+          {
+            "line": 116,
+            "text": "(@InventoryStatus is null or LI.INVENTORY_STS = @InventoryStatus) AND"
+          },
+          {
+            "line": 117,
+            "text": "(ISNULL(LI.LOC_INV_ATTRIBUTES_ID,0) = ISNULL(@InventoryAttributesId, 0)) and"
+          },
+          {
+            "line": 118,
+            "text": "LI.Location NOT IN ( SELECT LOCATION FROM LOCATION WHERE LOCATION_CLASS IN (N'<literal:36>',N'<literal:37>') AND WAREHOUSE = @Warehouse)"
+          },
+          {
+            "line": 119,
+            "text": ")"
+          },
+          {
+            "line": 120,
+            "text": ")"
+          },
+          {
+            "line": 122,
+            "text": "select @expirationDate = Expiration_Date from lot where LOT = @tempLot;"
+          },
+          {
+            "line": 123,
+            "text": "select @webThumbnailImage = WEB_THUMBNAIL_IMG from ITEM where ITEM=@tempItem and (@tempCompany is null or COMPANY = @tempCompany);"
+          },
+          {
+            "line": 125,
+            "text": "SELECT TOP 1"
+          },
+          {
+            "line": 126,
+            "text": "N'<literal:38>' AS N'<literal:39>',"
+          },
+          {
+            "line": 127,
+            "text": "N'<literal:40>' AS N'<literal:41>',"
+          },
+          {
+            "line": 128,
+            "text": "CASE WHEN LEN(@Company) > 0 THEN @Company ELSE @tempCompany  END AS N'<literal:42>',"
+          },
+          {
+            "line": 129,
+            "text": "CASE WHEN LEN(@Warehouse)>0 THEN @Warehouse ELSE @tempWarehouse END AS N'<literal:43>',"
+          },
+          {
+            "line": 130,
+            "text": "CASE WHEN LEN(@Item)> 0 THEN @Item ELSE @tempItem  END AS N'<literal:44>',"
+          },
+          {
+            "line": 131,
+            "text": "@tempItemDesc AS N'<literal:45>',"
+          },
+          {
+            "line": 132,
+            "text": "@tempQty AS N'<literal:46>',"
+          },
+          {
+            "line": 133,
+            "text": "@tempQtyUM AS N'<literal:47>',"
+          },
+          {
+            "line": 134,
+            "text": "0.0 AS N'<literal:48>',"
+          },
+          {
+            "line": 135,
+            "text": "N'<literal:49>' AS N'<literal:50>',"
+          },
+          {
+            "line": 136,
+            "text": "CASE WHEN len(@location) > 0 THEN @Location ELSE @tempLocation  END AS N'<literal:51>',"
+          },
+          {
+            "line": 137,
+            "text": "CASE WHEN len(@LicensePlate) > 0 THEN @LicensePlate ELSE @tempLicensePlate END AS N'<literal:52>',"
+          },
+          {
+            "line": 138,
+            "text": "CASE WHEN len(@tempParentLicensePlate) > 0 THEN @tempParentLicensePlate ELSE N'<literal:53>' END AS N'<literal:54>',"
+          },
+          {
+            "line": 139,
+            "text": "CASE WHEN len(@Lot) > 0 THEN @Lot ELSE @tempLot END AS N'<literal:55>',"
+          },
+          {
+            "line": 140,
+            "text": "case when len(@tempInventoryStatus) > 0 then @tempInventoryStatus else @defaultInventorySts end AS N'<literal:56>',"
+          },
+          {
+            "line": 141,
+            "text": "N'<literal:57>' AS N'<literal:58>',"
+          },
+          {
+            "line": 142,
+            "text": "@defaultInventorySts as N'<literal:59>',"
+          },
+          {
+            "line": 143,
+            "text": "@tempInventoryAttributesId as N'<literal:60>',"
+          },
+          {
+            "line": 144,
+            "text": "@expirationDate As N'<literal:61>',"
+          },
+          {
+            "line": 145,
+            "text": "@webThumbnailImage As N'<literal:62>',"
+          },
+          {
+            "line": 146,
+            "text": "N'<literal:63>' as N'<literal:64>',"
+          },
+          {
+            "line": 147,
+            "text": "N'<literal:65>' as N'<literal:66>',"
+          },
+          {
+            "line": 148,
+            "text": "N'<literal:67>' as N'<literal:68>',"
+          },
+          {
+            "line": 149,
+            "text": "N'<literal:69>' as N'<literal:70>',"
+          },
+          {
+            "line": 150,
+            "text": "N'<literal:71>' as N'<literal:72>',"
+          },
+          {
+            "line": 151,
+            "text": "N'<literal:73>' as N'<literal:74>',"
+          },
+          {
+            "line": 152,
+            "text": "0.0 as N'<literal:75>',"
+          },
+          {
+            "line": 153,
+            "text": "0.0 as N'<literal:76>'\t,"
+          },
+          {
+            "line": 154,
+            "text": "0.0   as N'<literal:77>',"
+          },
+          {
+            "line": 155,
+            "text": "N'<literal:78>' as N'<literal:79>'"
+          }
+        ],
+        "interpretation": "Inert exact retained SQL, not executable recovery instructions.",
+        "wildcard_column_catalog": []
+      },
+      "reviewed_literal_equality_groups": [
+        {
+          "ordinal": 1,
+          "original_line_start": 59,
+          "original_line_end": 59,
+          "sha256": "d59eced1ded07f84c145592f65bdf854358e009c5cd705f5215bf18697fed103",
+          "equality_group": 1,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 2,
+          "original_line_start": 60,
+          "original_line_end": 60,
+          "sha256": "758f487fe8e9fcc59cec4694d95a9032224f967b29f39543a1fb04e2901b079e",
+          "equality_group": 2,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 3,
+          "original_line_start": 64,
+          "original_line_end": 64,
+          "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "equality_group": 3,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 4,
+          "original_line_start": 64,
+          "original_line_end": 64,
+          "sha256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "equality_group": 4,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 5,
+          "original_line_start": 64,
+          "original_line_end": 64,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 6,
+          "original_line_start": 65,
+          "original_line_end": 65,
+          "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "equality_group": 3,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 7,
+          "original_line_start": 65,
+          "original_line_end": 65,
+          "sha256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "equality_group": 4,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 8,
+          "original_line_start": 65,
+          "original_line_end": 65,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 9,
+          "original_line_start": 66,
+          "original_line_end": 66,
+          "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "equality_group": 3,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 10,
+          "original_line_start": 66,
+          "original_line_end": 66,
+          "sha256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "equality_group": 4,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 11,
+          "original_line_start": 66,
+          "original_line_end": 66,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 12,
+          "original_line_start": 67,
+          "original_line_end": 67,
+          "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "equality_group": 3,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 13,
+          "original_line_start": 67,
+          "original_line_end": 67,
+          "sha256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "equality_group": 4,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 14,
+          "original_line_start": 67,
+          "original_line_end": 67,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 15,
+          "original_line_start": 68,
+          "original_line_end": 68,
+          "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "equality_group": 3,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 16,
+          "original_line_start": 68,
+          "original_line_end": 68,
+          "sha256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "equality_group": 4,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 17,
+          "original_line_start": 68,
+          "original_line_end": 68,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 18,
+          "original_line_start": 69,
+          "original_line_end": 69,
+          "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "equality_group": 3,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 19,
+          "original_line_start": 69,
+          "original_line_end": 69,
+          "sha256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "equality_group": 4,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 20,
+          "original_line_start": 69,
+          "original_line_end": 69,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 21,
+          "original_line_start": 70,
+          "original_line_end": 70,
+          "sha256": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+          "equality_group": 3,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 22,
+          "original_line_start": 70,
+          "original_line_end": 70,
+          "sha256": "eb045d78d273107348b0300c01d29b7552d622abbc6faf81b3ec55359aa9950c",
+          "equality_group": 4,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 23,
+          "original_line_start": 70,
+          "original_line_end": 70,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 24,
+          "original_line_start": 89,
+          "original_line_end": 89,
+          "sha256": "10e47618545196e31c0222fbf79bebd64393e0e2dc4a70ba2121544810f5dfb3",
+          "equality_group": 24,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 25,
+          "original_line_start": 89,
+          "original_line_end": 89,
+          "sha256": "3354f4a8fa7e4bb285ba4f89ece075b21993997d29be0e24cc2bac655530d5ef",
+          "equality_group": 25,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 26,
+          "original_line_start": 89,
+          "original_line_end": 89,
+          "sha256": "e089414534e219c28761ba1a03978cf75b97069665c508fcdb7561bd4808842e",
+          "equality_group": 26,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 27,
+          "original_line_start": 92,
+          "original_line_end": 92,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 28,
+          "original_line_start": 93,
+          "original_line_end": 93,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 29,
+          "original_line_start": 94,
+          "original_line_end": 94,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 30,
+          "original_line_start": 95,
+          "original_line_end": 95,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 31,
+          "original_line_start": 96,
+          "original_line_end": 96,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 32,
+          "original_line_start": 97,
+          "original_line_end": 97,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 33,
+          "original_line_start": 98,
+          "original_line_end": 98,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 34,
+          "original_line_start": 102,
+          "original_line_end": 102,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 35,
+          "original_line_start": 103,
+          "original_line_end": 103,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 36,
+          "original_line_start": 117,
+          "original_line_end": 117,
+          "sha256": "3354f4a8fa7e4bb285ba4f89ece075b21993997d29be0e24cc2bac655530d5ef",
+          "equality_group": 25,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 37,
+          "original_line_start": 117,
+          "original_line_end": 117,
+          "sha256": "e089414534e219c28761ba1a03978cf75b97069665c508fcdb7561bd4808842e",
+          "equality_group": 26,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 38,
+          "original_line_start": 125,
+          "original_line_end": 125,
+          "sha256": "d7dfbaf6df0a816fd85178599a48c11ff875288715c08377c6beb5d67e5fa8d5",
+          "equality_group": 38,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 39,
+          "original_line_start": 125,
+          "original_line_end": 125,
+          "sha256": "a3d8fba94e7e2209a9e3d39b3f7353abf229960c407329aff46572338f20bfa9",
+          "equality_group": 39,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 40,
+          "original_line_start": 126,
+          "original_line_end": 126,
+          "sha256": "be352f07cb884b1de31aa1f92f5d2e67f0987fab3ad4328429489a752153fd74",
+          "equality_group": 40,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 41,
+          "original_line_start": 126,
+          "original_line_end": 126,
+          "sha256": "522bad6d83fff732cf3340b46e7e3a46f564f20a6fe42dc02377f9bc2d0e3d1d",
+          "equality_group": 41,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 42,
+          "original_line_start": 127,
+          "original_line_end": 127,
+          "sha256": "f168ccdd91548c5a8c871bd4b9b757c5e889a1672e774bddef4a2714759a7a8f",
+          "equality_group": 42,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 43,
+          "original_line_start": 128,
+          "original_line_end": 128,
+          "sha256": "2a073b69e7c95ca048eca34150444ba85a32c3ce80f15b167b74eff4e179ae1a",
+          "equality_group": 43,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 44,
+          "original_line_start": 129,
+          "original_line_end": 129,
+          "sha256": "4a33eacd5fa65f2b2e2871cd131286b53c415b131666d71173bb6e3fe59361b3",
+          "equality_group": 44,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 45,
+          "original_line_start": 130,
+          "original_line_end": 130,
+          "sha256": "ea38ecd56c1ecaa54a0742bd864857fd59ce2b0665710f3afb0f7402957093ff",
+          "equality_group": 45,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 46,
+          "original_line_start": 131,
+          "original_line_end": 131,
+          "sha256": "1a7b308d8df661bad4338cb6acfa57891ac9d97b434d315b993214248ca3ddb2",
+          "equality_group": 46,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 47,
+          "original_line_start": 132,
+          "original_line_end": 132,
+          "sha256": "37c3b85f72c14dd789bce6f873a95a3aa5a85cf5d892e533cfdf8b11023a5bef",
+          "equality_group": 47,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 48,
+          "original_line_start": 133,
+          "original_line_end": 133,
+          "sha256": "2ba1891749e390820e37372ea1acf88ab9b767cfc667006ac2629b3b20e8346c",
+          "equality_group": 48,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 49,
+          "original_line_start": 134,
+          "original_line_end": 134,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 50,
+          "original_line_start": 134,
+          "original_line_end": 134,
+          "sha256": "0119d4c3ffd27db2616d0ea592b3e7f50d5ef6a6f1dc7bc4dcb98c63f4d3552d",
+          "equality_group": 50,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 51,
+          "original_line_start": 135,
+          "original_line_end": 135,
+          "sha256": "8c1601162679785cb37f1af470dcd1135cf606cba8f1dd253cf51d42f60d37bd",
+          "equality_group": 51,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 52,
+          "original_line_start": 136,
+          "original_line_end": 136,
+          "sha256": "89dea6933c24e5b851a1c8b9c12923ce050b879b890f209813197c91ed81cea9",
+          "equality_group": 52,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 53,
+          "original_line_start": 137,
+          "original_line_end": 137,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 54,
+          "original_line_start": 137,
+          "original_line_end": 137,
+          "sha256": "bdc5fc9f8a121cfb09f6b8fb4b69cff9925abd6a89472b4a195e381e540883a8",
+          "equality_group": 54,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 55,
+          "original_line_start": 138,
+          "original_line_end": 138,
+          "sha256": "b7b30d6e4f8c864714bf46cb6df3e5cc89c91af4ac4f31edac07cdf1f9090d4d",
+          "equality_group": 55,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 56,
+          "original_line_start": 139,
+          "original_line_end": 139,
+          "sha256": "d52a86ad7bf6f16c171d726060301168c5767d8e785b89ed8fb97342ccb34901",
+          "equality_group": 56,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 57,
+          "original_line_start": 140,
+          "original_line_end": 140,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 58,
+          "original_line_start": 140,
+          "original_line_end": 140,
+          "sha256": "d1ced9150a26758e6096fce8a41ceaacbd47657c0ad76257700d91a039f331dc",
+          "equality_group": 58,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 59,
+          "original_line_start": 141,
+          "original_line_end": 141,
+          "sha256": "7fb424916a876a11fd89e2be88512b1a80cd77c6de92121e6129adaa0286521a",
+          "equality_group": 59,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 60,
+          "original_line_start": 142,
+          "original_line_end": 142,
+          "sha256": "76d065faf1401af3ac0b7199bdd3961a47f7acda5204f92214cde62d8dc2d083",
+          "equality_group": 60,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 61,
+          "original_line_start": 143,
+          "original_line_end": 143,
+          "sha256": "193f041a018f1741973c4048f29a3dca79e26b5eecb0eae74b56b4dc2ea4412a",
+          "equality_group": 61,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 62,
+          "original_line_start": 144,
+          "original_line_end": 144,
+          "sha256": "a77905620c0f81f464a880bc97699de5a2ba7d427a0af9f49d915cc7ac476492",
+          "equality_group": 62,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 63,
+          "original_line_start": 145,
+          "original_line_end": 145,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 64,
+          "original_line_start": 145,
+          "original_line_end": 145,
+          "sha256": "65712aa921352362c44947df7ab418f2439a2b13ea3c92c125157ee0f54fe9db",
+          "equality_group": 64,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 65,
+          "original_line_start": 146,
+          "original_line_end": 146,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 66,
+          "original_line_start": 146,
+          "original_line_end": 146,
+          "sha256": "1c33693bd2118aa69781513bd6ba27333bfeaf8432b2e6821f228b81556a31fc",
+          "equality_group": 66,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 67,
+          "original_line_start": 147,
+          "original_line_end": 147,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 68,
+          "original_line_start": 147,
+          "original_line_end": 147,
+          "sha256": "d652cd0100f441c9d9d3fd4541c0144f8fe73b22c37403bcd6ed2f3ec530d35f",
+          "equality_group": 68,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 69,
+          "original_line_start": 148,
+          "original_line_end": 148,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 70,
+          "original_line_start": 148,
+          "original_line_end": 148,
+          "sha256": "ed33e38aa90e5557179386a1bd1e4a7dc0d16c203657b0f1bb0063ca98063f28",
+          "equality_group": 70,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 71,
+          "original_line_start": 149,
+          "original_line_end": 149,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 72,
+          "original_line_start": 149,
+          "original_line_end": 149,
+          "sha256": "4771aefd611d119427fbc7bf9023ef1ac3b73a4304c530afbd0539f2dfa27de2",
+          "equality_group": 72,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 73,
+          "original_line_start": 150,
+          "original_line_end": 150,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 74,
+          "original_line_start": 150,
+          "original_line_end": 150,
+          "sha256": "1837c3531c1294e08f842f00105b166f9a2322c2e78b8c49a7bdaa5d30650a9d",
+          "equality_group": 74,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 75,
+          "original_line_start": 151,
+          "original_line_end": 151,
+          "sha256": "78c9ab7da9d57a7857b51507e6056e33966d5da2703e165b4a0ff94da516f95c",
+          "equality_group": 75,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 76,
+          "original_line_start": 152,
+          "original_line_end": 152,
+          "sha256": "be54bb21df260453975235282e1ffac6bede02767ece79f7726b89ad57695089",
+          "equality_group": 76,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 77,
+          "original_line_start": 153,
+          "original_line_end": 153,
+          "sha256": "9c463d7fa97e7e7961122af93b6615d0ef0490f7f55297f57c78eac667a1a5bb",
+          "equality_group": 77,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 78,
+          "original_line_start": 154,
+          "original_line_end": 154,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 5,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 79,
+          "original_line_start": 154,
+          "original_line_end": 154,
+          "sha256": "d2176950bef0d89de24591bf386f4badf32da77fbdc0988208f7ac105a22b754",
+          "equality_group": 79,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        }
+      ]
+    },
+    "evidence_sources": {
+      "work-config-613225585": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 613225585,
+        "qualified_name": "dbo.MetaTrans_GetInventoryAdjustment",
+        "source_definition_sha256": "f5820bb2d67d61bf6e3cc320128893515daacdb98acd6afe0f95a46b41754811",
+        "reading_path": "DB Architecture/sql/613225585.sql",
+        "reading_sha256": "9eb3331ea000785c41c702ca633240564af88a24f4b54c8359b6d4e0c2c1c77f",
+        "line_spans": [
+          [
+            1,
+            156
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+      "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+      "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+      "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.MetaTrans_GetInventoryAdjustment",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/613225585.sql",
+      "reading_sha256": "9eb3331ea000785c41c702ca633240564af88a24f4b54c8359b6d4e0c2c1c77f",
+      "source_definition_sha256": "f5820bb2d67d61bf6e3cc320128893515daacdb98acd6afe0f95a46b41754811",
+      "reading_lines": 156,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+    "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+    "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+    "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+  ]
+}

@@ -1,0 +1,1713 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 2065754762,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "STH_UpdateHeader",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:58.653000",
+    "modify_date": "2026-08-16 06:59:58.653000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.STH_UpdateHeader",
+    "domain_candidate": "utilities"
+  },
+  "source_definition_sha256": "94304e8fe246dc7c4a5c67dccb38c2246029d095efa7c246803d1bfc51a738f8",
+  "exact_sql_path": "2065754762.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 8836,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": true,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": true,
+    "read_uncommitted_hint": true
+  },
+  "parameters": [
+    {
+      "object_id": 2065754762,
+      "parameter_id": 1,
+      "name": "@iIntShipNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 619865275,
+        "qualified_name": "dbo.SHIPMENT_DETAIL",
+        "layout_path": "../table layout/619865275.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 2065754762,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2621,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 157,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/157/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 51,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 78,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 2065754762,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2622,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 157,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/157/effects/2",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 157,
+              "source_field": "effects",
+              "source_index": 5,
+              "json_pointer": "/semantic_contracts/157/effects/5",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 71,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 151,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 180,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 214,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1067866871,
+        "qualified_name": "dbo.SHIPPING_CONTAINER",
+        "layout_path": "../table layout/1067866871.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 2065754762,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2626,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 157,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/157/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 35,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 36,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 37,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 64,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 728389664,
+        "qualified_name": "dbo.WAREHOUSE_ALERT",
+        "layout_path": "../table layout/728389664.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 2065754762,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2623,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 157,
+              "source_field": "effects",
+              "source_index": 3,
+              "json_pointer": "/semantic_contracts/157/effects/3",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 152,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 824390006,
+        "qualified_name": "dbo.WAREHOUSE_ALERT_REQUEST",
+        "layout_path": "../table layout/824390006.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 2065754762,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 2624,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 157,
+              "source_field": "effects",
+              "source_index": 4,
+              "json_pointer": "/semantic_contracts/157/effects/4",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/operations-continuation.json",
+              "batch_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+              "contract_index": 157,
+              "source_field": "effects",
+              "source_index": 6,
+              "json_pointer": "/semantic_contracts/157/effects/6",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "INSERT",
+              "line": 138,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 159,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 173,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [
+      {
+        "table_id": 1942297979,
+        "qualified_name": "dbo.FUNCTIONAL_AREA_STATUS_FLOW",
+        "layout_path": "../table layout/1942297979.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 2038298321,
+        "qualified_name": "dbo.GENERIC_CONFIG_DETAIL",
+        "layout_path": "../table layout/2038298321.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1131867099,
+        "qualified_name": "dbo.SHIPPING_LOAD",
+        "layout_path": "../table layout/1131867099.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": [
+      {
+        "table_id": 2009774217,
+        "qualified_name": "dbo.CONTAINER_TYPE",
+        "layout_path": "../table layout/2009774217.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2065754762,
+          "reading_lines": [
+            35,
+            36
+          ]
+        }
+      },
+      {
+        "table_id": 619865275,
+        "qualified_name": "dbo.SHIPMENT_DETAIL",
+        "layout_path": "../table layout/619865275.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2065754762,
+          "reading_lines": [
+            51,
+            78
+          ]
+        }
+      },
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2065754762,
+          "reading_lines": [
+            71,
+            151,
+            180,
+            214
+          ]
+        }
+      },
+      {
+        "table_id": 1067866871,
+        "qualified_name": "dbo.SHIPPING_CONTAINER",
+        "layout_path": "../table layout/1067866871.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2065754762,
+          "reading_lines": [
+            35,
+            36,
+            37,
+            64
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2065754762,
+          "reading_lines": [
+            70,
+            138,
+            142
+          ]
+        }
+      },
+      {
+        "table_id": 728389664,
+        "qualified_name": "dbo.WAREHOUSE_ALERT",
+        "layout_path": "../table layout/728389664.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2065754762,
+          "reading_lines": [
+            152
+          ]
+        }
+      },
+      {
+        "table_id": 824390006,
+        "qualified_name": "dbo.WAREHOUSE_ALERT_REQUEST",
+        "layout_path": "../table layout/824390006.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 2065754762,
+          "reading_lines": [
+            138,
+            159,
+            173
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 2065754762,
+          "module_type": "P",
+          "source_line": 132,
+          "source_start_offset": 5354,
+          "source_end_offset": 5363,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 664389436,
+          "table_qualified_name": "dbo.WAREHOUSE",
+          "source_definition_sha256": "94304e8fe246dc7c4a5c67dccb38c2246029d095efa7c246803d1bfc51a738f8",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 2065754762,
+          "module_type": "P",
+          "source_line": 135,
+          "source_start_offset": 5430,
+          "source_end_offset": 5439,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 664389436,
+          "table_qualified_name": "dbo.WAREHOUSE",
+          "source_definition_sha256": "94304e8fe246dc7c4a5c67dccb38c2246029d095efa7c246803d1bfc51a738f8",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 2065754762,
+          "module_type": "P",
+          "source_line": 176,
+          "source_start_offset": 7062,
+          "source_end_offset": 7071,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 664389436,
+          "table_qualified_name": "dbo.WAREHOUSE",
+          "source_definition_sha256": "94304e8fe246dc7c4a5c67dccb38c2246029d095efa7c246803d1bfc51a738f8",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 2065754762,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "STH_UpdateLoad",
+      "referenced_id": null,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": true,
+      "is_ambiguous": false,
+      "target_qualified_name": null
+    },
+    {
+      "referencing_id": 2065754762,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "SDBfn_GetQtyAtSts",
+      "referenced_id": 119319835,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": true,
+      "target_qualified_name": "dbo.SDBfn_GetQtyAtSts"
+    },
+    {
+      "referencing_id": 2065754762,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SHIPMENT_DETAIL",
+      "referenced_id": 619865275,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_DETAIL"
+    },
+    {
+      "referencing_id": 2065754762,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SHIPMENT_HEADER",
+      "referenced_id": 683865503,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_HEADER"
+    },
+    {
+      "referencing_id": 2065754762,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "WAREHOUSE_ALERT",
+      "referenced_id": 728389664,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.WAREHOUSE_ALERT"
+    },
+    {
+      "referencing_id": 2065754762,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "WAREHOUSE_ALERT_REQUEST",
+      "referenced_id": 824390006,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.WAREHOUSE_ALERT_REQUEST"
+    },
+    {
+      "referencing_id": 2065754762,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "GetWarehouseTimezoneValue",
+      "referenced_id": 1000702963,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": true,
+      "target_qualified_name": "dbo.GetWarehouseTimezoneValue"
+    },
+    {
+      "referencing_id": 2065754762,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SHIPPING_CONTAINER",
+      "referenced_id": 1067866871,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPPING_CONTAINER"
+    },
+    {
+      "referencing_id": 2065754762,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "SDBfn_GetLeadingStsInRange",
+      "referenced_id": 1489752710,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": true,
+      "target_qualified_name": "dbo.SDBfn_GetLeadingStsInRange"
+    },
+    {
+      "referencing_id": 2065754762,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "STSfn_RtrvStsForAction",
+      "referenced_id": 2113754933,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.STSfn_RtrvStsForAction"
+    },
+    {
+      "referencing_id": 2065754762,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "DHfn_GETDATENoTime",
+      "referenced_id": 2122802970,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": true,
+      "target_qualified_name": "dbo.DHfn_GetDateNoTime"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/operations-continuation.json",
+    "source_sha256": "c604b044747ae43ab3c9a2adf6d50e0194a4a694a8bdf1232cc59031b85b4600",
+    "json_pointer": "/semantic_contracts/157",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 2065754762,
+      "qualified_name": "dbo.STH_UpdateHeader",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body, necessary private dynamic/literal interpretation, direct source behavior and explicit operational gaps.",
+      "source_definition_sha256": "94304e8fe246dc7c4a5c67dccb38c2246029d095efa7c246803d1bfc51a738f8",
+      "purpose": "Roll shipment detail/root-container status into the header and linked load.",
+      "inputs_defaults": [
+        "CREATE PROCEDURE STH_UpdateHeader( @iIntShipNum numeric(9)) AS",
+        "Only explicit declaration defaults permit omission; catalog has_default_value is not used to infer T-SQL defaults."
+      ],
+      "parameters": [
+        {
+          "object_id": 2065754762,
+          "parameter_id": 1,
+          "name": "@iIntShipNum",
+          "type_schema": "sys",
+          "type_name": "numeric",
+          "max_length": 5,
+          "precision": 9,
+          "scale": 0,
+          "is_output": false,
+          "is_readonly": false,
+          "has_default_value": false
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "NULL old statuses make inequality/equality unknown, affecting change detection and optimistic update matching. Missing configuration can leave derived values NULL."
+      ],
+      "output_shape": [
+        "No result set; checked SQL errors return-1 and nonzero child returns propagate."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.SHIPMENT_DETAIL",
+          "object_id": 619865275,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.SHIPPING_CONTAINER",
+          "object_id": 1067866871,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.SHIPMENT_HEADER",
+          "object_id": 683865503,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.WAREHOUSE_ALERT",
+          "object_id": 728389664,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.WAREHOUSE_ALERT_REQUEST",
+          "object_id": 824390006,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.SHIPMENT_HEADER",
+          "object_id": 683865503,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.WAREHOUSE_ALERT_REQUEST",
+          "object_id": 824390006,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.SDBfn_GetLeadingStsInRange",
+          "object_id": 1489752710,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.SDBfn_GetQtyAtSts",
+          "object_id": 119319835,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.STSfn_RtrvStsForAction",
+          "object_id": 2113754933,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.DHfn_GetDateNoTime",
+          "object_id": 2122802970,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.GetWarehouseTimezoneValue",
+          "object_id": 1000702963,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "dbo.STH_UpdateLoad",
+          "object_id": 2081754819,
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Unbounded loop condition rowsUpdated=0. Usually derives minimum detail status1 and maximum helper-leading status, subject to a container-existence branch, then extends range with root containers (PARENT NULL). Highest per-line quantity at997 can override minimum via configured action status, capped by maximum. Invalid/nonpositive/NULL statuses and minimum>=994 invoke configured defaults selected by old leading>=300 or minimum997. Change flag is sticky across retries. On change, inserts active forward-progress alert requests before header update with NOLOCK NOT EXISTS; SCOPE_IDENTITY captures only one ID even if multiple alerts insert, so retry correction changes only that row. Header compares both old statuses, then updates both status dates to warehouse-local date, resets failure flags and stamps UTC. NULL old status or concurrent changes can prevent match indefinitely. On changed completion, refreshes positive linked load. No bounded retry/atomic transaction.",
+          "evidence_refs": [
+            "ops-sql-2065754762"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Unbounded loop condition rowsUpdated=0. Usually derives minimum detail status1 and maximum helper-leading status, subject to a container-existence branch, then extends range with root containers (PARENT NULL). Highest per-line quantity at997 can override minimum via configured action status, capped by maximum. Invalid/nonpositive/NULL statuses and minimum>=994 invoke configured defaults selected by old leading>=300 or minimum997. Change flag is sticky across retries. On change, inserts active forward-progress alert requests before header update with NOLOCK NOT EXISTS; SCOPE_IDENTITY captures only one ID even if multiple alerts insert, so retry correction changes only that row. Header compares both old statuses, then updates both status dates to warehouse-local date, resets failure flags and stamps UTC. NULL old status or concurrent changes can prevent match indefinitely. On changed completion, refreshes positive linked load. No bounded retry/atomic transaction.",
+      "configuration_scope_and_precedence": [
+        "Unbounded loop condition rowsUpdated=0. Usually derives minimum detail status1 and maximum helper-leading status, subject to a container-existence branch, then extends range with root containers (PARENT NULL). Highest per-line quantity at997 can override minimum via configured action status, capped by maximum. Invalid/nonpositive/NULL statuses and minimum>=994 invoke configured defaults selected by old leading>=300 or minimum997. Change flag is sticky across retries. On change, inserts active forward-progress alert requests before header update with NOLOCK NOT EXISTS; SCOPE_IDENTITY captures only one ID even if multiple alerts insert, so retry correction changes only that row. Header compares both old statuses, then updates both status dates to warehouse-local date, resets failure flags and stamps UTC. NULL old status or concurrent changes can prevent match indefinitely. On changed completion, refreshes positive linked load. No bounded retry/atomic transaction."
+      ],
+      "error_and_return_handling": [
+        "No result set; checked SQL errors return-1 and nonzero child returns propagate.",
+        "NULL old statuses make inequality/equality unknown, affecting change detection and optimistic update matching. Missing configuration can leave derived values NULL.",
+        "No explicit transaction; NOLOCK reads and compare-old-status updates form an unbounded optimistic retry, not an atomic snapshot."
+      ],
+      "transaction_ownership": "No explicit transaction; NOLOCK reads and compare-old-status updates form an unbounded optimistic retry, not an atomic snapshot.",
+      "concurrency": [
+        "NOLOCK/read-uncommitted hints occur in the captured body; dirty, missing or inconsistent reads are possible. No explicit transaction; NOLOCK reads and compare-old-status updates form an unbounded optimistic retry, not an atomic snapshot."
+      ],
+      "trigger_behavior": "Direct persistent writes can invoke enabled triggers and constraint actions for their actual event. Attached captured triggers below are metadata bindings, not proof that every branch fires them; their bodies and transitive effects are separate contracts. Dynamic targets and child procedures require their own trigger analysis.",
+      "attached_trigger_metadata": [],
+      "external_handoffs_and_gaps": [
+        "Static body review only; no updates, alerts or status-flow calls executed.",
+        "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+        "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+        "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+        "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+        "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+      ],
+      "source_structure": {
+        "declaration": "CREATE PROCEDURE STH_UpdateHeader( @iIntShipNum numeric(9)) AS",
+        "program": [
+          {
+            "line": 4,
+            "text": "CREATE PROCEDURE STH_UpdateHeader("
+          },
+          {
+            "line": 5,
+            "text": "\t@iIntShipNum numeric(9))"
+          },
+          {
+            "line": 6,
+            "text": "AS"
+          },
+          {
+            "line": 7,
+            "text": "\tSET NOCOUNT ON;"
+          },
+          {
+            "line": 10,
+            "text": "\tDECLARE @statusChanged INT;"
+          },
+          {
+            "line": 11,
+            "text": "\tDECLARE @rowCount INT;"
+          },
+          {
+            "line": 12,
+            "text": "\tDECLARE @rowsUpdated INT;"
+          },
+          {
+            "line": 13,
+            "text": "\tDECLARE @alertInserted INT;"
+          },
+          {
+            "line": 14,
+            "text": "\tDECLARE @internalAlertReqNum INT;"
+          },
+          {
+            "line": 15,
+            "text": "\tDECLARE @iError INT;"
+          },
+          {
+            "line": 16,
+            "text": "\tDECLARE @qtyAtImmediatePendingSts numeric(19,5) = 0.0;"
+          },
+          {
+            "line": 17,
+            "text": "\tDECLARE @iLoadNum numeric(9);"
+          },
+          {
+            "line": 18,
+            "text": "\tDECLARE @minStatus numeric(3);"
+          },
+          {
+            "line": 19,
+            "text": "\tDECLARE @maxStatus numeric(3);"
+          },
+          {
+            "line": 20,
+            "text": "\tDECLARE @defaultStatus numeric(3);"
+          },
+          {
+            "line": 21,
+            "text": "\tDECLARE @HdrTrailingSts numeric(3);"
+          },
+          {
+            "line": 22,
+            "text": "\tDECLARE @HdrLeadingSts numeric(3);"
+          },
+          {
+            "line": 23,
+            "text": "\tDECLARE @warehouse nvarchar(25);"
+          },
+          {
+            "line": 25,
+            "text": "\tSELECT @rowsUpdated = 0;"
+          },
+          {
+            "line": 26,
+            "text": "\tSELECT @alertInserted = 0;"
+          },
+          {
+            "line": 27,
+            "text": "\tSELECT @statusChanged = 0;"
+          },
+          {
+            "line": 31,
+            "text": "\tWHILE (@rowsUpdated = 0)"
+          },
+          {
+            "line": 32,
+            "text": "\tBEGIN"
+          },
+          {
+            "line": 35,
+            "text": "\t\tIF (NOT EXISTS(SELECT TOP 1 1 FROM SHIPPING_CONTAINER SC WHERE INTERNAL_SHIPMENT_NUM = @iIntShipNum AND STATUS >= 700 AND CONTAINER_TYPE <> N'<literal:1>'"
+          },
+          {
+            "line": 36,
+            "text": "\t\t\tAND NOT EXISTS (SELECT TOP 1 1 FROM SHIPPING_CONTAINER WHERE INTERNAL_SHIPMENT_NUM = @iIntShipNum AND PARENT = SC.INTERNAL_CONTAINER_NUM AND CONTAINER_TYPE=N'<literal:2>'))"
+          },
+          {
+            "line": 37,
+            "text": "\t\tOR EXISTS(SELECT TOP 1 1 FROM SHIPPING_CONTAINER WHERE INTERNAL_SHIPMENT_NUM = @iIntShipNum AND INTERNAL_SHIPMENT_LINE_NUM IS NOT NULL))"
+          },
+          {
+            "line": 38,
+            "text": "\t\tBEGIN\t\t"
+          },
+          {
+            "line": 39,
+            "text": "\t\tSELECT \t@minStatus = MIN(STATUS1),"
+          },
+          {
+            "line": 40,
+            "text": "\t\t\t@maxStatus = MAX(dbo.SDBfn_GetLeadingStsInRange("
+          },
+          {
+            "line": 41,
+            "text": "\t\t\t\t\t\t STATUS1,"
+          },
+          {
+            "line": 42,
+            "text": "\t\t\t\t\t\t STATUS2,"
+          },
+          {
+            "line": 43,
+            "text": "\t\t\t\t\t\t STATUS3,"
+          },
+          {
+            "line": 44,
+            "text": "\t\t\t\t\t\t STATUS4,"
+          },
+          {
+            "line": 45,
+            "text": "\t\t\t\t\t\t STATUS5,"
+          },
+          {
+            "line": 46,
+            "text": "\t\t\t\t\t\t STATUS6,"
+          },
+          {
+            "line": 47,
+            "text": "\t\t\t\t\t\t STATUS7,"
+          },
+          {
+            "line": 48,
+            "text": "\t\t\t\t\t\t STATUS8,"
+          },
+          {
+            "line": 49,
+            "text": "\t\t\t\t\t\t STATUS9,"
+          },
+          {
+            "line": 50,
+            "text": "\t\t\t\t\t\t STATUS10))"
+          },
+          {
+            "line": 51,
+            "text": "\t\tFROM SHIPMENT_DETAIL WITH (NOLOCK) "
+          },
+          {
+            "line": 52,
+            "text": "\t\tWHERE INTERNAL_SHIPMENT_NUM = @iIntShipNum;"
+          },
+          {
+            "line": 53,
+            "text": "\t\tEND"
+          },
+          {
+            "line": 56,
+            "text": "\t\tSELECT  @minStatus = CASE WHEN (MIN(SC.STATUS) < @minStatus OR @minStatus IS NULL)"
+          },
+          {
+            "line": 57,
+            "text": "\t\t\t\tTHEN MIN(SC.STATUS)"
+          },
+          {
+            "line": 58,
+            "text": "\t\t\t\tELSE @minStatus"
+          },
+          {
+            "line": 59,
+            "text": "\t\t\t\tEND,"
+          },
+          {
+            "line": 60,
+            "text": "\t\t\t    @maxStatus = CASE WHEN (MAX(SC.STATUS) > @maxStatus OR @maxStatus IS NULL)"
+          },
+          {
+            "line": 61,
+            "text": "\t\t\t    THEN MAX(SC.STATUS)"
+          },
+          {
+            "line": 62,
+            "text": "\t\t\t\tELSE @maxStatus"
+          },
+          {
+            "line": 63,
+            "text": "\t\t\t\tEND"
+          },
+          {
+            "line": 64,
+            "text": "\t\tFROM SHIPPING_CONTAINER  SC WITH(NOLOCK)"
+          },
+          {
+            "line": 65,
+            "text": "\t\tWHERE SC.INTERNAL_SHIPMENT_NUM = @iIntShipNum"
+          },
+          {
+            "line": 66,
+            "text": "\t\t\tAND SC.PARENT IS NULL;"
+          },
+          {
+            "line": 69,
+            "text": "\t\tSELECT @HdrTrailingSts = TRAILING_STS, "
+          },
+          {
+            "line": 70,
+            "text": "\t\t\t@HdrLeadingSts = LEADING_STS,@warehouse = WAREHOUSE"
+          },
+          {
+            "line": 71,
+            "text": "\t\tFROM SHIPMENT_HEADER WITH (NOLOCK) "
+          },
+          {
+            "line": 72,
+            "text": "\t\tWHERE INTERNAL_SHIPMENT_NUM = @iIntShipNum;"
+          },
+          {
+            "line": 75,
+            "text": "\t\tSELECT @qtyAtImmediatePendingSts = (SELECT TOP 1 dbo.SDBfn_GetQtyAtSts(997,"
+          },
+          {
+            "line": 76,
+            "text": "\t\t\t\t\t\t STATUS1, STATUS2, STATUS3, STATUS4, STATUS5, STATUS6, STATUS7, STATUS8, STATUS9, STATUS10,"
+          },
+          {
+            "line": 77,
+            "text": "\t\t\t\t\t\t QUANTITY_AT_STS1, QUANTITY_AT_STS2, QUANTITY_AT_STS3, QUANTITY_AT_STS4, QUANTITY_AT_STS5, QUANTITY_AT_STS6, QUANTITY_AT_STS7, QUANTITY_AT_STS8, QUANTITY_AT_STS9, QUANTITY_AT_STS10) AS QAI"
+          },
+          {
+            "line": 78,
+            "text": "\t\tFROM SHIPMENT_DETAIL WITH (NOLOCK) "
+          },
+          {
+            "line": 79,
+            "text": "\t\tWHERE INTERNAL_SHIPMENT_NUM = @iIntShipNum ORDER BY QAI DESC);"
+          },
+          {
+            "line": 82,
+            "text": "\t\t IF (@qtyAtImmediatePendingSts > 0.0)"
+          },
+          {
+            "line": 83,
+            "text": "\t\t   BEGIN\t\t     "
+          },
+          {
+            "line": 85,
+            "text": "\t\t    SELECT @minStatus = dbo.STSfn_RtrvStsForAction(N'<literal:3>', N'<literal:4>'); "
+          },
+          {
+            "line": 88,
+            "text": "\t\t\tIF (@minStatus > @maxStatus )"
+          },
+          {
+            "line": 89,
+            "text": "\t\t\t BEGIN"
+          },
+          {
+            "line": 90,
+            "text": "\t\t\t   SELECT @minStatus = @maxStatus;"
+          },
+          {
+            "line": 91,
+            "text": "\t\t\t END"
+          },
+          {
+            "line": 92,
+            "text": "\t\t   END"
+          },
+          {
+            "line": 96,
+            "text": "\t\tIF(@maxStatus <= 0 OR "
+          },
+          {
+            "line": 97,
+            "text": "\t\t\t\t@maxStatus IS NULL OR -- [comment omitted]"
+          },
+          {
+            "line": 98,
+            "text": "\t\t\t\t@minStatus <=0 OR "
+          },
+          {
+            "line": 99,
+            "text": "\t\t\t\t@minStatus IS NULL OR -- [comment omitted]"
+          },
+          {
+            "line": 100,
+            "text": "\t\t\t\t@minStatus >= 994)"
+          },
+          {
+            "line": 101,
+            "text": "\t\tBEGIN"
+          },
+          {
+            "line": 104,
+            "text": "\t\t\tIF (@HdrLeadingSts >= 300 OR @minStatus = 997)\t\t\t"
+          },
+          {
+            "line": 105,
+            "text": "\t\t\t\tSELECT @defaultStatus = dbo.STSfn_RtrvStsForAction(N'<literal:5>', N'<literal:6>');"
+          },
+          {
+            "line": 106,
+            "text": "\t\t\tELSE"
+          },
+          {
+            "line": 107,
+            "text": "\t\t\t\tSELECT @defaultStatus = dbo.STSfn_RtrvStsForAction(N'<literal:7>', N'<literal:8>');"
+          },
+          {
+            "line": 110,
+            "text": "\t\t\tIF(@maxStatus <= 0 OR @maxStatus IS NULL)"
+          },
+          {
+            "line": 111,
+            "text": "\t\t\tBEGIN"
+          },
+          {
+            "line": 112,
+            "text": "\t\t\t\tSET @maxStatus = @defaultStatus;"
+          },
+          {
+            "line": 113,
+            "text": "\t\t\tEND"
+          },
+          {
+            "line": 114,
+            "text": "\t\t\tIF(@minStatus <=0 OR @minStatus IS NULL OR @minStatus >= 994)"
+          },
+          {
+            "line": 115,
+            "text": "\t\t\tBEGIN"
+          },
+          {
+            "line": 116,
+            "text": "\t\t\t\tSET @minStatus = @defaultStatus;"
+          },
+          {
+            "line": 117,
+            "text": "\t\t\tEND"
+          },
+          {
+            "line": 119,
+            "text": "\t\tEND"
+          },
+          {
+            "line": 123,
+            "text": "\t\tIF( (@HdrTrailingSts <> ISNULL(@minStatus,@HdrTrailingSts)) "
+          },
+          {
+            "line": 124,
+            "text": "\t\t\tOR "
+          },
+          {
+            "line": 125,
+            "text": "\t\t\t(@HdrLeadingSts <> ISNULL(@maxStatus,@HdrLeadingSts)) )"
+          },
+          {
+            "line": 126,
+            "text": "\t\tBEGIN "
+          },
+          {
+            "line": 127,
+            "text": "\t\t\tSET @statusChanged = 1;"
+          },
+          {
+            "line": 128,
+            "text": "\t\tEND"
+          },
+          {
+            "line": 131,
+            "text": "\t\tIF(@statusChanged = 1 )"
+          },
+          {
+            "line": 132,
+            "text": "\t\tBEGIN"
+          },
+          {
+            "line": 134,
+            "text": "\t\t\tIF (@alertInserted = 0)"
+          },
+          {
+            "line": 135,
+            "text": "\t\t\tBEGIN"
+          },
+          {
+            "line": 138,
+            "text": "\t\t\t\tINSERT INTO WAREHOUSE_ALERT_REQUEST (ALERT_TYPE, INTERNAL_ALERT_NUM, INTERNAL_SOURCE_NUM, WAREHOUSE, PROCESSED, ACTIVITY_DATE_TIME, USER_STAMP, PROCESS_STAMP, DATE_TIME_STAMP, PRIORITY, MESSAGE, IDENTIFIER1)"
+          },
+          {
+            "line": 139,
+            "text": "\t\t\t\tSELECT ALERT.ALERT_TYPE,"
+          },
+          {
+            "line": 140,
+            "text": "\t\t\t\t\t   ALERT.INTERNAL_ALERT_NUM,"
+          },
+          {
+            "line": 141,
+            "text": "\t\t\t\t\t   SHIP.INTERNAL_SHIPMENT_NUM, "
+          },
+          {
+            "line": 142,
+            "text": "\t\t\t\t\t   SHIP.WAREHOUSE,"
+          },
+          {
+            "line": 143,
+            "text": "\t\t\t\t\t   N'<literal:9>',"
+          },
+          {
+            "line": 144,
+            "text": "\t\t\t\t\t   GETUTCDATE(),"
+          },
+          {
+            "line": 145,
+            "text": "\t\t\t\t\t   N'<literal:10>',"
+          },
+          {
+            "line": 146,
+            "text": "\t\t\t\t\t   N'<literal:11>',"
+          },
+          {
+            "line": 147,
+            "text": "\t\t\t\t\t   GETUTCDATE(),"
+          },
+          {
+            "line": 148,
+            "text": "\t\t\t\t\t   ALERT.PRIORITY,"
+          },
+          {
+            "line": 149,
+            "text": "\t\t\t\t\t   ALERT.MESSAGE,"
+          },
+          {
+            "line": 150,
+            "text": "\t\t\t\t\t   @minStatus"
+          },
+          {
+            "line": 151,
+            "text": "\t\t\t\t FROM SHIPMENT_HEADER SHIP WITH (NOLOCK) ,"
+          },
+          {
+            "line": 152,
+            "text": "\t\t\t\t\t WAREHOUSE_ALERT ALERT WITH (NOLOCK) "
+          },
+          {
+            "line": 154,
+            "text": "\t\t\t\t WHERE ALERT.ALERT_TYPE = N'<literal:12>'"
+          },
+          {
+            "line": 155,
+            "text": "\t\t\t\t   AND (SHIP.TRAILING_STS IS NULL OR SHIP.TRAILING_STS < @minStatus)"
+          },
+          {
+            "line": 156,
+            "text": "\t\t\t\t   AND SHIP.INTERNAL_SHIPMENT_NUM = @iIntShipNum"
+          },
+          {
+            "line": 157,
+            "text": "\t\t\t\t   AND ALERT.ACTIVE = N'<literal:13>'"
+          },
+          {
+            "line": 158,
+            "text": "\t\t\t\t   AND NOT EXISTS (SELECT REQUEST.INTERNAL_ALERT_REQ_NUM"
+          },
+          {
+            "line": 159,
+            "text": "\t\t\t\t\t\t\t\t\t FROM WAREHOUSE_ALERT_REQUEST REQUEST WITH (NOLOCK) "
+          },
+          {
+            "line": 160,
+            "text": "\t\t\t\t\t\t\t\t\tWHERE REQUEST.INTERNAL_ALERT_NUM = ALERT.INTERNAL_ALERT_NUM"
+          },
+          {
+            "line": 161,
+            "text": "\t\t\t\t\t\t\t\t\t  AND REQUEST.INTERNAL_SOURCE_NUM = SHIP.INTERNAL_SHIPMENT_NUM"
+          },
+          {
+            "line": 162,
+            "text": "\t\t\t\t\t\t\t\t\t  AND REQUEST.IDENTIFIER1 = @minStatus);"
+          },
+          {
+            "line": 164,
+            "text": "\t\t\t\tSELECT @iError = @@ERROR, "
+          },
+          {
+            "line": 165,
+            "text": "\t\t\t\t\t\t@rowCount = @@ROWCOUNT, "
+          },
+          {
+            "line": 166,
+            "text": "\t\t\t\t\t\t@internalAlertReqNum = SCOPE_IDENTITY();"
+          },
+          {
+            "line": 167,
+            "text": "\t\t\t\tIF (@rowCount <> 0) SELECT @alertInserted = 1;"
+          },
+          {
+            "line": 168,
+            "text": "\t\t\t\tIF (@iError <> 0) RETURN -1;"
+          },
+          {
+            "line": 170,
+            "text": "\t\t\tEND"
+          },
+          {
+            "line": 171,
+            "text": "\t\t\tELSE"
+          },
+          {
+            "line": 172,
+            "text": "\t\t\tBEGIN"
+          },
+          {
+            "line": 173,
+            "text": "\t\t\t\tUPDATE WAREHOUSE_ALERT_REQUEST"
+          },
+          {
+            "line": 174,
+            "text": "\t\t\t\tSET IDENTIFIER1 = @minStatus"
+          },
+          {
+            "line": 175,
+            "text": "\t\t\t\tWHERE INTERNAL_ALERT_REQ_NUM = @internalAlertReqNum;"
+          },
+          {
+            "line": 176,
+            "text": "\t\t\tEND"
+          },
+          {
+            "line": 180,
+            "text": "\t\t\tUPDATE SHIPMENT_HEADER"
+          },
+          {
+            "line": 182,
+            "text": "\t\t\t   SET TRAILING_STS = @minStatus,\t\t\t\t\t\t"
+          },
+          {
+            "line": 183,
+            "text": "\t\t\t\t   TRAILING_STS_DATE = dbo.DHfn_GETDATENoTime(dbo.GetWarehouseTimezoneValue(@warehouse,GETUTCDATE())),"
+          },
+          {
+            "line": 184,
+            "text": "\t\t\t\t   TRAILING_STS_FAILED = N'<literal:14>',"
+          },
+          {
+            "line": 187,
+            "text": "\t\t\t\t   LEADING_STS = @maxStatus,"
+          },
+          {
+            "line": 188,
+            "text": "\t\t\t\t   LEADING_STS_DATE = dbo.DHfn_GETDATENoTime(dbo.GetWarehouseTimezoneValue(@warehouse,GETUTCDATE())),"
+          },
+          {
+            "line": 189,
+            "text": "\t\t\t\t   LEADING_STS_FAILED = N'<literal:15>',"
+          },
+          {
+            "line": 190,
+            "text": "\t\t\t\t   PROCESS_STAMP = N'<literal:16>',"
+          },
+          {
+            "line": 191,
+            "text": "\t\t\t\t   USER_STAMP = N'<literal:17>',"
+          },
+          {
+            "line": 192,
+            "text": "\t\t\t\t   DATE_TIME_STAMP = GETUTCDATE()"
+          },
+          {
+            "line": 193,
+            "text": "\t\t\t WHERE INTERNAL_SHIPMENT_NUM = @iIntShipNum"
+          },
+          {
+            "line": 194,
+            "text": "\t\t\t AND TRAILING_STS = @HdrTrailingSts"
+          },
+          {
+            "line": 195,
+            "text": "\t\t\t AND LEADING_STS = @HdrLeadingSts;\t"
+          },
+          {
+            "line": 197,
+            "text": "\t\t\tSELECT @iError = @@ERROR, @rowCount = @@ROWCOUNT;"
+          },
+          {
+            "line": 198,
+            "text": "\t\t\tIF(@iError <> 0) RETURN -1;"
+          },
+          {
+            "line": 199,
+            "text": "\t\t\tIF (@rowCount <> 0) SELECT @rowsUpdated = 1;"
+          },
+          {
+            "line": 200,
+            "text": "\t\tEND -- [comment omitted]"
+          },
+          {
+            "line": 201,
+            "text": "\t\tELSE"
+          },
+          {
+            "line": 202,
+            "text": "\t\tBEGIN"
+          },
+          {
+            "line": 206,
+            "text": "\t\t\tSELECT @rowsUpdated = 1; "
+          },
+          {
+            "line": 207,
+            "text": "\t\tEND \t-- [comment omitted]"
+          },
+          {
+            "line": 208,
+            "text": "\tEND -- [comment omitted]"
+          },
+          {
+            "line": 211,
+            "text": "\tIF(@statusChanged = 1 )"
+          },
+          {
+            "line": 212,
+            "text": "\tBEGIN"
+          },
+          {
+            "line": 213,
+            "text": "\t\tSELECT @iLoadNum = SHIPPING_LOAD_NUM"
+          },
+          {
+            "line": 214,
+            "text": "\t\tFROM SHIPMENT_HEADER WITH (NOLOCK) "
+          },
+          {
+            "line": 215,
+            "text": "\t\tWHERE INTERNAL_SHIPMENT_NUM = @iIntShipNum;"
+          },
+          {
+            "line": 217,
+            "text": "\t\tIF (@iLoadNum > 0)"
+          },
+          {
+            "line": 218,
+            "text": "\t\tBEGIN"
+          },
+          {
+            "line": 219,
+            "text": "\t\t\tEXEC @iError = STH_UpdateLoad @iLoadNum;"
+          },
+          {
+            "line": 220,
+            "text": "\t\t\tIF (@@ERROR <> 0) RETURN -1; "
+          },
+          {
+            "line": 221,
+            "text": "\t\t\tIF (@iError <> 0) RETURN @iError;"
+          },
+          {
+            "line": 222,
+            "text": "\t\tEND -- [comment omitted]"
+          },
+          {
+            "line": 223,
+            "text": "\tEND -- [comment omitted]"
+          }
+        ],
+        "note": "Exact inert retained syntax with one-based reading-copy coordinates; preserves projection order, aliases, predicates, DML mappings and branch detail. Never execute this reading copy."
+      },
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/2065754762.sql",
+          "sha256": "363c6a189e422cd4fa34382a8cedee3a7e543130d41a857d6a91d687e72a4bf0",
+          "line_start": 1,
+          "line_end": 224,
+          "kind": "REDACTED_SQL",
+          "source_definition_sha256": "94304e8fe246dc7c4a5c67dccb38c2246029d095efa7c246803d1bfc51a738f8",
+          "description": "Complete retained body manually reviewed, including branches, effects, projections, NULL and error behavior; necessary private meanings are described without raw values."
+        }
+      ],
+      "evidence_refs": [
+        "ops-sql-2065754762"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "ops-sql-2065754762": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 2065754762,
+        "qualified_name": "dbo.STH_UpdateHeader",
+        "source_definition_sha256": "94304e8fe246dc7c4a5c67dccb38c2246029d095efa7c246803d1bfc51a738f8",
+        "reading_path": "DB Architecture/sql/2065754762.sql",
+        "reading_sha256": "363c6a189e422cd4fa34382a8cedee3a7e543130d41a857d6a91d687e72a4bf0",
+        "line_spans": [
+          [
+            1,
+            224
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+      "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+      "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+      "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+      "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.STH_UpdateHeader",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/2065754762.sql",
+      "reading_sha256": "363c6a189e422cd4fa34382a8cedee3a7e543130d41a857d6a91d687e72a4bf0",
+      "source_definition_sha256": "94304e8fe246dc7c4a5c67dccb38c2246029d095efa7c246803d1bfc51a738f8",
+      "reading_lines": 224,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": true
+    },
+    "dynamic_review_bindings": [
+      {
+        "module_id": 2065754762,
+        "batch_path": "DB Architecture/mappings/batches/dynamic-dependencies.json",
+        "batch_sha256": "b3647d0c9510b3038e2fd81c1ad659bb1d82b82bbf0a55b32bbd7c434899c323",
+        "review_state": "BOUNDED_FIXED_CALL_FALSE_POSITIVE_REVIEW",
+        "source_definition_sha256": "94304e8fe246dc7c4a5c67dccb38c2246029d095efa7c246803d1bfc51a738f8"
+      }
+    ],
+    "unresolved_catalog_dependencies": [
+      {
+        "module_id": 2065754762,
+        "row_index": 2619,
+        "candidate_table_id": null,
+        "reason": "CATALOG_NULL_TARGET_ID_NOT_RESOLVED_BY_NAME_ONLY"
+      }
+    ],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "The owner attests that the replica is current. These explanations use its captured source; no version/build gate is imposed.",
+    "No database connection, application rows, operational SQL, procedure execution, report/label rendering, printer, trace capture, maintenance or archive purge was performed.",
+    "Full procedure-body interpretation is separate from table roles, active application wiring, effective configuration, external delivery and operational acceptance.",
+    "Private literals were inspected only where necessary for dynamic or opaque behavior. Private server names, URLs, paths and raw literal payloads are not published.",
+    "Retained source expressions and aliases remain literal-redacted. Exact source hashes and line coordinates bind each contract; no historical-looking name establishes active caller selection."
+  ]
+}

@@ -1,0 +1,1321 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1418800462,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "WTH_DeactivateWork",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 07:00:13.703000",
+    "modify_date": "2026-08-16 07:00:13.703000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.WTH_DeactivateWork",
+    "domain_candidate": "work"
+  },
+  "source_definition_sha256": "730816eeabee7917c537ee1e198e9ccd878f85768d6e44cddcc0cc13db4c48a2",
+  "exact_sql_path": "1418800462.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 5204,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": true
+  },
+  "parameters": [
+    {
+      "object_id": 1418800462,
+      "parameter_id": 1,
+      "name": "@workUnit",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 2102298549,
+        "qualified_name": "dbo.IA_WORK_INSTRUCTION",
+        "layout_path": "../table layout/2102298549.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1418800462,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1684,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 91,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/91/effects/1",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "INSERT",
+              "line": 16,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1418800462,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1683,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 91,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/91/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 91,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/91/effects/2",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 212,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "DELETE",
+              "line": 214,
+              "context": "RESOLVED_DML_ALIAS",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "RELATION_READ",
+              "line": 214,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1418800462,
+          "reading_lines": [
+            35,
+            133
+          ]
+        }
+      },
+      {
+        "table_id": 2102298549,
+        "qualified_name": "dbo.IA_WORK_INSTRUCTION",
+        "layout_path": "../table layout/2102298549.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1418800462,
+          "reading_lines": [
+            16
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1418800462,
+          "reading_lines": [
+            36,
+            134
+          ]
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1418800462,
+          "reading_lines": [
+            64,
+            162
+          ]
+        }
+      },
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1418800462,
+          "reading_lines": [
+            212,
+            214
+          ]
+        }
+      },
+      {
+        "table_id": 1768393369,
+        "qualified_name": "dbo.WORK_TYPE",
+        "layout_path": "../table layout/1768393369.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1418800462,
+          "reading_lines": [
+            33,
+            131
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1418800462,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "WORK_INSTRUCTION",
+      "referenced_id": 1352391887,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.WORK_INSTRUCTION"
+    },
+    {
+      "referencing_id": 1418800462,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "IA_WORK_INSTRUCTION",
+      "referenced_id": 2102298549,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.IA_WORK_INSTRUCTION"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+    "source_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+    "json_pointer": "/semantic_contracts/91",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1418800462,
+      "qualified_name": "dbo.WTH_DeactivateWork",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Complete retained body manually read; parameter/default/output/effect/branch/configuration/error/transaction/concurrency dimensions reviewed as source-backed static behavior.",
+      "source_definition_sha256": "730816eeabee7917c537ee1e198e9ccd878f85768d6e44cddcc0cc13db4c48a2",
+      "purpose": "Move all named work-unit instructions into inactive storage.",
+      "inputs_defaults": [
+        "Exact inert declaration: CREATE PROCEDURE WTH_DeactivateWork( @workUnit nvarchar(50)) AS",
+        "Structured parameters record declaration defaults/directions and unused inputs; no default does not mean NOT NULL."
+      ],
+      "parameters": [
+        {
+          "name": "@workUnit",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "No warehouse, type, condition or completed-work restriction. NOLOCK copy can be inconsistent and subsequent unguarded delete can target a changed population. No local transaction/error handler/duplicate guard. Copy omits inventory-attribute IDs and min/max work-zone sequences. No claim that associated inventory/request rows are archived."
+      ],
+      "output_shape": [
+        "No result, OUTPUT or explicit return; NOCOUNT ON.",
+        "Exact SELECT expression, alias, order, TOP/DISTINCT and filter text is retained line-by-line in source_structure; variable assignments/subqueries do not count as caller result sets."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.WORK_INSTRUCTION",
+          "object_id": 1352391887,
+          "evidence_refs": [
+            "work-config-1418800462"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.IA_WORK_INSTRUCTION",
+          "object_id": 2102298549,
+          "evidence_refs": [
+            "work-config-1418800462"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.WORK_INSTRUCTION",
+          "object_id": 1352391887,
+          "evidence_refs": [
+            "work-config-1418800462"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Insert explicit fields from WORK_INSTRUCTION WITH(NOLOCK) for exact work-unit name into IA_WORK_INSTRUCTION; clear USER_ASSIGNED, set LOCKED negative and timestamp UTC. Then delete live instructions by the same work-unit name.",
+          "evidence_refs": [
+            "work-config-1418800462"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Scope, NULL/error and concurrency boundaries: No warehouse, type, condition or completed-work restriction. NOLOCK copy can be inconsistent and subsequent unguarded delete can target a changed population. No local transaction/error handler/duplicate guard. Copy omits inventory-attribute IDs and min/max work-zone sequences. No claim that associated inventory/request rows are archived.",
+          "evidence_refs": [
+            "work-config-1418800462"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Insert explicit fields from WORK_INSTRUCTION WITH(NOLOCK) for exact work-unit name into IA_WORK_INSTRUCTION; clear USER_ASSIGNED, set LOCKED negative and timestamp UTC. Then delete live instructions by the same work-unit name.",
+      "configuration_scope_and_precedence": [
+        "Insert explicit fields from WORK_INSTRUCTION WITH(NOLOCK) for exact work-unit name into IA_WORK_INSTRUCTION; clear USER_ASSIGNED, set LOCKED negative and timestamp UTC. Then delete live instructions by the same work-unit name.",
+        "No warehouse, type, condition or completed-work restriction. NOLOCK copy can be inconsistent and subsequent unguarded delete can target a changed population. No local transaction/error handler/duplicate guard. Copy omits inventory-attribute IDs and min/max work-zone sequences. No claim that associated inventory/request rows are archived."
+      ],
+      "error_and_return_handling": [
+        "No warehouse, type, condition or completed-work restriction. NOLOCK copy can be inconsistent and subsequent unguarded delete can target a changed population. No local transaction/error handler/duplicate guard. Copy omits inventory-attribute IDs and min/max work-zone sequences. No claim that associated inventory/request rows are archived.",
+        "No result, OUTPUT or explicit return; NOCOUNT ON."
+      ],
+      "transaction_ownership": "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic.",
+      "concurrency": [
+        "No warehouse, type, condition or completed-work restriction. NOLOCK copy can be inconsistent and subsequent unguarded delete can target a changed population. No local transaction/error handler/duplicate guard. Copy omits inventory-attribute IDs and min/max work-zone sequences. No claim that associated inventory/request rows are archived.",
+        "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic."
+      ],
+      "trigger_behavior": "Captured attached triggers: work_instruction_outgoing_pd (enabled). Trigger event must match the actual DML; an INSERT-only trigger does not fire for UPDATE/DELETE. Existing source-reviewed trigger contracts remain authoritative.",
+      "trigger_contract_refs": [
+        {
+          "ref": "DB Architecture/mappings/batches/work-execution.json#/semantic_contracts/12",
+          "source_definition_sha256": "155f13a60fb914314716a9481a9740979b7a1db7521ab805aa47dce41220be7f"
+        }
+      ],
+      "external_handoffs_and_gaps": [
+        "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+        "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+        "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+        "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1418800462.sql",
+          "sha256": "9592ebcf4c14f85141bbbaec75dbc41ec4840224045c8043cc794de402433134",
+          "line_start": 1,
+          "line_end": 217,
+          "kind": "REDACTED_SQL",
+          "description": "Complete retained body manually read; independent per-procedure notes and essential scalar equality/flag interpretations. Original hash and redaction parity checked.",
+          "source_definition_sha256": "730816eeabee7917c537ee1e198e9ccd878f85768d6e44cddcc0cc13db4c48a2"
+        }
+      ],
+      "evidence_refs": [
+        "work-config-1418800462"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_NAMES",
+      "source_structure": {
+        "program": [
+          {
+            "line": 10,
+            "text": "CREATE PROCEDURE WTH_DeactivateWork("
+          },
+          {
+            "line": 11,
+            "text": "@workUnit nvarchar(50))"
+          },
+          {
+            "line": 12,
+            "text": "AS"
+          },
+          {
+            "line": 13,
+            "text": "Begin"
+          },
+          {
+            "line": 14,
+            "text": "SET NOCOUNT ON;"
+          },
+          {
+            "line": 16,
+            "text": "INSERT INTO IA_WORK_INSTRUCTION(INTERNAL_INSTRUCTION_NUM"
+          },
+          {
+            "line": 17,
+            "text": ",INSTRUCTION_TYPE"
+          },
+          {
+            "line": 18,
+            "text": ",PARENT_INSTR"
+          },
+          {
+            "line": 19,
+            "text": ",WORK_UNIT"
+          },
+          {
+            "line": 20,
+            "text": ",SEQUENCE"
+          },
+          {
+            "line": 21,
+            "text": ",LAUNCH_NUM"
+          },
+          {
+            "line": 22,
+            "text": ",PRIORITY"
+          },
+          {
+            "line": 23,
+            "text": ",CONDITION"
+          },
+          {
+            "line": 24,
+            "text": ",HOLD_CODE"
+          },
+          {
+            "line": 25,
+            "text": ",REFERENCE_ID"
+          },
+          {
+            "line": 26,
+            "text": ",REFERENCE_TYPE"
+          },
+          {
+            "line": 27,
+            "text": ",ERP_ORDER"
+          },
+          {
+            "line": 28,
+            "text": ",ERP_ORDER_LINE_NUM"
+          },
+          {
+            "line": 29,
+            "text": ",INTERNAL_NUM"
+          },
+          {
+            "line": 30,
+            "text": ",INTERNAL_LINE_NUM"
+          },
+          {
+            "line": 31,
+            "text": ",PICK_LIST_ID"
+          },
+          {
+            "line": 32,
+            "text": ",ACCOUNT"
+          },
+          {
+            "line": 33,
+            "text": ",WORK_TYPE"
+          },
+          {
+            "line": 34,
+            "text": ",WORK_GROUP"
+          },
+          {
+            "line": 35,
+            "text": ",COMPANY"
+          },
+          {
+            "line": 36,
+            "text": ",ITEM"
+          },
+          {
+            "line": 37,
+            "text": ",ITEM_DESC"
+          },
+          {
+            "line": 38,
+            "text": ",FROM_QTY"
+          },
+          {
+            "line": 39,
+            "text": ",QUANTITY"
+          },
+          {
+            "line": 40,
+            "text": ",TO_QTY"
+          },
+          {
+            "line": 41,
+            "text": ",QUANTITY_UM"
+          },
+          {
+            "line": 42,
+            "text": ",TOTAL_WEIGHT"
+          },
+          {
+            "line": 43,
+            "text": ",WEIGHT_UM"
+          },
+          {
+            "line": 44,
+            "text": ",TOTAL_VOLUME"
+          },
+          {
+            "line": 45,
+            "text": ",FROM_WHS"
+          },
+          {
+            "line": 46,
+            "text": ",TO_WHS"
+          },
+          {
+            "line": 47,
+            "text": ",VOLUME_UM"
+          },
+          {
+            "line": 48,
+            "text": ",TOTAL_VALUE"
+          },
+          {
+            "line": 49,
+            "text": ",FROM_LOC"
+          },
+          {
+            "line": 50,
+            "text": ",TO_LOC"
+          },
+          {
+            "line": 51,
+            "text": ",FROM_CHECK_DIG"
+          },
+          {
+            "line": 52,
+            "text": ",TO_CHECK_DIG"
+          },
+          {
+            "line": 53,
+            "text": ",FROM_WORK_ZONE"
+          },
+          {
+            "line": 54,
+            "text": ",TO_WORK_ZONE"
+          },
+          {
+            "line": 55,
+            "text": ",COMPLETED_BY_USER"
+          },
+          {
+            "line": 56,
+            "text": ",TEAM_ASSIGNED"
+          },
+          {
+            "line": 57,
+            "text": ",USER_ASSIGNED"
+          },
+          {
+            "line": 58,
+            "text": ",ESTIMATED_TIME"
+          },
+          {
+            "line": 59,
+            "text": ",AGING_DATE_TIME"
+          },
+          {
+            "line": 60,
+            "text": ",START_DATE_TIME"
+          },
+          {
+            "line": 61,
+            "text": ",END_DATE_TIME"
+          },
+          {
+            "line": 62,
+            "text": ",NUMBER_OF_CHILDREN"
+          },
+          {
+            "line": 63,
+            "text": ",MESSAGE_ID"
+          },
+          {
+            "line": 64,
+            "text": ",LOT"
+          },
+          {
+            "line": 65,
+            "text": ",USER_DEF1"
+          },
+          {
+            "line": 66,
+            "text": ",USER_DEF2"
+          },
+          {
+            "line": 67,
+            "text": ",USER_DEF3"
+          },
+          {
+            "line": 68,
+            "text": ",USER_DEF4"
+          },
+          {
+            "line": 69,
+            "text": ",USER_DEF5"
+          },
+          {
+            "line": 70,
+            "text": ",USER_DEF6"
+          },
+          {
+            "line": 71,
+            "text": ",USER_DEF7"
+          },
+          {
+            "line": 72,
+            "text": ",USER_DEF8"
+          },
+          {
+            "line": 73,
+            "text": ",USER_STAMP"
+          },
+          {
+            "line": 74,
+            "text": ",PROCESS_STAMP"
+          },
+          {
+            "line": 75,
+            "text": ",DATE_TIME_STAMP"
+          },
+          {
+            "line": 76,
+            "text": ",EQUIPMENT_LOC"
+          },
+          {
+            "line": 77,
+            "text": ",CONVERTED_QTY"
+          },
+          {
+            "line": 78,
+            "text": ",CONVERTED_QTY_UM"
+          },
+          {
+            "line": 79,
+            "text": ",INTERNAL_NUM_TYPE"
+          },
+          {
+            "line": 80,
+            "text": ",INTERNAL_REQ_NUM"
+          },
+          {
+            "line": 81,
+            "text": ",INVENTORY_TRACKING"
+          },
+          {
+            "line": 82,
+            "text": ",LOCATING_ZONE"
+          },
+          {
+            "line": 83,
+            "text": ",FROM_TEMPL_FIELD1"
+          },
+          {
+            "line": 84,
+            "text": ",FROM_TEMPL_FIELD2"
+          },
+          {
+            "line": 85,
+            "text": ",FROM_TEMPL_FIELD3"
+          },
+          {
+            "line": 86,
+            "text": ",FROM_TEMPL_FIELD4"
+          },
+          {
+            "line": 87,
+            "text": ",FROM_TEMPL_FIELD5"
+          },
+          {
+            "line": 88,
+            "text": ",TO_TEMPL_FIELD1"
+          },
+          {
+            "line": 89,
+            "text": ",TO_TEMPL_FIELD2"
+          },
+          {
+            "line": 90,
+            "text": ",TO_TEMPL_FIELD3"
+          },
+          {
+            "line": 91,
+            "text": ",TO_TEMPL_FIELD4"
+          },
+          {
+            "line": 92,
+            "text": ",TO_TEMPL_FIELD5"
+          },
+          {
+            "line": 93,
+            "text": ",ALLOCATION_ZONE"
+          },
+          {
+            "line": 94,
+            "text": ",INTERNAL_CONTAINER_NUM"
+          },
+          {
+            "line": 95,
+            "text": ",CONTAINER_ID"
+          },
+          {
+            "line": 96,
+            "text": ",PARENT_CONTAINER_NUM"
+          },
+          {
+            "line": 97,
+            "text": ",PARENT_CONTAINER_ID"
+          },
+          {
+            "line": 98,
+            "text": ",INTERNAL_COUNT_NUM"
+          },
+          {
+            "line": 99,
+            "text": ",CYCLE_COUNT"
+          },
+          {
+            "line": 100,
+            "text": ",RELATED_WORK_UNIT"
+          },
+          {
+            "line": 101,
+            "text": ",TRANSPORT_CONT_ID"
+          },
+          {
+            "line": 102,
+            "text": ",GROUP_NUM"
+          },
+          {
+            "line": 103,
+            "text": ",OUTGOING_PD_LOC"
+          },
+          {
+            "line": 104,
+            "text": ",INCOMING_PD_LOC"
+          },
+          {
+            "line": 105,
+            "text": ",INVENTORY_AT_PD"
+          },
+          {
+            "line": 106,
+            "text": ",CYCLE_COUNT_GROUP_NUM"
+          },
+          {
+            "line": 107,
+            "text": ",ASSIGNMENT_ID"
+          },
+          {
+            "line": 108,
+            "text": ",LOGISTICS_UNIT"
+          },
+          {
+            "line": 109,
+            "text": ",PARENT_LOGISTICS_UNIT"
+          },
+          {
+            "line": 110,
+            "text": ",TREE_UNIT"
+          },
+          {
+            "line": 111,
+            "text": ",TREE_UNIT_ID"
+          },
+          {
+            "line": 112,
+            "text": ",LOCKED"
+          },
+          {
+            "line": 113,
+            "text": ",SRC_IDENTIFIER)"
+          },
+          {
+            "line": 114,
+            "text": "(SELECT INTERNAL_INSTRUCTION_NUM"
+          },
+          {
+            "line": 115,
+            "text": ",INSTRUCTION_TYPE"
+          },
+          {
+            "line": 116,
+            "text": ",PARENT_INSTR"
+          },
+          {
+            "line": 117,
+            "text": ",WORK_UNIT"
+          },
+          {
+            "line": 118,
+            "text": ",SEQUENCE"
+          },
+          {
+            "line": 119,
+            "text": ",LAUNCH_NUM"
+          },
+          {
+            "line": 120,
+            "text": ",PRIORITY"
+          },
+          {
+            "line": 121,
+            "text": ",CONDITION"
+          },
+          {
+            "line": 122,
+            "text": ",HOLD_CODE"
+          },
+          {
+            "line": 123,
+            "text": ",REFERENCE_ID"
+          },
+          {
+            "line": 124,
+            "text": ",REFERENCE_TYPE"
+          },
+          {
+            "line": 125,
+            "text": ",ERP_ORDER"
+          },
+          {
+            "line": 126,
+            "text": ",ERP_ORDER_LINE_NUM"
+          },
+          {
+            "line": 127,
+            "text": ",INTERNAL_NUM"
+          },
+          {
+            "line": 128,
+            "text": ",INTERNAL_LINE_NUM"
+          },
+          {
+            "line": 129,
+            "text": ",PICK_LIST_ID"
+          },
+          {
+            "line": 130,
+            "text": ",ACCOUNT"
+          },
+          {
+            "line": 131,
+            "text": ",WORK_TYPE"
+          },
+          {
+            "line": 132,
+            "text": ",WORK_GROUP"
+          },
+          {
+            "line": 133,
+            "text": ",COMPANY"
+          },
+          {
+            "line": 134,
+            "text": ",ITEM"
+          },
+          {
+            "line": 135,
+            "text": ",ITEM_DESC"
+          },
+          {
+            "line": 136,
+            "text": ",FROM_QTY"
+          },
+          {
+            "line": 137,
+            "text": ",QUANTITY"
+          },
+          {
+            "line": 138,
+            "text": ",TO_QTY"
+          },
+          {
+            "line": 139,
+            "text": ",QUANTITY_UM"
+          },
+          {
+            "line": 140,
+            "text": ",TOTAL_WEIGHT"
+          },
+          {
+            "line": 141,
+            "text": ",WEIGHT_UM"
+          },
+          {
+            "line": 142,
+            "text": ",TOTAL_VOLUME"
+          },
+          {
+            "line": 143,
+            "text": ",FROM_WHS"
+          },
+          {
+            "line": 144,
+            "text": ",TO_WHS"
+          },
+          {
+            "line": 145,
+            "text": ",VOLUME_UM"
+          },
+          {
+            "line": 146,
+            "text": ",TOTAL_VALUE"
+          },
+          {
+            "line": 147,
+            "text": ",FROM_LOC"
+          },
+          {
+            "line": 148,
+            "text": ",TO_LOC"
+          },
+          {
+            "line": 149,
+            "text": ",FROM_CHECK_DIG"
+          },
+          {
+            "line": 150,
+            "text": ",TO_CHECK_DIG"
+          },
+          {
+            "line": 151,
+            "text": ",FROM_WORK_ZONE"
+          },
+          {
+            "line": 152,
+            "text": ",TO_WORK_ZONE"
+          },
+          {
+            "line": 153,
+            "text": ",COMPLETED_BY_USER"
+          },
+          {
+            "line": 154,
+            "text": ",TEAM_ASSIGNED"
+          },
+          {
+            "line": 155,
+            "text": ",NULL"
+          },
+          {
+            "line": 156,
+            "text": ",ESTIMATED_TIME"
+          },
+          {
+            "line": 157,
+            "text": ",AGING_DATE_TIME"
+          },
+          {
+            "line": 158,
+            "text": ",START_DATE_TIME"
+          },
+          {
+            "line": 159,
+            "text": ",END_DATE_TIME"
+          },
+          {
+            "line": 160,
+            "text": ",NUMBER_OF_CHILDREN"
+          },
+          {
+            "line": 161,
+            "text": ",MESSAGE_ID"
+          },
+          {
+            "line": 162,
+            "text": ",LOT"
+          },
+          {
+            "line": 163,
+            "text": ",USER_DEF1"
+          },
+          {
+            "line": 164,
+            "text": ",USER_DEF2"
+          },
+          {
+            "line": 165,
+            "text": ",USER_DEF3"
+          },
+          {
+            "line": 166,
+            "text": ",USER_DEF4"
+          },
+          {
+            "line": 167,
+            "text": ",USER_DEF5"
+          },
+          {
+            "line": 168,
+            "text": ",USER_DEF6"
+          },
+          {
+            "line": 169,
+            "text": ",USER_DEF7"
+          },
+          {
+            "line": 170,
+            "text": ",USER_DEF8"
+          },
+          {
+            "line": 171,
+            "text": ",USER_STAMP"
+          },
+          {
+            "line": 172,
+            "text": ",PROCESS_STAMP"
+          },
+          {
+            "line": 173,
+            "text": ",GETUTCDATE()"
+          },
+          {
+            "line": 174,
+            "text": ",EQUIPMENT_LOC"
+          },
+          {
+            "line": 175,
+            "text": ",CONVERTED_QTY"
+          },
+          {
+            "line": 176,
+            "text": ",CONVERTED_QTY_UM"
+          },
+          {
+            "line": 177,
+            "text": ",INTERNAL_NUM_TYPE"
+          },
+          {
+            "line": 178,
+            "text": ",INTERNAL_REQ_NUM"
+          },
+          {
+            "line": 179,
+            "text": ",INVENTORY_TRACKING"
+          },
+          {
+            "line": 180,
+            "text": ",LOCATING_ZONE"
+          },
+          {
+            "line": 181,
+            "text": ",FROM_TEMPL_FIELD1"
+          },
+          {
+            "line": 182,
+            "text": ",FROM_TEMPL_FIELD2"
+          },
+          {
+            "line": 183,
+            "text": ",FROM_TEMPL_FIELD3"
+          },
+          {
+            "line": 184,
+            "text": ",FROM_TEMPL_FIELD4"
+          },
+          {
+            "line": 185,
+            "text": ",FROM_TEMPL_FIELD5"
+          },
+          {
+            "line": 186,
+            "text": ",TO_TEMPL_FIELD1"
+          },
+          {
+            "line": 187,
+            "text": ",TO_TEMPL_FIELD2"
+          },
+          {
+            "line": 188,
+            "text": ",TO_TEMPL_FIELD3"
+          },
+          {
+            "line": 189,
+            "text": ",TO_TEMPL_FIELD4"
+          },
+          {
+            "line": 190,
+            "text": ",TO_TEMPL_FIELD5"
+          },
+          {
+            "line": 191,
+            "text": ",ALLOCATION_ZONE"
+          },
+          {
+            "line": 192,
+            "text": ",INTERNAL_CONTAINER_NUM"
+          },
+          {
+            "line": 193,
+            "text": ",CONTAINER_ID"
+          },
+          {
+            "line": 194,
+            "text": ",PARENT_CONTAINER_NUM"
+          },
+          {
+            "line": 195,
+            "text": ",PARENT_CONTAINER_ID"
+          },
+          {
+            "line": 196,
+            "text": ",INTERNAL_COUNT_NUM"
+          },
+          {
+            "line": 197,
+            "text": ",CYCLE_COUNT"
+          },
+          {
+            "line": 198,
+            "text": ",RELATED_WORK_UNIT"
+          },
+          {
+            "line": 199,
+            "text": ",TRANSPORT_CONT_ID"
+          },
+          {
+            "line": 200,
+            "text": ",GROUP_NUM"
+          },
+          {
+            "line": 201,
+            "text": ",OUTGOING_PD_LOC"
+          },
+          {
+            "line": 202,
+            "text": ",INCOMING_PD_LOC"
+          },
+          {
+            "line": 203,
+            "text": ",INVENTORY_AT_PD"
+          },
+          {
+            "line": 204,
+            "text": ",CYCLE_COUNT_GROUP_NUM"
+          },
+          {
+            "line": 205,
+            "text": ",ASSIGNMENT_ID"
+          },
+          {
+            "line": 206,
+            "text": ",LOGISTICS_UNIT"
+          },
+          {
+            "line": 207,
+            "text": ",PARENT_LOGISTICS_UNIT"
+          },
+          {
+            "line": 208,
+            "text": ",TREE_UNIT"
+          },
+          {
+            "line": 209,
+            "text": ",TREE_UNIT_ID"
+          },
+          {
+            "line": 210,
+            "text": ",N'<literal:1>'"
+          },
+          {
+            "line": 211,
+            "text": ",SRC_IDENTIFIER"
+          },
+          {
+            "line": 212,
+            "text": "FROM WORK_INSTRUCTION WITH (NOLOCK) WHERE WORK_UNIT = @workUnit);"
+          },
+          {
+            "line": 214,
+            "text": "DELETE FROM  WORK_INSTRUCTION WHERE WORK_UNIT = @workUnit;"
+          },
+          {
+            "line": 215,
+            "text": "end;"
+          }
+        ],
+        "interpretation": "Inert exact retained SQL, not executable recovery instructions.",
+        "wildcard_column_catalog": []
+      },
+      "reviewed_literal_equality_groups": [
+        {
+          "ordinal": 1,
+          "original_line_start": 209,
+          "original_line_end": 209,
+          "sha256": "8ce86a6ae65d3692e7305e2c58ac62eebd97d3d943e093f577da25c36988246b",
+          "equality_group": 1,
+          "interpretation_kind": "NEGATIVE_FLAG"
+        }
+      ]
+    },
+    "evidence_sources": {
+      "work-config-1418800462": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1418800462,
+        "qualified_name": "dbo.WTH_DeactivateWork",
+        "source_definition_sha256": "730816eeabee7917c537ee1e198e9ccd878f85768d6e44cddcc0cc13db4c48a2",
+        "reading_path": "DB Architecture/sql/1418800462.sql",
+        "reading_sha256": "9592ebcf4c14f85141bbbaec75dbc41ec4840224045c8043cc794de402433134",
+        "line_spans": [
+          [
+            1,
+            217
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+      "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+      "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+      "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.WTH_DeactivateWork",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1418800462.sql",
+      "reading_sha256": "9592ebcf4c14f85141bbbaec75dbc41ec4840224045c8043cc794de402433134",
+      "source_definition_sha256": "730816eeabee7917c537ee1e198e9ccd878f85768d6e44cddcc0cc13db4c48a2",
+      "reading_lines": 217,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+    "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+    "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+    "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+  ]
+}

@@ -1,5 +1,11 @@
 # SCALE Intelligence master continuation prompt
 
+## Database programming reference - 2026-10-08
+
+The owner's new task adds `DB Architecture/SP layout`, `function layout` and `table layout`: **921 complete procedures, 76 complete functions, 518 table layouts and 16,968 columns**. Start with [the programming reference](DB%20Architecture/PROGRAMMING_LAYOUT.md), [verification](DB%20Architecture/evidence/programming-layout-verification.json) and [independent review](_project/programming-layout-independent-review-20261008.json). The [exact owner instruction](_project/programming-layout-authority-20261008.json) authorizes these unredacted exports in the repository, Git and GitHub and supersedes earlier private-only export wording for this task.
+
+Preserve the original snapshot/catalog and historical reports. New source-bound correlation is separate; comments/strings/indirect paths remain distinct from direct references. These are complete captured layouts from September 29, not current live DDL or proof that every object is vendor-base SCALE. Rebuild offline with `python tools/build_programming_layout.py`; do not infer authorization for a new database connection, runtime execution, deployment or unrelated source work. Prior C33 help state remains below.
+
 ## C33 current continuation - 2026-10-08
 
 The owner approved C32. C33 exposes **all 510 registered citations across 69 TAB claims** in collapsed source disclosures and corrects overlapping compound-topic search preference. Read [C33 changes and finite remainder](_project/CONTINUATION_C33.md) and [the C33 receipt](_project/continuation33-20261008.json).

@@ -1,0 +1,3233 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1322800120,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "WRK_UpdateWorkInstruction",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 07:00:13.460000",
+    "modify_date": "2026-08-16 07:00:13.460000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.WRK_UpdateWorkInstruction",
+    "domain_candidate": "work"
+  },
+  "source_definition_sha256": "d33dc18320dcec1e5cd5048098d024b6ed45908e0117bc5093a3b897fd69422f",
+  "exact_sql_path": "1322800120.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 7234,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1322800120,
+      "parameter_id": 1,
+      "name": "@CycleCount",
+      "type_schema": "sys",
+      "type_name": "nchar",
+      "max_length": 2,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nchar(1)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 2,
+      "name": "@InventoryAtPd",
+      "type_schema": "sys",
+      "type_name": "nchar",
+      "max_length": 2,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nchar(1)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 3,
+      "name": "@InventoryTracking",
+      "type_schema": "sys",
+      "type_name": "nchar",
+      "max_length": 2,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nchar(1)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 4,
+      "name": "@AgingDateTime",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 5,
+      "name": "@DateTimeStamp",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 6,
+      "name": "@EndDateTime",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 7,
+      "name": "@StartDateTime",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 8,
+      "name": "@ConvertedQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 9,
+      "name": "@CycleCountGroupNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 10,
+      "name": "@ErpOrderLineNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 11,
+      "name": "@EstimatedTime",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 12,
+      "name": "@FromQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 13,
+      "name": "@InternalContainerNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 14,
+      "name": "@InternalCountNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 15,
+      "name": "@InternalLineNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 16,
+      "name": "@InternalNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 17,
+      "name": "@InternalReqNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 18,
+      "name": "@LaunchNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 19,
+      "name": "@NumberOfChildren",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 20,
+      "name": "@ParentContainerNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 21,
+      "name": "@Priority",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 3,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(3,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 22,
+      "name": "@Quantity",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 23,
+      "name": "@Sequence",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 5,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(5,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 24,
+      "name": "@ToQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 25,
+      "name": "@TotalValue",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 13,
+      "precision": 28,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(28,5)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 26,
+      "name": "@TotalVolume",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 13,
+      "precision": 28,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(28,5)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 27,
+      "name": "@TotalWeight",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 13,
+      "precision": 28,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(28,5)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 28,
+      "name": "@UserDef7",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 29,
+      "name": "@UserDef8",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 30,
+      "name": "@Account",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 31,
+      "name": "@AllocationZone",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 32,
+      "name": "@Company",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 33,
+      "name": "@CompletedByUser",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 60,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(30)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 34,
+      "name": "@Condition",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 35,
+      "name": "@ContainerId",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 36,
+      "name": "@ConvertedQtyUm",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 37,
+      "name": "@EquipmentLoc",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 38,
+      "name": "@ErpOrder",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 39,
+      "name": "@FromCheckDig",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 40,
+      "name": "@FromLoc",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 41,
+      "name": "@FromTemplField1",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 42,
+      "name": "@FromTemplField2",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 43,
+      "name": "@FromTemplField3",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 44,
+      "name": "@FromTemplField4",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 45,
+      "name": "@FromTemplField5",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 46,
+      "name": "@FromWhs",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 47,
+      "name": "@FromWorkZone",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 48,
+      "name": "@GroupNum",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 49,
+      "name": "@HoldCode",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 50,
+      "name": "@IncomingPdLoc",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 51,
+      "name": "@InstructionType",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 52,
+      "name": "@InternalNumType",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 53,
+      "name": "@Item",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 54,
+      "name": "@ItemDesc",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 200,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(100)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 55,
+      "name": "@LocatingZone",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 56,
+      "name": "@Lot",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 57,
+      "name": "@MessageId",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 58,
+      "name": "@OutgoingPdLoc",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 59,
+      "name": "@ParentContainerId",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 60,
+      "name": "@PickListId",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 61,
+      "name": "@ProcessStamp",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 200,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(100)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 62,
+      "name": "@QuantityUm",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 63,
+      "name": "@ReferenceId",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 64,
+      "name": "@ReferenceType",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 65,
+      "name": "@RelatedWorkUnit",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 66,
+      "name": "@TeamAssigned",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 67,
+      "name": "@ToCheckDig",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 68,
+      "name": "@ToLoc",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 69,
+      "name": "@ToTemplField1",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 70,
+      "name": "@ToTemplField2",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 71,
+      "name": "@ToTemplField3",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 72,
+      "name": "@ToTemplField4",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 73,
+      "name": "@ToTemplField5",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 74,
+      "name": "@ToWhs",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 75,
+      "name": "@ToWorkZone",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 76,
+      "name": "@TransportContId",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 77,
+      "name": "@UserAssigned",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 60,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(30)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 78,
+      "name": "@UserDef1",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 79,
+      "name": "@UserDef2",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 80,
+      "name": "@UserDef3",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 81,
+      "name": "@UserDef4",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 82,
+      "name": "@UserDef5",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 83,
+      "name": "@UserDef6",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 84,
+      "name": "@UserStamp",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 60,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(30)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 85,
+      "name": "@VolumeUm",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 86,
+      "name": "@WeightUm",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 87,
+      "name": "@WorkGroup",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 88,
+      "name": "@WorkType",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 89,
+      "name": "@workUnit",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 90,
+      "name": "@logisticsUnit",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 91,
+      "name": "@parentLogisticsUnit",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 92,
+      "name": "@treeUnit",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 93,
+      "name": "@treeUnitId",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 94,
+      "name": "@fromLocInvAttributesId",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 95,
+      "name": "@toLocInvAttributesId",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 96,
+      "name": "@SrcIdentifier",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 97,
+      "name": "@MinWorkZoneSeq",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 4,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(4,0)"
+    },
+    {
+      "object_id": 1322800120,
+      "parameter_id": 98,
+      "name": "@MaxWorkZoneSeq",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 4,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(4,0)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1322800120,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1536,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 87,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/87/effects/0",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "UPDATE",
+              "line": 116,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1322800120,
+          "reading_lines": [
+            152
+          ]
+        }
+      },
+      {
+        "table_id": 386816440,
+        "qualified_name": "dbo.ITEM",
+        "layout_path": "../table layout/386816440.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1322800120,
+          "reading_lines": [
+            172
+          ]
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1322800120,
+          "reading_lines": [
+            175
+          ]
+        }
+      },
+      {
+        "table_id": 1352391887,
+        "qualified_name": "dbo.WORK_INSTRUCTION",
+        "layout_path": "../table layout/1352391887.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1322800120,
+          "reading_lines": [
+            116
+          ]
+        }
+      },
+      {
+        "table_id": 1768393369,
+        "qualified_name": "dbo.WORK_TYPE",
+        "layout_path": "../table layout/1768393369.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1322800120,
+          "reading_lines": [
+            207
+          ]
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1322800120,
+          "module_type": "P",
+          "source_line": 8,
+          "source_start_offset": 440,
+          "source_end_offset": 448,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1298819689,
+          "table_qualified_name": "dbo.LOCATION",
+          "source_definition_sha256": "d33dc18320dcec1e5cd5048098d024b6ed45908e0117bc5093a3b897fd69422f",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1322800120,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "work_instruction",
+      "referenced_id": 1352391887,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.WORK_INSTRUCTION"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+    "source_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+    "json_pointer": "/semantic_contracts/87",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1322800120,
+      "qualified_name": "dbo.WRK_UpdateWorkInstruction",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Complete retained body manually read; parameter/default/output/effect/branch/configuration/error/transaction/concurrency dimensions reviewed as source-backed static behavior.",
+      "source_definition_sha256": "d33dc18320dcec1e5cd5048098d024b6ed45908e0117bc5093a3b897fd69422f",
+      "purpose": "Replace a work-unit header field set from caller values.",
+      "inputs_defaults": [
+        "Exact inert declaration: CREATE procedure WRK_UpdateWorkInstruction( @CycleCount nchar(1), @InventoryAtPd nchar(1), @InventoryTracking nchar(1), @AgingDateTime nvarchar(25), @DateTimeStamp nvarchar(25), @EndDateTime nvarchar(25), @StartDateTime nvarchar(25), @ConvertedQty numeric(19,5), @CycleCountGroupNum numeric(9), @ErpOrderLineNum numeric(19,5), @EstimatedTime numeric(9), @FromQty numeric(19,5), @InternalContainerNum numeric(9), @InternalCountNum numeric(9), @InternalLineNum numeric(9), @InternalNum numeric(9), @InternalReqNum numeric(9), @LaunchNum numeric(9), @NumberOfChildren numeric(9), @ParentContainerNum numeric(9), @Priority numeric(3), @Quantity numeric(19,5), @Sequence numeric(5), @ToQty numeric(19,5), @TotalValue numeric(28,5), @TotalVolume numeric(28,5), @TotalWeight numeric(28,5), @UserDef7 numeric(19,5), @UserDef8 numeric(19,5), @Account nvarchar(25), @AllocationZone nvarchar(25), @Company nvarchar(25), @CompletedByUser nvarchar(30), @Condition nvarchar(25), @ContainerId nvarchar(25), @ConvertedQtyUm nvarchar(25), @EquipmentLoc nvarchar(25), @ErpOrder nvarchar(25), @FromCheckDig nvarchar(25), @FromLoc nvarchar(25), @FromTemplField1 nvarchar(25), @FromTemplField2 nvarchar(25), @FromTemplField3 nvarchar(25), @FromTemplField4 nvarchar(25), @FromTemplField5 nvarchar(25), @FromWhs nvarchar(25), @FromWorkZone nvarchar(25), @GroupNum nvarchar(50), @HoldCode nvarchar(50), @IncomingPdLoc nvarchar(25), @InstructionType nvarchar(25), @InternalNumType nvarchar(25), @Item nvarchar(50), @ItemDesc nvarchar(100), @LocatingZone nvarchar(25), @Lot nvarchar(25), @MessageId nvarchar(25), @OutgoingPdLoc nvarchar(25), @ParentContainerId nvarchar(25), @PickListId nvarchar(25), @ProcessStamp nvarchar(100), @QuantityUm nvarchar(25), @ReferenceId nvarchar(25), @ReferenceType nvarchar(25), @RelatedWorkUnit nvarchar(50), @TeamAssigned nvarchar(50), @ToCheckDig nvarchar(25), @ToLoc nvarchar(25), @ToTemplField1 nvarchar(25), @ToTemplField2 nvarchar(25), @ToTemplField3 nvarchar(25), @ToTemplField4 nvarchar(25), @ToTemplField5 nvarchar(25), @ToWhs nvarchar(25), @ToWorkZone nvarchar(25), @TransportContId nvarchar(25), @UserAssigned nvarchar(30), @UserDef1 nvarchar(25), @UserDef2 nvarchar(25), @UserDef3 nvarchar(25), @UserDef4 nvarchar(25), @UserDef5 nvarchar(25), @UserDef6 nvarchar(25), @UserStamp nvarchar(30), @VolumeUm nvarchar(25), @WeightUm nvarchar(25), @WorkGroup nvarchar(25), @WorkType nvarchar(25), @workUnit nvarchar(50), @logisticsUnit nvarchar(50), @parentLogisticsUnit nvarchar(50), @treeUnit numeric(9), @treeUnitId nvarchar(25), @fromLocInvAttributesId numeric(9), @toLocInvAttributesId numeric(9), @SrcIdentifier nvarchar(50), @MinWorkZoneSeq numeric(4), @MaxWorkZoneSeq numeric(4)) as",
+        "Structured parameters record declaration defaults/directions and unused inputs; no default does not mean NOT NULL."
+      ],
+      "parameters": [
+        {
+          "name": "@CycleCount",
+          "type": "nchar(1)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@InventoryAtPd",
+          "type": "nchar(1)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@InventoryTracking",
+          "type": "nchar(1)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@AgingDateTime",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@DateTimeStamp",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@EndDateTime",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@StartDateTime",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ConvertedQty",
+          "type": "numeric(19,5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@CycleCountGroupNum",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ErpOrderLineNum",
+          "type": "numeric(19,5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@EstimatedTime",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@FromQty",
+          "type": "numeric(19,5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@InternalContainerNum",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@InternalCountNum",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@InternalLineNum",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@InternalNum",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@InternalReqNum",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@LaunchNum",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@NumberOfChildren",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ParentContainerNum",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@Priority",
+          "type": "numeric(3)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@Quantity",
+          "type": "numeric(19,5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@Sequence",
+          "type": "numeric(5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ToQty",
+          "type": "numeric(19,5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@TotalValue",
+          "type": "numeric(28,5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@TotalVolume",
+          "type": "numeric(28,5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@TotalWeight",
+          "type": "numeric(28,5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@UserDef7",
+          "type": "numeric(19,5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@UserDef8",
+          "type": "numeric(19,5)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@Account",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@AllocationZone",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@Company",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@CompletedByUser",
+          "type": "nvarchar(30)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@Condition",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ContainerId",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ConvertedQtyUm",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@EquipmentLoc",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ErpOrder",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@FromCheckDig",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@FromLoc",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@FromTemplField1",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@FromTemplField2",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@FromTemplField3",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@FromTemplField4",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@FromTemplField5",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@FromWhs",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@FromWorkZone",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@GroupNum",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@HoldCode",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@IncomingPdLoc",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@InstructionType",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": false
+        },
+        {
+          "name": "@InternalNumType",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@Item",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ItemDesc",
+          "type": "nvarchar(100)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@LocatingZone",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@Lot",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@MessageId",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@OutgoingPdLoc",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ParentContainerId",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@PickListId",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ProcessStamp",
+          "type": "nvarchar(100)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@QuantityUm",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ReferenceId",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ReferenceType",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@RelatedWorkUnit",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@TeamAssigned",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ToCheckDig",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ToLoc",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ToTemplField1",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ToTemplField2",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ToTemplField3",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ToTemplField4",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ToTemplField5",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ToWhs",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@ToWorkZone",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@TransportContId",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@UserAssigned",
+          "type": "nvarchar(30)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@UserDef1",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@UserDef2",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@UserDef3",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@UserDef4",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@UserDef5",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@UserDef6",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@UserStamp",
+          "type": "nvarchar(30)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@VolumeUm",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@WeightUm",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@WorkGroup",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@WorkType",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@workUnit",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@logisticsUnit",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@parentLogisticsUnit",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@treeUnit",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@treeUnitId",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@fromLocInvAttributesId",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@toLocInvAttributesId",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@SrcIdentifier",
+          "type": "nvarchar(50)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@MinWorkZoneSeq",
+          "type": "numeric(4)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@MaxWorkZoneSeq",
+          "type": "numeric(4)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "Caller InstructionType parameter is unused: it neither selects nor updates instruction type. WorkUnit is only selector, not renamed. Multiple same-name headers across warehouses can update; no internal-ID or concurrency guard. NULL inputs overwrite fields, invalid dates fail. No hierarchy count recalculation, stock update, transaction or error handler."
+      ],
+      "output_shape": [
+        "No result set or OUTPUT; NOCOUNT is not set.",
+        "Exact SELECT expression, alias, order, TOP/DISTINCT and filter text is retained line-by-line in source_structure; variable assignments/subqueries do not count as caller result sets."
+      ],
+      "effects": [
+        {
+          "relationship": "WRITES",
+          "object": "dbo.WORK_INSTRUCTION",
+          "object_id": 1352391887,
+          "evidence_refs": [
+            "work-config-1322800120"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Update all WORK_INSTRUCTION rows whose WORK_UNIT matches caller and INSTRUCTION_TYPE equals a fixed header type. Replace explicit quantities/status/location/assignment/stamps/container/tree/attributes and zone sequence fields. Convert four nullable date strings style20; normalize count/attribute IDs to NULL unless positive.",
+          "evidence_refs": [
+            "work-config-1322800120"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Scope, NULL/error and concurrency boundaries: Caller InstructionType parameter is unused: it neither selects nor updates instruction type. WorkUnit is only selector, not renamed. Multiple same-name headers across warehouses can update; no internal-ID or concurrency guard. NULL inputs overwrite fields, invalid dates fail. No hierarchy count recalculation, stock update, transaction or error handler.",
+          "evidence_refs": [
+            "work-config-1322800120"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Update all WORK_INSTRUCTION rows whose WORK_UNIT matches caller and INSTRUCTION_TYPE equals a fixed header type. Replace explicit quantities/status/location/assignment/stamps/container/tree/attributes and zone sequence fields. Convert four nullable date strings style20; normalize count/attribute IDs to NULL unless positive.",
+      "configuration_scope_and_precedence": [
+        "Update all WORK_INSTRUCTION rows whose WORK_UNIT matches caller and INSTRUCTION_TYPE equals a fixed header type. Replace explicit quantities/status/location/assignment/stamps/container/tree/attributes and zone sequence fields. Convert four nullable date strings style20; normalize count/attribute IDs to NULL unless positive.",
+        "Caller InstructionType parameter is unused: it neither selects nor updates instruction type. WorkUnit is only selector, not renamed. Multiple same-name headers across warehouses can update; no internal-ID or concurrency guard. NULL inputs overwrite fields, invalid dates fail. No hierarchy count recalculation, stock update, transaction or error handler."
+      ],
+      "error_and_return_handling": [
+        "Caller InstructionType parameter is unused: it neither selects nor updates instruction type. WorkUnit is only selector, not renamed. Multiple same-name headers across warehouses can update; no internal-ID or concurrency guard. NULL inputs overwrite fields, invalid dates fail. No hierarchy count recalculation, stock update, transaction or error handler.",
+        "No result set or OUTPUT; NOCOUNT is not set."
+      ],
+      "transaction_ownership": "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic.",
+      "concurrency": [
+        "Caller InstructionType parameter is unused: it neither selects nor updates instruction type. WorkUnit is only selector, not renamed. Multiple same-name headers across warehouses can update; no internal-ID or concurrency guard. NULL inputs overwrite fields, invalid dates fail. No hierarchy count recalculation, stock update, transaction or error handler.",
+        "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic."
+      ],
+      "trigger_behavior": "Captured attached triggers: work_instruction_outgoing_pd (enabled). Trigger event must match the actual DML; an INSERT-only trigger does not fire for UPDATE/DELETE. Existing source-reviewed trigger contracts remain authoritative.",
+      "trigger_contract_refs": [
+        {
+          "ref": "DB Architecture/mappings/batches/work-execution.json#/semantic_contracts/12",
+          "source_definition_sha256": "155f13a60fb914314716a9481a9740979b7a1db7521ab805aa47dce41220be7f"
+        }
+      ],
+      "external_handoffs_and_gaps": [
+        "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+        "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+        "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+        "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1322800120.sql",
+          "sha256": "361e5ba01cb044632ab3da094d0c2be5442d56ed8484c3b0f82f641f26a3b625",
+          "line_start": 1,
+          "line_end": 219,
+          "kind": "REDACTED_SQL",
+          "description": "Complete retained body manually read; independent per-procedure notes and essential scalar equality/flag interpretations. Original hash and redaction parity checked.",
+          "source_definition_sha256": "d33dc18320dcec1e5cd5048098d024b6ed45908e0117bc5093a3b897fd69422f"
+        }
+      ],
+      "evidence_refs": [
+        "work-config-1322800120"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_NAMES",
+      "source_structure": {
+        "program": [
+          {
+            "line": 13,
+            "text": "CREATE procedure WRK_UpdateWorkInstruction("
+          },
+          {
+            "line": 14,
+            "text": "@CycleCount nchar(1),"
+          },
+          {
+            "line": 15,
+            "text": "@InventoryAtPd nchar(1),"
+          },
+          {
+            "line": 16,
+            "text": "@InventoryTracking nchar(1),"
+          },
+          {
+            "line": 18,
+            "text": "@AgingDateTime nvarchar(25),"
+          },
+          {
+            "line": 19,
+            "text": "@DateTimeStamp nvarchar(25),"
+          },
+          {
+            "line": 20,
+            "text": "@EndDateTime nvarchar(25),"
+          },
+          {
+            "line": 21,
+            "text": "@StartDateTime nvarchar(25),"
+          },
+          {
+            "line": 23,
+            "text": "@ConvertedQty numeric(19,5),"
+          },
+          {
+            "line": 24,
+            "text": "@CycleCountGroupNum numeric(9),"
+          },
+          {
+            "line": 25,
+            "text": "@ErpOrderLineNum numeric(19,5),"
+          },
+          {
+            "line": 26,
+            "text": "@EstimatedTime numeric(9),"
+          },
+          {
+            "line": 27,
+            "text": "@FromQty numeric(19,5),"
+          },
+          {
+            "line": 28,
+            "text": "@InternalContainerNum numeric(9),"
+          },
+          {
+            "line": 29,
+            "text": "@InternalCountNum numeric(9),"
+          },
+          {
+            "line": 30,
+            "text": "@InternalLineNum numeric(9),"
+          },
+          {
+            "line": 31,
+            "text": "@InternalNum numeric(9),"
+          },
+          {
+            "line": 32,
+            "text": "@InternalReqNum numeric(9),"
+          },
+          {
+            "line": 33,
+            "text": "@LaunchNum numeric(9),"
+          },
+          {
+            "line": 34,
+            "text": "@NumberOfChildren numeric(9),"
+          },
+          {
+            "line": 35,
+            "text": "@ParentContainerNum numeric(9),"
+          },
+          {
+            "line": 36,
+            "text": "@Priority numeric(3),"
+          },
+          {
+            "line": 37,
+            "text": "@Quantity numeric(19,5),"
+          },
+          {
+            "line": 38,
+            "text": "@Sequence numeric(5),"
+          },
+          {
+            "line": 39,
+            "text": "@ToQty numeric(19,5),"
+          },
+          {
+            "line": 40,
+            "text": "@TotalValue numeric(28,5),"
+          },
+          {
+            "line": 41,
+            "text": "@TotalVolume numeric(28,5),"
+          },
+          {
+            "line": 42,
+            "text": "@TotalWeight numeric(28,5),"
+          },
+          {
+            "line": 43,
+            "text": "@UserDef7 numeric(19,5),"
+          },
+          {
+            "line": 44,
+            "text": "@UserDef8 numeric(19,5),"
+          },
+          {
+            "line": 46,
+            "text": "@Account nvarchar(25),"
+          },
+          {
+            "line": 47,
+            "text": "@AllocationZone nvarchar(25),"
+          },
+          {
+            "line": 48,
+            "text": "@Company nvarchar(25),"
+          },
+          {
+            "line": 49,
+            "text": "@CompletedByUser nvarchar(30),"
+          },
+          {
+            "line": 50,
+            "text": "@Condition nvarchar(25),"
+          },
+          {
+            "line": 51,
+            "text": "@ContainerId nvarchar(25),"
+          },
+          {
+            "line": 52,
+            "text": "@ConvertedQtyUm nvarchar(25),"
+          },
+          {
+            "line": 53,
+            "text": "@EquipmentLoc nvarchar(25),"
+          },
+          {
+            "line": 54,
+            "text": "@ErpOrder nvarchar(25),"
+          },
+          {
+            "line": 55,
+            "text": "@FromCheckDig nvarchar(25),"
+          },
+          {
+            "line": 56,
+            "text": "@FromLoc nvarchar(25),"
+          },
+          {
+            "line": 57,
+            "text": "@FromTemplField1 nvarchar(25),"
+          },
+          {
+            "line": 58,
+            "text": "@FromTemplField2 nvarchar(25),"
+          },
+          {
+            "line": 59,
+            "text": "@FromTemplField3 nvarchar(25),"
+          },
+          {
+            "line": 60,
+            "text": "@FromTemplField4 nvarchar(25),"
+          },
+          {
+            "line": 61,
+            "text": "@FromTemplField5 nvarchar(25),"
+          },
+          {
+            "line": 62,
+            "text": "@FromWhs nvarchar(25),"
+          },
+          {
+            "line": 63,
+            "text": "@FromWorkZone nvarchar(25),"
+          },
+          {
+            "line": 64,
+            "text": "@GroupNum nvarchar(50),"
+          },
+          {
+            "line": 65,
+            "text": "@HoldCode nvarchar(50),"
+          },
+          {
+            "line": 66,
+            "text": "@IncomingPdLoc nvarchar(25),"
+          },
+          {
+            "line": 67,
+            "text": "@InstructionType nvarchar(25),"
+          },
+          {
+            "line": 68,
+            "text": "@InternalNumType nvarchar(25),"
+          },
+          {
+            "line": 69,
+            "text": "@Item nvarchar(50),"
+          },
+          {
+            "line": 70,
+            "text": "@ItemDesc nvarchar(100),"
+          },
+          {
+            "line": 71,
+            "text": "@LocatingZone nvarchar(25),"
+          },
+          {
+            "line": 72,
+            "text": "@Lot nvarchar(25),"
+          },
+          {
+            "line": 73,
+            "text": "@MessageId nvarchar(25),"
+          },
+          {
+            "line": 74,
+            "text": "@OutgoingPdLoc nvarchar(25),"
+          },
+          {
+            "line": 75,
+            "text": "@ParentContainerId nvarchar(25),"
+          },
+          {
+            "line": 76,
+            "text": "@PickListId nvarchar(25),"
+          },
+          {
+            "line": 77,
+            "text": "@ProcessStamp nvarchar(100),"
+          },
+          {
+            "line": 78,
+            "text": "@QuantityUm nvarchar(25),"
+          },
+          {
+            "line": 79,
+            "text": "@ReferenceId nvarchar(25),"
+          },
+          {
+            "line": 80,
+            "text": "@ReferenceType nvarchar(25),"
+          },
+          {
+            "line": 81,
+            "text": "@RelatedWorkUnit nvarchar(50),"
+          },
+          {
+            "line": 82,
+            "text": "@TeamAssigned nvarchar(50),"
+          },
+          {
+            "line": 83,
+            "text": "@ToCheckDig nvarchar(25),"
+          },
+          {
+            "line": 84,
+            "text": "@ToLoc nvarchar(25),"
+          },
+          {
+            "line": 85,
+            "text": "@ToTemplField1 nvarchar(25),"
+          },
+          {
+            "line": 86,
+            "text": "@ToTemplField2 nvarchar(25),"
+          },
+          {
+            "line": 87,
+            "text": "@ToTemplField3 nvarchar(25),"
+          },
+          {
+            "line": 88,
+            "text": "@ToTemplField4 nvarchar(25),"
+          },
+          {
+            "line": 89,
+            "text": "@ToTemplField5 nvarchar(25),"
+          },
+          {
+            "line": 90,
+            "text": "@ToWhs nvarchar(25),"
+          },
+          {
+            "line": 91,
+            "text": "@ToWorkZone nvarchar(25),"
+          },
+          {
+            "line": 92,
+            "text": "@TransportContId nvarchar(25),"
+          },
+          {
+            "line": 93,
+            "text": "@UserAssigned nvarchar(30),"
+          },
+          {
+            "line": 94,
+            "text": "@UserDef1 nvarchar(25),"
+          },
+          {
+            "line": 95,
+            "text": "@UserDef2 nvarchar(25),"
+          },
+          {
+            "line": 96,
+            "text": "@UserDef3 nvarchar(25),"
+          },
+          {
+            "line": 97,
+            "text": "@UserDef4 nvarchar(25),"
+          },
+          {
+            "line": 98,
+            "text": "@UserDef5 nvarchar(25),"
+          },
+          {
+            "line": 99,
+            "text": "@UserDef6 nvarchar(25),"
+          },
+          {
+            "line": 100,
+            "text": "@UserStamp nvarchar(30),"
+          },
+          {
+            "line": 101,
+            "text": "@VolumeUm nvarchar(25),"
+          },
+          {
+            "line": 102,
+            "text": "@WeightUm nvarchar(25),"
+          },
+          {
+            "line": 103,
+            "text": "@WorkGroup nvarchar(25),"
+          },
+          {
+            "line": 104,
+            "text": "@WorkType nvarchar(25),"
+          },
+          {
+            "line": 105,
+            "text": "@workUnit nvarchar(50),"
+          },
+          {
+            "line": 106,
+            "text": "@logisticsUnit nvarchar(50),"
+          },
+          {
+            "line": 107,
+            "text": "@parentLogisticsUnit nvarchar(50),"
+          },
+          {
+            "line": 108,
+            "text": "@treeUnit numeric(9),"
+          },
+          {
+            "line": 109,
+            "text": "@treeUnitId nvarchar(25),"
+          },
+          {
+            "line": 110,
+            "text": "@fromLocInvAttributesId numeric(9),"
+          },
+          {
+            "line": 111,
+            "text": "@toLocInvAttributesId numeric(9),"
+          },
+          {
+            "line": 112,
+            "text": "@SrcIdentifier nvarchar(50),"
+          },
+          {
+            "line": 113,
+            "text": "@MinWorkZoneSeq numeric(4),"
+          },
+          {
+            "line": 114,
+            "text": "@MaxWorkZoneSeq numeric(4))"
+          },
+          {
+            "line": 115,
+            "text": "as"
+          },
+          {
+            "line": 116,
+            "text": "update work_instruction set"
+          },
+          {
+            "line": 118,
+            "text": "cycle_count = @CycleCount,"
+          },
+          {
+            "line": 119,
+            "text": "inventory_at_pd = @InventoryAtPd,"
+          },
+          {
+            "line": 120,
+            "text": "inventory_tracking = @InventoryTracking,"
+          },
+          {
+            "line": 122,
+            "text": "aging_date_time = case when @AgingDateTime is null then null else convert(datetime, @AgingDateTime, 20) end,"
+          },
+          {
+            "line": 123,
+            "text": "date_time_stamp = case when @DateTimeStamp is null then null else convert(datetime, @DateTimeStamp, 20) end,"
+          },
+          {
+            "line": 124,
+            "text": "end_date_time = case when @EndDateTime is null then null else convert(datetime, @EndDateTime, 20) end,"
+          },
+          {
+            "line": 125,
+            "text": "start_date_time = case when @StartDateTime is null then null else convert(datetime, @StartDateTime, 20) end,"
+          },
+          {
+            "line": 127,
+            "text": "converted_qty = @ConvertedQty,"
+          },
+          {
+            "line": 128,
+            "text": "cycle_count_group_num = @CycleCountGroupNum,"
+          },
+          {
+            "line": 129,
+            "text": "erp_order_line_num = @ErpOrderLineNum,"
+          },
+          {
+            "line": 130,
+            "text": "estimated_time = @EstimatedTime,"
+          },
+          {
+            "line": 131,
+            "text": "from_qty = @FromQty,"
+          },
+          {
+            "line": 132,
+            "text": "internal_container_num = @InternalContainerNum,"
+          },
+          {
+            "line": 133,
+            "text": "internal_count_num = case when @InternalCountnum > 0 then @InternalCountNum else null end,"
+          },
+          {
+            "line": 134,
+            "text": "internal_line_num = @InternalLineNum,"
+          },
+          {
+            "line": 135,
+            "text": "internal_num = @InternalNum,"
+          },
+          {
+            "line": 136,
+            "text": "internal_req_num = @InternalReqNum,"
+          },
+          {
+            "line": 137,
+            "text": "launch_num = @LaunchNum,"
+          },
+          {
+            "line": 138,
+            "text": "number_of_children = @NumberOfChildren,"
+          },
+          {
+            "line": 139,
+            "text": "parent_container_num = @ParentContainerNum,"
+          },
+          {
+            "line": 140,
+            "text": "priority = @Priority,"
+          },
+          {
+            "line": 141,
+            "text": "quantity = @Quantity,"
+          },
+          {
+            "line": 142,
+            "text": "sequence = @Sequence,"
+          },
+          {
+            "line": 143,
+            "text": "to_qty = @ToQty,"
+          },
+          {
+            "line": 144,
+            "text": "total_value = @TotalValue,"
+          },
+          {
+            "line": 145,
+            "text": "total_volume = @TotalVolume,"
+          },
+          {
+            "line": 146,
+            "text": "total_weight= @TotalWeight,"
+          },
+          {
+            "line": 147,
+            "text": "user_def7 = @UserDef7,"
+          },
+          {
+            "line": 148,
+            "text": "user_def8 = @UserDef8,"
+          },
+          {
+            "line": 150,
+            "text": "account = @Account,"
+          },
+          {
+            "line": 151,
+            "text": "allocation_zone = @AllocationZone,"
+          },
+          {
+            "line": 152,
+            "text": "company = @Company,"
+          },
+          {
+            "line": 153,
+            "text": "completed_by_user = @CompletedByUser,"
+          },
+          {
+            "line": 154,
+            "text": "condition = @Condition,"
+          },
+          {
+            "line": 155,
+            "text": "container_id = @ContainerId,"
+          },
+          {
+            "line": 156,
+            "text": "converted_qty_um = @ConvertedQtyUm,"
+          },
+          {
+            "line": 157,
+            "text": "equipment_loc = @EquipmentLoc,"
+          },
+          {
+            "line": 158,
+            "text": "erp_order = @ErpOrder,"
+          },
+          {
+            "line": 159,
+            "text": "from_check_dig = @FromCheckDig,"
+          },
+          {
+            "line": 160,
+            "text": "from_loc = @FromLoc,"
+          },
+          {
+            "line": 161,
+            "text": "from_templ_field1 = @FromTemplField1,"
+          },
+          {
+            "line": 162,
+            "text": "from_templ_field2 = @FromTemplField2,"
+          },
+          {
+            "line": 163,
+            "text": "from_templ_field3 = @FromTemplField3,"
+          },
+          {
+            "line": 164,
+            "text": "from_templ_field4 = @FromTemplField4,"
+          },
+          {
+            "line": 165,
+            "text": "from_templ_field5 = @FromTemplField5,"
+          },
+          {
+            "line": 166,
+            "text": "from_whs = @FromWhs,"
+          },
+          {
+            "line": 167,
+            "text": "from_work_zone = @FromWorkZone,"
+          },
+          {
+            "line": 168,
+            "text": "group_num = @GroupNum,"
+          },
+          {
+            "line": 169,
+            "text": "hold_code = @HoldCode,"
+          },
+          {
+            "line": 170,
+            "text": "incoming_pd_loc = @IncomingPdLoc,"
+          },
+          {
+            "line": 171,
+            "text": "internal_num_type = @InternalNumType,"
+          },
+          {
+            "line": 172,
+            "text": "item = @Item,"
+          },
+          {
+            "line": 173,
+            "text": "item_desc = @ItemDesc,"
+          },
+          {
+            "line": 174,
+            "text": "locating_zone = @LocatingZone,"
+          },
+          {
+            "line": 175,
+            "text": "lot = @Lot,"
+          },
+          {
+            "line": 176,
+            "text": "message_id = @MessageId,"
+          },
+          {
+            "line": 177,
+            "text": "outgoing_pd_loc = @OutgoingPdLoc,"
+          },
+          {
+            "line": 178,
+            "text": "parent_container_id = @ParentContainerId,"
+          },
+          {
+            "line": 179,
+            "text": "pick_list_id = @PickListId,"
+          },
+          {
+            "line": 180,
+            "text": "process_stamp = @ProcessStamp,"
+          },
+          {
+            "line": 181,
+            "text": "quantity_um = @QuantityUm,"
+          },
+          {
+            "line": 182,
+            "text": "reference_id = @ReferenceId,"
+          },
+          {
+            "line": 183,
+            "text": "reference_type = @ReferenceType,"
+          },
+          {
+            "line": 184,
+            "text": "related_work_unit = @RelatedWorkUnit,"
+          },
+          {
+            "line": 185,
+            "text": "team_assigned = @TeamAssigned,"
+          },
+          {
+            "line": 186,
+            "text": "to_check_dig = @ToCheckDig,"
+          },
+          {
+            "line": 187,
+            "text": "to_loc = @ToLoc,"
+          },
+          {
+            "line": 188,
+            "text": "to_templ_field1 = @ToTemplField1,"
+          },
+          {
+            "line": 189,
+            "text": "to_templ_field2 = @ToTemplField2,"
+          },
+          {
+            "line": 190,
+            "text": "to_templ_field3 = @ToTemplField3,"
+          },
+          {
+            "line": 191,
+            "text": "to_templ_field4 = @ToTemplField4,"
+          },
+          {
+            "line": 192,
+            "text": "to_templ_field5 = @ToTemplField5,"
+          },
+          {
+            "line": 193,
+            "text": "to_whs = @ToWhs,"
+          },
+          {
+            "line": 194,
+            "text": "to_work_zone = @ToWorkZone,"
+          },
+          {
+            "line": 195,
+            "text": "transport_cont_id = @TransportContId,"
+          },
+          {
+            "line": 196,
+            "text": "user_assigned = @UserAssigned,"
+          },
+          {
+            "line": 197,
+            "text": "user_def1 = @UserDef1,"
+          },
+          {
+            "line": 198,
+            "text": "user_def2 = @UserDef2,"
+          },
+          {
+            "line": 199,
+            "text": "user_def3 = @UserDef3,"
+          },
+          {
+            "line": 200,
+            "text": "user_def4 = @UserDef4,"
+          },
+          {
+            "line": 201,
+            "text": "user_def5 = @UserDef5,"
+          },
+          {
+            "line": 202,
+            "text": "user_def6 = @UserDef6,"
+          },
+          {
+            "line": 203,
+            "text": "user_stamp = @UserStamp,"
+          },
+          {
+            "line": 204,
+            "text": "volume_um = @VolumeUm,"
+          },
+          {
+            "line": 205,
+            "text": "weight_um = @WeightUm,"
+          },
+          {
+            "line": 206,
+            "text": "work_group = @WorkGroup,"
+          },
+          {
+            "line": 207,
+            "text": "work_type = @WorkType,"
+          },
+          {
+            "line": 208,
+            "text": "logistics_unit = @logisticsUnit,"
+          },
+          {
+            "line": 209,
+            "text": "parent_logistics_unit = @parentLogisticsUnit,"
+          },
+          {
+            "line": 210,
+            "text": "tree_unit = @treeUnit,"
+          },
+          {
+            "line": 211,
+            "text": "tree_unit_id = @treeUnitId ,"
+          },
+          {
+            "line": 212,
+            "text": "from_loc_inv_attributes_id = case when @fromLocInvAttributesId > 0 then @fromLocInvAttributesId else null end,"
+          },
+          {
+            "line": 213,
+            "text": "to_loc_inv_attributes_id = case when @toLocInvAttributesId > 0 then @toLocInvAttributesId else null end,"
+          },
+          {
+            "line": 214,
+            "text": "src_identifier = @SrcIdentifier,"
+          },
+          {
+            "line": 215,
+            "text": "min_work_zone_seq = @MinWorkZoneSeq,"
+          },
+          {
+            "line": 216,
+            "text": "max_work_zone_seq = @MaxWorkZoneSeq"
+          },
+          {
+            "line": 217,
+            "text": "where work_unit = @WorkUnit and instruction_type = N'<literal:1>'"
+          }
+        ],
+        "interpretation": "Inert exact retained SQL, not executable recovery instructions.",
+        "wildcard_column_catalog": []
+      },
+      "reviewed_literal_equality_groups": [
+        {
+          "ordinal": 1,
+          "original_line_start": 216,
+          "original_line_end": 216,
+          "sha256": "ba5caa4285a84d88129280d2c3f6d796b4e2da069981e845bdaa55d9e6cfe7b5",
+          "equality_group": 1,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        }
+      ]
+    },
+    "evidence_sources": {
+      "work-config-1322800120": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1322800120,
+        "qualified_name": "dbo.WRK_UpdateWorkInstruction",
+        "source_definition_sha256": "d33dc18320dcec1e5cd5048098d024b6ed45908e0117bc5093a3b897fd69422f",
+        "reading_path": "DB Architecture/sql/1322800120.sql",
+        "reading_sha256": "361e5ba01cb044632ab3da094d0c2be5442d56ed8484c3b0f82f641f26a3b625",
+        "line_spans": [
+          [
+            1,
+            219
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+      "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+      "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+      "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.WRK_UpdateWorkInstruction",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1322800120.sql",
+      "reading_sha256": "361e5ba01cb044632ab3da094d0c2be5442d56ed8484c3b0f82f641f26a3b625",
+      "source_definition_sha256": "d33dc18320dcec1e5cd5048098d024b6ed45908e0117bc5093a3b897fd69422f",
+      "reading_lines": 219,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+    "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+    "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+    "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+  ]
+}

@@ -1,0 +1,1582 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 917226668,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "MetaTrans_GetRecAppSchedule",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:51.623000",
+    "modify_date": "2026-08-16 06:59:51.623000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.MetaTrans_GetRecAppSchedule",
+    "domain_candidate": "queue"
+  },
+  "source_definition_sha256": "49cc069091b48c561452a43ddb837128ee77e4f5877a4273a7730f5b6432d9b0",
+  "exact_sql_path": "917226668.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 5190,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 917226668,
+      "parameter_id": 1,
+      "name": "@internalNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 917226668,
+      "parameter_id": 2,
+      "name": "@culture",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 20,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(10)"
+    },
+    {
+      "object_id": 917226668,
+      "parameter_id": 3,
+      "name": "@warehouse",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1853249657,
+        "qualified_name": "dbo.APPOINTMENT_SCHEDULE",
+        "layout_path": "../table layout/1853249657.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 917226668,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 962,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 46,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/46/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 110,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1599344762,
+        "qualified_name": "dbo.RECEIPT_HEADER",
+        "layout_path": "../table layout/1599344762.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 917226668,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 961,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+              "batch_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+              "contract_index": 46,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/46/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 73,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1853249657,
+        "qualified_name": "dbo.APPOINTMENT_SCHEDULE",
+        "layout_path": "../table layout/1853249657.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "reading_lines": [
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            97,
+            98,
+            99,
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110
+          ]
+        }
+      },
+      {
+        "table_id": 1401772051,
+        "qualified_name": "dbo.CARRIER",
+        "layout_path": "../table layout/1401772051.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "reading_lines": [
+            59
+          ]
+        }
+      },
+      {
+        "table_id": 1401772051,
+        "qualified_name": "dbo.CARRIER",
+        "layout_path": "../table layout/1401772051.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "mentions": [
+            {
+              "original_line": 33,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            },
+            {
+              "original_line": 58,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "reading_lines": [
+            60
+          ]
+        }
+      },
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "mentions": [
+            {
+              "original_line": 34,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            },
+            {
+              "original_line": 59,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1599344762,
+        "qualified_name": "dbo.RECEIPT_HEADER",
+        "layout_path": "../table layout/1599344762.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "reading_lines": [
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "reading_lines": [
+            71
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "original_string_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "mentions": [
+            {
+              "original_line": 45,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            },
+            {
+              "original_line": 70,
+              "classification": "LITERAL_IDENTIFIER_MENTION_NOT_TABLE_USAGE"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "module_type": "P",
+          "source_line": 26,
+          "source_start_offset": 1735,
+          "source_end_offset": 1744,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 664389436,
+          "table_qualified_name": "dbo.WAREHOUSE",
+          "source_definition_sha256": "49cc069091b48c561452a43ddb837128ee77e4f5877a4273a7730f5b6432d9b0",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "module_type": "P",
+          "source_line": 51,
+          "source_start_offset": 2397,
+          "source_end_offset": 2406,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 664389436,
+          "table_qualified_name": "dbo.WAREHOUSE",
+          "source_definition_sha256": "49cc069091b48c561452a43ddb837128ee77e4f5877a4273a7730f5b6432d9b0",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "module_type": "P",
+          "source_line": 26,
+          "source_start_offset": 1723,
+          "source_end_offset": 1730,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1785773419,
+          "table_qualified_name": "dbo.COMPANY",
+          "source_definition_sha256": "49cc069091b48c561452a43ddb837128ee77e4f5877a4273a7730f5b6432d9b0",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      },
+      {
+        "table_id": 1785773419,
+        "qualified_name": "dbo.COMPANY",
+        "layout_path": "../table layout/1785773419.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 917226668,
+          "module_type": "P",
+          "source_line": 51,
+          "source_start_offset": 2385,
+          "source_end_offset": 2392,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1785773419,
+          "table_qualified_name": "dbo.COMPANY",
+          "source_definition_sha256": "49cc069091b48c561452a43ddb837128ee77e4f5877a4273a7730f5b6432d9b0",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 917226668,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "RECEIPT_HEADER",
+      "referenced_id": 1599344762,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.RECEIPT_HEADER"
+    },
+    {
+      "referencing_id": 917226668,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "APPOINTMENT_SCHEDULE",
+      "referenced_id": 1853249657,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.APPOINTMENT_SCHEDULE"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/work-config-continuation.json",
+    "source_sha256": "1e6398522c064698b8e42abc75d47748d2b202d9746542082cdd0259e7654b83",
+    "json_pointer": "/semantic_contracts/46",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 917226668,
+      "qualified_name": "dbo.MetaTrans_GetRecAppSchedule",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Complete retained body manually read; parameter/default/output/effect/branch/configuration/error/transaction/concurrency dimensions reviewed as source-backed static behavior.",
+      "source_definition_sha256": "49cc069091b48c561452a43ddb837128ee77e4f5877a4273a7730f5b6432d9b0",
+      "purpose": "Prepare receipt and appointment-schedule screen rows.",
+      "inputs_defaults": [
+        "Exact inert declaration: CREATE PROCEDURE MetaTrans_GetRecAppSchedule( @internalNum numeric(9), @culture nvarchar(10), @warehouse nvarchar(25)) AS",
+        "Structured parameters record declaration defaults/directions and unused inputs; no default does not mean NOT NULL."
+      ],
+      "parameters": [
+        {
+          "name": "@internalNum",
+          "type": "numeric(9)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        },
+        {
+          "name": "@culture",
+          "type": "nvarchar(10)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": false
+        },
+        {
+          "name": "@warehouse",
+          "type": "nvarchar(25)",
+          "direction": "INPUT",
+          "default": "NO_DECLARATION_DEFAULT",
+          "used_in_body": true
+        }
+      ],
+      "null_and_invalid_input_behavior": [
+        "Culture unused. NULL ID takes existing-record branch and returns empty first set plus default second row. No dock reservation, appointment insert/update or receipt-close action. No explicit error/transaction handling."
+      ],
+      "output_shape": [
+        "Two result sets: receipt model; appointment model. Receipt result is one default row for0, otherwise zero-or-more matches. Appointment always yields at least one default NULL-filled row, or all matching appointments, with no order.",
+        "Exact SELECT expression, alias, order, TOP/DISTINCT and filter text is retained line-by-line in source_structure; variable assignments/subqueries do not count as caller result sets."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.RECEIPT_HEADER",
+          "object_id": 1599344762,
+          "evidence_refs": [
+            "work-config-917226668"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.APPOINTMENT_SCHEDULE",
+          "object_id": 1853249657,
+          "evidence_refs": [
+            "work-config-917226668"
+          ],
+          "scope": "DIRECT_BODY_ONLY; CHILD_CONTRACTS_BOUND_TRANSITIVE_EFFECTS"
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Internal receipt number0 returns a scalar blank receipt model with caller warehouse. Every other value queries RECEIPT_HEADER by internal ID and ignores caller warehouse. Then dummy-left-join all APPOINTMENT_SCHEDULE rows for that ID, with NULL date passthrough and numeric user fields normalized to zero.",
+          "evidence_refs": [
+            "work-config-917226668"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Scope, NULL/error and concurrency boundaries: Culture unused. NULL ID takes existing-record branch and returns empty first set plus default second row. No dock reservation, appointment insert/update or receipt-close action. No explicit error/transaction handling.",
+          "evidence_refs": [
+            "work-config-917226668"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Internal receipt number0 returns a scalar blank receipt model with caller warehouse. Every other value queries RECEIPT_HEADER by internal ID and ignores caller warehouse. Then dummy-left-join all APPOINTMENT_SCHEDULE rows for that ID, with NULL date passthrough and numeric user fields normalized to zero.",
+      "configuration_scope_and_precedence": [
+        "Internal receipt number0 returns a scalar blank receipt model with caller warehouse. Every other value queries RECEIPT_HEADER by internal ID and ignores caller warehouse. Then dummy-left-join all APPOINTMENT_SCHEDULE rows for that ID, with NULL date passthrough and numeric user fields normalized to zero.",
+        "Culture unused. NULL ID takes existing-record branch and returns empty first set plus default second row. No dock reservation, appointment insert/update or receipt-close action. No explicit error/transaction handling."
+      ],
+      "error_and_return_handling": [
+        "Culture unused. NULL ID takes existing-record branch and returns empty first set plus default second row. No dock reservation, appointment insert/update or receipt-close action. No explicit error/transaction handling.",
+        "Two result sets: receipt model; appointment model. Receipt result is one default row for0, otherwise zero-or-more matches. Appointment always yields at least one default NULL-filled row, or all matching appointments, with no order."
+      ],
+      "transaction_ownership": "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic.",
+      "concurrency": [
+        "Culture unused. NULL ID takes existing-record branch and returns empty first set plus default second row. No dock reservation, appointment insert/update or receipt-close action. No explicit error/transaction handling.",
+        "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT. Caller/session transaction and isolation remain unknown; multiple statements and child calls are not assumed atomic."
+      ],
+      "trigger_behavior": "No direct persistent target; called procedures retain their own mutation/trigger contracts.",
+      "trigger_contract_refs": [],
+      "external_handoffs_and_gaps": [
+        "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+        "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+        "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+        "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/917226668.sql",
+          "sha256": "0b461b00677a1c00f4eba962cb45c3a818ea06ffefce32e3eb79f95417e02d54",
+          "line_start": 1,
+          "line_end": 110,
+          "kind": "REDACTED_SQL",
+          "description": "Complete retained body manually read; independent per-procedure notes and essential scalar equality/flag interpretations. Original hash and redaction parity checked.",
+          "source_definition_sha256": "49cc069091b48c561452a43ddb837128ee77e4f5877a4273a7730f5b6432d9b0"
+        }
+      ],
+      "evidence_refs": [
+        "work-config-917226668"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_NAMES",
+      "source_structure": {
+        "program": [
+          {
+            "line": 20,
+            "text": "CREATE PROCEDURE MetaTrans_GetRecAppSchedule("
+          },
+          {
+            "line": 21,
+            "text": "@internalNum numeric(9), @culture nvarchar(10), @warehouse nvarchar(25))"
+          },
+          {
+            "line": 23,
+            "text": "AS"
+          },
+          {
+            "line": 24,
+            "text": "SET NOCOUNT ON;"
+          },
+          {
+            "line": 25,
+            "text": "IF @internalNum = 0"
+          },
+          {
+            "line": 26,
+            "text": "BEGIN"
+          },
+          {
+            "line": 28,
+            "text": "SELECT"
+          },
+          {
+            "line": 29,
+            "text": "N'<literal:1>' AS N'<literal:2>',"
+          },
+          {
+            "line": 31,
+            "text": "N'<literal:3>' AS N'<literal:4>',"
+          },
+          {
+            "line": 32,
+            "text": "0 AS N'<literal:5>',"
+          },
+          {
+            "line": 33,
+            "text": "N'<literal:6>' AS N'<literal:7>',"
+          },
+          {
+            "line": 34,
+            "text": "N'<literal:8>' AS N'<literal:9>',"
+          },
+          {
+            "line": 35,
+            "text": "N'<literal:10>' AS N'<literal:11>',"
+          },
+          {
+            "line": 36,
+            "text": "N'<literal:12>' AS N'<literal:13>',"
+          },
+          {
+            "line": 37,
+            "text": "N'<literal:14>' AS N'<literal:15>',"
+          },
+          {
+            "line": 38,
+            "text": "N'<literal:16>' AS N'<literal:17>',"
+          },
+          {
+            "line": 39,
+            "text": "N'<literal:18>' AS N'<literal:19>',"
+          },
+          {
+            "line": 40,
+            "text": "N'<literal:20>' AS N'<literal:21>',"
+          },
+          {
+            "line": 41,
+            "text": "N'<literal:22>' AS N'<literal:23>',"
+          },
+          {
+            "line": 42,
+            "text": "N'<literal:24>' AS N'<literal:25>',"
+          },
+          {
+            "line": 43,
+            "text": "N'<literal:26>' AS N'<literal:27>',"
+          },
+          {
+            "line": 44,
+            "text": "N'<literal:28>' AS N'<literal:29>',"
+          },
+          {
+            "line": 45,
+            "text": "N'<literal:30>' AS N'<literal:31>',"
+          },
+          {
+            "line": 46,
+            "text": "@warehouse AS N'<literal:32>',"
+          },
+          {
+            "line": 47,
+            "text": "N'<literal:33>' as N'<literal:34>'"
+          },
+          {
+            "line": 49,
+            "text": "END"
+          },
+          {
+            "line": 50,
+            "text": "ELSE"
+          },
+          {
+            "line": 51,
+            "text": "BEGIN"
+          },
+          {
+            "line": 53,
+            "text": "SELECT"
+          },
+          {
+            "line": 54,
+            "text": "N'<literal:35>' AS N'<literal:36>',"
+          },
+          {
+            "line": 56,
+            "text": "N'<literal:37>' AS N'<literal:38>',"
+          },
+          {
+            "line": 57,
+            "text": "RECEIPT_HEADER.INTERNAL_RECEIPT_NUM AS N'<literal:39>',"
+          },
+          {
+            "line": 58,
+            "text": "RECEIPT_HEADER.RECEIPT_ID AS N'<literal:40>',"
+          },
+          {
+            "line": 59,
+            "text": "RECEIPT_HEADER.CARRIER AS N'<literal:41>',"
+          },
+          {
+            "line": 60,
+            "text": "RECEIPT_HEADER.COMPANY AS N'<literal:42>',"
+          },
+          {
+            "line": 61,
+            "text": "RECEIPT_HEADER.SHIP_FROM AS N'<literal:43>',"
+          },
+          {
+            "line": 62,
+            "text": "RECEIPT_HEADER.SHIP_FROM_NAME AS N'<literal:44>',"
+          },
+          {
+            "line": 63,
+            "text": "RECEIPT_HEADER.SHIP_FROM_ADDRESS1 AS N'<literal:45>',"
+          },
+          {
+            "line": 64,
+            "text": "RECEIPT_HEADER.SHIP_FROM_ADDRESS2 AS N'<literal:46>',"
+          },
+          {
+            "line": 65,
+            "text": "RECEIPT_HEADER.SHIP_FROM_ADDRESS3 AS N'<literal:47>',"
+          },
+          {
+            "line": 66,
+            "text": "RECEIPT_HEADER.SHIP_FROM_CITY AS N'<literal:48>',"
+          },
+          {
+            "line": 67,
+            "text": "RECEIPT_HEADER.SHIP_FROM_STATE AS N'<literal:49>',"
+          },
+          {
+            "line": 68,
+            "text": "RECEIPT_HEADER.SHIP_FROM_POSTAL_CODE AS N'<literal:50>',"
+          },
+          {
+            "line": 69,
+            "text": "RECEIPT_HEADER.SHIP_FROM_COUNTRY AS N'<literal:51>',"
+          },
+          {
+            "line": 70,
+            "text": "RECEIPT_HEADER.TRAILER_ID AS N'<literal:52>',"
+          },
+          {
+            "line": 71,
+            "text": "RECEIPT_HEADER.WAREHOUSE AS N'<literal:53>',"
+          },
+          {
+            "line": 72,
+            "text": "RECEIPT_HEADER.CLOSE_DATE as N'<literal:54>'"
+          },
+          {
+            "line": 73,
+            "text": "FROM RECEIPT_HEADER WHERE RECEIPT_HEADER.INTERNAL_RECEIPT_NUM = @internalNum ;"
+          },
+          {
+            "line": 74,
+            "text": "END"
+          },
+          {
+            "line": 77,
+            "text": "SELECT"
+          },
+          {
+            "line": 78,
+            "text": "N'<literal:55>' as N'<literal:56>',"
+          },
+          {
+            "line": 80,
+            "text": "N'<literal:57>' AS N'<literal:58>',"
+          },
+          {
+            "line": 81,
+            "text": "APPOINTMENT_SCHEDULE.OBJECT_ID AS N'<literal:59>',"
+          },
+          {
+            "line": 82,
+            "text": "APPOINTMENT_SCHEDULE.INTERNAL_RECEIPT_NUM AS N'<literal:60>',"
+          },
+          {
+            "line": 83,
+            "text": "APPOINTMENT_SCHEDULE.DOCK AS N'<literal:61>',"
+          },
+          {
+            "line": 84,
+            "text": "CASE WHEN APPOINTMENT_SCHEDULE.APPT_DATE_TIME is not null THEN APPOINTMENT_SCHEDULE.APPT_DATE_TIME ELSE null END AS N'<literal:62>',"
+          },
+          {
+            "line": 85,
+            "text": "CASE WHEN APPOINTMENT_SCHEDULE.END_DATE_TIME is not null THEN APPOINTMENT_SCHEDULE.END_DATE_TIME ELSE null END  AS N'<literal:63>',"
+          },
+          {
+            "line": 86,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF1 AS N'<literal:64>',"
+          },
+          {
+            "line": 87,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF2 AS N'<literal:65>',"
+          },
+          {
+            "line": 88,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF3 AS N'<literal:66>',"
+          },
+          {
+            "line": 89,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF4 AS N'<literal:67>',"
+          },
+          {
+            "line": 90,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF5 AS N'<literal:68>',"
+          },
+          {
+            "line": 91,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF6 AS N'<literal:69>',"
+          },
+          {
+            "line": 92,
+            "text": "ISNULL(APPOINTMENT_SCHEDULE.USER_DEF7, 0) AS N'<literal:70>',"
+          },
+          {
+            "line": 93,
+            "text": "ISNULL(APPOINTMENT_SCHEDULE.USER_DEF8, 0) AS N'<literal:71>'"
+          },
+          {
+            "line": 94,
+            "text": "FROM (SELECT 1 AS A) A"
+          },
+          {
+            "line": 95,
+            "text": "LEFT JOIN ("
+          },
+          {
+            "line": 96,
+            "text": "SELECT"
+          },
+          {
+            "line": 97,
+            "text": "APPOINTMENT_SCHEDULE.OBJECT_ID,"
+          },
+          {
+            "line": 98,
+            "text": "APPOINTMENT_SCHEDULE.INTERNAL_RECEIPT_NUM,"
+          },
+          {
+            "line": 99,
+            "text": "APPOINTMENT_SCHEDULE.DOCK,"
+          },
+          {
+            "line": 100,
+            "text": "APPOINTMENT_SCHEDULE.APPT_DATE_TIME,"
+          },
+          {
+            "line": 101,
+            "text": "APPOINTMENT_SCHEDULE.END_DATE_TIME,"
+          },
+          {
+            "line": 102,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF1,"
+          },
+          {
+            "line": 103,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF2,"
+          },
+          {
+            "line": 104,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF3,"
+          },
+          {
+            "line": 105,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF4,"
+          },
+          {
+            "line": 106,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF5,"
+          },
+          {
+            "line": 107,
+            "text": "APPOINTMENT_SCHEDULE.USER_DEF6,"
+          },
+          {
+            "line": 108,
+            "text": "ISNULL(APPOINTMENT_SCHEDULE.USER_DEF7, 0) as N'<literal:72>',"
+          },
+          {
+            "line": 109,
+            "text": "ISNULL(APPOINTMENT_SCHEDULE.USER_DEF8, 0) as N'<literal:73>'"
+          },
+          {
+            "line": 110,
+            "text": "FROM APPOINTMENT_SCHEDULE WHERE INTERNAL_RECEIPT_NUM = @internalNum) APPOINTMENT_SCHEDULE ON 1=1;"
+          }
+        ],
+        "interpretation": "Inert exact retained SQL, not executable recovery instructions.",
+        "wildcard_column_catalog": []
+      },
+      "reviewed_literal_equality_groups": [
+        {
+          "ordinal": 1,
+          "original_line_start": 28,
+          "original_line_end": 28,
+          "sha256": "d7dfbaf6df0a816fd85178599a48c11ff875288715c08377c6beb5d67e5fa8d5",
+          "equality_group": 1,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 2,
+          "original_line_start": 28,
+          "original_line_end": 28,
+          "sha256": "a3d8fba94e7e2209a9e3d39b3f7353abf229960c407329aff46572338f20bfa9",
+          "equality_group": 2,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 3,
+          "original_line_start": 30,
+          "original_line_end": 30,
+          "sha256": "2652ca4073b3b01516bc04c61792096a349f34199edc928458b6089a66ac4e68",
+          "equality_group": 3,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 4,
+          "original_line_start": 30,
+          "original_line_end": 30,
+          "sha256": "522bad6d83fff732cf3340b46e7e3a46f564f20a6fe42dc02377f9bc2d0e3d1d",
+          "equality_group": 4,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 5,
+          "original_line_start": 31,
+          "original_line_end": 31,
+          "sha256": "834da80fbf5815c787233bb99874de26dbbe611db451d46cdb4a2430f864276a",
+          "equality_group": 5,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 6,
+          "original_line_start": 32,
+          "original_line_end": 32,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 7,
+          "original_line_start": 32,
+          "original_line_end": 32,
+          "sha256": "f8899722413a03c590ba76866d75e40f20a14f28c0e3f45fe9c7d47c9223d556",
+          "equality_group": 7,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 8,
+          "original_line_start": 33,
+          "original_line_end": 33,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 9,
+          "original_line_start": 33,
+          "original_line_end": 33,
+          "sha256": "271c535631ff3f3dd9f7dd8f491d505ac6185a7ec423cd232934502bd253d0e3",
+          "equality_group": 9,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 10,
+          "original_line_start": 34,
+          "original_line_end": 34,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 11,
+          "original_line_start": 34,
+          "original_line_end": 34,
+          "sha256": "de4743c879734dc38cb3e270ecefcae077c3c2e626f9298115d5a03c8613f89b",
+          "equality_group": 11,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 12,
+          "original_line_start": 35,
+          "original_line_end": 35,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 13,
+          "original_line_start": 35,
+          "original_line_end": 35,
+          "sha256": "0d38dbf6b767b63ef32182f5445e0788e97f25abc97df69d49a3bd46799a66e1",
+          "equality_group": 13,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 14,
+          "original_line_start": 36,
+          "original_line_end": 36,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 15,
+          "original_line_start": 36,
+          "original_line_end": 36,
+          "sha256": "3fc5181047ca9eddf8ba51f467cf1f89d7ed8c72d7957949346d1b3721b500c2",
+          "equality_group": 15,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 16,
+          "original_line_start": 37,
+          "original_line_end": 37,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 17,
+          "original_line_start": 37,
+          "original_line_end": 37,
+          "sha256": "5365a6ed885288f388b089c5d86d28c5f7e8df200e78f5ab39467bbf09e8934a",
+          "equality_group": 17,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 18,
+          "original_line_start": 38,
+          "original_line_end": 38,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 19,
+          "original_line_start": 38,
+          "original_line_end": 38,
+          "sha256": "c0ecd8a4224a8b640208665daa0a3530859f720e143a31bbc15df57f4de5f214",
+          "equality_group": 19,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 20,
+          "original_line_start": 39,
+          "original_line_end": 39,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 21,
+          "original_line_start": 39,
+          "original_line_end": 39,
+          "sha256": "a42538b73e070e589131f7efe084accc70e7d33fd419a4adfde8750a918fe987",
+          "equality_group": 21,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 22,
+          "original_line_start": 40,
+          "original_line_end": 40,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 23,
+          "original_line_start": 40,
+          "original_line_end": 40,
+          "sha256": "34128a8892cb17d253773c016910bc8b3c659ce678a3872662c8c971f453b093",
+          "equality_group": 23,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 24,
+          "original_line_start": 41,
+          "original_line_end": 41,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 25,
+          "original_line_start": 41,
+          "original_line_end": 41,
+          "sha256": "3d40a4510c8409b237979d18672d83904527c630b24e29bd8c5344a2698eb0d9",
+          "equality_group": 25,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 26,
+          "original_line_start": 42,
+          "original_line_end": 42,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 27,
+          "original_line_start": 42,
+          "original_line_end": 42,
+          "sha256": "740a2b1e779b35924737818f2afb540186a8fa65fdd484f46dff24f509a3ac20",
+          "equality_group": 27,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 28,
+          "original_line_start": 43,
+          "original_line_end": 43,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 29,
+          "original_line_start": 43,
+          "original_line_end": 43,
+          "sha256": "cbdfb7a225b4ff817f7ac7fd524c9f42e373466f65d5ba725968339de4526809",
+          "equality_group": 29,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 30,
+          "original_line_start": 44,
+          "original_line_end": 44,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 31,
+          "original_line_start": 44,
+          "original_line_end": 44,
+          "sha256": "9ba78d1d4e4947967e2a0f625f23f4ec52dfe37bcb735608b1b763b264acce4e",
+          "equality_group": 31,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 32,
+          "original_line_start": 45,
+          "original_line_end": 45,
+          "sha256": "2a625c251683ca2ba8a1125319cb76d8f3d448d9e4d5a6c97bd948145217e36f",
+          "equality_group": 32,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 33,
+          "original_line_start": 46,
+          "original_line_end": 46,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "equality_group": 6,
+          "interpretation_kind": "EMPTY_VALUE"
+        },
+        {
+          "ordinal": 34,
+          "original_line_start": 46,
+          "original_line_end": 46,
+          "sha256": "62da0248486f61ae4a176bbc997e0311f90187865b91b0606dfc60c37b3fb8a5",
+          "equality_group": 34,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 35,
+          "original_line_start": 53,
+          "original_line_end": 53,
+          "sha256": "d7dfbaf6df0a816fd85178599a48c11ff875288715c08377c6beb5d67e5fa8d5",
+          "equality_group": 1,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 36,
+          "original_line_start": 53,
+          "original_line_end": 53,
+          "sha256": "a3d8fba94e7e2209a9e3d39b3f7353abf229960c407329aff46572338f20bfa9",
+          "equality_group": 2,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 37,
+          "original_line_start": 55,
+          "original_line_end": 55,
+          "sha256": "2652ca4073b3b01516bc04c61792096a349f34199edc928458b6089a66ac4e68",
+          "equality_group": 3,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 38,
+          "original_line_start": 55,
+          "original_line_end": 55,
+          "sha256": "522bad6d83fff732cf3340b46e7e3a46f564f20a6fe42dc02377f9bc2d0e3d1d",
+          "equality_group": 4,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 39,
+          "original_line_start": 56,
+          "original_line_end": 56,
+          "sha256": "834da80fbf5815c787233bb99874de26dbbe611db451d46cdb4a2430f864276a",
+          "equality_group": 5,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 40,
+          "original_line_start": 57,
+          "original_line_end": 57,
+          "sha256": "f8899722413a03c590ba76866d75e40f20a14f28c0e3f45fe9c7d47c9223d556",
+          "equality_group": 7,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 41,
+          "original_line_start": 58,
+          "original_line_end": 58,
+          "sha256": "271c535631ff3f3dd9f7dd8f491d505ac6185a7ec423cd232934502bd253d0e3",
+          "equality_group": 9,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 42,
+          "original_line_start": 59,
+          "original_line_end": 59,
+          "sha256": "de4743c879734dc38cb3e270ecefcae077c3c2e626f9298115d5a03c8613f89b",
+          "equality_group": 11,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 43,
+          "original_line_start": 60,
+          "original_line_end": 60,
+          "sha256": "0d38dbf6b767b63ef32182f5445e0788e97f25abc97df69d49a3bd46799a66e1",
+          "equality_group": 13,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 44,
+          "original_line_start": 61,
+          "original_line_end": 61,
+          "sha256": "3fc5181047ca9eddf8ba51f467cf1f89d7ed8c72d7957949346d1b3721b500c2",
+          "equality_group": 15,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 45,
+          "original_line_start": 62,
+          "original_line_end": 62,
+          "sha256": "5365a6ed885288f388b089c5d86d28c5f7e8df200e78f5ab39467bbf09e8934a",
+          "equality_group": 17,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 46,
+          "original_line_start": 63,
+          "original_line_end": 63,
+          "sha256": "c0ecd8a4224a8b640208665daa0a3530859f720e143a31bbc15df57f4de5f214",
+          "equality_group": 19,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 47,
+          "original_line_start": 64,
+          "original_line_end": 64,
+          "sha256": "a42538b73e070e589131f7efe084accc70e7d33fd419a4adfde8750a918fe987",
+          "equality_group": 21,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 48,
+          "original_line_start": 65,
+          "original_line_end": 65,
+          "sha256": "34128a8892cb17d253773c016910bc8b3c659ce678a3872662c8c971f453b093",
+          "equality_group": 23,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 49,
+          "original_line_start": 66,
+          "original_line_end": 66,
+          "sha256": "3d40a4510c8409b237979d18672d83904527c630b24e29bd8c5344a2698eb0d9",
+          "equality_group": 25,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 50,
+          "original_line_start": 67,
+          "original_line_end": 67,
+          "sha256": "740a2b1e779b35924737818f2afb540186a8fa65fdd484f46dff24f509a3ac20",
+          "equality_group": 27,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 51,
+          "original_line_start": 68,
+          "original_line_end": 68,
+          "sha256": "cbdfb7a225b4ff817f7ac7fd524c9f42e373466f65d5ba725968339de4526809",
+          "equality_group": 29,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 52,
+          "original_line_start": 69,
+          "original_line_end": 69,
+          "sha256": "9ba78d1d4e4947967e2a0f625f23f4ec52dfe37bcb735608b1b763b264acce4e",
+          "equality_group": 31,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 53,
+          "original_line_start": 70,
+          "original_line_end": 70,
+          "sha256": "2a625c251683ca2ba8a1125319cb76d8f3d448d9e4d5a6c97bd948145217e36f",
+          "equality_group": 32,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 54,
+          "original_line_start": 71,
+          "original_line_end": 71,
+          "sha256": "62da0248486f61ae4a176bbc997e0311f90187865b91b0606dfc60c37b3fb8a5",
+          "equality_group": 34,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 55,
+          "original_line_start": 77,
+          "original_line_end": 77,
+          "sha256": "d7dfbaf6df0a816fd85178599a48c11ff875288715c08377c6beb5d67e5fa8d5",
+          "equality_group": 1,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 56,
+          "original_line_start": 77,
+          "original_line_end": 77,
+          "sha256": "a3d8fba94e7e2209a9e3d39b3f7353abf229960c407329aff46572338f20bfa9",
+          "equality_group": 2,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 57,
+          "original_line_start": 79,
+          "original_line_end": 79,
+          "sha256": "b58b39007ec91909900eb5ce5e0c87858e0a46e41173f56455b5aed65e7d993b",
+          "equality_group": 57,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 58,
+          "original_line_start": 79,
+          "original_line_end": 79,
+          "sha256": "522bad6d83fff732cf3340b46e7e3a46f564f20a6fe42dc02377f9bc2d0e3d1d",
+          "equality_group": 4,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 59,
+          "original_line_start": 80,
+          "original_line_end": 80,
+          "sha256": "6f02e08366f6d328d84649c0c0bfadf1eedd630faed061a11c75a41537ed8509",
+          "equality_group": 59,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 60,
+          "original_line_start": 81,
+          "original_line_end": 81,
+          "sha256": "834da80fbf5815c787233bb99874de26dbbe611db451d46cdb4a2430f864276a",
+          "equality_group": 5,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 61,
+          "original_line_start": 82,
+          "original_line_end": 82,
+          "sha256": "49c1e208c54a34af7a1cdac846450ea9964150efe02e47f696e4daf1d84940de",
+          "equality_group": 61,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 62,
+          "original_line_start": 83,
+          "original_line_end": 83,
+          "sha256": "b2d53b42be910ac4a4bc4c252b9fbe94e7c5bfc2745b0baf9639a1211f7866be",
+          "equality_group": 62,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 63,
+          "original_line_start": 84,
+          "original_line_end": 84,
+          "sha256": "89079be88350c6602404b327cfe16451ac7743ddcff1d22ee6ca267fb9afd022",
+          "equality_group": 63,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 64,
+          "original_line_start": 85,
+          "original_line_end": 85,
+          "sha256": "9804afcc3846fd6c5fe7dd2d4b118662534cb025d1bda4c8d5d7f5b805850dfb",
+          "equality_group": 64,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 65,
+          "original_line_start": 86,
+          "original_line_end": 86,
+          "sha256": "110eac6c193ed0762a7b6609b5e7855fa0c3fe5c8e7f8a144c4e07e2f79201aa",
+          "equality_group": 65,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 66,
+          "original_line_start": 87,
+          "original_line_end": 87,
+          "sha256": "dd7d2762c1e81b047ff1958fda806315e07ff285137f97a557b6cd3a20f4a404",
+          "equality_group": 66,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 67,
+          "original_line_start": 88,
+          "original_line_end": 88,
+          "sha256": "f4f3d3268039ae7f92ed862dc6756af8a9ede6bfa368ee3a736f6d8a224f7056",
+          "equality_group": 67,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 68,
+          "original_line_start": 89,
+          "original_line_end": 89,
+          "sha256": "5b610e5f5b271ad7eb99ba867cad55a311b8051856c5b3a2229f94f23262fe77",
+          "equality_group": 68,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 69,
+          "original_line_start": 90,
+          "original_line_end": 90,
+          "sha256": "4b5a2e024608a6ea6ee247b7a2cb2c44b51d1cba701da79d130e804ea816faa5",
+          "equality_group": 69,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 70,
+          "original_line_start": 91,
+          "original_line_end": 91,
+          "sha256": "a5ed8efaaa6cbdd363deaabba1735efe253eca3c893bae7b3f1e2ec0ebb2c9c8",
+          "equality_group": 70,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 71,
+          "original_line_start": 92,
+          "original_line_end": 92,
+          "sha256": "a5daf3d37887c863bf24cb8240c464800ea6b42206db526eb8bc2c8e7041f79e",
+          "equality_group": 71,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 72,
+          "original_line_start": 107,
+          "original_line_end": 107,
+          "sha256": "fec4e2b5e7a4467110a61014c402b491955927fc71e22eed7a081e3d5c7edb8d",
+          "equality_group": 72,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        },
+        {
+          "ordinal": 73,
+          "original_line_start": 108,
+          "original_line_end": 108,
+          "sha256": "c1e7eb3e1a637c5aa3485600623bc8f773ba4478acfeb26a433d841ada2d5f1f",
+          "equality_group": 73,
+          "interpretation_kind": "SOURCE_BOUND_CODE_OR_MARKER"
+        }
+      ]
+    },
+    "evidence_sources": {
+      "work-config-917226668": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 917226668,
+        "qualified_name": "dbo.MetaTrans_GetRecAppSchedule",
+        "source_definition_sha256": "49cc069091b48c561452a43ddb837128ee77e4f5877a4273a7730f5b6432d9b0",
+        "reading_path": "DB Architecture/sql/917226668.sql",
+        "reading_sha256": "0b461b00677a1c00f4eba962cb45c3a818ea06ffefce32e3eb79f95417e02d54",
+        "line_spans": [
+          [
+            1,
+            110
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+      "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+      "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+      "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.MetaTrans_GetRecAppSchedule",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/917226668.sql",
+      "reading_sha256": "0b461b00677a1c00f4eba962cb45c3a818ea06ffefce32e3eb79f95417e02d54",
+      "source_definition_sha256": "49cc069091b48c561452a43ddb837128ee77e4f5877a4273a7730f5b6432d9b0",
+      "reading_lines": 110,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "Owner-attested current replica, captured snapshot20260929T214106Z. Source documented as-is; no version/build gate or extension work.",
+    "Static contracts do not establish actual application callers, authenticated permissions, effective configuration, current rows or live process outcomes.",
+    "No database connection, procedure execution, archive action, operational data retrieval or configuration change was performed.",
+    "No new table-role, dynamic-backlog or unresolved-dependency credit. Existing reviewed contracts remain immutable."
+  ]
+}

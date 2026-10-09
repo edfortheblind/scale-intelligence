@@ -1,0 +1,742 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1528704844,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "INV_UpdateFromLocInv",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:48.143000",
+    "modify_date": "2026-08-16 06:59:48.143000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.INV_UpdateFromLocInv",
+    "domain_candidate": "inventory"
+  },
+  "source_definition_sha256": "f76598a7a60fc7a72a8c509571a9c8e740d8734a8a2ca94044b602ab1717b117",
+  "exact_sql_path": "1528704844.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 5491,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1528704844,
+      "parameter_id": 1,
+      "name": "@iIntLocInv",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 2,
+      "name": "@dInitAllocQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 3,
+      "name": "@dInitInTransQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 4,
+      "name": "@dInitOnHandQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 5,
+      "name": "@dInitSuspQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 6,
+      "name": "@dNewAllocQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 7,
+      "name": "@dNewInTransQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 8,
+      "name": "@dNewOnHandQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 9,
+      "name": "@dNewSuspQty",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 9,
+      "precision": 19,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(19,5)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 10,
+      "name": "@dOverrodeVolumePerItem",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 13,
+      "precision": 28,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(28,5)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 11,
+      "name": "@dOverrodeWeightPerItem",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 13,
+      "precision": 28,
+      "scale": 5,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(28,5)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 12,
+      "name": "@stUserName",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 60,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(30)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 13,
+      "name": "@fromLocInvAttributeId",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 14,
+      "name": "@dtFromAgingDate",
+      "type_schema": "sys",
+      "type_name": "datetime",
+      "max_length": 8,
+      "precision": 23,
+      "scale": 3,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "datetime"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 15,
+      "name": "@dtFromExpDate",
+      "type_schema": "sys",
+      "type_name": "datetime",
+      "max_length": 8,
+      "precision": 23,
+      "scale": 3,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "datetime"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 16,
+      "name": "@dtFromManDate",
+      "type_schema": "sys",
+      "type_name": "datetime",
+      "max_length": 8,
+      "precision": 23,
+      "scale": 3,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "datetime"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 17,
+      "name": "@dtFromRecDate",
+      "type_schema": "sys",
+      "type_name": "datetime",
+      "max_length": 8,
+      "precision": 23,
+      "scale": 3,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "datetime"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 18,
+      "name": "@stFromInvSts",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 19,
+      "name": "@stFromItemColor",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 20,
+      "name": "@stFromItemDesc",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 200,
+      "precision": 0,
+      "scale": 0,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(100)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 21,
+      "name": "@stFromItemSize",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 22,
+      "name": "@stFromItemStyle",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1528704844,
+      "parameter_id": 23,
+      "name": "@iRowCount",
+      "type_schema": "sys",
+      "type_name": "int",
+      "max_length": 4,
+      "precision": 10,
+      "scale": 0,
+      "is_output": true,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "int"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1362819917,
+        "qualified_name": "dbo.LOCATION_INVENTORY",
+        "layout_path": "../table layout/1362819917.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1528704844,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1897,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/inventory-cycle-count-continuation.json",
+              "batch_sha256": "662aa90536cd4a47d4203e616a303e3c0c3676e5d58dd799f296ad6157c020db",
+              "contract_index": 28,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/28/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/inventory-cycle-count-continuation.json",
+              "batch_sha256": "662aa90536cd4a47d4203e616a303e3c0c3676e5d58dd799f296ad6157c020db",
+              "contract_index": 28,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/28/effects/2",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "UPDATE",
+              "line": 58,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1643868923,
+        "qualified_name": "dbo.SYSTEM_CONFIG_DETAIL",
+        "layout_path": "../table layout/1643868923.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1528704844,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1898,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/inventory-cycle-count-continuation.json",
+              "batch_sha256": "662aa90536cd4a47d4203e616a303e3c0c3676e5d58dd799f296ad6157c020db",
+              "contract_index": 28,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/28/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 52,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [],
+    "mentions_only": [
+      {
+        "table_id": 1362819917,
+        "qualified_name": "dbo.LOCATION_INVENTORY",
+        "layout_path": "../table layout/1362819917.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1528704844,
+          "reading_lines": [
+            58
+          ]
+        }
+      },
+      {
+        "table_id": 1554820601,
+        "qualified_name": "dbo.LOT",
+        "layout_path": "../table layout/1554820601.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1528704844,
+          "reading_lines": [
+            63
+          ]
+        }
+      },
+      {
+        "table_id": 1643868923,
+        "qualified_name": "dbo.SYSTEM_CONFIG_DETAIL",
+        "layout_path": "../table layout/1643868923.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1528704844,
+          "reading_lines": [
+            52
+          ]
+        }
+      },
+      {
+        "table_id": 1298819689,
+        "qualified_name": "dbo.LOCATION",
+        "layout_path": "../table layout/1298819689.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1528704844,
+          "module_type": "P",
+          "source_line": 93,
+          "source_start_offset": 2855,
+          "source_end_offset": 2863,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 1298819689,
+          "table_qualified_name": "dbo.LOCATION",
+          "source_definition_sha256": "f76598a7a60fc7a72a8c509571a9c8e740d8734a8a2ca94044b602ab1717b117",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1528704844,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "LOCATION_INVENTORY",
+      "referenced_id": 1362819917,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.LOCATION_INVENTORY"
+    },
+    {
+      "referencing_id": 1528704844,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SYSTEM_CONFIG_DETAIL",
+      "referenced_id": 1643868923,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SYSTEM_CONFIG_DETAIL"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/inventory-cycle-count-continuation.json",
+    "source_sha256": "662aa90536cd4a47d4203e616a303e3c0c3676e5d58dd799f296ad6157c020db",
+    "json_pointer": "/semantic_contracts/28",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_VERIFICATION",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1528704844,
+      "qualified_name": "dbo.INV_UpdateFromLocInv",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Full retained body read, authored input/output/effect/branch/configuration/error/transaction/concurrency explanations; source current per owner.",
+      "source_definition_sha256": "f76598a7a60fc7a72a8c509571a9c8e740d8734a8a2ca94044b602ab1717b117",
+      "purpose": "Replace source inventory quantities with an optimistic quantity-match guard.",
+      "inputs_defaults": [
+        "Captured declaration; placeholders are not executable argument values: CREATE PROCEDURE INV_UpdateFromLocInv( @iIntLocInv numeric(9), @dInitAllocQty numeric(19,5), @dInitInTransQty numeric(19,5), @dInitOnHandQty numeric(19,5), @dInitSuspQty numeric(19,5), @dNewAllocQty numeric(19,5), @dNewInTransQty numeric(19,5), @dNewOnHandQty numeric(19,5), @dNewSuspQty numeric(19,5), @dOverrodeVolumePerItem numeric(28,5), @dOverrodeWeightPerItem numeric(28,5), @stUserName nvarchar(30), @fromLocInvAttributeId numeric(9) =NULL, @dtFromAgingDate datetime output, @dtFromExpDate datetime output, @dtFromManDate datetime output, @dtFromRecDate datetime output, @stFromInvSts nvarchar(50) output, @stFromItemColor nvarchar(25) output, @stFromItemDesc nvarchar(100) output, @stFromItemSize nvarchar(25) output, @stFromItemStyle nvarchar(25) output, @iRowCount int output) AS"
+      ],
+      "null_and_invalid_input_behavior": [
+        "NULL initial quantities fail equality and can yield zero updated rows without an error. OUTPUT metadata is not reset before an unmatched UPDATE. Attribute default NULL overwrites an existing attribute ID."
+      ],
+      "output_shape": [
+        "Nine metadata OUTPUT values plus row-count OUTPUT; return is immediate UPDATE error, so 0 does not establish a matched row. NOCOUNT ON."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "dbo.SYSTEM_CONFIG_DETAIL",
+          "object_id": 1643868923,
+          "evidence_refs": [
+            "icc-sql-1528704844"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "dbo.LOCATION_INVENTORY",
+          "object_id": 1362819917,
+          "evidence_refs": [
+            "icc-sql-1528704844"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "dbo.LOCATION_INVENTORY",
+          "object_id": 1362819917,
+          "evidence_refs": [
+            "icc-sql-1528704844"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Determine metadata-empty state from new allocated/in-transit/on-hand quantities and INITIAL suspense quantity; read default status if that condition holds.",
+          "evidence_refs": [
+            "icc-sql-1528704844"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Update by inventory ID AND equality of all four initial quantities. Replace quantities, clear LOT when all four NEW quantities are zero, and scale cost/value from existing on-hand. Volume/weight override deltas are bypassed when existing on-hand is zero.",
+          "evidence_refs": [
+            "icc-sql-1528704844"
+          ]
+        },
+        {
+          "order": 3,
+          "explanation": "Metadata-empty state clears dates/user fields/logistics links and uses default status, except a previously NULL AGING_DATE is filled with UTC before the empty-state branch. Assign attribute ID directly. Capture source metadata OUTPUT values within the same UPDATE and return immediate error/row count.",
+          "evidence_refs": [
+            "icc-sql-1528704844"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "All four quantities replaced; value totals rescaled; metadata/lot clearing have different suspense tests.",
+      "configuration_scope_and_precedence": [
+        "Coded default inventory-status setting is used only for the metadata-empty branch."
+      ],
+      "error_and_return_handling": [
+        "Immediate @@ERROR/@@ROWCOUNT captured. Caller must inspect row count; no retry or rollback."
+      ],
+      "transaction_ownership": "No explicit BEGIN TRANSACTION, COMMIT, ROLLBACK, savepoint or SET XACT_ABORT in this body. Caller/session transaction behavior governs partial completion; this contract does not assume atomic child calls.",
+      "concurrency": [
+        "Quantity equality is an optimistic guard; it does not compare other metadata or perform a retry."
+      ],
+      "trigger_behavior": "No captured DML trigger is attached to the direct persistent target tables. Transitive child effects are not inferred.",
+      "external_handoffs_and_gaps": [
+        "Application callers, current record state and active permissions were not observed. No extension, assembly or Azure-function changes are required by this documentation task.",
+        "Explicit child/function calls are listed; their exact source contracts bound transitive effects. Opaque selectors are retained as technical evidence, without fabricated labels."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1528704844.sql",
+          "sha256": "e83f7306d59033ca7d911f7175885090ede4f7f0e621eb92ae488361aaf27c1f",
+          "line_start": 1,
+          "line_end": 154,
+          "kind": "REDACTED_SQL",
+          "description": "Complete retained definition reviewed with individual behavioral notes; private original hash/redaction parity verified.",
+          "source_definition_sha256": "f76598a7a60fc7a72a8c509571a9c8e740d8734a8a2ca94044b602ab1717b117"
+        }
+      ],
+      "evidence_refs": [
+        "icc-sql-1528704844"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_NAMES"
+    },
+    "evidence_sources": {
+      "icc-sql-1528704844": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1528704844,
+        "qualified_name": "dbo.INV_UpdateFromLocInv",
+        "source_definition_sha256": "f76598a7a60fc7a72a8c509571a9c8e740d8734a8a2ca94044b602ab1717b117",
+        "reading_path": "DB Architecture/sql/1528704844.sql",
+        "reading_sha256": "e83f7306d59033ca7d911f7175885090ede4f7f0e621eb92ae488361aaf27c1f",
+        "line_spans": [
+          [
+            1,
+            154
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
+      "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
+      "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.INV_UpdateFromLocInv",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1528704844.sql",
+      "reading_sha256": "e83f7306d59033ca7d911f7175885090ede4f7f0e621eb92ae488361aaf27c1f",
+      "source_definition_sha256": "f76598a7a60fc7a72a8c509571a9c8e740d8734a8a2ca94044b602ab1717b117",
+      "reading_lines": 154,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "Source-backed explanations describe the current captured replica. They do not diagnose an unseen work unit, container or user session.",
+    "No operational data, procedure execution or application configuration changes were performed. Caller actions, effective settings and whole-process duration remain evidence-specific.",
+    "Opaque literals are not exposed. Source identifiers and technical edge cases are supporting evidence, not instructions to execute SQL."
+  ]
+}

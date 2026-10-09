@@ -1,0 +1,856 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 1436180512,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "DASH_CaptureDashboardData",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:38.027000",
+    "modify_date": "2026-08-16 06:59:38.027000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.DASH_CaptureDashboardData",
+    "domain_candidate": "reporting"
+  },
+  "source_definition_sha256": "3fbd5de9cd2ae17b1c3563b8ba98d28ec7ee1bf170cd7a9ddbf0cd4625debf8d",
+  "exact_sql_path": "1436180512.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 5366,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": false,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": false
+  },
+  "parameters": [
+    {
+      "object_id": 1436180512,
+      "parameter_id": 1,
+      "name": "@warehouse",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    },
+    {
+      "object_id": 1436180512,
+      "parameter_id": 2,
+      "name": "@dashboardArea",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 100,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(50)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1853249657,
+        "qualified_name": "dbo.APPOINTMENT_SCHEDULE",
+        "layout_path": "../table layout/1853249657.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1436180512,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1718,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/performance-billing-maintenance.json",
+              "batch_sha256": "c18753c45e45b2f5235cab4189c56abd588ce10817c014eb2677eb3ecdbafee6",
+              "contract_index": 16,
+              "source_field": "effects",
+              "source_index": 3,
+              "json_pointer": "/semantic_contracts/16/effects/3",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 44,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 50,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 246291937,
+        "qualified_name": "dbo.DASHBOARD_DATA",
+        "layout_path": "../table layout/246291937.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1436180512,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1713,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/performance-billing-maintenance.json",
+              "batch_sha256": "c18753c45e45b2f5235cab4189c56abd588ce10817c014eb2677eb3ecdbafee6",
+              "contract_index": 16,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/16/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/performance-billing-maintenance.json",
+              "batch_sha256": "c18753c45e45b2f5235cab4189c56abd588ce10817c014eb2677eb3ecdbafee6",
+              "contract_index": 16,
+              "source_field": "effects",
+              "source_index": 5,
+              "json_pointer": "/semantic_contracts/16/effects/5",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "DELETE",
+              "line": 31,
+              "context": "RESOLVED_DML_ALIAS",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "RELATION_READ",
+              "line": 31,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 35,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "INSERT",
+              "line": 54,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "INSERT",
+              "line": 57,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "DELETE",
+              "line": 69,
+              "context": "RESOLVED_DML_ALIAS",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "RELATION_READ",
+              "line": 69,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 73,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "INSERT",
+              "line": 89,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "INSERT",
+              "line": 92,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1599344762,
+        "qualified_name": "dbo.RECEIPT_HEADER",
+        "layout_path": "../table layout/1599344762.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1436180512,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1716,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/performance-billing-maintenance.json",
+              "batch_sha256": "c18753c45e45b2f5235cab4189c56abd588ce10817c014eb2677eb3ecdbafee6",
+              "contract_index": 16,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/16/effects/2",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 43,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 49,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1436180512,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1714,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/performance-billing-maintenance.json",
+              "batch_sha256": "c18753c45e45b2f5235cab4189c56abd588ce10817c014eb2677eb3ecdbafee6",
+              "contract_index": 16,
+              "source_field": "effects",
+              "source_index": 4,
+              "json_pointer": "/semantic_contracts/16/effects/4",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 82,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 86,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      },
+      {
+        "table_id": 1643868923,
+        "qualified_name": "dbo.SYSTEM_CONFIG_DETAIL",
+        "layout_path": "../table layout/1643868923.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 1436180512,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 1717,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/performance-billing-maintenance.json",
+              "batch_sha256": "c18753c45e45b2f5235cab4189c56abd588ce10817c014eb2677eb3ecdbafee6",
+              "contract_index": 16,
+              "source_field": "effects",
+              "source_index": 1,
+              "json_pointer": "/semantic_contracts/16/effects/1",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 35,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 73,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": [
+      {
+        "table_id": 1853249657,
+        "qualified_name": "dbo.APPOINTMENT_SCHEDULE",
+        "layout_path": "../table layout/1853249657.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1436180512,
+          "reading_lines": [
+            44,
+            50
+          ]
+        }
+      },
+      {
+        "table_id": 246291937,
+        "qualified_name": "dbo.DASHBOARD_DATA",
+        "layout_path": "../table layout/246291937.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1436180512,
+          "reading_lines": [
+            31,
+            35,
+            54,
+            57,
+            69,
+            73,
+            89,
+            92
+          ]
+        }
+      },
+      {
+        "table_id": 1599344762,
+        "qualified_name": "dbo.RECEIPT_HEADER",
+        "layout_path": "../table layout/1599344762.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1436180512,
+          "reading_lines": [
+            43,
+            49
+          ]
+        }
+      },
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1436180512,
+          "reading_lines": [
+            82,
+            86
+          ]
+        }
+      },
+      {
+        "table_id": 1643868923,
+        "qualified_name": "dbo.SYSTEM_CONFIG_DETAIL",
+        "layout_path": "../table layout/1643868923.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1436180512,
+          "reading_lines": [
+            35,
+            73
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 1436180512,
+          "reading_lines": [
+            31,
+            36,
+            46,
+            52,
+            54,
+            57,
+            69,
+            74,
+            83,
+            87,
+            89,
+            92
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "COMMENT_IDENTIFIER_MENTION_NOT_ACCESS_CREDIT",
+        "category": "original_comment_mentions",
+        "observation": {
+          "module_id": 1436180512,
+          "module_type": "P",
+          "source_line": 19,
+          "source_start_offset": 709,
+          "source_end_offset": 718,
+          "offset_unit": "UNICODE_CHARACTER_HALF_OPEN",
+          "table_object_id": 664389436,
+          "table_qualified_name": "dbo.WAREHOUSE",
+          "source_definition_sha256": "3fbd5de9cd2ae17b1c3563b8ba98d28ec7ee1bf170cd7a9ddbf0cd4625debf8d",
+          "status": "COMMENT_IDENTIFIER_MENTION",
+          "counts_as_routine_reference": false,
+          "binding": "UNIQUE_CAPTURED_TABLE_NAME_TOKEN_NOT_SQL_BINDING"
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 1436180512,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "DASHBOARD_DATA",
+      "referenced_id": 246291937,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.DASHBOARD_DATA"
+    },
+    {
+      "referencing_id": 1436180512,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SHIPMENT_HEADER",
+      "referenced_id": 683865503,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_HEADER"
+    },
+    {
+      "referencing_id": 1436180512,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": "dbo",
+      "referenced_entity_name": "GetWarehouseTimezoneValue",
+      "referenced_id": 1000702963,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.GetWarehouseTimezoneValue"
+    },
+    {
+      "referencing_id": 1436180512,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "RECEIPT_HEADER",
+      "referenced_id": 1599344762,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.RECEIPT_HEADER"
+    },
+    {
+      "referencing_id": 1436180512,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "SYSTEM_CONFIG_DETAIL",
+      "referenced_id": 1643868923,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SYSTEM_CONFIG_DETAIL"
+    },
+    {
+      "referencing_id": 1436180512,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "APPOINTMENT_SCHEDULE",
+      "referenced_id": 1853249657,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.APPOINTMENT_SCHEDULE"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/performance-billing-maintenance.json",
+    "source_sha256": "c18753c45e45b2f5235cab4189c56abd588ce10817c014eb2677eb3ecdbafee6",
+    "json_pointer": "/semantic_contracts/16",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_PENDING_COORDINATOR_PEER_REVIEW",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 1436180512,
+      "qualified_name": "dbo.DASH_CaptureDashboardData",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Body-level static contract; transitive application and called-module completeness are separate.",
+      "source_definition_sha256": "3fbd5de9cd2ae17b1c3563b8ba98d28ec7ee1bf170cd7a9ddbf0cd4625debf8d",
+      "purpose": "Append planned/actual receipt or shipment snapshot pairs, with retention and expiration gating.",
+      "inputs_defaults": [
+        "warehouse nvarchar(25), dashboardArea nvarchar(50) required; no defaults. Only two coded area selectors enter capture branches."
+      ],
+      "null_and_invalid_input_behavior": [
+        "Missing warehouse/timezone can fail the initial helper. Non-numeric config expiration text can fail DATEADD conversion; a NULL config value uses5. A single fresh pair member does not suppress a new pair; two duplicate rows of one identifier can suppress it.",
+        "NULL warehouse cannot match cache cleanup/read predicates and cannot be inserted into the NOT NULL warehouse field; the captured warehouse FK also applies."
+      ],
+      "output_shape": [
+        "No explicit result set; early RETURN when freshness count exceeds1."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "DASHBOARD_DATA",
+          "object_id": 246291937,
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "SYSTEM_CONFIG_DETAIL",
+          "object_id": 1643868923,
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "RECEIPT_HEADER",
+          "object_id": 1599344762,
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "APPOINTMENT_SCHEDULE",
+          "object_id": 1853249657,
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "SHIPMENT_HEADER",
+          "object_id": 683865503,
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "DASHBOARD_DATA",
+          "object_id": 246291937,
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        },
+        {
+          "relationship": "CALLS",
+          "object": "GetWarehouseTimezoneValue",
+          "object_id": 1000702963,
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "Compute UTC now and warehouse-local date before checking the area selector.",
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "Receipt branch deletes this warehouse's identifiers130/200 older than14 hours. Count joined cache/config rows newer than now minus COALESCE(config.SYSTEM_VALUE,5) minutes; if count>1 return, regardless of whether both distinct identifiers are represented.",
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        },
+        {
+          "order": 3,
+          "explanation": "Otherwise planned receipts count receipt headers LEFT JOIN appointments for appointment date, falling back to scheduled date, equal local date. Actual additionally requires receipt CLOSE_DATE local-date equality. Multiple appointments can multiply a header; there is no DISTINCT.",
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        },
+        {
+          "order": 4,
+          "explanation": "Insert two separate rows for identifiers130/200 with expiration-config20 and shared UTC timestamp. EXPIRATION_TIME is omitted, so the captured default5 applies.",
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        },
+        {
+          "order": 5,
+          "explanation": "Shipment selector analogously cleans identifiers340/410 older than14 hours and applies the count>1 gate; planned counts scheduled-ship-date local day, actual additionally requires TRAILING_STS>=600. Insert identifiers340/410 using expiration-config50.",
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        },
+        {
+          "order": 6,
+          "explanation": "Unknown/NULL selector performs no capture branch after the initial date conversion. No call to a refresh routine is made.",
+          "evidence_refs": [
+            "pbm-batch-1436180512"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Deletes old and inserts new dashboard snapshots only; does not change receipt/shipment execution statuses.",
+      "configuration_scope_and_precedence": [
+        "System expiration lookup by coded record type and DD.EXPIRATION_TIME_CONFIG; no warehouse-specific configuration override in that join. Cleanup14 hours is independent of configured capture expiration."
+      ],
+      "error_and_return_handling": [
+        "No TRY/CATCH, RAISERROR, THROW, output error parameter or explicit application return code; SQL conversion, permission, arithmetic and called-module errors propagate."
+      ],
+      "transaction_ownership": "No explicit transaction, commit, rollback, savepoint, TRY/CATCH or XACT_ABORT is introduced by this body; caller/session semantics remain authoritative.",
+      "concurrency": [
+        "Delete, freshness check, source counts and each insert are separate statements without local transaction/lock. Concurrent captures may both insert and a failure may leave a partial pair. No unique warehouse+identifier key exists in captured metadata."
+      ],
+      "trigger_behavior": "No captured DML trigger has these dashboard/rate write tables as parent. This catalog observation does not establish absence of uncaptured database/server DDL triggers or later deployment changes.",
+      "external_handoffs_and_gaps": [
+        "Static body review only: no live rows, execution, caller identity, active deployment, timing or business acceptance were observed."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/1436180512.sql",
+          "sha256": "4051064c7062a0de172b44170a26887c352da6e472b6f2eb072de8f8b9db6f12",
+          "line_start": 1,
+          "line_end": 97,
+          "kind": "REDACTED_SQL",
+          "description": "Complete module body reviewed with original-definition fingerprint.",
+          "source_definition_sha256": "3fbd5de9cd2ae17b1c3563b8ba98d28ec7ee1bf170cd7a9ddbf0cd4625debf8d"
+        }
+      ],
+      "evidence_refs": [
+        "pbm-batch-1436180512"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "pbm-batch-1436180512": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 1436180512,
+        "qualified_name": "dbo.DASH_CaptureDashboardData",
+        "source_definition_sha256": "3fbd5de9cd2ae17b1c3563b8ba98d28ec7ee1bf170cd7a9ddbf0cd4625debf8d",
+        "reading_path": "DB Architecture/sql/1436180512.sql",
+        "reading_sha256": "4051064c7062a0de172b44170a26887c352da6e472b6f2eb072de8f8b9db6f12",
+        "line_spans": [
+          [
+            1,
+            97
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "No database connection, routine execution, credentials or application rows. Captured source review does not establish active deployment or runtime results.",
+      "No arbitrary private strings/comments/full original SQL definitions persisted. Public source copies are redacted; guarded private classifications publish only reviewed nonsensitive conclusions and hashes.",
+      "No module ownership is inferred from prefixes. No complete process-family or billing reconciliation is credited.",
+      "Potential source behavior concerns are not reproduced defects or applied fixes. Existing dynamic/dependency review denominators are unchanged."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.DASH_CaptureDashboardData",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/1436180512.sql",
+      "reading_sha256": "4051064c7062a0de172b44170a26887c352da6e472b6f2eb072de8f8b9db6f12",
+      "source_definition_sha256": "3fbd5de9cd2ae17b1c3563b8ba98d28ec7ee1bf170cd7a9ddbf0cd4625debf8d",
+      "reading_lines": 97,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "No database connection, routine execution, credentials or application rows. Captured source review does not establish active deployment or runtime results.",
+    "No arbitrary private strings/comments/full original SQL definitions persisted. Public source copies are redacted; guarded private classifications publish only reviewed nonsensitive conclusions and hashes.",
+    "No module ownership is inferred from prefixes. No complete process-family or billing reconciliation is credited.",
+    "Potential source behavior concerns are not reproduced defects or applied fixes. Existing dynamic/dependency review denominators are unchanged."
+  ]
+}

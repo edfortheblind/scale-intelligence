@@ -1,0 +1,495 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "AS_IS_ROUTINE_LAYOUT",
+  "snapshot_id": "20260929T214106Z",
+  "capture_started_at": "2026-09-29T21:41:06.224037+00:00",
+  "capture_finished_at": "2026-09-29T21:42:11.052877+00:00",
+  "identity": {
+    "object_id": 350272653,
+    "schema_id": 1,
+    "schema_name": "dbo",
+    "name": "WAVE_UpdateStatistics01",
+    "type": "P",
+    "type_desc": "SQL_STORED_PROCEDURE",
+    "parent_object_id": 0,
+    "create_date": "2026-08-16 06:59:59.900000",
+    "modify_date": "2026-08-16 06:59:59.900000",
+    "is_encrypted": 0,
+    "qualified_name": "dbo.WAVE_UpdateStatistics01",
+    "domain_candidate": "shipping"
+  },
+  "source_definition_sha256": "957b07c6d47fae96c4edb9b81e167c9727803d9b737a46da23b05c79d3ca4da5",
+  "exact_sql_path": "350272653.sql",
+  "encoding": "UTF-8",
+  "sql_bytes": 2523,
+  "module_flags": {
+    "uses_ansi_nulls": true,
+    "uses_quoted_identifier": true,
+    "is_schema_bound": false,
+    "uses_database_collation": false,
+    "is_recompiled": false,
+    "null_on_null_input": false,
+    "execute_as_principal_id": null
+  },
+  "static_features": {
+    "dynamic_sql_candidate": false,
+    "transaction_control": true,
+    "try_catch": false,
+    "raises_error": false,
+    "cursor": false,
+    "loop": false,
+    "read_uncommitted_hint": true
+  },
+  "parameters": [
+    {
+      "object_id": 350272653,
+      "parameter_id": 1,
+      "name": "@waveNum",
+      "type_schema": "sys",
+      "type_name": "numeric",
+      "max_length": 5,
+      "precision": 9,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "numeric(9,0)"
+    },
+    {
+      "object_id": 350272653,
+      "parameter_id": 2,
+      "name": "@processStamp",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 200,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(100)"
+    },
+    {
+      "object_id": 350272653,
+      "parameter_id": 3,
+      "name": "@userStamp",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 60,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(30)"
+    },
+    {
+      "object_id": 350272653,
+      "parameter_id": 4,
+      "name": "@nextStep",
+      "type_schema": "sys",
+      "type_name": "nvarchar",
+      "max_length": 50,
+      "precision": 0,
+      "scale": 0,
+      "is_output": false,
+      "is_readonly": false,
+      "has_default_value": false,
+      "declared_type": "nvarchar(25)"
+    }
+  ],
+  "return_metadata": {
+    "kind": "PROCEDURE_CONTRACT",
+    "scalar_parameters": [],
+    "columns": []
+  },
+  "table_references": {
+    "direct_or_reviewed": [
+      {
+        "table_id": 1074818891,
+        "qualified_name": "dbo.LAUNCH_STATISTICS",
+        "layout_path": "../table layout/1074818891.md",
+        "classification": "DIRECT_CAPTURED_STATIC_REFERENCE",
+        "confidence_boundary": "Catalog binding / bounded lexical evidence / reviewed effect scope are retained separately; execution is unverified.",
+        "evidence": {
+          "module_id": 350272653,
+          "module_type": "P",
+          "channels": [
+            "catalog",
+            "semantic",
+            "lexical"
+          ],
+          "catalog_dependency_records": [
+            {
+              "row_index": 416,
+              "referencing_minor_id": 0,
+              "referenced_minor_id": 0,
+              "is_schema_bound_reference": false,
+              "is_ambiguous": false,
+              "is_caller_dependent": false
+            }
+          ],
+          "reviewed_effects": [
+            {
+              "batch_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+              "batch_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+              "contract_index": 5,
+              "source_field": "effects",
+              "source_index": 0,
+              "json_pointer": "/semantic_contracts/5/effects/0",
+              "relationship": "READS",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            },
+            {
+              "batch_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+              "batch_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+              "contract_index": 5,
+              "source_field": "effects",
+              "source_index": 2,
+              "json_pointer": "/semantic_contracts/5/effects/2",
+              "relationship": "WRITES",
+              "reviewed_annotation": null,
+              "scope": "REVIEWED_CONTRACT_EFFECT; DIRECT_VERSUS_CALLED_SCOPE_NOT_STANDARDIZED"
+            }
+          ],
+          "lexical_relation_evidence": [
+            {
+              "operation": "SELECT",
+              "line": 14,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 21,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "SELECT",
+              "line": 34,
+              "context": "RELATION_CLAUSE",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            },
+            {
+              "operation": "UPDATE",
+              "line": 51,
+              "context": "DML_TARGET",
+              "binding": "UNIQUE_CAPTURED_NAME_NOT_RUNTIME_BINDING"
+            }
+          ]
+        }
+      }
+    ],
+    "possible_indirect": [
+      {
+        "table_id": 619865275,
+        "qualified_name": "dbo.SHIPMENT_DETAIL",
+        "layout_path": "../table layout/619865275.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              350272653,
+              2032062325
+            ],
+            "table_id": 619865275
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 683865503,
+        "qualified_name": "dbo.SHIPMENT_HEADER",
+        "layout_path": "../table layout/683865503.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              350272653,
+              2032062325
+            ],
+            "table_id": 683865503
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      },
+      {
+        "table_id": 1067866871,
+        "qualified_name": "dbo.SHIPPING_CONTAINER",
+        "layout_path": "../table layout/1067866871.md",
+        "classification": "POSSIBLE_STATIC_DELEGATION_NOT_EXECUTION",
+        "path_examples": [
+          {
+            "module_ids": [
+              350272653,
+              2032062325
+            ],
+            "table_id": 1067866871
+          }
+        ],
+        "limits": "Paths are static possibilities. At most 12 shortest path examples are shown; complete indirect module IDs and counts are retained. Trigger activation requires matching events and runtime execution."
+      }
+    ],
+    "mentions_only": [
+      {
+        "table_id": 1074818891,
+        "qualified_name": "dbo.LAUNCH_STATISTICS",
+        "layout_path": "../table layout/1074818891.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 350272653,
+          "reading_lines": [
+            14,
+            21,
+            34,
+            51
+          ]
+        }
+      },
+      {
+        "table_id": 664389436,
+        "qualified_name": "dbo.WAREHOUSE",
+        "layout_path": "../table layout/664389436.md",
+        "classification": "MENTION_OR_UNRESOLVED_CANDIDATE_ONLY_NOT_ACCESS_CREDIT",
+        "category": "identifier_token_mentions",
+        "observation": {
+          "module_id": 350272653,
+          "reading_lines": [
+            13,
+            25,
+            38
+          ]
+        }
+      }
+    ]
+  },
+  "dependencies": [
+    {
+      "referencing_id": 350272653,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "LAUNCH_STATISTICS",
+      "referenced_id": 1074818891,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.LAUNCH_STATISTICS"
+    },
+    {
+      "referencing_id": 350272653,
+      "referencing_minor_id": 0,
+      "referencing_class_desc": "OBJECT_OR_COLUMN",
+      "is_schema_bound_reference": false,
+      "referenced_class_desc": "OBJECT_OR_COLUMN",
+      "referenced_server_name": null,
+      "referenced_database_name": null,
+      "referenced_schema_name": null,
+      "referenced_entity_name": "shipment_header_view",
+      "referenced_id": 2032062325,
+      "referenced_minor_id": 0,
+      "is_caller_dependent": false,
+      "is_ambiguous": false,
+      "target_qualified_name": "dbo.SHIPMENT_HEADER_VIEW"
+    }
+  ],
+  "reviewed_contract": {
+    "source_path": "DB Architecture/mappings/batches/allocation-wave-replenishment.json",
+    "source_sha256": "c02511bbfd92bef8f5b1ff42dfe035ea7571b8a49e9b7cc13d91e10984bc970d",
+    "json_pointer": "/semantic_contracts/5",
+    "batch_review_state": "AUTHOR_STATIC_REVIEW_COMPLETE_INDEPENDENT_REVIEW_PENDING",
+    "contract": {
+      "snapshot_id": "20260929T214106Z",
+      "object_id": 350272653,
+      "qualified_name": "dbo.WAVE_UpdateStatistics01",
+      "object_type": "P",
+      "review_state": "FULL_BODY_STATIC_REVIEW_WITH_EXPLICIT_GAPS",
+      "review_scope": "Body-level static contract; transitive application and called-module completeness are separate.",
+      "source_definition_sha256": "957b07c6d47fae96c4edb9b81e167c9727803d9b737a46da23b05c79d3ca4da5",
+      "purpose": "Guard selected wave-step starts and refresh progress/statistics within a local transaction.",
+      "inputs_defaults": [
+        "waveNum numeric(9), processStamp nvarchar(100), userStamp nvarchar(30), nextStep nvarchar(25); required, no defaults."
+      ],
+      "null_and_invalid_input_behavior": [
+        "Missing/NULL wave can leave warehouse NULL and bypass equality conflicts, then update no target. Unknown/NULL nextStep bypasses the coded guarded branches; it is still assigned if target constraints permit. NULL previous current step is normalized by the coded last-step expression."
+      ],
+      "output_shape": [
+        "Explicit integer returns are zero on gate rejection and on the ordinary post-COMMIT @@ROWCOUNT path; they do not distinguish a successful update count. No intentional result set."
+      ],
+      "effects": [
+        {
+          "relationship": "READS",
+          "object": "LAUNCH_STATISTICS",
+          "object_id": 1074818891,
+          "evidence_refs": [
+            "awr-batch-350272653"
+          ]
+        },
+        {
+          "relationship": "READS",
+          "object": "SHIPMENT_HEADER_VIEW",
+          "object_id": 2032062325,
+          "evidence_refs": [
+            "awr-batch-350272653"
+          ]
+        },
+        {
+          "relationship": "WRITES",
+          "object": "LAUNCH_STATISTICS",
+          "object_id": 1074818891,
+          "evidence_refs": [
+            "awr-batch-350272653"
+          ]
+        }
+      ],
+      "ordered_branches": [
+        {
+          "order": 1,
+          "explanation": "BEGIN TRANSACTION. Read warehouse for this wave using NOLOCK.",
+          "evidence_refs": [
+            "awr-batch-350272653"
+          ]
+        },
+        {
+          "order": 2,
+          "explanation": "For either of two coded next-step tokens, acquire TABLOCKX via existence check for another wave in the same warehouse running either guarded token. For a third token, check its corresponding conflicting token. Conflict rolls back and returns zero.",
+          "evidence_refs": [
+            "awr-batch-350272653"
+          ]
+        },
+        {
+          "order": 3,
+          "explanation": "Test the latest @@ERROR; on nonzero roll back and return zero. Update statistics totals, START_DATE_TIME only when previously NULL, END_DATE_TIME to UTC now, LAST_LAUNCH_STEP from prior current-step mapping, CURRENT_LAUNCH_STEP to nextStep, and stamps.",
+          "evidence_refs": [
+            "awr-batch-350272653"
+          ]
+        },
+        {
+          "order": 4,
+          "explanation": "COMMIT TRANSACTION, then RETURN @@ROWCOUNT. COMMIT resets this value to zero under documented SQL Server behavior.",
+          "evidence_refs": [
+            "awr-batch-350272653"
+          ]
+        }
+      ],
+      "status_and_quantity_effects": "Writes progress timestamps and summary totals; END_DATE_TIME here is refreshed on each call, not proof of completed warehouse execution.",
+      "configuration_scope_and_precedence": [
+        "Guards are hard-coded step-token comparisons, not a complete wave-master step engine. Exact token meanings remain unpublished and are not inferred from the method name. Existing unit labels are preserved; missing ones use MAX source label."
+      ],
+      "error_and_return_handling": [
+        "No TRY/CATCH, XACT_ABORT declaration, rowcount-before-COMMIT capture or comprehensive post-UPDATE error check. Return zero alone cannot prove success; statement errors can propagate."
+      ],
+      "transaction_ownership": "Explicit BEGIN TRANSACTION, COMMIT and unqualified ROLLBACK in gate/error branches. No @@TRANCOUNT ownership test or savepoint; a rollback can unwind a caller transaction. Nested commit does not independently commit an outer transaction.",
+      "concurrency": [
+        "TABLOCKX is a table-level exclusive lock, broader than one wave/warehouse. It is used only in guarded branches. The earlier warehouse read and NOLOCK shipment aggregates are not a complete snapshot."
+      ],
+      "trigger_behavior": "No INSERT/UPDATE/DELETE trigger on these target tables is present in the captured six-trigger inventory, except SHIPPING_CONTAINER has an INSERT-only trigger and WORK_INSTRUCTION has an INSERT-only trigger; updates/deletes here do not directly activate those INSERT events. Constraints and caller actions still apply.",
+      "external_handoffs_and_gaps": [
+        "Application interpretation of zero, caller transaction nesting, step-token semantics and restart rules remain external. Static return analysis is not an executed defect reproduction."
+      ],
+      "evidence": [
+        {
+          "evidence_id": "E1",
+          "path": "DB Architecture/sql/350272653.sql",
+          "sha256": "8026bb16d0256cfa3e34753d399d1fa40e29b8acd464d549daaf8602e16aa194",
+          "line_start": 1,
+          "line_end": 88,
+          "kind": "REDACTED_SQL",
+          "description": "Complete module body reviewed with original-definition fingerprint.",
+          "source_definition_sha256": "957b07c6d47fae96c4edb9b81e167c9727803d9b737a46da23b05c79d3ca4da5"
+        },
+        {
+          "evidence_id": "E2",
+          "path": "DB Architecture/sql/350272653.sql",
+          "sha256": "8026bb16d0256cfa3e34753d399d1fa40e29b8acd464d549daaf8602e16aa194",
+          "line_start": 11,
+          "line_end": 44,
+          "kind": "REDACTED_SQL",
+          "description": "Guarded transaction and conflict branches.",
+          "source_definition_sha256": "957b07c6d47fae96c4edb9b81e167c9727803d9b737a46da23b05c79d3ca4da5"
+        },
+        {
+          "evidence_id": "E3",
+          "path": "DB Architecture/sql/350272653.sql",
+          "sha256": "8026bb16d0256cfa3e34753d399d1fa40e29b8acd464d549daaf8602e16aa194",
+          "line_start": 52,
+          "line_end": 87,
+          "kind": "REDACTED_SQL",
+          "description": "Progress fields, COMMIT and return value.",
+          "source_definition_sha256": "957b07c6d47fae96c4edb9b81e167c9727803d9b737a46da23b05c79d3ca4da5"
+        }
+      ],
+      "evidence_refs": [
+        "awr-batch-350272653"
+      ],
+      "operational_execution_verified": false,
+      "definition_ownership": "NOT_ESTABLISHED_FROM_PREFIX_OR_SOURCE_COMMENTS"
+    },
+    "evidence_sources": {
+      "awr-batch-350272653": {
+        "kind": "DEPLOYED_SQL_STATIC",
+        "object_id": 350272653,
+        "qualified_name": "dbo.WAVE_UpdateStatistics01",
+        "source_definition_sha256": "957b07c6d47fae96c4edb9b81e167c9727803d9b737a46da23b05c79d3ca4da5",
+        "reading_path": "DB Architecture/sql/350272653.sql",
+        "reading_sha256": "8026bb16d0256cfa3e34753d399d1fa40e29b8acd464d549daaf8602e16aa194",
+        "line_spans": [
+          [
+            1,
+            88
+          ]
+        ],
+        "line_coordinate_system": "ONE_BASED_REDACTED_READING_COPY"
+      }
+    },
+    "global_limits": [
+      "All conclusions are bounded to captured source/catalog and explicitly reviewed vendor nodes. No operational data or live SQL calls.",
+      "Code-review edges are static possible paths, not reproduced defects. Caller transactions, isolation, permitted values and actual configuration remain external.",
+      "Private source is used only in guarded fingerprint/literal-category checks. No full private definition, arbitrary message/comment or credentials are persisted in this fragment.",
+      "Unqualified procedure candidates and dynamic lexical false positives do not prove effective runtime binding. Object prefixes do not establish vendor/custom ownership."
+    ]
+  },
+  "unresolved_and_dynamic": {
+    "captured_module_observation": {
+      "qualified_name": "dbo.WAVE_UpdateStatistics01",
+      "object_type": "P",
+      "reading_path": "DB Architecture/sql/350272653.sql",
+      "reading_sha256": "8026bb16d0256cfa3e34753d399d1fa40e29b8acd464d549daaf8602e16aa194",
+      "source_definition_sha256": "957b07c6d47fae96c4edb9b81e167c9727803d9b737a46da23b05c79d3ca4da5",
+      "reading_lines": 88,
+      "semantic_contract_present": true,
+      "dynamic_execution_sites": [],
+      "unresolved_relation_positions": [],
+      "catalog_dynamic_candidate": false
+    },
+    "dynamic_review_bindings": [],
+    "unresolved_catalog_dependencies": [],
+    "unresolved_semantic_effects": [],
+    "cross_source_discrepancies": []
+  },
+  "definition_ownership": "NOT_ESTABLISHED",
+  "operational_execution_verified": false,
+  "limitations": [
+    "This is the retained 2026-09-29 replica capture, not a new database inspection. The .sql file is the complete captured sys.sql_modules.definition encoded as UTF-8, including original comments, literals and line endings; nothing is prepended or reformatted. Captured definition text is not a complete deployment script: permissions, SET options, session context and dependencies are separate. No routine was executed. Static references do not establish branch execution, current use or runtime table scans. Vendor-base versus customer customization ownership is not established by names or comments.",
+    "A captured source reference establishes a static relationship, not that a module ran, a branch was reached, or a table is currently active.",
+    "NO_CAPTURED_REFERENCE means none of the credited channels in this exact retained corpus identified the table. It does not establish that the table is unused, obsolete, a backup, safe to delete, or absent from external application SQL.",
+    "Dynamic SQL, runtime-selected identifiers, external callers, client-generated SQL, uncaptured jobs and historical/other database code can use tables without a resolvable reference here.",
+    "The bounded lexer recognizes named SQL relation/DML positions and local aliases/CTEs; it is not the SQL Server binder. Unqualified names assume a unique captured name, not verified caller/default-schema resolution. Unsupported or ambiguous syntax remains explicit.",
+    "DDL, DBCC, permission statements and metadata-function arguments are not comprehensively classified by the parser. Their table relationships depend on captured catalog dependencies or reviewed effects; unmatched identifiers/string arguments remain non-credit observations.",
+    "Identifier tokens and string-contained names are separate non-credit observations. Column names and configuration text can match table names; neither proves an executed table access.",
+    "Foreign keys are structural relationships and never count as procedure/function usage. View paths are catalog/source paths; attached trigger paths are possibilities, not proof the event fired.",
+    "Owner backup/leftover and item-master-failure suggestions are hypotheses. Name patterns and missing references do not validate them. No deletion recommendation is made.",
+    "Current replica status is owner-attested. This task documents the captured source as-is and requires no application version/build or extension development.",
+    "All conclusions are bounded to captured source/catalog and explicitly reviewed vendor nodes. No operational data or live SQL calls.",
+    "Code-review edges are static possible paths, not reproduced defects. Caller transactions, isolation, permitted values and actual configuration remain external.",
+    "Private source is used only in guarded fingerprint/literal-category checks. No full private definition, arbitrary message/comment or credentials are persisted in this fragment.",
+    "Unqualified procedure candidates and dynamic lexical false positives do not prove effective runtime binding. Object prefixes do not establish vendor/custom ownership."
+  ]
+}

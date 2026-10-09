@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "artifact_kind": "INDEPENDENT_PROGRAMMING_LAYOUT_REVIEW",
+  "status": "PASS",
+  "user_task_date": "2026-10-08",
+  "user_timezone": "America/Chicago",
+  "verified_at": "2026-10-09T02:20:59.040896+00:00",
+  "snapshot_id": "20260929T214106Z",
+  "reviewer": "coverage_audit native sub-agent",
+  "scope": "Offline source integrity, captured metadata completeness, routine/table reciprocity, comment coordinates, static Markdown link checks, protected connection-value scan and final artifact inventory. No database queries, execution or browser rendering.",
+  "checks": {
+    "exact_routine_bodies_byte_equal": 997,
+    "stored_procedures": 921,
+    "functions": 76,
+    "table_layouts": 518,
+    "captured_table_columns_equal": 16968,
+    "direct_metadata_class_comparisons": 6734,
+    "default_check_key_and_foreign_key_rows_equal": true,
+    "index_and_foreign_key_column_links_resolve": true,
+    "routine_parameters_module_flags_and_return_metadata_equal": true,
+    "reviewed_table_roles": 517,
+    "priority_tables_with_primary_source_mention_or_path": 318,
+    "reciprocal_direct_reviewed_pairs": 1927,
+    "reciprocal_indirect_pairs": 984,
+    "reciprocal_token_string_candidate_observations": 3324,
+    "reciprocal_comment_records": 1394,
+    "comment_original_coordinates_hash_and_dedup_verified": 1394,
+    "final_files_hash_and_size_verified": 4033,
+    "closed_final_artifact_inventory": true,
+    "markdown_documents_static_link_checked": 1518,
+    "local_prose_links_checked": 24286,
+    "protected_connection_value_scan": "PASS",
+    "protected_connection_value_hit_count": 0,
+    "comment_helper_focused_tests_passed": 10
+  },
+  "resolved_review_findings": [
+    {
+      "finding": "Historical table-usage bindings were stale against 21 reviewed batch files",
+      "resolution": "Fresh separate programming-layout-table-usage.json binds current batch hashes; historical report preserved."
+    },
+    {
+      "finding": "Batch-only roles omitted seven existing base table narratives",
+      "resolution": "Verified base roles included; 517 captured tables retain reviewed roles."
+    },
+    {
+      "finding": "Routine contract source snippets formed accidental Markdown links",
+      "resolution": "Literal source text escapes Markdown syntax; final static links pass and exact SQL/JSON source bytes are unchanged."
+    },
+    {
+      "finding": "Authored routine Markdown retained excerpt trailing whitespace",
+      "resolution": "Final Markdown whitespace normalization verified against frozen artifact manifest; original SQL and structured JSON were not normalized."
+    }
+  ],
+  "artifact_sha256": {
+    "DB Architecture/evidence/programming-layout-manifest.json": "0af82d1ea9113d10148aea03b4262d85d50de4514d53d7ed4ccb1cc4f4943ac9",
+    "DB Architecture/evidence/programming-layout-verification.json": "9882f30ad923093ac91ca814cfdbaabc3398b654707987ffea5e531a27c9d5d6",
+    "DB Architecture/evidence/programming-layout-table-usage.json": "28ae81b20c85fd6fcb182c3b809667e925e6265d99edf66ab7dbd3fe57dce440",
+    "DB Architecture/SP layout/manifest.json": "5085e7f1d0da62ba68339bf9eef3ce4f81c8795bf200554c0b621f0bbe1967df",
+    "DB Architecture/function layout/manifest.json": "1d6639db2a09f79f46ef24631790c8421a4a1502c19dc4f7b51ca62ed56539ba",
+    "DB Architecture/table layout/manifest.json": "15d18b1eafed4699ce04d33e88a26f8271f35d14d61efe59960eaaf4dde8fe9f"
+  },
+  "tool_sha256": {
+    "tools/build_programming_layout.py": "0398d8b41d709b207d50def81905618b2852a2a2df11a4592a34197138628772",
+    "tools/build_routine_layouts.py": "6239efac5e30cf209a9b851a4686467a924c29961919e4f075c8494fd6d3195c",
+    "tools/build_table_layouts.py": "80b94aa410726fa1036d275459e7ff7843fe052a598fb31060b47d50321040e7",
+    "tools/programming_layout_mentions.py": "49342245ef8434c74e2730ca9efff603f7b7c86f70ffe930ea1f75ecba9d0b7b",
+    "tools/report_table_usage.py": "cc287ba36a3fbe39d981965709aa8e0f195234917147b5c8cf95887aca1328e8"
+  },
+  "limits": [
+    "The September 29 retained replica capture is not a fresh database inspection.",
+    "Complete layouts preserve captured fields; they are not original CREATE TABLE batches or complete replayable DDL.",
+    "Static relationships and comments do not establish execution, physical scans, table lifecycle or vendor-base ownership.",
+    "The protected-value scan compares supplied connection password/user/server values without persisting or printing them; it is not a general discovery scan for every possible historical secret.",
+    "Markdown verification is static link/syntax checking, not a browser visual review."
+  ],
+  "errors": [],
+  "database_connected": false,
+  "application_rows_read": false,
+  "routines_executed": false,
+  "final_freeze_verified": true
+}
