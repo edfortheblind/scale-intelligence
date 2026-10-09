@@ -16,7 +16,7 @@ The **Technical reference and sources** section contains supporting routine beha
 
 The interface uses native HTML forms, links, headings and disclosure controls. JavaScript is unnecessary. A skip link, keyboard focus styling and narrow-window layout support accessible reading.
 
-When a search result matches a reviewed source detail, expand **Matching detail and source** beneath its general explanation to read that passage, its source name and its limits. The article link opens the full explanation and technical references. A matching passage does not by itself confirm the intended operation or current warehouse behavior.
+When a search result matches a reviewed source detail, expand **Matching detail and source** beneath its general explanation to read that passage, its source name and its limits. The article link opens the full explanation and technical references. **Return to search results** revisits your original library query after reading an article or its source, including after searching within that article. The article's **Search SCALE Knowledge** form retains that library query so you can refine it. A matching passage does not by itself confirm the intended operation or current warehouse behavior.
 
 When reading an article, expand **Find in this article** to look for words or a question within its text and reviewed routine details. The selected article stays in view. Eight matching passages appear per page with their source qualifications; article prose retains its article-level sources. Use **Previous page** and **Next page** to read the remaining matches. The range and page count show your position; submitting a new search returns to page one. An article can cover several routines, so read the passage labels and limits. These are text matches, not generated answers. **Search SCALE Knowledge** remains available for searching the whole library.
 
@@ -69,7 +69,7 @@ Write each explanation once. Omit empty or redundant sections. Keep project hist
 ## Verification
 
 ```powershell
-python -m unittest tests.test_help_guides tests.test_help_app tests.test_help_articles tests.test_retrieval tests.test_article_find tests.test_article_sources
+python -m unittest tests.test_help_guides tests.test_help_app tests.test_help_articles tests.test_retrieval tests.test_article_find tests.test_article_sources tests.test_article_search_context
 python tools/build_help_guides.py --check
 python tools/evaluate_help.py --serve
 python tools/verify_db_docs.py

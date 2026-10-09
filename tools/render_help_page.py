@@ -17,13 +17,14 @@ def section(title, items, ordered=False):
     return element('h3', title)+f'<{tag}>'+''.join(element('li', item) for item in items)+f'</{tag}>'
 
 
-def topic_link(topic_id, title):
-    return f'<a href="/topic/{quote(topic_id, safe="")}#answer">{escape(title)}</a>'
+def topic_link(topic_id, title, search=''):
+    href = article_context_url(topic_id, fragment='answer', search=search)
+    return f'<a href="{escape(href, quote=True)}">{escape(title)}</a>'
 
 
-def topic_list(topics):
+def topic_list(topics, search=''):
     return '<ul class="topic-list">'+''.join(
-        '<li>'+topic_link(t['topic_id'], t['title'])+'</li>'
+        '<li>'+topic_link(t['topic_id'], t['title'], search)+'</li>'
         for t in sorted(topics, key=lambda t: t['title'].casefold()))+'</ul>'
 
 
@@ -32,23 +33,25 @@ def source_target(source_id):
     return 'article-source-'+source_id.encode('utf-8').hex()
 
 
-def article_context_url(topic_id, question=None, page=1, source_id=None, fragment='article-matches'):
+def article_context_url(topic_id, question=None, page=1, source_id=None, fragment='article-matches', search=''):
     values = {}
     if question is not None:
         values.update(find=question, page=page)
     if source_id is not None:
         values['source'] = source_id
+    if search.strip():
+        values['search'] = search
     return ('/topic/'+quote(topic_id, safe='')+('?' + urlencode(values) if values else '')+
             '#'+quote(fragment, safe=''))
 
 
-def source_link(topic_id, source_id, source, question=None, page=1):
-    href = article_context_url(topic_id, question, page, source_id, source_target(source_id))
+def source_link(topic_id, source_id, source, question=None, page=1, search=''):
+    href = article_context_url(topic_id, question, page, source_id, source_target(source_id), search)
     label = source['kind_label']+' — '+source['label']
     return '<p class="hash">Source: <a href="'+escape(href, quote=True)+'">'+escape(label)+'</a></p>'
 
 
-def render_references(knowledge, topic, selected_source=None, article_find='', article_find_page=1):
+def render_references(knowledge, topic, selected_source=None, article_find='', article_find_page=1, search=''):
     parts = ['<details class="references"'+(' open' if selected_source is not None else '')+
              '><summary>Technical reference and sources</summary>']
     if topic['documentary_refinements']:
@@ -91,7 +94,7 @@ def render_references(knowledge, topic, selected_source=None, article_find='', a
         if selected:
             parts.append(element('p', source['qualification']))
             if article_find.strip():
-                href = article_context_url(topic['topic_id'], article_find, article_find_page)
+                href = article_context_url(topic['topic_id'], article_find, article_find_page, search=search)
                 parts.append('<p><a href="'+escape(href, quote=True)+'">Return to matching passages</a></p>')
         evidence = knowledge.source(source['source_id'])
         for excerpt in evidence['excerpts']:
@@ -107,7 +110,7 @@ def render_references(knowledge, topic, selected_source=None, article_find='', a
     return '<div id="article-sources" tabindex="-1">'+''.join(parts)+'</div>'
 
 
-def render_article_find(knowledge, topic, question, page=1):
+def render_article_find(knowledge, topic, question, page=1, search=''):
     result = knowledge.find_in_topic(topic['topic_id'], question, page)
     action = '/topic/'+quote(topic['topic_id'], safe='')+'#article-matches'
     parts = ['<section id="article-matches" tabindex="-1" aria-labelledby="article-find-heading">',
@@ -116,6 +119,7 @@ def render_article_find(knowledge, topic, question, page=1):
              element('p', 'Search article explanations and reviewed routine notes in '+topic['title']+
                      '. This article may cover several routines.', ' id="article-find-help"'),
              '<form action="'+escape(action, quote=True)+'" method="get">',
+             ('<input type="hidden" name="search" value="'+escape(search, quote=True)+'">' if search else ''),
              '<label for="article-find">Words or question</label>',
              '<div class="search-row"><input id="article-find" name="find" type="search" '
              'aria-describedby="article-find-help" maxlength="500" value="'+escape(question, quote=True)+'">',
@@ -132,7 +136,7 @@ def render_article_find(knowledge, topic, question, page=1):
                 parts += ['<li>', element('p', match['label']), element('p', match['text'])]
                 if match['source_id']:
                     source = knowledge.source(match['source_id'])
-                    parts += [source_link(topic['topic_id'], match['source_id'], source, question, page),
+                    parts += [source_link(topic['topic_id'], match['source_id'], source, question, page, search),
                               element('p', source['qualification'])]
                 parts.append('</li>')
             parts.append('</ol>')
@@ -140,8 +144,7 @@ def render_article_find(knowledge, topic, question, page=1):
                 parts.append('<nav aria-label="Article match pages">')
                 for number, label in [(page - 1, 'Previous page'), (page + 1, 'Next page')]:
                     if 1 <= number <= result['pages']:
-                        href = '/topic/'+quote(topic['topic_id'], safe='')+'?'+urlencode(
-                            {'find': question, 'page': number})+'#article-matches'
+                        href = article_context_url(topic['topic_id'], question, number, search=search)
                         parts.append('<a href="'+escape(href, quote=True)+'">'+label+'</a> ')
                 parts.append('</nav>')
             parts.append('<p><a href="#article-sources">Article sources and qualifications</a>. '
@@ -160,11 +163,15 @@ def render_shell(title, content):
 
 
 def render_page(knowledge, question='', topic_id=None, guides=None, article_find='', article_find_page=1,
-                article_source=None):
+                article_source=None, search_context=''):
     if len(question) > 500:
         raise ValueError('Use a question of 500 characters or fewer.')
     if not isinstance(article_find, str) or len(article_find) > 500:
         raise ValueError('Use a question of 500 characters or fewer.')
+    if not isinstance(search_context, str) or len(search_context) > 500:
+        raise ValueError('Use a question of 500 characters or fewer.')
+    if not search_context.strip():
+        search_context = ''
     topic = knowledge.topic(topic_id) if topic_id is not None else None
     if article_source is not None:
         if not isinstance(article_source, str) or not article_source.strip():
@@ -173,14 +180,16 @@ def render_page(knowledge, question='', topic_id=None, guides=None, article_find
             raise KeyError(article_source)
     parts = []
     if topic:
-        parts += ['<nav aria-label="Library"><a href="/">Browse topics</a></nav>',
+        return_link = (' <a href="'+escape('/?'+urlencode({'q': search_context})+'#results-heading', quote=True)+
+                       '">Return to search results</a>' if search_context else '')
+        parts += ['<nav aria-label="Library"><a href="/">Browse topics</a>'+return_link+'</nav>',
                   '<details class="article-search"><summary>Search SCALE Knowledge</summary>']
     else:
         parts += ['<section aria-labelledby="search-heading" class="search-panel">',
                   '<h2 id="search-heading">Find an answer</h2>']
     parts += ['<form action="/#results-heading" method="get"><label for="question">Search by process, screen or setting</label>',
               '<p id="search-help">Include the name of the process or setting in your question.</p>',
-              '<div class="search-row"><input id="question" name="q" type="search" aria-describedby="search-help" maxlength="500" value="'+escape(question, quote=True)+'" placeholder="For example: How do I configure packing?">',
+              '<div class="search-row"><input id="question" name="q" type="search" aria-describedby="search-help" maxlength="500" value="'+escape(search_context if topic and search_context else question, quote=True)+'" placeholder="For example: How do I configure packing?">',
               '<button type="submit">Search</button></div></form>',
               '</details>' if topic else '</section>']
     if question.strip():
@@ -200,13 +209,13 @@ def render_page(knowledge, question='', topic_id=None, guides=None, article_find
             parts.append(element('p', str(len(result['results']))+' related articles.', ' role="status"'))
             parts.append('<ul id="result-list">')
             for match in result['results']:
-                parts.append('<li>'+topic_link(match['topic_id'], match['title'])+element('p', match['answer']))
+                parts.append('<li>'+topic_link(match['topic_id'], match['title'], question)+element('p', match['answer']))
                 if match.get('matching_detail') and match.get('matching_source_id'):
                     source = knowledge.source(match['matching_source_id'])
                     parts += ['<details class="source">',
                               element('summary', 'Matching detail and source: '+match['title']),
                               element('p', match['matching_detail']),
-                              source_link(match['topic_id'], match['matching_source_id'], source),
+                              source_link(match['topic_id'], match['matching_source_id'], source, search=question),
                               element('p', source['qualification']), '</details>']
                 parts.append('</li>')
             parts.append('</ul>')
@@ -221,7 +230,7 @@ def render_page(knowledge, question='', topic_id=None, guides=None, article_find
     if topic:
         parts += ['<article id="answer" aria-labelledby="answer-title" tabindex="-1">',
                   element('h2', topic['title'], ' id="answer-title"'), element('p', topic['what_it_does'], ' class="lead"'),
-                  render_article_find(knowledge, topic, article_find, article_find_page)]
+                  render_article_find(knowledge, topic, article_find, article_find_page, search_context)]
         if topic['trigger']:
             parts.append(element('p', topic['trigger']))
         parts += [section('How to configure' if topic['article_type'] == 'configuration' else 'How it works',
@@ -231,8 +240,8 @@ def render_page(knowledge, question='', topic_id=None, guides=None, article_find
                   section('Troubleshooting', topic['what_you_can_check']),
                   section('Limits', topic['evidence_limits'])]
         if topic['related_topics']:
-            parts += [element('h3', 'Related articles'), topic_list(topic['related_topics'])]
-        parts += [render_references(knowledge, topic, article_source, article_find, article_find_page), '</article>']
+            parts += [element('h3', 'Related articles'), topic_list(topic['related_topics'], search_context)]
+        parts += [render_references(knowledge, topic, article_source, article_find, article_find_page, search_context), '</article>']
     else:
         setup = [t for t in knowledge.topics.values() if t.get('article_type') == 'configuration']
         processes = [t for t in knowledge.topics.values() if t['topic_id'].startswith('process-') and t not in setup]

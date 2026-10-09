@@ -1,5 +1,13 @@
 # SCALE Intelligence - next session on Astra
 
+## C42 retain the originating article search - 2026-10-09
+
+Global result article/source links now retain the original library query. **Return to search results** restores it after reading an article, searching within it or opening its source. The global form is prefilled; scoped article queries remain distinct. Read [C42 changes and limits](_project/CONTINUATION_C42.md) and [the checkpoint](_project/continuation42-20261009.json).
+
+**167 tests passed**. Across 723 queries, **5,720 result article links and 2,687 source links** preserve context. All 340 ordinary articles and 398 scoped pages remain byte-identical without context; 738 context-bearing pages preserve content and return navigation. Independent review and keyboard/320 px checks passed. All **723 evaluation records remain identical: 677 top-eight, 433 first and 46 misses**.
+
+This is navigation continuity, with no retrieval recovery or semantic-answer acceptance credit. Preserve unresolved source questions, six mobile deferrals, untracked Video Rec and **0/34 deployment/timing**. Publication parity is verified separately; no new runtime or JAWS acceptance is claimed.
+
 ## C41 exact article source navigation - 2026-10-09
 
 Source-qualified passages now link directly to their exact disclosure in the full article. The selected source opens with its qualification and visible keyboard focus. Scoped links preserve the exact search and page; **Return to matching passages** restores that context. Global matching details use the same source links. Read [C41 changes and limits](_project/CONTINUATION_C41.md) and [the checkpoint](_project/continuation41-20261009.json).

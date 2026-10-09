@@ -118,7 +118,7 @@ class ArticleSourceTests(unittest.TestCase):
         self.assertTrue(links)
         first = urlsplit(links[0]['attrs']['href'])
         self.assertEqual(first.path, '/topic/labor-log-and-consolidation')
-        self.assertEqual(parse_qs(first.query), {'source': ['lya-sql-776702165']})
+        self.assertEqual(parse_qs(first.query), {'source': ['lya-sql-776702165'], 'search': ['ISNUMERIC']})
         opened = render_page(self.knowledge, topic_id='labor-log-and-consolidation',
                              article_source='lya-sql-776702165').decode()
         target = Document(opened).target(unquote(first.fragment))

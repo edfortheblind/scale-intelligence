@@ -1,0 +1,229 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C42",
+  "recorded_date": "2026-10-09",
+  "timezone": "America/Chicago",
+  "base_commit": "d2272809ecfa50d089cb739b59988fc1318769c2",
+  "owner_instruction": "continue",
+  "outcome": "DONE_WITH_CONCERNS",
+  "bounded_task_status": "COMPLETE",
+  "task": "Retain originating library search through article and source navigation",
+  "tests": {
+    "passed": 167,
+    "failed": 0,
+    "skipped": 0,
+    "new_tests": 6,
+    "updated_link_expectations": 1,
+    "elapsed_seconds": 45.268,
+    "command": "python -m unittest tests.test_programming_library tests.test_help_app tests.test_help_articles tests.test_help_guides tests.test_tab_help tests.test_tab_reconciliation tests.test_retrieval tests.test_article_find tests.test_article_sources tests.test_article_search_context",
+    "baseline_regression": "Global result link lacks search context; new regression fails with missing search parameter",
+    "test_fixture_correction": "Replaced shipment-detail related-link expectation with an article that has retained related topics"
+  },
+  "article_evaluation": {
+    "command": "python tools/evaluate_help.py --serve",
+    "case_count": 723,
+    "question_only_retrieval": {
+      "expected_topic_first": 433,
+      "expected_topic_in_first_eight": 677,
+      "misses": 46
+    },
+    "selected_topic_contract": {
+      "passed": 723,
+      "failed": 0
+    },
+    "unchanged_complete_case_records": 723,
+    "recoveries": 0,
+    "new_losses": 0,
+    "ranking_changes": 0,
+    "changed_evaluation_fields": [
+      "implementation_sha256"
+    ],
+    "implementation_sha256": "980ba4e4578ff6697e76513e7c6612ca04f4bf8009e27f97b0276d906ebd36ab"
+  },
+  "corpus_verification": {
+    "receipt": "_project/article-search-context-verification-c42-20261009.json",
+    "counts": {
+      "articles": 340,
+      "ordinary_html_unchanged": 340,
+      "context_article_pages": 340,
+      "scoped_pages": 398,
+      "scoped_matches": 1566,
+      "scoped_source_links": 1203,
+      "scoped_pagination_links": 116,
+      "related_article_links": 135,
+      "global_queries": 723,
+      "global_article_links": 5720,
+      "global_source_links": 2687,
+      "return_links": 738,
+      "hidden_context_fields": 738
+    },
+    "ordinary_and_context_absent_scoped_html_byte_identical": true,
+    "context_pages_differ_only_in_navigation_and_form_context": true,
+    "selected_articles_do_not_execute_global_search": true,
+    "global_indexed_rows_unchanged": 10262,
+    "topic_api_records_unchanged": 340,
+    "home_html_unchanged": true,
+    "global_retrieval_recovery_credit": 0
+  },
+  "review": {
+    "kind": "SEPARATE_FRESH_CONTEXT_INDEPENDENT_PATCH_REVIEW",
+    "result": "PASS",
+    "findings": 0,
+    "corrections_requested": 0,
+    "reviewer_authored_or_designed_patch": false,
+    "focused_tests_passed": 66,
+    "ordinary_articles_compared": 340,
+    "home_compared": true,
+    "baseline_http_comparisons": 25,
+    "context_rejection_cases": 10,
+    "adversarial_context_roundtrips": 9,
+    "blank_context_comparisons": 3,
+    "global_queries_compared": 4,
+    "global_links_compared": 36,
+    "reviewed_hashes": {
+      "tools/render_help_page.py": "084cd8938ebd1a401abeeddc3618b3b8c8788e9293b2c7ed1db576b9e3ec84f1",
+      "tools/serve_help.py": "4f85e5f2166cfe04ce2ab6c61ee9f18cf22e4b467adfea6740530beddf69703d",
+      "tests/test_article_search_context.py": "a24c1a859be2b1cfd33a989d48ec9a5f11ec6cee2b7e558cfb0f2252bcee523e",
+      "tests/test_article_sources.py": "82baf3b82fa7a5d72044d65e5bf4a4b1d082c5ea654a60b9b8a75ebfdd7b0f0d",
+      "help_app/README.md": "428acee963482770d1e2a4dffe904dbd572fc9534c8baf3767238e9d9e99f876"
+    },
+    "full_corpus_http_and_browser_repeated_by_reviewer": false
+  },
+  "browser": {
+    "surface": "Local Brave loopback preview",
+    "keyboard_article_scoped_source_and_return_loop": true,
+    "library_query": "shipment door",
+    "article": "shipment-detail",
+    "distinct_scoped_query": "shipment",
+    "scoped_page": 2,
+    "scoped_range": [
+      9,
+      12
+    ],
+    "source": "shipment-detail-sql",
+    "source_focus_id": "article-source-736869706d656e742d64657461696c2d73716c",
+    "scoped_return_focus_id": "article-matches",
+    "global_return_focus_id": "results-heading",
+    "global_refinement_replaced_origin": "ISNUMERIC",
+    "refined_global_source": "lya-sql-776702165",
+    "global_source_does_not_invent_scoped_query": true,
+    "viewport_pixels": [
+      320,
+      720
+    ],
+    "equal_client_and_scroll_width": 305,
+    "return_link_focus_visually_checked": true,
+    "task_tab_closed": true,
+    "viewport_reset": true,
+    "preview_port": 59825,
+    "identified_preview_pid": 3596,
+    "listener_verified_absent": true,
+    "jaws_or_intended_user_acceptance": false,
+    "preview_renderer_sha256": "38d8996561aef6e41c82c639e5d508c8dcbd3d4e76b932b6dd0c378f2b6d2318",
+    "final_renderer_difference": "Eight leading indentation spaces outside one string; reconstructed preview hash and final AST equivalence verified",
+    "final_corpus_rerun": true
+  },
+  "other_checks": {
+    "guide_manifest_command": "python tools/build_help_guides.py --check",
+    "guides": 8,
+    "cited_sources": 87,
+    "evidence_files": 8,
+    "unchanged_baseline_files": [
+      "tools/help_knowledge.py",
+      "help_app/vendor-source-manifest.json",
+      "help_app/guide-manifest.json",
+      "DB Architecture/evidence/programming-layout-manifest.json",
+      "DB Architecture/function layout/manifest.json",
+      "DB Architecture/SP layout/manifest.json",
+      "DB Architecture/table layout/manifest.json",
+      "_project/CONTINUATION_C41.md",
+      "_project/continuation41-20261009.json",
+      "_project/article-source-navigation-verification-c41-20261009.json"
+    ],
+    "export_manifest_resealed": false,
+    "full_export_integrity_verifier_rerun": false,
+    "whitespace_passed": true
+  },
+  "preserved": [
+    "Authored evaluation questions and expected IDs",
+    "Source text and citation bindings",
+    "Global ranking and scoped passage construction, deduplication and order",
+    "Article, source and programming API contracts",
+    "Historical receipts",
+    "Six deferred mobile contracts",
+    "Deployment/correlated timing frozen at 0/34",
+    "Archive payload and Video Rec excluded"
+  ],
+  "limits": [
+    "46 global retrieval misses remain",
+    "Navigation is not semantic answer acceptance",
+    "Retained-word probes do not cover every possible scoped question",
+    "Link counts are occurrences across rendered queries/pages",
+    "No database connection, runtime, deployment or intended-user acceptance",
+    "Git parity does not prove OneDrive upload"
+  ],
+  "publication": "Final commit, remote refs and changed-file byte parity verified separately",
+  "output_manifest": [
+    {
+      "path": "tools/render_help_page.py",
+      "bytes": 16724,
+      "sha256": "084cd8938ebd1a401abeeddc3618b3b8c8788e9293b2c7ed1db576b9e3ec84f1"
+    },
+    {
+      "path": "tools/serve_help.py",
+      "bytes": 10797,
+      "sha256": "4f85e5f2166cfe04ce2ab6c61ee9f18cf22e4b467adfea6740530beddf69703d"
+    },
+    {
+      "path": "tests/test_article_search_context.py",
+      "bytes": 9040,
+      "sha256": "a24c1a859be2b1cfd33a989d48ec9a5f11ec6cee2b7e558cfb0f2252bcee523e"
+    },
+    {
+      "path": "tests/test_article_sources.py",
+      "bytes": 13658,
+      "sha256": "82baf3b82fa7a5d72044d65e5bf4a4b1d082c5ea654a60b9b8a75ebfdd7b0f0d"
+    },
+    {
+      "path": "help_app/README.md",
+      "bytes": 11704,
+      "sha256": "428acee963482770d1e2a4dffe904dbd572fc9534c8baf3767238e9d9e99f876"
+    },
+    {
+      "path": "help_app/evaluation.json",
+      "bytes": 632526,
+      "sha256": "c53b784239472e83b9eaaaa1128748a99e111bf688b9b8c19276495354177d1e"
+    },
+    {
+      "path": "_project/article-search-context-verification-c42-20261009.json",
+      "bytes": 1312,
+      "sha256": "0e13d4eae643b86fa5b5514ac3089aa5d15a950322bdd5191a7e1f87f7c4d11d"
+    },
+    {
+      "path": "_project/CONTINUATION_C42.md",
+      "bytes": 6459,
+      "sha256": "2297ffd1862f804071a3a081ed7f333886514d7ac5c82de36951fab77e5a86df"
+    },
+    {
+      "path": "03_SCALE_INTELLIGENCE_MASTER_PROMPT.md",
+      "bytes": 58852,
+      "sha256": "304f502d9590487c7b48e9362321de9bcb3af5381e06340054fe996ed1da1192"
+    },
+    {
+      "path": "04_SCALE_ASTRA_RESTART_PROMPT.md",
+      "bytes": 37068,
+      "sha256": "f1a96341bb6063d7c4eab99de27205a79e78e02b3930ab0869db16fab452f805"
+    },
+    {
+      "path": "PROJECT_STATUS.md",
+      "bytes": 50817,
+      "sha256": "038f3f498b9db0ab0bc86c5c00d45a452e58270d491813d1ae229771c31a8174"
+    },
+    {
+      "path": "_project/RESUME.md",
+      "bytes": 37504,
+      "sha256": "f914e7d43355785d7e61df637962ea122c688428f10b042933a230f510b85329"
+    }
+  ],
+  "manifest_scope": "Changed deliverables excluding this self-referential receipt; final Git commit binds the checkpoint."
+}
