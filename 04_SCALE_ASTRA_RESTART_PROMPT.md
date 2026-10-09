@@ -1,5 +1,13 @@
 # SCALE Intelligence - next session on Astra
 
+## C46 guide previews and retained-source follow-up - 2026-10-09
+
+Guide results now label ordinary text **Section preview:** and mark truncation; existing section links retain full procedures, parent context and source limits. Exact SRC qualifications remain complete. **102 tests passed**; 223 HTTP queries preserve existing fields/order and 212 full-page views remain byte-identical. All 723 article evaluation records remain identical: **677 top-eight, 433 first and 46 misses**. Guide retrieval remains **24/24 guides, 15/24 exact anchors**.
+
+A bounded retained-source search resolved **0/6** unmatched Receiving Form bindings; **24/30** catalog matches remains unchanged. Same-spelling XML types and SQL aliases do not establish application-model mappings. Read [C46 changes and limits](_project/CONTINUATION_C46.md) and [the checkpoint](_project/continuation46-20261009.json).
+
+Independent code review and bounded keyboard/320 px checks passed. [OPEN_ISSUES.md](OPEN_ISSUES.md) remains the disposition authority. Preserve all C45 closures, six mobile deferrals, untracked Video Rec and frozen **0/34 deployment/timing**. No source/ranking recovery, live inspection, runtime or new JAWS acceptance is claimed. Publication parity is verified separately.
+
 ## C45 owner closures and open-issue register - 2026-10-09
 
 **Current disposition authority:** [OPEN_ISSUES.md](OPEN_ISSUES.md) records all remaining review/decision items. It supersedes conflicting older next-step wording. Mobile initial task entries are **closed**; Performance Management is **closed because SCI will no longer be used**; historical runtime documentation is **complete** with [163/163 IDs documented](DB%20Architecture/HISTORICAL_RUNTIME_IDENTITIES.md). The 154 catalog matches and nine explicit unknown-identity dispositions retain their evidence limits; the unknown names are no longer an open recovery task.

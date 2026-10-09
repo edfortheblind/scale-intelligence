@@ -1,0 +1,172 @@
+{
+  "checkpoint": "C46",
+  "date": "2026-10-09",
+  "issue": "OI-01",
+  "finding": "No resolving mapping found in a bounded retained-text search",
+  "resolved_bindings": 0,
+  "searched_unmatched_names": 6,
+  "catalog_matches_unchanged": [
+    24,
+    30
+  ],
+  "forms": [
+    {
+      "form_table_name": "METADATA_RECEIPT_INSIGHT_VIEW",
+      "retained_forms": [
+        {
+          "FORM_ID": "2780",
+          "FORM_KEY_NAME": "MNU_RECEIPTLINEINSIGHT",
+          "TABLE_NAME": "METADATA_RECEIPT_INSIGHT_VIEW"
+        }
+      ],
+      "retained_catalog_exact_matches": 0,
+      "resolving_mapping_found": false
+    },
+    {
+      "form_table_name": "PurchaseOrderDetailView",
+      "retained_forms": [
+        {
+          "FORM_ID": "4051",
+          "FORM_KEY_NAME": "MNU_PURCHASEORDERLINEDETAILS",
+          "TABLE_NAME": "PurchaseOrderDetailView"
+        }
+      ],
+      "retained_catalog_exact_matches": 0,
+      "resolving_mapping_found": false
+    },
+    {
+      "form_table_name": "PurchaseOrderHeaderView",
+      "retained_forms": [
+        {
+          "FORM_ID": "4049",
+          "FORM_KEY_NAME": "MNU_PURCHASEORDERDETAILS",
+          "TABLE_NAME": "PurchaseOrderHeaderView"
+        },
+        {
+          "FORM_ID": "4075",
+          "FORM_KEY_NAME": "MNU_TPMPURCHASEORDERENTRYDETAILS",
+          "TABLE_NAME": "PurchaseOrderHeaderView"
+        }
+      ],
+      "retained_catalog_exact_matches": 0,
+      "resolving_mapping_found": false
+    },
+    {
+      "form_table_name": "ReceiptContainerView",
+      "retained_forms": [
+        {
+          "FORM_ID": "3005",
+          "FORM_KEY_NAME": "MNU_RECEIPTCONTAINERDETAILS",
+          "TABLE_NAME": "ReceiptContainerView"
+        }
+      ],
+      "retained_catalog_exact_matches": 0,
+      "resolving_mapping_found": false
+    },
+    {
+      "form_table_name": "ReceiptDetail",
+      "retained_forms": [
+        {
+          "FORM_ID": "3035",
+          "FORM_KEY_NAME": "MNU_RECEIPTDETAILDETAILS",
+          "TABLE_NAME": "ReceiptDetail"
+        },
+        {
+          "FORM_ID": "4070",
+          "FORM_KEY_NAME": "MNU_TPMRECEIPTLINEENTRYDETAILS",
+          "TABLE_NAME": "ReceiptDetail"
+        }
+      ],
+      "retained_catalog_exact_matches": 0,
+      "resolving_mapping_found": false
+    },
+    {
+      "form_table_name": "ReceiptHeaderView",
+      "retained_forms": [
+        {
+          "FORM_ID": "3034",
+          "FORM_KEY_NAME": "MNU_RECEIPTDETAILS",
+          "TABLE_NAME": "ReceiptHeaderView"
+        },
+        {
+          "FORM_ID": "4064",
+          "FORM_KEY_NAME": "MNU_TPMRECEIPTENTRYDETAILS",
+          "TABLE_NAME": "ReceiptHeaderView"
+        }
+      ],
+      "retained_catalog_exact_matches": 0,
+      "resolving_mapping_found": false
+    }
+  ],
+  "receipt_detail_contexts": [
+    {
+      "kind": "XML_COMPLEX_TYPE",
+      "path": "SDK/source/downloads/c55be2095d27d79c830e9c7e1ee25cadc59d8a45261cb777c5db03ca07360332.xsd",
+      "line": 183,
+      "meaning": "ReceivingDownload.xsd interface message type; receipt-download xmlData references this schema. No link to UI_RCPTDTL/Form 3035 established."
+    },
+    {
+      "kind": "XML_PATH_EXAMPLE",
+      "path": "AIM/source/html/bb96a2898f713f7f8ff3c012ab40ed9d18fa57fa8cba2e84289d9ea3e6327146.htm",
+      "line": 235,
+      "text": "//ReceiptDetail//ItemClass//ItemClass",
+      "meaning": "Interface-validation error reference; no Form mapping."
+    },
+    {
+      "kind": "QUERY_LOCAL_TABLE_ALIAS",
+      "path": "DB Architecture/SP layout/314796529.sql",
+      "line": 88,
+      "text": "RECEIPT_DETAIL ReceiptDetail",
+      "meaning": "Table alias within the captured routine, not a catalog object or application model."
+    },
+    {
+      "kind": "QUERY_LOCAL_TABLE_ALIAS",
+      "path": "DB Architecture/SP layout/330796586.sql",
+      "line": 108,
+      "text": "RECEIPT_DETAIL ReceiptDetail",
+      "meaning": "Table alias within the captured routine, not a catalog object or application model."
+    },
+    {
+      "kind": "QUERY_LOCAL_TABLE_ALIAS",
+      "path": "DB Architecture/SP layout/346796643.sql",
+      "line": 98,
+      "text": "RECEIPT_DETAIL ReceiptDetail",
+      "meaning": "Table alias within the captured routine, not a catalog object or application model."
+    }
+  ],
+  "form_2780_grid_discrepancy": {
+    "form_name": "METADATA_RECEIPT_INSIGHT_VIEW",
+    "grid_name": "METADATA_INSIGHT_RECEIPT_LINE_VIEW",
+    "control_id": 51927,
+    "attribute_id": 41051,
+    "effective_binding_or_precedence": "NOT_ESTABLISHED"
+  },
+  "completed_search_commands": [
+    "rg -n -w --max-columns 500 --max-columns-preview 'METADATA_RECEIPT_INSIGHT_VIEW|PurchaseOrderDetailView|PurchaseOrderHeaderView|ReceiptContainerView|ReceiptDetail|ReceiptHeaderView' SDK AIM -g '!source/navigation/**'",
+    "rg -l -w 'METADATA_RECEIPT_INSIGHT_VIEW|PurchaseOrderDetailView|PurchaseOrderHeaderView|ReceiptContainerView|ReceiptDetail|ReceiptHeaderView' Snapdragon 'DB Architecture'",
+    "rg -n -w -C 5 'METADATA_RECEIPT_INSIGHT_VIEW|PurchaseOrderDetailView|PurchaseOrderHeaderView|ReceiptContainerView|ReceiptDetail|ReceiptHeaderView' 'DB Architecture/SP layout/314796529.sql' 'DB Architecture/SP layout/330796586.sql' 'DB Architecture/SP layout/346796643.sql'",
+    "rg -n -w -i --max-columns 200 --max-columns-preview 'METADATA_RECEIPT_INSIGHT_VIEW|PurchaseOrderDetailView|PurchaseOrderHeaderView|ReceiptContainerView|ReceiptDetail|ReceiptHeaderView' 'DB Architecture/sql' SDK/source/downloads SDK/source/html AIM/source/html"
+  ],
+  "method_limits": [
+    "Case-sensitive whole-token main searches, plus case-insensitive supplemental source search; normal rg ignore/binary behavior.",
+    "Main whole-token tool output was complete; long matching lines used max-columns-preview and relevant contexts were subsequently read.",
+    "Earlier truncated substring output was superseded by completed whole-token searches.",
+    "One earlier supplemental command named nonexistent DB Architecture/exports and failed; successful existing-root rerun superseded it.",
+    "No hidden/ignored/binary/DLL/decompiled application inspection; no proof of absence in installed application.",
+    "Root archive, .aekr and Video Rec excluded; no live connections or warehouse actions."
+  ],
+  "input_sha256": {
+    "Snapdragon/database/forms.json": "98ecc88a6198877e7c176967b27d9b5fa6cc0c2508c6bd25bca494e67d54161d",
+    "Snapdragon/receiving/backend-bindings.json": "79d06cc8156ee6dd08d39a8459e5619f6ccdc84529dd436a1780cda528eca631",
+    "DB Architecture/catalog/objects.json": "c951f937ccd9f4e604cb22c88c029dbfaddcdefda4a9754f19f095cdf07876a7",
+    "SDK/source/downloads/c55be2095d27d79c830e9c7e1ee25cadc59d8a45261cb777c5db03ca07360332.xsd": "c55be2095d27d79c830e9c7e1ee25cadc59d8a45261cb777c5db03ca07360332",
+    "SDK/manifests/resources/e9f650f8779db4d99976922a6dec1d877255eecdfa739593f884367a6207ece0.json": "bce73abffae9d45139980dd27b0db7e3ef89506b06319023ecd8bc7dba7eb8ee",
+    "SDK/reading/086f0362ee27d395b17215ee67a8f3beaaee220d9b6cf4ed3a7742052d7025b3.md": "0704f6019a1fa219b9626a49a7368b97c155c6ea8942d6f5ceaaa48b947405fb",
+    "AIM/source/html/bb96a2898f713f7f8ff3c012ab40ed9d18fa57fa8cba2e84289d9ea3e6327146.htm": "bb96a2898f713f7f8ff3c012ab40ed9d18fa57fa8cba2e84289d9ea3e6327146",
+    "DB Architecture/SP layout/314796529.sql": "eb37f482b9d009aee040d6d00903b039d6073b4faeeef4ef5a46c1c95f61d2e9",
+    "DB Architecture/SP layout/330796586.sql": "37360be2efe79e5dac8f52afbdab88c6e1fa82a03eeba2ec55bd7f1db20e7570",
+    "DB Architecture/SP layout/346796643.sql": "454bd71df901d53cd87b55fa63f728b62a11e8ab79d8cbcbad7faf7d2456afec"
+  },
+  "owner_decision": "PENDING_UNCHANGED",
+  "runtime_verified": false
+}

@@ -200,6 +200,47 @@ class GuideTests(unittest.TestCase):
             self.guides.search('x'*501)
         self.assertNotIn('scale-reference', {r['guide_id'] for r in self.guides.sections})
 
+    def test_real_cut_procedures_are_labelled_as_incomplete_section_previews(self):
+        probe = json.loads((ROOT/'_project/guide-evaluation-c25.json').read_text(encoding='utf-8'))
+        endings = {'C25-RF-03': 'Skip,', 'C25-RF-10': 'quantity verification',
+                   'C25-RF-15': 'until later'}
+        for case in probe['results']:
+            if case['id'] not in endings:
+                continue
+            destination = case['meaning_review']['reviewed_meaning_destination']
+            hit = next(row for row in self.guides.search(case['question'])['results']
+                       if row['guide_id']+'#'+row['anchor'] == destination)
+            full = next(row['text'].strip() for row in self.guides.sections
+                        if row['guide_id']+'#'+row['anchor'] == destination)
+            with self.subTest(case=case['id']):
+                self.assertEqual(hit['text'], full[:360])
+                html = guide_search(self.guides, case['question'], matches=[hit])
+                self.assertIn('<p>Section preview: ', html)
+                self.assertTrue(hit.get('text_truncated', False))
+                self.assertIn(endings[case['id']]+' …</p>', html)
+                self.assertIn('Open a section title for the full procedure, parent context and source limits.', html)
+                self.assertIn('#'+hit['anchor']+'">', html)
+
+    def test_preview_boundaries_preserve_api_text_and_escape_display(self):
+        library = copy.copy(self.guides)
+        prefix = 'needle <script>unsafe</script> '
+        for length in [359, 360, 361]:
+            content = prefix+'x'*(length-len(prefix))
+            library.sections = [{'guide_id': 'mobile-work', 'guide_title': 'Fixture',
+                                 'section_title': 'Fixture section', 'anchor': 'fixture', 'text': content}]
+            hit = library.search('needle')['results'][0]
+            with self.subTest(length=length):
+                self.assertEqual(hit['text'], content[:360])
+                self.assertIs(hit.get('text_truncated'), length > 360)
+                html = guide_search(library, 'needle')
+                self.assertNotIn('<script>', html)
+                self.assertIn('&lt;script&gt;unsafe&lt;/script&gt;', html)
+                if length > 360:
+                    self.assertIn(' …</p>', html)
+                else:
+                    self.assertIn('<p>Section preview: '+escape(content)+'</p>', html)
+                    self.assertNotIn(' …</p>', html)
+
     def test_explicit_src_identifiers_use_declared_catalog_destinations_and_limits(self):
         catalog = self.guides.evidence['mobile-catalog']['src_base_flows']
         for flow in catalog:
@@ -216,6 +257,7 @@ class GuideTests(unittest.TestCase):
                 self.assertIn(flow['user_task'], hit['section_title'])
                 self.assertIn(flow['limit'], hit['text'])
                 self.assertNotIn(flow['procedure_detail_state'], hit['text'])
+                self.assertIs(hit.get('text_truncated'), False)
                 self.assertEqual(hit['guide_sha256'], self.guides.guides[hit['guide_id']]['sha256'])
                 self.assertEqual(results[0]['manifest_sha256'], self.guides.manifest_sha256)
 
@@ -235,6 +277,8 @@ class GuideTests(unittest.TestCase):
         self.assertIn('Final limitation.', html)
         self.assertNotIn('<script>', html)
         self.assertIn('&lt;script&gt;', html)
+        self.assertNotIn('Section preview:', html)
+        self.assertNotIn(' …</p>', html)
         flow['documentation_candidate'] = '../../.aekr/private.md'
         with self.assertRaises(ValueError):
             library.search(query)

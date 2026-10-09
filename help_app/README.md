@@ -26,6 +26,8 @@ Select a matching passage's **Source** link to open its exact supporting disclos
 
 Open **Detailed procedure guides** from the home page or visit `/guides`. The Warehouse Mobile/RF and Cross Application manuals have section navigation and in-app source views. Search on the home page also returns **Procedure guide matches**, linking directly to the matching sections. Existing article results and guide-section results remain separate.
 
+Ordinary guide results show a **Section preview:**. An ellipsis marks shortened text, which may omit later steps or qualifications. Open the section title for the full procedure, then use **Procedure context** for shared conditions. Exact SRC results retain their complete catalog qualification.
+
 Guide and TAB design search results retain the original library query. Follow guide sections, cited sources, related design answers or dated owner evidence, then use **Return to search results** to restore that query. The context also follows **All procedure guides** and links opened from that listing. Directly opened guides keep their ordinary browse navigation.
 
 For a known screen-flow number, enter the complete code, such as **SRC400** or **SRC 400**. The guide result opens the catalog's documented destination and states its source limitations. Unknown codes have no catalog match; custom or installation-specific flows may still exist. Questions containing other words continue to use ordinary guide search. The flow catalog also provides descriptive task and menu links for browsing. Under a child heading, use **Procedure context** to read its parent section, including shared prerequisites and conditions. The specific branch remains directly reachable.

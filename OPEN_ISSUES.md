@@ -47,6 +47,8 @@ Previously accepted/closed work also stays closed: AIM and SDK completion dispos
 
 **Why it matters.** The documentation cannot yet trace these Form bindings to a proven definition. An exact name match alone would still not prove the effective runtime query, permissions or operational outcome. No configuration repair is justified by this mismatch alone.
 
+**C46 retained-source follow-up (October 9).** A bounded search of active retained SDK, AIM, Snapdragon and database text resolved **0/6** bindings; **24/30** remains unchanged. `ReceiptDetail` also names an XML type in the SDK's `ReceivingDownload.xsd`, appears in AIM interface XML-path guidance and is a local alias for `RECEIPT_DETAIL` in three captured routines. None connects Form 3035 to that definition. The other five names supplied no resolving retained definition. These are search findings within the recorded text scope, not proof that installed models are absent. [Source distinctions and limits](_project/CONTINUATION_C46.md#receiving-binding-follow-up), [exact evidence receipt](_project/receiving-binding-search-c46-20261009.json).
+
 **Suggested follow-up to the SCALE administrator/developer:** “For each exact name above, identify what it resolves to in the installed environment/build: SQL object, application model, alias or obsolete metadata. Supply a dated, read-only definition/mapping or catalog result with the exact schema/name and environment. For Form 2780, explain which binding is effective and why the Form and grid names differ.” A sanitized definition or narrow export is sufficient; credentials and business rows are not needed.
 
 **Decision choices:** (A) Follow up on all six; (B) accept PO non-use for the two PO detail bindings and investigate the other four; (C) accept all six as documented limitations. **Recommendation:** B, subject to the owner's PO applicability decision in OI-04.
@@ -159,6 +161,8 @@ Evidence: [complete evaluation](help_app/evaluation.json), [C38 ranking correcti
 ## OI-07 Guide section retrieval
 
 The retained guide probe finds the intended guide within six results for **24/24**, but the exact expected section anchor for only **15/24 (62.5%)**. The nine misses are listed in [Appendix B](#appendix-b-nine-guide-anchor-misses). Each already returns a child of the expected parent section; parent-context links help navigation but do not count as exact-anchor recovery. C44 return links also preserve this distinction.
+
+**C46 presentation correction.** Ordinary results now identify **Section preview:** text and mark truncation, directing readers to the full section and its limits. This addresses clipped steps/qualifications without changing ranking: **24/24** guides and **15/24** exact anchors remain unchanged. It does not settle the pending section-ranking decision or the source conflicts. [Correction and verification](_project/CONTINUATION_C46.md).
 
 **Decision choices:** accept child-section plus parent navigation; prioritize particular cases; or authorize a bounded section-ranking change with no new losses. **Recommendation:** review whether the returned child section answers each practical need before deciding that all nine require ranking changes.
 

@@ -180,14 +180,21 @@ def guide_search(library, question, *, matches=None, nested=False):
         matches = library.search(question)['results']
     heading = 'h3' if nested else 'h2'
     parts = ['<section aria-labelledby="guide-results-heading"><'+heading+' id="guide-results-heading" tabindex="-1">Procedure guide matches</'+heading+'>',
-             '<p>Step-by-step procedures, conditions and source limits for your search.</p>']
+             '<p>Open a section title for the full procedure, parent context and source limits.</p>']
     if not matches:
         parts.append('<p>No guide section matched. Browse the detailed procedure guides below.</p>')
     else:
         parts.append('<ul class="guide-results">')
         for row in matches:
             href = '/guide/'+row['guide_id']+'#'+row['anchor']
-            parts.append('<li><a href="'+escape(guide_context_url(href, search_context), quote=True)+'">'+escape(row['section_title'])+'</a><p>'+escape(row['text'])+'</p></li>')
+            preview = row['text']
+            is_src = row.get('evidence_scope') == 'DOCUMENTED_SRC_CATALOG_MATCH'
+            if not is_src and row.get('text_truncated'):
+                if preview and not preview[-1].isspace():
+                    preview = re.sub(r'\s+\S+$', '', preview)
+                preview = preview.rstrip()+' …'
+            label = '' if is_src else 'Section preview: '
+            parts.append('<li><a href="'+escape(guide_context_url(href, search_context), quote=True)+'">'+escape(row['section_title'])+'</a><p>'+label+escape(preview)+'</p></li>')
         parts.append('</ul>')
     return ''.join(parts)+'</section>'
 

@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "checkpoint": "C46",
+  "recorded_date": "2026-10-09",
+  "timezone": "America/Chicago",
+  "base_commit": "b7fc14312eb3780299879929afa4d4c268707852",
+  "owner_instruction": "continue with what we can advance",
+  "outcome": "DONE_WITH_CONCERNS",
+  "bounded_task_status": "COMPLETE",
+  "task": "Identify truncated guide previews and record bounded retained-source Receiving binding findings",
+  "delivery_state": "REVIEWED_CODE_AND_VALIDATED_EVIDENCE_READY_FOR_NORMAL_PUBLICATION",
+  "product_state": "GUIDE_PREVIEW_PRESENTATION_IMPROVED_RETRIEVAL_AND_SIX_UNRESOLVED_BINDINGS_UNCHANGED",
+  "gate_authority_state": "LOCAL_HELP_AND_RETAINED_SOURCE_CONTINUATION_WITH_C45_CLOSURES_AND_FREEZES_PRESERVED",
+  "tests": {
+    "command": "python -m unittest tests.test_help_app tests.test_help_guides tests.test_tab_help tests.test_tab_reconciliation tests.test_guide_search_context tests.test_article_search_context",
+    "passed": 102,
+    "failed": 0,
+    "skipped": 0,
+    "elapsed_seconds": 23.601,
+    "focused_command": "python -m unittest tests.test_help_guides",
+    "focused_passed": 23,
+    "preimplementation_regression_failed_subcases": 3
+  },
+  "guide_verification": {
+    "command": "python work/verify_c46.py",
+    "receipt": "_project/guide-preview-verification-c46-20261009.json",
+    "counts": {
+      "guide_probe_cases": 24,
+      "section_title_queries": 154,
+      "src_queries": 45,
+      "unchanged_existing_response_fields": 223,
+      "truncated_result_occurrences": 743,
+      "untruncated_result_occurrences": 370,
+      "unchanged_full_views": 212
+    },
+    "guide_top_six": [
+      24,
+      24
+    ],
+    "exact_anchor_top_six": [
+      15,
+      24
+    ],
+    "api_change": "Additive text_truncated bool; all existing result fields/text/order preserved"
+  },
+  "article_evaluation": {
+    "command": "python tools/evaluate_help.py --serve --output work/c46-article-evaluation.json",
+    "complete_json_identical": true,
+    "unchanged_case_records": 723,
+    "question_only_retrieval": {
+      "expected_topic_first": 433,
+      "expected_topic_in_first_eight": 677,
+      "misses": 46
+    },
+    "selected_topic_contract": {
+      "passed": 723,
+      "failed": 0
+    },
+    "retained_evaluation_sha256": "052db17b7fb2ebddede3692d57db09e149fadc0d3a10c45d96ebfe0bbd34ec7f",
+    "guide_module_fingerprints": "Recorded separately; guide modules are outside the retained article implementation hash"
+  },
+  "receiving_search": {
+    "receipt": "_project/receiving-binding-search-c46-20261009.json",
+    "resolved": [
+      0,
+      6
+    ],
+    "catalog_matches_unchanged": [
+      24,
+      30
+    ],
+    "owner_decision_unchanged": true
+  },
+  "review": {
+    "kind": "FRESH_CONTEXT_READ_ONLY_INDEPENDENT_CODE_REVIEW",
+    "agent_task": "review_c46",
+    "result": "NO_BLOCKING_FINDINGS",
+    "focused_tests_passed": 23,
+    "additional_fixtures_passed": 6,
+    "independent_queries_compared": 223,
+    "reviewer_authored_patch": false,
+    "narrative_and_checkpoint_review": "PASS_NO_BLOCKING_FINDINGS",
+    "documentation_artifact_and_source_hashes_checked": 22,
+    "documentation_links_and_anchors_checked": 24
+  },
+  "browser": {
+    "surface": "Brave",
+    "query": "For Over Pick, must my quantity exceed the pick quantity or the on-hand quantity?",
+    "keyboard_destination_focus": "over-pick-and-in-transit-quantities",
+    "full_source_conflict_visible": true,
+    "return_focus": "results-heading",
+    "original_query_restored": true,
+    "viewport": [
+      320,
+      720
+    ],
+    "client_width": 305,
+    "scroll_width": 305,
+    "viewport_reset": true,
+    "tab_closed": true,
+    "preview_port": 52893,
+    "preview_pid": 31644,
+    "listener_stopped_and_verified_absent": true,
+    "jaws_or_intended_user_acceptance": false
+  },
+  "other_checks": {
+    "guide_manifest_command": "python tools/build_help_guides.py --check",
+    "guide_manifest": "PASS",
+    "whitespace": "PASS",
+    "new_database_connection": false,
+    "source_recapture": false,
+    "deployment_timing": [
+      0,
+      34
+    ],
+    "mobile_deferrals_preserved": 6,
+    "c45_closures_preserved": true,
+    "unrelated_path_preserved": "Video Rec/",
+    "new_documentation_links_and_anchors_checked": 24,
+    "retained_source_fingerprints_match_baseline": 10
+  },
+  "publication": {
+    "target": "origin/main",
+    "mode": "NORMAL_NON_FORCE",
+    "status_at_receipt": "PREPARED_FOR_PUBLICATION",
+    "post_commit_parity": "Verified separately after commit"
+  },
+  "changed_artifact_sha256": {
+    "tools/help_guides.py": "f38f6327fe7fd9c2b5c7502ce7ffdef84363286810d01df454d6d8e7814901e5",
+    "tools/render_help_guides.py": "5bd151b5653d76f817116f901282c74138b760ccb3f5a64e6868ba010ecd302c",
+    "tests/test_help_guides.py": "4e1969ae067ba79727d2be3cd293a1c859aa7aa70ff52d8c88145e03b7a8725c",
+    "help_app/README.md": "1c45b45fa60c4d43a18cb67fb0bfa58d8a01d8167d9aab0892489e1e36194a39",
+    "OPEN_ISSUES.md": "5725c4f180969d5564935aede96ca7d996a28992f00f9bf6d4e0c604ae6cc148",
+    "03_SCALE_INTELLIGENCE_MASTER_PROMPT.md": "8f8e12ea9f169fd09ec6ed767d8f7b67e5fc6327050a5c3d28032877862a4413",
+    "PROJECT_STATUS.md": "225fabeeb548f81f03f1856af72d248faf421d385fb84421fb598ac227299381",
+    "04_SCALE_ASTRA_RESTART_PROMPT.md": "06b698d78a1e5053e583efd83ff13b2ed3d7394eaa25d55ec0334f33932cb676",
+    "_project/RESUME.md": "94e18ef15b8d3fb149e20662df08f95499945a9c1f88ed8258c2b98744e6d240",
+    "_project/CONTINUATION_C46.md": "2fae6ae103d71e2b9670ff7bf932a6e1a5c318ddaa498ddbc1901509fe8dd4eb",
+    "_project/guide-preview-verification-c46-20261009.json": "1a526f817a4c825165153e2743aee9cafc796f86e9e017f87103eb740ecd3f94",
+    "_project/receiving-binding-search-c46-20261009.json": "1305aad6e668906ae52f464a4940439e971af2bbbf66b1a184b7f5a46d945564"
+  }
+}

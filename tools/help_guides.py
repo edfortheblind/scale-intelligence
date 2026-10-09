@@ -395,11 +395,14 @@ class GuideLibrary:
             result['results'] = [{**section,
                                   'section_title': 'SRC '+str(flow['src_identifier'])+': '+flow['user_task'],
                                   'text': state+'. '+flow['limit'],
+                                  'text_truncated': False,
                                   'guide_sha256': self.guides[section['guide_id']]['sha256'],
                                   'evidence_scope': 'DOCUMENTED_SRC_CATALOG_MATCH'}][:min(max(int(limit), 1), 20)]
             return result
         for section in self._search_sections(question, self.sections, limit):
-            result['results'].append({**section, 'text': section['text'].strip()[:360],
+            section_text = section['text'].strip()
+            result['results'].append({**section, 'text': section_text[:360],
+                                      'text_truncated': len(section_text) > 360,
                                       'guide_sha256': self.guides[section['guide_id']]['sha256'],
                                       'evidence_scope': 'DOCUMENTED_GUIDE_WITH_LABELLED_NAVIGATION_OBSERVATIONS'})
         return result
