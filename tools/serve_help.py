@@ -99,8 +99,8 @@ class HelpHandler(BaseHTTPRequestHandler):
                     return self.respond(200, render_shell(title+' | SCALE Knowledge', content), 'text/html; charset=utf-8')
             if path.startswith('/topic/'):
                 values = parse_qs(target.query, keep_blank_values=True)
-                if set(values) - {'find', 'page'} or any(len(v) != 1 for v in values.values()):
-                    raise ValueError('Provide one find and page parameter at most.')
+                if set(values) - {'find', 'page', 'source'} or any(len(v) != 1 for v in values.values()):
+                    raise ValueError('Provide one find, page and source parameter at most.')
                 if 'page' in values and 'find' not in values:
                     raise ValueError('A page parameter requires a find parameter.')
                 page = values.get('page', ['1'])[0]
@@ -108,7 +108,8 @@ class HelpHandler(BaseHTTPRequestHandler):
                     raise ValueError('Use a positive page number.')
                 return self.respond(200, render_page(self.knowledge, topic_id=path.removeprefix('/topic/'),
                                                     article_find=values.get('find', [''])[0],
-                                                    article_find_page=int(page)), 'text/html; charset=utf-8')
+                                                    article_find_page=int(page),
+                                                    article_source=values.get('source', [None])[0]), 'text/html; charset=utf-8')
             if path in ASSETS:
                 filename, mime = ASSETS[path]
                 return self.respond(200, (ROOT/'help_app'/filename).read_bytes(), mime)

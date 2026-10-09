@@ -27,8 +27,30 @@ def topic_list(topics):
         for t in sorted(topics, key=lambda t: t['title'].casefold()))+'</ul>'
 
 
-def render_references(knowledge, topic):
-    parts = ['<details class="references"><summary>Technical reference and sources</summary>']
+def source_target(source_id):
+    # UTF-8 hex is stable and one-to-one, including whitespace and URL punctuation.
+    return 'article-source-'+source_id.encode('utf-8').hex()
+
+
+def article_context_url(topic_id, question=None, page=1, source_id=None, fragment='article-matches'):
+    values = {}
+    if question is not None:
+        values.update(find=question, page=page)
+    if source_id is not None:
+        values['source'] = source_id
+    return ('/topic/'+quote(topic_id, safe='')+('?' + urlencode(values) if values else '')+
+            '#'+quote(fragment, safe=''))
+
+
+def source_link(topic_id, source_id, source, question=None, page=1):
+    href = article_context_url(topic_id, question, page, source_id, source_target(source_id))
+    label = source['kind_label']+' — '+source['label']
+    return '<p class="hash">Source: <a href="'+escape(href, quote=True)+'">'+escape(label)+'</a></p>'
+
+
+def render_references(knowledge, topic, selected_source=None, article_find='', article_find_page=1):
+    parts = ['<details class="references"'+(' open' if selected_source is not None else '')+
+             '><summary>Technical reference and sources</summary>']
     if topic['documentary_refinements']:
         parts += ['<details class="source"><summary>Additional process details</summary>',
                   element('p', 'These details describe individual process rules, not a new execution sequence.'), '<ul>']
@@ -63,7 +85,14 @@ def render_references(knowledge, topic):
         parts += [element('p', text) for text in qualifications]
         parts.append('</details>')
     for source in topic['sources']:
-        parts += ['<details class="source">', element('summary', source['kind_label']+': '+source['label'])]
+        selected = source['source_id'] == selected_source
+        parts += ['<details class="source" id="'+source_target(source['source_id'])+'" tabindex="-1"'+
+                  (' open' if selected else '')+'>', element('summary', source['kind_label']+': '+source['label'])]
+        if selected:
+            parts.append(element('p', source['qualification']))
+            if article_find.strip():
+                href = article_context_url(topic['topic_id'], article_find, article_find_page)
+                parts.append('<p><a href="'+escape(href, quote=True)+'">Return to matching passages</a></p>')
         evidence = knowledge.source(source['source_id'])
         for excerpt in evidence['excerpts']:
             parts += [element('h4', excerpt['location']), element('pre', excerpt['text'])]
@@ -103,7 +132,7 @@ def render_article_find(knowledge, topic, question, page=1):
                 parts += ['<li>', element('p', match['label']), element('p', match['text'])]
                 if match['source_id']:
                     source = knowledge.source(match['source_id'])
-                    parts += [element('p', 'Source: '+source['kind_label']+' — '+source['label'], ' class="hash"'),
+                    parts += [source_link(topic['topic_id'], match['source_id'], source, question, page),
                               element('p', source['qualification'])]
                 parts.append('</li>')
             parts.append('</ol>')
@@ -130,12 +159,18 @@ def render_shell(title, content):
     return template.replace('{{TITLE}}', escape(title)).replace('{{CONTENT}}', content).encode('utf-8')
 
 
-def render_page(knowledge, question='', topic_id=None, guides=None, article_find='', article_find_page=1):
+def render_page(knowledge, question='', topic_id=None, guides=None, article_find='', article_find_page=1,
+                article_source=None):
     if len(question) > 500:
         raise ValueError('Use a question of 500 characters or fewer.')
     if not isinstance(article_find, str) or len(article_find) > 500:
         raise ValueError('Use a question of 500 characters or fewer.')
     topic = knowledge.topic(topic_id) if topic_id is not None else None
+    if article_source is not None:
+        if not isinstance(article_source, str) or not article_source.strip():
+            raise ValueError('Use a nonempty source identifier.')
+        if topic is None or article_source not in {source['source_id'] for source in topic['sources']}:
+            raise KeyError(article_source)
     parts = []
     if topic:
         parts += ['<nav aria-label="Library"><a href="/">Browse topics</a></nav>',
@@ -171,7 +206,7 @@ def render_page(knowledge, question='', topic_id=None, guides=None, article_find
                     parts += ['<details class="source">',
                               element('summary', 'Matching detail and source: '+match['title']),
                               element('p', match['matching_detail']),
-                              element('p', 'Source: '+source['kind_label']+' — '+source['label'], ' class="hash"'),
+                              source_link(match['topic_id'], match['matching_source_id'], source),
                               element('p', source['qualification']), '</details>']
                 parts.append('</li>')
             parts.append('</ul>')
@@ -197,7 +232,7 @@ def render_page(knowledge, question='', topic_id=None, guides=None, article_find
                   section('Limits', topic['evidence_limits'])]
         if topic['related_topics']:
             parts += [element('h3', 'Related articles'), topic_list(topic['related_topics'])]
-        parts += [render_references(knowledge, topic), '</article>']
+        parts += [render_references(knowledge, topic, article_source, article_find, article_find_page), '</article>']
     else:
         setup = [t for t in knowledge.topics.values() if t.get('article_type') == 'configuration']
         processes = [t for t in knowledge.topics.values() if t['topic_id'].startswith('process-') and t not in setup]

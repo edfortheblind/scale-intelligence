@@ -1,5 +1,13 @@
 # SCALE Intelligence project status
 
+## C41 exact article source navigation - 2026-10-09
+
+Source-qualified passages now link directly to their exact disclosure in the full article. The selected source opens with its qualification and visible keyboard focus. Scoped links preserve the exact search and page; **Return to matching passages** restores that context. Global matching details use the same source links. Read [C41 changes and limits](_project/CONTINUATION_C41.md) and [the checkpoint](_project/continuation41-20261009.json).
+
+**161 tests passed**. Across 340 articles, **1,307 article/source targets** verified; 398 scoped pages supplied **1,203 exact-source links**, and 723 global queries supplied **2,687 source-link occurrences**. Existing text, attribution, retrieval and article API records remain unchanged. Independent review and keyboard/320 px checks passed. All **723 global evaluation records remain identical: 677 top-eight, 433 first and 46 misses**.
+
+This is source navigation, with no global retrieval recovery or semantic-answer acceptance credit. Preserve unresolved source questions, six mobile deferrals, untracked Video Rec and **0/34 deployment/timing**. Publication parity is verified separately; no new runtime or JAWS acceptance is claimed.
+
 ## C40 complete article-match navigation - 2026-10-09
 
 **Find in this article** now provides Previous/Next page links, preserving the selected article, exact query and source qualifications. Ranges and continued numbering identify each page; a new search resets to page one. Read [C40 changes and limits](_project/CONTINUATION_C40.md) and [the checkpoint](_project/continuation40-20261009.json).

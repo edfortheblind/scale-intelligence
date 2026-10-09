@@ -20,6 +20,8 @@ When a search result matches a reviewed source detail, expand **Matching detail 
 
 When reading an article, expand **Find in this article** to look for words or a question within its text and reviewed routine details. The selected article stays in view. Eight matching passages appear per page with their source qualifications; article prose retains its article-level sources. Use **Previous page** and **Next page** to read the remaining matches. The range and page count show your position; submitting a new search returns to page one. An article can cover several routines, so read the passage labels and limits. These are text matches, not generated answers. **Search SCALE Knowledge** remains available for searching the whole library.
 
+Select a matching passage's **Source** link to open its exact supporting disclosure and qualification in the full article. **Return to matching passages** restores the article search and page you were reading. The same source links are available in global search results under **Matching detail and source**. Expand **Source identity** to read retained hashes. Article prose without a separate passage citation continues to use the article's sources.
+
 ## Detailed procedure guides
 
 Open **Detailed procedure guides** from the home page or visit `/guides`. The Warehouse Mobile/RF and Cross Application manuals have section navigation and in-app source views. Search on the home page also returns **Procedure guide matches**, linking directly to the matching sections. Existing article results and guide-section results remain separate.
@@ -67,7 +69,7 @@ Write each explanation once. Omit empty or redundant sections. Keep project hist
 ## Verification
 
 ```powershell
-python -m unittest tests.test_help_guides tests.test_help_app tests.test_help_articles tests.test_retrieval tests.test_article_find
+python -m unittest tests.test_help_guides tests.test_help_app tests.test_help_articles tests.test_retrieval tests.test_article_find tests.test_article_sources
 python tools/build_help_guides.py --check
 python tools/evaluate_help.py --serve
 python tools/verify_db_docs.py
